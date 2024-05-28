@@ -57,7 +57,7 @@ export default function Page(): JSX.Element {
       <div className={styles.description}>
         <p>
           examples/basic&nbsp;
-          <Code className={styles.code}>docs</Code>
+          <Code className={styles.code}>design-system</Code>
         </p>
         <div>
           <a
@@ -78,7 +78,7 @@ export default function Page(): JSX.Element {
         </div>
       </div>
 
-      <Button appName="docs" className={styles.button}>
+      <Button appName="design-system" className={styles.button}>
         Click me!
       </Button>
 
