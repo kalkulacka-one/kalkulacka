@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3001",
-    "build": "next build",
-    "start": "next start",
+    "build": "storybook build",
+    "dev": "storybook dev -p 6006",
     "lint": "eslint . --max-warnings 0",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "next-build": "next build",
+    "next-dev": "next dev --port 3001",
+    "next-start": "next start"
   },
   "dependencies": {
     "@repo/design-system": "*",
