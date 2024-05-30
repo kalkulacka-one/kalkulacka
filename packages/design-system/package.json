@@ -31,6 +31,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@headlessui/react": "^2.0.4",
     "clsx": "^2.1.1"
   }
 }
