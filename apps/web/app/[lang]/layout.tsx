@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,12 +7,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  params: { lang },
   children,
 }: {
+  params: { lang: string };
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body>{children}</body>
     </html>
   );

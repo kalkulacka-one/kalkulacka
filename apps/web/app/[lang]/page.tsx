@@ -1,6 +1,11 @@
-export default function Page(): JSX.Element {
+export default function Page({
+  params: { lang },
+}: {
+  params: { lang: string };
+}): JSX.Element {
   return (
     <main className="p-4">
+      <p>{lang}</p>
       <p className="text-5xl font-light">Radio Canada Light</p>
       <p className="text-5xl font-normal">Radio Canada Normal</p>
       <p className="text-5xl font-medium">Radio Canada Medium</p>
