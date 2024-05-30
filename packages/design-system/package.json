@@ -6,7 +6,8 @@
     "./styles.css": "./dist/index.css",
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
+    "./code": "./src/code.tsx",
+    "./dropdown": "./src/dropdown.tsx"
   },
   "scripts": {
     "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
