@@ -1,53 +1,119 @@
-export default function Page({
-  params: { lang },
-}: {
-  params: { lang: string };
-}): JSX.Element {
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Kalkulacka.1",
+  description: "Ta pravá volební kalkulačka pro miliony voličů ve 4 zemích",
+};
+
+export default function Page(): JSX.Element {
   return (
-    <main className="p-4">
-      <p>{lang}</p>
-      <p className="text-5xl font-light">Radio Canada Light</p>
-      <p className="text-5xl font-normal">Radio Canada Normal</p>
-      <p className="text-5xl font-medium">Radio Canada Medium</p>
-      <p className="text-5xl font-semibold">Radio Canada Semibold</p>
-      <p className="text-5xl font-bold">Radio Canada Bold</p>
-      <p className="text-5xl font-light italic">Radio Canada Light Italic</p>
-      <p className="text-5xl font-normal italic">Radio Canada Normal Italic</p>
-      <p className="text-5xl font-medium italic">Radio Canada Medium Italic</p>
-      <p className="text-5xl font-semibold italic">
-        Radio Canada Semibold Italic
-      </p>
-      <p className="text-5xl font-bold italic">Radio Canada Bold Italic</p>
-      <p className="text-5xl font-light font-condensed">
-        Radio Canada Light Condensed
-      </p>
-      <p className="text-5xl font-normal font-condensed">
-        Radio Canada Normal Condensed
-      </p>
-      <p className="text-5xl font-medium font-condensed">
-        Radio Canada Medium Condensed
-      </p>
-      <p className="text-5xl font-semibold font-condensed">
-        Radio Canada Semibold Condensed
-      </p>
-      <p className="text-5xl font-bold font-condensed">
-        Radio Canada Bold Condensed
-      </p>
-      <p className="text-5xl font-light italic font-condensed">
-        Radio Canada Light Italic Condensed
-      </p>
-      <p className="text-5xl font-normal italic font-condensed">
-        Radio Canada Normal Italic Condensed
-      </p>
-      <p className="text-5xl font-medium italic font-condensed">
-        Radio Canada Medium Italic Condensed
-      </p>
-      <p className="text-5xl font-semibold italic font-condensed">
-        Radio Canada Semibold Italic Condensed
-      </p>
-      <p className="text-5xl font-bold italic font-condensed">
-        Radio Canada Bold Italic Condensed
-      </p>
-    </main>
+    <section className="max-w-2xl grid gap-8">
+      <section className="grid gap-2">
+        <h2 className="text-2xl font-medium">
+          Tvoříme <span className="font-bold">Volební kalkulačku</span>, která
+          vám pomáhá rozhodnout se koho volit
+        </h2>
+        <p>
+          Jsme spolek{" "}
+          <a
+            href="https://kohovolit.eu"
+            className="underline hover:no-underline"
+          >
+            KohoVolit.eu
+          </a>{" "}
+          a už 15 let pro vás tvoříme{" "}
+          <a
+            href="https://www.volebnikalkulacka.cz"
+            className="underline hover:no-underline"
+          >
+            Volební kalkulačku
+          </a>
+          , která vám pomáhá učinit informované rozhodnutí, koho volit.
+        </p>
+        <p>
+          V roce 2022 jsme s podporou{" "}
+          <a
+            href="https://cesko.digital"
+            className="underline hover:no-underline"
+          >
+            Česko.Digital
+          </a>{" "}
+          přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď
+          nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku
+          na Slovensku, v&nbsp;Maďarsku a Rakousku, a chystáme další:
+        </p>
+        <ul className="list-disc pl-6">
+          <li>
+            🇨🇿{" "}
+            <a
+              href="https://www.volebnikalkulacka.cz"
+              className="font-bold underline hover:no-underline"
+            >
+              Volební kalkulačka
+            </a>{" "}
+            v&nbsp;Česku
+          </li>
+          <li>
+            🇸🇰{" "}
+            <a
+              href="https://www.volebnakalkulacka.sk"
+              className="font-bold underline hover:no-underline"
+            >
+              Volební kalkulačka
+            </a>{" "}
+            na Slovensku
+          </li>
+          <li>
+            🇭🇺{" "}
+            <a
+              href="https://www.voksmonitor.hu"
+              className="font-bold underline hover:no-underline"
+            >
+              Voksmonitor
+            </a>{" "}
+            v&nbsp;Maďarsku
+          </li>
+          <li>
+            🇦🇹{" "}
+            <a
+              href="https://www.wahlrechner.at"
+              className="font-bold underline hover:no-underline"
+            >
+              Wahlrechner
+            </a>{" "}
+            v&nbsp;Rakousku
+          </li>
+        </ul>
+        <p>
+          Naše volební kalkulačky vyplní statisíce voličů každý rok. Jen
+          prezidentskou kalkulačku v&nbsp;Česku vyplnilo v&nbsp;roce 2023 přes{" "}
+          <strong>1 milion lidí</strong>!
+        </p>
+      </section>
+      <section className="grid gap-2">
+        <h2 className="text-2xl font-medium">
+          Podpořte Volební kalkulačku. Nebo se zapojte!
+        </h2>
+        <p>
+          Abychom mohli v tvorbě kalkulaček pokračovat, potřebujeme vaši
+          podporu.{" "}
+          <Link
+            href="/cs/podporte-kalkulacku"
+            className="font-bold underline hover:no-underline"
+          >
+            Podpořte nás
+          </Link>{" "}
+          nebo se{" "}
+          <Link
+            href="/cs/zapojte-se"
+            className="font-bold underline hover:no-underline"
+          >
+            zapojte do našeho týmu dobrovolníků
+          </Link>{" "}
+          a pomozte nám Volební kalkulačku dál rozvíjet. Děkujeme!
+        </p>
+      </section>
+    </section>
   );
 }
