@@ -11,6 +11,13 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang={lang}>
+      <head>
+        <script
+          defer
+          data-domain="kalkulacka.one"
+          src="/js/script.tagged-events.outbound-links.js"
+        />
+      </head>
       <body>
         <main className="p-4 grid gap-8">
           <header className="grid gap-2">
