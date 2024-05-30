@@ -47,6 +47,11 @@ export default function RootLayout({
           </header>
           {children}
         </main>
+        <script
+          defer
+          data-domain="kalkulacka.one"
+          src="/js/script.tagged-events.outbound-links.js"
+        ></script>
       </body>
     </html>
   );
