@@ -114,9 +114,9 @@ export default function Page(): JSX.Element {
             <section className="grid gap-1">
               <h4 className="text-lg font-bold">Vývoj aplikace</h4>
               <p>
-                Novou generaci kalkulačky jsme spustili s v roce 2022 a od té
+                Novou generaci kalkulačky jsme spustili v roce 2022 a od té
                 doby narazili na spoustu technických limitů. Rozhodli jsme se
-                proto aplikaci přepsat, poučit se s chyb a připravit ji na
+                proto aplikaci přepsat, poučit se z chyb a připravit ji na
                 mezinárodní expanzi.
               </p>
               <p>
@@ -141,11 +141,6 @@ export default function Page(): JSX.Element {
                 bylo ideální, ale budeme rádi za každý pull request.
               </p>
             </section>
-            <h4 className="text-lg font-bold"></h4>
-            <p>Bla bla</p>
-            <p>
-              <strong>Kdy a jak dlouho?</strong>{" "}
-            </p>
           </li>
           <li>
             <section className="grid gap-1">
