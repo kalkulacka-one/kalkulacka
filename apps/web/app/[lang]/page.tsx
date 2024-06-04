@@ -39,9 +39,9 @@ export default function Page(): JSX.Element {
           >
             Česko.Digital
           </a>{" "}
-          přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď nás
-          čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku na
-          Slovensku, v&nbsp;Maďarsku a Rakousku, a chystáme další:
+          přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď
+          nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku
+          na Slovensku, v&nbsp;Maďarsku a Rakousku, a chystáme další:
         </p>
         <ul className="list-disc pl-6">
           <li>

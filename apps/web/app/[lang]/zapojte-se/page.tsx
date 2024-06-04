@@ -104,8 +104,8 @@ export default function Page(): JSX.Element {
                 komunikace se dá vrhnout kdykoliv.
               </p>
               <p>
-                <strong>Jak dlouho?</strong> Dlouhodobá posila do týmu by
-                byla nejlepší, ale budeme rádi i za jednorázovou pomoc pro jedny
+                <strong>Jak dlouho?</strong> Dlouhodobá posila do týmu by byla
+                nejlepší, ale budeme rádi i za jednorázovou pomoc pro jedny
                 volby.
               </p>
             </section>
