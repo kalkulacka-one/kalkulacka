@@ -7,7 +7,7 @@ export function middleware(request: NextRequest): NextResponse | undefined {
   const supportedLocale = locales.some(
     (locale) =>
       request.nextUrl.pathname.startsWith(`/${locale}/`) ||
-      request.nextUrl.pathname === `/${locale}`
+      request.nextUrl.pathname === `/${locale}`,
   );
 
   if (supportedLocale) {
