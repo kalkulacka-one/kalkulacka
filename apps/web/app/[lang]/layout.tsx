@@ -51,6 +51,15 @@ export default function RootLayout({
                 Vlastní kalkulačka
               </Link>
             </nav>
+            <div className="flex flex-wrap gap-2">
+              →
+              <Link
+                href="https://x.com/kalkulacka_one"
+                className="underline hover:no-underline"
+              >
+                @kalkulacka_one na X
+              </Link>
+            </div>
           </header>
           {children}
         </main>
