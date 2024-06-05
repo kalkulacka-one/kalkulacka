@@ -28,7 +28,7 @@ export default function RootLayout({
                 zemích
               </p>
             </Link>
-            <nav className="grid grid-flow-col auto-cols-max gap-2">
+            <nav className="flex flex-wrap gap-2">
               <Link href="/cs" className="underline hover:no-underline">
                 Domů
               </Link>
