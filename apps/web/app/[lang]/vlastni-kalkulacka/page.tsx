@@ -17,10 +17,10 @@ export default function Page(): JSX.Element {
           Zajímají vás podrobnosti nebo chcete připravit cenovou nabídku?
           Kontaktujte nás ještě dnes na{" "}
           <a
-            href="mailto:info@kohovolit.eu"
+            href="mailto:hey@kalkulacka.one"
             className="underline hover:no-underline"
           >
-            info@kohovolit.eu
+            hey@kalkulacka.one
           </a>{" "}
           nebo zavolejte autorovi Volební kalkulačky Michalu Škopovi na{" "}
           <a href="tel:+420735518529">+420 735 518 529</a>.

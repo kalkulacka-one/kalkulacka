@@ -32,10 +32,10 @@ export default function Page(): JSX.Element {
         <p>
           Chcete se zapojit nebo se na něco zeptat? Napište nám na{" "}
           <a
-            href="mailto:info@kohovolit.eu"
+            href="mailto:hey@kalkulacka.one"
             className="underline hover:no-underline"
           >
-            info@kohovolit.eu
+            hey@kalkulacka.one
           </a>
           .
         </p>
@@ -165,10 +165,10 @@ export default function Page(): JSX.Element {
         <p>
           Napište nám e-mail:{" "}
           <a
-            href="mailto:info@kohovolit.eu"
+            href="mailto:hey@kalkulacka.one"
             className="underline hover:no-underline"
           >
-            info@kohovolit.eu
+            hey@kalkulacka.one
           </a>
           .
         </p>
