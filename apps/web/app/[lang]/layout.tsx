@@ -50,6 +50,12 @@ export default function RootLayout({
               >
                 Vlastní kalkulačka
               </Link>
+              <Link
+                href="https://x.com/kalkulacka_one"
+                className="underline hover:no-underline"
+              >
+                → @kalkulacka_one na X
+              </Link>
             </nav>
           </header>
           {children}
