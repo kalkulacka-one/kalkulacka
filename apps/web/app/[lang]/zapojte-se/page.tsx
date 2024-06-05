@@ -14,13 +14,17 @@ export default function Page(): JSX.Element {
         </p>
         <p>
           <strong>A potřebujeme vaši pomoc.</strong> Přidejte se k našemu týmu
-          dobrovolníků a podpořte férové volby. Práce na volební kalkulačce je
-          pestrá i různě rozložená v&nbsp;čase, takže určitě najdete příležitost
-          vhodnou právě pro vás.
+          dobrovolníků, podpořte férové volby a pomozte milionům lidí, kteří
+          Volební kalkulačku využívají. Jen prezidentskou kalkulačku v Česku
+          vyplnilo v roce 2023 přes 1 milion lidí!
         </p>
         <p>
-          Každé pomoci si velmi vážíme. A pokud se nemůžete zapojit přímo,
-          můžete nás{" "}
+          Práce na volební kalkulačce je pestrá i různě rozložená v&nbsp;čase,
+          takže určitě najdete příležitost vhodnou právě pro vás. Každé pomoci
+          si velmi vážíme.
+        </p>
+        <p>
+          A pokud se nemůžete zapojit přímo, můžete nás{" "}
           <Link
             href="/cs/podporte-kalkulacku"
             className="underline hover:no-underline"
@@ -30,12 +34,19 @@ export default function Page(): JSX.Element {
           . Moc děkujeme!
         </p>
         <p>
-          Chcete se zapojit nebo se na něco zeptat? Napište nám na{" "}
+          Chcete se zapojit nebo se na něco zeptat? Napište nám e-mail:{" "}
           <a
-            href="mailto:info@kohovolit.eu"
+            href="mailto:hey@kalkulacka.one"
             className="underline hover:no-underline"
           >
-            info@kohovolit.eu
+            hey@kalkulacka.one
+          </a>{" "}
+          nebo zprávu na{" "}
+          <a
+            href="https://twitter.com/kalkulacka_one"
+            className="underline hover:no-underline"
+          >
+            <span className="line-through">Twitteru</span> X
           </a>
           .
         </p>
@@ -68,6 +79,72 @@ export default function Page(): JSX.Element {
           </li>
           <li>
             <section className="grid gap-1">
+              <h4 className="text-lg font-bold">Marketing & copywriting</h4>
+              <p>
+                Rádi bychom zapracovali na komunikaci volební kalkulačky, aby se
+                dostala k co nejvíce voličům. A taky trochu šlápli do sociálních
+                sítí. Pomůžete nám s tím?
+              </p>
+              <ul className="list-disc pl-6">
+                <li>PR a tiskové zprávy</li>
+                <li>newslettery</li>
+                <li>obsah a komunikace na sociálních sítích</li>
+                <li>doplňující obsah a články na webu</li>
+                <li>a další komunikace</li>
+              </ul>
+              <p>
+                <strong>Kdy?</strong> Zejména při spuštění volební kalkulačky
+                (cca 2 týdny před volbami), ale do přípravy a strategické
+                komunikace se dá vrhnout kdykoliv.
+              </p>
+              <p>
+                <strong>Jak dlouho?</strong> Dlouhodobá posila do týmu by byla
+                nejlepší, ale budeme rádi i za jednorázovou pomoc pro jedny
+                volby nebo jen v jedné oblasti.
+              </p>
+            </section>
+          </li>
+          <li>
+            <section className="grid gap-1">
+              <h4 className="text-lg font-bold">Vývoj aplikace</h4>
+              <p>
+                Novou generaci kalkulačky jsme spustili v roce 2022 a od té doby
+                narazili na spoustu technických limitů. Rozhodli jsme se proto
+                aplikaci přepsat, poučit se z chyb a připravit ji na mezinárodní
+                expanzi.
+              </p>
+              <p>
+                Pracujeme s populárními technologiemi: React, NextJS, Tailwind
+                CSS či Prisma & PostgreSQL. Vše je{" "}
+                <a
+                  href="https://github.com/kalkulacka-one/kalkulacka"
+                  className="underline hover:no-underline"
+                >
+                  open-source na našem GitHubu
+                </a>{" "}
+                (současná kalkulačka zatím ještě na{" "}
+                <a
+                  href="https://github.com/cesko-digital/volebni-kalkulacka-2022"
+                  className="underline hover:no-underline"
+                >
+                  GitHubu Česko.Digital
+                </a>
+                ), kalkulačka beží na Vercelu a developer experience je pro nás
+                priorita číslo 1: nemusíte se bát, že spálíte týden času, než
+                něco skutečně uděláte.
+              </p>
+              <p>
+                <strong>Kdy?</strong> Kdykoliv. Ale potřebujeme do toho pořádně
+                šlápnout hlavně přes léto, abychom stihli podzimní volby.
+              </p>
+              <p>
+                <strong>Jak dlouho?</strong> Pravidelných pár hodin týdně by
+                bylo ideální, ale budeme rádi za každý pull request.
+              </p>
+            </section>
+          </li>
+          <li>
+            <section className="grid gap-1">
               <h4 className="text-lg font-bold">
                 Příprava otázek a sběr odpovědí
               </h4>
@@ -92,58 +169,6 @@ export default function Page(): JSX.Element {
           </li>
           <li>
             <section className="grid gap-1">
-              <h4 className="text-lg font-bold">Komunikace & sociální sítě</h4>
-              <p>
-                Rádi bychom zapracovali na komunikaci volební kalkulačky, aby se
-                dostala k co nejvíce voličům. A taky trochu šlápli do sociálních
-                sítí. Pomůžete nám s tím?
-              </p>
-              <p>
-                <strong>Kdy?</strong> Zejména při spuštění volební kalkulačky
-                (cca 2 týdny před volbami), ale do přípravy a strategické
-                komunikace se dá vrhnout kdykoliv.
-              </p>
-              <p>
-                <strong>Jak dlouho?</strong> Dlouhodobá posila do týmu by byla
-                nejlepší, ale budeme rádi i za jednorázovou pomoc pro jedny
-                volby.
-              </p>
-            </section>
-          </li>
-          <li>
-            <section className="grid gap-1">
-              <h4 className="text-lg font-bold">Vývoj aplikace</h4>
-              <p>
-                Novou generaci kalkulačky jsme spustili v roce 2022 a od té
-                doby narazili na spoustu technických limitů. Rozhodli jsme se
-                proto aplikaci přepsat, poučit se z chyb a připravit ji na
-                mezinárodní expanzi.
-              </p>
-              <p>
-                Pracujeme s populárními technologiemi: React, NextJS, Tailwind
-                CSS či Prisma & PostgreSQL. Vše je{" "}
-                <a
-                  href="https://github.com/kalkulacka-one/kalkulacka"
-                  className="underline hover:no-underline"
-                >
-                  open-source na GitHubu
-                </a>
-                , kalkulačka beží na Vercelu a developer experience je pro nás
-                priorita číslo 1: nemusíte se bát, že spálíte týden času, než
-                něco skutečně uděláte.
-              </p>
-              <p>
-                <strong>Kdy?</strong> Kdykoliv. Ale potřebujeme do toho pořádně
-                šlápnout hlavně přes léto, abychom stihli podzimní volby.
-              </p>
-              <p>
-                <strong>Jak dlouho?</strong> Pravidelných pár hodin týdně by
-                bylo ideální, ale budeme rádi za každý pull request.
-              </p>
-            </section>
-          </li>
-          <li>
-            <section className="grid gap-1">
               <h4 className="text-lg font-bold">UX design & grafika</h4>
               <p>
                 Kalkulačka se předloni převlékla do nového kabátku, ale spolu s
@@ -160,17 +185,41 @@ export default function Page(): JSX.Element {
               </p>
             </section>
           </li>
+          <li>
+            <section className="grid gap-1">
+              <h4 className="text-lg font-bold">Právní služby</h4>
+              <p>
+                Potřebovali bychom pomoct s právními dokumenty, jako je licence
+                pro open-source aplikaci, podmínky použití a ochrana osobních
+                údajů. Něco máme, ale potřebujeme to doladit.
+              </p>
+              <p>
+                <strong>Kdy?</strong> Kdykoliv.
+              </p>
+              <p>
+                <strong>Jak dlouho?</strong> Jednorázově a případně na
+                konzultace nebo zapracování nové legislativy v budoucnu.
+              </p>
+            </section>
+          </li>
         </ul>
         <h2 className="text-2xl font-bold">Jak se zapojit?</h2>
         <p>
           Napište nám e-mail:{" "}
           <a
-            href="mailto:info@kohovolit.eu"
+            href="mailto:hey@kalkulacka.one"
             className="underline hover:no-underline"
           >
-            info@kohovolit.eu
+            hey@kalkulacka.one
+          </a>{" "}
+          nebo zprávu na{" "}
+          <a
+            href="https://twitter.com/kalkulacka_one"
+            className="underline hover:no-underline"
+          >
+            <span className="line-through">Twitteru</span> X
           </a>
-          .
+          . Děkujeme!
         </p>
       </section>
     </section>

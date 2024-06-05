@@ -84,6 +84,18 @@ export default function Page(): JSX.Element {
             </a>{" "}
             v&nbsp;Rakousku
           </li>
+          <li>
+            <em> ještě letos v 🇧🇦 Bosně a Hercegovině</em>
+          </li>
+          <li>
+            <em>v roce 2025 v 🇽🇰 Kosovu</em>
+          </li>
+          <li>
+            <em>v roce 2025 v 🇦🇱 Albánii</em>
+          </li>
+          <li>
+            <em>v roce 2025 v 🇲🇰 Severní Makedonii</em>
+          </li>
         </ul>
         <p>
           Naše volební kalkulačky vyplní statisíce voličů každý rok. Jen
