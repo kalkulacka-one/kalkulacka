@@ -12,7 +12,7 @@
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "latest"
+    "turbo": "^2.0.6"
   },
   "engines": {
     "node": ">=18"
