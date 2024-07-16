@@ -11,8 +11,8 @@
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "latest"
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "turbo": "^2.0.6"
   },
   "engines": {
     "node": ">=18"
