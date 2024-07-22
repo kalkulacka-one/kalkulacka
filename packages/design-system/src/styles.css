@@ -20,3 +20,14 @@
       url("./fonts/radio-canada/italic.woff") format("woff");
   }
 }
+
+@layer utilities {
+  /* TODO: Remove after upgrading to Tailwind CSS v4.
+     See https://github.com/tailwindlabs/tailwindcss/pull/13153. */
+  .ds-font-stretch-semi-condensed {
+    font-stretch: semi-condensed;
+  }
+  .ds-font-stretch-condensed {
+    font-stretch: condensed;
+  }
+}
