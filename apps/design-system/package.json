@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "storybook build -o dist",
-    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "dev": "storybook dev -p 6006 --no-open",
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
