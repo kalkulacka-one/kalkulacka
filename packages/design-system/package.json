@@ -3,17 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./styles.css": "./dist/index.css",
+    "./styles": "./dist/index.css",
+    "./fonts": "./dist/fonts",
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
     "./code": "./src/code.tsx",
     "./dropdown": "./src/dropdown.tsx"
   },
   "scripts": {
-    "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
-    "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "build": "npm run fonts && npm run tailwind",
+    "fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
+    "dev": "npm run fonts && npm run tailwind:watch",
     "generate:component": "turbo gen react-component",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
+    "tailwind:watch": "npm run tailwind -- --watch"
   },
   "packageManager": "npm@10.8.2",
   "devDependencies": {
