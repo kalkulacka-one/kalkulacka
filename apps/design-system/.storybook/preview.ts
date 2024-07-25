@@ -3,6 +3,8 @@ import { withThemeByClassName } from "@storybook/addon-themes";
 
 import "@repo/design-system/styles";
 
+import "example.css";
+
 const preview: Preview = {
   parameters: {
     controls: {

@@ -1,0 +1,6 @@
+html.example {
+  --k1-color-background-light: white;
+  --k1-color-background-dark: black;
+  --k1-color-foreground-light: black;
+  --k1-color-foreground-dark: white;
+}
