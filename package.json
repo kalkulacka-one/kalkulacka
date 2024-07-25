@@ -4,8 +4,9 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
+    "format": "turbo format",
+    "format:fix": "turbo format:fix",
+    "lint": "turbo lint"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
