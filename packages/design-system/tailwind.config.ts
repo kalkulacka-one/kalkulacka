@@ -26,7 +26,7 @@ const fonts = {
 
 const config: Pick<Config, "content" | "prefix" | "presets"> = {
   content: ["./src/**/*.tsx"],
-  prefix: "ds-",
+  prefix: "k1-",
   presets: [globalConfig, colors, fonts],
 };
 
