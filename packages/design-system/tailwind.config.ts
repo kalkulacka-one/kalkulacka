@@ -1,6 +1,8 @@
-import globalConfig from "@repo/tailwind-config";
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
+
+import globalConfig from "@repo/tailwind-config";
+
+import typography from "./config/typography.ts"
 
 const colors = {
   theme: {
@@ -14,20 +16,10 @@ const colors = {
   },
 };
 
-const fonts = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Radio Canada"', ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
-};
-
 const config: Pick<Config, "content" | "prefix" | "presets"> = {
   content: ["./src/**/*.tsx"],
   prefix: "k1-",
-  presets: [globalConfig, colors, fonts],
+  presets: [globalConfig, colors, typography],
 };
 
 export default config;
