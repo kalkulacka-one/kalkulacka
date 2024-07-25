@@ -4,7 +4,12 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "apps/design-system/storybook-static/**",
+        "packages/**/dist/**"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
