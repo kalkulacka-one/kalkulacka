@@ -1,33 +1,14 @@
-import globalConfig from "@repo/tailwind-config";
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
 
-const colors = {
-  theme: {
-    extend: {
-      colors: {
-        red: {
-          100: "#BB0000",
-        },
-      },
-    },
-  },
-};
+import globalConfig from "@repo/tailwind-config";
 
-const fonts = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Radio Canada"', ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
-};
+import color from "./config/color.ts";
+import typography from "./config/typography.ts"
 
 const config: Pick<Config, "content" | "prefix" | "presets"> = {
   content: ["./src/**/*.tsx"],
-  prefix: "ds-",
-  presets: [globalConfig, colors, fonts],
+  prefix: "k1-",
+  presets: [globalConfig, color, typography],
 };
 
 export default config;

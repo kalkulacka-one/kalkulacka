@@ -4,6 +4,7 @@
   "private": true,
   "exports": {
     "./styles": "./dist/index.css",
+    "./tailwind": "./tailwind.config.ts",
     "./fonts": "./dist/fonts",
     "./heading": "./src/heading.tsx"
   },
