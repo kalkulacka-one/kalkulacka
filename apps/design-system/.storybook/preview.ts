@@ -1,6 +1,9 @@
-import type { Preview } from "@storybook/react";
+import { type Preview } from "@storybook/react";
+import { withThemeByClassName } from "@storybook/addon-themes";
 
 import "@repo/design-system/styles";
+
+import "example.css";
 
 const preview: Preview = {
   parameters: {
@@ -11,6 +14,15 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        default: "default",
+        example: "example",
+      },
+      defaultTheme: "default",
+    }),
+  ],
 };
 
 export default preview;
