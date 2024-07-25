@@ -5,6 +5,7 @@
   "exports": {
     "./styles": "./dist/index.css",
     "./fonts": "./dist/fonts",
+    "./heading": "./src/heading.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
