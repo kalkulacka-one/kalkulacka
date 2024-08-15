@@ -5,10 +5,10 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [
+        "apps/*/build/**",
         ".next/**",
         "!.next/cache/**",
-        "apps/design-system/storybook-static/**",
-        "packages/**/dist/**"
+        "packages/*/dist/**"
       ]
     },
     "lint": {
