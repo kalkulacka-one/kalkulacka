@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/calculator-group.schema.json",
+  "title": "Calculator group",
+  "description": "Group of two or more calculators",
+  "type": "object",
+  "$defs": {
+    "id": {
+      "title": "ID",
+      "description": "Unique identifier of a calculator group in the format of UUID",
+      "type": "string",
+      "format": "uuid",
+      "examples": ["cbc72c2e-ff2f-4ceb-bb41-a1a5dce7d4da"]
+    },
+    "key": {
+      "title": "Key",
+      "description": "Human-friendly unique key of a calculator group in the hyphen-separated lowercased format",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "examples": ["prezidentske-2023"]
+    },
+    "createdAt": {
+      "title": "Created at",
+      "description": "Time of the creation of a calculator group in the ISO 8601 format",
+      "type": "string",
+      "format": "date-time",
+      "examples": ["2021-01-01T00:00:00+01:00"]
+    },
+    "updatedAt": {
+      "title": "Updated at",
+      "description": "Time of the last update of a calculator group in the ISO 8601 format",
+      "type": "string",
+      "format": "date-time",
+      "examples": ["2021-01-01T00:00:00+01:00"]
+    },
+    "publishedAt": {
+      "title": "Published at",
+      "description": "Time when a calculator group should be published in the ISO 8601 format",
+      "type": "string",
+      "format": "date-time",
+      "examples": ["2021-01-01T00:00:00+01:00"]
+    },
+    "title": {
+      "title": "Title",
+      "description": "Title of a calculator group",
+      "type": "string",
+      "examples": ["Prezidentské volby 2023"]
+    },
+    "shortTitle": {
+      "title": "shortTitle",
+      "description": "Short title of a calculator group with a maximum of 25 characters",
+      "type": "string",
+      "maxLength": 25,
+      "examples": ["Prezidentské 2023"]
+    },
+    "description": {
+      "title": "Description",
+      "description": "Description of a calculator group",
+      "type": "string",
+      "examples": ["Volební kalkulačky pro obě kola prezidentských voleb 2023"]
+    },
+    "election": {
+      "title": "Election",
+      "description": "Reference to an election the calculator belongs to",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "./election.schema.json#/properties/id"
+        },
+        "key": {
+          "$ref": "./election.schema.json#/properties/key"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": ["id", "key"]
+    },
+    "variants": {
+      "title": "Ordered list of calculator variants",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "$ref": "./variant.schema.json#/properties/key"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "key": {
+      "$ref": "#/$defs/key"
+    },
+    "election": {
+      "$ref": "#/$defs/election"
+    },
+    "variants": {
+      "$ref": "#/$defs/variants"
+    },
+    "createdAt": {
+      "$ref": "#/$defs/createdAt"
+    },
+    "updatedAt": {
+      "$ref": "#/$defs/updatedAt"
+    },
+    "publishedAt": {
+      "$ref": "#/$defs/publishedAt"
+    },
+    "title": {
+      "$ref": "#/$defs/title"
+    },
+    "shortTitle": {
+      "$ref": "#/$defs/shortTitle"
+    },
+    "description": {
+      "$ref": "#/$defs/description"
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["id", "key", "createdAt"],
+  "oneOf": [
+    {
+      "properties": {
+        "calculators": {
+          "title": "Ordered list of calculators",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "title": "Calculator",
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "./calculator.schema.json#/$defs/id"
+              },
+              "variant": {
+                "$ref": "./calculator.schema.json#/$defs/variant"
+              }
+            },
+            "unevaluatedProperties": false,
+            "required": ["id", "variant"]
+          }
+        }
+      },
+      "required": ["title", "shortTitle", "calculators"]
+    },
+    {
+      "properties": {
+        "calculators": {
+          "title": "Ordered list of calculators from an election",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "title": "Calculator",
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "./calculator.schema.json#/$defs/id"
+              },
+              "variant": {
+                "$ref": "./calculator.schema.json#/$defs/variant"
+              },
+              "district": {
+                "$ref": "./calculator.schema.json#/$defs/district"
+              },
+              "round": {
+                "$ref": "./calculator.schema.json#/$defs/round"
+              }
+            },
+            "unevaluatedProperties": false,
+            "required": ["id"],
+            "anyOf": [
+              {
+                "required": ["variant"]
+              },
+              {
+                "required": ["district"]
+              },
+              {
+                "required": ["round"]
+              }
+            ]
+          }
+        }
+      },
+      "required": ["election", "calculators"]
+    }
+  ]
+}

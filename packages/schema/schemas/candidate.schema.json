@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/candidate.schema.json",
+  "title": "Candidate",
+  "description": "Candidate for a calculator",
+  "type": "object",
+  "properties": {
+    "id": {
+      "title": "ID",
+      "description": "Unique identifier of a candidate in the format of UUID",
+      "type": "string",
+      "format": "uuid",
+      "examples": ["11fee676-1eac-4948-a2fb-38e2b774f4b3"]
+    },
+    "reference": {
+      "title": "Person or organization reference",
+      "description": "Reference to a person or an organization which is a candidate",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "Unique identifier of a reference in the format of UUID",
+          "type": "string",
+          "format": "uuid",
+          "examples": ["5fb7d561-6e93-45c2-9c75-6a1f2b11deb4"]
+        },
+        "type": {
+          "title": "Type",
+          "description": "Type of a reference: either a person or an organization ",
+          "type": "string",
+          "enum": ["person", "organization"]
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": ["id", "type"]
+    },
+    "displayName": {
+      "title": "Display name",
+      "description": "Display name of a candidate",
+      "type": "string",
+      "examples": ["Jan Novák"]
+    },
+    "images": {
+      "$ref": "./images.schema.json"
+    },
+    "motto": {
+      "title": "Motto",
+      "description": "Motto of a candidate",
+      "type": "string",
+      "examples": ["Za lepší budoucnost"]
+    },
+    "number": {
+      "title": "Number",
+      "description": "Official candidate list (usually drawn) number assigned by a public authority",
+      "type": "integer",
+      "examples": [1]
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["id", "reference"]
+}
