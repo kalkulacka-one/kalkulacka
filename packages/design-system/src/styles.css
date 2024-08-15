@@ -24,10 +24,10 @@
 @layer utilities {
   /* TODO: Remove after upgrading to Tailwind CSS v4.
      See https://github.com/tailwindlabs/tailwindcss/pull/13153. */
-  .ds-font-stretch-semi-condensed {
+  .k1-font-stretch-semi-condensed {
     font-stretch: semi-condensed;
   }
-  .ds-font-stretch-condensed {
+  .k1-font-stretch-condensed {
     font-stretch: condensed;
   }
 }
