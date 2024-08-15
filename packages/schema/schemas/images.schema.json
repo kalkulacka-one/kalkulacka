@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/images.schema.json",
+  "title": "Images",
+  "description": "List of images",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "title": "Image",
+    "description": "Specification of an image",
+    "type": "object",
+    "properties": {
+      "type": {
+        "title": "Image type",
+        "description": "Type of the image, for avatar should be square",
+        "type": "string",
+        "enum": ["avatar", "logo", "portrait"]
+      }
+    },
+    "unevaluatedProperties": false,
+    "required": ["type"]
+  }
+}

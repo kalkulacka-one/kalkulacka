@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/question.schema.json",
+  "title": "Question",
+  "description": "Question for a calculator",
+  "type": "object",
+  "properties": {
+    "id": {
+      "title": "ID",
+      "description": "Unique identifier of a question in the format of UUID",
+      "type": "string",
+      "format": "uuid",
+      "examples": ["51115be7-246a-4f07-baf7-247ee81fde36"]
+    },
+    "title": {
+      "title": "Title",
+      "description": "Title of a question",
+      "type": "string",
+      "examples": ["Zrušení Senátu"]
+    },
+    "statement": {
+      "title": "Statement",
+      "description": "A statment to agree or disagree with, should not be phrased as a question with question mark",
+      "type": "string",
+      "examples": ["Senát by se měl zrušit"]
+    },
+    "detail": {
+      "title": "Detail",
+      "description": "A detailed description or an explanation of a question",
+      "type": "string",
+      "examples": [
+        "Senát by se měl zrušit, protože je zbytečný a jeho činnost je nákladná."
+      ]
+    },
+    "tags": {
+      "$ref": "./tags.schema.json"
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["id", "title", "statement"]
+}

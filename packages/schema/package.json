@@ -1,0 +1,16 @@
+{
+  "name": "@repo/schema",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./schemas/**/*.schema.json"
+  },
+  "scripts": {
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write"
+  },
+  "packageManager": "npm@10.8.2",
+  "devDependencies": {
+    "prettier": "^3.0.1"
+  }
+}

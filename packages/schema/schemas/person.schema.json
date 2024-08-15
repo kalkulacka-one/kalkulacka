@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/person.schema.json",
+  "title": "Person",
+  "description": "A human being",
+  "type": "object",
+  "properties": {
+    "id": {
+      "title": "ID",
+      "description": "Unique identifier of a person in the format of UUID",
+      "type": "string",
+      "format": "uuid",
+      "examples": ["5ee570e9-fdc6-4af1-8af5-a5e5589c44a6"]
+    },
+    "name": {
+      "title": "Name",
+      "description": "Person's preferred full name",
+      "type": "string"
+    },
+    "familyName": {
+      "description": "Family name (last name)",
+      "type": "string"
+    },
+    "givenName": {
+      "description": "Given name (first name)",
+      "type": "string"
+    },
+    "additionalName": {
+      "description": "Additional name (middle name)",
+      "type": "string"
+    },
+    "honorificPrefix": {
+      "description": "Honorifics preceding a person's name",
+      "type": "string"
+    },
+    "honorificSuffix": {
+      "description": "Honorifics following a person's name",
+      "type": "string"
+    },
+    "sortName": {
+      "description": "A name to use in a lexicographically ordered list",
+      "type": "string"
+    },
+    "alternateNames": {
+      "description": "Alternate names to use for example in search",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "images": {
+      "$ref": "./images.schema.json"
+    },
+    "memberOf": {
+      "title": "Member of",
+      "description": "List of organizations a person is a member of",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "title": "Organization",
+        "description": "Reference to an organization",
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "./organization.schema.json#/properties/id"
+          }
+        },
+        "unevaluatedProperties": false,
+        "required": ["id"]
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["id"],
+  "anyOf": [
+    {
+      "required": ["name"]
+    },
+    {
+      "required": ["familyName", "givenName"]
+    }
+  ]
+}
