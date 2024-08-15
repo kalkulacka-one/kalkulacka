@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "storybook build",
+    "build": "storybook build --output-dir build",
     "dev": "storybook dev -p 6006 --no-open",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
