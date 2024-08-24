@@ -5,10 +5,11 @@ export default {
   title: "Components/Badge",
   component: Badge,
   argTypes: {
-    color: { control: "color" },
+    color: { 
+      control: {type: "select", options: ["neutral", "secondary"] } },
     icon: { control: "boolean" },
-    variant: {
-      control: { type: "select", options: ["neutral", "primary", "secondary"] },
+    size: {
+      control: { type: "select", options: ["with_icon", "no_icon",] },
     },
   },
   tags: ["autodocs"],
@@ -19,7 +20,8 @@ type Story = StoryObj<typeof Badge>;
 export const Neutral: Story = {
   args: {
     icon: false,
-    variant: "neutral",
+    size: "no_icon",
+    color: "neutral",
     children: "Label",
   },
 };
@@ -27,7 +29,8 @@ export const Neutral: Story = {
 export const Primary: Story = {
   args: {
     icon: true,
-    variant: "primary",
+    size: "with_icon",
+    color: "neutral",
     children: "Label",
   },
 };
@@ -35,7 +38,8 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     icon: false,
-    variant: "secondary",
+    size: "with_icon",
+    color: "secondary",
     children: "Label",
   },
 };
