@@ -26,6 +26,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
     "styled-components": "^6.1.12"
   }
