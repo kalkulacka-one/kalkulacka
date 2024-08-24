@@ -1,5 +1,11 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "include": ["**/*.mdx", "**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "node_modules", "public"]
+  "exclude": ["dist", "node_modules", "public"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
+  }
 }
