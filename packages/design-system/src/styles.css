@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Colors variables */
+
+:root {
+  /* Primary palette */
+  --palette-primary-10: #091233;
+  --palette-primary-30: #0a3eaf;
+  --palette-primary-50: #0070f4;
+  --palette-primary-70: #63b9ff;
+  --palette-primary-90: #eaf7ff;
+
+  /* Secondary palette */
+  --palette-secondary-10: #2e0a0a;
+  --palette-secondary-30: #821414;
+  --palette-secondary-50: #d04646;
+  --palette-secondary-70: #f68585;
+  --palette-secondary-90: #fff4f5;
+
+  /* Neutral palette */
+  --palette-neutral-0: #000000;
+  --palette-neutral-10: #1d1c1c;
+  --palette-neutral-30: #565252;
+  --palette-neutral-50: #ada6a6;
+  --palette-neutral-70: #dad8d7;
+  --palette-neutral-90: #f8f7f7;
+  --palette-neutral-100: #ffffff;
+}
+
 @layer base {
   @font-face {
     font-family: "Radio Canada";
