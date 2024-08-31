@@ -1,14 +1,18 @@
 import type { Config } from "tailwindcss";
+import colors from "./config/colors";
+import typography from "./config/typography";
 
-import globalConfig from "@repo/tailwind-config";
-
-import color from "./config/color.ts";
-import typography from "./config/typography.ts";
-
-const config: Pick<Config, "content" | "prefix" | "presets"> = {
+// Each package is responsible for its own content
+const config: Config = {
   content: ["./src/**/*.tsx"],
   prefix: "k1-",
-  presets: [globalConfig, color, typography],
+  theme: {
+    extend: {
+      ...colors,
+      ...typography,
+    },
+  },
+  plugins: [],
 };
 
 export default config;

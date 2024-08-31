@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
-    "./tailwind": "./tailwind.config.ts",
     "./fonts": "./dist/fonts",
-    "./heading": "./src/heading.tsx"
+    "./heading": "./src/heading.tsx",
+    "./tailwind": "./tailwind.config.ts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
