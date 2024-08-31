@@ -24,3 +24,11 @@ We use css variables as a theming solution. Currently they are in `/src/themes` 
 - For each theme we can have an override file, e.g. `theme-idnes.css` that can re-define some of the variables or add their own custom css.
 
 For each project, we need to import the default theme and then import the specific theme, if one is selected.
+
+## Colors
+
+We use base paletter for `primary`, `secondary` and `neutral` colors defined as css variables in Theme files. Then in Tailwind config we define semantic colors like `text-primary`, `bg-primary`, `border-primary` etc. which are used in components.
+
+Each semantic color should be defined using reference to the palette variable, e.g. `secondaryColors[70]` for solic colors or `` `rgb(from ${neutralColors[100]} r g b / 0.8)` ``
+
+All colors are defined in [config/colors.ts](src/config/colors.ts) file.
