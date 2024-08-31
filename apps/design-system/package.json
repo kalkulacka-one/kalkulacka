@@ -5,13 +5,11 @@
   "scripts": {
     "build": "storybook build --output-dir build",
     "dev": "storybook dev -p 6006 --no-open",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@repo/design-system": "*",
-    "prettier": "^3.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -33,6 +31,7 @@
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.8.0",
+    "prettier": "^3.3.3",
     "storybook": "^8.1.4",
     "typescript": "^5.3.3"
   }
