@@ -5,9 +5,8 @@
   "scripts": {
     "build": "storybook build --output-dir build",
     "dev": "storybook dev -p 6006 --no-open",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@repo/design-system": "*",

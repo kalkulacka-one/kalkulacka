@@ -10,14 +10,11 @@
       "cache": false,
       "persistent": true
     },
-    "format": {
-      "dependsOn": ["^format"]
-    },
-    "format:fix": {
-      "dependsOn": ["^format:fix"]
-    },
     "lint": {
       "dependsOn": ["^lint"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"]
     }
   }
 }

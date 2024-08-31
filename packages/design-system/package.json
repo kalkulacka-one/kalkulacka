@@ -13,10 +13,9 @@
     "build": "npm run fonts && npm run tailwind",
     "dev": "npm run fonts && npm run tailwind:watch",
     "fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write",
     "generate:component": "turbo gen react-component",
     "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
     "tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "tailwind:watch": "npm run tailwind -- --watch"
   },

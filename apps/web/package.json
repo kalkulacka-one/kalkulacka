@@ -5,9 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write",
     "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
     "start": "next start"
   },
   "dependencies": {
