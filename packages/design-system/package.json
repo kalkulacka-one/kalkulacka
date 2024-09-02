@@ -10,7 +10,8 @@
     "./heading": "./src/heading.tsx",
     "./tailwind": "./tailwind.config.ts",
     "./demo": "./src/index.ts",
-    "./progressBar": "./src/progressBar.tsx"
+    "./progressBar": "./src/progressBar.tsx",
+    "./button": "./src/button.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
