@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["config", "src"],
+  "include": ["config", "src", "storybook-static/sb-addons/**/*", "storybook-static/sb-manager/**/*"],
   "exclude": ["node_modules", "dist"]
 }
