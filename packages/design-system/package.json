@@ -8,6 +8,8 @@
     "./fonts": "./dist/fonts",
     "./heading": "./src/heading.tsx",
     "./tailwind": "./tailwind.config.ts",
+    "./demo": "./src/index.ts"
+    "./tailwind": "./tailwind.config.ts",
     "./button": "./src/button.tsx"
   },
   "scripts": {
