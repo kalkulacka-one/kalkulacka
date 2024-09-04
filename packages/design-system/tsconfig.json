@@ -3,10 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-<<<<<<< HEAD
-  "include": ["src"],
-=======
-  "include": ["config", "src", "storybook-static/sb-addons/**/*", "storybook-static/sb-manager/**/*"],
->>>>>>> 4a2c754 (Created a textInput component based on task #24)
+  "include": ["config", "src"],
   "exclude": ["node_modules", "dist"]
 }
