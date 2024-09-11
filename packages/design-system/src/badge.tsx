@@ -22,7 +22,7 @@ const badge = cva(
       },
     },
   },
-})
+);
 
 const Badge: React.FC<BadgeProps> = ({
   icon = false,
