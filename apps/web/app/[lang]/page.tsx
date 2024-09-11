@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@repo/design-system/button";
 
 export const metadata: Metadata = {
   title: "Kalkulacka.1",
@@ -43,6 +44,7 @@ export default function Page(): JSX.Element {
           nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku
           na Slovensku, v&nbsp;Maďarsku a Rakousku, a chystáme další:
         </p>
+        <Button>Button label</Button>
         <ul className="list-disc pl-6">
           <li>
             🇨🇿{" "}
