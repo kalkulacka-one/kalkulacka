@@ -3,12 +3,11 @@ import BadgeStarIcon from "./Badge/BadgeStarIcon";
 import { cva } from "class-variance-authority";
 
 export interface BadgeProps {
-  icon?: boolean,
-  color?: "neutral" | "secondary",
-  size?: "with_icon" | "no_icon",
-  children?: React.ReactNode,
+  icon?: boolean;
+  color?: "neutral" | "secondary";
+  size?: "with_icon" | "no_icon";
+  children?: React.ReactNode;
 }
-
 
 const badge = cva(
   [
