@@ -2,13 +2,14 @@ import React from "react";
 import cn from "classnames";
 import { cva } from "class-variance-authority";
 
-const iconVariants = cva("",{
+const iconVariants = cva("", {
   variants: {
     size: {
-      "small": "w-var(--spacing-small) h-var(--spacing-small);",
-      "medium": "w-var(--spacing-medium) h-var(--spacing-medium);",
-      "large": "w-var(--spacing-large) h-var(--spacing-large);",
-      "extra-large": "w-var(--spacing-extra-large) h-var(--spacing-extra-large);",
+      small: "w-var(--spacing-small) h-var(--spacing-small);",
+      medium: "w-var(--spacing-medium) h-var(--spacing-medium);",
+      large: "w-var(--spacing-large) h-var(--spacing-large);",
+      "extra-large":
+        "w-var(--spacing-extra-large) h-var(--spacing-extra-large);",
       "extra-huge": "w-var(--spacing-extra-huge) h-var(--spacing-extra-huge);",
     },
   },
@@ -24,13 +25,8 @@ export interface IconProps {
   title?: string;
 }
 
-const Icon: React.FC<IconProps> = ({
-  icon,
-  color,
-  size,
-  title,
-}) => {
-  const classes= cn(iconVariants({ size }), "icon");
+const Icon: React.FC<IconProps> = ({ icon, color, size, title }) => {
+  const classes = cn(iconVariants({ size }), "icon");
 
   return (
     <div className={classes}>
