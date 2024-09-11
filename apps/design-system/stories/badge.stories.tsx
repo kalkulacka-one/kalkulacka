@@ -5,11 +5,12 @@ export default {
   title: "Components/Badge",
   component: Badge,
   argTypes: {
-    color: { 
-      control: {type: "select", options: ["neutral", "secondary"] } },
+    color: {
+      control: { type: "select", options: ["neutral", "secondary"] },
+    },
     icon: { control: "boolean" },
     size: {
-      control: { type: "select", options: ["with_icon", "no_icon",] },
+      control: { type: "select", options: ["with_icon", "no_icon"] },
     },
   },
   tags: ["autodocs"],
