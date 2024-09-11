@@ -1,7 +1,7 @@
 import { Field } from "@headlessui/react";
 import React from "react";
-import Label from "./Label";
-import Input from "./Input";
+/*import Label from "./Label";
+import Input from "./Input";*/
 
 interface FieldProps extends React.ComponentPropsWithoutRef<typeof Field> {
   children: React.ReactNode;
@@ -14,25 +14,25 @@ interface FieldProps extends React.ComponentPropsWithoutRef<typeof Field> {
 
 const FieldComponent: React.FC<FieldProps> = ({
   children,
-  label,
+  /*label,
   name,
-  required = false,
-  type = "text",
-  placeholder,
+  //required = false,
+  //type = "text",
+  placeholder,*/
   ...props
 }) => {
-  const id = `${name}-input`;
+  //const id = `${name}-input`;
 
   return (
     <Field {...props}>
-      <Label htmlFor={id} text={label} required={required} />
+      {/*<Label htmlFor={id} text={label} required={required} />
       <Input
         id={id}
         name={name}
         type={type}
         placeholder={placeholder}
         required={required}
-      />
+      />*/}
       {children}
     </Field>
   );
