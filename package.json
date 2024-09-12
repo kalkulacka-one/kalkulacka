@@ -10,7 +10,8 @@
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "prettier": "^3.3.3",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "turbo": "^2.0.6"
   },
@@ -23,6 +24,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0"
   }
 }
