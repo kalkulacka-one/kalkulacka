@@ -79,12 +79,6 @@ export default function Page(): JSX.Element {
         <div className="flex gap-2">
           <a
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            href="https://www.patreon.com/volebnikalkulacka"
-          >
-            Přidat se na Patreonu
-          </a>
-          <a
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             href="https://herohero.co/volebnikalkulacka"
           >
             Přidat se na Herohero
