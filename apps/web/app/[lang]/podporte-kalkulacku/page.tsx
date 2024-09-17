@@ -50,13 +50,6 @@ export default function Page(): JSX.Element {
         <p>
           Přidejte se do klubu podporovatelů Volební kalkulačky na{" "}
           <a
-            href="https://www.patreon.com/volebnikalkulacka"
-            className="underline hover:no-underline"
-          >
-            Patreonu
-          </a>{" "}
-          nebo{" "}
-          <a
             href="https://herohero.co/volebnikalkulacka"
             className="underline hover:no-underline"
           >
