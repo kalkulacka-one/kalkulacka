@@ -37,6 +37,6 @@ const AccordionCloseButton = forwardRef<
 >(({ className, ...props }, ref) => (
   <CloseButton ref={ref} className={(cn(""), className)} {...props} />
 ));
-AccordionButton.displayName = "AccordionCloseButton";
+AccordionCloseButton.displayName = "AccordionCloseButton";
 
 export { Accordion, AccordionButton, AccordionPanel, AccordionCloseButton };
