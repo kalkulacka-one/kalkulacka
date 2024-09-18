@@ -30,7 +30,7 @@ const backgroundColorNeutral = {
   neutral: neutralColors[90],
   "neutral-strong-hover": neutralColors[30],
   "neutral-strong-active": neutralColors[10],
-  "neutral-disaled": neutralColors[70],
+  "neutral-disabled": neutralColors[70],
   "neutral-backdrop": `rgb(from ${neutralColors[70]} r g b / 0.1)`,
   "neutral-backdrop-hover": `rgb(from ${neutralColors[70]} r g b / 0.2)`,
   "neutral-backdrop-active": `rgb(from ${neutralColors[70]} r g b / 0.6)`,
