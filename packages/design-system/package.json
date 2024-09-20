@@ -8,7 +8,8 @@
     "./fonts": "./dist/fonts",
     "./heading": "./src/heading.tsx",
     "./tailwind": "./tailwind.config.ts",
-    "./demo": "./src/index.ts"
+    "./demo": "./src/index.ts",
+    "./toggle": "./src/toggle.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
