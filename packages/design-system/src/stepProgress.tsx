@@ -26,6 +26,7 @@ const StepProgress = ({ currentStep, stepCount }: Props): JSX.Element => {
       <div className="k1-flex k1-gap-1">
         {steps.map((step, index) => {
           return (
+            // Make a step component
             <div
               className={stepProgressVariants({
                 status: index === currentStep - 1 ? "active" : "inactive",
