@@ -8,6 +8,19 @@ const meta: Meta<typeof StepProgress> = {
   component: StepProgress,
 };
 
+const mockupData = {
+  currentStep: 3,
+  stepCount: 4,
+  stepStatus: [
+    { step: 1, status: true },
+    { step: 2, status: false },
+    { step: 3, status: null },
+    { step: 4, status: undefined },
+  ],
+};
+
+console.log(mockupData.stepStatus.map((step) => step.step));
+
 type StepProgressStory = StoryObj<typeof meta>;
 
 export const Plain: StepProgressStory = {
