@@ -6,15 +6,15 @@ type Props = {
   stepCount: number;
 } & VariantProps<typeof stepProgressVariants>;
 
-const stepProgressVariants = cva("k1-rounded-full", {
+const stepProgressVariants = cva("k1-w-9", {
   variants: {
     status: {
-      active: "k1-bg-neutral-strong-active k1-w-5",
-      inactive: "k1-bg-neutral-disaled k1-h-2 k1-w-2",
+      active: "k1-bg-neutral-strong-active k1-h-2",
+      inactive: "k1-bg-neutral-disaled k1-h-1",
     },
   },
 });
-const StepProgress = ({ currentStep, stepCount }: Props): JSX.Element => {
+const StepProgressFancy = ({ currentStep, stepCount }: Props): JSX.Element => {
   const getStepCount = (n: number) => {
     return Array.from({ length: n }, (_, i) => (i === n ? n - 1 : i));
   };
@@ -23,7 +23,7 @@ const StepProgress = ({ currentStep, stepCount }: Props): JSX.Element => {
 
   return (
     <>
-      <div className="k1-flex k1-gap-1">
+      <div className="k1-flex k1-items-center">
         {steps.map((step, index) => {
           return (
             <div
@@ -39,4 +39,4 @@ const StepProgress = ({ currentStep, stepCount }: Props): JSX.Element => {
   );
 };
 
-export { StepProgress, stepProgressVariants };
+export { StepProgressFancy, stepProgressVariants };
