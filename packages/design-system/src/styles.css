@@ -31,3 +31,143 @@
     font-stretch: condensed;
   }
 }
+
+:root {
+  /* Primary palette */
+  --palette-primary-10: #091233;
+  --palette-primary-30: #0a3eaf;
+  --palette-primary-50: #0070f4;
+  --palette-primary-70: #63b9ff;
+  --palette-primary-90: #eaf7ff;
+
+  /* Secondary palette */
+  --palette-secondary-10: #2e0a0a;
+  --palette-secondary-30: #821414;
+  --palette-secondary-50: #d04646;
+  --palette-secondary-70: #f68585;
+  --palette-secondary-90: #fff4f5;
+
+  /* Neutral palette */
+  --palette-neutral-0: #000000;
+  --palette-neutral-10: #1d1c1c;
+  --palette-neutral-30: #565252;
+  --palette-neutral-50: #ada6a6;
+  --palette-neutral-70: #dad8d7;
+  --palette-neutral-90: #f8f7f7;
+  --palette-neutral-100: #ffffff;
+
+  /*Text style*/
+  --typography-family-radio-canada: "Radio Canada", sans-serif;
+
+  /*Calc text*/
+  --typography-calc-size: 1.94rem;
+  --typography-calc-line-height: leading-8;
+  --typography-calc-large-letter-spacing: -0.08em;
+  --typography-calc-large-weight: font-normal;
+
+  /*Headline text*/
+  /*large*/
+  --typography-headline-large-size: 3.812rem;
+  --typography-headline-large-line-height: leading-[4rem];
+  --typography-headline-large-letter-spacing: -0.07em;
+  --typography-headline-large-weight: font-bold;
+
+  /*medium*/
+  --typography-headline-medium-size: 3.062rem;
+  --typography-headline-medium-line-height: leading-[3.5rem];
+  --typography-headline-medium-letter-spacing: -0.07em;
+  --typography-headline-medium-weight: font-bold;
+
+  /*small*/
+  --typography-headline-small-size: 2.438rem;
+  --typography-headline-small-line-height: leading-10;
+  --typography-headline-small-letter-spacing: -0.06em;
+  --typography-headline-small-weight: font-bold;
+
+  /*Title text*/
+  /*large*/
+  --typography-title-large-size: 1.938rem;
+  --typography-title-large-line-height: leading-8;
+  --typography-title-large-letter-spacing: -0.06em;
+  --typography-title-large-weight: font-bold;
+
+  /*medium*/
+  --typography-title-medium-size: 1.562rem;
+  --typography-title-medium-line-height: leading-8;
+  --typography-title-medium-letter-spacing: -0.05em;
+  --typography-title-medium-weight: font-bold;
+
+  /* small*/
+  --typography-title-small-size: 1.25rem;
+  --typography-title-small-line-height: leading-6;
+  --typography-title-small-letter-spacing: -0.04em;
+  --typography-title-small-weight: font-bold;
+
+  /*extra small*/
+  --typography-title-extra-small-size: 0.81rem;
+  --typography-title-extra-small-line-height: leading-4;
+  --typography-title-extra-small-letter-spacing: -0.07em;
+  --typography-title-extra-small-weight: font-normal;
+
+  /*Body text*/
+  /*large*/
+  --typography-body-large-size: 1.25rem;
+  --typography-body-large-line-height: leading-8;
+  --typography-body-large-letter-spacing: -0.01rem;
+  --typography-body-large-weight: font-normal;
+
+  /*large bold*/
+  --typography-body-large-bold-size: 1.25rem;
+  --typography-body-large-bold-line-height: leading-8;
+  --typography-body-large-bold-weight: font-bold;
+
+  /*medium*/
+  --typography-body-medium-size: 1rem;
+  --typography-body-medium-line-height: leading-6;
+  --typography-body-medium-weight: font-normal;
+
+  /*medium bold*/
+  --typography-body-medium-bold-size: 1rem;
+  --typography-body-medium-bold-line-height: leading-6;
+  --typography-body-medium-bold-weight: font-bold;
+
+  /*small*/
+  --typography-body-small-size: 0.81rem;
+  --typography-body-small-line-height: leading-4;
+  --typography-body-small-weight: font-normal;
+
+  /*small bold*/
+  --typography-body-small-bold-size: 0.81rem;
+  --typography-body-small-bold-line-height: leading-4;
+  --typography-body-small-bold-weight: font-bold;
+
+  /*extra small*/
+  --typography-body-extra-small-size: 0.62rem;
+  --typography-body-extra-small-line-height: leading-4;
+  --typography-body-extra-small-letter-spacing: -0.04rem;
+  --typography-body-extra-small-weight: font-normal;
+
+  /*extra small bold*/
+  --typography-body-extra-small-bold-size: 0.62rem;
+  --typography-body-extra-small-bold-line-height: leading-4;
+  --typography-body-extra-small-bold-letter-spacing: -0.04rem;
+  --typography-body-extra-small-bold-weight: font-bold;
+
+  /*Button text*/
+  --typography-button-size: 0.81rem;
+  --typography-button-line-height: leading-6;
+  --typography-button-letter-spacing: 0.07rem;
+  --typography-button-weight: font-bold;
+
+  /*Button small text*/
+  --typography-button-small-size: 0.62rem;
+  --typography-button-small-line-height: leading-4;
+  --typography-button-small-letter-spacing: 0.06rem;
+  --typography-button-small-weight: font-bold;
+
+  /*Label text*/
+  --typography-label-size: 0.62rem;
+  --typography-label-line-height: leading-4;
+  --typography-label-letter-spacing: 0.04rem;
+  --typography-label-weight: font-bold;
+}
