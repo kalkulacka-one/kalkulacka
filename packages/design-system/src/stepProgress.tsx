@@ -16,6 +16,7 @@ const stepProgressVariants = cva("k1-rounded-full", {
 });
 const StepProgress = ({ currentStep, stepCount }: Props): JSX.Element => {
   const getStepCount = (n: number) => {
+    // or get the array length?
     return Array.from({ length: n }, (_, i) => (i === n ? n - 1 : i));
   };
 
