@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 type Props = {
   currentStep: number;
-  stepCount: number;
+  totalStep: number;
 } & VariantProps<typeof stepProgressVariants>;
 
 const stepProgressVariants = cva("k1-rounded-full", {
@@ -14,13 +14,13 @@ const stepProgressVariants = cva("k1-rounded-full", {
     },
   },
 });
-const StepProgress = ({ currentStep, stepCount }: Props): JSX.Element => {
+const StepProgress = ({ currentStep, totalStep }: Props): JSX.Element => {
   const getStepCount = (n: number) => {
-    // or get the array length?
+    // or get the array length? depends on the data structure
     return Array.from({ length: n }, (_, i) => (i === n ? n - 1 : i));
   };
 
-  const steps = getStepCount(stepCount);
+  const steps = getStepCount(totalStep);
 
   return (
     <>
