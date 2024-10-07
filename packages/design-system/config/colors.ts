@@ -84,7 +84,7 @@ const backgroundColorSecondary = {
 const textColorSecondary = {
   secondary: secondaryColors[50],
   "secondary-hover": secondaryColors[30],
-  "secondary-strong": secondaryColors[10],
+  "secondary-strong": secondaryColors[30],
 };
 
 const borderColorSecondary = {
