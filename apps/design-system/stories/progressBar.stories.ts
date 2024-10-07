@@ -6,7 +6,7 @@ const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
   argTypes: {
     color: {
-      options: ["blue", "red", "orange", "yellow"],
+      options: ["primary", "red", "orange", "yellow"],
       control: { type: "radio" },
     },
     progress: {
@@ -24,7 +24,7 @@ type ProgressBarStory = StoryObj<typeof meta>;
 export const Default: ProgressBarStory = {
   args: {
     progress: 50,
-    color: "blue",
+    color: "primary",
   },
 };
 

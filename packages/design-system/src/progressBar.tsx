@@ -7,14 +7,14 @@ type Props = {
 const progressBarVariants = cva("k1-h-full k1-w-full", {
   variants: {
     color: {
-      blue: "k1-bg-primary-fg",
+      primary: "k1-bg-primary-strong",
       red: "k1-bg-red-500",
       orange: "k1-bg-orange-500",
       yellow: "k1-bg-yellow-500",
     },
   },
   defaultVariants: {
-    color: "blue",
+    color: "primary",
   },
 });
 
@@ -23,7 +23,7 @@ const ProgressBar = ({ progress, color }: Props): JSX.Element => {
 
   return (
     <div
-      className="k1-bg-neutral-bg k1-h-0.5 lg:k1-h-1.5 k1-w-full k1-overflow-hidden k1-rounded-sm"
+      className="k1-bg-neutral k1-h-0.5 lg:k1-h-1.5 k1-w-full k1-overflow-hidden k1-rounded-full"
       role="progressbar"
       aria-valuenow={width}
       aria-valuemin={0}
@@ -33,7 +33,7 @@ const ProgressBar = ({ progress, color }: Props): JSX.Element => {
       <div
         className={progressBarVariants({ color })}
         style={{ transform: `translateX(-${100 - (width || 0)}%)` }}
-      ></div>
+      />
     </div>
   );
 };
