@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true, // Enable format on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit" // Let ESLint handle non-formatting fixes
+  },
+  "eslint.format.enable": true, // ESlint uses prettier rules for formatting
+
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"] // Allows us to use Tailwind intellisense with cva() syntax
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative" // Always auto-import from module root (avoid ../../..)
+}
