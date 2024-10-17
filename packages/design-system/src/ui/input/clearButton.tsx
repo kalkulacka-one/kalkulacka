@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import { ClearIcon } from "../../Clear/ClearIcon";
 
 type Props = {
   onClose: () => void;
@@ -13,7 +14,7 @@ function ClearButton({ onClose }: Props) {
         "k1-invisible peer-valid:k1-visible"
       )}
     >
-      X
+      <ClearIcon />
     </button>
   );
 }

@@ -53,7 +53,7 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
         <Input
           {...props}
           ref={ref}
-          className="k1-bg-transparent"
+          className="k1-bg-transparent k1-outline-none"
           placeholder={showPlaceholder ? placeholder : undefined}
           showClearButton={showClearButton}
         />
