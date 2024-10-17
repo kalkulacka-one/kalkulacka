@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@repo/design-system/button";
 import { ArrowIcon } from "@repo/design-system/arrowIcon";
-import { StarIcon } from "@repo/design-system/starIcon";
-import { YesIcon } from "@repo/design-system/yesIcon";
-import { NoIcon } from "@repo/design-system/noIcon";
-import { NeutralIcon } from "@repo/design-system/neutralIcon";
+// import { StarIcon } from "@repo/design-system/starIcon";
+// import { YesIcon } from "@repo/design-system/yesIcon";
+// import { NoIcon } from "@repo/design-system/noIcon";
+// import { NeutralIcon } from "@repo/design-system/neutralIcon";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -26,8 +26,8 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       options: [
-        "default",
-        "sm",
+        "large",
+        "small",
         "iconSm",
         "iconDefault",
         "iconLg",
@@ -35,9 +35,6 @@ const meta: Meta<typeof Button> = {
         "linkSm",
       ],
       control: { type: "radio" },
-    },
-    asChild: {
-      control: { type: "boolean" },
     },
   },
   decorators: [
@@ -73,161 +70,164 @@ type ButtonStory = StoryObj<typeof meta>;
 export const Default: ButtonStory = {
   args: {
     children: "Button label",
-    size: "default",
-    variant: "default",
-  },
-  render: (args) => {
-    return <Button {...args} />;
-  },
-};
-
-export const FilledIconRight: ButtonStory = {
-  args: {
-    size: "default",
-    variant: "default",
-  },
-  render: (args) => {
-    return (
-      <Button {...args}>
-        <span>Button label</span>
-        <ArrowIcon
-          style={{ width: "1.5rem", height: "1.5rem", marginLeft: "auto" }}
-        />
-      </Button>
-    );
-  },
-};
-
-export const FilledIconLeft: ButtonStory = {
-  args: {
-    size: "default",
-    variant: "default",
-  },
-  render: (args) => {
-    return (
-      <Button {...args}>
-        <ArrowIcon
-          style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-        />
-        Button label
-      </Button>
-    );
-  },
-};
-
-export const Filled: ButtonStory = {
-  args: {
-    children: "Button label",
-    size: "default",
+    size: "large",
     variant: "filled",
-  },
-};
-
-export const Outline: ButtonStory = {
-  args: {
-    children: "Button label",
-    size: "default",
-    variant: "outline",
-  },
-};
-
-export const Link: ButtonStory = {
-  args: {
-    size: "default",
-    variant: "link",
+    color: "primary",
+    iconPosition: "left",
+    iconSize: "small",
   },
   render: (args) => {
-    return (
-      <Button {...args} asChild>
-        <a href="/">Button link</a>
-      </Button>
-    );
+    return <Button icon={ArrowIcon} {...args} />;
   },
 };
 
-export const LinkWithIcon: ButtonStory = {
-  args: {
-    size: "linkDefault",
-    variant: "link",
-  },
-  render: (args) => {
-    return (
-      <Button {...args} asChild>
-        <a href="/">
-          <span>Button label</span>
-          <ArrowIcon
-            style={{ width: "1.5rem", height: "1.5rem", marginLeft: "auto" }}
-          />
-        </a>
-      </Button>
-    );
-  },
-};
+// export const FilledIconRight: ButtonStory = {
+//   args: {
+//     size: "default",
+//     variant: "default",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args}>
+//         <span>Button label</span>
+//         <ArrowIcon
+//           style={{ width: "1.5rem", height: "1.5rem", marginLeft: "auto" }}
+//         />
+//       </Button>
+//     );
+//   },
+// };
 
-export const InFavour: ButtonStory = {
-  args: {
-    size: "default",
-    variant: "answerInFavour",
-  },
-  render: (args) => {
-    return (
-      <Button {...args}>
-        <YesIcon
-          style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-        />
-        Jsem pro
-      </Button>
-    );
-  },
-};
+// export const FilledIconLeft: ButtonStory = {
+//   args: {
+//     size: "default",
+//     variant: "default",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args}>
+//         <ArrowIcon
+//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
+//         />
+//         Button label
+//       </Button>
+//     );
+//   },
+// };
 
-export const Against: ButtonStory = {
-  args: {
-    children: "Button label",
-    size: "default",
-    variant: "answerAgainst",
-  },
-  render: (args) => {
-    return (
-      <Button {...args}>
-        <NoIcon
-          style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-        />
-        Jsem proti
-      </Button>
-    );
-  },
-};
+// export const Filled: ButtonStory = {
+//   args: {
+//     children: "Button label",
+//     size: "default",
+//     variant: "filled",
+//   },
+// };
 
-export const Neutral: ButtonStory = {
-  args: {
-    size: "default",
-    variant: "answerNeutral",
-  },
-  render: (args) => {
-    return (
-      <Button {...args}>
-        <NeutralIcon
-          style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-        />
-        Přeskočit
-      </Button>
-    );
-  },
-};
+// export const Outline: ButtonStory = {
+//   args: {
+//     children: "Button label",
+//     size: "default",
+//     variant: "outline",
+//   },
+// };
 
-export const Icon: ButtonStory = {
-  args: {
-    size: "default",
-    variant: "icon",
-  },
-  render: (args) => {
-    return (
-      <Button {...args}>
-        <StarIcon style={{ width: "1.5rem" }} />
-      </Button>
-    );
-  },
-};
+// export const Link: ButtonStory = {
+//   args: {
+//     size: "default",
+//     variant: "link",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args} asChild>
+//         <a href="/">Button link</a>
+//       </Button>
+//     );
+//   },
+// };
+
+// export const LinkWithIcon: ButtonStory = {
+//   args: {
+//     size: "linkDefault",
+//     variant: "link",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args} asChild>
+//         <a href="/">
+//           <span>Button label</span>
+//           <ArrowIcon
+//             style={{ width: "1.5rem", height: "1.5rem", marginLeft: "auto" }}
+//           />
+//         </a>
+//       </Button>
+//     );
+//   },
+// };
+
+// export const InFavour: ButtonStory = {
+//   args: {
+//     size: "default",
+//     variant: "answerInFavour",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args}>
+//         <YesIcon
+//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
+//         />
+//         Jsem pro
+//       </Button>
+//     );
+//   },
+// };
+
+// export const Against: ButtonStory = {
+//   args: {
+//     children: "Button label",
+//     size: "default",
+//     variant: "answerAgainst",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args}>
+//         <NoIcon
+//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
+//         />
+//         Jsem proti
+//       </Button>
+//     );
+//   },
+// };
+
+// export const Neutral: ButtonStory = {
+//   args: {
+//     size: "default",
+//     variant: "answerNeutral",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args}>
+//         <NeutralIcon
+//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
+//         />
+//         Přeskočit
+//       </Button>
+//     );
+//   },
+// };
+
+// export const Icon: ButtonStory = {
+//   args: {
+//     size: "default",
+//     variant: "icon",
+//   },
+//   render: (args) => {
+//     return (
+//       <Button {...args}>
+//         <StarIcon style={{ width: "1.5rem" }} />
+//       </Button>
+//     );
+//   },
+// };
 
 export default meta;
