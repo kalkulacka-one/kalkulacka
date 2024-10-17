@@ -1,13 +1,16 @@
-import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+import { ThemeConfig } from "tailwindcss/types/config";
 
-const typography: Pick<Config, "theme"> = {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Radio Canada"', ...defaultTheme.fontFamily.sans],
-      },
-    },
+const typography: Pick<
+  Partial<ThemeConfig>,
+  "fontFamily" | "fontSize" | "fontWeight" | "lineHeight" | "letterSpacing"
+> = {
+  fontFamily: {
+    sans: ['"Radio Canada"', ...defaultTheme.fontFamily.sans],
+  },
+  fontSize: {
+    xs: "0.625rem",
+    sm: "0.812rem",
   },
 };
 

@@ -4,15 +4,12 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "format": "turbo format",
-    "format:fix": "turbo format:fix",
     "lint": "turbo lint",
-    "lint-prettier": "check-prettier"
+    "lint:fix": "turbo lint:fix"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "check-prettier": "^1.0.3",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "turbo": "^2.0.6"

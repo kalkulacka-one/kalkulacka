@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./ui": "./src/ui/index.ts",
+    "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
-    "./tailwind": "./tailwind.config.ts",
     "./fonts": "./dist/fonts",
-    "./heading": "./src/heading.tsx"
+    "./heading": "./src/heading.tsx",
+    "./tailwind": "./tailwind.config.ts",
+    "./demo": "./src/index.ts",
+    "./progressBar": "./src/progressBar.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
@@ -17,13 +21,13 @@
     "format:fix": "prettier . --write",
     "generate:component": "turbo gen react-component",
     "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
     "tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "tailwind:watch": "npm run tailwind -- --watch"
   },
   "packageManager": "npm@10.8.2",
   "devDependencies": {
     "@repo/eslint-config": "*",
-    "@repo/tailwind-config": "^0.0.0",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.0.6",
     "@types/eslint": "^8.56.5",
@@ -33,13 +37,16 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "postcss": "^8.4.38",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "react": "^18.2.0",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@headlessui/react": "^2.0.4",
+    "@headlessui/react": "^2.1.10",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "prettier": "^3.3.3"
+    "tailwind-merge": "^2.5.4"
   }
 }
