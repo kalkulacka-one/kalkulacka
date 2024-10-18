@@ -13,6 +13,7 @@ const labelVariants = cva(
     "k1-bg-inherit",
     "peer-data-[focus]:k1-bg-blue-200 peer-data-[empty=false]:k1-bg-green-200",
     "peer-data-[focus]:k1-top-[-0.5rem] k1-transition-all k1-duration-700",
+    "peer-data-[empty=false]:k1-top-[-0.5rem] k1-transition-all k1-duration-700",
   ],
   {
     variants: {

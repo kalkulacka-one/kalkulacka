@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { InputField } from "../../../packages/design-system/src/ui/input/inputField";
 
 const meta: Meta<typeof InputField> = {
@@ -9,7 +8,7 @@ const meta: Meta<typeof InputField> = {
     label: { control: "text" },
     error: { control: "text" },
     showClearButton: { control: "boolean" },
-    icon: { control: { type: "select" } },
+    icon: { control: { type: "select" }, options: [undefined, "Icon"] }, //Here should the icons be defined
   },
   tags: ["autodocs"],
 };
