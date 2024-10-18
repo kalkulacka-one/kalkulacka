@@ -1,6 +1,6 @@
 import React from "react";
 
-export function BadgeStarIcon(
+export function ClearIcon(
   props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
 ) {
   return (
@@ -13,8 +13,8 @@ export function BadgeStarIcon(
       {props.children}
       <path
         fill="currentColor"
-        d="M9 12.953l4.635 2.797-1.23-5.273L16.5 6.93l-5.393-.457L9 1.5 6.893 6.473 1.5 6.93l4.095 3.547-1.23 5.273L9 12.953z"
-      ></path>
+        d="M1.4 13.65.35 12.6 5.95 7 .35 1.4 1.4.35 7 5.95l5.6-5.6 1.05 1.05L8.05 7l5.6 5.6-1.05 1.05L7 8.05l-5.6 5.6Z"
+      />
     </svg>
   );
 }

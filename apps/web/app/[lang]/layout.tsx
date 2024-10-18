@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import "../globals.css";
+import "@repo/design-system/styles";
+import "@repo/design-system/themes/theme-default";
 
 export default function RootLayout({
   params: { lang },
