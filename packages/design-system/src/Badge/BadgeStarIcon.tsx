@@ -10,6 +10,7 @@ export function BadgeStarIcon(
       fill="none"
       {...props}
     >
+      {props.children}
       <path
         fill="currentColor"
         d="M9 12.953l4.635 2.797-1.23-5.273L16.5 6.93l-5.393-.457L9 1.5 6.893 6.473 1.5 6.93l4.095 3.547-1.23 5.273L9 12.953z"
