@@ -1,39 +1,37 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@repo/design-system/button";
+import ButtonInFavour from "@repo/design-system/buttonInFavour";
+import ButtonAgainst from "@repo/design-system/buttonAgainst";
+import ButtonNeutral from "@repo/design-system/buttonNeutral";
 import { ArrowIcon } from "@repo/design-system/arrowIcon";
-// import { StarIcon } from "@repo/design-system/starIcon";
-// import { YesIcon } from "@repo/design-system/yesIcon";
-// import { NoIcon } from "@repo/design-system/noIcon";
-// import { NeutralIcon } from "@repo/design-system/neutralIcon";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
   argTypes: {
-    variant: {
-      options: [
-        "default",
-        "filled",
-        "outline",
-        "link",
-        "answerInFavour",
-        "answerAgainst",
-        "answerNeutral",
-        "icon",
-      ],
+    kind: {
+      options: ["default", "filled", "outline"],
       control: { type: "radio" },
     },
     size: {
-      options: [
-        "large",
-        "small",
-        "iconSm",
-        "iconDefault",
-        "iconLg",
-        "linkDefault",
-        "linkSm",
-      ],
+      options: ["default", "small"],
+      control: { type: "radio" },
+    },
+    hasIcon: {
+      options: ["true", "false"],
+      control: { type: "radio" },
+    },
+    iconPosition: {
+      options: ["left", "right"],
+      control: { type: "radio" },
+    },
+    color: {
+      options: ["primary", "secondary", "neutral"],
+      control: { type: "radio" },
+    },
+    wider: {
+      options: ["true", "false"],
       control: { type: "radio" },
     },
   },
@@ -43,7 +41,7 @@ const meta: Meta<typeof Button> = {
         style={{
           display: "flex",
           height: "100vh",
-          width: "100%",
+          width: "100vw",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
@@ -54,7 +52,10 @@ const meta: Meta<typeof Button> = {
           style={{
             height: "50%",
             width: "50%",
-            backgroundColor: "yellow", // Equivalent to Tailwind's bg-gray-100
+            backgroundColor: "yellow",
+            display: "flex",
+            gap: "1rem",
+            flexDirection: "column",
           }}
         >
           <Story />
@@ -64,170 +65,60 @@ const meta: Meta<typeof Button> = {
   ],
 };
 
-// Default button
 type ButtonStory = StoryObj<typeof meta>;
 
-export const Default: ButtonStory = {
+export const Filled: ButtonStory = {
   args: {
     children: "Button label",
-    size: "large",
-    variant: "filled",
+    size: "default",
+    kind: "filled",
     color: "primary",
-    iconPosition: "left",
-    iconSize: "small",
   },
   render: (args) => {
-    return <Button icon={ArrowIcon} {...args} />;
+    return (
+      <>
+        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="left" />
+        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="right" />
+        <Button {...args} fitContent />
+      </>
+    );
   },
 };
 
-// export const FilledIconRight: ButtonStory = {
-//   args: {
-//     size: "default",
-//     variant: "default",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args}>
-//         <span>Button label</span>
-//         <ArrowIcon
-//           style={{ width: "1.5rem", height: "1.5rem", marginLeft: "auto" }}
-//         />
-//       </Button>
-//     );
-//   },
-// };
+export const Outline: ButtonStory = {
+  args: {
+    children: "Button label",
+    size: "default",
+    kind: "outline",
+    color: "neutral",
+  },
+  render: (args) => {
+    return (
+      <>
+        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="left" />
+        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="right" />
+        <Button {...args} fitContent />
+      </>
+    );
+  },
+};
 
-// export const FilledIconLeft: ButtonStory = {
-//   args: {
-//     size: "default",
-//     variant: "default",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args}>
-//         <ArrowIcon
-//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-//         />
-//         Button label
-//       </Button>
-//     );
-//   },
-// };
+export const AnswerInFavour: ButtonStory = {
+  render: () => {
+    return <ButtonInFavour />;
+  },
+};
 
-// export const Filled: ButtonStory = {
-//   args: {
-//     children: "Button label",
-//     size: "default",
-//     variant: "filled",
-//   },
-// };
+export const AnswerAgainst: ButtonStory = {
+  render: () => {
+    return <ButtonAgainst />;
+  },
+};
 
-// export const Outline: ButtonStory = {
-//   args: {
-//     children: "Button label",
-//     size: "default",
-//     variant: "outline",
-//   },
-// };
-
-// export const Link: ButtonStory = {
-//   args: {
-//     size: "default",
-//     variant: "link",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args} asChild>
-//         <a href="/">Button link</a>
-//       </Button>
-//     );
-//   },
-// };
-
-// export const LinkWithIcon: ButtonStory = {
-//   args: {
-//     size: "linkDefault",
-//     variant: "link",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args} asChild>
-//         <a href="/">
-//           <span>Button label</span>
-//           <ArrowIcon
-//             style={{ width: "1.5rem", height: "1.5rem", marginLeft: "auto" }}
-//           />
-//         </a>
-//       </Button>
-//     );
-//   },
-// };
-
-// export const InFavour: ButtonStory = {
-//   args: {
-//     size: "default",
-//     variant: "answerInFavour",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args}>
-//         <YesIcon
-//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-//         />
-//         Jsem pro
-//       </Button>
-//     );
-//   },
-// };
-
-// export const Against: ButtonStory = {
-//   args: {
-//     children: "Button label",
-//     size: "default",
-//     variant: "answerAgainst",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args}>
-//         <NoIcon
-//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-//         />
-//         Jsem proti
-//       </Button>
-//     );
-//   },
-// };
-
-// export const Neutral: ButtonStory = {
-//   args: {
-//     size: "default",
-//     variant: "answerNeutral",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args}>
-//         <NeutralIcon
-//           style={{ width: "1.5rem", height: "1.5rem", marginRight: "auto" }}
-//         />
-//         Přeskočit
-//       </Button>
-//     );
-//   },
-// };
-
-// export const Icon: ButtonStory = {
-//   args: {
-//     size: "default",
-//     variant: "icon",
-//   },
-//   render: (args) => {
-//     return (
-//       <Button {...args}>
-//         <StarIcon style={{ width: "1.5rem" }} />
-//       </Button>
-//     );
-//   },
-// };
+export const AnswerNeutral: ButtonStory = {
+  render: () => {
+    return <ButtonNeutral />;
+  },
+};
 
 export default meta;

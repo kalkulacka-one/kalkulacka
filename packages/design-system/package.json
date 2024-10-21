@@ -16,7 +16,10 @@
     "./starIcon": "./src/starIcon.tsx",
     "./yesIcon": "./src/yesIcon.tsx",
     "./noIcon": "./src/noIcon.tsx",
-    "./neutralIcon": "./src/neutralIcon.tsx"
+    "./neutralIcon": "./src/neutralIcon.tsx",
+    "./buttonInFavour": "./src/buttonInFavour.tsx",
+    "./buttonAgainst": "./src/buttonAgainst.tsx",
+    "./buttonNeutral": "./src/buttonNeutral.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
