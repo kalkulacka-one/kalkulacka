@@ -8,17 +8,20 @@ const buttonVariants = cva(
     "data-[hover]:k1-cursor-pointer k1-text-nowrap data-[disabled]:k1-pointer-events-none",
     "k1-uppercase k1-font-bold",
     "k1-rounded-l k1-rounded-br",
-    "k1-p-4",
+    "k1-select-none",
   ],
   {
     variants: {
       kind: {
-        filled: "",
-        outline: "k1-border-2 k1-bg-transparent",
+        filled:
+          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disaled",
+        outline: "k1-border-2 k1-bg-transparent k1-p-4",
         link: [
-          "k1-gap-2 k1-w-auto",
-          "k1-text-neutral",
-          "data-[hover]:k1-text-neutral-hover data-[active]:k1-text-neutral-active data-[disabled]:k1-text-neutral-disabled",
+          "k1-bg-transparent k1-text-neutral k1-p-0 k1-gap-2",
+          "k1-border-0",
+          "data-[hover]:k1-text-neutral-hover",
+          "data-[active]:k1-text-neutral-active",
+          "data-[disabled]:k1-text-neutral-disabled",
         ],
       },
       hasIcon: {
@@ -32,15 +35,18 @@ const buttonVariants = cva(
       color: {
         primary: [
           "k1-text-neutral-inverse k1-bg-primary-strong",
-          "data-[hover]:k1-bg-primary-strong-hover data-[active]:k1-bg-primary-strong-active data-[hover]-k1-text-white data-[disabled]:k1-bg-neutral-disaled",
+          "data-[hover]:k1-bg-primary-strong-hover data-[hover]-k1-text-white",
         ],
         secondary: [
           "k1-text-neutral-inverse k1-bg-secondary-strong",
-          "data-[hover]:k1-bg-secondary-strong-hover data-[active]:k1-bg-secondary-strong-active data-[disabled]:k1-bg-neutral-disaled",
+          "data-[hover]:k1-bg-secondary-strong-hover",
+          "data-[disabled]:k1-bg-neutral-disaled",
         ],
         neutral: [
           "k1-border-2 k1-text-neutral k1-border-neutral-strong",
-          "data-[hover]:k1-text-neutral-strong data-[hover]:k1-bg-neutral-backdrop-hover data-[active]:k1-bg-neutral-backdrop-active data-[active]:k1-text-neutral-active data-[disabled]:k1-text-neutral-disabled data-[disabled]:k1-bg-neutral-disaled data-[disabled]:k1-border-neutral-disabled",
+          "data-[hover]:k1-bg-neutral-backdrop-hover data-[hover]:k1-border-neutral-strong",
+          "data-[active]:k1-bg-neutral-backdrop-active data-[active]:k1-text-neutral-active",
+          "data-[disabled]:k1-border-neutral-disabled data-[disabled]:k1-text-neutral-disabled",
         ],
       },
       size: {
@@ -59,7 +65,6 @@ const buttonVariants = cva(
     defaultVariants: {
       kind: "filled",
       size: "default",
-      color: "primary",
       fitContent: false,
     },
 
@@ -67,6 +72,7 @@ const buttonVariants = cva(
       {
         kind: "outline",
         color: "primary",
+        wider: true,
         className: [
           "k1-border-primary-strong k1-text-primary k1-gap-4",
           "data-[hover]:k1-border-primary-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-primary-strong-hover",
@@ -76,6 +82,7 @@ const buttonVariants = cva(
       {
         kind: "outline",
         color: "secondary",
+        wider: true,
         className: [
           "k1-border-secondary-strong k1-text-secondary k1-gap-4",
           "data-[hover]:k1-border-secondary-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-secondary-strong-hover",
@@ -85,10 +92,11 @@ const buttonVariants = cva(
       {
         kind: "outline",
         color: "neutral",
+        wider: true,
         className: [
           "k1-border-neutral-strong k1-text-neutral k1-gap-4",
           "data-[hover]:k1-border-neutral-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-neutral-strong-hover",
-          "data-[active]:k1-bg-neutral-strong-active data-[active]:k1-text-neutral-inverse data-[active]:k1-border-neutral-strong-active",
+          "data-[active]:k1-bg-neutral-strong-active data-[active]:k1-text-neutral-inverse data-[active]:k1-border-neutral-active",
         ],
       },
     ],
@@ -136,17 +144,3 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
-
-// TODO
-
-//go through all style variants and fix in cva if needed
-
-// TEST: compactable apply if screen width is less than 768px in specific component!
-
-// Martin ask
-
-// compactable valid approach?
-
-// 6. button label start / end, flex space between, before / after vs right / left naming?
-
-// states also in separate string fields, okay?

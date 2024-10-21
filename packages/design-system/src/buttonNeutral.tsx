@@ -1,7 +1,11 @@
-import { Button } from "@repo/design-system/button";
+import { Button, buttonVariants } from "@repo/design-system/button";
 import { NeutralIcon } from "@repo/design-system/neutralIcon";
+import { VariantProps } from "class-variance-authority";
 
-export default function ButtonNeutral() {
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants>;
+
+export default function ButtonNeutral(props: Props) {
   return (
     <Button
       kind="outline"
@@ -12,8 +16,9 @@ export default function ButtonNeutral() {
       hasIcon
       wider
       fitContent
+      {...props}
     >
-      <span className="k1-hidden md:k1-block">Jsem proti</span>
+      <span className="k1-hidden md:k1-block">Přeskočit</span>
     </Button>
   );
 }

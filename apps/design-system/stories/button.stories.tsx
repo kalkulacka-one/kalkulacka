@@ -103,6 +103,24 @@ export const Outline: ButtonStory = {
   },
 };
 
+export const Link: ButtonStory = {
+  args: {
+    children: "Button label",
+    size: "default",
+    kind: "link",
+    fitContent: true,
+  },
+  render: (args) => {
+    return (
+      <>
+        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="left" />
+        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="right" />
+        <Button {...args} fitContent />
+      </>
+    );
+  },
+};
+
 export const AnswerInFavour: ButtonStory = {
   render: () => {
     return <ButtonInFavour />;
