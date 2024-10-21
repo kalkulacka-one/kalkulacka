@@ -4,7 +4,7 @@ import { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
 const descriptionVariants = cva(
-  ["k1-absolute -k1-bottom-3 k1-right-4 k1-bg-inherit"],
+  ["k1-absolute -k1-bottom-3 k1-right-4 k1-bg-inherit k1-bg-white"],
   {
     variants: {
       state: {

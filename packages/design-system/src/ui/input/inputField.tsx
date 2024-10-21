@@ -41,7 +41,7 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const hasIcon = !!Icon;
 
     return (
-      <Field>
+      <Field state={hasError ? "error" : "default"}>
         {hasIcon && (
           <Icon
             className={twMerge(
@@ -62,7 +62,9 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
             {label}
           </Label>
         )}
-        {hasError && <Description state="error">{error}</Description>}
+        {hasError && (
+          <Description state="error">{`Fix the ${label?.toLowerCase()}`}</Description>
+        )}
       </Field>
     );
   }
