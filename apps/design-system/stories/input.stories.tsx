@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { InputField } from "../../../packages/design-system/src/ui/input/inputField";
+import { BadgeStarIcon as icon } from "@repo/design-system/demo";
 
 const meta: Meta<typeof InputField> = {
   title: "Components/Input",
@@ -8,7 +9,7 @@ const meta: Meta<typeof InputField> = {
     label: { control: "text" },
     error: { control: "text" },
     showClearButton: { control: "boolean" },
-    icon: { control: { type: "select" }, options: [undefined, "Icon"] }, //Here should the icons be defined
+    icon: { control: { type: "select" }, options: [undefined, icon] }, //Here should the icons be defined
   },
   tags: ["autodocs"],
 };
