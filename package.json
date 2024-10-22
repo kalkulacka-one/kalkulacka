@@ -21,9 +21,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "class-variance-authority": "^0.7.0",
-    "tailwind-merge": "^2.5.2"
-  }
+  ]
 }
