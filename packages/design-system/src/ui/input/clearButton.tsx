@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { ClearIcon } from "../../Clear/ClearIcon";
+import { ClearIcon } from "@repo/design-system/demo";
 
 type Props = {
   onClose: () => void;
