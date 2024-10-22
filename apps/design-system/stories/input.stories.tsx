@@ -13,7 +13,7 @@ const meta: Meta<typeof InputField> = {
     icon: {
       control: { type: "select" },
       options: {
-        undefined,
+        NoIcon: undefined,
         SearchIcon: SearchIcon,
         HomeIcon: HomeIcon,
       },
