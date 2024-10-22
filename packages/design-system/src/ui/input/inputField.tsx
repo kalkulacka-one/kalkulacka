@@ -4,7 +4,6 @@ import { Field } from "./field";
 import { Input } from "./input";
 import { Label } from "./label";
 import { twMerge } from "tailwind-merge";
-import { ErrorIcon } from "@repo/design-system/demo";
 
 /*
   We choose what Input field properties we allow to be passed to the Input component
@@ -64,10 +63,11 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
           </Label>
         )}
         {hasError && (
-          <Description state="error">
-            {`Fix the ${label?.toLowerCase()}`}
-            <ErrorIcon />
-          </Description>
+          <>
+            <Description state="error">
+              {`Fix the ${label?.toLowerCase()}`}
+            </Description>
+          </>
         )}
       </Field>
     );
