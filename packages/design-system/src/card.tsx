@@ -9,7 +9,7 @@ type Props = {
   HTMLAttributes<HTMLDivElement>;
 
 const cardVariants = cva(
-  "disabled:k1-bg-neutral-disabled disabled:k1-pointer-events-none focus:k1-ring-purple-500 focus:k1-ring-8",
+  "disabled:k1-bg-neutral-disabled disabled:k1-pointer-events-none focus:k1-bg-primary-strong focus:k1-ring-8",
   {
     variants: {
       color: {
