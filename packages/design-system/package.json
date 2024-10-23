@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./ui": "./src/ui/index.ts",
     "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
     "./fonts": "./dist/fonts",
@@ -15,6 +16,7 @@
     "build": "npm run fonts && npm run tailwind",
     "dev": "npm run fonts && npm run tailwind:watch",
     "fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
+    "_comment": "Changed the code from line 14, which is a script for fonts from {mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts} to use on Windows",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
     "generate:component": "turbo gen react-component",
@@ -26,7 +28,6 @@
   "packageManager": "npm@10.8.2",
   "devDependencies": {
     "@repo/eslint-config": "*",
-    "@repo/tailwind-config": "^0.0.0",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.0.6",
     "@types/eslint": "^8.56.5",
@@ -43,7 +44,9 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@headlessui/react": "^2.0.4",
-    "clsx": "^2.1.1"
+    "@headlessui/react": "^2.1.10",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.4"
   }
 }

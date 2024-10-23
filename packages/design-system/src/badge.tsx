@@ -1,6 +1,6 @@
 import React from "react";
 import { cva } from "class-variance-authority";
-import { BadgeStarIcon } from "./Badge/BadgeStarIcon";
+import { BadgeStarIcon } from "./icons/BadgeStarIcon";
 
 export interface BadgeProps {
   icon?: boolean;
