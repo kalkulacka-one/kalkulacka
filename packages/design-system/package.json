@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
     "dev": "npm run fonts && npm run tailwind:watch",
-    "fonts": "if not exist .\\dist mkdir .\\dist && xcopy .\\src\\fonts .\\dist\\fonts /E /I",
+    "fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
     "_comment": "Changed the code from line 14, which is a script for fonts from {mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts} to use on Windows",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
