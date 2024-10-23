@@ -18,7 +18,7 @@ const fieldVariants = cva(
           "k1-border-secondary-strong k1-text-secondary-strong hover:k1-border-secondary-hover:not(:focus-within) focus-within:k1-border-secondary-strong focus-visible:k1-border-secondary-strong",
       },
     },
-  }
+  },
 );
 
 type Props = PropsWithChildren<{
