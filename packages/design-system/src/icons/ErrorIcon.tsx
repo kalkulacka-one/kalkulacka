@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export function ErrorIcon(
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" {...props}>

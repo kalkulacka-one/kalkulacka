@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 const descriptionVariants = cva(
   [
-    "k1-absolute -k1-bottom-3 k1-right-4 k1-bg-white k1-px-0.5 k1-gap-1 k1-inline-flex",
+    "k1-absolute -k1-bottom-3 k1-right-4 k1-bg-white k1-px-1 k1-gap-1 k1-inline-flex",
   ],
   {
     variants: {
@@ -14,7 +14,7 @@ const descriptionVariants = cva(
         error: "k1-text-secondary-strong",
       },
     },
-  }
+  },
 );
 
 // Description is <p> element, but we don't need to expose it to the caller in our design system.
@@ -26,7 +26,7 @@ function Description({ state, children }: Props) {
       className={twMerge(
         descriptionVariants({
           state,
-        })
+        }),
       )}
     >
       {children}
