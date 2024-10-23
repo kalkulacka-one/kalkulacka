@@ -4,7 +4,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
   [
-    "k1-inline-flex k1-items-center k1-justify-center k1-min-w-fit",
+    "k1-inline-flex k1-items-center k1-min-w-fit",
     "data-[hover]:k1-cursor-pointer k1-text-nowrap data-[disabled]:k1-pointer-events-none",
     "k1-uppercase k1-font-bold",
     "k1-rounded-l k1-rounded-br",
@@ -15,6 +15,7 @@ const buttonVariants = cva(
       kind: {
         filled:
           "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disaled",
+        inverse: "k1-border-2 k1-bg-transparent k1-p-4 k1-gap-4",
         outline: "k1-border-2 k1-bg-transparent k1-p-4",
         link: [
           "k1-bg-transparent k1-text-neutral k1-p-0 k1-gap-2",
@@ -70,29 +71,26 @@ const buttonVariants = cva(
 
     compoundVariants: [
       {
-        kind: "outline",
+        kind: "inverse",
         color: "primary",
-        wider: true,
         className: [
-          "k1-border-primary-strong k1-text-primary k1-gap-4",
+          "k1-border-primary-strong k1-text-primary",
           "data-[hover]:k1-border-primary-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-primary-strong-hover",
           "data-[active]:k1-bg-primary-strong data-[active]:k1-text-neutral-inverse data-[active]:k1-border-primary-strong-active",
         ],
       },
       {
-        kind: "outline",
+        kind: "inverse",
         color: "secondary",
-        wider: true,
         className: [
-          "k1-border-secondary-strong k1-text-secondary k1-gap-4",
+          "k1-border-secondary-strong k1-text-secondary",
           "data-[hover]:k1-border-secondary-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-secondary-strong-hover",
           "data-[active]:k1-bg-secondary-strong data-[active]:k1-text-neutral-inverse data-[active]:k1-border-secondary-strong-active",
         ],
       },
       {
-        kind: "outline",
+        kind: "inverse",
         color: "neutral",
-        wider: true,
         className: [
           "k1-border-neutral-strong k1-text-neutral k1-gap-4",
           "data-[hover]:k1-border-neutral-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-neutral-strong-hover",
@@ -131,12 +129,14 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 
     return (
       <HeadlessUIButton
-        className={`${buttonVariants({ kind, size, wider, fitContent, iconPosition, hasIcon, color })} ${className || ""}`}
+        className={`${buttonVariants({ kind, size, wider, fitContent, hasIcon, iconPosition, color })} ${className || ""}`}
         ref={ref}
         {...props}
       >
         {hasIcon ? <Icon className="k1-w-6 k1-h-6" /> : null}
-        {!compactable ? children : null}
+        <div className={compactable ? "k1-hidden md:k1-block" : "k1-block"}>
+          {children}
+        </div>
       </HeadlessUIButton>
     );
   },

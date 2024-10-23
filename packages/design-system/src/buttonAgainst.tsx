@@ -8,17 +8,18 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
 export default function ButtonAgainst(props: Props) {
   return (
     <Button
-      kind="outline"
+      kind="inverse"
       size="default"
       color="secondary"
       icon={NoIcon}
       iconPosition="left"
       hasIcon
+      compactable
       wider
       fitContent
       {...props}
     >
-      <span className="k1-hidden md:k1-block">Jsem proti</span>
+      Jsem proti
     </Button>
   );
 }

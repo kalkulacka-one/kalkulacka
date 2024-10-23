@@ -8,17 +8,18 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
 export default function ButtonInFavour(props: Props) {
   return (
     <Button
-      kind="outline"
+      kind="inverse"
       size="default"
       color="primary"
       icon={YesIcon}
       iconPosition="left"
       hasIcon
+      compactable
       wider
       fitContent
       {...props}
     >
-      <span className="k1-hidden md:k1-block">Jsem pro</span>
+      Jsem pro
     </Button>
   );
 }
