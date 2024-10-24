@@ -8,6 +8,10 @@ const typography: Pick<
   fontFamily: {
     sans: ['"Radio Canada"', ...defaultTheme.fontFamily.sans],
   },
+  fontSize: {
+    xs: "0.625rem",
+    sm: "0.812rem",
+  },
 };
 
 export default typography;
