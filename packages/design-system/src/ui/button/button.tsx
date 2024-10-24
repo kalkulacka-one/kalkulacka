@@ -112,7 +112,6 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
 const Button = React.forwardRef<HTMLButtonElement, Props>(
   (
     {
-      className,
       children,
       kind,
       color,
