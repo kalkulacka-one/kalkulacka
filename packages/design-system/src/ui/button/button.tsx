@@ -7,8 +7,9 @@ const buttonVariants = cva(
     "k1-inline-flex k1-items-center k1-min-w-fit",
     "data-[hover]:k1-cursor-pointer k1-text-nowrap data-[disabled]:k1-pointer-events-none",
     "k1-uppercase k1-font-bold",
-    "k1-rounded-l k1-rounded-br",
+    "k1-rounded-l-[16px] k1-rounded-br-[16px]",
     "k1-select-none",
+    "k1-gap-2",
   ],
   {
     variants: {
@@ -129,7 +130,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 
     return (
       <HeadlessUIButton
-        className={`${buttonVariants({ kind, size, wider, fitContent, hasIcon, iconPosition, color })} ${className || ""}`}
+        className={`${buttonVariants({ kind, size, wider, fitContent, hasIcon, iconPosition, color })}`}
         ref={ref}
         {...props}
       >

@@ -1,11 +1,11 @@
-import { Button, buttonVariants } from "@repo/design-system/button";
-import { NeutralIcon } from "@repo/design-system/neutralIcon";
+import { Button, buttonVariants } from "@repo/design-system/ui";
+import { NeutralIcon } from "../../icons/neutralIcon";
 import { VariantProps } from "class-variance-authority";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
-export default function ButtonNeutral(props: Props) {
+export function ButtonNeutral(props: Props) {
   return (
     <Button
       kind="inverse"

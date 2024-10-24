@@ -1,17 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from "@repo/design-system/button";
-import ButtonInFavour from "@repo/design-system/buttonInFavour";
-import ButtonAgainst from "@repo/design-system/buttonAgainst";
-import ButtonNeutral from "@repo/design-system/buttonNeutral";
-import { ArrowIcon } from "@repo/design-system/arrowIcon";
+import { Button } from "@repo/design-system/ui";
+import { ButtonInFavour } from "@repo/design-system/ui";
+import { ButtonAgainst } from "@repo/design-system/ui";
+import { ButtonNeutral } from "@repo/design-system/ui";
+import { ArrowIconRight, ArrowIconLeft } from "@repo/design-system/demo";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
+  tags: ["autodocs"],
   argTypes: {
     kind: {
-      options: ["default", "filled", "outline"],
+      options: ["filled", "inverse", "outline", "link"],
       control: { type: "radio" },
     },
     size: {
@@ -19,8 +20,7 @@ const meta: Meta<typeof Button> = {
       control: { type: "radio" },
     },
     hasIcon: {
-      options: ["true", "false"],
-      control: { type: "radio" },
+      control: { type: "boolean" },
     },
     iconPosition: {
       options: ["left", "right"],
@@ -31,8 +31,10 @@ const meta: Meta<typeof Button> = {
       control: { type: "radio" },
     },
     wider: {
-      options: ["true", "false"],
-      control: { type: "radio" },
+      control: { type: "boolean" },
+    },
+    compactable: {
+      control: { type: "boolean" },
     },
   },
   decorators: [
@@ -50,9 +52,9 @@ const meta: Meta<typeof Button> = {
       >
         <div
           style={{
-            height: "50%",
-            width: "50%",
-            backgroundColor: "yellow",
+            height: "75vh",
+            width: "75vw",
+            backgroundColor: "lightyellow",
             display: "flex",
             gap: "1rem",
             flexDirection: "column",
@@ -77,8 +79,8 @@ export const Filled: ButtonStory = {
   render: (args) => {
     return (
       <>
-        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="left" />
-        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="right" />
+        <Button icon={ArrowIconLeft} {...args} hasIcon iconPosition="left" />
+        <Button icon={ArrowIconRight} {...args} hasIcon iconPosition="right" />
         <Button {...args} fitContent />
       </>
     );
@@ -95,8 +97,8 @@ export const Outline: ButtonStory = {
   render: (args) => {
     return (
       <>
-        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="left" />
-        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="right" />
+        <Button icon={ArrowIconLeft} {...args} hasIcon iconPosition="left" />
+        <Button icon={ArrowIconRight} {...args} hasIcon iconPosition="right" />
         <Button {...args} fitContent />
       </>
     );
@@ -113,8 +115,8 @@ export const Link: ButtonStory = {
   render: (args) => {
     return (
       <>
-        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="left" />
-        <Button icon={ArrowIcon} {...args} hasIcon iconPosition="right" />
+        <Button icon={ArrowIconLeft} {...args} hasIcon iconPosition="left" />
+        <Button icon={ArrowIconRight} {...args} hasIcon iconPosition="right" />
         <Button {...args} fitContent />
       </>
     );

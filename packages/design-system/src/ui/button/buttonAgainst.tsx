@@ -1,17 +1,17 @@
-import { Button, buttonVariants } from "@repo/design-system/button";
-import { YesIcon } from "@repo/design-system/yesIcon";
+import { Button, buttonVariants } from "@repo/design-system/ui";
+import { NoIcon } from "../../icons/noIcon";
 import { VariantProps } from "class-variance-authority";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
-export default function ButtonInFavour(props: Props) {
+export function ButtonAgainst(props: Props) {
   return (
     <Button
       kind="inverse"
       size="default"
-      color="primary"
-      icon={YesIcon}
+      color="secondary"
+      icon={NoIcon}
       iconPosition="left"
       hasIcon
       compactable
@@ -19,7 +19,7 @@ export default function ButtonInFavour(props: Props) {
       fitContent
       {...props}
     >
-      Jsem pro
+      Jsem proti
     </Button>
   );
 }

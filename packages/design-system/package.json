@@ -11,15 +11,11 @@
     "./tailwind": "./tailwind.config.ts",
     "./demo": "./src/index.ts",
     "./progressBar": "./src/progressBar.tsx",
-    "./button": "./src/button.tsx",
     "./arrowIcon": "./src/arrowIcon.tsx",
     "./starIcon": "./src/starIcon.tsx",
     "./yesIcon": "./src/yesIcon.tsx",
     "./noIcon": "./src/noIcon.tsx",
-    "./neutralIcon": "./src/neutralIcon.tsx",
-    "./buttonInFavour": "./src/buttonInFavour.tsx",
-    "./buttonAgainst": "./src/buttonAgainst.tsx",
-    "./buttonNeutral": "./src/buttonNeutral.tsx"
+    "./neutralIcon": "./src/neutralIcon.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
