@@ -24,6 +24,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@headlessui/react": "^2.1.10",
     "class-variance-authority": "^0.7.0"
   }
 }
