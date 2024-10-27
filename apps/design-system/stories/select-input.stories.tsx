@@ -10,6 +10,18 @@ const meta: Meta<typeof SelectInputField> = {
     label: { control: "text" },
     error: { control: "text" },
     showClearButton: { control: "boolean" },
+    icon: {
+      control: { type: "select" },
+      options: {
+        NoIcon: undefined,
+        SearchIcon: SearchIcon,
+        HomeIcon: HomeIcon,
+      },
+      mapping: {
+        SearchIcon: SearchIcon,
+        HomeIcon: HomeIcon,
+      },
+    },
   },
   tags: ["autodocs"],
 };
