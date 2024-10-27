@@ -1,10 +1,9 @@
 import React, { forwardRef } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
-import { Combobox, Input, Options, Option, Button } from "./combobox";
+import { Combobox, Input } from "./combobox";
 import { Label } from "./label";
 import { twMerge } from "tailwind-merge";
-import { ChevronDownIcon } from "../../icons/ChevronDown";
 
 /*
   We choose what Input field properties we allow to be passed to the Input component
@@ -24,11 +23,16 @@ type Props = {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 } & InheritedInputProps;
 
+// Test options
+const options = [
+  { id: 1, value: "option1", label: "Option 1" },
+  { id: 2, value: "option2", label: "Option 2" },
+  { id: 3, value: "option3", label: "Option 3" },
+  { id: 4, value: "option4", label: "Option 4" },
+];
+
 const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
-  (
-    { label, error, showClearButton, icon, placeholder, ...props }: Props,
-    ref
-  ) => {
+  ({ label, error, showClearButton, icon }: Props, ref) => {
     // if error is present, we pass it to all the sub-components
     const hasError = !!error;
 
@@ -44,37 +48,24 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     return (
       <Field state={hasError ? "error" : "default"}>
         {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
-        <Combobox>
-          <Input
-            {...(props as Omit<InheritedInputProps, "defaultValue"> & {
-              defaultValue?: string;
-            })}
-            ref={ref}
-            className="k1-bg-transparent k1-outline-none"
-            placeholder={showPlaceholder ? placeholder : undefined}
-            showClearButton={showClearButton}
-          />
-          <Button>
-            <ChevronDownIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
-          </Button>
-          <Options>
-            <Option value="1">Option 1</Option>
-            <Option value="2">Option 2</Option>
-            <Option value="3">Option 3</Option>
-          </Options>
+        <Combobox
+          className="k1-relative k1-w-full k1-bg-transparent k1-outline-none k1-flex"
+          ref={ref}
+          showClearButton={showClearButton}
+          options={options}
+          defaultValue=""
+          onChange={(value) => console.log("Selected value:", value)}
+          onInputChange={(value) => console.log("Input value:", value)}
+          onClear={() => console.log("Cleared")}
+          showPlaceholder={showPlaceholder}
+        >
+          {label && (
+            <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
+              {label}
+            </Label>
+          )}
         </Combobox>
-
-        {label && (
-          <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
-            {label}
-          </Label>
-        )}
-        {hasError && (
-          <Description state="error">
-            {/* Custom error - must be text as in zod validator */}
-            {`Fix the ${label?.toLowerCase()}`}
-          </Description>
-        )}
+        {hasError && <Description state="error">{error}</Description>}
       </Field>
     );
   }

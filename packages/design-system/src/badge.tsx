@@ -1,6 +1,6 @@
 import React from "react";
 import { cva } from "class-variance-authority";
-import { BadgeStarIcon } from "./icons/BadgeStarIcon";
+import { BadgeStarIcon } from "./icons/badgeStarIcon";
 
 export interface BadgeProps {
   icon?: boolean;
@@ -19,7 +19,7 @@ const badge = cva(
         secondary: ["k1-text-secondary-strong k1-bg-secondary"],
       },
     },
-  },
+  }
 );
 
 const Badge: React.FC<BadgeProps> = ({ icon = false, color, children }) => {

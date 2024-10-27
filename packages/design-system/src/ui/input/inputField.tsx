@@ -26,7 +26,7 @@ type Props = {
 const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
   (
     { label, error, showClearButton, icon, placeholder, ...props }: Props,
-    ref,
+    ref
   ) => {
     // if error is present, we pass it to all the sub-components
     const hasError = !!error;
@@ -42,6 +42,11 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
 
     return (
       <Field state={hasError ? "error" : "default"}>
+        {label && (
+          <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
+            {label}
+          </Label>
+        )}
         {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
         <Input
           {...props}
@@ -50,22 +55,15 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
           placeholder={showPlaceholder ? placeholder : undefined}
           showClearButton={showClearButton}
         />
-        {label && (
-          <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
-            {label}
-          </Label>
-        )}
+
         {hasError && (
           <>
-            <Description state="error">
-              {/*Custom error - must be text as in zod validator*/}
-              {`Fix the ${label?.toLowerCase()}`}
-            </Description>
+            <Description state="error">{error}</Description>
           </>
         )}
       </Field>
     );
-  },
+  }
 );
 
 export { InputField };
