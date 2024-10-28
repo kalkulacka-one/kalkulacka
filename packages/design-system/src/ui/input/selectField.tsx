@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
 import { Combobox, Input, Options, Option, Button } from "./combobox";
@@ -24,6 +24,14 @@ type Props = {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 } & InheritedInputProps;
 
+// Test options
+const options = [
+  { id: 1, name: "Option 1" },
+  { id: 2, name: "Option 2" },
+  { id: 3, name: "Option 3" },
+  { id: 4, name: "Option 4" },
+];
+
 const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
   (
     { label, error, showClearButton, icon, placeholder, ...props }: Props,
@@ -41,28 +49,49 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const Icon = icon;
     const hasIcon = !!Icon;
 
+    const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [query, setQuery] = useState("");
+
+    //Filtering the options based on the query
+    const filteredOptions =
+      query === ""
+        ? options
+        : options.filter((option) => {
+            return option.name.toLowerCase().includes(query.toLowerCase());
+          });
+
     return (
       <Field state={hasError ? "error" : "default"}>
         {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
-        <Combobox className="k1-relative k1-w-full k1-bg-transparent k1-outline-none">
-          <div className="k1-flex k1-items-center k1-w-full">
-            <Input
-              {...(props as Omit<InheritedInputProps, "defaultValue"> & {
-                defaultValue?: string;
-              })}
-              ref={ref}
-              className="k1-bg-transparent k1-outline-none k1-flex-grow"
-              placeholder={showPlaceholder ? placeholder : undefined}
-              showClearButton={showClearButton}
-            />
-            <Button className="k1-flex-shrink-0 k1-w-10 k1-h-full k1-flex k1-items-center k1-justify-center">
-              <ChevronDownIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
-            </Button>
-          </div>
-          <Options className="k1-absolute k1-mt-1 k1-bg-white k1-shadow-lg k1-z-50 k1-w-full">
-            <Option value="1">Option 1</Option>
-            <Option value="2">Option 2</Option>
-            <Option value="3">Option 3</Option>
+        <Combobox
+          className="k1-relative k1-w-full k1-bg-transparent k1-outline-none k1-flex"
+          value={selectedOption}
+          onChange={setSelectedOption}
+          onClose={() => setQuery("")}
+        >
+          <Input
+            {...(props as Omit<InheritedInputProps, "defaultValue"> & {
+              defaultValue?: string;
+            })}
+            ref={ref}
+            displayValue={(option) => option?.name}
+            className={twMerge(
+              "k1-bg-transparent k1-outline-none k1-flex-grow"
+            )}
+            placeholder={showPlaceholder ? placeholder : undefined}
+            showClearButton={showClearButton}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          <Options anchor="bottom start" className="border empty:invisible">
+            {filteredOptions.map((option) => (
+              <Option
+                key={option.id}
+                value={option}
+                className="k1-data-[focus]:bg-blue-100 k1-w-full"
+              >
+                {option.name}
+              </Option>
+            ))}
           </Options>
         </Combobox>
 

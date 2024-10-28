@@ -11,6 +11,7 @@ import { twMerge } from "tailwind-merge";
 import * as React from "react";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { ClearButton } from "./clearButton";
+import { ChevronDownIcon } from "../../icons/ChevronDown";
 
 const Combobox = React.forwardRef<
   React.ElementRef<typeof ComboboxPrimitive>,
@@ -69,6 +70,9 @@ const Input = forwardRef<
         onChange={handleChange}
         {...props}
       />
+      <Button className="k1-flex-shrink-0 k1-h-full k1-flex">
+        <ChevronDownIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
+      </Button>
       {showClearButton && <ClearButton onClose={clearHandler} />}
     </>
   );
