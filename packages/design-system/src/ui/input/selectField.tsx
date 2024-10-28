@@ -1,9 +1,8 @@
 import React, { forwardRef, useState } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
-import { Combobox, Input, Options, Option, Button } from "./combobox";
+import { Combobox, Input, Options, Option } from "./combobox";
 import { Label } from "./label";
-import { ChevronDownIcon } from "../../icons/ChevronDown";
 import { twMerge } from "tailwind-merge";
 
 /*
