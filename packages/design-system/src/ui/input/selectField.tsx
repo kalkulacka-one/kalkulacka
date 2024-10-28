@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
 import { Combobox, Input } from "./combobox";
@@ -44,6 +44,17 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     // We need to pass hasIcon to some sub-components
     const Icon = icon;
     const hasIcon = !!Icon;
+
+    const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [query, setQuery] = useState("");
+
+    //Filtering the options based on the query
+    const filteredOptions =
+      query === ""
+        ? options
+        : options.filter((option) => {
+            return option.name.toLowerCase().includes(query.toLowerCase());
+          });
 
     return (
       <Field state={hasError ? "error" : "default"}>
