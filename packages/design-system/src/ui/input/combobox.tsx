@@ -12,6 +12,7 @@ import * as React from "react";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { ClearButton } from "./clearButton";
 import { ChevronDownIcon } from "../../icons/ChevronDown";
+import { useEffect } from "react";
 
 const Combobox = React.forwardRef<
   React.ElementRef<typeof ComboboxPrimitive>,
@@ -38,9 +39,14 @@ const Input = forwardRef<
 
   // Add a data attribute based on the input value. This is for peer styling.
   const updateDataEmpty = () => {
+    // inputRef is a reference to a DOM element. Check if it exists before updating
     if (inputRef.current) {
+      //if the inputRef is empty - isEmpty will be true
       const isEmpty = inputRef.current.value === "";
+      console.log("Updating data-empty attribute:", isEmpty); // Debug log
       inputRef.current.setAttribute("data-empty", isEmpty.toString());
+    } else {
+      console.log("inputRef.current is null"); // Debug log
     }
   };
 
@@ -51,6 +57,10 @@ const Input = forwardRef<
     }
     updateDataEmpty();
   };
+
+  useEffect(() => {
+    updateDataEmpty(); // Initial check
+  }, []);
 
   // Clear the input field and fire the onChange event
   const clearHandler = () => {

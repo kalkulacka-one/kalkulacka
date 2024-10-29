@@ -68,6 +68,11 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
           onChange={setSelectedOption}
           onClose={() => setQuery("")}
         >
+          {label && (
+            <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
+              {label}
+            </Label>
+          )}
           <Input
             {...(props as Omit<InheritedInputProps, "defaultValue"> & {
               defaultValue?: string;
@@ -93,12 +98,6 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
             ))}
           </Options>
         </Combobox>
-
-        {label && (
-          <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
-            {label}
-          </Label>
-        )}
         {hasError && <Description state="error">{error}</Description>}
       </Field>
     );
