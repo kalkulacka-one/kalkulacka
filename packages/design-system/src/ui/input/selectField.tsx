@@ -48,6 +48,11 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const Icon = icon;
     const hasIcon = !!Icon;
 
+    const handleSelect = (option: (typeof options)[0]) => {
+      console.log("Selected option:", option);
+      setSelectedOption(option);
+    };
+
     const [selectedOption, setSelectedOption] = useState(options[0]);
     const [query, setQuery] = useState("");
 
@@ -65,27 +70,30 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
         <Combobox
           className="k1-relative k1-w-full k1-bg-transparent k1-outline-none k1-flex"
           value={selectedOption}
-          onChange={setSelectedOption}
+          ref={ref}
+          onChange={handleSelect}
           onClose={() => setQuery("")}
+          defaultValue={null}
         >
-          {label && (
-            <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
-              {label}
-            </Label>
-          )}
           <Input
             {...(props as Omit<InheritedInputProps, "defaultValue"> & {
               defaultValue?: string;
             })}
-            ref={ref}
-            displayValue={(option) => option?.name}
+            displayValue={(option: string) =>
+              options.find((opt) => opt.name === option)?.name || ""
+            }
             className={twMerge(
               "k1-bg-transparent k1-outline-none k1-flex-grow"
             )}
             placeholder={showPlaceholder ? placeholder : undefined}
             showClearButton={showClearButton}
-            onChange={(event) => setQuery(event.target.value)}
+            value={selectedOption?.name}
           />
+          {label && (
+            <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
+              {label}
+            </Label>
+          )}
           <Options anchor="bottom start" className="border empty:invisible">
             {filteredOptions.map((option) => (
               <Option

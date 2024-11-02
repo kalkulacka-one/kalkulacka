@@ -32,7 +32,7 @@ Combobox.displayName = "Combobox";
 const Input = forwardRef<
   React.ElementRef<typeof InputPrimitive>,
   InputPrimitiveProps & { className?: string; showClearButton?: boolean } // InputProps has more variable className, but we need string
->(({ className, showClearButton, ...props }, ref) => {
+>(({ className, showClearButton, onChange, ...props }, ref) => {
   // We need to get object ref we're passing to check if the input is empty
   const inputRef = useRef<HTMLInputElement | null>(null);
   useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
@@ -52,8 +52,8 @@ const Input = forwardRef<
 
   // Override the onChange event to update data-empty attribute
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (props.onChange) {
-      props.onChange(event);
+    if (onChange) {
+      onChange(event);
     }
     updateDataEmpty();
   };
