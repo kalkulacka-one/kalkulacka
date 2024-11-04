@@ -56,4 +56,4 @@ const StepProgressFancy = ({ steps }: Props): JSX.Element => {
   );
 };
 
-export { StepProgressFancy, stepProgressVariants };
+export { StepProgressFancy };
