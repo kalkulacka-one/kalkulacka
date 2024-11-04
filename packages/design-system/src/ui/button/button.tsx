@@ -36,11 +36,11 @@ const buttonVariants = cva(
       },
       color: {
         primary: [
-          "k1-text-neutral-inverse k1-bg-primary-strong",
+          "k1-bg-primary-strong",
           "data-[hover]:k1-bg-primary-strong-hover data-[hover]-k1-text-white",
         ],
         secondary: [
-          "k1-text-neutral-inverse k1-bg-secondary-strong",
+          "k1-bg-secondary-strong",
           "data-[hover]:k1-bg-secondary-strong-hover",
           "data-[disabled]:k1-bg-neutral-disaled",
         ],
@@ -78,6 +78,7 @@ const buttonVariants = cva(
           "k1-border-primary-strong k1-text-primary",
           "data-[hover]:k1-border-primary-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-primary-strong-hover",
           "data-[active]:k1-bg-primary-strong data-[active]:k1-text-neutral-inverse data-[active]:k1-border-primary-strong-active",
+          "data-[pressed]:k1-bg-primary-strong data-[pressed]:k1-text-neutral-inverse",
         ],
       },
       {
@@ -87,6 +88,7 @@ const buttonVariants = cva(
           "k1-border-secondary-strong k1-text-secondary",
           "data-[hover]:k1-border-secondary-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-secondary-strong-hover",
           "data-[active]:k1-bg-secondary-strong data-[active]:k1-text-neutral-inverse data-[active]:k1-border-secondary-strong-active",
+          "data-[pressed]:k1-bg-secondary-strong data-[pressed]:k1-text-neutral-inverse",
         ],
       },
       {
@@ -96,6 +98,7 @@ const buttonVariants = cva(
           "k1-border-neutral-strong k1-text-neutral k1-gap-4",
           "data-[hover]:k1-border-neutral-strong-hover data-[hover]:k1-text-neutral-inverse data-[hover]:k1-bg-neutral-strong-hover",
           "data-[active]:k1-bg-neutral-strong-active data-[active]:k1-text-neutral-inverse data-[active]:k1-border-neutral-active",
+          "data-[pressed]:k1-bg-neutral-strong-active data-[pressed]:k1-text-neutral-inverse",
         ],
       },
     ],
@@ -104,6 +107,8 @@ const buttonVariants = cva(
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
+    pressed?: boolean;
+    answerType?: string;
     children: React.ReactNode;
     compactable?: boolean;
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -120,6 +125,8 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       wider,
       fitContent,
       compactable,
+      pressed,
+      answerType,
       ...props
     },
     ref,
@@ -131,6 +138,13 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       <HeadlessUIButton
         className={`${buttonVariants({ kind, size, wider, fitContent, hasIcon, iconPosition, color })}`}
         ref={ref}
+        aria-pressed={pressed ? true : false}
+        data-pressed={pressed ? true : null}
+        aria-label={
+          pressed
+            ? `Button ${answerType} pressed`
+            : `Press ${answerType} button`
+        }
         {...props}
       >
         {hasIcon ? <Icon className="k1-w-6 k1-h-6" /> : null}
