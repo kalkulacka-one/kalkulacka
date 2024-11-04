@@ -1,7 +1,8 @@
 import React, { forwardRef, useState } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
-import { Combobox, Input, Options, Option } from "./combobox";
+import { Combobox, Input, Options } from "./combobox";
+import { Option } from "./comboboxOption";
 import { Label } from "./label";
 import { twMerge } from "tailwind-merge";
 
@@ -48,11 +49,6 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const Icon = icon;
     const hasIcon = !!Icon;
 
-    const handleSelect = (option: (typeof options)[0]) => {
-      console.log("Selected option:", option);
-      setSelectedOption(option);
-    };
-
     const [selectedOption, setSelectedOption] = useState(options[0]);
     const [query, setQuery] = useState("");
 
@@ -71,9 +67,9 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
           className="k1-relative k1-w-full k1-bg-transparent k1-outline-none k1-flex"
           value={selectedOption}
           ref={ref}
-          onChange={handleSelect}
           onClose={() => setQuery("")}
           defaultValue={null}
+          showClearButton={showClearButton}
         >
           <Input
             {...(props as Omit<InheritedInputProps, "defaultValue"> & {
@@ -86,7 +82,6 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
               "k1-bg-transparent k1-outline-none k1-flex-grow"
             )}
             placeholder={showPlaceholder ? placeholder : undefined}
-            showClearButton={showClearButton}
             value={selectedOption?.name}
           />
           {label && (
