@@ -1,7 +1,6 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { YesIcon } from "@repo/design-system/demo";
 import { ToggleButton } from "@repo/design-system/toggleButton";
-import { YesIcon } from "@repo/design-system/yesIcon";
-import { Button } from "@repo/design-system/button";
+import { Meta, StoryObj } from "@storybook/react";
 
 export default {
   title: "Components/ToggleButton",
@@ -13,24 +12,19 @@ export default {
 type Story = StoryObj<typeof ToggleButton>;
 
 export const AnswerInFavour: Story = {
-  render: () => (
-    <ToggleButton>
-      <Button
-        answerType="In favour"
-        hasIcon
-        icon={YesIcon}
-        iconPosition="left"
-        color="primary"
-        kind="inverse"
-        size="default"
-        wider
-        fitContent
-        compactable
-      >
-        Jsem pro
-      </Button>
-    </ToggleButton>
-  ),
+  args: {
+    answerType: "InFavour",
+    children: "Jsem pro",
+    hasIcon: true,
+    icon: YesIcon,
+    iconPosition: "left",
+    color: "primary",
+    kind: "inverse",
+    size: "default",
+    wider: true,
+    fitContent: true,
+    compactable: true,
+  },
 };
 
 export const AnswerAgainst: Story = {

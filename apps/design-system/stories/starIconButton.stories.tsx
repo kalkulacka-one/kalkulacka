@@ -11,6 +11,6 @@ type Story = StoryObj<typeof StarIconButton>;
 
 export const Default: Story = {
   args: {
-    pressed: true
-  }
+    pressed: true,
+  },
 };
