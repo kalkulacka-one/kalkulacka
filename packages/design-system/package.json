@@ -10,7 +10,12 @@
     "./heading": "./src/heading.tsx",
     "./tailwind": "./tailwind.config.ts",
     "./demo": "./src/index.ts",
-    "./progressBar": "./src/progressBar.tsx"
+    "./progressBar": "./src/progressBar.tsx",
+    "./arrowIcon": "./src/arrowIcon.tsx",
+    "./starIcon": "./src/starIcon.tsx",
+    "./yesIcon": "./src/yesIcon.tsx",
+    "./noIcon": "./src/noIcon.tsx",
+    "./neutralIcon": "./src/neutralIcon.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
