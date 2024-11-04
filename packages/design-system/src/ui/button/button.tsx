@@ -15,7 +15,7 @@ const buttonVariants = cva(
     variants: {
       kind: {
         filled:
-          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disaled",
+          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled",
         inverse: "k1-border-2 k1-bg-transparent k1-p-4 k1-gap-4",
         outline: "k1-border-2 k1-bg-transparent k1-p-4",
         link: [
@@ -42,7 +42,7 @@ const buttonVariants = cva(
         secondary: [
           "k1-bg-secondary-strong",
           "data-[hover]:k1-bg-secondary-strong-hover",
-          "data-[disabled]:k1-bg-neutral-disaled",
+          "data-[disabled]:k1-bg-neutral-disabled",
         ],
         neutral: [
           "k1-border-2 k1-text-neutral k1-border-neutral-strong",
