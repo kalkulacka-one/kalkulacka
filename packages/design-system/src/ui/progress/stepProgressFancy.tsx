@@ -12,10 +12,10 @@ type Props = {
 const stepProgressVariants = cva("k1-w-9", {
   variants: {
     status: {
-      inFavour: "k1-bg-[#0070F4]",
-      against: "k1-bg-[#D04646]",
-      none: "k1-bg-[#1D1C1C]",
-      isNull: "k1-bg-neutral-disaled",
+      inFavour: "k1-bg-primary-strong",
+      against: "k1-bg-secondary-strong",
+      none: "k1-bg-neutral-strong-active",
+      isNull: "k1-bg-neutral-disabled",
     },
     height: {
       active: "k1-h-2",
@@ -55,5 +55,7 @@ const StepProgressFancy = ({ steps }: Props): JSX.Element => {
     </div>
   );
 };
+
+// TODO: Fix ternary operator with function with switch/case
 
 export { StepProgressFancy };

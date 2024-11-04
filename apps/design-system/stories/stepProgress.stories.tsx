@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { StepProgress } from "@repo/design-system/stepProgress";
+import { StepProgress } from "@repo/design-system/ui";
 
 const meta: Meta<typeof StepProgress> = {
   title: "Components/StepProgress",

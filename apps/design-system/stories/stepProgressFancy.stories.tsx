@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { StepProgressFancy } from "@repo/design-system/stepProgressFancy";
+import { StepProgressFancy } from "@repo/design-system/ui";
 
 const meta: Meta<typeof StepProgressFancy> = {
   title: "Components/StepProgress",
