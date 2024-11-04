@@ -45,11 +45,6 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const Icon = icon;
     const hasIcon = !!Icon;
 
-    const handleSelect = (option: (typeof options)[0]) => {
-      console.log("Selected option:", option);
-      setSelectedOption(option);
-    };
-
     const [selectedOption, setSelectedOption] = useState(options[0]);
     const [query, setQuery] = useState("");
 
