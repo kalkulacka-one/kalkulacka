@@ -45,17 +45,6 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const Icon = icon;
     const hasIcon = !!Icon;
 
-    const [selectedOption, setSelectedOption] = useState(options[0]);
-    const [query, setQuery] = useState("");
-
-    //Filtering the options based on the query
-    const filteredOptions =
-      query === ""
-        ? options
-        : options.filter((option) => {
-            return option.name.toLowerCase().includes(query.toLowerCase());
-          });
-
     return (
       <Field state={hasError ? "error" : "default"}>
         {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
