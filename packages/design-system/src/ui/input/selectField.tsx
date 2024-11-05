@@ -1,8 +1,7 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
 import { Combobox, Input, Options } from "./combobox";
-import { Option } from "./comboboxOption";
 import { Label } from "./label";
 import { twMerge } from "tailwind-merge";
 
@@ -54,7 +53,7 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
           ref={ref}
           showClearButton={showClearButton}
           options={options}
-          defaultValue="option1"
+          defaultValue=""
           onChange={(value) => console.log("Selected value:", value)}
           onInputChange={(value) => console.log("Input value:", value)}
           onClear={() => console.log("Cleared")}
