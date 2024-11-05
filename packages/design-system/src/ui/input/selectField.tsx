@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Description } from "./description";
 import { Field } from "./field";
-import { Combobox, Input, Options } from "./combobox";
+import { Combobox, Input } from "./combobox";
 import { Label } from "./label";
 import { twMerge } from "tailwind-merge";
 
@@ -32,7 +32,7 @@ const options = [
 ];
 
 const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
-  ({ label, error, showClearButton, icon, ...props }: Props, ref) => {
+  ({ label, error, showClearButton, icon }: Props, ref) => {
     // if error is present, we pass it to all the sub-components
     const hasError = !!error;
 
