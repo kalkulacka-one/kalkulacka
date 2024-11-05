@@ -10,52 +10,152 @@ import { twMerge } from "tailwind-merge";
 import * as React from "react";
 import {
   forwardRef,
-  useImperativeHandle,
   useRef,
-  useEffect,
+  useImperativeHandle,
   useState,
+  useEffect,
 } from "react";
 import { ClearButton } from "./clearButton";
 import { ChevronDownIcon } from "../../icons/ChevronDown";
+import { Option } from "./comboboxOption";
 
-const Combobox = React.forwardRef<
+interface ComboboxProps
+  extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {
+  showClearButton?: boolean;
+  onClear?: () => void;
+  defaultValue?: string;
+  onInputChange?: (value: string) => void;
+  options: Array<{ id: string | number; value: string; label: string }>;
+  showPlaceholder?: boolean;
+  children?: React.ReactNode;
+}
+
+const Combobox = forwardRef<
   React.ElementRef<typeof ComboboxPrimitive>,
-  React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> & {
-    showClearButton?: boolean;
-  }
->(({ className, children, showClearButton, onChange, ...props }, ref) => {
-  const clearHandler = () => {
-    if (onChange) {
-      onChange(null);
-    }
-  };
+  ComboboxProps
+>(
+  (
+    {
+      className,
+      children,
+      showClearButton,
+      onChange,
+      defaultValue,
+      onClear,
+      onInputChange,
+      options,
+      ...props
+    },
+    ref
+  ) => {
+    //Use state for selecting values. If nothing is provided, defaultValue will become the selected value
+    const [selectedValue, setSelectedValue] = useState<string | null>(
+      defaultValue || null
+    );
 
-  return (
-    <ComboboxPrimitive
-      as="div"
-      ref={ref}
-      className={twMerge("", className)}
-      {...props}
-    >
-      <>
+    const [query, setQuery] = useState<string>(defaultValue || "");
+    const [filteredOptions, setFilteredOptions] = useState(options);
+
+    useEffect(() => {
+      const filtered = options.filter((option) =>
+        option.label.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredOptions(filtered);
+    }, [query, options]);
+
+    const handleClear = () => {
+      setSelectedValue(null);
+      setQuery("");
+      if (onChange) {
+        onChange(null);
+      }
+      if (onClear) {
+        onClear();
+      }
+      if (onInputChange) {
+        onInputChange("");
+      }
+    };
+
+    const handleChange = (value: string | null) => {
+      setSelectedValue(value);
+      if (value) {
+        const selectedOption = options.find((opt) => opt.value === value);
+        if (selectedOption) {
+          setQuery(selectedOption.label);
+          if (onInputChange) {
+            onInputChange(selectedOption.label);
+          }
+        }
+      }
+      if (onChange) {
+        onChange(value);
+      }
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setQuery(value);
+      if (onInputChange) {
+        onInputChange(value);
+      }
+    };
+
+    return (
+      <ComboboxPrimitive
+        as="div"
+        ref={ref}
+        className={twMerge("k1-relative k1-w-full", className)}
+        onChange={handleChange}
+        value={selectedValue}
+        {...props}
+      >
+        <Input
+          onChange={handleInputChange}
+          className="k1-peer"
+          value={query}
+          displayValue={(value: string) => {
+            const option = options.find((opt) => opt.value === value);
+            return option ? option.label : query;
+          }}
+        />
         {children}
-        <Button className="k1-flex-shrink-0 k1-h-full k1-flex">
-          <ChevronDownIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
+        <Button className="k1-absolute k1-flex k1-items-center k1-pr-2">
+          <ChevronDownIcon className="k1-h-6 k1-w-6" />
         </Button>
-        {showClearButton && <ClearButton onClose={clearHandler} />}
-      </>
-    </ComboboxPrimitive>
-  );
-});
-Combobox.displayName = "Combobox";
+        {showClearButton && <ClearButton onClose={handleClear} />}
+
+        <Options>
+          {filteredOptions.length === 0 ? (
+            <div className="px-4 py-2 text-sm text-gray-500">
+              No results found
+            </div>
+          ) : (
+            filteredOptions.map((option) => (
+              <Option key={option.id} value={option.value}></Option>
+            ))
+          )}
+        </Options>
+      </ComboboxPrimitive>
+    );
+  }
+);
 
 const Input = forwardRef<
   React.ElementRef<typeof InputPrimitive>,
   InputPrimitiveProps & { className?: string } // InputProps has more variable className, but we need string
->(({ className, ...props }) => {
+>(({ className, ...props }, ref) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
+
   return (
     <InputPrimitive
-      className={twMerge("k1-peer k1-flex-grow", className)}
+      ref={inputRef}
+      className={twMerge(
+        "w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm",
+        className
+      )}
       {...props}
     />
   );

@@ -26,10 +26,10 @@ type Props = {
 
 // Test options
 const options = [
-  { id: 1, name: "Option 1" },
-  { id: 2, name: "Option 2" },
-  { id: 3, name: "Option 3" },
-  { id: 4, name: "Option 4" },
+  { id: 1, value: "option1", label: "Option 1" },
+  { id: 2, value: "option2", label: "Option 2" },
+  { id: 3, value: "option3", label: "Option 3" },
+  { id: 4, value: "option4", label: "Option 4" },
 ];
 
 const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
@@ -49,57 +49,25 @@ const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const Icon = icon;
     const hasIcon = !!Icon;
 
-    const [selectedOption, setSelectedOption] = useState(options[0]);
-    const [query, setQuery] = useState("");
-
-    //Filtering the options based on the query
-    const filteredOptions =
-      query === ""
-        ? options
-        : options.filter((option) => {
-            return option.name.toLowerCase().includes(query.toLowerCase());
-          });
-
     return (
       <Field state={hasError ? "error" : "default"}>
         {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
         <Combobox
           className="k1-relative k1-w-full k1-bg-transparent k1-outline-none k1-flex"
-          value={selectedOption}
           ref={ref}
-          onClose={() => setQuery("")}
-          defaultValue={null}
           showClearButton={showClearButton}
+          options={options}
+          defaultValue="option1"
+          onChange={(value) => console.log("Selected value:", value)}
+          onInputChange={(value) => console.log("Input value:", value)}
+          onClear={() => console.log("Cleared")}
+          showPlaceholder={showPlaceholder}
         >
-          <Input
-            {...(props as Omit<InheritedInputProps, "defaultValue"> & {
-              defaultValue?: string;
-            })}
-            displayValue={(option: string) =>
-              options.find((opt) => opt.name === option)?.name || ""
-            }
-            className={twMerge(
-              "k1-bg-transparent k1-outline-none k1-flex-grow"
-            )}
-            placeholder={showPlaceholder ? placeholder : undefined}
-            value={selectedOption?.name}
-          />
           {label && (
             <Label state={hasError ? "error" : "default"} hasIcon={hasIcon}>
               {label}
             </Label>
           )}
-          <Options anchor="bottom start" className="border empty:invisible">
-            {filteredOptions.map((option) => (
-              <Option
-                key={option.id}
-                value={option}
-                className="k1-data-[focus]:bg-blue-100 k1-w-full"
-              >
-                {option.name}
-              </Option>
-            ))}
-          </Options>
         </Combobox>
         {hasError && <Description state="error">{error}</Description>}
       </Field>
