@@ -1,9 +1,9 @@
 export * from "./heading";
 export * from "./demo";
 
-export * from "./icons/BadgeStarIcon";
-export * from "./icons/ClearIcon";
-export * from "./icons/SearchIcon";
-export * from "./icons/HomeIcon";
-export * from "./icons/ErrorIcon";
-export * from "./icons/ChevronDown";
+export * from "./icons/badgeStarIcon";
+export * from "./icons/clearIcon";
+export * from "./icons/searchIcon";
+export * from "./icons/homeIcon";
+export * from "./icons/errorIcon";
+export * from "./icons/chevronDown";

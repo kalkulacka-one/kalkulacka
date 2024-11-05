@@ -16,7 +16,7 @@ import {
   useEffect,
 } from "react";
 import { ClearButton } from "./clearButton";
-import { ChevronDownIcon } from "../../icons/ChevronDown";
+import { ChevronDownIcon } from "../../icons/chevronDown";
 import { Option } from "./comboboxOption";
 
 interface ComboboxProps
