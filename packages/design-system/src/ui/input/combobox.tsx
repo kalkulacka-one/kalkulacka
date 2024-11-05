@@ -116,6 +116,7 @@ const Combobox = forwardRef<
             onChange={handleInputChange}
             className="k1-flex-grow k1-container k1-peer"
             value={query}
+            data-focus={query ? "true" : undefined}
             displayValue={(value: string) => {
               const option = options.find((opt) => opt.value === value);
               return option ? option.label : query;
