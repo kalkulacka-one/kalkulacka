@@ -93,6 +93,7 @@ const Combobox = forwardRef<
       }
     };
 
+    //Takes an input change event as an argument. Extracts the new value from the input element. Updates the state with the new value. Optionally calls a provided callback function with the new value.
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
       setQuery(value);
@@ -110,29 +111,31 @@ const Combobox = forwardRef<
         value={selectedValue}
         {...props}
       >
-        <Input
-          onChange={handleInputChange}
-          className="k1-peer"
-          value={query}
-          displayValue={(value: string) => {
-            const option = options.find((opt) => opt.value === value);
-            return option ? option.label : query;
-          }}
-        />
-        {children}
-        <Button className="k1-absolute k1-flex k1-items-center k1-pr-2">
-          <ChevronDownIcon className="k1-h-6 k1-w-6" />
-        </Button>
-        {showClearButton && <ClearButton onClose={handleClear} />}
-
-        <Options>
+        <div className="k1-flex k1-items-center k1-w-full">
+          <Input
+            onChange={handleInputChange}
+            className="k1-flex-grow k1-container"
+            value={query}
+            displayValue={(value: string) => {
+              const option = options.find((opt) => opt.value === value);
+              return option ? option.label : query;
+            }}
+          />
+          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center k1-pr-2">
+            <ChevronDownIcon className="k1-h-6 k1-w-6" />
+          </Button>
+          {showClearButton && <ClearButton onClose={handleClear} />}
+        </div>
+        <Options anchor="bottom start">
           {filteredOptions.length === 0 ? (
-            <div className="px-4 py-2 text-sm text-gray-500">
-              No results found
-            </div>
+            <div className="k1-px-4 k1-py-2">No results found</div>
           ) : (
             filteredOptions.map((option) => (
-              <Option key={option.id} value={option.value}></Option>
+              <Option
+                key={option.id}
+                value={option.value}
+                className={twMerge("", className)}
+              ></Option>
             ))
           )}
         </Options>

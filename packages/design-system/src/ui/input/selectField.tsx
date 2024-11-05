@@ -33,10 +33,7 @@ const options = [
 ];
 
 const SelectInputField = forwardRef<React.ElementRef<typeof Input>, Props>(
-  (
-    { label, error, showClearButton, icon, placeholder, ...props }: Props,
-    ref
-  ) => {
+  ({ label, error, showClearButton, icon, ...props }: Props, ref) => {
     // if error is present, we pass it to all the sub-components
     const hasError = !!error;
 
