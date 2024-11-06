@@ -136,7 +136,15 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 
     return (
       <HeadlessUIButton
-        className={`${buttonVariants({ kind, size, wider, fitContent, hasIcon, iconPosition, color })}`}
+        className={buttonVariants({
+          kind,
+          size,
+          wider,
+          fitContent,
+          hasIcon,
+          iconPosition,
+          color,
+        })}
         ref={ref}
         aria-pressed={pressed ? true : false}
         data-pressed={pressed ? true : null}
