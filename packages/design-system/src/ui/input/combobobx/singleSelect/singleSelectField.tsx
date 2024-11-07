@@ -1,8 +1,15 @@
 import React, { forwardRef } from "react";
+<<<<<<<< HEAD:packages/design-system/src/ui/input/combobobx/singleSelect/singleSelectField.tsx
 import { Description } from "../../description";
 import { Field } from "../../field";
 import { Combobox, Input } from "../../combobox";
 import { Label } from "../../label";
+========
+import { Description } from "./../description";
+import { Field } from "./../field";
+import { Combobox, Input } from "./singleSelect/combobox";
+import { Label } from "./../label";
+>>>>>>>> b35f4a1 (Created a multiple select field.):packages/design-system/src/ui/input/combobobx/multipleOption.tsx
 import { twMerge } from "tailwind-merge";
 
 /*
