@@ -15,9 +15,9 @@ import {
   useState,
   useEffect,
 } from "react";
-import { ClearButton } from "./clearButton";
-import { ChevronDownIcon } from "../../icons/chevronDown";
-import { Option } from "./comboboxOption";
+import { ClearButton } from "../clearButton";
+import { ChevronDownIcon } from "../../../icons/chevronDown";
+import { Option } from "./singleOption";
 
 interface ComboboxProps
   extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {

@@ -22,7 +22,7 @@ const badge = cva(
   }
 );
 
-const Badge: React.FC<BadgeProps> = ({ icon = false, color, children }) => {
+function Badge({ icon = false, color, children }: BadgeProps) {
   const neutralVariant = color === "neutral";
 
   return (
@@ -35,6 +35,6 @@ const Badge: React.FC<BadgeProps> = ({ icon = false, color, children }) => {
       <div className="k1-whitespace-nowrap">{children}</div>
     </div>
   );
-};
+}
 
 export { Badge };
