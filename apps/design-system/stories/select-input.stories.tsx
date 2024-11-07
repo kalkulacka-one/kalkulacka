@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SelectInputField } from "../../../packages/design-system/src/ui/input/selectField";
+import { SingleSelectField } from "../../../packages/design-system/src/ui/input/combobobx/singleSelect/singleSelectField";
 import { SearchIcon } from "@repo/design-system/demo";
 import { HomeIcon } from "@repo/design-system/demo";
 
-const meta: Meta<typeof SelectInputField> = {
-  title: "Components/SelectInput",
-  component: SelectInputField,
+const meta: Meta<typeof SingleSelectField> = {
+  title: "Components/SingleSelectField",
+  component: SingleSelectField,
   argTypes: {
     label: { control: "text" },
     error: { control: "text" },
@@ -26,9 +26,9 @@ const meta: Meta<typeof SelectInputField> = {
   tags: ["autodocs"],
 };
 
-type SelectInputStory = StoryObj<typeof meta>;
+type SingleSelectFieldStory = StoryObj<typeof meta>;
 
-export const Default: SelectInputStory = {
+export const Default: SingleSelectFieldStory = {
   args: {},
 };
 

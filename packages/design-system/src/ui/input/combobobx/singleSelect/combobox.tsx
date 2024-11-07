@@ -15,9 +15,9 @@ import {
   useState,
   useEffect,
 } from "react";
-import { ClearButton } from "../clearButton";
-import { ChevronDownIcon } from "../../../icons/chevronDown";
-import { Option } from "./singleOption";
+import { ClearButton } from "../../clearButton";
+import { ChevronDownIcon } from "../../../../icons/chevronDown";
+import { Option } from "../option";
 
 interface ComboboxProps
   extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {
@@ -104,6 +104,7 @@ const Combobox = forwardRef<
 
     return (
       <ComboboxPrimitive
+        multiple
         as="div"
         ref={ref}
         className={twMerge("k1-relative k1-w-full", className)}

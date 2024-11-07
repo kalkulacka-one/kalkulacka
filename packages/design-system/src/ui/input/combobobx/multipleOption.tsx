@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Description } from "./../description";
 import { Field } from "./../field";
-import { Combobox, Input } from "./../combobobx/combobox";
+import { Combobox, Input } from "./singleSelect/combobox";
 import { Label } from "./../label";
 import { twMerge } from "tailwind-merge";
 
