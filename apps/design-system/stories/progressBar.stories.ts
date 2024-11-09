@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ProgressBar } from "@repo/design-system/progressBar";
+import { ProgressBar } from "@repo/design-system/ui";
 
 const meta: Meta<typeof ProgressBar> = {
   title: "Components/ProgressBar",
