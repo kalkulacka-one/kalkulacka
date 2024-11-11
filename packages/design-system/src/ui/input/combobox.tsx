@@ -123,12 +123,15 @@ const Combobox = forwardRef<
             }}
           />
           {children}
-          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center k1-pr-2">
+          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center k1-pr-2 k1-text-center">
             <ChevronDownIcon className="k1-h-6 k1-w-6" />
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}
         </div>
-        <Options anchor="bottom start">
+        <Options
+          anchor="bottom start"
+          className="k1-flex k1-w-full k1-absolute"
+        >
           {filteredOptions.length === 0 ? (
             <div className="k1-px-4 k1-py-2">Žadné vysledky</div>
           ) : (

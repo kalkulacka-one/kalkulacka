@@ -129,7 +129,7 @@ const Combobox = forwardRef<
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}
         </div>
-        <Options anchor="bottom start">
+        <Options anchor="bottom start" className="k1-w-[var(--input-width)]">
           {filteredOptions.length === 0 ? (
             <div className="k1-px-4 k1-py-2">Žadné vysledky</div>
           ) : (
