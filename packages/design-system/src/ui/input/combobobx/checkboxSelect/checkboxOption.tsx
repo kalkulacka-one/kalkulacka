@@ -11,14 +11,9 @@ interface CheckboxOptionProps {
   key: string | number;
 }
 
-export function CheckboxOption({
-  value,
-  className,
-  children,
-  key,
-}: CheckboxOptionProps) {
+export function CheckboxOption({ children }: CheckboxOptionProps) {
   return (
-    <Option>
+    <Option value={undefined}>
       <Checkbox />
       {children}
     </Option>

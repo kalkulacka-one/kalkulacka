@@ -17,7 +17,7 @@ import {
 } from "react";
 import { ClearButton } from "../../clearButton";
 import { ChevronDownIcon } from "../../../../icons/chevronDown";
-import { Option } from "../option";
+import { CheckboxOption } from "./checkboxOption";
 
 interface ComboboxProps
   extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {
@@ -142,13 +142,13 @@ const Combobox = forwardRef<
             <div className="k1-px-4 k1-py-2">Žadné vysledky</div>
           ) : (
             filteredOptions.map((option) => (
-              <Option
+              <CheckboxOption
                 key={option.id}
                 value={option.value}
                 className={twMerge("", className)}
               >
                 {option.label}
-              </Option>
+              </CheckboxOption>
             ))
           )}
         </Options>
