@@ -1,6 +1,6 @@
 import React from "react";
 
-export function InterdermineIcon(
+export function EmptyCheckBoxIcon(
   props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
 ) {
   return (
@@ -11,10 +11,7 @@ export function InterdermineIcon(
       {...props}
     >
       {props.children}
-      <path
-        fill="currentColor"
-        d="M0.5 17.5V0.5H17.5V17.5H0.5ZM14 8H4V9.5H14V8Z"
-      />
+      <path fill="currentColor" d="M.5 17.5V.5h17v17H.5ZM2 16h14V2H2v14Z" />
     </svg>
   );
 }

@@ -9,3 +9,4 @@ export * from "./icons/errorIcon";
 export * from "./icons/chevronDown";
 export * from "./icons/checkbox/checkedIcon";
 export * from "./icons/checkbox/interdetermineIcon";
+export * from "./icons/checkbox/emptyCheckBoxIcon";
