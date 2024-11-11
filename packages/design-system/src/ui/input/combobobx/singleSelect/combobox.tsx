@@ -107,7 +107,7 @@ const Combobox = forwardRef<
         multiple
         as="div"
         ref={ref}
-        className={twMerge("k1-relative k1-w-full", className)}
+        className={twMerge("k1-absolute k1-w-full", className)}
         onChange={handleChange}
         value={selectedValue}
         {...props}
@@ -115,7 +115,7 @@ const Combobox = forwardRef<
         <div className="k1-flex k1-items-center k1-w-full">
           <Input
             onChange={handleInputChange}
-            className="k1-flex-grow k1-container k1-peer"
+            className="k1-flex-grow k1-peer"
             value={query}
             data-focus={query ? "true" : undefined}
             displayValue={(value: string) => {
@@ -124,7 +124,7 @@ const Combobox = forwardRef<
             }}
           />
           {children}
-          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center k1-pr-2">
+          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center">
             <ChevronDownIcon className="k1-h-6 k1-w-6" />
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}
@@ -137,7 +137,7 @@ const Combobox = forwardRef<
               <Option
                 key={option.id}
                 value={option.value}
-                className={twMerge("", className)}
+                className={twMerge("k1-w-[var(--input-width)]", className)}
               >
                 {option.label}
               </Option>
@@ -160,10 +160,7 @@ const Input = forwardRef<
   return (
     <InputPrimitive
       ref={inputRef}
-      className={twMerge(
-        "w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm",
-        className
-      )}
+      className={twMerge("k1-w-full k1-py-2 k1-pl-3", className)}
       {...props}
     />
   );
