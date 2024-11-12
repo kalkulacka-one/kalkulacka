@@ -19,7 +19,7 @@ export function ButtonAgainst(props: Props) {
       fitContent
       {...props}
     >
-      Jsem proti
+      Ne
     </Button>
   );
 }
