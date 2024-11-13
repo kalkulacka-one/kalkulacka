@@ -13,7 +13,7 @@ const stepProgressVariants = cva("k1-rounded-full", {
   variants: {
     status: {
       active: "k1-w-5 k1-bg-neutral-strong-active",
-      inactive: "k1-h-2 k1-w-2",
+      inactive: "k1-h-2 k1-w-2 k1-bg-neutral-disabled",
     },
   },
 });
