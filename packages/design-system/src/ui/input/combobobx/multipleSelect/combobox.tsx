@@ -2,9 +2,6 @@ import {
   Combobox as ComboboxPrimitive,
   ComboboxInput as InputPrimitive,
   ComboboxInputProps as InputPrimitiveProps,
-  ComboboxOptions as OptionsPrimitive,
-  ComboboxButton as ButtonPrimitive,
-  ComboboxButtonProps as ButtonProps,
 } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 import * as React from "react";
@@ -17,7 +14,9 @@ import {
 } from "react";
 import { ClearButton } from "../../clearButton";
 import { ChevronDownIcon } from "../../../../icons/chevronDown";
-import { Option } from "../option";
+import { Option } from "../components/option";
+import { Options } from "../components/options";
+import { Button } from "../components/comboboxButton";
 
 interface ComboboxProps
   extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {
@@ -170,7 +169,7 @@ const Combobox = forwardRef<
             }}
           />
           {children}
-          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center">
+          <Button>
             <ChevronDownIcon className="k1-h-6 k1-w-6" />
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}
@@ -213,29 +212,4 @@ const Input = forwardRef<
 });
 Input.displayName = InputPrimitive.displayName;
 
-const Options = forwardRef<
-  React.ElementRef<typeof OptionsPrimitive>,
-  React.ComponentPropsWithoutRef<typeof OptionsPrimitive>
->(({ className, children, ...props }, ref) => (
-  <OptionsPrimitive
-    ref={ref}
-    className={twMerge(
-      "k1-bg-white k1-rounded-tl-lg k1-border k1-border-neutral k1-flex-col k1-justify-start k1-items-start k1-inline-flex",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </OptionsPrimitive>
-));
-Options.displayName = "Combobox.Options";
-
-const Button = forwardRef<
-  React.ElementRef<typeof ButtonPrimitive>,
-  ButtonProps & { className?: string }
->(({ className, ...props }, ref) => (
-  <ButtonPrimitive ref={ref} className={twMerge("", className)} {...props} />
-));
-Button.displayName = "Combobox.Button";
-
-export { Combobox, Input, Options, Button };
+export { Combobox, Input };
