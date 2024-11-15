@@ -57,17 +57,29 @@ const Combobox = forwardRef<
           : []
     );
 
-    const [query, setQuery] = useState<string>(
-      defaultValue ? defaultValue.join(", ") : ""
-    );
+    const [query, setQuery] = useState<string>("");
+    const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
     const [filteredOptions, setFilteredOptions] = useState(options);
 
     useEffect(() => {
-      const filtered = options.filter((option) =>
-        option.label.toLowerCase().includes(query.toLowerCase())
-      );
+      const filtered = options.filter((option) => {
+        // Always show options that aren't selected
+        const notSelected = !selectedValues.includes(option.value);
+
+        // If there's a query, filter by it
+        if (query) {
+          return (
+            notSelected &&
+            option.label.toLowerCase().includes(query.toLowerCase())
+          );
+        }
+
+        // If no query, show all unselected options
+        return notSelected;
+      });
+
       setFilteredOptions(filtered);
-    }, [query, options]);
+    }, [query, options, selectedValues]);
 
     const handleClear = () => {
       setSelectedValues([]);
@@ -84,18 +96,33 @@ const Combobox = forwardRef<
     };
 
     const handleChange = (value: string | null) => {
-      setSelectedValues(value ? [value] : []);
       if (value) {
-        const selectedOption = options.find((opt) => opt.value === value);
-        if (selectedOption) {
-          setQuery(selectedOption.label);
+        if (!selectedValues.includes(value)) {
+          const newSelectedValues = [...selectedValues, value];
+          setSelectedValues(newSelectedValues);
+
+          // Get all selected labels as array
+          const allSelectedLabels = newSelectedValues
+            .map((val) => options.find((opt) => opt.value === val)?.label)
+            .filter(Boolean);
+
+          // Update display with all selected labels
+          setQuery(allSelectedLabels.join(", "));
+          setSelectedLabels(allSelectedLabels as string[]);
+
           if (onInputChange) {
-            onInputChange([selectedOption.label]);
+            onInputChange(allSelectedLabels as string[]);
           }
+
+          if (onChange) {
+            onChange(newSelectedValues);
+          }
+
+          // Clear query after short delay to allow new selections
+          setTimeout(() => {
+            setQuery("");
+          }, 100);
         }
-      }
-      if (onChange) {
-        onChange(value);
       }
     };
 
@@ -103,8 +130,12 @@ const Combobox = forwardRef<
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
       setQuery(value);
+
       if (onInputChange) {
-        onInputChange([value]);
+        const selectedLabels = selectedValues
+          .map((val) => options.find((opt) => opt.value === val)?.label)
+          .filter(Boolean);
+        onInputChange(selectedLabels as string[]);
       }
     };
 
@@ -121,14 +152,21 @@ const Combobox = forwardRef<
         <div className="k1-flex k1-items-center k1-w-full">
           <Input
             onChange={handleInputChange}
-            className="k1-flex-grow k1-peer"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                const matchingOption = filteredOptions[0];
+                if (matchingOption) {
+                  handleChange(matchingOption.value);
+                }
+              }
+            }}
+            className="k1-flex-grow k1-container k1-peer"
+            data-focus={query ? "true" : undefined}
             value={
               selectedValues.length > 0 ? selectedValues.join(", ") : query
             }
-            data-focus={query ? "true" : undefined}
-            displayValue={(value: string) => {
-              const option = options.find((opt) => opt.value === value);
-              return option ? option.label : query;
+            displayValue={() => {
+              return selectedLabels.join(", ");
             }}
           />
           {children}
