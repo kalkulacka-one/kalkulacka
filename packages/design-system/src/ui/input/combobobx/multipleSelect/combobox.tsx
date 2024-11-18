@@ -56,12 +56,13 @@ const Combobox = forwardRef<
         .join(", ");
 
       console.log("Formatted labels:", labels);
-      return labels;
+      return labels || ""; // Return empty string when no selections
     };
 
     // Add debug logging
     console.log("Current selectedValues:", selectedValues);
 
+    //Filter options based on query and selected values and memoize the result
     const filteredOptions = useMemo(() => {
       return options.filter((option) => {
         const matchesQuery =
@@ -95,7 +96,6 @@ const Combobox = forwardRef<
       // Ensure value is a single string
       const valueToAdd = Array.isArray(value) ? value[0] : value;
 
-      // Check if not already selected
       if (!selectedValues.includes(valueToAdd)) {
         const newSelectedValues = [...selectedValues, valueToAdd];
         console.log("Setting new selectedValues:", newSelectedValues);
@@ -110,9 +110,14 @@ const Combobox = forwardRef<
     };
 
     const handleClear = () => {
-      setSelectedValues([]);
-      setQuery("");
-      handleRemoveOption("");
+      setSelectedValues([]); // Clear all selected values
+      setQuery(""); // Clear query
+
+      // Notify parent components
+      if (onChange) {
+        onChange([]); // Pass empty array to onChange
+      }
+
       if (onClear) {
         onClear();
       }
