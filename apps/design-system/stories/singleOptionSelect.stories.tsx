@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SingleSelectField } from "../../../packages/design-system/src/ui/input/combobobx/singleSelect/singleSelectField";
-import { SearchIcon } from "@repo/design-system/demo";
-import { HomeIcon } from "@repo/design-system/demo";
+import { SearchIcon, HomeIcon } from "@repo/design-system/demo";
 
 const meta: Meta<typeof SingleSelectField> = {
   title: "Components/SingleSelectField",
@@ -12,14 +11,10 @@ const meta: Meta<typeof SingleSelectField> = {
     showClearButton: { control: "boolean" },
     icon: {
       control: { type: "select" },
-      options: {
-        NoIcon: undefined,
-        SearchIcon: SearchIcon,
-        HomeIcon: HomeIcon,
-      },
+      options: [undefined, "Search", "Home"],
       mapping: {
-        SearchIcon: SearchIcon,
-        HomeIcon: HomeIcon,
+        Search: SearchIcon,
+        Home: HomeIcon,
       },
     },
   },

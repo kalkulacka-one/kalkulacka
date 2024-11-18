@@ -1,5 +1,5 @@
 import { Checkbox } from "../../checkbox";
-import { Option } from "../option";
+import { Option } from "../components/option";
 
 interface CheckboxOptionProps {
   value: string;

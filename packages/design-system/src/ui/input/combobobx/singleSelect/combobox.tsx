@@ -1,22 +1,13 @@
-import {
-  Combobox as ComboboxPrimitive,
-  ComboboxInput as InputPrimitive,
-  ComboboxInputProps as InputPrimitiveProps,
-} from "@headlessui/react";
+import { Combobox as ComboboxPrimitive } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 import * as React from "react";
-import {
-  forwardRef,
-  useRef,
-  useImperativeHandle,
-  useState,
-  useEffect,
-} from "react";
+import { forwardRef, useState, useEffect } from "react";
 import { ClearButton } from "../../clearButton";
 import { ChevronDownIcon } from "../../../../icons/chevronDown";
 import { Option } from "../components/option";
 import { Options } from "../components/options";
 import { Button } from "../components/comboboxButton";
+import { Input } from "../components/input";
 
 interface ComboboxProps
   extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {
@@ -121,14 +112,6 @@ const Combobox = forwardRef<
               const option = options.find((opt) => opt.value === value);
               return option ? option.label : query;
             }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                const matchingOption = filteredOptions[0];
-                if (matchingOption) {
-                  handleChange(matchingOption.value);
-                }
-              }
-            }}
           />
           {children}
           <Button>
@@ -137,15 +120,14 @@ const Combobox = forwardRef<
           {showClearButton && <ClearButton onClose={handleClear} />}
         </div>
         <Options anchor="bottom start" className="k1-w-[var(--input-width)]">
-        <Options anchor="bottom start" className="k1-w-[var(--input-width)]">
           {filteredOptions.length === 0 ? (
-            <div className="k1-w-[var(--input-width)]">Žadné vysledky</div>
+            <div>Žadné vysledky</div>
           ) : (
             filteredOptions.map((option) => (
               <Option
                 key={option.id}
                 value={option.value}
-                className={twMerge("k1-w-[var(--input-width)]", className)}
+                className={twMerge("", className)}
               >
                 {option.label}
               </Option>
@@ -156,23 +138,5 @@ const Combobox = forwardRef<
     );
   }
 );
-
-const Input = forwardRef<
-  React.ElementRef<typeof InputPrimitive>,
-  InputPrimitiveProps & { className?: string } // InputProps has more variable className, but we need string
->(({ className, ...props }, ref) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
-  return (
-    <InputPrimitive
-      ref={inputRef}
-      className={twMerge("k1-w-full k1-py-2 k1-pl-3", className)}
-      {...props}
-    />
-  );
-});
-Input.displayName = InputPrimitive.displayName;
 
 export { Combobox, Input };

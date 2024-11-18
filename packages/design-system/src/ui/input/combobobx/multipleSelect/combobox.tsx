@@ -1,22 +1,13 @@
-import {
-  Combobox as ComboboxPrimitive,
-  ComboboxInput as InputPrimitive,
-  ComboboxInputProps as InputPrimitiveProps,
-} from "@headlessui/react";
+import { Combobox as ComboboxPrimitive } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
 import * as React from "react";
-import {
-  forwardRef,
-  useRef,
-  useImperativeHandle,
-  useState,
-  useEffect,
-} from "react";
+import { forwardRef, useState, useMemo } from "react";
 import { ClearButton } from "../../clearButton";
 import { ChevronDownIcon } from "../../../../icons/chevronDown";
 import { Option } from "../components/option";
 import { Options } from "../components/options";
 import { Button } from "../components/comboboxButton";
+import { Input } from "../components/input";
 
 interface ComboboxProps
   extends React.ComponentPropsWithoutRef<typeof ComboboxPrimitive> {
@@ -49,93 +40,91 @@ const Combobox = forwardRef<
   ) => {
     //Use state for selecting values. If nothing is provided, defaultValue will become the selected value
     const [selectedValues, setSelectedValues] = useState<string[]>(
-      defaultValue instanceof Array
-        ? defaultValue
-        : defaultValue
-          ? [defaultValue]
-          : []
+      defaultValue?.length ? defaultValue : []
     );
+    const [query, setQuery] = useState("");
 
-    const [query, setQuery] = useState<string>("");
-    const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
-    const [filteredOptions, setFilteredOptions] = useState(options);
+    // Update formatSelectedValues to always show current selections
+    const formatSelectedValues = () => {
+      // Show query while typing
+      if (query) return query;
 
-    useEffect(() => {
-      const filtered = options.filter((option) => {
-        // Always show options that aren't selected
-        const notSelected = !selectedValues.includes(option.value);
+      // Show selected values
+      const labels = selectedValues
+        .map((value) => options.find((opt) => opt.value === value)?.label)
+        .filter(Boolean)
+        .join(", ");
 
-        // If there's a query, filter by it
-        if (query) {
-          return (
-            notSelected &&
-            option.label.toLowerCase().includes(query.toLowerCase())
-          );
-        }
+      console.log("Formatted labels:", labels);
+      return labels;
+    };
 
-        // If no query, show all unselected options
-        return notSelected;
+    // Add debug logging
+    console.log("Current selectedValues:", selectedValues);
+
+    const filteredOptions = useMemo(() => {
+      return options.filter((option) => {
+        const matchesQuery =
+          !query || option.label.toLowerCase().includes(query.toLowerCase());
+        const notAlreadySelected = !selectedValues.includes(option.value);
+
+        console.log(`Option ${option.label}:`, {
+          matchesQuery,
+          notAlreadySelected,
+        });
+
+        return matchesQuery && notAlreadySelected;
       });
-
-      setFilteredOptions(filtered);
     }, [query, options, selectedValues]);
+
+    console.log("Current filteredOptions:", filteredOptions);
+
+    // Update handleInputChange to pass single values
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const inputValue = e.target.value;
+      setQuery(inputValue);
+      if (onInputChange) {
+        onInputChange([inputValue]); // Keep array for compatibility
+      }
+    };
+
+    // Update the handleOptionSelect function
+    const handleOptionSelect = (value: string) => {
+      console.log("Before selection - selectedValues:", selectedValues);
+
+      // Ensure value is a single string
+      const valueToAdd = Array.isArray(value) ? value[0] : value;
+
+      // Check if not already selected
+      if (!selectedValues.includes(valueToAdd)) {
+        const newSelectedValues = [...selectedValues, valueToAdd];
+        console.log("Setting new selectedValues:", newSelectedValues);
+        setSelectedValues(newSelectedValues);
+        setQuery(""); // Clear query after selection
+
+        // Update onChange with new array
+        if (onChange) {
+          onChange(newSelectedValues);
+        }
+      }
+    };
 
     const handleClear = () => {
       setSelectedValues([]);
       setQuery("");
-      if (onChange) {
-        onChange([]);
-      }
+      handleRemoveOption("");
       if (onClear) {
         onClear();
       }
-      if (onInputChange) {
-        onInputChange([]);
-      }
     };
 
-    const handleChange = (value: string | null) => {
-      if (value) {
-        if (!selectedValues.includes(value)) {
-          const newSelectedValues = [...selectedValues, value];
-          setSelectedValues(newSelectedValues);
-
-          // Get all selected labels as array
-          const allSelectedLabels = newSelectedValues
-            .map((val) => options.find((opt) => opt.value === val)?.label)
-            .filter(Boolean);
-
-          // Update display with all selected labels
-          setQuery(allSelectedLabels.join(", "));
-          setSelectedLabels(allSelectedLabels as string[]);
-
-          if (onInputChange) {
-            onInputChange(allSelectedLabels as string[]);
-          }
-
-          if (onChange) {
-            onChange(newSelectedValues);
-          }
-
-          // Clear query after short delay to allow new selections
-          setTimeout(() => {
-            setQuery("");
-          }, 100);
-        }
-      }
-    };
-
-    //Takes an input change event as an argument. Extracts the new value from the input element. Updates the state with the new value. Optionally calls a provided callback function with the new value.
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value;
-      setQuery(value);
-
-      if (onInputChange) {
-        const selectedLabels = selectedValues
-          .map((val) => options.find((opt) => opt.value === val)?.label)
-          .filter(Boolean);
-        onInputChange(selectedLabels as string[]);
-      }
+    //Removes the selected value from the selectedValues array. Calls the onChange callback with the new array of selected values.
+    const handleRemoveOption = (valueToRemove: string) => {
+      const newSelectedValues = selectedValues.filter(
+        (value) => value !== valueToRemove
+      );
+      setSelectedValues(newSelectedValues);
+      onChange?.(newSelectedValues);
     };
 
     return (
@@ -144,29 +133,16 @@ const Combobox = forwardRef<
         as="div"
         ref={ref}
         className={twMerge("k1-absolute k1-w-full", className)}
-        onChange={handleChange}
+        onChange={handleOptionSelect}
         value={selectedValues}
         {...props}
       >
         <div className="k1-flex k1-items-center k1-w-full">
           <Input
             onChange={handleInputChange}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                const matchingOption = filteredOptions[0];
-                if (matchingOption) {
-                  handleChange(matchingOption.value);
-                }
-              }
-            }}
+            value={formatSelectedValues()}
             className="k1-flex-grow k1-container k1-peer"
             data-focus={query ? "true" : undefined}
-            value={
-              selectedValues.length > 0 ? selectedValues.join(", ") : query
-            }
-            displayValue={() => {
-              return selectedLabels.join(", ");
-            }}
           />
           {children}
           <Button>
@@ -174,7 +150,7 @@ const Combobox = forwardRef<
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}
         </div>
-        <Options anchor="bottom start" className="k1-w-[var(--input-width)]">
+        <Options anchor="bottom start">
           {filteredOptions.length === 0 ? (
             <div className="k1-px-4 k1-py-2">Žadné vysledky</div>
           ) : (
@@ -183,6 +159,7 @@ const Combobox = forwardRef<
                 key={option.id}
                 value={option.value}
                 className={twMerge("", className)}
+                onClick={() => handleOptionSelect(option.value)} // Add onClick handler
               >
                 {option.label}
               </Option>
@@ -193,23 +170,5 @@ const Combobox = forwardRef<
     );
   }
 );
-
-const Input = forwardRef<
-  React.ElementRef<typeof InputPrimitive>,
-  InputPrimitiveProps & { className?: string } // InputProps has more variable className, but we need string
->(({ className, ...props }, ref) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
-
-  return (
-    <InputPrimitive
-      ref={inputRef}
-      className={twMerge("k1-w-full k1-py-2 k1-pl-3", className)}
-      {...props}
-    />
-  );
-});
-Input.displayName = InputPrimitive.displayName;
 
 export { Combobox, Input };
