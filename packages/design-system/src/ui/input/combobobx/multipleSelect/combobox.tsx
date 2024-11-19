@@ -44,7 +44,7 @@ const Combobox = forwardRef<
     );
     const [query, setQuery] = useState("");
 
-    // Update formatSelectedValues to always show current selections
+    // Update formatSelectedValues dynamically to show the input field value
     const formatSelectedValues = () => {
       // Show query while typing
       if (query) return query;
@@ -59,17 +59,19 @@ const Combobox = forwardRef<
       return labels || ""; // Return empty string when no selections
     };
 
-    // Add debug logging
+    // Debug logging
     console.log("Current selectedValues:", selectedValues);
 
-    //Filter options based on query and selected values and memoize the result
+    // Update filteredOptions to properly filter based on selectedValues
     const filteredOptions = useMemo(() => {
+      console.log("Filtering options with selectedValues:", selectedValues);
+
       return options.filter((option) => {
         const matchesQuery =
           !query || option.label.toLowerCase().includes(query.toLowerCase());
         const notAlreadySelected = !selectedValues.includes(option.value);
 
-        console.log(`Option ${option.label}:`, {
+        console.log(`Filtering ${option.label}:`, {
           matchesQuery,
           notAlreadySelected,
         });
@@ -81,11 +83,27 @@ const Combobox = forwardRef<
     console.log("Current filteredOptions:", filteredOptions);
 
     // Update handleInputChange to pass single values
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const inputValue = e.target.value;
-      setQuery(inputValue);
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const safeInputValue = event.target.value || "";
+      setQuery(safeInputValue);
+
+      // Remove items that are no longer in the input
+      const remainingValues = selectedValues.filter((value) => {
+        const normalizedInput = safeInputValue.toLowerCase();
+        const normalizedValue = value.toLowerCase();
+        return normalizedInput.includes(normalizedValue);
+      });
+
+      // Only update if values have changed
+      if (remainingValues.length !== selectedValues.length) {
+        setSelectedValues(remainingValues);
+        if (onInputChange) {
+          onInputChange(remainingValues);
+        }
+      }
+
       if (onInputChange) {
-        onInputChange([inputValue]); // Keep array for compatibility
+        onInputChange([safeInputValue]); // Keep array for compatibility
       }
     };
 
@@ -93,12 +111,14 @@ const Combobox = forwardRef<
     const handleOptionSelect = (value: string) => {
       console.log("Before selection - selectedValues:", selectedValues);
 
-      // Ensure value is a single string
+      // Checks, if the value is an array and takes the first element
       const valueToAdd = Array.isArray(value) ? value[0] : value;
 
+      // Check if the value is already selected
       if (!selectedValues.includes(valueToAdd)) {
         const newSelectedValues = [...selectedValues, valueToAdd];
         console.log("Setting new selectedValues:", newSelectedValues);
+        //Tells the parz
         setSelectedValues(newSelectedValues);
         setQuery(""); // Clear query after selection
 
@@ -109,27 +129,20 @@ const Combobox = forwardRef<
       }
     };
 
+    // Update handleOptionSelect to properly remove options
+
     const handleClear = () => {
-      setSelectedValues([]); // Clear all selected values
-      setQuery(""); // Clear query
+      setSelectedValues([]); // Clear all selected values in dropdown
+      setQuery(""); // Clear query state for searching
 
       // Notify parent components
       if (onChange) {
-        onChange([]); // Pass empty array to onChange
+        onChange([]); // Notifies the parent, that the array is empty
       }
 
       if (onClear) {
         onClear();
       }
-    };
-
-    //Removes the selected value from the selectedValues array. Calls the onChange callback with the new array of selected values.
-    const handleRemoveOption = (valueToRemove: string) => {
-      const newSelectedValues = selectedValues.filter(
-        (value) => value !== valueToRemove
-      );
-      setSelectedValues(newSelectedValues);
-      onChange?.(newSelectedValues);
     };
 
     return (

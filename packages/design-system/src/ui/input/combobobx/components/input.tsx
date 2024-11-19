@@ -16,7 +16,7 @@ const Input = forwardRef<
   return (
     <InputPrimitive
       ref={inputRef}
-      className={twMerge("k1-w-full k1-py-2 k1-pl-3", className)}
+      className={twMerge("k1-w-full", className)}
       {...props}
     />
   );
