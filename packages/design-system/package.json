@@ -22,7 +22,8 @@
     "./buttonInFavour": "./src/buttonInFavour.tsx",
     "./buttonAgainst": "./src/buttonAgainst.tsx",
     "./buttonNeutral": "./src/buttonNeutral.tsx",
-    "./badge": "./src/badge.tsx"
+    "./badge": "./src/badge.tsx",
+    "./typography": "./src/typography.tsx"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
