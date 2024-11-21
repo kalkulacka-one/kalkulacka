@@ -1,14 +1,14 @@
 import { cva, VariantProps } from "class-variance-authority";
 
+type Status = true | false | null | undefined;
+
 type Props = {
   steps: {
     currentQuestion: number;
     totalQuestion: number;
-    answers: { answerId: string; status: true | false | null | undefined }[];
+    answers: { answerId: string; status: Status }[];
   };
 } & VariantProps<typeof stepProgressVariants>;
-
-type status = true | false | null | undefined;
 
 const stepProgressVariants = cva("k1-w-9", {
   variants: {
@@ -30,7 +30,7 @@ const stepProgressVariants = cva("k1-w-9", {
   },
 });
 
-function checkStatus(status: status) {
+function checkStatus(status: Status) {
   switch (status) {
     case true:
       return "inFavour";
