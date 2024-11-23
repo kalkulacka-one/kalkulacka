@@ -18,24 +18,31 @@ const steps = {
     { answerId: "2", status: null },
     { answerId: "3", status: null }, // neutral step (e.g. visited / skipped, answerNeutral)
     { answerId: "4", status: false }, // negative step (e.g. answerAgainst)
-    { answerId: "5", status: true },
-    { answerId: "6", status: true }, //
-    { answerId: "7", status: false },
-    { answerId: "8", status: undefined }, // step with no sratus (e.g. not visited yet)
+    { answerId: "5", status: null },
+    { answerId: "6", status: null }, //
+    { answerId: "7", status: null },
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
+    { answerId: "8", status: null }, // step with no sratus (e.g. not visited yet)
   ],
   totalQuestion: 4,
   currentQuestion: 8,
 };
 
-const answerCount = steps.answers.length;
-
 export default function Page() {
   return (
     // main wrapper
-    <div className="sticky bottom-0 bg-slate-300">
+    <div className="sticky bottom-0 border border-red-500">
       {/* count status wrapper */}
-      <div className="w-full">
-        <StepProgressFancy steps={steps} answerCount={answerCount} />
+      <div className="w-screen">
+        <StepProgressFancy steps={steps} />
       </div>
       {/* button wrapper */}
       <div className="flex justify-center p-4">
@@ -48,3 +55,8 @@ export default function Page() {
     </div>
   );
 }
+
+// TODO
+// 1. Buttons on mobile wihout texts WIDTH!
+// 2. Statuses proper styling (bg) check with live
+// 3. Bottom bar positioning
