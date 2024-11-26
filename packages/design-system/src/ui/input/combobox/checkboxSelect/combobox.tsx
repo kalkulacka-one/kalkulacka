@@ -36,7 +36,7 @@ const Combobox = forwardRef<
       options,
       ...props
     },
-    ref
+    ref,
   ) => {
     //Use state for selecting values. If nothing is provided, defaultValue will become the selected value
     const [selectedValues, setSelectedValues] = useState<string[]>(
@@ -44,17 +44,17 @@ const Combobox = forwardRef<
         ? defaultValue
         : defaultValue
           ? [defaultValue]
-          : []
+          : [],
     );
 
     const [query, setQuery] = useState<string>(
-      defaultValue ? defaultValue.join(", ") : ""
+      defaultValue ? defaultValue.join(", ") : "",
     );
     const [filteredOptions, setFilteredOptions] = useState(options);
 
     useEffect(() => {
       const filtered = options.filter((option) =>
-        option.label.toLowerCase().includes(query.toLowerCase())
+        option.label.toLowerCase().includes(query.toLowerCase()),
       );
       setFilteredOptions(filtered);
     }, [query, options]);
@@ -144,7 +144,7 @@ const Combobox = forwardRef<
         </Options>
       </ComboboxPrimitive>
     );
-  }
+  },
 );
 
 export { Combobox, Input };

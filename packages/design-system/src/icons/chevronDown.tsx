@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export function ChevronDownIcon(
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) {
   return (
     <svg

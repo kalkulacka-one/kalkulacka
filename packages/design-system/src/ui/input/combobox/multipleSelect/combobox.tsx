@@ -36,11 +36,11 @@ const Combobox = forwardRef<
       options,
       ...props
     },
-    ref
+    ref,
   ) => {
     //Use state for selecting values. If nothing is provided, defaultValue will become the selected value
     const [selectedValues, setSelectedValues] = useState<string[]>(
-      defaultValue?.length ? defaultValue : []
+      defaultValue?.length ? defaultValue : [],
     );
     const [query, setQuery] = useState("");
 
@@ -186,7 +186,7 @@ const Combobox = forwardRef<
         </Options>
       </ComboboxPrimitive>
     );
-  }
+  },
 );
 
 export { Combobox, Input };

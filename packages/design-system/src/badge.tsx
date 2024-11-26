@@ -19,7 +19,7 @@ const badge = cva(
         secondary: ["k1-text-secondary-strong k1-bg-secondary"],
       },
     },
-  }
+  },
 );
 
 function Badge({ icon = false, color, children }: BadgeProps) {

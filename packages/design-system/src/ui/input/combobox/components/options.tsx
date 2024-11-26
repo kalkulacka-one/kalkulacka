@@ -10,7 +10,7 @@ const Options = forwardRef<
     ref={ref}
     className={twMerge(
       "k1-w-[var(--input-width)] k1-bg-white k1-rounded-tl-lg k1-border k1-border-neutral k1-flex-col k1-justify-start k1-items-start k1-inline-flex ",
-      className
+      className,
     )}
     {...props}
   >

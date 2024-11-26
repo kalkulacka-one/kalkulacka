@@ -1,7 +1,7 @@
 import React from "react";
 
 export function EmptyCheckBoxIcon(
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) {
   return (
     <svg
