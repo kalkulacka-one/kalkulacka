@@ -1,2 +1,2 @@
-export * from "./BlueBlob";
-export * from "./RedBlob";
+export * from "./blueBlob";
+export * from "./redBlob";
