@@ -68,7 +68,7 @@ const SingleSelectField = forwardRef<React.ElementRef<typeof Input>, Props>(
         {hasError && <Description state="error">{error}</Description>}
       </Field>
     );
-  },
+  }
 );
 
 export { SingleSelectField };

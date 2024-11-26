@@ -36,11 +36,11 @@ const Combobox = forwardRef<
       options,
       ...props
     },
-    ref,
+    ref
   ) => {
     //Use state for selecting values. If nothing is provided, defaultValue will become the selected value
     const [selectedValue, setSelectedValue] = useState<string | null>(
-      defaultValue || null,
+      defaultValue || null
     );
 
     const [query, setQuery] = useState<string>(defaultValue || "");
@@ -48,7 +48,7 @@ const Combobox = forwardRef<
 
     useEffect(() => {
       const filtered = options.filter((option) =>
-        option.label.toLowerCase().includes(query.toLowerCase()),
+        option.label.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredOptions(filtered);
     }, [query, options]);
@@ -94,10 +94,9 @@ const Combobox = forwardRef<
 
     return (
       <ComboboxPrimitive
-        multiple
         as="div"
         ref={ref}
-        className={twMerge("k1-absolute k1-w-full", className)}
+        className={twMerge("k1-relative k1-w-full", className)}
         onChange={handleChange}
         value={selectedValue}
         {...props}
@@ -105,7 +104,7 @@ const Combobox = forwardRef<
         <div className="k1-flex k1-items-center k1-w-full">
           <Input
             onChange={handleInputChange}
-            className="k1-flex-grow k1-peer"
+            className="k1-flex-grow k1-container k1-peer"
             value={query}
             data-focus={query ? "true" : undefined}
             displayValue={(value: string) => {
@@ -114,29 +113,32 @@ const Combobox = forwardRef<
             }}
           />
           {children}
-          <Button>
+          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center k1-pr-2 k1-text-center">
             <ChevronDownIcon className="k1-h-6 k1-w-6" />
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}
         </div>
-        <Options anchor="bottom start" className="k1-w-[var(--input-width)]">
+        <Options
+          anchor="bottom start"
+          className="k1-flex k1-w-full k1-absolute"
+        >
           {filteredOptions.length === 0 ? (
-            <div>Žadné vysledky</div>
+            <div className="k1-px-4 k1-py-2">Žadné vysledky</div>
           ) : (
             filteredOptions.map((option) => (
               <Option
-                key={option?.id || ""}
-                value={option?.value}
+                key={option.id}
+                value={option.value}
                 className={twMerge("", className)}
               >
-                {option?.label}
+                {option.label}
               </Option>
             ))
           )}
         </Options>
       </ComboboxPrimitive>
     );
-  },
+  }
 );
 
 export { Combobox, Input };
