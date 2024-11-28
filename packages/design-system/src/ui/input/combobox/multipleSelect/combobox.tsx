@@ -118,7 +118,7 @@ const Combobox = forwardRef<
       if (!selectedValues.includes(valueToAdd)) {
         const newSelectedValues = [...selectedValues, valueToAdd];
         console.log("Setting new selectedValues:", newSelectedValues);
-        //Tells the parz
+        //Tells the par
         setSelectedValues(newSelectedValues);
         setQuery(""); // Clear query after selection
 
