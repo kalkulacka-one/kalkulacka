@@ -12,12 +12,12 @@ const config: Config = {
   content: ["./src/**/*.tsx"],
   prefix: "k1-",
   theme: {
+    ...screens,
     extend: {
       ...colors,
       ...typography,
       ...spacing,
       ...boxShadow,
-      ...screens,
       ...padding,
     },
     // Replace the default Tailwind CSS with our own
