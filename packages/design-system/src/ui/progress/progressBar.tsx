@@ -23,7 +23,7 @@ const ProgressBar = ({ progress, color }: Props): JSX.Element => {
 
   return (
     <div
-      className="k1-bg-neutral k1-h-0.5 lg:k1-h-1.5 k1-w-full k1-overflow-hidden k1-rounded-full"
+      className="k1-h-0.5 k1-w-full k1-overflow-hidden k1-rounded-full k1-bg-neutral lg:k1-h-1.5"
       role="progressbar"
       aria-valuenow={width}
       aria-valuemin={0}

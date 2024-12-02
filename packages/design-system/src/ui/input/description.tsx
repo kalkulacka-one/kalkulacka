@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 const descriptionVariants = cva(
   [
-    "k1-absolute -k1-bottom-3 k1-right-4 k1-bg-white k1-px-1 k1-gap-1 k1-inline-flex",
+    "k1-absolute -k1-bottom-3 k1-right-4 k1-inline-flex k1-gap-1 k1-bg-white k1-px-1",
   ],
   {
     variants: {

@@ -11,5 +11,6 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "eslint.workingDirectories": [{ "pattern": "./packages/*/" }, { "pattern": "./apps/*/" }],
 }

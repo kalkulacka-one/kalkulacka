@@ -35,13 +35,13 @@ const Checkbox = React.forwardRef<
       data-checked={checkboxState === "checked" ? true : undefined}
     >
       {checkboxState === "unchecked" && (
-        <EmptyCheckBoxIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
+        <EmptyCheckBoxIcon className="k1-h-6 k1-w-6 k1-min-w-6" />
       )}
       {checkboxState === "checked" && (
-        <CheckedIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
+        <CheckedIcon className="k1-h-6 k1-w-6 k1-min-w-6" />
       )}
       {checkboxState === "delete" && (
-        <InterdermineIcon className="k1-w-6 k1-h-6 k1-min-w-6" />
+        <InterdermineIcon className="k1-h-6 k1-w-6 k1-min-w-6" />
       )}
     </CheckboxPrimitive>
   );

@@ -49,7 +49,7 @@ const SingleSelectField = forwardRef<React.ElementRef<typeof Input>, Props>(
       <Field state={hasError ? "error" : "default"}>
         {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
         <Combobox
-          className="k1-relative k1-w-full k1-bg-transparent k1-outline-none k1-flex"
+          className="k1-relative k1-flex k1-w-full k1-bg-transparent k1-outline-none"
           ref={ref}
           showClearButton={showClearButton}
           options={options}

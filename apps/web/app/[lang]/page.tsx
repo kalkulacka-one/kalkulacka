@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Page(): JSX.Element {
   return (
-    <section className="max-w-2xl grid gap-8">
+    <section className="grid max-w-2xl gap-8">
       <section className="grid gap-2">
         <h2 className="text-2xl font-medium">
           Tvoříme <span className="font-bold">Volební kalkulačku</span>, která

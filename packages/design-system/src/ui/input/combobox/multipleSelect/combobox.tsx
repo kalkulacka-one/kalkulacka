@@ -156,11 +156,11 @@ const Combobox = forwardRef<
         value={selectedValues}
         {...props}
       >
-        <div className="k1-flex k1-items-center k1-w-full">
+        <div className="k1-flex k1-w-full k1-items-center">
           <Input
             onChange={handleInputChange}
             value={formatSelectedValues()}
-            className="k1-flex-grow k1-container k1-peer"
+            className="k1-peer k1-container k1-grow"
             data-focus={query ? "true" : undefined}
           />
           {children}

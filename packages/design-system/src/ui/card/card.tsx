@@ -9,7 +9,7 @@ type Props = {
   HTMLAttributes<HTMLDivElement>;
 
 const cardVariants = cva(
-  "disabled:k1-bg-neutral-disabled disabled:k1-pointer-events-none focus:k1-ring-purple-500 focus:k1-ring-8",
+  "focus:k1-ring-8 focus:k1-ring-purple-500 disabled:k1-pointer-events-none disabled:k1-bg-neutral-disabled",
   {
     variants: {
       color: {
@@ -27,8 +27,8 @@ const cardVariants = cva(
         bottomLeft: "k1-rounded-t k1-rounded-br",
       },
       border: {
-        default: "k1-border-neutral k1-border",
-        strong: "k1-border-primary-strong k1-border",
+        default: "k1-border k1-border-neutral",
+        strong: "k1-border k1-border-primary-strong",
         none: null,
       },
       shadow: {
