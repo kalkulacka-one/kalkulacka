@@ -29,12 +29,12 @@ export default function Page() {
           Přeskočit
         </Button>
       </div>
-      <div className="min-[701px]:grid sm:grid xs:flex xs:flex-col xs:gap-2 min-[701px]:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:gap-8">
+      <div className="xs:flex xs:flex-col xs:gap-2 sm:grid sm:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:gap-8 min-[701px]:grid min-[701px]:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr]">
         {/* desktop grid content */}
         {/* Place button end with flex ok? */}
-        <div className="min-[701px]:flex justify-end items-center xs:hidden">
+        <div className="xs:hidden items-center justify-end min-[701px]:flex">
           {/* button wrapper */}
-          <div className="hidden min-[701px]:hidden sm:block">
+          <div className="hidden sm:block min-[701px]:hidden">
             <Button
               hasIcon
               fitContent
@@ -51,9 +51,9 @@ export default function Page() {
         <div>
           <Question />
         </div>
-        <div className="content-center hidden xs:block">
+        <div className="xs:block hidden content-center">
           {/* button wrapper */}
-          <div className="hidden min-[701px]:hidden sm:block">
+          <div className="hidden sm:block min-[701px]:hidden">
             <Button
               hasIcon
               fitContent

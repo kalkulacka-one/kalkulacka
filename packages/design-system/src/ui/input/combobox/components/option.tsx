@@ -9,7 +9,7 @@ const Option = forwardRef<
   <OptionPrimitive
     ref={ref}
     className={twMerge(
-      "k1-px-4 k1-py-3 k1-border-b k1-border-neutral k1-justify-start k1-items-start k1-inline-flex hover:k1-bg-neutral-backdrop-hover data-[focus]:k1-bg-neutral-backdrop-active k1-text-neutral-fg k1-text-base k1-w-full disabled:k1-bg-muted disabled:k1-text-muted disabled:cursor-not-allowed",
+      "k1-text-neutral-fg disabled:k1-bg-muted disabled:k1-text-muted disabled:cursor-not-allowed k1-inline-flex k1-w-full k1-items-start k1-justify-start k1-border-b k1-border-neutral k1-px-4 k1-py-3 k1-text-base hover:k1-bg-neutral-backdrop-hover data-[focus]:k1-bg-neutral-backdrop-active",
       className,
     )}
     {...props}

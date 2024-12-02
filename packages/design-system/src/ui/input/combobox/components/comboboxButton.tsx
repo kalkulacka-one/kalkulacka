@@ -10,7 +10,7 @@ const Button = forwardRef<
   <ButtonPrimitive
     ref={ref}
     className={twMerge(
-      "k1-h-full k1-flex k1-items-center k1-justify-center",
+      "k1-flex k1-h-full k1-items-center k1-justify-center",
       className,
     )}
     {...props}

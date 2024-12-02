@@ -31,7 +31,7 @@ function Badge({ icon = false, color, children }: BadgeProps) {
         color: neutralVariant ? "neutral" : "secondary",
       })}
     >
-      {icon && <BadgeStarIcon className="k1-w-[18px] k1-h-[18px]" />}
+      {icon && <BadgeStarIcon className="k1-h-[18px] k1-w-[18px]" />}
       <div className="k1-whitespace-nowrap">{children}</div>
     </div>
   );

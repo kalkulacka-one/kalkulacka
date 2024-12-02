@@ -109,10 +109,10 @@ const Combobox = forwardRef<
         value={selectedValues}
         {...props}
       >
-        <div className="k1-flex k1-items-center k1-w-full">
+        <div className="k1-flex k1-w-full k1-items-center">
           <Input
             onChange={handleInputChange}
-            className="k1-flex-grow k1-peer"
+            className="k1-peer k1-flex-grow"
             value={
               selectedValues.length > 0 ? selectedValues.join(", ") : query
             }
@@ -123,7 +123,7 @@ const Combobox = forwardRef<
             }}
           />
           {children}
-          <Button className="k1-flex-shrink-0 k1-h-full k1-flex k1-items-center">
+          <Button className="k1-flex k1-h-full k1-flex-shrink-0 k1-items-center">
             <ChevronDownIcon className="k1-h-6 k1-w-6" />
           </Button>
           {showClearButton && <ClearButton onClose={handleClear} />}

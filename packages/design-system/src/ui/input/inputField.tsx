@@ -42,7 +42,7 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
 
     return (
       <Field state={hasError ? "error" : "default"}>
-        {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
+        {hasIcon && <Icon className={twMerge("k1-h-6 k1-w-6 k1-min-w-6")} />}
         <Input
           {...props}
           ref={ref}

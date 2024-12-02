@@ -21,7 +21,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <main className="p-4 grid gap-8">
+        <main className="grid gap-8 p-4">
           <header className="grid gap-2">
             <Link href="/cs">
               <h1 className="text-5xl font-semibold">Kalkulacka.1</h1>

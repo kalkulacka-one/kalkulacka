@@ -155,7 +155,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
         }
         {...props}
       >
-        {hasIcon ? <Icon className="k1-w-6 k1-h-6" /> : null}
+        {hasIcon ? <Icon className="k1-h-6 k1-w-6" /> : null}
         <div className={compactable ? "k1-hidden md:k1-block" : "k1-block"}>
           {children}
         </div>

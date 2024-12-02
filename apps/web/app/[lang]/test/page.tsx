@@ -15,7 +15,7 @@ export default function Page() {
   console.info(test);
 
   return (
-    <div className="w-full min-h-80 flex flex-col p-10 justify-center items-center gap-4">
+    <div className="flex min-h-80 w-full flex-col items-center justify-center gap-4 p-10">
       <InputField label="Full Name" icon={BadgeStarIcon} />
       <InputField label="Full Name" icon={BadgeStarIcon} error="Test error" />
       <InputField
