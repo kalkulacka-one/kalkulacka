@@ -14,6 +14,7 @@ interface ComboboxProps
   showClearButton?: boolean;
   onClear?: () => void;
   defaultValue?: string[];
+  // eslint-disable-next-line no-unused-vars
   onInputChange?: (value: string[]) => void;
   options: Array<{ id: string | number; value: string; label: string }>;
   showPlaceholder?: boolean;
