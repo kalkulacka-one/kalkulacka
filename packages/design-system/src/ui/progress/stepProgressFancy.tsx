@@ -1,11 +1,12 @@
-import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
+
+type Status = true | false | null | undefined;
 
 type Props = {
   steps: {
     currentQuestion: number;
     totalQuestion: number;
-    answers: { answerId: string; status: true | false | null | undefined }[];
+    answers: { answerId: string; status: Status }[];
   };
 } & VariantProps<typeof stepProgressVariants>;
 
@@ -29,25 +30,30 @@ const stepProgressVariants = cva("k1-w-9", {
   },
 });
 
+function checkStatus(status: Status) {
+  switch (status) {
+    case true:
+      return "inFavour";
+    case false:
+      return "against";
+    case null:
+      return "isNull";
+    case undefined:
+      return "none";
+  }
+}
+
 const StepProgressFancy = ({ steps }: Props): JSX.Element => {
   const answersData = steps.answers;
   const { currentQuestion } = steps;
+
   return (
     <div className="k1-flex k1-items-center">
       {answersData.map((answer, index) => {
         return (
           <div
             className={stepProgressVariants({
-              status:
-                answer.status === true
-                  ? "inFavour"
-                  : answer.status === false
-                    ? "against"
-                    : answer.status === null
-                      ? "isNull"
-                      : answer.status === undefined
-                        ? "none"
-                        : null,
+              status: checkStatus(answer.status),
               height: currentQuestion === index + 1 ? "active" : "inactive",
             })}
           ></div>
@@ -56,7 +62,5 @@ const StepProgressFancy = ({ steps }: Props): JSX.Element => {
     </div>
   );
 };
-
-// TODO: Fix ternary operator with function with switch/case
 
 export { StepProgressFancy };
