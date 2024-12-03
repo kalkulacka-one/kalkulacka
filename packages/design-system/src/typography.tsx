@@ -22,16 +22,16 @@ export function Typography() {
       <p className="k1-font-primary k1-text-base">
         Medium quick brown fox jumps over the lazy dog
       </p>
-      <span className="k1-font-secondary k1-text-sm k1-tracking-wider k1-font-bold k1-uppercase">
+      <span className="k1-font-secondary k1-text-sm k1-font-bold k1-uppercase k1-tracking-wider">
         Button text
       </span>
       <p className="k1-font-primary k1-text-sm">
         Small quick brown fox jumps over the lazy dog
       </p>
-      <span className="k1-font-primary k1-font-bold k1-tracking-wider k1-text-xs k1-uppercase">
+      <span className="k1-font-primary k1-text-xs k1-font-bold k1-uppercase k1-tracking-wider">
         Label text (inter).
       </span>
-      <span className="k1-font-secondary k1-font-bold k1-tracking-wider k1-text-xs k1-uppercase">
+      <span className="k1-font-secondary k1-text-xs k1-font-bold k1-uppercase k1-tracking-wider">
         Small button text (radio canada).
       </span>
       <p className="k1-font-primary k1-text-xs k1-tracking-tighter">

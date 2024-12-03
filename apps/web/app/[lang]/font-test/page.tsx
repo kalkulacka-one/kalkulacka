@@ -22,16 +22,16 @@ export default function Page() {
       <p className="font-primary text-base">
         Medium quick brown fox jumps over the lazy dog
       </p>
-      <span className="font-secondary text-sm tracking-wider font-bold uppercase">
+      <span className="font-secondary text-sm font-bold uppercase tracking-wider">
         Button text
       </span>
       <p className="font-primary text-sm">
         Small quick brown fox jumps over the lazy dog
       </p>
-      <span className="font-primary font-bold tracking-wider text-xs uppercase">
+      <span className="font-primary text-xs font-bold uppercase tracking-wider">
         Label text (inter).
       </span>
-      <span className="font-secondary font-bold tracking-wider text-xs uppercase">
+      <span className="font-secondary text-xs font-bold uppercase tracking-wider">
         Small button text (radio canada).
       </span>
       <p className="font-primary text-xs tracking-tighter">
