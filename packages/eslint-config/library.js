@@ -9,6 +9,7 @@ module.exports = {
     "prettier",
     "eslint-config-turbo",
     "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended",
   ],
   plugins: ["only-warn"],
   globals: {

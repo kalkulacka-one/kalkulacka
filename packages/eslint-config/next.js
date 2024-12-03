@@ -10,6 +10,7 @@ module.exports = {
     require.resolve("@vercel/style-guide/eslint/next"),
     "eslint-config-turbo",
     "plugin:prettier/recommended",
+    "plugin:tailwindcss/recommended",
   ],
   globals: {
     React: true,
