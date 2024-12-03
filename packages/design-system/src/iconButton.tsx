@@ -3,14 +3,14 @@ import { Button, ButtonProps } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
 
 const IconButtonVariants = cva(
-  ["k1-inline-flex k1-gap-2 k1-items-center k1-w-auto k1-select-none"],
+  ["k1-inline-flex k1-w-auto k1-select-none k1-items-center k1-gap-2"],
 
   {
     variants: {
       size: {
-        small: "k1-w-8 k1-h-8",
-        default: "k1-w-10 k1-h-10",
-        large: "k1-w-14 k1-h-14",
+        small: "k1-h-8 k1-w-8",
+        default: "k1-h-10 k1-w-10",
+        large: "k1-h-14 k1-w-14",
       },
     },
   },
@@ -18,7 +18,7 @@ const IconButtonVariants = cva(
 
 const IconVariants = cva(
   [
-    "k1-flex k1-justify-center k1-items-center k1-rounded-full hover:k1-bg-neutral-backdrop-hover active:k1-bg-neutral-backdrop-active",
+    "k1-flex k1-items-center k1-justify-center k1-rounded-full hover:k1-bg-neutral-backdrop-hover active:k1-bg-neutral-backdrop-active",
   ],
   {
     variants: {

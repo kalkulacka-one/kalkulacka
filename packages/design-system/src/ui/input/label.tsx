@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 
 const labelVariants = cva(
   [
-    "k1-absolute k1-left-4 k1-uppercase k1-px-1",
+    "k1-absolute k1-left-4 k1-px-1 k1-uppercase",
     "k1-font-bold",
     "k1-bg-white",
     "k1-text-base",
@@ -15,8 +15,8 @@ const labelVariants = cva(
     "peer-data-[focus]:k1-ml-0",
     "peer-data-[empty=false]:k1-text-xs",
     "peer-data-[focus]:k1-text-xs",
-    "peer-data-[focus]:k1-translate-y-[-120%] k1-transition-all k1-duration-200",
-    "peer-data-[empty=false]:k1-translate-y-[-120%] k1-transition-all k1-duration-200",
+    "k1-transition-all k1-duration-200 peer-data-[focus]:k1-translate-y-[-120%]",
+    "k1-transition-all k1-duration-200 peer-data-[empty=false]:k1-translate-y-[-120%]",
   ],
   {
     variants: {
@@ -25,7 +25,7 @@ const labelVariants = cva(
         error: "k1-text-secondary-strong",
       },
       hasIcon: {
-        true: "k1-ml-10 peer-data-[focus]:k1-pl-1 peer-data-[empty=false]:k1-pl-1",
+        true: "k1-ml-10 peer-data-[empty=false]:k1-pl-1 peer-data-[focus]:k1-pl-1",
       },
     },
     defaultVariants: {
