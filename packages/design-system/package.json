@@ -26,10 +26,8 @@
     "./typography": "./src/typography.tsx"
   },
   "scripts": {
-    "build": "npm run fonts && npm run tailwind",
-    "dev": "npm run fonts && npm run tailwind:watch",
-    "fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
-    "_comment": "Changed the code from line 14, which is a script for fonts from {mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts} to use on Windows {if not exist .\\dist mkdir .\\dist && xcopy .\\src\\fonts .\\dist\\fonts /E /I}",
+    "build": "npm run tailwind",
+    "dev": "npm run tailwind:watch",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
     "generate:component": "turbo gen react-component",
