@@ -46,7 +46,7 @@ export default function Page() {
       </div>
       {/* button wrapper */}
       <div className="flex justify-center p-4">
-        <div className="grid grid-cols-[auto_1fr_1fr] items-center justify-center gap-4 w-auto">
+        <div className="grid w-auto grid-cols-[auto_1fr_1fr] items-center justify-center gap-4">
           <StarIconButton />
           <ButtonInFavour />
           <ButtonAgainst />
