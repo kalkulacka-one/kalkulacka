@@ -19,7 +19,7 @@ export function ButtonInFavour(props: Props) {
       fitContent
       {...props}
     >
-      Jsem pro
+      Ano
     </Button>
   );
 }

@@ -1,13 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
+"use client";
 
+import { ButtonAgainst, ButtonInFavour } from "@repo/design-system/ui";
+import { StarIconButton } from "@repo/design-system/starIconButton";
 import { StepProgressFancy } from "@repo/design-system/ui";
-
-const meta: Meta<typeof StepProgressFancy> = {
-  title: "Components/StepProgress",
-  component: StepProgressFancy,
-};
-
-type StepProgressStory = StoryObj<typeof meta>;
 
 const steps = {
   answers: [
@@ -41,11 +36,27 @@ const steps = {
   currentQuestion: 8,
 };
 
-export const Fancy: StepProgressStory = {
-  args: {
-    steps,
-  },
-  render: (args) => <StepProgressFancy {...args} />,
-};
+export default function Page() {
+  return (
+    // main wrapper
+    <div className="sticky bottom-0 border border-red-500">
+      {/* count status wrapper */}
+      <div className="w-screen">
+        <StepProgressFancy steps={steps} />
+      </div>
+      {/* button wrapper */}
+      <div className="flex justify-center p-4">
+        <div className="grid w-auto grid-cols-[auto_1fr_1fr] items-center justify-center gap-4">
+          <StarIconButton />
+          <ButtonInFavour />
+          <ButtonAgainst />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-export default meta;
+// TODO
+// 1. Buttons on mobile wihout texts WIDTH!
+// 2. Statuses proper styling (bg) check with live
+// 3. Bottom bar positioning
