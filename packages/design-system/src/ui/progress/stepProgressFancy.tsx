@@ -21,9 +21,10 @@ const stepProgressVariants = cva("k1-w-9", {
       active: "k1-h-2",
       inactive: "k1-h-1",
     },
+    // added empty strings for the lint check, this component awaits new merge ({status: "undefined", height:"inactive"})
     defaultVariant: {
-      status: "undefined",
-      height: "inactive",
+      status: "",
+      height: "",
     },
   },
 });

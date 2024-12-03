@@ -37,7 +37,7 @@ const buttonVariants = cva(
       color: {
         primary: [
           "k1-bg-primary-strong",
-          "data-[hover]-k1-text-white data-[hover]:k1-bg-primary-strong-hover",
+          "data-[hover]:k1-bg-primary-strong-hover data-[hover]:k1-text-white",
         ],
         secondary: [
           "k1-bg-secondary-strong",

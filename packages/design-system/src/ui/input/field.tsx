@@ -15,7 +15,8 @@ const fieldVariants = cva(
           "focus-within:k1-border-neutral-active focus-visible:k1-text-neutral-active",
         ],
         error:
-          "hover:k1-border-secondary-hover:not(:focus-within) k1-border-secondary-strong k1-text-secondary-strong focus-within:k1-border-secondary-strong focus-visible:k1-border-secondary-strong",
+          // :not(:focus-within) not supported in TW
+          "k1-border-secondary-strong k1-text-secondary-strong focus-within:k1-border-secondary-strong hover:k1-border-secondary-strong focus-visible:k1-border-secondary-strong",
       },
     },
   },
