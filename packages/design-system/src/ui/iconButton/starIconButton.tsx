@@ -1,7 +1,7 @@
 import React, { ComponentProps } from "react";
-import { ToggleIconButton } from "@repo/design-system/toggleIconButton";
-import { StarIcon } from "@repo/design-system/starIcon";
-import { StarIconFilled } from "@repo/design-system/starIconFilled";
+import { ToggleIconButton } from "@repo/design-system/ui";
+import { StarIcon } from "@repo/design-system/icons";
+import { StarIconFilled } from "@repo/design-system/icons";
 
 type Props = Omit<
   ComponentProps<typeof ToggleIconButton>,

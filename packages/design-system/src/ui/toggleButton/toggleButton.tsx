@@ -1,7 +1,7 @@
 import { Button } from "@repo/design-system/ui";
 import { VariantProps } from "class-variance-authority";
 import React, { ComponentProps, useState } from "react";
-import { buttonVariants } from "./ui";
+import { buttonVariants } from "..";
 
 type Props = VariantProps<typeof buttonVariants> &
   Omit<ComponentProps<typeof Button>, "onClick">;

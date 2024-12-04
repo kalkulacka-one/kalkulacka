@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ToggleIconButton } from "@repo/design-system/toggleIconButton";
+import { ToggleIconButton } from "@repo/design-system/ui";
 
 export default {
   title: "Components/ToggleIconButton",
