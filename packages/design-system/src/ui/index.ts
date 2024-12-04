@@ -7,3 +7,7 @@ export * from "./blobs/index";
 export * from "./typography/index";
 export * from "./header/index";
 export * from "./footer/index";
+export * from "./layout/index";
+export * from "./iconButton/index";
+export * from "./toggleButton/index";
+export * from "./toggleIconButton/index";

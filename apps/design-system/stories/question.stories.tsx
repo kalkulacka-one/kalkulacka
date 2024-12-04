@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Question } from "@repo/design-system/ui";
 
 const meta: Meta<typeof Question> = {
-  title: "Layouts/Question",
+  title: "Layout/Question",
   component: Question,
 };
 

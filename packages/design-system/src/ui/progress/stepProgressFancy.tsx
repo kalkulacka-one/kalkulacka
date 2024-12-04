@@ -10,7 +10,7 @@ type Props = {
   };
 } & VariantProps<typeof stepProgressVariants>;
 
-const stepProgressVariants = cva("k1-w-9", {
+const stepProgressVariants = cva("", {
   variants: {
     status: {
       inFavour: "k1-bg-primary-strong",
@@ -48,10 +48,14 @@ const StepProgressFancy = ({ steps }: Props): JSX.Element => {
   const { currentQuestion } = steps;
 
   return (
-    <div className="k1-flex k1-items-center">
+    <div className="k1-flex k1-h-6 k1-items-center k1-justify-start">
       {answersData.map((answer, index) => {
         return (
           <div
+            style={{
+              flex: `1 1 calc(100% / ${steps.answers.length})`,
+              width: `calc(100% / ${steps.answers.length})`,
+            }}
             className={stepProgressVariants({
               status: checkStatus(answer.status),
               height: currentQuestion === index + 1 ? "active" : "inactive",

@@ -1,5 +1,5 @@
 import React, { ComponentProps } from "react";
-import { IconButton } from "@repo/design-system/iconButton";
+import { IconButton } from "@repo/design-system/ui";
 
 type Props = {
   iconDefault: React.ComponentType<React.SVGProps<SVGSVGElement>>;

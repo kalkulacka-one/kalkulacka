@@ -1,5 +1,5 @@
 import { YesIcon } from "@repo/design-system/demo";
-import { ToggleButton } from "@repo/design-system/toggleButton";
+import { ToggleButton } from "@repo/design-system/ui";
 import { Meta, StoryObj } from "@storybook/react";
 
 export default {
