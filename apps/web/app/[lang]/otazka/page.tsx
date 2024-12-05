@@ -1,17 +1,24 @@
-"use client";
-import { QuestionWrapper } from "@repo/design-system/ui";
-import { BottomBar } from "@repo/design-system/ui";
+import {
+  ClientBottomBar,
+  ClientQuestionWrapper,
+} from "../../temp/ClientWrapper";
 
-export default function Page() {
+export default async function Page() {
+  const res = await fetch(
+    "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json",
+  );
+
+  const data = await res.json();
+
+  console.log(data);
+
   return (
-    <div className="grid h-96 content-between">
-      <QuestionWrapper />
-      <BottomBar />
+    <div>
+      {data.map((item) => (
+        <span>{item.title}</span>
+      ))}
+      <ClientQuestionWrapper />
+      <ClientBottomBar />
     </div>
   );
 }
-
-// TODO
-// 1. Buttons on mobile wihout texts WIDTH!
-// 2. Statuses proper styling (bg) check with live
-// 3. Bottom bar positioning
