@@ -37,7 +37,7 @@ export function BottomBar() {
 
   return (
     // main wrapper
-    <div className="k1-sticky k1-bottom-0">
+    <div className="k1-sticky k1-bottom-0 k1-bg-white">
       {/* count status wrapper */}
       <div>
         <StepProgressFancy steps={steps} />

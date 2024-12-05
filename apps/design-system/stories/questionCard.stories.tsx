@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Question } from "@repo/design-system/ui";
+import { QuestionCard } from "@repo/design-system/ui";
 
-const meta: Meta<typeof Question> = {
+const meta: Meta<typeof QuestionCard> = {
   title: "Layout/Question",
-  component: Question,
+  component: QuestionCard,
 };
 
 type QuestionStory = StoryObj<typeof meta>;

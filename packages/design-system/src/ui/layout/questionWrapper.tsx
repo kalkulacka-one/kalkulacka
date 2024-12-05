@@ -1,8 +1,20 @@
 import { Button } from "@repo/design-system/ui";
 import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
-import { Question } from "@repo/design-system/ui";
+import { QuestionCard } from "@repo/design-system/ui";
+import type { Question } from "@repo/schema/dist/question.schema";
 
-export function QuestionWrapper() {
+export interface Props {
+  question: Question;
+  currentQuestion: number;
+  questionCount: number;
+}
+
+export function QuestionWrapper({
+  currentQuestion,
+  questionCount,
+  question,
+}: Props) {
+  // const { id, title, statement, detail, tags } = question;
   return (
     <>
       {/* content */}
@@ -47,7 +59,11 @@ export function QuestionWrapper() {
           </div>
         </div>
         <div>
-          <Question />
+          <QuestionCard
+            currentQuestion={currentQuestion}
+            questionCount={questionCount}
+            question={question}
+          />
         </div>
         <div className="k1-hidden k1-content-center xs:k1-block">
           {/* button wrapper */}
