@@ -7,12 +7,14 @@ export interface Props {
   question: Question;
   currentQuestion: number;
   questionCount: number;
+  onClick: (button: string) => void;
 }
 
 export function QuestionWrapper({
   currentQuestion,
   questionCount,
   question,
+  onClick,
 }: Props) {
   // const { id, title, statement, detail, tags } = question;
   return (
@@ -26,6 +28,7 @@ export function QuestionWrapper({
           iconPosition="left"
           kind="link"
           fitContent
+          onClick={() => onClick("prev")}
         >
           Předchozí
         </Button>
@@ -35,6 +38,7 @@ export function QuestionWrapper({
           iconPosition="right"
           kind="link"
           fitContent
+          onClick={() => onClick("next")}
         >
           Přeskočit
         </Button>
@@ -50,6 +54,7 @@ export function QuestionWrapper({
               fitContent
               icon={ArrowIconLeft}
               kind="link"
+              onClick={() => onClick("prev")}
               // fix k1 prefix issue!!!
             >
               <span className="k1-hidden md:k1-block">
@@ -74,6 +79,7 @@ export function QuestionWrapper({
               icon={ArrowIconRight}
               iconPosition="right"
               kind="link"
+              onClick={() => onClick("next")}
             >
               <span className="k1-hidden md:k1-block">
                 Přeskočit <span className="k1-hidden lg:k1-inline">otázku</span>

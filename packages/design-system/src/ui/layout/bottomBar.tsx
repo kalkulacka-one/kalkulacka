@@ -2,7 +2,12 @@ import { ButtonInFavour, ButtonAgainst } from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
 
-export function BottomBar() {
+type Props = {
+  // solve unused button type problem
+  onClick: (button: string) => void;
+};
+
+export function BottomBar({ onClick }: Props) {
   const steps = {
     answers: [
       { answerId: "1", status: true }, // positive step (e.g. answerInFavour)
@@ -46,8 +51,8 @@ export function BottomBar() {
       <div className="k1-flex k1-justify-center">
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
           <StarIconButton />
-          <ButtonInFavour />
-          <ButtonAgainst />
+          <ButtonInFavour onClick={() => onClick("inFavour")} />
+          <ButtonAgainst onClick={() => onClick("against")} />
         </div>
       </div>
     </div>
