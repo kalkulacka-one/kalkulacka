@@ -57,6 +57,7 @@ export default function Page() {
     }
   }
 
+  console.log(currentQuestion);
   console.log(steps);
 
   useEffect(() => {
@@ -83,7 +84,7 @@ export default function Page() {
       console.log(answers);
     };
     fetchData();
-  }, []);
+  }, [currentQuestion]);
 
   const questionCount = questions.length;
 
