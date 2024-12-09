@@ -18,26 +18,49 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   // steps for progress bar
-  const [steps, setSteps] = useState({});
+  const [steps, setSteps] = useState({
+    answers: [],
+    totalQuestion: questions.length,
+    currentQuestion: currentQuestion,
+  });
 
   function handleClick(button: string) {
-    // delete alerts after check
-    if (button === "inFavour") {
-      alert("In favour clicked");
-      setCurrentQuestion((prevState) => prevState + 1);
-    } else if (button === "against") {
-      alert("Against clicked");
-      setCurrentQuestion((prevState) => prevState + 1);
-    } else if (button === "prev") {
-      alert("Prev");
-      setCurrentQuestion((prevState) => prevState - 1);
-    } else if (button === "next") {
-      alert("Next");
-      setCurrentQuestion((prevState) => prevState + 1);
+    switch (button) {
+      case "inFavour":
+        setCurrentQuestion((prevState) => prevState + 1);
+        setSteps({
+          ...steps,
+          currentQuestion: currentQuestion,
+        });
+        break;
+      case "against":
+        setCurrentQuestion((prevState) => prevState + 1);
+        setSteps({
+          ...steps,
+          currentQuestion: currentQuestion,
+        });
+        break;
+      case "prev":
+        setCurrentQuestion((prevState) => prevState - 1);
+        setSteps({
+          ...steps,
+          currentQuestion: currentQuestion,
+        });
+        break;
+      case "next":
+        setCurrentQuestion((prevState) => prevState + 1);
+        setSteps({
+          ...steps,
+          currentQuestion: currentQuestion,
+        });
+        break;
     }
   }
 
+  console.log(steps);
+
   useEffect(() => {
+    // Data call and data state update
     const fetchData = async () => {
       const res = await fetch(
         "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json",
@@ -45,6 +68,19 @@ export default function Page() {
       const data = await res.json();
       setIsLoading(false);
       setQuestions(data);
+      // console.log(data);
+      // updating steps
+      const answerId = data.map((data) => {
+        return { answerId: data.id, status: null };
+      });
+      const answers = {
+        answers: answerId.flat(),
+        totalQuestion: questions.length,
+        currentQuestion: currentQuestion,
+      };
+
+      setSteps(answers);
+      console.log(answers);
     };
     fetchData();
   }, []);
@@ -70,7 +106,7 @@ export default function Page() {
         }
       })}
 
-      <ClientBottomBar onClick={handleClick} />
+      <ClientBottomBar onClick={handleClick} steps={steps} />
     </div>
   );
 }
