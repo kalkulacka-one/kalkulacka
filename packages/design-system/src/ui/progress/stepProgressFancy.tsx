@@ -50,6 +50,8 @@ const StepProgressFancy = ({ steps }: Props): JSX.Element => {
       {answersData.map((answer, index) => {
         return (
           <div
+            // fix needed: better key naming ?
+            key={`Step bar: ${index}`}
             style={{
               flex: `1 1 calc(100% / ${steps.answers.length})`,
               width: `calc(100% / ${steps.answers.length})`,
