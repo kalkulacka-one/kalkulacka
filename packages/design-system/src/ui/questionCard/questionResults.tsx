@@ -1,3 +1,3 @@
 export function QuestionResults() {
-  return <h1>Question results</h1>;
+  return <h1>Rekapitulace</h1>;
 }
