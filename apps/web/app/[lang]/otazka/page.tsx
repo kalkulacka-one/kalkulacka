@@ -22,7 +22,7 @@ type Steps = {
 export default function Page() {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   // steps for progress bar
   const [steps, setSteps] = useState<Steps>({
     answers: [],
@@ -33,7 +33,6 @@ export default function Page() {
   function handleClick(button: string) {
     switch (button) {
       case "inFavour":
-        setCurrentQuestion((prevState) => prevState + 1);
         // fix glitch, styling of the status bar should be permanent
         setSteps((prevSteps) => {
           const updatedAnswer = prevSteps.answers.map((answer, index) => {
@@ -45,9 +44,9 @@ export default function Page() {
 
           return { ...prevSteps, answers: updatedAnswer };
         });
+        setCurrentQuestion((prevState) => prevState + 1);
         break;
       case "against":
-        setCurrentQuestion((prevState) => prevState + 1);
         setSteps((prevSteps) => {
           const updatedAnswer = prevSteps.answers.map((answer, index) => {
             if (index === currentQuestion - 1) {
@@ -58,6 +57,7 @@ export default function Page() {
 
           return { ...prevSteps, answers: updatedAnswer };
         });
+        setCurrentQuestion((prevState) => prevState + 1);
         break;
       case "prev":
         setCurrentQuestion((prevState) => prevState - 1);
@@ -66,18 +66,19 @@ export default function Page() {
           currentQuestion: currentQuestion,
         });
         break;
-      // fix button naming  and args to "skip"
+      // fix button naming  and args to "skip" and null set
       case "next":
         setCurrentQuestion((prevState) => prevState + 1);
-        setSteps((prevSteps) => {
-          const updatedAnswer = prevSteps.answers.map((answer, index) => {
-            if (index === currentQuestion - 1) {
-              return { ...answer, status: null };
-            }
-            return answer;
-          });
-
-          return { ...prevSteps, answers: updatedAnswer };
+        setSteps({
+          ...steps,
+          currentQuestion: currentQuestion,
+        });
+        break;
+      case "guide":
+        setCurrentQuestion((prevState) => prevState + 1);
+        setSteps({
+          ...steps,
+          currentQuestion: currentQuestion,
         });
         break;
     }
@@ -115,7 +116,13 @@ export default function Page() {
 
   return (
     <div className="flex flex-col justify-center self-end">
-      {isLoading && <Spinner />}
+      {currentQuestion === 0 ? <QuestionGuide onClick={handleClick} /> : null}
+      {/* // fix glitch beginning */}
+      {currentQuestion > questions.length && currentQuestion !== 0 ? (
+        <QuestionResults />
+      ) : null}
+      {/* loader needed? */}
+      {/* {isLoading && <Spinner />} */}
       {/* find better approach than map */}
       {questions.map((question: Question, index) => {
         const questionNumber = index + 1;
@@ -131,8 +138,10 @@ export default function Page() {
           );
         }
       })}
-
-      <ClientBottomBar onClick={handleClick} steps={steps} />
+      {/* Bottom bar */}
+      {currentQuestion <= questions.length && currentQuestion > 0 ? (
+        <ClientBottomBar onClick={handleClick} steps={steps} />
+      ) : null}
     </div>
   );
 }
