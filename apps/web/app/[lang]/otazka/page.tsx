@@ -13,12 +13,18 @@ import {
 
 import type { Question } from "@repo/schema/dist";
 
+type Steps = {
+  answers: any[];
+  totalQuestion: number;
+  currentQuestion: number;
+};
+
 export default function Page() {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   // steps for progress bar
-  const [steps, setSteps] = useState({
+  const [steps, setSteps] = useState<Steps>({
     answers: [],
     totalQuestion: questions.length,
     currentQuestion: currentQuestion,
@@ -28,16 +34,29 @@ export default function Page() {
     switch (button) {
       case "inFavour":
         setCurrentQuestion((prevState) => prevState + 1);
-        setSteps({
-          ...steps,
-          currentQuestion: currentQuestion,
+        // fix glitch, styling of the status bar should be permanent
+        setSteps((prevSteps) => {
+          const updatedAnswer = prevSteps.answers.map((answer, index) => {
+            if (index === currentQuestion - 1) {
+              return { ...answer, status: true };
+            }
+            return answer;
+          });
+
+          return { ...prevSteps, answers: updatedAnswer };
         });
         break;
       case "against":
         setCurrentQuestion((prevState) => prevState + 1);
-        setSteps({
-          ...steps,
-          currentQuestion: currentQuestion,
+        setSteps((prevSteps) => {
+          const updatedAnswer = prevSteps.answers.map((answer, index) => {
+            if (index === currentQuestion - 1) {
+              return { ...answer, status: false };
+            }
+            return answer;
+          });
+
+          return { ...prevSteps, answers: updatedAnswer };
         });
         break;
       case "prev":
@@ -47,17 +66,23 @@ export default function Page() {
           currentQuestion: currentQuestion,
         });
         break;
+      // fix button naming  and args to "skip"
       case "next":
         setCurrentQuestion((prevState) => prevState + 1);
-        setSteps({
-          ...steps,
-          currentQuestion: currentQuestion,
+        setSteps((prevSteps) => {
+          const updatedAnswer = prevSteps.answers.map((answer, index) => {
+            if (index === currentQuestion - 1) {
+              return { ...answer, status: null };
+            }
+            return answer;
+          });
+
+          return { ...prevSteps, answers: updatedAnswer };
         });
         break;
     }
   }
 
-  console.log(currentQuestion);
   console.log(steps);
 
   useEffect(() => {
@@ -81,10 +106,10 @@ export default function Page() {
       };
 
       setSteps(answers);
-      console.log(answers);
+      // console.log(answers);
     };
     fetchData();
-  }, [currentQuestion]);
+  }, []);
 
   const questionCount = questions.length;
 
