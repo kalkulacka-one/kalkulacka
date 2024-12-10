@@ -22,6 +22,7 @@ type Steps = {
 export default function Page() {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [guideDisplay, setGuideDisplay] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   // steps for progress bar
   const [steps, setSteps] = useState<Steps>({
@@ -63,7 +64,7 @@ export default function Page() {
         setCurrentQuestion((prevState) => prevState - 1);
         setSteps({
           ...steps,
-          currentQuestion: currentQuestion,
+          currentQuestion: currentQuestion - 1,
         });
         break;
       // fix button naming  and args to "skip" and null set
@@ -71,20 +72,21 @@ export default function Page() {
         setCurrentQuestion((prevState) => prevState + 1);
         setSteps({
           ...steps,
-          currentQuestion: currentQuestion,
+          currentQuestion: currentQuestion + 1,
         });
         break;
       case "guide":
+        setGuideDisplay(false);
         setCurrentQuestion((prevState) => prevState + 1);
         setSteps({
           ...steps,
-          currentQuestion: currentQuestion,
+          currentQuestion: currentQuestion + 1,
         });
         break;
     }
   }
 
-  console.log(steps);
+  // console.log(steps);
 
   useEffect(() => {
     // Data call and data state update
@@ -97,7 +99,7 @@ export default function Page() {
       setQuestions(data);
       // console.log(data);
       // updating steps
-      const answerId = data.map((data) => {
+      const answerId = data.map((data: Question) => {
         return { answerId: data.id, status: null };
       });
       const answers = {
@@ -107,7 +109,6 @@ export default function Page() {
       };
 
       setSteps(answers);
-      // console.log(answers);
     };
     fetchData();
   }, []);
@@ -116,13 +117,15 @@ export default function Page() {
 
   return (
     <div className="flex flex-col justify-center self-end">
-      {currentQuestion === 0 ? <QuestionGuide onClick={handleClick} /> : null}
+      {guideDisplay || currentQuestion === 0 ? (
+        <QuestionGuide onClick={handleClick} />
+      ) : null}
       {/* // fix glitch beginning */}
       {currentQuestion > questions.length && currentQuestion !== 0 ? (
         <QuestionResults />
       ) : null}
       {/* loader needed? */}
-      {/* {isLoading && <Spinner />} */}
+      {isLoading && <Spinner />}
       {/* find better approach than map */}
       {questions.map((question: Question, index) => {
         const questionNumber = index + 1;
@@ -130,10 +133,13 @@ export default function Page() {
           // cleanup api and get rif of wrapper
           return (
             <ClientQuestionWrapper
+              // fix needed: better key naming ?
+              key={`Question: ${question.id}`}
               currentQuestion={currentQuestion}
               questionCount={questionCount}
               question={question}
               onClick={handleClick}
+              guideDisplay={guideDisplay}
             />
           );
         }

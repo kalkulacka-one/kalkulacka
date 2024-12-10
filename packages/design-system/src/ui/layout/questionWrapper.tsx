@@ -30,7 +30,7 @@ export function QuestionWrapper({
           fitContent
           onClick={() => onClick("prev")}
         >
-          Předchozí
+          {currentQuestion === 1 ? "Návod" : "Předchozí"}
         </Button>
         <Button
           hasIcon
