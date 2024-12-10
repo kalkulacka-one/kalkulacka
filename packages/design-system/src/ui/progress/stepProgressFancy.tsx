@@ -15,11 +15,11 @@ const stepProgressVariants = cva("", {
     status: {
       inFavour: "k1-bg-primary-strong",
       against: "k1-bg-secondary-strong",
-      none: "k1-bg-neutral-strong-active",
+      // none: "k1-bg-neutral-strong-active",
       isNull: "k1-bg-neutral-disabled",
     },
     height: {
-      active: "k1-h-2",
+      active: "k1-h-2 k1-bg-neutral-strong-active",
       inactive: "k1-h-1",
     },
     // added empty strings for the lint check, this component awaits new merge ({status: "undefined", height:"inactive"})
@@ -38,8 +38,6 @@ function checkStatus(status: Status) {
       return "against";
     case null:
       return "isNull";
-    case undefined:
-      return "none";
   }
 }
 
