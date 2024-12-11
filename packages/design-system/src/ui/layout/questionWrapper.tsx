@@ -40,7 +40,6 @@ export function QuestionWrapper({
           fitContent
           onClick={() => onClick("next")}
         >
-          Přeskočit
           {currentQuestion >= questionCount ? "Rekapitulace" : "Přeskočit"}
         </Button>
       </div>
@@ -62,7 +61,7 @@ export function QuestionWrapper({
                 "Návod"
               ) : (
                 <span className="k1-hidden md:k1-block">
-                  Předchozí
+                  Předchozí{" "}
                   <span className="k1-hidden lg:k1-inline">otázka</span>
                 </span>
               )}
@@ -91,7 +90,7 @@ export function QuestionWrapper({
                 "Rekapitulace"
               ) : (
                 <span className="k1-hidden md:k1-block">
-                  Přeskočit
+                  Přeskočit{" "}
                   <span className="k1-hidden lg:k1-inline">otázku</span>
                 </span>
               )}

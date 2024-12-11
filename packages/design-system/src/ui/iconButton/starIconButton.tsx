@@ -3,16 +3,19 @@ import { ToggleIconButton } from "@repo/design-system/ui";
 import { StarIcon } from "@repo/design-system/icons";
 import { StarIconFilled } from "@repo/design-system/icons";
 
-type Props = Omit<
+type Props = {
+  onClick: () => void;
+} & Omit<
   ComponentProps<typeof ToggleIconButton>,
   "iconDefault" | "iconPressed"
 >;
 
-const StarIconButton = (props: Props) => {
+const StarIconButton = ({ onClick, ...props }: Props) => {
   return (
     <ToggleIconButton
       iconDefault={StarIcon}
       iconPressed={StarIconFilled}
+      onClick={onClick}
       {...props}
     >
       Pro mě důležité

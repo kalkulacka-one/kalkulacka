@@ -2,7 +2,7 @@ import { ButtonInFavour, ButtonAgainst } from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
 
-type ButtonType = "inFavour" | "against";
+type ButtonType = "inFavour" | "against" | "star";
 
 type Props = {
   // solve unused button type eslint problem
@@ -53,7 +53,7 @@ export function BottomBar({ onClick, steps }: Props) {
       {/* button wrapper */}
       <div className="k1-flex k1-justify-center">
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
-          <StarIconButton />
+          <StarIconButton onClick={() => onClick("star")} />
           <ButtonInFavour onClick={() => onClick("inFavour")} />
           <ButtonAgainst onClick={() => onClick("against")} />
         </div>

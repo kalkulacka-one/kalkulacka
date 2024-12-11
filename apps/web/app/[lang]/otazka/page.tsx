@@ -13,6 +13,12 @@ import {
 
 import type { Question } from "@repo/schema/dist";
 
+type Questions = {
+  id: string;
+  status: null;
+  important: boolean;
+};
+
 type Steps = {
   answers: any[];
   totalQuestion: number;
@@ -96,10 +102,24 @@ export default function Page() {
           };
         });
         break;
+      case "star":
+        setSteps((prevSteps) => {
+          const updatedAnswer = prevSteps.answers.map((answer, index) => {
+            if (index === currentQuestion - 1) {
+              return { ...answer, important: !answer.important };
+            }
+            return answer;
+          });
+
+          return {
+            ...prevSteps,
+            answers: updatedAnswer,
+            // currentQuestion: prevSteps.currentQuestion + 1,
+          };
+        });
+        break;
     }
   }
-
-  // console.log(steps);
 
   useEffect(() => {
     // 1. Data call and data questions state update
@@ -112,11 +132,11 @@ export default function Page() {
       setQuestions(data);
 
       // populating steps state
-      const answerId = data.map((data: Question) => {
-        return { answerId: data.id, status: null };
+      const answersArray = data.map((data: Questions) => {
+        return { answerId: data.id, status: null, important: false };
       });
       const answers = {
-        answers: answerId.flat(),
+        answers: answersArray.flat(),
         totalQuestion: questions.length,
         currentQuestion: currentQuestion,
       };
