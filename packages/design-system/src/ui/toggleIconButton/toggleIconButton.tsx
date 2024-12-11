@@ -5,15 +5,19 @@ type Props = {
   iconDefault: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconPressed: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   children?: React.ReactNode;
-} & Omit<ComponentProps<typeof IconButton>, "icon" | "onClick">;
+} & Omit<ComponentProps<typeof IconButton>, "icon">;
 
 const ToggleIconButton = React.forwardRef<
   React.ElementRef<typeof IconButton>,
   Props
->(({ children, iconPressed, iconDefault }, ref) => {
+>(({ children, iconPressed, iconDefault, onClick }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
-  function handleToggle() {
+
+  function handleToggle(event: React.MouseEvent<HTMLButtonElement>) {
     setIsPressed((prevState) => !prevState);
+    if (onClick) {
+      onClick(event);
+    }
   }
 
   return (
