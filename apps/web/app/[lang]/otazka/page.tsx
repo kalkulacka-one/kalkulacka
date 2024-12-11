@@ -28,13 +28,12 @@ export default function Page() {
   const [steps, setSteps] = useState<Steps>({
     answers: [],
     totalQuestion: questions.length,
-    currentQuestion: currentQuestion,
+    currentQuestion: 0,
   });
 
   function handleClick(button: string) {
     switch (button) {
       case "inFavour":
-        // fix glitch, styling of the status bar should be permanent
         setSteps((prevSteps) => {
           const updatedAnswer = prevSteps.answers.map((answer, index) => {
             if (index === currentQuestion - 1) {
@@ -43,7 +42,11 @@ export default function Page() {
             return answer;
           });
 
-          return { ...prevSteps, answers: updatedAnswer };
+          return {
+            ...prevSteps,
+            answers: updatedAnswer,
+            currentQuestion: prevSteps.currentQuestion + 1,
+          };
         });
         setCurrentQuestion((prevState) => prevState + 1);
         break;
@@ -56,31 +59,41 @@ export default function Page() {
             return answer;
           });
 
-          return { ...prevSteps, answers: updatedAnswer };
+          return {
+            ...prevSteps,
+            answers: updatedAnswer,
+            currentQuestion: prevSteps.currentQuestion + 1,
+          };
         });
         setCurrentQuestion((prevState) => prevState + 1);
         break;
       case "prev":
         setCurrentQuestion((prevState) => prevState - 1);
-        setSteps({
-          ...steps,
-          currentQuestion: currentQuestion - 1,
+        setSteps((prevState) => {
+          return {
+            ...prevState,
+            currentQuestion: prevState.currentQuestion - 1,
+          };
         });
         break;
       // fix button naming  and args to "skip" and null set
       case "next":
         setCurrentQuestion((prevState) => prevState + 1);
-        setSteps({
-          ...steps,
-          currentQuestion: currentQuestion + 1,
+        setSteps((prevState) => {
+          return {
+            ...prevState,
+            currentQuestion: prevState.currentQuestion + 1,
+          };
         });
         break;
       case "guide":
         setGuideDisplay(false);
         setCurrentQuestion((prevState) => prevState + 1);
-        setSteps({
-          ...steps,
-          currentQuestion: currentQuestion + 1,
+        setSteps((prevSteps) => {
+          return {
+            ...prevSteps,
+            currentQuestion: prevSteps.currentQuestion + 1,
+          };
         });
         break;
     }
@@ -89,7 +102,7 @@ export default function Page() {
   // console.log(steps);
 
   useEffect(() => {
-    // Data call and data state update
+    // 1. Data call and data questions state update
     const fetchData = async () => {
       const res = await fetch(
         "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json",
@@ -97,8 +110,8 @@ export default function Page() {
       const data = await res.json();
       setIsLoading(false);
       setQuestions(data);
-      // console.log(data);
-      // updating steps
+
+      // populating steps state
       const answerId = data.map((data: Question) => {
         return { answerId: data.id, status: null };
       });
