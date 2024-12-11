@@ -19,7 +19,8 @@ const stepProgressVariants = cva("", {
       isNull: "k1-bg-neutral-disabled",
     },
     height: {
-      active: "k1-h-2 k1-bg-neutral-strong-active",
+      // fix needed: better solution than important ?
+      active: "k1-h-2 !k1-bg-neutral-strong-active",
       inactive: "k1-h-1",
     },
     // added empty strings for the lint check, this component awaits new merge ({status: "undefined", height:"inactive"})

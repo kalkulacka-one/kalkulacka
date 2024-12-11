@@ -41,6 +41,7 @@ export function QuestionWrapper({
           onClick={() => onClick("next")}
         >
           Přeskočit
+          {currentQuestion >= questionCount ? "Rekapitulace" : "Přeskočit"}
         </Button>
       </div>
       <div className="xs:k1-flex xs:k1-flex-col xs:k1-gap-2 min-[701px]:k1-grid min-[701px]:k1-grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:k1-grid sm:k1-grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:k1-gap-8">
@@ -57,9 +58,14 @@ export function QuestionWrapper({
               onClick={() => onClick("prev")}
               // fix k1 prefix issue!!!
             >
-              <span className="k1-hidden md:k1-block">
-                Předchozí <span className="k1-hidden lg:k1-inline">otázka</span>
-              </span>
+              {currentQuestion === 1 ? (
+                "Návod"
+              ) : (
+                <span className="k1-hidden md:k1-block">
+                  Předchozí
+                  <span className="k1-hidden lg:k1-inline">otázka</span>
+                </span>
+              )}
             </Button>
           </div>
         </div>
@@ -81,9 +87,14 @@ export function QuestionWrapper({
               kind="link"
               onClick={() => onClick("next")}
             >
-              <span className="k1-hidden md:k1-block">
-                Přeskočit <span className="k1-hidden lg:k1-inline">otázku</span>
-              </span>
+              {currentQuestion >= questionCount ? (
+                "Rekapitulace"
+              ) : (
+                <span className="k1-hidden md:k1-block">
+                  Přeskočit
+                  <span className="k1-hidden lg:k1-inline">otázku</span>
+                </span>
+              )}
             </Button>
           </div>
         </div>
