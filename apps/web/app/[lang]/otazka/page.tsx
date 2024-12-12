@@ -148,6 +148,11 @@ export default function Page() {
     fetchData();
   }, []);
 
+  // cleanup useEffects then
+  useEffect(() => {
+    // console.log("Component rendered")
+  }, [steps])
+
   const questionCount = questions.length;
 
   return (
@@ -179,22 +184,21 @@ export default function Page() {
           );
         }
       })}
-      {/* Bottom bar
-      {currentQuestion <= questions.length && currentQuestion > 0 ? (
-        <ClientBottomBar onClick={handleClick} steps={steps} />
-      ) : null} */}
-      {/* Bottom bar toggle */}
+      {/* Bottom bar */}
+      {/* write more elegantly  */}
       {questionsArray.map((question, index) => {
         const questionNumber = index + 1;
         if (question.important === true && questionNumber === currentQuestion) {
           return (
-            <ClientBottomBar starPressed onClick={handleClick} steps={steps} />
+            // fix needed: better key naming ?
+            <ClientBottomBar key={`Bottom bar (starPressed): ${question.id}`} starPressed onClick={handleClick} steps={steps} />
           );
         } else if (
           question.important === false &&
           questionNumber === currentQuestion
         ) {
-          return <ClientBottomBar onClick={handleClick} steps={steps} />;
+          // fix needed: better key naming ?
+          return <ClientBottomBar key={`Bottom bar (default): ${question.id}`}  onClick={handleClick} steps={steps} />;
         }
       })}
     </div>
