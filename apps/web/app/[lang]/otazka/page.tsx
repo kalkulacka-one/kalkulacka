@@ -37,6 +37,8 @@ export default function Page() {
     currentQuestion: 0,
   });
 
+  const questionsArray = steps.answers;
+
   function handleClick(button: string) {
     switch (button) {
       case "inFavour":
@@ -177,10 +179,24 @@ export default function Page() {
           );
         }
       })}
-      {/* Bottom bar */}
+      {/* Bottom bar
       {currentQuestion <= questions.length && currentQuestion > 0 ? (
         <ClientBottomBar onClick={handleClick} steps={steps} />
-      ) : null}
+      ) : null} */}
+      {/* Bottom bar toggle */}
+      {questionsArray.map((question, index) => {
+        const questionNumber = index + 1;
+        if (question.important === true && questionNumber === currentQuestion) {
+          return (
+            <ClientBottomBar starPressed onClick={handleClick} steps={steps} />
+          );
+        } else if (
+          question.important === false &&
+          questionNumber === currentQuestion
+        ) {
+          return <ClientBottomBar onClick={handleClick} steps={steps} />;
+        }
+      })}
     </div>
   );
 }
