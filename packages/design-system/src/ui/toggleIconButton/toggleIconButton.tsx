@@ -2,6 +2,7 @@ import React, { ComponentProps } from "react";
 import { IconButton } from "@repo/design-system/ui";
 
 type Props = {
+  togglePressed?: boolean;
   iconDefault: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   iconPressed: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   children?: React.ReactNode;
@@ -10,7 +11,7 @@ type Props = {
 const ToggleIconButton = React.forwardRef<
   React.ElementRef<typeof IconButton>,
   Props
->(({ children, iconPressed, iconDefault, onClick }, ref) => {
+>(({ children, iconPressed, iconDefault, onClick, togglePressed }, ref) => {
   const [isPressed, setIsPressed] = React.useState(false);
 
   function handleToggle(event: React.MouseEvent<HTMLButtonElement>) {
@@ -24,7 +25,7 @@ const ToggleIconButton = React.forwardRef<
     <IconButton
       pressed={isPressed}
       onClick={handleToggle}
-      icon={isPressed ? iconPressed : iconDefault}
+      icon={isPressed || togglePressed ? iconPressed : iconDefault}
       size="default"
       iconSize="default"
       iconWrapper="default"

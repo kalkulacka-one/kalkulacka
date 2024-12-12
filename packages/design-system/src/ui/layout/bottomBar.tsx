@@ -6,11 +6,12 @@ type ButtonType = "inFavour" | "against" | "star";
 
 type Props = {
   // solve unused button type eslint problem
+  starPressed?: boolean;
   onClick: (button: ButtonType) => void;
   steps?: any;
 };
 
-export function BottomBar({ onClick, steps }: Props) {
+export function BottomBar({ starPressed, onClick, steps }: Props) {
   // const steps = {
   //   answers: [
   //     { answerId: "1", status: true }, // positive step (e.g. answerInFavour)
@@ -53,7 +54,10 @@ export function BottomBar({ onClick, steps }: Props) {
       {/* button wrapper */}
       <div className="k1-flex k1-justify-center">
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
-          <StarIconButton onClick={() => onClick("star")} />
+          <StarIconButton
+            starPressed={starPressed ? starPressed : false}
+            onClick={() => onClick("star")}
+          />
           <ButtonInFavour onClick={() => onClick("inFavour")} />
           <ButtonAgainst onClick={() => onClick("against")} />
         </div>
