@@ -151,7 +151,7 @@ export default function Page() {
   // cleanup useEffects then
   useEffect(() => {
     // console.log("Component rendered")
-  }, [steps])
+  }, [steps]);
 
   const questionCount = questions.length;
 
@@ -191,14 +191,25 @@ export default function Page() {
         if (question.important === true && questionNumber === currentQuestion) {
           return (
             // fix needed: better key naming ?
-            <ClientBottomBar key={`Bottom bar (starPressed): ${question.id}`} starPressed onClick={handleClick} steps={steps} />
+            <ClientBottomBar
+              key={`Bottom bar (starPressed): ${question.id}`}
+              starPressed
+              onClick={handleClick}
+              steps={steps}
+            />
           );
         } else if (
           question.important === false &&
           questionNumber === currentQuestion
         ) {
           // fix needed: better key naming ?
-          return <ClientBottomBar key={`Bottom bar (default): ${question.id}`}  onClick={handleClick} steps={steps} />;
+          return (
+            <ClientBottomBar
+              key={`Bottom bar (default): ${question.id}`}
+              onClick={handleClick}
+              steps={steps}
+            />
+          );
         }
       })}
     </div>
