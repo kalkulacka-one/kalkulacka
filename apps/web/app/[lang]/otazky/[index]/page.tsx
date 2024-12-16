@@ -6,31 +6,21 @@ export async function generateStaticParams() {
   );
   const data = await res.json();
 
-  return data.map((question) => ({
-    id: question.id,
+  return data.map((_, index) => ({
+    index: index.toString(),
   }));
 }
 
-async function getQuestion(id) {
+async function getQuestion(index) {
   const res = await fetch(
     "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json",
   );
   const data = await res.json();
-  const question = data.filter((question) => question.id === id);
-  return question;
+  return data[index];
 }
 
 export default async function Page({ params }) {
-  const questionArray = await getQuestion(params.id);
-  // convert object to array
-  const convertArrayToObject = (array) => {
-    if (array.length === 1) {
-      return array[0];
-    }
-    throw "Array containt more than 1 item!";
-  };
-  const question = await convertArrayToObject(questionArray);
-  console.log(questionArray);
+  const question = await getQuestion(params.index);
   return (
     <OtazkaComponent
       key={question.id}
