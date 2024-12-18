@@ -21,6 +21,7 @@ async function getQuestion(index) {
 
 export default async function Page({ params }) {
   const question = await getQuestion(params.index);
+  console.log(question);
   return (
     <OtazkaComponent
       key={question.id}

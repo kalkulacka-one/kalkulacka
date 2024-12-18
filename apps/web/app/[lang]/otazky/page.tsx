@@ -1,5 +1,9 @@
 import type { Question } from "@repo/schema/dist";
 import OtazkaComponent from "../../temp/OtazkaComponent";
+import {
+  ClientBottomBar,
+  ClientQuestionWrapper,
+} from "../../temp/ClientWrapper";
 
 type Props = {
   params: { otazkaId: string };
@@ -16,17 +20,16 @@ export default async function Page({ params }: Props) {
   const questions = await getData();
   return (
     <>
-      <h1>Otazky page {params.otazkaId}</h1>
-      <span>ID otázky:</span>
+      <span>Questions length: {questions.length}</span>
       {questions.length > 0 &&
-        questions.map((item: any) => {
+        questions.map((question: Question, index: number) => {
+          const currentQuestion = index + 1;
           return (
-            // understand type error here
-            <OtazkaComponent
-              key={item.id}
-              statement={item.statement}
-              detail={item.detail}
-              id={item.id}
+            <ClientQuestionWrapper
+              key={`Question: ${question.id}`}
+              currentQuestion={currentQuestion}
+              questionCount={questions.length}
+              question={question}
             />
           );
         })}
