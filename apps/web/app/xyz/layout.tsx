@@ -1,3 +1,6 @@
+import "../globals.css";
+import "@repo/design-system/styles";
+import "@repo/design-system/themes/theme-default";
 import { useQuestionsStore } from "./store";
 
 export const metadata = {
