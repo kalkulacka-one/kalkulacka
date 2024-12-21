@@ -8,11 +8,13 @@ export default function Page() {
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
+  const answerYes = useQuestionsStore((state) => state.answerYes);
+  const answerNo = useQuestionsStore((state) => state.answerNo);
 
   return (
     <div>
       {/* questions wrapper */}
-      <div className="flex flex-col gap-2 bg-blue-500 p-5">
+      <div className="flex flex-col gap-2 bg-purple-200 p-5">
         {questions.map((question, index) => {
           const currentStep = index + 1;
           if (currentStep === currentQuestion) {
@@ -47,6 +49,28 @@ export default function Page() {
                     Skip
                   </button>
                 </div>
+              </div>
+            );
+          }
+        })}
+        {/* bottom bar wrapper */}
+        {questions.map((question, index) => {
+          const currentStep = index + 1;
+          if (currentStep === currentQuestion) {
+            return (
+              <div key={question.id} className="h-auto bg-rose-300">
+                <button
+                  onClick={answerYes}
+                  className={`border-4 border-blue-800 ${question.answerType === true ? "bg-blue-400" : "bg-blue-100"} px-4 py-2`}
+                >
+                  Yes
+                </button>
+                <button
+                  onClick={answerNo}
+                  className={`border-4 border-blue-800 ${question.answerType === false ? "bg-rose-400" : "bg-rose-100"} px-4 py-2`}
+                >
+                  No
+                </button>
               </div>
             );
           }

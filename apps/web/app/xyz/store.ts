@@ -2,7 +2,8 @@ import { create } from "zustand";
 import { Question } from "@repo/schema/dist";
 
 type ExtendedQuestions = Question & {
-  isImportant: boolean;
+  isImportant: true | false | null;
+  answerType: true | false | null | undefined;
 };
 
 type QuestionsStore = {
@@ -12,6 +13,8 @@ type QuestionsStore = {
   skipQuestion: () => void;
   prevQuestion: () => void;
   toggleImportant: () => void;
+  answerYes: () => void;
+  answerNo: () => void;
 };
 
 export const useQuestionsStore = create<QuestionsStore>((set) => ({
@@ -24,7 +27,8 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       detail:
         "V ČR studuje na všeobecných oborech 30 % žáků, zatímco v Evropě je tento podíl 50 %. Zastánci chtějí připravit studenty/ky na proměnlivý pracovní trh a zlepšit šance i na další, vyšší vzdělávání, odpůrci argumentují potřebou odborných škol pro naplnění poptávky po specializovaných pracovních místech.",
       tags: ["Vzdělání"],
-      isImportant: true,
+      isImportant: null,
+      answerType: null,
     },
     {
       id: "36079500-1556-4330-81c6-defe94472c99",
@@ -34,7 +38,8 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       detail:
         "Investice do veřejné dopravy jsou klíčové pro všechny kraje, zejména pro venkovské a méně rozvinuté oblasti.",
       tags: ["Veřejná doprava"],
-      isImportant: false,
+      isImportant: null,
+      answerType: null,
     },
     {
       id: "0908ae4c-c4bc-4908-8032-8bc96ae8ca49",
@@ -44,7 +49,8 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       detail:
         "Obnovitelné zdroje pomáhají snížit uhlíkovou stopu kraje. Zastánci argumentují, že to přispívá k boji proti změně klimatu, kritici varují před vysokými počátečními investicemi a technickými obtížemi.",
       tags: ["Obnovitelná energie"],
-      isImportant: true,
+      isImportant: null,
+      answerType: null,
     },
     {
       id: "fcdf48ac-3831-4efe-a859-a7a34c446e1c",
@@ -53,7 +59,8 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       detail:
         "Kraje mohou předkládat zákony parlamentu. Zastánci volají po častějším využívání této možnosti, kritici poukazují na nedostatek odborné kapacity pro legislativní práci.",
       tags: ["Legislativní iniciativa"],
-      isImportant: false,
+      isImportant: null,
+      answerType: null,
     },
   ],
   currentQuestion: 1,
@@ -69,6 +76,32 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
           return {
             ...question,
             isImportant: !question.isImportant,
+          };
+        }
+        return { ...question };
+      });
+      return { ...state, questions: updatedQuestions };
+    }),
+  answerYes: () =>
+    set((state) => {
+      const updatedQuestions = state.questions.map((question, index) => {
+        if (index + 1 === state.currentQuestion) {
+          return {
+            ...question,
+            answerType: true,
+          };
+        }
+        return { ...question };
+      });
+      return { ...state, questions: updatedQuestions };
+    }),
+  answerNo: () =>
+    set((state) => {
+      const updatedQuestions = state.questions.map((question, index) => {
+        if (index + 1 === state.currentQuestion) {
+          return {
+            ...question,
+            answerType: false,
           };
         }
         return { ...question };
