@@ -7,6 +7,7 @@ type ExtendedQuestions = Question & {
 };
 
 type QuestionsStore = {
+  testQuestions: any[];
   questions: ExtendedQuestions[];
   currentQuestion: number;
   questionTotal: number;
@@ -18,7 +19,8 @@ type QuestionsStore = {
 };
 
 export const useQuestionsStore = create<QuestionsStore>((set) => ({
-  questions: [
+  questions: [],
+  testQuestions: [
     {
       id: "b2e48e5f-2a73-498a-8817-3f8c36663984",
       title: "Více míst na gymnáziích",
