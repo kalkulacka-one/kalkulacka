@@ -8,7 +8,7 @@ async function fetchQuestions() {
     "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json",
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
 }
 
 fetchQuestions();

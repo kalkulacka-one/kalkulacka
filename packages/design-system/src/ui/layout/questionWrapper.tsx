@@ -3,18 +3,25 @@ import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
 import { QuestionCard } from "@repo/design-system/ui";
 import type { Question } from "@repo/schema/dist/question.schema";
 
+type ExtendedQuestions = Question & {
+  isImportant: true | false | null;
+  answerType: true | false | null | undefined;
+};
+
 export interface Props {
-  question: Question;
+  question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
-  onClick: (button: string) => void;
+  skipQuestion: () => void;
+  prevQuestion: () => void;
 }
 
 export function QuestionWrapper({
   currentQuestion,
   questionCount,
   question,
-  onClick,
+  skipQuestion,
+  prevQuestion,
 }: Props) {
   // const { id, title, statement, detail, tags } = question;
   return (
@@ -28,7 +35,7 @@ export function QuestionWrapper({
           iconPosition="left"
           kind="link"
           fitContent
-          onClick={() => onClick("prev")}
+          onClick={prevQuestion}
         >
           {currentQuestion === 1 ? "Návod" : "Předchozí"}
         </Button>
@@ -38,7 +45,7 @@ export function QuestionWrapper({
           iconPosition="right"
           kind="link"
           fitContent
-          onClick={() => onClick("next")}
+          onClick={skipQuestion}
         >
           {currentQuestion >= questionCount ? "Rekapitulace" : "Přeskočit"}
         </Button>
@@ -54,11 +61,11 @@ export function QuestionWrapper({
               fitContent
               icon={ArrowIconLeft}
               kind="link"
-              onClick={() => onClick("prev")}
+              onClick={prevQuestion}
               // fix k1 prefix issue!!!
             >
               {currentQuestion === 1 ? (
-                "Návod"
+                <span className="k1-hidden lg:k1-inline">Návod</span>
               ) : (
                 <span className="k1-hidden md:k1-block">
                   Předchozí{" "}
@@ -84,10 +91,10 @@ export function QuestionWrapper({
               icon={ArrowIconRight}
               iconPosition="right"
               kind="link"
-              onClick={() => onClick("next")}
+              onClick={skipQuestion}
             >
               {currentQuestion >= questionCount ? (
-                "Rekapitulace"
+                <span className="k1-hidden lg:k1-inline">Rekapitulace</span>
               ) : (
                 <span className="k1-hidden md:k1-block">
                   Přeskočit{" "}
