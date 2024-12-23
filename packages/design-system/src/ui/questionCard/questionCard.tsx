@@ -2,15 +2,19 @@ import { Card } from "@repo/design-system/ui";
 import { Badge } from "@repo/design-system/badge";
 import type { Question } from "@repo/schema/dist/question.schema";
 
+type ExtendedQuestions = Question & {
+  isImportant: true | false | null;
+  answerType: true | false | null | undefined;
+};
+
 export interface Props {
-  question: Question;
+  question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
 }
 
 const QuestionCard = ({ question, currentQuestion, questionCount }: Props) => {
   const { id, title, statement, detail, tags } = question;
-
   return (
     <Card
       id={id}

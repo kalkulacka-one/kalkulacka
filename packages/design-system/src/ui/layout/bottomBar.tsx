@@ -8,12 +8,12 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null | undefined;
 };
 
-type ButtonType = "inFavour" | "against" | "star";
-
 type Props = {
   // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
-  onClick: (button: ButtonType) => void;
+  toggleImportant: () => void;
+  yesClick: () => void;
+  noClick: () => void;
   questions?: ExtendedQuestions[];
   currentQuestion: number;
   questionTotal: number;
@@ -21,10 +21,12 @@ type Props = {
 
 export function BottomBar({
   starPressed,
-  onClick,
+  yesClick,
+  noClick,
   questions,
   questionTotal,
   currentQuestion,
+  toggleImportant,
 }: Props) {
   return (
     // main wrapper
@@ -32,6 +34,7 @@ export function BottomBar({
       {/* count status wrapper */}
       <div>
         <StepProgressFancy
+          // TODO: fix TS error
           questions={questions}
           questionTotal={questionTotal}
           currentQuestion={currentQuestion}
@@ -42,10 +45,10 @@ export function BottomBar({
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
           <StarIconButton
             starPressed={starPressed ? starPressed : false}
-            onClick={() => onClick("star")}
+            onClick={toggleImportant}
           />
-          <ButtonInFavour onClick={() => onClick("inFavour")} />
-          <ButtonAgainst onClick={() => onClick("against")} />
+          <ButtonInFavour onClick={yesClick} />
+          <ButtonAgainst onClick={noClick} />
         </div>
       </div>
     </div>
