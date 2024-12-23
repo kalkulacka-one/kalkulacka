@@ -1,6 +1,12 @@
 import { ButtonInFavour, ButtonAgainst } from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
+import { Question } from "@repo/schema/dist";
+
+type ExtendedQuestions = Question & {
+  isImportant: true | false | null;
+  answerType: true | false | null | undefined;
+};
 
 type ButtonType = "inFavour" | "against" | "star";
 
@@ -8,16 +14,28 @@ type Props = {
   // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
   onClick: (button: ButtonType) => void;
-  steps?: any;
+  questions?: ExtendedQuestions[];
+  currentQuestion: number;
+  questionTotal: number;
 };
 
-export function BottomBar({ starPressed, onClick, steps }: Props) {
+export function BottomBar({
+  starPressed,
+  onClick,
+  questions,
+  questionTotal,
+  currentQuestion,
+}: Props) {
   return (
     // main wrapper
     <div className="k1-sticky k1-bottom-0 k1-bg-white">
       {/* count status wrapper */}
       <div>
-        <StepProgressFancy steps={steps} />
+        <StepProgressFancy
+          questions={questions}
+          questionTotal={questionTotal}
+          currentQuestion={currentQuestion}
+        />
       </div>
       {/* button wrapper */}
       <div className="k1-flex k1-justify-center">

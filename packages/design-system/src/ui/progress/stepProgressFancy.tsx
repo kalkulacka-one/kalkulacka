@@ -1,13 +1,17 @@
 import { cva, VariantProps } from "class-variance-authority";
+import { Question } from "@repo/schema/dist";
+
+type ExtendedQuestions = Question & {
+  isImportant: true | false | null;
+  answerType: true | false | null | undefined;
+};
 
 type Status = true | false | null | undefined;
 
 type Props = {
-  steps: {
-    currentQuestion: number;
-    totalQuestion: number;
-    answers: { answerId: string; status: Status }[];
-  };
+  questions: ExtendedQuestions[];
+  currentQuestion: number;
+  questionTotal: number;
 } & VariantProps<typeof stepProgressVariants>;
 
 const stepProgressVariants = cva("", {
@@ -42,23 +46,24 @@ function checkStatus(status: Status) {
   }
 }
 
-const StepProgressFancy = ({ steps }: Props): JSX.Element => {
-  const answersData = steps.answers;
-  const { currentQuestion } = steps;
-
+const StepProgressFancy = ({
+  questions,
+  currentQuestion,
+  questionTotal,
+}: Props): JSX.Element => {
   return (
     <div className="k1-flex k1-h-6 k1-items-center k1-justify-start">
-      {answersData.map((answer, index) => {
+      {questions.map((answer, index) => {
         return (
           <div
             // fix needed: better key naming ?
             key={`Step bar: ${index}`}
             style={{
-              flex: `1 1 calc(100% / ${steps.answers.length})`,
-              width: `calc(100% / ${steps.answers.length})`,
+              flex: `1 1 calc(100% / ${questionTotal})`,
+              width: `calc(100% / ${questionTotal})`,
             }}
             className={stepProgressVariants({
-              status: checkStatus(answer.status),
+              status: checkStatus(answer.answerType),
               height: currentQuestion === index + 1 ? "active" : "inactive",
             })}
           ></div>
