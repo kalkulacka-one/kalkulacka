@@ -1,7 +1,9 @@
 "use client";
 import { useQuestionsStore } from "./store";
+import { BottomBar } from "@repo/design-system/ui";
 
 export default function Page() {
+  // cleanup and better naming
   const questions = useQuestionsStore((state) => state.questions);
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const questionTotal = useQuestionsStore((state) => state.questionTotal);
@@ -10,6 +12,16 @@ export default function Page() {
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
+
+  const YesClick = () => {
+    answerYes();
+    skipQuestion();
+  };
+
+  const NoClick = () => {
+    answerNo();
+    skipQuestion();
+  };
 
   return (
     <div>
@@ -54,19 +66,25 @@ export default function Page() {
           }
         })}
         {/* bottom bar wrapper */}
+        <BottomBar
+          questions={questions}
+          currentQuestion={currentQuestion}
+          questionTotal={questionTotal}
+          onClick={() => onclick("inFavour")}
+        />
         {questions.map((question, index) => {
           const currentStep = index + 1;
           if (currentStep === currentQuestion) {
             return (
               <div key={question.id} className="h-auto bg-rose-300">
                 <button
-                  onClick={answerYes}
+                  onClick={YesClick}
                   className={`border-4 border-blue-800 ${question.answerType === true ? "bg-blue-400" : "bg-blue-100"} px-4 py-2`}
                 >
                   Yes
                 </button>
                 <button
-                  onClick={answerNo}
+                  onClick={NoClick}
                   className={`border-4 border-blue-800 ${question.answerType === false ? "bg-rose-400" : "bg-rose-100"} px-4 py-2`}
                 >
                   No
