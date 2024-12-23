@@ -11,6 +11,7 @@ type ExtendedQuestions = Question & {
 
 export default function Page() {
   // cleanup and better naming
+  // const testQuestions = useQuestionsStore((state) => state.testQuestions);
   const questions = useQuestionsStore((state) => state.questions);
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const questionTotal = useQuestionsStore((state) => state.questionTotal);
