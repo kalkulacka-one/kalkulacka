@@ -3,6 +3,7 @@ import { useQuestionsStore } from "./store";
 import { QuestionWrapper, BottomBar } from "@repo/design-system/ui";
 import { useRouter } from "next/navigation";
 import type { ExtendedQuestions } from "./store";
+import { useEffect } from "react";
 
 export default function Page() {
   // cleanup and better naming
@@ -16,6 +17,16 @@ export default function Page() {
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
   const router = useRouter();
+
+  // understand this approach more!
+  useEffect(() => {
+    if (currentQuestion) {
+      const slug = `/xyz/${currentQuestion}`;
+      if (window.location.pathname !== slug) {
+        window.history.replaceState(null, "", slug);
+      }
+    }
+  }, [currentQuestion]);
 
   const prevClick = () => {
     if (currentQuestion === 1) {
