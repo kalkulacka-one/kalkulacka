@@ -12,7 +12,7 @@ const ToggleIconButton = React.forwardRef<
   React.ElementRef<typeof IconButton>,
   Props
 >(({ children, iconPressed, iconDefault, onClick, togglePressed }, ref) => {
-  const [isPressed, setIsPressed] = React.useState(false);
+  const [isPressed, setIsPressed] = React.useState(togglePressed);
 
   function handleToggle(event: React.MouseEvent<HTMLButtonElement>) {
     setIsPressed((prevState) => !prevState);

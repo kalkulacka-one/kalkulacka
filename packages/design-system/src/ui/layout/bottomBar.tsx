@@ -1,16 +1,12 @@
 import { ButtonInFavour, ButtonAgainst } from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
-import { Question } from "@repo/schema/dist";
-
-type ExtendedQuestions = Question & {
-  isImportant: true | false | null;
-  answerType: true | false | null | undefined;
-};
+import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
 
 type Props = {
   // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
+  testPressed?: boolean;
   toggleImportant: () => void;
   yesClick: () => void;
   noClick: () => void;
@@ -21,6 +17,7 @@ type Props = {
 
 export function BottomBar({
   starPressed,
+  testPressed,
   yesClick,
   noClick,
   questions,
@@ -44,7 +41,7 @@ export function BottomBar({
       <div className="k1-flex k1-justify-center">
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
           <StarIconButton
-            starPressed={starPressed ? starPressed : false}
+            starPressed={starPressed ? true : false}
             onClick={toggleImportant}
           />
           <ButtonInFavour onClick={yesClick} />
