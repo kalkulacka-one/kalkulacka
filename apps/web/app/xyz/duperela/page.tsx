@@ -9,13 +9,14 @@ export default function Page({ params }) {
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   const router = useRouter();
+  const paramsNumber = Number(params.index);
 
   const prevClick = () => {
     if (currentQuestion < 1) {
       router.push("/xyz/navod");
     } else {
       prevQuestion();
-      router.push(`/xyz/${currentQuestion - 1}`);
+      router.push(`/xyz/${paramsNumber - 1}`);
     }
   };
 
@@ -24,7 +25,7 @@ export default function Page({ params }) {
       router.push("/xyz/rekapitulace");
     } else {
       skipQuestion();
-      router.push(`/xyz/${currentQuestion + 1}`);
+      router.push(`/xyz/${paramsNumber + 1}`);
     }
   };
 
@@ -37,7 +38,7 @@ export default function Page({ params }) {
             <QuestionWrapper
               key={`Question card id:${question.id}`}
               question={question}
-              currentQuestion={params.index}
+              currentQuestion={currentQuestion}
               questionCount={questions.length}
               skipQuestion={skipClick}
               prevQuestion={prevClick}
