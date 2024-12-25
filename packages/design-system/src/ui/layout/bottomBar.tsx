@@ -6,18 +6,16 @@ import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
 type Props = {
   // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
-  testPressed?: boolean;
   toggleImportant: () => void;
   yesClick: () => void;
   noClick: () => void;
-  questions?: ExtendedQuestions[];
+  questions: ExtendedQuestions[];
   currentQuestion: number;
   questionTotal: number;
 };
 
 export function BottomBar({
   starPressed,
-  testPressed,
   yesClick,
   noClick,
   questions,
@@ -31,7 +29,6 @@ export function BottomBar({
       {/* count status wrapper */}
       <div>
         <StepProgressFancy
-          // TODO: fix TS error
           questions={questions}
           questionTotal={questionTotal}
           currentQuestion={currentQuestion}

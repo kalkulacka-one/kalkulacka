@@ -75,7 +75,6 @@ export default function Page() {
               yesClick={yesClick}
               noClick={noClick}
               starPressed={question.isImportant ? true : undefined}
-              testPressed={question.isImportant ? true : undefined}
             />
           );
         }

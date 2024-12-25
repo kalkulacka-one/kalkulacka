@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useQuestionsStore } from "./store";
+import type { ExtendedQuestions } from "./store";
 
 type Props = {
   testQuestions: any;
@@ -13,13 +14,15 @@ export default function KalkulackaInitializer({
   children,
 }: Props) {
   useQuestionsStore.setState(() => {
-    const updatedTestQuestions = testQuestions.map((question) => {
-      return {
-        ...question,
-        isImportant: null,
-        answerType: null,
-      };
-    });
+    const updatedTestQuestions = testQuestions.map(
+      (question: ExtendedQuestions) => {
+        return {
+          ...question,
+          isImportant: null,
+          answerType: null,
+        };
+      },
+    );
     return { questions: updatedTestQuestions };
   });
 
