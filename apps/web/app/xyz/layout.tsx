@@ -11,6 +11,7 @@ export default async function RootLayout({
   async function fetchQuestions() {
     "use server";
     const res = await fetch(
+      // AT questions test: https://www.wahlrechner.at/data/instance/wahlrechner.at/nationalratswahl-2024/wahlrechner/questions.json
       "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json",
     );
     const data = await res.json();

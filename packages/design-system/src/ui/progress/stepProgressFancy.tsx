@@ -1,11 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { Question } from "@repo/schema/dist";
-
-type ExtendedQuestions = Question & {
-  isImportant: true | false | null;
-  answerType: true | false | null | undefined;
-};
-
+import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
 type Status = true | false | null | undefined;
 
 type Props = {
@@ -53,7 +47,7 @@ const StepProgressFancy = ({
 }: Props): JSX.Element => {
   return (
     <div className="k1-flex k1-h-6 k1-items-center k1-justify-start">
-      {questions.map((answer, index) => {
+      {questions.map((question: ExtendedQuestions, index) => {
         return (
           <div
             // fix needed: better key naming ?
@@ -63,7 +57,7 @@ const StepProgressFancy = ({
               width: `calc(100% / ${questionTotal})`,
             }}
             className={stepProgressVariants({
-              status: checkStatus(answer.answerType),
+              status: checkStatus(question.answerType),
               height: currentQuestion === index + 1 ? "active" : "inactive",
             })}
           ></div>

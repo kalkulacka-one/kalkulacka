@@ -1,13 +1,8 @@
 "use client";
 import { useQuestionsStore } from "./store";
 import { QuestionWrapper, BottomBar } from "@repo/design-system/ui";
-import type { Question } from "@repo/schema/dist";
 import { useRouter } from "next/navigation";
-
-type ExtendedQuestions = Question & {
-  isImportant: true | false | null;
-  answerType: true | false | null | undefined;
-};
+import type { ExtendedQuestions } from "./store";
 
 export default function Page() {
   // cleanup and better naming
@@ -59,7 +54,7 @@ export default function Page() {
               key={`Question card id:${question.id}`}
               question={question}
               currentQuestion={currentQuestion}
-              questionCount={questionTotal}
+              questionCount={questions.length}
               skipQuestion={skipClick}
               prevQuestion={prevClick}
             />
@@ -67,7 +62,7 @@ export default function Page() {
         }
       })}
       {/* Bottom bar wrapper */}
-      {questions.map((question, index) => {
+      {questions.map((question: ExtendedQuestions, index) => {
         const currentStep = index + 1;
         if (currentStep === currentQuestion) {
           return (
@@ -79,7 +74,8 @@ export default function Page() {
               toggleImportant={toggleImportant}
               yesClick={yesClick}
               noClick={noClick}
-              starPressed={question.isImportant ? true : false}
+              starPressed={question.isImportant ? true : undefined}
+              testPressed={question.isImportant ? true : undefined}
             />
           );
         }

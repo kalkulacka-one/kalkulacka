@@ -3,7 +3,7 @@ import { Question } from "@repo/schema/dist";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
-  answerType: true | false | null | undefined;
+  answerType: true | false | null;
 };
 
 type QuestionsStore = {
@@ -111,3 +111,5 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       return { ...state, questions: updatedQuestions };
     }),
 }));
+
+export type { ExtendedQuestions };
