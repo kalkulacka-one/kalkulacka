@@ -26,6 +26,7 @@ export default function Page() {
 
   useEffect(() => {
     // Always do navigations after the first render
+    // shallow error?
     router.push(`/xyz/${currentQuestion}`, undefined, { shallow: true });
   }, [currentQuestion]);
 
