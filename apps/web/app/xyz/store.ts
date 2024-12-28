@@ -16,6 +16,7 @@ type QuestionsStore = {
   toggleImportant: () => void;
   answerYes: () => void;
   answerNo: () => void;
+  setCurrentQuestion: (number: number) => void;
 };
 
 export const useQuestionsStore = create<QuestionsStore>((set) => ({
@@ -65,7 +66,7 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       answerType: null,
     },
   ],
-  currentQuestion: 1,
+  currentQuestion: 0,
   questionTotal: 4,
   skipQuestion: () =>
     set((state) => ({ currentQuestion: state.currentQuestion + 1 })),
@@ -110,6 +111,7 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       });
       return { ...state, questions: updatedQuestions };
     }),
+  setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
 }));
 
 export type { ExtendedQuestions };
