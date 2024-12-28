@@ -7,7 +7,6 @@ type ExtendedQuestions = Question & {
 };
 
 type QuestionsStore = {
-  testQuestions: any[];
   questions: ExtendedQuestions[];
   currentQuestion: number;
   questionTotal: number;
@@ -19,53 +18,41 @@ type QuestionsStore = {
   setCurrentQuestion: (number: number) => void;
 };
 
-export const useQuestionsStore = create<QuestionsStore>((set) => ({
-  questions: [],
-  testQuestions: [
+type GuideStore = {
+  guide: { content: string }[];
+  currentStep: number;
+  stepTotal: number;
+  nextStep: () => void;
+  prevStep: () => void;
+};
+
+export const useGuideStore = create<GuideStore>((set) => ({
+  guide: [
     {
-      id: "b2e48e5f-2a73-498a-8817-3f8c36663984",
-      title: "Více míst na gymnáziích",
-      statement:
-        "Měl by kraj rozšířit kapacitu gymnázií a podpořit všeobecné vzdělávací obory?",
-      detail:
-        "V ČR studuje na všeobecných oborech 30 % žáků, zatímco v Evropě je tento podíl 50 %. Zastánci chtějí připravit studenty/ky na proměnlivý pracovní trh a zlepšit šance i na další, vyšší vzdělávání, odpůrci argumentují potřebou odborných škol pro naplnění poptávky po specializovaných pracovních místech.",
-      tags: ["Vzdělání"],
-      isImportant: null,
-      answerType: null,
+      content:
+        "Vítejte ve Volební kalkulačce pro krajské volby 2024 pro Jihomoravský kraj. Čeká vás 25 otázek. Stejné otázky dostaly všechny kandidující strany. Zodpovězení otázek zabere zhruba 10 minut a na konci se dozvíte, jak se jednotlivé strany shodují s vašimi názory. Oslovili jsme všechny strany bez výjimky. Pokud se některá neobjeví ve výsledcích, je to proto, že (zatím) neposlala svoje odpovědi.",
     },
     {
-      id: "36079500-1556-4330-81c6-defe94472c99",
-      title: "Hromadná doprava vs. automobilová",
-      statement:
-        "Investice do hromadné dopravy by měly mít přednost před rozvojem infrastruktury pro osobní automobilovou dopravu.",
-      detail:
-        "Investice do veřejné dopravy jsou klíčové pro všechny kraje, zejména pro venkovské a méně rozvinuté oblasti.",
-      tags: ["Veřejná doprava"],
-      isImportant: null,
-      answerType: null,
+      content:
+        "Odpovídat můžete pomocí tlačítek: = souhlasím = nesouhlasím. Když se s politikem nebo stranou v odpovědi shodnete, získá ve výpočtu shody 1 bod. V opačném případě 1 bod ztratí. Pokud kandidát nebo strana na otázku neodpověděli, započítá se ziskem 0 bodů.",
     },
     {
-      id: "0908ae4c-c4bc-4908-8032-8bc96ae8ca49",
-      title: "Podpora obnovitelných zdrojů energie",
-      statement:
-        "Kraj by měl finančně podporovat budování obnovitelných zdrojů energie na veřejných budovách a pozemcích.",
-      detail:
-        "Obnovitelné zdroje pomáhají snížit uhlíkovou stopu kraje. Zastánci argumentují, že to přispívá k boji proti změně klimatu, kritici varují před vysokými počátečními investicemi a technickými obtížemi.",
-      tags: ["Obnovitelná energie"],
-      isImportant: null,
-      answerType: null,
+      content:
+        "Pokud vám na daném tématu zvlášť záleží, označte ho hvězdičkou: = pro mě důležité.  Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.",
     },
     {
-      id: "fcdf48ac-3831-4efe-a859-a7a34c446e1c",
-      title: "Zákonodárná iniciativa krajů",
-      statement: "Kraj by měl častěji využívat svou zákonodárnou iniciativu.",
-      detail:
-        "Kraje mohou předkládat zákony parlamentu. Zastánci volají po častějším využívání této možnosti, kritici poukazují na nedostatek odborné kapacity pro legislativní práci.",
-      tags: ["Legislativní iniciativa"],
-      isImportant: null,
-      answerType: null,
+      content:
+        "Když si nejste si jisti, téma Vás nezajímá nebo z jiného důvodu nechcete odpovídat, můžete otázku přeskočit šipkou napravo. Tato otázka se do výpočtu vaší shody nezapočítá.",
     },
   ],
+  currentStep: 1,
+  stepTotal: 4,
+  nextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
+  prevStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
+}));
+
+export const useQuestionsStore = create<QuestionsStore>((set) => ({
+  questions: [],
   currentQuestion: 0,
   questionTotal: 4,
   skipQuestion: () =>
