@@ -2,10 +2,13 @@ import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 type Props = {
+  answers?: [];
+  currentQuestion?: number;
+  totalQuestion?: number;
   steps: {
     currentQuestion: number;
     totalQuestion: number;
-    answers: { answerId: string; status: boolean | null | undefined }[];
+    answers: [];
   };
 } & VariantProps<typeof stepProgressVariants>;
 
@@ -17,19 +20,21 @@ const stepProgressVariants = cva("k1-rounded-full", {
     },
   },
 });
-const StepProgress = ({ steps }: Props): JSX.Element => {
-  const { currentQuestion } = steps;
-  const answersData = steps.answers;
+const StepProgress = ({
+  answers,
+  currentQuestion,
+  totalQuestion,
+}: Props): JSX.Element => {
   return (
     <>
       <div className="k1-flex k1-gap-1">
-        {answersData.map((answer, index) => {
+        {answers.map((answer, index) => {
           return (
             <div
               className={stepProgressVariants({
                 status: currentQuestion === index + 1 ? "active" : "inactive",
               })}
-              key={answer.answerId}
+              key={`Bar number: ${index}`}
             ></div>
           );
         })}
