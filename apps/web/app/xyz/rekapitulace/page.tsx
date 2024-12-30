@@ -5,6 +5,16 @@ import { useQuestionsStore } from "../store";
 
 export default function Page() {
   const questions = useQuestionsStore((state) => state.questions);
+  const answerYes = useQuestionsStore((state) => state.answerYes);
+  const answerNo = useQuestionsStore((state) => state.answerNo);
+
+  function handleAnswer(buttonType) {
+    if (buttonType === "Ano") {
+      answerYes();
+    } else if (buttonType === "Ne") {
+      answerNo();
+    }
+  }
 
   return (
     <div className="flex flex-col">
@@ -19,7 +29,7 @@ export default function Page() {
           size="default"
           color="primary"
           icon={ArrowIconRight}
-          iconPosition="left"
+          iconPosition="right"
           hasIcon
           compactable
           wider
@@ -28,10 +38,10 @@ export default function Page() {
           Zobrazit výsledky
         </Button>
       </div>
-      {/* rekapitulace cards */}
       {/* fix grid here, redudant cols */}
-      <div className="grid">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-5">
+        <div className="col-span-1"></div>
+        <div className="col-span-3 col-start-2">
           <span>
             Zde si můžete projít a případně upravit svoje odpovědi a jejich
             váhu.
@@ -44,10 +54,12 @@ export default function Page() {
                 currentQuestion={currentQuestion}
                 questionCount={questions.length}
                 question={question}
+                onClick={handleAnswer}
               />
             );
           })}
         </div>
+        <div className="col-span-1 col-start-5"></div>
       </div>
     </div>
   );
