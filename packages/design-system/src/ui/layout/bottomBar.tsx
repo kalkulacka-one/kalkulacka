@@ -40,7 +40,9 @@ export function BottomBar({
           <StarIconButton
             starPressed={starPressed ? true : false}
             onClick={toggleImportant}
-          />
+          >
+            Pro mě důležité
+          </StarIconButton>
           <ButtonInFavour onClick={yesClick} />
           <ButtonAgainst onClick={noClick} />
         </div>
