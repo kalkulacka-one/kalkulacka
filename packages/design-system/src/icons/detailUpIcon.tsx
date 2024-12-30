@@ -1,0 +1,20 @@
+export function DetailUpIcon(
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
+) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      {props.children}
+      <g transform="rotate(180, 12, 12)">
+        <path
+          d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          fill="currentColor"
+        />
+      </g>
+    </svg>
+  );
+}

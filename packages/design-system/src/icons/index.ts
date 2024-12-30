@@ -11,3 +11,5 @@ export * from "./searchIcon";
 export * from "./starIcon";
 export * from "./starIconFilled";
 export * from "./yesIcon";
+export * from "./detailDownIcon";
+export * from "./detailUpIcon";
