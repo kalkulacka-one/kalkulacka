@@ -12,21 +12,74 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null | undefined;
 };
 
-type Props = {
-  question?: ExtendedQuestions;
-  currentQuestion?: number;
-  questionCount?: number;
-};
+export interface Props {
+  question: ExtendedQuestions;
+  currentQuestion: number;
+  questionCount: number;
+  onClick: (buttonType) => void;
+}
 
 export function RecapitulationCard({
   question,
   currentQuestion,
   questionCount,
+  onClick,
 }: Props) {
-  const { id, statement, detail, tags, title } = question;
+  const { id, statement, detail, tags, title, answerType } = question;
   const [detailToggled, setDetailToggled] = useState(false);
+
   function toggleDetail() {
     setDetailToggled((prevState) => !prevState);
+  }
+
+  function switchButton(answerType) {
+    switch (answerType) {
+      case true: {
+        return (
+          <Button
+            compactable
+            fitContent
+            wider
+            kind="inverse"
+            color="primary"
+            icon={YesIcon}
+          >
+            Ano
+          </Button>
+        );
+      }
+      case false: {
+        return (
+          <Button
+            compactable
+            fitContent
+            wider
+            kind="inverse"
+            color="secondary"
+            icon={NoIcon}
+          >
+            Ne
+          </Button>
+        );
+      }
+      case null: {
+        return (
+          <Button
+            compactable
+            fitContent
+            wider
+            kind="inverse"
+            color="neutral"
+            icon={NeutralIcon}
+          >
+            Nevím
+          </Button>
+        );
+      }
+      case undefined: {
+        return "Neutral";
+      }
+    }
   }
 
   return (
@@ -55,6 +108,7 @@ export function RecapitulationCard({
           </div>
         </div>
         <DetailIconButton onClick={toggleDetail} />
+        <div>{switchButton(answerType)}</div>
       </div>
       <div className="k1-flex k1-w-full">
         <Button
@@ -65,7 +119,7 @@ export function RecapitulationCard({
           icon={YesIcon}
           compactable
           wider
-          onClick={() => alert(-"In Favour clicked")}
+          onClick={() => onClick("Ano")}
         >
           Ano
         </Button>
@@ -77,7 +131,7 @@ export function RecapitulationCard({
           icon={NoIcon}
           compactable
           wider
-          onClick={() => alert(-"Against clicked")}
+          onClick={() => onClick("Ne")}
         >
           Ne
         </Button>
