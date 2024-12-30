@@ -4,6 +4,7 @@ import { StarIcon } from "@repo/design-system/icons";
 import { StarIconFilled } from "@repo/design-system/icons";
 
 type Props = {
+  children?: React.ReactNode;
   starPressed?: boolean;
   onClick: () => void;
 } & Omit<
@@ -11,7 +12,12 @@ type Props = {
   "iconDefault" | "iconPressed"
 >;
 
-const StarIconButton = ({ starPressed, onClick, ...props }: Props) => {
+const StarIconButton = ({
+  children,
+  starPressed,
+  onClick,
+  ...props
+}: Props) => {
   return (
     <ToggleIconButton
       iconDefault={StarIcon}
@@ -20,7 +26,7 @@ const StarIconButton = ({ starPressed, onClick, ...props }: Props) => {
       togglePressed={starPressed}
       {...props}
     >
-      Pro mě důležité
+      {children}
     </ToggleIconButton>
   );
 };

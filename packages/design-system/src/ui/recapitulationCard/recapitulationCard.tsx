@@ -1,0 +1,94 @@
+"use client";
+import { Badge } from "@repo/design-system/badge";
+import { YesIcon, NoIcon, NeutralIcon } from "@repo/design-system/icons";
+import { Button, Card } from "@repo/design-system/ui";
+import { StarIconButton } from "@repo/design-system/ui";
+import { DetailIconButton } from "@repo/design-system/ui";
+import { useState } from "react";
+import type { Question } from "@repo/schema/dist/question.schema";
+
+type ExtendedQuestions = Question & {
+  isImportant: true | false | null;
+  answerType: true | false | null | undefined;
+};
+
+type Props = {
+  question?: ExtendedQuestions;
+  currentQuestion?: number;
+  questionCount?: number;
+};
+
+export function RecapitulationCard({
+  question,
+  currentQuestion,
+  questionCount,
+}: Props) {
+  const { id, statement, detail, tags, title } = question;
+  const [detailToggled, setDetailToggled] = useState(false);
+  function toggleDetail() {
+    setDetailToggled((prevState) => !prevState);
+  }
+
+  return (
+    <Card
+      id={id}
+      corner="topLeft"
+      className="k1-flex k1-w-full k1-flex-col  k1-justify-between k1-gap-4 k1-p-customMobile md:k1-p-customDesktop"
+    >
+      <div className="k1-flex k1-items-center k1-justify-between">
+        {/* toggle star */}
+        <StarIconButton onClick={() => alert("Important toggled")} />
+
+        <div className="k1-mr-auto k1-flex k1-flex-col">
+          <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-4">
+            <span className="k1-text-sm k1-font-normal">
+              {currentQuestion}/{questionCount}
+            </span>
+            <span className="k1-text-sm k1-font-normal">{title}</span>
+            <Badge>{tags}</Badge>
+          </div>
+          <div>
+            {/* TODO: line height fix value */}
+            <span className="k1-text-lg k1-font-bold k1-leading-6 k1-tracking-tighter">
+              {statement}
+            </span>
+          </div>
+        </div>
+        <DetailIconButton onClick={toggleDetail} />
+      </div>
+      <div className="k1-flex k1-w-full">
+        <Button
+          kind="inverse"
+          color="primary"
+          size="default"
+          hasIcon
+          icon={YesIcon}
+          compactable
+          wider
+          onClick={() => alert(-"In Favour clicked")}
+        >
+          Ano
+        </Button>
+        <Button
+          kind="inverse"
+          color="secondary"
+          size="default"
+          hasIcon
+          icon={NoIcon}
+          compactable
+          wider
+          onClick={() => alert(-"Against clicked")}
+        >
+          Ne
+        </Button>
+      </div>
+      {detailToggled && (
+        <div>
+          <p className="k1-text-base k1-font-normal k1-text-neutral">
+            {detail}
+          </p>
+        </div>
+      )}
+    </Card>
+  );
+}
