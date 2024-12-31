@@ -6,6 +6,7 @@ import { StarIconButton } from "@repo/design-system/ui";
 import { DetailIconButton } from "@repo/design-system/ui";
 import { useState } from "react";
 import type { Question } from "@repo/schema/dist/question.schema";
+import { useQuestionsStore } from "../../../../../apps/web/app/xyz/store";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
@@ -16,7 +17,7 @@ export interface Props {
   question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
-  onClick: (buttonType) => void;
+  onClick: (event, buttonType) => void;
 }
 
 export function RecapitulationCard({
@@ -77,14 +78,25 @@ export function RecapitulationCard({
         );
       }
       case undefined: {
-        return "Neutral";
+        return (
+          <Button
+            compactable
+            fitContent
+            wider
+            kind="inverse"
+            color="neutral"
+            icon={NeutralIcon}
+          >
+            Nevím
+          </Button>
+        );
       }
     }
   }
 
   return (
     <Card
-      id={id}
+      data-card-id={id}
       corner="topLeft"
       className="k1-flex k1-w-full k1-flex-col  k1-justify-between k1-gap-4 k1-p-customMobile md:k1-p-customDesktop"
     >
@@ -119,7 +131,8 @@ export function RecapitulationCard({
           icon={YesIcon}
           compactable
           wider
-          onClick={() => onClick("Ano")}
+          data-buttonCardId={id}
+          onClick={(event) => onClick(event, "Yes")}
         >
           Ano
         </Button>
@@ -131,7 +144,8 @@ export function RecapitulationCard({
           icon={NoIcon}
           compactable
           wider
-          onClick={() => onClick("Ne")}
+          data-buttonCardId={id}
+          onClick={(event) => onClick(event, "No")}
         >
           Ne
         </Button>
