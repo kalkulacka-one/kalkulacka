@@ -56,7 +56,7 @@ export const useGuideStore = create<GuideStore>((set) => ({
 
 // swtich off debug mode
 
-export const useQuestionsStore = create((set) => ({
+export const useQuestionsStore = create<QuestionsStore>((set) => ({
   questions: [],
   currentQuestion: 0,
   questionTotal: 4,
