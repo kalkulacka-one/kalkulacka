@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { Question } from "@repo/schema/dist";
+import { devtools } from "zustand/middleware";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
@@ -15,6 +16,8 @@ type QuestionsStore = {
   toggleImportant: () => void;
   answerYes: () => void;
   answerNo: () => void;
+  toggleYes: (cardId: string) => void;
+  toggleNo: (cardId: string) => void;
   setCurrentQuestion: (number: number) => void;
 };
 
@@ -51,7 +54,9 @@ export const useGuideStore = create<GuideStore>((set) => ({
   prevStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
 }));
 
-export const useQuestionsStore = create<QuestionsStore>((set) => ({
+// swtich off debug mode
+
+export const useQuestionsStore = create((set) => ({
   questions: [],
   currentQuestion: 0,
   questionTotal: 4,
@@ -99,6 +104,32 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
       return { ...state, questions: updatedQuestions };
     }),
   setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
+  toggleYes: (cardId) =>
+    set((state) => {
+      const updatedQuestions = state.questions.map((question) => {
+        if (cardId === question.id) {
+          return {
+            ...question,
+            answerType: true,
+          };
+        }
+        return { ...question };
+      });
+      return { ...state, questions: updatedQuestions };
+    }),
+  toggleNo: (cardId) =>
+    set((state) => {
+      const updatedQuestions = state.questions.map((question) => {
+        if (cardId === question.id) {
+          return {
+            ...question,
+            answerType: false,
+          };
+        }
+        return { ...question };
+      });
+      return { ...state, questions: updatedQuestions };
+    }),
 }));
 
 export type { ExtendedQuestions };
