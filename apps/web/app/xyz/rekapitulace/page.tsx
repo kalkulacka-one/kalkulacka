@@ -2,18 +2,11 @@
 import { ArrowIconRight } from "@repo/design-system/icons";
 import { Button, RecapitulationCard } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../store";
-import { useEffect } from "react";
 
 export default function Page() {
   const questions = useQuestionsStore((state) => state.questions);
   const toggleYes = useQuestionsStore((state) => state.toggleYes);
   const toggleNo = useQuestionsStore((state) => state.toggleNo);
-  // const answerYes = useQuestionsStore((state) => state.answerYes);
-  // const answerNo = useQuestionsStore((state) => state.answerNo);
-
-  useEffect(() => {
-    console.log("Rerender");
-  }, [questions]);
 
   function handleAnswer(event, buttonType) {
     // console.log(event.currentTarget.dataset.buttoncardid);
@@ -24,13 +17,6 @@ export default function Page() {
     } else if (buttonType === "No") {
       toggleNo(id);
     }
-    // if (buttonType === "Ano") {
-    //   // alert("Ano");
-    //   console.log(questions[0].answerType);
-    // } else if (buttonType === "Ne") {
-    //   // alert("Ne");
-    //   console.log(questions[0].answerType);
-    // }
   }
 
   return (

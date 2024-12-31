@@ -6,7 +6,6 @@ import { StarIconButton } from "@repo/design-system/ui";
 import { DetailIconButton } from "@repo/design-system/ui";
 import { useState } from "react";
 import type { Question } from "@repo/schema/dist/question.schema";
-import { useQuestionsStore } from "../../../../../apps/web/app/xyz/store";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
