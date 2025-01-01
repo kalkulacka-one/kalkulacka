@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { Question } from "@repo/schema/dist";
-import { devtools } from "zustand/middleware";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
@@ -16,8 +15,10 @@ type QuestionsStore = {
   toggleImportant: () => void;
   answerYes: () => void;
   answerNo: () => void;
+  // fix no unused vars error
   toggleYes: (cardId: string) => void;
   toggleNo: (cardId: string) => void;
+  toggleImportantRec: (cardId: string) => void;
   setCurrentQuestion: (number: number) => void;
 };
 
@@ -124,6 +125,19 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
           return {
             ...question,
             answerType: false,
+          };
+        }
+        return { ...question };
+      });
+      return { ...state, questions: updatedQuestions };
+    }),
+  toggleImportantRec: (cardId) =>
+    set((state) => {
+      const updatedQuestions = state.questions.map((question) => {
+        if (cardId === question.id) {
+          return {
+            ...question,
+            isImportant: !question.isImportant,
           };
         }
         return { ...question };
