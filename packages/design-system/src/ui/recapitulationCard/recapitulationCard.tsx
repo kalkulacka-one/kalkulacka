@@ -104,7 +104,7 @@ export function RecapitulationCard({
       <div className="k1-flex k1-items-center k1-justify-between">
         {/* toggle star */}
         <StarIconButton
-          data-togglebuttonid="Testid"
+          data-buttonCardId={id}
           onClick={(event) => onClick(event, "Togglerecimportant")}
         />
 
