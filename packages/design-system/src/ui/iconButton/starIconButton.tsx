@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import React, { ComponentProps, ReactHTMLElement } from "react";
 import { ToggleIconButton } from "@repo/design-system/ui";
 import { StarIcon } from "@repo/design-system/icons";
 import { StarIconFilled } from "@repo/design-system/icons";
@@ -24,7 +24,6 @@ const StarIconButton = ({
       iconPressed={StarIconFilled}
       onClick={onClick}
       togglePressed={starPressed}
-      data-togleiconbuttonid="Dupa"
       {...props}
     >
       {children}

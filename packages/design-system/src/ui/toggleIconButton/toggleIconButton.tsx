@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import React, { ComponentProps, ReactHTMLElement } from "react";
 import { IconButton } from "@repo/design-system/ui";
 
 type Props = {
@@ -9,32 +9,38 @@ type Props = {
 } & Omit<ComponentProps<typeof IconButton>, "icon">;
 
 const ToggleIconButton = React.forwardRef<
-  React.ElementRef<typeof IconButton>,
+  React.ElementRef<typeof IconButton> & ReactHTMLElement<HTMLButtonElement>,
   Props
->(({ children, iconPressed, iconDefault, onClick, togglePressed }, ref) => {
-  const [isPressed, setIsPressed] = React.useState(togglePressed);
+>(
+  (
+    { children, iconPressed, iconDefault, onClick, togglePressed, ...props },
+    ref,
+  ) => {
+    const [isPressed, setIsPressed] = React.useState(togglePressed);
 
-  function handleToggle(event: React.MouseEvent<HTMLButtonElement>) {
-    setIsPressed((prevState) => !prevState);
-    if (onClick) {
-      onClick(event);
+    function handleToggle(event: React.MouseEvent<HTMLButtonElement>) {
+      setIsPressed((prevState) => !prevState);
+      if (onClick) {
+        onClick(event);
+      }
     }
-  }
 
-  return (
-    <IconButton
-      pressed={isPressed}
-      onClick={handleToggle}
-      icon={isPressed || togglePressed ? iconPressed : iconDefault}
-      size="default"
-      iconSize="default"
-      iconWrapper="default"
-      aria-pressed={isPressed}
-      ref={ref}
-    >
-      {children}
-    </IconButton>
-  );
-});
+    return (
+      <IconButton
+        pressed={isPressed}
+        onClick={handleToggle}
+        icon={isPressed || togglePressed ? iconPressed : iconDefault}
+        size="default"
+        iconSize="default"
+        iconWrapper="default"
+        aria-pressed={isPressed}
+        {...props}
+        ref={ref}
+      >
+        {children}
+      </IconButton>
+    );
+  },
+);
 
 export { ToggleIconButton };
