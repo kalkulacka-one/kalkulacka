@@ -7,6 +7,9 @@ export default function Page() {
   const questions = useQuestionsStore((state) => state.questions);
   const toggleYes = useQuestionsStore((state) => state.toggleYes);
   const toggleNo = useQuestionsStore((state) => state.toggleNo);
+  const toggleImportantRec = useQuestionsStore(
+    (state) => state.toggleImportantRec,
+  );
 
   function handleAnswer(event, buttonType) {
     // console.log(event.currentTarget.dataset.buttoncardid);
@@ -16,6 +19,8 @@ export default function Page() {
       toggleYes(id);
     } else if (buttonType === "No") {
       toggleNo(id);
+    } else if (buttonType === "Togglerecimportant") {
+      toggleImportantRec(id);
     }
   }
 

@@ -12,6 +12,8 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null | undefined;
 };
 
+// type answerType: true || false || null || undefined;
+
 export interface Props {
   question: ExtendedQuestions;
   currentQuestion: number;
@@ -101,7 +103,10 @@ export function RecapitulationCard({
     >
       <div className="k1-flex k1-items-center k1-justify-between">
         {/* toggle star */}
-        <StarIconButton onClick={() => alert("Important toggled")} />
+        <StarIconButton
+          data-togglebuttonid="Testid"
+          onClick={(event) => onClick(event, "Togglerecimportant")}
+        />
 
         <div className="k1-mr-auto k1-flex k1-flex-col">
           <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-4">
@@ -121,39 +126,41 @@ export function RecapitulationCard({
         <DetailIconButton onClick={toggleDetail} />
         <div>{switchButton(answerType)}</div>
       </div>
-      <div className="k1-flex k1-w-full">
-        <Button
-          kind="inverse"
-          color="primary"
-          size="default"
-          hasIcon
-          icon={YesIcon}
-          compactable
-          wider
-          data-buttonCardId={id}
-          onClick={(event) => onClick(event, "Yes")}
-        >
-          Ano
-        </Button>
-        <Button
-          kind="inverse"
-          color="secondary"
-          size="default"
-          hasIcon
-          icon={NoIcon}
-          compactable
-          wider
-          data-buttonCardId={id}
-          onClick={(event) => onClick(event, "No")}
-        >
-          Ne
-        </Button>
-      </div>
       {detailToggled && (
         <div>
-          <p className="k1-text-base k1-font-normal k1-text-neutral">
-            {detail}
-          </p>
+          <div className="k1-flex k1-w-full">
+            <Button
+              kind="inverse"
+              color="primary"
+              size="default"
+              hasIcon
+              icon={YesIcon}
+              compactable
+              wider
+              data-buttonCardId={id}
+              onClick={(event) => onClick(event, "Yes")}
+            >
+              Ano
+            </Button>
+            <Button
+              kind="inverse"
+              color="secondary"
+              size="default"
+              hasIcon
+              icon={NoIcon}
+              compactable
+              wider
+              data-buttonCardId={id}
+              onClick={(event) => onClick(event, "No")}
+            >
+              Ne
+            </Button>
+          </div>
+          <div>
+            <p className="k1-text-base k1-font-normal k1-text-neutral">
+              {detail}
+            </p>
+          </div>
         </div>
       )}
     </Card>
