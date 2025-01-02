@@ -19,6 +19,7 @@ export interface Props {
   currentQuestion: number;
   questionCount: number;
   onClick: (event, buttonType) => void;
+  starPressed?: boolean;
 }
 
 export function RecapitulationCard({
@@ -26,8 +27,10 @@ export function RecapitulationCard({
   currentQuestion,
   questionCount,
   onClick,
+  starPressed,
 }: Props) {
-  const { id, statement, detail, tags, title, answerType } = question;
+  const { id, statement, detail, tags, title, answerType, isImportant } =
+    question;
   const [detailToggled, setDetailToggled] = useState(false);
 
   function toggleDetail() {
@@ -105,6 +108,7 @@ export function RecapitulationCard({
         {/* toggle star */}
         <StarIconButton
           data-buttonCardId={id}
+          starPressed={isImportant ? true : false}
           onClick={(event) => onClick(event, "Togglerecimportant")}
         />
 
