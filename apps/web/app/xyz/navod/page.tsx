@@ -8,10 +8,10 @@ export default function Page() {
   console.log(typeof path);
   useEffect(() => {
     console.log("Use effect");
-    if (path === "/xyz") {
-      router.push("/xyz/1");
+    if (path === "/xyz/navod") {
+      router.push("/xyz/navod/1");
     }
   }, []);
 
-  return <h1>Redirect to first question</h1>;
+  return <h1>Redirect to guide</h1>;
 }

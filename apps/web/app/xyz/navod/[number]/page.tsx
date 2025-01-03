@@ -3,13 +3,22 @@ import { Button, StepProgress } from "@repo/design-system/ui";
 import Link from "next/link";
 import { useGuideStore } from "../../store";
 import { ArrowIconRight } from "@repo/design-system/icons";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page({ params }) {
+  const router = useRouter();
   const guide = useGuideStore((state) => state.guide);
   const currentStep = useGuideStore((state) => state.currentStep);
   const stepTotal = useGuideStore((state) => state.stepTotal);
   const nextStep = useGuideStore((state) => state.nextStep);
   const prevStep = useGuideStore((state) => state.prevStep);
+
+  useEffect(() => {
+    // Always do navigations after the first render
+    // shallow error?
+    router.push(`/xyz/navod/${currentStep}`, undefined, { shallow: true });
+  }, [currentStep]);
 
   return (
     <div className="grid h-screen w-screen grid-cols-3 place-content-center">
@@ -41,9 +50,12 @@ export default function Page({ params }) {
           />
         </div>
         <div className="flex w-auto flex-col items-center">
-          <Button onClick={nextStep} fitContent kind="outline">
-            Další krok
-          </Button>
+          {currentStep !== stepTotal && (
+            <Button onClick={nextStep} fitContent kind="outline">
+              Další krok
+            </Button>
+          )}
+
           {currentStep === 4 ? (
             <Button
               kind="filled"
