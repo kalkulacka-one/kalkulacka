@@ -2,8 +2,10 @@
 import { ArrowIconRight } from "@repo/design-system/icons";
 import { Button, RecapitulationCard } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../store";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   const questions = useQuestionsStore((state) => state.questions);
   const toggleYes = useQuestionsStore((state) => state.toggleYes);
   const toggleNo = useQuestionsStore((state) => state.toggleNo);
@@ -24,11 +26,16 @@ export default function Page() {
     }
   }
 
+  function handleBackToQuestions() {
+    // make dynamic
+    router.push("/xyz/25");
+  }
+
   return (
     <div className="flex flex-col">
       {/* sticky subheader */}
       <div className="flex h-fit items-center justify-between gap-4 bg-red-400">
-        <Button fitContent kind="link">
+        <Button onClick={handleBackToQuestions} fitContent kind="link">
           <span className="text-2xl">←</span>
         </Button>
         <span className="mr-auto text-2xl font-bold">Rekapitulace</span>
