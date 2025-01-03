@@ -1,15 +1,11 @@
 "use client";
-import { useQuestionsStore } from "./../store";
+import { useQuestionsStore } from "./store";
 import { QuestionWrapper, BottomBar } from "@repo/design-system/ui";
-import type { ExtendedQuestions } from "./../store";
-import { useParams, useRouter } from "next/navigation";
+import type { ExtendedQuestions } from "./store";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-type Props = {};
-
 export default function Page() {
-  const params = useParams();
-  const router = useRouter();
   // cleanup and better naming
   // const testQuestions = useQuestionsStore((state) => state.testQuestions);
   const questions = useQuestionsStore((state) => state.questions);
@@ -20,19 +16,17 @@ export default function Page() {
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
-  const setCurrentQuestion = useQuestionsStore(
-    (state) => state.setCurrentQuestion,
-  );
+  const router = useRouter();
 
-  useEffect(() => {
-    // Always do navigations after the first render
-    // shallow error?
-    router.push(`/xyz/${currentQuestion}`, undefined, { shallow: true });
-  }, [currentQuestion]);
-
-  useEffect(() => {
-    setCurrentQuestion(Number(params.number));
-  }, []);
+  // understand this approach more!
+  // useEffect(() => {
+  //   if (currentQuestion) {
+  //     const slug = `/xyz/${currentQuestion}`;
+  //     if (window.location.pathname !== slug) {
+  //       window.history.replaceState(null, "", slug);
+  //     }
+  //   }
+  // }, [currentQuestion]);
 
   const prevClick = () => {
     if (currentQuestion === 1) {
@@ -51,21 +45,13 @@ export default function Page() {
   };
 
   const yesClick = () => {
-    if (currentQuestion !== questions.length) {
-      answerYes();
-      skipQuestion();
-    } else {
-      router.push("/xyz/rekapitulace");
-    }
+    answerYes();
+    skipQuestion();
   };
 
   const noClick = () => {
-    if (currentQuestion !== questions.length) {
-      answerNo();
-      skipQuestion();
-    } else {
-      router.push("/xyz/rekapitulace");
-    }
+    answerNo();
+    skipQuestion();
   };
 
   return (
