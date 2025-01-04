@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-const BodyVariants = cva("k1-font-primary, k1-font-bold, k1-tracking-tighter", {
+const BodyVariants = cva("k1-font-primary k1-tracking-tighter", {
   variants: {
     variant: {
       large: "k1-text-xl k1-tracking-tight",
@@ -15,6 +15,6 @@ type Props = {
   children: React.ReactNode;
 } & VariantProps<typeof BodyVariants>;
 
-export default function Body({ children, variant }: Props) {
+export function BodyText({ children, variant }: Props) {
   return <p className={BodyVariants({ variant })}>{children}</p>;
 }

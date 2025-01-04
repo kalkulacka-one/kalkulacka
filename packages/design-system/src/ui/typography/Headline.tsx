@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 
 const HeadlineVariants = cva(
-  "k1-font-secondary, k1-font-bold, k1-tracking-tighter",
+  "k1-font-secondary k1-font-bold k1-tracking-tighter",
   {
     variants: {
       variant: {
@@ -13,24 +13,24 @@ const HeadlineVariants = cva(
   },
 );
 
+type HeadingType = "h1" | "h2" | "h3";
+
 type Props = {
   children: React.ReactNode;
+  type: HeadingType;
 } & VariantProps<typeof HeadlineVariants>;
 
-// TODO: solve h1,h2,h3 problem
+export function Headline({ children, variant, type }: Props) {
+  switch (type) {
+    case "h1": {
+      return <h1 className={HeadlineVariants({ variant })}>{children}</h1>;
+    }
+    case "h2": {
+      return <h2 className={HeadlineVariants({ variant })}>{children}</h2>;
+    }
 
-export default function Headline({ children, variant }: Props) {
-  return <h1 className={HeadlineVariants({ variant })}>{children}</h1>;
-}
-
-{
-  /* <h1 className="k1-font-secondary k1-text-6xl k1-font-bold k1-tracking-tighter">
-Headline large
-</h1>
-<h2 className="k1-font-secondary k1-text-5xl k1-font-bold k1-tracking-tighter">
-Headline medium
-</h2>
-<h3 className="k1-font-secondary k1-text-4xl k1-font-bold k1-tracking-tighter">
-Headline small
-</h3> */
+    case "h3": {
+      return <h3 className={HeadlineVariants({ variant })}>{children}</h3>;
+    }
+  }
 }

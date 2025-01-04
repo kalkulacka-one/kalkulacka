@@ -1,5 +1,5 @@
-export * from "./Body";
+export * from "./BodyText";
 export * from "./ButtonText";
 export * from "./Headline";
-export * from "./Label";
+export * from "./LabelText";
 export * from "./Title";
