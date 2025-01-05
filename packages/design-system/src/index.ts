@@ -16,3 +16,5 @@ export * from "./icons/chevronDown";
 export * from "./icons/checkbox/checkedIcon";
 export * from "./icons/checkbox/interdetermineIcon";
 export * from "./icons/checkbox/emptyCheckBoxIcon";
+export * from "./icons/envelopeIcon";
+export * from "./icons/telephoneIcon";
