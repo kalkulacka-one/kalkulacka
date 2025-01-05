@@ -10,9 +10,9 @@ export function Footer() {
           {/* col wrapper start */}
           <div className="k1-flex k1-flex-col k1-gap-6">
             {/* logo wrapper start */}
-            <div className="k1-w-full k1-flex k1-items-center k1-gap-2">
+            <div className="k1-flex k1-w-full k1-items-center k1-gap-2">
               <Logo className="k1-h-5 k1-w-[5.953rem]" />
-              <div className="k1-uppercase k1-font-bold k1-text-sm">
+              <div className="k1-text-sm k1-font-bold k1-uppercase">
                 Volební kalkulačka
               </div>
             </div>
@@ -33,8 +33,8 @@ export function Footer() {
           {/* logo wrapper end */}
           {/* col wrapper start */}
           <div className="k1-flex k1-flex-col k1-gap-6">
-            <h5 className="k1-font-bold k1-text-sm">O volební kalkulačce</h5>
-            <div className="k1-flex k1-flex-col k1-gap-2 k1-items-start k1-text-neutral k1-text-sm">
+            <h5 className="k1-text-sm k1-font-bold">O volební kalkulačce</h5>
+            <div className="k1-flex k1-flex-col k1-items-start k1-gap-2 k1-text-sm k1-text-neutral">
               <a href="/">O volební kalkulačce</a>
               <a href="/">Metodika tvorby otázek</a>
             </div>
@@ -42,8 +42,8 @@ export function Footer() {
           {/* col wrapper end */}
           {/* col wrapper start */}
           <div className="k1-flex k1-flex-col k1-gap-6">
-            <h5 className="k1-font-bold k1-text-sm">Odkazy</h5>
-            <div className="k1-flex k1-flex-col k1-gap-2 k1-items-start k1-text-neutral k1-text-sm">
+            <h5 className="k1-text-sm k1-font-bold">Odkazy</h5>
+            <div className="k1-flex k1-flex-col k1-items-start k1-gap-2 k1-text-sm k1-text-neutral">
               <a href="/">Ochrana dat</a>
               <a className="after:k1-content-['_↗']" href="/">
                 Podpořit kalkulačku
@@ -54,8 +54,8 @@ export function Footer() {
           {/* col wrapper end */}
           {/* col wrapper start */}
           <div className="k1-flex k1-flex-col k1-gap-6">
-            <h5 className="k1-font-bold k1-text-sm">Kontakt</h5>
-            <div className="k1-flex k1-flex-col k1-gap-2 k1-items-start k1-text-neutral k1-text-sm">
+            <h5 className="k1-text-sm k1-font-bold">Kontakt</h5>
+            <div className="k1-flex k1-flex-col k1-items-start k1-gap-2 k1-text-sm k1-text-neutral">
               <a href="/">info@kohovolit.eu</a>
               <a href="/">+420 735 518 529</a>
             </div>
@@ -64,8 +64,8 @@ export function Footer() {
         </div>
       </div>
       {/* bottom wrapper */}
-      <div className="k1-flex k1-gap-4 k1-items-center k1-justify-start k1-mt-8">
-        <p className="k1-text-neutral k1-text-sm">
+      <div className="k1-mt-8 k1-flex k1-items-center k1-justify-start k1-gap-4">
+        <p className="k1-text-sm k1-text-neutral">
           Vytvořeno spoluprací neziskových organizací.
         </p>
         <a
