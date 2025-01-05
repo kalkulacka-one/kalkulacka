@@ -1,4 +1,7 @@
 import { Logo } from "@repo/design-system/svg";
+// fix imports after project strucuture merge
+import { EnvelopeIcon } from "../../icons/envelopeIcon";
+import { TelephoneIcon } from "../../icons/telephoneIcon";
 
 export function Footer() {
   return (
@@ -6,7 +9,7 @@ export function Footer() {
       {/* content */}
       <div className="k1-px-4">
         {/* grid wrapper */}
-        <div className="k1-grid k1-grid-cols-4">
+        <div className="k1-grid k1-grid-cols-2 md:k1-grid-cols-4">
           {/* col wrapper start */}
           <div className="k1-flex k1-flex-col k1-gap-6">
             {/* logo wrapper start */}
@@ -56,8 +59,14 @@ export function Footer() {
           <div className="k1-flex k1-flex-col k1-gap-6">
             <h5 className="k1-text-sm k1-font-bold">Kontakt</h5>
             <div className="k1-flex k1-flex-col k1-items-start k1-gap-2 k1-text-sm k1-text-neutral">
-              <a href="/">info@kohovolit.eu</a>
-              <a href="/">+420 735 518 529</a>
+              <div className="k1-flex k1-items-center k1-gap-4">
+                <EnvelopeIcon className="k1-size-6" />
+                <a href="/">info@kohovolit.eu</a>
+              </div>
+              <div className="k1-flex k1-items-center k1-gap-4">
+                <TelephoneIcon className="k1-size-6" />
+                <a href="/">+420 735 518 529</a>{" "}
+              </div>
             </div>
           </div>
           {/* col wrapper end */}
