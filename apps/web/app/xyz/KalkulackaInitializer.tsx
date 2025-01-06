@@ -5,16 +5,13 @@ import { useQuestionsStore } from "./store";
 import type { ExtendedQuestions } from "./store";
 
 type Props = {
-  testQuestions: any;
+  questions: any;
   children: React.ReactNode;
 };
 
-export default function KalkulackaInitializer({
-  testQuestions,
-  children,
-}: Props) {
+export default function KalkulackaInitializer({ questions, children }: Props) {
   useQuestionsStore.setState(() => {
-    const updatedTestQuestions = testQuestions.map(
+    const updatedTestQuestions = questions.map(
       (question: ExtendedQuestions) => {
         return {
           ...question,
@@ -28,3 +25,7 @@ export default function KalkulackaInitializer({
 
   return children;
 }
+
+// TODOS:
+// 1. Solve warning: Cannot update a component (`useQuestionsStoreProvider`) while rendering a different component (`KalkulackaInitializer`). To locate the bad setState() call inside `KalkulackaInitializer`, follow the stack trace as described in https://reactjs.org/link/setstate-in-render
+// see: https://github.com/facebook/react/issues/18147#issuecomment-592267650

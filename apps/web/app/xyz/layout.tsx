@@ -18,11 +18,11 @@ export default async function RootLayout({
     return data;
   }
 
-  const testQuestions = await fetchQuestions();
+  const questions = await fetchQuestions();
   return (
     <html lang="en">
       <body>
-        <KalkulackaInitializer testQuestions={testQuestions}>
+        <KalkulackaInitializer questions={questions}>
           {children}
         </KalkulackaInitializer>
       </body>
