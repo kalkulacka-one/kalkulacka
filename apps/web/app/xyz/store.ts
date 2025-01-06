@@ -9,7 +9,6 @@ type ExtendedQuestions = Question & {
 type QuestionsStore = {
   questions: ExtendedQuestions[];
   currentQuestion: number;
-  questionTotal: number;
   skipQuestion: () => void;
   prevQuestion: () => void;
   toggleImportant: () => void;
@@ -30,6 +29,7 @@ type GuideStore = {
   prevStep: () => void;
 };
 
+// guide content as HTML rather than plain text in object ???
 export const useGuideStore = create<GuideStore>((set) => ({
   guide: [
     {
@@ -55,12 +55,9 @@ export const useGuideStore = create<GuideStore>((set) => ({
   prevStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
 }));
 
-// swtich off debug mode
-
 export const useQuestionsStore = create<QuestionsStore>((set) => ({
   questions: [],
   currentQuestion: 0,
-  questionTotal: 4,
   skipQuestion: () =>
     set((state) => ({ currentQuestion: state.currentQuestion + 1 })),
   prevQuestion: () =>
@@ -147,3 +144,8 @@ export const useQuestionsStore = create<QuestionsStore>((set) => ({
 }));
 
 export type { ExtendedQuestions };
+
+// TODOS:
+// 1. Use Immer for better performance and cleaner code for updating state
+// 2. Fix reduntant function
+// 3. Fix no unused vars error

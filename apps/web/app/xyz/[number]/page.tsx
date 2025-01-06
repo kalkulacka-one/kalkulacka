@@ -11,10 +11,8 @@ export default function Page() {
   const params = useParams();
   const router = useRouter();
   // cleanup and better naming
-  // const testQuestions = useQuestionsStore((state) => state.testQuestions);
   const questions = useQuestionsStore((state) => state.questions);
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
-  const questionTotal = useQuestionsStore((state) => state.questionTotal);
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
@@ -95,7 +93,7 @@ export default function Page() {
               key={`Bottom bar id:${question.id}`}
               questions={questions}
               currentQuestion={currentQuestion}
-              questionTotal={questionTotal}
+              questionTotal={questions.length}
               toggleImportant={toggleImportant}
               yesClick={yesClick}
               noClick={noClick}
