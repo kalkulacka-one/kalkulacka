@@ -10,12 +10,15 @@ export default function UrlUpdater({ children }: Props) {
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
 
   useEffect(() => {
+    // cleanups ?
     // change url
     function changeUrl() {
+      // insert conditionals here for edge cases?
       history.replaceState({}, "", `/abc/${currentQuestion}`);
     }
     // change title
     function changeTitle() {
+      // insert conditionals here for edge cases?
       document.title = `Otázka ${currentQuestion}`;
     }
     changeTitle();
