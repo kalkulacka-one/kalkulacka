@@ -3,15 +3,17 @@
 import { type ReactNode, createContext, useRef, useContext } from "react";
 import { type StoreApi, createStore, useStore } from "zustand";
 
+// divide store, to the external file?
+
 type Store = {
-  count: number;
   questions: string[];
   currentQuestion: number;
-  collection: string[];
-  decrementCount: () => void;
-  incrementCount: () => void;
   prevQuestion: () => void;
   skipQuestion: () => void;
+  nextGuide: () => void;
+  prevGuide: () => void;
+  guideNumber: number;
+  guideContent: string[];
 };
 
 export const StoreContext = createContext<StoreApi<Store> | undefined>(
@@ -21,23 +23,23 @@ export const StoreContext = createContext<StoreApi<Store> | undefined>(
 // update to props with children
 export interface StoreProviderProps {
   children: ReactNode;
-  collection: string[];
+  questions: string[];
 }
 
-export const StoreProvider = ({ children, collection }: StoreProviderProps) => {
+export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
   const storeRef = useRef<StoreApi<Store> | undefined>();
   if (!storeRef.current) {
     storeRef.current = createStore<Store>((set) => ({
-      collection,
-      count: 1,
-      questions: ["Item 1", "Item 2", "Item 3"],
+      questions,
       currentQuestion: 1,
-      decrementCount: () => set((state) => ({ count: state.count - 1 })),
-      incrementCount: () => set((state) => ({ count: state.count + 1 })),
       prevQuestion: () =>
         set((state) => ({ currentQuestion: state.currentQuestion - 1 })),
       skipQuestion: () =>
         set((state) => ({ currentQuestion: state.currentQuestion + 1 })),
+      guideNumber: 1,
+      guideContent: ["Guide item 1", "Guide item 2", "Guide item 3"],
+      prevGuide: () => set((state) => ({ guideNumber: state.guideNumber - 1 })),
+      nextGuide: () => set((state) => ({ guideNumber: state.guideNumber + 1 })),
     }));
   }
 
