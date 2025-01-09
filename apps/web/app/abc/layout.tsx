@@ -3,15 +3,17 @@ import "@repo/design-system/styles";
 import "@repo/design-system/themes/theme-default";
 import { StoreProvider } from "./providers/storeProvider";
 import UrlUpdater from "./utils/urlUpdater";
+import getQuestions from "./utils/getQuestions";
 
-const collection = ["Collection 1", "Collection 2", "Collection 3"];
+const baseUrl = "https://dummyjson.com/c/7ee4-a7f4-4977-bb54";
+
+const collection = await getQuestions(baseUrl);
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  console.log(collection);
   return (
     <html lang="en">
       <StoreProvider collection={collection}>
