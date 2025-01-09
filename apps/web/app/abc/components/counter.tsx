@@ -1,9 +1,9 @@
 "use client";
 
-import { useCounterStore } from "../providers/counterStoreProvider";
+import { useQuestionsStore } from "../providers/storeProvider";
 
 export default function Counter() {
-  const { count, incrementCount, decrementCount } = useCounterStore(
+  const { count, incrementCount, decrementCount } = useQuestionsStore(
     (state) => state,
   );
 

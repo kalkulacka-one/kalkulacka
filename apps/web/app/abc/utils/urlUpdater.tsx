@@ -1,13 +1,13 @@
 "use client";
 import { useEffect } from "react";
-import { useCounterStore } from "../providers/counterStoreProvider";
+import { useQuestionsStore } from "../providers/storeProvider";
 
 type Props = {
   children: React.ReactNode;
 };
 
 export default function UrlUpdater({ children }: Props) {
-  const currentQuestion = useCounterStore((state) => state.currentQuestion);
+  const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
 
   useEffect(() => {
     // change url
