@@ -7,7 +7,7 @@ import getQuestions from "./utils/getQuestions";
 
 const baseUrl = "https://dummyjson.com/c/7ee4-a7f4-4977-bb54";
 
-const collection = await getQuestions(baseUrl);
+const questions = await getQuestions(baseUrl);
 
 export default async function RootLayout({
   children,
@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <StoreProvider collection={collection}>
+      <StoreProvider questions={questions}>
         <UrlUpdater>
           <body>{children}</body>
         </UrlUpdater>
