@@ -7,13 +7,19 @@ type Props = {
 };
 
 export default function UrlUpdater({ children }: Props) {
-  const count = useCounterStore((state) => state.count);
+  const currentQuestion = useCounterStore((state) => state.currentQuestion);
 
   useEffect(() => {
+    // change url
+    function changeUrl() {
+      history.replaceState({}, "", `/abc/${currentQuestion}`);
+    }
+    // change title
     function changeTitle() {
-      document.title = `Hello World: ${count}`;
+      document.title = `Otázka ${currentQuestion}`;
     }
     changeTitle();
-  }, [count]);
+    changeUrl();
+  }, [currentQuestion]);
   return children;
 }
