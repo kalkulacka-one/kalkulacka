@@ -7,15 +7,15 @@ import guide from "../navod/guide.json";
 
 // extend question type like this? (need isImportant, answerType)
 
-// type ExtendedQuestions = Question & {
-//   isImportant: true | false | null;
-//   answerType: true | false | null;
-// };
+type ExtendedQuestions = Question & {
+  isImportant: true | false | null;
+  answerType: true | false | null;
+};
 
 // divide store, to the external file?
 
 type Store = {
-  questions: Question[];
+  questions: ExtendedQuestions[];
   currentQuestion: number;
   prevQuestion: () => void;
   skipQuestion: () => void;
@@ -32,7 +32,7 @@ export const StoreContext = createContext<StoreApi<Store> | undefined>(
 // update to props with children, assign questions differently?
 export interface StoreProviderProps {
   children: ReactNode;
-  questions: Question[];
+  questions: ExtendedQuestions[];
 }
 
 export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
@@ -48,7 +48,9 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       guideNumber: 1,
       guide: guide,
       prevGuide: () => set((state) => ({ guideNumber: state.guideNumber - 1 })),
-      nextGuide: () => set((state) => ({ guideNumber: state.guideNumber + 1 })),
+      nextGuide: () => {
+        set((state) => ({ guideNumber: state.guideNumber + 1 }));
+      },
     }));
   }
 
