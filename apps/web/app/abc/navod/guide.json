@@ -1,0 +1,14 @@
+[
+    {
+        "message": "Vítejte ve Volební kalkulačce pro krajské volby 2024 pro Jihomoravský kraj. Čeká vás 25 otázek. Stejné otázky dostaly všechny kandidující strany. Zodpovězení otázek zabere zhruba 10 minut a na konci se dozvíte, jak se jednotlivé strany shodují s vašimi názory. Oslovili jsme všechny strany bez výjimky. Pokud se některá neobjeví ve výsledcích, je to proto, že (zatím) neposlala svoje odpovědi."
+    },
+    {
+        "message": "Odpovídat můžete pomocí tlačítek: = souhlasím = nesouhlasím. Když se s politikem nebo stranou v odpovědi shodnete, získá ve výpočtu shody 1 bod. V opačném případě 1 bod ztratí. Pokud kandidát nebo strana na otázku neodpověděli, započítá se ziskem 0 bodů."
+    },
+    {
+        "message": "Pokud vám na daném tématu zvlášť záleží, označte ho hvězdičkou: = pro mě důležité. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu."
+    },
+    {
+        "message": "Když si nejste si jisti, téma Vás nezajímá nebo z jiného důvodu nechcete odpovídat, můžete otázku přeskočit šipkou napravo. Tato otázka se do výpočtu vaší shody nezapočítá."
+    }
+]

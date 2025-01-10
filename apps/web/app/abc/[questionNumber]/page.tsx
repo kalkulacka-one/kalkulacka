@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuestionsStore } from "../providers/storeProvider";
+import { Question } from "@repo/schema/dist";
 
 export default function Page() {
   const questions = useQuestionsStore((state) => state.questions);
@@ -12,11 +13,11 @@ export default function Page() {
     <main className="flex min-h-screen flex-col items-center p-24">
       <div className="bg-red-200">
         <h2>Collection</h2>
-        {questions?.map((item: string, index) => {
+        {questions?.map((item: Question, index) => {
           if (currentQuestion === index + 1) {
             return (
               <div key={index} className="m-4 bg-red-400">
-                <span>{item}</span>
+                <span>{item.statement}</span>
               </div>
             );
           }
