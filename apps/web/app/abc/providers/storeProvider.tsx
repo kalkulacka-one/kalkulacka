@@ -21,6 +21,14 @@ type Store = {
   skipQuestion: () => void;
   nextGuide: () => void;
   prevGuide: () => void;
+  toggleImportant: () => void;
+  answerYes: () => void;
+  answerNo: () => void;
+  // fix no unused vars error
+  toggleYes: (cardId: string) => void;
+  toggleNo: (cardId: string) => void;
+  toggleImportantRec: (cardId: string) => void;
+  setCurrentQuestion: (number: number) => void;
   guideNumber: number;
   guide: { message: string }[];
 };
@@ -51,6 +59,85 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       nextGuide: () => {
         set((state) => ({ guideNumber: state.guideNumber + 1 }));
       },
+      toggleImportant: () =>
+        set((state) => {
+          const updatedQuestions = state.questions.map((question, index) => {
+            if (index + 1 === state.currentQuestion) {
+              return {
+                ...question,
+                isImportant: !question.isImportant,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestions };
+        }),
+      answerYes: () =>
+        set((state) => {
+          const updatedQuestions = state.questions.map((question, index) => {
+            if (index + 1 === state.currentQuestion) {
+              return {
+                ...question,
+                answerType: true,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestions };
+        }),
+      answerNo: () =>
+        set((state) => {
+          const updatedQuestions = state.questions.map((question, index) => {
+            if (index + 1 === state.currentQuestion) {
+              return {
+                ...question,
+                answerType: false,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestions };
+        }),
+      setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
+      toggleYes: (cardId) =>
+        set((state) => {
+          const updatedQuestions = state.questions.map((question) => {
+            if (cardId === question.id) {
+              return {
+                ...question,
+                answerType: true,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestions };
+        }),
+      toggleNo: (cardId) =>
+        set((state) => {
+          const updatedQuestions = state.questions.map((question) => {
+            if (cardId === question.id) {
+              return {
+                ...question,
+                answerType: false,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestions };
+        }),
+      toggleImportantRec: (cardId) =>
+        set((state) => {
+          const updatedQuestions = state.questions.map((question) => {
+            if (cardId === question.id) {
+              return {
+                ...question,
+                isImportant: !question.isImportant,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestions };
+        }),
     }));
   }
 
