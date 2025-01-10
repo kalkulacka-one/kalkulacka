@@ -16,26 +16,21 @@ export default function Page() {
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <div>
-        {/* questions wrapper */}
-        {questions.map((question: ExtendedQuestions, index) => {
+      <div className="bg-red-200">
+        <h2>Collection</h2>
+        {questions?.map((item: Question, index) => {
           if (currentQuestion === index + 1) {
             return (
-              <QuestionWrapper
-                key={`Question card id:${question.id}`}
-                question={question}
-                currentQuestion={currentQuestion}
-                questionCount={questions.length}
-                skipQuestion={skipQuestion}
-                prevQuestion={prevQuestion}
-              />
+              <div key={index} className="m-4 bg-red-400">
+                <span>{item.statement}</span>
+              </div>
             );
           }
         })}
       </div>
+
+      <button onClick={skipQuestion}>Skip question</button>
+      <button onClick={prevQuestion}>Prev question</button>
     </main>
   );
 }
-
-// TODO:
-// 1. solve installHookJsError (see screenshot)

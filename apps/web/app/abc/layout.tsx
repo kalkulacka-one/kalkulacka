@@ -12,6 +12,8 @@ const baseUrlKalk =
 
 const questions = await getQuestions(baseUrlKalk);
 
+console.log(questions);
+
 export default async function RootLayout({
   children,
 }: {
