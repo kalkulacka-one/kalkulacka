@@ -14,9 +14,23 @@ export default function Page() {
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
+  const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
+  const answerYes = useQuestionsStore((state) => state.answerYes);
+  const answerNo = useQuestionsStore((state) => state.answerNo);
+
+  const yesClick = () => {
+    answerYes();
+    skipQuestion();
+  };
+
+  const noClick = () => {
+    answerNo();
+    skipQuestion();
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <div>
+    <>
+      <main className="relative flex min-h-dvh flex-col justify-center ">
         {/* questions wrapper */}
         {questions.map((question: ExtendedQuestions, index) => {
           if (currentQuestion === index + 1) {
@@ -32,8 +46,25 @@ export default function Page() {
             );
           }
         })}
-      </div>
-    </main>
+      </main>
+      {/* Bottom bar wrapper */}
+      {questions.map((question: ExtendedQuestions, index) => {
+        if (currentQuestion === index + 1) {
+          return (
+            <BottomBar
+              key={question.id}
+              questions={questions}
+              currentQuestion={currentQuestion}
+              questionTotal={questions.length}
+              toggleImportant={toggleImportant}
+              yesClick={yesClick}
+              noClick={noClick}
+              starPressed={question.isImportant ? true : undefined}
+            />
+          );
+        }
+      })}
+    </>
   );
 }
 

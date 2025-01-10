@@ -25,7 +25,7 @@ export function BottomBar({
 }: Props) {
   return (
     // main wrapper
-    <div className="k1-sticky k1-bottom-0 k1-bg-white">
+    <div className="k1-bottom-0 k1-bg-white k1-sticky">
       {/* count status wrapper */}
       <div>
         <StepProgressFancy

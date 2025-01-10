@@ -5,14 +5,10 @@ import { StoreProvider } from "./providers/storeProvider";
 import UrlUpdater from "./utils/urlUpdater";
 import getQuestions from "./utils/getQuestions";
 
-// const baseUrl = "https://dummyjson.com/c/7ee4-a7f4-4977-bb54";
-
-const baseUrlKalk =
+const baseUrl =
   "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json";
 
-const questions = await getQuestions(baseUrlKalk);
-
-console.log(questions);
+const questions = await getQuestions(baseUrl);
 
 export default async function RootLayout({
   children,
@@ -23,7 +19,12 @@ export default async function RootLayout({
     <html lang="en">
       <StoreProvider questions={questions}>
         <UrlUpdater>
-          <body>{children}</body>
+          <body>
+            <header className="flex h-10 items-center justify-center bg-primary">
+              Header
+            </header>
+            {children}
+          </body>
         </UrlUpdater>
       </StoreProvider>
     </html>
