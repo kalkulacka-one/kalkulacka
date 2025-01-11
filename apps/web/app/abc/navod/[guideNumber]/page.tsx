@@ -28,7 +28,7 @@ export default function Page() {
           {/* store content */}
           {/* add as title-m typography component, make content dynamic */}
           <span className="text-3xl font-bold text-neutral-strong">
-            Krajské volby 2024
+            Krajské volby 2024{" "}
             <span style={{ fontSize: "smaller" }} className="text-neutral">
               Jihomoravský kraj
             </span>
@@ -50,7 +50,7 @@ export default function Page() {
           )}
         </div>
       </main>
-      <div className="sticky bottom-0 grid w-1/4 grid-cols-2 justify-center gap-4 justify-self-center p-4">
+      <div className="sticky bottom-0 grid justify-center gap-4 bg-blue-200 p-4 sm:bg-transparent md:w-1/4 md:grid-cols-2 md:justify-self-center">
         {/* grid col 1 */}
         <div className="justify-self-start ">
           <span className="font-primary text-xs font-bold uppercase tracking-wide text-neutral-strong">
@@ -58,7 +58,7 @@ export default function Page() {
           </span>
         </div>
         {/* grid col 2 */}
-        <div className="justify-self-end ">
+        <div className="content-center justify-self-end">
           {/* fix type error */}
           <StepProgress
             currentQuestion={guideNumber}
@@ -67,8 +67,8 @@ export default function Page() {
           />
         </div>
         {/* grid col 3 */}
-        <div className="col-[1_/_span_2] ">
-          {guideNumber !== guide.length && (
+        <div className="col-[1_/_span_2]">
+          {guideNumber !== guide.length ? (
             <Button
               icon={ArrowIconRight}
               iconPosition="right"
@@ -78,11 +78,7 @@ export default function Page() {
             >
               Další krok
             </Button>
-          )}
-        </div>
-        {/* grid col 4 */}
-        <div className="col-[1_/_span_2] justify-self-center ">
-          {guideNumber === 4 ? (
+          ) : (
             <Button
               kind="filled"
               size="default"
@@ -92,10 +88,15 @@ export default function Page() {
               hasIcon
               compactable
               wider
-              fitContent
             >
               <Link href="/xyz/1">První otázka</Link>
             </Button>
+          )}
+        </div>
+        {/* grid col 4 */}
+        <div className="col-[1_/_span_2] justify-self-center ">
+          {guideNumber === 4 ? (
+            <div>Empty</div>
           ) : (
             <Button fitContent kind="link">
               <Link href="/xyz/1">Přeskočit návod ▶▶</Link>
