@@ -20,9 +20,10 @@ export default async function RootLayout({
       <StoreProvider questions={questions}>
         <UrlUpdater>
           <body>
-            {/* <header className="flex h-10 items-center justify-center bg-primary">
-              Header
-            </header> */}
+            {/* implementation sticky but does not make sense, ask  */}
+            <header className="flex h-14 w-screen items-center justify-center bg-primary">
+              Volební kalkulačka
+            </header>
             {children}
           </body>
         </UrlUpdater>

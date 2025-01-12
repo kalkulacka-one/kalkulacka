@@ -161,16 +161,18 @@ export default function Page() {
           <div
             className={`col-[1_/_span_2] justify-self-center ${guideNumber === 4 ? "invisible" : null}`}
           >
-            <Button
-              fitContent
-              kind="link"
-              size="auto"
-              icon={ForwardIcon}
-              hasIcon
-              iconPosition="right"
-            >
-              Přeskočit návod
-            </Button>
+            <Link href="/abc/1">
+              <Button
+                fitContent
+                kind="link"
+                size="auto"
+                icon={ForwardIcon}
+                hasIcon
+                iconPosition="right"
+              >
+                Přeskočit návod
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

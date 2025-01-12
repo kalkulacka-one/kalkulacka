@@ -30,7 +30,7 @@ export default function Page() {
 
   return (
     <>
-      <main className="relative flex min-h-dvh flex-col justify-center ">
+      <main className="relative flex h-screen items-center justify-center">
         {/* questions wrapper */}
         {questions.map((question: ExtendedQuestions, index) => {
           if (currentQuestion === index + 1) {
