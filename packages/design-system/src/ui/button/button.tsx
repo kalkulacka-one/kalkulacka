@@ -15,7 +15,7 @@ const buttonVariants = cva(
     variants: {
       kind: {
         filled:
-          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled",
+          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled text-white",
         inverse: "k1-gap-4 k1-border-2 k1-bg-transparent k1-p-4",
         outline: [
           "k1-border-2 k1-bg-transparent k1-p-4",
@@ -57,6 +57,7 @@ const buttonVariants = cva(
       size: {
         default: "k1-h-14 k1-text-sm k1-leading-6 k1-tracking-wider",
         small: "k1-h-10 k1-text-xs k1-leading-4 k1-tracking-wider",
+        auto: "k1-h-auto k1-text-sm k1-leading-6 k1-tracking-wider",
       },
       wider: {
         true: "k1-px-6",
@@ -122,7 +123,7 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     pressed?: boolean;
     answerType?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     compactable?: boolean;
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   };
