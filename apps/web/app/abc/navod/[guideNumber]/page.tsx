@@ -2,6 +2,7 @@
 
 import { Button, StepProgress, Blobs } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../../providers/storeProvider";
+import { CardTwo, CardThree, CardFour } from "../guideHtml";
 import Link from "next/link";
 import {
   ArrowIconLeft,
@@ -14,6 +15,24 @@ export default function Page() {
   const guideNumber = useQuestionsStore((state) => state.guideNumber);
   const prevGuide = useQuestionsStore((state) => state.prevGuide);
   const nextGuide = useQuestionsStore((state) => state.nextGuide);
+
+  const guideCardSwitcher = (number: number) => {
+    switch (number) {
+      case 1: {
+        return null;
+      }
+      case 2: {
+        return <CardTwo />;
+      }
+      case 3: {
+        return <CardThree />;
+      }
+      case 4: {
+        return <CardFour />;
+      }
+    }
+  };
+
   return (
     <>
       <Blobs />
@@ -68,9 +87,13 @@ export default function Page() {
               const current = index + 1;
               if (current === guideNumber) {
                 return (
-                  <div className="text-base font-normal text-neutral">
-                    {item.message}
-                  </div>
+                  <>
+                    <div className="flex flex-col gap-4 text-base font-normal text-neutral">
+                      {item.contentBefore}
+                      {guideCardSwitcher(current)}
+                      {item.contentAfter}
+                    </div>
+                  </>
                 );
               }
             })}

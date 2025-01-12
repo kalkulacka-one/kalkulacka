@@ -14,3 +14,5 @@ export * from "./yesIcon";
 export * from "./detailDownIcon";
 export * from "./detailUpIcon";
 export * from "./forwardIcon";
+export * from "./blueCheckIcon";
+export * from "./redCrossIcon";

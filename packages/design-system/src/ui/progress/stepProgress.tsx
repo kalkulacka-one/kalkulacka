@@ -1,8 +1,12 @@
 import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
+// todo: generic type for answers ?
+
+type Guide = { contentBefore?: string; contentAfter?: string }[];
+
 type Props = {
-  answers?: { message: string }[];
+  answers?: Guide;
   currentQuestion?: number;
   totalQuestion?: number;
   steps: {

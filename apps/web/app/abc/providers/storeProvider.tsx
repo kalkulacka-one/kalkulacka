@@ -12,6 +12,8 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null;
 };
 
+type Guide = { contentBefore?: string; contentAfter?: string }[];
+
 // divide store, to the external file?
 
 type Store = {
@@ -30,7 +32,7 @@ type Store = {
   toggleImportantRec: (cardId: string) => void;
   setCurrentQuestion: (number: number) => void;
   guideNumber: number;
-  guide: { message: string }[];
+  guide: Guide;
 };
 
 export const StoreContext = createContext<StoreApi<Store> | undefined>(
