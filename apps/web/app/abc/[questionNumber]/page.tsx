@@ -15,25 +15,8 @@ export default function Page() {
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
-  const toggleImportantTest = useQuestionsStore(
-    (state) => state.toggleImportantTest,
-  );
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
-
-  const tglImp = () => {
-    toggleImportantTest(currentQuestion);
-  };
-
-  const yesClick = () => {
-    answerYes();
-    skipQuestion();
-  };
-
-  const noClick = () => {
-    answerNo();
-    skipQuestion();
-  };
 
   return (
     <>
@@ -63,9 +46,9 @@ export default function Page() {
               questions={questions}
               currentQuestion={currentQuestion}
               questionTotal={questions.length}
-              toggleImportant={tglImp}
-              yesClick={yesClick}
-              noClick={noClick}
+              toggleImportant={() => toggleImportant(currentQuestion)}
+              yesClick={() => answerYes(currentQuestion)}
+              noClick={() => answerNo(currentQuestion)}
               starPressed={question.isImportant ? true : undefined}
             />
           );

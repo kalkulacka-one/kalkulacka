@@ -19,13 +19,13 @@ type Guide = { contentBefore?: string; contentAfter?: string }[];
 type Store = {
   questions: ExtendedQuestions[];
   currentQuestion: number;
+  answerYes: (currentQuestion: number) => void;
+  answerNo: (currentQuestion: number) => void;
   toggleImportant: (currentQuestion: number) => void;
   prevQuestion: () => void;
   skipQuestion: () => void;
   nextGuide: () => void;
   prevGuide: () => void;
-  answerYes: () => void;
-  answerNo: () => void;
   // fix no unused vars error
   toggleYes: (cardId: string) => void;
   toggleNo: (cardId: string) => void;
@@ -50,6 +50,38 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
     storeRef.current = createStore<Store>((set) => ({
       questions,
       currentQuestion: 1,
+      answerYes: (currentQuestion) => {
+        set((state) => {
+          const updatedQuestion = state.questions.map((question) => {
+            if (questions[currentQuestion - 1]?.id === question.id) {
+              return {
+                ...question,
+                answerType: true,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestion };
+        });
+        // understand this function  with current invoke better
+        storeRef.current?.getState().skipQuestion();
+      },
+      answerNo: (currentQuestion) => {
+        set((state) => {
+          const updatedQuestion = state.questions.map((question) => {
+            if (questions[currentQuestion - 1]?.id === question.id) {
+              return {
+                ...question,
+                answerType: false,
+              };
+            }
+            return { ...question };
+          });
+          return { ...state, questions: updatedQuestion };
+        });
+        // understand this function  with current invoke better
+        storeRef.current?.getState().skipQuestion();
+      },
       toggleImportant: (currentQuestion) =>
         set((state) => {
           const updatedQuestion = state.questions.map((question) => {
@@ -74,32 +106,6 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       nextGuide: () => {
         set((state) => ({ guideNumber: state.guideNumber + 1 }));
       },
-      answerYes: () =>
-        set((state) => {
-          const updatedQuestions = state.questions.map((question, index) => {
-            if (index + 1 === state.currentQuestion) {
-              return {
-                ...question,
-                answerType: true,
-              };
-            }
-            return { ...question };
-          });
-          return { ...state, questions: updatedQuestions };
-        }),
-      answerNo: () =>
-        set((state) => {
-          const updatedQuestions = state.questions.map((question, index) => {
-            if (index + 1 === state.currentQuestion) {
-              return {
-                ...question,
-                answerType: false,
-              };
-            }
-            return { ...question };
-          });
-          return { ...state, questions: updatedQuestions };
-        }),
       setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
       toggleYes: (cardId) =>
         set((state) => {
