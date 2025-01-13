@@ -18,6 +18,7 @@ const QuestionCard = ({ question, currentQuestion, questionCount }: Props) => {
   return (
     <Card
       id={id}
+      color="white"
       corner="topLeft"
       className="k1-flex k1-w-auto k1-flex-col k1-gap-4 k1-p-customMobile md:k1-p-customDesktop"
     >

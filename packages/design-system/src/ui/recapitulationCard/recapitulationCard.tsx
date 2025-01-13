@@ -41,43 +41,22 @@ export function RecapitulationCard({
     switch (answerType) {
       case true: {
         return (
-          <Button
-            compactable
-            fitContent
-            wider
-            kind="inverse"
-            color="primary"
-            icon={YesIcon}
-          >
-            Ano
+          <Button wider fitContent kind="inverse" color="primary">
+            <YesIcon className="size-6" />
           </Button>
         );
       }
       case false: {
         return (
-          <Button
-            compactable
-            fitContent
-            wider
-            kind="inverse"
-            color="secondary"
-            icon={NoIcon}
-          >
-            Ne
+          <Button wider fitContent kind="inverse" color="secondary">
+            <NoIcon className="size-6" />
           </Button>
         );
       }
       case null: {
         return (
-          <Button
-            compactable
-            fitContent
-            wider
-            kind="inverse"
-            color="neutral"
-            icon={NeutralIcon}
-          >
-            Nevím
+          <Button wider fitContent kind="inverse" color="neutral">
+            <NeutralIcon className="size-6" />
           </Button>
         );
       }
@@ -102,37 +81,50 @@ export function RecapitulationCard({
     <Card
       data-card-id={id}
       corner="topLeft"
-      className="k1-flex k1-w-full k1-flex-col  k1-justify-between k1-gap-4 k1-p-customMobile md:k1-p-customDesktop"
+      color="white"
+      className="k1-flex k1-flex-col k1-py-4"
     >
-      <div className="k1-flex k1-items-center k1-justify-between">
+      <div className="k1-items-center k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-gap-x-6">
         {/* toggle star */}
+        {/* icon edit large icon size and wrapper */}
         <StarIconButton
+          iconSize="large"
+          iconWrapper="large"
           data-buttonCardId={id}
           starPressed={isImportant ? true : false}
           onClick={(event) => onClick(event, "Togglerecimportant")}
         />
 
         <div className="k1-mr-auto k1-flex k1-flex-col">
-          <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-4">
-            <span className="k1-text-sm k1-font-normal">
+          <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-2">
+            <span className=" k1-font-light k1-text-sm  k1-text-neutral">
               {currentQuestion}/{questionCount}
             </span>
-            <span className="k1-text-sm k1-font-normal">{title}</span>
-            <Badge>{tags}</Badge>
+            <span className="sm:k1-inline k1-font-light k1-text-neutral k1-text-sm k1-font-primary  hidden">
+              {title}
+            </span>
+            <Badge color="neutral">{tags}</Badge>
           </div>
           <div>
             {/* TODO: line height fix value */}
-            <span className="k1-text-lg k1-font-bold k1-leading-6 k1-tracking-tighter">
+            {/* replace with typo compoment */}
+            <span className="k1-text-neutral k1-font-semibold k1-tracking-wide k1-leading-6 sm:k1-inline hidden font-primary text-base">
               {statement}
+            </span>
+            {/* mobile title */}
+            <span className="k1-font-light k1-text-neutral k1-font-primary k1-inline sm:k1-hidden">
+              {title}
             </span>
           </div>
         </div>
+        <div className={`${detailToggled ? "k1-invisible" : "k1-block"}`}>
+          {switchButton(answerType)}
+        </div>
         <DetailIconButton onClick={toggleDetail} />
-        <div>{switchButton(answerType)}</div>
       </div>
       {detailToggled && (
-        <div>
-          <div className="k1-flex k1-w-full">
+        <>
+          <div className="k1-flex k1-w-full k1-gap-4">
             <Button
               kind="inverse"
               color="primary"
@@ -160,12 +152,10 @@ export function RecapitulationCard({
               Ne
             </Button>
           </div>
-          <div>
-            <p className="k1-text-base k1-font-normal k1-text-neutral">
-              {detail}
-            </p>
-          </div>
-        </div>
+          <p className="k1-text-base k1-font-normal k1-text-neutral">
+            {detail}
+          </p>
+        </>
       )}
     </Card>
   );
