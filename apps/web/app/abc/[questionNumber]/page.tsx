@@ -15,8 +15,15 @@ export default function Page() {
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
+  const toggleImportantTest = useQuestionsStore(
+    (state) => state.toggleImportantTest,
+  );
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
+
+  const tglImp = () => {
+    toggleImportantTest(currentQuestion);
+  };
 
   const yesClick = () => {
     answerYes();
@@ -56,7 +63,7 @@ export default function Page() {
               questions={questions}
               currentQuestion={currentQuestion}
               questionTotal={questions.length}
-              toggleImportant={toggleImportant}
+              toggleImportant={tglImp}
               yesClick={yesClick}
               noClick={noClick}
               starPressed={question.isImportant ? true : undefined}

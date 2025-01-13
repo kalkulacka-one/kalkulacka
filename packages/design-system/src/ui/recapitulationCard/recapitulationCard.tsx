@@ -18,7 +18,7 @@ export interface Props {
   question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
-  onClick: (event, buttonType) => void;
+  onClick: (buttonType: string) => void;
   starPressed?: boolean;
 }
 
@@ -37,7 +37,7 @@ export function RecapitulationCard({
     setDetailToggled((prevState) => !prevState);
   }
 
-  function switchButton(answerType) {
+  function switchButton(answerType: true | false | null | undefined) {
     switch (answerType) {
       case true: {
         return (
@@ -82,17 +82,17 @@ export function RecapitulationCard({
       data-card-id={id}
       corner="topLeft"
       color="white"
-      className="k1-flex k1-flex-col k1-py-4"
+      // add custom calculated padding
+      className="k1-flex k1-flex-col k1-py-4 k1-gap-6"
     >
       <div className="k1-items-center k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-gap-x-6">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
           iconSize="large"
-          iconWrapper="large"
-          data-buttonCardId={id}
+          iconWrapper="default"
           starPressed={isImportant ? true : false}
-          onClick={(event) => onClick(event, "Togglerecimportant")}
+          onClick={() => onClick("toggleImportant")}
         />
 
         <div className="k1-mr-auto k1-flex k1-flex-col">
@@ -133,8 +133,7 @@ export function RecapitulationCard({
               icon={YesIcon}
               compactable
               wider
-              data-buttonCardId={id}
-              onClick={(event) => onClick(event, "Yes")}
+              onClick={() => onClick("Yes")}
             >
               Ano
             </Button>
@@ -146,8 +145,7 @@ export function RecapitulationCard({
               icon={NoIcon}
               compactable
               wider
-              data-buttonCardId={id}
-              onClick={(event) => onClick(event, "No")}
+              onClick={() => onClick("No")}
             >
               Ne
             </Button>
