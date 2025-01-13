@@ -6,7 +6,7 @@ import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
 type Props = {
   // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
-  toggleImportant: () => void;
+  toggleImportant: (currentQuestion: number) => void;
   yesClick: () => void;
   noClick: () => void;
   questions: ExtendedQuestions[];

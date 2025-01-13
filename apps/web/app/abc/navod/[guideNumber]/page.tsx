@@ -161,6 +161,7 @@ export default function Page() {
           <div
             className={`col-[1_/_span_2] justify-self-center ${guideNumber === 4 ? "invisible" : null}`}
           >
+            {/* fix link wrap, should be link in style of a button! */}
             <Link href="/abc/1">
               <Button
                 fitContent
