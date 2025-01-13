@@ -4,9 +4,14 @@ import {
   ArrowIconRight,
   PercentageIcon,
 } from "@repo/design-system/icons";
-import { Blobs, Button } from "@repo/design-system/ui";
+import { Blobs, Button, RecapitulationCard } from "@repo/design-system/ui";
+import { useQuestionsStore } from "../providers/storeProvider";
 
 export default function Page() {
+  const questions = useQuestionsStore((state) => state.questions);
+  const handleAnswer = () => {
+    alert("Clicked!");
+  };
   return (
     <>
       <Blobs />
@@ -43,20 +48,26 @@ export default function Page() {
           </Button>
         </div>
       </header>
-      <main className="grid grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] justify-center p-4">
+      <main className="grid grid-cols-[clamp(32rem,50vw,48rem)] justify-center gap-4 p-4">
         {/* grid col 1 */}
-        <div></div>
-        {/* grid col 2 */}
-        <div>
-          {/* replace with typo compoment */}
-          <p className="text-sm leading-tight text-neutral">
-            Zde si můžete projít a případně upravit svoje odpovědi a jejich
-            váhu.
-          </p>
+        {/* replace with typo compoment */}
+        <p className="text-sm leading-tight text-neutral">
+          Zde si můžete projít a případně upravit svoje odpovědi a jejich váhu.
+        </p>
+        <div className="grid items-start gap-4">
+          {questions.map((question, index) => {
+            const currentQuestion = index + 1;
+            return (
+              <RecapitulationCard
+                key={`Recapitulation card id:${question.id}`}
+                currentQuestion={currentQuestion}
+                questionCount={questions.length}
+                question={question}
+                onClick={handleAnswer}
+              />
+            );
+          })}
         </div>
-
-        {/* grid col 3 */}
-        <div></div>
       </main>
       {/* bottom bar */}
       <div className="sticky bottom-0 bg-white p-4 sm:hidden">
