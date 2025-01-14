@@ -32,6 +32,8 @@ type Store = {
   setCurrentQuestion: (number: number) => void;
   guideNumber: number;
   guide: Guide;
+  isRekapitulace: true | false | null;
+  setIsRekapitulace: () => void;
 };
 
 export const StoreContext = createContext<StoreApi<Store> | undefined>(
@@ -48,6 +50,8 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
   const storeRef = useRef<StoreApi<Store> | undefined>();
   if (!storeRef.current) {
     storeRef.current = createStore<Store>((set) => ({
+      setIsRekapitulace: () => {},
+      isRekapitulace: null,
       questions,
       currentQuestion: 1,
       answerYes: (currentQuestion) => {
