@@ -8,8 +8,18 @@ type Props = {
 };
 
 export default function UrlUpdater({ children }: Props) {
-  // const path = usePathname();
-  // // console.log(path);
+  const path = usePathname();
+  console.log(`Path: ${path}`);
+
+  console.log(path.includes("rekapitulace"));
+  console.log(path.includes("otazka"));
+
+  // if (path.includes("rekapitulace")) {
+  //   console.log("Rekapitulace found!");
+  // } else if (path.includes("otazka")) {
+  //   console.log("Otazka found!");
+  // }
+
   // const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
 
   // useEffect(() => {

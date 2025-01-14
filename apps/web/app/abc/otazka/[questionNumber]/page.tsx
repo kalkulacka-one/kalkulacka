@@ -1,7 +1,7 @@
 "use client";
 
 import { BottomBar, QuestionWrapper } from "@repo/design-system/ui";
-import { useQuestionsStore } from "../providers/storeProvider";
+import { useQuestionsStore } from "../../providers/storeProvider";
 import { Question } from "@repo/schema/dist";
 
 type ExtendedQuestions = Question & {
