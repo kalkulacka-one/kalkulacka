@@ -27,13 +27,11 @@ type Store = {
   nextGuide: () => void;
   prevGuide: () => void;
   // fix no unused vars error
-  toggleYes: (cardId: string) => void;
-  toggleNo: (cardId: string) => void;
-  setCurrentQuestion: (number: number) => void;
   guideNumber: number;
   guide: Guide;
-  isRekapitulace: true | false | null;
-  setIsRekapitulace: () => void;
+  isRekapitulace: boolean;
+  setCurrentQuestion: (number: number) => void;
+  setIsRekapitulace: (rekapitulaceState: boolean) => void;
 };
 
 export const StoreContext = createContext<StoreApi<Store> | undefined>(
@@ -50,8 +48,9 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
   const storeRef = useRef<StoreApi<Store> | undefined>();
   if (!storeRef.current) {
     storeRef.current = createStore<Store>((set) => ({
-      setIsRekapitulace: () => {},
-      isRekapitulace: null,
+      setIsRekapitulace: (rekapitulaceState) =>
+        set(() => ({ isRekapitulace: rekapitulaceState })),
+      isRekapitulace: false,
       questions,
       currentQuestion: 1,
       answerYes: (currentQuestion) => {
@@ -68,7 +67,11 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           return { ...state, questions: updatedQuestion };
         });
         // understand this function  with current invoke better
-        storeRef.current?.getState().skipQuestion();
+        // better way how to solve this?
+        const isRekapitulace = storeRef.current?.getState().isRekapitulace;
+        if (!isRekapitulace) {
+          storeRef.current?.getState().skipQuestion();
+        }
       },
       answerNo: (currentQuestion) => {
         set((state) => {
@@ -84,7 +87,11 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           return { ...state, questions: updatedQuestion };
         });
         // understand this function  with current invoke better
-        storeRef.current?.getState().skipQuestion();
+        // better way how to solve this?
+        const isRekapitulace = storeRef.current?.getState().isRekapitulace;
+        if (!isRekapitulace) {
+          storeRef.current?.getState().skipQuestion();
+        }
       },
       toggleImportant: (currentQuestion) =>
         set((state) => {
@@ -111,32 +118,6 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         set((state) => ({ guideNumber: state.guideNumber + 1 }));
       },
       setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
-      toggleYes: (cardId) =>
-        set((state) => {
-          const updatedQuestions = state.questions.map((question) => {
-            if (cardId === question.id) {
-              return {
-                ...question,
-                answerType: true,
-              };
-            }
-            return { ...question };
-          });
-          return { ...state, questions: updatedQuestions };
-        }),
-      toggleNo: (cardId) =>
-        set((state) => {
-          const updatedQuestions = state.questions.map((question) => {
-            if (cardId === question.id) {
-              return {
-                ...question,
-                answerType: false,
-              };
-            }
-            return { ...question };
-          });
-          return { ...state, questions: updatedQuestions };
-        }),
     }));
   }
 

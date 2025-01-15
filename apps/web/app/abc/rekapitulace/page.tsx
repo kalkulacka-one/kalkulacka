@@ -11,11 +11,13 @@ import Link from "next/link";
 export default function Page() {
   const questions = useQuestionsStore((state) => state.questions);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
+  const answerYes = useQuestionsStore((state) => state.answerYes);
+  const answerNo = useQuestionsStore((state) => state.answerNo);
 
   return (
     <>
       <Blobs />
-      {/* header */}
+      {/* rekapitulace header */}
       <header className="sticky top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
         {/* fix link wrap, should be link in style of a button! */}
         {/*Link to the last question "current quesiton" */}
@@ -75,9 +77,9 @@ export default function Page() {
                   if (buttonType === "toggleImportant") {
                     toggleImportant(index + 1);
                   } else if (buttonType === "Yes") {
-                    alert("Yes");
+                    answerYes(index + 1);
                   } else if (buttonType === "No") {
-                    alert("No");
+                    answerNo(index + 1);
                   }
                 }}
               />

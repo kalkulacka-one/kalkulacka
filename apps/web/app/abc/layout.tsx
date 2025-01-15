@@ -4,6 +4,7 @@ import "@repo/design-system/themes/theme-default";
 import { StoreProvider } from "./providers/storeProvider";
 import UrlUpdater from "./utils/urlUpdater";
 import getQuestions from "./utils/getQuestions";
+import Header from "./header";
 
 const baseUrl =
   "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json";
@@ -21,9 +22,7 @@ export default async function RootLayout({
         <UrlUpdater>
           <body>
             {/* implementation sticky but does not make sense, ask  */}
-            <header className="flex h-14 w-screen items-center justify-center bg-primary">
-              Volební kalkulačka
-            </header>
+            <Header />
             {children}
           </body>
         </UrlUpdater>
