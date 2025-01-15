@@ -152,7 +152,7 @@ export default function Page() {
                 icon={ArrowIconRight}
                 hasIcon
               >
-                <Link href="/xyz/1">První otázka</Link>
+                <Link href="/abc/otazka/1">První otázka</Link>
               </Button>
             )}
           </div>
@@ -162,7 +162,7 @@ export default function Page() {
             className={`col-[1_/_span_2] justify-self-center ${guideNumber === 4 ? "invisible" : null}`}
           >
             {/* fix link wrap, should be link in style of a button! */}
-            <Link href="/abc/otazka">
+            <Link href="/abc/otazka/1">
               <Button
                 fitContent
                 kind="link"
