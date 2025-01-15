@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useQuestionsStore } from "../providers/storeProvider";
 import { usePathname } from "next/navigation";
+import { stackTraceLimit } from "postcss/lib/css-syntax-error";
 
 type Props = {
   children: React.ReactNode;
@@ -9,16 +10,21 @@ type Props = {
 
 export default function UrlUpdater({ children }: Props) {
   const path = usePathname();
-  console.log(`Path: ${path}`);
+  const isRekapitulace = useQuestionsStore((state) => state.isRekapitulace);
+  const setIsRekapitulace = useQuestionsStore(
+    (state) => state.setIsRekapitulace,
+  );
 
-  console.log(path.includes("rekapitulace"));
-  console.log(path.includes("otazka"));
-
-  // if (path.includes("rekapitulace")) {
-  //   console.log("Rekapitulace found!");
-  // } else if (path.includes("otazka")) {
-  //   console.log("Otazka found!");
-  // }
+  // rekapitulace setter
+  // is slow, make a better approach?
+  useEffect(() => {
+    if (path.includes("rekapitulace") && !isRekapitulace) {
+      console.log("Rekapitulace");
+      setIsRekapitulace(true);
+    } else if (path.includes("otazka") && isRekapitulace) {
+      setIsRekapitulace(false);
+    }
+  }, []);
 
   // const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
 
