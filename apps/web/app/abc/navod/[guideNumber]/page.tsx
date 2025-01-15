@@ -9,12 +9,21 @@ import {
   ArrowIconRight,
   ForwardIcon,
 } from "@repo/design-system/icons";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page() {
+  const params = useParams();
   const guide = useQuestionsStore((state) => state.guide);
   const guideNumber = useQuestionsStore((state) => state.guideNumber);
+  const setGuideNumber = useQuestionsStore((state) => state.setGuideNumber);
   const prevGuide = useQuestionsStore((state) => state.prevGuide);
   const nextGuide = useQuestionsStore((state) => state.nextGuide);
+
+  // ** NEEEDS REFACTOR! ** set question from params
+  useEffect(() => {
+    setGuideNumber(Number(params.guideNumber));
+  }, []);
 
   const guideCardSwitcher = (number: number) => {
     switch (number) {
@@ -144,16 +153,18 @@ export default function Page() {
                 Další krok
               </Button>
             ) : (
-              <Button
-                kind="filled"
-                size="default"
-                color="primary"
-                iconPosition="right"
-                icon={ArrowIconRight}
-                hasIcon
-              >
-                <Link href="/abc/otazka/1">První otázka</Link>
-              </Button>
+              <Link href="/abc/otazka/1">
+                <Button
+                  kind="filled"
+                  size="default"
+                  color="primary"
+                  iconPosition="right"
+                  icon={ArrowIconRight}
+                  hasIcon
+                >
+                  První otázka
+                </Button>
+              </Link>
             )}
           </div>
           {/* grid col 4 */}

@@ -3,6 +3,8 @@
 import { BottomBar, QuestionWrapper } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../../providers/storeProvider";
 import { Question } from "@repo/schema/dist";
+import { useEffect } from "react";
+import { useParams } from "next/navigation";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
@@ -10,13 +12,22 @@ type ExtendedQuestions = Question & {
 };
 
 export default function Page() {
+  const params = useParams();
   const questions = useQuestionsStore((state) => state.questions);
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
+  const setCurrentQuestion = useQuestionsStore(
+    (state) => state.setCurrentQuestion,
+  );
   const prevQuestion = useQuestionsStore((state) => state.prevQuestion);
   const skipQuestion = useQuestionsStore((state) => state.skipQuestion);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
+
+  // ** NEEEDS REFACTOR! ** set question from params
+  useEffect(() => {
+    setCurrentQuestion(Number(params.questionNumber));
+  }, []);
 
   return (
     <>
