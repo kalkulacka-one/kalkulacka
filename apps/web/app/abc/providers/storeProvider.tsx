@@ -31,6 +31,7 @@ type Store = {
   guide: Guide;
   isRekapitulace: boolean;
   currentLocation: "navod" | "otazka" | "rekapitulace" | null;
+  setGuideNumber: (guideNumber: number) => void;
   setCurrentLocation: (
     currentLocation: "navod" | "otazka" | "rekapitulace",
   ) => void;
@@ -120,6 +121,8 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         set((state) => ({ currentQuestion: state.currentQuestion + 1 })),
       guideNumber: 1,
       guide: guide,
+      setGuideNumber: (guideNumber) =>
+        set(() => ({ guideNumber: guideNumber })),
       prevGuide: () => set((state) => ({ guideNumber: state.guideNumber - 1 })),
       nextGuide: () => {
         set((state) => ({ guideNumber: state.guideNumber + 1 }));

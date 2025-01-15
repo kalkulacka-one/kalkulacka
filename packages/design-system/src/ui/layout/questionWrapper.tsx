@@ -2,6 +2,7 @@ import { Button } from "@repo/design-system/ui";
 import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
 import { QuestionCard } from "@repo/design-system/ui";
 import type { Question } from "@repo/schema/dist/question.schema";
+import Link from "next/link";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
@@ -28,6 +29,7 @@ export function QuestionWrapper({
     <>
       {/* content */}
       {/* mobile arrow bar */}
+      {/* button link wrapping solve! */}
       <div className="k1-absolute k1-top-0 k1-w-dvw k1-flex k1-justify-between sm:k1-hidden">
         <Button
           hasIcon
@@ -37,7 +39,11 @@ export function QuestionWrapper({
           fitContent
           onClick={prevQuestion}
         >
-          {currentQuestion === 1 ? "Návod" : "Předchozí"}
+          {currentQuestion === 1 ? (
+            <Link href="/abc/navod">Návod</Link>
+          ) : (
+            "Předchozí"
+          )}
         </Button>
         <Button
           hasIcon
@@ -47,7 +53,11 @@ export function QuestionWrapper({
           fitContent
           onClick={skipQuestion}
         >
-          {currentQuestion >= questionCount ? "Rekapitulace" : "Přeskočit"}
+          {currentQuestion >= questionCount ? (
+            <Link href="/abc/rekapitulace">Rekapitulace</Link>
+          ) : (
+            "Přeskočit"
+          )}
         </Button>
       </div>
 
@@ -66,7 +76,9 @@ export function QuestionWrapper({
               // fix k1 prefix issue!!!
             >
               {currentQuestion === 1 ? (
-                <span className="k1-hidden lg:k1-inline">Návod</span>
+                <span className="k1-hidden lg:k1-inline">
+                  <Link href="/abc/navod">Návod</Link>
+                </span>
               ) : (
                 <span className="k1-hidden md:k1-block">
                   Předchozí{" "}
@@ -95,7 +107,9 @@ export function QuestionWrapper({
               onClick={skipQuestion}
             >
               {currentQuestion >= questionCount ? (
-                <span className="k1-hidden lg:k1-inline">Rekapitulace</span>
+                <span className="k1-hidden lg:k1-inline">
+                  <Link href="/abc/rekapitulace">Rekapitulace</Link>
+                </span>
               ) : (
                 <span className="k1-hidden md:k1-block">
                   Přeskočit{" "}
