@@ -18,7 +18,7 @@ type Guide = { contentBefore?: string; contentAfter?: string }[];
 
 type Store = {
   questions: ExtendedQuestions[];
-  currentQuestion: number;
+  currentQuestion: number | null;
   answerYes: (currentQuestion: number) => void;
   answerNo: (currentQuestion: number) => void;
   toggleImportant: (currentQuestion: number) => void;
@@ -27,7 +27,7 @@ type Store = {
   nextGuide: () => void;
   prevGuide: () => void;
   // fix no unused vars error
-  guideNumber: number;
+  guideNumber: number | null;
   guide: Guide;
   isRekapitulace: boolean;
   currentLocation: "navod" | "otazka" | "rekapitulace" | null;
@@ -60,7 +60,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         set(() => ({ isRekapitulace: rekapitulaceState })),
       isRekapitulace: false,
       questions,
-      currentQuestion: 1,
+      currentQuestion: null,
       answerYes: (currentQuestion) => {
         set((state) => {
           const updatedQuestion = state.questions.map((question) => {
@@ -119,7 +119,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         set((state) => ({ currentQuestion: state.currentQuestion - 1 })),
       skipQuestion: () =>
         set((state) => ({ currentQuestion: state.currentQuestion + 1 })),
-      guideNumber: 1,
+      guideNumber: null,
       guide: guide,
       setGuideNumber: (guideNumber) =>
         set(() => ({ guideNumber: guideNumber })),
