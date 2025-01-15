@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { useQuestionsStore } from "../providers/storeProvider";
 import { usePathname } from "next/navigation";
-import { stackTraceLimit } from "postcss/lib/css-syntax-error";
 
 type Props = {
   children: React.ReactNode;
@@ -10,39 +9,54 @@ type Props = {
 
 export default function UrlUpdater({ children }: Props) {
   const path = usePathname();
-  const isRekapitulace = useQuestionsStore((state) => state.isRekapitulace);
+  const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const setIsRekapitulace = useQuestionsStore(
     (state) => state.setIsRekapitulace,
   );
+  const setCurrentLocation = useQuestionsStore(
+    (state) => state.setCurrentLocation,
+  );
+  const guideNumber = useQuestionsStore((state) => state.guideNumber);
+  const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
-  // rekapitulace setter
+  console.log(path);
+
+  // location setter
   // is slow, make a better approach?
   useEffect(() => {
-    if (path.includes("rekapitulace") && !isRekapitulace) {
-      console.log("Rekapitulace");
+    if (path.includes("rekapitulace")) {
       setIsRekapitulace(true);
-    } else if (path.includes("otazka") && isRekapitulace) {
+      setCurrentLocation("rekapitulace");
+    } else if (path.includes("otazka")) {
       setIsRekapitulace(false);
+      setCurrentLocation("otazka");
+    } else if (path.includes("navod")) {
+      setCurrentLocation("navod");
     }
   }, []);
 
-  // const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
-
-  // useEffect(() => {
-  //   // cleanups ?
-  //   // change url
-  //   function changeUrl() {
-  //     // insert conditionals here for edge cases?
-  //     history.replaceState({}, "", `/abc/${currentQuestion}`);
-  //   }
-  //   // change title
-  //   function changeTitle() {
-  //     // insert conditionals here for edge cases?
-  //     document.title = `Otázka ${currentQuestion}`;
-  //   }
-  //   // changeTitle();
-  //   // changeUrl();
-  // }, [currentQuestion]);
+  useEffect(() => {
+    // cleanups ?
+    // change url
+    function changeUrl() {
+      // insert conditionals here for edge cases?
+      if (currentLocation === "otazka") {
+        history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
+      } else if (currentLocation === "navod") {
+        history.replaceState({}, "", `/abc/navod/${guideNumber}`);
+      }
+    }
+    // change title
+    function changeTitle() {
+      if (currentLocation === "otazka") {
+        document.title = `Otázka ${currentQuestion}`;
+      } else if (currentLocation === "navod") {
+        document.title = `Návod ${guideNumber}`;
+      }
+    }
+    changeTitle();
+    changeUrl();
+  }, [currentQuestion, guideNumber]);
 
   return children;
 }

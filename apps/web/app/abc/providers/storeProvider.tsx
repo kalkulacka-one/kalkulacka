@@ -30,6 +30,10 @@ type Store = {
   guideNumber: number;
   guide: Guide;
   isRekapitulace: boolean;
+  currentLocation: "navod" | "otazka" | "rekapitulace" | null;
+  setCurrentLocation: (
+    currentLocation: "navod" | "otazka" | "rekapitulace",
+  ) => void;
   setCurrentQuestion: (number: number) => void;
   setIsRekapitulace: (rekapitulaceState: boolean) => void;
 };
@@ -48,6 +52,9 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
   const storeRef = useRef<StoreApi<Store> | undefined>();
   if (!storeRef.current) {
     storeRef.current = createStore<Store>((set) => ({
+      currentLocation: null,
+      setCurrentLocation: (currentLocation) =>
+        set(() => ({ currentLocation: currentLocation })),
       setIsRekapitulace: (rekapitulaceState) =>
         set(() => ({ isRekapitulace: rekapitulaceState })),
       isRekapitulace: false,
