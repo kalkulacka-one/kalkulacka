@@ -41,17 +41,20 @@ const buttonVariants = cva(
         primary: [
           "k1-bg-primary-strong",
           "data-[hover]:k1-bg-primary-strong-hover data-[hover]:k1-text-white",
+          "data-[pressed]:k1-primary-strong",
         ],
         secondary: [
           "k1-bg-secondary-strong",
           "data-[hover]:k1-bg-secondary-strong-hover",
           "data-[disabled]:k1-bg-neutral-disabled",
+          "data-[pressed]:k1-secondary-strong",
         ],
         neutral: [
           "k1-border-2 k1-border-neutral-strong k1-text-neutral",
           "data-[hover]:k1-border-neutral-strong data-[hover]:k1-bg-neutral-backdrop-hover",
           "data-[active]:k1-bg-neutral-backdrop-active data-[active]:k1-text-neutral-active",
           "data-[disabled]:k1-border-neutral-disabled data-[disabled]:k1-text-neutral-disabled",
+          "data-[pressed]:k1-neutral-strong",
         ],
       },
       size: {

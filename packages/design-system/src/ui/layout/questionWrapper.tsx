@@ -40,7 +40,7 @@ export function QuestionWrapper({
           onClick={prevQuestion}
         >
           {currentQuestion === 1 ? (
-            <Link href="/abc/navod">Návod</Link>
+            <Link href="/abc/navod/1">Návod</Link>
           ) : (
             "Předchozí"
           )}
@@ -77,7 +77,7 @@ export function QuestionWrapper({
             >
               {currentQuestion === 1 ? (
                 <span className="k1-hidden lg:k1-inline">
-                  <Link href="/abc/navod">Návod</Link>
+                  <Link href="/abc/navod/1">Návod</Link>
                 </span>
               ) : (
                 <span className="k1-hidden md:k1-block">

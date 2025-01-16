@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, StepProgress, Blobs } from "@repo/design-system/ui";
+import { Button, StepProgress } from "@repo/design-system/ui";
+import AnswerYesToggle from "../../answerYesToggle";
 import { useQuestionsStore } from "../../providers/storeProvider";
 import { CardTwo, CardThree, CardFour } from "../guideHtml";
 import Link from "next/link";
@@ -11,6 +12,8 @@ import {
 } from "@repo/design-system/icons";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
+import AnswerNoToggle from "../../answerNoToggle";
+import AnswerNeutralToggle from "../../answerNeutralToggle";
 
 export default function Page() {
   const params = useParams();
@@ -108,6 +111,9 @@ export default function Page() {
                 );
               }
             })}
+            <AnswerYesToggle />
+            <AnswerNoToggle />
+            <AnswerNeutralToggle />
           </div>
           {/* grid col 3 */}
           {/* empty div for 700 - 767 screen width */}
