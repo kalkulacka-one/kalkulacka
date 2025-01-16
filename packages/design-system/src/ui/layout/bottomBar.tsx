@@ -1,4 +1,10 @@
-import { ButtonInFavour, ButtonAgainst } from "@repo/design-system/ui";
+import {
+  ButtonInFavour,
+  ButtonAgainst,
+  YesToggleButton,
+  NoToggleButton,
+  NeutralToggleButton,
+} from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
 import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
@@ -6,6 +12,8 @@ import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
 type Props = {
   // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
+  yesPressed?: boolean | null;
+  noPressed?: boolean | null;
   toggleImportant: (currentQuestion: number) => void;
   yesClick: () => void;
   noClick: () => void;
@@ -16,6 +24,8 @@ type Props = {
 
 export function BottomBar({
   starPressed,
+  yesPressed,
+  noPressed,
   yesClick,
   noClick,
   questions,
@@ -45,6 +55,8 @@ export function BottomBar({
           </StarIconButton>
           <ButtonInFavour onClick={yesClick} />
           <ButtonAgainst onClick={noClick} />
+          <YesToggleButton pressed={yesPressed ? true : null} />
+          <NoToggleButton pressed={noPressed ? true : null} />
         </div>
       </div>
     </div>
