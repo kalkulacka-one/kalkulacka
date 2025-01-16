@@ -15,7 +15,7 @@ const ToggleButton = React.forwardRef<React.ElementRef<typeof Button>, Props>(
       <Button
         onClick={handlePressed}
         pressed={isPressed}
-        data-pressed={isPressed ? true : null}
+        data-active={isPressed ? true : null}
         ref={ref}
         {...props}
       />

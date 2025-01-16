@@ -60,6 +60,8 @@ export default function Page() {
               toggleImportant={() => toggleImportant(currentQuestion)}
               yesClick={() => answerYes(currentQuestion)}
               noClick={() => answerNo(currentQuestion)}
+              yesPressed={question.answerType ? true : undefined}
+              noPressed={!question.answerType ? true : undefined}
               starPressed={question.isImportant ? true : undefined}
             />
           );
