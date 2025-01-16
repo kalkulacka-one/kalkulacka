@@ -12,7 +12,12 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null;
 };
 
-type Guide = { contentBefore?: string; contentAfter?: string }[];
+type Guide = {
+  title?: string;
+  region?: string;
+  contentBefore?: string;
+  contentAfter?: string;
+}[];
 
 // divide store, to the external file?
 

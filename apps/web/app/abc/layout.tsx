@@ -5,6 +5,7 @@ import { StoreProvider } from "./providers/storeProvider";
 import UrlUpdater from "./utils/urlUpdater";
 import getQuestions from "./utils/getQuestions";
 import Header from "./header";
+import { Blobs } from "@repo/design-system/ui";
 
 const baseUrl =
   "https://www.volebnikalkulacka.cz/data/instance/volebnikalkulacka.cz/krajske-2024/10-jihomoravsky/questions.json";
@@ -20,8 +21,7 @@ export default async function RootLayout({
     <html lang="en">
       <StoreProvider questions={questions}>
         <UrlUpdater>
-          <body>
-            {/* implementation sticky but does not make sense, ask  */}
+          <body className="flex h-screen flex-col">
             <Header />
             {children}
           </body>
