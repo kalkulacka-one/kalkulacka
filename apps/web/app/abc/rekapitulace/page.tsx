@@ -18,6 +18,7 @@ export default function Page() {
     <>
       <Blobs />
       {/* rekapitulace header */}
+      {/* sticky not working when scrolling over some portion of h */}
       <header className="sticky top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
         {/* fix link wrap, should be link in style of a button! */}
         {/*Link to the last question "current quesiton" */}

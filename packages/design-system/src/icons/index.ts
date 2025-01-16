@@ -17,3 +17,4 @@ export * from "./forwardIcon";
 export * from "./blueCheckIcon";
 export * from "./redCrossIcon";
 export * from "./percentageIcon";
+export * from "./closeIcon";
