@@ -58,9 +58,13 @@ export function BottomBar({
           <ButtonAgainst onClick={noClick} /> */}
           <YesToggleButton
             onClick={yesClick}
-            pressed={yesPressed ? true : null}
+            // null worked
+            pressed={yesPressed ? true : undefined}
           />
-          <NoToggleButton onClick={noClick} pressed={noPressed ? true : null} />
+          <NoToggleButton
+            onClick={noClick}
+            pressed={noPressed ? true : undefined}
+          />
         </div>
       </div>
     </div>

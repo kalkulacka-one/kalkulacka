@@ -3,13 +3,16 @@ import { VariantProps } from "class-variance-authority";
 import React, { ComponentProps, useState } from "react";
 import { buttonVariants } from "..";
 
-type Props = VariantProps<typeof buttonVariants> &
+type Props = {
+  toggleButtonPressed?: boolean;
+} & VariantProps<typeof buttonVariants> &
   ComponentProps<typeof Button>;
 const ToggleButton = React.forwardRef<React.ElementRef<typeof Button>, Props>(
-  ({ onClick, ...props }, ref) => {
-    const [isPressed, setIsPressed] = useState(false);
+  ({ toggleButtonPressed, onClick, ...props }, ref) => {
+    const [isPressed, setIsPressed] = useState(toggleButtonPressed);
     function handlePressed(event: React.MouseEvent<HTMLButtonElement>) {
       setIsPressed((prevState) => !prevState);
+      console.log(`From toggleButton: ${isPressed}`);
       if (onClick) {
         onClick(event);
       }

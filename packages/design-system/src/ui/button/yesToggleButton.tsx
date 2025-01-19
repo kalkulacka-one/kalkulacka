@@ -3,7 +3,7 @@ import { YesIcon } from "@repo/design-system/icons";
 
 type Props = {
   onClick: () => void;
-  pressed?: boolean | null;
+  pressed?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export function YesToggleButton({ pressed, onClick }: Props) {
@@ -17,6 +17,7 @@ export function YesToggleButton({ pressed, onClick }: Props) {
       onClick={onClick}
       fitContent
       wider
+      toggleButtonPressed={pressed}
       data-pressed={pressed ? true : undefined}
     >
       Ano
