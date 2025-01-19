@@ -4,13 +4,17 @@ import React, { ComponentProps, useState } from "react";
 import { buttonVariants } from "..";
 
 type Props = VariantProps<typeof buttonVariants> &
-  Omit<ComponentProps<typeof Button>, "onClick">;
+  ComponentProps<typeof Button>;
 const ToggleButton = React.forwardRef<React.ElementRef<typeof Button>, Props>(
-  ({ ...props }, ref) => {
+  ({ onClick, ...props }, ref) => {
     const [isPressed, setIsPressed] = useState(false);
-    function handlePressed() {
+    function handlePressed(event: React.MouseEvent<HTMLButtonElement>) {
       setIsPressed((prevState) => !prevState);
+      if (onClick) {
+        onClick(event);
+      }
     }
+
     return (
       <Button
         onClick={handlePressed}

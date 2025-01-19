@@ -6,7 +6,7 @@ import { StarIconFilled } from "@repo/design-system/icons";
 type Props = {
   children?: React.ReactNode;
   starPressed?: boolean;
-  onClick: (event) => void;
+  onClick: (currentQuestion: number) => void;
 } & Omit<
   ComponentProps<typeof ToggleIconButton>,
   "iconDefault" | "iconPressed"

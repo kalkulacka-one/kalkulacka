@@ -69,10 +69,23 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       answerYes: (currentQuestion) => {
         set((state) => {
           const updatedQuestion = state.questions.map((question) => {
-            if (questions[currentQuestion - 1]?.id === question.id) {
+            if (
+              (questions[currentQuestion - 1]?.id === question.id &&
+                question.answerType === null) ||
+              (questions[currentQuestion - 1]?.id === question.id &&
+                question.answerType === false)
+            ) {
               return {
                 ...question,
                 answerType: true,
+              };
+            } else if (
+              questions[currentQuestion - 1]?.id === question.id &&
+              question.answerType === true
+            ) {
+              return {
+                ...question,
+                answerType: null,
               };
             }
             return { ...question };
@@ -89,10 +102,23 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       answerNo: (currentQuestion) => {
         set((state) => {
           const updatedQuestion = state.questions.map((question) => {
-            if (questions[currentQuestion - 1]?.id === question.id) {
+            if (
+              (questions[currentQuestion - 1]?.id === question.id &&
+                question.answerType === null) ||
+              (questions[currentQuestion - 1]?.id === question.id &&
+                question.answerType === true)
+            ) {
               return {
                 ...question,
                 answerType: false,
+              };
+            } else if (
+              questions[currentQuestion - 1]?.id === question.id &&
+              question.answerType === false
+            ) {
+              return {
+                ...question,
+                answerType: null,
               };
             }
             return { ...question };
@@ -150,3 +176,15 @@ export function useQuestionsStore<U>(selector: (state: Store) => U): U {
   }
   return useStore(store, selector);
 }
+
+// TODO:
+
+// 1. answer toggle button interaction refinements:
+// a) ANSWER EMPTY =>
+//    - toggle YES or NO
+//    - move to the next question
+//    - "přeskočit otázku" (skip button)
+// b) QUESTION ANSWERED =>
+//    - possibility to untoggle
+//    - do not move to the next question
+//    - "další otázka" when (skip button)

@@ -49,14 +49,18 @@ export function BottomBar({
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
           <StarIconButton
             starPressed={starPressed ? true : false}
+            // fix onClick error here
             onClick={toggleImportant}
           >
             Pro mě důležité
           </StarIconButton>
-          <ButtonInFavour onClick={yesClick} />
-          <ButtonAgainst onClick={noClick} />
-          <YesToggleButton pressed={yesPressed ? true : null} />
-          <NoToggleButton pressed={noPressed ? true : null} />
+          {/* <ButtonInFavour onClick={yesClick} />
+          <ButtonAgainst onClick={noClick} /> */}
+          <YesToggleButton
+            onClick={yesClick}
+            pressed={yesPressed ? true : null}
+          />
+          <NoToggleButton onClick={noClick} pressed={noPressed ? true : null} />
         </div>
       </div>
     </div>
