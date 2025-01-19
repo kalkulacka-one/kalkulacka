@@ -19,8 +19,6 @@ export default function UrlUpdater({ children }: Props) {
   const guideNumber = useQuestionsStore((state) => state.guideNumber);
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
-  console.log(path);
-
   // location setter
   // is slow, make a better approach?
   useEffect(() => {
@@ -33,11 +31,9 @@ export default function UrlUpdater({ children }: Props) {
     } else if (path.includes("navod")) {
       setCurrentLocation("navod");
     }
-  }, []);
+  }, [path]);
 
   useEffect(() => {
-    // !!! implement cleanups!
-    // change url
     function changeUrl() {
       // insert conditionals here for edge cases?
       if (currentLocation === "otazka") {
@@ -46,6 +42,10 @@ export default function UrlUpdater({ children }: Props) {
         history.replaceState({}, "", `/abc/navod/${guideNumber}`);
       }
     }
+    changeUrl();
+  }, [currentQuestion, guideNumber]);
+
+  useEffect(() => {
     // change title
     function changeTitle() {
       if (currentLocation === "otazka") {
@@ -55,8 +55,7 @@ export default function UrlUpdater({ children }: Props) {
       }
     }
     changeTitle();
-    changeUrl();
-  }, [currentQuestion, guideNumber]);
+  }, [currentLocation]);
 
   return children;
 }
