@@ -2,7 +2,7 @@ import { ToggleButton } from "@repo/design-system/ui";
 import { NoIcon } from "@repo/design-system/icons";
 
 type Props = {
-  pressed?: boolean | null;
+  pressed?: boolean;
   onClick: () => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -17,6 +17,7 @@ export function NoToggleButton({ pressed, onClick }: Props) {
       fitContent
       wider
       onClick={onClick}
+      toggleButtonPressed={pressed}
       data-pressed={pressed ? true : undefined}
     >
       Ne

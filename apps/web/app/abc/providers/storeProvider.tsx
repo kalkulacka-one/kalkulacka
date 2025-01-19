@@ -95,7 +95,10 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         // understand this function  with current invoke better
         // better way how to solve this?
         const isRekapitulace = storeRef.current?.getState().isRekapitulace;
-        if (!isRekapitulace) {
+        const answerType =
+          storeRef.current?.getState().questions[currentQuestion - 1]
+            ?.answerType;
+        if (!isRekapitulace && answerType === true) {
           storeRef.current?.getState().skipQuestion();
         }
       },
@@ -128,7 +131,10 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         // understand this function  with current invoke better
         // better way how to solve this?
         const isRekapitulace = storeRef.current?.getState().isRekapitulace;
-        if (!isRekapitulace) {
+        const answerType =
+          storeRef.current?.getState().questions[currentQuestion - 1]
+            ?.answerType;
+        if (!isRekapitulace && answerType === false) {
           storeRef.current?.getState().skipQuestion();
         }
       },
