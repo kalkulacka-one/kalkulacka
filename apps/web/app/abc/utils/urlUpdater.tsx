@@ -9,7 +9,6 @@ type Props = {
 
 export default function UrlUpdater({ children }: Props) {
   const path = usePathname();
-  const router = useRouter();
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const rekapitulace = useQuestionsStore((state) => state.isRekapitulace);
   const setIsRekapitulace = useQuestionsStore(
@@ -23,21 +22,13 @@ export default function UrlUpdater({ children }: Props) {
 
   // Location setter
   useEffect(() => {
-    if (
-      path.includes("rekapitulace") &&
-      rekapitulace !== true &&
-      currentLocation !== "rekapitulace"
-    ) {
+    if (path.includes("rekapitulace")) {
       setIsRekapitulace(true);
       setCurrentLocation("rekapitulace");
-    } else if (
-      path.includes("otazka") &&
-      rekapitulace !== false &&
-      currentLocation !== "otazka"
-    ) {
+    } else if (path.includes("otazka")) {
       setIsRekapitulace(false);
       setCurrentLocation("otazka");
-    } else if (path.includes("navod") && currentLocation !== "navod") {
+    } else if (path.includes("navod")) {
       setCurrentLocation("navod");
     }
   }, [path]);
@@ -52,9 +43,6 @@ export default function UrlUpdater({ children }: Props) {
       } else if (currentLocation === "navod") {
         // refactor url structure
         history.replaceState({}, "", `/abc/navod/${guideNumber}`);
-        // edge case if currentLocation null or undefined
-      } else if (currentLocation === undefined || currentLocation === null) {
-        router.push("/");
       }
     }
     function changeTitle() {
@@ -64,9 +52,6 @@ export default function UrlUpdater({ children }: Props) {
       } else if (currentLocation === "navod") {
         // refactor title structure
         document.title = `Návod ${guideNumber}`;
-      } else {
-        // default title
-        document.title;
       }
     }
     changeTitle();
