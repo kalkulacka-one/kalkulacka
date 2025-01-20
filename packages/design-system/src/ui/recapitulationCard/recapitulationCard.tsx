@@ -83,13 +83,13 @@ export function RecapitulationCard({
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-flex k1-flex-col k1-py-4 k1-gap-6"
+      className="k1-flex k1-flex-col k1-px-2 k1-py-4 k1-gap-6"
     >
-      <div className="k1-items-center k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-gap-x-6">
+      <div className="k1-items-center k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-gap-6">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
-          iconSize="large"
+          iconSize="default"
           iconWrapper="default"
           starPressed={isImportant ? true : false}
           onClick={() => onClick("toggleImportant")}

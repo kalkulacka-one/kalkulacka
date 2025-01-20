@@ -21,7 +21,7 @@ export default async function RootLayout({
     <html lang="en">
       <StoreProvider questions={questions}>
         <UrlUpdater>
-          <body className="relative flex h-screen flex-col">
+          <body className="relative">
             <ClientBlobs />
             <Header />
             {children}
