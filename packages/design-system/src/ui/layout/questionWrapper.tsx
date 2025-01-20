@@ -76,9 +76,9 @@ export function QuestionWrapper({
               // fix k1 prefix issue!!!
             >
               {currentQuestion === 1 ? (
-                <span className="k1-hidden lg:k1-inline">
-                  <Link href="/abc/navod/1">Návod</Link>
-                </span>
+                <Link href="/abc/navod/1">
+                  <span className="k1-hidden lg:k1-inline">Návod</span>
+                </Link>
               ) : (
                 <span className="k1-hidden md:k1-block">
                   Předchozí{" "}
@@ -107,9 +107,9 @@ export function QuestionWrapper({
               onClick={skipQuestion}
             >
               {currentQuestion >= questionCount ? (
-                <span className="k1-hidden lg:k1-inline">
-                  <Link href="/abc/rekapitulace">Rekapitulace</Link>
-                </span>
+                <Link href="/abc/rekapitulace">
+                  <span className="k1-hidden lg:k1-inline">Rekapitulace</span>
+                </Link>
               ) : (
                 <span className="k1-hidden md:k1-block">
                   Přeskočit{" "}
