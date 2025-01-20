@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useQuestionsStore } from "../providers/storeProvider";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -9,7 +9,9 @@ type Props = {
 
 export default function UrlUpdater({ children }: Props) {
   const path = usePathname();
+  const router = useRouter();
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
+  const rekapitulace = useQuestionsStore((state) => state.isRekapitulace);
   const setIsRekapitulace = useQuestionsStore(
     (state) => state.setIsRekapitulace,
   );
@@ -19,43 +21,57 @@ export default function UrlUpdater({ children }: Props) {
   const guideNumber = useQuestionsStore((state) => state.guideNumber);
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
-  // location setter
-  // is slow, make a better approach?
+  // Location setter
   useEffect(() => {
-    if (path.includes("rekapitulace")) {
+    if (
+      path.includes("rekapitulace") &&
+      rekapitulace !== true &&
+      currentLocation !== "rekapitulace"
+    ) {
       setIsRekapitulace(true);
       setCurrentLocation("rekapitulace");
-    } else if (path.includes("otazka")) {
+    } else if (
+      path.includes("otazka") &&
+      rekapitulace !== false &&
+      currentLocation !== "otazka"
+    ) {
       setIsRekapitulace(false);
       setCurrentLocation("otazka");
-    } else if (path.includes("navod")) {
+    } else if (path.includes("navod") && currentLocation !== "navod") {
       setCurrentLocation("navod");
     }
   }, [path]);
 
+  // Url updater
   useEffect(() => {
     function changeUrl() {
       // insert conditionals here for edge cases?
       if (currentLocation === "otazka") {
+        // refactor url structure
         history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
       } else if (currentLocation === "navod") {
+        // refactor url structure
         history.replaceState({}, "", `/abc/navod/${guideNumber}`);
+        // edge case if currentLocation null or undefined
+      } else if (currentLocation === undefined || currentLocation === null) {
+        router.push("/");
       }
     }
-    changeUrl();
-  }, [currentQuestion, guideNumber]);
-
-  useEffect(() => {
-    // change title
     function changeTitle() {
       if (currentLocation === "otazka") {
+        // refactor title structure
         document.title = `Otázka ${currentQuestion}`;
       } else if (currentLocation === "navod") {
+        // refactor title structure
         document.title = `Návod ${guideNumber}`;
+      } else {
+        // default title
+        document.title;
       }
     }
     changeTitle();
-  }, [currentLocation]);
+    changeUrl();
+  }, [currentQuestion, guideNumber, currentLocation]);
 
   return children;
 }

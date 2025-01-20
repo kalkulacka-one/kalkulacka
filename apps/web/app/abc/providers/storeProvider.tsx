@@ -151,18 +151,40 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           });
           return { ...state, questions: updatedQuestion };
         }),
-      // add edge cases
+      // check edge cases
       prevQuestion: () =>
-        set((state) => ({ currentQuestion: state.currentQuestion - 1 })),
+        set((state) => ({
+          currentQuestion:
+            state.currentQuestion !== null && state.currentQuestion !== 0
+              ? state.currentQuestion - 1
+              : null,
+        })),
       skipQuestion: () =>
-        set((state) => ({ currentQuestion: state.currentQuestion + 1 })),
+        set((state) => ({
+          currentQuestion:
+            state.currentQuestion !== null &&
+            state.currentQuestion !== questions.length
+              ? state.currentQuestion + 1
+              : null,
+        })),
       guideNumber: null,
       guide: guide,
       setGuideNumber: (guideNumber) =>
         set(() => ({ guideNumber: guideNumber })),
-      prevGuide: () => set((state) => ({ guideNumber: state.guideNumber - 1 })),
+      prevGuide: () =>
+        set((state) => ({
+          guideNumber:
+            state.guideNumber !== null && state.guideNumber !== 0
+              ? state.guideNumber - 1
+              : null,
+        })),
       nextGuide: () => {
-        set((state) => ({ guideNumber: state.guideNumber + 1 }));
+        set((state) => ({
+          guideNumber:
+            state.guideNumber !== null && state.guideNumber !== guide.length
+              ? state.guideNumber + 1
+              : null,
+        }));
       },
       setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
     }));
