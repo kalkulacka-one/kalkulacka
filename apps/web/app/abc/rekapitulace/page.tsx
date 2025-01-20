@@ -4,7 +4,7 @@ import {
   ArrowIconRight,
   PercentageIcon,
 } from "@repo/design-system/icons";
-import { Blobs, Button, RecapitulationCard } from "@repo/design-system/ui";
+import { Button, RecapitulationCard } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../providers/storeProvider";
 import Link from "next/link";
 
@@ -16,7 +16,6 @@ export default function Page() {
 
   return (
     <>
-      <Blobs />
       {/* rekapitulace header */}
       {/* sticky not working when scrolling over some portion of h */}
       <header className="sticky top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
