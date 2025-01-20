@@ -11,7 +11,7 @@ export default function Header() {
   const path = usePathname();
 
   return (
-    <header className="h-1/6 max-w-[100vw]">
+    <header className="h-1/6 max-w-[100vw] bg-white">
       <div className="flex w-full items-center justify-between gap-2 p-4 sm:p-8">
         {/* logo wrapper */}
         <div className="flex gap-2">
