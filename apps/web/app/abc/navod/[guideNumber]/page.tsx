@@ -63,7 +63,7 @@ export default function Page() {
           onClick={nextGuide}
         />
       </div>
-      <main className="grid h-5/6 grid-rows-[1fr_auto]">
+      <main className="grid min-h-screen grid-rows-[1fr_auto]">
         {/* fix height !!! */}
         <div className="place-content-center items-center xs:flex xs:flex-col xs:gap-2 min-[701px]:grid min-[701px]:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:grid sm:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:gap-8">
           {/* grid col 1 */}

@@ -20,8 +20,11 @@ export default function UrlUpdater({ children }: Props) {
   const guideNumber = useQuestionsStore((state) => state.guideNumber);
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
+  // Todo: All logic in one use effect
+
   // Location setter
   useEffect(() => {
+    console.log("Location setter UE");
     if (path.includes("rekapitulace")) {
       setIsRekapitulace(true);
       setCurrentLocation("rekapitulace");
@@ -35,6 +38,7 @@ export default function UrlUpdater({ children }: Props) {
 
   // Url updater
   useEffect(() => {
+    console.log("URL updater UE");
     function changeUrl() {
       // insert conditionals here for edge cases?
       if (currentLocation === "otazka") {

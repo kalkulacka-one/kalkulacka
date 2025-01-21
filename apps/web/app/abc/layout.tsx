@@ -21,10 +21,15 @@ export default async function RootLayout({
     <html lang="en">
       <StoreProvider questions={questions}>
         <UrlUpdater>
-          <body className="relative">
-            <ClientBlobs />
-            <Header />
-            {children}
+          <body>
+            {/* blob container */}
+            <div className="grid size-full">
+              {/* root layout */}
+              <div className="relative grid min-h-screen">
+                {/* <Header /> */}
+                {children}
+              </div>
+            </div>
           </body>
         </UrlUpdater>
       </StoreProvider>
