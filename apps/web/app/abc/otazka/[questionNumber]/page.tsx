@@ -30,8 +30,8 @@ export default function Page() {
   }, []);
 
   return (
-    <>
-      <main className="relative flex h-screen items-center justify-center">
+    <main className="relative grid min-h-screen bg-purple-200">
+      <div className="flex min-h-fit items-center justify-center bg-green-300">
         {/* questions wrapper */}
         {questions.map((question: ExtendedQuestions, index) => {
           if (currentQuestion === index + 1) {
@@ -47,7 +47,7 @@ export default function Page() {
             );
           }
         })}
-      </main>
+      </div>
       {/* Bottom bar wrapper */}
       {questions.map((question: ExtendedQuestions, index) => {
         if (currentQuestion === index + 1) {
@@ -67,7 +67,7 @@ export default function Page() {
           );
         }
       })}
-    </>
+    </main>
   );
 }
 

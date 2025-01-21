@@ -151,7 +151,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           });
           return { ...state, questions: updatedQuestion };
         }),
-      // check edge cases
+      // TODO: check edge cases
       prevQuestion: () =>
         set((state) => ({
           currentQuestion:
