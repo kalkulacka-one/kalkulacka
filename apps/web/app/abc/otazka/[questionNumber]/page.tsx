@@ -30,8 +30,8 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="relative flex flex-col bg-purple-200">
-      <div className="flex-1 flex min-h-fit items-center justify-center bg-green-300">
+    <main className="flex-1 relative flex flex-col">
+      <div className="flex-1 flex sm:items-center justify-center">
         {/* questions wrapper */}
         {questions.map((question: ExtendedQuestions, index) => {
           if (currentQuestion === index + 1) {
