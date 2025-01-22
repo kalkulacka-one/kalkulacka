@@ -41,36 +41,29 @@ export function RecapitulationCard({
     switch (answerType) {
       case true: {
         return (
-          <Button wider fitContent kind="inverse" color="primary">
+          <Button fitContent kind="inverse" color="primary">
             <YesIcon className="size-6" />
           </Button>
         );
       }
       case false: {
         return (
-          <Button wider fitContent kind="inverse" color="secondary">
+          <Button fitContent kind="inverse" color="secondary">
             <NoIcon className="size-6" />
           </Button>
         );
       }
       case null: {
         return (
-          <Button wider fitContent kind="inverse" color="neutral">
+          <Button fitContent kind="inverse" color="neutral">
             <NeutralIcon className="size-6" />
           </Button>
         );
       }
       case undefined: {
         return (
-          <Button
-            compactable
-            fitContent
-            wider
-            kind="inverse"
-            color="neutral"
-            icon={NeutralIcon}
-          >
-            Nevím
+          <Button fitContent kind="inverse" color="neutral">
+            <NeutralIcon className="size-6" />
           </Button>
         );
       }
@@ -83,9 +76,9 @@ export function RecapitulationCard({
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-flex k1-w-full k1-flex-col"
+      className="k1-flex k1-min-w-full k1-flex-col"
     >
-      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-6">
+      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
