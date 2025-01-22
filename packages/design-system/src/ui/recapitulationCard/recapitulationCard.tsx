@@ -79,11 +79,11 @@ export function RecapitulationCard({
 
   return (
     <Card
-      data-card-id={id}
+      // data-card-id={id}
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-flex k1-flex-col k1-gap-6"
+      className="k1-flex k1-w-full k1-flex-col"
     >
       <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-6">
         {/* toggle star */}
