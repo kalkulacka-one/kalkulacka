@@ -15,10 +15,10 @@ export default function Page() {
   const answerNo = useQuestionsStore((state) => state.answerNo);
 
   return (
-    <div className="relative flex flex-col">
+    <div className="flex flex-col min-h-screen">
       {/* rekapitulace header */}
       {/* sticky not working when scrolling over some portion of h */}
-      <header className="sticky w-full top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
+      <header className="items-center  sticky w-full top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
         {/* fix link wrap, should be link in style of a button! */}
         {/*Link to the last question "current quesiton" */}
         <Link href="/abc/otazka/1">
@@ -28,12 +28,12 @@ export default function Page() {
             iconPosition="left"
             kind="link"
             fitContent
-            size="auto"
+            size="default"
           />
         </Link>
 
         {/* replace with typo compoment */}
-        <h2 className="text-5xl  font-bold tracking-snug text-neutral-strong sm:mr-auto">
+        <h2 className="text-center text-5xl font-bold tracking-snug text-neutral-strong sm:mr-auto">
           Rekapitulace
         </h2>
         {/* twmerge button fix here */}
@@ -59,13 +59,13 @@ export default function Page() {
         </div>
       </header>
       {/* main content */}
-      <main className="grid grid-cols-[clamp(32rem,50vw,48rem)] justify-center gap-4">
+      <main className="grid grid-cols-1 sm:grid-cols-[clamp(32rem,50vw,48rem)] justify-center p-4 gap-4">
         {/* grid col 1 */}
         {/* replace with typo compoment */}
         <p className="text-sm leading-tight text-neutral">
           Zde si můžete projít a případně upravit svoje odpovědi a jejich váhu.
         </p>
-        <div className="grid items-start gap-4">
+        <div className="flex flex-col items-start gap-4">
           {questions.map((question, index) => {
             const currentQuestion = index + 1;
             return (
