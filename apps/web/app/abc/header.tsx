@@ -11,8 +11,8 @@ export default function Header() {
   const path = usePathname();
 
   return (
-    <header className="max-w-[100vw] bg-white">
-      <div className="flex w-full items-center justify-between gap-2 p-4 sm:p-8">
+    <header className="max-w-[100vw] bg-white sticky bottom-0">
+      <div className="flex w-full items-center justify-between gap-2 p-2 sm:p-8">
         {/* logo wrapper */}
         <div className="flex gap-2">
           <Logo className="h-5 w-[5.953rem]" />
@@ -23,7 +23,7 @@ export default function Header() {
         {/* title component, refactor */}
         {guide[0]?.title && guide[0]?.region ? (
           <div className="mr-auto">
-            <p className="font-primary text-sm text-neutral">
+            <p className="font-primary text-xs sm:text-sm text-neutral">
               {guide[0]?.title} — {guide[0]?.region}
             </p>
           </div>
@@ -36,6 +36,7 @@ export default function Header() {
             size="auto"
             icon={CloseIcon}
             hasIcon
+            compactable
             iconPosition="right"
             // refactor
             onClick={() => alert("Back to home")}
