@@ -46,7 +46,7 @@ const StepProgressFancy = ({
   questionTotal,
 }: Props): JSX.Element => {
   return (
-    <div className="k1-flex k1-h-6 k1-items-center k1-justify-start">
+    <div className="k1-flex k1-items-center k1-justify-start">
       {questions.map((question: ExtendedQuestions, index) => {
         return (
           <div

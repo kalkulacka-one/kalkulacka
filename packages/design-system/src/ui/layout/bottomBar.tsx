@@ -35,7 +35,7 @@ export function BottomBar({
 }: Props) {
   return (
     // main wrapper
-    <div className="k1-sticky k1-bottom-0 k1-h-fit k1-w-full  k1-bg-red-400">
+    <div className="k1-sticky k1-bottom-0 k1-h-fit k1-w-full">
       {/* count status wrapper */}
       <div>
         <StepProgressFancy
@@ -45,7 +45,7 @@ export function BottomBar({
         />
       </div>
       {/* button wrapper */}
-      <div className="k1-flex k1-justify-center">
+      <div className="p-4 k1-flex k1-justify-center">
         <div className="k1-grid k1-w-auto k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4">
           <StarIconButton
             starPressed={starPressed ? true : false}

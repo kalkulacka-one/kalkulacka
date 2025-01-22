@@ -26,11 +26,11 @@ export function QuestionWrapper({
 }: Props) {
   // const { id, title, statement, detail, tags } = question;
   return (
-    <>
+    <div className="k1-relative k1-flex k1-flex-col">
       {/* content */}
       {/* mobile arrow bar */}
       {/* button link wrapping solve! */}
-      <div className="k1-absolute k1-top-0 k1-w-dvw k1-flex k1-justify-between sm:k1-hidden">
+      <div className="k1-sticky k1-top-0 k1-flex k1-w-dvw k1-justify-between sm:k1-hidden">
         <Button
           hasIcon
           icon={ArrowIconLeft}
@@ -61,7 +61,7 @@ export function QuestionWrapper({
         </Button>
       </div>
 
-      <div className="xs:k1-flex xs:k1-flex-col xs:k1-gap-2 min-[701px]:k1-grid min-[701px]:k1-grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:k1-grid sm:k1-grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:k1-gap-8">
+      <div className="k1-flex-1 k1-p-4 xs:k1-flex xs:k1-flex-col xs:k1-gap-2 min-[701px]:k1-grid min-[701px]:k1-grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:k1-grid sm:k1-grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:k1-gap-8">
         {/* desktop grid content */}
         {/* Place button end with flex ok? */}
         <div className="k1-items-center k1-justify-end xs:k1-hidden min-[701px]:k1-flex">
@@ -120,6 +120,6 @@ export function QuestionWrapper({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
