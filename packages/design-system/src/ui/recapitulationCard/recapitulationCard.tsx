@@ -83,9 +83,9 @@ export function RecapitulationCard({
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-flex k1-flex-col k1-px-2 k1-py-4 k1-gap-6"
+      className="k1-flex k1-flex-col k1-gap-6"
     >
-      <div className="k1-items-center k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-gap-6">
+      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-6">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
@@ -97,10 +97,10 @@ export function RecapitulationCard({
 
         <div className="k1-mr-auto k1-flex k1-flex-col">
           <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-2">
-            <span className=" k1-font-light k1-text-sm  k1-text-neutral">
+            <span className=" k1-text-sm k1-font-light  k1-text-neutral">
               {currentQuestion}/{questionCount}
             </span>
-            <span className="sm:k1-inline k1-font-light k1-text-neutral k1-text-sm k1-font-primary  hidden">
+            <span className="hidden k1-font-primary k1-text-sm k1-font-light k1-text-neutral  sm:k1-inline">
               {title}
             </span>
             <Badge color="neutral">{tags}</Badge>
@@ -108,11 +108,11 @@ export function RecapitulationCard({
           <div>
             {/* TODO: line height fix value */}
             {/* replace with typo compoment */}
-            <span className="k1-text-neutral k1-font-semibold k1-tracking-wide k1-leading-6 sm:k1-inline hidden font-primary text-base">
+            <span className="hidden font-primary text-base k1-font-semibold k1-leading-6 k1-tracking-wide k1-text-neutral sm:k1-inline">
               {statement}
             </span>
             {/* mobile title */}
-            <span className="k1-font-light k1-text-neutral k1-font-primary k1-inline sm:k1-hidden">
+            <span className="k1-inline k1-font-primary k1-font-light k1-text-neutral sm:k1-hidden">
               {title}
             </span>
           </div>
