@@ -15,10 +15,10 @@ export default function Page() {
   const answerNo = useQuestionsStore((state) => state.answerNo);
 
   return (
-    <>
+    <div className="relative flex flex-col">
       {/* rekapitulace header */}
       {/* sticky not working when scrolling over some portion of h */}
-      <header className="sticky top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
+      <header className="sticky w-full top-0 grid grid-cols-[auto_1fr_auto] items-center gap-8 bg-white p-4 sm:justify-center sm:p-8">
         {/* fix link wrap, should be link in style of a button! */}
         {/*Link to the last question "current quesiton" */}
         <Link href="/abc/otazka/1">
@@ -58,7 +58,8 @@ export default function Page() {
           </Link>
         </div>
       </header>
-      <main className="grid grid-cols-[clamp(32rem,50vw,48rem)] justify-center gap-4 p-4">
+      {/* main content */}
+      <main className="grid grid-cols-[clamp(32rem,50vw,48rem)] justify-center gap-4">
         {/* grid col 1 */}
         {/* replace with typo compoment */}
         <p className="text-sm leading-tight text-neutral">
@@ -103,6 +104,6 @@ export default function Page() {
           </Button>
         </Link>
       </div>
-    </>
+    </div>
   );
 }
