@@ -23,10 +23,11 @@ export default async function RootLayout({
         <UrlUpdater>
           <body>
             {/* blob container */}
-            <div className="grid size-full">
+            <div className="relative grid size-full">
+              <ClientBlobs />
               {/* root layout */}
-              <div className="relative grid min-h-screen">
-                {/* <Header /> */}
+              <div className="flex flex-col min-h-screen">
+                <Header />
                 {children}
               </div>
             </div>

@@ -1,14 +1,10 @@
 "use client";
 
-import { Button, StepProgress } from "@repo/design-system/ui";
+import { Button } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../../providers/storeProvider";
 import { CardTwo, CardThree, CardFour } from "../guideHtml";
-import Link from "next/link";
-import {
-  ArrowIconLeft,
-  ArrowIconRight,
-  ForwardIcon,
-} from "@repo/design-system/icons";
+import GuideBottomBar from "./guideBottomBar";
+import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -43,7 +39,7 @@ export default function Page() {
   };
 
   return (
-    <>
+    <div className="relative flex-1 flex flex-col">
       {/* mobile arrow bar */}
       <div className="absolute top-0 flex w-full justify-between p-2 sm:hidden">
         <Button
@@ -63,9 +59,9 @@ export default function Page() {
           onClick={nextGuide}
         />
       </div>
-      <main className="grid min-h-screen grid-rows-[1fr_auto]">
+      <main className="flex flex-col justify-center items-center flex-1">
         {/* fix height !!! */}
-        <div className="place-content-center items-center xs:flex xs:flex-col xs:gap-2 min-[701px]:grid min-[701px]:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:grid sm:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:gap-8">
+        <div className="flex-1 place-content-center items-center xs:flex xs:flex-col xs:gap-2 min-[701px]:grid min-[701px]:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:grid sm:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:gap-8">
           {/* grid col 1 */}
           {/* empty div for 700 - 767 screen width */}
           <div className="block sm:hidden"></div>
@@ -125,71 +121,13 @@ export default function Page() {
             )}
           </div>
         </div>
-        {/* bottom bar wrapper */}
-        <div className="sticky bottom-0 grid grid-cols-2 justify-center gap-4 bg-white p-4 min-[701px]:grid min-[701px]:[grid-template-columns:repeat(2,8rem)] sm:bg-transparent md:w-1/4 md:justify-self-center">
-          {/* grid col 1 */}
-          <div className="justify-self-start">
-            <span className="font-primary text-xs font-bold uppercase tracking-wide text-neutral-strong">
-              Návod {guideNumber} / {guide.length}
-            </span>
-          </div>
-          {/* grid col 2 */}
-          <div className="content-center justify-self-end">
-            {/* fix type error */}
-            <StepProgress
-              currentQuestion={guideNumber}
-              totalQuestion={guide.length}
-              answers={guide}
-            />
-          </div>
-          {/* grid col 3 */}
-          <div className="col-[1_/_span_2]">
-            {guideNumber !== guide.length ? (
-              <Button
-                icon={ArrowIconRight}
-                iconPosition="right"
-                onClick={nextGuide}
-                color="neutral"
-                kind="outline"
-              >
-                Další krok
-              </Button>
-            ) : (
-              <Link href="/abc/otazka/1">
-                <Button
-                  kind="filled"
-                  size="default"
-                  color="primary"
-                  iconPosition="right"
-                  icon={ArrowIconRight}
-                  hasIcon
-                >
-                  První otázka
-                </Button>
-              </Link>
-            )}
-          </div>
-          {/* grid col 4 */}
-          {/* invisible on div instead of button due to cva conflicts, fix in tw merge ? */}
-          <div
-            className={`col-[1_/_span_2] justify-self-center ${guideNumber === 4 ? "invisible" : null}`}
-          >
-            {/* fix link wrap, should be link in style of a button! */}
-            <Link href="/abc/otazka/1">
-              <Button
-                fitContent
-                kind="link"
-                size="auto"
-                icon={ForwardIcon}
-                hasIcon
-                iconPosition="right"
-              >
-                Přeskočit návod
-              </Button>
-            </Link>
-          </div>
-        </div>
+        {/* guide bottom bar */}
+        <GuideBottomBar
+          guide={guide}
+          guideNumber={guideNumber}
+          nextGuide={nextGuide}
+        />
       </main>
-    </>
+    </div>
   );
 }
