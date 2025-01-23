@@ -39,7 +39,7 @@ export default function Page() {
   };
 
   return (
-    <div className="relative flex-1 flex flex-col">
+    <div className="relative flex flex-1 flex-col">
       {/* mobile arrow bar */}
       <div className="absolute top-0 flex w-full justify-between p-2 sm:hidden">
         <Button
@@ -59,7 +59,7 @@ export default function Page() {
           onClick={nextGuide}
         />
       </div>
-      <main className="flex flex-col justify-center items-center flex-1">
+      <main className="flex flex-1 flex-col items-center justify-center">
         {/* fix height !!! */}
         <div className="flex-1 place-content-center items-center xs:flex xs:flex-col xs:gap-2 min-[701px]:grid min-[701px]:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:grid sm:grid-cols-[1fr_clamp(32rem,_50vw,_48rem)_1fr] sm:gap-8">
           {/* grid col 1 */}
