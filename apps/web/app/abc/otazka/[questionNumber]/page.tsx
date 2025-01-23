@@ -1,10 +1,12 @@
 "use client";
 
-import { BottomBar, QuestionWrapper } from "@repo/design-system/ui";
+import { BottomBar, Button, QuestionWrapper } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../../providers/storeProvider";
 import { Question } from "@repo/schema/dist";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
+import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
+import Link from "next/link";
 
 type ExtendedQuestions = Question & {
   isImportant: true | false | null;
@@ -30,8 +32,39 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="flex-1 relative flex flex-col">
-      <div className="flex-1 flex sm:items-center justify-center">
+    <main className="relative flex flex-1 flex-col">
+      {/* mobile navigation wrapper wrapper */}
+      <div className="k1-sticky k1-top-0 k1-flex k1-w-dvw k1-justify-between sm:k1-hidden">
+        <Button
+          hasIcon
+          icon={ArrowIconLeft}
+          iconPosition="left"
+          kind="link"
+          fitContent
+          onClick={prevQuestion}
+        >
+          {currentQuestion === 1 ? (
+            <Link href="/abc/navod/1">Návod</Link>
+          ) : (
+            "Předchozí"
+          )}
+        </Button>
+        <Button
+          hasIcon
+          icon={ArrowIconRight}
+          iconPosition="right"
+          kind="link"
+          fitContent
+          onClick={skipQuestion}
+        >
+          {currentQuestion >= questions.length ? (
+            <Link href="/abc/rekapitulace">Rekapitulace</Link>
+          ) : (
+            "Přeskočit"
+          )}
+        </Button>
+      </div>
+      <div className="flex flex-1 items-start justify-center min-[576px]:items-center">
         {/* questions wrapper */}
         {questions.map((question: ExtendedQuestions, index) => {
           if (currentQuestion === index + 1) {

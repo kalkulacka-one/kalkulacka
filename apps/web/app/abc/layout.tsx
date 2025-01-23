@@ -26,7 +26,7 @@ export default async function RootLayout({
             <div className="relative grid size-full">
               <ClientBlobs />
               {/* root layout */}
-              <div className="flex flex-col min-h-screen">
+              <div className="flex min-h-screen flex-col">
                 <Header />
                 {children}
               </div>
