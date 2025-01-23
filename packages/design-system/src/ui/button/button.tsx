@@ -1,6 +1,7 @@
 import React from "react";
 import { Button as HeadlessUIButton } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
   [
@@ -144,6 +145,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       compactable,
       pressed,
       answerType,
+      className,
       ...props
     },
     ref,
@@ -153,15 +155,18 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 
     return (
       <HeadlessUIButton
-        className={buttonVariants({
-          kind,
-          size,
-          wider,
-          fitContent,
-          hasIcon,
-          iconPosition,
-          color,
-        })}
+        className={twMerge(
+          buttonVariants({
+            kind,
+            size,
+            wider,
+            fitContent,
+            hasIcon,
+            iconPosition,
+            color,
+          }),
+          className,
+        )}
         ref={ref}
         aria-pressed={pressed ? true : false}
         data-pressed={pressed ? true : null}
