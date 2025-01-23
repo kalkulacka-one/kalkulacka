@@ -20,7 +20,7 @@ const QuestionCard = ({ question, currentQuestion, questionCount }: Props) => {
       id={id}
       color="white"
       corner="topLeft"
-      className="k1-flex k1-w-auto k1-flex-col max-[575px]:k1-gap-2 k1-gap-4 max-[575px]:k1-p-customMobile k1-p-customDesktop"
+      className="k1-flex k1-w-auto k1-flex-col max-[575px]:k1-gap-2 k1-gap-4 sm:k1-gap-8 max-[575px]:k1-p-customMobile k1-p-customDesktop"
     >
       <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-4">
         {/* font weight 400 300 issue solve */}

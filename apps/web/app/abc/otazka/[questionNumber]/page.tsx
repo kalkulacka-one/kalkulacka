@@ -34,13 +34,14 @@ export default function Page() {
   return (
     <main className="relative flex flex-1 flex-col">
       {/* mobile navigation wrapper wrapper */}
-      <div className="k1-sticky k1-top-0 k1-flex k1-w-dvw k1-justify-between sm:k1-hidden">
+      <div className="k1-sticky k1-top-0 k1-flex k1-w-dvw k1-justify-between sm:k1-hidden p-2 xs:p-4">
         <Button
           hasIcon
           icon={ArrowIconLeft}
           iconPosition="left"
           kind="link"
           fitContent
+          size="auto"
           onClick={prevQuestion}
         >
           {currentQuestion === 1 ? (
@@ -54,6 +55,7 @@ export default function Page() {
           icon={ArrowIconRight}
           iconPosition="right"
           kind="link"
+          size="auto"
           fitContent
           onClick={skipQuestion}
         >

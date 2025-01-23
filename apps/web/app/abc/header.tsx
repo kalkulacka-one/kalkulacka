@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header className="sticky bottom-0 max-w-[100vw] bg-white">
-      <div className="flex w-full items-center gap-2 p-2 min-[576px]:gap-4 min-[576px]:p-4 sm:p-8">
+      <div className="flex w-full items-center gap-2 p-2 xs:p-4 min-[576px]:gap-4 sm:p-8">
         {/* logo wrapper */}
         <div className="flex gap-2">
           <Logo className="h-5 w-[5.953rem]" />

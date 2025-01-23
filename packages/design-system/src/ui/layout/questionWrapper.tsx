@@ -44,12 +44,12 @@ export function QuestionWrapper({
             >
               {currentQuestion === 1 ? (
                 <Link href="/abc/navod/1">
-                  <span className="k1-hidden lg:k1-inline">Návod</span>
+                  <span className="k1-hidden md:k1-inline">Návod</span>
                 </Link>
               ) : (
-                <span className="k1-hidden md:k1-block">
-                  Předchozí{" "}
-                  <span className="k1-hidden lg:k1-inline">otázka</span>
+                <span className="k1-hidden md:k1-inline">
+                  Předchozí
+                  <span className="k1-hidden lg:k1-inline"> otázka</span>
                 </span>
               )}
             </Button>
@@ -75,12 +75,12 @@ export function QuestionWrapper({
             >
               {currentQuestion >= questionCount ? (
                 <Link href="/abc/rekapitulace">
-                  <span className="k1-hidden lg:k1-inline">Rekapitulace</span>
+                  <span className="k1-hidden md:k1-inline">Rekapitulace</span>
                 </Link>
               ) : (
-                <span className="k1-hidden md:k1-block">
-                  Přeskočit{" "}
-                  <span className="k1-hidden lg:k1-inline">otázku</span>
+                <span className="k1-hidden md:k1-inline">
+                  Přeskočit
+                  <span className="k1-hidden lg:k1-inline"> otázku</span>
                 </span>
               )}
             </Button>
