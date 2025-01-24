@@ -17,10 +17,9 @@ export function YesToggleButton({ pressed, onClick }: Props) {
       hasIcon
       compactable
       iconPosition="left"
-      className="!k1-w-full !k1-justify-center xs:k1-w-fit min-[1200px]:!k1-w-64 min-[1200px]:!k1-justify-start"
+      className="max-[576px]:!k1-w-full max-[576px]:!k1-justify-center xs:!k1-w-fit lg:k1-min-w-44  lg:!k1-justify-start"
       onClick={onClick}
       wider
-      // compactable
       toggleButtonPressed={pressed}
       data-pressed={pressed ? true : undefined}
     >
@@ -28,3 +27,9 @@ export function YesToggleButton({ pressed, onClick }: Props) {
     </ToggleButton>
   );
 }
+
+// "max-[576px]:!k1-w-full
+// xs:!k1-w-fit
+// !k1-justify-center
+// min-[1200px]:!k1-max-w-64
+// min-[1200px]:!k1-justify-start"
