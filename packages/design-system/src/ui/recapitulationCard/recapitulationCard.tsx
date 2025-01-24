@@ -96,9 +96,9 @@ export function RecapitulationCard({
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-p-custom k1-flex k1-min-w-full k1-flex-col"
+      className="k1-p-recapitulationCardMobile lg:k1-py-recapitulationCardDesktop k1-flex k1-min-w-full k1-flex-col k1-gap-4"
     >
-      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center">
+      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-x-2 min-[700px]:k1-gap-x-6">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
@@ -121,13 +121,13 @@ export function RecapitulationCard({
           <div>
             {/* TODO: line height fix value */}
             {/* replace with typo compoment */}
-            {/* <span className="hidden font-primary k1-font-semibold k1-leading-6 k1-tracking-wide k1-text-neutral sm:k1-inline sm:k1-text-base">
+            <p className="hidden font-primary k1-font-semibold k1-leading-6 k1-tracking-wide k1-text-neutral sm:k1-inline sm:k1-text-base">
               {statement}
-            </span> */}
+            </p>
             {/* mobile title */}
-            <span className="k1-font-primary k1-text-sm k1-font-light !k1-leading-[10px] k1-text-neutral sm:k1-hidden">
+            <p className="k1-font-primary k1-text-sm k1-font-light k1-leading-tight k1-text-neutral sm:k1-hidden">
               {title}
-            </span>
+            </p>
           </div>
         </div>
         <div className={`${detailToggled ? "k1-invisible" : "k1-block"}`}>

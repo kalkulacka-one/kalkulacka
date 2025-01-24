@@ -17,6 +17,9 @@ const DetailIconButton = ({ starPressed, onClick, ...props }: Props) => {
       iconDefault={DetailDownIcon}
       iconPressed={DetailUpIcon}
       onClick={onClick}
+      size="auto"
+      iconSize="default"
+      iconWrapper="fit"
       togglePressed={starPressed}
       {...props}
     ></ToggleIconButton>

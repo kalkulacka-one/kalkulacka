@@ -11,6 +11,7 @@ const IconButtonVariants = cva(
         small: "k1-h-8 k1-w-8",
         default: "k1-h-10 k1-w-10",
         large: "k1-h-14 k1-w-14",
+        auto: "k1-h-auto k1-w-auto",
       },
     },
   },
@@ -26,6 +27,7 @@ const IconVariants = cva(
         small: "k1-h-8 k1-w-8",
         default: "k1-h-fit k1-w-fit k1-p-2",
         large: "k1-h-14 k1-w-14",
+        fit: "k1-h-fit k1-w-fit",
       },
       iconSize: {
         small: "k1-h-4 k1-w-4",

@@ -5,7 +5,8 @@ const padding: Pick<Partial<ThemeConfig>, "padding"> = {
   padding: {
     customDesktop: "calc(calc(1rem * 2) - calc(1rem / 16))",
     customMobile: "calc(1rem / 2 - 1rem / 16)",
-    custom: "calc(1rem - calc(1rem / 16))",
+    recapitulationCardMobile: "calc(calc(1rem / 2) - calc(1rem / 16))",
+    recapitulationCardDesktop: "calc(1rem - calc(1rem / 16))",
   },
 };
 
