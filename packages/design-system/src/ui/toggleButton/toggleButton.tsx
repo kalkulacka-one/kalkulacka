@@ -1,7 +1,6 @@
-import { Button } from "@repo/design-system/ui";
+import { Button, buttonVariants } from "@repo/design-system/ui";
 import { VariantProps } from "class-variance-authority";
 import React, { ComponentProps, useState } from "react";
-import { buttonVariants } from "..";
 
 type Props = {
   toggleButtonPressed?: boolean;

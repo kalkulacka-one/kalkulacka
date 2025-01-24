@@ -11,6 +11,7 @@ import borderRadius from "./config/borderRadius";
 import boxShadow from "./config/boxShadow";
 import screens from "./config/screens";
 import padding from "./config/padding";
+import width from "./config/sizes";
 
 // Each package is responsible for its own content
 const config: Config = {
@@ -22,6 +23,7 @@ const config: Config = {
       ...colors,
       ...spacing,
       ...boxShadow,
+      ...width,
       fontFamily: { ...fontFamily },
       fontSize: { ...fontSize },
       lineHeight: { ...lineHeight },

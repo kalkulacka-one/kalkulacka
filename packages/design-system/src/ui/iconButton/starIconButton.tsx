@@ -1,7 +1,8 @@
 import React, { ComponentProps, ReactHTMLElement } from "react";
-import { ToggleIconButton } from "@repo/design-system/ui";
+import { ToggleIconButton, IconButtonVariants } from "@repo/design-system/ui";
 import { StarIcon } from "@repo/design-system/icons";
 import { StarIconFilled } from "@repo/design-system/icons";
+import { VariantProps } from "class-variance-authority";
 
 type Props = {
   children?: React.ReactNode;
@@ -10,7 +11,8 @@ type Props = {
 } & Omit<
   ComponentProps<typeof ToggleIconButton>,
   "iconDefault" | "iconPressed"
->;
+> &
+  VariantProps<typeof IconButtonVariants>;
 
 const StarIconButton = ({
   children,
@@ -23,6 +25,7 @@ const StarIconButton = ({
       iconDefault={StarIcon}
       iconPressed={StarIconFilled}
       onClick={onClick}
+      iconSize="large"
       togglePressed={starPressed}
       {...props}
     >
