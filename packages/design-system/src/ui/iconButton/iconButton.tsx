@@ -24,13 +24,13 @@ const IconVariants = cva(
     variants: {
       iconWrapper: {
         small: "k1-h-8 k1-w-8",
-        default: "k1-h-10 k1-w-10",
+        default: "k1-h-fit k1-w-fit k1-p-2",
         large: "k1-h-14 k1-w-14",
       },
       iconSize: {
         small: "k1-h-4 k1-w-4",
         default: "k1-h-6 k1-w-6",
-        large: "k1-h-10 k1-w-10",
+        large: "k1-size-8",
       },
     },
   },

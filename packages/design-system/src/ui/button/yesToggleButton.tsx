@@ -17,7 +17,7 @@ export function YesToggleButton({ pressed, onClick }: Props) {
       hasIcon
       compactable
       iconPosition="left"
-      className="max-[576px]:!k1-w-full max-[576px]:!k1-justify-center xs:!k1-w-fit lg:k1-min-w-44  lg:!k1-justify-start"
+      className="max-[576px]:!k1-w-full max-[576px]:!k1-justify-center xs:!k1-w-fit lg:!k1-w-full lg:!k1-justify-start"
       onClick={onClick}
       wider
       toggleButtonPressed={pressed}
