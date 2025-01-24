@@ -1,10 +1,4 @@
-import {
-  ButtonInFavour,
-  ButtonAgainst,
-  YesToggleButton,
-  NoToggleButton,
-  NeutralToggleButton,
-} from "@repo/design-system/ui";
+import { YesToggleButton, NoToggleButton } from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
 import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
