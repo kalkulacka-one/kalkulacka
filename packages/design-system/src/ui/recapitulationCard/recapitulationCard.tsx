@@ -1,7 +1,12 @@
 "use client";
 import { Badge } from "@repo/design-system/badge";
 import { YesIcon, NoIcon, NeutralIcon } from "@repo/design-system/icons";
-import { Button, Card } from "@repo/design-system/ui";
+import {
+  Button,
+  Card,
+  YesToggleButton,
+  NoToggleButton,
+} from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
 import { DetailIconButton } from "@repo/design-system/ui";
 import { useState } from "react";
@@ -15,6 +20,8 @@ type ExtendedQuestions = Question & {
 // type answerType: true || false || null || undefined;
 
 export interface Props {
+  yesPressed?: boolean | null;
+  noPressed?: boolean | null;
   question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
@@ -27,7 +34,8 @@ export function RecapitulationCard({
   currentQuestion,
   questionCount,
   onClick,
-  starPressed,
+  yesPressed,
+  noPressed,
 }: Props) {
   const { id, statement, detail, tags, title, answerType, isImportant } =
     question;
@@ -43,9 +51,9 @@ export function RecapitulationCard({
         return (
           <Button
             fitContent
-            kind="inverse"
+            kind="filled"
             color="primary"
-            className="xs:k1-px-6"
+            className="k1-pointer-events-none xs:k1-px-6"
           >
             <YesIcon className="k1-size-6" />
           </Button>
@@ -55,11 +63,11 @@ export function RecapitulationCard({
         return (
           <Button
             fitContent
-            kind="inverse"
+            kind="filled"
             color="secondary"
             className="xs:k1-px-6"
           >
-            <NoIcon className="k1-size-6" />
+            <NoIcon className="k1-pointer-events-none k1-size-6" />
           </Button>
         );
       }
@@ -71,7 +79,7 @@ export function RecapitulationCard({
             color="neutral"
             className="xs:k1-px-6"
           >
-            <NeutralIcon className="k1-size-6" />
+            <NeutralIcon className="k1-pointer-events-none k1-size-6" />
           </Button>
         );
       }
@@ -83,7 +91,7 @@ export function RecapitulationCard({
             color="neutral"
             className="xs:k1-px-6"
           >
-            <NeutralIcon className="k1-size-6" />
+            <NeutralIcon className="k1-pointer-events-none k1-size-6" />
           </Button>
         );
       }
@@ -138,30 +146,14 @@ export function RecapitulationCard({
       {detailToggled && (
         <>
           <div className="k1-flex k1-w-full k1-gap-4">
-            <Button
-              kind="inverse"
-              color="primary"
-              size="default"
-              hasIcon
-              icon={YesIcon}
-              compactable
-              wider
+            <YesToggleButton
               onClick={() => onClick("Yes")}
-            >
-              Ano
-            </Button>
-            <Button
-              kind="inverse"
-              color="secondary"
-              size="default"
-              hasIcon
-              icon={NoIcon}
-              compactable
-              wider
+              pressed={yesPressed ? true : undefined}
+            />
+            <NoToggleButton
               onClick={() => onClick("No")}
-            >
-              Ne
-            </Button>
+              pressed={noPressed ? true : undefined}
+            />
           </div>
           <p className="k1-text-base k1-font-normal k1-text-neutral">
             {detail}
@@ -171,3 +163,7 @@ export function RecapitulationCard({
     </Card>
   );
 }
+
+// TODO:
+// 1. Fix custom paddings on card (desktop)
+// 2.

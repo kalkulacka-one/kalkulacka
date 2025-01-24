@@ -7,12 +7,17 @@ import {
 import { Button, RecapitulationCard } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../providers/storeProvider";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Page() {
   const questions = useQuestionsStore((state) => state.questions);
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
+
+  useEffect(() => {
+    // rerender on change of answertype of isImportant
+  }, [questions]);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -79,6 +84,9 @@ export default function Page() {
                 currentQuestion={currentQuestion}
                 questionCount={questions.length}
                 question={question}
+                yesPressed={question.answerType === true ? true : undefined}
+                noPressed={question.answerType === false ? true : undefined}
+                starPressed={question.isImportant ? true : undefined}
                 onClick={(buttonType) => {
                   if (buttonType === "toggleImportant") {
                     toggleImportant(index + 1);
@@ -112,3 +120,6 @@ export default function Page() {
     </div>
   );
 }
+
+// TODO:
+// 1. ButtonToggle does not rerender state
