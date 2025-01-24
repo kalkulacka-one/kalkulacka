@@ -41,29 +41,49 @@ export function RecapitulationCard({
     switch (answerType) {
       case true: {
         return (
-          <Button fitContent kind="inverse" color="primary">
-            <YesIcon className="size-6" />
+          <Button
+            fitContent
+            kind="inverse"
+            color="primary"
+            className="xs:k1-px-6"
+          >
+            <YesIcon className="k1-size-6" />
           </Button>
         );
       }
       case false: {
         return (
-          <Button fitContent kind="inverse" color="secondary">
-            <NoIcon className="size-6" />
+          <Button
+            fitContent
+            kind="inverse"
+            color="secondary"
+            className="xs:k1-px-6"
+          >
+            <NoIcon className="k1-size-6" />
           </Button>
         );
       }
       case null: {
         return (
-          <Button fitContent kind="inverse" color="neutral">
-            <NeutralIcon className="size-6" />
+          <Button
+            fitContent
+            kind="inverse"
+            color="neutral"
+            className="xs:k1-px-6"
+          >
+            <NeutralIcon className="k1-size-6" />
           </Button>
         );
       }
       case undefined: {
         return (
-          <Button fitContent kind="inverse" color="neutral">
-            <NeutralIcon className="size-6" />
+          <Button
+            fitContent
+            kind="inverse"
+            color="neutral"
+            className="xs:k1-px-6"
+          >
+            <NeutralIcon className="k1-size-6" />
           </Button>
         );
       }
@@ -76,13 +96,13 @@ export function RecapitulationCard({
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-flex k1-min-w-full k1-flex-col"
+      className="k1-p-custom k1-flex k1-min-w-full k1-flex-col"
     >
       <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
-          iconSize="default"
+          iconSize="large"
           iconWrapper="default"
           starPressed={isImportant ? true : false}
           onClick={() => onClick("toggleImportant")}
@@ -101,11 +121,11 @@ export function RecapitulationCard({
           <div>
             {/* TODO: line height fix value */}
             {/* replace with typo compoment */}
-            <span className="hidden font-primary text-base k1-font-semibold k1-leading-6 k1-tracking-wide k1-text-neutral sm:k1-inline">
+            {/* <span className="hidden font-primary k1-font-semibold k1-leading-6 k1-tracking-wide k1-text-neutral sm:k1-inline sm:k1-text-base">
               {statement}
-            </span>
+            </span> */}
             {/* mobile title */}
-            <span className="k1-inline k1-font-primary k1-font-light k1-text-neutral sm:k1-hidden">
+            <span className="k1-font-primary k1-text-sm k1-font-light !k1-leading-[10px] k1-text-neutral sm:k1-hidden">
               {title}
             </span>
           </div>
