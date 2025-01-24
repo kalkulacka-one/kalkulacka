@@ -18,26 +18,31 @@ export default function Page() {
     <div className="flex min-h-screen flex-col">
       {/* rekapitulace header */}
       {/* sticky not working when scrolling over some portion of h */}
-      <header className="sticky  top-0 grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 bg-white p-2 sm:justify-center sm:gap-8 sm:p-8">
+      <header className="sticky top-0 grid w-full grid-cols-[auto_1fr_auto] items-center gap-2 bg-white p-2  sm:gap-8 sm:p-8">
         {/* fix link wrap, should be link in style of a button! */}
         {/*Link to the last question "current quesiton" */}
-        <Link href="/abc/otazka/1">
-          <Button
-            hasIcon
-            icon={ArrowIconLeft}
-            iconPosition="left"
-            kind="link"
-            fitContent
-            size="default"
-          />
-        </Link>
+        <div className="flex items-center  justify-self-start">
+          <Link className="flex items-center" href="/abc/otazka/1">
+            <Button
+              hasIcon
+              icon={ArrowIconLeft}
+              iconPosition="left"
+              kind="link"
+              fitContent
+              size="auto"
+            />
+          </Link>
+        </div>
 
         {/* replace with typo compoment */}
-        <h2 className="text-center text-5xl font-bold tracking-snug text-neutral-strong sm:mr-auto">
-          Rekapitulace
-        </h2>
+        <div className="justify-self-center sm:mr-auto">
+          <h2 className="text-3xl font-bold tracking-snug text-neutral-strong sm:text-5xl">
+            Rekapitulace
+          </h2>
+        </div>
+
         {/* twmerge button fix here */}
-        <div className="hidden sm:block">
+        <div className="hidden sm:block sm:justify-self-end">
           {/* fix link wrap, should be link in style of a button! */}
           <Link href="/abc/vysledky">
             <Button

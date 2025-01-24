@@ -30,9 +30,6 @@ const ToggleIconButton = React.forwardRef<
         pressed={isPressed}
         onClick={handleToggle}
         icon={isPressed || togglePressed ? iconPressed : iconDefault}
-        size="default"
-        iconSize="default"
-        iconWrapper="default"
         aria-pressed={isPressed}
         {...props}
         ref={ref}
