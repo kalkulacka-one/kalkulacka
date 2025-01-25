@@ -16,9 +16,14 @@ export default function Page() {
   const prevGuide = useQuestionsStore((state) => state.prevGuide);
   const nextGuide = useQuestionsStore((state) => state.nextGuide);
 
-  // ** NEEEDS REFACTOR! ** set question from params
+  // ** NEEEDS REFACTOR!
   useEffect(() => {
-    setGuideNumber(Number(params.guideNumber));
+    const number = Number(params.guideNumber);
+    if (number > 1 && number <= guide.length) {
+      setGuideNumber(Number(params.questionNumber));
+    } else {
+      setGuideNumber(1);
+    }
   }, []);
 
   const guideCardSwitcher = (number: number) => {
