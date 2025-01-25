@@ -5,6 +5,7 @@ import { useQuestionsStore } from "../../providers/storeProvider";
 import { Question } from "@repo/schema/dist";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
+
 import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
 import Link from "next/link";
 
@@ -93,7 +94,15 @@ export default function Page() {
               currentQuestion={currentQuestion}
               questionTotal={questions.length}
               toggleImportant={() => toggleImportant(currentQuestion)}
-              yesClick={() => answerYes(currentQuestion)}
+              // solve redirect !!!
+              yesClick={() => {
+                if (currentQuestion === questions.length) {
+                  answerYes(currentQuestion);
+                  console.log("Redirect here!");
+                } else {
+                  answerYes(currentQuestion);
+                }
+              }}
               noClick={() => answerNo(currentQuestion)}
               yesPressed={question.answerType === true ? true : undefined}
               noPressed={question.answerType === false ? true : undefined}
