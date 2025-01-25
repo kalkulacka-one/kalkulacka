@@ -17,16 +17,11 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null | undefined;
 };
 
-// type answerType: true || false || null || undefined;
-
 export interface Props {
-  yesPressed?: boolean | null;
-  noPressed?: boolean | null;
   question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
   onClick: (buttonType: string) => void;
-  starPressed?: boolean;
 }
 
 export function RecapitulationCard({
@@ -34,8 +29,6 @@ export function RecapitulationCard({
   currentQuestion,
   questionCount,
   onClick,
-  yesPressed,
-  noPressed,
 }: Props) {
   const { id, statement, detail, tags, title, answerType, isImportant } =
     question;
@@ -65,9 +58,9 @@ export function RecapitulationCard({
             fitContent
             kind="filled"
             color="secondary"
-            className="xs:k1-px-6"
+            className="k1-pointer-events-none xs:k1-px-6"
           >
-            <NoIcon className="k1-pointer-events-none k1-size-6" />
+            <NoIcon className="k1-size-6" />
           </Button>
         );
       }
@@ -77,9 +70,9 @@ export function RecapitulationCard({
             fitContent
             kind="inverse"
             color="neutral"
-            className="xs:k1-px-6"
+            className="k1-pointer-events-none  xs:k1-px-6"
           >
-            <NeutralIcon className="k1-pointer-events-none k1-size-6" />
+            <NeutralIcon className="k1-size-6" />
           </Button>
         );
       }
@@ -89,9 +82,9 @@ export function RecapitulationCard({
             fitContent
             kind="inverse"
             color="neutral"
-            className="xs:k1-px-6"
+            className="k1-pointer-events-none xs:k1-px-6"
           >
-            <NeutralIcon className="k1-pointer-events-none k1-size-6" />
+            <NeutralIcon className="k1-size-6" />
           </Button>
         );
       }
@@ -112,7 +105,7 @@ export function RecapitulationCard({
         <StarIconButton
           iconSize="large"
           iconWrapper="default"
-          starPressed={isImportant ? true : false}
+          starPressed={isImportant ? true : undefined}
           onClick={() => onClick("toggleImportant")}
         />
 
@@ -139,26 +132,28 @@ export function RecapitulationCard({
           </div>
         </div>
         <div className={`${detailToggled ? "k1-invisible" : "k1-block"}`}>
+          {/* rendering buttons here */}
           {switchButton(answerType)}
         </div>
         <DetailIconButton onClick={toggleDetail} />
       </div>
       {detailToggled && (
-        <>
+        // detail wrapper
+        <div>
           <div className="k1-flex k1-w-full k1-gap-4">
             <YesToggleButton
+              pressed={answerType === true ? true : undefined}
               onClick={() => onClick("Yes")}
-              pressed={yesPressed ? true : undefined}
             />
             <NoToggleButton
+              pressed={answerType === false ? true : undefined}
               onClick={() => onClick("No")}
-              pressed={noPressed ? true : undefined}
             />
           </div>
           <p className="k1-text-base k1-font-normal k1-text-neutral">
             {detail}
           </p>
-        </>
+        </div>
       )}
     </Card>
   );

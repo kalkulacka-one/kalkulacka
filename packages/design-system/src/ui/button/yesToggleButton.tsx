@@ -9,6 +9,7 @@ type Props = {
   VariantProps<typeof buttonVariants>;
 
 export function YesToggleButton({ pressed, onClick }: Props) {
+  // console.log("YesToggleButton pressed:", pressed);
   return (
     <ToggleButton
       kind="inverse"
