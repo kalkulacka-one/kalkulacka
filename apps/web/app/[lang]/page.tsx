@@ -41,9 +41,9 @@ export default function Page(): JSX.Element {
           </a>{" "}
           přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď
           nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku
-          na Slovensku, v&nbsp;Maďarsku a Rakousku, a chystáme další:
+          v 6 zemích a chystáme další:
         </p>
-        <ul className="list-disc pl-6">
+        <ul className="list-none pl-4">
           <li>
             🇨🇿{" "}
             <a
@@ -85,16 +85,50 @@ export default function Page(): JSX.Element {
             v&nbsp;Rakousku
           </li>
           <li>
-            <em> ještě letos v 🇧🇦 Bosně a Hercegovině</em>
+            🇷🇴{" "}
+            <a
+              href="https://www.testvot.eu"
+              className="font-bold underline hover:no-underline"
+            >
+              TestVot
+            </a>{" "}
+            v&nbsp;Rumunsku
           </li>
           <li>
-            <em>v roce 2025 v 🇽🇰 Kosovu</em>
+            🇽🇰{" "}
+            <a
+              href="https://www.kalkulatorizgjedhor.org"
+              className="font-bold underline hover:no-underline"
+            >
+              Kalkulatori zgjedhor
+            </a>{" "}
+            v&nbsp;Kosovu
           </li>
           <li>
-            <em>v roce 2025 v 🇦🇱 Albánii</em>
+            🇦🇱{" "}
+            <a
+              href="https://www.kalkulatorizgjedhor.al"
+              className="font-bold underline hover:no-underline"
+            >
+              Kalkulatori zgjedhor
+            </a>{" "}
+            v&nbsp;Albánii
+            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">
+              květen 2025
+            </span>
           </li>
           <li>
-            <em>v roce 2025 v 🇲🇰 Severní Makedonii</em>
+            🇲🇰{" "}
+            <a
+              href="https://www.glasomer.mk"
+              className="font-bold underline hover:no-underline"
+            >
+              Glasomer
+            </a>{" "}
+            v&nbsp;Severní Makedonii
+            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">
+              říjen 2025
+            </span>
           </li>
         </ul>
         <p>
