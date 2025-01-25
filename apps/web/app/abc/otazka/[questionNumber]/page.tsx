@@ -27,9 +27,14 @@ export default function Page() {
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
 
-  // ** NEEEDS REFACTOR! ** set question from params
+  // ** NEEEDS REFACTOR!
   useEffect(() => {
-    setCurrentQuestion(Number(params.questionNumber));
+    const number = Number(params.questionNumber);
+    if (number > 1 && number <= questions.length) {
+      setCurrentQuestion(Number(params.questionNumber));
+    } else {
+      setCurrentQuestion(1);
+    }
   }, []);
 
   return (
