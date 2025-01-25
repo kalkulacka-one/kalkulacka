@@ -41,7 +41,7 @@ export default function Page(): JSX.Element {
           </a>{" "}
           přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď
           nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku
-          na Slovensku, v&nbsp;Maďarsku, Rakousku a Rumunsku, a chystáme další:
+          v 6 zemích a chystáme další:
         </p>
         <ul className="list-none pl-4">
           <li>
