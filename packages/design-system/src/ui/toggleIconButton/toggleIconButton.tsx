@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactHTMLElement } from "react";
+import React, { ComponentProps, ReactHTMLElement, useEffect } from "react";
 import { IconButton } from "@repo/design-system/ui";
 
 type Props = {
@@ -24,6 +24,10 @@ const ToggleIconButton = React.forwardRef<
         onClick(event);
       }
     }
+
+    useEffect(() => {
+      setIsPressed(togglePressed);
+    }, [togglePressed]);
 
     return (
       <IconButton

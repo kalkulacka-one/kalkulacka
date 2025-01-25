@@ -24,7 +24,6 @@ export default function UrlUpdater({ children }: Props) {
 
   // Location setter
   useEffect(() => {
-    console.log("Location setter UE");
     if (path.includes("rekapitulace")) {
       setIsRekapitulace(true);
       setCurrentLocation("rekapitulace");
@@ -34,6 +33,7 @@ export default function UrlUpdater({ children }: Props) {
     } else if (path.includes("navod")) {
       setCurrentLocation("navod");
     }
+    console.log(`Current question ${currentQuestion}`);
   }, [path]);
 
   // Url updater
@@ -56,6 +56,8 @@ export default function UrlUpdater({ children }: Props) {
       } else if (currentLocation === "navod") {
         // refactor title structure
         document.title = `Návod ${guideNumber}`;
+      } else if (currentLocation === "rekapitulace") {
+        document.title = `Rekapitulace`;
       }
     }
     changeTitle();
