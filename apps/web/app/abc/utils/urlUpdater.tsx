@@ -11,6 +11,7 @@ export default function UrlUpdater({ children }: Props) {
   const path = usePathname();
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const rekapitulace = useQuestionsStore((state) => state.isRekapitulace);
+  const questions = useQuestionsStore((state) => state.questions);
   const setIsRekapitulace = useQuestionsStore(
     (state) => state.setIsRekapitulace,
   );
@@ -33,12 +34,10 @@ export default function UrlUpdater({ children }: Props) {
     } else if (path.includes("navod")) {
       setCurrentLocation("navod");
     }
-    console.log(`Current question ${currentQuestion}`);
   }, [path]);
 
   // Url updater
   useEffect(() => {
-    console.log("URL updater UE");
     function changeUrl() {
       // insert conditionals here for edge cases?
       if (currentLocation === "otazka") {
@@ -60,6 +59,7 @@ export default function UrlUpdater({ children }: Props) {
         document.title = `Rekapitulace`;
       }
     }
+
     changeTitle();
     changeUrl();
   }, [currentQuestion, guideNumber, currentLocation]);

@@ -11,7 +11,6 @@ const ToggleButton = React.forwardRef<React.ElementRef<typeof Button>, Props>(
     const [isPressed, setIsPressed] = useState(toggleButtonPressed);
     function handlePressed(event: React.MouseEvent<HTMLButtonElement>) {
       setIsPressed((prevState) => !prevState);
-      console.log(`From toggleButton: ${isPressed}`);
       if (onClick) {
         onClick(event);
       }
