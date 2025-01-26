@@ -100,7 +100,7 @@ export function RecapitulationCard({
       className="k1-flex k1-min-w-full k1-flex-col k1-gap-6 k1-p-recapitulationCardMobile lg:k1-py-recapitulationCardDesktop"
     >
       {/* top wrapper */}
-      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-x-2 k1-bg-purple-300">
+      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-x-2">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
@@ -111,12 +111,27 @@ export function RecapitulationCard({
         />
         {/* top toggled wrapper */}
 
-        <div className=" k1-mr-auto k1-flex k1-flex-col k1-bg-red-400">
+        <div
+          className={`${detailToggled ? "k1-flex k1-w-full k1-gap-4  min-[701px]:k1-hidden" : "k1-hidden"}`}
+        >
+          <RecapYesToggleButton
+            pressed={answerType === true ? true : undefined}
+            onClick={() => onClick("Yes")}
+          />
+          <RecapNoToggleButton
+            pressed={answerType === false ? true : undefined}
+            onClick={() => onClick("No")}
+          />
+        </div>
+
+        <div
+          className={`${detailToggled ? "k1-mr-auto k1-flex k1-flex-col max-[700px]:k1-hidden" : "k1-mr-auto k1-flex k1-flex-col"}`}
+        >
           <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-2">
             <span className=" k1-text-sm k1-font-light  k1-text-neutral">
               {currentQuestion}/{questionCount}
             </span>
-            <span className="hidden k1-font-primary k1-text-sm k1-font-light k1-text-neutral min-[700px]:k1-inline  sm:k1-inline">
+            <span className="k1-hidden k1-font-primary k1-text-sm k1-font-light k1-text-neutral min-[700px]:k1-inline  sm:k1-inline">
               {title}
             </span>
             <Badge color="neutral">{tags}</Badge>
@@ -133,7 +148,9 @@ export function RecapitulationCard({
             </p>
           </div>
         </div>
-        <div className={`${detailToggled ? "k1-invisible" : "k1-block"}`}>
+        <div
+          className={`${detailToggled ? "k1-hidden min-[701px]:k1-invisible" : "k1-block"}`}
+        >
           {/* rendering buttons here */}
           {switchButton(answerType)}
         </div>
@@ -143,7 +160,9 @@ export function RecapitulationCard({
         // detail wrapper
         <>
           {/* button wrapper */}
-          <div className="k1-flex k1-w-full k1-gap-4 k1-bg-green-300">
+          <div
+            className={`${detailToggled ? "k1-hidden k1-w-full k1-gap-4  min-[701px]:k1-flex" : null}`}
+          >
             <RecapYesToggleButton
               pressed={answerType === true ? true : undefined}
               onClick={() => onClick("Yes")}
@@ -167,7 +186,7 @@ export function RecapitulationCard({
                 <p className="k1-block k1-font-primary k1-text-sm k1-font-light k1-leading-tight k1-text-neutral min-[701px]:k1-hidden">
                   {title}
                 </p>
-                <p className="hidden font-primary k1-font-semibold k1-leading-normal k1-tracking-wide k1-text-neutral max-[700px]:k1-block  sm:k1-text-base">
+                <p className="k1-hidden k1-font-primary k1-font-semibold k1-leading-normal k1-tracking-wide k1-text-neutral max-[700px]:k1-block  sm:k1-text-base">
                   {statement}
                 </p>
               </div>
@@ -186,4 +205,3 @@ export function RecapitulationCard({
 // TODO:
 // 1. Fix custom paddings behaviour on card (desktop)
 // 2. Simplify structure (toggle behaviour content order), if possible
-// 3.
