@@ -41,36 +41,61 @@ export default function Page() {
     <main className="relative flex flex-1 flex-col">
       {/* mobile navigation wrapper wrapper */}
       <div className="sticky top-0 flex w-dvw justify-between p-2 xs:p-4 sm:hidden">
-        <Button
-          hasIcon
-          icon={ArrowIconLeft}
-          iconPosition="left"
-          kind="link"
-          fitContent
-          size="auto"
-          onClick={prevQuestion}
-        >
-          {currentQuestion === 1 ? (
-            <Link href="/abc/navod/1">Návod</Link>
-          ) : (
-            "Předchozí"
-          )}
-        </Button>
-        <Button
-          hasIcon
-          icon={ArrowIconRight}
-          iconPosition="right"
-          kind="link"
-          size="auto"
-          fitContent
-          onClick={skipQuestion}
-        >
-          {currentQuestion >= questions.length ? (
-            <Link href="/abc/rekapitulace">Rekapitulace</Link>
-          ) : (
-            "Přeskočit"
-          )}
-        </Button>
+        {currentQuestion === 1 ? (
+          <Link href="/abc/navod/1">
+            <Button
+              hasIcon
+              icon={ArrowIconLeft}
+              iconPosition="left"
+              kind="link"
+              fitContent
+              size="auto"
+            >
+              {currentQuestion === 1 ? "Návod" : "Předchozí"}
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            hasIcon
+            icon={ArrowIconLeft}
+            iconPosition="left"
+            kind="link"
+            fitContent
+            size="auto"
+            onClick={prevQuestion}
+          >
+            {currentQuestion === 1 ? "Návod" : "Předchozí"}
+          </Button>
+        )}
+
+        {currentQuestion >= questions.length ? (
+          <Link href="/abc/rekapitulace">
+            <Button
+              hasIcon
+              icon={ArrowIconRight}
+              iconPosition="right"
+              kind="link"
+              size="auto"
+              fitContent
+            >
+              {currentQuestion >= questions.length
+                ? "Rekapitulace"
+                : "Přeskočit"}
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            hasIcon
+            icon={ArrowIconRight}
+            iconPosition="right"
+            kind="link"
+            size="auto"
+            fitContent
+            onClick={skipQuestion}
+          >
+            {currentQuestion >= questions.length ? "Rekapitulace" : "Přeskočit"}
+          </Button>
+        )}
       </div>
       <div className="flex flex-1 items-start justify-center min-[576px]:items-center">
         {/* questions wrapper */}
@@ -100,14 +125,7 @@ export default function Page() {
               questionTotal={questions.length}
               toggleImportant={() => toggleImportant(currentQuestion)}
               // solve redirect !!!
-              yesClick={() => {
-                if (currentQuestion === questions.length) {
-                  answerYes(currentQuestion);
-                  console.log("Redirect here!");
-                } else {
-                  answerYes(currentQuestion);
-                }
-              }}
+              yesClick={() => answerYes(currentQuestion)}
               noClick={() => answerNo(currentQuestion)}
               yesPressed={question.answerType === true ? true : undefined}
               noPressed={question.answerType === false ? true : undefined}

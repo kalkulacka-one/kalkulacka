@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useQuestionsStore } from "../providers/storeProvider";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -10,8 +10,6 @@ type Props = {
 export default function UrlUpdater({ children }: Props) {
   const path = usePathname();
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
-  const rekapitulace = useQuestionsStore((state) => state.isRekapitulace);
-  const questions = useQuestionsStore((state) => state.questions);
   const setIsRekapitulace = useQuestionsStore(
     (state) => state.setIsRekapitulace,
   );
@@ -21,25 +19,23 @@ export default function UrlUpdater({ children }: Props) {
   const guideNumber = useQuestionsStore((state) => state.guideNumber);
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
-  // Todo: All logic in one use effect
-
-  // Location setter
   useEffect(() => {
-    if (path.includes("rekapitulace")) {
-      setIsRekapitulace(true);
-      setCurrentLocation("rekapitulace");
-    } else if (path.includes("otazka")) {
-      setIsRekapitulace(false);
-      setCurrentLocation("otazka");
-    } else if (path.includes("navod")) {
-      setCurrentLocation("navod");
-    } else if (path.includes("vysledky")) {
-      setCurrentLocation("vysledky");
+    // store location setter
+    function locationSetter() {
+      if (path.includes("rekapitulace")) {
+        setCurrentLocation("rekapitulace");
+        setIsRekapitulace(true);
+      } else if (path.includes("otazka")) {
+        setCurrentLocation("otazka");
+        setIsRekapitulace(false);
+      } else if (path.includes("navod")) {
+        setCurrentLocation("navod");
+      } else if (path.includes("vysledky")) {
+        setCurrentLocation("vysledky");
+        setIsRekapitulace(false);
+      }
     }
-  }, [path]);
-
-  // Url updater
-  useEffect(() => {
+    // url setter
     function changeUrl() {
       // insert conditionals here for edge cases?
       if (currentLocation === "otazka") {
@@ -48,8 +44,13 @@ export default function UrlUpdater({ children }: Props) {
       } else if (currentLocation === "navod") {
         // refactor url structure
         history.replaceState({}, "", `/abc/navod/${guideNumber}`);
+      } else if (currentLocation === "rekapitulace") {
+        history.replaceState({}, "", `/abc/rekapitulace`);
+      } else if (currentLocation === "vysledky") {
+        history.replaceState({}, "", `/abc/vysledky`);
       }
     }
+    // title setter
     function changeTitle() {
       if (currentLocation === "otazka") {
         // refactor title structure
@@ -64,9 +65,13 @@ export default function UrlUpdater({ children }: Props) {
       }
     }
 
+    locationSetter();
     changeTitle();
     changeUrl();
-  }, [currentQuestion, guideNumber, currentLocation]);
+  }, [path, currentQuestion, guideNumber, currentLocation]);
 
   return children;
 }
+
+// TODO:
+// 1. needs refactoring (url updates glitch)

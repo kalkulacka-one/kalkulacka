@@ -22,7 +22,10 @@ export default function Page() {
         {/* fix link wrap, should be link in style of a button! */}
         {/*Link to the last question "current quesiton" */}
         <div className="flex items-center  justify-self-start">
-          <Link className="flex items-center" href="/abc/otazka/1">
+          <Link
+            className="flex items-center"
+            href={`/abc/otazka/${questions.length}`}
+          >
             <Button
               hasIcon
               icon={ArrowIconLeft}
