@@ -206,13 +206,4 @@ export function useQuestionsStore<U>(selector: (state: Store) => U): U {
 }
 
 // TODO:
-
-// 1. answer toggle button interaction refinements:
-// a) ANSWER EMPTY =>
-//    - toggle YES or NO
-//    - move to the next question
-//    - "přeskočit otázku" (skip button)
-// b) QUESTION ANSWERED =>
-//    - possibility to untoggle
-//    - do not move to the next question
-//    - "další otázka" when (skip button)
+// 1. redirect

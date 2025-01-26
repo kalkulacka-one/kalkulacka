@@ -41,7 +41,7 @@ export function BottomBar({
       {/* button wrapper */}
       <div className="p-4 k1-flex k1-justify-center">
         <div className="k1-grid k1-w-full k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4 xs:k1-w-auto lg:k1-w-clamp-custom">
-          <div className="k1-mr-[calc(1rem*2)]">
+          <div className="min-[576px]:k1-mr-[calc(1rem*2)]">
             <StarIconButton
               starPressed={starPressed ? true : false}
               // fix onClick error here

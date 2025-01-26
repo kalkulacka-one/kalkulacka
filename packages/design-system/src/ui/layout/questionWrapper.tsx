@@ -34,25 +34,44 @@ export function QuestionWrapper({
         <div className="k1-items-center k1-justify-end xs:k1-hidden min-[701px]:k1-flex">
           {/* buttons wrapper */}
           <div className="k1-hidden min-[701px]:k1-hidden sm:k1-block">
-            <Button
-              hasIcon
-              fitContent
-              icon={ArrowIconLeft}
-              kind="link"
-              onClick={prevQuestion}
-              // fix k1 prefix issue!!!
-            >
-              {currentQuestion === 1 ? (
-                <Link href="/abc/navod/1">
+            {currentQuestion === 1 ? (
+              <Link href="/abc/navod/1">
+                <Button
+                  hasIcon
+                  fitContent
+                  icon={ArrowIconLeft}
+                  kind="link"
+                  // fix k1 prefix issue!!!
+                >
+                  {currentQuestion === 1 ? (
+                    <span className="k1-hidden md:k1-inline">Návod</span>
+                  ) : (
+                    <span className="k1-hidden md:k1-inline">
+                      Předchozí
+                      <span className="k1-hidden lg:k1-inline"> otázka</span>
+                    </span>
+                  )}
+                </Button>
+              </Link>
+            ) : (
+              <Button
+                hasIcon
+                fitContent
+                icon={ArrowIconLeft}
+                kind="link"
+                onClick={prevQuestion}
+                // fix k1 prefix issue!!!
+              >
+                {currentQuestion === 1 ? (
                   <span className="k1-hidden md:k1-inline">Návod</span>
-                </Link>
-              ) : (
-                <span className="k1-hidden md:k1-inline">
-                  Předchozí
-                  <span className="k1-hidden lg:k1-inline"> otázka</span>
-                </span>
-              )}
-            </Button>
+                ) : (
+                  <span className="k1-hidden md:k1-inline">
+                    Předchozí
+                    <span className="k1-hidden lg:k1-inline"> otázka</span>
+                  </span>
+                )}
+              </Button>
+            )}
           </div>
         </div>
         <div>
@@ -65,25 +84,44 @@ export function QuestionWrapper({
         <div className="k1-hidden k1-content-center xs:k1-block">
           {/* button wrapper */}
           <div className="k1-hidden min-[701px]:k1-hidden sm:k1-block">
-            <Button
-              hasIcon
-              fitContent
-              icon={ArrowIconRight}
-              iconPosition="right"
-              kind="link"
-              onClick={skipQuestion}
-            >
-              {currentQuestion >= questionCount ? (
-                <Link href="/abc/rekapitulace">
+            {currentQuestion >= questionCount ? (
+              <Link href="/abc/rekapitulace">
+                <Button
+                  hasIcon
+                  fitContent
+                  icon={ArrowIconRight}
+                  iconPosition="right"
+                  kind="link"
+                >
+                  {currentQuestion >= questionCount ? (
+                    <span className="k1-hidden md:k1-inline">Rekapitulace</span>
+                  ) : (
+                    <span className="k1-hidden md:k1-inline">
+                      Přeskočit
+                      <span className="k1-hidden lg:k1-inline"> otázku</span>
+                    </span>
+                  )}
+                </Button>
+              </Link>
+            ) : (
+              <Button
+                hasIcon
+                fitContent
+                icon={ArrowIconRight}
+                iconPosition="right"
+                kind="link"
+                onClick={skipQuestion}
+              >
+                {currentQuestion >= questionCount ? (
                   <span className="k1-hidden md:k1-inline">Rekapitulace</span>
-                </Link>
-              ) : (
-                <span className="k1-hidden md:k1-inline">
-                  Přeskočit
-                  <span className="k1-hidden lg:k1-inline"> otázku</span>
-                </span>
-              )}
-            </Button>
+                ) : (
+                  <span className="k1-hidden md:k1-inline">
+                    Přeskočit
+                    <span className="k1-hidden lg:k1-inline"> otázku</span>
+                  </span>
+                )}
+              </Button>
+            )}
           </div>
         </div>
       </div>

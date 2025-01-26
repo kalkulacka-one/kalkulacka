@@ -47,22 +47,28 @@ export default function Page() {
     <div className="relative flex flex-1 flex-col">
       {/* mobile arrow bar */}
       <div className="absolute top-0 flex w-full justify-between p-2 sm:hidden">
-        <Button
-          hasIcon
-          icon={ArrowIconLeft}
-          iconPosition="left"
-          kind="link"
-          fitContent
-          onClick={prevGuide}
-        />
-        <Button
-          hasIcon
-          icon={ArrowIconRight}
-          iconPosition="right"
-          kind="link"
-          fitContent
-          onClick={nextGuide}
-        />
+        {guideNumber > 1 && (
+          <Button
+            hasIcon
+            icon={ArrowIconLeft}
+            iconPosition="left"
+            className="mr-auto"
+            kind="link"
+            fitContent
+            onClick={prevGuide}
+          />
+        )}
+        {guideNumber < guide.length && (
+          <Button
+            hasIcon
+            icon={ArrowIconRight}
+            iconPosition="right"
+            className="ml-auto"
+            kind="link"
+            fitContent
+            onClick={nextGuide}
+          />
+        )}
       </div>
       <main className="flex flex-1 flex-col items-center justify-center">
         {/* fix height !!! */}
