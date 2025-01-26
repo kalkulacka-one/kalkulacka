@@ -24,12 +24,12 @@ const data: Results[] = [
       {
         partyShort: "STAN+SOL",
         partyLong: "STAROSTOVÉ PRO JIŽNÍ MORAVU",
-        result: 89,
+        result: 90,
       },
       {
         partyShort: "Piráti",
         partyLong: "Česká pirátská strana",
-        result: 89,
+        result: 30,
       },
       {
         partyShort: "SOM+Nestran2024",
@@ -78,15 +78,10 @@ export default function Page() {
 
         {/* twmerge button fix here */}
         <div className="flex items-center gap-4 sm:justify-self-end">
-          <Button
-            hasIcon
-            size="auto"
-            kind="link"
-            iconPosition="left"
-            fitContent
-            icon={ShareIcon}
-          >
-            Sdílet
+          <Button size="auto" kind="link" fitContent>
+            <span className="flex items-center text-primary">
+              <ShareIcon className="mr-2 size-6" /> Sdílet
+            </span>
           </Button>
           {/* fix link wrap, should be link in style of a button! */}
           <div></div>
@@ -124,5 +119,4 @@ export default function Page() {
 }
 
 // TODO
-// 1. Main layout
 // 2. Fallback layout

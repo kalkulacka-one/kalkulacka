@@ -33,6 +33,8 @@ export default function UrlUpdater({ children }: Props) {
       setCurrentLocation("otazka");
     } else if (path.includes("navod")) {
       setCurrentLocation("navod");
+    } else if (path.includes("vysledky")) {
+      setCurrentLocation("vysledky");
     }
   }, [path]);
 
@@ -57,6 +59,8 @@ export default function UrlUpdater({ children }: Props) {
         document.title = `Návod ${guideNumber}`;
       } else if (currentLocation === "rekapitulace") {
         document.title = `Rekapitulace`;
+      } else if (currentLocation === "vysledky") {
+        document.title = `Výsledky`;
       }
     }
 
