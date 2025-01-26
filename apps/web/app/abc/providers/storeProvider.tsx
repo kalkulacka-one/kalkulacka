@@ -65,7 +65,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
         set(() => ({ isRekapitulace: rekapitulaceState })),
       isRekapitulace: false,
       questions,
-      currentQuestion: null,
+      currentQuestion: 1,
       answerYes: (currentQuestion) => {
         set((state) => {
           const updatedQuestion = state.questions.map((question) => {

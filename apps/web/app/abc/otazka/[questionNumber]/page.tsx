@@ -40,7 +40,7 @@ export default function Page() {
   return (
     <main className="relative flex flex-1 flex-col">
       {/* mobile navigation wrapper wrapper */}
-      <div className="k1-sticky k1-top-0 k1-flex k1-w-dvw k1-justify-between sm:k1-hidden p-2 xs:p-4">
+      <div className="sticky top-0 flex w-dvw justify-between p-2 xs:p-4 sm:hidden">
         <Button
           hasIcon
           icon={ArrowIconLeft}

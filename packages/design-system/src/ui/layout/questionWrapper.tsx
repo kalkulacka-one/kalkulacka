@@ -32,7 +32,7 @@ export function QuestionWrapper({
         {/* desktop grid content */}
         {/* Place button end with flex ok? */}
         <div className="k1-items-center k1-justify-end xs:k1-hidden min-[701px]:k1-flex">
-          {/* button wrapper */}
+          {/* buttons wrapper */}
           <div className="k1-hidden min-[701px]:k1-hidden sm:k1-block">
             <Button
               hasIcon
