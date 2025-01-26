@@ -4,8 +4,8 @@ import { YesIcon, NoIcon, NeutralIcon } from "@repo/design-system/icons";
 import {
   Button,
   Card,
-  YesToggleButton,
-  NoToggleButton,
+  RecapYesToggleButton,
+  RecapNoToggleButton,
 } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
 import { DetailIconButton } from "@repo/design-system/ui";
@@ -97,9 +97,10 @@ export function RecapitulationCard({
       corner="topLeft"
       color="white"
       // add custom calculated padding
-      className="k1-p-recapitulationCardMobile lg:k1-py-recapitulationCardDesktop k1-flex k1-min-w-full k1-flex-col k1-gap-4"
+      className="k1-flex k1-min-w-full k1-flex-col k1-gap-6 k1-p-recapitulationCardMobile lg:k1-py-recapitulationCardDesktop"
     >
-      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-x-2 min-[700px]:k1-gap-x-6">
+      {/* top wrapper */}
+      <div className="k1-grid k1-grid-cols-[min-content_1fr_min-content_min-content] k1-items-center k1-gap-x-2 k1-bg-purple-300">
         {/* toggle star */}
         {/* icon edit large icon size and wrapper */}
         <StarIconButton
@@ -108,13 +109,14 @@ export function RecapitulationCard({
           starPressed={isImportant ? true : undefined}
           onClick={() => onClick("toggleImportant")}
         />
+        {/* top toggled wrapper */}
 
-        <div className="k1-mr-auto k1-flex k1-flex-col">
+        <div className=" k1-mr-auto k1-flex k1-flex-col k1-bg-red-400">
           <div className="k1-flex k1-flex-wrap k1-items-center k1-gap-2">
             <span className=" k1-text-sm k1-font-light  k1-text-neutral">
               {currentQuestion}/{questionCount}
             </span>
-            <span className="hidden k1-font-primary k1-text-sm k1-font-light k1-text-neutral  sm:k1-inline">
+            <span className="hidden k1-font-primary k1-text-sm k1-font-light k1-text-neutral min-[700px]:k1-inline  sm:k1-inline">
               {title}
             </span>
             <Badge color="neutral">{tags}</Badge>
@@ -122,11 +124,11 @@ export function RecapitulationCard({
           <div>
             {/* TODO: line height fix value */}
             {/* replace with typo compoment */}
-            <p className="hidden font-primary k1-font-semibold k1-leading-6 k1-tracking-wide k1-text-neutral sm:k1-inline sm:k1-text-base">
+            <p className="k1-hidden k1-font-primary k1-font-semibold k1-leading-normal k1-tracking-wide k1-text-neutral min-[700px]:k1-block  sm:k1-text-base">
               {statement}
             </p>
             {/* mobile title */}
-            <p className="k1-font-primary k1-text-sm k1-font-light k1-leading-tight k1-text-neutral sm:k1-hidden">
+            <p className="k1-font-primary k1-text-sm k1-font-light k1-leading-tight k1-text-neutral min-[700px]:k1-hidden">
               {title}
             </p>
           </div>
@@ -139,26 +141,49 @@ export function RecapitulationCard({
       </div>
       {detailToggled && (
         // detail wrapper
-        <div>
-          <div className="k1-flex k1-w-full k1-gap-4">
-            <YesToggleButton
+        <>
+          {/* button wrapper */}
+          <div className="k1-flex k1-w-full k1-gap-4 k1-bg-green-300">
+            <RecapYesToggleButton
               pressed={answerType === true ? true : undefined}
               onClick={() => onClick("Yes")}
             />
-            <NoToggleButton
+            <RecapNoToggleButton
               pressed={answerType === false ? true : undefined}
               onClick={() => onClick("No")}
             />
           </div>
-          <p className="k1-text-base k1-font-normal k1-text-neutral">
-            {detail}
-          </p>
-        </div>
+          {/* detail wrapper */}
+          <div>
+            {/* top toggled wrapper */}
+            <div className="k1-mb-4 k1-flex k1-flex-col k1-gap-4 min-[701px]:k1-hidden">
+              <div className="k1-flex k1-items-center k1-gap-2">
+                <span className=" k1-text-sm k1-font-light  k1-text-neutral">
+                  {currentQuestion}/{questionCount}
+                </span>
+                <Badge color="neutral">{tags}</Badge>
+              </div>
+              <div>
+                <p className="k1-block k1-font-primary k1-text-sm k1-font-light k1-leading-tight k1-text-neutral min-[701px]:k1-hidden">
+                  {title}
+                </p>
+                <p className="hidden font-primary k1-font-semibold k1-leading-normal k1-tracking-wide k1-text-neutral max-[700px]:k1-block  sm:k1-text-base">
+                  {statement}
+                </p>
+              </div>
+            </div>
+
+            <p className="k1-text-base k1-font-light k1-text-neutral">
+              {detail}
+            </p>
+          </div>
+        </>
       )}
     </Card>
   );
 }
 
 // TODO:
-// 1. Fix custom paddings on card (desktop)
-// 2.
+// 1. Fix custom paddings behaviour on card (desktop)
+// 2. Simplify structure (toggle behaviour content order), if possible
+// 3.
