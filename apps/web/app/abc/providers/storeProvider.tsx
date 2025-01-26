@@ -35,10 +35,10 @@ type Store = {
   guideNumber: number | null;
   guide: Guide;
   isRekapitulace: boolean;
-  currentLocation: "navod" | "otazka" | "rekapitulace" | null;
+  currentLocation: "navod" | "otazka" | "rekapitulace" | "vysledky" | null;
   setGuideNumber: (guideNumber: number) => void;
   setCurrentLocation: (
-    currentLocation: "navod" | "otazka" | "rekapitulace",
+    currentLocation: "navod" | "otazka" | "rekapitulace" | "vysledky",
   ) => void;
   setCurrentQuestion: (number: number) => void;
   setIsRekapitulace: (rekapitulaceState: boolean) => void;

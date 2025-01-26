@@ -15,8 +15,9 @@ export default function ResultCard({ cardNumber, isFirst, results }: Props) {
       corner="topLeft"
       className="flex max-w-full items-center gap-2 p-customMobile sm:p-customDesktop"
     >
-      {/* avatar */}
-      <div className="flex items-center justify-center">
+      {/* avatar wrapper */}
+      {/* fix fixed width here */}
+      <div className="flex w-20 items-center">
         {/* circle */}
         <div
           className={` ${isFirst ? "size-10 bg-primary-strong min-[700px]:size-[calc(3*1.5rem)]" : "size-[calc(2*1rem)] bg-primary min-[700px]:size-14"} flex items-center justify-center rounded-full`}
@@ -29,7 +30,7 @@ export default function ResultCard({ cardNumber, isFirst, results }: Props) {
         </div>
       </div>
       {/* party, percents wrapper */}
-      <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-col gap-4">
         {/* name short */}
         <div>
           <strong>
