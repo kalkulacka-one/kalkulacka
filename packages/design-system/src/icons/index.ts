@@ -18,3 +18,4 @@ export * from "./blueCheckIcon";
 export * from "./redCrossIcon";
 export * from "./percentageIcon";
 export * from "./closeIcon";
+export * from "./shareIcon";
