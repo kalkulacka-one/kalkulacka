@@ -35,7 +35,7 @@ export function QuestionWrapper({
           {/* buttons wrapper */}
           <div className="k1-hidden min-[701px]:k1-hidden sm:k1-block">
             {currentQuestion === 1 ? (
-              <Link href="/abc/navod/1">
+              <Link href="/abc/navod/4">
                 <Button
                   hasIcon
                   fitContent
