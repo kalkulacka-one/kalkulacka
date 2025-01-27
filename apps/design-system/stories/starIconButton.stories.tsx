@@ -1,4 +1,4 @@
-import { StarIconButton } from "@repo/design-system/starIconButton";
+import { StarIconButton } from "../../../packages/design-system/src/ui/iconButton/starIconButton";
 import { Meta, StoryObj } from "@storybook/react";
 
 export default {
