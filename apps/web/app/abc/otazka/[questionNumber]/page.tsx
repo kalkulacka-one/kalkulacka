@@ -61,7 +61,7 @@ export default function Page() {
       {/* mobile navigation wrapper wrapper */}
       <div className="sticky top-0 flex w-dvw justify-between p-2 xs:p-4 sm:hidden">
         {currentQuestion === 1 ? (
-          <Link href="/abc/navod/1">
+          <Link href="/abc/navod/4">
             <Button
               hasIcon
               icon={ArrowIconLeft}

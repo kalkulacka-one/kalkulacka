@@ -19,8 +19,8 @@ export default function Page() {
   // ** NEEEDS REFACTOR!
   useEffect(() => {
     const number = Number(params.guideNumber);
-    if (number > 1 && number <= guide.length) {
-      setGuideNumber(Number(params.questionNumber));
+    if (number >= 1 && number <= guide.length) {
+      setGuideNumber(Number(params.guideNumber));
     } else {
       setGuideNumber(1);
     }
