@@ -4,7 +4,7 @@ import { BottomBar, Button, QuestionWrapper } from "@repo/design-system/ui";
 import { useQuestionsStore } from "../../providers/storeProvider";
 import { Question } from "@repo/schema/dist";
 import { useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { ArrowIconLeft, ArrowIconRight } from "@repo/design-system/icons";
 import Link from "next/link";
@@ -16,6 +16,7 @@ type ExtendedQuestions = Question & {
 
 export default function Page() {
   const params = useParams();
+  const router = useRouter();
   const questions = useQuestionsStore((state) => state.questions);
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const setCurrentQuestion = useQuestionsStore(
@@ -36,6 +37,24 @@ export default function Page() {
       setCurrentQuestion(1);
     }
   }, []);
+
+  const yesClick = (currentQuestion: number) => {
+    if (currentQuestion === questions.length) {
+      answerYes(currentQuestion);
+      router.push("/abc/rekapitulace");
+    } else {
+      answerYes(currentQuestion);
+    }
+  };
+
+  const noClick = (currentQuestion: number) => {
+    if (currentQuestion === questions.length) {
+      answerNo(currentQuestion);
+      router.push("/abc/rekapitulace");
+    } else {
+      answerNo(currentQuestion);
+    }
+  };
 
   return (
     <main className="relative flex flex-1 flex-col">
@@ -125,8 +144,8 @@ export default function Page() {
               questionTotal={questions.length}
               toggleImportant={() => toggleImportant(currentQuestion)}
               // solve redirect !!!
-              yesClick={() => answerYes(currentQuestion)}
-              noClick={() => answerNo(currentQuestion)}
+              yesClick={() => yesClick(currentQuestion)}
+              noClick={() => noClick(currentQuestion)}
               yesPressed={question.answerType === true ? true : undefined}
               noPressed={question.answerType === false ? true : undefined}
               starPressed={question.isImportant ? true : undefined}
