@@ -101,7 +101,7 @@ export default function Page() {
                       {item.title}
                       <span
                         style={{ fontSize: "smaller" }}
-                        className="text-neutral"
+                        className="ml-2 text-neutral "
                       >
                         {item.region}
                       </span>

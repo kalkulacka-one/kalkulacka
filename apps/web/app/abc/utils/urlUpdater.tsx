@@ -38,7 +38,7 @@ export default function UrlUpdater({ children }: Props) {
     // url setter
     function changeUrl() {
       // insert conditionals here for edge cases?
-      if (currentLocation === "otazka") {
+      if (currentLocation === "otazka" && currentQuestion !== null) {
         // refactor url structure
         history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
       } else if (currentLocation === "navod") {
