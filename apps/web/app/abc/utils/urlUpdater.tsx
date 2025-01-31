@@ -20,52 +20,42 @@ export default function UrlUpdater({ children }: Props) {
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
   useEffect(() => {
-    function locationSetter() {
-      if (
-        currentUrl.includes("rekapitulace") &&
-        currentLocation !== "rekapitulace"
-      ) {
-        setCurrentLocation("rekapitulace");
-        setIsRekapitulace(true);
-      } else if (
-        currentUrl.includes("otazka") &&
-        currentLocation !== "otazka"
-      ) {
-        setCurrentLocation("otazka");
-        setIsRekapitulace(false);
-      } else if (currentUrl.includes("navod") && currentLocation !== "navod") {
-        setCurrentLocation("navod");
-        setIsRekapitulace(false);
-      } else if (
-        currentUrl.includes("vysledky") &&
-        currentLocation !== "vysledky"
-      ) {
-        setCurrentLocation("vysledky");
-        setIsRekapitulace(false);
-      }
+    if (
+      currentUrl.includes("rekapitulace") &&
+      currentLocation !== "rekapitulace"
+    ) {
+      setCurrentLocation("rekapitulace");
+      setIsRekapitulace(true);
+    } else if (currentUrl.includes("otazka") && currentLocation !== "otazka") {
+      setCurrentLocation("otazka");
+      setIsRekapitulace(false);
+    } else if (currentUrl.includes("navod") && currentLocation !== "navod") {
+      setCurrentLocation("navod");
+      setIsRekapitulace(false);
+    } else if (
+      currentUrl.includes("vysledky") &&
+      currentLocation !== "vysledky"
+    ) {
+      setCurrentLocation("vysledky");
+      setIsRekapitulace(false);
     }
-
-    locationSetter();
   }, [currentUrl, currentLocation]);
 
   useEffect(() => {
-    function changeTitle() {
-      if (currentLocation === "otazka") {
-        document.title = `Otázka ${currentQuestion}`;
-        history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
-      } else if (currentLocation === "navod") {
-        document.title = `Návod ${guideNumber}`;
-        history.replaceState({}, "", `/abc/navod/${guideNumber}`);
-      } else if (currentLocation === "rekapitulace") {
-        document.title = `Rekapitulace`;
-      } else if (currentLocation === "vysledky") {
-        document.title = `Výsledky`;
-      }
+    if (currentLocation === "otazka") {
+      document.title = `Otázka ${currentQuestion}`;
+      history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
+    } else if (currentLocation === "navod") {
+      document.title = `Návod ${guideNumber}`;
+      history.replaceState({}, "", `/abc/navod/${guideNumber}`);
+    } else if (currentLocation === "rekapitulace") {
+      document.title = `Rekapitulace`;
+    } else if (currentLocation === "vysledky") {
+      document.title = `Výsledky`;
     }
-    changeTitle();
-  }, [guideNumber, currentQuestion]);
+    return () => {
+      document.title;
+    };
+  }, [guideNumber, currentQuestion, currentLocation]);
   return children;
 }
-
-// TODO:
-// 1. needs refactoring (url updates glitch)
