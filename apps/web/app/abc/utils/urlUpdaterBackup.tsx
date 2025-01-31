@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function UrlUpdater({ children }: Props) {
-  const currentUrl = usePathname();
+  const path = usePathname();
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const setIsRekapitulace = useQuestionsStore(
     (state) => state.setIsRekapitulace,
@@ -20,50 +20,56 @@ export default function UrlUpdater({ children }: Props) {
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
   useEffect(() => {
+    // store location setter
     function locationSetter() {
-      if (
-        currentUrl.includes("rekapitulace") &&
-        currentLocation !== "rekapitulace"
-      ) {
+      if (path.includes("rekapitulace")) {
         setCurrentLocation("rekapitulace");
         setIsRekapitulace(true);
-      } else if (
-        currentUrl.includes("otazka") &&
-        currentLocation !== "otazka"
-      ) {
+      } else if (path.includes("otazka")) {
         setCurrentLocation("otazka");
         setIsRekapitulace(false);
-      } else if (currentUrl.includes("navod") && currentLocation !== "navod") {
+      } else if (path.includes("navod")) {
         setCurrentLocation("navod");
-        setIsRekapitulace(false);
-      } else if (
-        currentUrl.includes("vysledky") &&
-        currentLocation !== "vysledky"
-      ) {
+      } else if (path.includes("vysledky")) {
         setCurrentLocation("vysledky");
         setIsRekapitulace(false);
       }
     }
-
-    locationSetter();
-  }, [currentUrl, currentLocation]);
-
-  useEffect(() => {
-    function changeTitle() {
-      if (currentLocation === "otazka") {
-        document.title = `Otázka ${currentQuestion}`;
+    // url setter
+    function changeUrl() {
+      // insert conditionals here for edge cases?
+      if (currentLocation === "otazka" && currentQuestion !== null) {
+        // refactor url structure
         history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
       } else if (currentLocation === "navod") {
-        document.title = `Návod ${guideNumber}`;
+        // refactor url structure
         history.replaceState({}, "", `/abc/navod/${guideNumber}`);
+      } else if (currentLocation === "rekapitulace") {
+        history.replaceState({}, "", `/abc/rekapitulace`);
+      } else if (currentLocation === "vysledky") {
+        history.replaceState({}, "", `/abc/vysledky`);
+      }
+    }
+    // title setter
+    function changeTitle() {
+      if (currentLocation === "otazka") {
+        // refactor title structure
+        document.title = `Otázka ${currentQuestion}`;
+      } else if (currentLocation === "navod") {
+        // refactor title structure
+        document.title = `Návod ${guideNumber}`;
       } else if (currentLocation === "rekapitulace") {
         document.title = `Rekapitulace`;
       } else if (currentLocation === "vysledky") {
         document.title = `Výsledky`;
       }
     }
+
+    locationSetter();
     changeTitle();
-  }, [guideNumber, currentQuestion]);
+    changeUrl();
+  }, [path, currentQuestion, guideNumber, currentLocation]);
+
   return children;
 }
 

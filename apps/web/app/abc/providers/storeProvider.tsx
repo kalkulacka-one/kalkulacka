@@ -35,10 +35,15 @@ type Store = {
   guideNumber: number | null;
   guide: Guide;
   isRekapitulace: boolean;
-  currentLocation: "navod" | "otazka" | "rekapitulace" | "vysledky" | null;
+  currentLocation: "navod" | "otazka" | "rekapitulace" | "vysledky" | "default";
   setGuideNumber: (guideNumber: number) => void;
   setCurrentLocation: (
-    currentLocation: "navod" | "otazka" | "rekapitulace" | "vysledky",
+    currentLocation:
+      | "navod"
+      | "otazka"
+      | "rekapitulace"
+      | "vysledky"
+      | "default",
   ) => void;
   setCurrentQuestion: (number: number) => void;
   setIsRekapitulace: (rekapitulaceState: boolean) => void;
@@ -58,7 +63,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
   const storeRef = useRef<StoreApi<Store> | undefined>();
   if (!storeRef.current) {
     storeRef.current = createStore<Store>((set) => ({
-      currentLocation: null,
+      currentLocation: "default",
       setCurrentLocation: (currentLocation) =>
         set(() => ({ currentLocation: currentLocation })),
       setIsRekapitulace: (rekapitulaceState) =>
@@ -157,7 +162,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           currentQuestion:
             state.currentQuestion !== null && state.currentQuestion !== 0
               ? state.currentQuestion - 1
-              : null,
+              : state.currentQuestion,
         })),
       skipQuestion: () =>
         set((state) => ({
@@ -165,7 +170,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
             state.currentQuestion !== null &&
             state.currentQuestion !== questions.length
               ? state.currentQuestion + 1
-              : null,
+              : state.currentQuestion,
         })),
       guideNumber: null,
       guide: guide,
