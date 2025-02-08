@@ -1,6 +1,5 @@
 "use server";
 
-import { z } from "zod";
 import { prisma } from "@repo/database";
 import { PrismaClientKnownRequestError } from "@repo/database/library";
 import { SubscribeBody, subscribeBodySchema } from "../types/subscribe";
