@@ -5,3 +5,5 @@ export * from "./progress/index";
 export * from "./question/index";
 export * from "./blobs/index";
 export * from "./typography/index";
+export * from "./header/index";
+export * from "./footer/index";

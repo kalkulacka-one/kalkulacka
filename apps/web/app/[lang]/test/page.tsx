@@ -17,7 +17,6 @@ export default function Page() {
   return (
     <div className="flex min-h-80 w-full flex-col items-center justify-center gap-4 p-10">
       <InputField label="Full Name" icon={BadgeStarIcon} />
-      <InputField label="Full Name" icon={BadgeStarIcon} error="Test error" />
       <InputField
         label="Full Name"
         icon={BadgeStarIcon}

@@ -17,7 +17,10 @@ const buttonVariants = cva(
         filled:
           "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled",
         inverse: "k1-gap-4 k1-border-2 k1-bg-transparent k1-p-4",
-        outline: "k1-border-2 k1-bg-transparent k1-p-4",
+        outline: [
+          "k1-border-2 k1-bg-transparent k1-p-4",
+          "data-[active]:k1-bg-transparent",
+        ],
         link: [
           "k1-gap-2 k1-bg-transparent k1-p-0 k1-text-neutral",
           "k1-border-0",
@@ -99,6 +102,16 @@ const buttonVariants = cva(
           "data-[hover]:k1-border-neutral-strong-hover data-[hover]:k1-bg-neutral-strong-hover data-[hover]:k1-text-neutral-inverse",
           "data-[active]:k1-border-neutral-active data-[active]:k1-bg-neutral-strong-active data-[active]:k1-text-neutral-inverse",
           "data-[pressed]:k1-bg-neutral-strong-active data-[pressed]:k1-text-neutral-inverse",
+        ],
+      },
+      {
+        kind: "outline",
+        color: "primary",
+        // fix importants here
+        className: [
+          "k1-text-primary",
+          "k1-border-primary-strong",
+          "data-[hover]:!k1-bg-primary-backdrop-hover data-[hover]:!k1-text-primary",
         ],
       },
     ],

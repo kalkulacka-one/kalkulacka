@@ -10,12 +10,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@repo/design-system": "*",
+    "@hookform/resolvers": "^3.10.0",
     "@repo/database": "*",
+    "@repo/design-system": "*",
     "@repo/schema": "*",
     "next": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.54.2",
     "tailwind-merge": "^2.5.3",
     "zod": "^3.24.1"
   },

@@ -44,7 +44,7 @@ const Input = forwardRef<
     <>
       <InputPrimitive
         ref={inputRef}
-        className={twMerge("k1-peer k1-flex-grow", className)}
+        className={twMerge("k1-peer, k1-flex-grow", className)}
         onChange={handleChange}
         {...props}
       />

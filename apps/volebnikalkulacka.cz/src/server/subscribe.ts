@@ -1,29 +1,53 @@
 "use server";
 
+import { z } from "zod";
 import { prisma } from "@repo/database";
-import { SubscribeBody } from "../types/subscribe";
+import { PrismaClientKnownRequestError } from "@repo/database/library";
+import { SubscribeBody, subscribeBodySchema } from "../types/subscribe";
 import {
   EmptyObject,
   GenericResponse,
   resultBasicError,
+  resultSuccess,
 } from "../utils/genericResponse";
 
 export async function subscribe(
   body: SubscribeBody,
 ): Promise<GenericResponse<EmptyObject>> {
-  // Pridat validaci
-
-  // we save the email to database
-  // TODO: this fails when the email exists, we need a helper function that catches error and turn the response to GenericResponse<>
-  await prisma.subscription.create({
-    data: {
-      email: body.email,
-    },
-  });
-
-  return resultBasicError({
-    type: "error",
-    code: "not-implemented",
-    message: "Not implemented",
-  });
+  // validation wrapper
+  const parsed = subscribeBodySchema.safeParse(body);
+  if (!parsed.success) {
+    const issues = parsed.error.issues.map((issue) => issue.message);
+    return resultBasicError({
+      type: "Invalid data",
+      code: "not-implemented",
+      message: `Validation issue: ${issues}`,
+    });
+  }
+  try {
+    await prisma.subscription.create({
+      data: {
+        email: body.email,
+      },
+    });
+    return resultSuccess({});
+  } catch (error) {
+    // catching errors wrapper
+    if (
+      error instanceof PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
+      return resultBasicError({
+        type: "Duplicate email",
+        code: "not-implemented",
+        message: `Email already subscribed`,
+      });
+    }
+    // error unexpected
+    return resultBasicError({
+      type: "Unexpected error",
+      code: "not-implemented",
+      message: `Unexpected error`,
+    });
+  }
 }
