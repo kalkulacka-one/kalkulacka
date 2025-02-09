@@ -10,52 +10,56 @@ type Props = {
 export default function UrlUpdater({ children }: Props) {
   const currentUrl = usePathname();
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
-  const setIsRekapitulace = useQuestionsStore(
-    (state) => state.setIsRekapitulace,
-  );
   const setCurrentLocation = useQuestionsStore(
     (state) => state.setCurrentLocation,
   );
-  const guideNumber = useQuestionsStore((state) => state.guideNumber);
+  const currentGuide = useQuestionsStore((state) => state.currentGuide);
   const currentLocation = useQuestionsStore((state) => state.currentLocation);
 
-  useEffect(() => {
+  // setting the store location based on the current url
+  const storeLocationSetter = () => {
     if (
       currentUrl.includes("rekapitulace") &&
       currentLocation !== "rekapitulace"
     ) {
       setCurrentLocation("rekapitulace");
-      setIsRekapitulace(true);
     } else if (currentUrl.includes("otazka") && currentLocation !== "otazka") {
       setCurrentLocation("otazka");
-      setIsRekapitulace(false);
     } else if (currentUrl.includes("navod") && currentLocation !== "navod") {
       setCurrentLocation("navod");
-      setIsRekapitulace(false);
     } else if (
       currentUrl.includes("vysledky") &&
       currentLocation !== "vysledky"
     ) {
       setCurrentLocation("vysledky");
-      setIsRekapitulace(false);
     }
-  }, [currentUrl, currentLocation]);
-
-  useEffect(() => {
+  };
+  // url and tab updater based on the store state
+  const urlAndTitleUpdater = () => {
     if (currentLocation === "otazka") {
       document.title = `Otázka ${currentQuestion}`;
       history.replaceState({}, "", `/abc/otazka/${currentQuestion}`);
     } else if (currentLocation === "navod") {
-      document.title = `Návod ${guideNumber}`;
-      history.replaceState({}, "", `/abc/navod/${guideNumber}`);
+      document.title = `Návod ${currentGuide}`;
+      history.replaceState({}, "", `/abc/navod/${currentGuide}`);
     } else if (currentLocation === "rekapitulace") {
       document.title = `Rekapitulace`;
     } else if (currentLocation === "vysledky") {
       document.title = `Výsledky`;
     }
+  };
+
+  // useEffect to set the store location based on the current URL
+  useEffect(() => {
+    storeLocationSetter();
+  }, [currentUrl, currentLocation]);
+
+  // useEffect to update the URL and document title based on the current location
+  useEffect(() => {
+    urlAndTitleUpdater();
     return () => {
       document.title;
     };
-  }, [guideNumber, currentQuestion, currentLocation]);
+  }, [currentGuide, currentQuestion, currentLocation]);
   return children;
 }

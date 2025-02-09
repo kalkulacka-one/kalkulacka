@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import React from "react";
 import { Button as HeadlessUIButton } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
@@ -16,7 +17,7 @@ const buttonVariants = cva(
     variants: {
       kind: {
         filled:
-          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled text-white",
+          "k1-p-4 k1-text-white data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled",
         inverse: "k1-gap-4 k1-border-2 k1-bg-transparent k1-p-4",
         outline: [
           "k1-border-2 k1-bg-transparent k1-p-4",

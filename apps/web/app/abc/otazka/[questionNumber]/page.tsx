@@ -17,7 +17,9 @@ type ExtendedQuestions = Question & {
 export default function Page() {
   const params = useParams();
   const router = useRouter();
+  const questionNumberParam = Number(params.questionNumber);
   const questions = useQuestionsStore((state) => state.questions);
+  // default value makes sense here, glitch in UI
   const currentQuestion = useQuestionsStore((state) => state.currentQuestion);
   const setCurrentQuestion = useQuestionsStore(
     (state) => state.setCurrentQuestion,
@@ -27,19 +29,24 @@ export default function Page() {
   const toggleImportant = useQuestionsStore((state) => state.toggleImportant);
   const answerYes = useQuestionsStore((state) => state.answerYes);
   const answerNo = useQuestionsStore((state) => state.answerNo);
-
-  // ** NEEEDS REFACTOR!
-  useEffect(() => {
-    const number = Number(params.questionNumber);
-    if (number > 1 && number <= questions.length) {
-      setCurrentQuestion(Number(params.questionNumber));
+  const goToQuestionFromUrl = (number: number, currentQuestion: number) => {
+    if (number >= 1 && number <= questions.length && currentQuestion >= 0) {
+      setCurrentQuestion(number);
     } else {
       setCurrentQuestion(1);
     }
+  };
+
+  // go to question number from url
+  useEffect(() => {
+    goToQuestionFromUrl(questionNumberParam, currentQuestion);
   }, []);
 
   const yesClick = (currentQuestion: number) => {
-    if (currentQuestion === questions.length) {
+    if (
+      currentQuestion === questions.length &&
+      questions[currentQuestion - 1]?.answerType === null
+    ) {
       answerYes(currentQuestion);
       router.push("/abc/rekapitulace");
     } else {
@@ -48,7 +55,10 @@ export default function Page() {
   };
 
   const noClick = (currentQuestion: number) => {
-    if (currentQuestion === questions.length) {
+    if (
+      currentQuestion === questions.length &&
+      questions[currentQuestion - 1]?.answerType === null
+    ) {
       answerNo(currentQuestion);
       router.push("/abc/rekapitulace");
     } else {
@@ -143,7 +153,6 @@ export default function Page() {
               currentQuestion={currentQuestion}
               questionTotal={questions.length}
               toggleImportant={() => toggleImportant(currentQuestion)}
-              // solve redirect !!!
               yesClick={() => yesClick(currentQuestion)}
               noClick={() => noClick(currentQuestion)}
               yesPressed={question.answerType === true ? true : undefined}

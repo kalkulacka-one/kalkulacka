@@ -11,19 +11,22 @@ import { useEffect } from "react";
 export default function Page() {
   const params = useParams();
   const guide = useQuestionsStore((state) => state.guide);
-  const guideNumber = useQuestionsStore((state) => state.guideNumber);
-  const setGuideNumber = useQuestionsStore((state) => state.setGuideNumber);
+  // default value makes sense here, glitch in UI
+  const guideNumberParam = Number(params.guideNumber);
+  const currentGuide = useQuestionsStore((state) => state.currentGuide);
+  const setCurrentGuide = useQuestionsStore((state) => state.setCurrentGuide);
   const prevGuide = useQuestionsStore((state) => state.prevGuide);
   const nextGuide = useQuestionsStore((state) => state.nextGuide);
-
-  // ** NEEEDS REFACTOR!
-  useEffect(() => {
-    const number = Number(params.guideNumber);
-    if (number >= 1 && number <= guide.length) {
-      setGuideNumber(Number(params.guideNumber));
+  const goToGuideFromUrl = (number: number, currentGuide: number) => {
+    if (number >= 1 && number <= guide.length && currentGuide >= 0) {
+      setCurrentGuide(number);
     } else {
-      setGuideNumber(1);
+      setCurrentGuide(1);
     }
+  };
+
+  useEffect(() => {
+    goToGuideFromUrl(guideNumberParam, currentGuide);
   }, []);
 
   const guideCardSwitcher = (number: number) => {
@@ -47,7 +50,7 @@ export default function Page() {
     <div className="relative flex flex-1 flex-col">
       {/* mobile arrow bar */}
       <div className="absolute top-0 flex w-full justify-between p-2 sm:hidden">
-        {guideNumber > 1 && (
+        {currentGuide > 1 && (
           <Button
             hasIcon
             icon={ArrowIconLeft}
@@ -58,7 +61,7 @@ export default function Page() {
             onClick={prevGuide}
           />
         )}
-        {guideNumber < guide.length && (
+        {currentGuide < guide.length && (
           <Button
             hasIcon
             icon={ArrowIconRight}
@@ -77,7 +80,7 @@ export default function Page() {
           {/* empty div for 700 - 767 screen width */}
           <div className="block sm:hidden"></div>
           <div className="hidden items-center justify-end sm:flex">
-            {guideNumber === 1 ? null : (
+            {currentGuide === 1 ? null : (
               <Button
                 hasIcon
                 icon={ArrowIconLeft}
@@ -93,25 +96,27 @@ export default function Page() {
             {/* store content */}
             {/* add as title-m typography component, make content dynamic */}
             {guide.map((item, index) => {
-              const current = index + 1;
-              if (current === guideNumber) {
+              if (index + 1 === currentGuide) {
                 return (
-                  <>
-                    <span className="text-3xl font-bold text-neutral-strong">
-                      {item.title}
+                  <div
+                    className="flex flex-col gap-4"
+                    key={`Guide wrapper number ${index + 1}`}
+                  >
+                    <div className="flex flex-col text-3xl font-bold text-neutral-strong xs:flex-row xs:items-end xs:gap-2">
+                      <span>{item.title}</span>
                       <span
                         style={{ fontSize: "smaller" }}
-                        className="ml-2 text-neutral "
+                        className="text-neutral "
                       >
                         {item.region}
                       </span>
-                    </span>
+                    </div>
                     <div className="flex flex-col gap-4 text-base font-normal text-neutral">
                       {item.contentBefore}
-                      {guideCardSwitcher(current)}
+                      {guideCardSwitcher(index + 1)}
                       {item.contentAfter}
                     </div>
-                  </>
+                  </div>
                 );
               }
             })}
@@ -120,7 +125,7 @@ export default function Page() {
           {/* empty div for 700 - 767 screen width */}
           <div className="block sm:hidden"></div>
           <div className="hidden items-center justify-start sm:flex">
-            {guideNumber === 4 ? null : (
+            {currentGuide === 4 ? null : (
               <Button
                 hasIcon
                 icon={ArrowIconRight}
@@ -135,7 +140,7 @@ export default function Page() {
         {/* guide bottom bar */}
         <GuideBottomBar
           guide={guide}
-          guideNumber={guideNumber}
+          guideNumber={currentGuide}
           nextGuide={nextGuide}
         />
       </main>

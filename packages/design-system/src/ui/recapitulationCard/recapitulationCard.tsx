@@ -17,10 +17,11 @@ type ExtendedQuestions = Question & {
   answerType: true | false | null | undefined;
 };
 
-export interface Props {
+export interface RecapCardProps {
   question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
+  // eslint-disable-next-line no-unused-vars
   onClick: (buttonType: string) => void;
 }
 
@@ -29,7 +30,7 @@ export function RecapitulationCard({
   currentQuestion,
   questionCount,
   onClick,
-}: Props) {
+}: RecapCardProps) {
   const { id, statement, detail, tags, title, answerType, isImportant } =
     question;
   const [detailToggled, setDetailToggled] = useState(false);
@@ -93,6 +94,7 @@ export function RecapitulationCard({
 
   return (
     <Card
+      key={`RecapCard id: ${id}`}
       // data-card-id={id}
       corner="topLeft"
       color="white"

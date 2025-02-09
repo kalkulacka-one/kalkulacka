@@ -1,14 +1,13 @@
 import { YesToggleButton, NoToggleButton } from "@repo/design-system/ui";
 import { StepProgressFancy } from "@repo/design-system/ui";
 import { StarIconButton } from "@repo/design-system/ui";
-import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
+import type { ExtendedQuestions } from "../../../../../apps/web/app/abc/providers/store.types";
 
 type Props = {
-  // solve unused button type eslint (no-unused-vars) problem
   starPressed?: boolean;
   yesPressed?: boolean | null;
   noPressed?: boolean | null;
-  toggleImportant: (currentQuestion: number) => void;
+  toggleImportant: () => void;
   yesClick: () => void;
   noClick: () => void;
   questions: ExtendedQuestions[];
@@ -39,20 +38,16 @@ export function BottomBar({
         />
       </div>
       {/* button wrapper */}
-      <div className="p-4 k1-flex k1-justify-center">
+      <div className="k1-flex k1-justify-center k1-p-4">
         <div className="k1-grid k1-w-full k1-grid-cols-[auto_1fr_1fr] k1-items-center k1-justify-center k1-gap-4 xs:k1-w-auto lg:k1-w-clamp-custom">
           <div className="min-[576px]:k1-mr-[calc(1rem*2)]">
             <StarIconButton
               starPressed={starPressed ? true : false}
-              // fix onClick error here
               onClick={toggleImportant}
             >
               Pro mě důležité
             </StarIconButton>
           </div>
-
-          {/* <ButtonInFavour onClick={yesClick} />
-          <ButtonAgainst onClick={noClick} /> */}
           <YesToggleButton
             onClick={yesClick}
             // null worked
@@ -67,6 +62,3 @@ export function BottomBar({
     </div>
   );
 }
-// TODO
-// 1. Buttons on mobile wihout texts WIDTH!
-// 3. Bottom bar positioning

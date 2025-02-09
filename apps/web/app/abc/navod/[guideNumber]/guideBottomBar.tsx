@@ -2,14 +2,8 @@ import { ArrowIconRight, ForwardIcon } from "@repo/design-system/icons";
 import { Button, StepProgress } from "@repo/design-system/ui";
 import Link from "next/link";
 
-type Guide = {
-  title?: string;
-  region?: string;
-  contentBefore?: string;
-  contentAfter?: string;
-}[];
-
-type Props = {
+// more specific generic needed ?
+type Props<Guide = any[]> = {
   guideNumber: number | null;
   guide: Guide;
   nextGuide: () => void;
@@ -21,7 +15,7 @@ export default function GuideBottomBar({
   nextGuide,
 }: Props) {
   return (
-    <div className="bg-white sticky w-full bottom-0 grid grid-cols-2 justify-center gap-4 p-4 min-[701px]:grid sm:bg-transparent md:w-1/4 md:justify-self-center min-[701px]:[grid-template-columns:repeat(2,8rem)]">
+    <div className="sticky bottom-0 grid w-full grid-cols-2 justify-center gap-4 bg-white p-4 min-[701px]:grid min-[701px]:[grid-template-columns:repeat(2,8rem)] sm:bg-transparent md:w-1/4 md:justify-self-center">
       {/* grid col 1 */}
       <div className="justify-self-start">
         <span className="font-primary text-xs font-bold uppercase tracking-wide text-neutral-strong">
@@ -30,11 +24,10 @@ export default function GuideBottomBar({
       </div>
       {/* grid col 2 */}
       <div className="content-center justify-self-end">
-        {/* fix type error */}
         <StepProgress
-          currentQuestion={guideNumber}
-          totalQuestion={guide.length}
-          answers={guide}
+          currentStep={guideNumber}
+          stepTotal={guide.length}
+          steps={guide}
         />
       </div>
       {/* grid col 3 */}
@@ -65,9 +58,8 @@ export default function GuideBottomBar({
         )}
       </div>
       {/* grid col 4 */}
-      {/* invisible on div instead of button due to cva conflicts, fix in tw merge ? */}
       <div
-        className={`col-[1_/_span_2] justify-self-center ${guideNumber === 4 ? "invisible" : null}`}
+        className={`col-[1_/_span_2] justify-self-center ${guideNumber === 4 ? "invisible" : ""}`}
       >
         {/* fix link wrap, should be link in style of a button! */}
         <Link href="/abc/otazka/1">

@@ -1,19 +1,9 @@
-import React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-// todo: generic type for answers ?
-
-type Guide = { contentBefore?: string; contentAfter?: string }[];
-
-type Props = {
-  answers?: Guide;
-  currentQuestion?: number;
-  totalQuestion?: number;
-  steps: {
-    currentQuestion: number;
-    totalQuestion: number;
-    answers: [];
-  };
+type Props<Steps = any[]> = {
+  steps?: Steps;
+  currentStep?: number | null;
+  stepTotal?: number;
 } & VariantProps<typeof stepProgressVariants>;
 
 const stepProgressVariants = cva("k1-rounded-full", {
@@ -24,15 +14,15 @@ const stepProgressVariants = cva("k1-rounded-full", {
     },
   },
 });
-const StepProgress = ({ answers, currentQuestion }: Props): JSX.Element => {
+const StepProgress = ({ steps, currentStep }: Props): JSX.Element => {
   return (
     <>
       <div className="k1-flex k1-gap-1">
-        {answers?.map((answer, index) => {
+        {steps?.map((_, index) => {
           return (
             <div
               className={stepProgressVariants({
-                status: currentQuestion === index + 1 ? "active" : "inactive",
+                status: currentStep === index + 1 ? "active" : "inactive",
               })}
               key={`Bar number: ${index}`}
             ></div>

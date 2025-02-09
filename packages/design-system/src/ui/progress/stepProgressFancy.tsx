@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import type { ExtendedQuestions } from "../../../../../apps/web/app/xyz/store";
+import type { ExtendedQuestions } from "../../../../../apps/web/app/abc/providers/store.types";
 type Status = true | false | null | undefined;
 
 type Props = {

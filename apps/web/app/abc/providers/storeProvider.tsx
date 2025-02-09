@@ -2,42 +2,31 @@
 
 import { type ReactNode, createContext, useRef, useContext } from "react";
 import { type StoreApi, createStore, useStore } from "zustand";
-import { Question } from "@repo/schema/dist";
 import guide from "../navod/guide.json";
+import type { ExtendedQuestions, Guide } from "./store.types";
 
-// extend question type like this? (need isImportant, answerType)
-
-type ExtendedQuestions = Question & {
-  isImportant: true | false | null;
-  answerType: true | false | null;
-};
-
-type Guide = {
-  title?: string;
-  region?: string;
-  contentBefore?: string;
-  contentAfter?: string;
-}[];
-
-// divide store, to the external file?
-
+// divide store, to the external file ?
 type Store = {
   questions: ExtendedQuestions[];
-  currentQuestion: number | null;
+  currentQuestion: number;
+  currentGuide: number;
+  // eslint-disable-next-line no-unused-vars
   answerYes: (currentQuestion: number) => void;
+  // eslint-disable-next-line no-unused-vars
   answerNo: (currentQuestion: number) => void;
+  // eslint-disable-next-line no-unused-vars
   toggleImportant: (currentQuestion: number) => void;
   prevQuestion: () => void;
   skipQuestion: () => void;
   nextGuide: () => void;
   prevGuide: () => void;
   // fix no unused vars error
-  guideNumber: number | null;
   guide: Guide;
-  isRekapitulace: boolean;
   currentLocation: "navod" | "otazka" | "rekapitulace" | "vysledky" | "default";
-  setGuideNumber: (guideNumber: number) => void;
+  // eslint-disable-next-line no-unused-vars
+  setCurrentGuide: (currentGuide: number) => void;
   setCurrentLocation: (
+    // eslint-disable-next-line no-unused-vars
     currentLocation:
       | "navod"
       | "otazka"
@@ -45,8 +34,9 @@ type Store = {
       | "vysledky"
       | "default",
   ) => void;
+  // eslint-disable-next-line no-unused-vars
   setCurrentQuestion: (number: number) => void;
-  setIsRekapitulace: (rekapitulaceState: boolean) => void;
+  // eslint-disable-next-line no-unused-vars
 };
 
 export const StoreContext = createContext<StoreApi<Store> | undefined>(
@@ -66,11 +56,8 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       currentLocation: "default",
       setCurrentLocation: (currentLocation) =>
         set(() => ({ currentLocation: currentLocation })),
-      setIsRekapitulace: (rekapitulaceState) =>
-        set(() => ({ isRekapitulace: rekapitulaceState })),
-      isRekapitulace: false,
       questions,
-      currentQuestion: 1,
+      currentQuestion: 0,
       answerYes: (currentQuestion) => {
         set((state) => {
           const updatedQuestion = state.questions.map((question) => {
@@ -98,12 +85,12 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           return { ...state, questions: updatedQuestion };
         });
         // understand this function  with current invoke better
-        // better way how to solve this?
-        const isRekapitulace = storeRef.current?.getState().isRekapitulace;
+        // possible better way how to solve this?
         const answerType =
           storeRef.current?.getState().questions[currentQuestion - 1]
             ?.answerType;
-        if (!isRekapitulace && answerType === true) {
+        const storeLocation = storeRef.current?.getState().currentLocation;
+        if (storeLocation === "otazka" && answerType === true) {
           storeRef.current?.getState().skipQuestion();
         }
       },
@@ -134,12 +121,12 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
           return { ...state, questions: updatedQuestion };
         });
         // understand this function  with current invoke better
-        // better way how to solve this?
-        const isRekapitulace = storeRef.current?.getState().isRekapitulace;
+        // possible better way how to solve this?
         const answerType =
           storeRef.current?.getState().questions[currentQuestion - 1]
             ?.answerType;
-        if (!isRekapitulace && answerType === false) {
+        const storeLocation = storeRef.current?.getState().currentLocation;
+        if (storeLocation === "otazka" && answerType === false) {
           storeRef.current?.getState().skipQuestion();
         }
       },
@@ -160,35 +147,34 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
       prevQuestion: () =>
         set((state) => ({
           currentQuestion:
-            state.currentQuestion !== null && state.currentQuestion !== 0
+            state.currentQuestion > 0
               ? state.currentQuestion - 1
               : state.currentQuestion,
         })),
       skipQuestion: () =>
         set((state) => ({
           currentQuestion:
-            state.currentQuestion !== null &&
-            state.currentQuestion !== questions.length
+            state.currentQuestion < questions.length
               ? state.currentQuestion + 1
               : state.currentQuestion,
         })),
-      guideNumber: null,
+      currentGuide: 0,
       guide: guide,
-      setGuideNumber: (guideNumber) =>
-        set(() => ({ guideNumber: guideNumber })),
+      setCurrentGuide: (currentGuide) =>
+        set(() => ({ currentGuide: currentGuide })),
       prevGuide: () =>
         set((state) => ({
-          guideNumber:
-            state.guideNumber !== null && state.guideNumber !== 0
-              ? state.guideNumber - 1
-              : null,
+          currentGuide:
+            state.currentGuide > 0
+              ? state.currentGuide - 1
+              : state.currentGuide,
         })),
       nextGuide: () => {
         set((state) => ({
-          guideNumber:
-            state.guideNumber !== null && state.guideNumber !== guide.length
-              ? state.guideNumber + 1
-              : null,
+          currentGuide:
+            state.currentGuide < guide.length
+              ? state.currentGuide + 1
+              : state.currentGuide,
         }));
       },
       setCurrentQuestion: (number) => set(() => ({ currentQuestion: number })),
@@ -202,6 +188,7 @@ export const StoreProvider = ({ children, questions }: StoreProviderProps) => {
   );
 };
 
+// eslint-disable-next-line no-unused-vars
 export function useQuestionsStore<U>(selector: (state: Store) => U): U {
   const store = useContext(StoreContext);
   if (!store) {
@@ -210,5 +197,4 @@ export function useQuestionsStore<U>(selector: (state: Store) => U): U {
   return useStore(store, selector);
 }
 
-// TODO:
-// 1. redirect
+export default Store;
