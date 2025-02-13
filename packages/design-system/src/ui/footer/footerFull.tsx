@@ -1,14 +1,14 @@
 import { Logo } from "@repo/design-system/svg";
 // fix imports after project strucuture merge
-import { EnvelopeIcon } from "../../icons/envelopeIcon";
+import { EnvelopeFilledIcon } from "../../icons/envelopeFilledIcon";
 import { TelephoneIcon } from "../../icons/telephoneIcon";
 
-export function Footer() {
+export function FooterFull() {
   return (
     <footer className="k1-py-10">
       {/* content */}
       <div className="k1-px-4">
-        {/* grid wrapper */}
+        {/* grid wrapper */}s
         <div className="k1-grid k1-grid-cols-2 md:k1-grid-cols-4">
           {/* col wrapper start */}
           <div className="k1-flex k1-flex-col k1-gap-6">
@@ -60,7 +60,7 @@ export function Footer() {
             <h5 className="k1-text-sm k1-font-bold">Kontakt</h5>
             <div className="k1-flex k1-flex-col k1-items-start k1-gap-2 k1-text-sm k1-text-neutral">
               <div className="k1-flex k1-items-center k1-gap-4">
-                <EnvelopeIcon className="k1-size-6" />
+                <EnvelopeFilledIcon className="k1-size-6" />
                 <a href="/">info@kohovolit.eu</a>
               </div>
               <div className="k1-flex k1-items-center k1-gap-4">

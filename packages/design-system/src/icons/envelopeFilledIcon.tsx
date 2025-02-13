@@ -1,4 +1,4 @@
-export function EnvelopeIcon(
+export function EnvelopeFilledIcon(
   props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) {
   return (
