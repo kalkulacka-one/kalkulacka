@@ -1,9 +1,9 @@
 "use client";
 
-import "./globals.css";
+import "../globals.css";
 import "@repo/design-system/styles";
 import "@repo/design-system/themes/theme-default";
-import { Blobs } from "@repo/design-system/ui";
+import { Blobs, Header, Footer } from "@repo/design-system/ui";
 
 export default function RootLayout({
   params: { lang },
@@ -22,9 +22,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <main className="grid gap-8 p-4">
+        <main className="relative grid h-screen p-4">
+          <Header />
           <Blobs />
           {children}
+          <Footer />
         </main>
       </body>
     </html>

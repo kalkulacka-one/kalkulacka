@@ -4,6 +4,7 @@ import { Field } from "./field";
 import { Input } from "./input";
 import { Label } from "./label";
 import { twMerge } from "tailwind-merge";
+import { WarningIcon } from "@repo/design-system/demo";
 
 /*
   We choose what Input field properties we allow to be passed to the Input component
@@ -18,20 +19,29 @@ type InheritedInputProps = Omit<
 
 type Props = {
   label?: string;
-  error?: string;
+  error?: boolean;
+  errorMessage?: string;
   showClearButton?: boolean;
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 } & InheritedInputProps;
 
 const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
   (
-    { label, error, showClearButton, icon, placeholder, ...props }: Props,
+    {
+      label,
+      error,
+      errorMessage,
+      showClearButton,
+      icon,
+      placeholder,
+      ...props
+    }: Props,
     ref,
   ) => {
     // if error is present, we pass it to all the sub-components
     const hasError = !!error;
 
-    console.info("InputField", { hasError, label, error, showClearButton });
+    // console.info("InputField", { hasError, label, error, showClearButton });
 
     // We show label instead of placeholder if label is provided
     const showPlaceholder = !label;
@@ -41,8 +51,8 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
     const hasIcon = !!Icon;
 
     return (
-      <Field state={hasError ? "error" : "default"}>
-        {hasIcon && <Icon className={twMerge("k1-w-6 k1-h-6 k1-min-w-6")} />}
+      <Field className="!k1-w-fit" state={hasError ? "error" : "default"}>
+        {hasIcon && <Icon className={twMerge("k1-size-6")} />}
         <Input
           {...props}
           ref={ref}
@@ -59,7 +69,8 @@ const InputField = forwardRef<React.ElementRef<typeof Input>, Props>(
           <>
             <Description state="error">
               {/*Custom error - must be text as in zod validator*/}
-              {`Fix the ${label?.toLowerCase()}`}
+              {errorMessage}
+              <WarningIcon className="k1-size-4" />
             </Description>
           </>
         )}

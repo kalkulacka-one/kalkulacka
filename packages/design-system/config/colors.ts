@@ -60,6 +60,7 @@ const backgroundColorPrimary = {
   "primary-strong": primaryColors[50],
   "primary-strong-hover": primaryColors[30],
   "primary-strong-active": primaryColors[10],
+  "primary-backdrop-hover": `rgb(from ${primaryColors[30]} r g b / 0.1)`,
 };
 
 const textColorPrimary = {
