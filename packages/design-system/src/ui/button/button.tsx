@@ -1,6 +1,8 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import React from "react";
 import { Button as HeadlessUIButton } from "@headlessui/react";
 import { cva, VariantProps } from "class-variance-authority";
+import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
   [
@@ -15,7 +17,7 @@ const buttonVariants = cva(
     variants: {
       kind: {
         filled:
-          "k1-p-4 data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled",
+          "k1-p-4 k1-text-white data-[active]:k1-bg-primary-strong-active data-[disabled]:k1-bg-neutral-disabled",
         inverse: "k1-gap-4 k1-border-2 k1-bg-transparent k1-p-4",
         outline: [
           "k1-border-2 k1-bg-transparent k1-p-4",
@@ -41,22 +43,26 @@ const buttonVariants = cva(
         primary: [
           "k1-bg-primary-strong",
           "data-[hover]:k1-bg-primary-strong-hover data-[hover]:k1-text-white",
+          "data-[pressed]:k1-primary-strong",
         ],
         secondary: [
           "k1-bg-secondary-strong",
           "data-[hover]:k1-bg-secondary-strong-hover",
           "data-[disabled]:k1-bg-neutral-disabled",
+          "data-[pressed]:k1-secondary-strong",
         ],
         neutral: [
           "k1-border-2 k1-border-neutral-strong k1-text-neutral",
           "data-[hover]:k1-border-neutral-strong data-[hover]:k1-bg-neutral-backdrop-hover",
           "data-[active]:k1-bg-neutral-backdrop-active data-[active]:k1-text-neutral-active",
           "data-[disabled]:k1-border-neutral-disabled data-[disabled]:k1-text-neutral-disabled",
+          "data-[pressed]:k1-neutral-strong",
         ],
       },
       size: {
         default: "k1-h-14 k1-text-sm k1-leading-6 k1-tracking-wider",
         small: "k1-h-10 k1-text-xs k1-leading-4 k1-tracking-wider",
+        auto: "k1-h-auto k1-text-sm k1-leading-6 k1-tracking-wider",
       },
       wider: {
         true: "k1-px-6",
@@ -122,7 +128,7 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     pressed?: boolean;
     answerType?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     compactable?: boolean;
     icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   };
@@ -140,6 +146,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       compactable,
       pressed,
       answerType,
+      className,
       ...props
     },
     ref,
@@ -149,15 +156,18 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 
     return (
       <HeadlessUIButton
-        className={buttonVariants({
-          kind,
-          size,
-          wider,
-          fitContent,
-          hasIcon,
-          iconPosition,
-          color,
-        })}
+        className={twMerge(
+          buttonVariants({
+            kind,
+            size,
+            wider,
+            fitContent,
+            hasIcon,
+            iconPosition,
+            color,
+          }),
+          className,
+        )}
         ref={ref}
         aria-pressed={pressed ? true : false}
         data-pressed={pressed ? true : null}
@@ -169,7 +179,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
         {...props}
       >
         {hasIcon ? <Icon className="k1-h-6 k1-w-6" /> : null}
-        <div className={compactable ? "k1-hidden md:k1-block" : "k1-block"}>
+        <div className={compactable ? "k1-hidden xs:k1-block" : "k1-block"}>
           {children}
         </div>
       </HeadlessUIButton>

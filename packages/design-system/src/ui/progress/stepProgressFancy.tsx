@@ -1,25 +1,24 @@
 import { cva, VariantProps } from "class-variance-authority";
-
+import type { ExtendedQuestions } from "../../../../../apps/web/app/abc/providers/store.types";
 type Status = true | false | null | undefined;
 
 type Props = {
-  steps: {
-    currentQuestion: number;
-    totalQuestion: number;
-    answers: { answerId: string; status: Status }[];
-  };
+  questions: ExtendedQuestions[];
+  currentQuestion: number;
+  questionTotal: number;
 } & VariantProps<typeof stepProgressVariants>;
 
-const stepProgressVariants = cva("k1-w-9", {
+const stepProgressVariants = cva("", {
   variants: {
     status: {
       inFavour: "k1-bg-primary-strong",
       against: "k1-bg-secondary-strong",
-      none: "k1-bg-neutral-strong-active",
+      // none: "k1-bg-neutral-strong-active",
       isNull: "k1-bg-neutral-disabled",
     },
     height: {
-      active: "k1-h-2",
+      // fix needed: better solution than important ?
+      active: "k1-h-2 !k1-bg-neutral-strong-active",
       inactive: "k1-h-1",
     },
     // added empty strings for the lint check, this component awaits new merge ({status: "undefined", height:"inactive"})
@@ -38,22 +37,27 @@ function checkStatus(status: Status) {
       return "against";
     case null:
       return "isNull";
-    case undefined:
-      return "none";
   }
 }
 
-const StepProgressFancy = ({ steps }: Props): JSX.Element => {
-  const answersData = steps.answers;
-  const { currentQuestion } = steps;
-
+const StepProgressFancy = ({
+  questions,
+  currentQuestion,
+  questionTotal,
+}: Props): JSX.Element => {
   return (
-    <div className="k1-flex k1-items-center">
-      {answersData.map((answer, index) => {
+    <div className="k1-flex k1-items-center k1-justify-start">
+      {questions.map((question: ExtendedQuestions, index) => {
         return (
           <div
+            // fix needed: better key naming ?
+            key={`Step bar: ${index}`}
+            style={{
+              flex: `1 1 calc(100% / ${questionTotal})`,
+              width: `calc(100% / ${questionTotal})`,
+            }}
             className={stepProgressVariants({
-              status: checkStatus(answer.status),
+              status: checkStatus(question.answerType),
               height: currentQuestion === index + 1 ? "active" : "inactive",
             })}
           ></div>

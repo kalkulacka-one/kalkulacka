@@ -11,6 +11,7 @@ export * from "./icons/arrowIconRight";
 export * from "./icons/neutralIcon";
 export * from "./icons/noIcon";
 export * from "./icons/starIcon";
+export * from "./icons/starIconFilled";
 export * from "./icons/yesIcon";
 export * from "./icons/chevronDown";
 export * from "./icons/checkbox/checkedIcon";

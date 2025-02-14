@@ -15,7 +15,7 @@ const cardVariants = cva(
       color: {
         white:
           // TODO: add white as neutral-fg-inverse to the config?
-          "k1-bg-white hover:k1-bg-neutral-backdrop-hover active:k1-bg-neutral-backdrop-active",
+          "k1-bg-white",
         blue: "k1-bg-primary hover:k1-bg-primary-strong-hover active:k1-bg-primary-strong-active",
         transparent:
           "k1-bg-transparent hover:k1-bg-neutral-backdrop-hover active:k1-bg-neutral-backdrop-active",
