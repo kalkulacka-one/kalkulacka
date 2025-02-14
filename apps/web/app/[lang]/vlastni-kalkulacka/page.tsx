@@ -1,6 +1,6 @@
 export default function Page(): JSX.Element {
   return (
-    <section className="max-w-2xl grid gap-4">
+    <section className="grid max-w-2xl gap-4">
       <section className="grid gap-2">
         <h2 className="text-3xl font-bold">
           Získejte vlastní Volební kalkulačku

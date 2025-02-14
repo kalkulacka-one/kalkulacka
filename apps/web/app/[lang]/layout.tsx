@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
 
 import "../globals.css";
+import "@repo/design-system/styles";
+import "@repo/design-system/themes/theme-default";
+import { Blobs } from "@repo/design-system/ui";
 
 export default function RootLayout({
   params: { lang },
@@ -19,7 +24,8 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <main className="p-4 grid gap-8">
+        <main className="grid gap-8 p-4">
+          <Blobs />
           <header className="grid gap-2">
             <Link href="/cs">
               <h1 className="text-5xl font-semibold">Kalkulacka.1</h1>

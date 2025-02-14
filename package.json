@@ -3,13 +3,14 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo watch dev",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "turbo": "^2.0.6"
@@ -21,5 +22,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "class-variance-authority": "^0.7.0"
+  }
 }

@@ -1,0 +1,23 @@
+{
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "eslint.format.enable": true,
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./packages/*/"
+    },
+    {
+      "pattern": "./apps/*/"
+    }
+  ],
+}
