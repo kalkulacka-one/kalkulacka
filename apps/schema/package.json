@@ -8,6 +8,7 @@
     "build:openapi": "npm run build:copy && node ./scripts/generate-openapi.js"
   },
   "devDependencies": {
+    "@redocly/cli": "^1.29.0",
     "@repo/schema": "*",
     "yaml": "^2.7.0"
   }
