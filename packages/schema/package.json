@@ -2,7 +2,9 @@
   "name": "@repo/schema",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "exports": {
+    ".": "./index.js",
     "./*": "./schemas/**/*.schema.json"
   },
   "packageManager": "npm@10.8.2",
