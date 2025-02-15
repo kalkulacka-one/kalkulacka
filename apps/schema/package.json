@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build:copy": "node ./scripts/copy-schemas.js"
+    "build:copy": "node ./scripts/copy-schemas.js",
+    "build:openapi": "npm run build:copy && node ./scripts/generate-openapi.js"
   },
   "devDependencies": {
     "@repo/schema": "*",
