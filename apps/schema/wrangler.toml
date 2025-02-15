@@ -1,0 +1,7 @@
+name = "schema"
+main = "index.js"
+compatibility_date = "2025-02-15" 
+
+[assets]
+directory = "./build"
+binding = "ASSETS"
