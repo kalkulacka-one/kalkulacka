@@ -12,11 +12,21 @@ const outputFile = path.join(buildDir, "openapi.yaml");
 
 const schemaFiles = fs.readdirSync(buildDir).filter(file => file.endsWith(".json"));
 
+const version = JSON.parse(
+  fs.readFileSync(
+    path.resolve(
+      path.dirname(fileURLToPath(import.meta.resolve("@repo/schema"))),
+      "package.json"
+    ),
+    "utf-8"
+  )
+).version;
+
 const openapiDoc = {
   openapi: "3.1.0",
   info: {
     title: "Kalkulacka.1 schemas",
-    version: "0.1.0",
+    version,
     description: "Schemas of data for voting advice applications.",
   },
   tags: [],
