@@ -15,6 +15,6 @@ fs.mkdirSync(buildDir, { recursive: true });
 Object.entries(schemas).forEach(([schemaName, schemaData]) => {
   fs.writeFileSync(
     path.join(buildDir, `${schemaName}.schema.json`),
-    JSON.stringify(schemaData, null, 2)
+    JSON.stringify(schemaData, null, 2),
   );
 });
