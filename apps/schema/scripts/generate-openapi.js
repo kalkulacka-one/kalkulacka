@@ -32,7 +32,8 @@ schemaFiles.sort().forEach(file => {
   openapiDoc.components.schemas[schemaName] = { $ref: `./${file}` };
 
   const name = schemaContent.title;
-  let description = schemaContent.description ? `${schemaContent.description}\n\n` : "";
+  let description = `Schema URL: [${schemaContent.$id}](${schemaContent.$id})\n\n`;
+  description += schemaContent.description ? `${schemaContent.description}\n\n` : "";
   description += `<SchemaDefinition schemaRef="#/components/schemas/${schemaName}" />`;
 
   openapiDoc.tags.push({
