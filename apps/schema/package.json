@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build:copy": "node ./scripts/copy-schemas.js"
+  },
   "devDependencies": {
     "@repo/schema": "*",
     "yaml": "^2.7.0"
