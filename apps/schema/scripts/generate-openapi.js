@@ -32,7 +32,6 @@ const openapiDoc = {
     description: "Schemas of data for voting advice applications.",
   },
   tags: [],
-  "x-tagGroups": [{ name: "Schemas", tags: [] }],
   components: { schemas: {} },
 };
 
@@ -54,8 +53,6 @@ schemaFiles.sort().forEach((file) => {
     name,
     description,
   });
-
-  openapiDoc["x-tagGroups"][0].tags.push(name);
 });
 
 const yamlContent = yaml.stringify(openapiDoc);
