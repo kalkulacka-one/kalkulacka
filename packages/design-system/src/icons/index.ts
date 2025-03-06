@@ -19,3 +19,4 @@ export * from "./redCrossIcon";
 export * from "./percentageIcon";
 export * from "./closeIcon";
 export * from "./shareIcon";
+export * from "./filterIcon";

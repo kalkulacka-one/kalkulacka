@@ -43,7 +43,7 @@ export default function ResultsHeader() {
         </Button>
         {/* fix link wrap, should be link in style of a button! */}
         <div></div>
-        <Link className="hidden sm:inline" href="/abc/vysledky">
+        <Link className="hidden sm:inline" href="/abc/porovnani">
           <Button
             hasIcon
             kind="filled"
