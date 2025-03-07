@@ -1,10 +1,10 @@
 "use client";
 import { EnvelopeIcon } from "@repo/design-system/demo";
 import { Button, InputField } from "@repo/design-system/ui";
-import { SubscribeBody, subscribeBodySchema } from "../../src/types/subscribe";
+import { SubscribeBody, subscribeBodySchema } from "../src/types/subscribe";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { subscribe } from "../../src/server/subscribe";
+import { subscribe } from "../src/server/subscribe";
 import { useState } from "react";
 
 export default function Newsletter() {
