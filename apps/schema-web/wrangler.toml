@@ -1,4 +1,4 @@
-name = "schema"
+name = "schema-web"
 main = "index.js"
 compatibility_date = "2025-02-15" 
 
