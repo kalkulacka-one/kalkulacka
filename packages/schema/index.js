@@ -10,10 +10,10 @@ const schemasDir = path.join(__dirname, 'schemas');
 const schemas = {};
 
 for (const file of fs.readdirSync(schemasDir)) {
-	if (file.endsWith('.schema.json')) {
-		const schemaName = path.basename(file, '.schema.json');
-		schemas[schemaName] = JSON.parse(fs.readFileSync(path.join(schemasDir, file), 'utf8'));
-	}
+  if (file.endsWith('.schema.json')) {
+    const schemaName = path.basename(file, '.schema.json');
+    schemas[schemaName] = JSON.parse(fs.readFileSync(path.join(schemasDir, file), 'utf8'));
+  }
 }
 
 export default schemas;

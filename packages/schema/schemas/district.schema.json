@@ -1,24 +1,24 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://schema.kalkulacka.one/district.schema.json",
-	"title": "District",
-	"description": "Geographical area of an election",
-	"type": "object",
-	"properties": {
-		"key": {
-			"title": "Key",
-			"description": "Human-friendly unique key of a district in the hyphen-separated lowercased format",
-			"type": "string",
-			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-			"examples": ["praha"]
-		},
-		"code": {
-			"title": "Code",
-			"description": "Official district code assigned by the election authority",
-			"type": "string",
-			"examples": ["554782"]
-		}
-	},
-	"unevaluatedProperties": false,
-	"required": ["key"]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/district.schema.json",
+  "title": "District",
+  "description": "Geographical area of an election",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Key",
+      "description": "Human-friendly unique key of a district in the hyphen-separated lowercased format",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "examples": ["praha"]
+    },
+    "code": {
+      "title": "Code",
+      "description": "Official district code assigned by the election authority",
+      "type": "string",
+      "examples": ["554782"]
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["key"]
 }

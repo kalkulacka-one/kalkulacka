@@ -1,10 +1,10 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://schema.kalkulacka.one/calculators.schema.json",
-	"title": "Calculators",
-	"description": "List of calculators",
-	"type": "array",
-	"items": {
-		"$ref": "./calculator.schema.json"
-	}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/calculators.schema.json",
+  "title": "Calculators",
+  "description": "List of calculators",
+  "type": "array",
+  "items": {
+    "$ref": "./calculator.schema.json"
+  }
 }

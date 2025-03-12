@@ -1,11 +1,11 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://schema.kalkulacka.one/answers.schema.json",
-	"title": "Answers",
-	"description": "List of one or more answers",
-	"type": "array",
-	"minItems": 1,
-	"items": {
-		"$ref": "./answer.schema.json"
-	}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/answers.schema.json",
+  "title": "Answers",
+  "description": "List of one or more answers",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "$ref": "./answer.schema.json"
+  }
 }

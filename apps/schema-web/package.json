@@ -1,21 +1,21 @@
 {
-	"name": "schema-web",
-	"version": "1.0.0",
-	"type": "module",
-	"private": true,
-	"scripts": {
-		"build": "npm run build:openapi && npm run build:docs",
-		"build:copy": "node ./scripts/copy-schemas.js",
-		"build:openapi": "npm run build:copy && node ./scripts/generate-openapi.js",
-		"build:docs": "npx redocly build-docs ./build/openapi.yaml --output ./build/index.html --theme.openapi '{\"hideDownloadButton\": true }'",
-		"dev": "npx redocly preview-docs ./build/openapi.yaml",
-		"lint": "biome check .",
-		"lint:fix": "biome check --write ."
-	},
-	"devDependencies": {
-		"@redocly/cli": "^1.29.0",
-		"@repo/schema": "*",
-		"wrangler": "^3.109.1",
-		"yaml": "^2.7.0"
-	}
+  "name": "schema-web",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:openapi && npm run build:docs",
+    "build:copy": "node ./scripts/copy-schemas.js",
+    "build:openapi": "npm run build:copy && node ./scripts/generate-openapi.js",
+    "build:docs": "npx redocly build-docs ./build/openapi.yaml --output ./build/index.html --theme.openapi '{\"hideDownloadButton\": true }'",
+    "dev": "npx redocly preview-docs ./build/openapi.yaml",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.29.0",
+    "@repo/schema": "*",
+    "wrangler": "^3.109.1",
+    "yaml": "^2.7.0"
+  }
 }

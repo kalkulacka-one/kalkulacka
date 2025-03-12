@@ -1,18 +1,18 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://schema.kalkulacka.one/variant.schema.json",
-	"title": "Variant",
-	"description": "Variant of a calculator",
-	"type": "object",
-	"properties": {
-		"key": {
-			"title": "Key",
-			"description": "Human-friendly unique key of a variant in the hyphen-separated lowercased format",
-			"type": "string",
-			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-			"examples": ["pro-fajnsmekry"]
-		}
-	},
-	"unevaluatedProperties": false,
-	"required": ["key"]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/variant.schema.json",
+  "title": "Variant",
+  "description": "Variant of a calculator",
+  "type": "object",
+  "properties": {
+    "key": {
+      "title": "Key",
+      "description": "Human-friendly unique key of a variant in the hyphen-separated lowercased format",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "examples": ["pro-fajnsmekry"]
+    }
+  },
+  "unevaluatedProperties": false,
+  "required": ["key"]
 }

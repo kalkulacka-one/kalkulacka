@@ -1,10 +1,10 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://schema.kalkulacka.one/organizations.schema.json",
-	"title": "Organizations",
-	"description": "List of organizations",
-	"type": "array",
-	"items": {
-		"$ref": "./organization.schema.json"
-	}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/organizations.schema.json",
+  "title": "Organizations",
+  "description": "List of organizations",
+  "type": "array",
+  "items": {
+    "$ref": "./organization.schema.json"
+  }
 }

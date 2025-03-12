@@ -1,13 +1,13 @@
 {
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://schema.kalkulacka.one/candidates-answers.schema.json",
-	"title": "Candidates' answers",
-	"description": "List of candidates' answers",
-	"type": "object",
-	"patternProperties": {
-		"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": {
-			"$ref": "./answers.schema.json"
-		}
-	},
-	"unevaluatedProperties": false
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.kalkulacka.one/candidates-answers.schema.json",
+  "title": "Candidates' answers",
+  "description": "List of candidates' answers",
+  "type": "object",
+  "patternProperties": {
+    "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$": {
+      "$ref": "./answers.schema.json"
+    }
+  },
+  "unevaluatedProperties": false
 }

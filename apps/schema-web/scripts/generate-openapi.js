@@ -15,34 +15,34 @@ const schemaFiles = fs.readdirSync(buildDir).filter((file) => file.endsWith('.js
 const version = JSON.parse(fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.resolve('@repo/schema'))), 'package.json'), 'utf-8')).version;
 
 const openapiDoc = {
-	openapi: '3.1.0',
-	info: {
-		title: 'Kalkulacka.1 schemas',
-		version,
-		description: 'Schemas of data for voting advice applications.',
-	},
-	tags: [],
-	components: { schemas: {} },
+  openapi: '3.1.0',
+  info: {
+    title: 'Kalkulacka.1 schemas',
+    version,
+    description: 'Schemas of data for voting advice applications.',
+  },
+  tags: [],
+  components: { schemas: {} },
 };
 
 const sortedSchemaFiles = schemaFiles.sort();
 
 for (const file of sortedSchemaFiles) {
-	const filePath = path.join(buildDir, file);
-	const schemaContent = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  const filePath = path.join(buildDir, file);
+  const schemaContent = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-	const schemaName = path.basename(file, '.schema.json');
-	openapiDoc.components.schemas[schemaName] = { $ref: `./${file}` };
+  const schemaName = path.basename(file, '.schema.json');
+  openapiDoc.components.schemas[schemaName] = { $ref: `./${file}` };
 
-	const name = schemaContent.title;
-	let description = `Schema URL: [${schemaContent.$id}](${schemaContent.$id})\n\n`;
-	description += schemaContent.description ? `${schemaContent.description}\n\n` : '';
-	description += `<SchemaDefinition schemaRef="#/components/schemas/${schemaName}" />`;
+  const name = schemaContent.title;
+  let description = `Schema URL: [${schemaContent.$id}](${schemaContent.$id})\n\n`;
+  description += schemaContent.description ? `${schemaContent.description}\n\n` : '';
+  description += `<SchemaDefinition schemaRef="#/components/schemas/${schemaName}" />`;
 
-	openapiDoc.tags.push({
-		name,
-		description,
-	});
+  openapiDoc.tags.push({
+    name,
+    description,
+  });
 }
 
 const yamlContent = yaml.stringify(openapiDoc);

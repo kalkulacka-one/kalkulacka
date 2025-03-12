@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 @layer base {
-	@font-face {
-		font-family: "Radio Canada";
-		font-weight: 300 700;
-		src: url("./fonts/radio-canada/normal.woff2") format("woff2"), url("./fonts/radio-canada/normal.woff") format("woff");
-	}
+  @font-face {
+    font-family: "Radio Canada";
+    font-weight: 300 700;
+    src: url("./fonts/radio-canada/normal.woff2") format("woff2"), url("./fonts/radio-canada/normal.woff") format("woff");
+  }
 
-	@font-face {
-		font-family: "Radio Canada";
-		font-weight: 300 700;
-		font-style: italic;
-		src: url("./fonts/radio-canada/italic.woff2") format("woff2"), url("./fonts/radio-canada/italic.woff") format("woff");
-	}
+  @font-face {
+    font-family: "Radio Canada";
+    font-weight: 300 700;
+    font-style: italic;
+    src: url("./fonts/radio-canada/italic.woff2") format("woff2"), url("./fonts/radio-canada/italic.woff") format("woff");
+  }
 }
 
 @layer utilities {
-	/* TODO: Remove after upgrading to Tailwind CSS v4.
+  /* TODO: Remove after upgrading to Tailwind CSS v4.
      See https://github.com/tailwindlabs/tailwindcss/pull/13153. */
-	.k1-font-stretch-semi-condensed {
-		font-stretch: semi-condensed;
-	}
-	.k1-font-stretch-condensed {
-		font-stretch: condensed;
-	}
+  .k1-font-stretch-semi-condensed {
+    font-stretch: semi-condensed;
+  }
+  .k1-font-stretch-condensed {
+    font-stretch: condensed;
+  }
 }
