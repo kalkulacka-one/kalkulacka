@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
+  },
   "exports": {
     ".": "./index.js",
     "./*": "./schemas/**/*.schema.json"
   },
-  "packageManager": "npm@10.8.2",
-  "devDependencies": {
-    "prettier": "^3.0.1"
-  }
+  "packageManager": "npm@10.8.2"
 }
