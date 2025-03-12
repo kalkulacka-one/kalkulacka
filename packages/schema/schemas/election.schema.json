@@ -1,159 +1,152 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schema.kalkulacka.one/election.schema.json",
-  "title": "Election",
-  "description": "Election provides various details about an election such as districts and rounds",
-  "type": "object",
-  "$defs": {
-    "id": {
-      "title": "ID",
-      "description": "Unique identifier of an election in the format of UUID",
-      "type": "string",
-      "format": "uuid",
-      "examples": ["ad9b73fc-e578-4b3a-9623-533d76224cbc"]
-    },
-    "key": {
-      "title": "Key",
-      "description": "Human-friendly unique key of an election in the hyphen-separated lowercased format",
-      "type": "string",
-      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-      "examples": ["prezidentske-2023"]
-    },
-    "createdAt": {
-      "title": "Created at",
-      "description": "Time of the creation of an election in the ISO 8601 format",
-      "type": "string",
-      "format": "date-time",
-      "examples": ["2021-01-01T00:00:00+01:00"]
-    },
-    "updatedAt": {
-      "title": "Updated at",
-      "description": "Time of the last update of an election group in the ISO 8601 format",
-      "type": "string",
-      "format": "date-time",
-      "examples": ["2021-01-01T00:00:00+01:00"]
-    },
-    "publishedAt": {
-      "title": "Published at",
-      "description": "Time when an election group should be published in the ISO 8601 format",
-      "type": "string",
-      "format": "date-time",
-      "examples": ["2021-01-01T00:00:00+01:00"]
-    },
-    "title": {
-      "title": "Title",
-      "description": "Title of an election",
-      "type": "string",
-      "examples": ["Prezidentské volby 2023"]
-    },
-    "shortTitle": {
-      "title": "shortTitle",
-      "description": "Short title of an election with a maximum of 25 characters",
-      "type": "string",
-      "maxLength": 25,
-      "examples": ["Prezidentské 2023"]
-    },
-    "description": {
-      "title": "Description",
-      "description": "Description of an election",
-      "type": "string",
-      "examples": ["Volební kalkulačky pro obě kola prezidentských voleb 2023"]
-    },
-    "tags": {
-      "$ref": "./tags.schema.json"
-    },
-    "calculatorGroup": {
-      "title": "Calculator group",
-      "description": "Reference to a calculator group with election calculators",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "./calculator-group.schema.json#/properties/id"
-        },
-        "key": {
-          "$ref": "./calculator-group.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["id", "key"]
-    }
-  },
-  "properties": {
-    "id": {
-      "$ref": "#/$defs/id"
-    },
-    "key": {
-      "$ref": "#/$defs/key"
-    },
-    "createdAt": {
-      "$ref": "#/$defs/createdAt"
-    },
-    "updatedAt": {
-      "$ref": "#/$defs/updatedAt"
-    },
-    "publishedAt": {
-      "$ref": "#/$defs/publishedAt"
-    },
-    "title": {
-      "$ref": "#/$defs/title"
-    },
-    "shortTitle": {
-      "$ref": "#/$defs/shortTitle"
-    },
-    "description": {
-      "$ref": "#/$defs/description"
-    },
-    "tags": {
-      "$ref": "#/$defs/tags"
-    },
-    "calculatorGroup": {
-      "$ref": "#/$defs/calculatorGroup"
-    },
-    "districts": {
-      "title": "Ordered list of election districts",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "./district.schema.json"
-      }
-    },
-    "rounds": {
-      "title": "Ordered list of election rounds",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "./round.schema.json"
-      }
-    },
-    "votingHours": {
-      "title": "Voting hours",
-      "description": "One or multiple voting hours for the election",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "$ref": "./time-period.schema.json"
-      }
-    }
-  },
-  "unevaluatedProperties": false,
-  "required": [
-    "id",
-    "key",
-    "createdAt",
-    "title",
-    "shortTitle",
-    "calculatorGroup"
-  ],
-  "dependentSchemas": {
-    "rounds": {
-      "not": {
-        "required": ["votingHours"]
-      }
-    },
-    "votingHours": {
-      "not": {
-        "required": ["rounds"]
-      }
-    }
-  }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://schema.kalkulacka.one/election.schema.json",
+	"title": "Election",
+	"description": "Election provides various details about an election such as districts and rounds",
+	"type": "object",
+	"$defs": {
+		"id": {
+			"title": "ID",
+			"description": "Unique identifier of an election in the format of UUID",
+			"type": "string",
+			"format": "uuid",
+			"examples": ["ad9b73fc-e578-4b3a-9623-533d76224cbc"]
+		},
+		"key": {
+			"title": "Key",
+			"description": "Human-friendly unique key of an election in the hyphen-separated lowercased format",
+			"type": "string",
+			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+			"examples": ["prezidentske-2023"]
+		},
+		"createdAt": {
+			"title": "Created at",
+			"description": "Time of the creation of an election in the ISO 8601 format",
+			"type": "string",
+			"format": "date-time",
+			"examples": ["2021-01-01T00:00:00+01:00"]
+		},
+		"updatedAt": {
+			"title": "Updated at",
+			"description": "Time of the last update of an election group in the ISO 8601 format",
+			"type": "string",
+			"format": "date-time",
+			"examples": ["2021-01-01T00:00:00+01:00"]
+		},
+		"publishedAt": {
+			"title": "Published at",
+			"description": "Time when an election group should be published in the ISO 8601 format",
+			"type": "string",
+			"format": "date-time",
+			"examples": ["2021-01-01T00:00:00+01:00"]
+		},
+		"title": {
+			"title": "Title",
+			"description": "Title of an election",
+			"type": "string",
+			"examples": ["Prezidentské volby 2023"]
+		},
+		"shortTitle": {
+			"title": "shortTitle",
+			"description": "Short title of an election with a maximum of 25 characters",
+			"type": "string",
+			"maxLength": 25,
+			"examples": ["Prezidentské 2023"]
+		},
+		"description": {
+			"title": "Description",
+			"description": "Description of an election",
+			"type": "string",
+			"examples": ["Volební kalkulačky pro obě kola prezidentských voleb 2023"]
+		},
+		"tags": {
+			"$ref": "./tags.schema.json"
+		},
+		"calculatorGroup": {
+			"title": "Calculator group",
+			"description": "Reference to a calculator group with election calculators",
+			"type": "object",
+			"properties": {
+				"id": {
+					"$ref": "./calculator-group.schema.json#/properties/id"
+				},
+				"key": {
+					"$ref": "./calculator-group.schema.json#/properties/key"
+				}
+			},
+			"unevaluatedProperties": false,
+			"required": ["id", "key"]
+		}
+	},
+	"properties": {
+		"id": {
+			"$ref": "#/$defs/id"
+		},
+		"key": {
+			"$ref": "#/$defs/key"
+		},
+		"createdAt": {
+			"$ref": "#/$defs/createdAt"
+		},
+		"updatedAt": {
+			"$ref": "#/$defs/updatedAt"
+		},
+		"publishedAt": {
+			"$ref": "#/$defs/publishedAt"
+		},
+		"title": {
+			"$ref": "#/$defs/title"
+		},
+		"shortTitle": {
+			"$ref": "#/$defs/shortTitle"
+		},
+		"description": {
+			"$ref": "#/$defs/description"
+		},
+		"tags": {
+			"$ref": "#/$defs/tags"
+		},
+		"calculatorGroup": {
+			"$ref": "#/$defs/calculatorGroup"
+		},
+		"districts": {
+			"title": "Ordered list of election districts",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"$ref": "./district.schema.json"
+			}
+		},
+		"rounds": {
+			"title": "Ordered list of election rounds",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"$ref": "./round.schema.json"
+			}
+		},
+		"votingHours": {
+			"title": "Voting hours",
+			"description": "One or multiple voting hours for the election",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"$ref": "./time-period.schema.json"
+			}
+		}
+	},
+	"unevaluatedProperties": false,
+	"required": ["id", "key", "createdAt", "title", "shortTitle", "calculatorGroup"],
+	"dependentSchemas": {
+		"rounds": {
+			"not": {
+				"required": ["votingHours"]
+			}
+		},
+		"votingHours": {
+			"not": {
+				"required": ["rounds"]
+			}
+		}
+	}
 }

@@ -1,10 +1,10 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schema.kalkulacka.one/persons.schema.json",
-  "title": "Persons",
-  "description": "List of persons",
-  "type": "array",
-  "items": {
-    "$ref": "./person.schema.json"
-  }
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://schema.kalkulacka.one/persons.schema.json",
+	"title": "Persons",
+	"description": "List of persons",
+	"type": "array",
+	"items": {
+		"$ref": "./person.schema.json"
+	}
 }

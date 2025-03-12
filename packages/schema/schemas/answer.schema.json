@@ -1,72 +1,72 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schema.kalkulacka.one/answer.schema.json",
-  "title": "Answer",
-  "description": "Answer to a question of a calculator",
-  "type": "object",
-  "properties": {
-    "questionId": {
-      "title": "Question ID",
-      "description": "Unique identifier of an answered question in the format of UUID",
-      "type": "string",
-      "format": "uuid",
-      "examples": ["51115be7-246a-4f07-baf7-247ee81fde36"]
-    },
-    "answer": {
-      "title": "Answer",
-      "description": "Yes (`true`), no (`false`) or neutral (`null`) answer to a question",
-      "oneOf": [
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "isImportant": {
-      "title": "Is important?",
-      "description": "Whether a question was marked as important",
-      "type": "boolean"
-    },
-    "respondent": {
-      "title": "Responded",
-      "description": "Who answered a question",
-      "type": "string",
-      "enum": ["user", "candidate", "expert"]
-    },
-    "comment": {
-      "title": "Comment",
-      "description": "Respondent's comment to an answer",
-      "type": "string"
-    },
-    "sources": {
-      "title": "Sources",
-      "description": "Ordered list of sources for an answer",
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "title": "Source",
-        "description": "Source of an answer",
-        "type": "object",
-        "properties": {
-          "url": {
-            "title": "URL",
-            "description": "URL of a source",
-            "type": "string",
-            "format": "uri"
-          },
-          "title": {
-            "title": "Title",
-            "description": "Title of a source",
-            "type": "string"
-          }
-        },
-        "unevaluatedProperties": false,
-        "required": ["url"]
-      }
-    }
-  },
-  "unevaluatedProperties": false,
-  "required": ["questionId"]
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://schema.kalkulacka.one/answer.schema.json",
+	"title": "Answer",
+	"description": "Answer to a question of a calculator",
+	"type": "object",
+	"properties": {
+		"questionId": {
+			"title": "Question ID",
+			"description": "Unique identifier of an answered question in the format of UUID",
+			"type": "string",
+			"format": "uuid",
+			"examples": ["51115be7-246a-4f07-baf7-247ee81fde36"]
+		},
+		"answer": {
+			"title": "Answer",
+			"description": "Yes (`true`), no (`false`) or neutral (`null`) answer to a question",
+			"oneOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"isImportant": {
+			"title": "Is important?",
+			"description": "Whether a question was marked as important",
+			"type": "boolean"
+		},
+		"respondent": {
+			"title": "Responded",
+			"description": "Who answered a question",
+			"type": "string",
+			"enum": ["user", "candidate", "expert"]
+		},
+		"comment": {
+			"title": "Comment",
+			"description": "Respondent's comment to an answer",
+			"type": "string"
+		},
+		"sources": {
+			"title": "Sources",
+			"description": "Ordered list of sources for an answer",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"title": "Source",
+				"description": "Source of an answer",
+				"type": "object",
+				"properties": {
+					"url": {
+						"title": "URL",
+						"description": "URL of a source",
+						"type": "string",
+						"format": "uri"
+					},
+					"title": {
+						"title": "Title",
+						"description": "Title of a source",
+						"type": "string"
+					}
+				},
+				"unevaluatedProperties": false,
+				"required": ["url"]
+			}
+		}
+	},
+	"unevaluatedProperties": false,
+	"required": ["questionId"]
 }

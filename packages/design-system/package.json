@@ -1,41 +1,41 @@
 {
-  "name": "@repo/design-system",
-  "version": "0.0.0",
-  "private": true,
-  "exports": {
-    "./themes/*": "./src/themes/*.css",
-    "./styles": "./dist/index.css",
-    "./fonts": "./dist/fonts",
-    "./heading": "./src/heading.tsx",
-    "./tailwind": "./tailwind.config.ts",
-    "./demo": "./src/index.ts"
-  },
-  "scripts": {
-    "build": "npm run fonts && npm run tailwind",
-    "dev": "npm run fonts && npm run tailwind:watch",
-    "fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
-    "generate:component": "turbo gen react-component",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
-    "tailwind:watch": "npm run tailwind -- --watch"
-  },
-  "packageManager": "npm@10.8.2",
-  "devDependencies": {
-    "@repo/tailwind-config": "^0.0.0",
-    "@repo/typescript-config": "*",
-    "@turbo/gen": "^2.0.6",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "react": "^18.2.0",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "@headlessui/react": "^2.0.4",
-    "clsx": "^2.1.1"
-  }
+	"name": "@repo/design-system",
+	"version": "0.0.0",
+	"private": true,
+	"exports": {
+		"./themes/*": "./src/themes/*.css",
+		"./styles": "./dist/index.css",
+		"./fonts": "./dist/fonts",
+		"./heading": "./src/heading.tsx",
+		"./tailwind": "./tailwind.config.ts",
+		"./demo": "./src/index.ts"
+	},
+	"scripts": {
+		"build": "npm run fonts && npm run tailwind",
+		"dev": "npm run fonts && npm run tailwind:watch",
+		"fonts": "mkdir -p ./dist && cp -r ./src/fonts ./dist/fonts",
+		"generate:component": "turbo gen react-component",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
+		"tailwind:watch": "npm run tailwind -- --watch"
+	},
+	"packageManager": "npm@10.8.2",
+	"devDependencies": {
+		"@repo/tailwind-config": "^0.0.0",
+		"@repo/typescript-config": "*",
+		"@turbo/gen": "^2.0.6",
+		"@types/node": "^20.11.24",
+		"@types/react": "^18.2.61",
+		"@types/react-dom": "^18.2.19",
+		"autoprefixer": "^10.4.19",
+		"postcss": "^8.4.38",
+		"react": "^18.2.0",
+		"tailwindcss": "^3.4.3",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"@headlessui/react": "^2.0.4",
+		"clsx": "^2.1.1"
+	}
 }

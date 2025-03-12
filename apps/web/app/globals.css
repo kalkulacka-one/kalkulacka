@@ -3,26 +3,22 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: "Radio Canada";
-    font-weight: 300 700;
-    src:
-      url("/fonts/radio-canada/normal.woff2") format("woff2"),
-      url("/fonts/radio-canada/normal.woff") format("woff");
-  }
+	@font-face {
+		font-family: "Radio Canada";
+		font-weight: 300 700;
+		src: url("/fonts/radio-canada/normal.woff2") format("woff2"), url("/fonts/radio-canada/normal.woff") format("woff");
+	}
 
-  @font-face {
-    font-family: "Radio Canada";
-    font-weight: 300 700;
-    font-style: italic;
-    src:
-      url("/fonts/radio-canada/italic.woff2") format("woff2"),
-      url("/fonts/radio-canada/italic.woff") format("woff");
-  }
+	@font-face {
+		font-family: "Radio Canada";
+		font-weight: 300 700;
+		font-style: italic;
+		src: url("/fonts/radio-canada/italic.woff2") format("woff2"), url("/fonts/radio-canada/italic.woff") format("woff");
+	}
 }
 
 @layer utilities {
-  .font-condensed {
-    font-stretch: condensed;
-  }
+	.font-condensed {
+		font-stretch: condensed;
+	}
 }
