@@ -1,13 +1,13 @@
-import { ThemeConfig } from "tailwindcss/types/config";
+import type { ThemeConfig } from 'tailwindcss/types/config';
 
-const borderRadius: Pick<Partial<ThemeConfig>, "borderRadius"> = {
+const borderRadius: Pick<Partial<ThemeConfig>, 'borderRadius'> = {
   // !!! We replace the default Tailwind CSS borderRadius scale with our own
   borderRadius: {
-    none: "0px",
-    DEFAULT: "1rem",
-    md: "1.5rem",
-    lg: "2rem",
-    full: "9999px",
+    none: '0px',
+    DEFAULT: '1rem',
+    md: '1.5rem',
+    lg: '2rem',
+    full: '9999px',
   },
 };
 

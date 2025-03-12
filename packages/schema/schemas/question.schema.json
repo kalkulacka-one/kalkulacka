@@ -28,9 +28,7 @@
       "title": "Detail",
       "description": "A detailed description or an explanation of a question",
       "type": "string",
-      "examples": [
-        "Senát by se měl zrušit, protože je zbytečný a jeho činnost je nákladná."
-      ]
+      "examples": ["Senát by se měl zrušit, protože je zbytečný a jeho činnost je nákladná."]
     },
     "tags": {
       "$ref": "./tags.schema.json"

@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { Demo } from "@repo/design-system/demo";
+import { Demo } from '@repo/design-system/demo';
 
 const meta: Meta<typeof Demo> = {
-  title: "Components/Demo",
+  title: 'Components/Demo',
   component: Demo,
 };
 

@@ -8,10 +8,8 @@
     "lint:fix": "turbo lint:fix"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
+    "@biomejs/biome": "1.9.4",
     "@repo/typescript-config": "*",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.6.5",
     "turbo": "^2.0.6"
   },
   "engines": {

@@ -1,0 +1,74 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": {
+		"ignore": ["node_modules", "dist", "build", "out", ".next", ".vercel"]
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": true,
+		"indentStyle": "space",
+		"indentWidth": 2,
+		"lineWidth": 200,
+		"lineEnding": "lf"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"noNonNullAssertion": "error",
+				"useSelfClosingElements": "error",
+				"noUselessElse": "error",
+				"noUnusedTemplateLiteral": "error",
+				"useNodejsImportProtocol": "error",
+				"useDefaultParameterLast": "error",
+				"useExponentiationOperator": "error",
+				"useTemplate": "error",
+				"noParameterAssign": "error",
+				"noVar": "error"
+			},
+			"suspicious": {
+				"noImplicitAnyLet": "error",
+				"noArrayIndexKey": "error",
+				"noExplicitAny": "error",
+				"noSelfCompare": "error",
+				"noShadowRestrictedNames": "error",
+				"noDoubleEquals": "error"
+			},
+			"a11y": {
+				"noSvgWithoutTitle": "error",
+				"useButtonType": "error",
+				"useMediaCaption": "off",
+				"useKeyWithClickEvents": "off",
+				"useSemanticElements": "error",
+				"useFocusableInteractive": "error",
+				"noNoninteractiveElementToInteractiveRole": "error",
+				"useAltText": "error"
+			},
+			"complexity": {
+				"noUselessTernary": "error",
+				"noUselessFragments": "error",
+				"noBannedTypes": "error",
+				"useOptionalChain": "error",
+				"noThisInStatic": "error",
+				"noStaticOnlyClass": "error",
+				"noForEach": "error"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "error",
+				"useJsxKeyInIterable": "error"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "error"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single"
+		}
+	}
+}

@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss";
-import colors from "./config/colors";
-import typography from "./config/typography";
-import spacing from "./config/spacing";
-import borderRadius from "./config/borderRadius";
+import type { Config } from 'tailwindcss';
+import borderRadius from './config/borderRadius';
+import colors from './config/colors';
+import spacing from './config/spacing';
+import typography from './config/typography';
 
 // Each package is responsible for its own content
 const config: Config = {
-  content: ["./src/**/*.tsx"],
-  prefix: "k1-",
+  content: ['./src/**/*.tsx'],
+  prefix: 'k1-',
   theme: {
     extend: {
       ...colors,
