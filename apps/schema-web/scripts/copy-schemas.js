@@ -12,6 +12,6 @@ const buildDir = path.join(packageRoot, 'build');
 
 fs.mkdirSync(buildDir, { recursive: true });
 
-for (const [schemaName, schema] of Object.entries(schemas)) {
+for (const [schemaName, schemaData] of Object.entries(schemas)) {
   fs.writeFileSync(path.join(buildDir, `${schemaName}.schema.json`), JSON.stringify(schemaData, null, 2));
 }
