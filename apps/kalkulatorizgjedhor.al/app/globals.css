@@ -2,29 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Primary colors */
-  --primary-90: #f5f3ff;
-  --primary-70: #ddd6fe;
-  --primary-50: #8b5cf6;
-  --primary-30: #6d28d9;
-  --primary-10: #4c1d95;
+:root,
+html[lang] {
+  /* Primary colors - Based on near black */
+  --primary-90: #e6e6e6 !important;
+  --primary-70: #999999 !important;
+  --primary-50: #000000 !important;
+  --primary-30: #000000 !important;
+  --primary-10: #000000 !important;
 
-  /* Secondary colors */
-  --secondary-90: #f0fdf4;
-  --secondary-70: #bbf7d0;
-  --secondary-50: #22c55e;
-  --secondary-30: #16a34a;
-  --secondary-10: #166534;
+  /* Secondary colors - Based on #DA291C (red) */
+  --secondary-90: #fde7e6 !important;
+  --secondary-70: #f4a19a !important;
+  --secondary-50: #DA291C !important;
+  --secondary-30: #a11f15 !important;
+  --secondary-10: #68140d !important;
 
-  /* Neutral colors */
-  --neutral-100: #ffffff;
-  --neutral-90: #f4f4f5;
-  --neutral-70: #d4d4d8;
-  --neutral-50: #71717a;
-  --neutral-30: #3f3f46;
-  --neutral-10: #18181b;
-  --neutral-0: #09090b;
+  /* Neutral colors - Based on #C0C0C0 as neutral-10 */
+  --neutral-100: #ffffff !important;
+  --neutral-90: #f5f5f5 !important;
+  --neutral-70: #e0e0e0 !important;
+  --neutral-50: #C0C0C0 !important;
+  --neutral-30: #808080 !important;
+  --neutral-10: #404040 !important;
+  --neutral-0: #000000 !important;
 }
 
 @layer utilities {
