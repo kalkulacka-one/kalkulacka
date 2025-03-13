@@ -1,6 +1,117 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' prefix(k);
+
+@theme {
+  --radius-\*: initial;
+  --radius-none: 0px;
+  --radius: 1rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-full: 9999px;
+
+  --color-primary-10: var(--primary-10);
+  --color-primary-30: var(--primary-30);
+  --color-primary-50: var(--primary-50);
+  --color-primary-70: var(--primary-70);
+  --color-primary-90: var(--primary-90);
+
+  --color-secondary-10: var(--secondary-10);
+  --color-secondary-30: var(--secondary-30);
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-70: var(--secondary-70);
+  --color-secondary-90: var(--secondary-90);
+
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-10: var(--neutral-10);
+  --color-neutral-30: var(--neutral-30);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-70: var(--neutral-70);
+  --color-neutral-90: var(--neutral-90);
+  --color-neutral-100: var(--neutral-100);
+
+  --color-neutral-container: var(--neutral-100);
+  --color-neutral-page: var(--neutral-100);
+  --color-neutral-overlay: rgb(from var(--neutral-100) r g b / 0.8);
+
+  --background-color-neutral: var(--neutral-90);
+  --background-color-neutral-strong-hover: var(--neutral-30);
+  --background-color-neutral-strong-active: var(--neutral-10);
+  --background-color-neutral-disaled: var(--neutral-70);
+  --background-color-neutral-backdrop: rgb(from var(--neutral-70) r g b / 0.1);
+  --background-color-neutral-backdrop-hover: rgb(from var(--neutral-70) r g b / 0.2);
+  --background-color-neutral-backdrop-active: rgb(from var(--neutral-70) r g b / 0.6);
+  --background-color-primary: var(--primary-90);
+  --background-color-primary-strong: var(--primary-50);
+  --background-color-primary-strong-hover: var(--primary-30);
+  --background-color-primary-strong-active: var(--primary-10);
+  --background-color-secondary: var(--secondary-90);
+  --background-color-secondary-strong: var(--secondary-50);
+  --background-color-secondary-strong-hover: var(--secondary-30);
+  --background-color-secondary-strong-active: var(--secondary-10);
+
+  --text-color-neutral: var(--neutral-30);
+  --text-color-neutral-hover: var(--neutral-50);
+  --text-color-neutral-active: var(--neutral-0);
+  --text-color-neutral-muted: var(--neutral-50);
+  --text-color-neutral-strong: var(--neutral-10);
+  --text-color-neutral-inverse: var(--neutral-100);
+  --text-color-neutral-disabled: var(--neutral-70);
+  --text-color-primary: var(--primary-50);
+  --text-color-primary-hover: var(--primary-30);
+  --text-color-primary-strong: var(--primary-10);
+  --text-color-secondary: var(--secondary-50);
+  --text-color-secondary-hover: var(--secondary-30);
+  --text-color-secondary-strong: var(--secondary-10);
+
+  --border-color-neutral: var(--neutral-70);
+  --border-color-neutral-hover: var(--neutral-50);
+  --border-color-neutral-active: var(--neutral-10);
+  --border-color-neutral-muted: var(--neutral-90);
+  --border-color-neutral-strong: var(--neutral-30);
+  --border-color-neutral-disabled: var(--neutral-70);
+  --border-color-primary: var(--primary-70);
+  --border-color-primary-strong-hover: var(--primary-30);
+  --border-color-primary-strong: var(--primary-50);
+  --border-color-secondary: var(--secondary-70);
+  --border-color-secondary-strong-hover: var(--secondary-30);
+  --border-color-secondary-strong: var(--secondary-50);
+
+  --font-sans: "Radio Canada", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility k1-font-stretch-semi-condensed {
+  /* TODO: Remove after upgrading to Tailwind CSS v4.
+     See https://github.com/tailwindlabs/tailwindcss/pull/13153. */
+  font-stretch: semi-condensed;
+}
+
+@utility k1-font-stretch-condensed {
+  font-stretch: condensed;
+}
 
 @layer base {
   @font-face {
@@ -14,16 +125,5 @@
     font-weight: 300 700;
     font-style: italic;
     src: url("./fonts/radio-canada/italic.woff2") format("woff2"), url("./fonts/radio-canada/italic.woff") format("woff");
-  }
-}
-
-@layer utilities {
-  /* TODO: Remove after upgrading to Tailwind CSS v4.
-     See https://github.com/tailwindlabs/tailwindcss/pull/13153. */
-  .k1-font-stretch-semi-condensed {
-    font-stretch: semi-condensed;
-  }
-  .k1-font-stretch-condensed {
-    font-stretch: condensed;
   }
 }
