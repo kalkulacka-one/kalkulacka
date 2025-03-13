@@ -6,28 +6,29 @@
     "build": "storybook build --output-dir build",
     "dev": "storybook dev -p 6006 --no-open",
     "lint": "biome check .",
-    "lint:fix": "biome check --write ."
+    "lint:fix": "biome check --write .",
+    "ncu": "ncu -u"
   },
   "dependencies": {
     "@repo/design-system": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.5.0",
+    "@chromatic-com/storybook": "^3.2.5",
     "@repo/typescript-config": "*",
-    "@storybook/addon-essentials": "^8.1.4",
-    "@storybook/addon-interactions": "^8.1.4",
-    "@storybook/addon-links": "^8.1.4",
-    "@storybook/addon-onboarding": "^8.1.4",
-    "@storybook/blocks": "^8.1.4",
-    "@storybook/nextjs": "^8.1.4",
-    "@storybook/react": "^8.1.4",
-    "@storybook/test": "^8.1.4",
-    "@types/node": "^20.11.24",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "storybook": "^8.1.4",
-    "typescript": "^5.3.3"
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-interactions": "^8.6.4",
+    "@storybook/addon-links": "^8.6.4",
+    "@storybook/addon-onboarding": "^8.6.4",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/nextjs": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "storybook": "^8.6.4",
+    "typescript": "^5.8.2"
   }
 }
