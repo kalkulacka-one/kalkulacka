@@ -17,7 +17,7 @@ export default function RootLayout({
       <head>
         <script
           defer
-          data-domain="volebnikalkulacka.cz"
+          data-domain="kalkulatorizgjedhor.al"
           src="/js/script.tagged-events.outbound-links.js"
         />
       </head>
