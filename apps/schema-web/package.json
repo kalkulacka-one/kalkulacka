@@ -16,7 +16,7 @@
   "devDependencies": {
     "@redocly/cli": "^1.33.1",
     "@repo/schema": "*",
-    "wrangler": "^3.114.1",
+    "wrangler": "^4.0.0",
     "yaml": "^2.7.0"
   }
 }
