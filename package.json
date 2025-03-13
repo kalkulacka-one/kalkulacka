@@ -12,12 +12,12 @@
     "@biomejs/biome": "1.9.4",
     "@repo/typescript-config": "*",
     "npm-check-updates": "^17.1.15",
-    "turbo": "^2.0.6"
+    "turbo": "^2.4.4"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.2.4",
+  "packageManager": "npm@11.2.0",
   "workspaces": [
     "apps/*",
     "packages/*"
