@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Ta pravá volební kalkulačka pro miliony voličů ve 4 zemích',
 };
 
-export default function Page(): JSX.Element {
+export default async function Page() {
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">

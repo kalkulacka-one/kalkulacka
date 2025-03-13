@@ -2,13 +2,17 @@ import Link from 'next/link';
 
 import '../globals.css';
 
-export default function RootLayout({
-  params: { lang },
+type Params = Promise<{ lang: string }>;
+
+export default async function RootLayout({
   children,
+  params,
 }: {
-  params: { lang: string };
   children: React.ReactNode;
-}): JSX.Element {
+  params: Params;
+}) {
+  const { lang } = await params;
+
   return (
     <html lang={lang}>
       <head>
