@@ -1,4 +1,4 @@
-export default function Page(): JSX.Element {
+export default async function Page() {
   return (
     <section className="max-w-2xl grid gap-4">
       <section className="grid gap-2">

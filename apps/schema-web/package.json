@@ -10,12 +10,13 @@
     "build:docs": "npx redocly build-docs ./build/openapi.yaml --output ./build/index.html --theme.openapi '{\"hideDownloadButton\": true }'",
     "dev": "npx redocly preview-docs ./build/openapi.yaml",
     "lint": "biome check .",
-    "lint:fix": "biome check --write ."
+    "lint:fix": "biome check --write .",
+    "ncu": "ncu -u"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.29.0",
+    "@redocly/cli": "^1.33.1",
     "@repo/schema": "*",
-    "wrangler": "^3.109.1",
+    "wrangler": "^3.114.1",
     "yaml": "^2.7.0"
   }
 }
