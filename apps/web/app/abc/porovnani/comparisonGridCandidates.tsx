@@ -1,5 +1,7 @@
 import CandidateComment from "./candidateComment";
 import CandidateAnswer from "./candidateAnswer";
+import ComparisonGridCandidateCircleBadge from "./comparisonGridCandidateCircleBadge";
+import React from "react";
 
 type ComparisonGridCandidatesProps = {
   organizations: any[];
@@ -12,45 +14,40 @@ export default function ComparisonGridCandidates({
   candidates,
   candidatesAnswers,
 }: ComparisonGridCandidatesProps) {
-  // assign correct id to the candidate
   function assignCandidateId(organizationId: any) {
     const assignedId = candidates.filter(
       (candidate) => candidate.reference.id === organizationId,
     );
     return assignedId[0]?.id;
   }
-
   return (
     <>
       {organizations.map((organization, index) => {
         const number = index + 1;
-        const answerGridNumber = number * 2;
-        const commentGridNumber = number * 2 + 1;
+        const answerGridCol = number * 2;
+        const commentGridCol = number * 2 + 1;
+        const candidateId = assignCandidateId(organization.id);
         return (
-          <>
-            <div
-              key={organization.shortName}
-              className="sticky z-10"
-              style={{ gridArea: `1 / ${(index + 1) * 2}` }}
-            >
-              <div className="flex size-20 items-center justify-center rounded-full bg-black p-2 text-white">
-                <p className="text-center text-xs">
-                  <strong>{organization.shortName}</strong>
-                </p>
-              </div>
-            </div>
+          // possible to avoid React Fragment when structured differently?
+          <React.Fragment key={organization.id}>
+            <ComparisonGridCandidateCircleBadge
+              key={`${organization.id}-badge`}
+              shortName={organization.shortName}
+              gridCol={number * 2}
+            />
             <CandidateAnswer
+              key={`${organization.id}-answer`}
               candidatesAnswers={candidatesAnswers}
-              id={assignCandidateId(organization.id)}
-              gridPosition={answerGridNumber}
+              id={candidateId}
+              gridCol={answerGridCol}
             />
-            {/* candidate comment cards */}
             <CandidateComment
+              key={`${organization.id}-comment`}
               candidatesAnswers={candidatesAnswers}
-              id={assignCandidateId(organization.id)}
-              gridPosition={commentGridNumber}
+              id={candidateId}
+              gridCol={commentGridCol}
             />
-          </>
+          </React.Fragment>
         );
       })}
     </>

@@ -1,4 +1,4 @@
-import RenderAnswerIcon from "./renderAnswerIcon";
+import AnswerIcon from "./answerIcon";
 
 type Answer = {
   comment?: string;
@@ -7,35 +7,30 @@ type Answer = {
 
 type CandidateAnswerProps = {
   id: string;
-  gridPosition: number;
+  gridCol: number;
   candidatesAnswers: Record<string, Answer[]>;
 };
 
 export default function CandidateAnswer({
   id,
-  gridPosition,
+  gridCol,
   candidatesAnswers,
 }: CandidateAnswerProps) {
-  // get answers
-  const getCandidateAnswer = candidatesAnswers[id]?.map(
-    (answer) => answer.answer,
+  const candidateAnswer = candidatesAnswers[id] || [];
+  return (
+    <>
+      {candidateAnswer.map((answer, index) => {
+        const number = index + 1;
+        const getGridNumbers = (number: number) => number * 2 + 1;
+        return (
+          <div
+            key={`Candidate answer ${number}`}
+            style={{ gridArea: `${getGridNumbers(number)} / ${gridCol} ` }}
+          >
+            <AnswerIcon answerType={answer.answer} />
+          </div>
+        );
+      })}
+    </>
   );
-  // render answers
-  const candidateAnswer = getCandidateAnswer?.map(
-    (answer: any, index: number) => {
-      const number = index + 1;
-      const getGridNumbers = (number: number) => {
-        return number * 2 + 1;
-      };
-
-      return (
-        <div
-          style={{ gridArea: `${getGridNumbers(number)} / ${gridPosition} ` }}
-        >
-          <RenderAnswerIcon answerType={answer} />
-        </div>
-      );
-    },
-  );
-  return <>{candidateAnswer}</>;
 }

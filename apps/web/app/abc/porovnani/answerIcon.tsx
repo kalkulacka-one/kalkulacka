@@ -1,12 +1,10 @@
 import { YesIcon, NoIcon, NeutralIcon } from "@repo/design-system/icons";
 
-type RenderAnswerIconProps = {
-  answerType: boolean;
+type AnswerIconProps = {
+  answerType: boolean | undefined;
 };
 
-export default function renderAnswerIcon({
-  answerType,
-}: RenderAnswerIconProps) {
+export default function AnswerIcon({ answerType }: AnswerIconProps) {
   switch (answerType) {
     case true: {
       return (

@@ -18,10 +18,8 @@ export default function ComparisonHeader() {
     setFilterToggled((prevState) => !prevState);
   }
   return (
-    <>
-      <header className="sticky left-0 top-0 z-20 grid max-w-[100vw] grid-cols-[auto_1fr_auto] items-center gap-4 bg-white p-2 backdrop-blur-[6px] xs:p-4 sm:gap-8 sm:p-8">
-        {/* fix link wrap, should be link in style of a button! */}
-        {/*Link to the last question "current quesiton" */}
+    <header className="sticky left-0 top-0 z-40 max-w-[100vw] bg-white backdrop-blur-[6px]">
+      <div className="relative grid grid-cols-[auto_1fr_auto] items-center gap-4 p-2 xs:p-4 sm:gap-8 sm:p-8">
         <div className="flex items-center  justify-self-start">
           <Link className="flex items-center" href={`/abc/vysledky`}>
             <Button
@@ -36,21 +34,23 @@ export default function ComparisonHeader() {
             />
           </Link>
         </div>
-
         <div className="absolute justify-self-center sm:relative sm:mr-auto">
           {/* replace with typo compoment */}
           <h2 className="text-3xl font-bold tracking-snug text-neutral-strong sm:text-5xl">
             Porovnání
           </h2>
         </div>
-
         <div className="justify-self-end">
           <FilterToggleButton onClick={handleToggle} />
         </div>
-      </header>
+      </div>
       {filterToggled && (
-        <ComparisonFilter tags={uniqueTags} organizations={organizations} />
+        <div>
+          <ComparisonFilter organizations={organizations} tags={uniqueTags} />
+        </div>
       )}
-    </>
+    </header>
   );
 }
+
+// 1. Fix: Scrolling when filter toggled

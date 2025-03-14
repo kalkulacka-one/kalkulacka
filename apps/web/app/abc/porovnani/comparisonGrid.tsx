@@ -13,18 +13,14 @@ export default function ComparisonGrid() {
   const questions = useQuestionsStore((state) => state.questions);
 
   return (
-    <div className="grid auto-cols-max grid-flow-col justify-center justify-items-center gap-x-8 gap-y-6 overscroll-x-auto">
-      {/* Dividers */}
+    <div className="grid auto-cols-max grid-flow-col justify-center justify-items-center gap-y-6 overscroll-x-auto p-2 xs:gap-x-4 xs:p-4  sm:gap-x-8  sm:p-8 ">
       <ComparisonGridDividers organizations={organizations} />
-      {/* User */}
       <ComparisonGridUser questions={questions} />
-      {/* Candidates */}
       <ComparisonGridCandidates
         organizations={organizations}
         candidates={candidates}
         candidatesAnswers={candidatesAnswers}
       />
-      {/* Card */}
       <ComparisonGridCard questions={questions} />
     </div>
   );

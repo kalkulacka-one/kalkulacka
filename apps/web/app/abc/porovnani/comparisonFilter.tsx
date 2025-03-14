@@ -18,9 +18,9 @@ export default function ComparisonFilter({
   organizations,
 }: ComparisonFilterProps) {
   return (
-    <div className="sticky top-0 z-30 flex max-w-[100vw] flex-col bg-white">
+    <>
       {/* tags wrapper */}
-      <form className="p-8 pt-0">
+      <form className="bg-white p-8 pt-0">
         <h3 className="pb-4 text-lg font-bold">Filtrovat podle témat</h3>
         <ul className="flex list-none flex-wrap gap-[calc(1rem/2)]">
           {tags.map((tag) => (
@@ -36,7 +36,7 @@ export default function ComparisonFilter({
         </ul>
       </form>
       {/* candidates wrapper */}
-      <form className="p-8 pt-0">
+      <form className="bg-white p-8 pt-0">
         <h3 className="pb-4 text-lg font-bold">
           Filtrovat podle kandidujících
         </h3>
@@ -60,10 +60,9 @@ export default function ComparisonFilter({
           ))}
         </ul>
       </form>
-    </div>
+    </>
   );
 }
 
 // 1. Vybrat vše button
-// 2. Filter logic (tied with 1)
-// 3. nest filter within header and solve css issues after toggled
+// 2. Implement filter logic (tied with 1)

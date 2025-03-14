@@ -1,5 +1,5 @@
 // simplify this component
-import RenderAnswerIcon from "./renderAnswerIcon";
+import AnswerIcon from "./answerIcon";
 
 type ComparisonGridUserAnswersIconsProps = {
   questions: any[];
@@ -25,7 +25,7 @@ export default function ComparisonGridUserAnswersIcons({
             className="sticky left-4 w-fit"
             style={{ gridArea: `${gridNumber} / 1` }}
           >
-            <RenderAnswerIcon answerType={question.answerType} />
+            <AnswerIcon answerType={question.answerType} />
           </div>
         );
       })}

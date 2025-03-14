@@ -15,7 +15,7 @@ export default function ComparisonGridCard({
           <Card
             key={question.id}
             corner="topLeft"
-            className="sticky left-4 flex max-w-[calc(100vw-1rem)] flex-col justify-self-start p-4"
+            className="sticky left-2 flex max-w-[calc(100vw-1rem)] flex-col gap-4 justify-self-start px-recapitulationCardDesktop py-recapitulationCardMobile xs:left-4 sm:left-8 sm:max-w-[calc(100vw-4rem)]"
             style={{ gridArea: `${(index + 1) * 2} / 1 / auto / span 28` }}
           >
             <div className="flex items-center gap-4">

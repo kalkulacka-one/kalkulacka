@@ -23,3 +23,5 @@ export default function ComparisonGridDividers({
     </>
   );
 }
+
+// 1. Organizations type assertion error, why?
