@@ -12,3 +12,4 @@ export * from "./layout/index";
 export * from "./iconButton/index";
 export * from "./toggleButton/index";
 export * from "./toggleIconButton/index";
+export * from "./forms/index";
