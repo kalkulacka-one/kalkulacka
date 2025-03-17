@@ -7,7 +7,7 @@
     "dev": "storybook dev -p 6006 --no-open",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "ncu": "npx npm-check-updates -u"
+    "ncu": "ncu -u"
   },
   "dependencies": {
     "@repo/design-system": "*",
