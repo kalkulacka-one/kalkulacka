@@ -7,6 +7,10 @@
     "binding": "ASSETS",
     "run_worker_first": true
   },
+  "build": {
+    "cwd": "/apps/kalkulacka.one",
+    "watch_dir": ["/apps/kalkulacka.one/*"]
+  },
   "routes": [
     {
       "pattern": "kalkulacka.one",
