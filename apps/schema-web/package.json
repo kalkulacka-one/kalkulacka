@@ -11,7 +11,7 @@
     "dev": "npx redocly preview-docs ./build/openapi.yaml",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "ncu": "ncu -u"
+    "ncu": "npx npm-check-updates -u"
   },
   "devDependencies": {
     "@redocly/cli": "^1.33.1",

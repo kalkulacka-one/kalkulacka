@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "ncu": "ncu -u"
+    "ncu": "npx npm-check-updates -u"
   },
   "exports": {
     ".": "./index.js",
