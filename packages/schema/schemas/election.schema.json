@@ -136,14 +136,7 @@
     }
   },
   "unevaluatedProperties": false,
-  "required": [
-    "id",
-    "key",
-    "createdAt",
-    "title",
-    "shortTitle",
-    "calculatorGroup"
-  ],
+  "required": ["id", "key", "createdAt", "title", "shortTitle", "calculatorGroup"],
   "dependentSchemas": {
     "rounds": {
       "not": {
