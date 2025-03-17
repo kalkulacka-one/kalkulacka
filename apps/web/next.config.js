@@ -11,6 +11,10 @@ module.exports = {
         source: '/api/event',
         destination: 'https://plausible.io/api/event',
       },
+      {
+        source: '/.well-known/:path*',
+        destination: '/well-known/:path*',
+      },
     ];
   },
 };
