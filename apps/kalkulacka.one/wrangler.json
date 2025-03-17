@@ -5,5 +5,11 @@
   "assets": {
     "directory": "./assets",
     "binding": "ASSETS"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "kalkulacka.one",
+      "custom_domain": true
+    }
+  ]
 }
