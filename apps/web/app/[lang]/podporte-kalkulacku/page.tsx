@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-export default function Page(): JSX.Element {
+export default function Page() {
   useEffect(() => {
     // biome-ignore lint/security/noGlobalEval: Darujme widget is external code for donation processing
     eval(`+function(w, d, s, u, a, b) {

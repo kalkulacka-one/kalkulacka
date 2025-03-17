@@ -19,6 +19,9 @@
     },
     "build:openapi": {
       "dependsOn": ["^build:openapi"]
+    },
+    "ncu": {
+      "dependsOn": ["^ncu"]
     }
   }
 }
