@@ -1,0 +1,9 @@
+{
+  "name": "kalkulacka-one",
+  "main": "index.js",
+  "compatibility_date": "2025-02-15",
+  "assets": {
+    "directory": "./assets",
+    "binding": "ASSETS"
+  }
+}
