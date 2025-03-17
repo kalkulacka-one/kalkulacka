@@ -1,4 +1,4 @@
-@import 'tailwindcss' prefix(k);
+@import 'tailwindcss' prefix(ko);
 
 @theme {
   --radius-\*: initial;

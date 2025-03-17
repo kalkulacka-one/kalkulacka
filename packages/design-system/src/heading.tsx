@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Heading = ({ children }: Props): JSX.Element => {
-  return <h1 className="k:text-primary k:px-md k:h-xl">{children}</h1>;
+  return <h1 className="ko:text-primary ko:px-md ko:h-xl">{children}</h1>;
 };
 
 export { Heading };
