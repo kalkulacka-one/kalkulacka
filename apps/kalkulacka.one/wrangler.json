@@ -4,11 +4,16 @@
   "compatibility_date": "2025-02-15",
   "assets": {
     "directory": "./assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "build": {
+    "cwd": "/apps/kalkulacka.one",
+    "watch_dir": ["/apps/kalkulacka.one/*"]
   },
   "routes": [
     {
-      "pattern": "schema.kalkulacka.one",
+      "pattern": "kalkulacka.one",
       "custom_domain": true
     }
   ]
