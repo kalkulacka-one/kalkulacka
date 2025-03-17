@@ -9,9 +9,6 @@
   "build": {
     "command": "npm run build",
     "cwd": "/apps/schema-web",
-    "watch_dir": [
-      "packages/schema/*",
-      "apps/schema-web/*"
-    ]
+    "watch_dir": ["packages/schema/*", "apps/schema-web/*"]
   }
 }
