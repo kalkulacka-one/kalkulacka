@@ -1,0 +1,58 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a32089e0-5fda-44fb-b12a-c97139bdb785",
+    "name": "ANS",
+    "sortName": "ANS",
+    "shortName": "ANS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a32089e0-5fda-44fb-b12a-c97139bdb785",
+    "name": "APB",
+    "sortName": "APB",
+    "shortName": "APB",
+    "type": "candidate-list"
+  },
+  {
+    "id": "89395259-1fd2-4a28-8a86-537ecf69944f",
+    "name": "JaSaN",
+    "sortName": "JaSaN",
+    "shortName": "JaSaN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "970162b0-ec51-4f39-81e7-1d99f7bd7cc3",
+    "name": "KDUODSSTANPiTOP",
+    "sortName": "KDUODSSTANPiTOP",
+    "shortName": "KDUODSSTANPiTOP",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba",
+    "name": "Svobodní",
+    "sortName": "Svobodní",
+    "shortName": "Svobodní",
+    "type": "candidate-list"
+  },
+  {
+    "id": "0150f4df-0865-4577-8ccb-04f5b399e2a2",
+    "name": "Zelení",
+    "sortName": "Zelení",
+    "shortName": "Zelení",
+    "type": "candidate-list"
+  }
+]

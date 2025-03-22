@@ -1,0 +1,16 @@
+{
+  "id": "898f1d1f-5331-46f4-a4a8-6b43ff2aec9f",
+  "createdAt": "2021-01-01T00:00:00+01:00",
+  "intro": "Vítejte ve Volební kalkulačce pro senátní volby 2024 pro obvod Benešov (41). Čeká vás 35 otázek. Stejné otázky dostaly všechni kandidáti a kandidátky. Zodpovězení otázek zabere zhruba 10 minut a na konci se dozvíte, jak se jednotliví kandidáti shodují s vašimi názory.\n\nOslovili jsme všechny kandidáty bez výjimky. Pokud se někteří neobjeví ve výsledcích, je to proto, že (zatím) neposlali svoje odpovědi.",
+  "calculatorGroup": {
+    "id": "0b0c8620-c0e1-469b-a6b6-0e26cfc77cb7",
+    "key": "senatni-2024"
+  },
+  "election": {
+    "id": "8b28e4b7-96b6-4007-b289-2b0998f85beb",
+    "key": "senatni-2024"
+  },
+  "variant": {
+    "key": "41-benesov"
+  }
+}

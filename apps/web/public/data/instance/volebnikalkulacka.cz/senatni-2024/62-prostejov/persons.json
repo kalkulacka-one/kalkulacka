@@ -1,0 +1,74 @@
+[
+  {
+    "id": "e389eaa6-a2a9-4da3-b503-c69ddf01d14f",
+    "name": "František Jura",
+    "givenName": "František",
+    "familyName": "Jura",
+    "sortName": "Jura František",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "2cf10119-1b81-4d18-8dde-3d8a89e86e96",
+    "name": "Miroslav Burget",
+    "givenName": "Miroslav",
+    "familyName": "Burget",
+    "sortName": "Burget Miroslav",
+    "memberOf": [
+      {
+        "id": "89395259-1fd2-4a28-8a86-537ecf69944f"
+      }
+    ]
+  },
+  {
+    "id": "ed41997d-fbb4-4dd1-9e5a-c2461b44b97b",
+    "name": "Hana Pospíšilíková",
+    "givenName": "Hana",
+    "familyName": "Pospíšilíková",
+    "sortName": "Pospíšilíková Hana",
+    "memberOf": [
+      {
+        "id": "46927f39-fffa-44de-aa6b-ee76f53052bf"
+      }
+    ]
+  },
+  {
+    "id": "8e079344-35c4-4874-bbd2-19afd0c89104",
+    "name": "Milada Sokolová",
+    "givenName": "Milada",
+    "familyName": "Sokolová",
+    "sortName": "Sokolová Milada",
+    "memberOf": [
+      {
+        "id": "03b05c3c-f40e-4e19-a885-bcc911043444"
+      }
+    ]
+  },
+  {
+    "id": "fdadf5dc-e6ab-45bb-abdf-89290dcfe8ac",
+    "name": "Pavel Dopita",
+    "givenName": "Pavel",
+    "familyName": "Dopita",
+    "sortName": "Dopita Pavel",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "82d67027-1fdb-4cdf-9008-8e08b49b03fc",
+    "name": "Hana Naiclerová",
+    "givenName": "Hana",
+    "familyName": "Naiclerová",
+    "sortName": "Naiclerová Hana",
+    "memberOf": [
+      {
+        "id": "c520ea72-5d5b-4b91-b170-bea15e884c88"
+      }
+    ]
+  }
+]

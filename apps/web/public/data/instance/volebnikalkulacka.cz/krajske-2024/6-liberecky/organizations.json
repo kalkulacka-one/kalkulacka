@@ -1,0 +1,93 @@
+[
+  {
+    "id": "1292fa67-6d0a-4c0b-9fb4-1dcb0de09191",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "805f0199-24cb-4b6f-9f12-2fa5ab5c0b03",
+    "name": "STAČILO!, koalice Komunistické strany Čech a Moravy a České strany národně sociální",
+    "shortName": "ČSNS+KSČM",
+    "sortName": "ČSNS+KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c299b047-43a3-4849-83f4-56f62f990358",
+    "name": "SPOLU pro Liberecký kraj - ODS, TOP 09, KDU-ČSL",
+    "shortName": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "26fbd656-251e-434c-a727-7b7c7045b642",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - minimální MZDA 70.000 Kč, minimální DŮCHOD 50.000 Kč, ZRUŠENÍ daně z nemovitostí, …",
+    "shortName": "ND+LŽPL",
+    "sortName": "ND+LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e1698431-d4ff-4a1a-8717-292f3de43ece",
+    "name": "Starostové pro Liberecký kraj",
+    "shortName": "SLK",
+    "sortName": "SLK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "3deaa088-d6b9-4d2c-a799-644ebaba2742",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "b2b14abc-84d8-49b1-8eb0-f218f7439f65",
+    "name": "Zelení pro kraj",
+    "shortName": "Zelení+LES",
+    "sortName": "Zelení+LES",
+    "type": "candidate-list"
+  },
+  {
+    "id": "d5cd5ec2-9fc4-4b37-9e92-66aee856779e",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cfe5255-7001-4172-8561-e83a71cd2013",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4b2961dd-f362-436d-bee3-aa59e0b8d669",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5f90c463-0208-477c-884a-803b359b50cb",
+    "name": "Právo Respekt Odbornost",
+    "shortName": "PRO",
+    "sortName": "PRO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a056d5f9-853f-4911-9263-2c691ac4cac7",
+    "name": "SPD a Trikolora",
+    "shortName": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8db900f7-e146-4ada-93f2-013a44fadd62",
+    "name": "SPOLU PRO Liberecký kraj",
+    "shortName": "Svobod+Soukrom",
+    "sortName": "Svobod+Soukrom",
+    "type": "candidate-list"
+  }
+]

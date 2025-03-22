@@ -1,0 +1,51 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "89395259-1fd2-4a28-8a86-537ecf69944f",
+    "name": "JaSaN",
+    "sortName": "JaSaN",
+    "shortName": "JaSaN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835",
+    "name": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "0150f4df-0865-4577-8ccb-04f5b399e2a2",
+    "name": "Zelení",
+    "sortName": "Zelení",
+    "shortName": "Zelení",
+    "type": "candidate-list"
+  }
+]

@@ -5,10 +5,13 @@ import { useQuestionsStore } from "./providers/storeProvider";
 import { Button } from "@repo/design-system/ui";
 import { CloseIcon } from "@repo/design-system/icons";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
   const guide = useQuestionsStore((state) => state.guide);
   const path = usePathname();
+
+  console.log(path);
 
   return (
     <header className="sticky bottom-0 max-w-[100vw] bg-white">
@@ -34,19 +37,21 @@ export default function Header() {
             </div>
           ) : null}
           {/* refactor visiblity condition later */}
-          {path != "/" && (
-            <Button
-              fitContent
-              kind="link"
-              size="auto"
-              icon={CloseIcon}
-              hasIcon
-              iconPosition="right"
-              // refactor
-              onClick={() => alert("Back to home")}
-            >
-              <span className="hidden sm:inline">Zpět na hlavní stránku</span>
-            </Button>
+          {path !== "/home" ? (
+            <Link href="/home">
+              <Button
+                fitContent
+                kind="link"
+                size="auto"
+                icon={CloseIcon}
+                hasIcon
+                iconPosition="right"
+              >
+                <span className="hidden sm:inline">Zpět na hlavní stránku</span>
+              </Button>
+            </Link>
+          ) : (
+            <h1>Hlavní</h1>
           )}
         </div>
       </div>

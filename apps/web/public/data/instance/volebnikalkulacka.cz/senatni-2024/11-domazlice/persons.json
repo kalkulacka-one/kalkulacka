@@ -1,0 +1,110 @@
+[
+  {
+    "id": "14f9fccc-eebb-400a-8c64-a12f6c0ea0a1",
+    "name": "Jan Látka",
+    "givenName": "Jan",
+    "familyName": "Látka",
+    "sortName": "Látka Jan",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "93d56e99-6b3e-431f-b1fa-9565185e2a3b",
+    "name": "Stanislav Antoš",
+    "givenName": "Stanislav",
+    "familyName": "Antoš",
+    "sortName": "Antoš Stanislav",
+    "memberOf": [
+      {
+        "id": "7cbe01ba-db6b-4969-a91c-68ff4e6c3f2f"
+      }
+    ]
+  },
+  {
+    "id": "b80bdce2-4ce9-4d19-a523-770141e71d4b",
+    "name": "Ivan Maštálka",
+    "givenName": "Ivan",
+    "familyName": "Maštálka",
+    "sortName": "Maštálka Ivan",
+    "memberOf": [
+      {
+        "id": "40a4e263-ec72-417a-8e6f-f97297351b13"
+      }
+    ]
+  },
+  {
+    "id": "81db3837-e0d9-4ed4-8cd2-c420b9cd16a5",
+    "name": "Robert Baxa",
+    "givenName": "Robert",
+    "familyName": "Baxa",
+    "sortName": "Baxa Robert",
+    "memberOf": [
+      {
+        "id": "8331b263-fda5-459d-b28c-ddb84f281963"
+      }
+    ]
+  },
+  {
+    "id": "8b055a20-c679-4c5b-ac92-2409e041bb48",
+    "name": "Vladislav Vilímec",
+    "givenName": "Vladislav",
+    "familyName": "Vilímec",
+    "sortName": "Vilímec Vladislav",
+    "memberOf": [
+      {
+        "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309"
+      }
+    ]
+  },
+  {
+    "id": "17da4353-7c56-4461-b0a9-74f23529a262",
+    "name": "Jan Janda",
+    "givenName": "Jan",
+    "familyName": "Janda",
+    "sortName": "Janda Jan",
+    "memberOf": [
+      {
+        "id": "fac96e1b-54cc-4cc0-840e-9443f154c03f"
+      }
+    ]
+  },
+  {
+    "id": "92b29701-f7ba-4f98-85eb-c962d73c75a4",
+    "name": "Václav Sladký",
+    "givenName": "Václav",
+    "familyName": "Sladký",
+    "sortName": "Sladký Václav",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "20ad9dc2-f7a4-4762-985e-7556a7db9b71",
+    "name": "Ján Ridzoň",
+    "givenName": "Ján",
+    "familyName": "Ridzoň",
+    "sortName": "Ridzoň Ján",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "a4601fcb-1c9f-4bad-968f-2580e39a95be",
+    "name": "Libor Picka",
+    "givenName": "Libor",
+    "familyName": "Picka",
+    "sortName": "Picka Libor",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  }
+]

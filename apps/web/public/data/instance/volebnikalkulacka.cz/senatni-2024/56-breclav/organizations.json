@@ -1,0 +1,65 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835",
+    "name": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "40a4e263-ec72-417a-8e6f-f97297351b13",
+    "name": "KSČM",
+    "sortName": "KSČM",
+    "shortName": "KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a58c608d-34db-40bf-9c0b-7e1de5e39200",
+    "name": "Nestranici2024",
+    "sortName": "Nestranici2024",
+    "shortName": "Nestranici2024",
+    "type": "candidate-list"
+  },
+  {
+    "id": "952ed13b-c9ab-44cd-9019-3a19431aa4d9",
+    "name": "NOS",
+    "sortName": "NOS",
+    "shortName": "NOS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "14aa404d-35be-421d-aa87-fe6b3e2e7ae6",
+    "name": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "shortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  }
+]

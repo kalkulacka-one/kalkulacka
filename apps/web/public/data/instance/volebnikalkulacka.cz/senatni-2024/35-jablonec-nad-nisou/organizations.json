@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a32089e0-5fda-44fb-b12a-c97139bdb785",
+    "name": "APB",
+    "sortName": "APB",
+    "shortName": "APB",
+    "type": "candidate-list"
+  },
+  {
+    "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835",
+    "name": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "50e58d59-db2e-4949-a1c8-58cf68bd21f5",
+    "name": "SEN 21",
+    "sortName": "SEN 21",
+    "shortName": "SEN 21",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ff170d83-5e25-485e-979d-a5d58081d490",
+    "name": "SLK",
+    "sortName": "SLK",
+    "shortName": "SLK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  }
+]

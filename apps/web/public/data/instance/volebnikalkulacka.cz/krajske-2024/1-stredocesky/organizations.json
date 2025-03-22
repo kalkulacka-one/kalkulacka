@@ -1,0 +1,121 @@
+[
+  {
+    "id": "7a481608-e155-4d61-a4b3-5e01cd0f5769",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "cd129b70-b820-4627-9c7c-681569714f6a",
+    "name": "JISTOTA A BUDOUCNOST",
+    "shortName": "JAB",
+    "sortName": "JAB",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6a5ac75d-7366-4709-b929-e3eaf696c900",
+    "name": "SPOLU (ODS + TOP 09 + KDU-ČSL)",
+    "shortName": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f7a556a9-6bc6-424c-b989-8c4751e17b09",
+    "name": "Liberální aliance nezávislých občanů",
+    "shortName": "LANO",
+    "sortName": "LANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "b0983832-dcbd-4cfa-a91c-793a89b5c0bc",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - min. mzda 70.000 Kč, min. důchod 50.000 Kč, návrat cen energií na ceny z roku 2019, v obchodech zboží nejvyšší kvality za ceny dostupné pro každého, zrušení daně z nemovitostí, STOP válce",
+    "shortName": "LŽPL",
+    "sortName": "LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "93799b7b-d2a8-4ef6-b6c3-4e22cf65e711",
+    "name": "ANO LEPŠÍ ČESKO S MIMOZEMŠŤANY A OBČANY MOTORISTY - (dostupnější bydlení, jízdné zdarma školákům a studentům, …)",
+    "shortName": "mimozemstani.eu",
+    "sortName": "mimozemstani.eu",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c8b86b92-e025-4316-84f9-85cd9c98f779",
+    "name": "ČISTÝ A BEZPEČNÝ KRAJ",
+    "shortName": "NDDSSSBEZULANS",
+    "sortName": "NDDSSSBEZULANS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f2c4494f-64dd-4c6e-8eec-f566d38648a8",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "faab6ecc-63c9-4d83-aa18-9d5c3beacbbc",
+    "name": "Sdružení pro Místní Správu",
+    "shortName": "SMS",
+    "sortName": "SMS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "34b42bea-9f07-497d-b102-2ea5a77ff884",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1b3c52cc-c77b-4ccb-9c5e-fa5f43511e93",
+    "name": "STAROSTOVÉ A NEZÁVISLÍ",
+    "shortName": "STAN",
+    "sortName": "STAN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "89e41669-1b3e-47ca-a6f7-e3bfc0d71021",
+    "name": "Švýcarská demokracie (www.svycarska-demokracie.cz)",
+    "shortName": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "b00f7c0e-e296-44f8-9638-47ba6ec17455",
+    "name": "Zelení a SEN 21",
+    "shortName": "Zelení+SEN 21",
+    "sortName": "Zelení+SEN 21",
+    "type": "candidate-list"
+  },
+  {
+    "id": "cc79df2e-8411-42ad-a9bf-be2feda597e4",
+    "name": "STAČILO! - SPOJENÁ LEVICE KSČM, ČSSD A ČSNS",
+    "shortName": "ČSNS+KSČM+ČSSD",
+    "sortName": "ČSNS+KSČM+ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "bd9c43e4-2d70-464f-8501-071942911220",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "58cc3aa5-9649-4485-8977-636f8d48b06c",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "cfce1eae-5d9e-48a8-832f-9d8508d8ed1e",
+    "name": "SPD, Trikolora a PRO",
+    "shortName": "SPD+Trikol+PRO",
+    "sortName": "SPD+Trikol+PRO",
+    "type": "candidate-list"
+  }
+]

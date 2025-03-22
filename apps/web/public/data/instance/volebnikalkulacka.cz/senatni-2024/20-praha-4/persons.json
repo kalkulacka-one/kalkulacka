@@ -1,0 +1,98 @@
+[
+  {
+    "id": "fad8d045-0604-443b-b534-ed489b26af9d",
+    "name": "Josef Svoboda",
+    "givenName": "Josef",
+    "familyName": "Svoboda",
+    "sortName": "Svoboda Josef",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "13af6cb5-2d14-478b-b071-9a4c37578f6e",
+    "name": "Vladimíra Vítová",
+    "givenName": "Vladimíra",
+    "familyName": "Vítová",
+    "sortName": "Vítová Vladimíra",
+    "memberOf": [
+      {
+        "id": "a32089e0-5fda-44fb-b12a-c97139bdb785"
+      }
+    ]
+  },
+  {
+    "id": "5a16a080-801e-4903-80c1-737960c14196",
+    "name": "Pavel Sehnal",
+    "givenName": "Pavel",
+    "familyName": "Sehnal",
+    "sortName": "Sehnal Pavel",
+    "memberOf": [
+      {
+        "id": "a32089e0-5fda-44fb-b12a-c97139bdb785"
+      }
+    ]
+  },
+  {
+    "id": "3ab448d0-9d2c-4752-9832-28f238b36651",
+    "name": "Jiří Folajtár",
+    "givenName": "Jiří",
+    "familyName": "Folajtár",
+    "sortName": "Folajtár Jiří",
+    "memberOf": [
+      {
+        "id": "89395259-1fd2-4a28-8a86-537ecf69944f"
+      }
+    ]
+  },
+  {
+    "id": "f92343a6-ff84-4050-8ec5-dd4fac9c2dfe",
+    "name": "Jiří Drahoš",
+    "givenName": "Jiří",
+    "familyName": "Drahoš",
+    "sortName": "Drahoš Jiří",
+    "memberOf": [
+      {
+        "id": "970162b0-ec51-4f39-81e7-1d99f7bd7cc3"
+      }
+    ]
+  },
+  {
+    "id": "a0b9f0db-cdbe-462b-a7fc-3c308a5b8331",
+    "name": "Filip Outrata",
+    "givenName": "Filip",
+    "familyName": "Outrata",
+    "sortName": "Outrata Filip",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "495a9acd-f79c-4a9b-8e26-69f440076a0a",
+    "name": "Markéta Šichtařová",
+    "givenName": "Markéta",
+    "familyName": "Šichtařová",
+    "sortName": "Šichtařová Markéta",
+    "memberOf": [
+      {
+        "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba"
+      }
+    ]
+  },
+  {
+    "id": "ff426663-f8e6-4fd5-808d-92c0ce6dddf8",
+    "name": "Petr Štěpánek",
+    "givenName": "Petr",
+    "familyName": "Štěpánek",
+    "sortName": "Štěpánek Petr",
+    "memberOf": [
+      {
+        "id": "0150f4df-0865-4577-8ccb-04f5b399e2a2"
+      }
+    ]
+  }
+]

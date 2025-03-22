@@ -1,0 +1,98 @@
+[
+  {
+    "id": "b450202c-2395-449b-9bf2-7a5a98fa3e7c",
+    "name": "Zdeněk Kučera",
+    "givenName": "Zdeněk",
+    "familyName": "Kučera",
+    "sortName": "Kučera Zdeněk",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "dfe1afe6-ede8-4dbb-836e-a2a8af101e1a",
+    "name": "Vladimíra Ludková",
+    "givenName": "Vladimíra",
+    "familyName": "Ludková",
+    "sortName": "Ludková Vladimíra",
+    "memberOf": [
+      {
+        "id": "eeef1d79-7c04-42e4-a427-5ceb9ae9df1a"
+      }
+    ]
+  },
+  {
+    "id": "5173229c-a118-4f48-971b-c385d14747d9",
+    "name": "Pavel Fischer",
+    "givenName": "Pavel",
+    "familyName": "Fischer",
+    "sortName": "Fischer Pavel",
+    "memberOf": [
+      {
+        "id": "966d63f4-4986-4345-9c8e-7a9fbc66c37b"
+      }
+    ]
+  },
+  {
+    "id": "f066f840-0ea3-4725-9d6e-207510e2cfd6",
+    "name": "Lukáš Wagenknecht",
+    "givenName": "Lukáš",
+    "familyName": "Wagenknecht",
+    "sortName": "Wagenknecht Lukáš",
+    "memberOf": [
+      {
+        "id": "fac96e1b-54cc-4cc0-840e-9443f154c03f"
+      }
+    ]
+  },
+  {
+    "id": "9d35bea2-4525-4917-a3a7-d785bbd7e606",
+    "name": "David Kopecký",
+    "givenName": "David",
+    "familyName": "Kopecký",
+    "sortName": "Kopecký David",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "1b9a7949-1edc-4f2d-aaaf-9d2e0e38572c",
+    "name": "Vítězslav Novák",
+    "givenName": "Vítězslav",
+    "familyName": "Novák",
+    "sortName": "Novák Vítězslav",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "5e767100-8654-4ef3-a8ba-e30cd01a3677",
+    "name": "Miroslav Erbrt",
+    "givenName": "Miroslav",
+    "familyName": "Erbrt",
+    "sortName": "Erbrt Miroslav",
+    "memberOf": [
+      {
+        "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba"
+      }
+    ]
+  },
+  {
+    "id": "7e6681ca-7e9c-48ac-ad32-ef8958c17f68",
+    "name": "Jan Korda",
+    "givenName": "Jan",
+    "familyName": "Korda",
+    "sortName": "Korda Jan",
+    "memberOf": [
+      {
+        "id": "01d12899-6c90-4cc3-bb57-a21d5a927529"
+      }
+    ]
+  }
+]

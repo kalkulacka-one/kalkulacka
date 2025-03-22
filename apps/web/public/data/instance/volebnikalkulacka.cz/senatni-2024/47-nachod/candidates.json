@@ -1,0 +1,23 @@
+[
+  {
+    "id": "76026100-7a01-48c9-b608-e7b5e88273c3",
+    "reference": {
+      "id": "e21e451b-34e2-4bdf-88c3-9caae0746efc",
+      "type": "person"
+    }
+  },
+  {
+    "id": "04731b2b-2eb4-47d0-b8e8-1c9d097d1076",
+    "reference": {
+      "id": "0230ed3c-4609-4ae5-a593-5381f542c617",
+      "type": "person"
+    }
+  },
+  {
+    "id": "eb48d932-e5f6-4552-8633-5be5490ad493",
+    "reference": {
+      "id": "9f8a9461-a9b5-4b71-ae90-d9d8af113385",
+      "type": "person"
+    }
+  }
+]

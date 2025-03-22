@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6af5fa71-2a70-430e-9b29-45ead10d7018",
+    "name": "ČSSD",
+    "sortName": "ČSSD",
+    "shortName": "ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c2a3330d-26fb-4c9b-bb22-29697e08da9c",
+    "name": "DSSS",
+    "sortName": "DSSS",
+    "shortName": "DSSS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "50e58d59-db2e-4949-a1c8-58cf68bd21f5",
+    "name": "SEN 21",
+    "sortName": "SEN 21",
+    "shortName": "SEN 21",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4f390d39-afd6-4aae-a854-842dd8148163",
+    "name": "SpV",
+    "sortName": "SpV",
+    "shortName": "SpV",
+    "type": "candidate-list"
+  }
+]

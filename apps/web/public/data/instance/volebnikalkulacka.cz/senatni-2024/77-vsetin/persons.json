@@ -1,0 +1,38 @@
+[
+  {
+    "id": "808b2cdc-928e-4a86-bcdb-3e108af611b9",
+    "name": "Yvona Wojaczková",
+    "givenName": "Yvona",
+    "familyName": "Wojaczková",
+    "sortName": "Wojaczková Yvona",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "3b4ae139-b29d-47a2-8e33-f88a597640b1",
+    "name": "Jiří Čunek",
+    "givenName": "Jiří",
+    "familyName": "Čunek",
+    "sortName": "Čunek Jiří",
+    "memberOf": [
+      {
+        "id": "46927f39-fffa-44de-aa6b-ee76f53052bf"
+      }
+    ]
+  },
+  {
+    "id": "9f289794-eaa0-47ad-aa04-aa8e6ceaeffc",
+    "name": "Robert Hampl",
+    "givenName": "Robert",
+    "familyName": "Hampl",
+    "sortName": "Hampl Robert",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  }
+]

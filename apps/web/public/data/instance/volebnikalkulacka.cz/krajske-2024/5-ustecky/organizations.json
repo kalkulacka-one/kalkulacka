@@ -1,0 +1,100 @@
+[
+  {
+    "id": "652c1bc5-5068-409e-a32f-abde11a2dea8",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "512ae7b4-9151-4ec4-a392-8c83af4bb664",
+    "name": "ČSSD – ČISTÝ KRAJ",
+    "shortName": "ČSSD+ČiKR",
+    "sortName": "ČSSD+ČiKR",
+    "type": "candidate-list"
+  },
+  {
+    "id": "90018e40-b8c7-466a-8089-da49ebac52f8",
+    "name": "LEPŠÍ SEVER",
+    "shortName": "LS",
+    "sortName": "LS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "db76be10-f51f-4d18-8e17-c41b47401291",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - minimální MZDA 70.000 Kč, minimální DŮCHOD 50.000 Kč, ZRUŠENÍ daně z nemovitostí, …",
+    "shortName": "ND+LŽPL",
+    "sortName": "ND+LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7cee3b59-1f65-4d37-bfa6-b58cd1ac8e0c",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4c66e9de-38dd-4b78-b3ac-f8fbf9c85819",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e650147c-7d98-4a8f-9d31-4846f9fdb12f",
+    "name": "SVOBODNÍ A ŠVÝCARSKÁ DEMOKRACIE",
+    "shortName": "Svob+Švýc.dem.",
+    "sortName": "Svob+Švýc.dem.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "641432f7-07f8-471f-808a-3108940b1d6f",
+    "name": "STAČILO! v Ústeckém kraji – KSČM, SOCDEM, ČSNS",
+    "shortName": "ČSNS+SOCDE+KSČM",
+    "sortName": "ČSNS+SOCDE+KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "743aa8ce-ff67-4356-82fb-e5e0d4bbf812",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "3fcb6606-d7b4-479c-9529-b1421cb69066",
+    "name": "Občanská demokratická strana",
+    "shortName": "ODS",
+    "sortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "951cba08-0fd9-4030-97cb-6a4387e1e541",
+    "name": "SPD, Trikolora a PRO",
+    "shortName": "SPD+Trikol+PRO",
+    "sortName": "SPD+Trikol+PRO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2fac5736-5ddb-441e-b20c-0a725bc32990",
+    "name": "STAROSTOVÉ PRO ÚSTECKÝ KRAJ",
+    "shortName": "STAN+PRO Zdraví",
+    "sortName": "STAN+PRO Zdraví",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e4ee9450-8118-4087-9d64-d66c9df5870b",
+    "name": "HLAS Regionů",
+    "shortName": "USZ+SDSN+SpV+HS",
+    "sortName": "USZ+SDSN+SpV+HS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "9acfde2f-d769-4bbd-980b-9e55e2bffd5d",
+    "name": "Spojenci pro kraj",
+    "shortName": "Zel+ED+TOP+JP",
+    "sortName": "Zel+ED+TOP+JP",
+    "type": "candidate-list"
+  }
+]

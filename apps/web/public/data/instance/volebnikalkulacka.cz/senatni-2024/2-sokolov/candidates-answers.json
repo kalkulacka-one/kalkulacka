@@ -1,0 +1,765 @@
+{
+  "79ac0ee0-10bb-4f99-beb1-03a4fb622c20": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": null
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": false
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true,
+      "comment": "Ale jen těch prověřených"
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": null
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": true
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": false
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": true
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": null
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": false
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": true
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": false
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": null
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": false
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": null
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": null
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": null
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": null,
+      "comment": "Volit by měl jen ten, který žije na území ČR"
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": true,
+      "comment": "Jsem PRO, ale nemělo by se to nijak výrazně lišit od podpory od dalších studijních oborů"
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": false
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": false
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": false
+    }
+  ],
+  "512dbc0d-4bcd-40a2-988c-c46e678e6350": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": true,
+      "comment": "Jakékoliv domácí násilí a násilí na dětech, seniorech a ženách je pro mě nepřijatelné."
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": false
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": null
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": false
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": null,
+      "comment": "Rozhodně bych byl pro revizi potřebnosti. Neziskové organizace jsou nutností, máme jich ale příliš. Mnohdy je na jednu cílovou skupinu zaměřena spousta neziskovek."
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": true,
+      "comment": "Jsem rozhodně pro. V mnoha případech by to bylo účinné opatření v boji s \"obchodníky s chudobou\"."
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": true,
+      "comment": "Ale pouze v jasně pojmenovaných situacích. Např. pokud by parlament rozhodoval o ekonomických nebo bezpečnostních zákonech, které budou mít dlouhodobé a zásadní dopady na obyvatele ČR."
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true,
+      "comment": "Jsem pro, to ale neznamená, že by měl stát upustit od případných právních důsledků."
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": false
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true,
+      "comment": "Kritikům naprosto rozumím, ale dlouhodobá předpověď ČR v oblasti zásob vody není vůbec optimistická a je potřeba se na tuto budoucnost připravit."
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": true
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": false
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": false
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": true
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": true
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": null
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": true,
+      "comment": "Samozřejmě po splnění všech přístupových podmínek."
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": null
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": false,
+      "comment": "Pokud k tomuto rozhodnutí nepřistoupí státy s mnohem větší tvorou skleníkových plynů, je postup Evropy neúčinný. a to bohužel za cenu velkých ekonomických ztrát, kdy ztrácíme konkurenceschopnost."
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": false
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": true,
+      "comment": "V ČR chybí na pracovním trhu především absolventi odborných škol a tak k ekonomické návratnosti finančního zvýhodnění dojde budoucím zapojením absolventů do průmyslu v ČR."
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": null,
+      "comment": "Jsem pro inkluzi ve školství, ale ne v podobě, která je nyní na školách. Chybí mi v jejím uplatňování odborná debata především s pedagogy."
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false,
+      "comment": "Nejsem rozhodně příznivcem všech rozhodnutí EU, kterými se musíme v naší republice řídit, ale stále u mě převažují pozitiva členství."
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false,
+      "comment": "Obecně jsem spíše proti jakékoliv centralizaci."
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": true,
+      "comment": "Bohužel, doba se opravdu mění a tak u mě vyhrává pocit bezpečí a prevence nad ochranou soukromí."
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": true,
+      "comment": "Ale účelněji. Nepatřím např. mezi zastánce nutnosti mít stíhací letouny F-35 a spíše bych preferoval prodloužení nájmu stíhaček JAS-39 Gripen."
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": false
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": false
+    }
+  ],
+  "ae2d913b-05a0-499f-a9ba-3bb7a622345b": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": true
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": true
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": true,
+      "comment": "Mělo by se odlišit zdanění zajištění vlastního bydlení od investic."
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": false
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": true,
+      "comment": "Průměrná délka života se prodlužuje, to je nepopiratelný fakt a je potřeba na to reagovat. Je ale potřeba pečlivě vybrat profese, kde je zatížení celoživotní prací větší a kde by zvyšování věku odchodu do důchodu mělo být striktně omezeno."
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": false,
+      "comment": "Vzhledem k tomu, že pocházím z Karlovarského kraje, který nemá dálniční spojení s centrem ani okolními regiony, přikláním se k názoru, že rychlovlaky by měly přijít na řadu po dokončení páteřní dálniční sítě v ČR."
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": null,
+      "comment": "Pro jednoznačnou odpověď nyní nemám dostatek relevantních informací."
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": true
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true,
+      "comment": "Mnoho lidí, včetně seniorů, si nyní pěstují konopí pro vlastní potřebu. Kromě kouření také pro výrobu mastí a dalších léčivých výrobků. V současnosti jsou zbytečně kriminalizováni a také to podporuje černý trh s konopím a nezákonné velkopěstitele. Stát by měl na tento stav reagovat."
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": false,
+      "comment": "Na sociálních sítích se dnes šíří mnoho poplašných, lživých a podvodných zpráv, svoboda slova je tak zneužívána podvodníky a také cizí mocí. Jsme v informační válce. Odpovědnost provozovatelů sociální sítě za obsah nicméně není podle mého použitelným a rozumně vymahatelným nástrojem k tomu, aby se tento stav zlepšil. Měla by být ale podle mého násobně vyšší součinnost sociální sítě při odstraňování prokazatelně podvodných a lživých zpráv. Pomohlo by také povinné označování názorů a ověřených faktů."
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": true,
+      "comment": "Stejně, jako například falešný ukazatel směru (dopravní značka), který by byl u silnice podvodně instalován a ukazoval řidičům jiný směr než skutečný, a který by byl jistě po nahlášení odstraněn, měly by být po detekci odstraněny i prokazatelně nepravdivé podvodné zprávy. Vzhledem k tomu, že se jedná o zásah do svobody slova, mělo by se ve všech případech postupovat velmi obezřetně a citlivě. To, že jsme v informační válce, je nepopiratelný fakt."
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": false,
+      "comment": "Toto rozhodnutí je pouze na Ukrajině jako suverénním státu. Z historie navíc víme, že ani postoupení území ČSR v roce 1938 tehdejšího agresora Německo nezastavilo. Ukrajina a celá Evropa potřebuje spravedlivý mír, který obsahuje mnoho podmínek a záruk, proto prosté konstatování \"vzdát se okupovaných území\" je nedostatečné a velmi povrchní."
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": true,
+      "comment": "Po splnění všech potřebných podmínek a reforem."
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true,
+      "comment": "Ano, agresor by měl vždy nést následky svého počínání, pokud je naším společným cílem dodržování mezinárodního práva."
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": true,
+      "comment": "Evropa a vyspělá část světa vždy nesla břemeno odpovědnosti a měla by být vzorem, měla by být tím, kdo určuje směr. Jestli je jako cíl uhlíková neutralita Evropy do roku 2050 dosažitelný, není ale zřejmé. Určitě by to nemělo být za cenu hospodářského úpadku celého kontinentu."
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true,
+      "comment": "Velmi důležitou otázkou ale je, jak velká část bytů by měla být sociální."
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true,
+      "comment": "Jsem jednoznačně pro. V odlehlých regionech není dostatek kvalifikované práce. což má negativní dopady na mnoho oblastí a skladbu obyvatelstva. Stát má velmi omezený vliv na tvorbu pracovních míst a přesun úřadů do slabších regionů by mohl velmi pomoci. Navíc cena bydlení v centru a v regionech je diametrálně odlišná, ve výsledku by levnější bydlení v regionech posloužilo i zaměstnancům úřadů ke snížení životních nákladů."
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": true
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": true
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": null
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": true
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": true,
+      "comment": "Současná výrazně zhoršená bezpečnostní situace v Evropě i ve světě vyžaduje náležitou reakci. Tím by mělo být i zajištění bezpečnosti občanů ČR, která vyžaduje zvýšení rozpočtu na obranu."
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": true
+    }
+  ],
+  "75416cf6-b12e-4b4b-9dd2-6306e84f92ac": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": true
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": null,
+      "comment": "Je potřeba řešit v širším kontextu."
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": true
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": true
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": false
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": false
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": true
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": null,
+      "comment": "Vždy nutné posuzovat individuálně, podle konkrétních dopadových studií."
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": true
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": false,
+      "comment": "Jsem zastáncem institutu manželství muže a ženy. Podpořím však takový návrh zákona, který zajistí stejnopohlavním párům všechna práva jako institut manželství, včetně možnosti osvojit si dítě atd."
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": false
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": null
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": null,
+      "comment": "Záleží na konkrétní podobě opatření. Nelze říct ano/ne bez dalšího."
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": true,
+      "comment": "Za jasně stanovených pravidel, kdy nepravdivost informace bude prokázána."
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": null,
+      "comment": "Musí být předmětem mírových jednání a dohodou obou stran."
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": true,
+      "comment": "Po splnění všech přístupových pravidel"
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": false,
+      "comment": "Snižování emisí určitě ano. Musí se však stanovit splnitelné cíle a hlavně udržitelný způsob jak toho dosáhnout. V současné podobě ne."
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": true
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": false
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": false
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": true
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": true
+    }
+  ],
+  "95b4c2ca-77b5-41c2-9ef6-c8c391747659": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": false
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true,
+      "comment": "Greenvashing by měl být zakázán plošně, jelikož se jedná o formu klamání spotřebitele."
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": false
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true,
+      "comment": "Ano, ale pouze těch apolitických, které vykonávají skutečně společensky prospěšnou činnost, jako jsou sociální služby, sportovní, s mládeží apod. Politické neziskovky by měly být od státu odstřiženy."
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": null,
+      "comment": "Je to dvousečná zbraň. Ze zkušeností ze sousedních států víme, že regulace může mít neočekávané a negativní efekty a nakonec dobrý úmysl může situaci v dostupnosti bydlení ještě zhoršit. Vidíme cestu spíše v podpoře mladých při shánění prvního bydlení pro rodinu."
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": true
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true,
+      "comment": "Nevymožené pohledávky akorát zdržují a prodražují celý systém. Pokud není šance peníze vymoct, měly by se exekuce zastavit."
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": false
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true,
+      "comment": "Veškerá stavba dopravní infrastruktury v České republice má mít prioritu, tj. i síť rychlovlaků"
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": null,
+      "comment": "Nejme si jisti, zda převážení nesešlápnutých prázdných lahví z místa na místo je ekologicky opravdu šetrné, jak prezentují zastánci zálohování. Chceme o tomto ještě jednat, jelikož se obáváme účelového zdražení nápojů."
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": null,
+      "comment": "Hnutí ANO je přesvědčeno, že v této otázce by měli jeho zástupci hlasovat dle svého vědomí a svědomí samostatně a s ohledem na jejich názorové a náboženské pohnutky. Nikomu nevnucujeme názor, zda je to dobře či špatně. Ať se rozhodne každý sám."
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": true
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true,
+      "comment": "Pouze v případě pro použití pro léčebné účely, jako jsou masti a tinktury, nikoliv pro rekreační užití."
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true,
+      "comment": "Tresty za znásilnění jsou nízké a zvýšit by se měly hlavně v případech znásilnění nezletilých, kde by měly být ukládány opravdu exemplární tresty."
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": null
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": false
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": false
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": true,
+      "comment": "Ano, ale pouze v případě že splní všechny požadavky, tak jako všechny jiné kandidátské země a projde standartním přijímacím procesem a procesem slaďování s EU. V tuto chvíli to považujeme za nereálné."
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": true
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": false
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": true
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false,
+      "comment": "Ano, úřady mohou sídlit v jiných částech ČR, pokud bude provedena digitalizace, bude vlastně jedno, kde se nachází konkrétní budova."
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null,
+      "comment": "Glyfosát by se plošně zakazovat neměl, ale jeho použití by mělo být povoleno pouze v ojedinělých případech, kdy jiné formy jsou neúčinné."
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": false
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": true
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": false,
+      "comment": "Dotace by měly být stejné, nezáleží, kdo je malý a kdo je velký podnikatel. Zvýhodnění jedněch akorát povzbudí podvody a účelové rozdělování firem, aby se vešli do úředně stanovené škatulky. To je špatně."
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": false,
+      "comment": "Navrhujeme zachovat současný stav a stále dokola neměnit daňové prostředí. Tyto nepromyšlené úpravy akorát poškozují podnikatele a živnostníky a zasévají nedůvěru vůči státu a jeho orgánům do celé ekonomiky."
+    }
+  ]
+}

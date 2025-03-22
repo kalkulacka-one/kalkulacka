@@ -1,0 +1,58 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "89395259-1fd2-4a28-8a86-537ecf69944f",
+    "name": "JaSaN",
+    "sortName": "JaSaN",
+    "shortName": "JaSaN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835",
+    "name": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "966d63f4-4986-4345-9c8e-7a9fbc66c37b",
+    "name": "Mourek",
+    "sortName": "Mourek",
+    "shortName": "Mourek",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8331b263-fda5-459d-b28c-ddb84f281963",
+    "name": "NK",
+    "sortName": "NK",
+    "shortName": "NK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "14976b4e-8cc6-4d06-8c42-da46665ebe03",
+    "name": "STAN+OK",
+    "sortName": "STAN+OK",
+    "shortName": "STAN+OK",
+    "type": "candidate-list"
+  }
+]

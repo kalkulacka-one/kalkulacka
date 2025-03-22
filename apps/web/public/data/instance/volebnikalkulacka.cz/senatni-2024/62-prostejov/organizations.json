@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "89395259-1fd2-4a28-8a86-537ecf69944f",
+    "name": "JaSaN",
+    "sortName": "JaSaN",
+    "shortName": "JaSaN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "46927f39-fffa-44de-aa6b-ee76f53052bf",
+    "name": "KDU-ČSL",
+    "sortName": "KDU-ČSL",
+    "shortName": "KDU-ČSL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "03b05c3c-f40e-4e19-a885-bcc911043444",
+    "name": "ODS+OPAT",
+    "sortName": "ODS+OPAT",
+    "shortName": "ODS+OPAT",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c520ea72-5d5b-4b91-b170-bea15e884c88",
+    "name": "Zelení+STAN+SEN",
+    "sortName": "Zelení+STAN+SEN",
+    "shortName": "Zelení+STAN+SEN",
+    "type": "candidate-list"
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "cd95ba79-4ab9-46e6-a6d4-e1558a34e1df",
+    "name": "ZA MORAVU!",
+    "shortName": "Moravané+MZH",
+    "sortName": "Moravané+MZH",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f7a701fc-970e-4975-94f3-8f611bb765c8",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - minimální MZDA 70.000 Kč, minimální DŮCHOD 50.000 Kč, ZRUŠENÍ daně z nemovitostí, …",
+    "shortName": "ND+LŽPL",
+    "sortName": "ND+LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "113189fd-06a5-465f-9d80-d251ea5b1e05",
+    "name": "Nový směr",
+    "shortName": "NOS",
+    "sortName": "NOS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "aa98f20d-0457-4357-9349-f709cdadd150",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "9c3afab0-0944-4c8b-bd90-8bd621896fcf",
+    "name": "NESTRANÍCI PRO JIŽNÍ MORAVU",
+    "shortName": "SOM+Nestran2024",
+    "sortName": "SOM+Nestran2024",
+    "type": "candidate-list"
+  },
+  {
+    "id": "bcc55aaa-6d2b-4867-a2cf-102d1cc86325",
+    "name": "STAROSTOVÉ PRO JIŽNÍ MORAVU",
+    "shortName": "STAN+SOL",
+    "sortName": "STAN+SOL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1f0c65a6-c586-4ecb-9b67-032990df64f6",
+    "name": "SPD, Trikolora, PRO a Svobodní",
+    "shortName": "Svo+SPD+Tri+PRO",
+    "sortName": "Svo+SPD+Tri+PRO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "94f8275d-5e13-4e3d-924a-ffb929d85c5a",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c620fdf9-3e54-4533-9e5f-9d247c8215d0",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "d6607094-eea6-4629-a9b8-ac3a70ad815e",
+    "name": "SPOLU - ODS, KDU-ČSL, TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "667c65ce-e240-40a3-bcb2-4b382cebea74",
+    "name": "Koruna Česká (monarchistická strana Čech, Moravy a Slezska)",
+    "shortName": "Monarchiste.cz",
+    "sortName": "Monarchiste.cz",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6553de02-576f-4089-9342-24b89f1a44af",
+    "name": "STAČILO! v Jihomoravském kraji, koalice KSČM, ČSSD, ČSNS, SD-SN a DOMOV",
+    "shortName": "NSKSČMSDČSSDDOM",
+    "sortName": "NSKSČMSDČSSDDOM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "0d2e6a1b-8461-4537-b197-4bc696e28e9c",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "cd6267e1-b392-4055-9f95-5d9d408582d5",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8f51a149-2df7-4a88-99ea-1cd2fe5e73f4",
+    "name": "Hlas Moravy",
+    "shortName": "Zel+LES+SEN+Ide",
+    "sortName": "Zel+LES+SEN+Ide",
+    "type": "candidate-list"
+  }
+]

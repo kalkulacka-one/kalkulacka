@@ -1,0 +1,93 @@
+[
+  {
+    "id": "79ee04ba-7580-425a-a98e-c0b075e33d5a",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5ffd78d8-b288-4cb0-bd03-dee88a845421",
+    "name": "PRO NÁŠ KRAJ – PRO PLZEŇ a KDU-ČSL s podporou Svobodných, agrárníků, starostů a sportovců",
+    "shortName": "KDUČSL+PROPLZEŇ",
+    "sortName": "KDUČSL+PROPLZEŇ",
+    "type": "candidate-list"
+  },
+  {
+    "id": "99957f33-eb91-45b2-bec3-55d21d91fd88",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI-min.mzda 70.000 Kč,min.důchod 50.000 Kč,ceny energií 2019,v obchodech zboží nej. kvality,STOP válce",
+    "shortName": "LŽPL",
+    "sortName": "LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2e519cd6-343e-48d6-bf57-ec589e3c1370",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5155ebc4-be3f-4f2a-8233-794a21239422",
+    "name": "SPD a Trikolora",
+    "shortName": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f1226ebb-3e3c-4de5-bda7-6207afa13ba6",
+    "name": "STAČILO! Koalice Komunistické strany Čech a Moravy, Spojených demokratů - Sdružení nez. a České strany národně sociální",
+    "shortName": "ČSNS+KSČM+SD-SN",
+    "sortName": "ČSNS+KSČM+SD-SN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "343b8eb2-0b15-4cc9-bc54-3aca3af432ad",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "fe221b02-2fbc-4f9d-bc5b-a76271cdd14d",
+    "name": "Koruna Česká (monarchistická strana Čech, Moravy a Slezska)",
+    "shortName": "Monarchiste.cz",
+    "sortName": "Monarchiste.cz",
+    "type": "candidate-list"
+  },
+  {
+    "id": "19daca66-b868-4595-a135-f9b830076883",
+    "name": "ČISTÝ A BEZPEČNÝ KRAJ",
+    "shortName": "NDDSSSBEZULANS",
+    "sortName": "NDDSSSBEZULANS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1921b97d-0f68-4430-bf14-a81951c79530",
+    "name": "ODS a TOP 09 - SPOLEČNĚ DO KRAJE",
+    "shortName": "ODS+TOP 09",
+    "sortName": "ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1395731c-3a69-4c4a-b7b1-d4922977e5c6",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "825d5e88-d728-404b-a249-5ed1ca99d7ec",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "11194177-4e6b-4835-b8c5-6559d6fbc17e",
+    "name": "STAROSTOVÉ A NEZÁVISLÍ",
+    "shortName": "STAN",
+    "sortName": "STAN",
+    "type": "candidate-list"
+  }
+]

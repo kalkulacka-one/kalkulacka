@@ -1,0 +1,227 @@
+[
+  {
+    "id": "b2e48e5f-2a73-498a-8817-3f8c36663984",
+    "title": "Více míst na gymnáziích",
+    "statement": "Měl by kraj rozšířit kapacitu gymnázií a podpořit všeobecné vzdělávací obory?",
+    "detail": "V ČR studuje na všeobecných oborech 30 % žáků, zatímco v Evropě je tento podíl 50 %. Zastánci chtějí připravit studenty/ky na proměnlivý pracovní trh a zlepšit šance i na další, vyšší vzdělávání, odpůrci argumentují potřebou odborných škol pro naplnění poptávky po specializovaných pracovních místech.",
+    "tags": [
+      "Vzdělání"
+    ]
+  },
+  {
+    "id": "36079500-1556-4330-81c6-defe94472c99",
+    "title": "Hromadná doprava vs. automobilová",
+    "statement": "Investice do hromadné dopravy by měly mít přednost před rozvojem infrastruktury pro osobní automobilovou dopravu.",
+    "detail": "Investice do veřejné dopravy jsou klíčové pro všechny kraje, zejména pro venkovské a méně rozvinuté oblasti.",
+    "tags": [
+      "Veřejná doprava"
+    ]
+  },
+  {
+    "id": "0908ae4c-c4bc-4908-8032-8bc96ae8ca49",
+    "title": "Podpora obnovitelných zdrojů energie",
+    "statement": "Kraj by měl finančně podporovat budování obnovitelných zdrojů energie na veřejných budovách a pozemcích.",
+    "detail": "Obnovitelné zdroje pomáhají snížit uhlíkovou stopu kraje. Zastánci argumentují, že to přispívá k boji proti změně klimatu, kritici varují před vysokými počátečními investicemi a technickými obtížemi.",
+    "tags": [
+      "Obnovitelná energie"
+    ]
+  },
+  {
+    "id": "fcdf48ac-3831-4efe-a859-a7a34c446e1c",
+    "title": "Zákonodárná iniciativa krajů",
+    "statement": "Kraj by měl častěji využívat svou zákonodárnou iniciativu.",
+    "detail": "Kraje mohou předkládat zákony parlamentu. Zastánci volají po častějším využívání této možnosti, kritici poukazují na nedostatek odborné kapacity pro legislativní práci.",
+    "tags": [
+      "Legislativní iniciativa"
+    ]
+  },
+  {
+    "id": "a570227a-7275-46a9-9c45-2a34612749e4",
+    "title": "Povolební kontinuita",
+    "statement": "Povolební koalice by měla pokračovat ve stávající politice kraje.",
+    "detail": "Současná koalice v krajské radě ovlivňuje směřování kraje. Zastánci tvrdí, že kontinuita přináší stabilitu, zatímco kritici upozorňují na potřebu změn, pokud se stávající vedení nedostatečně vypořádalo s klíčovými problémy.",
+    "tags": [
+      "Povolební kontinuita"
+    ]
+  },
+  {
+    "id": "028b58e7-262d-47df-b7b0-677ab7924ac5",
+    "title": "Krajské firmy bez politiků",
+    "statement": "Představenstva krajských firem mají být bez politiků.",
+    "detail": "Odstranění politiků z vedení firem má zvýšit transparentnost a efektivitu. Zastánci tuto změnu vítají, kritici tvrdí, že politici mohou přinést cenné zkušenosti a lepší propojení s vedením kraje.",
+    "tags": [
+      "Správa"
+    ]
+  },
+  {
+    "id": "9106f935-3be1-45fc-9a27-9166923ae737",
+    "title": "Příprava na změnu klimatu",
+    "statement": "Měl by kraj investovat více do přípravy na změnu klimatu",
+    "detail": "Podle zastánců vyžadují častější sucha, povodně a extrémní počasí rychlá adaptační opatření a bez investic se budou problémy prohlubovat, náklady v budoucnu ještě vzrostou. Kritici namítají, že rozsáhlé klimatické projekty odvádějí finanční prostředky od jiných klíčových oblastí.",
+    "tags": [
+      "Adaptace na změnu klimatu"
+    ]
+  },
+  {
+    "id": "48ef1ae7-0a19-46b4-9281-b32e3c8a2c1d",
+    "title": "Zadlužení kraje",
+    "statement": "Kraj by měl hospodařit s vyrovnaným rozpočtem.",
+    "detail": "Vyrovnaný rozpočet je klíčový pro udržitelnost. Zastánci tvrdí, že dluhy kraje by mohly být nebezpečné, kritici upozorňují na nutnost investic do rozvoje. V tomto roce 13 ze 14 krajů schválilo rozpočet s většími výdaji než příjmy, schodek většinou chtějí pokrýt přebytky a úsporami z minulých let nebo finančními rezervami. Jediný přebytek má Pardubický kraj.",
+    "tags": [
+      "Rozpočet"
+    ]
+  },
+  {
+    "id": "f574fc72-052a-48d1-b6f5-34aa501bcc06",
+    "title": "Návaznost spojů",
+    "statement": "Kraj má dbát na návaznost dotovaných spojů a vymáhat ji i mezi konkurenčními dopravci.",
+    "detail": "Zajištění návaznosti spojů zlepšuje dostupnost veřejné dopravy. Zastánci tvrdí, že by to mělo být prioritou, skeptici argumentují nutností šetřit.",
+    "tags": [
+      "Doprava"
+    ]
+  },
+  {
+    "id": "4111c840-9fb8-45a1-b055-724d14470ae8",
+    "title": "Stromové aleje",
+    "statement": "Má kraj podporovat údržbu stromových alejí podél silnic?",
+    "detail": "Stromové aleje zlepšují krajinu i životní prostředí. Zastánci podporují jejich ochranu a výsadbu nových, kritici mohou namítat, že to může zvýšit náklady na údržbu silnic a zvýšit nebezpečnost v dopravě.",
+    "tags": [
+      "Životní prostředí"
+    ]
+  },
+  {
+    "id": "41d70ff6-dfc1-4d1e-92db-690a7da174b9",
+    "title": "Bezplatné školní obědy",
+    "statement": "Souhlasím, aby kraj podporoval bezplatné obědy pro děti z nízkopříjmových rodin.",
+    "detail": "Bezplatné obědy pro sociálně slabé děti pomáhají zlepšit jejich vzdělávací příležitosti. Zastánci upozorňují, že společné obědy zabraňují vyčleňování dětí z kolektivu, zlepšují vazby mezi vrstevníky, docházku i prospěch dětí a pomáhají k jejich zapojování do mimoškolních zájmových aktivit. Kritici upozorňují na finanční zátěž pro kraje. Jiní zase namítají, že obědy by měly mít zdarma všechny děti plošně.",
+    "tags": [
+      "Sociální programy"
+    ]
+  },
+  {
+    "id": "a61bfce9-9699-431c-a8a4-c0ea52fb88cc",
+    "title": "Podpora technického školství",
+    "statement": "Měl by kraj finančně zvýhodňovat technické střední školy oproti jiným typům vzdělání?",
+    "detail": "Podpora technických škol je zastánci vnímána jako důležitá pro rozvoj regionálního průmyslu a řešení nedostatku kvalifikovaných pracovníků. Kritici varují před upřednostňováním technických škol na úkor všeobecného vzdělání, které je důležité pro všestranný rozvoj studentů v moderní době.",
+    "tags": [
+      "Vzdělávání"
+    ]
+  },
+  {
+    "id": "6fe97b31-10f2-442c-b854-edd8c1d42ec6",
+    "title": "Více peněz na správu silnic",
+    "statement": "Podporuji, aby kraj více investoval do opravy silnic.",
+    "detail": "Opravy a údržba silnic jsou jednou z největších položek krajského rozpočtu.",
+    "tags": [
+      "Silniční infrastruktura"
+    ]
+  },
+  {
+    "id": "f3b18a48-6f14-4940-a559-2472a0ee3aa6",
+    "title": "Podpora vysokých škol",
+    "statement": "Kraj má finančně podporovat veřejné vysoké školy na svém území.",
+    "detail": "Vysoké školy jsou důležité pro inovace a rozvoj regionů. Zastánci chtějí větší podporu, kritici se obávají finanční zátěže krajů.",
+    "tags": [
+      "Vysokoškolské vzdělávání"
+    ]
+  },
+  {
+    "id": "4e5db964-0b90-4f67-a9d9-37f22e3de4fa",
+    "title": "Privatizace krajských nemocnic",
+    "statement": "Krajské nemocnice by měly být zprivatizovány.",
+    "detail": "Privatizace nemocnic je diskutována z hlediska efektivity a kvality péče. Zastánci věří, že by soukromý sektor mohl lépe spravovat zdravotní zařízení, kritici se obávají zhoršení dostupnosti a kvality péče.",
+    "tags": [
+      "Zdravotní péče"
+    ]
+  },
+  {
+    "id": "8a03c517-3fe7-4165-bb80-ef631ee1727c",
+    "title": "Erasmus+",
+    "statement": "Má být kraj zapojený do mezinárodních výměnných programů škol v rámci projektu Erasmus+?",
+    "detail": "Zastánci tvrdí, že to zlepší dostupnost programu pro menší a méně zapojené školy. Kritici upozorňují na možnou složitost a administrativní zátěž spojenou s centralizací programu.",
+    "tags": [
+      "Vzdělávání"
+    ]
+  },
+  {
+    "id": "e9cf34e3-0386-4289-b64b-7bb09999ad1b",
+    "title": "Komunitní bydlení",
+    "statement": "Kraj by měl preferovat komunitní bydlení oproti dětským domovům.",
+    "detail": "Komunitní bydlení pro děti je jedním z moderních přístupů, který klade důraz na rodinné prostředí.",
+    "tags": [
+      "Péče o děti"
+    ]
+  },
+  {
+    "id": "de8044d9-ab63-4c74-aaff-3a2566b87f07",
+    "title": "Terénní služby pro seniory",
+    "statement": "Souhlasím, aby kraj finančně podporoval rozšíření terénních služeb pro seniory.",
+    "detail": "Zajištění dostupných služeb pro seniory je prioritou ve všech krajích.",
+    "tags": [
+      "Péče o seniory"
+    ]
+  },
+  {
+    "id": "2c70783f-d5e2-4220-97ea-f86a7d046b27",
+    "title": "Doprava žáků zdarma",
+    "statement": "Kraj by měl zajišťovat dopravu žáků do škol zdarma.",
+    "detail": "Doprava zdarma pro žáky je diskutována v rámci všech krajů, ale její financování zůstává výzvou.",
+    "tags": [
+      "Vzdělávání"
+    ]
+  },
+  {
+    "id": "a22e6904-7765-4426-93cb-2e1206cff30e",
+    "title": "Podpora romské integrace",
+    "statement": "Kraj by měl podporovat neziskové organizace v oblasti integrace romské menšiny.",
+    "detail": "Zastánci tvrdí, že dotace jsou nezbytné pro zlepšení začlenění, kritici upozorňují na možné neefektivní využití těchto prostředků.",
+    "tags": [
+      "Sociální začleňování"
+    ]
+  },
+  {
+    "id": "5f8f2110-d09e-4647-86bf-27bd4552114d",
+    "title": "Nové přehrady",
+    "statement": "Myslím si, že kraj má podporovat stavbu nových přehrad.",
+    "detail": "Přehrady jsou důležité pro zajištění dostatku vody v sušších regionech. Zastánci tvrdí, že to je klíčové pro zemědělství i energetiku atd., kritici poukazují na negativní ekologické dopady.",
+    "tags": [
+      "Životní prostředí"
+    ]
+  },
+  {
+    "id": "bde5624a-7f8c-4d05-839e-655010417807",
+    "title": "Výuka sousedních jazyků",
+    "statement": "Kraj by měl ve svých školách podporovat výuku sousedního jazyka.",
+    "detail": "Podpora výuky němčiny nebo polštiny může zlepšit uplatnitelnost absolventů. Odpůrci nepodporují jazykovou výuku nebo chtějí pro rodiče větší autonomii, co budou jejich děti studovat.",
+    "tags": [
+      "Vzdělávání"
+    ]
+  },
+  {
+    "id": "0d3cf9cf-9320-4954-a99d-ea3ee975cc93",
+    "title": "Dětské exekuce",
+    "statement": "Kraj a jeho organizace by měly plošně zrušit dluhy, které exekučně vymáhá po dětech.",
+    "detail": "Zastánci tvrdí, že všechny dluhy by měly být vymáhány spravedlivě, kritici volají po odpuštění dětských dluhů z morálních důvodů.",
+    "tags": [
+      "Dluhová politika"
+    ]
+  },
+  {
+    "id": "18e71205-ad89-4a90-8741-c1b9a2727d1d",
+    "title": "Venkovské prodejny",
+    "statement": "Souhlasím, aby kraj finančně podporoval venkovské prodejny potravin a jejich udržení.",
+    "detail": "Venkovské prodejny jsou důležité pro dostupnost základních potravin v odlehlých oblastech. Kritici namítají, že dotovat tyto prodejny povede ke zbytečnému zatěžování rozpočtu kraje.",
+    "tags": [
+      "Podpora venkova"
+    ]
+  },
+  {
+    "id": "369b7ba5-08d7-4531-be7b-28aabfdefda4",
+    "title": "Dobré řízení poslední 4 roky",
+    "statement": "Podle mého názoru: kraj byl v posledním volebním období řízen dobře.",
+    "detail": "Hodnocení kvality řízení kraje se liší podle preferencí voličů a politické situace.",
+    "tags": [
+      "Správa"
+    ]
+  }
+]

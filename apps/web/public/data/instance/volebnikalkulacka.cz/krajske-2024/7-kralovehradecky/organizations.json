@@ -1,0 +1,93 @@
+[
+  {
+    "id": "ab0afd56-97c1-434e-bbfb-dde5e03fdda1",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7ebe2158-9919-43a4-a7b8-fea4a616f50d",
+    "name": "ČSSD",
+    "shortName": "ČSSD+DOMOV",
+    "sortName": "ČSSD+DOMOV",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c90903e3-8a71-45cf-a085-c79095872b2d",
+    "name": "SILNÍ LÍDŘI pro kraj - ODS, KDU-ČSL a VÝCHODOČEŠI",
+    "shortName": "KDU-ČSL+ODS+VČ",
+    "sortName": "KDU-ČSL+ODS+VČ",
+    "type": "candidate-list"
+  },
+  {
+    "id": "d05c8ac0-76cc-4a36-abe0-e8c74d93b228",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - minimální MZDA 70.000 Kč, minimální DŮCHOD 50.000 Kč, ZRUŠENÍ daně z nemovitostí, …",
+    "shortName": "ND+LŽPL",
+    "sortName": "ND+LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2c14c9f0-3a3c-4cc1-ac87-51d748619782",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "df17fd3d-c8ad-4310-a193-b6ebe9fed50d",
+    "name": "HLAS samospráv – pro spravedlivý rozvoj Královéhradeckého kraje",
+    "shortName": "SOCDEM+SproK+RH",
+    "sortName": "SOCDEM+SproK+RH",
+    "type": "candidate-list"
+  },
+  {
+    "id": "b68d1436-2fc1-4ce8-9916-4b95899d9260",
+    "name": "STAČILO!, koalice Komunistické strany Čech a Moravy a České strany národně sociální",
+    "shortName": "ČSNS+KSČM",
+    "sortName": "ČSNS+KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "39164437-7062-440f-9c6a-f87714b8a47d",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "21c96f6d-931f-442f-9229-41fea0e12e17",
+    "name": "Jasný Signál Nezávislých",
+    "shortName": "JaSaN",
+    "sortName": "JaSaN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5132a74b-7a62-43bb-a8b4-86bb27fb74cc",
+    "name": "Koruna Česká (monarchistická strana Čech, Moravy a Slezska)",
+    "shortName": "Monarchiste.cz",
+    "sortName": "Monarchiste.cz",
+    "type": "candidate-list"
+  },
+  {
+    "id": "cbc42964-3ced-4ad7-9ef1-5d53f27588eb",
+    "name": "Čtyřkoalice STAROSTOVÉ, TOP 09, HDK, LES",
+    "shortName": "STAN+TOP+LES+HD",
+    "sortName": "STAN+TOP+LES+HD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "11bf173c-f461-429d-bcc3-588e2abc44b2",
+    "name": "SPD, Trikolora, PRO a Svobodní",
+    "shortName": "Svo+SPD+Tri+PRO",
+    "sortName": "Svo+SPD+Tri+PRO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "96c554f4-b8d0-4a87-93f3-0dbd52b4047c",
+    "name": "PRO KRAJINU - Zelení, Změna pro Hradec a nezávislí",
+    "shortName": "Zelení+SEN 21",
+    "sortName": "Zelení+SEN 21",
+    "type": "candidate-list"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "id": "9758c0dd-dfe7-4434-a941-f8b5a17a5b98",
+  "key": "krajske-2024",
+  "createdAt": "2021-01-01T00:00:00+01:00",
+  "title": "Krajské volby 2024",
+  "shortTitle": "Krajské volby 2024",
+  "calculatorGroup": {
+    "id": "09b9bea4-74b9-4f28-9d19-f906a40503a5",
+    "key": "krajske-2024"
+  },
+  "votingHours": [
+    {
+      "start": "2024-09-20T07:00:00+02:00",
+      "end": "2024-09-21T22:00:00+02:00"
+    }
+  ]
+}

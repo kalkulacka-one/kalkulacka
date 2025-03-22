@@ -1,0 +1,38 @@
+[
+  {
+    "id": "e21e451b-34e2-4bdf-88c3-9caae0746efc",
+    "name": "Jan Borůvka",
+    "givenName": "Jan",
+    "familyName": "Borůvka",
+    "sortName": "Borůvka Jan",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "0230ed3c-4609-4ae5-a593-5381f542c617",
+    "name": "Martin Červíček",
+    "givenName": "Martin",
+    "familyName": "Červíček",
+    "sortName": "Červíček Martin",
+    "memberOf": [
+      {
+        "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309"
+      }
+    ]
+  },
+  {
+    "id": "9f8a9461-a9b5-4b71-ae90-d9d8af113385",
+    "name": "Tomáš Magnusek",
+    "givenName": "Tomáš",
+    "familyName": "Magnusek",
+    "sortName": "Magnusek Tomáš",
+    "memberOf": [
+      {
+        "id": "80121f2b-b391-4a27-be2a-db2699e59b48"
+      }
+    ]
+  }
+]

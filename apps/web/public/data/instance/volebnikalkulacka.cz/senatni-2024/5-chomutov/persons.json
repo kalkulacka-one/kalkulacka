@@ -1,0 +1,86 @@
+[
+  {
+    "id": "cc9b4c48-6fbe-458a-beaf-ce0f1016b2aa",
+    "name": "Elvíra Hahnová",
+    "givenName": "Elvíra",
+    "familyName": "Hahnová",
+    "sortName": "Hahnová Elvíra",
+    "memberOf": [
+      {
+        "id": "6af5fa71-2a70-430e-9b29-45ead10d7018"
+      }
+    ]
+  },
+  {
+    "id": "0673157c-b874-4ee2-a328-91c78827e91e",
+    "name": "Jiří Kulhánek",
+    "givenName": "Jiří",
+    "familyName": "Kulhánek",
+    "sortName": "Kulhánek Jiří",
+    "memberOf": [
+      {
+        "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835"
+      }
+    ]
+  },
+  {
+    "id": "896fd673-6005-4003-8005-3a5207fad36f",
+    "name": "Jaroslav Komínek",
+    "givenName": "Jaroslav",
+    "familyName": "Komínek",
+    "sortName": "Komínek Jaroslav",
+    "memberOf": [
+      {
+        "id": "40a4e263-ec72-417a-8e6f-f97297351b13"
+      }
+    ]
+  },
+  {
+    "id": "0d2433e9-3f89-47c1-874a-e053dc2317e3",
+    "name": "Roman Brand",
+    "givenName": "Roman",
+    "familyName": "Brand",
+    "sortName": "Brand Roman",
+    "memberOf": [
+      {
+        "id": "2380b884-88a5-4282-a772-b8f0ba6feaa0"
+      }
+    ]
+  },
+  {
+    "id": "92b85465-17e5-48a2-85fb-1e7e77bb44f8",
+    "name": "Přemysl Rabas",
+    "givenName": "Přemysl",
+    "familyName": "Rabas",
+    "sortName": "Rabas Přemysl",
+    "memberOf": [
+      {
+        "id": "50e58d59-db2e-4949-a1c8-58cf68bd21f5"
+      }
+    ]
+  },
+  {
+    "id": "0bdb684e-43d9-45b4-a7d2-1a0153dd70b2",
+    "name": "Jiří Smetana",
+    "givenName": "Jiří",
+    "familyName": "Smetana",
+    "sortName": "Smetana Jiří",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "d4580ba9-9dd8-435a-8194-93d1baf46d81",
+    "name": "Štefan Drozd",
+    "givenName": "Štefan",
+    "familyName": "Drozd",
+    "sortName": "Drozd Štefan",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  }
+]

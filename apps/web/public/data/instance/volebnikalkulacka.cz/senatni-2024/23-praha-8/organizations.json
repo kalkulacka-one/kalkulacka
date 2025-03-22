@@ -1,0 +1,58 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "eeef1d79-7c04-42e4-a427-5ceb9ae9df1a",
+    "name": "KDU+ODS+PatriČR",
+    "sortName": "KDU+ODS+PatriČR",
+    "shortName": "KDU+ODS+PatriČR",
+    "type": "candidate-list"
+  },
+  {
+    "id": "966d63f4-4986-4345-9c8e-7a9fbc66c37b",
+    "name": "Mourek",
+    "sortName": "Mourek",
+    "shortName": "Mourek",
+    "type": "candidate-list"
+  },
+  {
+    "id": "fac96e1b-54cc-4cc0-840e-9443f154c03f",
+    "name": "Piráti",
+    "sortName": "Piráti",
+    "shortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba",
+    "name": "Svobodní",
+    "sortName": "Svobodní",
+    "shortName": "Svobodní",
+    "type": "candidate-list"
+  },
+  {
+    "id": "01d12899-6c90-4cc3-bb57-a21d5a927529",
+    "name": "TOP 09",
+    "sortName": "TOP 09",
+    "shortName": "TOP 09",
+    "type": "candidate-list"
+  }
+]

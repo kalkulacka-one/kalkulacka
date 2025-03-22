@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6af5fa71-2a70-430e-9b29-45ead10d7018",
+    "name": "ČSSD",
+    "sortName": "ČSSD",
+    "shortName": "ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "fd9e3911-59bb-468e-ade0-eaa3601de370",
+    "name": "KONS+ODS+Mon+Sv",
+    "sortName": "KONS+ODS+Mon+Sv",
+    "shortName": "KONS+ODS+Mon+Sv",
+    "type": "candidate-list"
+  },
+  {
+    "id": "fac96e1b-54cc-4cc0-840e-9443f154c03f",
+    "name": "Piráti",
+    "sortName": "Piráti",
+    "shortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "01d12899-6c90-4cc3-bb57-a21d5a927529",
+    "name": "TOP 09",
+    "sortName": "TOP 09",
+    "shortName": "TOP 09",
+    "type": "candidate-list"
+  }
+]

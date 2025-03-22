@@ -1,0 +1,23 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "80121f2b-b391-4a27-be2a-db2699e59b48",
+    "name": "TMS",
+    "sortName": "TMS",
+    "shortName": "TMS",
+    "type": "candidate-list"
+  }
+]

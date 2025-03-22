@@ -1,0 +1,51 @@
+[
+  {
+    "id": "89395259-1fd2-4a28-8a86-537ecf69944f",
+    "name": "JaSaN",
+    "sortName": "JaSaN",
+    "shortName": "JaSaN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "aa886e40-4ca9-4d65-b909-4a15928e1861",
+    "name": "KDU-ČSL+Nestran",
+    "sortName": "KDU-ČSL+Nestran",
+    "shortName": "KDU-ČSL+Nestran",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8331b263-fda5-459d-b28c-ddb84f281963",
+    "name": "NK",
+    "sortName": "NK",
+    "shortName": "NK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5c2df6a6-1511-4f98-94eb-95dacef147d6",
+    "name": "SOCDEM+SproK",
+    "sortName": "SOCDEM+SproK",
+    "shortName": "SOCDEM+SproK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4f390d39-afd6-4aae-a854-842dd8148163",
+    "name": "SpV",
+    "sortName": "SpV",
+    "shortName": "SpV",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1dbf4591-b049-4b3e-97c0-73f31db974d1",
+    "name": "Trikolora",
+    "sortName": "Trikolora",
+    "shortName": "Trikolora",
+    "type": "candidate-list"
+  }
+]

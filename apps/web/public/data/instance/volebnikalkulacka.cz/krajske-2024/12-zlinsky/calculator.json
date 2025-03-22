@@ -1,0 +1,16 @@
+{
+  "id": "2b8bd05b-d736-4e17-8ecd-21d40af25144",
+  "createdAt": "2021-01-01T00:00:00+01:00",
+  "intro": "Vítejte ve Volební kalkulačce pro krajské volby 2024 pro Zlínský kraj. Čeká vás 25 otázek. Stejné otázky dostaly všechny kandidující strany. Zodpovězení otázek zabere zhruba 10 minut a na konci se dozvíte, jak se jednotlivé strany shodují s vašimi názory.\n\nOslovili jsme všechny strany bez výjimky. Pokud se některá neobjeví ve výsledcích, je to proto, že (zatím) neposlala svoje odpovědi.",
+  "calculatorGroup": {
+    "id": "09b9bea4-74b9-4f28-9d19-f906a40503a5",
+    "key": "krajske-2024"
+  },
+  "election": {
+    "id": "9758c0dd-dfe7-4434-a941-f8b5a17a5b98",
+    "key": "krajske-2024"
+  },
+  "variant": {
+    "key": "12-zlinsky"
+  }
+}

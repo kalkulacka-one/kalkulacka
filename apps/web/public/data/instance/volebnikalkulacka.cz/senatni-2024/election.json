@@ -1,0 +1,21 @@
+{
+  "id": "8b28e4b7-96b6-4007-b289-2b0998f85beb",
+  "key": "senatni-2024",
+  "createdAt": "2021-01-01T00:00:00+01:00",
+  "title": "Senátní volby 2024",
+  "shortTitle": "Senátní volby 2024",
+  "calculatorGroup": {
+    "id": "0b0c8620-c0e1-469b-a6b6-0e26cfc77cb7",
+    "key": "senatni-2024"
+  },
+  "votingHours": [
+    {
+      "start": "2024-09-20T07:00:00+02:00",
+      "end": "2024-09-21T14:00:00+02:00"
+    },
+    {
+      "start": "2024-09-27T07:00:00+02:00",
+      "end": "2024-09-28T14:00:00+02:00"
+    }
+  ]
+}

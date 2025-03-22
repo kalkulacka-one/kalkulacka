@@ -1,0 +1,62 @@
+[
+  {
+    "id": "49f073ad-9c6c-40ee-b9fb-8339766f9606",
+    "name": "Vladimír Slávka",
+    "givenName": "Vladimír",
+    "familyName": "Slávka",
+    "sortName": "Slávka Vladimír",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "15bf2434-3580-4fad-8294-b8684bb8b814",
+    "name": "Roman Málek",
+    "givenName": "Roman",
+    "familyName": "Málek",
+    "sortName": "Málek Roman",
+    "memberOf": [
+      {
+        "id": "a7998914-b3ad-4567-8c14-3e23f3fbb2b2"
+      }
+    ]
+  },
+  {
+    "id": "f6f50a94-5f98-45da-b224-cc9dc60da37c",
+    "name": "Jan Tecl",
+    "givenName": "Jan",
+    "familyName": "Tecl",
+    "sortName": "Tecl Jan",
+    "memberOf": [
+      {
+        "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309"
+      }
+    ]
+  },
+  {
+    "id": "c18a5fd1-a480-4868-afd5-bf55084d05e6",
+    "name": "Milan Chaloupecký",
+    "givenName": "Milan",
+    "familyName": "Chaloupecký",
+    "sortName": "Chaloupecký Milan",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "84518935-e166-43f0-84d7-71aec2ef3f12",
+    "name": "Miroslav Krčil",
+    "givenName": "Miroslav",
+    "familyName": "Krčil",
+    "sortName": "Krčil Miroslav",
+    "memberOf": [
+      {
+        "id": "c52430ee-d000-4c80-9447-e9e7f5c2fe59"
+      }
+    ]
+  }
+]

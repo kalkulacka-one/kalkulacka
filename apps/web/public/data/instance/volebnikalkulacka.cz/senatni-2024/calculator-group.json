@@ -1,0 +1,173 @@
+{
+  "id": "0b0c8620-c0e1-469b-a6b6-0e26cfc77cb7",
+  "createdAt": "2021-01-01T00:00:00+01:00",
+  "key": "senatni-2024",
+  "election": {
+    "id": "8b28e4b7-96b6-4007-b289-2b0998f85beb",
+    "key": "senatni-2024"
+  },
+  "calculators": [
+    {
+      "id": "68825da8-cf1a-4f88-905e-bdf0199ead9d",
+      "variant": {
+        "key": "2-sokolov"
+      }
+    },
+    {
+      "id": "850731e4-6f23-4f67-b49f-0a85a5ed4fbf",
+      "variant": {
+        "key": "5-chomutov"
+      }
+    },
+    {
+      "id": "c5ae3fc3-054d-4a3d-92db-a2e97fdeea8b",
+      "variant": {
+        "key": "8-rokycany"
+      }
+    },
+    {
+      "id": "79b52e66-aef8-4580-84a1-2e543cc4054f",
+      "variant": {
+        "key": "11-domazlice"
+      }
+    },
+    {
+      "id": "9f9c83a6-a77d-471c-96be-a72477b0df41",
+      "variant": {
+        "key": "14-ceske-budejovice"
+      }
+    },
+    {
+      "id": "30c6c885-244f-409e-bec0-7abd4163ebf1",
+      "variant": {
+        "key": "17-praha-12"
+      }
+    },
+    {
+      "id": "7fbed94a-6e8f-4ff1-b32e-9c1b69f222f4",
+      "variant": {
+        "key": "20-praha-4"
+      }
+    },
+    {
+      "id": "335acf24-d8be-40a3-82ad-55cffe40247c",
+      "variant": {
+        "key": "23-praha-8"
+      }
+    },
+    {
+      "id": "acdbfc91-4652-4ec9-b403-84cd223362fe",
+      "variant": {
+        "key": "26-praha-2"
+      }
+    },
+    {
+      "id": "68a3bb4b-cf34-466f-a145-85957ff3e7c1",
+      "variant": {
+        "key": "29-litomerice"
+      }
+    },
+    {
+      "id": "d6558726-d459-4022-b8a5-12a00b1c6a86",
+      "variant": {
+        "key": "32-teplice"
+      }
+    },
+    {
+      "id": "80c98841-7e0b-4a61-bc15-dd0254be47ea",
+      "variant": {
+        "key": "35-jablonec-nad-nisou"
+      }
+    },
+    {
+      "id": "ee4449b4-b4bb-4fc5-afc1-501c12528063",
+      "variant": {
+        "key": "38-mlada-boleslav"
+      }
+    },
+    {
+      "id": "898f1d1f-5331-46f4-a4a8-6b43ff2aec9f",
+      "variant": {
+        "key": "41-benesov"
+      }
+    },
+    {
+      "id": "ca1dd226-72f0-4822-b672-e52e8a1028f0",
+      "variant": {
+        "key": "44-chrudim"
+      }
+    },
+    {
+      "id": "e3a44a8a-1989-4e42-b4d1-ab0223dae4c9",
+      "variant": {
+        "key": "47-nachod"
+      }
+    },
+    {
+      "id": "dfa844a6-13e3-4c45-9b2e-228ff3b94744",
+      "variant": {
+        "key": "50-svitavy"
+      }
+    },
+    {
+      "id": "ee086a7f-a681-41e8-8c3f-16ea50d7aab1",
+      "variant": {
+        "key": "53-trebic"
+      }
+    },
+    {
+      "id": "f450635e-5dc6-4a67-8235-13c59c29180c",
+      "variant": {
+        "key": "56-breclav"
+      }
+    },
+    {
+      "id": "9e815c9e-1616-4eea-aa06-b88985b2fa31",
+      "variant": {
+        "key": "59-brno-mesto"
+      }
+    },
+    {
+      "id": "72004c64-0d24-4ffa-ae4e-0f165b8421e5",
+      "variant": {
+        "key": "62-prostejov"
+      }
+    },
+    {
+      "id": "dfc58697-dcd8-4c3d-9f39-637bb1fba317",
+      "variant": {
+        "key": "65-sumperk"
+      }
+    },
+    {
+      "id": "02c3966f-4ae2-4f94-99f6-4241dc9d1b46",
+      "variant": {
+        "key": "68-opava"
+      }
+    },
+    {
+      "id": "04d9b3a3-fe3a-461a-98d6-b313cd8b3e3b",
+      "variant": {
+        "key": "71-ostrava-mesto"
+      }
+    },
+    {
+      "id": "e985a1f6-a5b7-458c-b486-5ef28ee09c5c",
+      "variant": {
+        "key": "74-karvina"
+      }
+    },
+    {
+      "id": "07c89cb5-ea1e-4a87-b3c8-051a7437d465",
+      "variant": {
+        "key": "77-vsetin"
+      }
+    },
+    {
+      "id": "c9c0c0c7-0a90-4cf1-9a4d-d8a460d5544d",
+      "variant": {
+        "key": "80-zlin"
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "3f7556bd-601a-40f9-8314-5f47079ea8af",
+    "name": "Eva Kislingerová",
+    "givenName": "Eva",
+    "familyName": "Kislingerová",
+    "sortName": "Kislingerová Eva",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "47f1dfbe-1b60-4bcb-942d-b19ed56133cf",
+    "name": "Eva Zažímalová",
+    "givenName": "Eva",
+    "familyName": "Zažímalová",
+    "sortName": "Zažímalová Eva",
+    "memberOf": [
+      {
+        "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309"
+      }
+    ]
+  },
+  {
+    "id": "234fa6b7-3f3a-423a-8ae9-db666041b7e5",
+    "name": "Marek Hilšer",
+    "givenName": "Marek",
+    "familyName": "Hilšer",
+    "sortName": "Hilšer Marek",
+    "memberOf": [
+      {
+        "id": "f0a84417-fb42-4554-b3c5-316e9733110d"
+      }
+    ]
+  },
+  {
+    "id": "f3f2fd9d-a281-44b0-b6c3-845ccb809809",
+    "name": "Bronislav Poul",
+    "givenName": "Bronislav",
+    "familyName": "Poul",
+    "sortName": "Poul Bronislav",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "21c85646-fd70-4ebc-aea9-894f9c6e5719",
+    "name": "Miroslav Bárta",
+    "givenName": "Miroslav",
+    "familyName": "Bárta",
+    "sortName": "Bárta Miroslav",
+    "memberOf": [
+      {
+        "id": "a4af352c-2d35-4c43-8b81-8a3a2ab8180e"
+      }
+    ]
+  }
+]
