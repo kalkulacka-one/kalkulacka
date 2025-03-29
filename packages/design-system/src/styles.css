@@ -43,10 +43,16 @@
   --background-color-primary-strong: var(--primary-50);
   --background-color-primary-strong-hover: var(--primary-30);
   --background-color-primary-strong-active: var(--primary-10);
+  --background-color-primary-backdrop: rgb(from var(--primary-70) r g b / 0.1);
+  --background-color-primary-backdrop-hover: rgb(from var(--primary-70) r g b / 0.2);
+  --background-color-primary-backdrop-active: rgb(from var(--primary-70) r g b / 0.6);
   --background-color-secondary: var(--secondary-90);
   --background-color-secondary-strong: var(--secondary-50);
   --background-color-secondary-strong-hover: var(--secondary-30);
   --background-color-secondary-strong-active: var(--secondary-10);
+  --background-color-secondary-backdrop: rgb(from var(--secondary-70) r g b / 0.1);
+  --background-color-secondary-backdrop-hover: rgb(from var(--secondary-70) r g b / 0.2);
+  --background-color-secondary-backdrop-active: rgb(from var(--secondary-70) r g b / 0.6);
 
   --text-color-neutral: var(--neutral-30);
   --text-color-neutral-hover: var(--neutral-50);
@@ -70,6 +76,7 @@
   --border-color-neutral-disabled: var(--neutral-70);
   --border-color-primary: var(--primary-70);
   --border-color-primary-strong-hover: var(--primary-30);
+  --border-color-primary-strong-active: var(--primary-10);
   --border-color-primary-strong: var(--primary-50);
   --border-color-secondary: var(--secondary-70);
   --border-color-secondary-strong-hover: var(--secondary-30);
@@ -83,6 +90,13 @@
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
+
+  --breakpoint-*: initial;
+  --breakpoint-xs: 36rem;  /* 576px / 16 */
+  --breakpoint-sm: 48rem;  /* 768px / 16 */
+  --breakpoint-md: 62rem;  /* 992px / 16 */
+  --breakpoint-lg: 75rem;  /* 1200px / 16 */
+  --breakpoint-xl: 87.5rem; /* 1400px / 16 */
 }
 
 @layer base {
