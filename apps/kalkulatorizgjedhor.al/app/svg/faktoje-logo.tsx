@@ -1,13 +1,4 @@
-import Image from "next/image";
-
-export function FaktojeLogo(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <Image
-      src="/faktoje.png"
-      alt="Faktoje"
-      width={96}
-      height={20}
-      {...props}
-    />
-  );
-} 
+export function FaktojeLogo() {
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src="/faktoje.png" alt="Faktoje" width={96} height={20} />;
+}

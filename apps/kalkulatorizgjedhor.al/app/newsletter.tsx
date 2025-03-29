@@ -67,10 +67,12 @@ export default function Newsletter() {
       ) : (
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-5xl font-bold leading-[1.03] tracking-snug text-neutral-strong">
-            Ne po përgatisim Kalkulatorin Zgjedhor, mjetin e parë të këtij lloji për Shqipërinë – mos e humbisni!
+            Ne po përgatisim Kalkulatorin Zgjedhor, mjetin e parë të këtij lloji
+            për Shqipërinë – mos e humbisni!
           </h2>
           <p className="text-sm leading-[1.23] text-neutral">
-            Lini emailin tuaj dhe bëhuni ndër të parët që do të mësojnë për lançimin e tij.
+            Lini emailin tuaj dhe bëhuni ndër të parët që do të mësojnë për
+            lançimin e tij.
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex w-fit flex-wrap justify-center gap-4">

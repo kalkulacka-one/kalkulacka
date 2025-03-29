@@ -7,4 +7,4 @@ export function YourNewOrgLogo(props: React.SVGProps<SVGSVGElement>) {
       {/* Your SVG content */}
     </svg>
   );
-} 
+}

@@ -7,9 +7,9 @@ import { Blobs, Header } from "@repo/design-system/ui";
 import { Footer } from "./components/footer";
 
 const headerText = {
-  default: "Kalkulatori Zgjedhor",  // Albanian as default
+  default: "Kalkulatori Zgjedhor", // Albanian as default
   en: "Election Calculator",
-  cs: "Volební kalkulačka"
+  cs: "Volební kalkulačka",
 };
 
 export default function RootLayout({
