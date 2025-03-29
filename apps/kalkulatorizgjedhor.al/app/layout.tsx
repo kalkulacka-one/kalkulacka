@@ -1,29 +1,34 @@
 "use client";
 
-import "./globals.css";
 import "@repo/design-system/styles";
 import "@repo/design-system/themes/theme-default";
-import { Blobs, Header, Footer } from "@repo/design-system/ui";
+import "./globals.css";
+import { Blobs, Header } from "@repo/design-system/ui";
+import { Footer } from "./components/footer";
+
+const headerText = {
+  default: "Kalkulatori Zgjedhor", // Albanian as default
+  en: "Election Calculator",
+  cs: "Volební kalkulačka",
+};
 
 export default function RootLayout({
-  params: { lang },
   children,
 }: {
-  params: { lang: string };
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang={lang}>
+    <html lang="sq">
       <head>
         <script
           defer
-          data-domain="volebnikalkulacka.cz"
+          data-domain="kalkulatorizgjedhor.al"
           src="/js/script.tagged-events.outbound-links.js"
         />
       </head>
       <body>
         <main className="relative grid h-screen p-4">
-          <Header />
+          <Header text={headerText.default} />
           <Blobs />
           {children}
           <Footer />

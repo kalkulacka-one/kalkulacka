@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root,
+html[lang] {
+  /* Primary colors - Based on near black */
+  --primary-90: #e6e6e6 !important;
+  --primary-70: #999999 !important;
+  --primary-50: #000000 !important;
+  --primary-30: #000000 !important;
+  --primary-10: #000000 !important;
+
+  /* Secondary colors - Based on #DA291C (red) */
+  --secondary-90: #fde7e6 !important;
+  --secondary-70: #f4a19a !important;
+  --secondary-50: #DA291C !important;
+  --secondary-30: #a11f15 !important;
+  --secondary-10: #68140d !important;
+
+  /* Neutral colors - Based on #C0C0C0 as neutral-10 */
+  --neutral-100: #ffffff !important;
+  --neutral-90: #f5f5f5 !important;
+  --neutral-70: #e0e0e0 !important;
+  --neutral-50: #C0C0C0 !important;
+  --neutral-30: #808080 !important;
+  --neutral-10: #404040 !important;
+  --neutral-0: #000000 !important;
+}
+
 @layer utilities {
   .font-condensed {
     font-stretch: condensed;

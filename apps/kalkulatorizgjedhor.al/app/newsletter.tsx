@@ -42,10 +42,10 @@ export default function Newsletter() {
       const response = await subscribe(data);
       if (response.success) {
         // console.log("Subscribed");
-        setResponseMessage("Děkujeme za vyplnění");
+        setResponseMessage("Faleminderit për plotësimin!");
       } else if (response.error) {
         // console.log("Error", response.error.message);
-        setResponseMessage("Tento e-mail se již v databázi nachází.");
+        setResponseMessage("Ky email tashmë ndodhet në bazën e të dhënave.");
       }
     } catch (error) {
       console.log("Unexpected error", error);
@@ -67,11 +67,12 @@ export default function Newsletter() {
       ) : (
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-5xl font-bold leading-[1.03] tracking-snug text-neutral-strong">
-            Chystáme novou Volební kalkulačku, buďte u toho s námi!
+            Ne po përgatisim Kalkulatorin Zgjedhor, mjetin e parë të këtij lloji
+            për Shqipërinë – mos e humbisni!
           </h2>
           <p className="text-sm leading-[1.23] text-neutral">
-            Nechte nám svůj e-mail a buďte mezi prvními, kdo se dozví o jejím
-            spuštění.
+            Lini emailin tuaj dhe bëhuni ndër të parët që do të mësojnë për
+            lançimin e tij.
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex w-fit flex-wrap justify-center gap-4">
@@ -98,13 +99,13 @@ export default function Newsletter() {
                   fitContent
                   kind="outline"
                 >
-                  Odeslat
+                  Dërgo
                 </Button>
               </div>
             </div>
           </form>
           <p className="text-xs leading-[1.23] text-neutral">
-            Odesláním souhlasíte se zasíláním novinek o volební kalkulačce.
+            Duke e dërguar, pranoni të merrni lajme rreth Kalkulatorit Zgjedhor.
           </p>
         </div>
       )}
