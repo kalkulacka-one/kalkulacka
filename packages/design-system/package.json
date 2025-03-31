@@ -8,7 +8,9 @@
     "./fonts": "./dist/fonts",
     "./heading": "./src/heading.tsx",
     "./tailwind": "./tailwind.config.ts",
-    "./demo": "./src/index.ts"
+    "./demo": "./src/index.ts",
+    "./svg": "./src/svg/index.ts",
+    "./ui": "./src/ui/index.ts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
@@ -24,6 +26,8 @@
   "packageManager": "npm@11.2.0",
   "devDependencies": {
     "@repo/typescript-config": "*",
+    "@tailwindcss/cli": "^4.0.14",
+    "@tailwindcss/postcss": "^4.0.14",
     "@turbo/gen": "^2.4.4",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.11",
@@ -31,12 +35,12 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "@tailwindcss/cli": "^4.0.14",
-    "@tailwindcss/postcss": "^4.0.14",
     "typescript": "^5.8.2"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
-    "clsx": "^2.1.1"
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.2"
   }
 }
