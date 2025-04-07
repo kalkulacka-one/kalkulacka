@@ -1,0 +1,74 @@
+[
+  {
+    "id": "facd4259-3acf-4f51-9c1c-786e40c9526a",
+    "name": "Jan Schiller",
+    "givenName": "Jan",
+    "familyName": "Schiller",
+    "sortName": "Schiller Jan",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "3b795f11-404c-4751-95a2-17c1099194c2",
+    "name": "Ivan Vinický",
+    "givenName": "Ivan",
+    "familyName": "Vinický",
+    "sortName": "Vinický Ivan",
+    "memberOf": [
+      {
+        "id": "6af5fa71-2a70-430e-9b29-45ead10d7018"
+      }
+    ]
+  },
+  {
+    "id": "45a5f383-d4de-4841-a483-e6a6ad561f9c",
+    "name": "Tomáš Vandas",
+    "givenName": "Tomáš",
+    "familyName": "Vandas",
+    "sortName": "Vandas Tomáš",
+    "memberOf": [
+      {
+        "id": "c2a3330d-26fb-4c9b-bb22-29697e08da9c"
+      }
+    ]
+  },
+  {
+    "id": "2eb6e505-7149-4cdb-bf4f-a83f9bd26591",
+    "name": "Hynek Hanza",
+    "givenName": "Hynek",
+    "familyName": "Hanza",
+    "sortName": "Hanza Hynek",
+    "memberOf": [
+      {
+        "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309"
+      }
+    ]
+  },
+  {
+    "id": "d3617e79-3008-4a9c-b87a-2dd8f42ca65a",
+    "name": "Jiří Řehák",
+    "givenName": "Jiří",
+    "familyName": "Řehák",
+    "sortName": "Řehák Jiří",
+    "memberOf": [
+      {
+        "id": "50e58d59-db2e-4949-a1c8-58cf68bd21f5"
+      }
+    ]
+  },
+  {
+    "id": "46644c31-036e-4c64-ab6d-98a4e01069ae",
+    "name": "Zdeněk Žák",
+    "givenName": "Zdeněk",
+    "familyName": "Žák",
+    "sortName": "Žák Zdeněk",
+    "memberOf": [
+      {
+        "id": "4f390d39-afd6-4aae-a854-842dd8148163"
+      }
+    ]
+  }
+]

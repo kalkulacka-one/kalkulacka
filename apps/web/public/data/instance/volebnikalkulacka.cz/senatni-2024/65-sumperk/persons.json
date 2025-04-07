@@ -1,0 +1,38 @@
+[
+  {
+    "id": "e6f4f22a-9957-4c72-be64-44330a134e1c",
+    "name": "Miroslav Adámek",
+    "givenName": "Miroslav",
+    "familyName": "Adámek",
+    "sortName": "Adámek Miroslav",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "42e96abd-a256-41c6-89b6-1a638453244a",
+    "name": "Stanislav Balík",
+    "givenName": "Stanislav",
+    "familyName": "Balík",
+    "sortName": "Balík Stanislav",
+    "memberOf": [
+      {
+        "id": "8331b263-fda5-459d-b28c-ddb84f281963"
+      }
+    ]
+  },
+  {
+    "id": "aeae66ba-8dcd-4fda-a581-565f65ae22d3",
+    "name": "Vladimír Hošek",
+    "givenName": "Vladimír",
+    "familyName": "Hošek",
+    "sortName": "Hošek Vladimír",
+    "memberOf": [
+      {
+        "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba"
+      }
+    ]
+  }
+]

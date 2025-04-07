@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "46927f39-fffa-44de-aa6b-ee76f53052bf",
+    "name": "KDU-ČSL",
+    "sortName": "KDU-ČSL",
+    "shortName": "KDU-ČSL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6f007ce1-2275-4abc-b38f-65913d78f7e6",
+    "name": "NEZ",
+    "sortName": "NEZ",
+    "shortName": "NEZ",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8331b263-fda5-459d-b28c-ddb84f281963",
+    "name": "NK",
+    "sortName": "NK",
+    "shortName": "NK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "37a912ea-5bb0-476f-a124-6729ba67cc7e",
+    "name": "PRO 2022",
+    "sortName": "PRO 2022",
+    "shortName": "PRO 2022",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  }
+]

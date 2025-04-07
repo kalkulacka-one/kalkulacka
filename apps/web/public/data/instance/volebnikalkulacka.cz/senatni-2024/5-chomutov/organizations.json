@@ -1,0 +1,51 @@
+[
+  {
+    "id": "6af5fa71-2a70-430e-9b29-45ead10d7018",
+    "name": "ČSSD",
+    "sortName": "ČSSD",
+    "shortName": "ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835",
+    "name": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "40a4e263-ec72-417a-8e6f-f97297351b13",
+    "name": "KSČM",
+    "sortName": "KSČM",
+    "shortName": "KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2380b884-88a5-4282-a772-b8f0ba6feaa0",
+    "name": "LS",
+    "sortName": "LS",
+    "shortName": "LS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "50e58d59-db2e-4949-a1c8-58cf68bd21f5",
+    "name": "SEN 21",
+    "sortName": "SEN 21",
+    "shortName": "SEN 21",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  }
+]

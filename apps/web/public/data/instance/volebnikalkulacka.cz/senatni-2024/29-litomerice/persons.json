@@ -1,0 +1,98 @@
+[
+  {
+    "id": "3a702fd3-bdcb-42a3-bd7e-24627479b1d4",
+    "name": "Ondřej Štěrba",
+    "givenName": "Ondřej",
+    "familyName": "Štěrba",
+    "sortName": "Štěrba Ondřej",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "aa7954e0-6faa-45c6-8f64-e27a1067ec44",
+    "name": "Jan Skalický",
+    "givenName": "Jan",
+    "familyName": "Skalický",
+    "sortName": "Skalický Jan",
+    "memberOf": [
+      {
+        "id": "bc382abd-a642-43b9-b64e-0ca563ac4ca3"
+      }
+    ]
+  },
+  {
+    "id": "4003248e-230e-4097-92cf-a0b3946672ec",
+    "name": "Vladimír Vlk",
+    "givenName": "Vladimír",
+    "familyName": "Vlk",
+    "sortName": "Vlk Vladimír",
+    "memberOf": [
+      {
+        "id": "6af5fa71-2a70-430e-9b29-45ead10d7018"
+      }
+    ]
+  },
+  {
+    "id": "ae18e0d7-098c-48ea-8838-ec3df6eb6fdc",
+    "name": "Ladislav Chlupáč",
+    "givenName": "Ladislav",
+    "familyName": "Chlupáč",
+    "sortName": "Chlupáč Ladislav",
+    "memberOf": [
+      {
+        "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835"
+      }
+    ]
+  },
+  {
+    "id": "c31d09cb-758b-4862-916a-ed554dac6fa1",
+    "name": "Miroslav Jiránek",
+    "givenName": "Miroslav",
+    "familyName": "Jiránek",
+    "sortName": "Jiránek Miroslav",
+    "memberOf": [
+      {
+        "id": "fac96e1b-54cc-4cc0-840e-9443f154c03f"
+      }
+    ]
+  },
+  {
+    "id": "4ec18352-1d18-41ee-a3bc-e8ba729a4bf9",
+    "name": "Ilja Baudyš",
+    "givenName": "Ilja",
+    "familyName": "Baudyš",
+    "sortName": "Baudyš Ilja",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "5a9b98e0-d663-40e7-b4f2-e0c5e40f9848",
+    "name": "Petr Liška",
+    "givenName": "Petr",
+    "familyName": "Liška",
+    "sortName": "Liška Petr",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  },
+  {
+    "id": "d68c8fc9-8547-4b66-9086-0ba900036ebc",
+    "name": "Martin Kratochvíl",
+    "givenName": "Martin",
+    "familyName": "Kratochvíl",
+    "sortName": "Kratochvíl Martin",
+    "memberOf": [
+      {
+        "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba"
+      }
+    ]
+  }
+]

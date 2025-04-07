@@ -1,0 +1,37 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7cbe01ba-db6b-4969-a91c-68ff4e6c3f2f",
+    "name": "KDU+PROPLZ+ADS",
+    "sortName": "KDU+PROPLZ+ADS",
+    "shortName": "KDU+PROPLZ+ADS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "46ef04cd-61f7-49cc-8f7a-169995873fe4",
+    "name": "ODSMonarTOPOPAT",
+    "sortName": "ODSMonarTOPOPAT",
+    "shortName": "ODSMonarTOPOPAT",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "id": "b342ff6e-a45e-4d17-b1f5-62d376456259",
+    "reference": {
+      "id": "1292fa67-6d0a-4c0b-9fb4-1dcb0de09191",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "d2f09893-b125-4c8c-9fc2-f02e8a39a8bb",
+    "reference": {
+      "id": "805f0199-24cb-4b6f-9f12-2fa5ab5c0b03",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "8f935b69-aca9-4c15-a622-8ff48fada00a",
+    "reference": {
+      "id": "c299b047-43a3-4849-83f4-56f62f990358",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "d1bf0298-c8d5-45ad-8e1a-54474872f6de",
+    "reference": {
+      "id": "26fbd656-251e-434c-a727-7b7c7045b642",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "78ed7732-fb1a-4528-9941-9c951df554bc",
+    "reference": {
+      "id": "e1698431-d4ff-4a1a-8717-292f3de43ece",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "2a44f944-739b-4b00-9dbc-81aeda0d94df",
+    "reference": {
+      "id": "3deaa088-d6b9-4d2c-a799-644ebaba2742",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "9d2ed2df-ecb8-4f44-964d-20665fb904d8",
+    "reference": {
+      "id": "b2b14abc-84d8-49b1-8eb0-f218f7439f65",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "5a8afc2d-48b7-45f4-9499-b67f4b20ad6c",
+    "reference": {
+      "id": "d5cd5ec2-9fc4-4b37-9e92-66aee856779e",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "db6460be-e9b3-4b65-bbb9-591b84f00632",
+    "reference": {
+      "id": "5cfe5255-7001-4172-8561-e83a71cd2013",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "15fff0ae-0d61-44b4-b537-6ba0ebd7dddf",
+    "reference": {
+      "id": "4b2961dd-f362-436d-bee3-aa59e0b8d669",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "19c11521-1a68-4b48-b301-ed7f70904b21",
+    "reference": {
+      "id": "5f90c463-0208-477c-884a-803b359b50cb",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "7f3c533d-d1fa-4111-955e-0c2b434bf5db",
+    "reference": {
+      "id": "a056d5f9-853f-4911-9263-2c691ac4cac7",
+      "type": "organization"
+    }
+  },
+  {
+    "id": "b249377b-44db-407c-bc3d-b8fa41efbdb6",
+    "reference": {
+      "id": "8db900f7-e146-4ada-93f2-013a44fadd62",
+      "type": "organization"
+    }
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "id": "09b9bea4-74b9-4f28-9d19-f906a40503a5",
+  "createdAt": "2021-01-01T00:00:00+01:00",
+  "key": "krajske-2024",
+  "election": {
+    "id": "9758c0dd-dfe7-4434-a941-f8b5a17a5b98",
+    "key": "krajske-2024"
+  },
+  "calculators": [
+    {
+      "id": "d73169ed-58a7-49cf-922a-f40ce575f308",
+      "variant": {
+        "key": "1-stredocesky"
+      }
+    },
+    {
+      "id": "f458d7b8-70bf-4bae-ba9c-c8c3c449a698",
+      "variant": {
+        "key": "2-jihocesky"
+      }
+    },
+    {
+      "id": "8540b8c3-d9a1-4516-8600-b1a30355d226",
+      "variant": {
+        "key": "3-plzensky"
+      }
+    },
+    {
+      "id": "25ae24b9-fce5-4336-8fbd-517d57e6166e",
+      "variant": {
+        "key": "4-karlovarsky"
+      }
+    },
+    {
+      "id": "82db1bd0-17e6-419d-a714-db320f47c272",
+      "variant": {
+        "key": "5-ustecky"
+      }
+    },
+    {
+      "id": "b7cb1573-0f96-4d48-969f-c97960d3f5a0",
+      "variant": {
+        "key": "6-liberecky"
+      }
+    },
+    {
+      "id": "08780188-dd1c-4fe0-9d56-0abbef17fa24",
+      "variant": {
+        "key": "7-kralovehradecky"
+      }
+    },
+    {
+      "id": "bfe70c18-c22d-43c5-a4b9-2bd0c0d431c6",
+      "variant": {
+        "key": "8-pardubicky"
+      }
+    },
+    {
+      "id": "97db7a9c-dda5-402d-80da-595ff9116bcd",
+      "variant": {
+        "key": "9-vysocina"
+      }
+    },
+    {
+      "id": "de0a6fd8-6f62-4d55-bad0-21f1aa1e164a",
+      "variant": {
+        "key": "10-jihomoravsky"
+      }
+    },
+    {
+      "id": "3cee15cc-b55a-4433-a8a3-5885cdeb6589",
+      "variant": {
+        "key": "11-olomoucky"
+      }
+    },
+    {
+      "id": "2b8bd05b-d736-4e17-8ecd-21d40af25144",
+      "variant": {
+        "key": "12-zlinsky"
+      }
+    },
+    {
+      "id": "f7d23394-399a-421f-995e-119104892a0a",
+      "variant": {
+        "key": "13-moravskoslezsky"
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "bac60127-c4ac-4fb4-a3f6-60fab7c8e0dc",
+    "name": "Drahoslav Ryba",
+    "givenName": "Drahoslav",
+    "familyName": "Ryba",
+    "sortName": "Ryba Drahoslav",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "0064fe03-a2ec-4c38-83e1-3738466482ea",
+    "name": "Luděk Růžička",
+    "givenName": "Luděk",
+    "familyName": "Růžička",
+    "sortName": "Růžička Luděk",
+    "memberOf": [
+      {
+        "id": "34af5333-7e1b-418e-8145-1ff2d2b874a5"
+      }
+    ]
+  },
+  {
+    "id": "6555fed3-6a63-48da-a378-5f5288e0e847",
+    "name": "Petr Chňoupek",
+    "givenName": "Petr",
+    "familyName": "Chňoupek",
+    "sortName": "Chňoupek Petr",
+    "memberOf": [
+      {
+        "id": "599fa7bf-3231-41b0-8a56-cd50b602f07a"
+      }
+    ]
+  },
+  {
+    "id": "d1a93f79-8a87-47fd-b815-ed0a450d5326",
+    "name": "Zdeněk Ryšavý",
+    "givenName": "Zdeněk",
+    "familyName": "Ryšavý",
+    "sortName": "Ryšavý Zdeněk",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "29682a80-9ab5-48ba-8414-a834b5cc2a01",
+    "name": "Václav Lhotský",
+    "givenName": "Václav",
+    "familyName": "Lhotský",
+    "sortName": "Lhotský Václav",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "05c0ea58-4f2b-4080-b272-108472da1677",
+    "name": "Hana Žáková",
+    "givenName": "Hana",
+    "familyName": "Žáková",
+    "sortName": "Žáková Hana",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  },
+  {
+    "id": "53acb24a-10e6-41b5-ba07-b01f2565c93c",
+    "name": "Jaroslav Turánek",
+    "givenName": "Jaroslav",
+    "familyName": "Turánek",
+    "sortName": "Turánek Jaroslav",
+    "memberOf": [
+      {
+        "id": "7dfbba65-9e0f-4654-bf9b-81eca8783f8f"
+      }
+    ]
+  }
+]

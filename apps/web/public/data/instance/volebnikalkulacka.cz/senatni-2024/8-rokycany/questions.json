@@ -1,0 +1,317 @@
+[
+  {
+    "id": "eb011229-b553-4b29-9037-8459eea5c194",
+    "title": "Istanbulská úmluva",
+    "statement": "Podporujete, aby Česko ratifikovalo Istanbulskou úmluvu?",
+    "detail": "Istanbulská úmluva se zaměřuje na prevenci a boj proti násilí na ženách a domácímu násilí. Zastánci tvrdí, že ochrání zranitelné skupiny, zatímco kritici varují před zásahem do rodinných práv.",
+    "tags": [
+      "Právo"
+    ]
+  },
+  {
+    "id": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+    "title": "Více míst na gymnáziích",
+    "statement": "Měl by stát podpořit vyšší kapacitu gymnázií (všeobecné vzdělávací obory)?",
+    "detail": "V ČR studuje na všeobecných oborech 30 % žáků, zatímco v Evropě je tento podíl 50 %. Zastánci chtějí připravit studenty/ky na proměnlivý pracovní trh a zlepšit šance i na další, vyšší vzdělávání, odpůrci argumentují potřebou odborných škol pro naplnění poptávky po specializovaných pracovních místech.",
+    "tags": [
+      "Vzdělání"
+    ]
+  },
+  {
+    "id": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+    "title": "Greenwashing",
+    "statement": "Ekologická tvrzení v reklamě, která nejsou podložená fakty, by měla být zakázána.",
+    "detail": "Firmy by měly mít povinnost podkládat svá ekologická tvrzení vědeckými důkazy. Zastánci zákazu tzv. greenwashingu tvrdí, že to ochrání spotřebitele. Odpůrci zákazu tvrdí, že lidé i firmy mají právo říkat ve veřejném prostoru cokoli.",
+    "tags": [
+      "Ekologie"
+    ]
+  },
+  {
+    "id": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+    "title": "Zavedení eura",
+    "statement": "ČR by měla zavést společnou evropskou měnu (euro).",
+    "detail": "Eurem platí 19 zemí EU včetně sousedního Německa, Rakouska a Slovenska. Přijetí eura by snížilo transakční náklady a zjednodušilo zahraniční obchod. Bez eura má země vlastní centrální banku, která má pečovat o cenovou stabilitu.",
+    "tags": [
+      "Ekonomika"
+    ]
+  },
+  {
+    "id": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+    "title": "Dotace pro NGO",
+    "statement": "Má stát finančně podporovat činnost neziskových organizací?",
+    "detail": "Neziskové organizace hrají zásadní roli v sociálních službách. Zastánci tvrdí, že bez dotací by tyto služby nebyly dostupné, kritici varují před zatížením státního rozpočtu.",
+    "tags": [
+      "Financování neziskových organizací"
+    ]
+  },
+  {
+    "id": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+    "title": "Zdanění investičních bytů",
+    "statement": "Investiční byty by měly být více zdaněné.",
+    "detail": "Jde o druhé a další byty, které nejsou určeny k vlastnímu bydlení majitelů. Zrušení této úlevy na dani by podle ekonomů pomohlo státnímu rozpočtu a stabilizovalo trh s byty. Odpůrci to považují za zásah do vlastnických práv.",
+    "tags": [
+      "Bydlení"
+    ]
+  },
+  {
+    "id": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+    "title": "Celostátní referendum",
+    "statement": "Mělo by být uzákoněno právo občanů iniciovat celostátní referendum?",
+    "detail": "Občané by mohli přímo rozhodovat o zásadních otázkách bez souhlasu Parlamentu. Riziko přímé demokracie vězí ve zkreslení nebo populistickém zneužití hlasu veřejnosti.",
+    "tags": [
+      "Demokracie a občanská práva"
+    ]
+  },
+  {
+    "id": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+    "title": "Zastavování bezvýsledných exekucí",
+    "statement": "Dlouhodobě bezvýsledné exekuce se mají zastavovat.",
+    "detail": "Zastavení exekucí má snížit náklady pro dlužníky, ale někdy je vnímáno jako nedostatečné vymáhání povinností dlužníků vůči věřitelům.",
+    "tags": [
+      "Právní systém"
+    ]
+  },
+  {
+    "id": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+    "title": "Zvýšení věku odchodu do důchodu",
+    "statement": "Věk odchodu do důchodu by se měl zvyšovat nad 65 let.",
+    "detail": "Argumenty pro zvýšení odchodu do důchodu nad 65 let vycházejí z rostoucí délky života a potřeby udržitelnosti důchodového systému. Kritici varují před zhoršením životních podmínek starších lidí.",
+    "tags": [
+      "Důchodový systém"
+    ]
+  },
+  {
+    "id": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+    "title": "Rychlovlaky - priorita",
+    "statement": "Má se upřednostnit výstavba infrastruktury pro rychlovlaky?",
+    "detail": "Vysokorychlostní tratě mají výrazně zkrátit jízdní dobu, navýšit kapacity železniční sítě a zrychlit spojení.",
+    "tags": [
+      "Doprava"
+    ]
+  },
+  {
+    "id": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+    "title": "Nové přehrady",
+    "statement": "ČR by měla stavět více nových přehrad.",
+    "detail": "ČR má vytipovaných přes 100 míst, kde by mohly vzniknout přehrady pro zadržování dešťové vody. Kritici poukazují na potenciální ekologické dopady.",
+    "tags": [
+      "Životní prostředí"
+    ]
+  },
+  {
+    "id": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+    "title": "Zálohované PETky a plechovky",
+    "statement": "Měly by být PET lahve zálohované?",
+    "detail": "PET lahve jsou zálohované v Německu, Chorvatsku, Dánsku a na Slovensku. Zastánci tvrdí, že to přispívá ke snížení plastového odpadu, odpůrci namítají zvýšené ceny.",
+    "tags": [
+      "Životní prostředí"
+    ]
+  },
+  {
+    "id": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+    "title": "Manželství pro všechny",
+    "statement": "Má být uzákoněno manželství pro všechny?",
+    "detail": "Lidé v registrovaném partnerství mají v porovnání s manžely omezená práva. Nemají společné jmění, právo na bydlení, ani nárok na důchod po úmrtí partnera. Kritici se obávají redefinice manželství.",
+    "tags": [
+      "Lidská práva"
+    ]
+  },
+  {
+    "id": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+    "title": "Omezení pracovních agentur",
+    "statement": "Působnost pracovních agentur by měla být výrazně omezena.",
+    "detail": "Zastánci regulace věří, že to zlepší pracovní podmínky. Odpůrci regulace se odvolávají na trh, který se sám zvládá regulovat nabídkou a poptávkou.",
+    "tags": [
+      "Pracovní právo"
+    ]
+  },
+  {
+    "id": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+    "title": "Pěstování konopí legální",
+    "statement": "Pěstovat konopí pro vlastní potřebu by mělo být legální.",
+    "detail": "V současnosti je v ČR pěstování konopí s vyšším obsahem THC v malém množství přestupek, ve větším trestný čin. Zastánci legalizace argumentují osobní svobodou, odpůrci se obávají dopadů na veřejné zdraví.",
+    "tags": [
+      "Pěstování konopí"
+    ]
+  },
+  {
+    "id": "36847062-6427-40d0-80fb-f0f57934dc90",
+    "title": "Vyšší tresty za znásilnění",
+    "statement": "Tresty za znásilnění by se měly zvýšit.",
+    "detail": "Kritici tvrdí, že zvýšení trestů nezlepší prevenci. Zastánci zpřísnění si naopak slibují lepší ochranu společnosti.",
+    "tags": [
+      "Právo"
+    ]
+  },
+  {
+    "id": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+    "title": "Zodpovědnost sociálních sítí",
+    "statement": "Sociální sítě mají být zodpovědné za obsah, který zpřístupňují.",
+    "detail": "Velké sociální sítě jako Facebook nebo YouTube jsou dnes pojímány spíše jako nástěnka, kde je zodpovědnost za obsah na uživateli. Zastánci chtějí přísnější regulaci pro ochranu před nepravdivými informacemi, odpůrci varují před cenzurou.",
+    "tags": [
+      "Technologie"
+    ]
+  },
+  {
+    "id": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+    "title": "Fake news – povinnost odstraňovat",
+    "statement": "Provozovatelé velkých internetových platforem mají být povinni odstraňovat tzv. fake news a dezinformace.",
+    "detail": "Odstraňování nepravdivé a manipulativní informace, označované jako fake news, by podle zastánců pomohlo více ochránit veřejnost před dezinformacemi. Kritici argumentují, že veřejnost má právo na všechny, i nepravdivé informace.",
+    "tags": [
+      "Technologie"
+    ]
+  },
+  {
+    "id": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+    "title": "Ukrajina – vzdát se uzemí",
+    "statement": "Měla by se Ukrajina vzdát okupovaných území?",
+    "detail": "Podle zastánců by to mohlo být teoretické východisko k ukončení války. Kritici tvrdí, že by to bylo porušením suverenity Ukrajiny.",
+    "tags": [
+      "Zahraniční politika"
+    ]
+  },
+  {
+    "id": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+    "title": "Vstup Ukrajiny do EU",
+    "statement": "Ukrajina by měla vstoupit do EU.",
+    "detail": "Podle zastánců Ukrajina do EU politicky i geograficky patří. Kritici poukazují na potřebu reforem před vstupem.",
+    "tags": [
+      "Zahraniční politika"
+    ]
+  },
+  {
+    "id": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+    "title": "Sankce vůči Rusku",
+    "statement": "Podporujete, aby Rusko neslo následky za válku, kterou rozpoutalo na Ukrajině?",
+    "detail": "Senát odhlasoval usnesení, že Rusko musí nést následky za válku včetně reparací. Kritici varují, že to může bránit diplomatickým jednáním.",
+    "tags": [
+      "Zahraniční politika"
+    ]
+  },
+  {
+    "id": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+    "title": "Green Deal",
+    "statement": "Podporujete, aby se EU do roku 2050 stala klimaticky neutrální?",
+    "detail": "Podle Zelené dohody se má v EU do roku 2050 snížit rozdíl mezi vyprodukovanými a spotřebovanými skleníkovými plyny na nulu. Odpůrci se obávají ekonomických dopadů na průmysl.",
+    "tags": [
+      "Životní prostředí"
+    ]
+  },
+  {
+    "id": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+    "title": "Sociální bydlení",
+    "statement": "Nová výstavba musí být alespoň zčásti tvořena sociálními byty.",
+    "detail": "Zastánci tvrdí, že sociální bydlení pomáhá nízkopříjmovým domácnostem, kritici poukazují na rostoucí náklady na výstavbu.",
+    "tags": [
+      "Bydlení"
+    ]
+  },
+  {
+    "id": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+    "title": "Decentralizace ČR",
+    "statement": "Mělo by se zavést pravidlo, že státní instituce budou rozmisťovány rovnoměrně po celém území ČR.",
+    "detail": "V ČR je velké množství státních institucí v Praze. Dle zastánců decentralizace by rovnoměrné rozmístění institucí vedlo k lepšímu rozvoji regionů. Zastánci centralizace ji chápou efektivní a vítají nižší administrativní náklady.",
+    "tags": [
+      "Decentralizace"
+    ]
+  },
+  {
+    "id": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+    "title": "Volby online",
+    "statement": "Měla by být zavedena možnost volit online po internetu.",
+    "detail": "Zastánci řadí elektronické volby k moderní demokracii. Kritici namítají, že současné technické možnosti nejsou zárukou spolehlivé ochrany proti volebním podvodům.",
+    "tags": [
+      "Volební systém"
+    ]
+  },
+  {
+    "id": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+    "title": "Podpora technického školství",
+    "statement": "Technické střední školy by měly být finančně zvýhodněné oproti jiným typům vzdělání.",
+    "detail": "Podporu technických škol zastánci chápou jako důležitou pro rozvoj regionálního průmyslu a řešení nedostatku kvalifikovaných pracovníků. Kritici varují před upřednostňováním technických škol na úkor všeobecného vzdělání, které je důležité pro všestranný rozvoj studentů v moderní době.",
+    "tags": [
+      "Vzdělávání"
+    ]
+  },
+  {
+    "id": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+    "title": "Inkluzivní vzdělávací systém",
+    "statement": "Vzdělávací systém má být co nejvíce inkluzivní.",
+    "detail": "Zastánci inkluze poukazují na výzkumy potvrzující přínosy pro společnost. Kritici se obávají o zdroje a realizovatelnost.",
+    "tags": [
+      "Vzdělávání"
+    ]
+  },
+  {
+    "id": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+    "title": "Výstup z EU",
+    "statement": "ČR by měla vystoupit z Evropské unie.",
+    "detail": "Evropská unie (EU) je svazek 27 evropských zemí. Zastánci tvrdí, že opuštění EU by přineslo více suverenity, odpůrci se obávají ekonomických dopadů.",
+    "tags": [
+      "Zahraniční politika"
+    ]
+  },
+  {
+    "id": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+    "title": "Centralizace specializované lékařské péče",
+    "statement": "Specializovaná lékařská péče se má více centralizovat.",
+    "detail": "V ČR je dnes podporována centralizace specializované péče do několika velkých nemocnic. Odpůrci argumentují zhoršenou dostupností péče na venkově.",
+    "tags": [
+      "Zdravotnictví"
+    ]
+  },
+  {
+    "id": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+    "title": "Zákaz glyfosátu",
+    "statement": "Používání glyfosátu by mělo být zakázáno.",
+    "detail": "Mezinárodní agentura pro výzkum rakoviny zařadila glyfosát mezi pravděpodobné karcinogeny. Zastánci zákazu zdůrazňují riziko pro veřejné zdraví, odpůrci tvrdí, že glyfosát je klíčový pro zemědělství.",
+    "tags": [
+      "Životní prostředí"
+    ]
+  },
+  {
+    "id": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+    "title": "Zákaz automatického rozpoznávání obličeje",
+    "statement": "Používání systémů automatického rozpoznávání obličeje na veřejných místech by mělo být zakázáno.",
+    "detail": "Systémy rozpoznávání obličeje pomocí umělé inteligence dokážou sledovat jednotlivé lidi na veřejnosti. Zastánci argumentují ochranou soukromí, odpůrci vidí přínos v prevenci kriminality.",
+    "tags": [
+      "Technologie"
+    ]
+  },
+  {
+    "id": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+    "title": "Více peněz na armádu",
+    "statement": "ČR by měla dávat více peněz na armádu.",
+    "detail": "V roce 2022 dává ČR na obranu cca 88 miliard Kč, což odpovídá asi 1,35 % HDP. Kritici se obávají, že vyšší výdaje budou na úkor sociálních služeb.",
+    "tags": [
+      "Obrana"
+    ]
+  },
+  {
+    "id": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+    "title": "Výstup z NATO",
+    "statement": "ČR by měla vystoupit z NATO.",
+    "detail": "Severoatlantická aliance (NATO) je mezinárodní vojenský pakt 30 zemí. Zastánci vystoupení tvrdí, že by to Česku přineslo větší nezávislost, odpůrci poukazují na riziko ztráty bezpečnostních záruk.",
+    "tags": [
+      "Zahraniční politika"
+    ]
+  },
+  {
+    "id": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+    "title": "Zemědělské dotace",
+    "statement": "Zemědělské dotace by měly být hlavně pro malé farmy.",
+    "detail": "Nejvyšší kontrolní úřad poukazuje, že rozdělování dotací je špatně cílené. Odpůrci preferují rovnoměrnější přístup k podpoře velkých i malých farem.",
+    "tags": [
+      "Zemědělství"
+    ]
+  },
+  {
+    "id": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+    "title": "Daňová progrese zaměstnanců",
+    "statement": "Měla by se zvýšit progrese daně z příjmů lidí?",
+    "detail": "V ČR existuje „jednotná daň z příjmu 15 %“, která je ve skutečnosti mírně progresivní. Zastánci vyšší progrese tvrdí, že to zvýší spravedlnost, odpůrcům vadí větší zdanění vyšších příjmových skupin.",
+    "tags": [
+      "Daně"
+    ]
+  }
+]

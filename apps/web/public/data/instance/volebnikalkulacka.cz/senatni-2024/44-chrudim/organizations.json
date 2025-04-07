@@ -1,0 +1,37 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a7998914-b3ad-4567-8c14-3e23f3fbb2b2",
+    "name": "LES",
+    "sortName": "LES",
+    "shortName": "LES",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c52430ee-d000-4c80-9447-e9e7f5c2fe59",
+    "name": "SproK",
+    "sortName": "SproK",
+    "shortName": "SproK",
+    "type": "candidate-list"
+  }
+]

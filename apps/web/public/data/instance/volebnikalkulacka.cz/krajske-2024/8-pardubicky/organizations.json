@@ -1,0 +1,86 @@
+[
+  {
+    "id": "51826da1-4392-40d6-aeec-fa41c76338c8",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4d90b74e-0a66-4831-8492-9cccb68206eb",
+    "name": "Koalice pro Pardubický kraj",
+    "shortName": "Koalice pro PaK",
+    "sortName": "Koalice pro PaK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a1990571-bfe5-4edd-882b-c78832412ad2",
+    "name": "ODS a TOP 09",
+    "shortName": "ODS+TOP 09",
+    "sortName": "ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "fdaa549d-1258-4129-a219-092783b8cb61",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "38f03477-76b5-4b4f-af13-cc1a0559b83f",
+    "name": "3PK - Pro prosperující Pardubický kraj",
+    "shortName": "SOCDEM+VČ+SproK",
+    "sortName": "SOCDEM+VČ+SproK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "31b6879e-c4b9-4d93-bac2-a63698483a3f",
+    "name": "NAŠE PARDUBICE - \"Nechme kraj rozkvést\"",
+    "shortName": "SPDV+mimozemst.",
+    "sortName": "SPDV+mimozemst.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "3648451a-a937-40c7-853d-056ab4db0d0f",
+    "name": "STAROSTOVÉ A NEZÁVISLÍ",
+    "shortName": "STAN",
+    "sortName": "STAN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "9728007d-99bd-42f0-ad12-42fac41ea720",
+    "name": "Švýcarská demokracie (www.svycarska-demokracie.cz)",
+    "shortName": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "eca7cc39-fd8a-43a7-a9e2-b4e41accecc6",
+    "name": "STAČILO! (KSČM, ČSNS, ČSSD)",
+    "shortName": "ČSNS+KSČM+ČSSD",
+    "sortName": "ČSNS+KSČM+ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "544129f5-4b21-4129-bc56-151ca9cc58af",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c414fd65-e7b0-47e8-a588-739d616ba7ba",
+    "name": "REFERENDUM - Hlas Lidu",
+    "shortName": "REFERENDUM",
+    "sortName": "REFERENDUM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "3b929f67-c7b4-40bd-8974-b80cf509a4a4",
+    "name": "SPD, Trikolora a PRO",
+    "shortName": "SPD+Trikol+PRO",
+    "sortName": "SPD+Trikol+PRO",
+    "type": "candidate-list"
+  }
+]

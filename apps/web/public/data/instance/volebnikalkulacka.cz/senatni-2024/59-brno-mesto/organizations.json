@@ -1,0 +1,51 @@
+[
+  {
+    "id": "46927f39-fffa-44de-aa6b-ee76f53052bf",
+    "name": "KDU-ČSL",
+    "sortName": "KDU-ČSL",
+    "shortName": "KDU-ČSL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "de9476eb-0063-47c0-9ada-d8c3fd0609f3",
+    "name": "SOCDEM+ANO",
+    "sortName": "SOCDEM+ANO",
+    "shortName": "SOCDEM+ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ff1877fc-95a7-430a-bb90-2088a9983f9d",
+    "name": "SOM",
+    "sortName": "SOM",
+    "shortName": "SOM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba",
+    "name": "Svobodní",
+    "sortName": "Svobodní",
+    "shortName": "Svobodní",
+    "type": "candidate-list"
+  },
+  {
+    "id": "b79dfa80-b1a3-4c13-bf44-4421f32d6c17",
+    "name": "Zel+ODS+Pir+TOP",
+    "sortName": "Zel+ODS+Pir+TOP",
+    "shortName": "Zel+ODS+Pir+TOP",
+    "type": "candidate-list"
+  }
+]

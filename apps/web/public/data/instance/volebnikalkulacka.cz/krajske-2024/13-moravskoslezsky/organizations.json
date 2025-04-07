@@ -1,0 +1,93 @@
+[
+  {
+    "id": "37cb458c-0df8-43b0-b76c-719c41a2e06d",
+    "name": "SPOLU MSK",
+    "shortName": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f1794e0e-d4f6-42b1-9b97-7eb2d17759b4",
+    "name": "Moravané",
+    "shortName": "Moravané",
+    "sortName": "Moravané",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4320bb33-7951-4eea-ab40-c7b7bc295e5e",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ba7558ba-86af-4e2c-a340-661bab7aa0ad",
+    "name": "REFERENDUM - Hlas Lidu",
+    "shortName": "REFERENDUM",
+    "sortName": "REFERENDUM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "bddde800-c0a9-49a3-9712-581e0958842a",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c96596dd-f265-44e9-b31d-93dd39e055c4",
+    "name": "SPD, Trikolora a PRO",
+    "shortName": "SPD+Trikol+PRO",
+    "sortName": "SPD+Trikol+PRO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e8207c2e-ca1d-4f0f-9b22-b1f45cd45521",
+    "name": "STAROSTOVÉ A OSOBNOSTI PRO KRAJ",
+    "shortName": "STAN+OK",
+    "sortName": "STAN+OK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cf61e1b-3b2a-4a02-bd85-4ada2d4a8080",
+    "name": "Švýcarská demokracie (www.svycarska-demokracie.cz)",
+    "shortName": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1a9e2e16-07c1-4ac0-9fda-7d94d1a011ab",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "cb5f5ac1-4338-4274-a52e-6311dd325d6b",
+    "name": "STAČILO!, koalice Komunistické strany Čech a Moravy a České strany národně sociální",
+    "shortName": "ČSNS+KSČM",
+    "sortName": "ČSNS+KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "bd130e38-69ef-4af7-8b78-51769b4ec94c",
+    "name": "ČSSD A NEZÁVISLÉ OSOBNOSTI",
+    "shortName": "ČSSD+DOMOV",
+    "sortName": "ČSSD+DOMOV",
+    "type": "candidate-list"
+  },
+  {
+    "id": "3ebb8278-ed49-4c8d-a029-fba792390303",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "61dfb541-cf38-4c81-aae5-dd9f62ec5fcc",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  }
+]

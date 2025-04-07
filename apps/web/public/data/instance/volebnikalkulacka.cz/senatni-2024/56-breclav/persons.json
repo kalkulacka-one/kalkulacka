@@ -1,0 +1,110 @@
+[
+  {
+    "id": "f439ae8f-eb3a-440d-96f0-f9de020899e2",
+    "name": "Miloslav Janulík",
+    "givenName": "Miloslav",
+    "familyName": "Janulík",
+    "sortName": "Janulík Miloslav",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "11a17925-3e54-452a-b252-0be1661099a3",
+    "name": "Rostislav Koštial",
+    "givenName": "Rostislav",
+    "familyName": "Koštial",
+    "sortName": "Koštial Rostislav",
+    "memberOf": [
+      {
+        "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835"
+      }
+    ]
+  },
+  {
+    "id": "c45ac450-a3a2-4370-9d83-e9360cc104b0",
+    "name": "Stanislav Šprtel",
+    "givenName": "Stanislav",
+    "familyName": "Šprtel",
+    "sortName": "Šprtel Stanislav",
+    "memberOf": [
+      {
+        "id": "40a4e263-ec72-417a-8e6f-f97297351b13"
+      }
+    ]
+  },
+  {
+    "id": "c9fcea15-00be-479c-9cec-9729bb65690e",
+    "name": "Rudolf Kadlec",
+    "givenName": "Rudolf",
+    "familyName": "Kadlec",
+    "sortName": "Kadlec Rudolf",
+    "memberOf": [
+      {
+        "id": "a58c608d-34db-40bf-9c0b-7e1de5e39200"
+      }
+    ]
+  },
+  {
+    "id": "b02b5044-0c56-47a6-ac05-2a66b305a435",
+    "name": "Zbyněk Hromek",
+    "givenName": "Zbyněk",
+    "familyName": "Hromek",
+    "sortName": "Hromek Zbyněk",
+    "memberOf": [
+      {
+        "id": "952ed13b-c9ab-44cd-9019-3a19431aa4d9"
+      }
+    ]
+  },
+  {
+    "id": "5d77997d-0145-48d7-a51b-15165ef5cc30",
+    "name": "Róbert Šlachta",
+    "givenName": "Róbert",
+    "familyName": "Šlachta",
+    "sortName": "Šlachta Róbert",
+    "memberOf": [
+      {
+        "id": "14aa404d-35be-421d-aa87-fe6b3e2e7ae6"
+      }
+    ]
+  },
+  {
+    "id": "809cc70d-b813-4edb-9d7c-13b509b3a755",
+    "name": "David Malinkovič",
+    "givenName": "David",
+    "familyName": "Malinkovič",
+    "sortName": "Malinkovič David",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "b58736c2-f6fb-478c-8e96-277380a93e9b",
+    "name": "Zdeněk Koudelka",
+    "givenName": "Zdeněk",
+    "familyName": "Koudelka",
+    "sortName": "Koudelka Zdeněk",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "9764d4dd-1cad-4475-81ef-acc196bb6dca",
+    "name": "Josef Osička",
+    "givenName": "Josef",
+    "familyName": "Osička",
+    "sortName": "Osička Josef",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  }
+]

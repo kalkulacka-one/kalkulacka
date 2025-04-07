@@ -1,0 +1,65 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7cbe01ba-db6b-4969-a91c-68ff4e6c3f2f",
+    "name": "KDU+PROPLZ+ADS",
+    "sortName": "KDU+PROPLZ+ADS",
+    "shortName": "KDU+PROPLZ+ADS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "40a4e263-ec72-417a-8e6f-f97297351b13",
+    "name": "KSČM",
+    "sortName": "KSČM",
+    "shortName": "KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8331b263-fda5-459d-b28c-ddb84f281963",
+    "name": "NK",
+    "sortName": "NK",
+    "shortName": "NK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "fac96e1b-54cc-4cc0-840e-9443f154c03f",
+    "name": "Piráti",
+    "sortName": "Piráti",
+    "shortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  }
+]

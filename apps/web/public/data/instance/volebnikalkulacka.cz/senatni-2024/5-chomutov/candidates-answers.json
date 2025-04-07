@@ -1,0 +1,879 @@
+{
+  "9b4d1126-1da6-4936-a377-c19952dcf18d": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": true
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": null
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true,
+      "comment": "je ovšem nutné, aby činnost konkrétní NNO byla efektivní, proto doporučuji monitoring efektivity"
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": false
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": false,
+      "comment": "Máme parlamentní demokracii"
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": true
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": null
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": true
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": true
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": true
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": false
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": true
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": null
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": true
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": false
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": true
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": false
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": null
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": true
+    }
+  ],
+  "70747d2c-17f4-4a23-a556-106801626d11": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": true
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": true
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": null,
+      "comment": "Zde nutné rozlišovat, nelze jednoznačně odpovědět, např. byty, kde bydlí rodina, atd."
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": false
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": null,
+      "comment": "Opět nelze jednoznačná odpověď, každopádně je nutné ukončit exekuční byznys"
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": true
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true,
+      "comment": "Zde však nutno jednat s obcemi a netlačit silou, tak jak se děje, hrozí pak soudy a zdržení procesu."
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": null
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": false,
+      "comment": "Dopad cen neponesou firmy, ale spotřebitelé a obce"
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": null,
+      "comment": "Zde opět nelze jednoznačně jednoduše odpovědět"
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": false,
+      "comment": "Bohužel konopím závislost jen začíná"
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": true,
+      "comment": "Lež není názor, šíření lží není svoboda projevu"
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": true,
+      "comment": "viz. předchozí otázka"
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": null,
+      "comment": "Zde je to vnitřní věcí Ukrajiny, nelze jednoduše odpovědět"
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": null,
+      "comment": "V tuto chvíli ne, ovšem nelze vyloučit v budoucnu"
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": true
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true,
+      "comment": "jednoznačně do regionů"
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": true
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": true
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": null,
+      "comment": "Zde nelze jednoznačně a jednoduše odpovědět"
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": true
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": true
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": null,
+      "comment": "nelze jednoznačná odpověď"
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": null,
+      "comment": "Podporuji ale. Nelze opomíjet další závazky a priority"
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": false
+    }
+  ],
+  "02dc3968-d64b-4d8e-95f2-83765bf56c48": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": true
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": true
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": true
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": true
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": false
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": false
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": false
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": null
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": true
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": true
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": false
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": true
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": true
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": true
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": false
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": true
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": true
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": false
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": true
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": true
+    }
+  ],
+  "e9adc2fc-5224-45e0-950a-c2d0a90cd874": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": false
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": false
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": false
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true,
+      "comment": "Organizace, které mají měřitelný přínos, ano, např. sociální služby, horskou službu, amatérské sportovní kluby apod. Politické neziskovky, tj. takové, které se snaží nátlakem prosazovat svou ideologii, ne."
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": true
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": true
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": true
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": false
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": true
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": false
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": null
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": false
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": false
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": null,
+      "comment": "Na tuto otázku nelze odpovědět jednoduše."
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": false
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": null
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": false
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": null,
+      "comment": "Nová výstavby s kým v roli investora?"
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": true
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": false
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": null,
+      "comment": "Další nešťastně formulovaná otázka. Technické vzdělání je potřeba a je možná potřeba jej i upřednostňovat, ale nikde není psáno, že to musí být touto formou či dokonce na úkor jiných typů vzdělání."
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": null,
+      "comment": "K této otázce by mělo být vypsáno referendum."
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": false
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": true
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": true
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": false
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": true
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": true
+    }
+  ],
+  "680e510b-e8a0-412a-b9c0-f8f6ae9f37ed": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": false
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": true
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": null
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": false
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": false,
+      "comment": "Platí v případě politických neziskovek"
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": false
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": true
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": false
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": false
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": false
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": false
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": true
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": null
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": false
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": false
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": null
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": false
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": null
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": false
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": true
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": false
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": false
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": true
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": null
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": true
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": false
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": true
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": false
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": false
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": false
+    }
+  ],
+  "65b2104d-c3c8-4eee-9453-2af0216163d1": [
+    {
+      "questionId": "eb011229-b553-4b29-9037-8459eea5c194",
+      "answer": false
+    },
+    {
+      "questionId": "d92e06ba-5f03-4188-93be-13ed049a91d7",
+      "answer": false
+    },
+    {
+      "questionId": "d2e39e39-19bf-4840-8e01-61791fb58ba6",
+      "answer": true
+    },
+    {
+      "questionId": "802ca7b6-2b85-4056-8f24-a062c6b7aa3e",
+      "answer": false
+    },
+    {
+      "questionId": "2b8e4a89-b082-4566-870b-df79faa09f3a",
+      "answer": true,
+      "comment": "Je třeba silná redukce podpory"
+    },
+    {
+      "questionId": "72c1cf07-c617-467a-84d1-7e4e1560221e",
+      "answer": false
+    },
+    {
+      "questionId": "02bccd7b-7c7d-4533-9744-161c32d9acc7",
+      "answer": false
+    },
+    {
+      "questionId": "601aacd3-d095-4801-a5fa-9ecc5866897d",
+      "answer": false
+    },
+    {
+      "questionId": "c20fa265-0cc9-4bd1-82c8-90f199c68822",
+      "answer": true,
+      "comment": "Maximálně 66 let"
+    },
+    {
+      "questionId": "5246fb1f-d2ff-4208-986b-c75eef1726ef",
+      "answer": true
+    },
+    {
+      "questionId": "dfa34db8-1fce-4e03-bc74-023c851635dc",
+      "answer": true
+    },
+    {
+      "questionId": "a44b2eda-e3e9-46c0-84d3-b54384f69c4e",
+      "answer": null,
+      "comment": "Potřebuji vysvětlení oběhu PET lahví"
+    },
+    {
+      "questionId": "b52cb4c1-ec9d-40bc-9801-3d664a491d56",
+      "answer": true
+    },
+    {
+      "questionId": "5639fb63-b567-4961-8ce4-145eb286f3d3",
+      "answer": false
+    },
+    {
+      "questionId": "db9c7221-9a8d-44bb-af2b-47c8f6b03d56",
+      "answer": true
+    },
+    {
+      "questionId": "36847062-6427-40d0-80fb-f0f57934dc90",
+      "answer": true
+    },
+    {
+      "questionId": "931cf702-396e-4a2b-a0c7-db2a2d051f05",
+      "answer": true
+    },
+    {
+      "questionId": "2deb4e7d-fc56-48b2-99c9-43ac0eb17809",
+      "answer": false
+    },
+    {
+      "questionId": "7d1d35e0-12b5-46af-ac08-1c3c64862103",
+      "answer": false
+    },
+    {
+      "questionId": "9cf8aae5-681b-4fe7-b215-f0818f89b68e",
+      "answer": false
+    },
+    {
+      "questionId": "07b8e1f9-79e1-4f17-af33-b9114e0bd75e",
+      "answer": true
+    },
+    {
+      "questionId": "4bb73b72-2610-46e2-a891-f093858ae0ad",
+      "answer": false
+    },
+    {
+      "questionId": "78d3f289-6d60-4af0-b2e9-06154ff4124c",
+      "answer": false
+    },
+    {
+      "questionId": "5f2bebd3-ed6b-44f6-971b-ceafeafd6cd4",
+      "answer": false
+    },
+    {
+      "questionId": "c0a9c9c6-c36b-4c83-b02d-3f704f697d6c",
+      "answer": false
+    },
+    {
+      "questionId": "a94a2af4-3b3e-4a43-a936-4b393ddbcdb7",
+      "answer": false
+    },
+    {
+      "questionId": "b31ccd80-369f-4224-8e86-8aa44664b80b",
+      "answer": false
+    },
+    {
+      "questionId": "226b8e98-32b3-42f5-b4e4-6ab2b2b06c87",
+      "answer": false
+    },
+    {
+      "questionId": "7b3ac5c9-b2a2-45cc-928d-c876949a2b7f",
+      "answer": true
+    },
+    {
+      "questionId": "e3c15681-0a1c-4e62-bc2f-2d89088856a9",
+      "answer": null
+    },
+    {
+      "questionId": "088029ea-c9fe-4abb-bdc7-4c1faa2c007f",
+      "answer": false
+    },
+    {
+      "questionId": "dc4b3ed9-80d5-4c0f-976b-9dd0f44b5df6",
+      "answer": true
+    },
+    {
+      "questionId": "fc8daca8-7035-415c-9ab5-5cff0ec01e2c",
+      "answer": false
+    },
+    {
+      "questionId": "db7b8164-71d8-4f4b-8d78-4abebcc17847",
+      "answer": true
+    },
+    {
+      "questionId": "dbf45b5e-1e11-45e2-a037-18d9bf18353f",
+      "answer": false
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "7325c71b-6c4e-4a26-b7a5-5d92fc3db347",
+    "name": "Právo Respekt Odbornost",
+    "shortName": "PRO 2022",
+    "sortName": "PRO 2022",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c4f6ccd0-644a-4d57-b676-1f2234767d3f",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a5558632-279d-4bdc-a251-96f9961be952",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a4f5d6df-1cb8-4108-bb18-e09104a97624",
+    "name": "Svoboda a přímá demokracie (SPD)",
+    "shortName": "SPD",
+    "sortName": "SPD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8adb62a2-4def-49f6-a7d7-6a327cbb7aea",
+    "name": "STAROSTOVÉ pro Zlínský kraj s podporou TOP 09 a ZVUK 12",
+    "shortName": "STAN+TOP+ZVUK",
+    "sortName": "STAN+TOP+ZVUK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2be065db-39ab-4516-9baf-0eb26727be49",
+    "name": "Švýcarská demokracie (www.svycarska-demokracie.cz)",
+    "shortName": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "dfa1c9d5-4da0-443b-a152-8b7dac7d7d49",
+    "name": "STAČILO! koalice Komunistické strany Čech a Moravy, České strany národně sociální a ČSSD – České suverenity soc. dem.",
+    "shortName": "ČSNS+KSČM+ČSSD",
+    "sortName": "ČSNS+KSČM+ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "0bb23780-82f5-47c3-a947-532ba86fbc10",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f1244d8f-118a-44a1-addc-3d4964025112",
+    "name": "K21 ZLÍNSKÝ KRAJ 21. STOLETÍ",
+    "shortName": "KDU-ČSL+Z21",
+    "sortName": "KDU-ČSL+Z21",
+    "type": "candidate-list"
+  },
+  {
+    "id": "03854f03-4c30-4179-af55-43d9c5baa403",
+    "name": "Koruna Česká (monarchistická strana Čech, Moravy a Slezska)",
+    "shortName": "Monarchiste.cz",
+    "sortName": "Monarchiste.cz",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e93829ac-b3e4-4370-a497-1553d30db395",
+    "name": "Za Moravu, obnovenou z moravských krajů a okresů",
+    "shortName": "Moravané+MZH",
+    "sortName": "Moravané+MZH",
+    "type": "candidate-list"
+  },
+  {
+    "id": "504b2f75-fb6f-41c0-9e5f-77ea5177bbd2",
+    "name": "Nezávislý HLAS pro Zlínský kraj",
+    "shortName": "NEZ+Svobo+Soukr",
+    "sortName": "NEZ+Svobo+Soukr",
+    "type": "candidate-list"
+  },
+  {
+    "id": "80813a70-0b06-4578-904f-0e5369b524e5",
+    "name": "Občanská demokratická strana",
+    "shortName": "ODS",
+    "sortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "bfcc3b5b-257a-4cb8-a574-f48708458400",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f3654072-d28c-433c-9ae1-8a640ffb0fa1",
+    "name": "Trikolora",
+    "shortName": "Trikolora",
+    "sortName": "Trikolora",
+    "type": "candidate-list"
+  }
+]

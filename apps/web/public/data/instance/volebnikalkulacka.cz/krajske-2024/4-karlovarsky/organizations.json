@@ -1,0 +1,135 @@
+[
+  {
+    "id": "29ebf171-b3d6-4099-af86-a266f0f259ee",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "3e81c7e9-c756-4148-a1ff-28dda2396624",
+    "name": "Koalice SNK 1 - Starostové našeho kraje a KDU-ČSL",
+    "shortName": "KDU-ČSL+SNK 1",
+    "sortName": "KDU-ČSL+SNK 1",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6d99b168-c76e-4e70-9daf-998266c4ec3e",
+    "name": "Komunistická strana Čech a Moravy",
+    "shortName": "KSČM",
+    "sortName": "KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "101ab1d7-0e4b-42f1-9c93-dde49014a1dd",
+    "name": "MÍSTNÍ HNUTÍ NEZÁVISLÝCH ZA HARMONICKÝ ROZVOJ OBCÍ A MĚST",
+    "shortName": "MÍSTNÍ HNHRM",
+    "sortName": "MÍSTNÍ HNHRM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "71849ea2-1d40-44be-9b81-ddc09c46a149",
+    "name": "Občanská demokratická strana",
+    "shortName": "ODS",
+    "sortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c3439335-e3a2-4fb9-89d8-b8dc3d8e8756",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ba85e418-219f-4d04-b65e-8678dcc5e310",
+    "name": "Správná Volba PRO kraj",
+    "shortName": "PRO2022+SpV",
+    "sortName": "PRO2022+SpV",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8006a2f1-0846-4def-a198-ec67e2455321",
+    "name": "H L A S pro Karlovarský kraj",
+    "shortName": "SD-SN+SproK",
+    "sortName": "SD-SN+SproK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ad1f1155-1220-4927-934d-f07c038e7de6",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "68876af1-bb46-4f68-84bb-bd0d30546e49",
+    "name": "SPD a Trikolora",
+    "shortName": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "63b54792-1c06-4e7c-85a3-6021ed3a61a7",
+    "name": "SRDCEM PRO ...",
+    "shortName": "SRDCEM PRO ...",
+    "sortName": "SRDCEM PRO ...",
+    "type": "candidate-list"
+  },
+  {
+    "id": "74b5fc1d-cb11-4498-94ef-d38ef1472e81",
+    "name": "Svobodní a Soukromníci",
+    "shortName": "Svobod+Soukrom",
+    "sortName": "Svobod+Soukrom",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c448dd2a-d68f-4117-a735-89a960784c70",
+    "name": "Švýcarská demokracie (www.svycarska-demokracie.cz)",
+    "shortName": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "d26161a4-cd2b-4f35-9930-21690e7372a7",
+    "name": "Vize pro Karlovarský kraj",
+    "shortName": "Vize KVK",
+    "sortName": "Vize KVK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8842debd-03f3-43a6-96f0-82fed6d8a2e6",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "46ecc231-c22e-4c8e-b21c-fcc2e8916ef5",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1cf7c04f-408e-4813-83ab-774da12e7c6b",
+    "name": "STAROSTOVÉ A NEZÁVISLÍ",
+    "shortName": "STAN",
+    "sortName": "STAN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2d4d9724-d4d8-4527-b180-3245f503e0b2",
+    "name": "Volba pro kraj",
+    "shortName": "VOK",
+    "sortName": "VOK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "dc4750ce-1403-4930-9c29-d7f01ece2275",
+    "name": "Volt Česko",
+    "shortName": "Volt",
+    "sortName": "Volt",
+    "type": "candidate-list"
+  }
+]

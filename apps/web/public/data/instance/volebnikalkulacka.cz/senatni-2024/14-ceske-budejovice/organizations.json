@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "40a4e263-ec72-417a-8e6f-f97297351b13",
+    "name": "KSČM",
+    "sortName": "KSČM",
+    "shortName": "KSČM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1d206640-9e62-43b5-bda6-820e6a53145e",
+    "name": "ND",
+    "sortName": "ND",
+    "shortName": "ND",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "05f2b433-cb35-4dd4-88ad-6f7a255b110e",
+    "name": "STAN+HOPB",
+    "sortName": "STAN+HOPB",
+    "shortName": "STAN+HOPB",
+    "type": "candidate-list"
+  }
+]

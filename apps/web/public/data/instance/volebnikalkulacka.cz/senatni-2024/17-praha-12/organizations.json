@@ -1,0 +1,44 @@
+[
+  {
+    "id": "081afd8b-19c0-456a-a532-c53385383e0a",
+    "name": "ANO+AUTO",
+    "sortName": "ANO+AUTO",
+    "shortName": "ANO+AUTO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "29fcc360-87ef-4800-ac24-b1bc2b2057bd",
+    "name": "KDU+ODS+STA+TOP",
+    "sortName": "KDU+ODS+STA+TOP",
+    "shortName": "KDU+ODS+STA+TOP",
+    "type": "candidate-list"
+  },
+  {
+    "id": "31ef10ae-3173-4397-a4fd-95c5ff2f1361",
+    "name": "Piráti+LES",
+    "sortName": "Piráti+LES",
+    "shortName": "Piráti+LES",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7dfbba65-9e0f-4654-bf9b-81eca8783f8f",
+    "name": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "shortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  }
+]

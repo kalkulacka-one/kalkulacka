@@ -1,0 +1,23 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8331b263-fda5-459d-b28c-ddb84f281963",
+    "name": "NK",
+    "sortName": "NK",
+    "shortName": "NK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba",
+    "name": "Svobodní",
+    "sortName": "Svobodní",
+    "shortName": "Svobodní",
+    "type": "candidate-list"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f2e8b77f-f263-448a-b416-9111778c0cf9",
+    "name": "MÍSTNÍ HNHRM",
+    "sortName": "MÍSTNÍ HNHRM",
+    "shortName": "MÍSTNÍ HNHRM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ba98fb1e-3a37-4507-80c5-134cc7c3c9af",
+    "name": "SRDCEM PRO ...",
+    "sortName": "SRDCEM PRO ...",
+    "shortName": "SRDCEM PRO ...",
+    "type": "candidate-list"
+  },
+  {
+    "id": "15630910-e388-4038-bfeb-04781a6cf2d6",
+    "name": "STAN",
+    "sortName": "STAN",
+    "shortName": "STAN",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ab95d98f-6ccb-44a5-913c-4ec073f5be44",
+    "name": "VOK",
+    "sortName": "VOK",
+    "shortName": "VOK",
+    "type": "candidate-list"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "e8833483-680f-435a-af44-b759327578c8",
+    "name": "ANO",
+    "sortName": "ANO",
+    "shortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f87f4d6b-f2d5-49fa-8a38-2757be7d3309",
+    "name": "ODS",
+    "sortName": "ODS",
+    "shortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f0a84417-fb42-4554-b3c5-316e9733110d",
+    "name": "Piráti+MHS",
+    "sortName": "Piráti+MHS",
+    "shortName": "Piráti+MHS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a4af352c-2d35-4c43-8b81-8a3a2ab8180e",
+    "name": "TOP+STAN",
+    "sortName": "TOP+STAN",
+    "shortName": "TOP+STAN",
+    "type": "candidate-list"
+  }
+]

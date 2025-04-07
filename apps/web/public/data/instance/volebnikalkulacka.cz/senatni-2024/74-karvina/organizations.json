@@ -1,0 +1,37 @@
+[
+  {
+    "id": "6af5fa71-2a70-430e-9b29-45ead10d7018",
+    "name": "ČSSD",
+    "sortName": "ČSSD",
+    "shortName": "ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835",
+    "name": "KDU+ODS+TOP 09",
+    "sortName": "KDU+ODS+TOP 09",
+    "shortName": "KDU+ODS+TOP 09",
+    "type": "candidate-list"
+  },
+  {
+    "id": "758b3394-1927-477c-81bb-4bb4605fd3ef",
+    "name": "SOCDEM",
+    "sortName": "SOCDEM",
+    "shortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "5cb5d56c-688e-4b55-a801-8a803d939aab",
+    "name": "SPD+Trikolora",
+    "sortName": "SPD+Trikolora",
+    "shortName": "SPD+Trikolora",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7dfbba65-9e0f-4654-bf9b-81eca8783f8f",
+    "name": "Švýcar. demokr.",
+    "sortName": "Švýcar. demokr.",
+    "shortName": "Švýcar. demokr.",
+    "type": "candidate-list"
+  }
+]

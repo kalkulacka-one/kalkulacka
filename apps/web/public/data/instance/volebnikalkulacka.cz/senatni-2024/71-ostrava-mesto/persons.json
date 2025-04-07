@@ -1,0 +1,86 @@
+[
+  {
+    "id": "7104a36f-25df-4dda-b7af-8a2ceeaf1db4",
+    "name": "Martin Bednář",
+    "givenName": "Martin",
+    "familyName": "Bednář",
+    "sortName": "Bednář Martin",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "76cdcd73-5338-4838-ae39-3f5d8034dec3",
+    "name": "Leo Luzar",
+    "givenName": "Leo",
+    "familyName": "Luzar",
+    "sortName": "Luzar Leo",
+    "memberOf": [
+      {
+        "id": "bc382abd-a642-43b9-b64e-0ca563ac4ca3"
+      }
+    ]
+  },
+  {
+    "id": "7feca3e1-f861-4d22-a7a9-dfff913a7de3",
+    "name": "Leopold Sulovský",
+    "givenName": "Leopold",
+    "familyName": "Sulovský",
+    "sortName": "Sulovský Leopold",
+    "memberOf": [
+      {
+        "id": "20a54dd5-96f0-4740-b7e2-67f621d32715"
+      }
+    ]
+  },
+  {
+    "id": "104ca231-786c-462b-b432-c975913f655b",
+    "name": "Štefan Režný",
+    "givenName": "Štefan",
+    "familyName": "Režný",
+    "sortName": "Režný Štefan",
+    "memberOf": [
+      {
+        "id": "e2e60e7a-5165-40e8-a233-068db4e79888"
+      }
+    ]
+  },
+  {
+    "id": "4d7250e6-8c3b-416e-8354-12881e8a7eec",
+    "name": "Marie Malcharová",
+    "givenName": "Marie",
+    "familyName": "Malcharová",
+    "sortName": "Malcharová Marie",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "e7efc67c-84da-4312-86f4-b8ffa630b5b0",
+    "name": "Liana Janáčková",
+    "givenName": "Liana",
+    "familyName": "Janáčková",
+    "sortName": "Janáčková Liana",
+    "memberOf": [
+      {
+        "id": "6797d805-5e00-4f26-acb5-a61f8b4895ba"
+      }
+    ]
+  },
+  {
+    "id": "457ed732-fd0f-4217-bb0c-cb65e757293b",
+    "name": "Radoslav Štědroň",
+    "givenName": "Radoslav",
+    "familyName": "Štědroň",
+    "sortName": "Štědroň Radoslav",
+    "memberOf": [
+      {
+        "id": "7dfbba65-9e0f-4654-bf9b-81eca8783f8f"
+      }
+    ]
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "8f87b234-fe42-41e3-a5cf-750680fb37c4",
+    "name": "Tomáš Navrátil",
+    "givenName": "Tomáš",
+    "familyName": "Navrátil",
+    "sortName": "Navrátil Tomáš",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "25f143ad-c241-4aaf-bd53-890507215b91",
+    "name": "Bronislav Sedláček",
+    "givenName": "Bronislav",
+    "familyName": "Sedláček",
+    "sortName": "Sedláček Bronislav",
+    "memberOf": [
+      {
+        "id": "89395259-1fd2-4a28-8a86-537ecf69944f"
+      }
+    ]
+  },
+  {
+    "id": "d0a5e8d1-0f16-40c5-8ef3-4604dff377d3",
+    "name": "Herbert Pavera",
+    "givenName": "Herbert",
+    "familyName": "Pavera",
+    "sortName": "Pavera Herbert",
+    "memberOf": [
+      {
+        "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835"
+      }
+    ]
+  },
+  {
+    "id": "c3a69fa8-7254-4a62-91fa-e7a2e0055f82",
+    "name": "Brigita Bilíková",
+    "givenName": "Brigita",
+    "familyName": "Bilíková",
+    "sortName": "Bilíková Brigita",
+    "memberOf": [
+      {
+        "id": "966d63f4-4986-4345-9c8e-7a9fbc66c37b"
+      }
+    ]
+  },
+  {
+    "id": "1b31b9e9-d0fc-4e31-a7f4-3111adbf4f5a",
+    "name": "Vladimír Tancík",
+    "givenName": "Vladimír",
+    "familyName": "Tancík",
+    "sortName": "Tancík Vladimír",
+    "memberOf": [
+      {
+        "id": "8331b263-fda5-459d-b28c-ddb84f281963"
+      }
+    ]
+  },
+  {
+    "id": "b252b283-f3b9-41c7-b75f-53f7fe15a4f7",
+    "name": "René Černohorský",
+    "givenName": "René",
+    "familyName": "Černohorský",
+    "sortName": "Černohorský René",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "a9e426e4-87a4-45f7-909e-5c05ccd24e28",
+    "name": "Zita Calabri",
+    "givenName": "Zita",
+    "familyName": "Calabri",
+    "sortName": "Calabri Zita",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "fb158169-85dd-4ac8-b9bc-530696b8219f",
+    "name": "Michael Rataj",
+    "givenName": "Michael",
+    "familyName": "Rataj",
+    "sortName": "Rataj Michael",
+    "memberOf": [
+      {
+        "id": "14976b4e-8cc6-4d06-8c42-da46665ebe03"
+      }
+    ]
+  }
+]

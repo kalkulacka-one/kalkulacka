@@ -1,0 +1,93 @@
+[
+  {
+    "id": "a8baeebd-1ea3-44a8-8490-a9a90d0d33d1",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "b6583cd2-1a3f-41ac-b48d-344ea67341f7",
+    "name": "STAČILO!",
+    "shortName": "ČSNS+KSČM+ČSSD",
+    "sortName": "ČSNS+KSČM+ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e5b9fb7f-7141-4d35-a1e2-63d7794aebcb",
+    "name": "KDU-ČSL",
+    "shortName": "KDU-ČSL",
+    "sortName": "KDU-ČSL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f1697775-caeb-45b9-ae5c-7498849769f9",
+    "name": "MÁ VLAST ČECHY MORAVA SLEZSKO",
+    "shortName": "MÁ VLAST ČMS",
+    "sortName": "MÁ VLAST ČMS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "53157b56-0092-4e3a-92fa-44b212036595",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - minimální MZDA 70.000 Kč, minimální DŮCHOD 50.000 Kč, ZRUŠENÍ daně z nemovitostí, …",
+    "shortName": "ND+LŽPL",
+    "sortName": "ND+LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4a98dbe6-794a-4cf2-833c-864d8ed4664e",
+    "name": "Nezávislá kandidátka",
+    "shortName": "NeKa",
+    "sortName": "NeKa",
+    "type": "candidate-list"
+  },
+  {
+    "id": "eed8efe7-bdd3-4953-9c98-37c8fbd8aebb",
+    "name": "Společně se Starosty pro občany",
+    "shortName": "ODS+TOP 09+STO",
+    "sortName": "ODS+TOP 09+STO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "06b656ea-8c9d-4105-a256-3100a0365d76",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "9193eaed-79b8-428b-a391-14c2de688da8",
+    "name": "STAROSTOVÉ PRO VYSOČINU",
+    "shortName": "STAN+SNK ED",
+    "sortName": "STAN+SNK ED",
+    "type": "candidate-list"
+  },
+  {
+    "id": "f815079d-c679-44d1-8f79-d622ee08bba1",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "41a3c037-d090-4ff3-8dd0-eaa95e47a0ee",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "c3417abb-6114-4760-b111-e339110558b5",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "284b349a-edee-4cb2-9bf7-3e4afe34d0da",
+    "name": "SPD, Trikolora a PRO",
+    "shortName": "SPD+Trikol+PRO",
+    "sortName": "SPD+Trikol+PRO",
+    "type": "candidate-list"
+  }
+]

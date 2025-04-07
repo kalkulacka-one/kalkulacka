@@ -1,0 +1,74 @@
+[
+  {
+    "id": "b1d38a84-c36b-4748-aca8-7ae54ae9eade",
+    "name": "Boris Šťastný",
+    "givenName": "Boris",
+    "familyName": "Šťastný",
+    "sortName": "Šťastný Boris",
+    "memberOf": [
+      {
+        "id": "081afd8b-19c0-456a-a532-c53385383e0a"
+      }
+    ]
+  },
+  {
+    "id": "41e05602-1ac3-4252-9b20-618e41898819",
+    "name": "Pavel Fischer",
+    "givenName": "Pavel",
+    "familyName": "Fischer",
+    "sortName": "Fischer Pavel",
+    "memberOf": [
+      {
+        "id": "29fcc360-87ef-4800-ac24-b1bc2b2057bd"
+      }
+    ]
+  },
+  {
+    "id": "d8c0b88e-79df-4037-a433-dd1165068bdb",
+    "name": "Eva Tylová",
+    "givenName": "Eva",
+    "familyName": "Tylová",
+    "sortName": "Tylová Eva",
+    "memberOf": [
+      {
+        "id": "31ef10ae-3173-4397-a4fd-95c5ff2f1361"
+      }
+    ]
+  },
+  {
+    "id": "66436ce1-38f9-4c31-8278-7e2216e5d8e2",
+    "name": "Petr Hůla",
+    "givenName": "Petr",
+    "familyName": "Hůla",
+    "sortName": "Hůla Petr",
+    "memberOf": [
+      {
+        "id": "758b3394-1927-477c-81bb-4bb4605fd3ef"
+      }
+    ]
+  },
+  {
+    "id": "9fd21aa5-09f2-412e-b250-d1240fcb8ad3",
+    "name": "Milan Urban",
+    "givenName": "Milan",
+    "familyName": "Urban",
+    "sortName": "Urban Milan",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "fe8b8136-b9cd-4983-ae42-fd77d9b31e65",
+    "name": "Pynelopi Cimprichová",
+    "givenName": "Pynelopi",
+    "familyName": "Cimprichová",
+    "sortName": "Cimprichová Pynelopi",
+    "memberOf": [
+      {
+        "id": "7dfbba65-9e0f-4654-bf9b-81eca8783f8f"
+      }
+    ]
+  }
+]

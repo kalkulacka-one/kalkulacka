@@ -1,0 +1,74 @@
+[
+  {
+    "id": "57433329-75ff-4554-b1a5-60459387cd8b",
+    "name": "Milan Kroupa",
+    "givenName": "Milan",
+    "familyName": "Kroupa",
+    "sortName": "Kroupa Milan",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "7a19d653-8ab2-4b81-9b3f-066cad58a509",
+    "name": "Tomáš Vašíček",
+    "givenName": "Tomáš",
+    "familyName": "Vašíček",
+    "sortName": "Vašíček Tomáš",
+    "memberOf": [
+      {
+        "id": "a32089e0-5fda-44fb-b12a-c97139bdb785"
+      }
+    ]
+  },
+  {
+    "id": "5abb91f9-b78b-4efb-9e50-d9829b86ec16",
+    "name": "Vít Němeček",
+    "givenName": "Vít",
+    "familyName": "Němeček",
+    "sortName": "Němeček Vít",
+    "memberOf": [
+      {
+        "id": "64a0008f-2d59-4a0f-961f-8fa2fd1a7835"
+      }
+    ]
+  },
+  {
+    "id": "6b59aa30-5ec6-45c2-8252-6a9ff276e0dd",
+    "name": "Michaela Tejmlová",
+    "givenName": "Michaela",
+    "familyName": "Tejmlová",
+    "sortName": "Tejmlová Michaela",
+    "memberOf": [
+      {
+        "id": "50e58d59-db2e-4949-a1c8-58cf68bd21f5"
+      }
+    ]
+  },
+  {
+    "id": "10517a10-ec12-43c8-b3c2-ba87bc03b140",
+    "name": "Lena Mlejnková",
+    "givenName": "Lena",
+    "familyName": "Mlejnková",
+    "sortName": "Mlejnková Lena",
+    "memberOf": [
+      {
+        "id": "ff170d83-5e25-485e-979d-a5d58081d490"
+      }
+    ]
+  },
+  {
+    "id": "a760cfdc-21a8-4083-b6eb-30b9f5100017",
+    "name": "Michal Švarc",
+    "givenName": "Michal",
+    "familyName": "Švarc",
+    "sortName": "Švarc Michal",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  }
+]

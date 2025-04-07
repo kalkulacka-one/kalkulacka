@@ -1,0 +1,93 @@
+[
+  {
+    "id": "042126d1-a16c-451c-8ee1-f7999ed5e06b",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "dd5f38ff-2733-4c97-8c15-f35f7899b29a",
+    "name": "Občanská demokratická strana",
+    "shortName": "ODS",
+    "sortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "230dccff-10a9-4346-a618-47714b0c82cd",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "19f2b5b0-c903-4c9f-9443-beb09b9a96af",
+    "name": "Hlas pro náš kraj, koalice SOCDEM a SproK",
+    "shortName": "SOCDEM+SproK",
+    "sortName": "SOCDEM+SproK",
+    "type": "candidate-list"
+  },
+  {
+    "id": "150bed1b-23fe-4110-8dcf-d04e8f14a014",
+    "name": "STAČILO!",
+    "shortName": "ČSNS+KSČM+ČSSD",
+    "sortName": "ČSNS+KSČM+ČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "1e09b99d-9749-430c-92ca-b48475f67cd3",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "8afb366d-a220-4d56-8c88-8f6d0c370c4b",
+    "name": "Spojenci24 s vámi (KDU-ČSL, TOP 09, Strana zelených, Nestraníci)",
+    "shortName": "KDU+Zel+Nes+TOP",
+    "sortName": "KDU+Zel+Nes+TOP",
+    "type": "candidate-list"
+  },
+  {
+    "id": "2cc496db-14d7-48d9-a40f-08b79e1def7c",
+    "name": "Koruna Česká (monarchistická strana Čech, Moravy a Slezska)",
+    "shortName": "Monarchiste.cz",
+    "sortName": "Monarchiste.cz",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ed28f119-7d6e-4518-948b-102513e3973c",
+    "name": "Moravané",
+    "shortName": "Moravané",
+    "sortName": "Moravané",
+    "type": "candidate-list"
+  },
+  {
+    "id": "d845414e-8d90-43d2-89bd-918b4fdd953f",
+    "name": "Piráti s podporou ProOlomouc, Společně pro Přerov, Naše Litovelsko a osobností z regionu",
+    "shortName": "Piráti+ProOl",
+    "sortName": "Piráti+ProOl",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e743339d-c056-4b56-8e39-c0a53f1db39c",
+    "name": "SDRUŽENÍ PRO REPUBLIKU - REPUBLIKÁNSKÁ STRANA ČECH, MORAVY A SLEZSKA",
+    "shortName": "SPR-RSČMS",
+    "sortName": "SPR-RSČMS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "dafd4630-8006-4ca1-b6bd-fecc8690c032",
+    "name": "STAROSTOVÉ PRO OLOMOUCKÝ KRAJ",
+    "shortName": "STAN+SNK ED",
+    "sortName": "STAN+SNK ED",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4eca1ee4-8548-4b12-a70f-7c7abe47da85",
+    "name": "SPD, Trikolora, PRO a Svobodní",
+    "shortName": "Svo+SPD+Tri+PRO",
+    "sortName": "Svo+SPD+Tri+PRO",
+    "type": "candidate-list"
+  }
+]

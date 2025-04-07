@@ -1,0 +1,100 @@
+[
+  {
+    "id": "7b04039d-417a-462f-93b6-6c734f165cc0",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "sortName": "ANO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4cbff686-bcc7-4c2f-adec-e8bb5d16d977",
+    "name": "JIHOČEŠI 2012",
+    "shortName": "JIH 12",
+    "sortName": "JIH 12",
+    "type": "candidate-list"
+  },
+  {
+    "id": "ec6c074b-3878-43f0-9e9b-18176191c872",
+    "name": "Společně pro jižní Čechy - TOP 09, KDU-ČSL, Tábor 2020",
+    "shortName": "KDU+T2020+TOP",
+    "sortName": "KDU+T2020+TOP",
+    "type": "candidate-list"
+  },
+  {
+    "id": "7c1514cc-559d-4585-b7a0-f9eaf939bb73",
+    "name": "LEPŠÍ ŽIVOT PRO LIDI - minimální MZDA 70.000 Kč, minimální DŮCHOD 50.000 Kč, ZRUŠENÍ daně z nemovitostí, …",
+    "shortName": "ND+LŽPL",
+    "sortName": "ND+LŽPL",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4a4ff8de-9c5f-4dbb-8960-1dcd47056fb4",
+    "name": "Občanská demokratická strana",
+    "shortName": "ODS",
+    "sortName": "ODS",
+    "type": "candidate-list"
+  },
+  {
+    "id": "beb6adb5-a315-438c-9206-ec42b7ce6b29",
+    "name": "PŘÍSAHA občanské hnutí",
+    "shortName": "PŘÍSAHA",
+    "sortName": "PŘÍSAHA",
+    "type": "candidate-list"
+  },
+  {
+    "id": "da7ad9c7-73c5-46fc-adfc-093c29effd0a",
+    "name": "Sociální demokracie",
+    "shortName": "SOCDEM",
+    "sortName": "SOCDEM",
+    "type": "candidate-list"
+  },
+  {
+    "id": "eb5964b0-3ee0-4c37-b2a3-1b62d2d98238",
+    "name": "STAROSTOVÉ pro Jihočeský kraj",
+    "shortName": "STAN+HOPB",
+    "sortName": "STAN+HOPB",
+    "type": "candidate-list"
+  },
+  {
+    "id": "eead5425-df75-4b10-94ac-719f32e4ca0c",
+    "name": "STAČILO!, koalice KSČM, ČSSD, ČSNS, SD-SN",
+    "shortName": "ČSNSKSČMSDČSSD",
+    "sortName": "ČSNSKSČMSDČSSD",
+    "type": "candidate-list"
+  },
+  {
+    "id": "4a8e09f8-dc54-45d6-81cb-ff0f67894ae8",
+    "name": "Demokratická strana zelených - ZA PRÁVA ZVÍŘAT",
+    "shortName": "DSZ-ZA PR.ZVÍŘ.",
+    "sortName": "DSZ-ZA PR.ZVÍŘ.",
+    "type": "candidate-list"
+  },
+  {
+    "id": "56edeb4a-4ffa-421f-9056-1050eafdf888",
+    "name": "Jihočeská veřejnost",
+    "shortName": "NEZ+DV 2016",
+    "sortName": "NEZ+DV 2016",
+    "type": "candidate-list"
+  },
+  {
+    "id": "e260e092-5c38-42da-86da-a87cdff7b373",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "sortName": "Piráti",
+    "type": "candidate-list"
+  },
+  {
+    "id": "d83bc985-d8ce-4886-8112-1e9fae19d405",
+    "name": "SPD, Trikolora a PRO",
+    "shortName": "SPD+Trikol+PRO",
+    "sortName": "SPD+Trikol+PRO",
+    "type": "candidate-list"
+  },
+  {
+    "id": "a59a268a-23ee-465a-9bf1-53aea55c891f",
+    "name": "Spolu pro lidi a krajinu",
+    "shortName": "Zelení+Levice",
+    "sortName": "Zelení+Levice",
+    "type": "candidate-list"
+  }
+]

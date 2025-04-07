@@ -1,0 +1,74 @@
+[
+  {
+    "id": "7ab1b3b4-3c1a-4e12-bb3a-4f332b5792a5",
+    "name": "Jana Mračková Vildumetzová",
+    "givenName": "Jana",
+    "familyName": "Mračková Vildumetzová",
+    "sortName": "Mračková Vildumetzová Jana",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "e2165d3d-fa14-46b1-aa53-63f0e13ca233",
+    "name": "Alexandr Terek",
+    "givenName": "Alexandr",
+    "familyName": "Terek",
+    "sortName": "Terek Alexandr",
+    "memberOf": [
+      {
+        "id": "f2e8b77f-f263-448a-b416-9111778c0cf9"
+      }
+    ]
+  },
+  {
+    "id": "648bca28-284b-49cf-8495-36959aaad846",
+    "name": "Josef Vaněk",
+    "givenName": "Josef",
+    "familyName": "Vaněk",
+    "sortName": "Vaněk Josef",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "8584e489-46a9-480e-aa3c-e08e339a069e",
+    "name": "Dana Wittnerová",
+    "givenName": "Dana",
+    "familyName": "Wittnerová",
+    "sortName": "Wittnerová Dana",
+    "memberOf": [
+      {
+        "id": "ba98fb1e-3a37-4507-80c5-134cc7c3c9af"
+      }
+    ]
+  },
+  {
+    "id": "75a2f341-51e9-4ecf-9576-f141af5b83ca",
+    "name": "Miroslav Balatka",
+    "givenName": "Miroslav",
+    "familyName": "Balatka",
+    "sortName": "Balatka Miroslav",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  },
+  {
+    "id": "975d4fcf-28af-43a0-a12f-076dd2d5fbe1",
+    "name": "Jan Picka",
+    "givenName": "Jan",
+    "familyName": "Picka",
+    "sortName": "Picka Jan",
+    "memberOf": [
+      {
+        "id": "ab95d98f-6ccb-44a5-913c-4ec073f5be44"
+      }
+    ]
+  }
+]

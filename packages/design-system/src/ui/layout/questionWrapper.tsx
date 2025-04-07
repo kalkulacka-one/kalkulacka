@@ -13,14 +13,16 @@ export interface Props {
   question: ExtendedQuestions;
   currentQuestion: number;
   questionCount: number;
-  skipQuestion: () => void;
-  prevQuestion: () => void;
+  skipQuestion?: () => void;
+  prevQuestion?: () => void;
+  district?: any;
 }
 
 export function QuestionWrapper({
   currentQuestion,
   questionCount,
   question,
+  district,
   skipQuestion,
   prevQuestion,
 }: Props) {
@@ -35,7 +37,7 @@ export function QuestionWrapper({
           {/* buttons wrapper */}
           <div className="k1-hidden min-[701px]:k1-hidden sm:k1-block">
             {currentQuestion === 1 ? (
-              <Link href="/abc/navod/4">
+              <Link href={`/kalkulacka/${district}/navod/`}>
                 <Button
                   hasIcon
                   fitContent
@@ -85,7 +87,7 @@ export function QuestionWrapper({
           {/* button wrapper */}
           <div className="k1-hidden min-[701px]:k1-hidden sm:k1-block">
             {currentQuestion >= questionCount ? (
-              <Link href="/abc/rekapitulace">
+              <Link href={`/kalkulacka/${district}/rekapitulace/`}>
                 <Button
                   hasIcon
                   fitContent

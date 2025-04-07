@@ -1,0 +1,62 @@
+[
+  {
+    "id": "34b0490a-8576-4698-9246-0dbd4c89aa8a",
+    "name": "Petr Vanka",
+    "givenName": "Petr",
+    "familyName": "Vanka",
+    "sortName": "Vanka Petr",
+    "memberOf": [
+      {
+        "id": "e8833483-680f-435a-af44-b759327578c8"
+      }
+    ]
+  },
+  {
+    "id": "721a4ee6-3d49-4255-baf5-2f7acb60bd1d",
+    "name": "Tomáš Rada",
+    "givenName": "Tomáš",
+    "familyName": "Rada",
+    "sortName": "Rada Tomáš",
+    "memberOf": [
+      {
+        "id": "7cbe01ba-db6b-4969-a91c-68ff4e6c3f2f"
+      }
+    ]
+  },
+  {
+    "id": "6f1638a4-4715-4eea-a0b6-96bc23d61070",
+    "name": "Pavel Karpíšek",
+    "givenName": "Pavel",
+    "familyName": "Karpíšek",
+    "sortName": "Karpíšek Pavel",
+    "memberOf": [
+      {
+        "id": "46ef04cd-61f7-49cc-8f7a-169995873fe4"
+      }
+    ]
+  },
+  {
+    "id": "eb433112-c76e-4921-aedb-5548befaee66",
+    "name": "Jaromír Pěnkava",
+    "givenName": "Jaromír",
+    "familyName": "Pěnkava",
+    "sortName": "Pěnkava Jaromír",
+    "memberOf": [
+      {
+        "id": "5cb5d56c-688e-4b55-a801-8a803d939aab"
+      }
+    ]
+  },
+  {
+    "id": "d15b9255-f4e2-4b70-8aed-8c5ac7d1ed35",
+    "name": "Miroslav Kroc",
+    "givenName": "Miroslav",
+    "familyName": "Kroc",
+    "sortName": "Kroc Miroslav",
+    "memberOf": [
+      {
+        "id": "15630910-e388-4038-bfeb-04781a6cf2d6"
+      }
+    ]
+  }
+]
