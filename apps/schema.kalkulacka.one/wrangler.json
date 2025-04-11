@@ -1,5 +1,5 @@
 {
-  "name": "schema-web",
+  "name": "schema-kalkulacka-one",
   "main": "index.js",
   "compatibility_date": "2025-02-15",
   "assets": {
@@ -8,8 +8,8 @@
   },
   "build": {
     "command": "npm run build",
-    "cwd": "/apps/schema-web",
-    "watch_dir": ["packages/schema/*", "apps/schema-web/*"]
+    "cwd": "/apps/schema.kalkulacka.one",
+    "watch_dir": ["packages/schema/*", "apps/schema.kalkulacka.one/*"]
   },
   "routes": [
     {
