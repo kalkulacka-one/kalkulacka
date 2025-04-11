@@ -4,12 +4,9 @@ import '@repo/design-system/styles';
 
 // Record to map theme names to their respective import functions
 const themeLoaders: Record<string, () => Promise<string>> = {
-  'theme-idnes': async () =>
+  'kalkulacka-one': async () =>
     // @ts-ignore
-    (await import('!css-loader!@repo/design-system/themes/theme-idnes')).default,
-  'theme-default': async () =>
-    // @ts-ignore
-    (await import('!css-loader!@repo/design-system/themes/theme-default')).default,
+    (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
 };
 
 const keys = Object.keys(themeLoaders);
