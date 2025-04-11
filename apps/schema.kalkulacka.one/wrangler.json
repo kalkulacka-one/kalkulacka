@@ -1,0 +1,20 @@
+{
+  "name": "schema-kalkulacka-one",
+  "main": "index.js",
+  "compatibility_date": "2025-02-15",
+  "assets": {
+    "directory": "./build",
+    "binding": "ASSETS"
+  },
+  "build": {
+    "command": "npm run build",
+    "cwd": "/apps/schema.kalkulacka.one",
+    "watch_dir": ["packages/schema/*", "apps/schema.kalkulacka.one/*"]
+  },
+  "routes": [
+    {
+      "pattern": "schema.kalkulacka.one",
+      "custom_domain": true
+    }
+  ]
+}
