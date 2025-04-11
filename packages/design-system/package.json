@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./themes/*": "./src/themes/**/*.css",
+    "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
     "./fonts": "./dist/fonts"
   },
