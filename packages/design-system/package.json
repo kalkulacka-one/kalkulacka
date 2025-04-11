@@ -5,8 +5,7 @@
   "exports": {
     "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
-    "./fonts": "./dist/fonts",
-    "./tailwind": "./tailwind.config.ts"
+    "./fonts": "./dist/fonts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
