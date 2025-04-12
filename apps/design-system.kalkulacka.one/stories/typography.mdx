@@ -6,11 +6,11 @@ import { Meta, Unstyled } from "@storybook/blocks";
 
 ## Fonts
 
+Kalkulacka.1 utilizes two sans-serif typefaces for its typography system: **Radio Canada** and **Inter**.
+
 ### Radio Canada
 
-The default typeface used by Kalkulacka.1 is [Radio-Canada](https://github.com/cbcrc/radiocanadafonts),
-a well-internationalized set of variable (weight 300–700 & width 75–100) normal & italic fonts made for
-CBC/Radio-Canada (Canada's national public broadcaster).
+[Radio-Canada](https://github.com/cbcrc/radiocanadafonts) is used for **headings and titles**. It's a well-internationalized set of variable fonts (weight 300–700 & width 75–100) available in normal and italic styles, made for CBC/Radio-Canada (Canada's national public broadcaster). Its bolder weights provide emphasis and hierarchy.
 
 <Unstyled>
   <div
@@ -245,6 +245,138 @@ CBC/Radio-Canada (Canada's national public broadcaster).
         }}
       >
         Radio Canada Bold 700 Italic
+      </p>
+    </div>
+  </div>
+</Unstyled>
+
+### Inter
+
+[Inter](https://github.com/rsms/inter/) is used for **body text, labels, and button text**. It's a well-internationalized set of variable fonts (weight 300–700 & width 75–100) available in normal and italic styles, carefully crafted & designed for computer screens. Inter features a tall x-height to aid in readability of mixed-case and lower-case text, making it ideal for longer blocks of text and UI elements.
+
+<Unstyled>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      padding: "2rem",
+    }}
+  >
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 300,
+        }}
+      >
+        Inter Light 300
+      </p>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 300,
+          fontStyle: "italic",
+        }}
+      >
+        Inter Light 300 Italic
+      </p>
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 400,
+        }}
+      >
+        Inter Regular 400
+      </p>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 400,
+          fontStyle: "italic",
+        }}
+      >
+        Inter Regular 400 Italic
+      </p>
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 500,
+        }}
+      >
+        Inter Medium 500
+      </p>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 500,
+          fontStyle: "italic",
+        }}
+      >
+        Inter Medium 500 Italic
+      </p>
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 600,
+        }}
+      >
+        Inter SemiBold 600
+      </p>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 600,
+          fontStyle: "italic",
+        }}
+      >
+        Inter SemiBold 600 Italic
+      </p>
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 700,
+        }}
+      >
+        Inter Bold 700
+      </p>
+      <p
+        style={{
+          fontSize: "1.875rem",
+          lineHeight: "2.25rem",
+          fontFamily: "Inter",
+          fontWeight: 700,
+          fontStyle: "italic",
+        }}
+      >
+        Inter Bold 700 Italic
       </p>
     </div>
   </div>
