@@ -2,8 +2,77 @@
 
 @theme {
   --font-display: "Radio Canada", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
 
+  --color-primary-10: var(--primary-10);
+  --color-primary-30: var(--primary-30);
+  --color-primary-50: var(--primary-50);
+  --color-primary-70: var(--primary-70);
+  --color-primary-90: var(--primary-90);
+
+  --color-secondary-10: var(--secondary-10);
+  --color-secondary-30: var(--secondary-30);
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-70: var(--secondary-70);
+  --color-secondary-90: var(--secondary-90);
+
+  --color-neutral-0: var(--neutral-0);
+  --color-neutral-10: var(--neutral-10);
+  --color-neutral-30: var(--neutral-30);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-70: var(--neutral-70);
+  --color-neutral-90: var(--neutral-90);
+  --color-neutral-100: var(--neutral-100);
+
+  --color-primary-fg: var(--primary-50);
+  --color-primary-fg-hover: var(--primary-30);
+  --color-primary-fg-strong: var(--primary-10);
+  --color-primary-bg: var(--primary-90);
+  --color-primary-bg-strong: var(--primary-50);
+  --color-primary-bg-strong-hover: var(--primary-30);
+  --color-primary-bg-strong-active: var(--primary-10);
+  --color-border: var(--primary-70);
+  --color-border-strong: var(--primary-50);
+  --color-border-strong-hover: var(--primary-30);
+
+  --color-secondary-fg: var(--secondary-50);
+  --color-secondary-fg-hover: var(--secondary-30);
+  --color-secondary-fg-strong: var(--secondary-30);
+  --color-secondary-bg: var(--secondary-90);
+  --color-secondary-bg-strong: var(--secondary-50);
+  --color-secondary-bg-strong-hover: var(--secondary-30);
+  --color-border: var(--secondary-70);
+  --color-border-strong: var(--secondary-50);
+  --color-border-strong-hover: var(--secondary-30);
+
+  --color-neutral-fg: var(--neutral-30);
+  --color-neutral-fg-hover: var(--neutral-50);
+  --color-neutral-fg-active: var(--neutral-0);
+  --color-neutral-fg-muted: var(--neutral-50);
+  --color-neutral-fg-strong: var(--neutral-10);
+  --color-neutral-fg-inverse: var(--neutral-100);
+  --color-neutral-fg-disabled: var(--neutral-70);
+
+  --color-neutral-bg: var(--neutral-90);
+  --color-neutral-bg-strong-hover: var(--neutral-30);
+  --color-neutral-bg-strong-active: var(--neutral-10);
+  --color-neutral-bg-disabled: var(--neutral-70);
+  --color-neutral-bg-backdrop-hover: rgb(from var(--neutral-70) r g b / 0.2);
+  --color-neutral-bg-backdrop-active: rgb(from var(--neutral-70) r g b / 0.6);
+  
+  --color-border: var(--neutral-70);
+  --color-border-hover: var(--neutral-50);
+  --color-border-active: var(--neutral-10);
+  --color-border-muted: var(--neutral-90);
+  --color-border-strong: var(--neutral-30);
+  --color-border-disabled: var(--neutral-70);
+  
+  
+  --color-neutral-container: var(--neutral-100);
+  --color-neutral-overlay: var(--neutral-100);
+  --color-neutral-page: var(--neutral-100);
+
+
+}
 @layer base {
   @font-face {
     font-family: "Radio Canada";
