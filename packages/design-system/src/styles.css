@@ -32,8 +32,4 @@
     font-style: italic;
     src: url("./fonts/inter/italic.woff2") format("woff2"), url("./fonts/inter/italic.woff") format("woff");
   }
-
-  body {
-    font-family: "Inter";
-  }
 }
