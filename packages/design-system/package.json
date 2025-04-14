@@ -5,7 +5,8 @@
   "exports": {
     "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
-    "./fonts": "./dist/fonts"
+    "./fonts": "./dist/fonts",
+    "./components": "./src/components/index.ts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
@@ -21,6 +22,8 @@
   "packageManager": "npm@11.2.0",
   "devDependencies": {
     "@repo/typescript-config": "*",
+    "@tailwindcss/cli": "^4.0.14",
+    "@tailwindcss/postcss": "^4.0.14",
     "@turbo/gen": "^2.4.4",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.11",
@@ -28,12 +31,11 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "@tailwindcss/cli": "^4.0.14",
-    "@tailwindcss/postcss": "^4.0.14",
     "typescript": "^5.8.2"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1"
   }
 }
