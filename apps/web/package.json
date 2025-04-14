@@ -11,6 +11,7 @@
     "ncu": "ncu -u"
   },
   "dependencies": {
+    "@repo/database": "*",
     "@repo/design-system": "*",
     "next": "^15.2.2",
     "react": "^19.0.0",
