@@ -6,7 +6,9 @@
     "./themes/*": "./src/themes/*.css",
     "./styles": "./dist/index.css",
     "./fonts": "./dist/fonts",
-    "./components": "./src/components/index.ts"
+    "./components": "./src/components/index.ts",
+    "./types": "./src/types/index.ts",
+    "./icons": "./src/components/icons/index.ts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",

@@ -3,7 +3,7 @@ import React from 'react';
 import type { IconType } from '../types/icon-types';
 import * as Icons from './icons';
 
-const iconStyles = cva('', {
+export const iconVariants = {
   variants: {
     size: {
       small: 'ko:size-4',
@@ -13,18 +13,25 @@ const iconStyles = cva('', {
       extraHuge: 'ko:size-14',
     },
   },
+} as const;
+
+const iconStyles = cva('', {
+  variants: iconVariants.variants,
   defaultVariants: {
     size: 'medium',
   },
 });
 
+type IconVariants = VariantProps<typeof iconStyles>;
+type IconSize = IconVariants['size'];
+export const iconSizes = Object.keys(iconVariants) as IconSize[];
+
 type IconProps = {
   name: IconType;
-  color?: string;
 } & VariantProps<typeof iconStyles>;
 
-export function Icon({ name, size, color, ...props }: IconProps) {
+export function Icon({ name, size, ...props }: IconProps) {
   const className = iconStyles({ size });
-  const IconComponent = React.createElement(Icons[name], { ...props, className, style: { color } });
+  const IconComponent = React.createElement(Icons[name], { ...props, className });
   return IconComponent;
 }

@@ -1,23 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import type { ArgTypes } from '@storybook/react';
 
-import { Icon } from '@repo/design-system/components';
+import { Icon, iconSizes } from '@repo/design-system/components';
+import { iconNames } from '@repo/design-system/types';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icon',
   component: Icon,
+  tags: ['autodocs'],
   argTypes: {
     name: {
       control: 'select',
-      options: ['EnvelopeIcon', 'SearchIcon'],
+      options: iconNames,
     },
     size: {
       control: 'select',
-      options: ['small', 'medium', 'large', 'extraLarge', 'extraHuge'],
+      options: iconSizes,
     },
     color: {
       control: 'color',
     },
-  },
+  } as ArgTypes,
 };
 
 type IconStory = StoryObj<typeof meta>;
