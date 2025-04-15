@@ -24,14 +24,15 @@ const iconStyles = cva('', {
 
 type IconVariants = VariantProps<typeof iconStyles>;
 type IconSize = IconVariants['size'];
-export const iconSizes = Object.keys(iconVariants) as IconSize[];
+export const iconSizes = Object.keys(iconVariants.variants.size) as IconSize[];
 
 type IconProps = {
   name: IconType;
+  title: string;
 } & VariantProps<typeof iconStyles>;
 
-export function Icon({ name, size, ...props }: IconProps) {
+export function Icon({ name, size, title, ...props }: IconProps) {
   const className = iconStyles({ size });
-  const IconComponent = React.createElement(Icons[name], { ...props, className });
+  const IconComponent = React.createElement(Icons[name], { ...props, title, className });
   return IconComponent;
 }
