@@ -1,5 +1,5 @@
 type EnvelopeIconProps = {
-  title?: string;
+  title: string;
 } & React.JSX.IntrinsicAttributes &
   React.SVGProps<SVGSVGElement>;
 

@@ -29,7 +29,7 @@ export const Default: IconStory = {
   args: {
     name: 'SearchIcon',
     size: 'medium',
-    title: '',
+    title: 'Search icon',
   },
 };
 
