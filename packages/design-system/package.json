@@ -8,7 +8,8 @@
     "./fonts": "./dist/fonts",
     "./components": "./src/components/index.ts",
     "./types": "./src/types/index.ts",
-    "./icons": "./src/components/icons/index.ts"
+    "./icons": "./src/components/icons/index.ts",
+    "./svg": "./src/components/svg/index.ts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
