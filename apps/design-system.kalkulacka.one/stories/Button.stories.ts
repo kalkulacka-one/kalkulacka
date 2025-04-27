@@ -7,6 +7,11 @@ const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
+  argTypes: {
+    disabled: {
+      control: 'boolean',
+    },
+  },
 };
 
 type ButtonStory = StoryObj<typeof meta>;
@@ -14,6 +19,8 @@ type ButtonStory = StoryObj<typeof meta>;
 export const Default: ButtonStory = {
   args: {
     children: 'Button text',
+    kind: 'filled',
+    disabled: true,
   },
 };
 
