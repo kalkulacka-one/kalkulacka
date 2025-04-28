@@ -1,4 +1,9 @@
 :root {
   --typeface-display: "Radio Canada";
   --typeface-sans: "Inter";
+
+  /* Base Palette */
+  --palette-primary: #0070f4;
+  --palette-secondary: #d04646;
+  --palette-neutral: #cccccc;
 }
