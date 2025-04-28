@@ -6,13 +6,18 @@
     "dev": "turbo watch dev",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "ncu": "turbo ncu"
+    "ncu": "turbo ncu",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/typescript-config": "*",
+    "@vitest/ui": "^3.1.2",
+    "jsdom": "^26.1.0",
     "npm-check-updates": "^17.1.15",
-    "turbo": "^2.4.4"
+    "turbo": "^2.4.4",
+    "vitest": "^3.1.2"
   },
   "engines": {
     "node": ">=18"
