@@ -3,6 +3,33 @@
 @theme {
   --font-display: var(--typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans: var(--typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Color tokens */
+  --color-bg-primary: oklch(from var(--palette-primary) l c h / 1);
+  --color-border-primary: oklch(from var(--palette-primary) l c h / 1);
+  --color-text-primary-on-fill-primary: light-dark(white, white);
+
+  --color-bg-primary-hover: light-dark(
+    oklch(from var(--palette-primary) calc(l - 0.1) c h / 1),
+    oklch(from var(--palette-primary) calc(l + 0.1) c h / 1)
+  );
+
+  --color-text-primary-on-fill-primary-hover: light-dark(white, black);
+
+  --color-bg-primary-disabled: light-dark(
+    oklch(from var(--palette-neutral) calc(l + 0.1) c h / 1),
+    oklch(from var(--palette-neutral) calc(l - 0.1) c h / 1)
+  );
+
+  --color-text-primary-on-fill-primary-disabled: light-dark(
+    oklch(from var(--palette-neutral) calc(l - 0.3) c h / 1),
+    oklch(from var(--palette-neutral) calc(l + 0.4) c h / 1)
+  );
+
+  --color-border-primary-disabled: light-dark(
+    oklch(from var(--palette-neutral) calc(l - 0.1) c h / 1),
+    oklch(from var(--palette-neutral) calc(l - 0.2) c h / 1)
+  );
 }
 
 @layer base {
