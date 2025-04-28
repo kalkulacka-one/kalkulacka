@@ -26,6 +26,8 @@
     "@repo/typescript-config": "*",
     "@tailwindcss/cli": "^4.0.14",
     "@tailwindcss/postcss": "^4.0.14",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@turbo/gen": "^2.4.4",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.11",
