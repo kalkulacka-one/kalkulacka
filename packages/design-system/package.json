@@ -19,13 +19,16 @@
     "lint:fix": "biome check --write .",
     "tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "tailwind:watch": "npm run tailwind -- --watch",
-    "ncu": "ncu -u"
+    "ncu": "ncu -u",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "packageManager": "npm@11.2.0",
   "devDependencies": {
     "@repo/typescript-config": "*",
     "@tailwindcss/cli": "^4.0.14",
     "@tailwindcss/postcss": "^4.0.14",
+    "vitest": "^3.1.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@turbo/gen": "^2.4.4",

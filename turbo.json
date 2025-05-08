@@ -22,6 +22,9 @@
     },
     "ncu": {
       "dependsOn": ["^ncu"]
+    },
+    "test": {
+      "dependsOn": ["build", "^build"]
     }
   }
 }

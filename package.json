@@ -7,12 +7,13 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "ncu": "turbo ncu",
-    "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test": "turbo run test",
+    "test:ui": "turbo run test:ui"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/typescript-config": "*",
+    "@vitejs/plugin-react": "^4.4.1",
     "@vitest/ui": "^3.1.2",
     "jsdom": "^26.1.0",
     "npm-check-updates": "^17.1.15",

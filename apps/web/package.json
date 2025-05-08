@@ -8,7 +8,9 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "start": "next start",
-    "ncu": "ncu -u"
+    "ncu": "ncu -u",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@repo/design-system": "*",
@@ -25,6 +27,9 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.14",
     "@tailwindcss/postcss": "^4.0.14",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vitest": "^3.1.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0"
   }
 }
