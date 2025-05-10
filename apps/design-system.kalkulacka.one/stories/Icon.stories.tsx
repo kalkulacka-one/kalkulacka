@@ -1,35 +1,39 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type { ArgTypes } from '@storybook/react';
 
-import { Icon, iconSizes } from '@repo/design-system/components';
-import { iconNames } from '@repo/design-system/types';
+import { mdiAccount } from '@mdi/js';
+import { Icon } from '@repo/design-system/components';
+import { EnvelopeIcon } from '@repo/design-system/icons';
 
 const meta: Meta<typeof Icon> = {
   title: 'Components/Icon',
   component: Icon,
   tags: ['autodocs'],
   argTypes: {
-    name: {
-      control: 'select',
-      options: iconNames,
-    },
+    decorative: { control: 'boolean' },
+    title: { control: 'text' },
     size: {
       control: 'select',
-      options: iconSizes,
+      options: ['small', 'medium', 'large'],
     },
-    color: {
-      control: 'color',
-    },
-  } as ArgTypes,
+  },
 };
 
-type IconStory = StoryObj<typeof meta>;
+type IconStory = StoryObj<typeof Icon>;
 
-export const Default: IconStory = {
+export const Decorative: IconStory = {
   args: {
-    name: 'SearchIcon',
+    decorative: true,
+    icon: mdiAccount,
     size: 'medium',
-    title: 'Search icon',
+  },
+};
+
+export const NonDecorative: IconStory = {
+  args: {
+    decorative: false,
+    title: 'Envelope icon',
+    icon: EnvelopeIcon,
+    size: 'medium',
   },
 };
 
