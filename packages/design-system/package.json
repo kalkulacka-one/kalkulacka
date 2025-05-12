@@ -38,6 +38,8 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "react-hook-form": "^7.56.3",
+    "tailwind-merge": "^3.3.0"
   }
 }
