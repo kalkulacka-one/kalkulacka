@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 
 type SvgIconProps = {
   title?: string;
+  titleId?: string;
+  decorative?: boolean;
 } & React.SVGProps<SVGSVGElement>;
 
 type SvgIcon = React.FunctionComponent<SvgIconProps>;
@@ -45,7 +47,7 @@ export function Icon({ icon, size, title, decorative, className, ...props }: Ico
         viewBox="0 0 24 24"
         fill="currentColor"
       >
-        {title && <title>{title}</title>}
+        {title && <title id={titleId}>{title}</title>}
         <path d={icon} fill="currentColor" />
       </svg>
     );
