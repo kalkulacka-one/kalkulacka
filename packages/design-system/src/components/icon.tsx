@@ -1,8 +1,11 @@
 import { type VariantProps, cva } from 'class-variance-authority';
+import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type SvgIconProps = {
   title?: string;
+  titleId?: string;
+  decorative?: boolean;
 } & React.SVGProps<SVGSVGElement>;
 
 type SvgIcon = React.FunctionComponent<SvgIconProps>;
@@ -34,22 +37,36 @@ const IconStyles = cva('', {
   },
 });
 export function Icon({ icon, size, title, decorative, className, ...props }: IconProps) {
+  const titleId = title && `${title.split(' ').join('_').toLowerCase()}-${useId()}`;
   if (typeof icon === 'string') {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden={decorative ? 'true' : 'false'}
+        aria-labelledby={!decorative ? titleId : undefined}
         focusable="false"
         role="img"
         className={twMerge(IconStyles({ size }), className)}
         viewBox="0 0 24 24"
         fill="currentColor"
       >
-        {title && <title>{title}</title>}
+        {title && <title id={titleId}>{title}</title>}
         <path d={icon} fill="currentColor" />
       </svg>
     );
   }
   const SvgIcon = icon;
-  return <SvgIcon title={title} focusable="false" role="img" aria-hidden={decorative ? 'true' : 'false'} {...props} className={twMerge(IconStyles({ size }), className)} />;
+  return (
+    <SvgIcon
+      title={title}
+      titleId={titleId}
+      decorative={decorative}
+      focusable="false"
+      role="img"
+      aria-labelledby={!decorative ? titleId : undefined}
+      aria-hidden={decorative ? 'true' : 'false'}
+      {...props}
+      className={twMerge(IconStyles({ size }), className)}
+    />
+  );
 }
