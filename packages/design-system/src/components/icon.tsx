@@ -10,19 +10,19 @@ type SvgIconProps = {
 
 type SvgIcon = React.FunctionComponent<SvgIconProps>;
 
-type BaseIconProps = {
+type BaseProps = {
   icon: string | SvgIcon;
 } & VariantProps<typeof IconStyles> &
   React.SVGProps<SVGSVGElement>;
 
-type ConditionalIconProps =
+type ConditionalProps =
   | {
       title: string;
       decorative: false;
     }
   | { title?: string; decorative: true };
 
-type IconProps = BaseIconProps & ConditionalIconProps;
+type Props = BaseProps & ConditionalProps;
 
 const IconStyles = cva('', {
   variants: {
@@ -36,21 +36,22 @@ const IconStyles = cva('', {
     size: 'medium',
   },
 });
-export function Icon({ icon, size, title, decorative, className, ...props }: IconProps) {
-  const titleId = title && `${title.split(' ').join('_').toLowerCase()}-${useId()}`;
+export function Icon({ icon, size, title, decorative, className, ...props }: Props) {
+  const titleId = useId();
   if (typeof icon === 'string') {
     return (
       <svg
+        {...props}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden={decorative ? 'true' : 'false'}
         aria-labelledby={!decorative ? titleId : undefined}
         focusable="false"
-        role="img"
+        role={decorative ? undefined : 'img'}
         className={twMerge(IconStyles({ size }), className)}
         viewBox="0 0 24 24"
         fill="currentColor"
       >
-        {title && <title id={titleId}>{title}</title>}
+        {!decorative && title && <title id={titleId}>{title}</title>}
         <path d={icon} fill="currentColor" />
       </svg>
     );
@@ -58,14 +59,14 @@ export function Icon({ icon, size, title, decorative, className, ...props }: Ico
   const SvgIcon = icon;
   return (
     <SvgIcon
+      {...props}
       title={title}
       titleId={titleId}
       decorative={decorative}
       focusable="false"
-      role="img"
+      role={decorative ? undefined : 'img'}
       aria-labelledby={!decorative ? titleId : undefined}
       aria-hidden={decorative ? 'true' : 'false'}
-      {...props}
       className={twMerge(IconStyles({ size }), className)}
     />
   );

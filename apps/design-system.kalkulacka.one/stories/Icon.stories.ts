@@ -10,7 +10,7 @@ const meta: Meta<typeof Icon> = {
   tags: ['autodocs'],
   argTypes: {
     decorative: { control: 'boolean' },
-    title: { control: 'text' },
+    title: { control: 'text', if: { arg: 'decorative', eq: false } },
     size: {
       control: 'select',
       options: ['small', 'medium', 'large'],
