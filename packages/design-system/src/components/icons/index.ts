@@ -1,2 +1,2 @@
-export * from './envelopeIcon';
-export * from './searchIcon';
+export * from "./envelopeIcon";
+export * from "./searchIcon";

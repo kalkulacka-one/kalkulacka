@@ -1,12 +1,12 @@
-import type { Preview } from '@storybook/react';
-import React, { useEffect } from 'react';
-import '@repo/design-system/styles';
+import type { Preview } from "@storybook/react";
+import React, { useEffect } from "react";
+import "@repo/design-system/styles";
 
 // Record to map theme names to their respective import functions
 const themeLoaders: Record<string, () => Promise<string>> = {
-  'kalkulacka-one': async () =>
+  "kalkulacka-one": async () =>
     // @ts-ignore
-    (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
+    (await import("!css-loader!@repo/design-system/themes/kalkulacka.one")).default,
 };
 
 const keys = Object.keys(themeLoaders);
@@ -30,11 +30,11 @@ const preview: Preview = {
   },
   globalTypes: {
     theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
+      name: "Theme",
+      description: "Global theme for components",
       defaultValue: keys[0],
       toolbar: {
-        icon: 'circlehollow',
+        icon: "circlehollow",
         items: keys,
         showName: true,
       },
@@ -46,24 +46,24 @@ const preview: Preview = {
 
       useEffect(() => {
         const applyTheme = async () => {
-          const oldStyle = document.getElementById('theme-style');
+          const oldStyle = document.getElementById("theme-style");
           if (oldStyle) oldStyle.remove();
 
           try {
             const cssContent = await loadTheme(theme);
-            const styleTag = document.createElement('style');
-            styleTag.id = 'theme-style';
+            const styleTag = document.createElement("style");
+            styleTag.id = "theme-style";
             styleTag.textContent = cssContent;
             document.head.appendChild(styleTag);
           } catch (error) {
-            console.error('Error loading theme:', error);
+            console.error("Error loading theme:", error);
           }
         };
 
         applyTheme();
 
         return () => {
-          const oldStyle = document.getElementById('theme-style');
+          const oldStyle = document.getElementById("theme-style");
           if (oldStyle) oldStyle.remove();
         };
       }, [theme]);
