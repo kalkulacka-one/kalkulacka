@@ -1,38 +1,73 @@
-import { type VariantProps, cva } from 'class-variance-authority';
-import React from 'react';
-import type { IconType } from '../types/icon-types';
-import * as Icons from './icons';
+import { type VariantProps, cva } from "class-variance-authority";
+import { useId } from "react";
+import { twMerge } from "tailwind-merge";
 
-export const iconVariants = {
+type SvgIconProps = {
+  title?: string;
+  titleId?: string;
+  decorative?: boolean;
+} & React.SVGProps<SVGSVGElement>;
+
+type SvgIcon = React.FunctionComponent<SvgIconProps>;
+
+type BaseProps = {
+  icon: string | SvgIcon;
+} & VariantProps<typeof IconStyles> &
+  React.SVGProps<SVGSVGElement>;
+
+type ConditionalProps =
+  | {
+      title: string;
+      decorative: false;
+    }
+  | { title?: string; decorative: true };
+
+type Props = BaseProps & ConditionalProps;
+
+const IconStyles = cva("", {
   variants: {
     size: {
-      small: 'ko:size-4',
-      medium: 'ko:size-6',
-      large: 'ko:size-8',
-      extraLarge: 'ko:size-10',
-      extraHuge: 'ko:size-14',
+      small: "ko:size-4",
+      medium: "ko:size-6",
+      large: "ko:size-8",
     },
   },
-} as const;
-
-const iconStyles = cva('', {
-  variants: iconVariants.variants,
   defaultVariants: {
-    size: 'medium',
+    size: "medium",
   },
 });
-
-type IconVariants = VariantProps<typeof iconStyles>;
-type IconSize = IconVariants['size'];
-export const iconSizes = Object.keys(iconVariants.variants.size) as IconSize[];
-
-type IconProps = {
-  name: IconType;
-  title: string;
-} & VariantProps<typeof iconStyles>;
-
-export function Icon({ name, size, title, ...props }: IconProps) {
-  const className = iconStyles({ size });
-  const IconComponent = React.createElement(Icons[name], { ...props, title, className });
-  return IconComponent;
+export function Icon({ icon, size, title, decorative, className, ...props }: Props) {
+  const titleId = useId();
+  if (typeof icon === "string") {
+    return (
+      <svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden={decorative ? "true" : "false"}
+        aria-labelledby={!decorative ? titleId : undefined}
+        focusable="false"
+        role={decorative ? undefined : "img"}
+        className={twMerge(IconStyles({ size }), className)}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        {!decorative && title && <title id={titleId}>{title}</title>}
+        <path d={icon} fill="currentColor" />
+      </svg>
+    );
+  }
+  const SvgIcon = icon;
+  return (
+    <SvgIcon
+      {...props}
+      title={title}
+      titleId={titleId}
+      decorative={decorative}
+      focusable="false"
+      role={decorative ? undefined : "img"}
+      aria-labelledby={!decorative ? titleId : undefined}
+      aria-hidden={decorative ? "true" : "false"}
+      className={twMerge(IconStyles({ size }), className)}
+    />
+  );
 }

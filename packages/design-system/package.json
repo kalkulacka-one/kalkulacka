@@ -37,7 +37,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@mdi/js": "^7.4.47",
     "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.2.0"
   }
 }
