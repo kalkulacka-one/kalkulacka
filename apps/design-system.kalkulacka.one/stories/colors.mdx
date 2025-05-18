@@ -1,0 +1,107 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+import { Card } from '@repo/design-system/components';
+
+<Meta title="Colors" />
+
+# Colors
+
+Kalkulacka.1 design system colors are architectured to be very easily themeable.
+
+There are two layers of CSS variables:
+
+- [**color palette**](#color-palette): base colors defined by each theme
+- [**color tokens**](#color-tokens): semantic colors derived from the palette colors
+
+## Color palette
+
+Color palette defines three main colors:
+
+- primary: `--palette-primary`
+- secondary: `--palette-secondary`
+- neutral: `--palette-neutral`
+
+and various direct colors:
+
+- red: `--palette-red`
+- yellow: `--palette-yellow`
+- green: `--palette-green`
+
+Primary and secondary colors are also used in the context of affirmative and negative responses. If the colors doesn't match their semantic meaning, they can be overriden by defining additional colors:
+
+- affirmative: `--palette-response-affirmative` *(primary as default)*
+- negative: `--palette-response-negative` *(secondary as default)*
+
+These colors are also used in the logo as well, and again if the colors doesn't match the desired logo composition, individual logo colors can be adjusted by defining another set of specific colors:
+
+- check: `--palette-logo-check` *(primary as default)*
+- slash: `--palette-logo-slash` *(neutral as default)*
+- percent numerator: `--palette-logo-percent-numerator` *(primary as default)*
+- percent slash: `--palette-logo-percent-slash` *(neutral as default)*
+- percent denominator: `--palette-logo-percent-denominator` *(secondary as default)*
+- cross: `--palette-logo-percent-cross` *(secondary as default)*
+
+Therefore the minimal color theme can look like this:
+
+```css
+:root {
+  --palette-primary: blue;
+  --palette-secondary: orange;
+  --palette-neutral: gray;
+  --palette-red: red;
+  --palette-yellow: yellow;
+  --palette-green: green;
+}
+```
+
+## Color tokens
+
+Color tokens assign semantic meaning to the colors from the palette as well as define [custom colors in Tailwind CSS](https://tailwindcss.com/docs/colors#customizing-your-colors).
+
+Thanks to the support of [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function and [relative color syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors) (introduced in CSS Color Module Level 5) and [Oklch color space](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) (introduced in CSS Color Module Level 4), all tokens can be dynamically derived from the few colors defined in the palette.
+
+However it is always possible to override the token with a specific CSS variable in the palette for a more precise control.
+
+Color tokens are defined on four main levels:
+
+- element
+- variant
+- state
+- light/dark
+
+Besides that combinations with appropriate color contrast are defined as well.
+
+<Unstyled style={{
+  display: "grid",
+  gridAutoFlow: "column",
+  gridTemplateColumns: "min-content",
+  gap: "1rem",
+  justifyContent: "start"
+}}>
+  <Card variant="primary">
+    Primary
+  </Card>
+  <Card variant="secondary">
+    Secondary
+  </Card>
+  <Card variant="neutral">
+    Neutral
+  </Card>
+</Unstyled>
+
+<Unstyled style={{
+  display: "grid",
+  gridAutoFlow: "column",
+  gridTemplateColumns: "min-content",
+  gap: "1rem",
+  justifyContent: "start"
+}}>
+  <Card variant="primary">
+    Primary
+  </Card>
+  <Card variant="secondary">
+    Secondary
+  </Card>
+  <Card variant="neutral">
+    Neutral
+  </Card>
+</Unstyled>

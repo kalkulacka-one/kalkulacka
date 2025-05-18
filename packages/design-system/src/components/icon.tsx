@@ -41,7 +41,7 @@ export function Icon({ name, size, title, ...props }: IconProps) {
   return (
     <p
       className={
-        "ko:font-display ko:text-bold ko:text-4xl ko:leading-10 ko:tracking-tight ko:text-primary"
+        "ko:font-display ko:text-bold ko:text-4xl ko:leading-10 ko:tracking-tight ko:text-primary-hover"
       }
     >
       olala

@@ -2,5 +2,6 @@
   --typeface-display: "Radio Canada";
   --typeface-sans: "Inter";
 
-  --dummy-color: pink;
+  --palette-primary: pink;
+  --palette-secondary: blue;
 }

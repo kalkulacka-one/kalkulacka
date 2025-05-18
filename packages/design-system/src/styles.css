@@ -1,8 +1,72 @@
 @import 'tailwindcss' prefix(ko);
 
-@theme {
+:root {
+  color-scheme: light dark;
+}
+
+@theme static {
   --font-display: var(--typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans: var(--typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary: light-dark(
+    var(--palette-primary-light, var(--palette-primary)),
+    var(--palette-primary-dark, var(--palette-primary))
+    /*var(--palette-primary-dark, oklch(from var(--palette-primary) calc(l - 0.2) c h))*/
+  );
+  --color-secondary: light-dark(
+    var(--palette-secondary-light, var(--palette-secondary)),
+    var(--palette-secondary-dark, var(--palette-secondary))
+  );
+  --color-neutral: light-dark(
+    var(--palette-neutral-light, var(--palette-neutral)),
+    var(--palette-neutral-dark, var(--palette-neutral))
+  );
+  --color-red: light-dark(
+    var(--palette-red-light, var(--palette-red)),
+    var(--palette-red-dark, var(--palette-red))
+  );
+  --color-yellow: light-dark(
+    var(--palette-yellow-light, var(--palette-yellow)),
+    var(--palette-yellow-dark, var(--palette-yellow))
+  );
+  --color-green: light-dark(
+    var(--palette-green-light, var(--palette-green)),
+    var(--palette-green-dark, var(--palette-green))
+  );
+
+  --color-response-affirmative: light-dark(
+    var(--palette-response-affirmative-light, var(--palette-primary)),
+    var(--palette-response-affirmative-dark, var(--palette-primary))
+  );
+  --color-response-negative: light-dark(
+    var(--palette-response-negative-light, var(--palette-secondary)),
+    var(--palette-response-negative-dark, var(--palette-secondary))
+  );
+
+  --color-logo-check: light-dark(
+    var(--palette-logo-check-light, var(--palette-primary)),
+    var(--palette-logo-check-dark, var(--palette-primary))
+  );
+  --color-logo-slash: light-dark(
+    var(--palette-logo-slash-light, var(--palette-neutral)),
+    var(--palette-logo-slash-dark, var(--palette-neutral))
+  );
+  --color-logo-percent-numerator: light-dark(
+    var(--palette-logo-percent-numerator-light, var(--palette-primary));
+    var(--palette-logo-percent-numerator-dark, var(--palette-primary));
+  );
+  --color-logo-percent-slash: light-dark(
+    var(--palette-logo-percent-slash-light, var(--palette-neutral)),
+    var(--palette-logo-percent-slash-dark, var(--palette-neutral))
+  );
+  --color-logo-percent-denominator: light-dark(
+    var(--palette-logo-percent-denominator-light, var(--palette-secondary)),
+    var(--palette-logo-percent-denominator-dark, var(--palette-secondary))
+  );
+  --color-logo-cross: light-dark(
+    var(--palette-logo-cross-light, var(--palette-secondary)),
+    var(--palette-logo-cross-dark, var(--palette-secondary))
+  );
 }
 
 @layer base {

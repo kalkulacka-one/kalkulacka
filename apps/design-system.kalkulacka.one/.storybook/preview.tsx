@@ -5,13 +5,13 @@ import { DocsContainer as BaseDocsContainer } from "@storybook/addon-docs/blocks
 
 // Load theme CSS dynamically
 const themeLoaders: Record<string, () => Promise<string>> = {
+  "Volební kalkulačka (CZ)": async () =>
+    // @ts-ignore
+    await import("@repo/design-system/themes/www.volebnikalkulacka.cz/default"),
   "kalkulacka-one": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/kalkulacka.one"))
       .default,
-  dva: async () =>
-    // @ts-ignore
-    (await import("!css-loader!@repo/design-system/themes/dva")).default,
 };
 
 const keys = Object.keys(themeLoaders);
