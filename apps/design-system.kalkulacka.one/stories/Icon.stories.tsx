@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import type { ArgTypes } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { ArgTypes } from '@storybook/nextjs';
 
 import { Icon, iconSizes } from '@repo/design-system/components';
 import { iconNames } from '@repo/design-system/types';

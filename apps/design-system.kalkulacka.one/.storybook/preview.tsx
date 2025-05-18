@@ -1,12 +1,12 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/nextjs';
 import React, { useEffect } from 'react';
 import '@repo/design-system/styles';
 
 // Record to map theme names to their respective import functions
-const themeLoaders: Record<string, () => Promise<string>> = {
+const themeLoaders: Record<string, () => Promise<void>> = {
   'kalkulacka-one': async () =>
     // @ts-ignore
-    (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
+    await import('@repo/design-system/themes/kalkulacka.one'),
 };
 
 const keys = Object.keys(themeLoaders);
