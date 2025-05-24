@@ -8,7 +8,9 @@
     "./fonts": "./dist/fonts",
     "./components": "./src/components/index.ts",
     "./types": "./src/types/index.ts",
-    "./icons": "./src/components/icons/index.ts"
+    "./icons": "./src/components/icons/index.ts",
+    "./utils": "./src/utils/index.ts",
+    "./provider": "./src/provider/index.ts"
   },
   "scripts": {
     "build": "npm run fonts && npm run tailwind",
@@ -37,7 +39,11 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@hookform/resolvers": "^5.0.1",
     "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1"
+    "clsx": "^2.1.1",
+    "react-hook-form": "^7.56.3",
+    "tailwind-merge": "^3.3.0",
+    "zod": "^3.22.3"
   }
 }
