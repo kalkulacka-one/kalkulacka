@@ -18,7 +18,8 @@
       "dependsOn": ["^lint:fix"]
     },
     "build:openapi": {
-      "dependsOn": ["^build:openapi"]
+      "dependsOn": ["^build:openapi"],
+      "cache": false
     },
     "ncu": {
       "dependsOn": ["^ncu"]
