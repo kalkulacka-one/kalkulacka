@@ -9,13 +9,13 @@ const themeLoaders: Record<string, () => Promise<string>> = {
     (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
 };
 
-const keys = Object.keys(themeLoaders);
 
 // Function to dynamically load CSS content using the Record
 const loadTheme = (themeName: string) => {
   const load = themeLoaders[themeName];
   if (!load) throw new Error(`Theme ${themeName} not found`);
   return load();
+const themeNames = Object.keys(themeLoaders);
 };
 
 const ThemedDocsContainer = ({ children, context, ...props }) => {
@@ -69,10 +69,10 @@ const preview: Preview = {
     theme: {
       name: 'Theme',
       description: 'Global theme for components',
-      defaultValue: keys[0],
+      defaultValue: themeNames[0],
       toolbar: {
-        icon: 'circlehollow',
-        items: keys,
+        icon: 'paintbrush',
+        items: themeNames,
         showName: true,
       },
     },
