@@ -6,7 +6,7 @@ import '@repo/design-system/styles';
 const themeLoaders: Record<string, () => Promise<void>> = {
   'kalkulacka-one': async () =>
     // @ts-ignore
-    await import('@repo/design-system/themes/kalkulacka.one'),
+    (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
 };
 
 const keys = Object.keys(themeLoaders);
