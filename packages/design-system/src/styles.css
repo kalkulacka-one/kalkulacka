@@ -1,6 +1,6 @@
 @import 'tailwindcss' prefix(ko);
 
-@theme {
+@theme static {
   --font-display: var(--typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans: var(--typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
