@@ -9,41 +9,37 @@ const themeLoaders: Record<string, () => Promise<string>> = {
     (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
 };
 
-
-// Function to dynamically load CSS content using the Record
-const loadTheme = (themeName: string) => {
-  const load = themeLoaders[themeName];
-  if (!load) throw new Error(`Theme ${themeName} not found`);
-  return load();
 const themeNames = Object.keys(themeLoaders);
+
+const applyTheme = async (themeName: string) => {
+  const loader = themeLoaders[themeName];
+  if (!loader) {
+    throw new Error(`Theme \`${themeName}\` is not defined`);
+  }
+
+  const cssContent = await loader();
+  if (!cssContent) {
+    throw new Error(`Theme \`${themeName}\` is empty`);
+  }
+
+  const currentTheme = document.getElementById('theme-style');
+  if (currentTheme) currentTheme.remove();
+
+  const styleTag = document.createElement('style');
+  styleTag.id = 'theme-style';
+  styleTag.textContent = cssContent;
+  document.head.appendChild(styleTag);
+};
+
+const useTheme = (themeName: string) => {
+  useEffect(() => {
+    applyTheme(themeName);
+  }, [themeName]);
 };
 
 const ThemedDocsContainer = ({ children, context, ...props }) => {
-  const theme = context?.store?.userGlobals?.globals?.theme;
-
-  useEffect(() => {
-    const applyTheme = async () => {
-      const oldStyle = document.getElementById('theme-style');
-      if (oldStyle) oldStyle.remove();
-
-      try {
-        const cssContent = await loadTheme(theme);
-        const styleTag = document.createElement('style');
-        styleTag.id = 'theme-style';
-        styleTag.textContent = cssContent;
-        document.head.appendChild(styleTag);
-      } catch (error) {
-        console.error('Error loading theme:', error);
-      }
-    };
-
-    applyTheme();
-
-    return () => {
-      const oldStyle = document.getElementById('theme-style');
-      if (oldStyle) oldStyle.remove();
-    };
-  }, [theme]);
+  const themeName = context?.store?.userGlobals?.globals?.theme;
+  useTheme(themeName);
 
   return (
     <DocsContainer context={context} {...props}>
@@ -52,7 +48,6 @@ const ThemedDocsContainer = ({ children, context, ...props }) => {
   );
 };
 
-// Storybook preview configuration with globalTypes for themes
 const preview: Preview = {
   parameters: {
     controls: {
@@ -79,31 +74,8 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme;
-
-      useEffect(() => {
-        const applyTheme = async () => {
-          const oldStyle = document.getElementById('theme-style');
-          if (oldStyle) oldStyle.remove();
-
-          try {
-            const cssContent = await loadTheme(theme);
-            const styleTag = document.createElement('style');
-            styleTag.id = 'theme-style';
-            styleTag.textContent = cssContent;
-            document.head.appendChild(styleTag);
-          } catch (error) {
-            console.error('Error loading theme:', error);
-          }
-        };
-
-        applyTheme();
-
-        return () => {
-          const oldStyle = document.getElementById('theme-style');
-          if (oldStyle) oldStyle.remove();
-        };
-      }, [theme]);
+      const themeName = context.globals.theme;
+      useTheme(themeName);
 
       return <Story />;
     },
