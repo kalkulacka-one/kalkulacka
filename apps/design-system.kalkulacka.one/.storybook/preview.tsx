@@ -1,3 +1,4 @@
+import { DocsContainer } from '@storybook/addon-docs/blocks';
 import type { Preview } from '@storybook/nextjs';
 import React, { useEffect } from 'react';
 import '@repo/design-system/styles';
@@ -18,6 +19,40 @@ const loadTheme = (themeName: string) => {
   return load();
 };
 
+const ThemedDocsContainer = ({ children, context, ...props }) => {
+  const theme = context?.store?.userGlobals?.globals?.theme;
+
+  useEffect(() => {
+    const applyTheme = async () => {
+      const oldStyle = document.getElementById('theme-style');
+      if (oldStyle) oldStyle.remove();
+
+      try {
+        const cssContent = await loadTheme(theme);
+        const styleTag = document.createElement('style');
+        styleTag.id = 'theme-style';
+        styleTag.textContent = cssContent;
+        document.head.appendChild(styleTag);
+      } catch (error) {
+        console.error('Error loading theme:', error);
+      }
+    };
+
+    applyTheme();
+
+    return () => {
+      const oldStyle = document.getElementById('theme-style');
+      if (oldStyle) oldStyle.remove();
+    };
+  }, [theme]);
+
+  return (
+    <DocsContainer context={context} {...props}>
+      {children}
+    </DocsContainer>
+  );
+};
+
 // Storybook preview configuration with globalTypes for themes
 const preview: Preview = {
   parameters: {
@@ -26,6 +61,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    docs: {
+      container: ThemedDocsContainer,
     },
   },
   globalTypes: {
