@@ -4,9 +4,12 @@ import React, { useEffect } from "react";
 import "@repo/design-system/styles";
 
 const themeLoaders: Record<string, () => Promise<string>> = {
-  "kalkulacka-one": async () =>
+  "Kalkulacka.1": async () =>
     // @ts-ignore
-    (await import("!css-loader!@repo/design-system/themes/kalkulacka.one")).default,
+    (await import("!css-loader!@repo/design-system/themes/www.kalkulacka.one/default")).default,
+  "Volební kalkulačka (CZ)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
