@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useEffect } from 'react';
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Page() {
   useEffect(() => {
@@ -26,10 +26,10 @@ export default function Page() {
           příspěvek se počítá!
         </p>
         <p>
-          Nebo se{' '}
+          Nebo se{" "}
           <Link href="/cs/zapojit-se" className="underline hover:no-underline">
             přidejte k našemu týmu dobrovolníků
-          </Link>{' '}
+          </Link>{" "}
           a pomozte milionům lidí, kteří Volební kalkulačku využívají.
         </p>
         <p>Vaše podpora je klíčová pro to, abychom mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku. Děkujeme!</p>
@@ -37,10 +37,10 @@ export default function Page() {
       <section className="grid gap-2">
         <h3 className="text-2xl font-bold">Přidejte se do klubu podporovatelů</h3>
         <p>
-          Přidejte se do klubu podporovatelů Volební kalkulačky na{' '}
+          Přidejte se do klubu podporovatelů Volební kalkulačky na{" "}
           <a href="https://herohero.co/volebnikalkulacka" className="underline hover:no-underline">
             Herohero
-          </a>{' '}
+          </a>{" "}
           a kromě dobrého pocitu, že pomůžete zajistit tvorbu dalších kalkulaček a podpoříte demokracii:
         </p>
         <ul className="list-disc pl-6">
@@ -64,11 +64,11 @@ export default function Page() {
       </section>
       <section className="grid gap-2">
         <p>
-          Chcete se na něco zeptat? Napište nám e-mail:{' '}
+          Chcete se na něco zeptat? Napište nám e-mail:{" "}
           <a href="mailto:hey@kalkulacka.one" className="underline hover:no-underline">
             hey@kalkulacka.one
-          </a>{' '}
-          nebo zprávu na{' '}
+          </a>{" "}
+          nebo zprávu na{" "}
           <a href="https://twitter.com/kalkulacka_one" className="underline hover:no-underline">
             <span className="line-through">Twitteru</span> X
           </a>

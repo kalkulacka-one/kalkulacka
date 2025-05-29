@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export default async function Page() {
   return (
@@ -15,18 +15,18 @@ export default async function Page() {
         </p>
         <p>Práce na volební kalkulačce je pestrá i různě rozložená v&nbsp;čase, takže určitě najdete příležitost vhodnou právě pro vás. Každé pomoci si velmi vážíme.</p>
         <p>
-          A pokud se nemůžete zapojit přímo, můžete nás{' '}
+          A pokud se nemůžete zapojit přímo, můžete nás{" "}
           <Link href="/cs/podporte-kalkulacku" className="underline hover:no-underline">
             podpořit i jinak
           </Link>
           . Moc děkujeme!
         </p>
         <p>
-          Chcete se zapojit nebo se na něco zeptat? Napište nám e-mail:{' '}
+          Chcete se zapojit nebo se na něco zeptat? Napište nám e-mail:{" "}
           <a href="mailto:hey@kalkulacka.one" className="underline hover:no-underline">
             hey@kalkulacka.one
-          </a>{' '}
-          nebo zprávu na{' '}
+          </a>{" "}
+          nebo zprávu na{" "}
           <a href="https://twitter.com/kalkulacka_one" className="underline hover:no-underline">
             <span className="line-through">Twitteru</span> X
           </a>
@@ -79,11 +79,11 @@ export default async function Page() {
                 mezinárodní expanzi.
               </p>
               <p>
-                Pracujeme s populárními technologiemi: React, NextJS, Tailwind CSS či Prisma & PostgreSQL. Vše je{' '}
+                Pracujeme s populárními technologiemi: React, NextJS, Tailwind CSS či Prisma & PostgreSQL. Vše je{" "}
                 <a href="https://github.com/kalkulacka-one/kalkulacka" className="underline hover:no-underline">
                   open-source na našem GitHubu
-                </a>{' '}
-                (současná kalkulačka zatím ještě na{' '}
+                </a>{" "}
+                (současná kalkulačka zatím ještě na{" "}
                 <a href="https://github.com/cesko-digital/volebni-kalkulacka-2022" className="underline hover:no-underline">
                   GitHubu Česko.Digital
                 </a>
@@ -140,11 +140,11 @@ export default async function Page() {
         </ul>
         <h2 className="text-2xl font-bold">Jak se zapojit?</h2>
         <p>
-          Napište nám e-mail:{' '}
+          Napište nám e-mail:{" "}
           <a href="mailto:hey@kalkulacka.one" className="underline hover:no-underline">
             hey@kalkulacka.one
-          </a>{' '}
-          nebo zprávu na{' '}
+          </a>{" "}
+          nebo zprávu na{" "}
           <a href="https://twitter.com/kalkulacka_one" className="underline hover:no-underline">
             <span className="line-through">Twitteru</span> X
           </a>

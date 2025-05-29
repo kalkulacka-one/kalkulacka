@@ -1,24 +1,24 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
-import type { ArgTypes } from '@storybook/nextjs';
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { ArgTypes } from "@storybook/nextjs";
 
-import { Icon, iconSizes } from '@repo/design-system/components';
-import { iconNames } from '@repo/design-system/types';
+import { Icon, iconSizes } from "@repo/design-system/components";
+import { iconNames } from "@repo/design-system/types";
 
 const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
+  title: "Components/Icon",
   component: Icon,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     name: {
-      control: 'select',
+      control: "select",
       options: iconNames,
     },
     size: {
-      control: 'select',
+      control: "select",
       options: iconSizes,
     },
     color: {
-      control: 'color',
+      control: "color",
     },
   } as ArgTypes,
 };
@@ -27,9 +27,9 @@ type IconStory = StoryObj<typeof meta>;
 
 export const Default: IconStory = {
   args: {
-    name: 'SearchIcon',
-    size: 'medium',
-    title: 'Search icon',
+    name: "SearchIcon",
+    size: "medium",
+    title: "Search icon",
   },
 };
 

@@ -1,12 +1,12 @@
-import { DocsContainer } from '@storybook/addon-docs/blocks';
-import type { Preview } from '@storybook/nextjs';
-import React, { useEffect } from 'react';
-import '@repo/design-system/styles';
+import { DocsContainer } from "@storybook/addon-docs/blocks";
+import type { Preview } from "@storybook/nextjs";
+import React, { useEffect } from "react";
+import "@repo/design-system/styles";
 
 const themeLoaders: Record<string, () => Promise<string>> = {
-  'kalkulacka-one': async () =>
+  "kalkulacka-one": async () =>
     // @ts-ignore
-    (await import('!css-loader!@repo/design-system/themes/kalkulacka.one')).default,
+    (await import("!css-loader!@repo/design-system/themes/kalkulacka.one")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
@@ -22,11 +22,11 @@ const applyTheme = async (themeName: string) => {
     throw new Error(`Theme \`${themeName}\` is empty`);
   }
 
-  const currentTheme = document.getElementById('theme-style');
+  const currentTheme = document.getElementById("theme-style");
   if (currentTheme) currentTheme.remove();
 
-  const styleTag = document.createElement('style');
-  styleTag.id = 'theme-style';
+  const styleTag = document.createElement("style");
+  styleTag.id = "theme-style";
   styleTag.textContent = cssContent;
   document.head.appendChild(styleTag);
 };
@@ -62,11 +62,11 @@ const preview: Preview = {
   },
   globalTypes: {
     theme: {
-      name: 'Theme',
-      description: 'Global theme for components',
+      name: "Theme",
+      description: "Global theme for components",
       defaultValue: themeNames[0],
       toolbar: {
-        icon: 'paintbrush',
+        icon: "paintbrush",
         items: themeNames,
         showName: true,
       },
