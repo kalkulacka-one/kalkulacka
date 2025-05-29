@@ -1,0 +1,58 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Colors" />
+
+# Colors
+
+Kalkulacka.1 design system colors are designed to be easily themeable.
+
+There are two layers of CSS variables:
+
+- [**color palette**](#color-palette): base colors defined per theme
+- [**color tokens**](#color-tokens): semantic colors derived from the palette
+
+## Color palette
+
+The color palette defines three main colors:
+
+- primary: `--palette-primary`
+- secondary: `--palette-secondary`
+- neutral: `--palette-neutral`
+
+and additional direct colors:
+
+- red: `--palette-red`
+- yellow: `--palette-yellow`
+- green: `--palette-green`
+
+A minimal color theme might look like this:
+
+```css
+:root {
+  --palette-primary: blue;
+  --palette-secondary: orange;
+  --palette-neutral: gray;
+  --palette-red: red;
+  --palette-yellow: yellow;
+  --palette-green: green;
+}
+```
+
+## Color tokens
+
+Color tokens assign semantic meaning to the palette colors and define [custom colors in Tailwind CSS](https://tailwindcss.com/docs/colors#customizing-your-colors).
+
+Thanks to the support for [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function and [relative color syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors) (CSS Color Module Level 5) and [Oklch color space](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) (CSS Color Module Level 4), tokens can be dynamically derived from the few base palette colors.
+
+However, tokens can always be overridden with a specific palette variable for more precise control, for example if the primary/secondary colors don't align well with the affirmative/negative meaning of the response buttons.
+
+### Structure
+
+Color tokens are defined on four main levels:
+
+- element
+- variant
+- state
+- light/dark mode
+
+In addition, combinations (element on token) with appropriate color contrast are also defined.
