@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { mdiAccount } from '@mdi/js';
-import { Icon } from '@repo/design-system/components';
-import { EnvelopeIcon } from '@repo/design-system/icons';
+import { mdiAccount } from "@mdi/js";
+import { Icon } from "@repo/design-system/client";
+import { EnvelopeIcon } from "@repo/design-system/icons";
 
 const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
+  title: "Components/Icon",
   component: Icon,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    decorative: { control: 'boolean' },
-    title: { control: 'text' },
+    decorative: { control: "boolean" },
+    title: { control: "text", if: { arg: "decorative", eq: false } },
     size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
+      control: "select",
+      options: ["small", "medium", "large"],
     },
   },
 };
@@ -24,16 +24,16 @@ export const Decorative: IconStory = {
   args: {
     decorative: true,
     icon: mdiAccount,
-    size: 'medium',
+    size: "medium",
   },
 };
 
 export const NonDecorative: IconStory = {
   args: {
     decorative: false,
-    title: 'Envelope icon',
+    title: "Envelope icon",
     icon: EnvelopeIcon,
-    size: 'medium',
+    size: "medium",
   },
 };
 
