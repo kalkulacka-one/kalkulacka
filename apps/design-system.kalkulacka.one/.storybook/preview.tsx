@@ -66,12 +66,11 @@ const preview: Preview = {
   globalTypes: {
     theme: {
       name: "Theme",
-      description: "Global theme for components",
-      defaultValue: themeNames[0],
+      defaultValue: "Volební kalkulačka (CZ)",
       toolbar: {
+        title: "Theme",
         icon: "paintbrush",
         items: themeNames,
-        showName: true,
       },
     },
   },
