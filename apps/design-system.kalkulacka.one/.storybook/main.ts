@@ -1,6 +1,6 @@
-import type { StorybookConfig } from '@storybook/nextjs';
+import type { StorybookConfig } from "@storybook/nextjs";
 
-import { dirname, join } from 'node:path';
+import { dirname, join } from "node:path";
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -9,15 +9,15 @@ import { dirname, join } from 'node:path';
 
 // biome-ignore lint/suspicious/noExplicitAny: Fix any later
 function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
+  return dirname(require.resolve(join(value, "package.json")));
 }
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [getAbsolutePath('@storybook/addon-onboarding'), getAbsolutePath('@storybook/addon-links'), getAbsolutePath('@storybook/addon-docs')],
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [getAbsolutePath("@storybook/addon-onboarding"), getAbsolutePath("@storybook/addon-links"), getAbsolutePath("@storybook/addon-docs")],
   framework: {
-    name: getAbsolutePath('@storybook/nextjs'),
+    name: getAbsolutePath("@storybook/nextjs"),
     options: {},
   },
-  staticDirs: ['../public'],
+  staticDirs: ["../public"],
 };
 export default config;
