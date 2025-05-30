@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
 
 <Meta title="Colors" />
 
@@ -19,11 +19,89 @@ The color palette defines three main colors:
 - secondary: `--ko-palette-secondary`
 - neutral: `--ko-palette-neutral`
 
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "primary", variable: "--ko-palette-primary" },
+      { label: "secondary", variable: "--ko-palette-secondary" },
+      { label: "neutral", variable: "--ko-palette-neutral" },      
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            borderRadius: "50%",
+            backgroundColor: `var(${variable})`,
+          }}
+        />
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
 and additional direct colors:
 
 - red: `--ko-palette-red`
 - yellow: `--ko-palette-yellow`
 - green: `--ko-palette-green`
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "red", variable: "--ko-palette-red" },
+      { label: "yellow", variable: "--ko-palette-yellow" },
+      { label: "green", variable: "--ko-palette-green" },      
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            borderRadius: "50%",
+            backgroundColor: `var(${variable})`,
+          }}
+        />
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+      </div>
+    ))}
+  </div>
+</Unstyled>
 
 A minimal color theme might look like this:
 
