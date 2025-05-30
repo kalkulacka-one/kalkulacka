@@ -1,8 +1,40 @@
 @import 'tailwindcss' prefix(ko);
 
-@theme {
-  --font-display: var(--typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans: var(--typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+:root {
+  color-scheme: light dark;
+}
+
+@theme static {
+  --font-display: var(--ko-typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--ko-typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-*: initial;
+
+  --color-primary: light-dark(
+    var(--ko-palette-primary-light, var(--ko-palette-primary)),
+    var(--ko-palette-primary-dark, var(--ko-palette-primary))
+  );
+  --color-secondary: light-dark(
+    var(--ko-palette-secondary-light, var(--ko-palette-secondary)),
+    var(--ko-palette-secondary-dark, var(--ko-palette-secondary))
+  );
+  --color-neutral: light-dark(
+    var(--ko-palette-neutral-light, var(--ko-palette-neutral)),
+    var(--ko-palette-neutral-dark, var(--ko-palette-neutral))
+  );
+
+  --color-red: light-dark(
+    var(--ko-palette-red-light, var(--ko-palette-red)),
+    var(--ko-palette-red-dark, var(--ko-palette-red))
+  );
+  --color-yellow: light-dark(
+    var(--ko-palette-yellow-light, var(--ko-palette-yellow)),
+    var(--ko-palette-yellow-dark, var(--ko-palette-yellow))
+  );
+  --color-green: light-dark(
+    var(--ko-palette-green-light, var(--ko-palette-green)),
+    var(--ko-palette-green-dark, var(--ko-palette-green))
+  );
 }
 
 @layer base {

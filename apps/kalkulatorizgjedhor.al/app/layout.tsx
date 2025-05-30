@@ -1,5 +1,5 @@
 import "@repo/design-system/styles";
-import "@repo/design-system/themes/kalkulacka.one";
+import "@repo/design-system/themes/www.kalkulacka.one/default";
 import type { Metadata } from "next";
 
 import "./globals.css";
