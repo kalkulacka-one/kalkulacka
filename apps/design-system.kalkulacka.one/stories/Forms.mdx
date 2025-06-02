@@ -1,0 +1,95 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+import { DistrictSelectionForm } from '@repo/design-system/components';
+
+<Meta title="Forms" />
+
+# Forms
+
+Kalkulacka.1 design system forms are architectured to scale easily. All form primitives are rebranded wrappers of [Headless UI component library](https://headlessui.com/).
+
+## Primitives
+
+- Checkbox
+- Description
+- Field & Fieldset
+- Input (text)
+- Label
+- Radio
+- RadioGroup
+
+`headlessui` "rebrands", see docs for the proper usage
+
+## Forms
+
+There are currently three types of forms:
+
+- Radio selection (District selection page) 
+- Input submission (Email submission form)
+- Checkbox (Filter form)
+
+### Usage
+
+Forms are controlled & managed by `react-hook-forms` and validated with `zod`.
+
+### Form architecture:
+
+```jsx
+<form>
+  <Fieldset>
+    <Legend>
+      // insert desired components here
+    </Legend>
+</Fieldset>
+
+</form>
+```
+
+### Form examples
+
+#### A: Simple
+
+```jsx
+      <form onSubmit={...}>
+        <Fieldset>
+          <Legend>...</Legend>
+          <Field>
+            <Label>...</Label>
+            <Input/>
+            {errors.email && <Description>...</Description>}
+          </Field>
+          <Button type="submit">...</Button>
+        </Fieldset>
+      </form>
+```
+
+#### B: Complex
+
+Bear in mind usecase specific custom components (e.g.: RadioGroupItem) and adjust structure accordingly. 
+
+```jsx
+      <form onSubmit={...}>
+        <Fieldset>
+          <Legend>...</Legend>
+          <Field>
+            <Label>...</Label>
+            <Input/>
+            {errors.email && <Description>...</Description>}
+          </Field>
+          <Button type="submit">...</Button>
+        </Fieldset>
+
+        <Fieldset>
+        <Legend>...</Legend>
+        <RadioGroup value={...} {...register('radio')} onChange={...} aria-label="...">
+          {options.map((option) => (
+            <RadioGroupItem key={...} value={...}>
+              ...
+            </RadioGroupItem>
+          ))}
+        </RadioGroup>
+        <Button type="submit">...</Button>
+        </Fieldset>
+
+      </form>
+```
+
