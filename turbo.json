@@ -7,7 +7,7 @@
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
     },
     "dev": {
-      "dependsOn": ["schema-web#build:openapi", "@repo/database#build"],
+      "dependsOn": ["schema.kalkulacka.one#build:openapi", "@repo/database#build"],
       "cache": false,
       "persistent": true
     },
