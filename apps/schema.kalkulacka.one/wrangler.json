@@ -8,7 +8,6 @@
   },
   "build": {
     "command": "npm run build",
-    "cwd": "/apps/schema.kalkulacka.one",
     "watch_dir": ["packages/schema/*", "apps/schema.kalkulacka.one/*"]
   },
   "routes": [
