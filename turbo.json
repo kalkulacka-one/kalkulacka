@@ -23,6 +23,9 @@
     },
     "ncu": {
       "dependsOn": ["^ncu"]
+    },
+    "ncu:upgrade": {
+      "dependsOn": ["^ncu:upgrade"]
     }
   }
 }

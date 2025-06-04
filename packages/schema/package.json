@@ -6,11 +6,12 @@
   "scripts": {
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "ncu": "ncu -u"
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u"
   },
   "exports": {
     ".": "./index.js",
     "./*": "./schemas/**/*.schema.json"
   },
-  "packageManager": "npm@11.2.0"
+  "packageManager": "npm@11.4.1"
 }

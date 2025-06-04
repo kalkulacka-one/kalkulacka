@@ -11,12 +11,13 @@
     "dev": "npx redocly preview-docs ./build/openapi.yaml",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "ncu": "ncu -u"
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.33.1",
+    "@redocly/cli": "^1.34.3",
     "@repo/schema": "*",
-    "wrangler": "^4.0.0",
-    "yaml": "^2.7.0"
+    "wrangler": "^4.19.1",
+    "yaml": "^2.8.0"
   }
 }

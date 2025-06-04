@@ -6,7 +6,8 @@
     "dev": "turbo watch dev",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
-    "ncu": "turbo ncu"
+    "ncu": "turbo ncu",
+    "ncu:upgrade": "turbo ncu:upgrade"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -18,8 +19,5 @@
     "node": ">=18"
   },
   "packageManager": "npm@11.2.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "workspaces": ["apps/*", "packages/*"]
 }
