@@ -16,5 +16,8 @@
       "pattern": "schema.kalkulacka.one",
       "custom_domain": true
     }
-  ]
+  ],
+  "observability": {
+    "enabled": true
+  }
 }
