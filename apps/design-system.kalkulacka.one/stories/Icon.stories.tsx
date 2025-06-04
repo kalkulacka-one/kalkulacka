@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ArgTypes } from "@storybook/nextjs";
 
-import { Icon, iconSizes } from "@repo/design-system/components";
+import { Icon, iconSizes } from "@repo/design-system/server";
 import { iconNames } from "@repo/design-system/types";
 
 const meta: Meta<typeof Icon> = {

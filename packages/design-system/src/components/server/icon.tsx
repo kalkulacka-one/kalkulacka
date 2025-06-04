@@ -1,6 +1,6 @@
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
-import type { IconType } from "../types/icon-types";
+import type { IconType } from "../../types/icon-types";
 import * as Icons from "./icons";
 
 export const iconVariants = {
