@@ -13,5 +13,5 @@
     ".": "./index.js",
     "./*": "./schemas/**/*.schema.json"
   },
-  "packageManager": "npm@11.2.0"
+  "packageManager": "npm@11.4.1"
 }
