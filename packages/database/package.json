@@ -1,0 +1,36 @@
+{
+  "name": "@repo/database",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "exports": {
+    ".": {
+      "types": "./dist/db.d.ts",
+      "default": "./dist/db.js"
+    },
+    "./library": {
+      "types": "./dist/library.d.ts",
+      "default": "./dist/library.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "generate": "prisma generate",
+    "prebuild": "npm run generate",
+    "predev": "npm run generate",
+    "postinstall": "npm run generate",
+    "ncu": "ncu -u",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/node": "^22.13.10",
+    "prisma": "^6.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.5.0"
+  }
+}
