@@ -7,7 +7,7 @@
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
     },
     "dev": {
-      "dependsOn": ["^build:openapi", "^build"],
+      "dependsOn": ["schema-web#build:openapi", "@repo/database#build"],
       "cache": false,
       "persistent": true
     },
