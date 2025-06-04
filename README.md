@@ -9,3 +9,9 @@ The _one_ voting advice application used by millions of voters in 7 countries:
 - 🇷🇴 **[TestVot](https://www.testvot.eu)** in Romania
 - 🇽🇰 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.org)** in Kosovo
 - 🇦🇱 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.al)** in Albania
+
+## Contributing
+
+Join our community and support democracy! We welcome all contributions, whether it's code or anything else.
+
+Read our [contributing guide](CONTRIBUTING.md) to get started.
