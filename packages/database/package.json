@@ -19,7 +19,8 @@
     "prebuild": "npm run generate",
     "predev": "npm run generate",
     "postinstall": "npm run generate",
-    "ncu": "ncu -u",
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u",
     "lint": "biome check .",
     "lint:fix": "biome check --write ."
   },

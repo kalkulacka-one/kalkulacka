@@ -31,7 +31,8 @@
     "lint:fix": "biome check --write .",
     "tailwind": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "tailwind:watch": "npm run tailwind -- --watch",
-    "ncu": "ncu -u"
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u"
   },
   "packageManager": "npm@11.2.0",
   "devDependencies": {
