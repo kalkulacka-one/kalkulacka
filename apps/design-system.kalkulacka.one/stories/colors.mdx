@@ -1,0 +1,252 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+
+<Meta title="Colors" />
+
+# Colors
+
+Kalkulacka.1 design system colors are designed to be easily themeable.
+
+There are two layers of CSS variables:
+
+- [**color palette**](#color-palette): base colors defined per theme
+- [**color tokens**](#color-tokens): semantic colors derived from the palette
+
+## Color palette
+
+The color palette defines three main colors:
+
+- primary: `--ko-palette-primary`
+- secondary: `--ko-palette-secondary`
+- neutral: `--ko-palette-neutral`
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "primary", variable: "--ko-palette-primary" },
+      { label: "secondary", variable: "--ko-palette-secondary" },
+      { label: "neutral", variable: "--ko-palette-neutral" },      
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            borderRadius: "50%",
+            backgroundColor: `var(${variable})`,
+          }}
+        />
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+and additional direct colors:
+
+- red: `--ko-palette-red`
+- yellow: `--ko-palette-yellow`
+- green: `--ko-palette-green`
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "red", variable: "--ko-palette-red" },
+      { label: "yellow", variable: "--ko-palette-yellow" },
+      { label: "green", variable: "--ko-palette-green" },      
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            borderRadius: "50%",
+            backgroundColor: `var(${variable})`,
+          }}
+        />
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+### Theming
+
+Themes live in the design system package at `/src/themes/{ full instance URL }/{ variant }.css`, for example `/design-system/src/themes/www.kalkulacka.one/default.css` (or `ct24.css` for embeds).
+
+The theme file defines just the CSS variables for the palette colors, therefore a minimal color theme might look like this:
+
+```css
+:root {
+  --ko-palette-primary: blue;
+  --ko-palette-secondary: orange;
+  --ko-palette-neutral: gray;
+  --ko-palette-red: red;
+  --ko-palette-yellow: yellow;
+  --ko-palette-green: green;
+}
+```
+
+## Color tokens
+
+Color tokens assign semantic meaning to the palette colors and define [custom colors in Tailwind CSS](https://tailwindcss.com/docs/colors#customizing-your-colors).
+
+Thanks to the support for [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) function and [relative color syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Relative_colors) (CSS Color Module Level 5) and [Oklch color space](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) (CSS Color Module Level 4), tokens can be dynamically derived from the few base palette colors.
+
+However, tokens can always be overridden with a specific palette variable for more precise control, for example if the primary/secondary colors don't align well with the affirmative/negative meaning of the response buttons.
+
+### Structure
+
+Color tokens are defined on four main levels:
+
+- element
+- variant
+- state
+- light/dark mode
+
+In addition, combinations (element on token) with appropriate color contrast are also defined.
+
+### Reference
+
+#### Main colors
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "primary", variable: "--ko-color-primary" },
+          { label: "secondary", variable: "--ko-color-secondary" },
+          { label: "neutral", variable: "--ko-color-neutral" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Direct colors
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "red", variable: "--ko-color-red" },
+          { label: "yellow", variable: "--ko-color-yellow" },
+          { label: "green", variable: "--ko-color-green" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
