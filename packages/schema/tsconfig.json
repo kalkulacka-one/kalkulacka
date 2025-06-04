@@ -1,0 +1,10 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "zod",
+    "rootDir": "zod",
+    "declaration": true
+  },
+  "include": ["zod/**/*.ts"],
+  "exclude": ["node_modules"]
+}

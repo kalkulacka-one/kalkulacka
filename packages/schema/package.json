@@ -6,11 +6,20 @@
   "scripts": {
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "ncu": "ncu -u"
+    "ncu": "ncu -u",
+    "build": "node ./scripts/generate-zod.js && tsc -p ./tsconfig.json"
   },
   "exports": {
     ".": "./index.js",
+    "./zod": "./zod/index.js",
+    "./zod/*": "./zod/*.js",
     "./*": "./schemas/**/*.schema.json"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "json-schema-to-zod": "^2.6.1",
+    "typescript": "^5.8.2",
+    "zod": "^3.25.51"
   },
   "packageManager": "npm@11.2.0"
 }
