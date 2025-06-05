@@ -24,5 +24,6 @@
     "ncu": {
       "dependsOn": ["^ncu"]
     }
-  }
+  },
+  "ui": "tui"
 }
