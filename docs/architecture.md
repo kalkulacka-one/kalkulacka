@@ -38,6 +38,8 @@ Every voting advice application instance is a Next.js application that serves as
 
 Each instance is built independently and can be fully customized, but uses the shared libraries and components. In addition to custom content, each instance handles routing logic for the app.
 
+Each application in the `/apps` directory is named after the full production URL of the instance, such as `www.volebnikalkulacka.cz` or `www.wahlrechner.at`.
+
 ## App
 
 The app package is the core of the voting advice application. It provides composed components, layouts, state and store management, result calculation logic and other core features.
