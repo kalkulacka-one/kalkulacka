@@ -26,6 +26,9 @@
     },
     "ncu:upgrade": {
       "dependsOn": ["^ncu:upgrade"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
     }
   },
   "ui": "tui"
