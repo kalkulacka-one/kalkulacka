@@ -27,5 +27,6 @@
     "ncu:upgrade": {
       "dependsOn": ["^ncu:upgrade"]
     }
-  }
+  },
+  "ui": "tui"
 }
