@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.4",
-    "class-variance-authority": "^0.7.1"
+    "class-variance-authority": "^0.7.1",
+    "tailwind-merge": "^3.3.0"
   }
 }
