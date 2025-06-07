@@ -11,11 +11,12 @@ export type Icon = {
 const IconVariants = cva("", {
   variants: {
     size: {
-      small: "ko:size-4",
+      // or shrink-0
+      small: "ko:size-4 ko:min-w-4",
 
-      medium: "ko:size-6",
+      medium: "ko:size-6 ko:min-w-6",
 
-      large: "ko:size-8",
+      large: "ko:size-8 ko:min-w-8",
     },
   },
 
