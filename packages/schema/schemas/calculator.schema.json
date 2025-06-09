@@ -59,6 +59,12 @@
       "type": "string",
       "examples": ["Volební kalkulačka pro 2. kolo prezidentských voleb 2023"]
     },
+    "methodology": {
+      "title": "Methodology",
+      "description": "Methodology of a calculator",
+      "type": "string",
+      "examples": ["Pokud kandidát neodpověděl na otázku, jeho odpověď se nezapočítává do výsledku kalkulačky."]
+    },
     "intro": {
       "type": "string",
       "description": "Intro text displayed before starting the calculator"
