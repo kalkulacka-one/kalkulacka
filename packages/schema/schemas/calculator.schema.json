@@ -167,7 +167,7 @@
           "$ref": "#/$defs/key"
         }
       },
-      "required": ["key", "title", "shortTitle"],
+      "required": ["key", "shortTitle"],
       "not": {
         "required": ["calculatorGroup", "election"]
       }
