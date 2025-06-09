@@ -1,15 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import type { ArgTypes } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from '@repo/design-system/components';
+import { Button } from "@repo/design-system/client";
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     disabled: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -18,8 +17,8 @@ type ButtonStory = StoryObj<typeof meta>;
 
 export const Default: ButtonStory = {
   args: {
-    children: 'Button text',
-    kind: 'filled',
+    children: "Button text",
+    kind: "filled",
     disabled: true,
   },
 };
