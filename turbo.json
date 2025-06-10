@@ -29,6 +29,9 @@
     },
     "test": {
       "dependsOn": ["^build"]
+    },
+    "test:ui": {
+      "dependsOn": ["^build"]
     }
   },
   "ui": "tui"
