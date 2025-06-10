@@ -12,7 +12,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/typescript-config": "*",
-    "npm-check-updates": "^17.1.15",
+    "npm-check-updates": "^18.0.0",
     "turbo": "^2.4.4"
   },
   "engines": {
