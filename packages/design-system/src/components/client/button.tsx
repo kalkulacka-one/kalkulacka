@@ -20,7 +20,7 @@ const ButtonVariants = cva(
   ],
   {
     variants: {
-      kind: {
+      variant: {
         filled: [
           "ko:border-2",
           "ko:bg-primary ko:border-primary",
@@ -32,14 +32,14 @@ const ButtonVariants = cva(
       },
     },
     defaultVariants: {
-      kind: "filled",
+      variant: "filled",
     },
   },
 );
 
-function ButtonComponent({ children, kind, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+function ButtonComponent({ children, variant, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ kind }))} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ variant }))} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );

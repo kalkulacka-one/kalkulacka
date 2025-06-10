@@ -21,7 +21,7 @@ type ButtonStory = StoryObj<typeof meta>;
 export const Default: ButtonStory = {
   args: {
     children: "Button text",
-    kind: "filled",
+    variant: "filled",
     type: "button",
     disabled: false,
     autoFocus: false,
