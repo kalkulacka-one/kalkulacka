@@ -10,6 +10,9 @@ const meta: Meta<typeof Button> = {
     disabled: {
       control: "boolean",
     },
+    autoFocus: {
+      control: "boolean",
+    },
   },
 };
 
@@ -19,7 +22,9 @@ export const Default: ButtonStory = {
   args: {
     children: "Button text",
     kind: "filled",
-    disabled: true,
+    type: "button",
+    disabled: false,
+    autoFocus: false,
   },
 };
 
