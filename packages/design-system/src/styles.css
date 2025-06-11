@@ -40,6 +40,11 @@
     var(--ko-palette-secondary-dark, var(--ko-palette-secondary))
   );
 
+  --color-neutral: light-dark(
+    var(--ko-palette-neutral-light, var(--ko-palette-neutral)),
+    var(--ko-palette-neutral-dark, var(--ko-palette-neutral))
+  );
+
   --color-red: light-dark(
     var(--ko-palette-red-light, var(--ko-palette-red)),
     var(--ko-palette-red-dark, var(--ko-palette-red))
