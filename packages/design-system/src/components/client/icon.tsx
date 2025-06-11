@@ -3,7 +3,15 @@ import { useId } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type Icon = {
-  icon: string | React.FunctionComponent<{ title?: string; titleId?: string; decorative?: boolean } & React.SVGProps<SVGSVGElement>>;
+  icon:
+    | string
+    | React.FunctionComponent<
+        {
+          title?: string;
+          titleId?: string;
+          decorative?: boolean;
+        } & React.SVGProps<SVGSVGElement>
+      >;
 } & VariantProps<typeof IconVariants> &
   React.SVGProps<SVGSVGElement> &
   ({ title: string; decorative: false } | { title?: string; decorative: true });
@@ -11,11 +19,11 @@ export type Icon = {
 const IconVariants = cva("", {
   variants: {
     size: {
-      small: "ko:size-4",
+      small: "ko:size-4 ko:min-w-4",
 
-      medium: "ko:size-6",
+      medium: "ko:size-6 ko:min-w-6",
 
-      large: "ko:size-8",
+      large: "ko:size-8 ko:min-w-8",
     },
   },
 
@@ -24,7 +32,7 @@ const IconVariants = cva("", {
   },
 });
 
-export function Icon({ icon, size, title, decorative, className, ...props }: Icon) {
+export function Icon({ icon, size, title, decorative, ...props }: Icon) {
   const titleId = useId();
 
   if (typeof icon === "string") {
@@ -36,7 +44,7 @@ export function Icon({ icon, size, title, decorative, className, ...props }: Ico
         aria-labelledby={!decorative ? titleId : undefined}
         focusable="false"
         role={decorative ? undefined : "img"}
-        className={twMerge(IconVariants({ size }), className)}
+        className={twMerge(IconVariants({ size }))}
         viewBox="0 0 24 24"
         fill="currentColor"
       >
@@ -59,7 +67,7 @@ export function Icon({ icon, size, title, decorative, className, ...props }: Ico
       role={decorative ? undefined : "img"}
       aria-labelledby={!decorative ? titleId : undefined}
       aria-hidden={decorative ? "true" : "false"}
-      className={twMerge(IconVariants({ size }), className)}
+      className={twMerge(IconVariants({ size }))}
     />
   );
 }

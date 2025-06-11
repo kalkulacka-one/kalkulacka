@@ -1,11 +1,11 @@
-type EnvelopeIconProps = {
+type EnvelopeIcon = {
   title?: string;
   titleId?: string;
   decorative?: boolean;
 } & React.JSX.IntrinsicAttributes &
   React.SVGProps<SVGSVGElement>;
 
-export function EnvelopeIcon({ title, titleId, decorative, ...props }: EnvelopeIconProps) {
+export function EnvelopeIcon({ title, titleId, decorative, ...props }: EnvelopeIcon) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
       {title && !decorative && <title id={titleId}>{title}</title>}

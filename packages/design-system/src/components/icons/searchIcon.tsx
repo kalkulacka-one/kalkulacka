@@ -1,11 +1,11 @@
-type SearchIconProps = {
+type SearchIcon = {
   title?: string;
   titleId?: string;
   decorative?: boolean;
 } & React.JSX.IntrinsicAttributes &
   React.SVGProps<SVGSVGElement>;
 
-export function SearchIcon({ title, titleId, decorative, ...props }: SearchIconProps) {
+export function SearchIcon({ title, titleId, decorative, ...props }: SearchIcon) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor" {...props}>
       {title && !decorative && <title id={titleId}>{title}</title>}
