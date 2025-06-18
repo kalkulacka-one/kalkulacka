@@ -1,6 +1,6 @@
+import { twMerge } from "@repo/design-system/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 import { useId } from "react";
-import { twMerge } from "tailwind-merge";
 
 export type Icon = {
   icon:
@@ -16,6 +16,7 @@ export type Icon = {
   React.SVGProps<SVGSVGElement> &
   ({ title: string; decorative: false } | { title?: string; decorative: true });
 
+// TODO: Update after spacing & sizing is finalized.
 const IconVariants = cva("", {
   variants: {
     size: {
