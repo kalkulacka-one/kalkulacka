@@ -1,0 +1,11 @@
+{
+  "header.title": "Kalkulacka.1",
+  "header.tagline": "Ta <em>pravá</em> volební kalkulačka pro miliony voličů ve 4 zemích",
+  "header.serverComponentText": "Fallback message",
+  "navigation.home": "Domů",
+  "navigation.support": "Podpora",
+  "navigation.volunteer": "Dobrovolnictví",
+  "navigation.customCalculator": "Vlastní kalkulačka",
+  "social.twitterLink": "@kalkulacka_one na X",
+  "componentTest": "Test komponenty"
+}
