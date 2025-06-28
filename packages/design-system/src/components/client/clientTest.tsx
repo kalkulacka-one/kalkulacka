@@ -9,12 +9,10 @@ export function ClientTest() {
 
   return (
     <div className="ko:flex ko:flex-col ko:gap-2 ko:p-4">
-      <p>Client component</p>
       <p>
-        Language:{" "}
         {intl.formatMessage({
-          id: "key1",
-          defaultMessage: "Default message",
+          id: "clientComponentTest",
+          defaultMessage: "Client component default message",
         })}
       </p>
     </div>
