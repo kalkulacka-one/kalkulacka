@@ -1,112 +1,224 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import getIntl from "../server/getIntl";
 
-export const metadata: Metadata = {
-  title: "Kalkulacka.1",
-  description: "Ta pravá volební kalkulačka pro miliony voličů ve 4 zemích",
-};
+type Params = Promise<{ lang: string }>;
 
-export default async function Page() {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { lang } = await params;
+  const intl = await getIntl(lang);
+
+  const intlTitle = intl.formatMessage({
+    id: "home.page.metadata.title",
+  });
+
+  const intlDescription = intl.formatMessage({
+    id: "home.page.metadata.description",
+  });
+  return {
+    title: intlTitle ?? "Kalkulacka.1",
+    description: intlDescription ?? "Ta pravá volební kalkulačka pro miliony voličů ve 4 zemích",
+  };
+}
+
+export default async function Page({ params }: { params: Params }) {
+  const { lang } = await params;
+  const intl = await getIntl(lang);
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">
         <h2 className="text-2xl font-medium">
-          Tvoříme <span className="font-bold">Volební kalkulačku</span>, která vám pomáhá rozhodnout se koho volit
+          {intl.formatMessage(
+            {
+              id: "home.page.title",
+            },
+            { span: (chunks) => <span className="font-bold">{chunks}</span> },
+          )}
         </h2>
         <p>
-          Jsme spolek{" "}
-          <a href="https://kohovolit.eu" className="underline hover:no-underline">
-            KohoVolit.eu
-          </a>{" "}
-          a už 15 let pro vás tvoříme{" "}
-          <a href="https://www.volebnikalkulacka.cz" className="underline hover:no-underline">
-            Volební kalkulačku
-          </a>
-          , která vám pomáhá učinit informované rozhodnutí, koho volit.
+          {intl.formatMessage(
+            {
+              id: "home.page.intro.p1",
+            },
+            {
+              kohoVolitLink: (chunks) => (
+                <a href="https://kohovolit.eu" className="underline hover:no-underline">
+                  {chunks}
+                </a>
+              ),
+              kalkulackaLink: (chunks) => (
+                <a href="https://www.volebnikalkulacka.cz" className="underline hover:no-underline">
+                  {chunks}
+                </a>
+              ),
+            },
+          )}
         </p>
         <p>
-          V roce 2022 jsme s podporou{" "}
-          <a href="https://cesko.digital" className="underline hover:no-underline">
-            Česko.Digital
-          </a>{" "}
-          přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku v 6 zemích a chystáme další:
+          {intl.formatMessage(
+            {
+              id: "home.page.intro.p2",
+            },
+            {
+              ceskoDigitalLink: (chunks) => (
+                <a href="https://cesko.digital" className="underline hover:no-underline">
+                  {chunks}
+                </a>
+              ),
+            },
+          )}
         </p>
         <ul className="list-none pl-4">
           <li>
-            🇨🇿{" "}
-            <a href="https://www.volebnikalkulacka.cz" className="font-bold underline hover:no-underline">
-              Volební kalkulačka
-            </a>{" "}
-            v&nbsp;Česku
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.czechia",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.volebnikalkulacka.cz" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+              },
+            )}
           </li>
           <li>
-            🇸🇰{" "}
-            <a href="https://www.volebnakalkulacka.sk" className="font-bold underline hover:no-underline">
-              Volební kalkulačka
-            </a>{" "}
-            na Slovensku
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.slovakia",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.volebnakalkulacka.sk" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+              },
+            )}
           </li>
           <li>
-            🇭🇺{" "}
-            <a href="https://www.voksmonitor.hu" className="font-bold underline hover:no-underline">
-              Voksmonitor
-            </a>{" "}
-            v&nbsp;Maďarsku
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.hungary",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.voksmonitor.hu" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+              },
+            )}
           </li>
           <li>
-            🇦🇹{" "}
-            <a href="https://www.wahlrechner.at" className="font-bold underline hover:no-underline">
-              Wahlrechner
-            </a>{" "}
-            v&nbsp;Rakousku
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.austria",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.wahlrechner.at" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+              },
+            )}
           </li>
           <li>
-            🇷🇴{" "}
-            <a href="https://www.testvot.eu" className="font-bold underline hover:no-underline">
-              TestVot
-            </a>{" "}
-            v&nbsp;Rumunsku
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.romania",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.testvot.eu" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+              },
+            )}
           </li>
           <li>
-            🇽🇰{" "}
-            <a href="https://www.kalkulatorizgjedhor.org" className="font-bold underline hover:no-underline">
-              Kalkulatori zgjedhor
-            </a>{" "}
-            v&nbsp;Kosovu
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.kosovo",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.kalkulatorizgjedhor.org" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+              },
+            )}
           </li>
           <li>
-            🇦🇱{" "}
-            <a href="https://www.kalkulatorizgjedhor.al" className="font-bold underline hover:no-underline">
-              Kalkulatori zgjedhor
-            </a>{" "}
-            v&nbsp;Albánii
-            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">květen 2025</span>
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.albania",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.kalkulatorizgjedhor.org" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+                span: (chunks) => <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">{chunks}</span>,
+              },
+            )}
           </li>
           <li>
-            🇲🇰{" "}
-            <a href="https://www.glasomer.mk" className="font-bold underline hover:no-underline">
-              Glasomer
-            </a>{" "}
-            v&nbsp;Severní Makedonii
-            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">říjen 2025</span>
+            {intl.formatMessage(
+              {
+                id: "home.page.projects.northMacedonia",
+              },
+              {
+                link: (chunks) => (
+                  <a href="https://www.kalkulatorizgjedhor.org" className="font-bold underline hover:no-underline">
+                    {chunks}
+                  </a>
+                ),
+                span: (chunks) => <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">{chunks}</span>,
+              },
+            )}
           </li>
         </ul>
         <p>
-          Naše volební kalkulačky vyplní statisíce voličů každý rok. Jen prezidentskou kalkulačku v&nbsp;Česku vyplnilo v&nbsp;roce 2023 přes <strong>1 milion lidí</strong>!
+          {intl.formatMessage(
+            {
+              id: "home.page.p3",
+            },
+            {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            },
+          )}
         </p>
       </section>
       <section className="grid gap-2">
-        <h2 className="text-2xl font-medium">Podpořte Volební kalkulačku. Nebo se zapojte!</h2>
+        <h2 className="text-2xl font-medium">
+          {intl.formatMessage({
+            id: "home.page.cta.title",
+          })}
+        </h2>
         <p>
-          Abychom mohli v tvorbě kalkulaček pokračovat, potřebujeme vaši podporu.{" "}
-          <Link href="/cs/podporte-kalkulacku" className="font-bold underline hover:no-underline">
-            Podpořte nás
-          </Link>{" "}
-          nebo se{" "}
-          <Link href="/cs/zapojte-se" className="font-bold underline hover:no-underline">
-            zapojte do našeho týmu dobrovolníků
-          </Link>{" "}
-          a pomozte nám Volební kalkulačku dál rozvíjet. Děkujeme!
+          {intl.formatMessage(
+            {
+              id: "home.page.cta.p1",
+            },
+            {
+              supportLink: (chunks) => (
+                <Link href="/cs/podporte-kalkulacku" className="font-bold underline hover:no-underline">
+                  {chunks}
+                </Link>
+              ),
+              volunteerLink: (chunks) => (
+                <Link href="/cs/zapojte-se" className="font-bold underline hover:no-underline">
+                  {chunks}
+                </Link>
+              ),
+            },
+          )}
         </p>
       </section>
     </section>
