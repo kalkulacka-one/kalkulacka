@@ -10,7 +10,8 @@ const packageRoot = path.resolve(__dirname, "..");
 const buildDir = path.join(packageRoot, "build");
 const outputFile = path.join(buildDir, "openapi.yaml");
 
-const schemaFiles = fs.readdirSync(buildDir).filter((file) => file.endsWith(".json"));
+const schemaFiles = fs.readdirSync(buildDir).filter((file) => file.endsWith(".schema.json"));
+const schemaDocsFiles = new Set(fs.readdirSync(buildDir).filter((file) => file.endsWith(".md")));
 
 const version = JSON.parse(fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.resolve("@repo/schema"))), "package.json"), "utf-8")).version;
 
@@ -34,14 +35,19 @@ for (const file of sortedSchemaFiles) {
   const schemaName = path.basename(file, ".schema.json");
   openapiDoc.components.schemas[schemaName] = { $ref: `./${file}` };
 
-  const name = schemaContent.title;
-  let description = `Schema URL: [${schemaContent.$id}](${schemaContent.$id})\n\n`;
-  description += schemaContent.description ? `${schemaContent.description}\n\n` : "";
-  description += `<SchemaDefinition schemaRef="#/components/schemas/${schemaName}" />`;
+  const docsFilename = `${schemaName}.md`;
+  const docsPath = path.join(buildDir, docsFilename);
+  let docsContent = schemaDocsFiles.has(docsFilename) ? fs.readFileSync(docsPath, "utf8") : undefined;
+
+  docsContent = [`[\`${schemaContent.$id}\`](${schemaContent.$id})`, docsContent || schemaContent.description || undefined, `<SchemaDefinition schemaRef="#/components/schemas/${schemaName}" />`]
+    .filter(Boolean)
+    .join("\n\n---\n\n");
+
+  fs.writeFileSync(docsPath, docsContent, "utf8");
 
   openapiDoc.tags.push({
-    name,
-    description,
+    name: schemaContent.title,
+    description: { $ref: docsPath },
   });
 }
 
