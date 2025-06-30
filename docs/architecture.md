@@ -10,15 +10,15 @@ All components are in a monorepo, which follows a [Turborepo](https://turborepo.
 ```mermaid
 graph TD
   subgraph apps [apps]
-    CZ["www.volebnikalkulacka.cz"]
-    SK["www.volebnikalkulacka.sk"]
-    AT["www.wahlrechner.at"]
+    CZ["www.​volebnikalkulacka.cz"]
+    SK["www.​volebnikalkulacka.sk"]
+    AT["www.​wahlrechner.at"]
     etc["…"]
   end
   
   subgraph packages [packages]
-    design-system["@repo/design-system"]
-    themes[`/src/themes`]
+    design-system["`@repo/design-system`"]
+    themes["`/src/themes`"]
     app["`@repo/app`"]
     schema["`@repo/schema`"]
     database["`@repo/database`"]
