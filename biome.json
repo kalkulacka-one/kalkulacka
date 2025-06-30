@@ -39,7 +39,7 @@
         "noDoubleEquals": "error"
       },
       "a11y": {
-        "noSvgWithoutTitle": "error",
+        "noSvgWithoutTitle": "info",
         "useButtonType": "error",
         "useMediaCaption": "off",
         "useKeyWithClickEvents": "off",

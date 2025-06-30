@@ -1,4 +1,4 @@
-name: Lint, format, test & build
+name: Lint, format, build & test
 on: push
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      - name: Test
-        run: npm run test
       - name: Build
         run: npm run build
+      - name: Test
+        run: npm run test
