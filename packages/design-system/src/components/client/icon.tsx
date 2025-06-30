@@ -50,7 +50,6 @@ export function Icon({ icon, size, title, decorative, ...props }: Icon) {
         fill="currentColor"
       >
         {!decorative && title && <title id={titleId}>{title}</title>}
-
         <path d={icon} fill="currentColor" />
       </svg>
     );
