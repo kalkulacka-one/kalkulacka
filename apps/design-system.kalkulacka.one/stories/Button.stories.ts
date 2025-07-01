@@ -7,6 +7,14 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ["autodocs"],
   argTypes: {
+    variant: {
+      control: "select",
+      options: ["filled", "outline", "link"],
+    },
+    size: {
+      control: "select",
+      options: ["default", "small"],
+    },
     disabled: {
       control: "boolean",
     },
