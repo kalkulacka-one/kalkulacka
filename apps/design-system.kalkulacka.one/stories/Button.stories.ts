@@ -11,6 +11,10 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: ["filled", "outline", "link"],
     },
+    color: {
+      control: "select",
+      options: ["primary", "secondary", "neutral"],
+    },
     size: {
       control: "select",
       options: ["default", "small"],
@@ -30,6 +34,7 @@ export const Default: ButtonStory = {
   args: {
     children: "Button text",
     variant: "filled",
+    color: "primary",
     type: "button",
     disabled: false,
     autoFocus: false,
