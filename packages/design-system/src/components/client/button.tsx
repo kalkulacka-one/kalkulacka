@@ -10,36 +10,83 @@ export type Button = {
 
 const ButtonVariants = cva(
   [
-    "ko:p-4",
     "ko:select-none ko:data-hover:cursor-pointer",
     "ko:font-display ko:font-bold ko:uppercase ko:leading-[1.85] ko:tracking-[.07em]",
     "ko:rounded-tr-none ko:rounded-2xl",
     "ko:text-xs",
     "ko:data-disabled:cursor-not-allowed",
-    "ko:data-focus:ring-2 ko:data-focus:ring-offset-2 ko:data-focus:ring-yellow",
+    "ko:data-focus:focus:outline-none ko:data-focus:ring-2 ko:data-focus:ring-offset-2 ko:data-focus:ring-yellow",
   ],
   {
     variants: {
       variant: {
-        filled: [
-          "ko:border-2",
-          "ko:bg-primary ko:border-primary",
-          "ko:data-hover:bg-primary-hover ko:data-hover:border-primary-hover",
-          "ko:text-on-fill-primary",
-          "ko:data-disabled:bg-primary-disabled ko:data-disabled:border-primary-disabled",
-          "ko:data-hover:data-active:bg-primary-active ko:data-hover:data-active:border-primary-active",
-        ],
+        filled: ["ko:border-2"],
+        outline: ["ko:border-2", "ko:bg-transparent", "ko:data-disabled:bg-transparent ko:data-disabled:text-neutral-disabled"],
+        link: ["ko:bg-transparent", "ko:border-transparent ko:border-2", "ko:data-disabled:bg-transparent ko:data-disabled:text-neutral-disabled ko:data-disabled:border-transparent"],
+      },
+      size: {
+        default: "ko:p-4",
+        small: "ko:px-4 ko:py-2 ",
+      },
+      color: {
+        primary: ["ko:bg-primary ko:border-primary", "ko:data-disabled:border-primary-disabled"],
+        secondary: ["ko:bg-secondary ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
+        neutral: ["ko:bg-neutral ko:border-neutral", "ko:data-disabled:bg-neutral-disabled ko:data-disabled:border-neutral-disabled"],
       },
     },
     defaultVariants: {
       variant: "filled",
+      size: "default",
+      color: "primary",
     },
+    compoundVariants: [
+      {
+        variant: "filled",
+        color: "primary",
+        class: [
+          "ko:text-on-bg-primary",
+          "ko:data-hover:bg-primary-hover ko:data-hover:border-primary-hover",
+          "ko:data-hover:data-active:bg-primary-active ko:data-hover:data-active:border-primary-active",
+          "ko:data-disabled:bg-primary-disabled",
+        ],
+      },
+      {
+        variant: "filled",
+        color: "secondary",
+        class: [
+          "ko:text-on-bg-secondary",
+          "ko:data-hover:bg-secondary-hover ko:data-hover:border-secondary-hover",
+          "ko:data-hover:data-active:bg-secondary-active ko:data-hover:data-active:border-secondary-active",
+          "ko:data-disabled:bg-secondary-disabled",
+        ],
+      },
+      {
+        variant: "filled",
+        color: "neutral",
+        class: [
+          "ko:text-on-bg-neutral",
+          "ko:data-hover:bg-neutral-hover ko:data-hover:border-neutral-hover",
+          "ko:data-hover:data-active:bg-neutral-active ko:data-hover:data-active:border-neutral-active",
+          "ko:data-disabled:bg-neutral-disabled",
+        ],
+      },
+      { variant: "outline", color: "primary", class: ["ko:text-primary", "ko:data-hover:bg-primary-hover/10", "ko:data-hover:data-active:bg-primary-active/10"] },
+      { variant: "outline", color: "secondary", class: ["ko:text-secondary", "ko:data-hover:bg-secondary-hover/10", "ko:data-hover:data-active:bg-secondary-active/10"] },
+      { variant: "outline", color: "neutral", class: ["ko:text-neutral", "ko:data-hover:bg-neutral-hover/10", "ko:data-hover:data-active:bg-neutral-active/10"] },
+      { variant: "link", color: "primary", class: ["ko:text-primary", "ko:data-hover:text-primary-hover", "ko:data-hover:data-active:text-primary-active"] },
+      { variant: "link", color: "secondary", class: ["ko:text-secondary", "ko:data-hover:text-secondary-hover", "ko:data-hover:data-active:text-secondary-active"] },
+      {
+        variant: "link",
+        color: "neutral",
+        class: ["ko:text-neutral", "ko:data-hover:text-neutral-hover", "ko:data-hover:data-active:text-neutral-active"],
+      },
+    ],
   },
 );
 
-function ButtonComponent({ children, variant, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+function ButtonComponent({ children, variant, size, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ variant }))} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ variant, size, color }))} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );

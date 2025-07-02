@@ -7,6 +7,18 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ["autodocs"],
   argTypes: {
+    variant: {
+      control: "select",
+      options: ["filled", "outline", "link"],
+    },
+    color: {
+      control: "select",
+      options: ["primary", "secondary", "neutral"],
+    },
+    size: {
+      control: "select",
+      options: ["default", "small"],
+    },
     disabled: {
       control: "boolean",
     },
@@ -22,6 +34,7 @@ export const Default: ButtonStory = {
   args: {
     children: "Button text",
     variant: "filled",
+    color: "primary",
     type: "button",
     disabled: false,
     autoFocus: false,
