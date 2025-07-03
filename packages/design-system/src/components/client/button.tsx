@@ -10,6 +10,7 @@ export type Button = {
 
 const ButtonVariants = cva(
   [
+    "ko:border-2",
     "ko:select-none ko:data-hover:cursor-pointer",
     "ko:font-display ko:font-bold ko:uppercase ko:leading-[1.85] ko:tracking-[.07em]",
     "ko:rounded-tr-none ko:rounded-2xl",
@@ -20,18 +21,18 @@ const ButtonVariants = cva(
   {
     variants: {
       variant: {
-        filled: ["ko:border-2"],
-        outline: ["ko:border-2", "ko:bg-transparent", "ko:data-disabled:bg-transparent ko:data-disabled:text-neutral-disabled"],
-        link: ["ko:bg-transparent", "ko:border-transparent ko:border-2", "ko:data-disabled:bg-transparent ko:data-disabled:text-neutral-disabled ko:data-disabled:border-transparent"],
+        filled: [""],
+        outline: ["ko:bg-transparent", "ko:data-disabled:text-neutral-disabled"],
+        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:bg-transparent ko:data-disabled:text-neutral-disabled ko:data-disabled:border-transparent"],
+      },
+      color: {
+        primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
+        secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
+        neutral: ["ko:border-neutral", "ko:data-disabled:bg-neutral-disabled ko:data-disabled:border-neutral-disabled"],
       },
       size: {
         default: "ko:p-4",
         small: "ko:px-4 ko:py-2 ",
-      },
-      color: {
-        primary: ["ko:bg-primary ko:border-primary", "ko:data-disabled:border-primary-disabled"],
-        secondary: ["ko:bg-secondary ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
-        neutral: ["ko:bg-neutral ko:border-neutral", "ko:data-disabled:bg-neutral-disabled ko:data-disabled:border-neutral-disabled"],
       },
     },
     defaultVariants: {
@@ -44,6 +45,7 @@ const ButtonVariants = cva(
         variant: "filled",
         color: "primary",
         class: [
+          "ko:bg-primary",
           "ko:text-on-bg-primary",
           "ko:data-hover:bg-primary-hover ko:data-hover:border-primary-hover",
           "ko:data-hover:data-active:bg-primary-active ko:data-hover:data-active:border-primary-active",
@@ -54,6 +56,7 @@ const ButtonVariants = cva(
         variant: "filled",
         color: "secondary",
         class: [
+          "ko:bg-secondary",
           "ko:text-on-bg-secondary",
           "ko:data-hover:bg-secondary-hover ko:data-hover:border-secondary-hover",
           "ko:data-hover:data-active:bg-secondary-active ko:data-hover:data-active:border-secondary-active",
@@ -64,6 +67,7 @@ const ButtonVariants = cva(
         variant: "filled",
         color: "neutral",
         class: [
+          "ko:bg-neutral",
           "ko:text-on-bg-neutral",
           "ko:data-hover:bg-neutral-hover ko:data-hover:border-neutral-hover",
           "ko:data-hover:data-active:bg-neutral-active ko:data-hover:data-active:border-neutral-active",
