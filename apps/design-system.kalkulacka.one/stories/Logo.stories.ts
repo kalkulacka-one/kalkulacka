@@ -7,13 +7,13 @@ const meta: Meta<typeof Logo> = {
   component: Logo,
   tags: ["autodocs"],
   argTypes: {
-    text: {
-      control: "boolean",
+    logoName: {
+      control: "text",
     },
     textPosition: {
       control: "select",
       options: ["horizontal", "vertical"],
-      if: { arg: "text" },
+      if: { arg: "children" },
     },
     children: {
       control: "text",
@@ -25,9 +25,15 @@ type LogoStory = StoryObj<typeof Logo>;
 
 export const Default: LogoStory = {
   args: {
-    text: true,
-    children: "Volební kalkulačka",
+    logoName: "Volební kalkulačka",
     textPosition: "horizontal",
+    children: "Volební kalkulačka",
+  },
+};
+
+export const SymbolOnly: LogoStory = {
+  args: {
+    logoName: "Volební kalkulačka",
   },
 };
 

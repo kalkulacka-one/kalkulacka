@@ -1,11 +1,12 @@
 import { LogoSvg } from "@repo/design-system/svg";
 import { twMerge } from "@repo/design-system/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
 export type Logo = {
-  text?: boolean;
-  children: string;
-} & VariantProps<typeof LogoVariants>;
+  logoName: string;
+  children?: React.ReactNode;
+  textPosition?: "horizontal" | "vertical";
+};
 
 const LogoVariants = cva("ko:flex ko:gap-2", {
   variants: {
@@ -19,11 +20,18 @@ const LogoVariants = cva("ko:flex ko:gap-2", {
   },
 });
 
-export function Logo({ children, text = false, textPosition }: Logo) {
+export function Logo({ children, logoName, textPosition }: Logo) {
+  const hasVisibleText = children != null;
   return (
     <div className={twMerge(LogoVariants({ textPosition }))}>
-      <LogoSvg aria-label={!text ? children : undefined} decorative={text} title={!text ? children : undefined} titleId={`${children}-logo`} className="ko:w-24 ko:min-w-24" />
-      {text && <div className="ko:hidden ko:sm:block ko:[line-break:normal] ko:font-bold ko:font-display ko:text-[0.812rem] ko:uppercase">{children}</div>}
+      <LogoSvg
+        aria-label={!hasVisibleText ? logoName : undefined}
+        title={!hasVisibleText ? logoName : undefined}
+        decorative={hasVisibleText}
+        titleId={`${logoName.toLowerCase().split(" ").join("")}-logo`}
+        className="ko:w-24 ko:min-w-24"
+      />
+      <div className="ko:hidden ko:sm:block ko:[line-break:normal] ko:font-bold ko:font-display ko:text-xs ko:uppercase">{children}</div>
     </div>
   );
 }

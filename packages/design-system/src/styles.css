@@ -1,3 +1,7 @@
+/* 
+
+  --ko-palette-logo-percent-denominator: var(--ko-palette-secondary); */
+
 @import 'tailwindcss' prefix(ko);
 
 :root {
@@ -9,6 +13,36 @@
   --font-sans: var(--ko-typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-*: initial;
+
+  --color-logo-check: light-dark(
+    var(--ko-palette-logo-check-light, var(--ko-palette-primary)),
+    var(--ko-palette-logo-check-dark, var(--ko-palette-primary))
+  );
+
+  --color-logo-slash: light-dark(
+    var(--ko-palette-logo-slash-light, var(--ko-palette-neutral)),
+    var(--ko-palette-logo-slash-dark, var(--ko-palette-neutral))
+  );
+
+  --color-logo-cross: light-dark(
+    var(--ko-palette-logo-cross-light, var(--ko-palette-secondary)),
+    var(--ko-palette-logo-cross-dark, var(--ko-palette-secondary))
+  );
+
+  --color-logo-percent-numerator: light-dark(
+    var(--ko-palette-logo-percent-numerator-light, var(--ko-palette-primary)),
+    var(--ko-palette-logo-percent-numerator-dark, var(--ko-palette-primary))
+  );
+
+  --color-logo-percent-slash: light-dark(
+    var(--ko-palette-logo-percent-slash-light, var(--ko-palette-neutral)),
+    var(--ko-palette-logo-percent-slash-dark, var(--ko-palette-neutral))
+  );
+
+  --color-logo-percent-denominator: light-dark(
+    var(--ko-palette-logo-percent-denominator-light, var(--ko-palette-secondary)),
+    var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-secondary))
+  );
 
   --color-primary: light-dark(
     var(--ko-palette-primary-light, var(--ko-palette-primary)),
