@@ -22,13 +22,13 @@ const ButtonVariants = cva(
     variants: {
       variant: {
         filled: [""],
-        outline: ["ko:bg-transparent", "ko:data-disabled:text-neutral-disabled"],
-        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:bg-transparent ko:data-disabled:text-neutral-disabled ko:data-disabled:border-transparent"],
+        outline: ["ko:bg-transparent"],
+        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
       },
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
         secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
-        neutral: ["ko:border-neutral", "ko:data-disabled:bg-neutral-disabled ko:data-disabled:border-neutral-disabled"],
+        neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
       },
       size: {
         default: "ko:p-4",
@@ -74,15 +74,31 @@ const ButtonVariants = cva(
           "ko:data-disabled:bg-neutral-disabled",
         ],
       },
-      { variant: "outline", color: "primary", class: ["ko:text-primary", "ko:data-hover:bg-primary-hover/10", "ko:data-hover:data-active:bg-primary-active/10"] },
-      { variant: "outline", color: "secondary", class: ["ko:text-secondary", "ko:data-hover:bg-secondary-hover/10", "ko:data-hover:data-active:bg-secondary-active/10"] },
-      { variant: "outline", color: "neutral", class: ["ko:text-neutral", "ko:data-hover:bg-neutral-hover/10", "ko:data-hover:data-active:bg-neutral-active/10"] },
-      { variant: "link", color: "primary", class: ["ko:text-primary", "ko:data-hover:text-primary-hover", "ko:data-hover:data-active:text-primary-active"] },
-      { variant: "link", color: "secondary", class: ["ko:text-secondary", "ko:data-hover:text-secondary-hover", "ko:data-hover:data-active:text-secondary-active"] },
+      {
+        variant: "outline",
+        color: "primary",
+        class: ["ko:text-primary", "ko:data-hover:bg-primary-hover/10", "ko:data-hover:data-active:bg-primary-active/10", "ko:data-disabled:text-primary-disabled"],
+      },
+      {
+        variant: "outline",
+        color: "secondary",
+        class: ["ko:text-secondary", "ko:data-hover:bg-secondary-hover/10", "ko:data-hover:data-active:bg-secondary-active/10", "ko:data-disabled:text-secondary-disabled"],
+      },
+      {
+        variant: "outline",
+        color: "neutral",
+        class: ["ko:text-neutral", "ko:data-hover:bg-neutral-hover/10", "ko:data-hover:data-active:bg-neutral-active/10", "ko:data-disabled:text-neutral-disabled"],
+      },
+      { variant: "link", color: "primary", class: ["ko:text-primary", "ko:data-hover:text-primary-hover", "ko:data-hover:data-active:text-primary-active", "ko:data-disabled:text-primary-disabled"] },
+      {
+        variant: "link",
+        color: "secondary",
+        class: ["ko:text-secondary", "ko:data-hover:text-secondary-hover", "ko:data-hover:data-active:text-secondary-active", "ko:data-disabled:text-secondary-disabled"],
+      },
       {
         variant: "link",
         color: "neutral",
-        class: ["ko:text-neutral", "ko:data-hover:text-neutral-hover", "ko:data-hover:data-active:text-neutral-active"],
+        class: ["ko:text-neutral", "ko:data-hover:text-neutral-hover", "ko:data-hover:data-active:text-neutral-active", "ko:data-disabled:text-neutral-disabled"],
       },
     ],
   },

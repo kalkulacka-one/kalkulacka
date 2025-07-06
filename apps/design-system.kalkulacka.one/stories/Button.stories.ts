@@ -19,10 +19,11 @@ const meta: Meta<typeof Button> = {
       control: "select",
       options: ["default", "small"],
     },
-    disabled: {
-      control: "boolean",
+    type: {
+      control: "select",
+      options: ["button", "submit", "reset"],
     },
-    autoFocus: {
+    disabled: {
       control: "boolean",
     },
   },
@@ -37,7 +38,6 @@ export const Default: ButtonStory = {
     color: "primary",
     type: "button",
     disabled: false,
-    autoFocus: false,
   },
 };
 
