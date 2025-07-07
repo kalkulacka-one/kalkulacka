@@ -8,7 +8,7 @@ export type Button = {
 } & Omit<ButtonPropsHeadless, "className" | "as"> &
   VariantProps<typeof ButtonVariants>;
 
-const ButtonVariants = cva(
+export const ButtonVariants = cva(
   [
     "ko:border-2",
     "ko:select-none ko:data-hover:cursor-pointer",
@@ -32,7 +32,7 @@ const ButtonVariants = cva(
       },
       size: {
         default: "ko:p-4",
-        small: "ko:px-4 ko:py-2 ",
+        small: "ko:px-4 ko:py-2",
       },
     },
     defaultVariants: {
