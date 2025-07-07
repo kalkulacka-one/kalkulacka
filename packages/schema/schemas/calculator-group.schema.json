@@ -145,7 +145,7 @@
           }
         }
       },
-      "required": ["title", "shortTitle", "calculators"]
+      "required": ["shortTitle", "calculators"]
     },
     {
       "properties": {
