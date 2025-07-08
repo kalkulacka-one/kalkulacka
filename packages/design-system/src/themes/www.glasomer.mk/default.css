@@ -1,4 +1,8 @@
 :root {
   --ko-typeface-display: "Radio Canada";
   --ko-typeface-sans: "Inter";
+
+  --ko-palette-primary: rgb(249, 214, 22);
+  --ko-palette-secondary: rgb(206, 32, 40);
+  --ko-palette-neutral: rgb(25, 25, 32);
 }
