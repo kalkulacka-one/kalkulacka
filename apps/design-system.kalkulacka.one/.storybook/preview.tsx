@@ -22,6 +22,9 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Testvot (RO)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.testvot.eu/default")).default,
+  "Kalkulatori zgjedhor (XK)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.kalkulatorizgjedhor.org/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
