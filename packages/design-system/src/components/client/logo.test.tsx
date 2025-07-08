@@ -15,6 +15,13 @@ describe("Logo", () => {
     expect(title).toBeInTheDocument();
   });
 
+  it("renders the SVG with `aria-labelledby`", () => {
+    const { container } = render(<Logo title="Volební kalkulačka" />);
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveAttribute("aria-labelledby");
+    expect(svg).not.toHaveAttribute("aria-hidden");
+  });
+
   it("does not render visible text", () => {
     render(<Logo title="Volební kalkulačka" />);
     expect(screen.queryByText("Volební kalkulačka")).not.toBeVisible();
@@ -26,10 +33,11 @@ describe("Logo", () => {
       expect(screen.getByText("Volební kalkulačka")).toBeInTheDocument();
     });
 
-    it("renders SVG with aria-hidden", () => {
+    it("renders SVG with `aria-hidden`", () => {
       const { container } = render(<Logo title="Volební kalkulačka" text />);
       const svg = container.querySelector("svg");
       expect(svg).toHaveAttribute("aria-hidden", "true");
+      expect(svg).not.toHaveAttribute("aria-labelledby");
     });
 
     it("does not include a <title> element", () => {
