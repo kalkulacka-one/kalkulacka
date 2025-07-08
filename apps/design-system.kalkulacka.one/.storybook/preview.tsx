@@ -10,6 +10,27 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Volební kalkulačka (CZ)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/default")).default,
+  "Volebná kalkulačka (SK)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.volebnakalkulacka.sk/default")).default,
+  "Voksmonitor (HU)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.voksmonitor.hu/default")).default,
+  "Wahlrechner (AT)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.wahlrechner.at/default")).default,
+  "Testvot (RO)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.testvot.eu/default")).default,
+  "Kalkulatori zgjedhor (XK)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.kalkulatorizgjedhor.org/default")).default,
+  "Kalkulatori zgjedhor (AL)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.kalkulatorizgjedhor.al/default")).default,
+  "Glasomer (MK)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.glasomer.mk/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
