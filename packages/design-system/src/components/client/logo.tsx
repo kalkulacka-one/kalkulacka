@@ -44,7 +44,7 @@ export function Logo({ title, text }: Logo) {
         />
       </svg>
 
-      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:tracking-[10%] ko:text-[2.25rem] ko:line-height-[normal] ko:text-nowrap">{title}</div>}
+      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:tracking-[10%] ko:text-[2.25rem] ko:leading-[normal] ko:text-nowrap">{title}</div>}
     </div>
   );
 }
