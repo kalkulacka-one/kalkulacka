@@ -40,8 +40,8 @@
   );
 
   --color-on-bg-primary: light-dark(
-    var(--ko-palette-on-bg-primary-light, white),
-    var(--ko-palette-on-bg-primary-dark, white)
+    var(--ko-palette-on-bg-primary-light, oklch(from var(--ko-palette-primary) round(calc(1 - (l * l))) 0 0)),
+    var(--ko-palette-on-bg-primary-dark, oklch(from var(--ko-palette-primary) round(calc(1 - (l * l))) 0 0))
   );
 
   /* Secondary color */
@@ -66,8 +66,8 @@
   );
 
   --color-on-bg-secondary: light-dark(
-    var(--ko-palette-on-bg-secondary-light, white),
-    var(--ko-palette-on-bg-secondary-dark, white)
+    var(--ko-palette-on-bg-secondary-light, oklch(from var(--ko-palette-secondary) round(calc(1 - (l * l))) 0 0)),
+    var(--ko-palette-on-bg-secondary-dark, oklch(from var(--ko-palette-secondary) round(calc(1 - (l * l))) 0 0))
   );
 
   /* Neutral color */
@@ -97,8 +97,8 @@
   );
 
   --color-on-bg-neutral: light-dark(
-    var(--ko-palette-on-bg-neutral-light, white),
-    var(--ko-palette-on-bg-neutral-dark, white)
+    var(--ko-palette-on-bg-neutral-light, oklch(from var(--ko-palette-neutral) round(calc(1 - (l * l))) 0 0)),
+    var(--ko-palette-on-bg-neutral-dark, oklch(from var(--ko-palette-neutral) round(calc(1 - (l * l))) 0 0))
   );
 
   /* Direct colors
