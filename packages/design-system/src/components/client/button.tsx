@@ -20,6 +20,10 @@ export const ButtonVariants = cva(
   ],
   {
     variants: {
+      size: {
+        small: "ko:px-4 ko:py-2",
+        medium: "ko:p-4",
+      },
       variant: {
         filled: [""],
         outline: ["ko:bg-transparent"],
@@ -30,14 +34,10 @@ export const ButtonVariants = cva(
         secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
         neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
       },
-      size: {
-        default: "ko:p-4",
-        small: "ko:px-4 ko:py-2",
-      },
     },
     defaultVariants: {
+      size: "medium",
       variant: "filled",
-      size: "default",
       color: "primary",
     },
     compoundVariants: [
@@ -104,9 +104,9 @@ export const ButtonVariants = cva(
   },
 );
 
-function ButtonComponent({ children, variant, size, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ variant, size, color }))} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }))} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );
