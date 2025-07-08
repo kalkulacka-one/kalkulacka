@@ -32,7 +32,7 @@ The color palette defines three main colors:
     {[
       { label: "primary", variable: "--ko-palette-primary" },
       { label: "secondary", variable: "--ko-palette-secondary" },
-      { label: "neutral", variable: "--ko-palette-neutral" },      
+      { label: "neutral", variable: "--ko-palette-neutral" },
     ].map(({ label, variable }) => (
       <div
         key={variable}
@@ -77,7 +77,7 @@ and additional direct colors:
     {[
       { label: "red", variable: "--ko-palette-red" },
       { label: "yellow", variable: "--ko-palette-yellow" },
-      { label: "green", variable: "--ko-palette-green" },      
+      { label: "green", variable: "--ko-palette-green" },
     ].map(({ label, variable }) => (
       <div
         key={variable}
@@ -93,6 +93,60 @@ and additional direct colors:
             width: "8rem",
             height: "8rem",
             borderRadius: "50%",
+            backgroundColor: `var(${variable})`,
+          }}
+        />
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+If the default mapping of the main colors to the individual parts of the logo doesn't match the desired logo composition, individual logo colors can be adjusted by defining another set of specific colors:
+
+- check: `--ko-palette-logo-check` *(primary as default)*
+- slash: `--ko-palette-logo-slash` *(neutral as default)*
+- cross: `--ko-palette-logo-cross` *(secondary as default)*
+- percent numerator: `--ko-palette-logo-percent-numerator` *(primary as default)*
+- percent slash: `--ko-palette-logo-percent-slash` *(neutral as default)*
+- percent denominator: `--ko-palette-logo-percent-denominator` *(secondary as default)*
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "check", variable: "--ko-palette-logo-check" },
+      { label: "slash", variable: "--ko-palette-logo-slash" },
+      { label: "cross", variable: "--ko-palette-logo-cross" },
+      { label: "percent numerator", variable: "--ko-palette-logo-percent-numerator" },
+      { label: "percent slash", variable: "--ko-palette-logo-percent-slash" },
+      { label: "percent denominator", variable: "--ko-palette-logo-percent-denominator" },
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            borderWidth: "0.25rem",
+            borderStyle: "dashed",
+            borderRadius: "50%",
+            borderColor: `var(${variable}, black)`,
             backgroundColor: `var(${variable})`,
           }}
         />
@@ -221,6 +275,64 @@ In addition, combinations (element on token) with appropriate color contrast are
           { label: "red", variable: "--ko-color-red" },
           { label: "yellow", variable: "--ko-color-yellow" },
           { label: "green", variable: "--ko-color-green" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+### Logo colors
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "check", variable: "--ko-color-logo-check" },
+          { label: "slash", variable: "--ko-color-logo-slash" },
+          { label: "cross", variable: "--ko-color-logo-cross" },
+          { label: "percent numerator", variable: "--ko-color-logo-percent-numerator" },
+          { label: "percent slash", variable: "--ko-color-logo-percent-slash" },
+          { label: "percent denominator", variable: "--ko-color-logo-percent-denominator" },
         ].map(({ label, variable }) => (
           <div
             key={`${mode}-${variable}`}
