@@ -28,6 +28,9 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Kalkulatori zgjedhor (AL)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.kalkulatorizgjedhor.al/default")).default,
+  "Glasomer (MK)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.glasomer.mk/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
