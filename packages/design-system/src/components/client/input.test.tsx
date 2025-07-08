@@ -13,7 +13,7 @@ describe("Input", () => {
   it("should render with an icon", () => {
     render(
       <Input placeholder="Input placeholder" data-testid="input">
-        <div>Some</div>
+        <EnvelopeIcon data-testid="icon" />
       </Input>,
     );
     expect(screen.getByTestId("input")).toBeInTheDocument();
