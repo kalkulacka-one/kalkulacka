@@ -19,6 +19,9 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Wahlrechner (AT)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.wahlrechner.at/default")).default,
+  "Testvot (RO)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.testvot.eu/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
