@@ -21,18 +21,18 @@
   );
 
   --color-primary-active: light-dark(
-    var(--ko-palette-primary-active-light, oklch(from var(--ko-palette-primary) calc(l - 0.436) calc(c - 0.181) h)),
+    var(--ko-palette-primary-active-light, oklch(from var(--ko-palette-primary) calc(l - 0.436) calc(c - 0.05) h)),
     var(--ko-palette-primary-active-dark, oklch(from var(--ko-palette-primary) calc(l - 0.5) calc(c - 0.2) h))
   );
 
   --color-primary-disabled: light-dark(
-    var(--ko-palette-primary-disabled-light, oklch(from var(--ko-palette-neutral) 0.75  calc(c - 0.01) h)),
-    var(--ko-palette-primary-disabled-dark, oklch(from var(--ko-palette-neutral) 0.75 calc(c - 0.2) h))
+    var(--ko-palette-primary-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
+    var(--ko-palette-primary-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
   );
 
-  --text-color-on-fill-primary: light-dark(
-    var(--ko-palette-on-fill-primary-light, white),
-    var(--ko-palette-on-fill-primary-dark, white)
+  --color-on-bg-primary: light-dark(
+    var(--ko-palette-on-bg-primary-light, white),
+    var(--ko-palette-on-bg-primary-dark, white)
   );
   
   --color-secondary: light-dark(
@@ -40,9 +40,49 @@
     var(--ko-palette-secondary-dark, var(--ko-palette-secondary))
   );
 
+  --color-secondary-hover: light-dark(
+    var(--ko-palette-secondary-hover-light, oklch(from var(--ko-palette-secondary) calc(l - 0.206) calc(c - 0.075) h)),
+    var(--ko-palette-secondary-hover-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.35) calc(c - 0.12) h))
+  );
+
+  --color-secondary-active: light-dark(
+    var(--ko-palette-secondary-active-light, oklch(from var(--ko-palette-secondary) calc(l - 0.436) calc(c - 0.05) h)),
+    var(--ko-palette-secondary-active-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.5) calc(c - 0.2) h))
+  );
+
+  --color-secondary-disabled: light-dark(
+    var(--ko-palette-secondary-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
+    var(--ko-palette-secondary-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+  );
+
+  --color-on-bg-secondary: light-dark(
+    var(--ko-palette-on-bg-secondary-light, white),
+    var(--ko-palette-on-bg-secondary-dark, white)
+  );
+
   --color-neutral: light-dark(
-    var(--ko-palette-neutral-light, var(--ko-palette-neutral)),
-    var(--ko-palette-neutral-dark, var(--ko-palette-neutral))
+    var(--ko-palette-neutral-light, oklch(from var(--ko-palette-neutral) calc(l - 0.206) calc(c - 0.075) h)),
+    var(--ko-palette-neutral-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.35) calc(c - 0.12) h))
+  );
+
+  --color-neutral-hover: light-dark(
+    var(--ko-palette-neutral-hover-light, var(--ko-palette-neutral)),
+    var(--ko-palette-neutral-hover-dark, var(--ko-palette-neutral))
+  );
+
+  --color-neutral-active: light-dark(
+    var(--ko-palette-neutral-active-light, oklch(from var(--ko-palette-neutral) calc(l - 0.436) calc(c - 0.05) h)),
+    var(--ko-palette-neutral-active-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.5) calc(c - 0.2) h))
+  );
+
+  --color-neutral-disabled: light-dark(
+    var(--ko-palette-neutral-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
+    var(--ko-palette-neutral-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+  );
+
+  --color-on-bg-neutral: light-dark(
+    var(--ko-palette-on-bg-neutral-light, white),
+    var(--ko-palette-on-bg-neutral-dark, white)
   );
 
   --color-red: light-dark(
