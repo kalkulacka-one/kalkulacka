@@ -126,7 +126,8 @@
     var(--ko-palette-white-dark, white)
   );
 
-  /* Logo colors */
+  /* Logo colors
+     ========================================================================== */
   --color-logo-check: light-dark(
     var(--ko-palette-logo-check-light, var(--ko-palette-logo-check, var(--ko-palette-primary))),
     var(--ko-palette-logo-check-dark, var(--ko-palette-logo-check, var(--ko-palette-primary)))
