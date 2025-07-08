@@ -3,10 +3,12 @@
   --ko-typeface-sans: "Geist";
   --ko-typeface-mono: "Geist Mono";
 
-  --ko-palette-logo-check: rgb(25, 25, 32);
-  --ko-palette-logo-slash: rgb(25, 25, 32);
-  --ko-palette-logo-cross: rgb(25, 25, 32);
-  --ko-palette-logo-percent-numerator: rgb(25, 25, 32);
-  --ko-palette-logo-percent-slash: rgb(25, 25, 32);
-  --ko-palette-logo-percent-denominator: rgb(25, 25, 32);
+  --ko-palette-primary: rgb(25, 25, 32);
+
+  --ko-palette-logo-check: var(--ko-palette-neutral);
+  --ko-palette-logo-slash: var(--ko-palette-neutral);
+  --ko-palette-logo-cross: var(--ko-palette-neutral);
+  --ko-palette-logo-percent-numerator: var(--ko-palette-neutral);
+  --ko-palette-logo-percent-slash: var(--ko-palette-neutral);
+  --ko-palette-logo-percent-denominator: var(--ko-palette-neutral);
 }
