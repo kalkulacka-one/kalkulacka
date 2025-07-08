@@ -16,6 +16,9 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Voksmonitor (HU)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.voksmonitor.hu/default")).default,
+  "Wahlrechner (AT)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.wahlrechner.at/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
