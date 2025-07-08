@@ -1,5 +1,6 @@
 import { Input } from "@repo/design-system/client";
 import { EnvelopeIcon } from "@repo/design-system/icons";
+import { twMerge } from "@repo/design-system/utils";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
@@ -10,7 +11,7 @@ describe("Input", () => {
     expect(screen.getByTestId("input")).toBeInTheDocument();
   });
 
-  it("should render with an icon", () => {
+  it("should render with an icon and proper styling", () => {
     render(
       <Input placeholder="Input placeholder" data-testid="input">
         <EnvelopeIcon data-testid="icon" />
@@ -18,5 +19,6 @@ describe("Input", () => {
     );
     expect(screen.getByTestId("input")).toBeInTheDocument();
     expect(screen.getByTestId("icon")).toBeInTheDocument();
+    expect(screen.getByTestId("input")).toHaveClass(twMerge("ko:pl-14 ko:p-4"));
   });
 });

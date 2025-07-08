@@ -1,5 +1,6 @@
 import { Input as InputHeadless, type InputProps as InputPropsHeadless } from "@headlessui/react";
 import type { Icon } from "@repo/design-system/client";
+import { twMerge } from "@repo/design-system/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
@@ -33,7 +34,7 @@ function InputComponent({ children, variant, ...props }: Input, ref: React.Ref<H
   return (
     <div className="ko:relative">
       {hasIcon && <div className="ko:absolute ko:left-4 ko:top-1/2 ko:-translate-y-1/2">{children}</div>}
-      <InputHeadless {...props} ref={ref} className={InputVariants({ variant: hasIcon ? "icon" : "default" })} />
+      <InputHeadless {...props} ref={ref} className={twMerge(InputVariants({ variant: hasIcon ? "icon" : "default" }))} />
     </div>
   );
 }
