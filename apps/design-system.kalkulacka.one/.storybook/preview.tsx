@@ -25,6 +25,9 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Kalkulatori zgjedhor (XK)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.kalkulatorizgjedhor.org/default")).default,
+  "Kalkulatori zgjedhor (AL)": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.kalkulatorizgjedhor.al/default")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
