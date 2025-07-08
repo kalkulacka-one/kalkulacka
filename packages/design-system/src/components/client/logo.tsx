@@ -9,7 +9,7 @@ export function Logo({ title, text }: Logo) {
   const titleId = useId();
 
   return (
-    <div className="ko:items-center ko:flex ko:gap-[1.78125rem]">
+    <div className="ko:flex ko:items-center ko:gap-[1.78125rem]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden={text ? "true" : undefined}
