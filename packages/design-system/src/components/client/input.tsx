@@ -1,9 +1,10 @@
 import { Input as InputHeadless, type InputProps as InputPropsHeadless } from "@headlessui/react";
+import type { Icon } from "@repo/design-system/client";
 import { type VariantProps, cva } from "class-variance-authority";
 import React from "react";
 
 export type Input = {
-  children?: React.ReactNode;
+  children?: React.ReactElement<React.ComponentProps<typeof Icon>>;
 } & InputPropsHeadless &
   VariantProps<typeof InputVariants>;
 
@@ -15,7 +16,6 @@ const InputVariants = cva(
     "ko:placeholder:text-base ko:placeholder:font-sans ko:placeholder:text-neutral",
     "ko:data-hover:border-neutral-hover",
     "ko:data-disabled:placeholder:text-neutral-disabled ko:data-disabled:border-neutral-disabled ko:data-disabled:text-neutral-disabled",
-    "ko:data-focus:focus:outline-none ko:data-focus:ring-2 ko:data-focus:ring-offset-2 ko:data-focus:ring-yellow",
   ],
   {
     variants: {
