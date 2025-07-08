@@ -1,4 +1,15 @@
 :root {
   --ko-typeface-display: "Radio Canada";
   --ko-typeface-sans: "Inter";
+
+  --ko-palette-primary: rgb(29, 28, 28);
+  --ko-palette-secondary: rgb(208, 70, 70);
+  --ko-palette-neutral: rgb(29, 28, 28);
+
+  --ko-palette-logo-check: var(--ko-palette-neutral);
+  --ko-palette-logo-slash: var(--ko-palette-neutral);
+  --ko-palette-logo-cross: var(--ko-palette-neutral);
+  --ko-palette-logo-percent-numerator: var(--ko-palette-secondary);
+  --ko-palette-logo-percent-slash: var(--ko-palette-neutral);
+  --ko-palette-logo-percent-denominator: var(--ko-palette-secondary);
 }
