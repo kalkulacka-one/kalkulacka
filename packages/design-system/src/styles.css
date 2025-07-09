@@ -21,7 +21,7 @@
   /* Primary color */
   --color-primary: light-dark(
     var(--ko-palette-primary-light, var(--ko-palette-primary)),
-    var(--ko-palette-primary-dark, var(--ko-palette-primary))
+    var(--ko-palette-primary-dark, oklch(from var(--ko-palette-primary) max(l, 0.4) c h))
   );
 
   --color-primary-hover: light-dark(
@@ -47,7 +47,7 @@
   /* Secondary color */
   --color-secondary: light-dark(
     var(--ko-palette-secondary-light, var(--ko-palette-secondary)),
-    var(--ko-palette-secondary-dark, var(--ko-palette-secondary))
+    var(--ko-palette-secondary-dark, oklch(from var(--ko-palette-secondary) max(l, 0.4) c h))
   );
 
   --color-secondary-hover: light-dark(
@@ -72,8 +72,8 @@
 
   /* Neutral color */
   --color-neutral: light-dark(
-    var(--ko-palette-neutral-light, oklch(from var(--ko-palette-neutral) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-neutral-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.35) calc(c - 0.12) h))
+    var(--ko-palette-neutral-light, var(--ko-palette-neutral)),
+    var(--ko-palette-neutral-dark, oklch(from var(--ko-palette-neutral) max(l, 0.4) c h))
   );
 
   --color-neutral-hover: light-dark(

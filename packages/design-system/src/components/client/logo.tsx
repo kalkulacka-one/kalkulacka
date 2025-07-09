@@ -57,7 +57,8 @@ export function Logo({ title, text, size }: Logo) {
           d="M300 54.4368C300 59.7184 295.725 64 290.452 64C285.178 64 280.903 59.7184 280.903 54.4368C280.903 49.1552 285.178 44.8736 290.452 44.8736C295.725 44.8736 300 49.1552 300 54.4368Z"
         />
       </svg>
-      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:text-[2.25em] ko:tracking-[10%] ko:leading-[normal] ko:text-nowrap">{title}</div>}
+
+      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:text-neutral ko:tracking-[10%] ko:text-[2.25rem] ko:leading-[normal] ko:text-nowrap">{title}</div>}
     </div>
   );
 }
