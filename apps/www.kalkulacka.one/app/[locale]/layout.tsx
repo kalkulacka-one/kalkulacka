@@ -1,9 +1,9 @@
+import { NextIntlClientProvider } from "next-intl";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Link } from "../i18n/navigation";
 import { routing } from "../i18n/routing";
-
-import Link from "next/link";
 
 import "../globals.css";
 
@@ -21,7 +21,7 @@ export default async function RootLayout({
     notFound();
   }
 
-  const t = await getTranslations("HomePage");
+  const t = await getTranslations("layout");
 
   return (
     <html lang={locale}>
@@ -29,37 +29,50 @@ export default async function RootLayout({
         <script defer data-domain="kalkulacka.one" src="/js/script.tagged-events.outbound-links.js" />
       </head>
       <body>
-        <main className="p-4 grid gap-8">
-          <header className="grid gap-2">
-            <Link href="/cs">
-              <h1 className="text-5xl font-semibold">Kalkulacka.1</h1>
-              <p className="text-lg font-medium">
-                Ta <em>pravá</em> volební kalkulačka pro miliony voličů ve 4 zemích
-              </p>
-            </Link>
-            <nav className="flex flex-wrap gap-2">
-              <Link href="/cs" className="underline hover:no-underline">
-                Domů
+        <NextIntlClientProvider>
+          <main className="p-4 grid gap-8">
+            <header className="grid gap-2">
+              <Link href="/">
+                <h1 className="text-5xl font-semibold">{t("title")}</h1>
+                <p className="text-lg font-medium">
+                  {t.rich("description", {
+                    emphasis: (chunks) => <em>{chunks}</em>,
+                  })}
+                </p>
               </Link>
-              <Link href="/cs/podporte-kalkulacku" className="underline hover:no-underline">
-                Podpora
-              </Link>
-              <Link href="/cs/zapojte-se" className="underline hover:no-underline">
-                Dobrovolnictví
-              </Link>
-              <Link href="/cs/vlastni-kalkulacka" className="underline hover:no-underline">
-                Vlastní kalkulačka
-              </Link>
-            </nav>
-            <div className="flex flex-wrap gap-2">
-              →
-              <Link href="https://x.com/kalkulacka_one" className="underline hover:no-underline">
-                @kalkulacka_one na X
-              </Link>
-            </div>
-          </header>
-          {children}
-        </main>
+              <nav className="flex flex-wrap gap-2">
+                <Link href="/" className="underline hover:no-underline">
+                  {t("homeLink")}
+                </Link>
+                <Link href="/podporte-kalkulacku" className="underline hover:no-underline">
+                  {t("supportLink")}
+                </Link>
+                <Link href="/zapojte-se" className="underline hover:no-underline">
+                  {t("volunteerLink")}
+                </Link>
+                <Link href="/vlastni-kalkulacka" className="underline hover:no-underline">
+                  {t("customCalculatorLink")}
+                </Link>
+                {locale === "cs" ? (
+                  <Link href="/" locale="en" className="underline hover:no-underline">
+                    English 🇬🇧
+                  </Link>
+                ) : (
+                  <Link href="/" locale="cs" className="underline hover:no-underline">
+                    Czech 🇨🇿
+                  </Link>
+                )}
+              </nav>
+              <div className="flex flex-wrap gap-2">
+                →
+                <a href="https://x.com/kalkulacka_one" className="underline hover:no-underline">
+                  {t("xLink")}
+                </a>
+              </div>
+            </header>
+            {children}
+          </main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

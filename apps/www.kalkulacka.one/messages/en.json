@@ -1,6 +1,47 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "layout": {
+    "title": "Kalkulacka.1",
+    "description": "The <emphasis>true</emphasis> election calculator for millions of voters in 4 countries",
+    "homeLink": "Home",
+    "supportLink": "Support",
+    "volunteerLink": "Volunteer",
+    "customCalculatorLink": "Custom Calculator",
+    "xLink": "@kalkulacka_one on X"
+  },
+  "home": {
+    "heroTitle": "We create the <bold>Election Calculator</bold> that helps you decide who to vote for",
+    "aboutUsPart1": "We are the association <link>KohoVolit.eu</link> and for 15 years we have been creating the <link2>Election Calculator</link2> for you, which helps you make an informed decision on who to vote for.",
+    "aboutUsPart2": "In 2022, with the support of <link>Česko.Digital</link>, we brought a new generation of the Election Calculator with a new design, and now another stage awaits us: international expansion. We have already launched the calculator in 6 countries and are preparing more:",
+    "countryCz": "<bold>Election Calculator</bold> in the Czech Republic",
+    "countrySk": "<bold>Election Calculator</bold> in Slovakia",
+    "countryHu": "<bold>Voksmonitor</bold> in Hungary",
+    "countryAt": "<bold>Wahlrechner</bold> in Austria",
+    "countryRo": "<bold>TestVot</bold> in Romania",
+    "countryXk": "<bold>Kalkulatori zgjedhor</bold> in Kosovo",
+    "countryAl": "<bold>Kalkulatori zgjedhor</bold> in Albania",
+    "countryAlDate": "May 2025",
+    "countryMk": "<bold>Glasomer</bold> in North Macedonia",
+    "countryMkDate": "October 2025",
+    "stats": "Hundreds of thousands of voters fill out our election calculators every year. The presidential calculator in the Czech Republic alone was filled out by over <bold>1 million people</bold> in 2023!",
+    "supportTitle": "Support the Election Calculator. Or get involved!",
+    "supportText": "To continue creating calculators, we need your support. <link>Support us</link> or <link2>join our team of volunteers</link2> and help us further develop the Election Calculator. Thank you!"
+  },
+  "SupportPage": {
+    "title": "Support the Election Calculator and Democracy",
+    "p1": "Do you like the Election Calculator? Thanks to volunteers and generous donors, we can provide the calculator for free.",
+    "p2": "However, to continue our work for upcoming elections and improve the calculator, we need your help. Join the club of supporters or support us with a one-time contribution. Every contribution counts!",
+    "p3": "Or <link>join our team of volunteers</link> and help millions of people who use the Election Calculator.",
+    "p4": "Your support is crucial for us to continue our work for upcoming elections and improve the calculator. Thank you!",
+    "clubTitle": "Join the Club of Supporters",
+    "clubP1": "Join the Election Calculator supporters club on <link>Herohero</link> and in addition to the good feeling of helping to ensure the creation of new calculators and supporting democracy:",
+    "clubLi1": "we will thank you in the calculator",
+    "clubLi2": "you will get exclusive access to the calculator one day before the official launch",
+    "clubLi3": "you will be able to propose a question for the calculator and vote with other supporters on which question will be included in the calculator",
+    "clubButton": "Join on Herohero",
+    "oneTimeContributionTitle": "One-time Contribution",
+    "oneTimeContributionP1": "Or you can support us with a one-time contribution:",
+    "loading": "Loading…",
+    "thankYou": "Thank you!",
+    "contactP1": "Do you have any questions? Send us an email: <link>hey@kalkulacka.one</link> or a message on <link2>X</link2>."
   }
 }

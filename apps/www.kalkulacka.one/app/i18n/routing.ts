@@ -4,10 +4,11 @@ export const routing = defineRouting({
   locales: ["cs", "en"],
   defaultLocale: "cs",
   pathnames: {
+    "/": "/",
     "/podporte-kalkulacku": {
       en: "/support-us",
     },
-    "vlastni-kalkulacka": {
+    "/vlastni-kalkulacka": {
       en: "/custom-calulator",
     },
     "/zapojte-se": {

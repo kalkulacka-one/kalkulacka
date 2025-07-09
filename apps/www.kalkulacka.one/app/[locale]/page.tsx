@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -7,106 +8,127 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+  const t = await getTranslations("home");
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">
         <h2 className="text-2xl font-medium">
-          Tvoříme <span className="font-bold">Volební kalkulačku</span>, která vám pomáhá rozhodnout se koho volit
+          {t.rich("heroTitle", {
+            bold: (chunks) => <span className="font-bold">{chunks}</span>,
+          })}
         </h2>
         <p>
-          Jsme spolek{" "}
-          <a href="https://kohovolit.eu" className="underline hover:no-underline">
-            KohoVolit.eu
-          </a>{" "}
-          a už 15 let pro vás tvoříme{" "}
-          <a href="https://www.volebnikalkulacka.cz" className="underline hover:no-underline">
-            Volební kalkulačku
-          </a>
-          , která vám pomáhá učinit informované rozhodnutí, koho volit.
+          {t.rich("aboutUsPart1", {
+            link: (chunks) => (
+              <a href="https://kohovolit.eu" className="underline hover:no-underline">
+                {chunks}
+              </a>
+            ),
+            link2: (chunks) => (
+              <a href="https://www.volebnikalkulacka.cz" className="underline hover:no-underline">
+                {chunks}
+              </a>
+            ),
+          })}
         </p>
         <p>
-          V roce 2022 jsme s podporou{" "}
-          <a href="https://cesko.digital" className="underline hover:no-underline">
-            Česko.Digital
-          </a>{" "}
-          přinesli novou generaci Volební kalkulačky v&nbsp;novém designu a teď nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku v 6 zemích a chystáme další:
+          {t.rich("aboutUsPart2", {
+            link: (chunks) => (
+              <a href="https://cesko.digital" className="underline hover:no-underline">
+                {chunks}
+              </a>
+            ),
+          })}
         </p>
         <ul className="list-none pl-4">
           <li>
             🇨🇿{" "}
-            <a href="https://www.volebnikalkulacka.cz" className="font-bold underline hover:no-underline">
-              Volební kalkulačka
+            <a href="https://www.volebnikalkulacka.cz">
+              {t.rich("countryCz", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
             </a>{" "}
-            v&nbsp;Česku
           </li>
           <li>
             🇸🇰{" "}
-            <a href="https://www.volebnakalkulacka.sk" className="font-bold underline hover:no-underline">
-              Volební kalkulačka
+            <a href="https://www.volebnakalkulacka.sk">
+              {t.rich("countrySk", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
             </a>{" "}
-            na Slovensku
           </li>
           <li>
             🇭🇺{" "}
-            <a href="https://www.voksmonitor.hu" className="font-bold underline hover:no-underline">
-              Voksmonitor
+            <a href="https://www.voksmonitor.hu">
+              {t.rich("countryHu", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
             </a>{" "}
-            v&nbsp;Maďarsku
           </li>
           <li>
             🇦🇹{" "}
-            <a href="https://www.wahlrechner.at" className="font-bold underline hover:no-underline">
-              Wahlrechner
+            <a href="https://www.wahlrechner.at">
+              {t.rich("countryAt", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
             </a>{" "}
-            v&nbsp;Rakousku
           </li>
           <li>
             🇷🇴{" "}
-            <a href="https://www.testvot.eu" className="font-bold underline hover:no-underline">
-              TestVot
+            <a href="https://www.testvot.eu">
+              {t.rich("countryRo", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
             </a>{" "}
-            v&nbsp;Rumunsku
           </li>
           <li>
             🇽🇰{" "}
-            <a href="https://www.kalkulatorizgjedhor.org" className="font-bold underline hover:no-underline">
-              Kalkulatori zgjedhor
+            <a href="https://www.kalkulatorizgjedhor.org">
+              {t.rich("countryXk", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
             </a>{" "}
-            v&nbsp;Kosovu
           </li>
           <li>
             🇦🇱{" "}
-            <a href="https://www.kalkulatorizgjedhor.al" className="font-bold underline hover:no-underline">
-              Kalkulatori zgjedhor
-            </a>{" "}
-            v&nbsp;Albánii
-            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">květen 2025</span>
+            <a href="https://www.kalkulatorizgjedhor.al">
+              {t.rich("countryAl", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
+            </a>
+            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">{t("countryAlDate")}</span>
           </li>
           <li>
             🇲🇰{" "}
-            <a href="https://www.glasomer.mk" className="font-bold underline hover:no-underline">
-              Glasomer
-            </a>{" "}
-            v&nbsp;Severní Makedonii
-            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">říjen 2025</span>
+            <a href="https://www.glasomer.mk">
+              {t.rich("countryMk", {
+                bold: (chunks) => <span className="font-bold underline hover:no-underline">{chunks}</span>,
+              })}
+            </a>
+            <span className="inline-flex items-center ml-2 px-2 py-0.25 rounded-full text-sm font-medium bg-gray-200">{t("countryMkDate")}</span>
           </li>
         </ul>
         <p>
-          Naše volební kalkulačky vyplní statisíce voličů každý rok. Jen prezidentskou kalkulačku v&nbsp;Česku vyplnilo v&nbsp;roce 2023 přes <strong>1 milion lidí</strong>!
+          {t.rich("stats", {
+            bold: (chunks) => <strong>{chunks}</strong>,
+          })}
         </p>
       </section>
       <section className="grid gap-2">
-        <h2 className="text-2xl font-medium">Podpořte Volební kalkulačku. Nebo se zapojte!</h2>
+        <h2 className="text-2xl font-medium">{t("supportTitle")}</h2>
         <p>
-          Abychom mohli v tvorbě kalkulaček pokračovat, potřebujeme vaši podporu.{" "}
-          <Link href="/cs/podporte-kalkulacku" className="font-bold underline hover:no-underline">
-            Podpořte nás
-          </Link>{" "}
-          nebo se{" "}
-          <Link href="/cs/zapojte-se" className="font-bold underline hover:no-underline">
-            zapojte do našeho týmu dobrovolníků
-          </Link>{" "}
-          a pomozte nám Volební kalkulačku dál rozvíjet. Děkujeme!
+          {t.rich("supportText", {
+            link: (chunks) => (
+              <Link href="/cs/podporte-kalkulacku" className="font-bold underline hover:no-underline">
+                {chunks}
+              </Link>
+            ),
+            link2: (chunks) => (
+              <Link href="/cs/zapojte-se" className="font-bold underline hover:no-underline">
+                {chunks}
+              </Link>
+            ),
+          })}
         </p>
       </section>
     </section>
