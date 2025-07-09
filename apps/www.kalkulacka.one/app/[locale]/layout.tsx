@@ -1,8 +1,13 @@
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "../i18n/routing";
+
 import Link from "next/link";
 
 import "../globals.css";
 
-type Params = Promise<{ lang: string }>;
+type Params = Promise<{ locale: string }>;
 
 export default async function RootLayout({
   children,
@@ -11,10 +16,15 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Params;
 }) {
-  const { lang } = await params;
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  const t = await getTranslations("HomePage");
 
   return (
-    <html lang={lang}>
+    <html lang={locale}>
       <head>
         <script defer data-domain="kalkulacka.one" src="/js/script.tagged-events.outbound-links.js" />
       </head>
