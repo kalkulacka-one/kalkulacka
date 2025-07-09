@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import getIntl from "../server/getIntl";
 import "../globals.css";
 
 type Params = Promise<{ lang: string }>;
@@ -13,6 +13,8 @@ export default async function RootLayout({
 }) {
   const { lang } = await params;
 
+  const intl = await getIntl(lang);
+
   return (
     <html lang={lang}>
       <head>
@@ -22,29 +24,37 @@ export default async function RootLayout({
         <main className="p-4 grid gap-8">
           <header className="grid gap-2">
             <Link href="/cs">
-              <h1 className="text-5xl font-semibold">Kalkulacka.1</h1>
-              <p className="text-lg font-medium">
-                Ta <em>pravá</em> volební kalkulačka pro miliony voličů ve 4 zemích
-              </p>
+              <h1 className="text-5xl font-semibold">{intl.formatMessage({ id: "header.title" })}</h1>
+              <p className="text-lg font-medium">{intl.formatMessage({ id: "header.tagline" }, { em: (chunks) => <em>{chunks}</em> })}</p>
             </Link>
             <nav className="flex flex-wrap gap-2">
               <Link href="/cs" className="underline hover:no-underline">
-                Domů
+                {intl.formatMessage({
+                  id: "navigation.home",
+                })}
               </Link>
               <Link href="/cs/podporte-kalkulacku" className="underline hover:no-underline">
-                Podpora
+                {intl.formatMessage({
+                  id: "navigation.support",
+                })}
               </Link>
               <Link href="/cs/zapojte-se" className="underline hover:no-underline">
-                Dobrovolnictví
+                {intl.formatMessage({
+                  id: "navigation.volunteer",
+                })}
               </Link>
               <Link href="/cs/vlastni-kalkulacka" className="underline hover:no-underline">
-                Vlastní kalkulačka
+                {intl.formatMessage({
+                  id: "navigation.customCalculator",
+                })}
               </Link>
             </nav>
             <div className="flex flex-wrap gap-2">
               →
               <Link href="https://x.com/kalkulacka_one" className="underline hover:no-underline">
-                @kalkulacka_one na X
+                {intl.formatMessage({
+                  id: "social.twitterLink",
+                })}
               </Link>
             </div>
           </header>
