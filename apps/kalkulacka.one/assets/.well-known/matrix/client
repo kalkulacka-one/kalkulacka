@@ -8,5 +8,11 @@
   "org.matrix.msc2965.authentication": {
     "issuer": "https://auth.talk.kalkulacka.one/",
     "account": "https://auth.talk.kalkulacka.one/account"
-  }
+  },
+  "org.matrix.msc4143.rtc_foci": [
+    {
+      "livekit_service_url": "https://jwt.call.element.io",
+      "type": "livekit"
+    }
+  ]
 }
