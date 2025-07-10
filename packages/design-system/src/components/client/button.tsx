@@ -79,7 +79,16 @@ export const ButtonVariants = cva(
       {
         variant: "outline",
         color: "primary",
-        class: ["ko:text-primary", "ko:data-hover:bg-primary-hover/10 ko:data-focus:bg-primary-hover/10", "ko:data-hover:data-active:bg-primary-active/10", "ko:data-disabled:text-primary-disabled"],
+        class: [
+          "ko:text-primary",
+          "ko:data-hover:bg-primary-hover/10 ko:data-focus:bg-primary-hover/10",
+          "ko:data-hover:data-active:bg-primary-active/10",
+          "ko:data-disabled:text-primary-disabled",
+          // Test group classes
+          "ko:group-hover:bg-primary! ko:group-hover:text-on-bg-primary",
+          "ko:group-data-checked:bg-primary! ko:group-data-checked:text-on-bg-primary",
+          "ko:group-data-active:bg-primary-active! ko:group-data-active:border-primary-active! ko:group-data-active:hover:bg-primary-active!",
+        ],
       },
       {
         variant: "outline",
