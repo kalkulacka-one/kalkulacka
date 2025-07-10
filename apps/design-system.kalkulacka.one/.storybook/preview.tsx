@@ -1,6 +1,8 @@
+import { IntlProvider } from "@repo/design-system/client";
 import { DocsContainer } from "@storybook/addon-docs/blocks";
 import type { Preview } from "@storybook/nextjs";
 import React, { useEffect } from "react";
+import { reactIntl } from "./reactIntl";
 import "@repo/design-system/styles";
 
 const themeLoaders: Record<string, () => Promise<string>> = {
@@ -52,7 +54,11 @@ const ThemedDocsContainer = ({ children, context, ...props }) => {
 };
 
 const preview: Preview = {
+  initialGlobals: {
+    locale: reactIntl.defaultLocale,
+  },
   parameters: {
+    reactIntl,
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -73,6 +79,19 @@ const preview: Preview = {
         items: themeNames,
       },
     },
+    locale: {
+      name: "Locale",
+      description: "Internationalization locale",
+      defaultValue: reactIntl.defaultLocale,
+      toolbar: {
+        title: "Languaga",
+        icon: "globe",
+        items: reactIntl.locales.map((locale) => ({
+          value: locale,
+          title: locale.toUpperCase(),
+        })),
+      },
+    },
   },
   decorators: [
     (Story, context) => {
@@ -80,6 +99,16 @@ const preview: Preview = {
       useTheme(themeName);
 
       return <Story />;
+    },
+    (Story, context) => {
+      const { locale } = context.globals;
+      const messages = reactIntl.messages[locale];
+
+      return (
+        <IntlProvider locale={locale} messages={messages}>
+          <Story />
+        </IntlProvider>
+      );
     },
   ],
 };

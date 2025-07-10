@@ -60,6 +60,7 @@
     "@headlessui/react": "^2.2.4",
     "@mdi/js": "^7.4.47",
     "class-variance-authority": "^0.7.1",
+    "react-intl": "^7.1.11",
     "tailwind-merge": "^3.3.1"
   }
 }
