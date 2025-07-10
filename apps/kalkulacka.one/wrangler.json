@@ -1,11 +1,8 @@
 {
   "name": "kalkulacka-one",
-  "main": "index.js",
   "compatibility_date": "2025-02-15",
   "assets": {
-    "directory": "./assets",
-    "binding": "ASSETS",
-    "run_worker_first": true
+    "directory": "./assets"
   },
   "build": {
     "cwd": "/apps/kalkulacka.one",
