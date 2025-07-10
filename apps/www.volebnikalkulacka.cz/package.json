@@ -18,8 +18,7 @@
     "@repo/design-system": "*",
     "next": "^15.3.5",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "www.volebnikalkulacka.cz": "^1.0.0"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
