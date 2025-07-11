@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button, ToggleButton } from "@repo/design-system/client";
+import { useArgs } from "storybook/internal/preview-api";
 
 const meta: Meta<typeof ToggleButton> = {
   title: "Components/ToggleButton",
@@ -16,13 +17,24 @@ const meta: Meta<typeof ToggleButton> = {
 type ToggleButtonStory = StoryObj<typeof meta>;
 
 export const AnswerYes: ToggleButtonStory = {
-  render: () => (
-    <ToggleButton>
-      <Button variant="outline" color="primary">
-        Pro mě důležité
-      </Button>
-    </ToggleButton>
-  ),
-};
+  args: {
+    checked: false,
+  },
+  render: function Render() {
+    const [{ checked }, updateArgs] = useArgs();
+
+    function onChange() {
+      updateArgs({ checked: !checked });
+    }
+
+    return (
+      <ToggleButton checked={checked} onChange={onChange}>
+        <Button variant="outline" color="primary">
+          Pro mě důležité
+        </Button>
+      </ToggleButton>
+    );
+  },
+} satisfies ToggleButtonStory;
 
 export default meta;
