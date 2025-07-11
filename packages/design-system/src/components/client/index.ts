@@ -2,8 +2,9 @@
 
 export * from "./button";
 export * from "./clientTest";
-export * from "./icon";
-export * from "./logo";
-export * from "./label";
-export * from "./field";
 export * from "./description";
+export * from "./field";
+export * from "./icon";
+export * from "./input";
+export * from "./label";
+export * from "./logo";
