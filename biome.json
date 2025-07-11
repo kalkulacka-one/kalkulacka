@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "files": {
-    "ignore": ["node_modules", "dist", "build", "out", ".next", ".vercel", "styles.css"]
+    "ignore": ["node_modules", "dist", "build", "out", ".next", ".vercel", "styles.css", "globals.css"]
   },
   "organizeImports": {
     "enabled": true
