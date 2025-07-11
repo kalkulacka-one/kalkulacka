@@ -1,4 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss' prefix(ko);
+
+@import "@repo/design-system/styles";
+@import "../../../packages/design-system/src/themes/www.volebnikalkulacka.cz/default.css";
 
 @layer base {
   @font-face {

@@ -16,7 +16,7 @@ export function Logo({ title, text }: Logo) {
         aria-labelledby={!text ? titleId : undefined}
         focusable="false"
         role={text ? undefined : "img"}
-        className="ko:h-[4rem] ko:shrink-0"
+        className="ko:h-5 ko:shrink-0"
         viewBox="0 0 300 64"
       >
         {!text && <title id={titleId}>{title}</title>}
@@ -44,7 +44,7 @@ export function Logo({ title, text }: Logo) {
         />
       </svg>
 
-      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:tracking-[10%] ko:text-[2.25rem] ko:leading-[normal] ko:text-nowrap">{title}</div>}
+      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:text-xs ko:tracking-[10%] ko:leading-[normal] ko:text-nowrap">{title}</div>}
     </div>
   );
 }

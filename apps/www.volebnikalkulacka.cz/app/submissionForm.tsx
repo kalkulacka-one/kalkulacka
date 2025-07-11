@@ -1,3 +1,5 @@
+import { Button } from "@repo/design-system/client";
+
 export default function SubmissionForm() {
   return (
     <form>
@@ -7,7 +9,10 @@ export default function SubmissionForm() {
         </label>
         <input name="email" type="email" placeholder="Zadejte svůj email" />
       </div>
-      <button type="submit">Odeslat</button>
+      <Button variant="outline" color="primary">
+        Odeslat
+      </Button>
     </form>
   );
 }
+ž;

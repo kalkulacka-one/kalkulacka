@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Logo } from "@repo/design-system/client";
 
 export default async function RootLayout({
   children,
@@ -8,12 +9,14 @@ export default async function RootLayout({
   return (
     <html lang="cs">
       <body>
-        <div className="container mx-auto flex flex-col min-h-screen">
-          <header className="h-14 bg-blue-200 flex justify-center items-center">Header</header>
-          <div className="flex flex-grow items-center justify-center bg-gradient-to-tr from-blue-100 to-red-100 px-4">
+        <div className="ko:container ko:mx-auto ko:flex ko:flex-col ko:min-h-screen">
+          <header className="ko:h-14 ko:flex">
+            <Logo title="Volební kalkulačka" text />
+          </header>
+          <div className="ko:flex ko:flex-grow ko:items-center ko:justify-center ko:bg-gradient-to-tr ko:from-blue-100 ko:to-red-100 px-4">
             <main>{children}</main>
           </div>
-          <footer className="h-14 bg-blue-200 flex justify-center items-center">Footer</footer>
+          <footer className="ko:h-14 ko:bg-blue-200 ko:flex ko:justify-center ko:items-center">Footer</footer>
         </div>
       </body>
     </html>
