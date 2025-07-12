@@ -8,16 +8,16 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="cs">
-      <body className="ko:bg-gradient-to-r ko:from-sky-100 ko:to-red-50">
-        <div className="ko:container ko:mx-auto ko:px-4 ko:lg:px-8 ko:py-4 ko:flex ko:flex-col ko:min-h-screen">
-          <header className="ko:h-14 ko:flex ko:bg-transparent">
+      <body>
+        <div className="container mx-auto p-16 flex flex-col min-h-screen">
+          <header className="h-14 flex">
             <Logo title="Volební kalkulačka" text />
           </header>
-          <div className="ko:flex ko:flex-grow ko:items-center ko:justify-center">
+          <div className="flex flex-grow items-center justify-center">
             <main>{children}</main>
           </div>
-          <footer className="ko:h-14 ko:flex ko:justify-start ko:items-center">
-            <p className="ko:text-sm ko:leading-[1.23] ko:opacity-60">Vytvořeno spoluprací neziskových organizací.</p>
+          <footer className="h-14 flex justify-start items-center">
+            <p>Vytvořeno spoluprací neziskových organizací.</p>
           </footer>
         </div>
       </body>
