@@ -3,7 +3,7 @@ import SubmissionForm from "./submissionForm";
 
 export const metadata: Metadata = {
   title: "Volební kalkulačka",
-  description: "Ta pravá volební kalkulačka pro miliony voličů ve 4 zemích",
+  description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
 };
 
 export default function Page() {
