@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section className="flex flex-col gap-4 items-center">
-      <h2>Parlamentní volby 2025</h2>
+      <h2 className="text-5xl font-bold leading-[1.03] tracking-snug text-center">Parlamentní volby 2025</h2>
       <SubmissionForm />
     </section>
   );
