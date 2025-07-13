@@ -39,12 +39,13 @@ export default function SubmissionForm() {
       {isSubmitSuccessful ? (
         <div>Děkujeme za vyplnění</div>
       ) : (
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
+          <p className="text-center text-sm">Zjistěte, kdo se s vámi shodne na klíčových tématech. Nechte nám tu svůj e-mail a získejte přístup k nové kalkulačce mezi prvními.</p>
           <div className="flex gap-4 justify-center">
             <Field className="flex gap-4 relative" disabled={isSubmitting}>
               <Label className="sr-only hidden">Zadejte váš email</Label>
               <Input invalid={errors.email ? true : undefined} autoComplete="email" type="email" placeholder="E-mail" {...register("email")} />
-              {errors.email && <Description className="absolute -bottom-1.5 right-4 px-1 bg-white text-xs text-red-500">{errors.email.message}</Description>}
+              {errors.email && <Description className="absolute -bottom-1.5 right-4 px-1 bg-white text-xs text-[var(--ko-palette-secondary)]">{errors.email.message}</Description>}
             </Field>
             <Button disabled={isSubmitting} type="submit" variant="outline" color="primary">
               {isSubmitting ? "Odesílám" : "Odeslat"}
