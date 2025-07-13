@@ -14,11 +14,14 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@repo/database": "*",
     "@repo/design-system": "*",
     "next": "^15.3.5",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
