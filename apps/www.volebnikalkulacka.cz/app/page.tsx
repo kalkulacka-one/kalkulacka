@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SubmissionForm from "./submissionForm";
 
 export const metadata: Metadata = {
   title: "Volební kalkulačka",
@@ -7,8 +8,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <section>
+    <section className="flex flex-col gap-4 items-center">
       <h2>Parlamentní volby 2025</h2>
+      <SubmissionForm />
     </section>
   );
 }
