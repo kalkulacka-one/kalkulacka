@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, ToggleButton } from "@repo/design-system/client";
+import { Button, Toggle } from "@repo/design-system/client";
 import { useArgs } from "storybook/internal/preview-api";
 
-const meta: Meta<typeof ToggleButton> = {
-  title: "Components/ToggleButton",
-  component: ToggleButton,
+const meta: Meta<typeof Toggle> = {
+  title: "Components/Toggle",
+  component: Toggle,
   tags: ["autodocs"],
   argTypes: {
     checked: {
@@ -14,9 +14,9 @@ const meta: Meta<typeof ToggleButton> = {
   },
 };
 
-type ToggleButtonStory = StoryObj<typeof meta>;
+type ToggleStory = StoryObj<typeof meta>;
 
-export const AnswerYes: ToggleButtonStory = {
+export const AnswerYes: ToggleStory = {
   args: {
     checked: false,
   },
@@ -28,13 +28,13 @@ export const AnswerYes: ToggleButtonStory = {
     }
 
     return (
-      <ToggleButton checked={checked} onChange={onChange}>
+      <Toggle checked={checked} onChange={onChange}>
         <Button variant="outline" color="primary">
           Pro mě důležité
         </Button>
-      </ToggleButton>
+      </Toggle>
     );
   },
-} satisfies ToggleButtonStory;
+} satisfies ToggleStory;
 
 export default meta;
