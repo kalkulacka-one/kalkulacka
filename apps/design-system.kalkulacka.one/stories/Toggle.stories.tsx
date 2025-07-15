@@ -29,8 +29,29 @@ export const AnswerYes: ToggleStory = {
 
     return (
       <Toggle checked={checked} onChange={onChange}>
-        <Button variant="outline" color="primary">
-          Pro mě důležité
+        <Button variant="answer" color="primary">
+          Ano
+        </Button>
+      </Toggle>
+    );
+  },
+} satisfies ToggleStory;
+
+export const AnswerNo: ToggleStory = {
+  args: {
+    checked: false,
+  },
+  render: function Render() {
+    const [{ checked }, updateArgs] = useArgs();
+
+    function onChange() {
+      updateArgs({ checked: !checked });
+    }
+
+    return (
+      <Toggle checked={checked} onChange={onChange}>
+        <Button variant="answer" color="secondary">
+          Ne
         </Button>
       </Toggle>
     );

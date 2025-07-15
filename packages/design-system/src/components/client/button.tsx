@@ -27,6 +27,7 @@ export const ButtonVariants = cva(
         filled: [""],
         outline: ["ko:bg-transparent"],
         link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
+        answer: ["ko:px-6"],
       },
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
@@ -79,16 +80,7 @@ export const ButtonVariants = cva(
       {
         variant: "outline",
         color: "primary",
-        class: [
-          "ko:text-primary",
-          "ko:data-hover:bg-primary-hover/10 ko:data-focus:bg-primary-hover/10",
-          "ko:data-hover:data-active:bg-primary-active/10",
-          "ko:data-disabled:text-primary-disabled",
-          // Test group classes
-          "ko:group-hover:bg-primary! ko:group-hover:text-on-bg-primary",
-          "ko:group-data-checked:bg-primary! ko:group-data-checked:text-on-bg-primary",
-          "ko:group-data-active:bg-primary-active! ko:group-data-active:border-primary-active! ko:group-data-active:hover:bg-primary-active!",
-        ],
+        class: ["ko:text-primary", "ko:data-hover:bg-primary-hover/10 ko:data-focus:bg-primary-hover/10", "ko:data-hover:data-active:bg-primary-active/10", "ko:data-disabled:text-primary-disabled"],
       },
       {
         variant: "outline",
@@ -124,6 +116,36 @@ export const ButtonVariants = cva(
         variant: "link",
         color: "neutral",
         class: ["ko:text-neutral", "ko:data-hover:text-neutral-hover ko:data-focus:text-neutral-hover", "ko:data-hover:data-active:text-neutral-active", "ko:data-disabled:text-neutral-disabled"],
+      },
+      {
+        variant: "answer",
+        color: "primary",
+        class: [
+          "ko:text-primary",
+          "ko:group-hover:bg-primary ko:group-hover:text-on-bg-primary",
+          "ko:group-data-checked:bg-primary ko:group-data-checked:text-on-bg-primary",
+          "ko:group-data-active:bg-primary-active ko:group-data-active:border-primary-active ko:group-data-active:hover:bg-primary-active",
+        ],
+      },
+      {
+        variant: "answer",
+        color: "secondary",
+        class: [
+          "ko:text-secondary",
+          "ko:group-hover:bg-secondary ko:group-hover:text-on-bg-secondary",
+          "ko:group-data-checked:bg-secondary ko:group-data-checked:text-on-bg-secondary",
+          "ko:group-data-active:bg-secondary-active ko:group-data-active:border-secondary-active ko:group-data-active:hover:bg-secondary-active",
+        ],
+      },
+      {
+        variant: "answer",
+        color: "neutral",
+        class: [
+          "ko:text-neutral",
+          "ko:group-hover:bg-neutral ko:group-hover:text-on-bg-neutral",
+          "ko:group-data-checked:bg-neutral ko:group-data-checked:text-on-bg-neutral",
+          "ko:group-data-active:bg-neutral-active ko:group-data-active:border-neutral-active ko:group-data-active:hover:bg-neutral-active",
+        ],
       },
     ],
   },
