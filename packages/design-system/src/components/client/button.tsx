@@ -5,7 +5,8 @@ import React from "react";
 
 export type Button = {
   children: React.ReactNode;
-} & Omit<ButtonPropsHeadless, "className" | "as"> &
+  as?: "div" | "button";
+} & Omit<ButtonPropsHeadless, "className"> &
   VariantProps<typeof ButtonVariants>;
 
 export const ButtonVariants = cva(
@@ -122,9 +123,9 @@ export const ButtonVariants = cva(
         color: "primary",
         class: [
           "ko:text-primary",
-          "ko:group-hover:bg-primary ko:group-hover:text-on-bg-primary",
-          "ko:group-data-checked:bg-primary ko:group-data-checked:text-on-bg-primary",
-          "ko:group-data-active:bg-primary-active ko:group-data-active:border-primary-active ko:group-data-active:hover:bg-primary-active",
+          "ko:data-hover:bg-primary ko:data-hover:text-on-bg-primary",
+          "ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
+          "ko:data-active:bg-primary-active ko:data-active:border-primary-active ko:data-active:hover:bg-primary-active",
         ],
       },
       {
@@ -132,9 +133,9 @@ export const ButtonVariants = cva(
         color: "secondary",
         class: [
           "ko:text-secondary",
-          "ko:group-hover:bg-secondary ko:group-hover:text-on-bg-secondary",
-          "ko:group-data-checked:bg-secondary ko:group-data-checked:text-on-bg-secondary",
-          "ko:group-data-active:bg-secondary-active ko:group-data-active:border-secondary-active ko:group-data-active:hover:bg-secondary-active",
+          "ko:data-hover:bg-secondary ko:data-hover:text-on-bg-secondary",
+          "ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
+          "ko:data-active:bg-secondary-active ko:data-active:border-secondary-active ko:data-active:hover:bg-secondary-active",
         ],
       },
       {
@@ -142,18 +143,18 @@ export const ButtonVariants = cva(
         color: "neutral",
         class: [
           "ko:text-neutral",
-          "ko:group-hover:bg-neutral ko:group-hover:text-on-bg-neutral",
-          "ko:group-data-checked:bg-neutral ko:group-data-checked:text-on-bg-neutral",
-          "ko:group-data-active:bg-neutral-active ko:group-data-active:border-neutral-active ko:group-data-active:hover:bg-neutral-active",
+          "ko:data-hover:bg-neutral ko:data-hover:text-on-bg-neutral",
+          "ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral",
+          "ko:data-active:bg-neutral-active ko:data-active:border-neutral-active ko:group-data-active:hover:bg-neutral-active",
         ],
       },
     ],
   },
 );
 
-function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+function ButtonComponent({ children, size, variant, color, as, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }))} {...props} ref={ref}>
+    <ButtonHeadless as={as} className={twMerge(ButtonVariants({ size, variant, color }))} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );

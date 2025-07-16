@@ -1,18 +1,17 @@
-import { Switch as SwitchHeadless, type SwitchProps as SwitchPropsHeadless } from "@headlessui/react";
+import { Switch as SwitchHeadless, type SwitchProps as SwitchHeadlessProps } from "@headlessui/react";
+import { ButtonVariants } from "@repo/design-system/client";
+import { twMerge } from "@repo/design-system/utils";
+import type { VariantProps } from "class-variance-authority";
 import React from "react";
-import { useState } from "react";
 
-export type Toggle = {
-  children: React.ReactNode;
-} & SwitchPropsHeadless;
+export type Toggle = Omit<SwitchHeadlessProps<"button">, "className"> & VariantProps<typeof ButtonVariants>;
 
-function ToggleComponent({ children, ...props }: Toggle, ref: React.Ref<HTMLButtonElement>) {
-  const [enabled, setEnabled] = useState(false);
+function ToggleComponent({ children, size, variant, color, ...props }: Toggle, ref: React.Ref<HTMLButtonElement>) {
   return (
-    <SwitchHeadless ref={ref} checked={enabled} onChange={setEnabled} className="ko:group ko:flex ko:gap-4" {...props}>
+    <SwitchHeadless ref={ref} className={twMerge(ButtonVariants({ size, variant, color }))} {...props}>
       {children}
     </SwitchHeadless>
   );
 }
 
-export const Toggle = React.forwardRef<HTMLButtonElement, Toggle>(ToggleComponent);
+export const Toggle = React.forwardRef(ToggleComponent);

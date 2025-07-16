@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, Toggle } from "@repo/design-system/client";
+import { Toggle } from "@repo/design-system/client";
 import { useArgs } from "storybook/internal/preview-api";
 
 const meta: Meta<typeof Toggle> = {
@@ -28,10 +28,8 @@ export const AnswerYes: ToggleStory = {
     }
 
     return (
-      <Toggle checked={checked} onChange={onChange}>
-        <Button variant="answer" color="primary">
-          Ano
-        </Button>
+      <Toggle variant="answer" color="primary" checked={checked} onChange={onChange}>
+        Ano
       </Toggle>
     );
   },
@@ -49,10 +47,8 @@ export const AnswerNo: ToggleStory = {
     }
 
     return (
-      <Toggle checked={checked} onChange={onChange}>
-        <Button variant="answer" color="secondary">
-          Ne
-        </Button>
+      <Toggle variant="answer" color="secondary" checked={checked} onChange={onChange}>
+        Ne
       </Toggle>
     );
   },
