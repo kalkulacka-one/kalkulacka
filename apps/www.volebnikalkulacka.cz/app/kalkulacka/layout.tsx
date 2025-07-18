@@ -20,8 +20,8 @@ export default async function AppLayout({
               </Button>
             </Link>
           </header>
-          <div className="flex flex-grow items-center justify-center">
-            <main>{children}</main>
+          <div className="flex flex-grow items-center justify-center w-full">
+            <main className="w-full">{children}</main>
           </div>
         </div>
       </body>
