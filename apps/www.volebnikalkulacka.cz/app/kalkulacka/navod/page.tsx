@@ -8,6 +8,23 @@ import data from "./data.json";
 export default function Page() {
   const stepCurrent = 1;
 
+  const ReturnCardContent = (number: number) => {
+    switch (number) {
+      case 1: {
+        return null;
+      }
+      case 2: {
+        return "✅ = Souhlasím ❌ = Nesouhlasím";
+      }
+      case 3: {
+        return "⭐ = Pro mě důležité";
+      }
+      case 4: {
+        return "➡️ = Přeskočit";
+      }
+    }
+  };
+
   const ReturnGuideContent = (number: number) => {
     switch (number) {
       case 1: {
@@ -27,11 +44,13 @@ export default function Page() {
 
   const guideContent = ReturnGuideContent(stepCurrent);
 
+  const cardContent = ReturnCardContent(stepCurrent);
+
   return (
     <div>
       <Content>
         {stepCurrent === 1 && <Content.Title>{data.calculatorGroup.name}</Content.Title>}
-        {stepCurrent > 1 && <Card>Infographic</Card>}
+        {stepCurrent > 1 && <Card>{cardContent}</Card>}
         <Content.Body>{guideContent}</Content.Body>
       </Content>
       <BottomBar stepCurrent={stepCurrent} stepTotal={data.guide.length}>
