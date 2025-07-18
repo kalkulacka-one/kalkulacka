@@ -1,7 +1,7 @@
 import { Button } from "@repo/design-system/client";
 import Link from "next/link";
+import { Card } from "../components/card";
 import { BottomBar } from "./components/bottomBar";
-import { Card } from "./components/card";
 import { Content } from "./components/content";
 import data from "./data.json";
 

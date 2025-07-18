@@ -1,6 +1,6 @@
 import { Button } from "@repo/design-system/client";
 import Link from "next/link";
-import { Card } from "./components/card";
+import { Card } from "../components/card";
 import { Content } from "./components/content";
 import { Header } from "./components/header";
 import data from "./data.json";
