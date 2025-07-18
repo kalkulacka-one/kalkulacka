@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "coalition_short": "STAN+TOP+LES+HD",
+    "coalition_long": "Čtyřkoalice STAROSTOVÉ, TOP 09, HDK, LES",
+    "percentage": 25
+  },
+  {
+    "id": 2,
+    "coalition_short": "SOCDEM+SproK+RH",
+    "coalition_long": "HLAS samospráv – pro spravedlivý rozvoj Královéhradeckého kraje",
+    "percentage": 25
+  },
+  {
+    "id": 3,
+    "coalition_short": "Zelení+SEN 21",
+    "coalition_long": "PRO KRAJINU - Zelení, Změna pro Hradec a nezávislí",
+    "percentage": 25
+  },
+  {
+    "id": 4,
+    "coalition_short": "Piráti",
+    "coalition_long": "Česká pirátská strana",
+    "percentage": 25
+  }
+]
