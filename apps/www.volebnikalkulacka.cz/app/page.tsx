@@ -4,6 +4,8 @@ import { useState } from "react";
 import { BottomBar } from "./bottomBar";
 import { ToggleAnswerNo } from "./toggleAnswerNo";
 import { ToggleAnswerYes } from "./toggleAnswerYes";
+import { ToggleIsImportant } from "./toggleIsImportant";
+
 // export const metadata: Metadata = {
 //   title: "Volební kalkulačka",
 //   description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
@@ -15,11 +17,11 @@ enum UserAnswerEnum {
   skip = 3,
 }
 
-const currentStep = 1;
+const currentStep = 2;
 
 export default function Page() {
   const [data, setData] = useState([
-    { name: "question1", answer: 1, isImportant: false },
+    { name: "question1", answer: 1, isImportant: true },
 
     { name: "question2", answer: 2, isImportant: true },
 
@@ -44,14 +46,26 @@ export default function Page() {
           setData(toggledData);
         }
         break;
-      case "no": {
-        // alert("Ne!!!!");
+      case "no":
+        {
+          // alert("Ne!!!!");
+          const toggledData = data.map((item, index) => {
+            if (index + 1 === currentStep && item.answer === UserAnswerEnum.no) {
+              return { ...item, answer: 0 };
+            }
+            if (index + 1 === currentStep && item.answer !== UserAnswerEnum.no) {
+              return { ...item, answer: 2 };
+            }
+            return { ...item };
+          });
+          setData(toggledData);
+        }
+        break;
+      case "important": {
+        // alert("Important");
         const toggledData = data.map((item, index) => {
-          if (index + 1 === currentStep && item.answer === UserAnswerEnum.no) {
-            return { ...item, answer: 0 };
-          }
-          if (index + 1 === currentStep && item.answer !== UserAnswerEnum.no) {
-            return { ...item, answer: 2 };
+          if (index + 1 === currentStep) {
+            return { ...item, isImportant: !item.isImportant };
           }
           return { ...item };
         });
@@ -68,6 +82,7 @@ export default function Page() {
           if (index + 1 === currentStep) {
             return (
               <div key={question.name} className="flex gap-4 items-center">
+                <ToggleIsImportant checked={question.isImportant} onChange={() => handleToggle("important")} />
                 <ToggleAnswerYes checked={question.answer === 1 && true} onChange={() => handleToggle("yes")} />
                 <ToggleAnswerNo checked={question.answer === 2 && true} onChange={() => handleToggle("no")} />
                 <span>{question.name}</span>
