@@ -1,4 +1,5 @@
 import { Button } from "@repo/design-system/client";
+import Link from "next/link";
 import { BottomBar } from "./components/bottomBar";
 import { Card } from "./components/card";
 import { Content } from "./components/content";
@@ -45,9 +46,11 @@ export default function Page() {
         )}
 
         {stepCurrent < 4 && (
-          <Button variant="link" color="neutral">
-            Přeskočit návod
-          </Button>
+          <Link href="/kalkulacka/otazka">
+            <Button variant="link" color="neutral">
+              Přeskočit návod
+            </Button>
+          </Link>
         )}
       </BottomBar>
     </div>
