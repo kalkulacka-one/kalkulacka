@@ -1,7 +1,7 @@
 import { Toggle } from "@repo/design-system/client";
 
 export type ToggleAnswerYes = {
-  checked: boolean;
+  checked?: boolean;
   onChange: () => void;
 };
 
