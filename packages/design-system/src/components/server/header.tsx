@@ -6,28 +6,18 @@ export type Header = {
 
 export function Header({ children }: Header) {
   return (
-    <header className={twMerge("ko:max-w-[100vw] ko:left-0 ko:sticky ko:[grid-area:header]")}>
-      <div className="ko:grid ko:grid-cols-[auto_auto_1fr] ko:gap-2 ko:xs:gap-4 ko:sm:gap-8 ko:w-full ko:items-center ko:p-2 ko:xs:p-4 ko:sm:p-8 ko:bg-transparent ko:[grid-template-areas:'logo_title_right']">
-        {children}
-      </div>
+    <header className={twMerge("ko:w-full ko:py-4 ko:px-44")}>
+      <div className={twMerge("ko:flex ko:justify-between ko:py-4")}>{children}</div>
     </header>
   );
 }
 
-export type HeaderLogo = {
+export type HeaderLeft = {
   children: React.ReactNode;
 };
 
-export function HeaderLogo({ children }: HeaderLogo) {
-  return <div className={twMerge("ko:flex ko:items-center ko:[grid-area:logo]")}>{children}</div>;
-}
-
-export type HeaderTitle = {
-  children: React.ReactNode;
-};
-
-export function HeaderTitle({ children }: HeaderTitle) {
-  return <div className="ko:[grid-area:title]">{children}</div>;
+export function HeaderLeft({ children }: HeaderLeft) {
+  return <div className={twMerge("ko:flex ko:gap-8 ko:grow-1")}>{children}</div>;
 }
 
 export type HeaderRight = {
@@ -35,9 +25,8 @@ export type HeaderRight = {
 };
 
 export function HeaderRight({ children }: HeaderRight) {
-  return <div className={twMerge("ko:flex ko:items-start ko:justify-end ko:[grid-area:right]")}>{children}</div>;
+  return <div className={twMerge("ko:flex ko:gap-6")}>{children}</div>;
 }
 
-Header.Logo = HeaderLogo;
-Header.Title = HeaderTitle;
+Header.Left = HeaderLeft;
 Header.Right = HeaderRight;
