@@ -6,14 +6,25 @@ const meta: Meta<typeof StepProgress> = {
   title: "Components/StepProgress",
   component: StepProgress,
   tags: ["autodocs"],
-  args: {},
+  argTypes: {
+    stepCurrent: {
+      control: {
+        type: "number",
+        min: 1,
+        max: 4,
+      },
+    },
+    stepTotal: {
+      control: false,
+    },
+  },
 };
 
 type StepProgressStory = StoryObj<typeof StepProgress>;
 
 export const Default: StepProgressStory = {
   args: {
-    stepCurrent: 0,
+    stepCurrent: 1,
     stepTotal: 4,
   },
 };
