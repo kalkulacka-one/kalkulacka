@@ -80,6 +80,11 @@
     var(--ko-palette-neutral-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
   );
 
+  --border-color-neutral: light-dark(
+    var(--ko-palette-border-neutral-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
+    var(--ko-palette-border-neutral-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+  );
+
   --color-on-bg-neutral: light-dark(
     var(--ko-palette-on-bg-neutral-light, white),
     var(--ko-palette-on-bg-neutral-dark, white)
@@ -96,6 +101,10 @@
   --color-green: light-dark(
     var(--ko-palette-green-light, var(--ko-palette-green)),
     var(--ko-palette-green-dark, var(--ko-palette-green))
+  );
+  --color-white: light-dark(
+    var(--ko-palette-white-light, white),
+    var(--ko-palette-white-dark, white)
   );
 
   /* Logo colors */
