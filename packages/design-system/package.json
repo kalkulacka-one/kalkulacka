@@ -22,10 +22,6 @@
       "types": "./dist/components/icons/index.d.ts",
       "default": "./dist/components/icons/index.js"
     },
-    "./svg": {
-      "types": "./dist/components/svg/index.d.ts",
-      "default": "./dist/components/svg/index.js"
-    },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "default": "./dist/utils/index.js"
