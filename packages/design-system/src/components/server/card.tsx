@@ -5,13 +5,13 @@ export type Card = {
   children: React.ReactNode;
 } & VariantProps<typeof CardVariants>;
 
-const CardVariants = cva("", {
+const CardVariants = cva("ko:rounded-lg", {
   variants: {
     color: {
       white: "ko:bg-white",
       transparent: "ko:bg-transparent",
     },
-    corner: { topRight: "ko:rounded-l ko:rounded-br", topLeft: "ko:rounded-r ko:rounded-bl", bottomRight: "ko:rounded-t ko:rounded-bl", bottomLeft: "ko:rounded-t ko:rounded-br" },
+    corner: { topRight: "ko:rounded-tr-none", topLeft: "ko:rounded-tl-none", bottomRight: "ko:rounded-br-none", bottomLeft: "ko:rounded-bl-none" },
     border: {
       true: "ko:border ko:border-neutral",
       false: "",
