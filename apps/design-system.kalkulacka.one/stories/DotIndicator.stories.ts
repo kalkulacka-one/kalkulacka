@@ -11,7 +11,6 @@ const meta: Meta<typeof DotIndicator> = {
       control: {
         type: "number",
         min: 1,
-        max: 4,
       },
     },
     stepTotal: {
