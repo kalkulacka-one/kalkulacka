@@ -7,7 +7,7 @@ export type Logo = {
   text?: boolean;
 } & VariantProps<typeof LogoVariants>;
 
-const LogoVariants = cva("ko:flex ko:items-center ko:gap-[1.78125em] ko:min-h-4", {
+const LogoVariants = cva("ko:flex ko:items-center ko:gap-[1.78125em]", {
   variants: {
     size: {
       small: "ko:text-[0.5rem]",
