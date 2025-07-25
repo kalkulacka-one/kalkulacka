@@ -102,6 +102,10 @@
     var(--ko-palette-green-light, var(--ko-palette-green)),
     var(--ko-palette-green-dark, var(--ko-palette-green))
   );
+  --color-white: light-dark(
+    var(--ko-palette-white-light, white),
+    var(--ko-palette-white-dark, white)
+  );
 
   /* Logo colors */
   --color-logo-check: light-dark(
