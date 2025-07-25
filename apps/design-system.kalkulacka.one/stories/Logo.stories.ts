@@ -17,6 +17,10 @@ const meta: Meta<typeof Logo> = {
     text: {
       control: "boolean",
     },
+    size: {
+      control: "select",
+      options: ["small", "default"],
+    },
   },
 };
 
@@ -25,6 +29,7 @@ type LogoStory = StoryObj<typeof Logo>;
 export const Default: LogoStory = {
   args: {
     title: "Volební kalkulačka",
+    size: "small",
   },
 };
 
