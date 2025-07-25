@@ -10,8 +10,8 @@ export type Logo = {
 const LogoVariants = cva("ko:flex ko:items-center ko:gap-[1.78125em] ko:min-h-4", {
   variants: {
     size: {
-      small: "ko:text-xs",
-      default: "ko:text-[2.25rem]",
+      small: "ko:text-[0.5rem]",
+      default: "",
     },
   },
   defaultVariants: {
@@ -30,7 +30,7 @@ export function Logo({ title, text, size }: Logo) {
         aria-labelledby={!text ? titleId : undefined}
         focusable="false"
         role={text ? undefined : "img"}
-        className="ko:h-[calc(16/9*1em)] ko:shrink-0"
+        className="ko:h-[4em] ko:shrink-0"
         viewBox="0 0 300 64"
       >
         {!text && <title id={titleId}>{title}</title>}
@@ -57,7 +57,7 @@ export function Logo({ title, text, size }: Logo) {
           d="M300 54.4368C300 59.7184 295.725 64 290.452 64C285.178 64 280.903 59.7184 280.903 54.4368C280.903 49.1552 285.178 44.8736 290.452 44.8736C295.725 44.8736 300 49.1552 300 54.4368Z"
         />
       </svg>
-      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:tracking-[10%] ko:leading-normal ko:text-nowrap">{title}</div>}
+      {text && <div className="ko:font-display ko:font-bold ko:uppercase ko:text-[2.25em] ko:tracking-[10%] ko:leading-[normal] ko:text-nowrap">{title}</div>}
     </div>
   );
 }
