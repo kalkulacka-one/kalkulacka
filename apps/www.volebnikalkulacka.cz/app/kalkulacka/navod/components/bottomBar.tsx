@@ -1,5 +1,5 @@
+import { DotIndicator } from "@repo/design-system/server";
 import type React from "react";
-import { StepProgress } from "./stepProgress";
 
 export type BottomBar = {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export function BottomBar({ children, stepCurrent, stepTotal }: BottomBar) {
           </span>
           {/* progress gui */}
           <div>
-            <StepProgress stepTotal={stepTotal} stepCurrent={stepCurrent} />
+            <DotIndicator stepTotal={stepTotal} stepCurrent={stepCurrent} />
           </div>
         </div>
         {children}

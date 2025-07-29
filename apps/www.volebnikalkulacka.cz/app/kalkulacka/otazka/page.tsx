@@ -10,22 +10,7 @@ export default function Page() {
   return (
     <div>
       <Content>
-        <QuestionCard>
-          {/* question info */}
-          <div className="flex gap-2">
-            <span>
-              {stepCurrent}/{data.length}
-            </span>
-            <span>{data[stepCurrent - 1]?.title}</span>
-            <span>{data[stepCurrent - 1]?.tags}</span>
-          </div>
-          {/* question title */}
-          <div>
-            <h2 className="text-2xl font-bold">{data[stepCurrent - 1]?.statement}</h2>
-          </div>
-          {/* question text */}
-          <div>{data[stepCurrent - 1]?.detail}</div>
-        </QuestionCard>
+        <QuestionCard question={data} questionCurrent={stepCurrent} questionTotal={data.length} />
       </Content>
       <BottomBar stepCurrent={stepCurrent} stepTotal={data.length} questions={data}>
         <div className="flex gap-2 justify-center">

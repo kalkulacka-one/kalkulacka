@@ -2,7 +2,7 @@ import { Button } from "@repo/design-system/client";
 import Link from "next/link";
 import { Content } from "./components/content";
 import { Header } from "./components/header";
-import { ResultCandidateCard } from "./components/resultCard";
+import { ResultCandidateCard, ResultCandidateCardResult } from "./components/resultCard";
 import data from "./data.json";
 
 export default function Page() {
@@ -22,15 +22,22 @@ export default function Page() {
         </Header.Right>
       </Header>
       <Content>
-        <div className="flex flex-col gap-4">
-          {data.map((card, index) => (
-            <ResultCandidateCard key={card.id}>
-              <ResultCandidateCard.Circle>{card.id}</ResultCandidateCard.Circle>
-              <ResultCandidateCard.ShortTitle>{card.coalition_short}</ResultCandidateCard.ShortTitle>
-              <ResultCandidateCard.LongTitle>{card.coalition_long}</ResultCandidateCard.LongTitle>
-              <ResultCandidateCard.Progress value={card.percentage} />
-            </ResultCandidateCard>
-          ))}
+        <div className="flex justify-center">
+          <div className="flex flex-col gap-4">
+            {data.map((card, index) => (
+              <ResultCandidateCard key={card.id}>
+                <ResultCandidateCard.Circle>{card.id}</ResultCandidateCard.Circle>
+                <div className="flex flex-col flex-grow-1 gap-2">
+                  <ResultCandidateCard.ShortTitle>{card.coalition_short}</ResultCandidateCard.ShortTitle>
+                  <ResultCandidateCard.Progress value={card.percentage} />
+                  <ResultCandidateCard.LongTitle>{card.coalition_long}</ResultCandidateCard.LongTitle>
+                </div>
+                <ResultCandidateCardResult>
+                  <span className="text-2xl font-bold">{card.percentage} %</span>
+                </ResultCandidateCardResult>
+              </ResultCandidateCard>
+            ))}
+          </div>
         </div>
       </Content>
       <Content>

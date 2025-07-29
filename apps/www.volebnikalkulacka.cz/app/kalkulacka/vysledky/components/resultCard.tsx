@@ -1,7 +1,7 @@
+import { Card } from "@repo/design-system/server";
+import { ProgressBar } from "@repo/design-system/server";
 import { type VariantProps, cva } from "class-variance-authority";
 import type React from "react";
-import { Card } from "../../components/card";
-import { PercentageBar } from "./percentageBar";
 
 export type ResultCandidateCard = {
   children: React.ReactNode;
@@ -10,7 +10,9 @@ export type ResultCandidateCard = {
 export function ResultCandidateCard({ children }: ResultCandidateCard) {
   return (
     <Card>
-      <div className="flex flex-col"> {children}</div>
+      <div className="p-4">
+        <div className="flex items-center gap-2 justify-between"> {children}</div>
+      </div>
     </Card>
   );
 }
@@ -40,7 +42,7 @@ export type ResultCandidateCardProgress = {
 };
 
 export function ResultCandidateCardProgress({ value }: ResultCandidateCardProgress) {
-  return <PercentageBar value={value} />;
+  return <ProgressBar value={value} />;
 }
 
 export type ResultCandidateCardShortTitle = {
@@ -57,6 +59,14 @@ export type ResultCandidateCardLongTitle = {
 
 export function ResultCandidateCardLongTitle({ children }: ResultCandidateCardLongTitle) {
   return <span>{children}</span>;
+}
+
+export type ResultCandidateCardResult = {
+  children: React.ReactNode;
+};
+
+export function ResultCandidateCardResult({ children }: ResultCandidateCardResult) {
+  return children;
 }
 
 ResultCandidateCard.Circle = ResultCandidateCardCircle;
