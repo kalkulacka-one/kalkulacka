@@ -1,6 +1,6 @@
 import { Button } from "@repo/design-system/client";
 import Link from "next/link";
-import { Card } from "../components/card";
+import { RecapCard } from "../rekapitulace/components/recapCard";
 import { Content } from "./components/content";
 import { Header } from "./components/header";
 import data from "./data.json";
@@ -23,7 +23,7 @@ export default function Page() {
       <Content>
         <div className=" flex flex-col gap-4">
           {data.map((card, index) => (
-            <Card key={card.id}>
+            <RecapCard key={card.id}>
               <div className="flex gap-2">
                 <span>
                   {index + 1}/{data.length}
@@ -48,7 +48,7 @@ export default function Page() {
                   Ne
                 </Button>
               </div>
-            </Card>
+            </RecapCard>
           ))}
         </div>
       </Content>

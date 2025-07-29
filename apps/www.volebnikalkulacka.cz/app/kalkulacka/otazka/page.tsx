@@ -1,5 +1,5 @@
 import { Button } from "@repo/design-system/client";
-import { Card } from "../components/card";
+import { QuestionCard } from "../otazka/components/questionCard";
 import { BottomBar } from "./components/bottomBar";
 import { Content } from "./components/content";
 import data from "./data.json";
@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div>
       <Content>
-        <Card>
+        <QuestionCard>
           {/* question info */}
           <div className="flex gap-2">
             <span>
@@ -25,7 +25,7 @@ export default function Page() {
           </div>
           {/* question text */}
           <div>{data[stepCurrent - 1]?.detail}</div>
-        </Card>
+        </QuestionCard>
       </Content>
       <BottomBar stepCurrent={stepCurrent} stepTotal={data.length} questions={data}>
         <div className="flex gap-2 justify-center">

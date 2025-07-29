@@ -1,29 +1,12 @@
 import { Button } from "@repo/design-system/client";
 import Link from "next/link";
-import { Card } from "../components/card";
+import { GuideCard } from "../navod/components/guideCard";
 import { BottomBar } from "./components/bottomBar";
 import { Content } from "./components/content";
 import data from "./data.json";
 
 export default function Page() {
-  const stepCurrent = 1;
-
-  const ReturnCardContent = (number: number) => {
-    switch (number) {
-      case 1: {
-        return null;
-      }
-      case 2: {
-        return "✅ = Souhlasím ❌ = Nesouhlasím";
-      }
-      case 3: {
-        return "⭐ = Pro mě důležité";
-      }
-      case 4: {
-        return "➡️ = Přeskočit";
-      }
-    }
-  };
+  const stepCurrent = 3;
 
   const ReturnGuideContent = (number: number) => {
     switch (number) {
@@ -44,14 +27,17 @@ export default function Page() {
 
   const guideContent = ReturnGuideContent(stepCurrent);
 
-  const cardContent = ReturnCardContent(stepCurrent);
-
   return (
-    <div>
+    <div className="flex justify-center">
       <Content>
         {stepCurrent === 1 && <Content.Title>{data.calculatorGroup.name}</Content.Title>}
-        {stepCurrent > 1 && <Card>{cardContent}</Card>}
-        <Content.Body>{guideContent}</Content.Body>
+        <div>{guideContent?.split("//")[0]}</div>
+        {stepCurrent > 1 && (
+          <div className="w-fit self-center">
+            <GuideCard stepCurrent={stepCurrent} />
+          </div>
+        )}
+        <Content.Body>{guideContent?.split("//")[1]}</Content.Body>
       </Content>
       <BottomBar stepCurrent={stepCurrent} stepTotal={data.guide.length}>
         {stepCurrent >= 4 ? (

@@ -3,7 +3,7 @@ export type Content = {
 };
 
 export function Content({ children }: Content) {
-  return <div className="flex flex-col">{children}</div>;
+  return <div className="flex flex-col gap-4 w-1/2">{children}</div>;
 }
 
 export type ContentTitle = {
