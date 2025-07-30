@@ -7,6 +7,7 @@
 @theme static {
   --font-display: var(--ko-typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans: var(--ko-typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--ko-typeface-mono), ui-monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --color-*: initial;
 
@@ -154,15 +155,28 @@
   }
 
   @font-face {
-    font-family: "Inter";
-    font-weight: 300 700;
-    src: url("./fonts/inter/normal.woff2") format("woff2"), url("./fonts/inter/normal.woff") format("woff");
+    font-family: "Geist";
+    font-weight: 100 900;
+    src: url("./fonts/geist/normal.woff2") format("woff2");
   }
 
   @font-face {
-    font-family: "Inter";
-    font-weight: 300 700;
+    font-family: "Geist";
+    font-weight: 100 900;
     font-style: italic;
-    src: url("./fonts/inter/italic.woff2") format("woff2"), url("./fonts/inter/italic.woff") format("woff");
+    src: url("./fonts/geist/italic.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Geist Mono";
+    font-weight: 100 900;
+    src: url("./fonts/geist-mono/normal.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Geist Mono";
+    font-weight: 100 900;
+    font-style: italic;
+    src: url("./fonts/geist-mono/italic.woff2") format("woff2");
   }
 }
