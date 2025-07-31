@@ -10,6 +10,5 @@ function ToggleComponent(props: Toggle, ref: React.Ref<any>) {
 }
 
 const Toggle = React.forwardRef(ToggleComponent) as unknown as typeof SwitchHeadless;
-Object.assign(Toggle, SwitchHeadless);
-// biome-ignore lint/style/useExportType: we export a type *and* a value Toggle
+
 export { Toggle };
