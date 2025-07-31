@@ -1,18 +1,15 @@
 import { Switch as SwitchHeadless, type SwitchProps as SwitchPropsHeadless } from "@headlessui/react";
-import React from "react";
-import { useState } from "react";
+import * as React from "react";
 
-export type Toggle = {
-  children: React.ReactNode;
-} & SwitchPropsHeadless;
+// biome-ignore lint/suspicious/noExplicitAny: allow any for generic `as` prop support
+export type Toggle = SwitchPropsHeadless<any>;
 
-function ToggleComponent({ children, ...props }: Toggle, ref: React.Ref<HTMLButtonElement>) {
-  const [enabled, setEnabled] = useState(false);
-  return (
-    <SwitchHeadless ref={ref} checked={enabled} onChange={setEnabled} className="ko:group ko:flex ko:gap-4" {...props}>
-      {children}
-    </SwitchHeadless>
-  );
+// biome-ignore lint/suspicious/noExplicitAny: allow any for loose ref signature
+function ToggleComponent(props: Toggle, ref: React.Ref<any>) {
+  return <SwitchHeadless {...props} ref={ref} />;
 }
 
-export const Toggle = React.forwardRef<HTMLButtonElement, Toggle>(ToggleComponent);
+const Toggle = React.forwardRef(ToggleComponent) as unknown as typeof SwitchHeadless;
+Object.assign(Toggle, SwitchHeadless);
+// biome-ignore lint/style/useExportType: we export a type *and* a value Toggle
+export { Toggle };

@@ -28,10 +28,8 @@ export const AnswerYes: ToggleStory = {
     }
 
     return (
-      <Toggle checked={checked} onChange={onChange}>
-        <Button variant="answer" color="primary">
-          Ano
-        </Button>
+      <Toggle as={Button} variant="answer" color="primary" checked={checked} onChange={onChange}>
+        Ano
       </Toggle>
     );
   },
@@ -49,10 +47,8 @@ export const AnswerNo: ToggleStory = {
     }
 
     return (
-      <Toggle checked={checked} onChange={onChange}>
-        <Button variant="answer" color="secondary">
-          Ne
-        </Button>
+      <Toggle as={Button} variant="answer" color="secondary" checked={checked} onChange={onChange}>
+        Ne
       </Toggle>
     );
   },
