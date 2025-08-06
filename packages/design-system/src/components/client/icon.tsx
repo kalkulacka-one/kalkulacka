@@ -33,7 +33,7 @@ const IconVariants = cva("", {
   },
 });
 
-export function Icon({ icon, size, title, decorative, className, ...props }: Icon) {
+export function Icon({ icon, size, title, decorative, ...props }: Icon) {
   const titleId = useId();
 
   if (typeof icon === "string") {
@@ -45,7 +45,7 @@ export function Icon({ icon, size, title, decorative, className, ...props }: Ico
         aria-labelledby={!decorative ? titleId : undefined}
         focusable="false"
         role={decorative ? undefined : "img"}
-        className={twMerge(IconVariants({ size }), className)}
+        className={twMerge(IconVariants({ size }))}
         viewBox="0 0 24 24"
         fill="currentColor"
       >
