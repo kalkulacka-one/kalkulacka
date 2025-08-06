@@ -1,14 +1,11 @@
 import { Switch as SwitchHeadless, type SwitchProps as SwitchPropsHeadless } from "@headlessui/react";
+import { Button } from "@repo/design-system/client";
 import * as React from "react";
 
-// biome-ignore lint/suspicious/noExplicitAny: allow any for generic `as` prop support
-export type Toggle = SwitchPropsHeadless<any>;
+export type Toggle = Omit<SwitchPropsHeadless<typeof Button>, "as">;
 
-// biome-ignore lint/suspicious/noExplicitAny: allow any for loose ref signature
-function ToggleComponent(props: Toggle, ref: React.Ref<any>) {
-  return <SwitchHeadless {...props} ref={ref} />;
+function ToggleComponent(props: Toggle, ref: React.Ref<HTMLButtonElement>) {
+  return <SwitchHeadless {...props} as={Button} ref={ref} />;
 }
 
-const Toggle = React.forwardRef(ToggleComponent) as unknown as typeof SwitchHeadless;
-
-export { Toggle };
+export const Toggle = React.forwardRef(ToggleComponent);
