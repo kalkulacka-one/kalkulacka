@@ -1,47 +1,6 @@
 {
-  "layout": {
-    "title": "Kalkulacka.1",
-    "description": "Ta <emphasis>pravá</emphasis> volební kalkulačka pro miliony voličů ve 4 zemích",
-    "homeLink": "Domů",
-    "supportLink": "Podpora",
-    "volunteerLink": "Dobrovolnictví",
-    "customCalculatorLink": "Vlastní kalkulačka",
-    "xLink": "@kalkulacka_one na X"
-  },
-  "home": {
-    "heroTitle": "Tvoříme <bold>Volební kalkulačku</bold>, která vám pomáhá rozhodnout se koho volit",
-    "aboutUsPart1": "Jsme spolek <link>KohoVolit.eu</link> a už 15 let pro vás tvoříme <link2>Volební kalkulačku</link2>, která vám pomáhá učinit informované rozhodnutí, koho volit.",
-    "aboutUsPart2": "V roce 2022 jsme s podporou <link>Česko.Digital</link> přinesli novou generaci Volební kalkulačky v novém designu a teď nás čeká další etapa: mezinárodní expanze. Už jsme spustili kalkulačku v 6 zemích a chystáme další:",
-    "countryCz": "<bold>Volební kalkulačka</bold> v Česku",
-    "countrySk": "<bold>Volební kalkulačka</bold> na Slovensku",
-    "countryHu": "<bold>Voksmonitor</bold> v Maďarsku",
-    "countryAt": "<bold>Wahlrechner</bold> v Rakousku",
-    "countryRo": "<bold>TestVot</bold> v Rumunsku",
-    "countryXk": "<bold>Kalkulatori zgjedhor</bold> v Kosovu",
-    "countryAl": "<bold>Kalkulatori zgjedhor</bold> v Albánii",
-    "countryAlDate": "květen 2025",
-    "countryMk": "<bold>Glasomer</bold> v Severní Makedonii",
-    "countryMkDate": "říjen 2025",
-    "stats": "Naše volební kalkulačky vyplní statisíce voličů každý rok. Jen prezidentskou kalkulačku v Česku vyplnilo v roce 2023 přes <bold>1 milion lidí</bold>!",
-    "supportTitle": "Podpořte Volební kalkulačku. Nebo se zapojte!",
-    "supportText": "Abychom mohli v tvorbě kalkulaček pokračovat, potřebujeme vaši podporu. <link>Podpořte nás</link> nebo se <link2>zapojte do našeho týmu dobrovolníků</link2> a pomozte nám Volební kalkulačku dál rozvíjet. Děkujeme!"
-  },
-  "SupportPage": {
-    "title": "Podpořte Volební kalkulačku a demokracii",
-    "p1": "Líbí se vám Volební kalkulačka? Díky dobrovolníkům a štědrým dárcům můžeme kalkulačku poskytovat zdarma.",
-    "p2": "Abychom však mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku, potřebujeme vaši pomoc. Přidejte se do klubu podporovatelů nebo nás podpořte jednorázově. Každý příspěvek se počítá!",
-    "p3": "Nebo se <link>přidejte k našemu týmu dobrovolníků</link> a pomozte milionům lidí, kteří Volební kalkulačku využívají.",
-    "p4": "Vaše podpora je klíčová pro to, abychom mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku. Děkujeme!",
-    "clubTitle": "Přidejte se do klubu podporovatelů",
-    "clubP1": "Přidejte se do klubu podporovatelů Volební kalkulačky na <link>Herohero</link> a kromě dobrého pocitu, že pomůžete zajistit tvorbu dalších kalkulaček a podpoříte demokracii:",
-    "clubLi1": "vám poděkujeme v kalkulačce",
-    "clubLi2": "získáte exkluzivní přístup ke kalkulačce den před oficiálním spuštěním",
-    "clubLi3": "budete moci navrhnout otázku do kalkulačky a společně s ostatními podporovateli hlasovat, která otázka se do kalkulačky dostane",
-    "clubButton": "Přidat se na Herohero",
-    "oneTimeContributionTitle": "Jednorázový příspěvek",
-    "oneTimeContributionP1": "Nebo nás můžete podpořit i jednorázově:",
-    "loading": "Načítám…",
-    "thankYou": "Děkujeme!",
-    "contactP1": "Chcete se na něco zeptat? Napište nám e-mail: <link>hey@kalkulacka.one</link> nebo zprávu na <link2>X</link2>."
+  "HomePage": {
+    "title": "Ahoj svět!",
+    "about": "Jdi na about"
   }
 }
