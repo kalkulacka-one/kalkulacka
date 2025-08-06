@@ -8,4 +8,4 @@ export * from "./icon";
 export * from "./input";
 export * from "./label";
 export * from "./logo";
-export * from "./toggle";
+export * from "./toggleButton";

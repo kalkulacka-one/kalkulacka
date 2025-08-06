@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Toggle } from "@repo/design-system/client";
+import { ToggleButton } from "@repo/design-system/client";
 import { useArgs } from "storybook/internal/preview-api";
 
-const meta: Meta<typeof Toggle> = {
-  title: "Components/Toggle",
-  component: Toggle,
+const meta: Meta<typeof ToggleButton> = {
+  title: "Components/ToggleButton",
+  component: ToggleButton,
   tags: ["autodocs"],
   argTypes: {
     checked: {
@@ -14,9 +14,9 @@ const meta: Meta<typeof Toggle> = {
   },
 };
 
-type ToggleStory = StoryObj<typeof meta>;
+type ToggleButtonStory = StoryObj<typeof meta>;
 
-export const AnswerYes: ToggleStory = {
+export const AnswerYes: ToggleButtonStory = {
   args: {
     checked: false,
   },
@@ -28,14 +28,14 @@ export const AnswerYes: ToggleStory = {
     }
 
     return (
-      <Toggle variant="answer" color="primary" checked={checked} onChange={onChange}>
+      <ToggleButton variant="answer" color="primary" checked={checked} onChange={onChange}>
         Ano
-      </Toggle>
+      </ToggleButton>
     );
   },
-} satisfies ToggleStory;
+} satisfies ToggleButtonStory;
 
-export const AnswerNo: ToggleStory = {
+export const AnswerNo: ToggleButtonStory = {
   args: {
     checked: false,
   },
@@ -47,11 +47,11 @@ export const AnswerNo: ToggleStory = {
     }
 
     return (
-      <Toggle variant="answer" color="secondary" checked={checked} onChange={onChange}>
+      <ToggleButton variant="answer" color="secondary" checked={checked} onChange={onChange}>
         Ne
-      </Toggle>
+      </ToggleButton>
     );
   },
-} satisfies ToggleStory;
+} satisfies ToggleButtonStory;
 
 export default meta;
