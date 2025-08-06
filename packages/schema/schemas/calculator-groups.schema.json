@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schema.kalkulacka.one/calculator-groups.schema.json",
-  "title": "Answers",
+  "title": "Calculator groups",
   "description": "List of calculator groups",
   "type": "array",
   "items": {

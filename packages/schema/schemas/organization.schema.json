@@ -82,12 +82,6 @@
     "images": {
       "$ref": "./images.schema.json"
     },
-    "type": {
-      "title": "Organization type",
-      "description": "Whether the organization is a political party/movement, coalition or a candidate list",
-      "type": "string",
-      "enum": ["party", "coalition", "candidate-list"]
-    },
     "members": {
       "title": "Members",
       "description": "List of members of an organization",

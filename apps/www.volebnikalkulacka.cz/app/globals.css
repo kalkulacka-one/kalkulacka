@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+@import "@repo/design-system/themes/www.volebnikalkulacka.cz/default";
+@import "@repo/design-system/styles";
