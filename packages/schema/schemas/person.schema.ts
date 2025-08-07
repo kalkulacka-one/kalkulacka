@@ -2,12 +2,18 @@ import { z } from "zod";
 import { imagesSchema } from "./images.schema.js";
 import { organizationIdSchema } from "./organization.schema.js";
 
-export const basePersonSchema = z
+export const personIdSchema = z.string().uuid().describe("Unique identifier of a person in the format of UUID");
+
+export const personSchemaReference = z
   .object({
-    id: z.string().uuid().describe("Unique identifier of a person in the format of UUID"),
-    name: z.string().describe("Person's preferred full name").optional(),
-    familyName: z.string().describe("Family name (last name)").optional(),
-    givenName: z.string().describe("Given name (first name)").optional(),
+    id: personIdSchema,
+    type: z.literal("person"),
+  })
+  .strict();
+
+const personBaseSchema = z
+  .object({
+    id: personIdSchema,
     additionalName: z.string().describe("Additional name (middle name)").optional(),
     honorificPrefix: z.string().describe("Honorifics preceding a person's name").optional(),
     honorificSuffix: z.string().describe("Honorifics following a person's name").optional(),
@@ -22,23 +28,18 @@ export const basePersonSchema = z
   })
   .strict();
 
-export const personSchemaReference = z
-  .object({
-    id: basePersonSchema.shape.id,
-    type: z.literal("person"),
-  })
-  .strict();
+const personWithFullName = z.object({
+  name: z.string().describe("Person's preferred full name"),
+  familyName: z.string().describe("Family name (last name)").optional(),
+  givenName: z.string().describe("Given name (first name)").optional(),
+});
 
-export const personSchema = basePersonSchema
-  .superRefine((val, ctx) => {
-    if (!val.name && !(val.familyName && val.givenName)) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Person must have either name or family name with given name. ",
-        path: ["name", "familyName", "givenName"],
-      });
-    }
-  })
-  .describe("A human being");
+const personWithFamilyAndGivenName = z.object({
+  name: z.string().describe("Person's preferred full name").optional(),
+  familyName: z.string().describe("Family name (last name)"),
+  givenName: z.string().describe("Given name (first name)"),
+});
+
+export const personSchema = personBaseSchema.and(z.union([personWithFullName, personWithFamilyAndGivenName])).describe("A human being");
 
 export type Person = z.infer<typeof personSchema>;
