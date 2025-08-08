@@ -1,15 +1,14 @@
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import type { I18nParams } from "../i18n/params";
 import { routing } from "../i18n/routing";
 
 import Link from "next/link";
 
 import "../globals.css";
 
-type Params = Promise<{ locale: string }>;
-
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: { params: I18nParams }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "layouts.root" });
 
@@ -24,7 +23,7 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Params;
+  params: I18nParams;
 }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {

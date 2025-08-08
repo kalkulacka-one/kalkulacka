@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+import type { I18nParams } from "../../i18n/params";
+
+export default async function Page({ params }: { params: I18nParams }) {
   const { locale } = await params;
   if (locale !== "cs") {
     notFound();
