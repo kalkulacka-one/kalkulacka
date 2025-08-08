@@ -4,7 +4,7 @@ import Layout from "./layout";
 
 describe("RootLayout", () => {
   it("should render the main heading", async () => {
-    const mockParams = Promise.resolve({ lang: "cs" });
+    const mockParams = Promise.resolve({ locale: "cs" });
 
     render(await Layout({ params: mockParams, children: null }));
 
