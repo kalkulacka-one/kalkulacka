@@ -1,4 +1,11 @@
-export default async function Page() {
+import { notFound } from "next/navigation";
+
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (locale !== "cs") {
+    notFound();
+  }
+
   return (
     <section className="max-w-2xl grid gap-4">
       <section className="grid gap-2">
