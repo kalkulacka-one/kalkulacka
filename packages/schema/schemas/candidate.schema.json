@@ -66,6 +66,14 @@
       "description": "Official candidate list (usually drawn) number assigned by a public authority",
       "type": "integer",
       "examples": [1]
+    },
+    "nestedCandidates": {
+      "title": "Nested candidates",
+      "description": "List of nested candidates, which can be used for aggregated answers if top-level candidate answers are not provided",
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
     }
   },
   "unevaluatedProperties": false,
