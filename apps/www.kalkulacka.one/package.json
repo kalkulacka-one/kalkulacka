@@ -10,8 +10,8 @@
     "start": "next start",
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test": "vitest --passWithNoTests",
+    "test:ui": "vitest --passWithNoTests --ui"
   },
   "dependencies": {
     "@repo/database": "*",
