@@ -9,6 +9,16 @@ import "../globals.css";
 
 type Params = Promise<{ locale: string }>;
 
+export async function generateMetadata({ params }: { params: Params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "layouts.root" });
+
+  return {
+    title: "Kalkulacka.1",
+    description: t("metadata.description"),
+  };
+}
+
 export default async function RootLayout({
   children,
   params,

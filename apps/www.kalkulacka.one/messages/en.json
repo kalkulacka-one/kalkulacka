@@ -1,6 +1,9 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "layouts": {
+    "root": {
+      "metadata": {
+        "description": "The one voting advice application used by millions of voters across 7 countries"
+      }
+    }
   }
 }

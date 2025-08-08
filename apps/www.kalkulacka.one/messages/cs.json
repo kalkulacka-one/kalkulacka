@@ -1,6 +1,9 @@
 {
-  "HomePage": {
-    "title": "Ahoj svět!",
-    "about": "Jdi na about"
+  "layouts": {
+    "root": {
+      "metadata": {
+        "description": "Ta pravá volební kalkulačka pro miliony voličů v 7 zemích"
+      }
+    }
   }
 }
