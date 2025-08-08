@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { electionSchemaReference } from "./election.schema.js";
+import { variantSchema } from "./variant.schema.js";
 
 export const calculatorGroupIdSchema = z.string().uuid().describe("Unique identifier of a calculator group in the format of UUID");
 export const calculatorGroupKeySchema = z
@@ -11,6 +13,7 @@ export const calculatorGroupPublishedAtSchema = z.string().datetime({ offset: tr
 export const calculatorGroupTitleSchema = z.string().describe("Title of a calculator group");
 export const calculatorGroupShortTitleSchema = z.string().max(25).describe("Short title of a calculator group with a maximum of 25 characters");
 export const calculatorGroupDescriptionSchema = z.string().describe("Description of a calculator group");
+export const calculatorGroupElectionSchema = electionSchemaReference;
 
 export const calculatorGroupSchemaReference = z
   .object({
@@ -19,13 +22,18 @@ export const calculatorGroupSchemaReference = z
   })
   .strict();
 
-export const calculatorGroupSchema = z.object({
-  id: calculatorGroupIdSchema,
-  key: calculatorGroupKeySchema,
-  createdAt: calculatorGroupCreatedAtSchema,
-  updatedAt: calculatorGroupUpdatedAtSchema,
-  publishedAt: calculatorGroupPublishedAtSchema,
-  title: calculatorGroupTitleSchema,
-  shortTitle: calculatorGroupShortTitleSchema,
-  description: calculatorGroupDescriptionSchema,
-});
+export const calculatorGroupSchema = z
+  .object({
+    id: calculatorGroupIdSchema,
+    key: calculatorGroupKeySchema,
+    createdAt: calculatorGroupCreatedAtSchema,
+    updatedAt: calculatorGroupUpdatedAtSchema,
+    publishedAt: calculatorGroupPublishedAtSchema,
+    title: calculatorGroupTitleSchema,
+    shortTitle: calculatorGroupShortTitleSchema,
+    description: calculatorGroupDescriptionSchema,
+    election: calculatorGroupElectionSchema,
+    variants: z.array(variantSchema).min(1),
+  })
+  .strict()
+  .describe("Group of two or more calculators");
