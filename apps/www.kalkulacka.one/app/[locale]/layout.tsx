@@ -31,7 +31,7 @@ export default async function RootLayout({
     notFound();
   }
 
-  const t = await getTranslations("HomePage");
+  const t = await getTranslations({ locale, namespace: "layouts.root" });
 
   return (
     <html lang={locale}>
@@ -41,30 +41,34 @@ export default async function RootLayout({
       <body>
         <main className="p-4 grid gap-8">
           <header className="grid gap-2">
-            <Link href="/cs">
+            <Link href={`/${locale}`}>
               <h1 className="text-5xl font-semibold">Kalkulacka.1</h1>
               <p className="text-lg font-medium">
-                Ta <em>pravá</em> volební kalkulačka pro miliony voličů ve 4 zemích
+                {t.rich("headline", {
+                  em: (chunks) => <em>{chunks}</em>,
+                })}
               </p>
             </Link>
-            <nav className="flex flex-wrap gap-2">
-              <Link href="/cs" className="underline hover:no-underline">
-                Domů
-              </Link>
-              <Link href="/cs/podporte-kalkulacku" className="underline hover:no-underline">
-                Podpora
-              </Link>
-              <Link href="/cs/zapojte-se" className="underline hover:no-underline">
-                Dobrovolnictví
-              </Link>
-              <Link href="/cs/vlastni-kalkulacka" className="underline hover:no-underline">
-                Vlastní kalkulačka
-              </Link>
-            </nav>
+            {locale === "cs" && (
+              <nav className="flex flex-wrap gap-2">
+                <Link href="/cs" className="underline hover:no-underline">
+                  Domů
+                </Link>
+                <Link href="/cs/podporte-kalkulacku" className="underline hover:no-underline">
+                  Podpora
+                </Link>
+                <Link href="/cs/zapojte-se" className="underline hover:no-underline">
+                  Dobrovolnictví
+                </Link>
+                <Link href="/cs/vlastni-kalkulacka" className="underline hover:no-underline">
+                  Vlastní kalkulačka
+                </Link>
+              </nav>
+            )}
             <div className="flex flex-wrap gap-2">
               →
               <Link href="https://x.com/kalkulacka_one" className="underline hover:no-underline">
-                @kalkulacka_one na X
+                @kalkulacka_one
               </Link>
             </div>
           </header>
