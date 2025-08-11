@@ -4,6 +4,7 @@ export const variantSchema = z
   .object({
     key: z
       .string()
+      .trim()
       .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
       .describe("Human-friendly unique key of a variant in the hyphen-separated lowercased format"),
   })

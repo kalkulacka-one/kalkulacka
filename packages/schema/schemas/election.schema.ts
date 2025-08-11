@@ -5,11 +5,11 @@ import { roundSchema } from "./round.schema.js";
 import { tagsSchema } from "./tags.schema.js";
 import { timePeriodSchema } from "./time-period.schema.js";
 
-const electionIdSchema = z.string().uuid().describe("Unique identifier of a calculator group in the format of UUID");
+const electionIdSchema = z.string().uuid().describe("Unique identifier of an election in the format of UUID");
 const electionKeySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-  .describe("Human-friendly unique key of a standalone calculator group in the hyphen-separated lowercased format");
+  .describe("Human-friendly unique key of an election in the hyphen-separated lowercased format");
 
 export const electionSchemaReference = z.object({
   id: electionIdSchema,
@@ -20,12 +20,12 @@ export const electionBaseSchema = z
   .object({
     id: electionIdSchema,
     key: electionKeySchema,
-    createdAt: z.string().datetime({ offset: true }).describe("Time of the creation of a calculator group in the ISO 8601 format"),
-    updatedAt: z.string().datetime({ offset: true }).describe("Time of the last update of a calculator group in the ISO 8601 format").optional(),
-    publishedAt: z.string().datetime({ offset: true }).describe("Time when a calculator group should be published in the ISO 8601 format").optional(),
-    title: z.string().describe("Title of a calculator group"),
-    shortTitle: z.string().max(25).describe("Short title of a calculator group with a maximum of 25 characters"),
-    description: z.string().describe("Description of a calculator group").optional(),
+    createdAt: z.string().datetime({ offset: true }).describe("Time of the creation of an election in the ISO 8601 format"),
+    updatedAt: z.string().datetime({ offset: true }).describe("Time of the last update of an election group in the ISO 8601 format").optional(),
+    publishedAt: z.string().datetime({ offset: true }).describe("Time when an election group should be published in the ISO 8601 format").optional(),
+    title: z.string().describe("Title of an election"),
+    shortTitle: z.string().max(25).describe("Short title of an election with a maximum of 25 characters"),
+    description: z.string().describe("Description of an election").optional(),
     tags: tagsSchema,
     calculatorGroup: z.lazy((): z.ZodType<CalculatorGroupReference> => calculatorGroupSchemaReference),
     districts: z.array(districtSchema).min(1).describe("Ordered list of election districts").optional(),
@@ -34,7 +34,7 @@ export const electionBaseSchema = z
   })
   .strict();
 
-export const electionSchema = electionBaseSchema.refine((val) => !(val.rounds && val.votingHours), { message: "Cannot have both rounds and votingHours" });
+export const electionSchema = electionBaseSchema.refine((data) => !(data.rounds && data.votingHours), { message: "Cannot have both rounds and votingHours" });
 
 export type Election = z.infer<typeof electionSchema>;
 export type ElectionReference = z.infer<typeof electionSchemaReference>;

@@ -29,8 +29,6 @@ const standaloneCalculatorSchema = calculatorBaseSchema
       .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
       .describe("Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format"),
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
-    calculatorGroup: z.undefined(),
-    election: z.undefined(),
   })
 
   .strict();
@@ -39,7 +37,6 @@ const groupCalculatorSchema = calculatorBaseSchema
   .extend({
     calculatorGroup: calculatorGroup,
     variant: variantSchema,
-    election: z.undefined(),
   })
   .strict();
 
@@ -52,9 +49,13 @@ const electionCalculatorSchema = calculatorBaseSchema
     round: roundSchema.optional(),
   })
   .strict()
-  .refine((data) => data.variant || data.district || data.round, {
-    message: "Election calculator must have at least a variant, district, or round",
-    path: ["variant", "district", "round"],
+  .superRefine((data, ctx) => {
+    if (!(data.variant || data.district || data.round)) {
+      const message = "Election calculator must have at least a variant, district, or round";
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message, path: ["variant"] });
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message, path: ["district"] });
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message, path: ["round"] });
+    }
   });
 
 export const calculatorSchema = z.union([standaloneCalculatorSchema, groupCalculatorSchema, electionCalculatorSchema]).describe("Calculator is a set of questions, candidates and their answers");

@@ -40,6 +40,7 @@ const personWithFamilyAndGivenName = z.object({
   givenName: z.string().describe("Given name (first name)"),
 });
 
+// OR vs XOR
 export const personSchema = z.union([personBaseSchema.extend(personWithFullName.shape), personBaseSchema.extend(personWithFamilyAndGivenName.shape)]).describe("A human being");
 
 export type Person = z.infer<typeof personSchema>;
