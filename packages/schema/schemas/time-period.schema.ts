@@ -11,4 +11,6 @@ export const timePeriodSchema = z
     end: z.union([dateSchema, dateTimeSchema]).describe("End date (or time) of a voting period in the ISO 8601 format"),
   })
   .strict()
-  .describe("Time period from–to");
+  .describe("Time period from-to");
+
+export type TimePeriod = z.infer<typeof timePeriodSchema>;

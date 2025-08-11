@@ -40,6 +40,6 @@ const personWithFamilyAndGivenName = z.object({
   givenName: z.string().describe("Given name (first name)"),
 });
 
-export const personSchema = personBaseSchema.and(z.union([personWithFullName, personWithFamilyAndGivenName])).describe("A human being");
+export const personSchema = z.union([personBaseSchema.extend(personWithFullName.shape), personBaseSchema.extend(personWithFamilyAndGivenName.shape)]).describe("A human being");
 
 export type Person = z.infer<typeof personSchema>;
