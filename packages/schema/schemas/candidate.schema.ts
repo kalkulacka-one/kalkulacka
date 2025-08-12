@@ -15,8 +15,7 @@ export const candidateBaseSchema = z
           .strict()
           .describe("Reference to a person or an organization"),
       )
-      .describe("Ordered list of persons or organizations that are related to the candidate")
-      .optional(),
+      .describe("Ordered list of persons or organizations that are related to the candidate"),
     displayName: z.string().describe("Display name of a candidate").optional(),
     images: imagesSchema.optional(),
     motto: z.string().describe("Motto of a candidate").optional(),
@@ -26,9 +25,12 @@ export const candidateBaseSchema = z
   .describe("Candidate for a calculator");
 
 export type Candidate = z.infer<typeof candidateBaseSchema> & {
-  nestedCandidates: Candidate[];
+  nestedCandidates?: Candidate[];
 };
 
 export const candidateSchema: z.ZodType<Candidate> = candidateBaseSchema.extend({
-  nestedCandidates: z.array(z.lazy(() => candidateSchema)).describe("List of nested candidates, which can be used for aggregated answers if top-level candidate answers are not provided"),
+  nestedCandidates: z
+    .array(z.lazy(() => candidateSchema))
+    .describe("List of nested candidates, which can be used for aggregated answers if top-level candidate answers are not provided")
+    .optional(),
 });
