@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./..//globals.css";
 import { Logo } from "@repo/design-system/client";
 
 export default async function RootLayout({
