@@ -155,6 +155,9 @@
     "description": {
       "$ref": "#/$defs/description"
     },
+    "methodology": {
+      "$ref": "#/$defs/methodology"
+    },
     "intro": {
       "$ref": "#/$defs/intro"
     },
