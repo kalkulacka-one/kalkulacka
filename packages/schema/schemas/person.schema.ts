@@ -25,7 +25,7 @@ const personBaseSchema = z
         z
           .array(z.object({ id: organizationSchema.organizationIdSchema }).describe("Reference to an organization").strict())
           .min(1)
-          .describe("List of organizations a person is a member of")
+          .describe("List of organizations a person is a member of"),
       )
       .optional(),
   })

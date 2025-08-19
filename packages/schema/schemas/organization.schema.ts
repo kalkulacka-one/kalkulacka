@@ -19,9 +19,7 @@ const organizationBaseSchema = z
     sortName: z.string().describe("A name to use in a lexicographically ordered list").optional(),
     alternateNames: z.array(z.string()).describe("Alternate names to use for example in search").optional(),
     images: imagesSchema.optional(),
-    members: z
-      .lazy(() => z.array(z.discriminatedUnion("type", [organizationSchemaReference, personSchema.personSchemaReference])).min(1))
-      .optional(),
+    members: z.lazy(() => z.array(z.discriminatedUnion("type", [organizationSchemaReference, personSchema.personSchemaReference])).min(1)).optional(),
   })
   .strict();
 
