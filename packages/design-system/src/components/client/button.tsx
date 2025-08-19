@@ -27,6 +27,7 @@ export const ButtonVariants = cva(
         filled: [""],
         outline: ["ko:bg-transparent"],
         link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
+        answer: ["ko:px-6"],
       },
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
@@ -115,6 +116,36 @@ export const ButtonVariants = cva(
         variant: "link",
         color: "neutral",
         class: ["ko:text-neutral", "ko:data-hover:text-neutral-hover ko:data-focus:text-neutral-hover", "ko:data-hover:data-active:text-neutral-active", "ko:data-disabled:text-neutral-disabled"],
+      },
+      {
+        variant: "answer",
+        color: "primary",
+        class: [
+          "ko:text-primary",
+          "ko:hover:bg-primary ko:hover:text-on-bg-primary",
+          "ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
+          "ko:data-active:bg-primary-active ko:data-active:border-primary-active ko:data-active:hover:bg-primary-active",
+        ],
+      },
+      {
+        variant: "answer",
+        color: "secondary",
+        class: [
+          "ko:text-secondary",
+          "ko:hover:bg-secondary ko:hover:text-on-bg-secondary",
+          "ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
+          "ko:data-active:bg-secondary-active ko:data-active:border-secondary-active ko:data-active:hover:bg-secondary-active",
+        ],
+      },
+      {
+        variant: "answer",
+        color: "neutral",
+        class: [
+          "ko:text-neutral",
+          "ko:hover:bg-neutral ko:hover:text-on-bg-neutral",
+          "ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral",
+          "ko:data-active:bg-neutral-active ko:data-active:border-neutral-active ko:data-active:hover:bg-neutral-active",
+        ],
       },
     ],
   },
