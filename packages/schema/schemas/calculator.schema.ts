@@ -16,8 +16,7 @@ export const calculatorBaseSchema = z.object({
   publishedAt: z.string().datetime({ offset: true }).describe("Time when a calculator should be published in the ISO 8601 format").optional(),
   title: z.string().describe("Title of a calculator").optional(),
   description: z.string().describe("Description of a calculator").optional(),
-  // methodology defined in $defs, but not listed in within any variant
-  // methodology: z.string().describe("Methodology of a calculator").optional(),
+  methodology: z.string().describe("Methodology of a calculator").optional(),
   intro: z.string().describe("Intro text displayed before starting the calculator").optional(),
   tags: tagsSchema.describe("Tags of a calculator").optional(),
 });

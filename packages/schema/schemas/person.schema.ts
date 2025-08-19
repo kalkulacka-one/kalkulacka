@@ -40,9 +40,6 @@ const personWithFamilyAndGivenName = z.object({
   givenName: z.string().describe("Given name (first name)"),
 });
 
-// union vs superRefine
-// union (highly flexible, easily extendable --> more complex initial definition and less user-friendly error messages)
-// superRefine (flatter schema definition with much clearer validation logic and superior error messages --> outputs zodEffect, less flexible)
 export const personSchema = z.union([personBaseSchema.extend(personWithFullName.shape), personBaseSchema.extend(personWithFamilyAndGivenName.shape)]).describe("A human being");
 
 export type Person = z.infer<typeof personSchema>;
