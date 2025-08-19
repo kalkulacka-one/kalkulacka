@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { imagesSchema } from "./images.schema.js";
-import { organizationIdSchema } from "./organization.schema.js";
+import * as organizationSchema from "./organization.schema.js";
 
 export const personIdSchema = z.string().uuid().describe("Unique identifier of a person in the format of UUID");
 
@@ -21,9 +21,12 @@ const personBaseSchema = z
     alternateNames: z.array(z.string()).describe("Alternate names to use for example in search").optional(),
     images: imagesSchema.optional(),
     memberOf: z
-      .array(z.object({ id: organizationIdSchema }).describe("Reference to an organization").strict())
-      .min(1)
-      .describe("List of organizations a person is a member of")
+      .lazy(() =>
+        z
+          .array(z.object({ id: organizationSchema.organizationIdSchema }).describe("Reference to an organization").strict())
+          .min(1)
+          .describe("List of organizations a person is a member of")
+      )
       .optional(),
   })
   .strict();

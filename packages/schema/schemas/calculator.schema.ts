@@ -1,13 +1,13 @@
 import { z } from "zod";
-import { calculatorGroupSchemaReference } from "./calculator-group.schema.js";
+import * as calculatorGroupSchema from "./calculator-group.schema.js";
 import { districtSchema } from "./district.schema.js";
-import { electionSchemaReference } from "./election.schema.js";
+import * as electionSchema from "./election.schema.js";
 import { roundSchema } from "./round.schema.js";
 import { tagsSchema } from "./tags.schema.js";
 import { variantSchema } from "./variant.schema.js";
 
-const calculatorGroup = calculatorGroupSchemaReference.describe("Reference to a calculator group the calculator belongs to");
-const election = electionSchemaReference.describe("Reference to an election the calculator belongs to");
+const calculatorGroup = z.lazy(() => calculatorGroupSchema.calculatorGroupSchemaReference).describe("Reference to a calculator group the calculator belongs to");
+const election = z.lazy(() => electionSchema.electionSchemaReference).describe("Reference to an election the calculator belongs to");
 
 export const calculatorBaseSchema = z.object({
   id: z.string().uuid().describe("Unique identifier of a calculator in the format of UUID"),

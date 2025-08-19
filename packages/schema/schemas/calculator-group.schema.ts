@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { calculatorBaseSchema, calculatorDistrictSchema, calculatorRoundSchema, calculatorVariantSchema } from "./calculator.schema.js";
-import { type ElectionReference, electionSchemaReference } from "./election.schema.js";
+import * as electionSchema from "./election.schema.js";
 import { variantSchema } from "./variant.schema.js";
 
 const calculatorGroupIdSchema = z.string().uuid().describe("Unique identifier of a calculator group in the format of UUID");
@@ -24,7 +24,7 @@ export const calculatorGroupBaseSchema = z
     title: z.string().describe("Title of a calculator group").optional(),
     shortTitle: z.string().max(25).describe("Short title of a calculator group with a maximum of 25 characters").optional(),
     description: z.string().describe("Description of a calculator group").optional(),
-    election: z.lazy((): z.ZodType<ElectionReference> => electionSchemaReference).optional(),
+    election: z.lazy((): z.ZodType<electionSchema.ElectionReference> => electionSchema.electionSchemaReference).optional(),
     variants: z.array(variantSchema).min(1).describe("Ordered list of calculator variants").optional(),
   })
   .strict();
@@ -58,7 +58,7 @@ export const electionCalculatorItemSchema = calculatorBaseSchema
 
 export const electionCalculatorGroupSchema = calculatorGroupBaseSchema
   .extend({
-    election: electionSchemaReference,
+    election: z.lazy((): z.ZodType<electionSchema.ElectionReference> => electionSchema.electionSchemaReference),
     calculators: z.array(electionCalculatorItemSchema).min(1).describe("Ordered list of calculators from an election"),
     shortTitle: z.undefined(),
   })
