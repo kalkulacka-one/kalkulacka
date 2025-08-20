@@ -1,0 +1,5420 @@
+{
+  "71bc21a9-0a74-4614-a406-05ec6a9b6115": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "dae6d23c-a429-4fad-8b43-e6a2d2a29b94": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "f02f6f26-dad2-4dcf-b932-2c0159b285a2": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "b704cce0-c345-4e1a-86f1-849f37e0b8b9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "58562bd9-439e-4687-ba94-d44051d89834": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d4f60ff2-c9d4-4ff9-9ad8-ddfcc5827c30": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "17ab6a1b-8461-4c13-9e70-9fdace71a03b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "b42334d3-4288-4690-96fc-521c7dad5f2b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "7ef77751-7a37-4d42-b3fd-e133df3712c5": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "189d8413-beda-43fe-a44c-39ed93e666f4": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d6bb2166-cb25-4318-aa5d-fa8dde34c747": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "94c265f4-f6e3-4349-b5eb-875546d9bd13": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "50cd0380-04be-44c4-9906-472c273316d9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "016c7aa7-cec0-4b0d-a528-207645cc9c84": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "faedf8e4-185f-4d5d-8d69-585f0bb11d93": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "45ba0851-f850-4ba7-9c67-8cb0359cebb4": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "153f3002-d59c-4917-a7cf-bec2f77715a9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "61420983-1385-44fd-8993-150c37cabbed": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "42d5aeee-c76a-49fb-b0df-845bccb52514": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "a9c7c437-d65e-4090-850b-fb4b86e7395a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "1c730a65-e414-4c8c-a09f-7891d3cf23e8": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "564decec-f6e8-4f26-a671-1ab933caf146": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "3f83da2b-0c52-4601-80e7-81367231b1e9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "63b9f8ff-a138-4920-aa61-c184dd232a7c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "84f51d02-6e04-4c46-9825-4d05d1655d1d": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "8c2181a1-4115-41e2-bab7-427c03c57d27": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "1988a94f-8407-427a-bda9-908aacac57b6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "60252545-f73a-43eb-a10a-bf2ac068227d": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "a5c19eb7-5ac9-4ef3-a962-3e19a9d5e352": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "52fa7e3f-569d-4e51-bbf5-2de18c40b774": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "e5a14166-b424-4f15-b843-dcb7cc50f8fe": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "58b0dee7-2968-4fa9-bf9c-ac4dbfc5bf1c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "58c911e8-6347-49ee-afdd-49405eec0c17": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "73274104-c232-4193-921d-43375cb28dba": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "3d691280-4aa8-438e-a2d2-26c78d0fd8ea": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "e4d26c50-9971-426a-a64e-4411bb10ba12": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "441ee307-d73a-44d4-8c1c-677995ef9664": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "14e9340b-b2c3-4ab8-98a2-0c4852e9ba2c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "03e4cea1-0b51-45b8-9478-a77e7ec56924": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "bbd6feda-d61a-42b4-9e3e-9d891e1d8872": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "adbd14a6-e546-4452-8db0-44890e6a9a1c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "b1d882ce-beac-4456-88df-dd87d3a5053f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "7322fe5e-8a17-4489-bd76-21c35145bba8": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f80fe71c-9354-440f-8db4-7e713eec4226": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "77ccddd6-c722-4298-8ac4-9475c9ddc2c2": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "1cb6df5d-6f3d-4a46-8683-080f2874d74b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "07ff1093-e736-4942-b663-7f4e0c18774a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "5cca68e8-89e2-49df-ab5a-c11b30816aa8": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "2c32b61c-94ff-4d3f-a74b-95a03dcb721b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "9be04f6a-2480-4843-8dc9-5b50fb57e9c3": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "ae524d30-551f-4da8-b72f-6477c4927ece": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "07a27ee9-e9de-4f33-bdd0-3a37a8073e5e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "2d2d81b2-9371-48e5-ad6c-9bbe942d84c9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "c820a035-91f3-4537-b190-fc0abc22e2f1": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "ac53e1d2-91d0-410f-ac5b-0d771d9c0c03": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "7245790d-3859-4fb2-94ce-b42841d7dfe6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "b5bcb868-06c4-48f9-91a5-ffccace972c5": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "1cfd0044-aeae-40aa-96b0-36b458c3c1c3": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "dadc5469-a310-40d7-b540-b1a4c30d0cbe": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "65a85fae-e7fa-4390-97bf-763d3d1efbef": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "8fb91ff9-9583-4bea-9cc7-6a569a1657a6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d744a3e3-5900-494d-8b26-704a8b9ecf17": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "d62cef33-d365-4e02-bb91-884aba74e444": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "cae798a1-4ba4-4b1b-a15d-6437d9f9e75e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "edc65484-1d34-4459-85a3-eaf8b5ec1265": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "67acc7cd-a391-44bd-9ec4-f64809670a14": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "78ca5dfa-45e3-424b-874b-90947348a666": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "52f5c9da-90be-43db-9801-cfbe7332cb2e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "dda6230c-73d4-4432-acfa-cd5a2d8ebf1f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "c83b5422-edf2-4cd8-8956-f3ea88ada4a9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "9fea9a04-c0c2-499a-b787-a0f561111603": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "e83ee7e8-0d6f-49c5-bf64-6633ac4162e4": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f93f24ba-8fb8-4ddf-a5a1-5b1b64b95b37": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "361cbc63-9c17-4f84-8f1f-a1680dd06797": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "ea8eb32b-e78e-4d8a-adf8-df53c2f07c80": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "8857bf33-a689-4198-9563-5a7ff1687856": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "90428b08-c337-4096-aa05-43cc44bd9468": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "c593009c-0276-4d49-bba9-f9737c801a56": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "b82b00c2-8908-43da-b83c-56c617f49161": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "3f2f8b93-998f-4375-a449-f9decc6bd0de": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "2dfed135-2da4-497f-a0c2-7b9a7f34d61b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "a99e3371-8757-4eea-8623-74dd75894df3": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "a83a7e7a-b3f9-40f3-982e-21bcb50f5f93": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d071386e-be73-4d0e-95bd-177f21a190cc": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "b4a7ca20-144a-4168-8d57-1c48ac7e0f91": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "8f7b03d8-609c-4d36-b81d-03dbb6176791": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "e6c4e73f-467c-48db-bd33-c84438e2ece1": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "c088a37c-6f92-46a1-bd96-9432d634940b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "3059c0d1-8c56-4f3c-af37-9e4476593298": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "f40063bc-c53a-4da0-8288-3ce65adac992": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "14371677-679d-43ed-b5ac-ccf8b79f9067": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "d1859f88-360f-4858-b883-c7c25bbebae6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "d8d870e1-4ab9-4429-9143-eccab1e890d2": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "8d896bbb-ff6e-48cc-b4e1-0d51a00af06d": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "c9eceb34-4e0f-49a3-a245-b62c41d24ff5": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "1020f711-8844-41f9-86de-1adc990354c1": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "aaba310d-3f85-4aa7-94d6-83aae9a7135d": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "dc5bfde1-13b6-49e6-8896-986d79c26657": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "bbd1f178-b447-44d9-9363-4cca2b1dd846": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "ace4d0d4-116e-46bc-95d5-49bc526d66a3": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "732d1a06-ed42-49f0-858f-265af69c7e1f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "639ae8e6-82d6-49b2-94cd-b96e181ffd5a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "586327da-f1a6-49fe-8b4b-1c764ff0afe6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "90ad7938-415c-451a-a68b-dd18c94917d5": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "e2522646-4c76-49b3-87de-fab0777d153a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "9cfa727e-531f-4947-a789-558a3d661e60": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "6ffe8774-6adf-4586-ac44-dfda3c848125": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "50c0f837-8791-4474-92af-81d9b2c53978": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f715c536-d81f-421c-ac89-4a3a6ef12ebc": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "5c31da53-2a5c-4edb-96f4-cb6f64f3a786": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "30b775a1-21d8-42a2-9065-c10ac60f63a3": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "0c9f64ee-a339-43d0-8a06-1551e311b3ae": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "a428de68-6f2c-4308-a241-2129237f017b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "c72e9246-ef5a-41a7-a436-00000f8d766e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "a364123d-18db-4056-bb25-c03ec579a937": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "63988409-911b-4872-a041-bda581453291": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "63a29ce4-ad6e-45e1-b4b0-0212fc21887b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "cb6df335-5af0-443e-a931-7713215495c6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "bf8b33d1-d495-4819-8e59-e15d36f6341d": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "ac7cacb2-59f9-4c6b-b715-b5f6bfb0dd3a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f579a8e0-cadf-4248-b5ce-aaef2fb802ee": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "b50c661f-8036-4971-acd6-67db8fa7376a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "362c6fff-2f75-4a2f-bac1-a6910d25ba1a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "6b25916e-4926-45cd-a41e-504e4013f56f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "2fdbb8d2-5599-49f8-8db9-641c40c5d847": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "1affa693-cace-48ee-970f-32a5d06c174b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "1be5fbdd-8b5b-4995-8350-8ae8021b0fec": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "d40b5c9f-d502-431a-9160-c3729a27463e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "4a89273f-82f9-4f05-a035-5b11f2ef6168": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "bbf53a91-53e0-4583-9ae8-76b95bd0155c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "7cdb4418-c098-4bad-9470-ce3e24baf8f4": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "fb120190-2417-4d92-9615-6055612a781e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "c32ae66d-1801-4761-a7f5-27008f4d3e90": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "cf20e17d-3dbf-4d35-a0e8-c9046613cb82": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "37b8f928-842d-4707-a88f-d0953c5fbfec": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "560ca634-036b-4ef9-bc25-4dc59a82ea87": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "cbaf5887-59c7-4424-b150-f4966cf2c9db": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d82c8b85-82c0-4fbe-8ddc-698a728717a0": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "fc970d94-8966-4ad9-a44b-4cd73ae9c8e0": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "0b24883e-aeb7-42ca-854f-5a303c9a6c4e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "6fce1353-2bd9-42f0-9507-3301ef5bbc0a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "c424c2c8-5832-41de-b2d7-f07e128ff5ec": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f7a83853-d4d0-4efd-8383-642650c486d1": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "5cae67b6-f440-4b26-9740-8d4d3fecea5a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "a07b401c-4af3-4ebb-90e1-fddbc6bdea43": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "3089a96c-85c8-4ccb-a6d1-7686b887fa3a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "df43cf78-1f61-425a-86ae-c1a55cf41de6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "5d78277c-870f-4dab-b18e-47f5b4f02369": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "1fd28123-baf7-4bef-b34f-027c624d65ac": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "205dd61e-c0af-487d-917d-a47fa434e472": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "fe3d7971-bd8f-45a7-b334-f1512a1667fb": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "21514ed2-dc6e-49f1-8484-13d7ba805045": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "7668311d-2a5e-46df-9ea4-ba753d51f0a9": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "c6e0c1f7-32cc-48bb-8726-9535cf3402a5": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "f6847444-e1af-49ab-a57e-a274ecadd7df": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "89de8a87-9be9-4e01-84d4-a29fbd4e670d": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "00fecaca-a160-4432-bad5-c46ae74b8d31": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "9e442644-87cd-4c0e-9a83-6a6858e434dc": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "c2b2b90e-c9b0-42f0-a691-2d96ff01320e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d811caab-e209-4628-a9e9-214c72b12b35": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "38150f46-aff6-4e73-aaa7-416181adf35f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d64171bf-3f10-474c-946a-c5ff4d1ed7ee": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "b95bd56d-2cbc-4d22-a32f-4b5d50246057": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "00cd07ed-9525-4ee1-ac27-d528eb4e1837": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f616c751-3090-48c6-95fd-daa471f058ae": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "e5d6f887-c001-4900-8793-8214e1918957": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "6c79555f-1a1e-4f53-90f4-1445c37c805a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "3b07636b-991c-4b95-b41f-fa0b6a58761a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "2a5dab69-8f0d-430c-b41d-09b7f2db7129": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "b2e49181-894e-486f-9136-5c0ec04127d7": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "fb8bca9a-14ba-41f5-a4d7-ae977a3dbc80": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "31713023-f4ff-4938-95b0-a8ae9b3a343f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "7f13264a-905c-4472-bb53-fb5423a4513c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "8d77a978-dab2-47b0-ada3-f95df5626c4b": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "393242a9-3d49-423e-96c5-8c9614e78c92": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "601da306-db0c-4d09-858e-a0d9fbab7117": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "5ce1575a-2517-4c39-895c-9820b5c4ed4c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "f932b9db-ba80-434b-8bbc-cfb477e95c17": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "78aaa557-b2dc-458d-9158-ef539be76bff": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "d240b223-e3b9-481c-976b-ab19f1848685": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "e75d6a8d-24fe-45d1-93fc-c3d1fcdf5635": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f0b13ac7-6985-407d-951b-99d99efe5a8f": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "53acc46f-d917-4f8c-8b82-afea335a6103": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "4682e780-defb-400c-9b43-1873d8df28fb": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f4ab0ec4-841f-47e7-b2fc-c07135ac9fc6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "fece958f-6ba5-4cdf-a756-c941fdb6c3b6": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "74177bbe-bc3e-4402-8c82-727b7ede4edb": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "c6fa8232-f30d-4d83-8879-9b8226fb59dc": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "540e282d-488f-428b-b292-6e8e0e072ea2": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "1b150952-10e5-4bc8-9177-b62c6c430389": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "a2672f02-7cc5-4363-a40c-aec1b708536a": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "dbeee201-8eaa-4ff0-bf5f-825d997d9bbe": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "5e5a1efb-067f-4f50-a23c-916fba322a66": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "74b289e5-7169-4a60-9062-8cba9a757fb5": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    }
+  ],
+  "ac518985-2d7d-4d43-812d-88c38cbeed5e": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "f1422469-795f-411b-8376-2e0e2b7448b1": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "a0667027-53fc-416e-b3d6-9d9001a0d89c": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "6e020f1d-2145-4a90-ae8e-ed5a6a545418": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "167cfa62-f3b7-4291-845f-99735be0d420": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": null,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "df7ffefe-bfc5-40be-849b-6ede94b9b6a1": [
+    {
+      "questionId": "e62219f9-4abf-499d-8baa-14c823a1b303",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "2dc45567-da96-4e73-9fb2-8cfa629d863d": [
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "ae194b00-d7e7-4367-9dc7-f7ad114d12ea": [
+    {
+      "questionId": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "c44d6c27-02c7-479b-97bd-8d75c8b053e0": [
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "1e085905-51be-463f-9e8b-014bb71021c5": [
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "f7edf5ed-8bd6-477a-926b-f2703251365a": [
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "9855ac8f-c479-42fa-9756-57db29a6dee0": [
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": true,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ],
+  "9bc802c3-53e6-46bf-83fa-06ed5e2806a8": [
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "9793d482-bb10-479b-ac7a-12a579bca405": [
+    {
+      "questionId": "679d787d-258f-4dda-abd8-885b69ab1255",
+      "answer": false,
+      "respondent": "candidate"
+    },
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": true,
+      "respondent": "candidate"
+    }
+  ],
+  "c37177e3-aee3-4081-9cf9-21d63fc25aaa": [
+    {
+      "questionId": "1e4f5504-586d-4246-9a8f-982b909385a4",
+      "answer": false,
+      "respondent": "candidate"
+    }
+  ]
+}
