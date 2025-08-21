@@ -1,10 +1,10 @@
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import type { I18nParams } from "../i18n/params";
 import { routing } from "../i18n/routing";
-
-import Link from "next/link";
 
 import "../globals.css";
 
