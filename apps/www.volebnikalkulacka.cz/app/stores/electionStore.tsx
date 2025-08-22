@@ -2,19 +2,24 @@
 
 import { type ReactNode, createContext, useContext, useRef } from "react";
 import { type StoreApi, createStore, useStore } from "zustand";
+import type { Answers } from "../../../../packages/schema/schemas/answers.schema";
+import type { Questions } from "../../../../packages/schema/schemas/questions.schema";
 
 type ElectionStore = {
   calculator: any;
   setCalculator: (calculator: any) => void;
   guideStep: number;
   handleGuideStep: (handleType: string) => void;
-  questions: any;
-  setQuestions: (questions: any) => void;
+  questions: Questions | undefined;
+  setQuestions: (questions: Questions) => void;
   questionStep: number;
+  maxQuestionStep: number | undefined;
   handleQuestionStep: (handleType: string) => void;
-  answers: any[];
+  answers: Answers | undefined;
   setAnswers: () => void;
   handleAnswer: (questionId: string, handleType: "yes" | "no" | "important") => void;
+  candidatesAnswers: any;
+  setCandidatesAnswers: (candidatesAnswers: any) => void;
 };
 
 export const ElectionStoreContext = createContext<StoreApi<ElectionStore> | undefined>(undefined);
@@ -40,19 +45,26 @@ export const ElectionStoreProvider = ({ children }: ElectionStoreProviderProps) 
         }
       },
       questions: undefined,
-      setQuestions: (questions) => {
-        const newAnswers = questions.map((question: any) => {
-          return { id: question.id, answerType: 3, isImportant: false };
-        });
-        set(() => ({ questions: questions, answers: newAnswers }));
-      },
+      setQuestions: (questions) => set(() => ({ questions: questions })),
       questionStep: 1,
+      // TODO: handle better
+      maxQuestionStep: 5,
       handleQuestionStep: (handleType) => {
-        if (handleType === "next") {
-          set((state) => ({ questionStep: state.questionStep + 1 }));
-        }
-        if (handleType === "previous") {
-          set((state) => ({ questionStep: state.questionStep - 1 }));
+        const questionStep = storeRef.current?.getState().questionStep ?? 1;
+        const maxQuestionStep = storeRef.current?.getState().maxQuestionStep ?? 0;
+        switch (handleType) {
+          case "next":
+            if (questionStep > 0 && questionStep < maxQuestionStep) {
+              set((state) => ({ questionStep: state.questionStep + 1 }));
+            }
+            break;
+          case "previous":
+            if (questionStep !== 1) {
+              set((state) => ({ questionStep: state.questionStep - 1 }));
+            }
+            break;
+          default:
+            break;
         }
       },
       setAnswers: () => {
@@ -60,24 +72,33 @@ export const ElectionStoreProvider = ({ children }: ElectionStoreProviderProps) 
 
         if (storeQuestions) {
           const defaultAnswers = storeQuestions.map((answer) => {
-            return { id: answer.id, answerType: 3, isImportant: false };
+            return { questionId: answer.id, answer: null, isImportant: false };
           });
           set(() => ({ answers: defaultAnswers }));
         }
       },
-      answers: [],
+      answers: undefined,
       handleAnswer: (questionId, handleType) => {
+        const questionStep = storeRef.current?.getState().questionStep ?? 1;
+        const maxQuestionStep = storeRef.current?.getState().maxQuestionStep ?? 0;
         set((state) => {
-          const newAnswers = state.answers.map((answer) => {
-            if (answer.id === questionId) {
-              if (handleType === "yes") {
-                return { ...answer, answerType: answer.answerType === 1 ? 3 : 1 };
-              }
-              if (handleType === "no") {
-                return { ...answer, answerType: answer.answerType === 2 ? 3 : 2 };
-              }
-              if (handleType === "important") {
-                return { ...answer, isImportant: !answer.isImportant };
+          const newAnswers = state.answers?.map((answer) => {
+            if (answer.questionId === questionId) {
+              switch (handleType) {
+                case "yes":
+                  // TODO: handle better
+                  if ((answer.answer === null || answer.answer === false) && maxQuestionStep !== questionStep) {
+                    set((state) => ({ questionStep: state.questionStep + 1 }));
+                  }
+                  return { ...answer, answer: answer.answer === true ? null : true };
+                case "no":
+                  // TODO: handle better
+                  if ((answer.answer === null || answer.answer === true) && maxQuestionStep !== questionStep) {
+                    set((state) => ({ questionStep: state.questionStep + 1 }));
+                  }
+                  return { ...answer, answer: answer.answer === false ? null : false };
+                case "important":
+                  return { ...answer, isImportant: !answer.isImportant };
               }
             }
             return answer;
@@ -85,6 +106,8 @@ export const ElectionStoreProvider = ({ children }: ElectionStoreProviderProps) 
           return { answers: newAnswers };
         });
       },
+      candidatesAnswers: undefined,
+      setCandidatesAnswers: (candidatesAnswers) => set(() => ({ candidatesAnswers: candidatesAnswers })),
     }));
   }
 

@@ -1,4 +1,4 @@
-import getCalculator from "../../utils/getCalculator";
+import getCandidatesAnswers from "../../utils/getCandidatesAnswers";
 import getQuestions from "../../utils/getQuestions";
 import QuestionsInject from "./questionsInject";
 
@@ -9,12 +9,14 @@ export default async function Layout({
   children: React.ReactNode;
   params: { electionName: string };
 }) {
-  const data = await getQuestions({ electionName: params.electionName });
-
-  console.log(data);
+  const questions = await getQuestions({ electionName: params.electionName });
+  const candidatesAnswers = await getCandidatesAnswers({ electionName: params.electionName });
+  if (!questions) {
+    return null;
+  }
   return (
     <>
-      <QuestionsInject questions={data} />
+      <QuestionsInject candidatesAnswers={candidatesAnswers} questions={questions} />
       {children}
     </>
   );

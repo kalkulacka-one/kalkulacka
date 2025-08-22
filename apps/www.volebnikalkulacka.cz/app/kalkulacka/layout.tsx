@@ -2,6 +2,7 @@ import { Button, Logo } from "@repo/design-system/client";
 import "./../globals.css";
 import Link from "next/link";
 import { ElectionStoreProvider } from "../stores/electionStore";
+import CalculatorInject from "./calculatorInject";
 
 export default async function AppLayout({
   children,

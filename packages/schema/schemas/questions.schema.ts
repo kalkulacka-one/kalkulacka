@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { questionSchema } from "./question.schema.js";
+import { questionSchema } from "./question.schema";
 
 export const questionsSchema = z.array(questionSchema).min(1).describe("List of one or more questions");
 

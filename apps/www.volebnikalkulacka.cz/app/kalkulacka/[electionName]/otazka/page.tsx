@@ -3,26 +3,38 @@ import { Button, ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
 import { useElectionStore } from "../../../stores/electionStore";
 
 export default function Page() {
   const params = useParams();
   const questions = useElectionStore((state) => state.questions);
   const questionStep = useElectionStore((state) => state.questionStep);
+  const maxQuestionStep = useElectionStore((state) => state.maxQuestionStep);
   const handleQuestionStep = useElectionStore((state) => state.handleQuestionStep);
   const answers = useElectionStore((state) => state.answers);
   const handleAnswer = useElectionStore((state) => state.handleAnswer);
-  const currentAnswer = answers.find((answer) => answer.id === questions[questionStep - 1].id);
+
+  console.log(answers);
+  console.log(questionStep);
+  console.log(maxQuestionStep);
 
   if (!questions) {
     return null;
   }
 
-  console.log(answers);
+  const currentQuestion = questions[questionStep - 1];
 
+  if (!currentQuestion) {
+    return null;
+  }
+
+  const currentQuestionId = currentQuestion?.id;
+
+  console.log();
   return (
     <div>
-      {questions.map((question: any, index: number) => {
+      {questions.map((question: Question, index: number) => {
         if (questionStep - 1 === index)
           return (
             <Card key={question.id} color="white">
@@ -34,20 +46,20 @@ export default function Page() {
                   <span>{question.title}</span>
                   <span>{question.tags}</span>
                 </div>
-                <div className="text-2xl+">{question.statement}</div>
-                <div className="text-2xl+">{question.detail}</div>
+                <div className="text-2xl">{question.statement}</div>
+                <div className="text-2xl">{question.detail}</div>
               </div>
             </Card>
           );
       })}
       <div className="flex gap-4">
-        <ToggleButton variant="answer" color="neutral" checked={currentAnswer?.isImportant} onChange={() => handleAnswer(questions[questionStep - 1].id, "important")}>
+        <ToggleButton variant="answer" color="neutral" checked={answers?.[questionStep - 1]?.isImportant} onChange={() => handleAnswer(currentQuestionId, "important")}>
           Pro mě důležité
         </ToggleButton>
-        <ToggleButton variant="answer" checked={currentAnswer?.answerType === 1} color="primary" onChange={() => handleAnswer(questions[questionStep - 1].id, "yes")}>
+        <ToggleButton variant="answer" checked={answers?.[questionStep - 1]?.answer === true} color="primary" onChange={() => handleAnswer(currentQuestionId, "yes")}>
           Jsem pro
         </ToggleButton>
-        <ToggleButton variant="answer" checked={currentAnswer?.answerType === 2} color="secondary" onChange={() => handleAnswer(questions[questionStep - 1].id, "no")}>
+        <ToggleButton variant="answer" checked={answers?.[questionStep - 1]?.answer === false} color="secondary" onChange={() => handleAnswer(currentQuestionId, "no")}>
           Jsem proti
         </ToggleButton>
       </div>
@@ -59,7 +71,21 @@ export default function Page() {
           Přeskočit
         </Button>
       </div>
-      <Link href={`/kalkulacka/${params.electionName}/rekapitulace`}>Rekapitulace</Link>
+      <div className="flex gap-4">
+        {questionStep === maxQuestionStep ? (
+          <Link href={`/kalkulacka/${params.electionName}/rekapitulace`}>
+            <Button color="neutral" variant="link">
+              Rekapitulace
+            </Button>
+          </Link>
+        ) : (
+          <Link href={`/kalkulacka/${params.electionName}/navod`}>
+            <Button color="neutral" variant="link">
+              Návod
+            </Button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

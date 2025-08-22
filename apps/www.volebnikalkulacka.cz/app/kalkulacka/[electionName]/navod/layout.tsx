@@ -1,5 +1,6 @@
+import CalculatorInject from "../../calculatorInject";
 import getCalculator from "../../utils/getCalculator";
-import CalculatorInject from "../calculatorInject";
+import getCandidatesAnswers from "../../utils/getCandidatesAnswers";
 
 export default async function Layout({
   children,
@@ -8,12 +9,13 @@ export default async function Layout({
   children: React.ReactNode;
   params: { electionName: string };
 }) {
-  const data = await getCalculator({ electionName: params.electionName });
+  const calculator = await getCalculator({ electionName: params.electionName });
+  const candidatesAnswers = await getCandidatesAnswers({ electionName: params.electionName });
 
-  console.log(data);
+  console.log(candidatesAnswers);
   return (
     <>
-      <CalculatorInject calculator={data} />
+      <CalculatorInject candidatesAnswers={candidatesAnswers} calculator={calculator} />
       {children}
     </>
   );
