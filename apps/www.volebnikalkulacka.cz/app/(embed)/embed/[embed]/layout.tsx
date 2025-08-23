@@ -13,7 +13,7 @@ export default async function RootLayout({
   return (
     <html lang="cs">
       <body>
-        <ThemeProvider name={embed}>
+        <ThemeProvider name="default">
           <div>
             <span className="text-[var(--ko-palette-primary)]">Embed: `{embed}`</span>
             <main>{children}</main>
