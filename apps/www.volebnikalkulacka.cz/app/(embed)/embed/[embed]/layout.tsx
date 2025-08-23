@@ -5,7 +5,7 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ embed: string; kalkulacka: string }>;
+  params: Promise<{ embed: string }>;
 }) {
   const { embed } = await params;
   return (
