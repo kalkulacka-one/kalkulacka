@@ -11,8 +11,8 @@ export default async function RootLayout({
   return (
     <html lang="cs">
       <body>
-        <div className="container mx-auto p-16 flex flex-col min-h-screen">
-          <span>Param for theme: "{embed}"</span>
+        <div>
+          <span>Embed: `{embed}`</span>
           <main>{children}</main>
         </div>
       </body>

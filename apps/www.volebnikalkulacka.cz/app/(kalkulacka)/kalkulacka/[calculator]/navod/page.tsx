@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h2>Návod page</h2>;
+  return <h2>Návod</h2>;
 }

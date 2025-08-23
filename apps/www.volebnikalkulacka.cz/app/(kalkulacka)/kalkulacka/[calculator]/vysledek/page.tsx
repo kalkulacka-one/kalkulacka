@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h2>Výsledek page</h2>;
+  return <h2>Výsledek</h2>;
 }
