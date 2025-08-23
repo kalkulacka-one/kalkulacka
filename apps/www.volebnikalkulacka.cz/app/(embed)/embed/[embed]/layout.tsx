@@ -1,5 +1,7 @@
 import "../../../globals.css";
 
+import { ThemeProvider } from "../../../../components/client";
+
 export default async function RootLayout({
   children,
   params,
@@ -11,10 +13,12 @@ export default async function RootLayout({
   return (
     <html lang="cs">
       <body>
-        <div>
-          <span>Embed: `{embed}`</span>
-          <main>{children}</main>
-        </div>
+        <ThemeProvider name={embed}>
+          <div>
+            <span className="text-[var(--ko-palette-primary)]">Embed: `{embed}`</span>
+            <main>{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
