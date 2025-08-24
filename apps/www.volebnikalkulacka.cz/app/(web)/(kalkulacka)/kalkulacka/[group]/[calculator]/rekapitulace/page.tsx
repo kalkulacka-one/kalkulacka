@@ -1,3 +1,5 @@
+import RekapitulacePage from "../../../../../../../calculator/components/rekapitulace/rekapitulacePage";
+
 export default function Page() {
-  return <h2>Rekapitulace</h2>;
+  return <RekapitulacePage />;
 }

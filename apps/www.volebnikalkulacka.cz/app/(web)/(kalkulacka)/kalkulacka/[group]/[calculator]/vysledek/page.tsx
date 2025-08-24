@@ -1,3 +1,5 @@
+import VysledekPage from "../../../../../../../calculator/components/vysledek/vysledekPage";
+
 export default function Page() {
-  return <h2>Výsledek</h2>;
+  return <VysledekPage />;
 }
