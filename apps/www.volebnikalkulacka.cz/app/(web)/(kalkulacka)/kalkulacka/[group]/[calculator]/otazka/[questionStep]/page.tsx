@@ -1,7 +1,8 @@
-"use client";
-import { useParams } from "next/navigation";
-
-export default function Page() {
-  const params = useParams<{ questionStep: string }>();
-  return <h2>Otázka, questionStep: {params.questionStep}</h2>;
+import { notFound } from "next/navigation";
+export default async function Page({ params }: { params: Promise<{ questionStep: string }> }) {
+  const questionStepInt = Number.parseInt((await params).questionStep);
+  if (Number.isNaN(questionStepInt)) {
+    notFound();
+  }
+  return <h2>Otázka, questionStep {questionStepInt}</h2>;
 }
