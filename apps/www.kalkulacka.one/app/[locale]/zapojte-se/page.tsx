@@ -1,6 +1,14 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-export default async function Page() {
+import type { I18nParams } from "../../i18n/params";
+
+export default async function Page({ params }: { params: I18nParams }) {
+  const { locale } = await params;
+  if (locale !== "cs") {
+    notFound();
+  }
+
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">

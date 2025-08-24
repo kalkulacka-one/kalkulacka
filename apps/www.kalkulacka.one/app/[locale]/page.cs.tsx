@@ -1,10 +1,4 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Kalkulacka.1",
-  description: "Ta pravá volební kalkulačka pro miliony voličů ve 4 zemích",
-};
 
 export default async function Page() {
   return (
