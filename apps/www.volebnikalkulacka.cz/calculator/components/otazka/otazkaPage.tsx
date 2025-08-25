@@ -3,13 +3,14 @@
 import { Button, ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useElectionStore } from "../../../stores/electionStore";
 import UrlUpdater from "../urlUpdater";
 
 export default function OtazkaPage({ questionStep }: { questionStep: number }) {
   const params = useParams();
+  const router = useRouter();
   const calculator = useElectionStore((state) => state.calculator);
   const storeQuestionStep = useElectionStore((state) => state.questionStep);
   const setStoreQuestionStep = useElectionStore((state) => state.setQuestionStep);
@@ -56,10 +57,30 @@ export default function OtazkaPage({ questionStep }: { questionStep: number }) {
           <ToggleButton variant="answer" color="neutral" checked={answers?.[storeQuestionStep - 1]?.isImportant} onChange={() => handleAnswer(currentQuestionId, "important", "otazka")}>
             Pro mě důležité
           </ToggleButton>
-          <ToggleButton variant="answer" checked={answers?.[storeQuestionStep - 1]?.answer === true} color="primary" onChange={() => handleAnswer(currentQuestionId, "yes", "otazka")}>
+          <ToggleButton
+            variant="answer"
+            checked={answers?.[storeQuestionStep - 1]?.answer === true}
+            color="primary"
+            onChange={() => {
+              if (storeQuestionStep === calculator.questions.length && answers?.[storeQuestionStep - 1]?.answer === null) {
+                router.push(`/kalkulacka/${params.group}/${params.calculator}/rekapitulace`);
+              }
+              handleAnswer(currentQuestionId, "yes", "otazka");
+            }}
+          >
             Jsem pro
           </ToggleButton>
-          <ToggleButton variant="answer" checked={answers?.[storeQuestionStep - 1]?.answer === false} color="secondary" onChange={() => handleAnswer(currentQuestionId, "no", "otazka")}>
+          <ToggleButton
+            variant="answer"
+            checked={answers?.[storeQuestionStep - 1]?.answer === false}
+            color="secondary"
+            onChange={() => {
+              if (storeQuestionStep === calculator.questions.length && answers?.[storeQuestionStep - 1]?.answer === null) {
+                router.push(`/kalkulacka/${params.group}/${params.calculator}/rekapitulace`);
+              }
+              handleAnswer(currentQuestionId, "no", "otazka");
+            }}
+          >
             Jsem proti
           </ToggleButton>
         </div>
