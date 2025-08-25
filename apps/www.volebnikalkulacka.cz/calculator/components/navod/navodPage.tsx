@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import { useElectionStore } from "../../../stores/electionStore";
+import UrlUpdater from "../urlUpdater";
 
 export default function NavodPage({ guideStep }: { guideStep: number }) {
   const calculator = useElectionStore((state) => state.calculator);
