@@ -1,4 +1,6 @@
-import { fetchCalculator, fetchCalculatorData, fetchCalculatorGroup, fetchElection } from "../../../../../../common/dataFetch";
+import CalculatorInject from "../../../../../../common/calculatorInject";
+import { fetchCalculatorData, fetchElection } from "../../../../../../common/dataFetch";
+import { ElectionStoreProvider } from "../../../../../../stores/electionStore";
 export default async function Layout({
   children,
   params,
@@ -8,30 +10,17 @@ export default async function Layout({
 }) {
   const { group, calculator } = await params;
 
-  // const election = await fetchElection(group);
-  // console.log(election);
-  // console.log(`Calculator group id: ${election.calculatorGroup.id}`);
-
-  // const calculatorGroup = await fetchCalculatorGroup(group, election.id, election.key, election.calculatorGroup.id, election.calculatorGroup.key);
-  // console.log(calculatorGroup);
-
-  // const calculatorFile = await fetchCalculator(group, calculator, calculatorGroup.id);
-
-  // console.log(calculatorFile);
-
   const calculatorData = await fetchCalculatorData(group, calculator);
-
-  console.log("Candidates answers:", calculatorData[0]);
-  console.log("Candidates:", calculatorData[1]);
-  console.log("Organizations:", calculatorData[2]);
-  console.log("Persons:", calculatorData[3]);
-  console.log("Questions:", calculatorData[4]);
+  const electionData = await fetchElection(group);
 
   return (
-    <section>
-      <span>Group: `{group}`</span>
-      <span>Calculator: `{calculator}`</span>
-      <main>{children}</main>
-    </section>
+    <ElectionStoreProvider>
+      <CalculatorInject electionData={electionData} calculatorData={calculatorData} />
+      <div>
+        <span>Group: `{group}`</span>
+        <span>Calculator: `{calculator}`</span>
+        <main>{children}</main>
+      </div>
+    </ElectionStoreProvider>
   );
 }

@@ -24,6 +24,7 @@ export async function fetchCalculator(group: string, calculator: string, calcula
 
 export async function fetchCalculatorData(group: string, calculator: string) {
   const res = await Promise.all([
+    fetch(`http://localhost:3000/www.volebnikalkulacka.cz/${group}/${calculator}/calculator.json`),
     fetch(`http://localhost:3000/www.volebnikalkulacka.cz/${group}/${calculator}/candidates-answers.json`),
     fetch(`http://localhost:3000/www.volebnikalkulacka.cz/${group}/${calculator}/candidates.json`),
     fetch(`http://localhost:3000/www.volebnikalkulacka.cz/${group}/${calculator}/organizations.json`),
