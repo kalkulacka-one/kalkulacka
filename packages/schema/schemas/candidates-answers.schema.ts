@@ -7,4 +7,5 @@ export const candidateAnswerSchema = answerSchema.extend({
 
 export const candidateAnswers = z.record(z.string().uuid(), z.array(candidateAnswerSchema)).describe("List of candidates' answers");
 
+export type CandidateAnswer = z.infer<typeof candidateAnswerSchema>;
 export type CandidateAnswers = z.infer<typeof candidateAnswers>;

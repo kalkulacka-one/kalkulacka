@@ -46,19 +46,19 @@ export function processAnswer(userAnswer: any, candidateAnswer: any) {
   return { questionId, score: finalScore, weight: weight };
 }
 
-export function aggregateMatchScore(userAnswers: any, candidateAnswers: any[]) {
+export function aggregateMatchScore(userAnswers: any[], candidateAnswers: any[]) {
   const initialScore = { score: 0, weight: 0 };
-  return userAnswers.reduce((totalScore, userAnswer) => {
-    const matchingCandidateAnswer = candidateAnswers.find((candidateAnswer: any) => candidateAnswer.questionId === userAnswer.questionId);
-    if (matchingCandidateAnswer) {
-      const resultStep = processAnswer(userAnswer, matchingCandidateAnswer);
 
+  return userAnswers.reduce((totalScore, userAnswer) => {
+    const matchingAnswers = candidateAnswers.filter((candidateAnswer) => candidateAnswer.questionId === userAnswer.questionId);
+
+    return matchingAnswers.reduce((currentTotal, singleMatch) => {
+      const resultStep = processAnswer(userAnswer, singleMatch);
       return {
-        score: totalScore.score + resultStep.score,
-        weight: totalScore.weight + resultStep.weight,
+        score: currentTotal.score + resultStep.score,
+        weight: currentTotal.weight + resultStep.weight,
       };
-    }
-    return totalScore;
+    }, totalScore);
   }, initialScore);
 }
 
