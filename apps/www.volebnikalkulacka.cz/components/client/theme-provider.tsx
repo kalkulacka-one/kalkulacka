@@ -1,10 +1,12 @@
 import dynamic from "next/dynamic";
 
-const themes = {
-  default: dynamic(() => import("./themes/default-theme").then((mod) => mod.DefaultTheme)) as React.ComponentType<{ children: React.ReactNode }>,
-} as const;
+import type { ThemeName } from "../../config/themes";
 
-export const ThemeProvider = ({ name, children }: { name: keyof typeof themes; children: React.ReactNode }) => {
+const themes = {
+  default: dynamic(() => import("./themes/default-theme").then((mod) => mod.DefaultTheme)),
+} as const satisfies Record<ThemeName, React.ComponentType<{ children: React.ReactNode }>>;
+
+export const ThemeProvider = ({ name, children }: { name: ThemeName; children: React.ReactNode }) => {
   const Theme = themes[name];
   return <Theme>{children}</Theme>;
 };
