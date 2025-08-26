@@ -1,5 +1,9 @@
+const createNextIntlPlugin = require("next-intl/plugin");
+
+const withNextIntl = createNextIntlPlugin("./app/i18n/request.ts");
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   transpilePackages: ["@repo/design-system"],
   async rewrites() {
     return [
@@ -14,3 +18,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = withNextIntl(nextConfig);
