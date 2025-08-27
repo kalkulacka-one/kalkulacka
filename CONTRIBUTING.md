@@ -38,7 +38,12 @@ You'll need:
    npm run dev
    ```
 
-5. Follow the instructions in the terminal to open the individual apps and components in your browser.
+5. Follow the instructions in the terminal to open the individual apps and components in your browser:
+
+- **[Kalkulacka.1 Design System](https://design-system.kalkulacka.one)** docs via [Storybook](http://storybook.js.org) @ [`localhost:3001`](http://localhost:3001)
+- **[Kalkulacka.1 Schema](https://schema.kalkulacka.one)** docs via [ReDoc](https://redocly.com/docs/redoc)  @ [`localhost:3002`](http://localhost:3002)
+- **[Kalkulacka.1](https://www.kalkulacka.one)** platform site Next.js app live @ [`localhost:3010`](http://localhost:3010)
+- 🇨🇿 Czech **[Volební kalkulačka](https://www.volebnikalkulacka.cz)** Next.js app @ [`localhost:3020`](http://localhost:3020)
 
 ### What next?
 
