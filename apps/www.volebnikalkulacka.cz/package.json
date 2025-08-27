@@ -15,6 +15,9 @@
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/api-logs": "^0.53.0",
+    "@opentelemetry/instrumentation": "^0.57.2",
+    "@opentelemetry/sdk-logs": "^0.53.0",
     "@repo/database": "*",
     "@repo/design-system": "*",
     "@vercel/otel": "^1.13.0",
