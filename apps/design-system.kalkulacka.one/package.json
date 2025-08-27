@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build --output-dir build",
-    "dev": "storybook dev -p 6006 --no-open",
+    "dev": "storybook dev --port 3001 --no-open",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "ncu": "ncu",
