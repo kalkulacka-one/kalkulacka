@@ -12,8 +12,8 @@ export function QuestionCard({ question, questionCurrent, questionTotal }: Quest
   const { title, tags, detail, statement } = question;
   return (
     <Card corner="topLeft">
-      <div className="ko:flex ko:flex-col ko:gap-4">
-        <div className="ko:flex ko:gap-2">
+      <div className="flex flex-col gap-4">
+        <div className="flex gap-2">
           <span>
             {questionCurrent}/{questionTotal}
           </span>
