@@ -15,9 +15,9 @@
     "ncu:upgrade": "ncu -u"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.34.3",
+    "@redocly/cli": "^2.0.8",
     "@repo/schema": "*",
-    "wrangler": "^4.19.1",
-    "yaml": "^2.8.0"
+    "wrangler": "^4.33.0",
+    "yaml": "^2.8.1"
   }
 }
