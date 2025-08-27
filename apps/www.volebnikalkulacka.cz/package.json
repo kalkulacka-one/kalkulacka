@@ -14,6 +14,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@opentelemetry/api": "^1.9.0",
     "@repo/database": "*",
     "@repo/design-system": "*",
     "@vercel/otel": "^1.13.0",
