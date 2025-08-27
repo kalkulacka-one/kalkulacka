@@ -3,11 +3,7 @@ import { Logo } from "@repo/design-system/client";
 import "../globals.css";
 import { ThemeProvider } from "../../components/client";
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="cs">
       <body>
