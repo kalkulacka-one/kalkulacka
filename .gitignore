@@ -40,3 +40,4 @@ yarn-error.log*
 *storybook.log
 
 .claude/settings.local.json
+storybook-static
