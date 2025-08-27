@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import "../../../globals.css";
+
 import { EmbedProvider } from "../../../../components/client";
 import { type EmbedName, isEmbedName } from "../../../../config/embeds";
 

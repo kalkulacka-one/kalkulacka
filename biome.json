@@ -3,7 +3,19 @@
   "files": {
     "includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/out", "!**/.next", "!**/.vercel", "!**/styles.css", "!**/globals.css"]
   },
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "identifierOrder": "natural",
+            "groups": [[":URL:", ":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:", ":ALIAS:"], ":BLANK_LINE:", "@repo/**", ":BLANK_LINE:", ":PATH:"]
+          }
+        }
+      }
+    }
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
