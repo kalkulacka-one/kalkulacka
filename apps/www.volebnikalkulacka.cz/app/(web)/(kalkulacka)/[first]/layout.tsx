@@ -3,12 +3,12 @@ export default async function Layout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ calculator: string }>;
+  params: Promise<{ first: string }>;
 }) {
-  const { calculator } = await params;
+  const { first } = await params;
   return (
     <section>
-      <span>Calculator: `{calculator}`</span>
+      <p>First: `{first}`</p>
       <main>{children}</main>
     </section>
   );
