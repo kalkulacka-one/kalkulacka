@@ -1,13 +1,6 @@
 import { Card } from "@repo/design-system/server";
-
-// temporary type
-type Question = {
-  id: string;
-  title: string;
-  statement: string;
-  detail: string;
-  tags: string[];
-};
+import type { Question } from "../../../../packages/schema/schemas/question.schema";
+import type { Tag } from "../../../../packages/schema/schemas/tags.schema";
 
 export type QuestionCard = {
   question: Question;
@@ -25,10 +18,12 @@ export function QuestionCard({ question, questionCurrent, questionTotal }: Quest
             {questionCurrent}/{questionTotal}
           </span>
           <span>{title}</span>
-          <span>{tags}</span>
+          {tags?.map((tag: Tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
         </div>
         <h2>{statement}</h2>
-        <span>{detail}</span>
+        {detail && <span>{detail}</span>}
       </div>
     </Card>
   );
