@@ -1,0 +1,16 @@
+{
+  "id": "ac39139b-476b-41cc-a9c0-8a7c867ac7d0",
+  "createdAt": "2025-08-24T20:25:30+02:00",
+  "intro": "Vítejte ve Volební kalkulačce pro volby do poslanecké sněmovny 2025. Čeká vás 25 otázek. Stejné otázky dostaly všechny kandidující strany. Zodpovězení otázek zabere zhruba 10 minut a na konci se dozvíte, jak se jednotlivé strany shodují s vašimi názory.\n\nOslovili jsme všechny strany bez výjimky. Pokud se některá neobjeví ve výsledcích, je to proto, že (zatím) neposlala svoje odpovědi.",
+  "calculatorGroup": {
+    "id": "f3b8b1a2-c1f9-4d8e-b2d7-9f4d7a8e5b6c",
+    "key": "snemovna-2025"
+  },
+  "election": {
+    "id": "e7c2c4d9-5a1e-4b6f-8a0b-1f7c3c5b9d2a",
+    "key": "snemovna-2025"
+  },
+  "variant": {
+    "key": "inventura"
+  }
+}

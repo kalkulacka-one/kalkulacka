@@ -1,3 +1,4 @@
+import VysledekPage from "../../../../../components/vysledekPage";
 export default function Page() {
-  return <h2>Výsledek</h2>;
+  return <VysledekPage />;
 }
