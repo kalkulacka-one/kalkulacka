@@ -1,10 +1,14 @@
 import { twMerge } from "@repo/design-system/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 
-export type SteppedProgressBar = {
-  questions: any[];
+type StepStatus = boolean | null | undefined;
+
+export type SteppedProgressBar<TItem extends Record<string, unknown>> = {
+  stepItems: TItem[];
   stepCurrent: number;
   stepTotal: number;
+  idKey: keyof TItem;
+  statusKey: keyof TItem;
 } & VariantProps<typeof stepProgressVariants>;
 
 const stepProgressVariants = cva("", {
@@ -12,34 +16,36 @@ const stepProgressVariants = cva("", {
     status: {
       inFavour: "ko:bg-primary",
       against: "ko:bg-secondary",
-      // none: "bg-neutral-strong-active",
       isNull: "ko:bg-neutral-inactive",
     },
     height: {
       active: "ko:h-2 ko:bg-neutral-active!",
       inactive: "ko:h-1",
     },
-    defaultVariant: {
-      status: "isNull",
-      height: "inactive",
-    },
+  },
+  defaultVariants: {
+    status: "isNull",
+    height: "inactive",
   },
 });
 
-function checkAnswer(status: number) {
+function checkAnswer(status: StepStatus) {
   switch (status) {
-    case 1:
+    case true:
       return "inFavour";
-    case 2:
+    case false:
       return "against";
-    case 3:
-      return "isNull";
-    case 0:
+    case null:
+    case undefined:
       return "isNull";
   }
 }
 
-export function SteppedProgressBar({ questions, stepCurrent, stepTotal }: SteppedProgressBar) {
+export function SteppedProgressBar<TItem extends Record<string, unknown>>({ stepItems, stepCurrent, stepTotal, idKey, statusKey }: SteppedProgressBar<TItem>) {
+  if (!stepItems || stepItems.length === 0) {
+    return null;
+  }
+
   return (
     // biome-ignore lint/a11y/useFocusableInteractive: A non-interactive progressbar should not be focusable
     <div
@@ -50,10 +56,13 @@ export function SteppedProgressBar({ questions, stepCurrent, stepTotal }: Steppe
       aria-valuemax={stepTotal}
       className="ko:flex ko:items-center ko:justify-start"
     >
-      {questions.map((question: any[], index) => {
+      {stepItems.map((step, index) => {
+        const id = step[idKey] as string;
+        const status = step[statusKey] as StepStatus;
+
         return (
           <div
-            key={`bar-${question.id}`}
+            key={`bar-${id}`}
             aria-hidden="true"
             style={{
               flex: `1 1 calc(100% / ${stepTotal})`,
@@ -61,7 +70,7 @@ export function SteppedProgressBar({ questions, stepCurrent, stepTotal }: Steppe
             }}
             className={twMerge(
               stepProgressVariants({
-                status: checkAnswer(question.answer),
+                status: checkAnswer(status),
                 height: stepCurrent === index + 1 ? "active" : "inactive",
               }),
             )}
