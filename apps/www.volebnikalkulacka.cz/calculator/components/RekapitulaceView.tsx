@@ -1,9 +1,13 @@
-import { Button, ToggleButton } from "@repo/design-system/client";
-import { Card } from "@repo/design-system/server";
+"use client";
+
+import { Button } from "@repo/design-system/client";
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../packages/schema/schemas/question.schema";
+import { RecapQuestionCard } from "./recapQuestionCard";
 
 export type RekapitulaceView = {
+  questionStep: number;
+  maxQuestionStep: number;
   isLoading: boolean;
   questions: Question[];
   answers: Answer[];
@@ -12,7 +16,7 @@ export type RekapitulaceView = {
   onGoToResults: () => void;
 };
 
-export const RekapitulaceView = ({ isLoading, questions, answers, onAnswerChange, onGoToQuestions, onGoToResults }: RekapitulaceView) => {
+export const RekapitulaceView = ({ isLoading, questions, answers, questionStep, maxQuestionStep, onAnswerChange, onGoToQuestions, onGoToResults }: RekapitulaceView) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -20,24 +24,24 @@ export const RekapitulaceView = ({ isLoading, questions, answers, onAnswerChange
   return (
     <div>
       <div className="flex flex-col gap-2">
-        {answers?.map((answer, index) => (
-          <Card color="white" key={answer.questionId}>
-            <div>{questions[index]?.title}</div>
-            <div>{questions[index]?.statement}</div>
-            <div>{questions[index]?.detail}</div>
-            <div className="flex gap-4">
-              <ToggleButton variant="answer" color="neutral" checked={answers?.[index]?.isImportant} onChange={() => onAnswerChange(answer.questionId, "important")}>
-                Pro mě důležité
-              </ToggleButton>
-              <ToggleButton variant="answer" checked={answers?.[index]?.answer === true} color="primary" onChange={() => onAnswerChange(answer.questionId, "yes")}>
-                Jsem pro
-              </ToggleButton>
-              <ToggleButton variant="answer" checked={answers?.[index]?.answer === false} color="secondary" onChange={() => onAnswerChange(answer.questionId, "no")}>
-                Jsem proti
-              </ToggleButton>
-            </div>
-          </Card>
-        ))}
+        {answers?.map((answer, index) => {
+          const question = questions[index];
+          if (!question) {
+            return null;
+          }
+          return (
+            <RecapQuestionCard
+              key={answer.questionId}
+              question={question}
+              answer={answer}
+              questionCurrent={index + 1}
+              questionTotal={maxQuestionStep}
+              starClick={() => onAnswerChange(answer.questionId, "important")}
+              yesClick={() => onAnswerChange(answer.questionId, "yes")}
+              noClick={() => onAnswerChange(answer.questionId, "no")}
+            />
+          );
+        })}
       </div>
       <div className="flex gap-4">
         <Button color="neutral" variant="link" onClick={onGoToQuestions}>

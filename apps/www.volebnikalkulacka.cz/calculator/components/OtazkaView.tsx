@@ -3,6 +3,7 @@ import { Card } from "@repo/design-system/server";
 import React from "react";
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../packages/schema/schemas/question.schema";
+import { QuestionCard } from "./questionCard";
 
 export type OtazkaView = {
   isLoading: boolean;
@@ -26,21 +27,7 @@ export const OtazkaView = ({ isLoading, question, questionStep, maxQuestionStep,
 
   return (
     <div>
-      <div>
-        <Card color="white" key={question.id}>
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-4">
-              <span>
-                {questionStep}/{maxQuestionStep}
-              </span>
-              <span>{question.title}</span>
-              <span>{question.tags}</span>
-            </div>
-            <div className="text-2xl">{question.statement}</div>
-            <div className="text-2xl">{question.detail}</div>
-          </div>
-        </Card>
-      </div>
+      <QuestionCard question={question} questionCurrent={questionStep} questionTotal={maxQuestionStep} />
       <div className="flex gap-4">
         <ToggleButton variant="answer" color="neutral" checked={answer?.isImportant} onChange={onImportantToggle}>
           Pro mě důležité
