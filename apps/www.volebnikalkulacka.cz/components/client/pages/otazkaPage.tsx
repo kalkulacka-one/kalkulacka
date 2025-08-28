@@ -1,5 +1,10 @@
 "use client";
 
-export function OtazkaPage() {
-  return <div>Otázka page</div>;
+export function OtazkaPage({ questionNumber }: { questionNumber: number }) {
+  return (
+    <div>
+      <h2>Otázka</h2>
+      <p>questionNumber:{questionNumber}</p>
+    </div>
+  );
 }

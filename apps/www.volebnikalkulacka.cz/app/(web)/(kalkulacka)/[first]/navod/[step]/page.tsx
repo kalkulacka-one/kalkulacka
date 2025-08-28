@@ -1,9 +1,10 @@
+import { notFound } from "next/navigation";
+import { NavodPage } from "../../../../../../components/client";
+
 export default async function Page({ params }: { params: Promise<{ step: string }> }) {
-  const { step } = await params;
-  return (
-    <section>
-      <h2>Návod</h2>
-      <p>Step: {step}</p>
-    </section>
-  );
+  const stepInt = Number.parseInt((await params).step);
+  if (Number.isNaN(stepInt)) {
+    notFound();
+  }
+  return <NavodPage step={stepInt} />;
 }

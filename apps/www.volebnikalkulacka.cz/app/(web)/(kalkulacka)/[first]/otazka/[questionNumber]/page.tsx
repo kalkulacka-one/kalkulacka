@@ -1,9 +1,10 @@
+import { notFound } from "next/navigation";
+import { OtazkaPage } from "../../../../../../components/client";
+
 export default async function Page({ params }: { params: Promise<{ questionNumber: string }> }) {
-  const { questionNumber } = await params;
-  return (
-    <section>
-      <h2>Otázka</h2>
-      <p>Číslo: {questionNumber}</p>
-    </section>
-  );
+  const questionNumberInt = Number.parseInt((await params).questionNumber);
+  if (Number.isNaN(questionNumberInt)) {
+    notFound();
+  }
+  return <OtazkaPage questionNumber={questionNumberInt} />;
 }
