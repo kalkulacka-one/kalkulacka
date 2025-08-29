@@ -1,3 +1,6 @@
+import { CalculatorStoreProvider } from "../../../../../calculator/calculatorStore";
+import { parseCalculator } from "../../../../../common/dataFetch";
+
 export default async function Layout({
   children,
   params,
@@ -5,11 +8,15 @@ export default async function Layout({
   children: React.ReactNode;
   params: Promise<{ first: string; second: string }>;
 }) {
-  const { second } = await params;
+  const { first, second } = await params;
+  const parsedCalculator = await parseCalculator(first, second);
+
   return (
-    <section>
-      <p>Second: `{second}`</p>
-      <main>{children}</main>
-    </section>
+    <CalculatorStoreProvider data={parsedCalculator}>
+      <section>
+        <p>Second: `{second}`</p>
+        <main>{children}</main>
+      </section>
+    </CalculatorStoreProvider>
   );
 }

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { electionSchema } from "./election.schema.js";
+import { electionSchema } from "./election.schema";
 
 export const electionsSchema = z.array(electionSchema).describe("List of elections");
 

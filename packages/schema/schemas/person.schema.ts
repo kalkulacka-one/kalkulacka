@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { imagesSchema } from "./images.schema.js";
-import * as organizationSchema from "./organization.schema.js";
+import { imagesSchema } from "./images.schema";
+import * as organizationSchema from "./organization.schema";
 
 export const personIdSchema = z.string().uuid().describe("Unique identifier of a person in the format of UUID");
 

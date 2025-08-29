@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { imagesSchema } from "./images.schema.js";
+import { imagesSchema } from "./images.schema";
 
 export const candidateBaseSchema = z
   .object({

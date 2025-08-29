@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { timePeriodSchema } from "./time-period.schema.js";
+import { timePeriodSchema } from "./time-period.schema";
 
 export const roundSchema = z
   .object({
