@@ -6,8 +6,6 @@ import type { Question } from "../../../../packages/schema/schemas/question.sche
 import { RecapQuestionCard } from "./recapQuestionCard";
 
 export type RekapitulaceView = {
-  questionStep: number;
-  maxQuestionStep: number;
   isLoading: boolean;
   questions: Question[];
   answers: Answer[];
@@ -16,7 +14,7 @@ export type RekapitulaceView = {
   onGoToResults: () => void;
 };
 
-export const RekapitulaceView = ({ isLoading, questions, answers, questionStep, maxQuestionStep, onAnswerChange, onGoToQuestions, onGoToResults }: RekapitulaceView) => {
+export const RekapitulaceView = ({ isLoading, questions, answers, onAnswerChange, onGoToQuestions, onGoToResults }: RekapitulaceView) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -35,7 +33,7 @@ export const RekapitulaceView = ({ isLoading, questions, answers, questionStep, 
               question={question}
               answer={answer}
               questionCurrent={index + 1}
-              questionTotal={maxQuestionStep}
+              questionTotal={questions.length}
               starClick={() => onAnswerChange(answer.questionId, "important")}
               yesClick={() => onAnswerChange(answer.questionId, "yes")}
               noClick={() => onAnswerChange(answer.questionId, "no")}
@@ -47,8 +45,8 @@ export const RekapitulaceView = ({ isLoading, questions, answers, questionStep, 
         <Button color="neutral" variant="link" onClick={onGoToQuestions}>
           Otázky
         </Button>
-        <Button color="neutral" variant="link" onClick={onGoToResults}>
-          Výsledek
+        <Button color="primary" variant="filled" onClick={onGoToResults}>
+          Zobrazit výsledky
         </Button>
       </div>
     </div>

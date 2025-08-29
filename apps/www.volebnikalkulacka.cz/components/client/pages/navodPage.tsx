@@ -10,13 +10,14 @@ export function NavodPage({ guideStep }: { guideStep: number }) {
   const router = useRouter();
   const storeGuideStep = useElectionStore((state) => state.guideStep);
   const setStoreGuideStep = useElectionStore((state) => state.setGuideStep);
+  const handleGuideStep = useElectionStore((state) => state.handleGuideStep);
 
   useEffect(() => {
     setStoreGuideStep(guideStep);
   }, [guideStep, setStoreGuideStep]);
 
   const handleStartCalculator = () => {
-    router.push(`/${params.first}/${params.first}/otazka/1`);
+    router.push(`/${params.first}/${params.second}/otazka/1`);
   };
 
   const handleSkip = () => {
@@ -31,6 +32,7 @@ export function NavodPage({ guideStep }: { guideStep: number }) {
       calculatorIntro={calculator?.calculator.intro}
       onStartCalculator={handleStartCalculator}
       onSkip={handleSkip}
+      handleGuideStep={handleGuideStep}
     />
   );
 }

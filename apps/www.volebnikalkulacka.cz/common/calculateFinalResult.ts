@@ -40,7 +40,7 @@ export function calculateFinalResult(userAnswers: any, candidates: any, allCandi
         id: candidate.id,
         name: candidate.name,
         percentage: percentage,
-        memberResults: memberResults,
+        memberResults: memberResults.sort((a, b) => b.percentage - a.percentage),
       });
     }
   }

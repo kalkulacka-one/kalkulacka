@@ -60,7 +60,7 @@ export function OtazkaPage({ questionStep }: { questionStep: number }) {
   };
 
   const handleNavod = () => {
-    router.push(`/${params.first}/${params.second}/navod/1`);
+    router.push(`/${params.first}/${params.second}/navod/4`);
   };
 
   return (
@@ -71,6 +71,7 @@ export function OtazkaPage({ questionStep }: { questionStep: number }) {
         question={currentQuestion}
         questionStep={storeQuestionStep}
         maxQuestionStep={storeMaxQuestionStep}
+        answers={answers}
         answer={currentAnswer}
         onImportantToggle={handleImportantToggle}
         onYes={handleYes}

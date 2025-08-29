@@ -1,5 +1,5 @@
 import { Button } from "@repo/design-system/client";
-import { Card } from "@repo/design-system/server";
+import { ResultCandidateCard } from "./resultCandidateCard";
 
 type Result = any;
 
@@ -29,22 +29,21 @@ export const VysledekView = ({ isLoading, results, noAnswerFromUser, onStartCalc
 
   return (
     <div className="h-1/3">
-      {results.map((result) => (
-        <Card key={result.id}>
-          <div>{result.name}</div>
-          <div>{Math.round(result.percentage)} %</div>
-          <details>
+      {results.map((result, index) => (
+        <div key={result.id}>
+          <ResultCandidateCard strong={index === 0} order={index + 1} result={result} />
+          <details key={result.memberResults.id}>
             <summary>Výsledky členů</summary>
             <ul>
               {result.memberResults.map((memberResult: any) => (
                 <li className="flex justify-between" key={memberResult.id}>
                   <span>{memberResult.id}</span>
-                  <span>{memberResult.percentage} %</span>
+                  <span>{Math.round(memberResult.percentage)} %</span>
                 </li>
               ))}
             </ul>
           </details>
-        </Card>
+        </div>
       ))}
       <Button color="neutral" variant="link" onClick={onGoToRecap}>
         Rekapitulace

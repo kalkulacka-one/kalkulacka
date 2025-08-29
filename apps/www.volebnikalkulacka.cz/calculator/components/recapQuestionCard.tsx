@@ -40,7 +40,7 @@ export function RecapQuestionCard({ question, answer, questionCurrent, questionT
             <h2>{statement}</h2>
           </div>
           <div>
-            <Button variant="answer" color="neutral">
+            <Button variant="answer" color={answer.answer === true ? "primary" : answer.answer === false ? "secondary" : "neutral"}>
               <Icon size="large" icon={answer.answer === true ? mdiCheckBold : answer.answer === false ? mdiCloseThick : answer.answer === null ? mdiSlashForward : mdiChevronDown} decorative={true} />
             </Button>
           </div>

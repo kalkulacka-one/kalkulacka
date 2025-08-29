@@ -1,4 +1,5 @@
 import { useParams, useRouter } from "next/navigation";
+import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
 import { VysledekView } from "../../../calculator/components/VysledekView";
 import { calculateFinalResult } from "../../../common/calculateFinalResult";
 import { useElectionStore } from "../../../stores/electionStore";
@@ -24,7 +25,6 @@ export function VysledekPage() {
   const candidatesAnswers = calculator.candidatesAnswers;
   const candidates = calculator.candidates;
   const results = calculateFinalResult(answers, candidates, candidatesAnswers);
-  const noAnswerFromUser = answers.every((answer) => answer.answer === null);
-
+  const noAnswerFromUser = answers.every((answer: Answer) => answer.answer === null);
   return <VysledekView isLoading={false} results={results} noAnswerFromUser={noAnswerFromUser} onStartCalculator={handleStartCalculator} onGoToRecap={handleGoToRecap} />;
 }
