@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { answerSchema } from "./answer.schema";
 
-export const candidateAnswerSchema = answerSchema.extend({
-  respondent: z.literal("candidate").describe("The respondent must be a candidate."),
+export const candidatesAnswerSchema = answerSchema.extend({
+  respondent: z.literal("candidate").describe("The respondent must be a candidate.").optional(),
 });
 
-export const candidateAnswers = z.record(z.string().uuid(), z.array(candidateAnswerSchema)).describe("List of candidates' answers");
+export const candidatesAnswers = z.record(z.string().uuid(), z.array(candidatesAnswerSchema)).describe("List of candidates' answers");
 
-export type CandidateAnswers = z.infer<typeof candidateAnswers>;
+export type CandidatesAnswers = z.infer<typeof candidatesAnswers>;

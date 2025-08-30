@@ -17,6 +17,9 @@ export const candidateBaseSchema = z
       )
       .describe("Ordered list of persons or organizations that are related to the candidate"),
     displayName: z.string().describe("Display name of a candidate").optional(),
+    // new props added
+    displayShortName: z.string().describe("Display short name of a candidate").optional(),
+    displayAdditionalName: z.string().describe("Display additional name of a candidate").optional(),
     images: imagesSchema.optional(),
     motto: z.string().describe("Motto of a candidate").optional(),
     number: z.number().int().describe("Official candidate list (usually drawn) number assigned by a public authority").optional(),

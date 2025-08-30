@@ -1,5 +1,5 @@
-import { CalculatorStoreProvider } from "../../../../calculator/calculatorStore";
-import { fetchCalculator } from "../../../../common/dataFetch";
+import { type CalculatorData, CalculatorStoreProvider } from "../../../../calculator/calculatorStore";
+import { loadCalculatorData } from "../../../../common/dataFetch";
 
 export default async function Layout({
   children,
@@ -9,15 +9,13 @@ export default async function Layout({
   params: Promise<{ first: string }>;
 }) {
   const { first } = await params;
-  // const data = await fetchCalculator(first);
-  // console.log(data);
-
+  const calculatorData: CalculatorData = await loadCalculatorData(first);
   return (
-    // <CalculatorStoreProvider data={data}>
-    <section>
-      <p>First: `{first}`</p>
-      <main>{children}</main>
-    </section>
-    // </CalculatorStoreProvider>
+    <CalculatorStoreProvider calculatorData={calculatorData}>
+      <section>
+        <p>First: `{first}`</p>
+        <main>{children}</main>
+      </section>
+    </CalculatorStoreProvider>
   );
 }
