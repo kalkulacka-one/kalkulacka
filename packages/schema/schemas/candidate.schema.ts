@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { imagesSchema } from "./images.schema.js";
 
 export const candidateBaseSchema = z

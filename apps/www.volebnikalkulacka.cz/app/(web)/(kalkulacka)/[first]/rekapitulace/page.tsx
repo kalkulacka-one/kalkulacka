@@ -1,3 +1,5 @@
+import { ReviewPage } from "../../../../../components/client/pages";
+
 export default function Page() {
-  return <h2>Rekapitulace</h2>;
+  return <ReviewPage />;
 }
