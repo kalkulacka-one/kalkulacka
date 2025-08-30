@@ -9,7 +9,7 @@ function getAbsolutePath(value: string): string {
   return dirname(require.resolve(join(value, "package.json")));
 }
 const config: StorybookConfig = {
-  stories: ["../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../components/**/*.stories.@(js|jsx|mjs|ts|tsx)", "../calculator/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [],
   framework: {
     name: getAbsolutePath("@storybook/nextjs"),
