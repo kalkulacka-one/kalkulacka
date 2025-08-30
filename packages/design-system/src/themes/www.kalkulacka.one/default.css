@@ -1,6 +1,7 @@
 :root {
   --ko-typeface-display: "Radio Canada";
-  --ko-typeface-sans: "Inter";
+  --ko-typeface-sans: "Geist";
+  --ko-typeface-mono: "Geist Mono";
 
   --ko-palette-logo-check: rgb(25, 25, 32);
   --ko-palette-logo-slash: rgb(25, 25, 32);

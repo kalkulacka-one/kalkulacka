@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { Card } from "@repo/design-system/server";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",

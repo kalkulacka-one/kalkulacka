@@ -1,7 +1,7 @@
 import { Input as InputHeadless, type InputProps as InputPropsHeadless } from "@headlessui/react";
 import type { Icon } from "@repo/design-system/client";
 import { twMerge } from "@repo/design-system/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 export type Input = {

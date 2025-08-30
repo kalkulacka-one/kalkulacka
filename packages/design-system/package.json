@@ -40,24 +40,24 @@
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
-  "packageManager": "npm@11.4.1",
+  "packageManager": "npm@11.5.2",
   "devDependencies": {
     "@repo/typescript-config": "*",
-    "@tailwindcss/cli": "^4.1.8",
-    "@tailwindcss/postcss": "^4.1.8",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@tailwindcss/cli": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.12",
+    "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
-    "@turbo/gen": "^2.5.4",
     "@types/node": "^22.15.29",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
+    "@turbo/gen": "^2.5.6",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.8",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.4",
-    "react": "^19.1.0",
-    "typescript": "^5.8.3"
+    "postcss": "^8.5.6",
+    "react": "^19.1.1",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.4",
+    "@headlessui/react": "^2.2.7",
     "@mdi/js": "^7.4.47",
     "class-variance-authority": "^0.7.1",
     "tailwind-merge": "^3.3.1"
