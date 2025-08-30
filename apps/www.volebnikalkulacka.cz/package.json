@@ -12,7 +12,7 @@
     "ncu:upgrade": "ncu -u",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 3021",
     "build-storybook": "storybook build"
   },
   "dependencies": {
