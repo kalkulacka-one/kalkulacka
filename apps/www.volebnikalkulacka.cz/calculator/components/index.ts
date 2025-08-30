@@ -1,1 +1,1 @@
-export * from "./resultCandidateCard";
+export * from "./result-card";
