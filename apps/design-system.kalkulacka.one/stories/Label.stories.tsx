@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { Field, Label } from "@repo/design-system/client";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Label> = {
   title: "Components/Label",
