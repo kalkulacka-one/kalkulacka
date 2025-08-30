@@ -1,6 +1,5 @@
-import { Card } from "@repo/design-system/server";
-import { ProgressBar } from "@repo/design-system/server";
-import { type VariantProps, cva } from "class-variance-authority";
+import { Card, ProgressBar } from "@repo/design-system/server";
+import { cva, type VariantProps } from "class-variance-authority";
 
 type Result = {
   id: number;
