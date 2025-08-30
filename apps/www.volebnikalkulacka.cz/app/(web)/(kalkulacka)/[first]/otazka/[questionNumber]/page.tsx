@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+
 import { QuestionPage } from "../../../../../../components/client/pages";
 
 export default async function Page({ params }: { params: Promise<{ questionNumber: string }> }) {
