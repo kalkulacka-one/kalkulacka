@@ -1,4 +1,4 @@
-import { ReviewPage } from "../../../../../components/client/pages";
+import { ReviewPage } from "../../../../../components/server";
 
 export default function Page() {
   return <ReviewPage />;
