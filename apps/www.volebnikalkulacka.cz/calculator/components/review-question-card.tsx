@@ -1,4 +1,3 @@
-"use client";
 import { mdiCheckBold, mdiChevronDown, mdiCloseThick, mdiSlashForward, mdiStar, mdiStarOutline } from "@mdi/js";
 import { Button, Icon, ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
