@@ -1,5 +1,3 @@
-"use client";
-
 export function GuidePage({ step }: { step: number }) {
   return (
     <div>

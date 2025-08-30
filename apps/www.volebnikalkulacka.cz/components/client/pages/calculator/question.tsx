@@ -1,5 +1,3 @@
-"use client";
-
 export function QuestionPage({ questionNumber }: { questionNumber: number }) {
   return (
     <div>
