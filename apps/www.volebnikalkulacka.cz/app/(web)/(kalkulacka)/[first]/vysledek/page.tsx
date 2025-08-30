@@ -1,3 +1,5 @@
+import { ResultPage } from "../../../../../components/client/pages";
+
 export default function Page() {
-  return <h2>Výsledek</h2>;
+  return <ResultPage />;
 }

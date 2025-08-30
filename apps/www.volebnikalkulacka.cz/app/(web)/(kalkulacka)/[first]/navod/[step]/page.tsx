@@ -1,9 +1,11 @@
+import { notFound } from "next/navigation";
+
+import { GuidePage } from "../../../../../../components/client/pages";
+
 export default async function Page({ params }: { params: Promise<{ step: string }> }) {
-  const { step } = await params;
-  return (
-    <section>
-      <h2>Návod</h2>
-      <p>Step: {step}</p>
-    </section>
-  );
+  const stepInt = Number.parseInt((await params).step);
+  if (Number.isNaN(stepInt)) {
+    notFound();
+  }
+  return <GuidePage step={stepInt} />;
 }
