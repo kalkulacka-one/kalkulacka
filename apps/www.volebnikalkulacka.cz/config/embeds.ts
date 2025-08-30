@@ -11,5 +11,5 @@ export const embedsConfig = {
 export type EmbedName = keyof typeof embedsConfig;
 
 export function isEmbedName(name: string): name is EmbedName {
-  return Object.prototype.hasOwnProperty.call(embedsConfig, name);
+  return Object.hasOwn(embedsConfig, name);
 }
