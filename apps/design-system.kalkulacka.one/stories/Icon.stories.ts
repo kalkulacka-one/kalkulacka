@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { mdiAccount } from "@mdi/js";
 import { Icon } from "@repo/design-system/client";
 import { EnvelopeIcon } from "@repo/design-system/icons";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Icon> = {
   title: "Components/Icon",

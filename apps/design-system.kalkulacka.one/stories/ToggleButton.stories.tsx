@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { ToggleButton } from "@repo/design-system/client";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "storybook/internal/preview-api";
 
 const meta: Meta<typeof ToggleButton> = {

@@ -1,3 +1,3 @@
-import Page from "../../otazka/page";
+import Page from "../../rekapitulace/page";
 
 export default Page;
