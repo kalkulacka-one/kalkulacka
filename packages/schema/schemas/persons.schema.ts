@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { personSchema } from "./person.schema.js";
 
 export const personsSchema = z.array(personSchema).describe("List of persons");

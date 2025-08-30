@@ -1,5 +1,5 @@
 export default {
-  async fetch(request, env, ctx) {
+  async fetch() {
     return new Response("Kalkulacka.1");
   },
 };
