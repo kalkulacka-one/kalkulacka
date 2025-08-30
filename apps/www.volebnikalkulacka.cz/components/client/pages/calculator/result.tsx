@@ -1,5 +1,5 @@
 "use client";
 
-export function VysledekPage() {
+export function ResultPage() {
   return <div>Výsledek</div>;
 }

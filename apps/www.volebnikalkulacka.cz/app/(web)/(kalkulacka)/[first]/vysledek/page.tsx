@@ -1,5 +1,5 @@
-import { VysledekPage } from "../../../../../components/client";
+import { ResultPage } from "../../../../../components/client/pages";
 
 export default function Page() {
-  return <VysledekPage />;
+  return <ResultPage />;
 }

@@ -1,5 +1,5 @@
 "use client";
 
-export function RekapitulacePage() {
+export function ReviewPage() {
   return <div>Rekapitulace</div>;
 }

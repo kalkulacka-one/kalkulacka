@@ -1,6 +1,6 @@
 "use client";
 
-export function NavodPage({ step }: { step: number }) {
+export function GuidePage({ step }: { step: number }) {
   return (
     <div>
       <h2>Návod</h2>

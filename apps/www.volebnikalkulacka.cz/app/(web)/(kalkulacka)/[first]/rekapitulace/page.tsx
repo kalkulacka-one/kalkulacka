@@ -1,5 +1,5 @@
-import { RekapitulacePage } from "../../../../../components/client";
+import { ReviewPage } from "../../../../../components/client/pages";
 
 export default function Page() {
-  return <RekapitulacePage />;
+  return <ReviewPage />;
 }
