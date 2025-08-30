@@ -10,6 +10,9 @@ const themeLoaders: Record<string, () => Promise<string>> = {
   "Volební kalkulačka (CZ)": async () =>
     // @ts-ignore
     (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/default")).default,
+  "Volební kalkulačka (CZ) — Generace F": async () =>
+    // @ts-ignore
+    (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/generace-f")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
