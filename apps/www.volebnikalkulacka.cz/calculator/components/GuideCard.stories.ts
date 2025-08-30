@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { GuideCard } from "@repo/design-system/server";
+import { GuideCard } from "./guideCard";
 
 const meta: Meta<typeof GuideCard> = {
   title: "Components/GuideCard",
