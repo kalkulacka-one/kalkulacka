@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ResultCandidateCard } from "./result-card";
+import { ResultCard } from "./result-card";
 
-const meta: Meta<typeof ResultCandidateCard> = {
-  title: "Components/ResultCandidateCard",
-  component: ResultCandidateCard,
+const meta: Meta<typeof ResultCard> = {
+  title: "Components/ResultCard",
+  component: ResultCard,
   tags: ["autodocs"],
   argTypes: {
     order: {
@@ -13,7 +13,7 @@ const meta: Meta<typeof ResultCandidateCard> = {
   },
 };
 
-type ResultCandidateCardStory = StoryObj<typeof meta>;
+type ResultCardStory = StoryObj<typeof meta>;
 
 const results = [
   {
@@ -42,7 +42,7 @@ const results = [
   },
 ];
 
-export const Default: ResultCandidateCardStory = {
+export const Default: ResultCardStory = {
   args: {
     order: 1,
   },
@@ -50,7 +50,7 @@ export const Default: ResultCandidateCardStory = {
     return (
       <>
         {results.map((result, index) => (
-          <ResultCandidateCard {...args} result={result} key={result.id} order={index + 1} strong={index === 0} />
+          <ResultCard {...args} result={result} key={result.id} order={index + 1} strong={index === 0} />
         ))}
       </>
     );

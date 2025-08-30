@@ -8,13 +8,13 @@ type Result = {
   value: number;
 };
 
-export type ResultCandidateCard = {
+export type ResultCard = {
   result: Result;
   order: number;
   strong?: boolean;
-} & VariantProps<typeof ResultCandidateCardCircleVariants>;
+} & VariantProps<typeof ResultCardCircleVariants>;
 
-const ResultCandidateCardCircleVariants = cva("ko:flex ko:items-center ko:justify-center ko:rounded-full", {
+const ResultCardCircleVariants = cva("ko:flex ko:items-center ko:justify-center ko:rounded-full", {
   variants: {
     strong: {
       true: "ko:bg-primary ko:size-18 ko:text-white ko:text-xl",
@@ -23,13 +23,13 @@ const ResultCandidateCardCircleVariants = cva("ko:flex ko:items-center ko:justif
   },
 });
 
-export function ResultCandidateCard({ result, order, strong }: ResultCandidateCard) {
+export function ResultCard({ result, order, strong }: ResultCard) {
   const { id, coalition_long, coalition_short, value } = result;
   return (
     <Card corner="topLeft">
       <div className="ko:flex ko:gap-4 ko:items-center">
         <div>
-          <div className={ResultCandidateCardCircleVariants({ strong })}>{order}.</div>
+          <div className={ResultCardCircleVariants({ strong })}>{order}.</div>
         </div>
         <div className="ko:flex ko:flex-col ko:flex-auto">
           <div className={`ko:font-bold ${strong ? "ko:text-2xl" : "ko:text-base"}`}>{coalition_short}</div>
