@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { GuideCard } from "./guide-card";
+import { Guide } from "./guide";
 
-const meta: Meta<typeof GuideCard> = {
-  title: "Components/GuideCard",
-  component: GuideCard,
+const meta: Meta<typeof Guide> = {
+  title: "Components/Guide",
+  component: Guide,
   tags: ["autodocs"],
   argTypes: {
     stepCurrent: {
@@ -15,9 +15,9 @@ const meta: Meta<typeof GuideCard> = {
   },
 };
 
-type GuideCardStory = StoryObj<typeof meta>;
+type GuideStory = StoryObj<typeof meta>;
 
-export const Default: GuideCardStory = {
+export const Default: GuideStory = {
   args: {
     stepCurrent: 2,
   },

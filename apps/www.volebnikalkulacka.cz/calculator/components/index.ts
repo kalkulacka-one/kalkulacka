@@ -1,1 +1,1 @@
-export * from "./guide-card";
+export * from "./guide";

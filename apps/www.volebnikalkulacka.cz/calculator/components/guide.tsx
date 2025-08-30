@@ -2,7 +2,7 @@ import { mdiArrowRight, mdiCheckBold, mdiCloseThick, mdiStar, mdiStarOutline } f
 import { Icon } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 
-export type GuideCard = {
+export type Guide = {
   stepCurrent: number;
 };
 
@@ -41,7 +41,7 @@ function Content(stepCurrent: number) {
   }
 }
 
-export function GuideCard({ stepCurrent }: GuideCard) {
+export function Guide({ stepCurrent }: Guide) {
   const content = Content(stepCurrent);
   return (
     <Card corner="bottomRight">
