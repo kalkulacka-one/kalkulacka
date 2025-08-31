@@ -1,0 +1,37 @@
+[
+  {
+    "id": "679d787d-258f-4dda-abd8-885b69ab1255",
+    "title": "Odvolání Pekarové Adamové",
+    "statement": "Hlasovali byste pro odvolání M. Pekarové Adamové z funkce předsedkyně Sněmovny?",
+    "detail": "Markéta Pekarová Adamová (TOP 09 / SPOLU) je předsedkyní Sněmovny. V prosinci 2024 padl návrh, aby byla odvolána. Hlasovalo se zařazení tohoto bodu na jednání Sněmovny.",
+    "tags": ["parlament"]
+  },
+  {
+    "id": "7c0edbcc-1d31-44cf-8164-48f2844ba042",
+    "title": "Korespondenční volba",
+    "statement": "Hlasovali byste pro, aby občané ČR, kteří žijí v zahraničí, mohli volit korespondenčně ve volbách do parlamentu?",
+    "detail": "Občané ČR, kteří žijí v zahraničí, mohli hlasovat do parlamentu mimo ČR jen na vybraných místech, obvykle na českých velvyslanectvích v hlavních městech dnaého státu.",
+    "tags": ["demokracie"]
+  },
+  {
+    "id": "1e4f5504-586d-4246-9a8f-982b909385a4",
+    "title": "Koncesionářské poplatky",
+    "statement": "Hlasovali byste pro zvýšení koncesionářských poplatků pro Českou televizi a Český rozhlas?",
+    "detail": "Bylo navrženo zvýšit koncesionářské poplatky pro ČT a ČRo, a to ze 135 na 150 Kč měsíčně pro Českou televizi a ze 45 na 55 Kč měsíčně pro Český rozhlas. Poplatky by se částečně zvyšovaly při inflaci.",
+    "tags": ["média"]
+  },
+  {
+    "id": "e62219f9-4abf-499d-8baa-14c823a1b303",
+    "title": "Rusko hrozba",
+    "statement": "Hlasovali byste pro, aby Sněmovna označila za největší bezpečnostní hrozbu pro ČR ruský režim?",
+    "detail": "",
+    "tags": ["zahraničí"]
+  },
+  {
+    "id": "61ca6304-74f6-465a-9983-f28b8e9b7894",
+    "title": "Den samozdatu",
+    "statement": "Hlasovali byste pro vyhlášení 12. října Dnem samizdatu?",
+    "detail": "Den samizdatu stanovený na 12. října má být připomínkou vydávání nezávislých tiskovin vlastním nákladem v době totality a na památku 92 českých a slovenských vydavatelů samizdatu, kteří v daný den roku 1988 dopisem adresovaným tehdejšímu komunistickému prezidentu Gustavu Husákovi protestovali proti uvěznění křesťanského aktivisty Ivana Polanského.",
+    "tags": ["demokracie"]
+  }
+]
