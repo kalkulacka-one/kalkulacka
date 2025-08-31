@@ -1,5 +1,8 @@
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
+import { Introduction } from ".";
 
 const data = {
   id: "00000000-0000-0000-0000-000000000000",
@@ -10,6 +13,10 @@ const data = {
   intro: "Čeká vás 35 otázek, na které jsme se zeptali všech 26 kandidujících subjektů.",
 } satisfies Calculator;
 
-export function GuidePage({ step }: { step: number }) {
-  return <AppGuidePage calculator={data} step={step} />;
-}
+describe("Introduction", () => {
+  it("renders title and intro", () => {
+    render(<Introduction calculator={data} />);
+    expect(screen.getByText(data.title)).toBeInTheDocument();
+    expect(screen.getByText(data.intro)).toBeInTheDocument();
+  });
+});
