@@ -2,9 +2,9 @@ import { mdiCheckBold, mdiChevronDown, mdiCloseThick, mdiSlashForward, mdiStar, 
 import { Button, Icon, ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 
-import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
-import type { Question } from "../../../../packages/schema/schemas/question.schema";
-import type { Tag } from "../../../../packages/schema/schemas/tags.schema";
+import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
+import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
+import type { Tag } from "../../../../../../packages/schema/schemas/tags.schema";
 
 export type RecapQuestionCard = {
   question: Question;
