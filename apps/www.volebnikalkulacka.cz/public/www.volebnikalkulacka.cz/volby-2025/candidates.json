@@ -1,0 +1,3835 @@
+[
+  {
+    "id": "fe70dc1c-3094-43a6-9201-f577f5fda168",
+    "name": "ANO 2011",
+    "shortName": "ANO",
+    "nestedCandidates": [
+      {
+        "id": "60252545-f73a-43eb-a10a-bf2ac068227d",
+        "references": [
+          {
+            "id": "c88570ca-b53c-4407-bc69-7c73879869ff",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Rais",
+        "displayShortName": "Rais",
+        "displayAdditionalName": "Karel",
+        "number": 1889
+      },
+      {
+        "id": "63b9f8ff-a138-4920-aa61-c184dd232a7c",
+        "references": [
+          {
+            "id": "eb3c6ba7-bcf8-4cee-bc73-fbcffa4d6b73",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Stanislav Berkovec",
+        "displayShortName": "Berkovec",
+        "displayAdditionalName": "Stanislav",
+        "number": 1765
+      },
+      {
+        "id": "a07b401c-4af3-4ebb-90e1-fddbc6bdea43",
+        "references": [
+          {
+            "id": "64f7d9ca-2933-490e-919c-d847211069f4",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Romana Fischerová",
+        "displayShortName": "Fischerová",
+        "displayAdditionalName": "Romana",
+        "number": 1793
+      },
+      {
+        "id": "d744a3e3-5900-494d-8b26-704a8b9ecf17",
+        "references": [
+          {
+            "id": "0d8474dd-c758-4f3c-be33-9a1b7d10563b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Josef Bělica",
+        "displayShortName": "Bělica",
+        "displayAdditionalName": "Josef",
+        "number": 1756
+      },
+      {
+        "id": "9be04f6a-2480-4843-8dc9-5b50fb57e9c3",
+        "references": [
+          {
+            "id": "bd8494bc-d952-47e0-b359-49d4e1d9ca34",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Tureček",
+        "displayShortName": "Tureček",
+        "displayAdditionalName": "Karel",
+        "number": 1920
+      },
+      {
+        "id": "77ccddd6-c722-4298-8ac4-9475c9ddc2c2",
+        "references": [
+          {
+            "id": "9cfecf71-81de-48eb-8ff3-3d7e6c1c312e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Kolovratník",
+        "displayShortName": "Kolovratník",
+        "displayAdditionalName": "Martin",
+        "number": 1831
+      },
+      {
+        "id": "732d1a06-ed42-49f0-858f-265af69c7e1f",
+        "references": [
+          {
+            "id": "7830a120-2739-48d7-909b-42f824edc5f5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Růžička",
+        "displayShortName": "Růžička",
+        "displayAdditionalName": "Pavel",
+        "number": 1896
+      },
+      {
+        "id": "c44d6c27-02c7-479b-97bd-8d75c8b053e0",
+        "references": [
+          {
+            "id": "b932b95b-d9b7-44ea-87e9-f7427540827d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Kamila Bláhová",
+        "displayShortName": "Bláhová",
+        "displayAdditionalName": "Kamila",
+        "number": 1949
+      },
+      {
+        "id": "1affa693-cace-48ee-970f-32a5d06c174b",
+        "references": [
+          {
+            "id": "fb1d832e-8c5a-4236-93eb-131bf8d47399",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lubomír Wenzl",
+        "displayShortName": "Wenzl",
+        "displayAdditionalName": "Lubomír",
+        "number": 1935
+      },
+      {
+        "id": "0c9f64ee-a339-43d0-8a06-1551e311b3ae",
+        "references": [
+          {
+            "id": "7cb03fc9-117e-48af-acfc-dcea0efb7d96",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Havlíček",
+        "displayShortName": "Havlíček",
+        "displayAdditionalName": "Karel",
+        "number": 1804
+      },
+      {
+        "id": "9855ac8f-c479-42fa-9756-57db29a6dee0",
+        "references": [
+          {
+            "id": "d2378441-3bd1-4990-a95d-36a117aaa39f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Josef Váňa",
+        "displayShortName": "Váňa",
+        "displayAdditionalName": "Josef",
+        "number": 1950
+      },
+      {
+        "id": "b2e49181-894e-486f-9136-5c0ec04127d7",
+        "references": [
+          {
+            "id": "9db8cc90-75b5-4f84-921c-c8b7cfaa6d75",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lenka Knechtová",
+        "displayShortName": "Knechtová",
+        "displayAdditionalName": "Lenka",
+        "number": 1825
+      },
+      {
+        "id": "aaba310d-3f85-4aa7-94d6-83aae9a7135d",
+        "references": [
+          {
+            "id": "1391edc2-f105-440b-982c-40700cdaf72c",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Kubík",
+        "displayShortName": "Kubík",
+        "displayAdditionalName": "Jan",
+        "number": 1840
+      },
+      {
+        "id": "14e9340b-b2c3-4ab8-98a2-0c4852e9ba2c",
+        "references": [
+          {
+            "id": "d26868db-d52c-4899-8c46-224b67824d38",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Milan Brázdil",
+        "displayShortName": "Brázdil",
+        "displayAdditionalName": "Milan",
+        "number": 1770
+      },
+      {
+        "id": "67acc7cd-a391-44bd-9ec4-f64809670a14",
+        "references": [
+          {
+            "id": "dfc8ec8a-c28d-4811-9da4-3651d16110f0",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Kamal Farhan",
+        "displayShortName": "Farhan",
+        "displayAdditionalName": "Kamal",
+        "number": 1786
+      },
+      {
+        "id": "bf8b33d1-d495-4819-8e59-e15d36f6341d",
+        "references": [
+          {
+            "id": "7efb442d-b3ce-4caf-9db2-a968ca8be67f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Berkovcová",
+        "displayShortName": "Berkovcová",
+        "displayAdditionalName": "Jana",
+        "number": 1764
+      },
+      {
+        "id": "adbd14a6-e546-4452-8db0-44890e6a9a1c",
+        "references": [
+          {
+            "id": "0e851549-a7bf-4427-8337-ee9e18675075",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaroslava Pokorná Jermanová",
+        "displayShortName": "Pokorná Jermanová",
+        "displayAdditionalName": "Jaroslava",
+        "number": 1884
+      },
+      {
+        "id": "90428b08-c337-4096-aa05-43cc44bd9468",
+        "references": [
+          {
+            "id": "89af3a67-65d6-40e7-b9a8-cebd57aaeee8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Mračková Vildumetzová",
+        "displayShortName": "Mračková Vildumetzová",
+        "displayAdditionalName": "Jana",
+        "number": 1860
+      },
+      {
+        "id": "9cfa727e-531f-4947-a789-558a3d661e60",
+        "references": [
+          {
+            "id": "de99c304-f8a2-4ac4-b88e-6c233518b648",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marek Novák",
+        "displayShortName": "Novák",
+        "displayAdditionalName": "Marek",
+        "number": 1867
+      },
+      {
+        "id": "f7edf5ed-8bd6-477a-926b-f2703251365a",
+        "references": [
+          {
+            "id": "751775c9-4919-4c8e-9fbb-1da67383f0ab",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Miroslav Samaš",
+        "displayShortName": "Samaš",
+        "displayAdditionalName": "Miroslav",
+        "number": 1948
+      },
+      {
+        "id": "e5a14166-b424-4f15-b843-dcb7cc50f8fe",
+        "references": [
+          {
+            "id": "a0b77a48-ba66-43ea-ae89-e33e5be159d2",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Helena Válková",
+        "displayShortName": "Válková",
+        "displayAdditionalName": "Helena",
+        "number": 1924
+      },
+      {
+        "id": "c83b5422-edf2-4cd8-8956-f3ea88ada4a9",
+        "references": [
+          {
+            "id": "171b28a7-ba68-4803-84bf-0e1c22edd5f9",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Eva Fialová",
+        "displayShortName": "Fialová",
+        "displayAdditionalName": "Eva",
+        "number": 1791
+      },
+      {
+        "id": "1cfd0044-aeae-40aa-96b0-36b458c3c1c3",
+        "references": [
+          {
+            "id": "8e4c3571-5a5e-4999-bf77-dd563314df31",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lenka Dražilová",
+        "displayShortName": "Dražilová",
+        "displayAdditionalName": "Lenka",
+        "number": 1780
+      },
+      {
+        "id": "78ca5dfa-45e3-424b-874b-90947348a666",
+        "references": [
+          {
+            "id": "3ae487f6-d383-4fa3-808d-a9f14159831b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Milan Feranec",
+        "displayShortName": "Feranec",
+        "displayAdditionalName": "Milan",
+        "number": 1788
+      },
+      {
+        "id": "2c32b61c-94ff-4d3f-a74b-95a03dcb721b",
+        "references": [
+          {
+            "id": "e3c91809-0c88-4023-a572-e60bfb18b762",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Pastuchová",
+        "displayShortName": "Pastuchová",
+        "displayAdditionalName": "Jana",
+        "number": 1878
+      },
+      {
+        "id": "e6c4e73f-467c-48db-bd33-c84438e2ece1",
+        "references": [
+          {
+            "id": "a30f7a26-38a0-4d17-ae9f-17bf774c4b97",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Vrána",
+        "displayShortName": "Vrána",
+        "displayAdditionalName": "Petr",
+        "number": 1933
+      },
+      {
+        "id": "d071386e-be73-4d0e-95bd-177f21a190cc",
+        "references": [
+          {
+            "id": "a6dd780d-d88b-4562-9859-8a1695a58891",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "David Štolpa",
+        "displayShortName": "Štolpa",
+        "displayAdditionalName": "David",
+        "number": 1917
+      },
+      {
+        "id": "9fea9a04-c0c2-499a-b787-a0f561111603",
+        "references": [
+          {
+            "id": "4dc29fde-1075-476b-9814-ce770bb88b36",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ivan Jáč",
+        "displayShortName": "Jáč",
+        "displayAdditionalName": "Ivan",
+        "number": 1813
+      },
+      {
+        "id": "03e4cea1-0b51-45b8-9478-a77e7ec56924",
+        "references": [
+          {
+            "id": "93fc4b0e-9191-4507-aa98-598ae0d7de65",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaroslav Faltýnek",
+        "displayShortName": "Faltýnek",
+        "displayAdditionalName": "Jaroslav",
+        "number": 1785
+      },
+      {
+        "id": "1be5fbdd-8b5b-4995-8350-8ae8021b0fec",
+        "references": [
+          {
+            "id": "60e3fda8-5b15-4866-90dc-0c2e514ed578",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Milan Wenzl",
+        "displayShortName": "Wenzl",
+        "displayAdditionalName": "Milan",
+        "number": 1936
+      },
+      {
+        "id": "e2522646-4c76-49b3-87de-fab0777d153a",
+        "references": [
+          {
+            "id": "353a444b-d209-4fdd-8506-c8b280db0909",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "David Pražák",
+        "displayShortName": "Pražák",
+        "displayAdditionalName": "David",
+        "number": 1887
+      },
+      {
+        "id": "8c2181a1-4115-41e2-bab7-427c03c57d27",
+        "references": [
+          {
+            "id": "ad08069c-31b4-46f4-9f6c-047780c5159d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Andrej Babiš",
+        "displayShortName": "Babiš",
+        "displayAdditionalName": "Andrej",
+        "number": 1745
+      },
+      {
+        "id": "7245790d-3859-4fb2-94ce-b42841d7dfe6",
+        "references": [
+          {
+            "id": "3dce6581-5dc9-4e68-9667-09db23fc25b7",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Andrea Babišová",
+        "displayShortName": "Babišová",
+        "displayAdditionalName": "Andrea",
+        "number": 1746
+      },
+      {
+        "id": "f579a8e0-cadf-4248-b5ce-aaef2fb802ee",
+        "references": [
+          {
+            "id": "dc7a21e9-797a-4a7d-90ad-adf3529b5741",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lubomír Brož",
+        "displayShortName": "Brož",
+        "displayAdditionalName": "Lubomír",
+        "number": 1771
+      },
+      {
+        "id": "07a27ee9-e9de-4f33-bdd0-3a37a8073e5e",
+        "references": [
+          {
+            "id": "1a013cb0-3d0c-4640-b19e-4b42274ce588",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Věra Adámková",
+        "displayShortName": "Adámková",
+        "displayAdditionalName": "Věra",
+        "number": 1744
+      },
+      {
+        "id": "f40063bc-c53a-4da0-8288-3ce65adac992",
+        "references": [
+          {
+            "id": "8340f76f-550c-4124-ad26-73f5e0c0f250",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Richter",
+        "displayShortName": "Richter",
+        "displayAdditionalName": "Jan",
+        "number": 1893
+      },
+      {
+        "id": "cf20e17d-3dbf-4d35-a0e8-c9046613cb82",
+        "references": [
+          {
+            "id": "796bd469-01a2-4fd6-a5d0-de2dd66daed6",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Hubert Lang",
+        "displayShortName": "Lang",
+        "displayAdditionalName": "Hubert",
+        "number": 1846
+      },
+      {
+        "id": "ae524d30-551f-4da8-b72f-6477c4927ece",
+        "references": [
+          {
+            "id": "850eca94-806f-4a9a-af56-99fc9d9f3eff",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Josef Kott",
+        "displayShortName": "Kott",
+        "displayAdditionalName": "Josef",
+        "number": 1833
+      },
+      {
+        "id": "a5c19eb7-5ac9-4ef3-a962-3e19a9d5e352",
+        "references": [
+          {
+            "id": "825baffe-9cfc-4d85-b6a0-8c3fe1b51cc9",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radek Vondráček",
+        "displayShortName": "Vondráček",
+        "displayAdditionalName": "Radek",
+        "number": 1931
+      },
+      {
+        "id": "21514ed2-dc6e-49f1-8484-13d7ba805045",
+        "references": [
+          {
+            "id": "1f1b6471-ccbc-4e5c-a906-e92613063fc0",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Tomáš Helebrant",
+        "displayShortName": "Helebrant",
+        "displayAdditionalName": "Tomáš",
+        "number": 1806
+      },
+      {
+        "id": "ace4d0d4-116e-46bc-95d5-49bc526d66a3",
+        "references": [
+          {
+            "id": "b62d4312-f633-41f2-80ab-30de0a42f62e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Sadovský",
+        "displayShortName": "Sadovský",
+        "displayAdditionalName": "Petr",
+        "number": 1898
+      },
+      {
+        "id": "ea8eb32b-e78e-4d8a-adf8-df53c2f07c80",
+        "references": [
+          {
+            "id": "7b4b0d1c-df03-41bb-bf8a-de88d3950225",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Taťána Malá",
+        "displayShortName": "Malá",
+        "displayAdditionalName": "Taťána",
+        "number": 1855
+      },
+      {
+        "id": "58b0dee7-2968-4fa9-bf9c-ac4dbfc5bf1c",
+        "references": [
+          {
+            "id": "1811dca6-d560-48b6-ba6f-dbf7f38f32a8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ladislav Okleštěk",
+        "displayShortName": "Okleštěk",
+        "displayAdditionalName": "Ladislav",
+        "number": 1873
+      },
+      {
+        "id": "6ffe8774-6adf-4586-ac44-dfda3c848125",
+        "references": [
+          {
+            "id": "f2c64272-bcf0-4702-91e6-cb335753179c",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Mašek",
+        "displayShortName": "Mašek",
+        "displayAdditionalName": "Jiří",
+        "number": 1857
+      },
+      {
+        "id": "8f7b03d8-609c-4d36-b81d-03dbb6176791",
+        "references": [
+          {
+            "id": "99fc2923-b9ee-40e7-bb53-c0069a00c9e9",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Patrik Nacher",
+        "displayShortName": "Nacher",
+        "displayAdditionalName": "Patrik",
+        "number": 1863
+      },
+      {
+        "id": "52f5c9da-90be-43db-9801-cfbe7332cb2e",
+        "references": [
+          {
+            "id": "a3c1c40e-7d47-4e2f-915a-56aa8a23869b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Stanislav Fridrich",
+        "displayShortName": "Fridrich",
+        "displayAdditionalName": "Stanislav",
+        "number": 1796
+      },
+      {
+        "id": "3f2f8b93-998f-4375-a449-f9decc6bd0de",
+        "references": [
+          {
+            "id": "7482b04a-eac3-480c-ab77-d4c812f34588",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Monika Oborná",
+        "displayShortName": "Oborná",
+        "displayAdditionalName": "Monika",
+        "number": 1870
+      },
+      {
+        "id": "586327da-f1a6-49fe-8b4b-1c764ff0afe6",
+        "references": [
+          {
+            "id": "18cbdd40-8057-4e8e-8420-10a17cbf67a1",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michal Ratiborský",
+        "displayShortName": "Ratiborský",
+        "displayAdditionalName": "Michal",
+        "number": 1892
+      },
+      {
+        "id": "d1859f88-360f-4858-b883-c7c25bbebae6",
+        "references": [
+          {
+            "id": "863e3488-3be5-4830-8b65-ae6f1bbb1bc0",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Julius Špičák",
+        "displayShortName": "Špičák",
+        "displayAdditionalName": "Julius",
+        "number": 1915
+      },
+      {
+        "id": "f80fe71c-9354-440f-8db4-7e713eec4226",
+        "references": [
+          {
+            "id": "b7862d5d-6748-43a8-9b67-0168875e9159",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "David Kasal",
+        "displayShortName": "Kasal",
+        "displayAdditionalName": "David",
+        "number": 1821
+      },
+      {
+        "id": "12163a29-3b6c-4a80-91ee-640b860238a2",
+        "references": [
+          {
+            "id": "22d797bc-b28c-468e-8506-d8cf73844b0f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radim Holiš",
+        "displayShortName": "Holiš",
+        "displayAdditionalName": "Radim",
+        "number": 1810
+      },
+      {
+        "id": "b5bcb868-06c4-48f9-91a5-ffccace972c5",
+        "references": [
+          {
+            "id": "e6b884ab-5f65-47ef-903b-864282dc1f53",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Klára Dostálová",
+        "displayShortName": "Dostálová",
+        "displayAdditionalName": "Klára",
+        "number": 1779
+      },
+      {
+        "id": "1fd28123-baf7-4bef-b34f-027c624d65ac",
+        "references": [
+          {
+            "id": "352be744-e01a-4a0b-bcff-50c5c12667c1",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Hanzlíková",
+        "displayShortName": "Hanzlíková",
+        "displayAdditionalName": "Jana",
+        "number": 1802
+      },
+      {
+        "id": "393242a9-3d49-423e-96c5-8c9614e78c92",
+        "references": [
+          {
+            "id": "1fd9fbb6-6445-40c2-aa5a-860d2c00c72f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Berenika Peštová",
+        "displayShortName": "Peštová",
+        "displayAdditionalName": "Berenika",
+        "number": 1880
+      },
+      {
+        "id": "f616c751-3090-48c6-95fd-daa471f058ae",
+        "references": [
+          {
+            "id": "ad940df1-4ce6-4797-896a-5f3edabfb865",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Renata Oulehlová",
+        "displayShortName": "Oulehlová",
+        "displayAdditionalName": "Renata",
+        "number": 1876
+      },
+      {
+        "id": "cae798a1-4ba4-4b1b-a15d-6437d9f9e75e",
+        "references": [
+          {
+            "id": "d585b142-c8fd-4a9a-95e6-28c11282f85f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaroslav Bžoch",
+        "displayShortName": "Bžoch",
+        "displayAdditionalName": "Jaroslav",
+        "number": 1773
+      },
+      {
+        "id": "b82b00c2-8908-43da-b83c-56c617f49161",
+        "references": [
+          {
+            "id": "de7c7231-623a-4f28-98a3-5962066d5899",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Zuzana Ožanová",
+        "displayShortName": "Ožanová",
+        "displayAdditionalName": "Zuzana",
+        "number": 1877
+      },
+      {
+        "id": "c820a035-91f3-4537-b190-fc0abc22e2f1",
+        "references": [
+          {
+            "id": "a434fae3-b62c-4a31-85e9-ab740d4dca2e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "František Petrtýl",
+        "displayShortName": "Petrtýl",
+        "displayAdditionalName": "František",
+        "number": 1881
+      },
+      {
+        "id": "c6e0c1f7-32cc-48bb-8726-9535cf3402a5",
+        "references": [
+          {
+            "id": "69e04f7e-10dc-4f11-a72c-399b17387368",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Igor Hendrych",
+        "displayShortName": "Hendrych",
+        "displayAdditionalName": "Igor",
+        "number": 1808
+      },
+      {
+        "id": "5c31da53-2a5c-4edb-96f4-cb6f64f3a786",
+        "references": [
+          {
+            "id": "24b00632-1ae2-4da5-befd-06d92e18a028",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Alena Schillerová",
+        "displayShortName": "Schillerová",
+        "displayAdditionalName": "Alena",
+        "number": 1900
+      },
+      {
+        "id": "5ce1575a-2517-4c39-895c-9820b5c4ed4c",
+        "references": [
+          {
+            "id": "74aada1a-6e20-43f7-a53f-2bc8149a4467",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Drahoslav Ryba",
+        "displayShortName": "Ryba",
+        "displayAdditionalName": "Drahoslav",
+        "number": 1897
+      },
+      {
+        "id": "07ff1093-e736-4942-b663-7f4e0c18774a",
+        "references": [
+          {
+            "id": "233a2c65-da83-4118-9f64-dab10dd635da",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Roman Kubíček",
+        "displayShortName": "Kubíček",
+        "displayAdditionalName": "Roman",
+        "number": 1839
+      },
+      {
+        "id": "a428de68-6f2c-4308-a241-2129237f017b",
+        "references": [
+          {
+            "id": "4291fb19-c671-466d-80de-89103c1aa4d6",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ondřej Babka",
+        "displayShortName": "Babka",
+        "displayAdditionalName": "Ondřej",
+        "number": 1747
+      },
+      {
+        "id": "c9eceb34-4e0f-49a3-a245-b62c41d24ff5",
+        "references": [
+          {
+            "id": "557fcc2c-588f-49a8-8dd4-a7fb0b075cd0",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Robert Králíček",
+        "displayShortName": "Králíček",
+        "displayAdditionalName": "Robert",
+        "number": 1836
+      },
+      {
+        "id": "f93f24ba-8fb8-4ddf-a5a1-5b1b64b95b37",
+        "references": [
+          {
+            "id": "58ebeece-d9f0-461e-bb89-be434eafd2cb",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Aleš Juchelka",
+        "displayShortName": "Juchelka",
+        "displayAdditionalName": "Aleš",
+        "number": 1818
+      },
+      {
+        "id": "fb120190-2417-4d92-9615-6055612a781e",
+        "references": [
+          {
+            "id": "a06eb2c3-63a5-44db-ae00-ba4f0abf161c",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Kukla",
+        "displayShortName": "Kukla",
+        "displayAdditionalName": "Martin",
+        "number": 1843
+      },
+      {
+        "id": "1e085905-51be-463f-9e8b-014bb71021c5",
+        "references": [
+          {
+            "id": "40727b38-ba4b-41f3-bf22-61bccd4fd5d8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaromír Dědeček",
+        "displayShortName": "Dědeček",
+        "displayAdditionalName": "Jaromír",
+        "number": 1947
+      },
+      {
+        "id": "d8d870e1-4ab9-4429-9143-eccab1e890d2",
+        "references": [
+          {
+            "id": "3ef8de58-7cb3-42ed-a0a8-994c5ae551b9",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Tomáš Kohoutek",
+        "displayShortName": "Kohoutek",
+        "displayAdditionalName": "Tomáš",
+        "number": 1829
+      },
+      {
+        "id": "52fa7e3f-569d-4e51-bbf5-2de18c40b774",
+        "references": [
+          {
+            "id": "4a248aa5-9887-4488-a91d-62a3761aadd3",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Volný",
+        "displayShortName": "Volný",
+        "displayAdditionalName": "Jan",
+        "number": 1929
+      },
+      {
+        "id": "d40b5c9f-d502-431a-9160-c3729a27463e",
+        "references": [
+          {
+            "id": "23fe8280-820d-4db5-9889-dfadc8ff9f63",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ivana Mádlová",
+        "displayShortName": "Mádlová",
+        "displayAdditionalName": "Ivana",
+        "number": 1853
+      },
+      {
+        "id": "fc970d94-8966-4ad9-a44b-4cd73ae9c8e0",
+        "references": [
+          {
+            "id": "f6e421df-19ab-412f-b73e-da2b384cbde5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Robert Stržínek",
+        "displayShortName": "Stržínek",
+        "displayAdditionalName": "Robert",
+        "number": 1909
+      },
+      {
+        "id": "bbd6feda-d61a-42b4-9e3e-9d891e1d8872",
+        "references": [
+          {
+            "id": "49df7eb1-7af1-4224-997c-372c05e3ab06",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Miloslav Janulík",
+        "displayShortName": "Janulík",
+        "displayAdditionalName": "Miloslav",
+        "number": 1816
+      },
+      {
+        "id": "f715c536-d81f-421c-ac89-4a3a6ef12ebc",
+        "references": [
+          {
+            "id": "09537b20-413b-4d9c-9dfb-2e7c836a7840",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lubomír Metnar",
+        "displayShortName": "Metnar",
+        "displayAdditionalName": "Lubomír",
+        "number": 1858
+      },
+      {
+        "id": "c088a37c-6f92-46a1-bd96-9432d634940b",
+        "references": [
+          {
+            "id": "6f859e19-c663-4374-a4fe-fb01a24a1959",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ivo Vondrák",
+        "displayShortName": "Vondrák",
+        "displayAdditionalName": "Ivo",
+        "number": 1932
+      },
+      {
+        "id": "441ee307-d73a-44d4-8c1c-677995ef9664",
+        "references": [
+          {
+            "id": "3b00a0cf-7a43-4618-ad23-fc29365ca2af",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Richard Brabec",
+        "displayShortName": "Brabec",
+        "displayAdditionalName": "Richard",
+        "number": 1769
+      },
+      {
+        "id": "c37177e3-aee3-4081-9cf9-21d63fc25aaa",
+        "references": [
+          {
+            "id": "41de3965-7257-47bf-991b-f4d9a1501425",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Bohuslav Hudec",
+        "displayShortName": "Hudec",
+        "displayAdditionalName": "Bohuslav",
+        "number": 1953
+      },
+      {
+        "id": "73274104-c232-4193-921d-43375cb28dba",
+        "references": [
+          {
+            "id": "04ba4532-83b7-4ad1-ad26-45339e4f2b40",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Margita Balaštíková",
+        "displayShortName": "Balaštíková",
+        "displayAdditionalName": "Margita",
+        "number": 1943
+      },
+      {
+        "id": "bbd1f178-b447-44d9-9363-4cca2b1dd846",
+        "references": [
+          {
+            "id": "45de6e34-e059-4416-b401-e2d051189015",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Strýček",
+        "displayShortName": "Strýček",
+        "displayAdditionalName": "Jiří",
+        "number": 1908
+      }
+    ]
+  },
+  {
+    "id": "4954124c-09da-4381-a128-01fb0b588582",
+    "name": "Svoboda a přímá demokracie",
+    "shortName": "SPD",
+    "nestedCandidates": [
+      {
+        "id": "1b150952-10e5-4bc8-9177-b62c6c430389",
+        "references": [
+          {
+            "id": "178bc22b-dec8-4658-bcf9-fad22b18007a",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vladimír Zlínský",
+        "displayShortName": "Zlínský",
+        "displayAdditionalName": "Vladimír",
+        "number": 1939
+      },
+      {
+        "id": "edc65484-1d34-4459-85a3-eaf8b5ec1265",
+        "references": [
+          {
+            "id": "a336a668-46fb-4996-b82e-23d9fecac786",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaroslav Dvořák",
+        "displayShortName": "Dvořák",
+        "displayAdditionalName": "Jaroslav",
+        "number": 1783
+      },
+      {
+        "id": "b42334d3-4288-4690-96fc-521c7dad5f2b",
+        "references": [
+          {
+            "id": "715cfee2-0ee4-41c7-bb06-03d5f73683ed",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radim Fiala",
+        "displayShortName": "Fiala",
+        "displayAdditionalName": "Radim",
+        "number": 1790
+      },
+      {
+        "id": "6fce1353-2bd9-42f0-9507-3301ef5bbc0a",
+        "references": [
+          {
+            "id": "ffa64149-6a9b-4a56-ac2f-0c87685fa537",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marie Pošarová",
+        "displayShortName": "Pošarová",
+        "displayAdditionalName": "Marie",
+        "number": 1885
+      },
+      {
+        "id": "7ef77751-7a37-4d42-b3fd-e133df3712c5",
+        "references": [
+          {
+            "id": "f3ca1e97-223c-4202-af3e-d0ef78220cc9",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vladimíra Lesenská",
+        "displayShortName": "Lesenská",
+        "displayAdditionalName": "Vladimíra",
+        "number": 1848
+      },
+      {
+        "id": "b50c661f-8036-4971-acd6-67db8fa7376a",
+        "references": [
+          {
+            "id": "0e429d03-f987-4cb7-ad78-64a494de8023",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Oldřich Černý",
+        "displayShortName": "Černý",
+        "displayAdditionalName": "Oldřich",
+        "number": 1777
+      },
+      {
+        "id": "14371677-679d-43ed-b5ac-ccf8b79f9067",
+        "references": [
+          {
+            "id": "8e8bb9de-0aed-4ad1-ace7-c8416dbdc5b8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Kobza",
+        "displayShortName": "Kobza",
+        "displayAdditionalName": "Jiří",
+        "number": 1826
+      },
+      {
+        "id": "d240b223-e3b9-481c-976b-ab19f1848685",
+        "references": [
+          {
+            "id": "a67b386f-2640-4a9f-ab04-270908b51883",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Iveta Štefanová",
+        "displayShortName": "Štefanová",
+        "displayAdditionalName": "Iveta",
+        "number": 1916
+      },
+      {
+        "id": "8d896bbb-ff6e-48cc-b4e1-0d51a00af06d",
+        "references": [
+          {
+            "id": "99837870-aec2-47ec-affd-944c4481bba7",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radek Koten",
+        "displayShortName": "Koten",
+        "displayAdditionalName": "Radek",
+        "number": 1832
+      },
+      {
+        "id": "8857bf33-a689-4198-9563-5a7ff1687856",
+        "references": [
+          {
+            "id": "3d8e36d2-c348-4a9d-8f9d-3295e6e11f74",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karla Maříková",
+        "displayShortName": "Maříková",
+        "displayAdditionalName": "Karla",
+        "number": 1856
+      },
+      {
+        "id": "2dc45567-da96-4e73-9fb2-8cfa629d863d",
+        "references": [
+          {
+            "id": "4dfe63c0-f43f-439a-bc46-a9feda16c21d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marcel Dlask",
+        "displayShortName": "Dlask",
+        "displayAdditionalName": "Marcel",
+        "number": 1945
+      },
+      {
+        "id": "3059c0d1-8c56-4f3c-af37-9e4476593298",
+        "references": [
+          {
+            "id": "51986185-2bec-4100-ac47-ed9dddd05bca",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radovan Vích",
+        "displayShortName": "Vích",
+        "displayAdditionalName": "Radovan",
+        "number": 1925
+      },
+      {
+        "id": "560ca634-036b-4ef9-bc25-4dc59a82ea87",
+        "references": [
+          {
+            "id": "ae07fd0c-3c37-409d-acb5-1ac377f80327",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Sládeček",
+        "displayShortName": "Sládeček",
+        "displayAdditionalName": "Karel",
+        "number": 1903
+      },
+      {
+        "id": "564decec-f6e8-4f26-a671-1ab933caf146",
+        "references": [
+          {
+            "id": "3c1347eb-f7f0-4919-b963-d0422b622456",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Tomio Okamura",
+        "displayShortName": "Okamura",
+        "displayAdditionalName": "Tomio",
+        "number": 1872
+      },
+      {
+        "id": "dae6d23c-a429-4fad-8b43-e6a2d2a29b94",
+        "references": [
+          {
+            "id": "84dd603c-7cf6-40d1-97ec-b7408fda2c47",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaroslav Bašta",
+        "displayShortName": "Bašta",
+        "displayAdditionalName": "Jaroslav",
+        "number": 1752
+      },
+      {
+        "id": "f932b9db-ba80-434b-8bbc-cfb477e95c17",
+        "references": [
+          {
+            "id": "ce96d486-6a3b-4f9c-a365-99d5a5082531",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Síla",
+        "displayShortName": "Síla",
+        "displayAdditionalName": "Jan",
+        "number": 1901
+      },
+      {
+        "id": "a99e3371-8757-4eea-8623-74dd75894df3",
+        "references": [
+          {
+            "id": "3125e496-23e7-4fc9-96d2-a16ed737ef62",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lucie Šafránková",
+        "displayShortName": "Šafránková",
+        "displayAdditionalName": "Lucie",
+        "number": 1912
+      },
+      {
+        "id": "639ae8e6-82d6-49b2-94cd-b96e181ffd5a",
+        "references": [
+          {
+            "id": "ca475655-e511-44a1-a6d7-529ce4834808",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radek Rozvoral",
+        "displayShortName": "Rozvoral",
+        "displayAdditionalName": "Radek",
+        "number": 1895
+      },
+      {
+        "id": "dda6230c-73d4-4432-acfa-cd5a2d8ebf1f",
+        "references": [
+          {
+            "id": "6f5fb4ac-5d85-4dea-aaba-af5e4b93482d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Hrnčíř",
+        "displayShortName": "Hrnčíř",
+        "displayAdditionalName": "Jan",
+        "number": 1812
+      },
+      {
+        "id": "016c7aa7-cec0-4b0d-a528-207645cc9c84",
+        "references": [
+          {
+            "id": "ba7b7f53-f017-49a9-9764-a7d3f1d3bdc8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jaroslav Foldyna",
+        "displayShortName": "Foldyna",
+        "displayAdditionalName": "Jaroslav",
+        "number": 1795
+      },
+      {
+        "id": "3b07636b-991c-4b95-b41f-fa0b6a58761a",
+        "references": [
+          {
+            "id": "bb031a5b-a783-4c7c-a099-50efddb1368d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Zdeněk Kettner",
+        "displayShortName": "Kettner",
+        "displayAdditionalName": "Zdeněk",
+        "number": 1823
+      }
+    ]
+  },
+  {
+    "id": "4bc67746-dc67-4d3e-9685-47567f905554",
+    "name": "SPOLU - ODS, TOP 09, KDU-ČSL",
+    "shortName": "SPOLU",
+    "nestedCandidates": [
+      {
+        "id": "45ba0851-f850-4ba7-9c67-8cb0359cebb4",
+        "references": [
+          {
+            "id": "314dedcc-39af-45d8-853b-ddff573e1887",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Helena Langšádlová",
+        "displayShortName": "Langšádlová",
+        "displayAdditionalName": "Helena",
+        "number": 1847
+      },
+      {
+        "id": "540e282d-488f-428b-b292-6e8e0e072ea2",
+        "references": [
+          {
+            "id": "aac16657-ac32-4dff-bde7-c94e7f6e3a1a",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Miroslav Zborovský",
+        "displayShortName": "Zborovský",
+        "displayAdditionalName": "Miroslav",
+        "number": 1938
+      },
+      {
+        "id": "ac518985-2d7d-4d43-812d-88c38cbeed5e",
+        "references": [
+          {
+            "id": "8fcfc967-0d64-4468-9c6e-c4e65764aaec",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Václav Král",
+        "displayShortName": "Král",
+        "displayAdditionalName": "Václav",
+        "number": 1835
+      },
+      {
+        "id": "f0b13ac7-6985-407d-951b-99d99efe5a8f",
+        "references": [
+          {
+            "id": "74e01f24-3bca-46f5-b991-1fff4b08df43",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Libor Turek",
+        "displayShortName": "Turek",
+        "displayAdditionalName": "Libor",
+        "number": 1921
+      },
+      {
+        "id": "7f13264a-905c-4472-bb53-fb5423a4513c",
+        "references": [
+          {
+            "id": "cfcf79d6-2210-41bb-ad5c-74cab4e57a4a",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martina Ochodnická",
+        "displayShortName": "Ochodnická",
+        "displayAdditionalName": "Martina",
+        "number": 1850
+      },
+      {
+        "id": "189d8413-beda-43fe-a44c-39ed93e666f4",
+        "references": [
+          {
+            "id": "c6ca7d0b-a4a9-4a95-a819-9176f175a0a7",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ivan Adamec",
+        "displayShortName": "Adamec",
+        "displayAdditionalName": "Ivan",
+        "number": 1743
+      },
+      {
+        "id": "50cd0380-04be-44c4-9906-472c273316d9",
+        "references": [
+          {
+            "id": "eac18636-fbe0-4fc8-8905-f4f81a7d0cde",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Černochová",
+        "displayShortName": "Černochová",
+        "displayAdditionalName": "Jana",
+        "number": 1776
+      },
+      {
+        "id": "1988a94f-8407-427a-bda9-908aacac57b6",
+        "references": [
+          {
+            "id": "809bf562-aba9-446f-b936-307aa51c658e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marek Ženíšek",
+        "displayShortName": "Ženíšek",
+        "displayAdditionalName": "Marek",
+        "number": 1942
+      },
+      {
+        "id": "f02f6f26-dad2-4dcf-b932-2c0159b285a2",
+        "references": [
+          {
+            "id": "0d60ad11-0766-464e-9c9c-dfa4cc2df68d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Bendl",
+        "displayShortName": "Bendl",
+        "displayAdditionalName": "Petr",
+        "number": 1761
+      },
+      {
+        "id": "0b24883e-aeb7-42ca-854f-5a303c9a6c4e",
+        "references": [
+          {
+            "id": "ac9b187d-a65d-453a-ab5d-f90102209422",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Rudolf Salvetr",
+        "displayShortName": "Salvetr",
+        "displayAdditionalName": "Rudolf",
+        "number": 1899
+      },
+      {
+        "id": "c72e9246-ef5a-41a7-a436-00000f8d766e",
+        "references": [
+          {
+            "id": "77b3328b-1d20-42c1-8e65-89b0f5bac4f5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Jakob",
+        "displayShortName": "Jakob",
+        "displayAdditionalName": "Jan",
+        "number": 1814
+      },
+      {
+        "id": "7668311d-2a5e-46df-9ea4-ba753d51f0a9",
+        "references": [
+          {
+            "id": "921f33d4-2f50-4cf7-8583-e91867be9841",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Šimon Heller",
+        "displayShortName": "Heller",
+        "displayAdditionalName": "Šimon",
+        "number": 1807
+      },
+      {
+        "id": "50c0f837-8791-4474-92af-81d9b2c53978",
+        "references": [
+          {
+            "id": "3b674a72-653e-461b-9611-4325858f1e5b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Kupka",
+        "displayShortName": "Kupka",
+        "displayAdditionalName": "Martin",
+        "number": 1844
+      },
+      {
+        "id": "c6fa8232-f30d-4d83-8879-9b8226fb59dc",
+        "references": [
+          {
+            "id": "4ff003d3-43a9-452a-9b64-05aa81567170",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Renáta Zajíčková",
+        "displayShortName": "Zajíčková",
+        "displayAdditionalName": "Renáta",
+        "number": 1937
+      },
+      {
+        "id": "2d2d81b2-9371-48e5-ad6c-9bbe942d84c9",
+        "references": [
+          {
+            "id": "4cbce548-9db3-4e74-842c-6803eadc2fd0",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavla Golasowská",
+        "displayShortName": "Golasowská",
+        "displayAdditionalName": "Pavla",
+        "number": 1798
+      },
+      {
+        "id": "3d691280-4aa8-438e-a2d2-26c78d0fd8ea",
+        "references": [
+          {
+            "id": "8ac01e90-d9a4-4a77-bdfa-d883cd8ed998",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Bartošek",
+        "displayShortName": "Bartošek",
+        "displayAdditionalName": "Jan",
+        "number": 1751
+      },
+      {
+        "id": "8fb91ff9-9583-4bea-9cc7-6a569a1657a6",
+        "references": [
+          {
+            "id": "e6b5e8f8-2964-4c23-b4f0-761bc46c78bd",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Beitl",
+        "displayShortName": "Beitl",
+        "displayAdditionalName": "Petr",
+        "number": 1755
+      },
+      {
+        "id": "a0667027-53fc-416e-b3d6-9d9001a0d89c",
+        "references": [
+          {
+            "id": "296f6822-137a-49b1-9eb0-38ef0116603c",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Svoboda",
+        "displayShortName": "Svoboda",
+        "displayAdditionalName": "Pavel",
+        "number": 1911
+      },
+      {
+        "id": "d6bb2166-cb25-4318-aa5d-fa8dde34c747",
+        "references": [
+          {
+            "id": "22a742f7-c8a3-49a6-85b5-cbd55387af1f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Bureš",
+        "displayShortName": "Bureš",
+        "displayAdditionalName": "Jan",
+        "number": 1772
+      },
+      {
+        "id": "2fdbb8d2-5599-49f8-8db9-641c40c5d847",
+        "references": [
+          {
+            "id": "7dc083f0-b61c-451d-be31-745e051b9d91",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Aleš Dufek",
+        "displayShortName": "Dufek",
+        "displayAdditionalName": "Aleš",
+        "number": 1782
+      },
+      {
+        "id": "d62cef33-d365-4e02-bb91-884aba74e444",
+        "references": [
+          {
+            "id": "2b503688-c14e-4f42-9544-a64020286856",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Stanislav Blaha",
+        "displayShortName": "Blaha",
+        "displayAdditionalName": "Stanislav",
+        "number": 1767
+      },
+      {
+        "id": "2a5dab69-8f0d-430c-b41d-09b7f2db7129",
+        "references": [
+          {
+            "id": "9acadacb-19f9-4ce4-9c45-8a7ee304f1b5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Klíma",
+        "displayShortName": "Klíma",
+        "displayAdditionalName": "Pavel",
+        "number": 1824
+      },
+      {
+        "id": "78aaa557-b2dc-458d-9158-ef539be76bff",
+        "references": [
+          {
+            "id": "b22b1b61-b3c7-46fc-a943-20ad8b775bad",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "David Šimek",
+        "displayShortName": "Šimek",
+        "displayAdditionalName": "David",
+        "number": 1914
+      },
+      {
+        "id": "31713023-f4ff-4938-95b0-a8ae9b3a343f",
+        "references": [
+          {
+            "id": "f67c6669-04e5-4da7-974d-c289495d8877",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michael Kohajda",
+        "displayShortName": "Kohajda",
+        "displayAdditionalName": "Michael",
+        "number": 1828
+      },
+      {
+        "id": "42d5aeee-c76a-49fb-b0df-845bccb52514",
+        "references": [
+          {
+            "id": "70740808-e8bb-47fe-a299-901c3611d2ab",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Bohuslav Svoboda",
+        "displayShortName": "Svoboda",
+        "displayAdditionalName": "Bohuslav",
+        "number": 1910
+      },
+      {
+        "id": "ac53e1d2-91d0-410f-ac5b-0d771d9c0c03",
+        "references": [
+          {
+            "id": "90a61ba0-e4c0-485e-84cd-af2127f8596b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Skopeček",
+        "displayShortName": "Skopeček",
+        "displayAdditionalName": "Jan",
+        "number": 1902
+      },
+      {
+        "id": "7322fe5e-8a17-4489-bd76-21c35145bba8",
+        "references": [
+          {
+            "id": "7b7162c4-d7f4-430b-baa5-5b61a3d75a0b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vít Kaňkovský",
+        "displayShortName": "Kaňkovský",
+        "displayAdditionalName": "Vít",
+        "number": 1820
+      },
+      {
+        "id": "74177bbe-bc3e-4402-8c82-727b7ede4edb",
+        "references": [
+          {
+            "id": "6ff99303-a4f3-4d0c-9eed-628dd24f38cf",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vít Vomáčka",
+        "displayShortName": "Vomáčka",
+        "displayAdditionalName": "Vít",
+        "number": 1930
+      },
+      {
+        "id": "9bc802c3-53e6-46bf-83fa-06ed5e2806a8",
+        "references": [
+          {
+            "id": "79e7ef8a-ea51-4e85-b3dc-989d50aa4d23",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Radim Jirout",
+        "displayShortName": "Jirout",
+        "displayAdditionalName": "Radim",
+        "number": 1951
+      },
+      {
+        "id": "c2b2b90e-c9b0-42f0-a691-2d96ff01320e",
+        "references": [
+          {
+            "id": "44d86439-dd3c-4653-b75e-946628babc4f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marie Jílková",
+        "displayShortName": "Jílková",
+        "displayAdditionalName": "Marie",
+        "number": 1817
+      },
+      {
+        "id": "1020f711-8844-41f9-86de-1adc990354c1",
+        "references": [
+          {
+            "id": "3efd6519-73d6-46a2-8309-c2cac8fe4325",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Krejza",
+        "displayShortName": "Krejza",
+        "displayAdditionalName": "Karel",
+        "number": 1837
+      },
+      {
+        "id": "f6847444-e1af-49ab-a57e-a274ecadd7df",
+        "references": [
+          {
+            "id": "d65975a6-39fd-42bd-988c-38375bf9db4e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Hofmann",
+        "displayShortName": "Hofmann",
+        "displayAdditionalName": "Jan",
+        "number": 1809
+      },
+      {
+        "id": "b704cce0-c345-4e1a-86f1-849f37e0b8b9",
+        "references": [
+          {
+            "id": "e8c0adb9-948a-4a7b-9d51-865b476fa7bf",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Žáček",
+        "displayShortName": "Žáček",
+        "displayAdditionalName": "Pavel",
+        "number": 1941
+      },
+      {
+        "id": "b4a7ca20-144a-4168-8d57-1c48ac7e0f91",
+        "references": [
+          {
+            "id": "5903f0c5-777d-42b8-9208-ebd6de8961d1",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vojtěch Munzar",
+        "displayShortName": "Munzar",
+        "displayAdditionalName": "Vojtěch",
+        "number": 1862
+      },
+      {
+        "id": "17ab6a1b-8461-4c13-9e70-9fdace71a03b",
+        "references": [
+          {
+            "id": "4bf27374-8142-454e-91a1-f7d9a03cc82e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Carbol",
+        "displayShortName": "Carbol",
+        "displayAdditionalName": "Jiří",
+        "number": 1774
+      },
+      {
+        "id": "30b775a1-21d8-42a2-9065-c10ac60f63a3",
+        "references": [
+          {
+            "id": "776812a8-ccd8-4625-b7ff-79d008f85adf",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Tom Philipp",
+        "displayShortName": "Philipp",
+        "displayAdditionalName": "Tom",
+        "number": 1882
+      },
+      {
+        "id": "e75d6a8d-24fe-45d1-93fc-c3d1fcdf5635",
+        "references": [
+          {
+            "id": "d332a391-e10a-4d5d-88a2-37419c92d9dc",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Róbert Teleky",
+        "displayShortName": "Teleky",
+        "displayAdditionalName": "Róbert",
+        "number": 1918
+      },
+      {
+        "id": "b1d882ce-beac-4456-88df-dd87d3a5053f",
+        "references": [
+          {
+            "id": "19807c05-6d3b-4dd8-8917-3f2a30316e81",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marian Jurečka",
+        "displayShortName": "Jurečka",
+        "displayAdditionalName": "Marian",
+        "number": 1819
+      },
+      {
+        "id": "65a85fae-e7fa-4390-97bf-763d3d1efbef",
+        "references": [
+          {
+            "id": "074ef6cc-3625-4776-9f04-eeb58925911b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Baxa",
+        "displayShortName": "Baxa",
+        "displayAdditionalName": "Martin",
+        "number": 1754
+      },
+      {
+        "id": "153f3002-d59c-4917-a7cf-bec2f77715a9",
+        "references": [
+          {
+            "id": "bf8cf131-d795-42c2-b45a-5309bc7c29b2",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Staněk",
+        "displayShortName": "Staněk",
+        "displayAdditionalName": "Pavel",
+        "number": 1906
+      },
+      {
+        "id": "5cae67b6-f440-4b26-9740-8d4d3fecea5a",
+        "references": [
+          {
+            "id": "1dc75616-1f0e-43d3-8e33-4356e24f6c7e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Fifka",
+        "displayShortName": "Fifka",
+        "displayAdditionalName": "Petr",
+        "number": 1792
+      },
+      {
+        "id": "167cfa62-f3b7-4291-845f-99735be0d420",
+        "references": [
+          {
+            "id": "fc727a1c-79db-4d9b-a8a2-3b7dba5f2558",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Zdenka Němečková Crkvenjaš",
+        "displayShortName": "Němečková Crkvenjaš",
+        "displayAdditionalName": "Zdenka",
+        "number": 1866
+      },
+      {
+        "id": "84f51d02-6e04-4c46-9825-4d05d1655d1d",
+        "references": [
+          {
+            "id": "458ca8c8-9ad5-4b68-a1d9-2e836a528343",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Markéta Pekarová Adamová",
+        "displayShortName": "Pekarová Adamová",
+        "displayAdditionalName": "Markéta",
+        "number": 1879
+      },
+      {
+        "id": "a364123d-18db-4056-bb25-c03ec579a937",
+        "references": [
+          {
+            "id": "dea4ac73-1a7f-430b-a4ae-92997fb49748",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Bačíková",
+        "displayShortName": "Bačíková",
+        "displayAdditionalName": "Jana",
+        "number": 1748
+      },
+      {
+        "id": "362c6fff-2f75-4a2f-bac1-a6910d25ba1a",
+        "references": [
+          {
+            "id": "dd8c8966-daeb-499f-b0d4-0a6ea7d648ee",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Eva Decroix",
+        "displayShortName": "Decroix",
+        "displayAdditionalName": "Eva",
+        "number": 1778
+      },
+      {
+        "id": "d82c8b85-82c0-4fbe-8ddc-698a728717a0",
+        "references": [
+          {
+            "id": "73fbce12-08f4-4d33-8021-e928d6f3cc52",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Smetana",
+        "displayShortName": "Smetana",
+        "displayAdditionalName": "Karel",
+        "number": 1905
+      },
+      {
+        "id": "d811caab-e209-4628-a9e9-214c72b12b35",
+        "references": [
+          {
+            "id": "f54e1759-881e-4541-8d0d-b6fb668cdcfd",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Kašník",
+        "displayShortName": "Kašník",
+        "displayAdditionalName": "Pavel",
+        "number": 1822
+      },
+      {
+        "id": "74b289e5-7169-4a60-9062-8cba9a757fb5",
+        "references": [
+          {
+            "id": "231820ac-d8ee-4ba4-87f8-55313e7cd910",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ondřej Kolář",
+        "displayShortName": "Kolář",
+        "displayAdditionalName": "Ondřej",
+        "number": 1830
+      },
+      {
+        "id": "71bc21a9-0a74-4614-a406-05ec6a9b6115",
+        "references": [
+          {
+            "id": "4b2fe93d-ef8d-4326-aa81-330bfcf7269b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marek Benda",
+        "displayShortName": "Benda",
+        "displayAdditionalName": "Marek",
+        "number": 1760
+      },
+      {
+        "id": "d4f60ff2-c9d4-4ff9-9ad8-ddfcc5827c30",
+        "references": [
+          {
+            "id": "2102188a-7d42-4dc2-9a68-6d4789e3af35",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Bauer",
+        "displayShortName": "Bauer",
+        "displayAdditionalName": "Jan",
+        "number": 1753
+      },
+      {
+        "id": "dc5bfde1-13b6-49e6-8896-986d79c26657",
+        "references": [
+          {
+            "id": "5a9c5607-12b6-4019-87bf-d229a0290012",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Marek Výborný",
+        "displayShortName": "Výborný",
+        "displayAdditionalName": "Marek",
+        "number": 1934
+      },
+      {
+        "id": "a83a7e7a-b3f9-40f3-982e-21bcb50f5f93",
+        "references": [
+          {
+            "id": "7086837b-4f8d-425b-85e3-ab5b62518c4b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vlastimil Válek",
+        "displayShortName": "Válek",
+        "displayAdditionalName": "Vlastimil",
+        "number": 1923
+      },
+      {
+        "id": "a2672f02-7cc5-4363-a40c-aec1b708536a",
+        "references": [
+          {
+            "id": "1dfd6390-9404-4a8b-9a2e-60fe9f096042",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michal Zuna",
+        "displayShortName": "Zuna",
+        "displayAdditionalName": "Michal",
+        "number": 1940
+      },
+      {
+        "id": "63988409-911b-4872-a041-bda581453291",
+        "references": [
+          {
+            "id": "850c6352-ef58-4b8c-ad45-8a0d2b069b9e",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Romana Bělohlávková",
+        "displayShortName": "Bělohlávková",
+        "displayAdditionalName": "Romana",
+        "number": 1758
+      },
+      {
+        "id": "fe3d7971-bd8f-45a7-b334-f1512a1667fb",
+        "references": [
+          {
+            "id": "74fb3ee0-8ef2-497a-baf1-1d59bddddc5b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Havránek",
+        "displayShortName": "Havránek",
+        "displayAdditionalName": "Jiří",
+        "number": 1805
+      },
+      {
+        "id": "e83ee7e8-0d6f-49c5-bf64-6633ac4162e4",
+        "references": [
+          {
+            "id": "70cdf755-d4e5-487b-bc3a-4e851759ea5d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jakub Janda",
+        "displayShortName": "Janda",
+        "displayAdditionalName": "Jakub",
+        "number": 1815
+      },
+      {
+        "id": "e4d26c50-9971-426a-a64e-4411bb10ba12",
+        "references": [
+          {
+            "id": "72833b78-be11-4dd0-b596-6e70d12be3d5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ondřej Benešík",
+        "displayShortName": "Benešík",
+        "displayAdditionalName": "Ondřej",
+        "number": 1762
+      },
+      {
+        "id": "df43cf78-1f61-425a-86ae-c1a55cf41de6",
+        "references": [
+          {
+            "id": "8cf43872-1229-4ac0-9482-ad24613b5479",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Karel Haas",
+        "displayShortName": "Haas",
+        "displayAdditionalName": "Karel",
+        "number": 1799
+      },
+      {
+        "id": "205dd61e-c0af-487d-917d-a47fa434e472",
+        "references": [
+          {
+            "id": "126e1d48-b053-4570-8e19-16466c78c5bb",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Matěj Ondřej Havel",
+        "displayShortName": "Havel",
+        "displayAdditionalName": "Matěj Ondřej",
+        "number": 1803
+      },
+      {
+        "id": "f1422469-795f-411b-8376-2e0e2b7448b1",
+        "references": [
+          {
+            "id": "c7f14585-d273-4f1b-ab8e-c141d5f35b23",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Navrátil",
+        "displayShortName": "Navrátil",
+        "displayAdditionalName": "Jiří",
+        "number": 1865
+      },
+      {
+        "id": "ae194b00-d7e7-4367-9dc7-f7ad114d12ea",
+        "references": [
+          {
+            "id": "280a7583-83fc-4c58-93e8-0cf9869775b4",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Dlouhý",
+        "displayShortName": "Dlouhý",
+        "displayAdditionalName": "Martin",
+        "number": 1946
+      },
+      {
+        "id": "b95bd56d-2cbc-4d22-a32f-4b5d50246057",
+        "references": [
+          {
+            "id": "95e663f7-0ad7-438b-9d07-776fdaf3b15c",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Miloš Nový",
+        "displayShortName": "Nový",
+        "displayAdditionalName": "Miloš",
+        "number": 1869
+      },
+      {
+        "id": "61420983-1385-44fd-8993-150c37cabbed",
+        "references": [
+          {
+            "id": "bc7e693c-c2d5-4b43-b5b2-c915185e32fc",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Zbyněk Stanjura",
+        "displayShortName": "Stanjura",
+        "displayAdditionalName": "Zbyněk",
+        "number": 1907
+      },
+      {
+        "id": "4a89273f-82f9-4f05-a035-5b11f2ef6168",
+        "references": [
+          {
+            "id": "92b98a8e-b2b0-44e0-ba74-3a5ea5e080ca",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Major",
+        "displayShortName": "Major",
+        "displayAdditionalName": "Martin",
+        "number": 1854
+      },
+      {
+        "id": "5cca68e8-89e2-49df-ab5a-c11b30816aa8",
+        "references": [
+          {
+            "id": "fc319dbb-fe34-48e3-9ee4-5bd2d8235e26",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michal Kučera",
+        "displayShortName": "Kučera",
+        "displayAdditionalName": "Michal",
+        "number": 1841
+      },
+      {
+        "id": "6e020f1d-2145-4a90-ae8e-ed5a6a545418",
+        "references": [
+          {
+            "id": "cfa0b383-bad9-426b-95f0-29816f8e8aec",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Horák",
+        "displayShortName": "Horák",
+        "displayAdditionalName": "Jiří",
+        "number": 1811
+      },
+      {
+        "id": "58562bd9-439e-4687-ba94-d44051d89834",
+        "references": [
+          {
+            "id": "03cb01df-79d5-481b-9f42-0f1981489e94",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Antonín Tesařík",
+        "displayShortName": "Tesařík",
+        "displayAdditionalName": "Antonín",
+        "number": 1919
+      },
+      {
+        "id": "a9c7c437-d65e-4090-850b-fb4b86e7395a",
+        "references": [
+          {
+            "id": "ac2958a6-e1af-455a-be9c-38cb79fb29ef",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Fiala",
+        "displayShortName": "Fiala",
+        "displayAdditionalName": "Petr",
+        "number": 1789
+      },
+      {
+        "id": "cbaf5887-59c7-4424-b150-f4966cf2c9db",
+        "references": [
+          {
+            "id": "d88c7135-d002-4a5a-a587-9faaf690a9b7",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Slavík",
+        "displayShortName": "Slavík",
+        "displayAdditionalName": "Jiří",
+        "number": 1904
+      },
+      {
+        "id": "58c911e8-6347-49ee-afdd-49405eec0c17",
+        "references": [
+          {
+            "id": "d2d5f3b3-5bd6-4b4a-a3de-b59b798140a1",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Nina Nováková",
+        "displayShortName": "Nováková",
+        "displayAdditionalName": "Nina",
+        "number": 1868
+      },
+      {
+        "id": "3f83da2b-0c52-4601-80e7-81367231b1e9",
+        "references": [
+          {
+            "id": "24b19c2d-18f4-40d9-8e2a-cea4fe259101",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Bělobrádek",
+        "displayShortName": "Bělobrádek",
+        "displayAdditionalName": "Pavel",
+        "number": 1757
+      },
+      {
+        "id": "00cd07ed-9525-4ee1-ac27-d528eb4e1837",
+        "references": [
+          {
+            "id": "5ea32ca9-5a1b-416c-9a88-cfc3b4cbe633",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Hayato Okamura",
+        "displayShortName": "Okamura",
+        "displayAdditionalName": "Hayato",
+        "number": 1871
+      },
+      {
+        "id": "1c730a65-e414-4c8c-a09f-7891d3cf23e8",
+        "references": [
+          {
+            "id": "76feff1d-59ce-4baa-9615-7c667968bbee",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavel Blažek",
+        "displayShortName": "Blažek",
+        "displayAdditionalName": "Pavel",
+        "number": 1768
+      }
+    ]
+  },
+  {
+    "id": "60325f0d-8148-409a-9039-9c1d0cb2947c",
+    "name": "Starostové a nezávislí",
+    "shortName": "STAN",
+    "nestedCandidates": [
+      {
+        "id": "53acc46f-d917-4f8c-8b82-afea335a6103",
+        "references": [
+          {
+            "id": "6cdb17e7-6d13-4897-a45f-a74f44e3d0c1",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Barbora Urbanová",
+        "displayShortName": "Urbanová",
+        "displayAdditionalName": "Barbora",
+        "number": 1922
+      },
+      {
+        "id": "fece958f-6ba5-4cdf-a756-c941fdb6c3b6",
+        "references": [
+          {
+            "id": "d611c074-11fe-414c-849e-7adc1f05d083",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Viktor Vojtko",
+        "displayShortName": "Vojtko",
+        "displayAdditionalName": "Viktor",
+        "number": 1928
+      },
+      {
+        "id": "4682e780-defb-400c-9b43-1873d8df28fb",
+        "references": [
+          {
+            "id": "8af35afb-9187-40c2-9227-70443119b311",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lukáš Vlček",
+        "displayShortName": "Vlček",
+        "displayAdditionalName": "Lukáš",
+        "number": 1926
+      },
+      {
+        "id": "b9909a47-4a99-4a37-8149-1f776db50cdf",
+        "references": [
+          {
+            "id": "80d59ec3-fae7-45be-945b-51482fdae2e7",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Farský",
+        "displayShortName": "Farský",
+        "displayAdditionalName": "Jan",
+        "number": 1787
+      },
+      {
+        "id": "1cb6df5d-6f3d-4a46-8683-080f2874d74b",
+        "references": [
+          {
+            "id": "1cb3a056-1b5c-4258-8174-75561d6ad479",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Věra Kovářová",
+        "displayShortName": "Kovářová",
+        "displayAdditionalName": "Věra",
+        "number": 1834
+      },
+      {
+        "id": "5e5a1efb-067f-4f50-a23c-916fba322a66",
+        "references": [
+          {
+            "id": "ec97f0fd-774d-4be8-a374-2ab999941a89",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jiří Hájek",
+        "displayShortName": "Hájek",
+        "displayAdditionalName": "Jiří",
+        "number": 1800
+      },
+      {
+        "id": "8d77a978-dab2-47b0-ada3-f95df5626c4b",
+        "references": [
+          {
+            "id": "069947f2-0066-4ef0-847f-f9558372a355",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ondřej Lochman",
+        "displayShortName": "Lochman",
+        "displayAdditionalName": "Ondřej",
+        "number": 1852
+      },
+      {
+        "id": "3089a96c-85c8-4ccb-a6d1-7686b887fa3a",
+        "references": [
+          {
+            "id": "fc872ee8-eefb-4c30-8445-b4a0041e695b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Josef Flek",
+        "displayShortName": "Flek",
+        "displayAdditionalName": "Josef",
+        "number": 1794
+      },
+      {
+        "id": "00fecaca-a160-4432-bad5-c46ae74b8d31",
+        "references": [
+          {
+            "id": "d4accd68-c7e2-40b5-8404-7addcdcffa25",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Pavla Pivoňka Vaňková",
+        "displayShortName": "Pivoňka Vaňková",
+        "displayAdditionalName": "Pavla",
+        "number": 1883
+      },
+      {
+        "id": "9e442644-87cd-4c0e-9a83-6a6858e434dc",
+        "references": [
+          {
+            "id": "49013ca0-95f1-47a6-a62f-abdf451aed32",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michaela Šebelová",
+        "displayShortName": "Šebelová",
+        "displayAdditionalName": "Michaela",
+        "number": 1913
+      },
+      {
+        "id": "faedf8e4-185f-4d5d-8d69-585f0bb11d93",
+        "references": [
+          {
+            "id": "f811df84-a981-48a9-8c93-eef08d5053ac",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Gazdík",
+        "displayShortName": "Gazdík",
+        "displayAdditionalName": "Petr",
+        "number": 1797
+      },
+      {
+        "id": "94c265f4-f6e3-4349-b5eb-875546d9bd13",
+        "references": [
+          {
+            "id": "fd8ef1aa-b648-4215-aafd-be303404850f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Josef Cogan",
+        "displayShortName": "Cogan",
+        "displayAdditionalName": "Josef",
+        "number": 1775
+      },
+      {
+        "id": "bbf53a91-53e0-4583-9ae8-76b95bd0155c",
+        "references": [
+          {
+            "id": "6cd5465f-bbe1-49ec-9290-1c23537f9b88",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Liška",
+        "displayShortName": "Liška",
+        "displayAdditionalName": "Petr",
+        "number": 1851
+      },
+      {
+        "id": "df7ffefe-bfc5-40be-849b-6ede94b9b6a1",
+        "references": [
+          {
+            "id": "8ef5c866-32b3-401f-b4b2-0ac77dcf0ea2",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jarmila Levko",
+        "displayShortName": "Levko",
+        "displayAdditionalName": "Jarmila",
+        "number": 1944
+      },
+      {
+        "id": "dbeee201-8eaa-4ff0-bf5f-825d997d9bbe",
+        "references": [
+          {
+            "id": "d3e05db6-d4fe-443a-9931-496b7b2c86c3",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vladimír Balaš",
+        "displayShortName": "Balaš",
+        "displayAdditionalName": "Vladimír",
+        "number": 1749
+      },
+      {
+        "id": "c424c2c8-5832-41de-b2d7-f07e128ff5ec",
+        "references": [
+          {
+            "id": "c93669f6-b854-4167-961f-e297cbae4a70",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Lucie Potůčková",
+        "displayShortName": "Potůčková",
+        "displayAdditionalName": "Lucie",
+        "number": 1886
+      },
+      {
+        "id": "601da306-db0c-4d09-858e-a0d9fbab7117",
+        "references": [
+          {
+            "id": "aabc0837-8cb5-4d72-8c86-37bcb053c64a",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michael Rataj",
+        "displayShortName": "Rataj",
+        "displayAdditionalName": "Michael",
+        "number": 1891
+      },
+      {
+        "id": "7cdb4418-c098-4bad-9470-ce3e24baf8f4",
+        "references": [
+          {
+            "id": "c50869b4-42b7-498f-ab2f-e7c46cc27ed5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Kuchař",
+        "displayShortName": "Kuchař",
+        "displayAdditionalName": "Jan",
+        "number": 1842
+      },
+      {
+        "id": "37b8f928-842d-4707-a88f-d0953c5fbfec",
+        "references": [
+          {
+            "id": "e2900338-4743-49b1-8824-90483c8cb581",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petr Letocha",
+        "displayShortName": "Letocha",
+        "displayAdditionalName": "Petr",
+        "number": 1849
+      },
+      {
+        "id": "89de8a87-9be9-4e01-84d4-a29fbd4e670d",
+        "references": [
+          {
+            "id": "7cb79b3e-701e-43e9-a7b7-d4b452972e2d",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Petra Quittová",
+        "displayShortName": "Quittová",
+        "displayAdditionalName": "Petra",
+        "number": 1888
+      },
+      {
+        "id": "361cbc63-9c17-4f84-8f1f-a1680dd06797",
+        "references": [
+          {
+            "id": "a9b4d2fd-528c-44df-91b7-4b036ceea905",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jana Krutáková",
+        "displayShortName": "Krutáková",
+        "displayAdditionalName": "Jana",
+        "number": 1838
+      },
+      {
+        "id": "cb6df335-5af0-443e-a931-7713215495c6",
+        "references": [
+          {
+            "id": "4ea00add-3a70-409f-a990-4ee130b741e7",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Berki",
+        "displayShortName": "Berki",
+        "displayAdditionalName": "Jan",
+        "number": 1763
+      },
+      {
+        "id": "6b25916e-4926-45cd-a41e-504e4013f56f",
+        "references": [
+          {
+            "id": "b56397f3-7159-4e4a-8398-6af03140ecb0",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Tomáš Dubský",
+        "displayShortName": "Dubský",
+        "displayAdditionalName": "Tomáš",
+        "number": 1781
+      },
+      {
+        "id": "e5d6f887-c001-4900-8793-8214e1918957",
+        "references": [
+          {
+            "id": "e0daada5-4e17-4cfc-9358-dd20d9639ab6",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Hana Naiclerová",
+        "displayShortName": "Naiclerová",
+        "displayAdditionalName": "Hana",
+        "number": 1864
+      },
+      {
+        "id": "c32ae66d-1801-4761-a7f5-27008f4d3e90",
+        "references": [
+          {
+            "id": "186bc077-6294-4e64-8ad6-b702925e642f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jan Lacina",
+        "displayShortName": "Lacina",
+        "displayAdditionalName": "Jan",
+        "number": 1845
+      },
+      {
+        "id": "ac7cacb2-59f9-4c6b-b715-b5f6bfb0dd3a",
+        "references": [
+          {
+            "id": "6fac9219-ef52-487b-afd4-4d1b156571e4",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Josef Bernard",
+        "displayShortName": "Bernard",
+        "displayAdditionalName": "Josef",
+        "number": 1766
+      },
+      {
+        "id": "90ad7938-415c-451a-a68b-dd18c94917d5",
+        "references": [
+          {
+            "id": "d8711130-c06d-4460-9a96-694fbe16dce8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Vít Rakušan",
+        "displayShortName": "Rakušan",
+        "displayAdditionalName": "Vít",
+        "number": 1890
+      },
+      {
+        "id": "6c79555f-1a1e-4f53-90f4-1445c37c805a",
+        "references": [
+          {
+            "id": "6e0bc11f-3fea-4e93-95eb-b566928f76e5",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Tomáš Müller",
+        "displayShortName": "Müller",
+        "displayAdditionalName": "Tomáš",
+        "number": 1861
+      },
+      {
+        "id": "f7a83853-d4d0-4efd-8383-642650c486d1",
+        "references": [
+          {
+            "id": "cb92695b-8d14-4f75-8cb8-c909d835cbe8",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Exner",
+        "displayShortName": "Exner",
+        "displayAdditionalName": "Martin",
+        "number": 1784
+      },
+      {
+        "id": "f4ab0ec4-841f-47e7-b2fc-c07135ac9fc6",
+        "references": [
+          {
+            "id": "daf7a772-7d41-4695-98ce-e3dafea8217a",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Milada Voborská",
+        "displayShortName": "Voborská",
+        "displayAdditionalName": "Milada",
+        "number": 1927
+      },
+      {
+        "id": "63a29ce4-ad6e-45e1-b4b0-0212fc21887b",
+        "references": [
+          {
+            "id": "80262016-4350-468a-b1c1-7911ff129b3f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Roman Bělor",
+        "displayShortName": "Bělor",
+        "displayAdditionalName": "Roman",
+        "number": 1759
+      },
+      {
+        "id": "5d78277c-870f-4dab-b18e-47f5b4f02369",
+        "references": [
+          {
+            "id": "aafc467f-5479-4d52-af05-4ec06e58a55f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Martin Hájek",
+        "displayShortName": "Hájek",
+        "displayAdditionalName": "Martin",
+        "number": 1801
+      },
+      {
+        "id": "38150f46-aff6-4e73-aaa7-416181adf35f",
+        "references": [
+          {
+            "id": "b6cc4a52-a78d-45ad-931e-676a3ecb6b8f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Eliška Olšáková",
+        "displayShortName": "Olšáková",
+        "displayAdditionalName": "Eliška",
+        "number": 1874
+      },
+      {
+        "id": "9793d482-bb10-479b-ac7a-12a579bca405",
+        "references": [
+          {
+            "id": "b63b3d60-2bba-4f15-a00c-ec061ac8e85b",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Silvia Doušová",
+        "displayShortName": "Doušová",
+        "displayAdditionalName": "Silvia",
+        "number": 1952
+      },
+      {
+        "id": "d64171bf-3f10-474c-946a-c5ff4d1ed7ee",
+        "references": [
+          {
+            "id": "c2264299-5a4b-415b-b7e9-1d147ef95f20",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Michaela Opltová",
+        "displayShortName": "Opltová",
+        "displayAdditionalName": "Michaela",
+        "number": 1875
+      }
+    ]
+  },
+  {
+    "id": "7f4d2b9f-28ad-4f55-aef1-a5a1ad5e5f92",
+    "name": "Česká pirátská strana",
+    "shortName": "Piráti",
+    "nestedCandidates": [
+      {
+        "id": "c593009c-0276-4d49-bba9-f9737c801a56",
+        "references": [
+          {
+            "id": "bcbe7681-bfc0-4feb-94f3-ce34674cbd95",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Olga Richterová",
+        "displayShortName": "Richterová",
+        "displayAdditionalName": "Olga",
+        "number": 1894
+      },
+      {
+        "id": "fb8bca9a-14ba-41f5-a4d7-ae977a3dbc80",
+        "references": [
+          {
+            "id": "ed556876-bf45-4d09-8c87-315b3f77d10f",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Klára Kocmanová",
+        "displayShortName": "Kocmanová",
+        "displayAdditionalName": "Klára",
+        "number": 1827
+      },
+      {
+        "id": "dadc5469-a310-40d7-b540-b1a4c30d0cbe",
+        "references": [
+          {
+            "id": "0dd9f9f6-0f39-4f56-b1ae-be4682fb26f4",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Ivan Bartoš",
+        "displayShortName": "Bartoš",
+        "displayAdditionalName": "Ivan",
+        "number": 1750
+      },
+      {
+        "id": "2dfed135-2da4-497f-a0c2-7b9a7f34d61b",
+        "references": [
+          {
+            "id": "2d0a8b58-bf97-40f7-9d03-7d2125efde91",
+            "type": "person"
+          }
+        ],
+        "images": [
+          {
+            "type": "avatar"
+          }
+        ],
+        "displayName": "Jakub Michálek",
+        "displayShortName": "Michálek",
+        "displayAdditionalName": "Jakub",
+        "number": 1859
+      }
+    ]
+  }
+]

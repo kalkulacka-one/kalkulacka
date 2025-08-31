@@ -1,0 +1,16 @@
+{
+  "id": "f4f2c1b3-c8e9-4b1d-a2f6-8d7b9c1a0e3d",
+  "createdAt": "2025-08-29T14:41:20+02:00",
+  "calculatorGroup": {
+    "id": "976e9e37-124b-4ef7-962e-96fbedbc2c42",
+    "key": "volby-2025"
+  },
+  "election": {
+    "id": "74e6b9a3-2efa-4fa9-ae3c-7c6b7e274671",
+    "key": "volby-2025"
+  },
+  "variant": {
+    "key": "kalkulacka"
+  },
+  "intro": "Vítejte v intentuře kalkulačky pro volby do Poslanecké sněmovny Parlamentu České republiky v roce 2025.\n\nČeká na vás 45 otázek. Na identické otázky odpověděli i zástupci politických stran a hnutí, které se ucházejí o váš hlas. Odpovědi na otázky vám zaberou přibližně 5-10 minut a na konci se dozvíte, jak se kandidující subjekty shodují s vašimi názory.\n\nOslovili jsme všechny relevantní kandidující subjekty. Pokud se některý neobjeví ve výsledném srovnání, je to proto, že navzdory urgencím zatím neposlal své odpovědi."
+}
