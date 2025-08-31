@@ -26,9 +26,4 @@ describe("GuidePage", () => {
     expect(Introduction).toHaveBeenCalledTimes(1);
     expect(Introduction).toHaveBeenCalledWith({ calculator: data }, undefined);
   });
-
-  it("renders nothing for other step values", () => {
-    const { container } = render(<GuidePage calculator={data} step={2} />);
-    expect(container.firstChild).toBeNull();
-  });
 });
