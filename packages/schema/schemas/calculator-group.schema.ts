@@ -30,12 +30,14 @@ export const calculatorGroupBaseSchema = z
   })
   .strict();
 
-export const calculatorItemSchema = calculatorBaseSchema
-  .pick({ id: true })
-  .extend({
-    variant: calculatorVariantSchema,
-  })
-  .strict();
+export const calculatorItemSchema = z.lazy(() =>
+  calculatorBaseSchema
+    .pick({ id: true })
+    .extend({
+      variant: calculatorVariantSchema,
+    })
+    .strict(),
+);
 
 export const standaloneCalculatorInGroupSchema = calculatorGroupBaseSchema
   .extend({
@@ -45,17 +47,19 @@ export const standaloneCalculatorInGroupSchema = calculatorGroupBaseSchema
   })
   .strict();
 
-export const electionCalculatorItemSchema = calculatorBaseSchema
-  .pick({ id: true })
-  .extend({
-    variant: calculatorVariantSchema.optional(),
-    district: calculatorDistrictSchema.optional(),
-    round: calculatorRoundSchema.optional(),
-  })
-  .strict()
-  .refine((data) => data.variant || data.district || data.round, {
-    message: "Calculator must have at least a variant, district, or round.",
-  });
+export const electionCalculatorItemSchema = z.lazy(() =>
+  calculatorBaseSchema
+    .pick({ id: true })
+    .extend({
+      variant: calculatorVariantSchema.optional(),
+      district: calculatorDistrictSchema.optional(),
+      round: calculatorRoundSchema.optional(),
+    })
+    .strict()
+    .refine((data) => data.variant || data.district || data.round, {
+      message: "Calculator must have at least a variant, district, or round.",
+    }),
+);
 
 export const electionCalculatorGroupSchema = calculatorGroupBaseSchema
   .extend({
