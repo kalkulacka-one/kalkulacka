@@ -44,6 +44,7 @@ const electionCalculatorSchema = calculatorBaseSchema
   .extend({
     calculatorGroup: calculatorGroup,
     election: election,
+    shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
     variant: variantSchema.optional(),
     district: districtSchema.optional(),
     round: roundSchema.optional(),
@@ -58,7 +59,7 @@ const electionCalculatorSchema = calculatorBaseSchema
     }
   });
 
-export const calculatorSchema = z.union([standaloneCalculatorSchema, groupCalculatorSchema, electionCalculatorSchema]).describe("Calculator is a set of questions, candidates and their answers");
+export const calculatorSchema = standaloneCalculatorSchema.or(groupCalculatorSchema).or(electionCalculatorSchema).describe("Calculator is a set of questions, candidates and their answers");
 
 export type Calculator = z.infer<typeof calculatorSchema>;
 
