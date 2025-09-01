@@ -3,10 +3,10 @@
 import { createContext, type ReactNode, useContext, useRef } from "react";
 import { createStore, type StoreApi, useStore } from "zustand";
 
-import type { Calculator } from "../../../../packages/schema/schemas/calculator.schema";
+import type { CalculatorData } from "../lib";
 
 type CalculatorStoreState = {
-  calculator: Calculator;
+  calculator: CalculatorData;
   step: number | undefined;
 };
 
@@ -20,7 +20,7 @@ export const CalculatorStoreContext = createContext<StoreApi<CalculatorStore> | 
 
 export type CalculatorStoreProviderProps = {
   children: ReactNode;
-  calculatorData: Calculator;
+  calculatorData: CalculatorData;
 };
 
 export const CalculatorStoreProvider = ({ children, calculatorData }: CalculatorStoreProviderProps) => {

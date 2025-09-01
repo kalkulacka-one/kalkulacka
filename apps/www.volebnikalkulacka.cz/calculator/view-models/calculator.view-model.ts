@@ -4,6 +4,6 @@ import { useCalculatorStore } from "../stores/calculatorStore";
 export type CalculatorViewModel = Calculator;
 
 export function useCalculatorViewModel(): CalculatorViewModel {
-  const calculator = useCalculatorStore((state) => state.calculator);
+  const calculator = useCalculatorStore((state) => state.calculator.calculator);
   return calculator;
 }
