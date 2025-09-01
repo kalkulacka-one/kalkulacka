@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-import * as calculatorGroupSchema from "./calculator-group.schema.js";
-import { districtSchema } from "./district.schema.js";
-import * as electionSchema from "./election.schema.js";
-import { roundSchema } from "./round.schema.js";
-import { tagsSchema } from "./tags.schema.js";
-import { variantSchema } from "./variant.schema.js";
+import * as calculatorGroupSchema from "./calculator-group.schema";
+import { districtSchema } from "./district.schema";
+import * as electionSchema from "./election.schema";
+import { roundSchema } from "./round.schema";
+import { tagsSchema } from "./tags.schema";
+import { variantSchema } from "./variant.schema";
 
 const calculatorGroup = z.lazy(() => calculatorGroupSchema.calculatorGroupSchemaReference).describe("Reference to a calculator group the calculator belongs to");
 const election = z.lazy(() => electionSchema.electionSchemaReference).describe("Reference to an election the calculator belongs to");
