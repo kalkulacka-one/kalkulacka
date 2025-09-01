@@ -8,6 +8,7 @@ export const districtSchema = z
       .describe("Human-friendly unique key of a district in the hyphen-separated lowercased format"),
     code: z.string().describe("Official district code assigned by the election authority").optional(),
   })
-  .strict();
+  .strict()
+  .describe("Geographical area of an election");
 
 export type District = z.infer<typeof districtSchema>;
