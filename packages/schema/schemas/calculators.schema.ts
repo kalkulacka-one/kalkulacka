@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { calculatorSchema } from "./calculator.schema.js";
+import { calculatorSchema } from "./calculator.schema";
 
 export const calculatorsSchema = z.array(calculatorSchema).describe("List of calculators");
 

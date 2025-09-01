@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-import { type CalculatorGroupReference, calculatorGroupSchemaReference } from "./calculator-group.schema.js";
-import { districtSchema } from "./district.schema.js";
-import { roundSchema } from "./round.schema.js";
-import { tagsSchema } from "./tags.schema.js";
-import { timePeriodSchema } from "./time-period.schema.js";
+import { type CalculatorGroupReference, calculatorGroupSchemaReference } from "./calculator-group.schema";
+import { districtSchema } from "./district.schema";
+import { roundSchema } from "./round.schema";
+import { tagsSchema } from "./tags.schema";
+import { timePeriodSchema } from "./time-period.schema";
 
 const electionIdSchema = z.string().uuid().describe("Unique identifier of an election in the format of UUID");
 const electionKeySchema = z

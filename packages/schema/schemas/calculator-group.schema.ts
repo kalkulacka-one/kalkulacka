@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import { calculatorBaseSchema, calculatorDistrictSchema, calculatorRoundSchema, calculatorVariantSchema } from "./calculator.schema.js";
-import * as electionSchema from "./election.schema.js";
-import { variantSchema } from "./variant.schema.js";
+import { calculatorBaseSchema, calculatorDistrictSchema, calculatorRoundSchema, calculatorVariantSchema } from "./calculator.schema";
+import * as electionSchema from "./election.schema";
+import { variantSchema } from "./variant.schema";
 
 const calculatorGroupIdSchema = z.string().uuid().describe("Unique identifier of a calculator group in the format of UUID");
 const calculatorGroupKeySchema = z
