@@ -27,7 +27,7 @@ export const electionBaseSchema = z
     title: z.string().describe("Title of an election"),
     shortTitle: z.string().max(25).describe("Short title of an election with a maximum of 25 characters"),
     description: z.string().describe("Description of an election").optional(),
-    tags: tagsSchema,
+    tags: tagsSchema.optional(),
     calculatorGroup: z.lazy((): z.ZodType<CalculatorGroupReference> => calculatorGroupSchemaReference),
     districts: z.array(districtSchema).min(1).describe("Ordered list of election districts").optional(),
     rounds: z.array(roundSchema).min(1).describe("Ordered list of election rounds").optional(),
