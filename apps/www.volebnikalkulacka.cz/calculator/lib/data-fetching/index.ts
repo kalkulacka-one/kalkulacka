@@ -1,4 +1,4 @@
 export * from "./fetchAndParseFile";
 export * from "./fetch-file";
-export * from "./loadCalculatorData";
+export * from "./load-calculator-data";
 export * from "./parse-with-schema";
