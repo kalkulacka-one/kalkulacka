@@ -1,10 +1,12 @@
 "use client";
 
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
 import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
-import { useCalculatorStore } from "../../../../calculator/stores/calculatorStore";
+import { useCalculatorViewModel } from "../../../../calculator/view-models/calculator.view-model";
 
 export function GuidePage({ step }: { step: number }) {
-  const calculator = useCalculatorStore((state) => state.calculator?.calculator || ({} as Calculator));
+  const calculator = useCalculatorViewModel();
+  if (!calculator) {
+    return <div>Loading...</div>;
+  }
   return <AppGuidePage calculator={calculator} step={step} />;
 }

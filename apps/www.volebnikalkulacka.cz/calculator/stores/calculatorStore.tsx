@@ -3,13 +3,18 @@
 import { createContext, type ReactNode, useContext, useRef } from "react";
 import { createStore, type StoreApi, useStore } from "zustand";
 
-import { CalculatorData } from "../common";
+import type { CalculatorData } from "../common";
 
 type CalculatorStoreState = {
   calculator: CalculatorData | undefined;
+  step: number | undefined;
 };
 
-type CalculatorStore = CalculatorStoreState;
+type CalculatorStoreActions = {
+  setStep: (step: number) => void;
+};
+
+type CalculatorStore = CalculatorStoreState & CalculatorStoreActions;
 
 export const CalculatorStoreContext = createContext<StoreApi<CalculatorStore> | undefined>(undefined);
 
@@ -23,6 +28,8 @@ export const CalculatorStoreProvider = ({ children, calculatorData }: Calculator
   if (!storeRef.current) {
     storeRef.current = createStore<CalculatorStore>((set) => ({
       calculator: calculatorData,
+      step: undefined,
+      setStep: (step) => set(() => ({ step: step })),
     }));
   }
 
