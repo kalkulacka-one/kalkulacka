@@ -1,15 +1,39 @@
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
+"use client";
 
-const data = {
-  id: "00000000-0000-0000-0000-000000000000",
-  createdAt: new Date(0).toISOString(),
-  key: "kalkulacka",
-  shortTitle: "Sněmovní 2025",
-  title: "Volební kalkulačka pro sněmovní volby 2025",
-  intro: "Čeká vás 35 otázek, na které jsme se zeptali všech 26 kandidujících subjektů.",
-} satisfies Calculator;
+import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
+import { useCalculatorStore } from "../../../../calculator/stores/calculatorStore";
+import { useCalculatorViewModel } from "../../../../calculator/view-models/calculator.view-model";
 
 export function GuidePage({ step }: { step: number }) {
-  return <AppGuidePage calculator={data} step={step} />;
+  const params = useParams();
+  const router = useRouter();
+  const storeStep = useCalculatorStore((state) => state.step);
+  const setStep = useCalculatorStore((state) => state.setStep);
+
+  useEffect(() => {
+    if (!storeStep) {
+      setStep(step);
+    }
+  }, [step, setStep, storeStep]);
+
+  const onNext = () => {
+    if (storeStep) {
+      router.push(`/${params.first}/${params.second}/navod/${step + 1}`);
+    }
+  };
+
+  const onPrevious = () => {
+    if (storeStep) {
+      router.push(`/${params.first}/${params.second}/navod/${step - 1}`);
+    }
+  };
+
+  const calculator = useCalculatorViewModel();
+  if (!calculator && !storeStep) {
+    return <div>...Loading</div>;
+  }
+  return <AppGuidePage calculator={calculator} step={step} onNext={onNext} onPrevious={onPrevious} />;
 }
