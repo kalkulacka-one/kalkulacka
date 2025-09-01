@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { answerSchema } from "./answer.schema.js";
+import { answerSchema } from "./answer.schema";
 
 export const candidateAnswerSchema = answerSchema.extend({
   respondent: z.literal("candidate").describe("The respondent must be a candidate."),
