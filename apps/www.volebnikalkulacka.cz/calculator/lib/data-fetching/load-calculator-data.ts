@@ -24,7 +24,9 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
   }
 
   const dataPath = group ? `${key}/${group}` : key;
-  const dataUrl = new URL(`${baseUrl.pathname}/${dataPath}`, baseUrl.origin);
+  const basePath = baseUrl.pathname === "/" ? "" : baseUrl.pathname.slice(1);
+  const fullPath = basePath ? `${basePath}/${dataPath}` : dataPath;
+  const dataUrl = new URL(fullPath, baseUrl.origin);
 
   const fileEntries = Object.entries(DATA_CONFIG).map(([key, config]) => ({
     key,
