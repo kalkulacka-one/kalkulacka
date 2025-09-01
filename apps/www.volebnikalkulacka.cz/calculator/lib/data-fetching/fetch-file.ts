@@ -1,4 +1,4 @@
-export async function fetchFile(url: string): Promise<unknown> {
+export async function fetchFile({ url }: { url: string }): Promise<unknown> {
   const response = await fetch(url);
 
   if (response.status === 404) {

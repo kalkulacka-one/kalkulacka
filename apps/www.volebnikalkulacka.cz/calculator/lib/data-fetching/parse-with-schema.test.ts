@@ -17,7 +17,7 @@ describe("parseWithSchema", () => {
       publishedAt: "2024-01-15T10:30:00Z",
     };
 
-    const result = parseWithSchema(data, schema);
+    const result = parseWithSchema({ data, schema });
     expect(result).toEqual(data);
   });
 
@@ -28,12 +28,12 @@ describe("parseWithSchema", () => {
       publishedAt: "not-a-date",
     };
 
-    expect(() => parseWithSchema(invalidData, schema)).toThrow("Data validation failed");
+    expect(() => parseWithSchema({ data: invalidData, schema })).toThrow("Data validation failed");
   });
 
   it("should include Zod error message in thrown error", () => {
     const invalidData = { id: "123e4567-e89b-12d3-a456-426614174000", title: 123 };
 
-    expect(() => parseWithSchema(invalidData, schema)).toThrow(/Expected string, received number/);
+    expect(() => parseWithSchema({ data: invalidData, schema })).toThrow(/Expected string, received number/);
   });
 });

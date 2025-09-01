@@ -15,7 +15,7 @@ describe("fetchFile", () => {
       json: () => Promise.resolve(mockData),
     } as Response);
 
-    const result = await fetchFile("https://example.com/test.json");
+    const result = await fetchFile({ url: "https://example.com/test.json" });
 
     expect(result).toEqual(mockData);
     expect(mockFetch).toHaveBeenCalledWith("https://example.com/test.json");
@@ -28,7 +28,7 @@ describe("fetchFile", () => {
       statusText: "Not Found",
     } as Response);
 
-    await expect(fetchFile("https://example.com/missing.json")).rejects.toThrow("File `https://example.com/missing.json` not found");
+    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrow("File `https://example.com/missing.json` not found");
   });
 
   it("should throw error for 500 status", async () => {
@@ -38,7 +38,7 @@ describe("fetchFile", () => {
       statusText: "Internal Server Error",
     } as Response);
 
-    await expect(fetchFile("https://example.com/error.json")).rejects.toThrow("Server error while fetching `https://example.com/error.json` file");
+    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrow("Server error while fetching `https://example.com/error.json` file");
   });
 
   it("should throw error for other HTTP errors", async () => {
@@ -48,12 +48,12 @@ describe("fetchFile", () => {
       statusText: "Forbidden",
     } as Response);
 
-    await expect(fetchFile("https://example.com/forbidden.json")).rejects.toThrow("HTTP 403: Forbidden for `https://example.com/forbidden.json` file");
+    await expect(fetchFile({ url: "https://example.com/forbidden.json" })).rejects.toThrow("HTTP 403: Forbidden for `https://example.com/forbidden.json` file");
   });
 
   it("should handle network errors", async () => {
     mockFetch.mockRejectedValue(new Error("Network error"));
 
-    await expect(fetchFile("https://example.com/test.json")).rejects.toThrow("Network error");
+    await expect(fetchFile({ url: "https://example.com/test.json" })).rejects.toThrow("Network error");
   });
 });

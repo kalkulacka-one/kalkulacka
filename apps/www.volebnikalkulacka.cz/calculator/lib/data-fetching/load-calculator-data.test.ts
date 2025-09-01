@@ -44,7 +44,7 @@ describe("loadCalculatorData", () => {
 
     await loadCalculatorData({ key: "key" });
 
-    expect(mockFetchFile).toHaveBeenCalledWith(`${DATA_ENDPOINT}/key/calculator.json`);
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/calculator.json` });
   });
 
   it("should handle `DATA_ENDPOINT` environment variable with path", async () => {
@@ -55,7 +55,7 @@ describe("loadCalculatorData", () => {
 
     await loadCalculatorData({ key: "key" });
 
-    expect(mockFetchFile).toHaveBeenCalledWith(`${DATA_ENDPOINT}/data/key/calculator.json`);
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/data/key/calculator.json` });
   });
 
   it("should load calculator data successfully with key only", async () => {
@@ -66,8 +66,8 @@ describe("loadCalculatorData", () => {
 
     const result = await loadCalculatorData({ key: "key" });
 
-    expect(mockFetchFile).toHaveBeenCalledWith(`${DATA_ENDPOINT}/key/calculator.json`);
-    expect(mockParseWithSchema).toHaveBeenCalledWith(data, expect.any(Object));
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/calculator.json` });
+    expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
     expect(result).toEqual({ calculator: data });
   });
 
@@ -79,8 +79,8 @@ describe("loadCalculatorData", () => {
 
     const result = await loadCalculatorData({ key: "key", group: "group" });
 
-    expect(mockFetchFile).toHaveBeenCalledWith(`${DATA_ENDPOINT}/key/group/calculator.json`);
-    expect(mockParseWithSchema).toHaveBeenCalledWith(data, expect.any(Object));
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/calculator.json` });
+    expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
     expect(result).toEqual({ calculator: data });
   });
 

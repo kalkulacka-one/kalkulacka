@@ -35,7 +35,7 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
   }));
 
   const fetchPromises = fileEntries.map(({ key, url }) =>
-    fetchFile(url).catch((error) => {
+    fetchFile({ url }).catch((error) => {
       throw new Error(`Failed to fetch ${key} data: ${error.message}`);
     }),
   );
@@ -43,7 +43,7 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
 
   const parsedData = fileEntries.map(({ key, schema }, index) => {
     try {
-      return [key, parseWithSchema(results[index], schema)];
+      return [key, parseWithSchema({ data: results[index], schema })];
     } catch (error) {
       throw new Error(`Failed to parse ${key} data: ${(error as Error).message}`);
     }
