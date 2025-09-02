@@ -38,7 +38,8 @@
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit"
   },
   "packageManager": "npm@11.5.2",
   "devDependencies": {

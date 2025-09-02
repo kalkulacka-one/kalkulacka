@@ -34,6 +34,9 @@
     },
     "test:ui": {
       "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
     }
   },
   "ui": "tui"
