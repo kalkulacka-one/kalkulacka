@@ -9,7 +9,8 @@
     "ncu": "turbo ncu",
     "ncu:upgrade": "turbo ncu:upgrade",
     "test": "turbo run test",
-    "test:ui": "turbo run test:ui"
+    "test:ui": "turbo run test:ui",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.2",

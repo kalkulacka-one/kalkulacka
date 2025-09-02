@@ -11,7 +11,8 @@
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
     "test": "vitest --passWithNoTests",
-    "test:ui": "vitest --passWithNoTests --ui"
+    "test:ui": "vitest --passWithNoTests --ui",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@repo/database": "*",
