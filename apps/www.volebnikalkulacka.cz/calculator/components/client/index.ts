@@ -1,3 +1,3 @@
 "use client";
 
-export * from "./calculatorStoreProvider";
+export * from "./calculator-store-provider";
