@@ -2,7 +2,7 @@ import { type ReactNode, useRef } from "react";
 import { createStore, type StoreApi } from "zustand";
 
 import type { CalculatorData } from "../../lib";
-import type CalculatorStore from "../../stores/calculator";
+import type { CalculatorStore } from "../../stores/calculator";
 import { CalculatorStoreContext } from "../../stores/calculator";
 
 export type CalculatorStoreProviderProps = {
