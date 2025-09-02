@@ -1,4 +1,4 @@
-import type { CalculatorViewModel } from "../../../view-models/calculator.view-model";
+import type { CalculatorViewModel } from "../../../view-models";
 
 export type Introduction = {
   calculator: CalculatorViewModel;

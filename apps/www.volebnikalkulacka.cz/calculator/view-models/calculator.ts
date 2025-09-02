@@ -1,5 +1,5 @@
 import type { Calculator } from "../../../../packages/schema/schemas/calculator.schema";
-import { useCalculatorStore } from "../stores/calculatorStore";
+import { useCalculatorStore } from "../stores";
 
 export type CalculatorViewModel = Calculator;
 

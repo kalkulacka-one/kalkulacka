@@ -1,5 +1,3 @@
-"use client";
-
 import { createContext, type ReactNode, useContext, useRef } from "react";
 import { createStore, type StoreApi, useStore } from "zustand";
 
@@ -7,12 +5,10 @@ import type { CalculatorData } from "../lib";
 
 type CalculatorStoreState = {
   calculator: CalculatorData;
-  step: number | undefined;
 };
 
-type CalculatorStoreActions = {
-  setStep: (step: number) => void;
-};
+// biome-ignore lint/complexity/noBannedTypes: To be defined
+type CalculatorStoreActions = {};
 
 type CalculatorStore = CalculatorStoreState & CalculatorStoreActions;
 
@@ -26,10 +22,8 @@ export type CalculatorStoreProviderProps = {
 export const CalculatorStoreProvider = ({ children, calculatorData }: CalculatorStoreProviderProps) => {
   const storeRef = useRef<StoreApi<CalculatorStore> | undefined>(undefined);
   if (!storeRef.current) {
-    storeRef.current = createStore<CalculatorStore>((set) => ({
+    storeRef.current = createStore<CalculatorStore>(() => ({
       calculator: calculatorData,
-      step: undefined,
-      setStep: (step) => set(() => ({ step: step })),
     }));
   }
 
