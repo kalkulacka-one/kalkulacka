@@ -1,15 +1,13 @@
 import { loadCalculatorData } from "../../../../../calculator/lib";
 import { CalculatorStoreProvider } from "../../../../../calculator/stores";
+export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
+  const { first } = await params;
 
-export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
-  const { first, second } = await params;
-
-  const calculatorData = await loadCalculatorData({ key: first, group: second });
-
+  const calculatorData = await loadCalculatorData({ key: first });
   return (
     <CalculatorStoreProvider calculatorData={calculatorData}>
       <section>
-        <p>Second: `{second}`</p>
+        <p>First: `{first}`</p>
         <main>{children}</main>
       </section>
     </CalculatorStoreProvider>

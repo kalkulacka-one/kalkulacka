@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { GuidePage } from "../../../../../../components/client";
+import { GuidePage } from "../../../../../../../components/client";
 
 export default async function Page({ params }: { params: Promise<{ step: string }> }) {
   const stepInt = Number.parseInt((await params).step);
