@@ -1,3 +1,7 @@
+"use client";
+
+import { useParams, useRouter } from "next/navigation";
+
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
 import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
 
@@ -11,5 +15,16 @@ const data = {
 } satisfies Calculator;
 
 export function GuidePage({ step }: { step: number }) {
-  return <AppGuidePage calculator={data} step={step} />;
+  const router = useRouter();
+  const params = useParams();
+
+  const handleNavigationClick = () => {
+    if (step === 1) {
+      router.push(`/${params.first}/${params.second}/navod/2`);
+    } else if (step === 2) {
+      router.push(`/${params.first}/${params.second}/otazka`);
+    }
+  };
+
+  return <AppGuidePage onNavigationClick={handleNavigationClick} calculator={data} step={step} />;
 }

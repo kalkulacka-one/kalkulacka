@@ -20,7 +20,7 @@ const data = {
 
 describe("GuidePage", () => {
   it("renders Introduction component when step is 1 and passes calculator prop", () => {
-    render(<GuidePage calculator={data} step={1} />);
+    render(<GuidePage calculator={data} step={1} onNavigationClick={vi.fn()} />);
 
     expect(screen.getByTestId("mocked-introduction")).toBeInTheDocument();
     expect(Introduction).toHaveBeenCalledTimes(1);

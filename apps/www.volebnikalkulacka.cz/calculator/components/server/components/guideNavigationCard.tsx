@@ -4,12 +4,13 @@ import { NavigationCard } from "./navigationCard";
 
 export type GuideNavigationCard = {
   step: number;
+  onNavigationClick: () => void;
 };
 
-export function GuideNavigationCard({ step }: GuideNavigationCard) {
+export function GuideNavigationCard({ step, onNavigationClick }: GuideNavigationCard) {
   return (
     <NavigationCard>
-      <Button>{step === 1 ? "Pokračovat" : "Začít odpovídat"}</Button>
+      <Button onClick={onNavigationClick}>{step === 1 ? "Pokračovat" : "Začít odpovídat"}</Button>
     </NavigationCard>
   );
 }
