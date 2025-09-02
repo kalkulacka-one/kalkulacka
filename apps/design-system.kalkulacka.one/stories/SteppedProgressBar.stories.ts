@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { SteppedProgressBar } from "@repo/design-system/server";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const stepItems = [
   { id: "1", status: null },

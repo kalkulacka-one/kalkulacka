@@ -1,5 +1,5 @@
 import { twMerge } from "@repo/design-system/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 type StepStatus = boolean | null | undefined;
 
