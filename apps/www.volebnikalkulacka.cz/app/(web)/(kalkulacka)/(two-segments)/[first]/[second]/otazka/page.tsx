@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ first: string; questionNumber: string }> }) {
-  const { first, questionNumber } = await params;
+export default async function Page({ params }: { params: Promise<{ first: string; second: string; questionNumber: string }> }) {
+  const { first, second, questionNumber } = await params;
   if (!questionNumber) {
-    redirect(`/${first}/otazka/1`);
+    redirect(`/${first}/${second}/otazka/1`);
   }
 }
