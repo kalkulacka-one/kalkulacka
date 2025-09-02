@@ -1,5 +1,3 @@
-import { ReviewPage } from "../../../../../../../components/server";
+import Page from "../../../../(one-segment)/[first]/rekapitulace/page";
 
-export default function Page() {
-  return <ReviewPage />;
-}
+export default Page;

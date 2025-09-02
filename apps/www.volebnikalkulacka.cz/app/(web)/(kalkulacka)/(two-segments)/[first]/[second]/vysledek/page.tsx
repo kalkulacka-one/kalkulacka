@@ -1,5 +1,3 @@
-import { ResultPage } from "../../../../../../../components/server";
+import Page from "../../../../(one-segment)/[first]/vysledek/page";
 
-export default function Page() {
-  return <ResultPage />;
-}
+export default Page;

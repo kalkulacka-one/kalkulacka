@@ -9,6 +9,7 @@ export default async function Layout({ children, params }: { children: React.Rea
     <CalculatorStoreProvider calculatorData={calculatorData}>
       <section>
         <p>First: `{first}`</p>
+        <p>Second: `{second}`</p>
         <main>{children}</main>
       </section>
     </CalculatorStoreProvider>

@@ -1,11 +1,3 @@
-import { notFound } from "next/navigation";
+import Page from "../../../../../(one-segment)/[first]/otazka/[questionNumber]/page";
 
-import { QuestionPage } from "../../../../../../../../components/server";
-
-export default async function Page({ params }: { params: Promise<{ questionNumber: string }> }) {
-  const questionNumberInt = Number.parseInt((await params).questionNumber);
-  if (Number.isNaN(questionNumberInt)) {
-    notFound();
-  }
-  return <QuestionPage questionNumber={questionNumberInt} />;
-}
+export default Page;
