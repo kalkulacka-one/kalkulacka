@@ -5,9 +5,6 @@ export type Introduction = {
 };
 
 export function Introduction({ calculator }: Introduction) {
-  if (!calculator) {
-    return <div>...Loading</div>;
-  }
   const { title, intro } = calculator;
   return (
     <>
