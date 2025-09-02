@@ -1,5 +1,5 @@
+import { CalculatorStoreProvider } from "../../../../../calculator/components/client";
 import { loadCalculatorData } from "../../../../../calculator/lib";
-import { CalculatorStoreProvider } from "../../../../../calculator/stores";
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
   const { first } = await params;
 

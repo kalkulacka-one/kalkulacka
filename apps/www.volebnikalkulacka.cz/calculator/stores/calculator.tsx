@@ -1,5 +1,5 @@
-import { createContext, type ReactNode, useContext, useRef } from "react";
-import { createStore, type StoreApi, useStore } from "zustand";
+import { createContext, useContext } from "react";
+import { type StoreApi, useStore } from "zustand";
 
 import type { CalculatorData } from "../lib";
 
@@ -13,22 +13,6 @@ type CalculatorStoreActions = {};
 type CalculatorStore = CalculatorStoreState & CalculatorStoreActions;
 
 export const CalculatorStoreContext = createContext<StoreApi<CalculatorStore> | undefined>(undefined);
-
-export type CalculatorStoreProviderProps = {
-  children: ReactNode;
-  calculatorData: CalculatorData;
-};
-
-export const CalculatorStoreProvider = ({ children, calculatorData }: CalculatorStoreProviderProps) => {
-  const storeRef = useRef<StoreApi<CalculatorStore> | undefined>(undefined);
-  if (!storeRef.current) {
-    storeRef.current = createStore<CalculatorStore>(() => ({
-      calculator: calculatorData,
-    }));
-  }
-
-  return <CalculatorStoreContext.Provider value={storeRef.current}>{children}</CalculatorStoreContext.Provider>;
-};
 
 export function useCalculatorStore<U>(selector: (state: CalculatorStore) => U): U {
   const store = useContext(CalculatorStoreContext);
