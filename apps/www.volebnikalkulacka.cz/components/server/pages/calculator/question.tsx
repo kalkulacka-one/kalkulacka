@@ -1,8 +1,10 @@
-export function QuestionPage({ questionNumber }: { questionNumber: number }) {
+import { BottomBarWrapper, CardNavigationWrapper } from "../../../../calculator/components/client";
+
+export function QuestionPage() {
   return (
-    <div>
-      <h2>Otázka</h2>
-      <p>questionNumber:{questionNumber}</p>
-    </div>
+    <>
+      <CardNavigationWrapper />
+      <BottomBarWrapper />
+    </>
   );
 }
