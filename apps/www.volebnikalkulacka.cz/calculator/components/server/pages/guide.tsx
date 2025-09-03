@@ -3,7 +3,7 @@ import { GuideComponent, Introduction } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
-  step: number;
+  step: 1 | 2;
 };
 
 export function GuidePage({ calculator, step }: GuidePage) {
