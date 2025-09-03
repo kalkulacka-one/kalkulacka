@@ -1,6 +1,6 @@
 import type { CalculatorViewModel } from "../../../view-models";
 import { Introduction } from "../components";
-import { GuideComponent } from "../components/guideComponent";
+import { GuideComponent } from "../components/guide-component";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
