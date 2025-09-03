@@ -1,12 +1,14 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { render } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { Introduction } from "../components";
+import { GuideComponent, GuideNavigationCard, Introduction } from "../components";
 import { GuidePage } from "./guide";
 
 vi.mock("../components", () => ({
-  Introduction: vi.fn(() => <div data-testid="mocked-introduction" />),
+  Introduction: vi.fn(() => null),
+  GuideComponent: vi.fn(() => null),
+  GuideNavigationCard: vi.fn(() => null),
 }));
 
 const data = {
@@ -19,11 +21,63 @@ const data = {
 } satisfies Calculator;
 
 describe("GuidePage", () => {
-  it("renders Introduction component when step is 1 and passes calculator prop", () => {
-    render(<GuidePage calculator={data} step={1} />);
+  let onNavigationNextClick: ReturnType<typeof vi.fn>;
 
-    expect(screen.getByTestId("mocked-introduction")).toBeInTheDocument();
+  beforeEach(() => {
+    onNavigationNextClick = vi.fn();
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("renders Introduction for step 1", () => {
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
     expect(Introduction).toHaveBeenCalledTimes(1);
-    expect(Introduction).toHaveBeenCalledWith({ calculator: data }, undefined);
+  });
+
+  it("passes calculator to Introduction component", () => {
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    expect(Introduction).toHaveBeenCalledWith(
+      expect.objectContaining({
+        calculator: data,
+      }),
+      undefined,
+    );
+  });
+
+  it("doesn't render GuideComponent for step 1", () => {
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    expect(GuideComponent).not.toHaveBeenCalled();
+  });
+
+  it("renders GuideComponent for step 2", () => {
+    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} />);
+    expect(GuideComponent).toHaveBeenCalledTimes(1);
+  });
+
+  it("doesn't render Introduction for step 2", () => {
+    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} />);
+    expect(Introduction).not.toHaveBeenCalled();
+  });
+
+  it("renders GuideNavigationCard for step 1", () => {
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders GuideNavigationCard for step 2", () => {
+    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} />);
+    expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
+  });
+
+  it("passes onNavigationNextClick to GuideNavigationCard", () => {
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    expect(GuideNavigationCard).toHaveBeenCalledWith(
+      expect.objectContaining({
+        onNextClick: onNavigationNextClick,
+      }),
+      undefined,
+    );
   });
 });
