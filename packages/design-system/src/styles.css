@@ -62,18 +62,18 @@
   );
 
   --color-neutral: light-dark(
-    var(--ko-palette-neutral-light, oklch(from var(--ko-palette-neutral) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-neutral-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.35) calc(c - 0.12) h))
+    var(--ko-palette-neutral-light, oklch(0.4 0.02 0)),
+    var(--ko-palette-neutral-dark, oklch(0.85 0.01 0))
   );
 
   --color-neutral-hover: light-dark(
-    var(--ko-palette-neutral-hover-light, var(--ko-palette-neutral)),
-    var(--ko-palette-neutral-hover-dark, var(--ko-palette-neutral))
+    var(--ko-palette-neutral-hover-light, oklch(0.25 0.02 0)),
+    var(--ko-palette-neutral-hover-dark, oklch(0.95 0.005 0))
   );
 
   --color-neutral-active: light-dark(
-    var(--ko-palette-neutral-active-light, oklch(from var(--ko-palette-neutral) calc(l - 0.436) calc(c - 0.05) h)),
-    var(--ko-palette-neutral-active-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.5) calc(c - 0.2) h))
+    var(--ko-palette-neutral-active-light, oklch(0.15 0.02 0)),
+    var(--ko-palette-neutral-active-dark, oklch(0.75 0.01 0))
   );
 
   --color-neutral-inactive: light-dark(
@@ -82,8 +82,8 @@
   );
 
   --color-neutral-disabled: light-dark(
-    var(--ko-palette-neutral-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
-    var(--ko-palette-neutral-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+    var(--ko-palette-neutral-disabled-light, oklch(0.75 0.01 0)),
+    var(--ko-palette-neutral-disabled-dark, oklch(0.45 0.01 0))
   );
 
   --color-on-bg-neutral: light-dark(
@@ -106,6 +106,17 @@
   --color-white: light-dark(
     var(--ko-palette-white-light, white),
     var(--ko-palette-white-dark, white)
+  );
+
+  /* Card colors */
+  --color-card-bg: light-dark(
+    var(--ko-palette-card-bg-light, white),
+    var(--ko-palette-card-bg-dark, oklch(0.15 0.01 0))
+  );
+
+  --color-card-border: light-dark(
+    var(--ko-palette-card-border-light, oklch(0.85 0.01 0)),
+    var(--ko-palette-card-border-dark, oklch(0.25 0.01 0))
   );
 
   /* Logo colors */
