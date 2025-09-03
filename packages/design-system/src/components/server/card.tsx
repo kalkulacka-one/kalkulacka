@@ -8,12 +8,13 @@ export type Card = {
 const CardVariants = cva("ko:rounded-lg", {
   variants: {
     color: {
+      default: "ko:bg-card-bg",
       white: "ko:bg-white",
       transparent: "ko:bg-transparent",
     },
     corner: { topRight: "ko:rounded-tr-none", topLeft: "ko:rounded-tl-none", bottomRight: "ko:rounded-br-none", bottomLeft: "ko:rounded-bl-none" },
     border: {
-      true: "ko:border ko:border-neutral",
+      true: "ko:border ko:border-card-border",
       false: "",
     },
     shadow: {
@@ -22,7 +23,7 @@ const CardVariants = cva("ko:rounded-lg", {
     },
   },
   defaultVariants: {
-    color: "white",
+    color: "default",
     border: true,
     corner: "bottomRight",
     shadow: true,
