@@ -47,5 +47,11 @@ export function calculateResult(userAnswers: Answers, candidates: Candidates, al
       });
     }
   }
-  return finalResults.sort((a, b) => b.percentage - a.percentage);
+  return finalResults.sort((a, b) => {
+    if (b.percentage !== a.percentage) {
+      return b.percentage - a.percentage;
+    }
+    // Random order for ties
+    return Math.random() - 0.5;
+  });
 }

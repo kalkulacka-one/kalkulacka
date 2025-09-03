@@ -9,9 +9,15 @@ export function processSingleAnswer(userAnswer: Answer, candidateAnswer: Answer)
   const numericUserAnswer = booleanAnswerToNumber(userAnswer.answer);
   const numericCandidateAnswer = booleanAnswerToNumber(candidateAnswer.answer);
 
+  // Only process if both answers are defined (not undefined/missing)
+  if (numericUserAnswer === undefined || numericCandidateAnswer === undefined) {
+    return { questionId, score: 0, weight: 0 };
+  }
+
   const baseScore = calculateBaseScore(numericUserAnswer, numericCandidateAnswer);
 
-  let weight = numericUserAnswer === 0 || numericCandidateAnswer === 0 ? 0 : 1;
+  // Weight is 1 for all defined answers (including neutral)
+  let weight = 1;
 
   let finalScore = baseScore;
 

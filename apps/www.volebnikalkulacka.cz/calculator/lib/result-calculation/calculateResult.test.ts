@@ -16,8 +16,12 @@ const mockUserAnswers: Answers = [
 const person_a_id = "p0000000-0000-0000-0000-00000000000a";
 const person_b_id = "p0000000-0000-0000-0000-00000000000b";
 const person_c_id = "p0000000-0000-0000-0000-00000000000c";
+const person_d_id = "p0000000-0000-0000-0000-00000000000d";
+const person_e_id = "p0000000-0000-0000-0000-00000000000e";
 const organization_x_id = "o0000000-0000-0000-0000-00000000000x";
 const organization_y_id = "o0000000-0000-0000-0000-00000000000y";
+const organization_z_id = "o0000000-0000-0000-0000-00000000000z";
+const organization_w_id = "o0000000-0000-0000-0000-00000000000w";
 
 const mockCandidates: Candidates = [
   // Candidate 'a' is a person. The candidate ID ('a00...') is different from the person ID ('p00...').
@@ -50,6 +54,42 @@ const mockCandidates: Candidates = [
       },
     ],
   },
+  // Candidate 'z' is an organization/coalition that has nested candidates (persons 'a' and 'd').
+  {
+    id: "z0000000-0000-0000-0000-00000000000z",
+    displayName: "Candidate Z",
+    references: [{ type: "organization", id: organization_z_id }],
+    nestedCandidates: [
+      {
+        id: "a0000000-0000-0000-0000-00000000000a",
+        displayName: "Candidate A",
+        references: [{ type: "person", id: person_a_id }],
+      },
+      {
+        id: "d0000000-0000-0000-0000-00000000000d",
+        displayName: "Candidate D",
+        references: [{ type: "person", id: person_d_id }],
+      },
+    ],
+  },
+  // Candidate 'w' is an organization/coalition that has nested candidates (persons 'a' and 'd') and its own answers.
+  {
+    id: "w0000000-0000-0000-0000-00000000000w",
+    displayName: "Candidate W",
+    references: [{ type: "organization", id: organization_w_id }],
+    nestedCandidates: [
+      {
+        id: "a0000000-0000-0000-0000-00000000000a",
+        displayName: "Candidate A",
+        references: [{ type: "person", id: person_a_id }],
+      },
+      {
+        id: "d0000000-0000-0000-0000-00000000000d",
+        displayName: "Candidate D",
+        references: [{ type: "person", id: person_d_id }],
+      },
+    ],
+  },
   // Candidates 'b' and 'c' are also available as standalone candidates for individual scoring.
   {
     id: "b0000000-0000-0000-0000-00000000000b",
@@ -60,6 +100,18 @@ const mockCandidates: Candidates = [
     id: "c0000000-0000-0000-0000-00000000000c",
     displayName: "Candidate C",
     references: [{ type: "person", id: person_c_id }],
+  },
+  // Candidate 'd' is an individual person.
+  {
+    id: "d0000000-0000-0000-0000-00000000000d",
+    displayName: "Candidate D",
+    references: [{ type: "person", id: person_d_id }],
+  },
+  // Candidate 'e' is an individual person with all neutral answers.
+  {
+    id: "e0000000-0000-0000-0000-00000000000e",
+    displayName: "Candidate E",
+    references: [{ type: "person", id: person_e_id }],
   },
 ];
 
@@ -78,12 +130,26 @@ const mockAllCandidatesAnswers: CandidatesAnswers = {
   ],
   "b0000000-0000-0000-0000-00000000000b": [
     { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: false, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: null, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000002", answer: null, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
   ],
   "c0000000-0000-0000-0000-00000000000c": [
     { questionId: "00000000-0000-0000-0000-000000000001", answer: false, respondent: "candidate" },
     { questionId: "00000000-0000-0000-0000-000000000002", answer: true, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
+  ],
+  "d0000000-0000-0000-0000-00000000000d": [
+    { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
+  ],
+  "e0000000-0000-0000-0000-00000000000e": [
+    { questionId: "00000000-0000-0000-0000-000000000001", answer: null, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000002", answer: null, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000003", answer: null, respondent: "candidate" },
+  ],
+  "w0000000-0000-0000-0000-00000000000w": [
+    { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
+    { questionId: "00000000-0000-0000-0000-000000000002", answer: false, respondent: "candidate" },
     { questionId: "00000000-0000-0000-0000-000000000003", answer: true, respondent: "candidate" },
   ],
 };
@@ -92,26 +158,37 @@ describe("calculateResult", () => {
   it("should calculate all results and sort them correctly", () => {
     const finalResults = calculateResult(mockUserAnswers, mockCandidates, mockAllCandidatesAnswers);
 
-    expect(finalResults).toHaveLength(5);
+    expect(finalResults).toHaveLength(9);
 
     expect(finalResults[0]).toEqual({
-      id: "b0000000-0000-0000-0000-00000000000b",
+      id: "w0000000-0000-0000-0000-00000000000w",
       percentage: 100,
     });
 
     expect(finalResults).toEqual([
-      { id: "b0000000-0000-0000-0000-00000000000b", percentage: 100 },
+      { id: "w0000000-0000-0000-0000-00000000000w", percentage: 100 },
       { id: "a0000000-0000-0000-0000-00000000000a", percentage: 75 },
       {
-        id: "y0000000-0000-0000-0000-00000000000y",
-        percentage: expect.closeTo(66.67, 2),
+        id: "z0000000-0000-0000-0000-00000000000z",
+        percentage: expect.closeTo(57.14, 2),
         memberResults: [
-          { id: "b0000000-0000-0000-0000-00000000000b", percentage: 100 },
-          { id: "c0000000-0000-0000-0000-00000000000c", percentage: 50 },
+          { id: "a0000000-0000-0000-0000-00000000000a", percentage: 75 },
+          { id: "d0000000-0000-0000-0000-00000000000d", percentage: expect.closeTo(33.33, 2) },
         ],
       },
-      { id: "c0000000-0000-0000-0000-00000000000c", percentage: 50 },
+      { id: "e0000000-0000-0000-0000-00000000000e", percentage: 50 },
+      { id: "b0000000-0000-0000-0000-00000000000b", percentage: 37.5 },
+      { id: "d0000000-0000-0000-0000-00000000000d", percentage: expect.closeTo(33.33, 2) },
       { id: "x0000000-0000-0000-0000-00000000000x", percentage: 25 },
+      {
+        id: "y0000000-0000-0000-0000-00000000000y",
+        percentage: 18.75,
+        memberResults: [
+          { id: "b0000000-0000-0000-0000-00000000000b", percentage: 37.5 },
+          { id: "c0000000-0000-0000-0000-00000000000c", percentage: 0 },
+        ],
+      },
+      { id: "c0000000-0000-0000-0000-00000000000c", percentage: 0 },
     ]);
   });
 });
