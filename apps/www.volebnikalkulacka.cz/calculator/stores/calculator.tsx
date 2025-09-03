@@ -10,7 +10,7 @@ type CalculatorStoreState = {
 // biome-ignore lint/complexity/noBannedTypes: To be defined
 type CalculatorStoreActions = {};
 
-type CalculatorStore = CalculatorStoreState & CalculatorStoreActions;
+export type CalculatorStore = CalculatorStoreState & CalculatorStoreActions;
 
 export const CalculatorStoreContext = createContext<StoreApi<CalculatorStore> | undefined>(undefined);
 
@@ -21,5 +21,3 @@ export function useCalculatorStore<U>(selector: (state: CalculatorStore) => U): 
   }
   return useStore(store, selector);
 }
-
-export default CalculatorStore;
