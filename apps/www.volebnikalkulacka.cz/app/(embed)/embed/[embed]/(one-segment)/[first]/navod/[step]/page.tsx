@@ -5,7 +5,8 @@ export default async function Page({ params }: { params: Promise<{ embed: string
   const { embed, first, step } = await params;
   const stepInt = stepGuard(step);
 
-  const navigationNextPath = (currentStep: 1 | 2) => {
+  const navigationNextPath = async (currentStep: 1 | 2) => {
+    "use server";
     if (currentStep === 1) {
       return `/embed/${embed}/${first}/navod/2`;
     }
