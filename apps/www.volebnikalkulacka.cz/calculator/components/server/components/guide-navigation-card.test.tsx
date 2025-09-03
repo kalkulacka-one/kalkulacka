@@ -11,7 +11,7 @@ describe("GuideNavigationCard", () => {
     expect(screen.getByText("Pokračovat")).toBeInTheDocument();
   });
 
-  it("renders 'Začít odpovídat' button for step greater than 1", () => {
+  it("renders 'Začít odpovídat' button for step 2", () => {
     const onNextClick = vi.fn();
     render(<GuideNavigationCard step={2} onNextClick={onNextClick} />);
     expect(screen.getByText("Začít odpovídat")).toBeInTheDocument();

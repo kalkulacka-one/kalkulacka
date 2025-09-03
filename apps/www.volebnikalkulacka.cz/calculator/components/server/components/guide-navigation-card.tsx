@@ -3,7 +3,7 @@ import { Button } from "@repo/design-system/client";
 import { NavigationCard } from "./navigation-card";
 
 export type GuideNavigationCard = {
-  step: number;
+  step: 1 | 2;
   onNextClick: () => void;
 };
 
