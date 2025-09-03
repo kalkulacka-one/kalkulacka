@@ -1,10 +1,9 @@
 import { Card } from "@repo/design-system/server";
 
-import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
-import type { Tag } from "../../../../../../packages/schema/schemas/tags.schema";
+import type { QuestionViewModel } from "../../../view-models/question";
 
 export type QuestionCard = {
-  question: Question;
+  question: QuestionViewModel;
   questionCurrent: number;
   questionTotal: number;
 };
@@ -19,7 +18,7 @@ export function QuestionCard({ question, questionCurrent, questionTotal }: Quest
             {questionCurrent}/{questionTotal}
           </span>
           <span>{title}</span>
-          {tags?.map((tag: Tag) => (
+          {tags?.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
