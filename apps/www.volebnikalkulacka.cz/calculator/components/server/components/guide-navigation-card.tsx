@@ -1,6 +1,6 @@
 import { Button } from "@repo/design-system/client";
 
-import { NavigationCard } from "./navigationCard";
+import { NavigationCard } from "./navigation-card";
 
 export type GuideNavigationCard = {
   step: number;
