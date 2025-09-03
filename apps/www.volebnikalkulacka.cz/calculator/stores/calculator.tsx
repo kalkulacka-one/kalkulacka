@@ -1,14 +1,22 @@
 import { createContext, useContext } from "react";
 import { type StoreApi, useStore } from "zustand";
 
+import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 import type { CalculatorData } from "../lib";
 
-type CalculatorStoreState = {
-  calculator: CalculatorData;
+type CalculatorStoreState = CalculatorData & {
+  currentQuestionIndex: number;
+  answers: Map<string, Pick<Answer, "answer" | "isImportant">>;
 };
 
-// biome-ignore lint/complexity/noBannedTypes: To be defined
-type CalculatorStoreActions = {};
+type CalculatorStoreActions = {
+  setCurrentQuestionIndex: (index: number) => void;
+  setAnswer: (questionId: string, answer: boolean | null) => void;
+  setImportant: (questionId: string, isImportant: boolean) => void;
+  getAnswer: (questionId: string) => Pick<Answer, "answer" | "isImportant"> | undefined;
+  isQuestionAnswered: (questionId: string) => boolean;
+  isQuestionImportant: (questionId: string) => boolean;
+};
 
 export type CalculatorStore = CalculatorStoreState & CalculatorStoreActions;
 

@@ -1,6 +1,8 @@
 "use client";
 
+export * from "./bottomBar";
 export * from "./button";
+export * from "./cardNavigation";
 export * from "./clientTest";
 export * from "./description";
 export * from "./field";

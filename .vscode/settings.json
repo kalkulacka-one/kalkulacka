@@ -9,5 +9,9 @@
     "editor.defaultFormatter": "Prisma.prisma"
   },
   "tailwindCSS.experimental.classRegex": [["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]],
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "files.associations": {
+    "**/styles.css": "tailwindcss",
+    "**/globals.css": "tailwindcss"
+  }
 }

@@ -1,2 +1,10 @@
+export * from "./checkIcon";
+export * from "./chevronLeftIcon";
+export * from "./chevronRightIcon";
+export * from "./doubleChevronLeftIcon";
+export * from "./doubleChevronRightIcon";
 export * from "./envelopeIcon";
 export * from "./searchIcon";
+export * from "./starIcon";
+export type { IconProps } from "./types";
+export * from "./xIcon";

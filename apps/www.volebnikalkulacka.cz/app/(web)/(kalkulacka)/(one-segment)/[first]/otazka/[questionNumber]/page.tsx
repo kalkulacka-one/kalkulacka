@@ -7,5 +7,5 @@ export default async function Page({ params }: { params: Promise<{ questionNumbe
   if (Number.isNaN(questionNumberInt)) {
     notFound();
   }
-  return <QuestionPage questionNumber={questionNumberInt} />;
+  return <QuestionPage />;
 }

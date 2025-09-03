@@ -4,12 +4,5 @@ export default async function Layout({ children, params }: { children: React.Rea
   const { first } = await params;
 
   const calculatorData = await loadCalculatorData({ key: first });
-  return (
-    <CalculatorStoreProvider calculatorData={calculatorData}>
-      <section>
-        <p>First: `{first}`</p>
-        <main>{children}</main>
-      </section>
-    </CalculatorStoreProvider>
-  );
+  return <CalculatorStoreProvider calculatorData={calculatorData}>{children}</CalculatorStoreProvider>;
 }

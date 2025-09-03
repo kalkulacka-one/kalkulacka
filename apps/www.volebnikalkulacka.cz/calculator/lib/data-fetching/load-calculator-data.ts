@@ -1,4 +1,5 @@
 import { type Calculator, calculatorSchema } from "../../../../../packages/schema/schemas/calculator.schema";
+import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
 import { fetchFile, parseWithSchema } from ".";
 
 const DATA_CONFIG = {
@@ -6,10 +7,15 @@ const DATA_CONFIG = {
     filename: "calculator.json",
     schema: calculatorSchema,
   },
+  questions: {
+    filename: "questions.json",
+    schema: questionsSchema,
+  },
 } as const;
 
 export type CalculatorData = {
   calculator: Calculator;
+  questions: Questions;
 };
 
 export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
@@ -29,7 +35,7 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
   const dataUrl = new URL(fullPath, baseUrl.origin);
 
   const fileEntries = Object.entries(DATA_CONFIG).map(([key, config]) => ({
-    key,
+    key: key as keyof CalculatorData,
     url: new URL(config.filename, `${dataUrl}/`).toString(),
     schema: config.schema,
   }));
@@ -41,13 +47,23 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
   );
   const results = await Promise.all(fetchPromises);
 
-  const parsedData = fileEntries.map(({ key, schema }, index) => {
+  const parsedData: Partial<CalculatorData> = {};
+
+  fileEntries.forEach(({ key }, index) => {
     try {
-      return [key, parseWithSchema({ data: results[index], schema })];
+      if (key === "calculator") {
+        parsedData.calculator = parseWithSchema({ data: results[index], schema: calculatorSchema });
+      } else if (key === "questions") {
+        parsedData.questions = parseWithSchema({ data: results[index], schema: questionsSchema });
+      }
     } catch (error) {
       throw new Error(`Failed to parse ${key} data: ${(error as Error).message}`);
     }
   });
 
-  return Object.fromEntries(parsedData) as CalculatorData;
+  if (!parsedData.calculator || !parsedData.questions) {
+    throw new Error("Failed to load all required data");
+  }
+
+  return parsedData as CalculatorData;
 }
