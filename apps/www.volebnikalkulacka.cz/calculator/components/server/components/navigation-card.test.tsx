@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { NavigationCard } from "./navigationCard";
+import { NavigationCard } from "./navigation-card";
 
 describe("NavigationCard", () => {
   it("renders children", () => {

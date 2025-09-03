@@ -1,2 +1,2 @@
 export * from "./introduction";
-export * from "./navigationCard";
+export * from "./navigation-card";
