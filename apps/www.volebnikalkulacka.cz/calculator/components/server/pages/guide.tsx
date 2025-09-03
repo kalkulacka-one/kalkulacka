@@ -1,8 +1,8 @@
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
+import type { CalculatorViewModel } from "../../../view-models";
 import { Introduction } from "../components";
 
 export type GuidePage = {
-  calculator: Calculator;
+  calculator: CalculatorViewModel;
   step: number;
 };
 

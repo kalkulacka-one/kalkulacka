@@ -1,7 +1,7 @@
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
+import type { CalculatorViewModel } from "../../../view-models";
 
 export type Introduction = {
-  calculator: Calculator;
+  calculator: CalculatorViewModel;
 };
 
 export function Introduction({ calculator }: Introduction) {
