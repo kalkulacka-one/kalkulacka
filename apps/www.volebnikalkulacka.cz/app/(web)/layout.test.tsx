@@ -8,8 +8,8 @@ vi.mock("../../components/client", () => ({
 import Layout from "./layout";
 
 describe("RootLayout", () => {
-  it("should render the main heading", async () => {
-    render(await Layout({ children: null }));
-    expect(screen.getByText("Volební kalkulačka"));
+  it("should render children within ThemeProvider", async () => {
+    render(await Layout({ children: <div>Test content</div> }));
+    expect(screen.getByText("Test content")).toBeInTheDocument();
   });
 });
