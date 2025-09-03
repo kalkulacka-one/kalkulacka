@@ -12,6 +12,6 @@ export function GuidePage({ calculator, step }: GuidePage) {
     case 1:
       return <Introduction calculator={calculator} />;
     case 2:
-      return <GuideComponent href="/" />;
+      return <GuideComponent />;
   }
 }

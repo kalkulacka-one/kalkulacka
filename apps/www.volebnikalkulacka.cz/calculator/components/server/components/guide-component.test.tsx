@@ -4,16 +4,14 @@ import { describe, expect, it } from "vitest";
 import { GuideComponent } from ".";
 
 describe("GuideComponent", () => {
-  it("renders guide text and link", () => {
-    const href = "/guide";
-    render(<GuideComponent href={href} />);
+  it("renders guide text", () => {
+    render(<GuideComponent />);
 
     expect(screen.getByText(/Odpovídejte ANO\/NE nebo otázku přeskočte/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Více o výpočtu shody" })).toHaveAttribute("href", href);
   });
 
   it("renders scoring explanation cards", () => {
-    render(<GuideComponent href="/guide" />);
+    render(<GuideComponent />);
 
     expect(screen.getByText("✔✔ Při shodě s Vaší odpovědí strana nebo politik dostane bod")).toBeInTheDocument();
     expect(screen.getByText("✔✘ Při neshodě bod naopak ztratí")).toBeInTheDocument();
