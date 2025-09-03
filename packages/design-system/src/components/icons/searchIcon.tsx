@@ -5,9 +5,18 @@ type SearchIcon = {
 } & React.JSX.IntrinsicAttributes &
   React.SVGProps<SVGSVGElement>;
 
-export function SearchIcon({ title, titleId, decorative, ...props }: SearchIcon) {
+export function SearchIcon({ className, title, titleId, decorative = true, ...props }: SearchIcon) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor" {...props}>
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 18 18"
+      fill="currentColor"
+      aria-hidden={decorative ? "true" : undefined}
+      aria-labelledby={!decorative && titleId ? titleId : undefined}
+      role={!decorative ? "img" : undefined}
+      {...props}
+    >
       {title && !decorative && <title id={titleId}>{title}</title>}
       <path
         fill="currentColor"
