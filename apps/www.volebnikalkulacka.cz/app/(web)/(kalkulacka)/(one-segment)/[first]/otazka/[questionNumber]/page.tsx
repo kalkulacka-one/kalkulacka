@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { QuestionPage } from "../../../../../../../components/server";
+import { QuestionPage } from "../../../../../../../components/client";
 
 export default async function Page({ params }: { params: Promise<{ questionNumber: string }> }) {
   const questionNumberInt = Number.parseInt((await params).questionNumber);
