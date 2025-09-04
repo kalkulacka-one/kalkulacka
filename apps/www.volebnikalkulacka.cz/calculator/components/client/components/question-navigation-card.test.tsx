@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { QuestionNavigationCard } from "./question-navigation-card";
 
@@ -57,47 +57,40 @@ describe("QuestionNavigationCard", () => {
   });
 
   describe("interactions", () => {
-    const setup = () => ({
-      user: userEvent.setup(),
-      mockHandler: vi.fn(),
+    let user: ReturnType<typeof userEvent.setup>;
+    let mockHandler: ReturnType<typeof vi.fn>;
+
+    beforeEach(() => {
+      user = userEvent.setup();
+      mockHandler = vi.fn();
     });
 
     it("calls onPreviousClick when previous button is clicked", async () => {
-      const { user, mockHandler } = setup();
       render(<QuestionNavigationCard {...defaultProps} onPreviousClick={mockHandler} />);
-
       await user.click(screen.getByText("Předchozí"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onNextClick when next button is clicked", async () => {
-      const { user, mockHandler } = setup();
       render(<QuestionNavigationCard {...defaultProps} onNextClick={mockHandler} />);
-
       await user.click(screen.getByText("Další"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onAgreeChange when agree button is clicked", async () => {
-      const { user, mockHandler } = setup();
       render(<QuestionNavigationCard {...defaultProps} onAgreeChange={mockHandler} />);
-
       await user.click(screen.getByText("Ano"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
-      const { user, mockHandler } = setup();
       render(<QuestionNavigationCard {...defaultProps} onDisagreeChange={mockHandler} />);
-
       await user.click(screen.getByText("Ne"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
-      const { user, mockHandler } = setup();
       render(<QuestionNavigationCard {...defaultProps} onImportantChange={mockHandler} />);
-
       await user.click(screen.getByText("Pro mě důležité"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
