@@ -12,13 +12,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: true, isImportant: false },
       { questionId: "q3", answer: false, isImportant: false },
-      { questionId: "q4", answer: false, isImportant: false},
+      { questionId: "q4", answer: false, isImportant: false },
     ];
 
     // Candidate answers: Yes, No, Yes (perfect match)
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "Perfect Match", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "Perfect Match", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -31,9 +29,7 @@ describe("calculateResult", () => {
 
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
-    expect(results).toEqual([
-      { id: "candidate1", percentage: 100 },
-    ]);
+    expect(results).toEqual([{ id: "candidate1", percentage: 100 }]);
   });
 
   it("should calculate 75% match when candidate has one mismatch out of four questions", () => {
@@ -42,13 +38,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: true, isImportant: false },
       { questionId: "q3", answer: false, isImportant: false },
-      { questionId: "q4", answer: false, isImportant: false},
+      { questionId: "q4", answer: false, isImportant: false },
     ];
 
     // Candidate answers: Yes, Yes, Yes (mismatch on question 2)
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "Partial Match", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "Partial Match", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -61,9 +55,7 @@ describe("calculateResult", () => {
 
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
-    expect(results).toEqual([
-      { id: "candidate1", percentage: 75 },
-    ]);
+    expect(results).toEqual([{ id: "candidate1", percentage: 75 }]);
   });
 
   it("should calculate 50% match when candidate's answers are half matches and half mismatches with the user's answers", () => {
@@ -72,13 +64,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: true, isImportant: false },
       { questionId: "q3", answer: false, isImportant: false },
-      { questionId: "q4", answer: false, isImportant: false},
+      { questionId: "q4", answer: false, isImportant: false },
     ];
 
     // Candidate answers: All Neutral (50% match on all questions)
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -91,11 +81,8 @@ describe("calculateResult", () => {
 
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
-    expect(results).toEqual([
-      { id: "candidate1", percentage: 50 },
-    ]);
+    expect(results).toEqual([{ id: "candidate1", percentage: 50 }]);
   });
-
 
   it("should calculate 0% match when candidate's answers are all mismatches with the user's answers", () => {
     // User answers: Yes, No, Yes (important)
@@ -103,13 +90,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: true, isImportant: false },
       { questionId: "q3", answer: true, isImportant: false },
-      { questionId: "q4", answer: true, isImportant: false},
+      { questionId: "q4", answer: true, isImportant: false },
     ];
 
     // Candidate answers: All Neutral (50% match on all questions)
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -122,9 +107,7 @@ describe("calculateResult", () => {
 
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
-    expect(results).toEqual([
-      { id: "candidate1", percentage: 0 },
-    ]);
+    expect(results).toEqual([{ id: "candidate1", percentage: 0 }]);
   });
 
   it("should calculate 50% match when candidate gives neutral answers", () => {
@@ -133,13 +116,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: true, isImportant: false },
       { questionId: "q3", answer: false, isImportant: false },
-      { questionId: "q4", answer: false, isImportant: false},
+      { questionId: "q4", answer: false, isImportant: false },
     ];
 
     // Candidate answers: All Neutral (50% match on all questions)
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -152,9 +133,7 @@ describe("calculateResult", () => {
 
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
-    expect(results).toEqual([
-      { id: "candidate1", percentage: 50 },
-    ]);
+    expect(results).toEqual([{ id: "candidate1", percentage: 50 }]);
   });
 
   it("should calculate weight (w=2) as twice the question, two matches and two mismatches but with weight 2x should result in 33%", () => {
@@ -163,13 +142,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: true, isImportant: false },
       { questionId: "q3", answer: false, isImportant: true },
-      { questionId: "q4", answer: false, isImportant: true},
+      { questionId: "q4", answer: false, isImportant: true },
     ];
 
     // Candidate answers: All Neutral (50% match on all questions)
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -182,9 +159,7 @@ describe("calculateResult", () => {
 
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
-    expect(results).toEqual([
-      { id: "candidate1", percentage: expect.closeTo(33.33, 0.01) },
-    ]);
+    expect(results).toEqual([{ id: "candidate1", percentage: expect.closeTo(33.33, 0.01) }]);
   });
 
   it("should return undefined when candidate has no answers (currently returns 0)", () => {
@@ -193,13 +168,11 @@ describe("calculateResult", () => {
       { questionId: "q1", answer: true, isImportant: false },
       { questionId: "q2", answer: false, isImportant: false },
       { questionId: "q3", answer: true, isImportant: true },
-      { questionId: "q4", answer: false, isImportant: false},
+      { questionId: "q4", answer: false, isImportant: false },
     ];
 
     // Candidate has no answers at all
-    const candidates: Candidates = [
-      { id: "candidate1", displayName: "No Answers", references: [{ type: "person", id: "p1" }] },
-    ];
+    const candidates: Candidates = [{ id: "candidate1", displayName: "No Answers", references: [{ type: "person", id: "p1" }] }];
 
     const candidatesAnswers: CandidatesAnswers = {
       candidate1: [
@@ -210,7 +183,7 @@ describe("calculateResult", () => {
     const results = calculateResult(userAnswers, candidates, candidatesAnswers);
 
     expect(results).toEqual([
-      { id: "candidate1", percentage: 0}, // Currently returns 0, not undefined
+      { id: "candidate1", percentage: 0 }, // Currently returns 0, not undefined
     ]);
   });
 
@@ -416,12 +389,12 @@ describe("calculateResult", () => {
     // Test that results are sorted by percentage (descending)
     expect(results).toHaveLength(4);
     expect(results[0]?.percentage).toBe(100); // Perfect match first
-    expect(results[1]?.percentage).toBe(75);  // Partial matches (tied)
-    expect(results[2]?.percentage).toBe(50);  // Partial matches (tied)
-    expect(results[3]?.percentage).toBe(25);   // Poor match last (actual result is 0, not 25)
+    expect(results[1]?.percentage).toBe(75); // Partial matches (tied)
+    expect(results[2]?.percentage).toBe(50); // Partial matches (tied)
+    expect(results[3]?.percentage).toBe(25); // Poor match last (actual result is 0, not 25)
 
     // Test that all candidates are present
-    const candidateIds = results.map(r => r.id);
+    const candidateIds = results.map((r) => r.id);
     expect(candidateIds).toContain("candidate1");
     expect(candidateIds).toContain("candidate2");
     expect(candidateIds).toContain("candidate3");
