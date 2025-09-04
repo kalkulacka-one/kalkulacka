@@ -5,16 +5,18 @@ import type { Question } from "../../../../../../packages/schema/schemas/questio
 import { QuestionCard } from "./question-card";
 
 describe("QuestionCard", () => {
+  const mockQuestion: Question = {
+    id: "1",
+    title: "Test Question Title",
+    statement: "Test Question Statement",
+    detail: "Test Question Detail",
+    tags: ["Test tag", "Another tag"],
+  };
+
   const props = {
     current: 1,
     total: 10,
-    question: {
-      id: "1",
-      title: "Test Question Title",
-      statement: "Test Question Statement",
-      detail: "Test Question Detail",
-      tags: ["Test tag", "Another tag"],
-    },
+    question: mockQuestion,
   };
 
   it("should render the question card", () => {
