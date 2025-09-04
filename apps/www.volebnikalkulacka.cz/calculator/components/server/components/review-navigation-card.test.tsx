@@ -1,25 +1,22 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
 import { ReviewNavigationCard } from "./review-navigation-card";
 
 describe("ReviewNavigationCard", () => {
-  it("should render the review navigation card", () => {
-    const mockOnClick = vi.fn();
-
-    render(<ReviewNavigationCard onNextClick={mockOnClick} />);
-
-    expect(screen.getByRole("button", { name: /začít odpovídat/i })).toBeInTheDocument();
+  it("renders 'Začít odpovídat' button", () => {
+    const onNextClick = vi.fn();
+    render(<ReviewNavigationCard onNextClick={onNextClick} />);
+    expect(screen.getByText("Začít odpovídat")).toBeInTheDocument();
   });
 
-  it("should call onNextClick when button is clicked", () => {
-    const mockOnClick = vi.fn();
+  it("calls onNextClick when button is clicked", async () => {
+    const onNextClick = vi.fn();
+    const user = userEvent.setup();
+    render(<ReviewNavigationCard onNextClick={onNextClick} />);
 
-    render(<ReviewNavigationCard onNextClick={mockOnClick} />);
-
-    const button = screen.getByRole("button", { name: /začít odpovídat/i });
-    button.click();
-
-    expect(mockOnClick).toHaveBeenCalledOnce();
+    await user.click(screen.getByText("Začít odpovídat"));
+    expect(onNextClick).toHaveBeenCalledTimes(1);
   });
 });
