@@ -4,7 +4,7 @@ import { Card } from "@repo/design-system/server";
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
 
-export type RecapQuestionCard = {
+export type ReviewQuestionCard = {
   question: Question;
   answer: Answer;
   current: number;
@@ -14,7 +14,7 @@ export type RecapQuestionCard = {
   onImportantChange: (isImportant: boolean) => void;
 };
 
-export function RecapQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: RecapQuestionCard) {
+export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
   const { title, statement, detail, tags } = question;
   return (
     <Card corner="topLeft">

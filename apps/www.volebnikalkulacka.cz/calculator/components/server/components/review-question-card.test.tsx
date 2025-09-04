@@ -4,9 +4,9 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
-import { RecapQuestionCard } from "./review-question-card";
+import { ReviewQuestionCard } from "./review-question-card";
 
-describe("RecapQuestionCard", () => {
+describe("ReviewQuestionCard", () => {
   const mockQuestion: Question = {
     id: "1",
     title: "Test Question Title",
@@ -31,8 +31,8 @@ describe("RecapQuestionCard", () => {
     onImportantChange: vi.fn(),
   };
 
-  it("should render the recap question card", () => {
-    render(<RecapQuestionCard {...props} />);
+  it("renders question information and answer buttons", () => {
+    render(<ReviewQuestionCard {...props} />);
 
     expect(screen.getByText(`${props.current}/${props.total}`)).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
@@ -60,21 +60,21 @@ describe("RecapQuestionCard", () => {
     });
 
     it("calls onAgreeChange when agree button is clicked", async () => {
-      render(<RecapQuestionCard {...props} onAgreeChange={mockHandler} />);
+      render(<ReviewQuestionCard {...props} onAgreeChange={mockHandler} />);
 
       await user.click(screen.getByText("Jsem pro"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
-      render(<RecapQuestionCard {...props} onDisagreeChange={mockHandler} />);
+      render(<ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />);
 
       await user.click(screen.getByText("Jsem proti"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
-      render(<RecapQuestionCard {...props} onImportantChange={mockHandler} />);
+      render(<ReviewQuestionCard {...props} onImportantChange={mockHandler} />);
 
       await user.click(screen.getByText("Pro mě důležité"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
