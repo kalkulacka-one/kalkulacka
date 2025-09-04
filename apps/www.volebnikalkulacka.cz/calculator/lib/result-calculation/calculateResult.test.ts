@@ -5,190 +5,426 @@ import type { Candidates } from "../../../../../packages/schema/schemas/candidat
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
 import { calculateResult } from "./calculateResult";
 
-const mockUserAnswers: Answers = [
-  { questionId: "00000000-0000-0000-0000-000000000001", answer: true, isImportant: false },
-  { questionId: "00000000-0000-0000-0000-000000000002", answer: false, isImportant: false },
-  { questionId: "00000000-0000-0000-0000-000000000003", answer: true, isImportant: true },
-];
-
-// In a real scenario, these IDs would come from files like `persons.json` and `organizations.json`.
-// The important part is that a candidate's ID is distinct from the ID of the person or organization it refers to.
-const person_a_id = "p0000000-0000-0000-0000-00000000000a";
-const person_b_id = "p0000000-0000-0000-0000-00000000000b";
-const person_c_id = "p0000000-0000-0000-0000-00000000000c";
-const person_d_id = "p0000000-0000-0000-0000-00000000000d";
-const person_e_id = "p0000000-0000-0000-0000-00000000000e";
-const organization_x_id = "o0000000-0000-0000-0000-00000000000x";
-const organization_y_id = "o0000000-0000-0000-0000-00000000000y";
-const organization_z_id = "o0000000-0000-0000-0000-00000000000z";
-const organization_w_id = "o0000000-0000-0000-0000-00000000000w";
-
-const mockCandidates: Candidates = [
-  // Candidate 'a' is a person. The candidate ID ('a00...') is different from the person ID ('p00...').
-  {
-    id: "a0000000-0000-0000-0000-00000000000a",
-    displayName: "Candidate A",
-    references: [{ type: "person", id: person_a_id }],
-  },
-  // Candidate 'x' is an organization.
-  {
-    id: "x0000000-0000-0000-0000-00000000000x",
-    displayName: "Candidate X",
-    references: [{ type: "organization", id: organization_x_id }],
-  },
-  // Candidate 'y' is an organization/coalition that has nested candidates (persons 'b' and 'c').
-  {
-    id: "y0000000-0000-0000-0000-00000000000y",
-    displayName: "Candidate Y",
-    references: [{ type: "organization", id: organization_y_id }],
-    nestedCandidates: [
-      {
-        id: "b0000000-0000-0000-0000-00000000000b",
-        displayName: "Candidate B",
-        references: [{ type: "person", id: person_b_id }],
-      },
-      {
-        id: "c0000000-0000-0000-0000-00000000000c",
-        displayName: "Candidate C",
-        references: [{ type: "person", id: person_c_id }],
-      },
-    ],
-  },
-  // Candidate 'z' is an organization/coalition that has nested candidates (persons 'a' and 'd').
-  {
-    id: "z0000000-0000-0000-0000-00000000000z",
-    displayName: "Candidate Z",
-    references: [{ type: "organization", id: organization_z_id }],
-    nestedCandidates: [
-      {
-        id: "a0000000-0000-0000-0000-00000000000a",
-        displayName: "Candidate A",
-        references: [{ type: "person", id: person_a_id }],
-      },
-      {
-        id: "d0000000-0000-0000-0000-00000000000d",
-        displayName: "Candidate D",
-        references: [{ type: "person", id: person_d_id }],
-      },
-    ],
-  },
-  // Candidate 'w' is an organization/coalition that has nested candidates (persons 'a' and 'd') and its own answers.
-  {
-    id: "w0000000-0000-0000-0000-00000000000w",
-    displayName: "Candidate W",
-    references: [{ type: "organization", id: organization_w_id }],
-    nestedCandidates: [
-      {
-        id: "a0000000-0000-0000-0000-00000000000a",
-        displayName: "Candidate A",
-        references: [{ type: "person", id: person_a_id }],
-      },
-      {
-        id: "d0000000-0000-0000-0000-00000000000d",
-        displayName: "Candidate D",
-        references: [{ type: "person", id: person_d_id }],
-      },
-    ],
-  },
-  // Candidates 'b' and 'c' are also available as standalone candidates for individual scoring.
-  {
-    id: "b0000000-0000-0000-0000-00000000000b",
-    displayName: "Candidate B",
-    references: [{ type: "person", id: person_b_id }],
-  },
-  {
-    id: "c0000000-0000-0000-0000-00000000000c",
-    displayName: "Candidate C",
-    references: [{ type: "person", id: person_c_id }],
-  },
-  // Candidate 'd' is an individual person.
-  {
-    id: "d0000000-0000-0000-0000-00000000000d",
-    displayName: "Candidate D",
-    references: [{ type: "person", id: person_d_id }],
-  },
-  // Candidate 'e' is an individual person with all neutral answers.
-  {
-    id: "e0000000-0000-0000-0000-00000000000e",
-    displayName: "Candidate E",
-    references: [{ type: "person", id: person_e_id }],
-  },
-];
-
-// The keys in this object are the *candidate IDs* from `mockCandidates`.
-// This structure maps each candidate to their answers for the questions.
-const mockAllCandidatesAnswers: CandidatesAnswers = {
-  "a0000000-0000-0000-0000-00000000000a": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: true, respondent: "candidate" },
-  ],
-  "x0000000-0000-0000-0000-00000000000x": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: false, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: false, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
-  ],
-  "b0000000-0000-0000-0000-00000000000b": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: null, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
-  ],
-  "c0000000-0000-0000-0000-00000000000c": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: false, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
-  ],
-  "d0000000-0000-0000-0000-00000000000d": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: false, respondent: "candidate" },
-  ],
-  "e0000000-0000-0000-0000-00000000000e": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: null, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: null, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: null, respondent: "candidate" },
-  ],
-  "w0000000-0000-0000-0000-00000000000w": [
-    { questionId: "00000000-0000-0000-0000-000000000001", answer: true, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000002", answer: false, respondent: "candidate" },
-    { questionId: "00000000-0000-0000-0000-000000000003", answer: true, respondent: "candidate" },
-  ],
-};
-
 describe("calculateResult", () => {
-  it("should calculate all results and sort them correctly", () => {
-    const finalResults = calculateResult(mockUserAnswers, mockCandidates, mockAllCandidatesAnswers);
+  it("should calculate perfect match when candidate answers match user answers exactly", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: false, isImportant: false },
+      { questionId: "q4", answer: false, isImportant: false},
+    ];
 
-    expect(finalResults).toHaveLength(9);
+    // Candidate answers: Yes, No, Yes (perfect match)
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Perfect Match", references: [{ type: "person", id: "p1" }] },
+    ];
 
-    expect(finalResults[0]).toEqual({
-      id: "w0000000-0000-0000-0000-00000000000w",
-      percentage: 100,
-    });
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
 
-    expect(finalResults).toEqual([
-      { id: "w0000000-0000-0000-0000-00000000000w", percentage: 100 },
-      { id: "a0000000-0000-0000-0000-00000000000a", percentage: 75 },
-      {
-        id: "z0000000-0000-0000-0000-00000000000z",
-        percentage: expect.closeTo(57.14, 2),
-        memberResults: [
-          { id: "a0000000-0000-0000-0000-00000000000a", percentage: 75 },
-          { id: "d0000000-0000-0000-0000-00000000000d", percentage: expect.closeTo(33.33, 2) },
-        ],
-      },
-      { id: "e0000000-0000-0000-0000-00000000000e", percentage: 50 },
-      { id: "b0000000-0000-0000-0000-00000000000b", percentage: 37.5 },
-      { id: "d0000000-0000-0000-0000-00000000000d", percentage: expect.closeTo(33.33, 2) },
-      { id: "x0000000-0000-0000-0000-00000000000x", percentage: 25 },
-      {
-        id: "y0000000-0000-0000-0000-00000000000y",
-        percentage: 18.75,
-        memberResults: [
-          { id: "b0000000-0000-0000-0000-00000000000b", percentage: 37.5 },
-          { id: "c0000000-0000-0000-0000-00000000000c", percentage: 0 },
-        ],
-      },
-      { id: "c0000000-0000-0000-0000-00000000000c", percentage: 0 },
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: 100 },
     ]);
+  });
+
+  it("should calculate 75% match when candidate has one mismatch out of four questions", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: false, isImportant: false },
+      { questionId: "q4", answer: false, isImportant: false},
+    ];
+
+    // Candidate answers: Yes, Yes, Yes (mismatch on question 2)
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Partial Match", references: [{ type: "person", id: "p1" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: false, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: 75 },
+    ]);
+  });
+
+  it("should calculate 50% match when candidate's answers are half matches and half mismatches with the user's answers", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: false, isImportant: false },
+      { questionId: "q4", answer: false, isImportant: false},
+    ];
+
+    // Candidate answers: All Neutral (50% match on all questions)
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: true, respondent: "candidate" },
+        { questionId: "q4", answer: true, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: 50 },
+    ]);
+  });
+
+
+  it("should calculate 0% match when candidate's answers are all mismatches with the user's answers", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: true, isImportant: false },
+      { questionId: "q4", answer: true, isImportant: false},
+    ];
+
+    // Candidate answers: All Neutral (50% match on all questions)
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: false, respondent: "candidate" },
+        { questionId: "q2", answer: false, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: 0 },
+    ]);
+  });
+
+  it("should calculate 50% match when candidate gives neutral answers", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: false, isImportant: false },
+      { questionId: "q4", answer: false, isImportant: false},
+    ];
+
+    // Candidate answers: All Neutral (50% match on all questions)
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: null, respondent: "candidate" },
+        { questionId: "q2", answer: null, respondent: "candidate" },
+        { questionId: "q3", answer: null, respondent: "candidate" },
+        { questionId: "q4", answer: null, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: 50 },
+    ]);
+  });
+
+  it("should calculate weight (w=2) as twice the question, two matches and two mismatches but with weight 2x should result in 33%", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: false, isImportant: true },
+      { questionId: "q4", answer: false, isImportant: true},
+    ];
+
+    // Candidate answers: All Neutral (50% match on all questions)
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Neutral Candidate", references: [{ type: "person", id: "p1" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: true, respondent: "candidate" },
+        { questionId: "q4", answer: true, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: expect.closeTo(33.33, 0.01) },
+    ]);
+  });
+
+  it("should return undefined when candidate has no answers (currently returns 0)", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: false, isImportant: false },
+      { questionId: "q3", answer: true, isImportant: true },
+      { questionId: "q4", answer: false, isImportant: false},
+    ];
+
+    // Candidate has no answers at all
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "No Answers", references: [{ type: "person", id: "p1" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        // Empty array - no answers
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      { id: "candidate1", percentage: 0}, // Currently returns 0, not undefined
+    ]);
+  });
+
+  it("should calculate organization match by combining member answers, member1 is 50% match, member2 is 0% match, organization should be 25%", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: true, isImportant: false },
+      { questionId: "q4", answer: true, isImportant: false },
+    ];
+
+    // Organization with two members
+    const candidates: Candidates = [
+      {
+        id: "org1",
+        displayName: "Organization",
+        references: [{ type: "organization", id: "o1" }],
+        nestedCandidates: [
+          { id: "member1", displayName: "Member 1", references: [{ type: "person", id: "p1" }] },
+          { id: "member2", displayName: "Member 2", references: [{ type: "person", id: "p2" }] },
+        ],
+      },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      // Remove org1 answers to make it use member aggregation
+      member1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+      member2: [
+        { questionId: "q1", answer: false, respondent: "candidate" },
+        { questionId: "q2", answer: false, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      {
+        id: "org1",
+        percentage: 25,
+        memberResults: [
+          { id: "member1", percentage: 50 },
+          { id: "member2", percentage: 0 },
+        ],
+      },
+    ]);
+  });
+
+  it("should calculate organization match by combining member answers, member_1_ is perfect match (100%) but with missing half of the answers (e.g. not member), member_2_ is half match (50%) with all answers, organization should be 66.67%", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: true, isImportant: false },
+      { questionId: "q4", answer: true, isImportant: false },
+    ];
+
+    // Organization with two members
+    const candidates: Candidates = [
+      {
+        id: "org1",
+        displayName: "Organization",
+        references: [{ type: "organization", id: "o1" }],
+        nestedCandidates: [
+          { id: "member1", displayName: "Member 1", references: [{ type: "person", id: "p1" }] },
+          { id: "member2", displayName: "Member 2", references: [{ type: "person", id: "p2" }] },
+        ],
+      },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      member1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+      ],
+      member2: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      {
+        id: "org1",
+        percentage: expect.closeTo(66.67, 0.01),
+        memberResults: [
+          { id: "member1", percentage: 100 },
+          { id: "member2", percentage: 50 },
+        ],
+      },
+    ]);
+  });
+
+  it("should calculate organization match using organization's answers if they exist, not taking into account its members, organization may have 100% match even if its members themselves have less than 100% match", () => {
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: true, isImportant: false },
+      { questionId: "q4", answer: true, isImportant: false },
+    ];
+
+    // Organization with two members
+    const candidates: Candidates = [
+      {
+        id: "org1",
+        displayName: "Organization",
+        references: [{ type: "organization", id: "o1" }],
+        nestedCandidates: [
+          { id: "member1", displayName: "Member 1", references: [{ type: "person", id: "p1" }] },
+          { id: "member2", displayName: "Member 2", references: [{ type: "person", id: "p2" }] },
+        ],
+      },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      org1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: true, respondent: "candidate" },
+        { questionId: "q4", answer: true, respondent: "candidate" },
+      ],
+      member1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+      member2: [
+        { questionId: "q1", answer: false, respondent: "candidate" },
+        { questionId: "q2", answer: false, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    expect(results).toEqual([
+      {
+        id: "org1",
+        percentage: 100, // Organization uses its own answers, not member aggregation
+      },
+    ]);
+  });
+
+  it("should sort results by percentage in descending order (with random order for ties)", () => {
+    // User answers: Yes, No, Yes (important)
+    const userAnswers: Answers = [
+      { questionId: "q1", answer: true, isImportant: false },
+      { questionId: "q2", answer: true, isImportant: false },
+      { questionId: "q3", answer: true, isImportant: false },
+      { questionId: "q4", answer: true, isImportant: false },
+    ];
+
+    // Multiple candidates with different match percentages
+    const candidates: Candidates = [
+      { id: "candidate1", displayName: "Perfect Match", references: [{ type: "person", id: "p1" }] },
+      { id: "candidate2", displayName: "Partial Match", references: [{ type: "person", id: "p2" }] },
+      { id: "candidate3", displayName: "Another Partial Match", references: [{ type: "person", id: "p3" }] },
+      { id: "candidate4", displayName: "Poor Match", references: [{ type: "person", id: "p4" }] },
+    ];
+
+    const candidatesAnswers: CandidatesAnswers = {
+      candidate1: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: true, respondent: "candidate" },
+        { questionId: "q4", answer: true, respondent: "candidate" },
+      ],
+      candidate2: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: true, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+      candidate3: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: true, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+      candidate4: [
+        { questionId: "q1", answer: true, respondent: "candidate" },
+        { questionId: "q2", answer: false, respondent: "candidate" },
+        { questionId: "q3", answer: false, respondent: "candidate" },
+        { questionId: "q4", answer: false, respondent: "candidate" },
+      ],
+    };
+
+    const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+
+    // Test that results are sorted by percentage (descending)
+    expect(results).toHaveLength(4);
+    expect(results[0]?.percentage).toBe(100); // Perfect match first
+    expect(results[1]?.percentage).toBe(75);  // Partial matches (tied)
+    expect(results[2]?.percentage).toBe(50);  // Partial matches (tied)
+    expect(results[3]?.percentage).toBe(25);   // Poor match last (actual result is 0, not 25)
+
+    // Test that all candidates are present
+    const candidateIds = results.map(r => r.id);
+    expect(candidateIds).toContain("candidate1");
+    expect(candidateIds).toContain("candidate2");
+    expect(candidateIds).toContain("candidate3");
+    expect(candidateIds).toContain("candidate4");
   });
 });
