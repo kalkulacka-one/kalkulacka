@@ -15,9 +15,6 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
-  const currentAnswer = answer.answer;
-  const isImportant = answer.isImportant;
-
   return (
     <NavigationCard>
       <div>
@@ -33,15 +30,15 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </Button>
         </div>
         <div>
-          <ToggleButton variant="answer" color="primary" checked={currentAnswer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+          <ToggleButton variant="answer" color="primary" checked={answer.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             Ano
           </ToggleButton>
-          <ToggleButton variant="answer" color="secondary" checked={currentAnswer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+          <ToggleButton variant="answer" color="secondary" checked={answer.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             Ne
           </ToggleButton>
         </div>
         <div>
-          <ToggleButton variant="link" checked={isImportant} onChange={(checked: boolean) => onImportantChange(checked)}>
+          <ToggleButton variant="link" checked={answer.isImportant} onChange={(checked: boolean) => onImportantChange(checked)}>
             Pro mě důležité
           </ToggleButton>
         </div>
