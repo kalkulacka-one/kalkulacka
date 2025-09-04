@@ -1,4 +1,4 @@
-import { ResultPage } from "../../../../../../components/server";
+import { ResultPage } from "../../../../../../components/client";
 
 export default function Page() {
   return <ResultPage />;
