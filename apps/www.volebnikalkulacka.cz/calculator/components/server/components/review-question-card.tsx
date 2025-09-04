@@ -1,63 +1,53 @@
-import { mdiCheckBold, mdiChevronDown, mdiCloseThick, mdiSlashForward, mdiStar, mdiStarOutline } from "@mdi/js";
-import { Button, Icon, ToggleButton } from "@repo/design-system/client";
+import { ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
-import type { Tag } from "../../../../../../packages/schema/schemas/tags.schema";
 
 export type RecapQuestionCard = {
   question: Question;
   answer: Answer;
-  questionCurrent: number;
-  questionTotal: number;
-  starClick: () => void;
-  yesClick: () => void;
-  noClick: () => void;
+  current: number;
+  total: number;
+  onAgreeChange: (agree: boolean) => void;
+  onDisagreeChange: (disagree: boolean) => void;
+  onImportantChange: (isImportant: boolean) => void;
 };
 
-export function RecapQuestionCard({ question, answer, questionCurrent, questionTotal, starClick, yesClick, noClick }: RecapQuestionCard) {
+export function RecapQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: RecapQuestionCard) {
   const { title, statement, detail, tags } = question;
   return (
     <Card corner="topLeft">
-      <details className="group">
-        <summary className="flex list-none [&::-webkit-details-marker]:hidden items-center gap-4">
-          <ToggleButton checked={answer.isImportant} variant="link" color="neutral" onChange={() => starClick()}>
-            <Icon size="large" icon={answer.isImportant ? mdiStar : mdiStarOutline} decorative={true} className={answer.isImportant ? "text-[var(--ko-color-yellow)]" : "text-black"} />
-          </ToggleButton>
-          <div className="flex flex-col gap-2 flex-grow-1">
-            <div className="flex gap-2">
-              <span>
-                {questionCurrent}/{questionTotal}
-              </span>
-              <span>{title}</span>
-              {tags?.map((tag: Tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-            <h2>{statement}</h2>
-          </div>
+      <div>
+        <div>
           <div>
-            <Button variant="answer" color="neutral">
-              <Icon size="large" icon={answer.answer === true ? mdiCheckBold : answer.answer === false ? mdiCloseThick : answer.answer === null ? mdiSlashForward : mdiChevronDown} decorative={true} />
-            </Button>
+            <span>
+              {current}/{total}
+            </span>
+            <span>{title}</span>
+            {tags?.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
           </div>
-          <div className="group-open:-rotate-180 cursor-pointer">
-            <Icon icon={mdiChevronDown} decorative={true} />
-          </div>
-        </summary>
-        <div className="flex flex-col">
-          {detail && <div>{detail}</div>}
-          <div className="flex">
-            <ToggleButton checked={answer.answer === true} variant="answer" color="primary" onChange={() => yesClick()}>
+          <h2>{statement}</h2>
+        </div>
+        {detail && <div>{detail}</div>}
+        <div>
+          <div>
+            <ToggleButton variant="answer" color="primary" checked={answer.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
               Jsem pro
             </ToggleButton>
-            <ToggleButton checked={answer.answer === false} variant="answer" color="secondary" onChange={() => noClick()}>
+            <ToggleButton variant="answer" color="secondary" checked={answer.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
               Jsem proti
             </ToggleButton>
           </div>
+          <div>
+            <ToggleButton variant="link" checked={answer.isImportant} onChange={(checked: boolean) => onImportantChange(checked)}>
+              Pro mě důležité
+            </ToggleButton>
+          </div>
         </div>
-      </details>
+      </div>
     </Card>
   );
 }
