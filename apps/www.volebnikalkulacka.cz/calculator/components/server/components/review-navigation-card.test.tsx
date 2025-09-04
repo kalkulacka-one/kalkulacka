@@ -5,10 +5,10 @@ import { describe, expect, it, vi } from "vitest";
 import { ReviewNavigationCard } from "./review-navigation-card";
 
 describe("ReviewNavigationCard", () => {
-  it("renders 'Začít odpovídat' button", () => {
+  it("renders 'Zobrazit výsledky' button", () => {
     const onNextClick = vi.fn();
     render(<ReviewNavigationCard onNextClick={onNextClick} />);
-    expect(screen.getByText("Začít odpovídat")).toBeInTheDocument();
+    expect(screen.getByText("Zobrazit výsledky")).toBeInTheDocument();
   });
 
   it("calls onNextClick when button is clicked", async () => {
@@ -16,7 +16,7 @@ describe("ReviewNavigationCard", () => {
     const user = userEvent.setup();
     render(<ReviewNavigationCard onNextClick={onNextClick} />);
 
-    await user.click(screen.getByText("Začít odpovídat"));
+    await user.click(screen.getByText("Zobrazit výsledky"));
     expect(onNextClick).toHaveBeenCalledTimes(1);
   });
 });
