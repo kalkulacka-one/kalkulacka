@@ -1,6 +1,6 @@
 import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
-import { booleanAnswerToNumber } from "./booleanAnswerToNumber";
-import { calculateBaseScore } from "./calculateBaseScore";
+import { booleanAnswerToNumber } from "./boolean-answer-to-number";
+import { calculateBaseScore } from "./calculate-base-score";
 export function processSingleAnswer(userAnswer: Answer, candidateAnswer: Answer) {
   if (userAnswer.questionId !== candidateAnswer.questionId) {
     throw new Error("Question IDs do not match");

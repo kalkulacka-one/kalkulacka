@@ -1,8 +1,8 @@
 import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
 import type { Candidates } from "../.././../../../packages/schema/schemas/candidates.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import { aggregateAnswersMatchScore } from "./aggregateAnswersMatchScore";
-import { calculateMatchScorePercentage } from "./calculateMatchScorePercentage";
+import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
+import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
 export function calculateResult(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers) {
   const finalResults = [];

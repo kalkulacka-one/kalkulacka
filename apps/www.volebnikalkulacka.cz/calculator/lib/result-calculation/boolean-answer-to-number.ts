@@ -1,4 +1,4 @@
-import type { BaseScoreValue } from "./calculateBaseScore";
+import type { BaseScoreValue } from "./calculate-base-score";
 
 export type AnswerValue = boolean | null | undefined;
 

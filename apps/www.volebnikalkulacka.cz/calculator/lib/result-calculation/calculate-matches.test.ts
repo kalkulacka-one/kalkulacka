@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
 import type { Candidates } from "../../../../../packages/schema/schemas/candidates.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import { calculateResult } from "./calculateResult";
+import { calculateResult } from "./calculate-result";
 
 describe("Result calculation algorithm", () => {
   // Helpers for answer values, see https://schema.kalkulacka.one/#tag/Answer for details

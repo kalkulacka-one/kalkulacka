@@ -1,5 +1,5 @@
 import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
-import { processSingleAnswer } from "./processSingleAnswer";
+import { processSingleAnswer } from "./process-single-answer";
 
 export function aggregateAnswersMatchScore(userAnswers: Answers, candidateAnswers: Answers) {
   const initialScore = { score: 0, weight: 0 };
