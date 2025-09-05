@@ -14,10 +14,75 @@
         "title": "Image type",
         "description": "Type of the image",
         "type": "string",
-        "enum": ["avatar", "logo", "portrait"]
+        "enum": ["avatar", "logo", "portrait"],
+        "examples": ["avatar"]
+      },
+      "urls": {
+        "title": "Image paths",
+        "description": "Relative paths to image files for different sizes",
+        "type": "object",
+        "properties": {
+          "original": {
+            "title": "Original image path",
+            "description": "Relative path to original source image",
+            "type": "string",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.jpg"]
+          },
+          "xs": {
+            "title": "Extra small image path",
+            "description": "Relative path to optimized 100 × 100 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.xs.webp"]
+          },
+          "sm": {
+            "title": "Small image path",
+            "description": "Relative path to optimized 200 × 200 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.sm.webp"]
+          },
+          "md": {
+            "title": "Medium image path",
+            "description": "Relative path to optimized 400 × 400 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.md.webp"]
+          },
+          "lg": {
+            "title": "Large image path",
+            "description": "Relative path to optimized 800 × 800 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.lg.webp"]
+          },
+          "xl": {
+            "title": "Extra large image path",
+            "description": "Relative path to optimized 1200 × 1200 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.xl.webp"]
+          },
+          "2xl": {
+            "title": "Double extra large image path",
+            "description": "Relative path to optimized 1600 × 1600 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.2xl.webp"]
+          },
+          "3xl": {
+            "title": "Triple extra large image path",
+            "description": "Relative path to optimized 2400 × 2400 px WebP image",
+            "type": "string",
+            "pattern": "\\.webp$",
+            "examples": ["images/avatars/4a685bde-8b18-4348-b2bd-850d68943440/image.3xl.webp"]
+          }
+        },
+        "additionalProperties": false,
+        "required": ["original"]
       }
     },
     "unevaluatedProperties": false,
-    "required": ["type"]
+    "required": ["type", "urls"]
   }
 }

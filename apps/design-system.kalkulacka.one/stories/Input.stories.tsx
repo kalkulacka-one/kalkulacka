@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { Icon, Input } from "@repo/design-system/client";
 import { EnvelopeIcon } from "@repo/design-system/icons";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",

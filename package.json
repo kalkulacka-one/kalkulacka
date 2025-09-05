@@ -9,10 +9,11 @@
     "ncu": "turbo ncu",
     "ncu:upgrade": "turbo ncu:upgrade",
     "test": "turbo run test",
-    "test:ui": "turbo run test:ui"
+    "test:ui": "turbo run test:ui",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.2.2",
     "@repo/typescript-config": "*",
     "@vitejs/plugin-react": "^4.5.0",
     "@vitest/ui": "^3.1.4",
@@ -25,5 +26,8 @@
     "node": "22.x"
   },
   "packageManager": "npm@11.2.0",
-  "workspaces": ["apps/*", "packages/*"]
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

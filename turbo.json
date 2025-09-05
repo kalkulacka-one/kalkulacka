@@ -12,10 +12,12 @@
       "persistent": true
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "cache": false
     },
     "lint:fix": {
-      "dependsOn": ["^lint:fix"]
+      "dependsOn": ["^lint:fix"],
+      "cache": false
     },
     "build:openapi": {
       "dependsOn": ["^build:openapi"],
@@ -28,10 +30,15 @@
       "dependsOn": ["^ncu:upgrade"]
     },
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": false
     },
     "test:ui": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
     }
   },
   "ui": "tui"

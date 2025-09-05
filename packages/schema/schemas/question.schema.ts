@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { tagsSchema } from "./tags.schema.js";
+
+import { tagsSchema } from "./tags.schema";
 
 export const questionSchema = z
   .object({
