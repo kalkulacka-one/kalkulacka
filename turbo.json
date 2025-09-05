@@ -30,10 +30,12 @@
       "dependsOn": ["^ncu:upgrade"]
     },
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": false
     },
     "test:ui": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "cache": false
     },
     "typecheck": {
       "dependsOn": ["^typecheck"]

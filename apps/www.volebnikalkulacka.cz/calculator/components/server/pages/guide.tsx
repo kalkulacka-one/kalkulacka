@@ -1,14 +1,16 @@
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { Introduction } from "../components";
+import type { CalculatorViewModel } from "../../../view-models";
+import { GuideComponent, Introduction } from "../components";
 
 export type GuidePage = {
-  calculator: Calculator;
-  step: number;
+  calculator: CalculatorViewModel;
+  step: 1 | 2;
 };
 
 export function GuidePage({ calculator, step }: GuidePage) {
   switch (step) {
     case 1:
       return <Introduction calculator={calculator} />;
+    case 2:
+      return <GuideComponent />;
   }
 }
