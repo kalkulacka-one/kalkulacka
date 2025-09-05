@@ -3,11 +3,10 @@ import { useCalculatorStore } from "../stores";
 
 export type QuestionViewModel = Question;
 
-export function useQuestionViewModel(questionNumber: number): QuestionViewModel {
+export function useQuestionsViewModel(): { questions: Question[]; total: number } {
   const questions = useCalculatorStore((state) => state.calculator.questions);
-  const question = questions[questionNumber - 1];
-  if (!question) {
-    throw new Error(`Question ${questionNumber} not found`);
-  }
-  return question;
+  return {
+    questions,
+    total: questions.length,
+  };
 }
