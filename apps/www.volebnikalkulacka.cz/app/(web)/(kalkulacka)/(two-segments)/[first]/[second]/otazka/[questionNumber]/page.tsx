@@ -9,23 +9,25 @@ export default async function Page({ params }: { params: Promise<{ first: string
     notFound();
   }
 
-  const navigationNextPath = async (currentQuestionNumber: number) => {
+  const nextQuestionPath = async (currentQuestionNumber: number) => {
     "use server";
     return `/${first}/${second}/otazka/${currentQuestionNumber + 1}`;
   };
 
-  const navigationPreviousPath = async (currentQuestionNumber: number) => {
+  const previousQuestionPath = async (currentQuestionNumber: number) => {
     "use server";
-    if (currentQuestionNumber === 1) {
-      return `/${first}/${second}/navod/2`;
-    }
     return `/${first}/${second}/otazka/${currentQuestionNumber - 1}`;
   };
 
-  const navigationReviewPath = async () => {
+  const guidePath = async () => {
+    "use server";
+    return `/${first}/${second}/navod/2`;
+  };
+
+  const reviewPath = async () => {
     "use server";
     return `/${first}/${second}/rekapitulace`;
   };
 
-  return <QuestionPage current={currentQuestionNumber} navigationNextPath={navigationNextPath} navigationPreviousPath={navigationPreviousPath} navigationReviewPath={navigationReviewPath} />;
+  return <QuestionPage current={currentQuestionNumber} nextQuestionPath={nextQuestionPath} previousQuestionPath={previousQuestionPath} guidePath={guidePath} reviewPath={reviewPath} />;
 }

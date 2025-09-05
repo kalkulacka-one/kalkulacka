@@ -1,19 +1,21 @@
+import { Button } from "@repo/design-system/client";
 import { notFound, useRouter } from "next/navigation";
 
-import { Button } from "@repo/design-system/client";
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
 import { useQuestionsViewModel } from "../../../../calculator/view-models";
 
 export function QuestionPage({
   current,
-  navigationNextPath,
-  navigationPreviousPath,
-  navigationReviewPath,
+  nextQuestionPath,
+  previousQuestionPath,
+  guidePath,
+  reviewPath,
 }: {
   current: number;
-  navigationNextPath: (current: number) => Promise<string>;
-  navigationPreviousPath: (current: number) => Promise<string>;
-  navigationReviewPath: () => Promise<string>;
+  nextQuestionPath: (current: number) => Promise<string>;
+  previousQuestionPath: (current: number) => Promise<string>;
+  guidePath: () => Promise<string>;
+  reviewPath: () => Promise<string>;
 }) {
   const router = useRouter();
   const { questions, total } = useQuestionsViewModel();
@@ -24,18 +26,23 @@ export function QuestionPage({
   }
 
   const handleNavigationNextClick = async () => {
-    const path = await navigationNextPath(current);
-    router.push(path);
+    const path = await nextQuestionPath(current);
+    if (current < total) {
+      router.push(path);
+    } else {
+      const review = await reviewPath();
+      router.push(review);
+    }
   };
 
   const handleNavigationPreviousClick = async () => {
-    const path = await navigationPreviousPath(current);
-    router.push(path);
-  };
-
-  const handleNavigationReviewClick = async () => {
-    const path = await navigationReviewPath();
-    router.push(path);
+    const path = await previousQuestionPath(current);
+    if (current === 1) {
+      const guide = await guidePath();
+      router.push(guide);
+    } else {
+      router.push(path);
+    }
   };
 
   return (
@@ -43,7 +50,6 @@ export function QuestionPage({
       <AppQuestionPage question={question} number={current} total={total} />
       <Button onClick={handleNavigationNextClick}>Další otázka</Button>
       <Button onClick={handleNavigationPreviousClick}>Předchozí otázka</Button>
-      <Button onClick={handleNavigationReviewClick}>Rekapitulace</Button>
     </div>
   );
 }
