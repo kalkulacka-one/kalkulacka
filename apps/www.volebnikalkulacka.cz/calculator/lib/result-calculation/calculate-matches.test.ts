@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
 import type { Candidates } from "../../../../../packages/schema/schemas/candidates.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import { calculateResult } from "./calculate-result";
+import { calculateMatches } from "./calculate-matches";
 
 describe("Result calculation algorithm", () => {
   // Helpers for answer values, see https://schema.kalkulacka.one/#tag/Answer for details
@@ -49,7 +49,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 100 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 100 }]);
       });
     });
@@ -61,7 +61,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates ≈ 66 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: approx66 }]);
       });
     });
@@ -73,7 +73,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 50 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 50 }]);
       });
     });
@@ -85,7 +85,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 0 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 0 }]);
       });
     });
@@ -101,7 +101,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 100 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 100 }]);
       });
     });
@@ -113,7 +113,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 75 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 75 }]);
       });
     });
@@ -125,7 +125,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 50 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 50 }]);
       });
     });
@@ -137,7 +137,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("calculates 75 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 75 }]);
       });
     });
@@ -153,7 +153,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("ignores the third question and calculates 100 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 100 }]);
       });
     });
@@ -168,7 +168,7 @@ describe("Result calculation algorithm", () => {
         A: prepareAnswers([No(), No(), No()]),
       };
       it("calculates 100 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 100 }]);
       });
     });
@@ -184,7 +184,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
       it("calculates 50 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 50 }]);
       });
     });
@@ -193,7 +193,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([No(), No(), No()]);
 
       it("calculates 50 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 50 }]);
       });
     });
@@ -209,7 +209,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
       it("ignores the third question and calculates 50 % match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: 50 }]);
       });
     });
@@ -225,7 +225,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([undefined, Yes()]);
 
       it("doesn't return percentage as there are no common questions to compare", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: undefined }]);
       });
     });
@@ -241,7 +241,7 @@ describe("Result calculation algorithm", () => {
       };
 
       it("doesn't return percentage as it makes no sense to calculate match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: undefined }]);
       });
     });
@@ -257,7 +257,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([Yes()]);
 
       it("doesn't return percentage as it makes no sense to calculate match", () => {
-        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const match = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: undefined }]);
       });
     });
@@ -275,7 +275,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
       it("sorts candidates by percentage (descending), preserving decimal precision", () => {
-        const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(results).toEqual([
           { id: "A", percentage: 100 },
           { id: "C", percentage: approx66 },
@@ -297,7 +297,7 @@ describe("Result calculation algorithm", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
       it("sorts candidates randomly", () => {
-        const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+        const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
         expect(new Set(results.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
       });
     });
@@ -334,12 +334,12 @@ describe("Result calculation algorithm", () => {
         const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
         it("aggregates the results from nested candidates to top-level candidate as 50 %", () => {
-          const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+          const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "A", percentage: 50 });
         });
 
         it("includes results for nested candidates", () => {
-          const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+          const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "B", percentage: 100 });
           expect(results).toContainEqual({ id: "C", percentage: 0 });
         });
@@ -356,7 +356,7 @@ describe("Result calculation algorithm", () => {
         const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
         it("aggregates the results from nested candidates to top-level candidate as 25 %", () => {
-          const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+          const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "A", percentage: 25 });
         });
       });
@@ -373,12 +373,12 @@ describe("Result calculation algorithm", () => {
         const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
         it("uses top-level candidate answers and calculates ≈ 66 % match", () => {
-          const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+          const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "A", percentage: approx66 });
         });
 
         it("includes results for nested candidates", () => {
-          const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+          const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "B", percentage: 100 });
           expect(results).toContainEqual({ id: "C", percentage: 0 });
         });

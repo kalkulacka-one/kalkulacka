@@ -4,7 +4,7 @@ import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/c
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
-export function calculateResult(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers) {
+export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers) {
   const finalResults = [];
 
   const allCandidatesAnswersId = Object.keys(allCandidatesAnswers);
