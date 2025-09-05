@@ -1,6 +1,9 @@
 import { Button } from "@repo/design-system/client";
 import { useRouter } from "next/navigation";
 
+import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
+import { useQuestionViewModel } from "../../../../calculator/view-models";
+
 export function QuestionPage({
   current,
   navigationNextPath,
@@ -13,6 +16,7 @@ export function QuestionPage({
   navigationReviewPath: () => Promise<string>;
 }) {
   const router = useRouter();
+  const question = useQuestionViewModel(current);
 
   const handleNavigationNextClick = async () => {
     const path = await navigationNextPath(current);
@@ -31,8 +35,7 @@ export function QuestionPage({
 
   return (
     <div>
-      <h2>Otázka</h2>
-      <p>current:{current}</p>
+      <AppQuestionPage question={question} number={current} total={3} />
       <Button onClick={handleNavigationNextClick}>Další otázka</Button>
       <Button onClick={handleNavigationPreviousClick}>Předchozí otázka</Button>
       <Button onClick={handleNavigationReviewClick}>Rekapitulace</Button>
