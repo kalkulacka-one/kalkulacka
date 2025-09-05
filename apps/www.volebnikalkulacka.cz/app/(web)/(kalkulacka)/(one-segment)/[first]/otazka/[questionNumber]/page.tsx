@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { QuestionPage } from "../../../../../../../components/client";
+import { QuestionPageWithRouting } from "../../../../../../../components/client";
 
 export default async function Page({ params }: { params: Promise<{ first: string; questionNumber: string }> }) {
   const { first, questionNumber } = await params;
@@ -9,25 +9,5 @@ export default async function Page({ params }: { params: Promise<{ first: string
     notFound();
   }
 
-  const nextQuestionPath = async (currentQuestionNumber: number) => {
-    "use server";
-    return `/${first}/otazka/${currentQuestionNumber + 1}`;
-  };
-
-  const previousQuestionPath = async (currentQuestionNumber: number) => {
-    "use server";
-    return `/${first}/otazka/${currentQuestionNumber - 1}`;
-  };
-
-  const guidePath = async () => {
-    "use server";
-    return `/${first}/navod/2`;
-  };
-
-  const reviewPath = async () => {
-    "use server";
-    return `/${first}/rekapitulace`;
-  };
-
-  return <QuestionPage current={currentQuestionNumber} nextQuestionPath={nextQuestionPath} previousQuestionPath={previousQuestionPath} guidePath={guidePath} reviewPath={reviewPath} />;
+  return <QuestionPageWithRouting current={currentQuestionNumber} segments={{ first }} />;
 }
