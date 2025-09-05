@@ -1,9 +1,9 @@
 import { Card } from "@repo/design-system/server";
 
-import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
+import type { QuestionViewModel } from "../../../view-models/questions";
 
 export type QuestionCard = {
-  question: Question;
+  question: QuestionViewModel;
   current: number;
   total: number;
 };

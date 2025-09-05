@@ -1,4 +1,7 @@
+import type { z } from "zod";
+
 import { type Calculator, calculatorSchema } from "../../../../../packages/schema/schemas/calculator.schema";
+import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
 import { fetchFile, parseWithSchema } from ".";
 
 const DATA_CONFIG = {
@@ -6,10 +9,15 @@ const DATA_CONFIG = {
     filename: "calculator.json",
     schema: calculatorSchema,
   },
+  questions: {
+    filename: "questions.json",
+    schema: questionsSchema,
+  },
 } as const;
 
 export type CalculatorData = {
   calculator: Calculator;
+  questions: Questions;
 };
 
 export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
@@ -43,7 +51,7 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
 
   const parsedData = fileEntries.map(({ key, schema }, index) => {
     try {
-      return [key, parseWithSchema({ data: results[index], schema })];
+      return [key, parseWithSchema({ data: results[index], schema: schema as z.ZodSchema })];
     } catch (error) {
       throw new Error(`Failed to parse ${key} data: ${(error as Error).message}`);
     }
