@@ -1,4 +1,3 @@
-import { Button } from "@repo/design-system/client";
 import { notFound, useRouter } from "next/navigation";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
