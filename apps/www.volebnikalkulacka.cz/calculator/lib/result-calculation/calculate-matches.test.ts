@@ -119,6 +119,18 @@ describe("Result calculation algorithm", () => {
       });
     });
 
+    describe("and candidate answered No, Yes, Yes", () => {
+      const candidates: Candidates = prepareCandidates(["A"]);
+      const candidatesAnswers: CandidatesAnswers = {
+        A: prepareAnswers([No(), Yes(), Yes()]),
+      };
+
+      it("calculates 50 % match", () => {
+        const match = calculateResult(userAnswers, candidates, candidatesAnswers);
+        expect(match).toMatchObject([{ percentage: 50 }]);
+      });
+    });
+
     describe("and candidate answered Neutral, Yes, Yes", () => {
       const candidates: Candidates = prepareCandidates(["A"]);
       const candidatesAnswers: CandidatesAnswers = {
