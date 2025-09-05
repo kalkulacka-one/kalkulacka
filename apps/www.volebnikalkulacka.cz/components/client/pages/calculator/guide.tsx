@@ -2,18 +2,17 @@ import { useRouter } from "next/navigation";
 
 import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
 import { useCalculatorViewModel } from "../../../../calculator/view-models";
-import { createBaseSegment } from "../../../../lib/routing/path-config";
+import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
-export function GuidePageWithRouting({ step, segments }: { step: 1 | 2; segments: { first: string; second?: string; embed?: string } }) {
+export function GuidePageWithRouting({ step, segments }: { step: 1 | 2; segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculatorViewModel();
-  const baseSegment = createBaseSegment(segments);
 
   const handleNavigationNextClick = () => {
     if (step === 1) {
-      router.push(`/${baseSegment}/navod/2`);
+      router.push(routes.guide(segments, 2));
     } else {
-      router.push(`/${baseSegment}/otazka/1`);
+      router.push(routes.question(segments, 1));
     }
   };
 
