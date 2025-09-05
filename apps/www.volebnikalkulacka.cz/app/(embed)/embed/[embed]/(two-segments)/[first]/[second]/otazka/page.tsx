@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string; questionNumber: string }> }) {
-  const { embed, first, second, questionNumber } = await params;
-  if (!questionNumber) {
-    redirect(`/embed/${embed}/${first}/${second}/otazka/1`);
-  }
+import { createBaseSegment } from "../../../../../../../../lib/routing/path-config";
+
+export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string }> }) {
+  const { embed, first, second } = await params;
+  const baseSegment = createBaseSegment({ first, second, embed });
+  redirect(`/${baseSegment}/otazka/1`);
 }

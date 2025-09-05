@@ -1,6 +1,9 @@
 import { redirect } from "next/navigation";
 
+import { createBaseSegment } from "../../../../../../lib/routing/path-config";
+
 export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {
   const { first, second } = await params;
-  redirect(`/${first}/${second}/navod`);
+  const baseSegment = createBaseSegment({ first, second });
+  redirect(`/${baseSegment}/navod/1`);
 }
