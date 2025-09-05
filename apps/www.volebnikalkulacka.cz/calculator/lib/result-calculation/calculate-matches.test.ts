@@ -337,6 +337,22 @@ describe("Result calculation algorithm", () => {
       });
     });
 
+    describe("and top-level candidate didn't answer, nested did but unevenly (first Yes and other one No, No, No)", () => {
+      const candidatesAnswers: CandidatesAnswers = {
+        B: prepareAnswers([Yes()]),
+        C: prepareAnswers([No(), No(), No()]),
+      };
+
+      describe("and user answered Yes, Yes, Yes", () => {
+        const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
+
+        it("it aggregates the results from nested candidates to top-level candidate as 25 %", () => {
+          const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+          expect(results).toContainEqual({ id: "A", percentage: 25 });
+        });
+      });
+    });
+
     describe("and both top-level and nested candidates answered", () => {
       const candidatesAnswers: CandidatesAnswers = {
         A: prepareAnswers([Yes(), Yes(), No()]),
