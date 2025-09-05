@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ embed: string; first: string; step: string }> }) {
-  const { embed, first, step } = await params;
-  if (!step) {
-    redirect(`/embed/${embed}/${first}/navod/1`);
-  }
+import { routes } from "../../../../../../../lib/routing/route-builders";
+
+export default async function Page({ params }: { params: Promise<{ embed: string; first: string }> }) {
+  const { embed, first } = await params;
+  redirect(routes.guide({ first, embed }, 1));
 }

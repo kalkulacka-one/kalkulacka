@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ embed: string; first: string; questionNumber: string }> }) {
-  const { embed, first, questionNumber } = await params;
-  if (!questionNumber) {
-    redirect(`/embed/${embed}/${first}/otazka/1`);
-  }
+import { routes } from "../../../../../../../lib/routing/route-builders";
+
+export default async function Page({ params }: { params: Promise<{ embed: string; first: string }> }) {
+  const { embed, first } = await params;
+  redirect(routes.question({ first, embed }, 1));
 }

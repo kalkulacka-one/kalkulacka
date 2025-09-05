@@ -1,22 +1,10 @@
-import { Button } from "@repo/design-system/client";
 import { notFound, useRouter } from "next/navigation";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
 import { useQuestionsViewModel } from "../../../../calculator/view-models";
+import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
-export function QuestionPage({
-  current,
-  nextQuestionPath,
-  previousQuestionPath,
-  guidePath,
-  reviewPath,
-}: {
-  current: number;
-  nextQuestionPath: (current: number) => Promise<string>;
-  previousQuestionPath: (current: number) => Promise<string>;
-  guidePath: () => Promise<string>;
-  reviewPath: () => Promise<string>;
-}) {
+export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
   const { questions, total } = useQuestionsViewModel();
   const question = questions[current - 1];
@@ -25,29 +13,25 @@ export function QuestionPage({
     notFound();
   }
 
-  const handleNavigationNextClick = async () => {
-    const path = await nextQuestionPath(current);
+  const handleNextClick = () => {
     if (current < total) {
-      router.push(path);
+      router.push(routes.question(segments, current + 1));
     } else {
-      const review = await reviewPath();
-      router.push(review);
+      router.push(routes.review(segments));
     }
   };
 
-  const handleNavigationPreviousClick = async () => {
-    const path = await previousQuestionPath(current);
+  const handlePreviousClick = () => {
     if (current === 1) {
-      const guide = await guidePath();
-      router.push(guide);
+      router.push(routes.guide(segments, 2));
     } else {
-      router.push(path);
+      router.push(routes.question(segments, current - 1));
     }
   };
 
   return (
     <div>
-      <AppQuestionPage question={question} number={current} total={total} onPreviousClick={handleNavigationPreviousClick} onNextClick={handleNavigationNextClick} />
+      <AppQuestionPage question={question} number={current} total={total} onPreviousClick={handlePreviousClick} onNextClick={handleNextClick} />
     </div>
   );
 }

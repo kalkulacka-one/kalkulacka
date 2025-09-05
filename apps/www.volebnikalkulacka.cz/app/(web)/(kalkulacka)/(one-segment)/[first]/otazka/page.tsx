@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ first: string; questionNumber: string }> }) {
-  const { first, questionNumber } = await params;
-  if (!questionNumber) {
-    redirect(`/${first}/otazka/1`);
-  }
+import { routes } from "../../../../../../lib/routing/route-builders";
+
+export default async function Page({ params }: { params: Promise<{ first: string }> }) {
+  const { first } = await params;
+  redirect(routes.question({ first }, 1));
 }
