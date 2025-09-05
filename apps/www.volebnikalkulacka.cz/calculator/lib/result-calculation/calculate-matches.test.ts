@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
 import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
-import type { Candidate } from "../../../../../packages/schema/schemas/candidate.schema";
 import type { Candidates } from "../../../../../packages/schema/schemas/candidates.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
 import { calculateResult } from "./calculateResult";
@@ -225,9 +224,7 @@ describe("Result calculation algorithm", () => {
     describe("and user answered only the second question Yes", () => {
       const userAnswers: Answers = prepareAnswers([undefined, Yes()]);
 
-      console.log(userAnswers, candidatesAnswers);
-
-      it("returns undefined as there are no common questions to compare", () => {
+      it("doesn't return percentage as there are no common questions to compare", () => {
         const match = calculateResult(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: undefined }]);
       });
@@ -243,7 +240,7 @@ describe("Result calculation algorithm", () => {
         A: prepareAnswers([Yes()]),
       };
 
-      it("returns undefined as it makes no sense to calculate match", () => {
+      it("doesn't return percentage as it makes no sense to calculate match", () => {
         const match = calculateResult(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: undefined }]);
       });
@@ -259,7 +256,7 @@ describe("Result calculation algorithm", () => {
     describe("and user answered Yes", () => {
       const userAnswers: Answers = prepareAnswers([Yes()]);
 
-      it("returns undefined as it makes no sense to calculate match", () => {
+      it("doesn't return percentage as it makes no sense to calculate match", () => {
         const match = calculateResult(userAnswers, candidates, candidatesAnswers);
         expect(match).toMatchObject([{ percentage: undefined }]);
       });
@@ -277,7 +274,7 @@ describe("Result calculation algorithm", () => {
     describe("and user answered Yes, Yes, Yes", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-      it("it sorts candidates descending using the decimal values", () => {
+      it("sorts candidates by percentage (descending), preserving decimal precision", () => {
         const results = calculateResult(userAnswers, candidates, candidatesAnswers);
         expect(results).toEqual([
           { id: "A", percentage: 100 },
@@ -299,7 +296,7 @@ describe("Result calculation algorithm", () => {
     describe("and user answered Yes, Yes, Yes", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-      it("it sorts candidates randomly", () => {
+      it("sorts candidates randomly", () => {
         const results = calculateResult(userAnswers, candidates, candidatesAnswers);
         expect(new Set(results.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
       });
@@ -327,7 +324,7 @@ describe("Result calculation algorithm", () => {
       },
     ];
 
-    describe("and top-level candidate didn't answer but nested candidates did (first all Yes, other No)", () => {
+    describe("and top-level candidate didn't answer but nested candidates did (first all Yes, second all No)", () => {
       const candidatesAnswers: CandidatesAnswers = {
         B: prepareAnswers([Yes(), Yes(), Yes()]),
         C: prepareAnswers([No(), No(), No()]),
@@ -336,12 +333,12 @@ describe("Result calculation algorithm", () => {
       describe("and user answered Yes, Yes, Yes", () => {
         const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-        it("it aggregates the results from nested candidates to top-level candidate as 50 %", () => {
+        it("aggregates the results from nested candidates to top-level candidate as 50 %", () => {
           const results = calculateResult(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "A", percentage: 50 });
         });
 
-        it("it includes results for nested candidates", () => {
+        it("includes results for nested candidates", () => {
           const results = calculateResult(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "B", percentage: 100 });
           expect(results).toContainEqual({ id: "C", percentage: 0 });
@@ -349,7 +346,7 @@ describe("Result calculation algorithm", () => {
       });
     });
 
-    describe("and top-level candidate didn't answer, nested did but unevenly (first Yes and other one No, No, No)", () => {
+    describe("and top-level candidate didn't answer, nested did but unevenly (first Yes and second No, No, No)", () => {
       const candidatesAnswers: CandidatesAnswers = {
         B: prepareAnswers([Yes()]),
         C: prepareAnswers([No(), No(), No()]),
@@ -358,7 +355,7 @@ describe("Result calculation algorithm", () => {
       describe("and user answered Yes, Yes, Yes", () => {
         const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-        it("it aggregates the results from nested candidates to top-level candidate as 25 %", () => {
+        it("aggregates the results from nested candidates to top-level candidate as 25 %", () => {
           const results = calculateResult(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "A", percentage: 25 });
         });
@@ -375,12 +372,12 @@ describe("Result calculation algorithm", () => {
       describe("and user answered Yes, Yes, Yes", () => {
         const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-        it("it uses top-level candidate answers for top-level candidate result", () => {
+        it("uses top-level candidate answers and calculates ≈ 66 % match", () => {
           const results = calculateResult(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "A", percentage: approx66 });
         });
 
-        it("it includes results for nested candidates", () => {
+        it("includes results for nested candidates", () => {
           const results = calculateResult(userAnswers, candidates, candidatesAnswers);
           expect(results).toContainEqual({ id: "B", percentage: 100 });
           expect(results).toContainEqual({ id: "C", percentage: 0 });
