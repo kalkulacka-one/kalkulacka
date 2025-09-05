@@ -20,15 +20,18 @@ interface CalculationResult {
   percentage: number | undefined;
 }
 
+type RandomNumberGenerator = () => number;
+
 /**
  * Main calculation function
  *
  * @param userAnswers - The answers provided by the user
  * @param candidates - The list of all candidates
  * @param candidatesAnswers - Object with candidate IDs as keys and their answers as values
+ * @param rng - Optional random number generator for deterministic results (defaults to Math.random)
  * @returns Results sorted by match percentage (highest first)
  */
-export function calculateResult(userAnswers: Answers, candidates: Candidates, candidatesAnswers: CandidatesAnswers): CalculationResult[] {
+export function calculateResult(userAnswers: Answers, candidates: Candidates, candidatesAnswers: CandidatesAnswers, rng: RandomNumberGenerator = Math.random): CalculationResult[] {
   // First, we calculate the match percentage for each candidate
   const results: CalculationResult[] = [];
 
@@ -77,7 +80,7 @@ export function calculateResult(userAnswers: Answers, candidates: Candidates, ca
 
   // Sort results by percentage (highest first)
   // Candidates with the same percentage are shuffled randomly to avoid bias
-  return sortResultsWithRandomTieBreaker(results);
+  return sortResultsWithRandomTieBreaker(results, rng);
 }
 
 /**
@@ -262,13 +265,14 @@ function countCommonQuestions(userAnswers: Answers, candidateAnswers: Answers): 
  * appear in the same order, preventing any systematic bias.
  *
  * @param results - Array of results with id and percentage
+ * @param rng - Random number generator function (defaults to Math.random)
  * @returns Sorted results
  */
-function sortResultsWithRandomTieBreaker(results: CalculationResult[]): CalculationResult[] {
+function sortResultsWithRandomTieBreaker(results: CalculationResult[], rng: RandomNumberGenerator = Math.random): CalculationResult[] {
   // First, add a random tiebreaker value to each result
   const resultsWithTieBreaker = results.map((result) => ({
     ...result,
-    tieBreaker: Math.random(),
+    tieBreaker: rng(),
   }));
 
   // Sort by percentage (descending), then by random tiebreaker
@@ -294,6 +298,25 @@ function sortResultsWithRandomTieBreaker(results: CalculationResult[]): Calculat
 }
 
 /**
+ * Creates a seeded random number generator for reproducible results
+ *
+ * Uses a simple Linear Congruential Generator (LCG) algorithm
+ * which is sufficient for tie-breaking purposes.
+ *
+ * @param seed - The seed value for reproducible randomness
+ * @returns A random number generator function
+ */
+export function createSeededRNG(seed: number): RandomNumberGenerator {
+  let state = seed;
+
+  return () => {
+    // LCG parameters from Numerical Recipes
+    state = (state * 1664525 + 1013904223) >>> 0; // Keep it 32-bit unsigned
+    return state / 0x100000000; // Convert to 0-1 range
+  };
+}
+
+/**
  * Summary of the Algorithm
  * ========================
  *
@@ -304,7 +327,17 @@ function sortResultsWithRandomTieBreaker(results: CalculationResult[]): Calculat
  * 3. FLEXIBILITY: Supports important questions (double weight) and neutral answers
  * 4. AGGREGATION: Can combine results from multiple candidates (e.g., party members)
  * 5. RANDOMNESS: Ties are broken randomly to avoid systematic bias
+ * 6. REPRODUCIBILITY: Optional seeded RNG for deterministic results when needed
  *
  * The result is a percentage from 0% (complete disagreement) to 100% (complete agreement),
  * helping voters make informed decisions based on policy alignment rather than personality.
+ *
+ * Usage Examples:
+ *
+ * // Random results (default)
+ * const results = calculateResult(userAnswers, candidates, candidatesAnswers);
+ *
+ * // Deterministic results with seed
+ * const rng = createSeededRNG(12345);
+ * const results = calculateResult(userAnswers, candidates, candidatesAnswers, rng);
  */

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
 import type { Candidates } from "../../../../../packages/schema/schemas/candidates.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import { calculateResult } from "./calculateResult";
+import { calculateResult, createSeededRNG } from "./calculateResult";
 
 describe("Result calculation algorithm", () => {
   // Helpers for answer values, see https://schema.kalkulacka.one/#tag/Answer for details
@@ -296,9 +296,26 @@ describe("Result calculation algorithm", () => {
     describe("and user answered Yes, Yes, Yes", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-      it("sorts candidates randomly", () => {
-        const results = calculateResult(userAnswers, candidates, candidatesAnswers);
-        expect(new Set(results.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
+      it("sorts candidates randomly with different seeds producing different orders", () => {
+        const rng1 = createSeededRNG(12345);
+        const rng2 = createSeededRNG(54321);
+
+        const results1 = calculateResult(userAnswers, candidates, candidatesAnswers, rng1);
+        const results2 = calculateResult(userAnswers, candidates, candidatesAnswers, rng2);
+
+        const order1 = results1.map((r) => r.id).join(",");
+        const order2 = results2.map((r) => r.id).join(",");
+        expect(order1).not.toEqual(order2);
+      });
+
+      it("sorts candidates consistently with the same seed", () => {
+        const rng1 = createSeededRNG(42);
+        const rng2 = createSeededRNG(42);
+
+        const results1 = calculateResult(userAnswers, candidates, candidatesAnswers, rng1);
+        const results2 = calculateResult(userAnswers, candidates, candidatesAnswers, rng2);
+
+        expect(results1).toEqual(results2);
       });
     });
   });
