@@ -47,9 +47,7 @@ export function QuestionPage({
 
   return (
     <div>
-      <AppQuestionPage question={question} number={current} total={total} />
-      <Button onClick={handleNavigationNextClick}>Další otázka</Button>
-      <Button onClick={handleNavigationPreviousClick}>Předchozí otázka</Button>
+      <AppQuestionPage question={question} number={current} total={total} onPreviousClick={handleNavigationPreviousClick} onNextClick={handleNavigationNextClick} />
     </div>
   );
 }
