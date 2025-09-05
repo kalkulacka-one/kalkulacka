@@ -6,4 +6,5 @@ export * from "./navigation-card";
 export * from "./question-card";
 export * from "./question-navigation-card";
 export * from "./result-card";
+export * from "./review-navigation-card";
 export * from "./review-question-card";
