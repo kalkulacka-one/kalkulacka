@@ -6,7 +6,7 @@ import { type RouteSegments, routes } from "../../../../lib/routing/route-builde
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
-  const questionsViewModel = useQuestionsViewModel();
+  const questions = useQuestionsViewModel();
   const answers = useAnswersViewModel();
 
   const handleNextClick = () => {
@@ -14,12 +14,12 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
   };
 
   const handlePreviousClick = () => {
-    router.push(routes.question(segments, questionsViewModel.total));
+    router.push(routes.question(segments, questions.total));
   };
 
   return (
     <div>
-      <AppReviewPage questions={questionsViewModel} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} />
+      <AppReviewPage questions={questions} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} />
     </div>
   );
 }
