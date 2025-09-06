@@ -13,9 +13,7 @@ export type CalculatorStoreProviderProps = {
 export const CalculatorStoreProvider = ({ children, calculatorData }: CalculatorStoreProviderProps) => {
   const storeRef = useRef<StoreApi<CalculatorStore> | undefined>(undefined);
   if (!storeRef.current) {
-    storeRef.current = createStore<CalculatorStore>(() => ({
-      calculator: calculatorData,
-    }));
+    storeRef.current = createStore<CalculatorStore>(() => calculatorData);
   }
 
   return <CalculatorStoreContext.Provider value={storeRef.current}>{children}</CalculatorStoreContext.Provider>;

@@ -7,7 +7,7 @@ export type QuestionsViewModel = {
 };
 
 export function useQuestionsViewModel(): QuestionsViewModel {
-  const questions = useCalculatorStore((state) => state.calculator.questions);
+  const questions = useCalculatorStore((state) => state.questions);
   return {
     questions,
     total: questions.length,
