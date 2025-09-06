@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import type { Candidate } from "../../../../../../packages/schema/schemas/candidate.schema";
-import { ResultCard } from "./result-card";
+import { MatchCard } from "./match-card";
 
-describe("ResultCard", () => {
+describe("MatchCard", () => {
   const mockCandidate: Candidate = {
     id: "1",
     references: [],
@@ -15,11 +15,11 @@ describe("ResultCard", () => {
   const props = {
     candidate: mockCandidate,
     order: 1,
-    matchPercentage: 85,
+    match: 85,
   };
 
   it("renders candidate information", () => {
-    render(<ResultCard {...props} />);
+    render(<MatchCard {...props} />);
 
     expect(screen.getByText("1.")).toBeInTheDocument();
     expect(screen.getByText(mockCandidate.displayName ?? "")).toBeInTheDocument();
