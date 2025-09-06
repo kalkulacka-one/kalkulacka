@@ -1,3 +1,5 @@
-import Page from "../../../../../../(web)/(kalkulacka)/(one-segment)/[first]/vysledek/page";
+import { ResultPageWithRouting } from "../../../../../../../components/client";
 
-export default Page;
+export default function Page() {
+  return <ResultPageWithRouting />;
+}

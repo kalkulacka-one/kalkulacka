@@ -1,42 +1,37 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { Question } from "../../../../packages/schema/schemas/question.schema";
+import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
 import { QuestionCard } from "./question-card";
 
 describe("QuestionCard", () => {
-  const questionCurrent = 1;
-  const questionTotal = 10;
-  it("should render the question card with required props", () => {
-    const mockQuestion: Question = {
-      id: "1",
-      title: "Test Question Title",
-      statement: "Test Question Statement",
-    };
+  const mockQuestion: Question = {
+    id: "1",
+    title: "Test Question Title",
+    statement: "Test Question Statement",
+    detail: "Test Question Detail",
+    tags: ["Test tag", "Another tag"],
+  };
 
-    render(<QuestionCard question={mockQuestion} questionCurrent={questionCurrent} questionTotal={questionTotal} />);
+  const props = {
+    current: 1,
+    total: 10,
+    question: mockQuestion,
+  };
 
-    expect(screen.getByText(`${questionCurrent}/${questionTotal}`)).toBeInTheDocument();
-    expect(screen.getByText(mockQuestion.title)).toBeInTheDocument();
-    expect(screen.getByText(mockQuestion.statement)).toBeInTheDocument();
-  });
-  it("should render the question card with all props", () => {
-    const mockQuestion: Question = {
-      id: "1",
-      title: "Test Question Title",
-      statement: "Test Question Statement",
-      detail: "Test Question Detail",
-      tags: ["Test tag"],
-    };
+  it("should render the question card", () => {
+    render(<QuestionCard {...props} />);
 
-    render(<QuestionCard question={mockQuestion} questionCurrent={questionCurrent} questionTotal={questionTotal} />);
-
-    expect(screen.getByText(`${questionCurrent}/${questionTotal}`)).toBeInTheDocument();
-    expect(screen.getByText(mockQuestion.title)).toBeInTheDocument();
-    expect(screen.getByText(mockQuestion.statement)).toBeInTheDocument();
-    expect(screen.queryByText(mockQuestion.detail ?? "")).toBeInTheDocument();
-    if (mockQuestion.tags) {
-      expect(screen.queryByText(mockQuestion.tags.join(""))).toBeInTheDocument();
+    expect(screen.getByText(`${props.current}/${props.total}`)).toBeInTheDocument();
+    expect(screen.getByText(props.question.title)).toBeInTheDocument();
+    expect(screen.getByText(props.question.statement)).toBeInTheDocument();
+    if (props.question.detail) {
+      expect(screen.getByText(props.question.detail)).toBeInTheDocument();
+    }
+    if (props.question.tags) {
+      for (const tag of props.question.tags) {
+        expect(screen.getByText(tag)).toBeInTheDocument();
+      }
     }
   });
 });

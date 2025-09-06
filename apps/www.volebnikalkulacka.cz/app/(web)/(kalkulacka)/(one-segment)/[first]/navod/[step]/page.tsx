@@ -1,11 +1,9 @@
-import { notFound } from "next/navigation";
+import { GuidePageWithRouting } from "../../../../../../../components/client";
+import { stepGuard } from "../../../../../../../lib/routing/guards/step";
 
-import { GuidePage } from "../../../../../../../components/client";
+export default async function Page({ params }: { params: Promise<{ first: string; step: string }> }) {
+  const { first, step } = await params;
+  const stepInt = stepGuard(step);
 
-export default async function Page({ params }: { params: Promise<{ step: string }> }) {
-  const stepInt = Number.parseInt((await params).step);
-  if (Number.isNaN(stepInt) || (stepInt !== 1 && stepInt !== 2)) {
-    notFound();
-  }
-  return <GuidePage step={stepInt as 1 | 2} />;
+  return <GuidePageWithRouting step={stepInt} segments={{ first }} />;
 }

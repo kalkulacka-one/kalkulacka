@@ -1,11 +1,9 @@
-import { notFound } from "next/navigation";
+import { QuestionPageWithRouting } from "../../../../../../../components/client";
+import { questionNumberGuard } from "../../../../../../../lib/routing/guards/question-number";
 
-import { QuestionPage } from "../../../../../../../components/server";
+export default async function Page({ params }: { params: Promise<{ first: string; questionNumber: string }> }) {
+  const { first, questionNumber } = await params;
+  const currentQuestionNumber = questionNumberGuard(questionNumber);
 
-export default async function Page({ params }: { params: Promise<{ questionNumber: string }> }) {
-  const questionNumberInt = Number.parseInt((await params).questionNumber);
-  if (Number.isNaN(questionNumberInt)) {
-    notFound();
-  }
-  return <QuestionPage questionNumber={questionNumberInt} />;
+  return <QuestionPageWithRouting current={currentQuestionNumber} segments={{ first }} />;
 }
