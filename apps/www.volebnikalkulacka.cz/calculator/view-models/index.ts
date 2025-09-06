@@ -6,3 +6,4 @@ export * from "./candidate";
 export * from "./candidates";
 export * from "./question";
 export * from "./questions";
+export * from "./result";
