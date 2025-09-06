@@ -1,9 +1,13 @@
 import { createContext, useContext } from "react";
-import { type StoreApi, useStore } from "zustand";
+import { createStore, type StoreApi, useStore } from "zustand";
 
 import type { CalculatorData } from "../lib";
 
 export type CalculatorStore = CalculatorData;
+
+export const createCalculatorStore = (calculatorData: CalculatorData) => {
+  return createStore<CalculatorStore>(() => calculatorData);
+};
 
 export const CalculatorStoreContext = createContext<StoreApi<CalculatorStore> | undefined>(undefined);
 
