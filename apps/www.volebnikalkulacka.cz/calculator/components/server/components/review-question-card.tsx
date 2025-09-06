@@ -1,12 +1,11 @@
 import { ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 
-import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
-import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
+import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
 
 export type ReviewQuestionCard = {
-  question: Question;
-  answer: Answer;
+  question: QuestionViewModel;
+  answer: AnswerViewModel;
   current: number;
   total: number;
   onAgreeChange: (agree: boolean) => void;
