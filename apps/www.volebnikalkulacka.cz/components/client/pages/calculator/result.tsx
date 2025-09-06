@@ -27,7 +27,7 @@ function mockCalculateResultViewModel(candidates: CandidateViewModel[]): ResultV
 
 export function ResultPageWithRouting() {
   const candidates = useCandidatesViewModel();
-  const resultViewModel = mockCalculateResultViewModel(candidates);
+  const result = mockCalculateResultViewModel(candidates);
 
-  return <AppResultPage resultViewModel={resultViewModel} />;
+  return <AppResultPage result={result} />;
 }
