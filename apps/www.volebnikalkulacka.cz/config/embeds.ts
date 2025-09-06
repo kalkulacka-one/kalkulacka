@@ -6,7 +6,7 @@ export type EmbedConfig = {
 
 export const embedsConfig = {
   default: { theme: "default" },
-  "generace-f": { theme: "generace-f" },
+  "diky-ze-muzem": { theme: "diky-ze-muzem" },
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
