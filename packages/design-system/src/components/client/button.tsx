@@ -9,19 +9,12 @@ export type Button = {
   VariantProps<typeof ButtonVariants>;
 
 export const ButtonVariants = cva(
-  [
-    "ko:border-2",
-    "ko:select-none ko:data-hover:cursor-pointer",
-    "ko:font-display ko:font-bold ko:uppercase ko:leading-[1.85] ko:tracking-[.07em]",
-    "ko:rounded-tr-none ko:rounded-2xl",
-    "ko:text-xs",
-    "ko:data-disabled:cursor-not-allowed",
-  ],
+  ["ko:border-2", "ko:select-none ko:data-hover:cursor-pointer", "ko:font-semibold ko:tracking-[.01em]", "ko:rounded-tr-none ko:rounded-2xl", "ko:text-s", "ko:data-disabled:cursor-not-allowed"],
   {
     variants: {
       size: {
         small: "ko:px-4 ko:py-2",
-        medium: "ko:p-4",
+        medium: "ko:px-5 ko:py-3",
       },
       variant: {
         filled: [""],
