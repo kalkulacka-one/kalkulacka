@@ -5,7 +5,7 @@ import { useCandidatesViewModel } from "../../../../calculator/view-models";
 function mockCalculateResultViewModel(candidates: CandidateViewModel[]): ResultViewModel {
   const mockPercentages = [78, 65, 52, 45, 38, 29, 22, 18];
 
-  const results = candidates.map((candidate, index) => {
+  const matches = candidates.map((candidate, index) => {
     const percentage = mockPercentages[index] || Math.floor(Math.random() * 20) + 10;
 
     const nestedResults = candidate.nestedCandidates?.map((nested, nestedIndex) => ({
@@ -22,7 +22,7 @@ function mockCalculateResultViewModel(candidates: CandidateViewModel[]): ResultV
     };
   });
 
-  return { results };
+  return { matches };
 }
 
 export function ResultPageWithRouting() {
