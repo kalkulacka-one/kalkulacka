@@ -1,12 +1,12 @@
 import type { CandidateViewModel } from "./candidate";
 
-export type CandidateResultViewModel = {
+export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
-  percentage: number;
-  order: number;
-  nestedResults?: CandidateResultViewModel[];
+  match?: number;
+  order?: number;
+  nestedMatches?: CandidateMatchViewModel[];
 };
 
 export type ResultViewModel = {
-  results: CandidateResultViewModel[];
+  matches: CandidateMatchViewModel[];
 };

@@ -13,10 +13,10 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
       const candidateAnswers = allCandidatesAnswers[candidate.id];
       if (candidateAnswers) {
         const scoreObject = aggregateAnswersMatchScore(userAnswers, candidateAnswers);
-        const percentage = calculateMatchScorePercentage(scoreObject);
+        const match = calculateMatchScorePercentage(scoreObject);
         finalResults.push({
           id: candidate.id,
-          percentage: percentage,
+          match,
         });
       }
 
@@ -27,10 +27,10 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
             const memberAnswers = allCandidatesAnswers[member.id];
             if (memberAnswers) {
               const scoreObject = aggregateAnswersMatchScore(userAnswers, memberAnswers);
-              const percentage = calculateMatchScorePercentage(scoreObject);
+              const match = calculateMatchScorePercentage(scoreObject);
               finalResults.push({
                 id: member.id,
-                percentage: percentage,
+                match,
               });
             }
           }
@@ -42,36 +42,36 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
       for (const member of candidate.nestedCandidates) {
         const memberAnswers = allCandidatesAnswers[member.id] || [];
         const scoreObject = aggregateAnswersMatchScore(userAnswers, memberAnswers);
-        const percentage = calculateMatchScorePercentage(scoreObject);
+        const match = calculateMatchScorePercentage(scoreObject);
 
         memberResults.push({
           id: member.id,
-          percentage: percentage,
+          match,
         });
         finalResults.push({
           id: member.id,
-          percentage: percentage,
+          match,
         });
       }
 
       const combinedAnswers = candidate.nestedCandidates.flatMap((member) => allCandidatesAnswers[member.id] || []);
       const scoreObject = aggregateAnswersMatchScore(userAnswers, combinedAnswers);
-      const percentage = calculateMatchScorePercentage(scoreObject);
+      const match = calculateMatchScorePercentage(scoreObject);
 
       // Add the parent result without memberResults to match the test expectation
       finalResults.push({
         id: candidate.id,
-        percentage: percentage,
+        match,
       });
     }
   }
   return finalResults.sort((a, b) => {
-    // Handle potentially undefined percentages
-    const bPercentage = b.percentage ?? -1;
-    const aPercentage = a.percentage ?? -1;
+    // Handle potentially undefined matches
+    const bMatch = b.match ?? -1;
+    const aMatch = a.match ?? -1;
 
-    if (bPercentage !== aPercentage) {
-      return bPercentage - aPercentage;
+    if (bMatch !== aMatch) {
+      return bMatch - aMatch;
     }
     // Random order for ties
     return Math.random() - 0.5;

@@ -1,15 +1,15 @@
 import type { ResultViewModel } from "../../../view-models";
-import { ResultCard } from "../components";
+import { MatchCard } from "../components";
 
 export type ResultPage = {
-  resultViewModel: ResultViewModel;
+  result: ResultViewModel;
 };
 
-export function ResultPage({ resultViewModel }: ResultPage) {
+export function ResultPage({ result }: ResultPage) {
   return (
     <>
-      {resultViewModel.results.map((result) => (
-        <ResultCard key={result.candidate.id} candidate={result.candidate} order={result.order} matchPercentage={result.percentage} />
+      {result.matches.map((match) => (
+        <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
       ))}
     </>
   );

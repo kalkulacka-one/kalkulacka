@@ -2,23 +2,23 @@ import { Card } from "@repo/design-system/server";
 
 import type { Candidate } from "../../../../../../packages/schema/schemas/candidate.schema";
 
-export type ResultCard = {
+export type MatchCard = {
   candidate: Candidate;
-  order: number;
-  matchPercentage: number;
+  order?: number;
+  match?: number;
 };
 
-export function ResultCard({ candidate, order, matchPercentage }: ResultCard) {
+export function MatchCard({ candidate, order, match }: MatchCard) {
   return (
     <Card corner="topLeft">
       <div>
         <div>
-          <div>{order}.</div>
+          <div>{order !== undefined ? `${order}.` : "—"}</div>
         </div>
         <div>
           <div>{candidate.displayName}</div>
         </div>
-        <span>{matchPercentage} %</span>
+        <span>{match !== undefined ? `${match} %` : "—"}</span>
       </div>
     </Card>
   );
