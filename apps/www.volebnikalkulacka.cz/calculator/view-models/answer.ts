@@ -1,9 +1,9 @@
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
-import { useAnswersStore } from "../stores/answers";
+import { type AnswersStore, useAnswersStore } from "../stores/answers";
 
 export type AnswerViewModel = {
   answer: Answer | undefined;
-  setAnswer: (answer: Answer) => void;
+  setAnswer: AnswersStore["setAnswer"];
 };
 
 export function useAnswerViewModel(questionId: string): AnswerViewModel {
