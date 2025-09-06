@@ -2,8 +2,8 @@ import type { CandidateViewModel } from "./candidate";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
-  match: number;
-  order: number;
+  match?: number;
+  order?: number;
   nestedMatches?: CandidateMatchViewModel[];
 };
 
