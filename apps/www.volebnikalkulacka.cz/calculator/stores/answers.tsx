@@ -26,7 +26,8 @@ export const createAnswersStore = () => {
           newAnswers[existingIndex] = { ...newAnswers[existingIndex], ...answer };
           return { answers: newAnswers };
         }
-        return { answers: [...state.answers, answer as Answer] };
+        const newAnswer: Answer = { ...answer };
+        return { answers: [...state.answers, newAnswer] };
       });
     },
     getAnswer: (questionId: string) => {
