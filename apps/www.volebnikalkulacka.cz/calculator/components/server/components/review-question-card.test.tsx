@@ -2,12 +2,11 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
-import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
+import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
 import { ReviewQuestionCard } from "./review-question-card";
 
 describe("ReviewQuestionCard", () => {
-  const mockQuestion: Question = {
+  const mockQuestion: QuestionViewModel = {
     id: "1",
     title: "Test Question Title",
     statement: "Test Question Statement",
@@ -15,7 +14,7 @@ describe("ReviewQuestionCard", () => {
     tags: ["Test tag"],
   };
 
-  const mockAnswer: Answer = {
+  const mockAnswer: AnswerViewModel = {
     questionId: "1",
     answer: true,
     isImportant: true,
