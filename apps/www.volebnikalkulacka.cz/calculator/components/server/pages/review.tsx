@@ -11,8 +11,7 @@ export type ReviewPage = {
 export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
-      const answer = answers.answers.find((a) => a.answer?.questionId === questionId);
-      answer?.setAnswer({
+      answers.setAnswer({
         questionId,
         answer: true,
       });
@@ -21,8 +20,7 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
 
   const handleDisagreeChange = (questionId: string, disagree: boolean) => {
     if (disagree) {
-      const answer = answers.answers.find((a) => a.answer?.questionId === questionId);
-      answer?.setAnswer({
+      answers.setAnswer({
         questionId,
         answer: false,
       });
@@ -30,8 +28,7 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
   };
 
   const handleImportantChange = (questionId: string, isImportant: boolean) => {
-    const answer = answers.answers.find((a) => a.answer?.questionId === questionId);
-    answer?.setAnswer({
+    answers.setAnswer({
       questionId,
       isImportant,
     });
@@ -42,7 +39,7 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
       {questions.questions.map((question, index) => {
         const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
           answer: undefined,
-          setAnswer: () => {},
+          setAnswer: answers.setAnswer,
         };
 
         return (

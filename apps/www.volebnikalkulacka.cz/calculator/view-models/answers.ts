@@ -1,9 +1,10 @@
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
-import { useAnswersStore } from "../stores/answers";
+import { type AnswersStore, useAnswersStore } from "../stores/answers";
 import type { AnswerViewModel } from ".";
 
 export type AnswersViewModel = {
   answers: AnswerViewModel[];
+  setAnswer: AnswersStore["setAnswer"];
   clearAnswers: () => void;
 };
 
@@ -19,6 +20,7 @@ export function useAnswersViewModel(): AnswersViewModel {
         setAnswer,
       }),
     ),
+    setAnswer,
     clearAnswers,
   };
 }
