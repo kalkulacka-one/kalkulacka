@@ -1,6 +1,7 @@
 "use client";
 
 export * from "./answer";
+export * from "./answers";
 export * from "./calculator";
 export * from "./candidate";
 export * from "./candidates";

@@ -1,4 +1,4 @@
-import { CalculatorStoreProvider } from "../../../../../../calculator/components/client";
+import { AnswersStoreProvider, CalculatorStoreProvider } from "../../../../../../calculator/components/client";
 import { loadCalculatorData } from "../../../../../../calculator/lib";
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
   const { first, second } = await params;
@@ -7,11 +7,13 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   return (
     <CalculatorStoreProvider calculatorData={calculatorData}>
-      <section>
-        <p>First: `{first}`</p>
-        <p>Second: `{second}`</p>
-        <main>{children}</main>
-      </section>
+      <AnswersStoreProvider>
+        <section>
+          <p>First: `{first}`</p>
+          <p>Second: `{second}`</p>
+          <main>{children}</main>
+        </section>
+      </AnswersStoreProvider>
     </CalculatorStoreProvider>
   );
 }
