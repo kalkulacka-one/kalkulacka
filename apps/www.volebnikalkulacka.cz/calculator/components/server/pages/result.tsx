@@ -8,8 +8,8 @@ export type ResultPage = {
 export function ResultPage({ resultViewModel }: ResultPage) {
   return (
     <>
-      {resultViewModel.results.map((result) => (
-        <MatchCard key={result.candidate.id} candidate={result.candidate} order={result.order} matchPercentage={result.percentage} />
+      {resultViewModel.matches.map((match) => (
+        <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
       ))}
     </>
   );

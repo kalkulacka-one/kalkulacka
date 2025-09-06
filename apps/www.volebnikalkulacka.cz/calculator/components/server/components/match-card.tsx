@@ -5,10 +5,10 @@ import type { Candidate } from "../../../../../../packages/schema/schemas/candid
 export type MatchCard = {
   candidate: Candidate;
   order: number;
-  matchPercentage: number;
+  match: number;
 };
 
-export function MatchCard({ candidate, order, matchPercentage }: MatchCard) {
+export function MatchCard({ candidate, order, match }: MatchCard) {
   return (
     <Card corner="topLeft">
       <div>
@@ -18,7 +18,7 @@ export function MatchCard({ candidate, order, matchPercentage }: MatchCard) {
         <div>
           <div>{candidate.displayName}</div>
         </div>
-        <span>{matchPercentage} %</span>
+        <span>{match} %</span>
       </div>
     </Card>
   );
