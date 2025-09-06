@@ -1,10 +1,20 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
   "files": {
-    "ignore": ["node_modules", "dist", "build", "out", ".next", ".vercel", "styles.css", "globals.css"]
+    "includes": ["**", "!**/node_modules", "!**/dist", "!**/build", "!**/out", "!**/.next", "!**/.vercel", "!**/styles.css", "!**/globals.css"]
   },
-  "organizeImports": {
-    "enabled": true
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "identifierOrder": "natural",
+            "groups": [[":URL:", ":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:", ":ALIAS:"], ":BLANK_LINE:", "@repo/**", ":BLANK_LINE:", ":PATH:"]
+          }
+        }
+      }
+    }
   },
   "formatter": {
     "enabled": true,
@@ -27,8 +37,7 @@
         "useDefaultParameterLast": "error",
         "useExponentiationOperator": "error",
         "useTemplate": "error",
-        "noParameterAssign": "error",
-        "noVar": "error"
+        "noParameterAssign": "error"
       },
       "suspicious": {
         "noImplicitAnyLet": "error",
@@ -36,7 +45,8 @@
         "noExplicitAny": "error",
         "noSelfCompare": "error",
         "noShadowRestrictedNames": "error",
-        "noDoubleEquals": "error"
+        "noDoubleEquals": "error",
+        "noVar": "error"
       },
       "a11y": {
         "noSvgWithoutTitle": "info",

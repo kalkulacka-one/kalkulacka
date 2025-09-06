@@ -22,16 +22,17 @@
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
     "lint": "biome check .",
-    "lint:fix": "biome check --write ."
+    "lint:fix": "biome check --write .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
     "@types/node": "^22.15.29",
-    "prisma": "^6.9.0",
+    "prisma": "^6.15.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@prisma/client": "^6.9.0"
+    "@prisma/client": "^6.15.0"
   }
 }

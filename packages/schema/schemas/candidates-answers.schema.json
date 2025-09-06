@@ -9,14 +9,16 @@
       "$ref": "./answers.schema.json"
     }
   },
-  "example": {
-    "11fee676-1eac-4948-a2fb-38e2b774f4b3": [
-      {
-        "questionId": "51115be7-246a-4f07-baf7-247ee81fde36",
-        "answer": true,
-        "respondent": "candidate"
-      }
-    ]
-  },
+  "examples": [
+    {
+      "11fee676-1eac-4948-a2fb-38e2b774f4b3": [
+        {
+          "questionId": "51115be7-246a-4f07-baf7-247ee81fde36",
+          "answer": true,
+          "respondent": "candidate"
+        }
+      ]
+    }
+  ],
   "unevaluatedProperties": false
 }

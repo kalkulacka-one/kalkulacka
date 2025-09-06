@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
 import schemas from "@repo/schema";
 
 const __filename = fileURLToPath(import.meta.url);
