@@ -49,7 +49,7 @@ export function QuestionPage({ question, number, total, onPreviousClick, onNextC
         total={total}
         onPreviousClick={onPreviousClick}
         onNextClick={onNextClick}
-        answer={answer}
+        answer={{ answer, setAnswer: () => {} }}
         onAgreeChange={handleAgreeChange}
         onDisagreeChange={handleDisagreeChange}
         onImportantChange={handleImportantChange}

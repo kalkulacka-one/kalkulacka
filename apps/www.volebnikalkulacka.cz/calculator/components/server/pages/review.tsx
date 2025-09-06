@@ -46,9 +46,12 @@ export function ReviewPage({ questions, onNextClick, onPreviousClick }: ReviewPa
     <>
       {questions.questions.map((question, index) => {
         const answer = {
-          questionId: question.id,
-          answer: mockAnswers[question.id]?.answer || null,
-          isImportant: mockAnswers[question.id]?.isImportant || false,
+          answer: {
+            questionId: question.id,
+            answer: mockAnswers[question.id]?.answer || null,
+            isImportant: mockAnswers[question.id]?.isImportant || false,
+          },
+          setAnswer: () => {},
         };
 
         return (
