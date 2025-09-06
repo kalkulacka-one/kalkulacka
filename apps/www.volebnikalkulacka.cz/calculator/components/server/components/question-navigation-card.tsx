@@ -1,6 +1,6 @@
 import { Button, ToggleButton } from "@repo/design-system/client";
 
-import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
+import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
 
 export type QuestionNavigationCard = {
@@ -8,7 +8,7 @@ export type QuestionNavigationCard = {
   total: number;
   onPreviousClick: () => void;
   onNextClick: () => void;
-  answer: Answer;
+  answer: AnswerViewModel;
   onAgreeChange: (agree: boolean) => void;
   onDisagreeChange: (disagree: boolean) => void;
   onImportantChange: (isImportant: boolean) => void;
