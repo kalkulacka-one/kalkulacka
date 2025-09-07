@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { Candidate } from "../../../../../../packages/schema/schemas/candidate.schema";
+import type { CandidateViewModel } from "../../../view-models";
 import { MatchCard } from "./match-card";
 
 describe("MatchCard", () => {
-  const mockCandidate: Candidate = {
+  const mockCandidate: CandidateViewModel = {
     id: "1",
     references: [],
     displayName: "Občanská demokratická strana",
