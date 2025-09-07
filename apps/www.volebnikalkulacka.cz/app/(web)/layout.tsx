@@ -1,5 +1,5 @@
-import { Logo } from "@repo/design-system/client";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import "../globals.css";
 
@@ -18,17 +18,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="cs">
       <body>
         <ThemeProvider name="default">
-          <div className="container mx-auto p-16 flex flex-col min-h-screen">
-            <header className="h-14 flex">
-              <Logo title="Volební kalkulačka" text />
-            </header>
-            <div className="flex flex-grow items-center justify-center">
-              <main>{children}</main>
-            </div>
-            <footer className="h-14 flex justify-start items-center">
-              <p>Vytvořeno spoluprací neziskových organizací.</p>
-            </footer>
-          </div>
+          <nav>
+            <Link href="/">Domů</Link>
+            <Link href="/o-nas">O nás</Link>
+            <Link href="/metodika">Metodika</Link>
+            <Link href="/soukromi">Ochrana soukromí</Link>
+            <Link href="/kontakt">Kontakt</Link>
+          </nav>
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>
