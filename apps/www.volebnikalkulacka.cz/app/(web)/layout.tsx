@@ -1,8 +1,17 @@
 import { Logo } from "@repo/design-system/client";
+import type { Metadata } from "next";
 
 import "../globals.css";
 
 import { ThemeProvider } from "../../components/client";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Volební kalkulačka",
+    template: "%s — Volební kalkulačka",
+  },
+  description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
+};
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (

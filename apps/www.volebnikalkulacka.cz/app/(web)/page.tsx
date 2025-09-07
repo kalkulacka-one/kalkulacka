@@ -1,9 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Volební kalkulačka",
-  description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
-};
 
 export default function Page() {
   return (
