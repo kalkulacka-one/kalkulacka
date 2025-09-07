@@ -3,10 +3,19 @@ import { useMemo } from "react";
 import type { Person } from "../../../../packages/schema/schemas/person.schema";
 import { useCalculatorStore } from "../stores";
 
-export type PersonViewModel = Person;
+export type PersonViewModel = Person & {
+  displayName: string;
+};
+
+function getPersonDisplayName(person: Person): string {
+  return person.name || `${person.givenName || ""} ${person.familyName || ""}`.trim();
+}
 
 export function personViewModel(person: Person): PersonViewModel {
-  return person;
+  return {
+    ...person,
+    displayName: getPersonDisplayName(person),
+  };
 }
 
 export function usePerson(id: string): PersonViewModel | undefined {
