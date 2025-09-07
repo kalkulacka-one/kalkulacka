@@ -4,7 +4,7 @@ import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/c
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
-export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers) {
+export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers, useRandomTieBreaker: boolean = false) {
   const finalResults = [];
 
   const allCandidatesAnswersId = Object.keys(allCandidatesAnswers);
@@ -73,7 +73,7 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
     if (bMatch !== aMatch) {
       return bMatch - aMatch;
     }
-    // Random order for ties
-    return Math.random() - 0.5;
+    // Tie-breaker: random if enabled, otherwise deterministic by ID
+    return useRandomTieBreaker ? Math.random() - 0.5 : a.id.localeCompare(b.id);
   });
 }
