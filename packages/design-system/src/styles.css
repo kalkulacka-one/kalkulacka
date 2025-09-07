@@ -138,6 +138,32 @@
     var(--ko-palette-logo-percent-denominator-light, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary))),
     var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary)))
   );
+
+  /* Hard shadows - custom border-like shadows */
+  --shadow-hard-sm: light-dark(
+    var(--ko-shadow-hard-sm-light, 2px 2px 0px var(--color-neutral)),
+    var(--ko-shadow-hard-sm-dark, 2px 2px 0px var(--color-neutral))
+  );
+
+  --shadow-hard-md: light-dark(
+    var(--ko-shadow-hard-md-light, 4px 4px 0px var(--color-neutral)),
+    var(--ko-shadow-hard-md-dark, 4px 4px 0px var(--color-neutral))
+  );
+
+  --shadow-hard-lg: light-dark(
+    var(--ko-shadow-hard-lg-light, 6px 6px 0px var(--color-neutral)),
+    var(--ko-shadow-hard-lg-dark, 6px 6px 0px var(--color-neutral))
+  );
+
+  --shadow-hard-primary: light-dark(
+    var(--ko-shadow-hard-primary-light, 4px 4px 0px var(--color-primary)),
+    var(--ko-shadow-hard-primary-dark, 4px 4px 0px var(--color-primary))
+  );
+
+  --shadow-hard-secondary: light-dark(
+    var(--ko-shadow-hard-secondary-light, 4px 4px 0px var(--color-secondary)),
+    var(--ko-shadow-hard-secondary-dark, 4px 4px 0px var(--color-secondary))
+  );
 }
 
 @layer base {
