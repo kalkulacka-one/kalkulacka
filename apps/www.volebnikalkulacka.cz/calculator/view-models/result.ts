@@ -1,8 +1,11 @@
+import { useMemo } from "react";
+
+import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
+import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
 import { calculateMatches } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
 import type { CandidateViewModel } from "./candidate";
-import { useCandidatesViewModel } from "./candidates";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
@@ -22,11 +25,7 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   return [...withOrder, ...withoutOrder];
 }
 
-export function useResultViewModel(): ResultViewModel {
-  const answers = useAnswersStore((state) => state.answers);
-  const candidates = useCandidatesViewModel();
-  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
-
+export function resultViewModel(answers: Answer[], candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswers): ResultViewModel {
   const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
 
   const topLevelIds = candidates.map((candidate) => candidate.id);
@@ -66,4 +65,12 @@ export function useResultViewModel(): ResultViewModel {
   });
 
   return { matches: sortByOrder(matches) };
+}
+
+export function useResultViewModel(): ResultViewModel {
+  const answers = useAnswersStore((state) => state.answers);
+  const candidates = useCalculatorStore((state) => state.candidates);
+  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
+
+  return useMemo(() => resultViewModel(answers, candidates, candidatesAnswers), [answers, candidates, candidatesAnswers]);
 }
