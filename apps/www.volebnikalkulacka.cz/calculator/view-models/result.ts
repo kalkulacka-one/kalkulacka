@@ -5,7 +5,9 @@ import type { CandidatesAnswers } from "../../../../packages/schema/schemas/cand
 import { calculateMatches } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
-import type { CandidateViewModel } from "./candidate";
+import { type CandidateViewModel, candidateViewModel } from "./candidate";
+import { organizationViewModel } from "./organization";
+import { personViewModel } from "./person";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
@@ -70,7 +72,14 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
 export function useResultViewModel(): ResultViewModel {
   const answers = useAnswersStore((state) => state.answers);
   const candidates = useCalculatorStore((state) => state.candidates);
+  const persons = useCalculatorStore((state) => state.persons);
+  const organizations = useCalculatorStore((state) => state.organizations);
   const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
 
-  return useMemo(() => resultViewModel(answers, candidates, candidatesAnswers), [answers, candidates, candidatesAnswers]);
+  const personsMap = useMemo(() => new Map(persons.map((person) => [person.id, personViewModel(person)])), [persons]);
+  const organizationsMap = useMemo(() => new Map(organizations.map((organization) => [organization.id, organizationViewModel(organization)])), [organizations]);
+
+  const candidateViewModels = useMemo(() => candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap)), [candidates, personsMap, organizationsMap]);
+
+  return useMemo(() => resultViewModel(answers, candidateViewModels, candidatesAnswers), [answers, candidateViewModels, candidatesAnswers]);
 }
