@@ -5,7 +5,7 @@ import type { AnswerViewModel } from ".";
 export type AnswersViewModel = {
   answers: AnswerViewModel[];
   setAnswer: AnswersStore["setAnswer"];
-  clearAnswers: () => void;
+  clearAnswers: AnswersStore["clearAnswers"];
 };
 
 export function useAnswersViewModel(): AnswersViewModel {
