@@ -1,8 +1,6 @@
 import { useMemo } from "react";
 
 import type { Candidate } from "../../../../packages/schema/schemas/candidate.schema";
-import type { Organization } from "../../../../packages/schema/schemas/organization.schema";
-import type { Person } from "../../../../packages/schema/schemas/person.schema";
 import { useCalculatorStore } from "../stores";
 import { organizationViewModel } from "./organization";
 import { personViewModel } from "./person";
