@@ -1,9 +1,9 @@
 import { Card } from "@repo/design-system/server";
 
-import type { Candidate } from "../../../../../../packages/schema/schemas/candidate.schema";
+import type { CandidateViewModel } from "../../../view-models";
 
 export type MatchCard = {
-  candidate: Candidate;
+  candidate: CandidateViewModel;
   order?: number;
   match?: number;
 };
