@@ -4,7 +4,18 @@ import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/c
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
-export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers) {
+type RandomNumberGenerator = () => number;
+
+export function createSeededRNG(seed: number): RandomNumberGenerator {
+  let state = seed;
+
+  return () => {
+    state = (state * 1664525 + 1013904223) >>> 0;
+    return state / 0x100000000;
+  };
+}
+
+export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers, rng: RandomNumberGenerator = Math.random) {
   const finalResults = [];
 
   const allCandidatesAnswersId = Object.keys(allCandidatesAnswers);
@@ -74,6 +85,6 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
       return bMatch - aMatch;
     }
     // Random order for ties
-    return Math.random() - 0.5;
+    return rng() - 0.5;
   });
 }

@@ -1,4 +1,4 @@
-import { calculateMatches } from "../lib/result-calculation/calculate-matches";
+import { calculateMatches, createSeededRNG } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
 import type { CandidateViewModel } from "./candidate";
@@ -27,7 +27,14 @@ export function useResultViewModel(): ResultViewModel {
   const candidates = useCandidatesViewModel();
   const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
 
-  const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
+  const seed = candidates
+    .map((c) => c.id)
+    .join("")
+    .split("")
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const rng = createSeededRNG(seed);
+
+  const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers, rng);
 
   const topLevelIds = candidates.map((c) => c.id);
   const topLevelAlgorithmMatches = algorithmMatches.filter((match) => topLevelIds.includes(match.id));
