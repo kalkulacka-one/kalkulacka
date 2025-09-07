@@ -29,21 +29,21 @@ export function useResultViewModel(): ResultViewModel {
 
   const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
 
-  const topLevelIds = candidates.map((c) => c.id);
+  const topLevelIds = candidates.map((candidate) => candidate.id);
   const topLevelAlgorithmMatches = algorithmMatches.filter((match) => topLevelIds.includes(match.id));
 
   const matches: CandidateMatchViewModel[] = candidates.map((candidate) => {
-    const matchIndex = topLevelAlgorithmMatches.findIndex((m) => m.id === candidate.id);
+    const matchIndex = topLevelAlgorithmMatches.findIndex((match) => match.id === candidate.id);
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
     const order = matchIndex >= 0 ? matchIndex + 1 : undefined;
 
     let nestedMatches: CandidateMatchViewModel[] | undefined;
     if (candidate.nestedCandidates && candidate.nestedCandidates.length > 0) {
-      const nestedIds = candidate.nestedCandidates.map((nc) => nc.id);
+      const nestedIds = candidate.nestedCandidates.map((nestedCandidate) => nestedCandidate.id);
       const nestedAlgorithmMatches = algorithmMatches.filter((match) => nestedIds.includes(match.id));
 
       nestedMatches = candidate.nestedCandidates.map((nestedCandidate) => {
-        const nestedMatchIndex = nestedAlgorithmMatches.findIndex((m) => m.id === nestedCandidate.id);
+        const nestedMatchIndex = nestedAlgorithmMatches.findIndex((match) => match.id === nestedCandidate.id);
         const nestedMatch = nestedMatchIndex >= 0 ? nestedAlgorithmMatches[nestedMatchIndex]?.match : undefined;
         const nestedOrder = nestedMatchIndex >= 0 ? nestedMatchIndex + 1 : undefined;
 
