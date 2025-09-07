@@ -3,10 +3,19 @@ import { useMemo } from "react";
 import type { Organization } from "../../../../packages/schema/schemas/organization.schema";
 import { useCalculatorStore } from "../stores";
 
-export type OrganizationViewModel = Organization;
+export type OrganizationViewModel = Organization & {
+  displayName: string;
+};
+
+function getOrganizationDisplayName(organization: Organization): string {
+  return organization.shortName || organization.abbreviation || organization.name;
+}
 
 export function organizationViewModel(organization: Organization): OrganizationViewModel {
-  return organization;
+  return {
+    ...organization,
+    displayName: getOrganizationDisplayName(organization),
+  };
 }
 
 export function useOrganization(id: string): OrganizationViewModel | undefined {
