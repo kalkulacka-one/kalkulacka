@@ -15,6 +15,13 @@ export type ResultViewModel = {
   matches: CandidateMatchViewModel[];
 };
 
+function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
+  const withOrder = items.filter((item): item is T & { order: number } => item.order !== undefined);
+  const withoutOrder = items.filter((item) => item.order === undefined);
+  withOrder.sort((a, b) => a.order - b.order);
+  return [...withOrder, ...withoutOrder];
+}
+
 export function useResultViewModel(): ResultViewModel {
   const answers = useAnswersStore((state) => state.answers);
   const candidates = useCandidatesViewModel();
@@ -46,6 +53,8 @@ export function useResultViewModel(): ResultViewModel {
           order: nestedOrder,
         };
       });
+
+      nestedMatches = sortByOrder(nestedMatches);
     }
 
     return {
@@ -56,5 +65,5 @@ export function useResultViewModel(): ResultViewModel {
     };
   });
 
-  return { matches };
+  return { matches: sortByOrder(matches) };
 }
