@@ -1,4 +1,5 @@
-import { Button, ToggleButton } from "@repo/design-system/client";
+import { mdiStar, mdiStarOutline } from "@mdi/js";
+import { Button, Icon, ToggleButton } from "@repo/design-system/client";
 
 import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
@@ -38,8 +39,8 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </ToggleButton>
         </div>
         <div>
-          <ToggleButton variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)}>
-            Pro mě důležité
+          <ToggleButton variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
+            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
         </div>
       </div>
