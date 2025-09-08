@@ -5,7 +5,7 @@ export type Card = {
   children: React.ReactNode;
 } & VariantProps<typeof CardVariants>;
 
-const CardVariants = cva("ko:rounded-lg", {
+const CardVariants = cva("ko:rounded-3xl", {
   variants: {
     color: {
       white: "ko:bg-white",
@@ -17,7 +17,7 @@ const CardVariants = cva("ko:rounded-lg", {
       false: "",
     },
     shadow: {
-      true: "ko:shadow-md",
+      true: "ko:shadow-lg",
       false: "",
     },
   },
