@@ -4,6 +4,7 @@ import type { ThemeName } from "../../config/themes";
 
 const themes = {
   default: dynamic(() => import("./themes/default-theme").then((mod) => mod.DefaultTheme)),
+  alarm: dynamic(() => import("./themes/alarm-theme").then((mod) => mod.AlarmTheme)),
 } as const satisfies Record<ThemeName, React.ComponentType<{ children: React.ReactNode }>>;
 
 export const ThemeProvider = ({ name, children }: { name: ThemeName; children: React.ReactNode }) => {
