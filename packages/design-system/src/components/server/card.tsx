@@ -17,15 +17,15 @@ const CardVariants = cva("ko:rounded-3xl", {
       false: "",
     },
     shadow: {
-      true: "ko:shadow-lg",
-      false: "",
+      elevated: "ko:drop-shadow-2xl",
       hard: "ko:drop-shadow-hard",
+      false: "",
     },
   },
   defaultVariants: {
     color: "white",
-    border: true,
-    corner: "bottomRight",
+    corner: "topLeft",
+    border: false,
     shadow: true,
   },
 });
