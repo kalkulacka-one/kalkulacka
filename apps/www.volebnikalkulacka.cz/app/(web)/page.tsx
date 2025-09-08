@@ -1,14 +1,5 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Volební kalkulačka",
-  description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
-};
+import Link from "next/link";
 
 export default function Page() {
-  return (
-    <section>
-      <h2>Parlamentní volby 2025</h2>
-    </section>
-  );
+  return <Link href="/snemovni-2025/inventura">Inventura hlasování 2021–2025</Link>;
 }
