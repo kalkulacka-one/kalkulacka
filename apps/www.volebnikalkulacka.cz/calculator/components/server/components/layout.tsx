@@ -3,12 +3,7 @@ type LayoutProps = {
 };
 
 export function Layout({ children }: LayoutProps) {
-  return (
-    <div>
-      <header>Volební kalkulačka</header>
-      <main>{children}</main>
-    </div>
-  );
+  return <>{children}</>;
 }
 
 export function LayoutBottomNavigation({ children }: { children: React.ReactNode }) {

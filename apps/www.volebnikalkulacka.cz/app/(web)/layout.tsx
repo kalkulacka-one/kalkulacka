@@ -17,16 +17,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="cs">
       <body className="min-h-dvh">
-        <ThemeProvider name="default">
-          <nav>
-            <Link href="/">Domů</Link>
-            <Link href="/o-nas">O nás</Link>
-            <Link href="/metodika">Metodika</Link>
-            <Link href="/soukromi">Ochrana soukromí</Link>
-            <Link href="/kontakt">Kontakt</Link>
-          </nav>
-          <main>{children}</main>
-        </ThemeProvider>
+        <ThemeProvider name="default">{children}</ThemeProvider>
       </body>
     </html>
   );
