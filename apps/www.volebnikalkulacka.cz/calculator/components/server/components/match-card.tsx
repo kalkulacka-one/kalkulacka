@@ -17,9 +17,7 @@ export function MatchCard({ candidate, order, match }: MatchCard) {
         </div>
         <div>
           <div>{candidate.displayName}</div>
-          {candidate.organization && (
-            <div>{candidate.organization}</div>
-          )}
+          {candidate.organization && <div>{candidate.organization}</div>}
         </div>
         <span>{match !== undefined ? `${match} %` : "—"}</span>
       </div>
