@@ -11,18 +11,18 @@ export type QuestionCard = {
 export function QuestionCard({ question, current, total }: QuestionCard) {
   const { title, tags, detail, statement } = question;
   return (
-    <Card corner="topLeft" padding={"lg"}>
+    <Card corner="topLeft">
       <div>
-        <div className="mb-3">
-          <span className="pr-2">
+        <div>
+          <span>
             {current}/{total}
           </span>
-          <span className="font-semibold pr-2">{title}</span>
+          <span>{title}</span>
           {tags?.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <h2 className="ko:font-display font-semibold tracking-[-0.03em] text-2xl mb-3">{statement}</h2>
+        <h2>{statement}</h2>
         {detail && <span>{detail}</span>}
       </div>
     </Card>

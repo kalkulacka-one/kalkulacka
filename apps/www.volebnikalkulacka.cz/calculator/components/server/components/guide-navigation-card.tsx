@@ -10,9 +10,7 @@ export type GuideNavigationCard = {
 export function GuideNavigationCard({ step, onNextClick }: GuideNavigationCard) {
   return (
     <NavigationCard>
-      <Button color="neutral" onClick={onNextClick}>
-        {step === 1 ? "Pokračovat" : "Začít odpovídat"}
-      </Button>
+      <Button onClick={onNextClick}>{step === 1 ? "Pokračovat" : "Začít odpovídat"}</Button>
     </NavigationCard>
   );
 }
