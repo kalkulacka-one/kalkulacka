@@ -1,5 +1,5 @@
 import type { CalculatorViewModel } from "../../../view-models";
-import { GuideComponent, GuideNavigationCard, Introduction } from "../components";
+import { AppHeader, GuideComponent, GuideNavigationCard, Introduction, LayoutBottomNavigation, LayoutHeader } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
@@ -10,6 +10,11 @@ export type GuidePage = {
 export function GuidePage({ calculator, step, onNavigationNextClick }: GuidePage) {
   return (
     <>
+      <LayoutHeader>
+        <AppHeader>
+          <h1>Volební kalkulačka</h1>
+        </AppHeader>
+      </LayoutHeader>
       {(() => {
         switch (step) {
           case 1:
@@ -18,7 +23,9 @@ export function GuidePage({ calculator, step, onNavigationNextClick }: GuidePage
             return <GuideComponent />;
         }
       })()}
-      <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} />
+      <LayoutBottomNavigation>
+        <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} />
+      </LayoutBottomNavigation>
     </>
   );
 }

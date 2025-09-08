@@ -68,8 +68,19 @@ describe("loadCalculatorData", () => {
 
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/calculator.json` });
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/questions.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/candidates.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/candidates-answers.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/persons.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
-    expect(result).toEqual({ calculator: data, questions: data });
+    expect(result).toEqual({
+      calculator: data,
+      questions: data,
+      candidates: data,
+      candidatesAnswers: data,
+      persons: data,
+      organizations: data,
+    });
   });
 
   it("should load calculator data successfully with key and group", async () => {
@@ -82,15 +93,26 @@ describe("loadCalculatorData", () => {
 
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/calculator.json` });
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/questions.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/candidates.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/candidates-answers.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/persons.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
-    expect(result).toEqual({ calculator: data, questions: data });
+    expect(result).toEqual({
+      calculator: data,
+      questions: data,
+      candidates: data,
+      candidatesAnswers: data,
+      persons: data,
+      organizations: data,
+    });
   });
 
   it("should throw error with details when fetch fails", async () => {
     process.env.DATA_ENDPOINT = DATA_ENDPOINT;
     mockFetchFile.mockRejectedValue(new Error("Network error"));
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch calculator data: Network error");
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(/Failed to fetch .* data: Network error/);
   });
 
   it("should throw error with details when parsing fails", async () => {
@@ -102,6 +124,6 @@ describe("loadCalculatorData", () => {
       throw new Error("Invalid data format");
     });
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to parse calculator data: Invalid data format");
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(/Failed to parse .* data: Invalid data format/);
   });
 });

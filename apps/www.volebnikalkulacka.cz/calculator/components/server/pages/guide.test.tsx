@@ -9,6 +9,9 @@ vi.mock("../components", () => ({
   Introduction: vi.fn(() => null),
   GuideComponent: vi.fn(() => null),
   GuideNavigationCard: vi.fn(() => null),
+  LayoutHeader: vi.fn(({ children }) => children),
+  LayoutBottomNavigation: vi.fn(({ children }) => children),
+  AppHeader: vi.fn(({ children }) => children),
 }));
 
 const data = {

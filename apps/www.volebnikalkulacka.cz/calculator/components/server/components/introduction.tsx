@@ -1,3 +1,5 @@
+import Markdown from "react-markdown";
+
 import type { CalculatorViewModel } from "../../../view-models";
 
 export type Introduction = {
@@ -9,7 +11,9 @@ export function Introduction({ calculator }: Introduction) {
   return (
     <>
       <h1>{title}</h1>
-      <p>{intro}</p>
+      <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
+        {intro}
+      </Markdown>
     </>
   );
 }

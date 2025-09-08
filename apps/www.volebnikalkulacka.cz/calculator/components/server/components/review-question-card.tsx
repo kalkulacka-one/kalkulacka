@@ -1,12 +1,11 @@
 import { ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 
-import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
-import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
+import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
 
 export type ReviewQuestionCard = {
-  question: Question;
-  answer: Answer;
+  question: QuestionViewModel;
+  answer: AnswerViewModel;
   current: number;
   total: number;
   onAgreeChange: (agree: boolean) => void;
@@ -34,15 +33,15 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
         {detail && <div>{detail}</div>}
         <div>
           <div>
-            <ToggleButton variant="answer" color="primary" checked={answer.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+            <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
               Jsem pro
             </ToggleButton>
-            <ToggleButton variant="answer" color="secondary" checked={answer.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+            <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
               Jsem proti
             </ToggleButton>
           </div>
           <div>
-            <ToggleButton variant="link" checked={answer.isImportant} onChange={(checked: boolean) => onImportantChange(checked)}>
+            <ToggleButton variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)}>
               Pro mě důležité
             </ToggleButton>
           </div>
