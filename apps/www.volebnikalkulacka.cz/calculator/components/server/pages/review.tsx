@@ -1,5 +1,5 @@
 import type { AnswersViewModel, QuestionsViewModel } from "../../../view-models";
-import { ReviewNavigationCard, ReviewQuestionCard } from "../components";
+import { AppHeader, LayoutBottomNavigation, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
   questions: QuestionsViewModel;
@@ -36,6 +36,11 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
 
   return (
     <>
+      <LayoutHeader>
+        <AppHeader>
+          <h1>Volební kalkulačka</h1>
+        </AppHeader>
+      </LayoutHeader>
       {questions.questions.map((question, index) => {
         const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
           answer: undefined,
@@ -55,7 +60,9 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
           />
         );
       })}
-      <ReviewNavigationCard onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+      <LayoutBottomNavigation>
+        <ReviewNavigationCard onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+      </LayoutBottomNavigation>
     </>
   );
 }
