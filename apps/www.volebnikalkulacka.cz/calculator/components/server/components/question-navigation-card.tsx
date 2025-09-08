@@ -16,31 +16,37 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
+  const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
+  const nextButtonLabel = answer.answer ? "Další" : "Přeskočit";
+
   return (
     <NavigationCard>
-      <div>
-        <div>
-          <Button variant="link" onClick={onPreviousClick}>
-            Předchozí
+      <div className="grid grid-flow-row gap-4">
+        <div className="grid grid-flow-col grid-cols-[1fr_auto_1fr] items-center gap-8">
+          <Button variant="link" color="neutral" onClick={onPreviousClick}>
+            {previousButtonLabel}
           </Button>
-          <span>
-            {current}/{total}
+          <span className="tabular-nums">
+            <span>
+              <span style={{ visibility: "hidden" }}>{current.toString().padStart(2, "0").startsWith("0") ? "0" : ""}</span>
+              <span>
+                <strong>{current}</strong> / {total}
+              </span>
+            </span>
           </span>
-          <Button variant="link" onClick={onNextClick}>
-            Další
+          <Button variant="link" color="neutral" onClick={onNextClick}>
+            {nextButtonLabel}
           </Button>
         </div>
-        <div>
+        <div className="grid grid-flow-col grid-cols-[auto_1fr_1fr] gap-4 items-center">
+          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
+            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
+          </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             Ano
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             Ne
-          </ToggleButton>
-        </div>
-        <div>
-          <ToggleButton variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
-            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
         </div>
       </div>

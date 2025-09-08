@@ -6,10 +6,10 @@ const meta: Meta<typeof Card> = {
   component: Card,
   tags: ["autodocs"],
   args: {
-    border: true,
-    shadow: true,
     color: "white",
-    corner: "bottomRight",
+    corner: "topLeft",
+    border: false,
+    shadow: false,
   },
   argTypes: {
     children: {
@@ -28,7 +28,7 @@ const meta: Meta<typeof Card> = {
     },
     shadow: {
       control: "select",
-      options: [true, false, "hard"],
+      options: [true, "hard", undefined],
     },
   },
 };
@@ -36,24 +36,25 @@ const meta: Meta<typeof Card> = {
 type CardStory = StoryObj<typeof meta>;
 
 export const Default: CardStory = {
+  name: "Default card",
   args: {
     children: "Card",
   },
 };
 
-export const NoShadow: CardStory = {
-  name: "No shadow",
-  args: {
-    shadow: false,
-    children: "Card without shadow",
-  },
-};
-
 export const Transparent: CardStory = {
-  name: "Transparent background",
+  name: "Transparent card",
   args: {
     color: "transparent",
     children: "Transparent card",
+  },
+};
+
+export const ElevatedShadow: CardStory = {
+  name: "Card with elevated shadow",
+  args: {
+    shadow: "elevated",
+    children: "Card with elevated shadow",
   },
 };
 

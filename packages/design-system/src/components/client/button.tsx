@@ -3,13 +3,15 @@ import { twMerge } from "@repo/design-system/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
+import { Icon } from "./icon";
+
 export type Button = {
   children: React.ReactNode;
 } & Omit<ButtonPropsHeadless, "className" | "as"> &
   VariantProps<typeof ButtonVariants>;
 
 export const ButtonVariants = cva(
-  ["ko:border-2", "ko:select-none ko:data-hover:cursor-pointer", "ko:font-semibold ko:tracking-[.01em]", "ko:rounded-tr-none ko:rounded-2xl", "ko:text-s", "ko:data-disabled:cursor-not-allowed"],
+  ["ko:border-2", "ko:select-none ko:data-hover:cursor-pointer", "ko:font-semibold ko:tracking-[.01em]", "ko:rounded-br-none ko:rounded-2xl", "ko:text-s", "ko:data-disabled:cursor-not-allowed"],
   {
     variants: {
       size: {
@@ -145,8 +147,7 @@ export const ButtonVariants = cva(
 );
 
 function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
-  const isIconOnly =
-    React.isValidElement(children) && typeof children.props === "object" && children.props !== null && "isIcon" in children.props && (children.props as { isIcon?: true }).isIcon === true;
+  const isIconOnly = React.isValidElement(children) && (children as React.ReactElement).type === Icon;
 
   const iconOnlyClasses = isIconOnly ? "ko:!rounded-full ko:aspect-square ko:flex ko:items-center ko:justify-center" : "";
 

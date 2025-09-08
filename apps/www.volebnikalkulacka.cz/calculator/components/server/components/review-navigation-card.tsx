@@ -10,10 +10,12 @@ export type ReviewNavigationCard = {
 export function ReviewNavigationCard({ onPreviousClick, onNextClick }: ReviewNavigationCard) {
   return (
     <NavigationCard>
-      <Button variant="outline" onClick={onPreviousClick}>
-        Zpět
-      </Button>
-      <Button onClick={onNextClick}>Zobrazit výsledky</Button>
+      <div className="grid grid-flow-col gap-4">
+        <Button variant="outline" onClick={onPreviousClick}>
+          Zpět
+        </Button>
+        <Button onClick={onNextClick}>Zobrazit výsledky</Button>
+      </div>
     </NavigationCard>
   );
 }

@@ -11,5 +11,5 @@ export function LayoutHeader({ children }: { children: React.ReactNode }) {
 }
 
 export function LayoutBottomNavigation({ children }: { children: React.ReactNode }) {
-  return <div className="fixed bottom-0">{children}</div>;
+  return <div className="fixed bottom-0 left-0 right-0">{children}</div>;
 }
