@@ -40,7 +40,6 @@ export const Default: CardStory = {
   },
 };
 
-
 export const NoShadow: CardStory = {
   name: "No shadow",
   args: {
