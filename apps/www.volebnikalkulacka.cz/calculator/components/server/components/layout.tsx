@@ -10,3 +10,7 @@ export function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+
+export function LayoutBottomNavigation({ children }: { children: React.ReactNode }) {
+  return <div className="fixed bottom-0">{children}</div>;
+}

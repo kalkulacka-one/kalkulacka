@@ -1,5 +1,5 @@
 import type { AnswersViewModel, QuestionsViewModel } from "../../../view-models";
-import { ReviewNavigationCard, ReviewQuestionCard } from "../components";
+import { LayoutBottomNavigation, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
   questions: QuestionsViewModel;
@@ -55,7 +55,9 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
           />
         );
       })}
-      <ReviewNavigationCard onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+      <LayoutBottomNavigation>
+        <ReviewNavigationCard onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+      </LayoutBottomNavigation>
     </>
   );
 }

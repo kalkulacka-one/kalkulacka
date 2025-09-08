@@ -1,5 +1,5 @@
 import type { CalculatorViewModel } from "../../../view-models";
-import { GuideComponent, GuideNavigationCard, Introduction } from "../components";
+import { GuideComponent, GuideNavigationCard, Introduction, LayoutBottomNavigation } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
@@ -18,7 +18,9 @@ export function GuidePage({ calculator, step, onNavigationNextClick }: GuidePage
             return <GuideComponent />;
         }
       })()}
-      <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} />
+      <LayoutBottomNavigation>
+        <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} />
+      </LayoutBottomNavigation>
     </>
   );
 }

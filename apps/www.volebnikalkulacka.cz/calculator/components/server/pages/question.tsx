@@ -1,5 +1,5 @@
 import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
-import { QuestionCard, QuestionNavigationCard } from "../components";
+import { LayoutBottomNavigation, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
@@ -41,16 +41,18 @@ export function QuestionPage({ question, number, total, onPreviousClick, onNextC
   return (
     <>
       <QuestionCard question={question} current={number} total={total} />
-      <QuestionNavigationCard
-        current={number}
-        total={total}
-        onPreviousClick={onPreviousClick}
-        onNextClick={onNextClick}
-        answer={answer}
-        onAgreeChange={handleAgreeChange}
-        onDisagreeChange={handleDisagreeChange}
-        onImportantChange={handleImportantChange}
-      />
+      <LayoutBottomNavigation>
+        <QuestionNavigationCard
+          current={number}
+          total={total}
+          onPreviousClick={onPreviousClick}
+          onNextClick={onNextClick}
+          answer={answer}
+          onAgreeChange={handleAgreeChange}
+          onDisagreeChange={handleDisagreeChange}
+          onImportantChange={handleImportantChange}
+        />
+      </LayoutBottomNavigation>
     </>
   );
 }
