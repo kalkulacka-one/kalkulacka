@@ -7,7 +7,7 @@ const meta: Meta<typeof Button> = {
   tags: ["autodocs"],
   args: {
     children: "Button",
-    variant: "filled",
+    variant: "fill",
     color: "primary",
     size: "medium",
     type: "button",
@@ -23,9 +23,9 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: "select",
-      options: ["filled", "outline", "link", "answer"],
+      options: ["fill", "outline", "link", "answer"],
       defaultValue: {
-        summary: "filled",
+        summary: "fill",
       },
     },
     color: {
@@ -56,7 +56,7 @@ type ButtonStory = StoryObj<typeof meta>;
 export const Default: ButtonStory = {
   args: {
     children: "Button",
-    variant: "filled",
+    variant: "fill",
     color: "primary",
     type: "button",
     disabled: false,

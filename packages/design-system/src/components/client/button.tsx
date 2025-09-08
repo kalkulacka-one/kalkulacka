@@ -17,7 +17,7 @@ export const ButtonVariants = cva(
         medium: "ko:px-5 ko:py-3",
       },
       variant: {
-        filled: [""],
+        fill: [""],
         outline: ["ko:bg-transparent"],
         link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent", "ko:hover:bg-neutral/10"],
         answer: ["ko:px-6"],
@@ -30,12 +30,12 @@ export const ButtonVariants = cva(
     },
     defaultVariants: {
       size: "medium",
-      variant: "filled",
+      variant: "fill",
       color: "primary",
     },
     compoundVariants: [
       {
-        variant: "filled",
+        variant: "fill",
         color: "primary",
         class: [
           "ko:bg-primary",
@@ -47,7 +47,7 @@ export const ButtonVariants = cva(
         ],
       },
       {
-        variant: "filled",
+        variant: "fill",
         color: "secondary",
         class: [
           "ko:bg-secondary",
@@ -59,7 +59,7 @@ export const ButtonVariants = cva(
         ],
       },
       {
-        variant: "filled",
+        variant: "fill",
         color: "neutral",
         class: [
           "ko:bg-neutral",
