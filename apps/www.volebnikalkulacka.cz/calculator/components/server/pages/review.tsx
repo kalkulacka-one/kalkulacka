@@ -1,54 +1,45 @@
-import { useState } from "react";
-
-import type { QuestionsViewModel } from "../../../view-models";
+import type { AnswersViewModel, QuestionsViewModel } from "../../../view-models";
 import { ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
   questions: QuestionsViewModel;
+  answers: AnswersViewModel;
   onNextClick: () => void;
   onPreviousClick: () => void;
 };
 
-export function ReviewPage({ questions, onNextClick, onPreviousClick }: ReviewPage) {
-  const [mockAnswers, setMockAnswers] = useState<Record<string, { answer: boolean | null; isImportant: boolean }>>({});
-
+export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
-    setMockAnswers((prev) => ({
-      ...prev,
-      [questionId]: {
-        answer: agree ? true : null,
-        isImportant: prev[questionId]?.isImportant || false,
-      },
-    }));
+    if (agree) {
+      answers.setAnswer({
+        questionId,
+        answer: true,
+      });
+    }
   };
 
   const handleDisagreeChange = (questionId: string, disagree: boolean) => {
-    setMockAnswers((prev) => ({
-      ...prev,
-      [questionId]: {
-        answer: disagree ? false : null,
-        isImportant: prev[questionId]?.isImportant || false,
-      },
-    }));
+    if (disagree) {
+      answers.setAnswer({
+        questionId,
+        answer: false,
+      });
+    }
   };
 
   const handleImportantChange = (questionId: string, isImportant: boolean) => {
-    setMockAnswers((prev) => ({
-      ...prev,
-      [questionId]: {
-        answer: prev[questionId]?.answer || null,
-        isImportant,
-      },
-    }));
+    answers.setAnswer({
+      questionId,
+      isImportant,
+    });
   };
 
   return (
     <>
       {questions.questions.map((question, index) => {
-        const answer = {
-          questionId: question.id,
-          answer: mockAnswers[question.id]?.answer || null,
-          isImportant: mockAnswers[question.id]?.isImportant || false,
+        const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
+          answer: undefined,
+          setAnswer: answers.setAnswer,
         };
 
         return (

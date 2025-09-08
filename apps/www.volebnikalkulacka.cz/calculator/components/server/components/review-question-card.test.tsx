@@ -15,9 +15,12 @@ describe("ReviewQuestionCard", () => {
   };
 
   const mockAnswer: AnswerViewModel = {
-    questionId: "1",
-    answer: true,
-    isImportant: true,
+    answer: {
+      questionId: "1",
+      answer: true,
+      isImportant: true,
+    },
+    setAnswer: vi.fn(),
   };
 
   const props = {

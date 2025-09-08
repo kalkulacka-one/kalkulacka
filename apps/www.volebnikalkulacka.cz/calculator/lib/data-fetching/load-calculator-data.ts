@@ -3,6 +3,8 @@ import type { z } from "zod";
 import { type Calculator, calculatorSchema } from "../../../../../packages/schema/schemas/calculator.schema";
 import { type Candidates, candidatesSchema } from "../../../../../packages/schema/schemas/candidates.schema";
 import { type CandidatesAnswers, candidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
+import { type Organizations, organizationsSchema } from "../../../../../packages/schema/schemas/organizations.schema";
+import { type Persons, personsSchema } from "../../../../../packages/schema/schemas/persons.schema";
 import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
 import { fetchFile, parseWithSchema } from ".";
 
@@ -23,6 +25,14 @@ const DATA_CONFIG = {
     filename: "candidates-answers.json",
     schema: candidatesAnswers,
   },
+  persons: {
+    filename: "persons.json",
+    schema: personsSchema,
+  },
+  organizations: {
+    filename: "organizations.json",
+    schema: organizationsSchema,
+  },
 } as const;
 
 export type CalculatorData = {
@@ -30,6 +40,8 @@ export type CalculatorData = {
   questions: Questions;
   candidates: Candidates;
   candidatesAnswers: CandidatesAnswers;
+  persons: Persons;
+  organizations: Organizations;
 };
 
 export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {

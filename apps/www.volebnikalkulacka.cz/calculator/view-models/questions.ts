@@ -1,15 +1,22 @@
+import { useMemo } from "react";
+
+import type { Question } from "../../../../packages/schema/schemas/question.schema";
 import { useCalculatorStore } from "../stores";
-import type { QuestionViewModel } from "./question";
+import { type QuestionViewModel, questionViewModel } from "./question";
 
 export type QuestionsViewModel = {
   questions: QuestionViewModel[];
   total: number;
 };
 
-export function useQuestionsViewModel(): QuestionsViewModel {
-  const questions = useCalculatorStore((state) => state.calculator.questions);
+export function questionsViewModel(questions: Question[]): QuestionsViewModel {
   return {
-    questions,
+    questions: questions.map(questionViewModel),
     total: questions.length,
   };
+}
+
+export function useQuestionsViewModel(): QuestionsViewModel {
+  const questions = useCalculatorStore((state) => state.questions);
+  return useMemo(() => questionsViewModel(questions), [questions]);
 }

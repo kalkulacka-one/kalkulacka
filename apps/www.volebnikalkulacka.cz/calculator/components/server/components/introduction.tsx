@@ -1,4 +1,4 @@
-import { Card } from "@repo/design-system/server";
+import Markdown from "react-markdown";
 
 import type { CalculatorViewModel } from "../../../view-models";
 
@@ -10,8 +10,10 @@ export function Introduction({ calculator }: Introduction) {
   const { title, intro } = calculator;
   return (
     <>
-      <h1 className="text-2xl ko:font-display font-semibold mb-2 tracking-[-.03em]">{title}</h1>
-      <p className="tracking-[0.03em]">{intro}</p>
+      <h1>{title}</h1>
+      <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
+        {intro}
+      </Markdown>
     </>
   );
 }

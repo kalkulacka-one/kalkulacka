@@ -2,14 +2,18 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import type { AnswerViewModel } from "../../../view-models";
 import { QuestionNavigationCard } from "./question-navigation-card";
 
 describe("QuestionNavigationCard", () => {
-  const mockAnswer = {
-    questionId: "550e8400-e29b-41d4-a716-446655440000",
-    answer: true,
-    isImportant: true,
-  } as const;
+  const mockAnswer: AnswerViewModel = {
+    answer: {
+      questionId: "550e8400-e29b-41d4-a716-446655440000",
+      answer: true,
+      isImportant: true,
+    },
+    setAnswer: vi.fn(),
+  };
 
   const defaultProps = {
     current: 5,
