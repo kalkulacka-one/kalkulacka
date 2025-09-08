@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="cs">
-      <body>
+      <body className="min-h-dvh">
         <ThemeProvider name="default">
           <nav>
             <Link href="/">Domů</Link>
