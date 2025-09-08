@@ -2,6 +2,7 @@ export * from "./guide";
 export * from "./guide-component";
 export * from "./guide-navigation-card";
 export * from "./introduction";
+export * from "./layout";
 export * from "./match-card";
 export * from "./navigation-card";
 export * from "./question-card";
