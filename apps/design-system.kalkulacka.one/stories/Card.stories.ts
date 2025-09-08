@@ -6,7 +6,6 @@ const meta: Meta<typeof Card> = {
   component: Card,
   tags: ["autodocs"],
   args: {
-    padding: "md",
     border: true,
     shadow: true,
     color: "white",
@@ -30,10 +29,6 @@ const meta: Meta<typeof Card> = {
     shadow: {
       control: "boolean",
     },
-    padding: {
-      control: "select",
-      options: ["none", "sm", "md", "lg"],
-    },
   },
 };
 
@@ -45,37 +40,6 @@ export const Default: CardStory = {
   },
 };
 
-export const PaddingSm: CardStory = {
-  name: "Padding: sm",
-  args: {
-    padding: "sm",
-    children: "Small padding",
-  },
-};
-
-export const PaddingMd: CardStory = {
-  name: "Padding: md",
-  args: {
-    padding: "md",
-    children: "Medium padding (default)",
-  },
-};
-
-export const PaddingLg: CardStory = {
-  name: "Padding: lg",
-  args: {
-    padding: "lg",
-    children: "Large + responsive padding",
-  },
-};
-
-export const NoPadding: CardStory = {
-  name: "Padding: none",
-  args: {
-    padding: "none",
-    children: "No padding",
-  },
-};
 
 export const NoShadow: CardStory = {
   name: "No shadow",

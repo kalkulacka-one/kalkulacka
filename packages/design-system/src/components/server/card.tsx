@@ -20,22 +20,15 @@ const CardVariants = cva("ko:rounded-3xl", {
       true: "ko:shadow-lg",
       false: "",
     },
-    padding: {
-      lg: "ko:px-4 ko:py-6 ko:sm:p-8",
-      md: "ko:p-4",
-      sm: "ko:p-2",
-      none: "",
-    },
   },
   defaultVariants: {
     color: "white",
     border: true,
     corner: "bottomRight",
     shadow: true,
-    padding: "md",
   },
 });
 
-export function Card({ children, color, corner, border, shadow, padding }: Card) {
-  return <div className={twMerge(CardVariants({ color, corner, border, shadow, padding }))}>{children}</div>;
+export function Card({ children, color, corner, border, shadow }: Card) {
+  return <div className={twMerge(CardVariants({ color, corner, border, shadow }))}>{children}</div>;
 }
