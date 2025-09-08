@@ -1,3 +1,3 @@
-import Layout from "../../../../../(web)/(kalkulacka)/(one-segment)/[first]/layout";
+import Layout from "../../../../../(web)/(app)/(one-segment)/[first]/layout";
 
 export default Layout;
