@@ -1,5 +1,5 @@
 import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
-import { LayoutBottomNavigation, QuestionCard, QuestionNavigationCard } from "../components";
+import { AppHeader, LayoutBottomNavigation, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
@@ -40,6 +40,11 @@ export function QuestionPage({ question, number, total, onPreviousClick, onNextC
 
   return (
     <>
+      <LayoutHeader>
+        <AppHeader>
+          <h1>Volební kalkulačka</h1>
+        </AppHeader>
+      </LayoutHeader>
       <QuestionCard question={question} current={number} total={total} />
       <LayoutBottomNavigation>
         <QuestionNavigationCard
