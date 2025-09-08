@@ -145,8 +145,12 @@ export const ButtonVariants = cva(
 );
 
 function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+  const isIconOnly = React.isValidElement(children) && children.type && typeof children.type === "function" && children.type.name?.includes("Icon");
+
+  const iconOnlyClasses = isIconOnly ? "ko:!rounded-full ko:aspect-square ko:flex ko:items-center ko:justify-center" : "";
+
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }))} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses)} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );
