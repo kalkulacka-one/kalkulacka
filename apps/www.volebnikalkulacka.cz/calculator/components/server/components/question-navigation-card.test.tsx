@@ -48,7 +48,7 @@ describe("QuestionNavigationCard", () => {
 
     it("renders important button", () => {
       render(<QuestionNavigationCard {...defaultProps} />);
-      expect(screen.getByText("Pro mě důležité")).toBeInTheDocument();
+      expect(screen.getByLabelText("Pro mě důležité")).toBeInTheDocument();
     });
 
     it("shows correct state when answer is provided", () => {
@@ -56,7 +56,7 @@ describe("QuestionNavigationCard", () => {
 
       expect(screen.getByText("Ano")).toBeChecked();
       expect(screen.getByText("Ne")).not.toBeChecked();
-      expect(screen.getByText("Pro mě důležité")).toBeChecked();
+      expect(screen.getByLabelText("Pro mě důležité")).toBeChecked();
     });
   });
 
@@ -95,7 +95,7 @@ describe("QuestionNavigationCard", () => {
 
     it("calls onImportantChange when important button is clicked", async () => {
       render(<QuestionNavigationCard {...defaultProps} onImportantChange={mockHandler} />);
-      await user.click(screen.getByText("Pro mě důležité"));
+      await user.click(screen.getByLabelText("Pro mě důležité"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
   });
