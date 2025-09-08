@@ -1,3 +1,4 @@
+export * from "./app-header";
 export * from "./guide";
 export * from "./guide-component";
 export * from "./guide-navigation-card";
