@@ -19,7 +19,7 @@ export const ButtonVariants = cva(
       variant: {
         filled: [""],
         outline: ["ko:bg-transparent"],
-        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
+        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent", "ko:hover:bg-neutral/10"],
         answer: ["ko:px-6"],
       },
       color: {

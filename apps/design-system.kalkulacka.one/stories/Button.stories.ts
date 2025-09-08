@@ -23,7 +23,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: "select",
-      options: ["filled", "outline", "link"],
+      options: ["filled", "outline", "link", "answer"],
       defaultValue: {
         summary: "filled",
       },
@@ -60,6 +60,30 @@ export const Default: ButtonStory = {
     color: "primary",
     type: "button",
     disabled: false,
+  },
+};
+
+export const Outline: ButtonStory = {
+  args: {
+    children: "Outline",
+    variant: "outline",
+    color: "primary",
+  },
+};
+
+export const Link: ButtonStory = {
+  args: {
+    children: "Link",
+    variant: "link",
+    color: "primary",
+  },
+};
+
+export const Answer: ButtonStory = {
+  args: {
+    children: "Answer",
+    variant: "answer",
+    color: "primary",
   },
 };
 

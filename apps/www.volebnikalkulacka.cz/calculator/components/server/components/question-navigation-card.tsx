@@ -19,13 +19,13 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
     <NavigationCard>
       <div>
         <div>
-          <Button variant="link" onClick={onPreviousClick}>
+          <Button variant="link" color="neutral" size={"small"} onClick={onPreviousClick}>
             Předchozí
           </Button>
           <span>
             {current}/{total}
           </span>
-          <Button variant="link" onClick={onNextClick}>
+          <Button variant="link" color="neutral" size={"small"} onClick={onNextClick}>
             Další
           </Button>
         </div>
@@ -38,7 +38,7 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </ToggleButton>
         </div>
         <div>
-          <ToggleButton variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)}>
+          <ToggleButton variant="link" color="neutral" size={"small"} checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)}>
             Pro mě důležité
           </ToggleButton>
         </div>
