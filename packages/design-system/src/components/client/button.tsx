@@ -145,7 +145,7 @@ export const ButtonVariants = cva(
 );
 
 function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
-  const isIconOnly = React.isValidElement(children) && children.type && typeof children.type === "function" && children.type.name?.includes("Icon");
+  const isIconOnly = React.isValidElement(children) && (children.props as { isIcon?: true })?.isIcon === true;
 
   const iconOnlyClasses = isIconOnly ? "ko:!rounded-full ko:aspect-square ko:flex ko:items-center ko:justify-center" : "";
 
