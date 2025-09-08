@@ -69,15 +69,17 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
   return { matches: sortByOrder(matches) };
 }
 
-export function useResultViewModel(): ResultViewModel {
+export function useResultViewModel(options?: { showOnlyNested?: boolean }): ResultViewModel {
   const answers = useAnswersStore((state) => state.answers);
-  const candidates = useCalculatorStore((state) => state.candidates);
+  const allCandidates = useCalculatorStore((state) => state.candidates);
   const persons = useCalculatorStore((state) => state.persons);
   const organizations = useCalculatorStore((state) => state.organizations);
   const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
 
   const personsMap = useMemo(() => new Map(persons.map((person) => [person.id, personViewModel(person)])), [persons]);
   const organizationsMap = useMemo(() => new Map(organizations.map((organization) => [organization.id, organizationViewModel(organization)])), [organizations]);
+
+  const candidates = options?.showOnlyNested ? allCandidates.flatMap((candidate) => candidate.nestedCandidates || []) : allCandidates;
 
   const candidateViewModels = useMemo(() => candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap)), [candidates, personsMap, organizationsMap]);
 
