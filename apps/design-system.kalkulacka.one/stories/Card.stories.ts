@@ -27,7 +27,8 @@ const meta: Meta<typeof Card> = {
       control: "boolean",
     },
     shadow: {
-      control: "boolean",
+      control: "select",
+      options: [true, false, "hard"],
     },
   },
 };
@@ -53,6 +54,14 @@ export const Transparent: CardStory = {
   args: {
     color: "transparent",
     children: "Transparent card",
+  },
+};
+
+export const HardShadow: CardStory = {
+  name: "Hard shadow",
+  args: {
+    shadow: "hard",
+    children: "Card with hard shadow",
   },
 };
 

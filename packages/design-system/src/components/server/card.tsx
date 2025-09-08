@@ -19,6 +19,7 @@ const CardVariants = cva("ko:rounded-3xl", {
     shadow: {
       true: "ko:shadow-lg",
       false: "",
+      hard: "ko:drop-shadow-hard",
     },
   },
   defaultVariants: {
