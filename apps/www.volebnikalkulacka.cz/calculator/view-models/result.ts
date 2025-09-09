@@ -41,8 +41,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
     
     // Only assign order if match is defined
-    const validMatchIndex = validMatches.findIndex((validMatch) => validMatch.id === candidate.id);
-    const order = validMatchIndex >= 0 ? validMatchIndex + 1 : undefined;
+    const order = match !== undefined ? validMatches.findIndex((validMatch) => validMatch.id === candidate.id) + 1 : undefined;
 
     let nestedMatches: CandidateMatchViewModel[] | undefined;
     if (candidate.nestedCandidates && candidate.nestedCandidates.length > 0) {
@@ -57,8 +56,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
         const nestedMatch = nestedMatchIndex >= 0 ? nestedAlgorithmMatches[nestedMatchIndex]?.match : undefined;
         
         // Only assign order if match is defined
-        const validNestedMatchIndex = validNestedMatches.findIndex((validMatch) => validMatch.id === nestedCandidate.id);
-        const nestedOrder = validNestedMatchIndex >= 0 ? validNestedMatchIndex + 1 : undefined;
+        const nestedOrder = nestedMatch !== undefined ? validNestedMatches.findIndex((validMatch) => validMatch.id === nestedCandidate.id) + 1 : undefined;
 
         return {
           candidate: nestedCandidate,
