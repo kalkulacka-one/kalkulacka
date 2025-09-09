@@ -27,6 +27,74 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   return [...withOrder, ...withoutOrder];
 }
 
+function sortByMatchWithTieRandomization<T extends { order?: number; match?: number }>(items: T[]): T[] {
+  const withMatch = items.filter((item): item is T & { match: number } => item.match !== undefined);
+  const withoutMatch = items.filter((item) => item.match === undefined);
+  
+  // Group by match percentage
+  const grouped = withMatch.reduce((acc, item) => {
+    const key = item.match;
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(item);
+    return acc;
+  }, {} as Record<number, (T & { match: number })[]>);
+
+  // Sort groups by match percentage (descending) and shuffle ties
+  const result: T[] = [];
+  Object.keys(grouped)
+    .map(Number)
+    .sort((a, b) => b - a) // Sort by match percentage descending
+    .forEach(matchValue => {
+      const group = grouped[matchValue];
+      if (!group) return;
+      
+      const shuffledGroup = [...group];
+      
+      // Shuffle ties using Fisher-Yates algorithm
+      if (shuffledGroup.length > 1) {
+        for (let i = shuffledGroup.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = shuffledGroup[i];
+          const itemJ = shuffledGroup[j];
+          if (temp && itemJ) {
+            shuffledGroup[i] = itemJ;
+            shuffledGroup[j] = temp;
+          }
+        }
+      }
+      result.push(...shuffledGroup);
+    });
+
+  // Randomize candidates with undefined matches
+  const shuffledWithoutMatch = [...withoutMatch];
+  if (shuffledWithoutMatch.length > 1) {
+    for (let i = shuffledWithoutMatch.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = shuffledWithoutMatch[i];
+      const itemJ = shuffledWithoutMatch[j];
+      if (temp && itemJ) {
+        shuffledWithoutMatch[i] = itemJ;
+        shuffledWithoutMatch[j] = temp;
+      }
+    }
+  }
+
+  // Assign final order based on position after randomization
+  // Only candidates with matches get order numbers
+  const finalResultWithMatch = result.map((item, index) => ({
+    ...item,
+    order: index + 1
+  }));
+
+  // Candidates without matches keep their original order (undefined)
+  const finalResultWithoutMatch = shuffledWithoutMatch.map((item) => ({
+    ...item,
+    order: undefined
+  }));
+
+  return [...finalResultWithMatch, ...finalResultWithoutMatch];
+}
+
 export function resultViewModel(answers: Answer[], candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswers): ResultViewModel {
   const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
 
@@ -55,7 +123,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
         };
       });
 
-      nestedMatches = sortByOrder(nestedMatches);
+      nestedMatches = sortByMatchWithTieRandomization(nestedMatches);
     }
 
     return {
@@ -66,7 +134,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
     };
   });
 
-  return { matches: sortByOrder(matches) };
+  return { matches: sortByMatchWithTieRandomization(matches) };
 }
 
 export function useResultViewModel(options?: { showOnlyNested?: boolean }): ResultViewModel {
