@@ -7,10 +7,10 @@ export type ResultPage = {
 
 export function ResultPage({ result }: ResultPage) {
   return (
-    <>
+    <div className="grid gap-4">
       {result.matches.map((match) => (
         <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
       ))}
-    </>
+    </div>
   );
 }
