@@ -35,9 +35,13 @@ const data = {
 
 describe("GuidePage", () => {
   let onNextClick: ReturnType<typeof vi.fn>;
+  let onBackClick: ReturnType<typeof vi.fn>;
+  let onCloseClick: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
     onNextClick = vi.fn();
+    onBackClick = vi.fn();
+    onCloseClick = vi.fn();
   });
 
   afterEach(() => {
@@ -45,12 +49,12 @@ describe("GuidePage", () => {
   });
 
   it("renders Guide component", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} />);
+    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(Guide).toHaveBeenCalledTimes(1);
   });
 
   it("passes calculator to Guide component", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} />);
+    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(Guide).toHaveBeenCalledWith(
       expect.objectContaining({
         calculator: data,
@@ -60,17 +64,17 @@ describe("GuidePage", () => {
   });
 
   it("doesn't render Introduction", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} />);
+    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(Introduction).not.toHaveBeenCalled();
   });
 
   it("renders GuideNavigationCard", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} />);
+    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
   });
 
   it("passes onNextClick to GuideNavigationCard", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} />);
+    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(GuideNavigationCard).toHaveBeenCalledWith(
       expect.objectContaining({
         onNextClick: onNextClick,

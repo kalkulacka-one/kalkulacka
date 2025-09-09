@@ -12,5 +12,13 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     router.push(routes.question(segments, 1));
   };
 
-  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} />;
+  const handleBackClick = () => {
+    router.push(routes.introduction(segments));
+  };
+
+  const handleCloseClick = () => {
+    router.push("/");
+  };
+
+  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} />;
 }
