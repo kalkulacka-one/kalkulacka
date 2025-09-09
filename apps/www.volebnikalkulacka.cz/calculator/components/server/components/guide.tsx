@@ -3,11 +3,11 @@ import Markdown from "react-markdown";
 
 import type { CalculatorViewModel } from "../../../view-models";
 
-export type GuideComponent = {
+export type Guide = {
   calculator: CalculatorViewModel;
 };
 
-export function GuideComponent({ calculator }: GuideComponent) {
+export function Guide({ calculator }: Guide) {
   return (
     <div className="grid gap-4">
       <Card shadow="hard">

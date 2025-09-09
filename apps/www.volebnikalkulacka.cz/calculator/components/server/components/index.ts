@@ -1,5 +1,5 @@
 export * from "./app-header";
-export * from "./guide-component";
+export * from "./guide";
 export * from "./guide-navigation-card";
 export * from "./introduction";
 export * from "./layout";

@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { GuideComponent } from ".";
+import { Guide } from ".";
 
-describe("GuideComponent", () => {
+describe("Guide", () => {
   it("renders", () => {
     const mockCalculator = {
       id: "test",
@@ -15,7 +15,7 @@ describe("GuideComponent", () => {
       methodology: "Test methodology",
     };
 
-    render(<GuideComponent calculator={mockCalculator} />);
+    render(<Guide calculator={mockCalculator} />);
     expect(screen.getByText("Shoda")).toBeInTheDocument();
   });
 });
