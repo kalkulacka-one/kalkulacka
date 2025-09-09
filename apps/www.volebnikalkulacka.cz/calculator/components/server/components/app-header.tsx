@@ -34,7 +34,7 @@ export function AppHeader({ children, condensed = false, logoTitle = "Volební k
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/60 backdrop-blur-md p-4 grid gap-4 items-center @container" style={headerStyles}>
+    <header className="sticky top-0 bg-white/60 backdrop-blur-md p-4 grid gap-4 items-center @container" style={headerStyles}>
       <div style={logoStyles}>
         <Logo title={logoTitle} size="medium" />
       </div>
