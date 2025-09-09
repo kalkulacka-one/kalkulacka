@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, LayoutHeader, MatchCard } from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, LayoutContent, LayoutHeader, MatchCard } from "../components";
 
 export type ResultPage = {
   result: ResultViewModel;
@@ -39,9 +39,11 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick }
           )}
         </WithCondenseOnScroll>
       </LayoutHeader>
-      {result.matches.map((match) => (
-        <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
-      ))}
+      <LayoutContent>
+        {result.matches.map((match) => (
+          <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
+        ))}
+      </LayoutContent>
     </>
   );
 }

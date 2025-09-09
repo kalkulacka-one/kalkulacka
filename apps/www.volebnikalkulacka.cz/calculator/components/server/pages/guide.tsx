@@ -2,7 +2,19 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import type { CalculatorViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutHeader } from "../components";
+import {
+  AppHeader,
+  AppHeaderBottom,
+  AppHeaderBottomLeft,
+  AppHeaderBottomMain,
+  AppHeaderMain,
+  AppHeaderRight,
+  Guide,
+  GuideNavigationCard,
+  LayoutBottomNavigation,
+  LayoutContent,
+  LayoutHeader,
+} from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
@@ -34,7 +46,9 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }
           </AppHeaderBottom>
         </AppHeader>
       </LayoutHeader>
-      <Guide calculator={calculator} />
+      <LayoutContent>
+        <Guide calculator={calculator} />
+      </LayoutContent>
       <LayoutBottomNavigation>
         <GuideNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>

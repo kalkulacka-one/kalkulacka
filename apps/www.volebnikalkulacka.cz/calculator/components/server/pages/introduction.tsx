@@ -2,7 +2,18 @@ import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import type { CalculatorViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, Introduction, IntroductionNavigationCard, LayoutBottomNavigation, LayoutHeader } from "../components";
+import {
+  AppHeader,
+  AppHeaderBottom,
+  AppHeaderBottomMain,
+  AppHeaderMain,
+  AppHeaderRight,
+  Introduction,
+  IntroductionNavigationCard,
+  LayoutBottomNavigation,
+  LayoutContent,
+  LayoutHeader,
+} from "../components";
 
 export type IntroductionPage = {
   calculator: CalculatorViewModel;
@@ -28,7 +39,9 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick }: Intr
           </AppHeaderBottom>
         </AppHeader>
       </LayoutHeader>
-      <Introduction calculator={calculator} />
+      <LayoutContent>
+        <Introduction calculator={calculator} />
+      </LayoutContent>
       <LayoutBottomNavigation>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
