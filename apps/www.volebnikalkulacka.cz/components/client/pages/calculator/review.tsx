@@ -17,9 +17,5 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
     router.push(routes.question(segments, questions.total));
   };
 
-  return (
-    <div>
-      <AppReviewPage questions={questions} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} />
-    </div>
-  );
+  return <AppReviewPage questions={questions} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} />;
 }
