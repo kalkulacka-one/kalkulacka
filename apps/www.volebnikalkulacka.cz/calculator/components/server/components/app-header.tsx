@@ -1,3 +1,5 @@
-export function AppHeader({ children }: { children: React.ReactNode }) {
-  return <header className="sticky top-0">{children}</header>;
+import { AppHeader as ClientAppHeader } from "../../client/app-header";
+
+export function AppHeader(props: React.ComponentProps<typeof ClientAppHeader>) {
+  return <ClientAppHeader {...props} />;
 }

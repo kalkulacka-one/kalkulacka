@@ -1,5 +1,9 @@
+import { mdiClose } from "@mdi/js";
+import { Button, Icon } from "@repo/design-system/client";
+
 import type { CalculatorViewModel } from "../../../view-models";
-import { AppHeader, GuideComponent, GuideNavigationCard, Introduction, LayoutBottomNavigation, LayoutHeader } from "../components";
+import { AppHeader, AppHeaderMain, AppHeaderRight, AppHeaderBottomMain } from "../../client";
+import { GuideComponent, GuideNavigationCard, Introduction, LayoutBottomNavigation, LayoutHeader } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
@@ -13,7 +17,15 @@ export function GuidePage({ calculator, step, onNavigationNextClick, onNavigatio
     <>
       <LayoutHeader>
         <AppHeader>
-          <h1>Volební kalkulačka</h1>
+          <AppHeaderMain />
+          <AppHeaderRight>
+            <Button variant="link" color="neutral" size="small" aria-label="Close">
+              <Icon icon={mdiClose} size="medium" decorative />
+            </Button>
+          </AppHeaderRight>
+          <AppHeaderBottomMain>
+            Návod
+          </AppHeaderBottomMain>
         </AppHeader>
       </LayoutHeader>
       {(() => {
