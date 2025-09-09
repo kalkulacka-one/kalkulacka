@@ -27,9 +27,11 @@ export function ResultPage({ result, calculator, onPreviousClick }: ResultPage) 
           </AppHeaderBottomMain>
         </AppHeader>
       </LayoutHeader>
-      {result.matches.map((match) => (
-        <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
-      ))}
+      <div className="grid gap-4">
+        {result.matches.map((match) => (
+          <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
+        ))}
+      </div>
     </>
   );
 }
