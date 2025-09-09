@@ -3,7 +3,7 @@ type LayoutProps = {
 };
 
 export function Layout({ children }: LayoutProps) {
-  return <>{children}</>;
+  return <div className="min-h-screen bg-gray-50 p-4 sm:p-6 lg:p-8">{children}</div>;
 }
 
 export function LayoutHeader({ children }: { children: React.ReactNode }) {
