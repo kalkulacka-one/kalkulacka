@@ -9,6 +9,7 @@ const ProgressBarVariants = cva("ko:h-full ko:w-full", {
   variants: {
     color: {
       primary: "ko:bg-primary",
+      neutral: "ko:bg-neutral",
     },
     corner: {
       rounded: "",
