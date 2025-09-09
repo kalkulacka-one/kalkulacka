@@ -61,7 +61,7 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
         );
       })}
       <LayoutBottomNavigation>
-        <ReviewNavigationCard onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+        <ReviewNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
     </>
   );
