@@ -22,5 +22,5 @@ export function GuidePageWithRouting({ step, segments }: { step: 1 | 2; segments
     }
   };
 
-  return <AppGuidePage calculator={calculator} step={step} onNavigationNextClick={handleNavigationNextClick} onNavigationPreviousClick={handleNavigationPreviousClick} />;
+  return <AppGuidePage calculator={calculator} step={step} onNavigationNextClick={handleNavigationNextClick} onNavigationPreviousClick={handleNavigationPreviousClick} onPreviousClick={handleNavigationPreviousClick} />;
 }

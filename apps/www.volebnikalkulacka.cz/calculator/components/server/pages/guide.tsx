@@ -24,11 +24,13 @@ export function GuidePage({ calculator, step, onNavigationNextClick, onNavigatio
               <Icon icon={mdiClose} size="medium" decorative />
             </Button>
           </AppHeaderRight>
-          <AppHeaderBottomLeft>
-            <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Back">
-              <Icon icon={mdiArrowLeft} size="medium" decorative />
-            </Button>
-          </AppHeaderBottomLeft>
+          {step === 2 && (
+            <AppHeaderBottomLeft>
+              <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Back">
+                <Icon icon={mdiArrowLeft} size="medium" decorative />
+              </Button>
+            </AppHeaderBottomLeft>
+          )}
           <AppHeaderBottomMain>Návod</AppHeaderBottomMain>
         </AppHeader>
       </LayoutHeader>
