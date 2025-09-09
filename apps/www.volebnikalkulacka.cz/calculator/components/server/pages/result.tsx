@@ -3,9 +3,10 @@ import { MatchCard } from "../components";
 
 export type ResultPage = {
   result: ResultViewModel;
+  onPreviousClick: () => void;
 };
 
-export function ResultPage({ result }: ResultPage) {
+export function ResultPage({ result, onPreviousClick }: ResultPage) {
   return (
     <>
       {result.matches.map((match) => (

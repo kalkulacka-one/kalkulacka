@@ -5,9 +5,10 @@ export type GuidePage = {
   calculator: CalculatorViewModel;
   step: 1 | 2;
   onNavigationNextClick: () => void;
+  onNavigationPreviousClick: () => void;
 };
 
-export function GuidePage({ calculator, step, onNavigationNextClick }: GuidePage) {
+export function GuidePage({ calculator, step, onNavigationNextClick, onNavigationPreviousClick }: GuidePage) {
   return (
     <>
       <LayoutHeader>
@@ -24,7 +25,7 @@ export function GuidePage({ calculator, step, onNavigationNextClick }: GuidePage
         }
       })()}
       <LayoutBottomNavigation>
-        <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} />
+        <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} onPreviousClick={onNavigationPreviousClick} />
       </LayoutBottomNavigation>
     </>
   );
