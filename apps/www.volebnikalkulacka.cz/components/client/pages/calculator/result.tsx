@@ -21,12 +21,6 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   };
 
   return (
-    <>
-      <label>
-        <input type="checkbox" checked={showOnlyNested} onChange={(e) => setShowOnlyNested(e.target.checked)} />
-        Zobrazit všechny poslance
-      </label>
-      <AppResultPage calculator={calculator} result={result} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} />
-    </>
+    <AppResultPage calculator={calculator} result={result} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} showOnlyNested={showOnlyNested} onFilterChange={setShowOnlyNested} />
   );
 }
