@@ -9,11 +9,13 @@ export type Introduction = {
 export function Introduction({ calculator }: Introduction) {
   const { title, intro } = calculator;
   return (
-    <>
-      <h1>{title}</h1>
-      <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
-        {intro}
-      </Markdown>
-    </>
+    <div className="grid gap-6 max-w-prose">
+      <h1 className="ko:font-display text-2xl font-bold">{title}</h1>
+      <div className="grid gap-1">
+        <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
+          {intro}
+        </Markdown>
+      </div>
+    </div>
   );
 }
