@@ -1,16 +1,21 @@
-import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
-import { AppHeader, LayoutBottomNavigation, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { mdiClose } from "@mdi/js";
+import { Button, Icon } from "@repo/design-system/client";
+
+import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
+import { AppHeader, AppHeaderMain, AppHeaderRight } from "../../client";
+import { LayoutBottomNavigation, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
   number: number;
   total: number;
   answer: AnswerViewModel;
+  calculator?: CalculatorViewModel;
   onPreviousClick: () => void;
   onNextClick: () => void;
 };
 
-export function QuestionPage({ question, number, total, onPreviousClick, onNextClick, answer }: QuestionPage) {
+export function QuestionPage({ question, number, total, onPreviousClick, onNextClick, answer, calculator }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -42,7 +47,12 @@ export function QuestionPage({ question, number, total, onPreviousClick, onNextC
     <>
       <LayoutHeader>
         <AppHeader>
-          <h1>Volební kalkulačka</h1>
+          <AppHeaderMain />
+          <AppHeaderRight>
+            <Button variant="link" color="neutral" size="small" aria-label="Close">
+              <Icon icon={mdiClose} size="medium" decorative />
+            </Button>
+          </AppHeaderRight>
         </AppHeader>
       </LayoutHeader>
       <QuestionCard question={question} current={number} total={total} />

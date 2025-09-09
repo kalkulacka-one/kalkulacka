@@ -92,3 +92,7 @@ Biome organizes imports in this order:
 3. `npm run test` - Ensure all tests pass
 
 These commands must always be run from the root of the monorepo, never from individual packages or apps.
+
+## app ports
+
+repository uses hardocded ports. you have to lunch the apps using custom ports to resolve conflicts figure it out
