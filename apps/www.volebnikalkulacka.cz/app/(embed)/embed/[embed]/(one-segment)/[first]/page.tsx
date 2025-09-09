@@ -4,5 +4,5 @@ import { routes } from "../../../../../../lib/routing/route-builders";
 
 export default async function Page({ params }: { params: Promise<{ embed: string; first: string }> }) {
   const { embed, first } = await params;
-  redirect(routes.guide({ first, embed }, 1));
+  redirect(routes.introduction({ first, embed }));
 }

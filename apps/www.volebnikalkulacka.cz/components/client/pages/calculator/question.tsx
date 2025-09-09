@@ -23,7 +23,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   const handlePreviousClick = () => {
     if (current === 1) {
-      router.push(routes.guide(segments, 2));
+      router.push(routes.guide(segments));
     } else {
       router.push(routes.question(segments, current - 1));
     }
