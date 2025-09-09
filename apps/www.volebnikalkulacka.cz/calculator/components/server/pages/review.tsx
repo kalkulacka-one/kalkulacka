@@ -2,7 +2,7 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderMain, AppHeaderRight, AppHeaderBottomLeft, AppHeaderBottomMain } from "../../client";
+import { AppHeader, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
 import { LayoutBottomNavigation, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
@@ -54,9 +54,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
               <Icon icon={mdiArrowLeft} size="medium" decorative />
             </Button>
           </AppHeaderBottomLeft>
-          <AppHeaderBottomMain>
-            Rekapitulace
-          </AppHeaderBottomMain>
+          <AppHeaderBottomMain>Rekapitulace</AppHeaderBottomMain>
         </AppHeader>
       </LayoutHeader>
       {questions.questions.map((question, index) => {
