@@ -79,11 +79,17 @@ export function AppHeader({ children, className }: AppHeaderProps) {
 type AppHeaderLeftProps = {
   children?: ReactNode;
   isCondensed?: boolean;
+  alwaysVisible?: boolean;
 };
 
-export function AppHeaderLeft({ children, isCondensed }: AppHeaderLeftProps) {
+export function AppHeaderLeft({ children, isCondensed, alwaysVisible }: AppHeaderLeftProps) {
   return (
-    <div style={{ gridArea: "left", opacity: isCondensed ? 1 : 0, transition: "opacity 200ms", pointerEvents: isCondensed ? 'auto' : 'none' }}>
+    <div style={{ 
+      gridArea: "left", 
+      opacity: alwaysVisible ? 1 : (isCondensed ? 1 : 0), 
+      transition: "opacity 200ms", 
+      pointerEvents: alwaysVisible ? 'auto' : (isCondensed ? 'auto' : 'none') 
+    }}>
       {children}
     </div>
   );
