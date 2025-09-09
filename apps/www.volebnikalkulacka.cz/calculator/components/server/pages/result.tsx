@@ -19,7 +19,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick }
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed}>
-              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.title} tertiaryTitle="Sněmovní volby 2025" />
+              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
               <AppHeaderRight>
                 <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                   <Icon icon={mdiClose} size="medium" decorative />

@@ -23,7 +23,7 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick }: Intr
           </AppHeaderRight>
           <AppHeaderBottom>
             <AppHeaderBottomMain>
-              <h2 className="ko:font-display font-semibold text-3xl">{calculator?.title}</h2>
+              <h2 className="ko:font-display font-semibold text-3xl">{calculator?.shortTitle}</h2>
             </AppHeaderBottomMain>
           </AppHeaderBottom>
         </AppHeader>
