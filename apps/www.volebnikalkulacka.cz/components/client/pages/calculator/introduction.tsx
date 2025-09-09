@@ -12,5 +12,9 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
     router.push(routes.guide(segments));
   };
 
-  return <IntroductionPage calculator={calculator} onNextClick={handleNavigationNextClick} />;
+  const handleCloseClick = () => {
+    router.push("/");
+  };
+
+  return <IntroductionPage calculator={calculator} onNextClick={handleNavigationNextClick} onCloseClick={handleCloseClick} />;
 }
