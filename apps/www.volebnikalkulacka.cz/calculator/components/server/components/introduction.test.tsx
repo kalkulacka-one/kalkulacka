@@ -24,9 +24,8 @@ const dataWithMarkdown = {
 };
 
 describe("Introduction", () => {
-  it("renders title and intro", () => {
+  it("renders intro content", () => {
     render(<Introduction calculator={data} />);
-    expect(screen.getByText(data.title)).toBeInTheDocument();
     expect(screen.getByText(data.intro)).toBeInTheDocument();
   });
 
@@ -90,8 +89,7 @@ describe("Introduction", () => {
       );
 
       const h1Elements = container.querySelectorAll("h1");
-      expect(h1Elements).toHaveLength(1);
-      expect(h1Elements[0]?.textContent).toBe(data.title);
+      expect(h1Elements).toHaveLength(0);
       expect(screen.getByText("This paragraph should remain.")).toBeInTheDocument();
       expect(screen.queryByText("This heading should be stripped")).not.toBeInTheDocument();
     });
