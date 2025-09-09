@@ -2,14 +2,14 @@ import { Button } from "@repo/design-system/client";
 
 import { NavigationCard } from "./navigation-card";
 
-export type ReviewNavigationCard = {
+export type IntroductionNavigationCard = {
   onNextClick: () => void;
 };
 
-export function ReviewNavigationCard({ onNextClick }: ReviewNavigationCard) {
+export function IntroductionNavigationCard({ onNextClick }: IntroductionNavigationCard) {
   return (
     <NavigationCard>
-      <Button onClick={onNextClick}>Zobrazit výsledky</Button>
+      <Button onClick={onNextClick}>Pokračovat</Button>
     </NavigationCard>
   );
 }

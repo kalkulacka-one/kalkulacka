@@ -1,31 +1,42 @@
+import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { Button, Icon } from "@repo/design-system/client";
+
 import type { CalculatorViewModel } from "../../../view-models";
-import { AppHeader, Guide, GuideNavigationCard, Introduction, LayoutBottomNavigation, LayoutHeader } from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutHeader } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
-  step: 1 | 2;
-  onNavigationNextClick: () => void;
-  onNavigationPreviousClick: () => void;
+  onNextClick: () => void;
+  onBackClick: () => void;
+  onCloseClick: () => void;
 };
 
-export function GuidePage({ calculator, step, onNavigationNextClick, onNavigationPreviousClick }: GuidePage) {
+export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
   return (
     <>
       <LayoutHeader>
         <AppHeader>
-          <h1>Volební kalkulačka</h1>
+          <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+          <AppHeaderRight>
+            <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+              <Icon icon={mdiClose} size="medium" decorative />
+            </Button>
+          </AppHeaderRight>
+          <AppHeaderBottom>
+            <AppHeaderBottomLeft condensed={false}>
+              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Zpět na úvod">
+                <Icon icon={mdiArrowLeft} size="medium" decorative />
+              </Button>
+            </AppHeaderBottomLeft>
+            <AppHeaderBottomMain condensed={false}>
+              <h3 className="ko:font-display font-semibold text-3xl">Návod</h3>
+            </AppHeaderBottomMain>
+          </AppHeaderBottom>
         </AppHeader>
       </LayoutHeader>
-      {(() => {
-        switch (step) {
-          case 1:
-            return <Introduction calculator={calculator} />;
-          case 2:
-            return <Guide calculator={calculator} />;
-        }
-      })()}
+      <Guide calculator={calculator} />
       <LayoutBottomNavigation>
-        <GuideNavigationCard step={step} onNextClick={onNavigationNextClick} onPreviousClick={onNavigationPreviousClick} />
+        <GuideNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
     </>
   );

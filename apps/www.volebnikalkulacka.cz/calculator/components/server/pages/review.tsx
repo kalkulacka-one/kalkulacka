@@ -1,14 +1,31 @@
-import type { AnswersViewModel, QuestionsViewModel } from "../../../view-models";
-import { AppHeader, LayoutBottomNavigation, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
+import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { Button, Icon } from "@repo/design-system/client";
+
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
+import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
+import {
+  AppHeader,
+  AppHeaderBottom,
+  AppHeaderBottomLeft,
+  AppHeaderBottomMain,
+  AppHeaderMain,
+  AppHeaderRight,
+  LayoutBottomNavigation,
+  LayoutHeader,
+  ReviewNavigationCard,
+  ReviewQuestionCard,
+} from "../components";
 
 export type ReviewPage = {
   questions: QuestionsViewModel;
   answers: AnswersViewModel;
+  calculator: CalculatorViewModel;
   onNextClick: () => void;
   onPreviousClick: () => void;
+  onCloseClick: () => void;
 };
 
-export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }: ReviewPage) {
+export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -37,9 +54,28 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
   return (
     <>
       <LayoutHeader>
-        <AppHeader>
-          <h1>Volební kalkulačka</h1>
-        </AppHeader>
+        <WithCondenseOnScroll>
+          {(condensed) => (
+            <AppHeader condensed={condensed}>
+              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+              <AppHeaderRight>
+                <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+                  <Icon icon={mdiClose} size="medium" decorative />
+                </Button>
+              </AppHeaderRight>
+              <AppHeaderBottom>
+                <AppHeaderBottomLeft condensed={condensed}>
+                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Zpět na otázky">
+                    <Icon icon={mdiArrowLeft} size="medium" decorative />
+                  </Button>
+                </AppHeaderBottomLeft>
+                <AppHeaderBottomMain condensed={condensed}>
+                  <h3 className="ko:font-display font-semibold text-3xl">Rekapitulace</h3>
+                </AppHeaderBottomMain>
+              </AppHeaderBottom>
+            </AppHeader>
+          )}
+        </WithCondenseOnScroll>
       </LayoutHeader>
       {questions.questions.map((question, index) => {
         const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
@@ -61,7 +97,7 @@ export function ReviewPage({ questions, answers, onNextClick, onPreviousClick }:
         );
       })}
       <LayoutBottomNavigation>
-        <ReviewNavigationCard onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+        <ReviewNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
     </>
   );

@@ -1,8 +1,7 @@
-import { redirect } from "next/navigation";
-
-import { routes } from "../../../../../../lib/routing/route-builders";
+import { GuidePageWithRouting } from "../../../../../../components/client";
 
 export default async function Page({ params }: { params: Promise<{ first: string }> }) {
   const { first } = await params;
-  redirect(routes.guide({ first }, 1));
+
+  return <GuidePageWithRouting segments={{ first }} />;
 }

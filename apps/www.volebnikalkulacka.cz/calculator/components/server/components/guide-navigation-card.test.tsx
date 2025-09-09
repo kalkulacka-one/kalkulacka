@@ -5,27 +5,18 @@ import { describe, expect, it, vi } from "vitest";
 import { GuideNavigationCard } from "./guide-navigation-card";
 
 describe("GuideNavigationCard", () => {
-  it("renders 'Pokračovat' button for step 1", () => {
+  it("renders 'Začít odpovídat' button", () => {
     const onNextClick = vi.fn();
-    const onPreviousClick = vi.fn();
-    render(<GuideNavigationCard step={1} onNextClick={onNextClick} onPreviousClick={onPreviousClick} />);
-    expect(screen.getByText("Pokračovat")).toBeInTheDocument();
-  });
-
-  it("renders 'Začít odpovídat' button for step 2", () => {
-    const onNextClick = vi.fn();
-    const onPreviousClick = vi.fn();
-    render(<GuideNavigationCard step={2} onNextClick={onNextClick} onPreviousClick={onPreviousClick} />);
+    render(<GuideNavigationCard onNextClick={onNextClick} />);
     expect(screen.getByText("Začít odpovídat")).toBeInTheDocument();
   });
 
   it("calls onNextClick when button is clicked", async () => {
     const onNextClick = vi.fn();
-    const onPreviousClick = vi.fn();
     const user = userEvent.setup();
-    render(<GuideNavigationCard step={1} onNextClick={onNextClick} onPreviousClick={onPreviousClick} />);
+    render(<GuideNavigationCard onNextClick={onNextClick} />);
 
-    await user.click(screen.getByText("Pokračovat"));
+    await user.click(screen.getByText("Začít odpovídat"));
     expect(onNextClick).toHaveBeenCalledTimes(1);
   });
 });

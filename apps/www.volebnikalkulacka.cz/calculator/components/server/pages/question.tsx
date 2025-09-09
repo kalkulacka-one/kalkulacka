@@ -1,16 +1,22 @@
-import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
-import { AppHeader, LayoutBottomNavigation, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { mdiClose } from "@mdi/js";
+import { Button, Icon } from "@repo/design-system/client";
+
+import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
+import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
+import { AppHeader, AppHeaderMain, AppHeaderRight, LayoutBottomNavigation, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
   number: number;
   total: number;
   answer: AnswerViewModel;
+  calculator: CalculatorViewModel;
   onPreviousClick: () => void;
   onNextClick: () => void;
+  onCloseClick: () => void;
 };
 
-export function QuestionPage({ question, number, total, onPreviousClick, onNextClick, answer }: QuestionPage) {
+export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -41,9 +47,18 @@ export function QuestionPage({ question, number, total, onPreviousClick, onNextC
   return (
     <>
       <LayoutHeader>
-        <AppHeader>
-          <h1>Volební kalkulačka</h1>
-        </AppHeader>
+        <WithCondenseOnScroll>
+          {(condensed) => (
+            <AppHeader condensed={condensed}>
+              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+              <AppHeaderRight>
+                <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+                  <Icon icon={mdiClose} size="medium" decorative />
+                </Button>
+              </AppHeaderRight>
+            </AppHeader>
+          )}
+        </WithCondenseOnScroll>
       </LayoutHeader>
       <QuestionCard question={question} current={number} total={total} />
       <LayoutBottomNavigation>
