@@ -21,7 +21,7 @@ export function GuidePage({ calculator, step, onNavigationNextClick, onNavigatio
           case 1:
             return <Introduction calculator={calculator} />;
           case 2:
-            return <GuideComponent />;
+            return <GuideComponent calculator={calculator} />;
         }
       })()}
       <LayoutBottomNavigation>

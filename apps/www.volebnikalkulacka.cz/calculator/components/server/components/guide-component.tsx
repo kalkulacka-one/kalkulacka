@@ -1,6 +1,13 @@
 import { Card } from "@repo/design-system/server";
+import Markdown from "react-markdown";
 
-export function GuideComponent() {
+import type { CalculatorViewModel } from "../../../view-models";
+
+export type GuideComponent = {
+  calculator: CalculatorViewModel;
+};
+
+export function GuideComponent({ calculator }: GuideComponent) {
   return (
     <div className="grid gap-4">
       <Card shadow="hard">
@@ -50,6 +57,12 @@ export function GuideComponent() {
           </div>
         </div>
       </Card>
+
+      <div className="grid gap-1 max-w-prose">
+        <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
+          {calculator.methodology}
+        </Markdown>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,17 @@ import { GuideComponent } from ".";
 
 describe("GuideComponent", () => {
   it("renders", () => {
-    render(<GuideComponent />);
+    const mockCalculator = {
+      id: "test",
+      createdAt: new Date().toISOString(),
+      key: "test",
+      shortTitle: "Test",
+      title: "Test Calculator",
+      intro: "Test intro",
+      methodology: "Test methodology",
+    };
+
+    render(<GuideComponent calculator={mockCalculator} />);
     expect(screen.getByText("Shoda")).toBeInTheDocument();
   });
 });
