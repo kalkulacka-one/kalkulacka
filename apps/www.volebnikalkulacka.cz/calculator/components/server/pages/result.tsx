@@ -2,7 +2,7 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottomMain, AppHeaderLeft, AppHeaderMain, AppHeaderRight } from "../../client";
+import { AppHeader, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
 import { LayoutHeader, MatchCard } from "../components";
 
 export type ResultPage = {
@@ -16,17 +16,17 @@ export function ResultPage({ result, calculator, onPreviousClick }: ResultPage) 
     <>
       <LayoutHeader>
         <AppHeader>
-          <AppHeaderLeft>
-            <Button variant="link" color="neutral" size="small" aria-label="Go back" onClick={onPreviousClick}>
-              <Icon icon={mdiArrowLeft} size="medium" decorative />
-            </Button>
-          </AppHeaderLeft>
           <AppHeaderMain />
           <AppHeaderRight>
             <Button variant="link" color="neutral" size="small" aria-label="Close">
               <Icon icon={mdiClose} size="medium" decorative />
             </Button>
           </AppHeaderRight>
+          <AppHeaderBottomLeft>
+            <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Back">
+              <Icon icon={mdiArrowLeft} size="medium" decorative />
+            </Button>
+          </AppHeaderBottomLeft>
           <AppHeaderBottomMain>Výsledek</AppHeaderBottomMain>
         </AppHeader>
       </LayoutHeader>
