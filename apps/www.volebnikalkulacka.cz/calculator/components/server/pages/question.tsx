@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
 import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
-import { AppHeader, AppHeaderMain, AppHeaderRight, LayoutBottomNavigation, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { AppHeader, AppHeaderMain, AppHeaderRight, LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
@@ -60,7 +60,9 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           )}
         </WithCondenseOnScroll>
       </LayoutHeader>
-      <QuestionCard question={question} current={number} total={total} />
+      <LayoutContent>
+        <QuestionCard question={question} current={number} total={total} />
+      </LayoutContent>
       <LayoutBottomNavigation>
         <QuestionNavigationCard
           current={number}

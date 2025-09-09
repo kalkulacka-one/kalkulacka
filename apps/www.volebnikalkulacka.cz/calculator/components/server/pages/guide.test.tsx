@@ -16,6 +16,7 @@ vi.mock("../components", () => ({
   GuideNavigationCard: vi.fn(() => null),
   LayoutHeader: vi.fn(({ children }) => children),
   LayoutBottomNavigation: vi.fn(({ children }) => children),
+  LayoutContent: vi.fn(({ children }) => children),
   AppHeader: vi.fn(({ children }) => children),
   AppHeaderMain: vi.fn(() => null),
   AppHeaderRight: vi.fn(({ children }) => children),
