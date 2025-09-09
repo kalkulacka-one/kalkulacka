@@ -35,12 +35,12 @@ describe("GuidePage", () => {
   });
 
   it("renders Introduction for step 1", () => {
-    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(Introduction).toHaveBeenCalledTimes(1);
   });
 
   it("passes calculator to Introduction component", () => {
-    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(Introduction).toHaveBeenCalledWith(
       expect.objectContaining({
         calculator: data,
@@ -50,32 +50,32 @@ describe("GuidePage", () => {
   });
 
   it("doesn't render GuideComponent for step 1", () => {
-    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(GuideComponent).not.toHaveBeenCalled();
   });
 
   it("renders GuideComponent for step 2", () => {
-    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(GuideComponent).toHaveBeenCalledTimes(1);
   });
 
   it("doesn't render Introduction for step 2", () => {
-    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(Introduction).not.toHaveBeenCalled();
   });
 
   it("renders GuideNavigationCard for step 1", () => {
-    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
   });
 
   it("renders GuideNavigationCard for step 2", () => {
-    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={2} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
   });
 
   it("passes onNavigationNextClick to GuideNavigationCard", () => {
-    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} />);
+    render(<GuidePage calculator={data} step={1} onNavigationNextClick={onNavigationNextClick} onNavigationPreviousClick={vi.fn()} />);
     expect(GuideNavigationCard).toHaveBeenCalledWith(
       expect.objectContaining({
         onNextClick: onNavigationNextClick,
