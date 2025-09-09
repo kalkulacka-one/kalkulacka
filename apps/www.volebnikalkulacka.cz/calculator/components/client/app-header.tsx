@@ -2,7 +2,7 @@
 
 import { mdiArrowLeft } from "@mdi/js";
 import { Button, Icon, Logo } from "@repo/design-system/client";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 import { useCalculatorViewModel } from "../../view-models";
@@ -15,10 +15,26 @@ type AppHeaderProps = {
 export function AppHeader({ children, className }: AppHeaderProps) {
   const [isCondensed, setIsCondensed] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsCondensed(scrollY > 20);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setIsCondensed(prev => {
+            // Balanced thresholds to prevent oscillation (76px height difference)
+            if (prev && scrollY <= 45) {
+              return false; // Uncondense when scrolled back up
+            } else if (!prev && scrollY > 120) {
+              return true; // Condense when scrolled down
+            }
+            return prev; // Keep current state
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
