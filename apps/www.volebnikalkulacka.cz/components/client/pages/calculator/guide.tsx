@@ -16,5 +16,11 @@ export function GuidePageWithRouting({ step, segments }: { step: 1 | 2; segments
     }
   };
 
-  return <AppGuidePage calculator={calculator} step={step} onNavigationNextClick={handleNavigationNextClick} />;
+  const handleNavigationPreviousClick = () => {
+    if (step === 2) {
+      router.push(routes.guide(segments, 1));
+    }
+  };
+
+  return <AppGuidePage calculator={calculator} step={step} onNavigationNextClick={handleNavigationNextClick} onNavigationPreviousClick={handleNavigationPreviousClick} />;
 }
