@@ -1,8 +1,8 @@
-import { mdiClose } from "@mdi/js";
+import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import type { CalculatorViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderMain, AppHeaderRight, AppHeaderBottomMain } from "../../client";
+import { AppHeader, AppHeaderBottomMain, AppHeaderLeft, AppHeaderMain, AppHeaderRight } from "../../client";
 import { GuideComponent, GuideNavigationCard, Introduction, LayoutBottomNavigation, LayoutHeader } from "../components";
 
 export type GuidePage = {
@@ -10,22 +10,26 @@ export type GuidePage = {
   step: 1 | 2;
   onNavigationNextClick: () => void;
   onNavigationPreviousClick: () => void;
+  onPreviousClick: () => void;
 };
 
-export function GuidePage({ calculator, step, onNavigationNextClick, onNavigationPreviousClick }: GuidePage) {
+export function GuidePage({ calculator, step, onNavigationNextClick, onNavigationPreviousClick, onPreviousClick }: GuidePage) {
   return (
     <>
       <LayoutHeader>
         <AppHeader>
+          <AppHeaderLeft alwaysVisible>
+            <Button variant="link" color="neutral" size="small" aria-label="Go back" onClick={onPreviousClick}>
+              <Icon icon={mdiArrowLeft} size="medium" decorative />
+            </Button>
+          </AppHeaderLeft>
           <AppHeaderMain />
           <AppHeaderRight>
             <Button variant="link" color="neutral" size="small" aria-label="Close">
               <Icon icon={mdiClose} size="medium" decorative />
             </Button>
           </AppHeaderRight>
-          <AppHeaderBottomMain>
-            Návod
-          </AppHeaderBottomMain>
+          <AppHeaderBottomMain>Návod</AppHeaderBottomMain>
         </AppHeader>
       </LayoutHeader>
       {(() => {
