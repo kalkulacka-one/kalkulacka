@@ -7,7 +7,7 @@ export function Layout({ children }: LayoutProps) {
 }
 
 export function LayoutHeader({ children }: { children: React.ReactNode }) {
-  return <div className="sticky top-0">{children}</div>;
+  return <div className="sticky top-0 z-10">{children}</div>;
 }
 
 export function LayoutContent({ children }: { children: React.ReactNode }) {
