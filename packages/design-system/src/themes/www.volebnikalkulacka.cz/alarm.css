@@ -3,8 +3,8 @@
   --ko-typeface-sans: "Geist";
   --ko-typeface-mono: "Geist Mono";
 
-  --ko-palette-primary: rgb(255, 19, 70);
-  --ko-palette-secondary: rgb(117, 242, 97);
+  --ko-palette-primary: rgb(117, 242, 97); 
+  --ko-palette-secondary: rgb(255, 19, 70);
   --ko-palette-neutral: rgb(0, 0, 0);
   --ko-palette-red: rgb(255, 19, 70);
   --ko-palette-yellow: yellow;
