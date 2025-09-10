@@ -12,18 +12,22 @@ const DATA_CONFIG = {
   calculator: {
     filename: "calculator.json",
     schema: calculatorSchema,
+    required: true,
   },
   questions: {
     filename: "questions.json",
     schema: questionsSchema,
+    required: true,
   },
   candidates: {
     filename: "candidates.json",
     schema: candidatesSchema,
+    required: true,
   },
   candidatesAnswers: {
     filename: "candidates-answers.json",
     schema: candidatesAnswers,
+    required: true,
   },
   persons: {
     filename: "persons.json",
@@ -40,8 +44,8 @@ export type CalculatorData = {
   questions: Questions;
   candidates: Candidates;
   candidatesAnswers: CandidatesAnswers;
-  persons: Persons;
-  organizations: Organizations;
+  persons?: Persons;
+  organizations?: Organizations;
 };
 
 export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
@@ -64,22 +68,31 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
     key,
     url: new URL(config.filename, `${dataUrl}/`).toString(),
     schema: config.schema,
+    required: "required" in config && config.required,
   }));
 
-  const fetchPromises = fileEntries.map(({ key, url }) =>
+  const fetchPromises = fileEntries.map(({ key, url, required }) =>
     fetchFile({ url }).catch((error) => {
-      throw new Error(`Failed to fetch ${key} data: ${error.message}`);
+      if (required) {
+        throw new Error(`Failed to fetch ${key} data: ${error.message}`);
+      }
+      return undefined;
     }),
   );
   const results = await Promise.all(fetchPromises);
 
-  const parsedData = fileEntries.map(({ key, schema }, index) => {
-    try {
-      return [key, parseWithSchema({ data: results[index], schema: schema as z.ZodSchema })];
-    } catch (error) {
-      throw new Error(`Failed to parse ${key} data: ${(error as Error).message}`);
-    }
-  });
+  const parsedData = fileEntries
+    .map(({ key, schema }, index) => {
+      const data = results[index];
+      if (data === undefined) return undefined;
+
+      try {
+        return [key, parseWithSchema({ data, schema: schema as z.ZodSchema })];
+      } catch (error) {
+        throw new Error(`Failed to parse ${key} data: ${(error as Error).message}`);
+      }
+    })
+    .filter((entry): entry is [string, unknown] => entry !== undefined);
 
   return Object.fromEntries(parsedData) as CalculatorData;
 }

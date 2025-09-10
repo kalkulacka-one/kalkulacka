@@ -4,8 +4,8 @@ import type { Organization } from "../../../../packages/schema/schemas/organizat
 import { useCalculatorStore } from "../stores";
 import { type OrganizationViewModel, organizationViewModel } from "./organization";
 
-export function organizationsViewModel(organizations: Organization[]): OrganizationViewModel[] {
-  return organizations.map(organizationViewModel);
+export function organizationsViewModel(organizations: Organization[] | undefined): OrganizationViewModel[] {
+  return organizations?.map(organizationViewModel) ?? [];
 }
 
 export function useOrganizationsViewModel(): OrganizationViewModel[] {
