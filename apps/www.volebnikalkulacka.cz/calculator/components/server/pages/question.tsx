@@ -24,6 +24,11 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
         answer: true,
       });
       onNextClick();
+    } else {
+      answer.setAnswer({
+        questionId: question.id,
+        answer: undefined,
+      });
     }
   };
 
@@ -34,6 +39,11 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
         answer: false,
       });
       onNextClick();
+    } else {
+      answer.setAnswer({
+        questionId: question.id,
+        answer: undefined,
+      });
     }
   };
 
@@ -63,7 +73,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutContent>
         <QuestionCard question={question} current={number} total={total} />
       </LayoutContent>
-      <LayoutBottomNavigation>
+      <LayoutBottomNavigation spacer="11rem">
         <QuestionNavigationCard
           current={number}
           total={total}

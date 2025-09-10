@@ -17,7 +17,7 @@ export type QuestionNavigationCard = {
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
   const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
-  const nextButtonLabel = answer.answer ? "Další" : "Přeskočit";
+  const nextButtonLabel = answer.answer?.answer !== undefined ? "Další" : "Přeskočit";
 
   return (
     <NavigationCard>

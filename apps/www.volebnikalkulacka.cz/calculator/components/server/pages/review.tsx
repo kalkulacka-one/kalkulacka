@@ -33,6 +33,11 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         questionId,
         answer: true,
       });
+    } else {
+      answers.setAnswer({
+        questionId,
+        answer: undefined,
+      });
     }
   };
 
@@ -41,6 +46,11 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
       answers.setAnswer({
         questionId,
         answer: false,
+      });
+    } else {
+      answers.setAnswer({
+        questionId,
+        answer: undefined,
       });
     }
   };
