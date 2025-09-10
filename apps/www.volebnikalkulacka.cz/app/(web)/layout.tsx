@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata, Viewport } from "next";
 
 import "../globals.css";
 
@@ -11,6 +10,11 @@ export const metadata: Metadata = {
     template: "%s — Volební kalkulačka",
   },
   description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
