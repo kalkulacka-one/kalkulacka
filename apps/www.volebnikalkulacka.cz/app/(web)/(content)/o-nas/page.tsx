@@ -146,6 +146,9 @@ export default function Page() {
             Otázka, u níž neodpovíte „Ano" či „Ne", se do výpočtu nezahrnuje. Pokud na otázku odpovíte „Ano", strany či kandidáti, kteří rovněž odpověděli „Ano", získávají jeden bod. Strany či kandidáti, kteří odpověděli „Ne", jeden bod ztrácejí. Pokud odpovíte „Ne", získávají jeden bod strany či kandidáti, kteří rovněž odpověděli „Ne". Ti, kteří odpověděli „Ano", naopak jeden bod ztrácejí. Strany či kandidáti, kteří na otázku neodpověděli „Ano" ani „Ne", nezískávají ani neztrácí žádné body.
           </p>
           <p className="ko:mb-3">
+            U Inventury hlasování platí, že pokud se poslanec daného hlasování nezúčastnil, je jeho postoj neutrální (nevíme, jak by hlasoval) a nezíská ani neztratí bod. Pokud v té době vůbec nebyl poslancem, toto hlasování se do shody s ním vůbec nezapočte.
+          </p>
+          <p className="ko:mb-3">
             Následně se každé straně či kandidátovi sečtou body za všechny otázky, u nichž jste odpověděli „Ano" či „Ne", a výsledek se vydělí počtem takových otázek. Tím je získána shoda v rozmezí -100 % až 100 %. Pro větší názornost se shoda převádí na rozmezí 0 % až 100 % tak, že se vydělí dvěma a přičte se k ní 50 % (u kalkulaček od poloviny roku 2013).
           </p>
           
