@@ -34,7 +34,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
                   </Button>
                 </AppHeaderBottomLeft>
                 <AppHeaderBottomMain condensed={condensed}>
-                  <h3 className="ko:font-display font-semibold text-3xl">Výsledek</h3>
+                  <h3 className="font-display font-semibold text-3xl">Výsledek</h3>
                 </AppHeaderBottomMain>
               </AppHeaderBottom>
             </AppHeader>

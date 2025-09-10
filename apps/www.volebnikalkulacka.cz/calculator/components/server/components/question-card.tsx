@@ -19,7 +19,7 @@ export function QuestionCard({ question, current, total }: QuestionCard) {
           </span>
           <span className="font-light">{title}</span>
         </div>
-        <h3 className="ko:font-display text-2xl font-bold leading-tight max-w-2xl break-words">{statement}</h3>
+        <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words">{statement}</h3>
         {detail && <p className="text-sm text-gray-900 leading-relaxed sm:text-base max-w-prose break-words">{detail}</p>}
       </div>
     </Card>

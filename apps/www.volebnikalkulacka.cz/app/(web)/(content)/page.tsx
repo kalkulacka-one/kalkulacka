@@ -5,7 +5,7 @@ export default function Page() {
         <div className="max-w-4xl mx-auto text-center space-y-12">
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="ko:font-display text-5xl md:text-7xl font-bold text-slate-800 tracking-tight leading-tight">
+              <h1 className="font-display text-5xl md:text-7xl font-bold text-slate-800 tracking-tight leading-tight">
                 Už to skoro <span className="text-primary">bude!</span>
               </h1>
 
