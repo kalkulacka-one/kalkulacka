@@ -89,25 +89,27 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         </WithCondenseOnScroll>
       </LayoutHeader>
       <LayoutContent>
-        {questions.questions.map((question, index) => {
-          const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
-            answer: undefined,
-            setAnswer: answers.setAnswer,
-          };
+        <div className="grid gap-4">
+          {questions.questions.map((question, index) => {
+            const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
+              answer: undefined,
+              setAnswer: answers.setAnswer,
+            };
 
-          return (
-            <ReviewQuestionCard
-              key={question.id}
-              question={question}
-              answer={answer}
-              current={index + 1}
-              total={questions.total}
-              onAgreeChange={(agree) => handleAgreeChange(question.id, agree)}
-              onDisagreeChange={(disagree) => handleDisagreeChange(question.id, disagree)}
-              onImportantChange={(isImportant) => handleImportantChange(question.id, isImportant)}
-            />
-          );
-        })}
+            return (
+              <ReviewQuestionCard
+                key={question.id}
+                question={question}
+                answer={answer}
+                current={index + 1}
+                total={questions.total}
+                onAgreeChange={(agree) => handleAgreeChange(question.id, agree)}
+                onDisagreeChange={(disagree) => handleDisagreeChange(question.id, disagree)}
+                onImportantChange={(isImportant) => handleImportantChange(question.id, isImportant)}
+              />
+            );
+          })}
+        </div>
       </LayoutContent>
       <LayoutBottomNavigation>
         <ReviewNavigationCard onNextClick={onNextClick} />
