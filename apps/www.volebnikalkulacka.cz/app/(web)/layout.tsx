@@ -11,6 +11,16 @@ export const metadata: Metadata = {
     template: "%s — Volební kalkulačka",
   },
   description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: "Volební kalkulačka",
     description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
