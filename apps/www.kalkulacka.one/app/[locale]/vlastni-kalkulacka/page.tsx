@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: I18nParams }) {
   return (
     <section className="max-w-2xl grid gap-4">
       <section className="grid gap-2">
-        <h2 className="text-3xl font-bold">Získejte vlastní Volební kalkulačku</h2>
+        <h2 className="text-3xl font-display font-bold">Získejte vlastní Volební kalkulačku</h2>
         <p>Náš tým vývojářů dokáže vytvořit přizpůsobenou webovou aplikaci kalkulačky ušitou na míru vašim konkrétním volbám a kandidátům.</p>
         <p>Kalkulačku můžete použít i v jiných oblastech než jen předvolební nástroj pro voliče.</p>
         <p>
