@@ -26,7 +26,7 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
           <span className="font-light">{title}</span>
         </div>
         <h3 className="ko:font-display text-lg font-bold leading-tight max-w-2xl break-words">{statement}</h3>
-        <div className="grid gap-3 items-center overflow-x-auto" style={{ gridTemplateColumns: "max-content 1fr 1fr" }}>
+        <div className="grid gap-3 items-center" style={{ gridTemplateColumns: "max-content 1fr 1fr" }}>
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
