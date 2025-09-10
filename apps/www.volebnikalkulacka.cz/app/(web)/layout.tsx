@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import "../globals.css";
 
@@ -20,6 +21,9 @@ export const viewport: Viewport = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="cs">
+      <head>
+        <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
+      </head>
       <body className="min-h-dvh">
         <ThemeProvider name="default">{children}</ThemeProvider>
       </body>
