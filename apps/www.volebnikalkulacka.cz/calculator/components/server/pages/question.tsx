@@ -2,15 +2,17 @@ import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
-import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
+import type { AnswersViewModel, AnswerViewModel, CalculatorViewModel, QuestionsViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard, QuestionProgressBar } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
+  questions: QuestionsViewModel;
   number: number;
   total: number;
   answer: AnswerViewModel;
+  answers: AnswersViewModel;
   calculator: CalculatorViewModel;
   onPreviousClick: () => void;
   onNextClick: () => void;
@@ -18,7 +20,7 @@ export type QuestionPage = {
   attribution?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, attribution }: QuestionPage) {
+export function QuestionPage({ question, questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick, attribution }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -75,6 +77,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       </LayoutHeader>
       <LayoutContent>
         <QuestionCard question={question} current={number} total={total} />
+        <QuestionProgressBar questions={questions} current={number} answers={answers} />
       </LayoutContent>
       <LayoutBottomNavigation spacer={attribution ? "14rem" : "11rem"}>
         <QuestionNavigationCard
