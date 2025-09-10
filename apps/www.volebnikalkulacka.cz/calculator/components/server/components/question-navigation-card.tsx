@@ -38,7 +38,7 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
             {nextButtonLabel}
           </Button>
         </div>
-        <div className="grid grid-flow-col grid-cols-[auto_1fr_1fr] gap-4 items-center">
+        <div className="grid grid-flow-col grid-cols-[auto_1fr_1fr] gap-4 items-center min-w-0">
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
