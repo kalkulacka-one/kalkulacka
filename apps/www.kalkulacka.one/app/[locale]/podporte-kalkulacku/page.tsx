@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">
-        <h2 className="text-3xl font-bold">Podpořte Volební kalkulačku a&nbsp;demokracii</h2>
+        <h2 className="text-3xl font-display font-bold">Podpořte Volební kalkulačku a&nbsp;demokracii</h2>
         <p>Líbí se vám Volební kalkulačka? Díky dobrovolníkům a štědrým dárcům můžeme kalkulačku poskytovat zdarma.</p>
         <p>
           Abychom však mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku, potřebujeme vaši pomoc. Přidejte se do klubu podporovatelů nebo nás podpořte jednorázově. Každý
