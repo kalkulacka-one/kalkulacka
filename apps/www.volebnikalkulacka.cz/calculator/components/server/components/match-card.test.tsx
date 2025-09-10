@@ -21,7 +21,7 @@ describe("MatchCard", () => {
   it("renders candidate information", () => {
     render(<MatchCard {...props} />);
 
-    expect(screen.getByText("1.")).toBeInTheDocument();
+    expect(screen.getByText("1")).toBeInTheDocument();
     expect(screen.getByText(mockCandidate.displayName ?? "")).toBeInTheDocument();
     expect(screen.getByText("85 %")).toBeInTheDocument();
   });
