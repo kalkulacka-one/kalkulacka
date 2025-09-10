@@ -65,7 +65,7 @@ export function Guide({ calculator }: Guide) {
           </span>
           <div>
             <p className="font-semibold">Neúčast poslanců</p>
-            <p className="text-sm">Pokud poslanec na hlasování chyběl, počítá jeho hlas neutrálně, nevíme, jak by hlasoval. Pokud vůbec nebyl v době hlasování poslancem, otázka se pro něj nepočítá.</p>
+            <p className="text-sm">Pokud poslanec na hlasování chyběl, počítá se jeho hlas neutrálně, nevíme, jak by hlasoval. Pokud vůbec nebyl v době hlasování poslancem, otázka se pro něj nepočítá.</p>
           </div>
         </div>
       </Card>
