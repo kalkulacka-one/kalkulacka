@@ -79,8 +79,8 @@ export function useResultViewModel(options?: { showOnlyNested?: boolean }): Resu
   const organizations = useCalculatorStore((state) => state.organizations);
   const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
 
-  const personsMap = useMemo(() => new Map(persons.map((person) => [person.id, personViewModel(person)])), [persons]);
-  const organizationsMap = useMemo(() => new Map(organizations.map((organization) => [organization.id, organizationViewModel(organization)])), [organizations]);
+  const personsMap = useMemo(() => new Map(persons?.map((person) => [person.id, personViewModel(person)]) ?? []), [persons]);
+  const organizationsMap = useMemo(() => new Map(organizations?.map((organization) => [organization.id, organizationViewModel(organization)]) ?? []), [organizations]);
 
   const candidates = options?.showOnlyNested ? allCandidates.flatMap((candidate) => candidate.nestedCandidates || []) : allCandidates;
 
