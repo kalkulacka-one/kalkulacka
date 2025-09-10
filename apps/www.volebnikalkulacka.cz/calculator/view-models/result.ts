@@ -33,30 +33,23 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
   const topLevelIds = candidates.map((candidate) => candidate.id);
   const topLevelAlgorithmMatches = algorithmMatches.filter((match) => topLevelIds.includes(match.id));
 
-  // Filter out candidates with undefined matches for ranking
-  const validMatches = topLevelAlgorithmMatches.filter((match) => match.match !== undefined);
-  
   const matches: CandidateMatchViewModel[] = candidates.map((candidate) => {
     const matchIndex = topLevelAlgorithmMatches.findIndex((match) => match.id === candidate.id);
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
-    
-    // Only assign order if match is defined
-    const order = match !== undefined ? validMatches.findIndex((validMatch) => validMatch.id === candidate.id) + 1 : undefined;
+
+    const order = match !== undefined ? topLevelAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === candidate.id) + 1 : undefined;
 
     let nestedMatches: CandidateMatchViewModel[] | undefined;
     if (candidate.nestedCandidates && candidate.nestedCandidates.length > 0) {
       const nestedIds = candidate.nestedCandidates.map((nestedCandidate) => nestedCandidate.id);
       const nestedAlgorithmMatches = algorithmMatches.filter((match) => nestedIds.includes(match.id));
-      
-      // Filter out nested candidates with undefined matches for ranking
-      const validNestedMatches = nestedAlgorithmMatches.filter((match) => match.match !== undefined);
 
       nestedMatches = candidate.nestedCandidates.map((nestedCandidate) => {
         const nestedMatchIndex = nestedAlgorithmMatches.findIndex((match) => match.id === nestedCandidate.id);
         const nestedMatch = nestedMatchIndex >= 0 ? nestedAlgorithmMatches[nestedMatchIndex]?.match : undefined;
-        
-        // Only assign order if match is defined
-        const nestedOrder = nestedMatch !== undefined ? validNestedMatches.findIndex((validMatch) => validMatch.id === nestedCandidate.id) + 1 : undefined;
+
+        const nestedOrder =
+          nestedMatch !== undefined ? nestedAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === nestedCandidate.id) + 1 : undefined;
 
         return {
           candidate: nestedCandidate,
