@@ -1,7 +1,7 @@
 import { notFound, useRouter } from "next/navigation";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
-import { useAnswerViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswersViewModel, useAnswerViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
@@ -9,6 +9,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const calculator = useCalculatorViewModel();
   const { questions, total } = useQuestionsViewModel();
   const question = questions[current - 1];
+  const answers = useAnswersViewModel();
 
   if (!question) {
     notFound();
@@ -41,12 +42,14 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
       <AppQuestionPage
         calculator={calculator}
         question={question}
+        questions={{ questions, total }}
         number={current}
         total={total}
         onPreviousClick={handlePreviousClick}
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
+        answers={answers}
       />
     </div>
   );
