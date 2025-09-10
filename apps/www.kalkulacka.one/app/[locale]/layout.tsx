@@ -2,11 +2,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import type { Viewport } from "next";
 
 import type { I18nParams } from "../i18n/params";
 import { routing } from "../i18n/routing";
 
 import "../globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export async function generateMetadata({ params }: { params: I18nParams }) {
   const { locale } = await params;
@@ -29,7 +35,6 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang={locale}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script defer data-domain="kalkulacka.one" src="/js/script.tagged-events.outbound-links.js" />
       </head>
       <body>
