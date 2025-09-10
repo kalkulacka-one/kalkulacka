@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     default: "Volební kalkulačka",
     template: "%s — Volební kalkulačka",
   },
-  description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
+  description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
   openGraph: {
     title: "Volební kalkulačka",
-    description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
+    description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
     url: "https://www.volebnikalkulacka.cz",
     siteName: "Volební kalkulačka",
     images: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://www.volebnikalkulacka.cz/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Volební kalkulačka - Parlamentní volby 2025",
+        alt: "Volební kalkulačka - Sněmovní volby 2025",
       },
     ],
     locale: "cs_CZ",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Volební kalkulačka",
-    description: "Nejužitečnějších 5 minut před parlamentními volbami 2025",
+    description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
     images: ["https://www.volebnikalkulacka.cz/og-image.jpg"],
   },
   robots: {
