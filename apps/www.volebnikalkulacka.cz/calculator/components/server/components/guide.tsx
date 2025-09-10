@@ -58,6 +58,18 @@ export function Guide({ calculator }: Guide) {
         </div>
       </Card>
 
+      <Card shadow="hard">
+        <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
+          <span className="text-2xl" aria-hidden="true">
+            ?
+          </span>
+          <div>
+            <p className="font-semibold">Neúčast poslanců</p>
+            <p className="text-sm">Pokud poslanec na hlasování chyběl, počítá jeho hlas neutrálně, nevíme, jak by hlasoval. Pokud vůbec nebyl v době hlasování poslancem, otázka se pro něj nepočítá.</p>
+          </div>
+        </div>
+      </Card>
+
       <div className="grid gap-1 max-w-prose">
         <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
           {calculator.methodology}
