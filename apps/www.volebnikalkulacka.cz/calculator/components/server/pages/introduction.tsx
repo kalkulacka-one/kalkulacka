@@ -1,56 +1,49 @@
-import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import type { CalculatorViewModel } from "../../../view-models";
 import {
   AppHeader,
   AppHeaderBottom,
-  AppHeaderBottomLeft,
   AppHeaderBottomMain,
   AppHeaderMain,
   AppHeaderRight,
-  Guide,
-  GuideNavigationCard,
+  Introduction,
+  IntroductionNavigationCard,
   LayoutBottomNavigation,
   LayoutContent,
   LayoutHeader,
 } from "../components";
 
-export type GuidePage = {
+export type IntroductionPage = {
   calculator: CalculatorViewModel;
   onNextClick: () => void;
-  onBackClick: () => void;
   onCloseClick: () => void;
 };
 
-export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
+export function IntroductionPage({ calculator, onNextClick, onCloseClick }: IntroductionPage) {
   return (
     <>
       <LayoutHeader>
         <AppHeader>
-          <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+          <AppHeaderMain title="Volební kalkulačka" tertiaryTitle="Sněmovní volby 2025" />
           <AppHeaderRight>
             <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
               <Icon icon={mdiClose} size="medium" decorative />
             </Button>
           </AppHeaderRight>
           <AppHeaderBottom>
-            <AppHeaderBottomLeft condensed={false}>
-              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Zpět na úvod">
-                <Icon icon={mdiArrowLeft} size="medium" decorative />
-              </Button>
-            </AppHeaderBottomLeft>
-            <AppHeaderBottomMain condensed={false}>
-              <h3 className="ko:font-display font-semibold text-3xl">Návod</h3>
+            <AppHeaderBottomMain>
+              <h2 className="ko:font-display font-semibold text-3xl">{calculator?.shortTitle}</h2>
             </AppHeaderBottomMain>
           </AppHeaderBottom>
         </AppHeader>
       </LayoutHeader>
       <LayoutContent>
-        <Guide calculator={calculator} />
+        <Introduction calculator={calculator} />
       </LayoutContent>
       <LayoutBottomNavigation>
-        <GuideNavigationCard onNextClick={onNextClick} />
+        <IntroductionNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
     </>
   );

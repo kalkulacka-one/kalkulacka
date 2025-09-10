@@ -138,6 +138,11 @@
     var(--ko-palette-logo-percent-denominator-light, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary))),
     var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary)))
   );
+
+  --drop-shadow-hard: 6px 6px 0px light-dark(
+    var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
+    var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))
+  );
 }
 
 @layer base {

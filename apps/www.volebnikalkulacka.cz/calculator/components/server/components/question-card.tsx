@@ -9,21 +9,18 @@ export type QuestionCard = {
 };
 
 export function QuestionCard({ question, current, total }: QuestionCard) {
-  const { title, tags, detail, statement } = question;
+  const { title, detail, statement } = question;
   return (
-    <Card corner="topLeft">
-      <div>
-        <div>
-          <span>
+    <Card corner="topLeft" shadow="hard">
+      <div className="grid gap-4 p-8">
+        <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+          <span className="font-bold">
             {current}/{total}
           </span>
-          <span>{title}</span>
-          {tags?.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
+          <span className="font-light">{title}</span>
         </div>
-        <h2>{statement}</h2>
-        {detail && <span>{detail}</span>}
+        <h3 className="ko:font-display text-2xl font-bold leading-tight max-w-2xl">{statement}</h3>
+        {detail && <p className="text-sm text-gray-900 leading-relaxed sm:text-base max-w-prose">{detail}</p>}
       </div>
     </Card>
   );

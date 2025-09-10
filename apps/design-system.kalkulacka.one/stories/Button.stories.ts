@@ -1,5 +1,7 @@
-import { Button } from "@repo/design-system/client";
+import { mdiClose, mdiCog, mdiMagnify } from "@mdi/js";
+import { Button, Icon } from "@repo/design-system/client";
 import type { Meta, StoryObj } from "@storybook/react";
+import { createElement } from "react";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -7,7 +9,7 @@ const meta: Meta<typeof Button> = {
   tags: ["autodocs"],
   args: {
     children: "Button",
-    variant: "filled",
+    variant: "fill",
     color: "primary",
     size: "medium",
     type: "button",
@@ -23,9 +25,9 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: "select",
-      options: ["filled", "outline", "link"],
+      options: ["fill", "outline", "link", "answer"],
       defaultValue: {
-        summary: "filled",
+        summary: "fill",
       },
     },
     color: {
@@ -56,8 +58,62 @@ type ButtonStory = StoryObj<typeof meta>;
 export const Default: ButtonStory = {
   args: {
     children: "Button",
-    variant: "filled",
+    variant: "fill",
     color: "primary",
+    type: "button",
+    disabled: false,
+  },
+};
+
+export const Outline: ButtonStory = {
+  args: {
+    children: "Outline",
+    variant: "outline",
+    color: "primary",
+  },
+};
+
+export const Link: ButtonStory = {
+  args: {
+    children: "Link",
+    variant: "link",
+    color: "primary",
+  },
+};
+
+export const Answer: ButtonStory = {
+  args: {
+    children: "Answer",
+    variant: "answer",
+    color: "primary",
+  },
+};
+
+export const IconOnly: ButtonStory = {
+  args: {
+    children: createElement(Icon, { icon: mdiMagnify, decorative: true }),
+    variant: "fill",
+    color: "primary",
+    type: "button",
+    disabled: false,
+  },
+};
+
+export const IconOnlySecondary: ButtonStory = {
+  args: {
+    children: createElement(Icon, { icon: mdiClose, decorative: true }),
+    variant: "outline",
+    color: "secondary",
+    type: "button",
+    disabled: false,
+  },
+};
+
+export const IconOnlyNeutral: ButtonStory = {
+  args: {
+    children: createElement(Icon, { icon: mdiCog, decorative: true }),
+    variant: "fill",
+    color: "neutral",
     type: "button",
     disabled: false,
   },

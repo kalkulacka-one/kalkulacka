@@ -1,5 +1,7 @@
 import { ResultPageWithRouting } from "../../../../../../../components/client";
 
-export default function Page() {
-  return <ResultPageWithRouting />;
+export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {
+  const { first, second } = await params;
+
+  return <ResultPageWithRouting segments={{ first, second }} />;
 }
