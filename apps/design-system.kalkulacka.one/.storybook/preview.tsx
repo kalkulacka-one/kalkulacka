@@ -11,7 +11,7 @@ const themeLoaders: Record<string, () => Promise<string>> = {
     // @ts-expect-error
     (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/default")).default,
   "Volební kalkulačka (CZ) — Díky, že můžem": async () =>
-    // @ts-ignore
+    // @ts-expect-error
     (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/diky-ze-muzem")).default,
   "Volební kalkulačka (CZ) — Alarm": async () =>
     // @ts-expect-error
