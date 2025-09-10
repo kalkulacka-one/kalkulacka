@@ -73,7 +73,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutContent>
         <QuestionCard question={question} current={number} total={total} />
       </LayoutContent>
-      <LayoutBottomNavigation>
+      <LayoutBottomNavigation spacer="8rem">
         <QuestionNavigationCard
           current={number}
           total={total}
