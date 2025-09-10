@@ -24,6 +24,11 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
         answer: true,
       });
       onNextClick();
+    } else {
+      answer.setAnswer({
+        questionId: question.id,
+        answer: undefined,
+      });
     }
   };
 
@@ -34,6 +39,11 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
         answer: false,
       });
       onNextClick();
+    } else {
+      answer.setAnswer({
+        questionId: question.id,
+        answer: undefined,
+      });
     }
   };
 
