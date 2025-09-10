@@ -1,6 +1,7 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
+import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
 import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, LayoutContent, LayoutHeader, MatchCard } from "../components";
@@ -23,9 +24,11 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
             <AppHeader condensed={condensed}>
               <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
               <AppHeaderRight>
-                <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
-                  <Icon icon={mdiClose} size="medium" decorative />
-                </Button>
+                <HideOnEmbed>
+                  <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+                    <Icon icon={mdiClose} size="medium" decorative />
+                  </Button>
+                </HideOnEmbed>
               </AppHeaderRight>
               <AppHeaderBottom>
                 <AppHeaderBottomLeft condensed={condensed}>
