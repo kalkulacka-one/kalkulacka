@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Volební kalkulačka",
     images: [
       {
-        url: "https://archiv-2024.volebnikalkulacka.cz/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Volební kalkulačka - Sněmovní volby 2025",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Volební kalkulačka",
     description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
-    images: ["https://archiv-2024.volebnikalkulacka.cz/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
