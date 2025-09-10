@@ -14,7 +14,7 @@ export type ReviewQuestionCard = {
 };
 
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
-  const { title, statement, detail, tags } = question;
+  const { title, statement } = question;
   return (
     <Card corner="topLeft">
       <div>
@@ -24,13 +24,9 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
               {current}/{total}
             </span>
             <span>{title}</span>
-            {tags?.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
           </div>
           <h2>{statement}</h2>
         </div>
-        {detail && <div>{detail}</div>}
         <div>
           <div>
             <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>

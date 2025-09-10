@@ -39,14 +39,6 @@ describe("ReviewQuestionCard", () => {
     expect(screen.getByText(`${props.current}/${props.total}`)).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
     expect(screen.getByText(props.question.statement)).toBeInTheDocument();
-    if (props.question.detail) {
-      expect(screen.getByText(props.question.detail)).toBeInTheDocument();
-    }
-    if (props.question.tags) {
-      for (const tag of props.question.tags) {
-        expect(screen.getByText(tag)).toBeInTheDocument();
-      }
-    }
     expect(screen.getByText("Jsem pro")).toBeInTheDocument();
     expect(screen.getByText("Jsem proti")).toBeInTheDocument();
     expect(screen.getByText("Pro mě důležité")).toBeInTheDocument();
