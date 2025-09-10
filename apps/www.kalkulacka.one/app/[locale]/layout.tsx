@@ -29,6 +29,7 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang={locale}>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script defer data-domain="kalkulacka.one" src="/js/script.tagged-events.outbound-links.js" />
       </head>
       <body>
