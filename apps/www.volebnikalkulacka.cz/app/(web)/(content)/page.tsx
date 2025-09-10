@@ -36,7 +36,7 @@ export default function Page() {
             </p>
             <div className="flex justify-center gap-8">
               <a
-                href="https://x.com/volkalkulacka"
+                href="https://x.com/volebnikalk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-8 py-4 border-2 border-slate-300 rounded-2xl rounded-br-none text-slate-700 font-semibold tracking-wide hover:bg-slate-100 hover:border-slate-400 transition-all duration-200"
@@ -51,7 +51,7 @@ export default function Page() {
               </a>
 
               <a
-                href="https://instagram.com/volkalkulacka"
+                href="https://instagram.com/volebnikalk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-8 py-4 border-2 border-slate-300 rounded-2xl rounded-br-none text-slate-700 font-semibold tracking-wide hover:bg-slate-100 hover:border-slate-400 transition-all duration-200"
