@@ -9,7 +9,7 @@ export type QuestionCard = {
 };
 
 export function QuestionCard({ question, current, total }: QuestionCard) {
-  const { title, tags, detail, statement } = question;
+  const { title, detail, statement } = question;
   return (
     <Card corner="topLeft">
       <div>
@@ -18,9 +18,6 @@ export function QuestionCard({ question, current, total }: QuestionCard) {
             {current}/{total}
           </span>
           <span>{title}</span>
-          {tags?.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
         </div>
         <h2>{statement}</h2>
         {detail && <span>{detail}</span>}
