@@ -1,14 +1,16 @@
+import Link from "next/link";
+
 export function Header() {
   return (
     <header className="sticky top-0">
       <h1>Volební kalkulačka</h1>
       <div>
         <nav>
-          <a href="/">Domů</a>
-          <a href="/o-nas">O nás</a>
-          <a href="/metodika">Metodika</a>
-          <a href="/soukromi">Ochrana soukromí</a>
-          <a href="/kontakt">Kontakt</a>
+          <Link href="/">Domů</Link>
+          <Link href="/o-nas">O nás</Link>
+          <Link href="/metodika">Metodika</Link>
+          <Link href="/soukromi">Ochrana soukromí</Link>
+          <Link href="/kontakt">Kontakt</Link>
         </nav>
       </div>
     </header>
