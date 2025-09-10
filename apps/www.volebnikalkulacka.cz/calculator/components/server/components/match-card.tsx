@@ -15,8 +15,7 @@ export function MatchCard({ candidate, order, match }: MatchCard) {
         {match !== undefined && <ProgressBar value={match} color={order === 1 ? "primary" : "neutral"} corner="sharp" />}
         <div className="grid grid-cols-[auto_1fr_auto] gap-4 items-center p-8">
           <div
-            className="flex h-14 w-14 items-center justify-center rounded-2xl"
-            style={{ backgroundColor: order === 1 ? "var(--ko-color-primary)" : "var(--ko-color-neutral)", color: order === 1 ? "var(--ko-color-on-bg-primary)" : "var(--ko-color-on-bg-neutral)" }}
+            className={`flex h-14 w-14 items-center justify-center rounded-2xl ${order === 1 ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "bg-[var(--ko-color-neutral)] text-[var(--ko-color-on-bg-neutral)]"}`}
           >
             <span className="text-2xl font-bold">{order !== undefined ? order : "—"}</span>
           </div>
