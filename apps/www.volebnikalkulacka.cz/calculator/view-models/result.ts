@@ -36,7 +36,8 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
   const matches: CandidateMatchViewModel[] = candidates.map((candidate) => {
     const matchIndex = topLevelAlgorithmMatches.findIndex((match) => match.id === candidate.id);
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
-    const order = matchIndex >= 0 ? matchIndex + 1 : undefined;
+
+    const order = match !== undefined ? topLevelAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === candidate.id) + 1 : undefined;
 
     let nestedMatches: CandidateMatchViewModel[] | undefined;
     if (candidate.nestedCandidates && candidate.nestedCandidates.length > 0) {
@@ -46,7 +47,9 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
       nestedMatches = candidate.nestedCandidates.map((nestedCandidate) => {
         const nestedMatchIndex = nestedAlgorithmMatches.findIndex((match) => match.id === nestedCandidate.id);
         const nestedMatch = nestedMatchIndex >= 0 ? nestedAlgorithmMatches[nestedMatchIndex]?.match : undefined;
-        const nestedOrder = nestedMatchIndex >= 0 ? nestedMatchIndex + 1 : undefined;
+
+        const nestedOrder =
+          nestedMatch !== undefined ? nestedAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === nestedCandidate.id) + 1 : undefined;
 
         return {
           candidate: nestedCandidate,
