@@ -1,7 +1,7 @@
 {
   "name": "Archiv volebních kalkulaček",
   "short_name": "Archiv volebních kalkulaček",
-  "icons": [{ "src": "/icons/icon-192.png", "type": "image/png", "sizes": "192x192" }, { "src": "/icons/icon-512.png", "type": "image/png", "sizes": "512x512" }],
+  "icons": [{ "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" }, { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }],
   "theme_color": "#F8F7F7",
   "background_color": "#F8F7F7",
   "display": "standalone"
