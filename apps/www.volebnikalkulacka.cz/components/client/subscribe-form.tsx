@@ -4,10 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Description, Field, Input, Label } from "@repo/design-system/client";
 import { type SubmitHandler, useForm } from "react-hook-form";
 
-import { subscribe } from "../../../server/subscribe";
-import { type SubscribeBody, subscribeBodySchema } from "../../../types/subscribe";
+import { subscribe } from "../../server/subscribe";
+import { type SubscribeBody, subscribeBodySchema } from "../../types/subscribe";
 
-export default function SubmissionForm() {
+export function SubscribeForm() {
   const {
     register,
     handleSubmit,

@@ -1,4 +1,4 @@
-import SubscribeForm from "./subscribeForm";
+import { SubscribeForm } from "../../../components/client";
 export default function Page() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
