@@ -39,7 +39,7 @@ export default function Page() {
                     <span className="font-light">Sněmovní volby 2025</span>
                   </div>
                   <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Inventura hlasování</h3>
-                  <p className="text-sm text-gray-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
+                  <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
                   <Button variant="fill" color="neutral">
                     Spustit inventuru →
                   </Button>
