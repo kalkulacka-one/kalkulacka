@@ -1,0 +1,125 @@
+import { 
+  LogoCheck, 
+  LogoSlash, 
+  LogoCross, 
+  LogoPercent, 
+  LogoPercentNumerator, 
+  LogoPercentSlash, 
+  LogoPercentDenominator 
+} from "@repo/design-system/client";
+import type { Meta, StoryObj } from "@storybook/react";
+
+const meta: Meta = {
+  title: "Components/Logo/Parts",
+  tags: ["autodocs"],
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["small", "medium", "large", "default"],
+    },
+    title: {
+      control: "text",
+    },
+  },
+};
+
+export default meta;
+
+// Individual logo parts
+export const Check: StoryObj<typeof LogoCheck> = {
+  render: (args) => <LogoCheck {...args} />,
+  args: {
+    title: "Check mark",
+    size: "default",
+  },
+};
+
+export const Slash: StoryObj<typeof LogoSlash> = {
+  render: (args) => <LogoSlash {...args} />,
+  args: {
+    title: "Slash",
+    size: "default",
+  },
+};
+
+export const Cross: StoryObj<typeof LogoCross> = {
+  render: (args) => <LogoCross {...args} />,
+  args: {
+    title: "Cross",
+    size: "default",
+  },
+};
+
+export const Percent: StoryObj<typeof LogoPercent> = {
+  render: (args) => <LogoPercent {...args} />,
+  args: {
+    title: "Percent",
+    size: "default",
+  },
+};
+
+// Granular percent parts
+export const PercentNumerator: StoryObj<typeof LogoPercentNumerator> = {
+  render: (args) => <LogoPercentNumerator {...args} />,
+  args: {
+    title: "Percent numerator",
+    size: "default",
+  },
+};
+
+export const PercentSlash: StoryObj<typeof LogoPercentSlash> = {
+  render: (args) => <LogoPercentSlash {...args} />,
+  args: {
+    title: "Percent slash",
+    size: "default",
+  },
+};
+
+export const PercentDenominator: StoryObj<typeof LogoPercentDenominator> = {
+  render: (args) => <LogoPercentDenominator {...args} />,
+  args: {
+    title: "Percent denominator",
+    size: "default",
+  },
+};
+
+// All parts together for comparison
+export const AllParts: StoryObj = {
+  render: () => (
+    <div className="flex items-center gap-4 flex-wrap">
+      <div className="flex flex-col items-center gap-2">
+        <LogoCheck size="large" />
+        <span className="text-sm">Check</span>
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <LogoSlash size="large" />
+        <span className="text-sm">Slash</span>
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <LogoCross size="large" />
+        <span className="text-sm">Cross</span>
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <LogoPercent size="large" />
+        <span className="text-sm">Percent</span>
+      </div>
+    </div>
+  ),
+};
+
+// Size comparison
+export const SizeComparison: StoryObj = {
+  render: () => (
+    <div className="space-y-6">
+      {["small", "medium", "large", "default"].map((size) => (
+        <div key={size} className="flex items-center gap-4">
+          <span className="w-16 text-sm font-medium">{size}:</span>
+          <LogoCheck size={size as any} />
+          <LogoSlash size={size as any} />
+          <LogoCross size={size as any} />
+          <LogoPercent size={size as any} />
+        </div>
+      ))}
+    </div>
+  ),
+};

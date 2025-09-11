@@ -1,4 +1,6 @@
+import { mdiStar } from "@mdi/js";
 import { Card } from "@repo/design-system/server";
+import { LogoCheck, LogoCross, LogoSlash, Icon } from "@repo/design-system/client";
 import Markdown from "react-markdown";
 
 import type { CalculatorViewModel } from "../../../view-models";
@@ -11,10 +13,8 @@ export function Guide({ calculator }: Guide) {
   return (
     <div className="grid gap-4">
       <Card shadow="hard">
-        <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ✅
-          </span>
+        <div className="flex items-center gap-3 px-6 py-4 max-w-prose">
+          <LogoCheck size="medium" className="text-green-600" title="Shoda" />
           <div>
             <p className="font-semibold">Shoda</p>
             <p className="text-sm">Při shodě s Vaší odpovědí strana nebo politik dostane bod</p>
@@ -23,10 +23,8 @@ export function Guide({ calculator }: Guide) {
       </Card>
 
       <Card shadow="hard">
-        <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ❌
-          </span>
+        <div className="flex items-center gap-3 px-6 py-4 max-w-prose">
+          <LogoCross size="medium" className="text-red-600" title="Neshoda" />
           <div>
             <p className="font-semibold">Neshoda</p>
             <p className="text-sm">Při neshodě bod naopak ztratí</p>
@@ -35,10 +33,8 @@ export function Guide({ calculator }: Guide) {
       </Card>
 
       <Card shadow="hard">
-        <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ⏭️
-          </span>
+        <div className="flex items-center gap-3 px-6 py-4 max-w-prose">
+          <LogoSlash size="medium" className="text-gray-600" title="Přeskočit" />
           <div>
             <p className="font-semibold">Přeskočit</p>
             <p className="text-sm">Otázku můžete přeskočit a nebude se do výpočtu počítat</p>
@@ -47,10 +43,8 @@ export function Guide({ calculator }: Guide) {
       </Card>
 
       <Card shadow="hard">
-        <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ⭐
-          </span>
+        <div className="flex items-center gap-3 px-6 py-4 max-w-prose">
+          <Icon icon={mdiStar} className="text-yellow-500" size="large" decorative={false} title="Důležité otázky" />
           <div>
             <p className="font-semibold">Důležité otázky</p>
             <p className="text-sm">Pro vás důležité otázky označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
