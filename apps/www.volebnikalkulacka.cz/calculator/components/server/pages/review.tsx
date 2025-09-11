@@ -3,20 +3,8 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
-import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
-import {
-  AppHeader,
-  AppHeaderBottom,
-  AppHeaderBottomLeft,
-  AppHeaderBottomMain,
-  AppHeaderMain,
-  AppHeaderRight,
-  LayoutBottomNavigation,
-  LayoutContent,
-  LayoutHeader,
-  ReviewNavigationCard,
-  ReviewQuestionCard,
-} from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
   questions: QuestionsViewModel;
@@ -68,7 +56,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed}>
+            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
               <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
               <AppHeaderRight>
                 <HideOnEmbed>

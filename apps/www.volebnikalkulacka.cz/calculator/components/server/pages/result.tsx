@@ -3,8 +3,8 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, LayoutContent, LayoutHeader, MatchCard } from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { LayoutContent, LayoutHeader, MatchCard } from "../components";
 
 export type ResultPage = {
   result: ResultViewModel;
@@ -23,7 +23,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed}>
+            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
               <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
               <AppHeaderRight>
                 <HideOnEmbed>
