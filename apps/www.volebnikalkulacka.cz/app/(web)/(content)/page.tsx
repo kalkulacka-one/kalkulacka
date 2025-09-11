@@ -51,28 +51,28 @@ export default function Page() {
               </div>
             </Link>
 
-            <Link href="/volby/snemovni-2025/pro-mlade" className="group block h-full">
-              <div className="h-full">
-                <Card shadow="hard" corner="topLeft">
-                  <div className="grid gap-4 p-8 h-full items-start">
-                    <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
-                      <span className="font-light">Sněmovní volby 2025</span>
-                    </div>
-                    <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Kalkulačka pro mladé</h3>
-                    <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">
-                      Témata, která trápí mladou generaci. Ve spolupráci s{" "}
-                      <a href="https://dikyzemuzem.cz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
-                        Díky, že můžem
-                      </a>
-                      .
-                    </p>
+            <div className="group block h-full">
+              <Card shadow="hard" corner="topLeft">
+                <div className="grid gap-4 p-8 h-full items-start">
+                  <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                    <span className="font-light">Sněmovní volby 2025</span>
+                  </div>
+                  <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Kalkulačka pro mladé</h3>
+                  <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">
+                    Témata, která trápí mladou generaci. Ve spolupráci s{" "}
+                    <a href="https://dikyzemuzem.cz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                      Díky, že můžem
+                    </a>
+                    .
+                  </p>
+                  <Link href="/volby/snemovni-2025/pro-mlade">
                     <Button variant="fill" color="neutral">
                       Spustit kalkulačku →
                     </Button>
-                  </div>
-                </Card>
-              </div>
-            </Link>
+                  </Link>
+                </div>
+              </Card>
+            </div>
           </div>
 
           <div className="space-y-4 pt-12">
