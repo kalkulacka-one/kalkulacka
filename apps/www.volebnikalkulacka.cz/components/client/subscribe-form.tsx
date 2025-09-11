@@ -55,7 +55,7 @@ export function SubscribeForm() {
           <Field disabled={isSubmitting}>
             <div className="grid grid-rows-2 gap-2 justify-center">
               <div className="flex gap-4 justify-center">
-                <Label className="sr-only hidden">Zadejte váš email</Label>
+                <Label className="sr-only">Zadejte váš email</Label>
                 <Input invalid={errors.email ? true : undefined} autoComplete="email" type="email" placeholder="E-mail" {...register("email")} />
                 <Button disabled={isSubmitting} type="submit" variant="outline" color="neutral">
                   {isSubmitting ? "Odesílám" : "Odeslat"}
