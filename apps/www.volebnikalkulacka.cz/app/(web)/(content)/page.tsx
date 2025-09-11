@@ -2,6 +2,8 @@ import { Button } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 import Link from "next/link";
 
+import { SubscribeForm } from "../../../components/client";
+
 export default function Page() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
@@ -29,7 +31,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-
+          <SubscribeForm />
           {/* Calculator Cards */}
           <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto auto-rows-fr md:grid-cols-[1fr_1fr]">
             <Link href="/volby/snemovni-2025/inventura" className="group block h-full">
