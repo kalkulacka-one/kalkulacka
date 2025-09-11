@@ -27,6 +27,7 @@ export function SubscribeForm() {
       } else if (response.error.code === "duplicate-email") {
       }
     } catch (error) {
+      console.error("Subscribe form error:", error);
       setError("root.serverError", {
         type: "400",
         message: "Chyba na serveru, kontaktujte vývojáře aplikace.",
