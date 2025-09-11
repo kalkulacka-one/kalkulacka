@@ -15,7 +15,7 @@ export function Introduction({ calculator }: Introduction) {
         skipHtml
         components={{
           a: ({ href, children }) => (
-            <a href={href} className="text-[var(--ko-color-primary)] text-[var(--ko-color-primary-hover)] underline" target="_blank" rel="noopener noreferrer">
+            <a href={href} className="text-[var(--ko-color-primary)] hover:text-[var(--ko-color-primary-hover)] underline hover:no-underline" target="_blank" rel="noopener noreferrer">
               {children}
             </a>
           ),
