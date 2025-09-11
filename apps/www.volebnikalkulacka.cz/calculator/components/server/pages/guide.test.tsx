@@ -25,6 +25,10 @@ vi.mock("../components", () => ({
   AppHeaderBottomMain: vi.fn(({ children }) => children),
 }));
 
+vi.mock("../../../../components/client", () => ({
+  HideOnEmbed: vi.fn(({ children }) => children),
+}));
+
 const data = {
   id: "00000000-0000-0000-0000-000000000000",
   createdAt: new Date(0).toISOString(),
