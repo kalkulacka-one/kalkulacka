@@ -3,7 +3,7 @@ import Script from "next/script";
 
 import "../globals.css";
 
-import { ThemeProvider } from "../../components/client";
+import { EmbedContextProvider, ThemeProvider } from "../../components/client";
 
 export const metadata: Metadata = {
   title: {
@@ -61,7 +61,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
       </head>
       <body className="min-h-dvh">
-        <ThemeProvider name="default">{children}</ThemeProvider>
+        <EmbedContextProvider isEmbed={false} name={null}>
+          <ThemeProvider name="default">{children}</ThemeProvider>
+        </EmbedContextProvider>
       </body>
     </html>
   );
