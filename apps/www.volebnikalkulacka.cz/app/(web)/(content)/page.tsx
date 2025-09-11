@@ -1,3 +1,7 @@
+import { Button } from "@repo/design-system/client";
+import { Card } from "@repo/design-system/server";
+import Link from "next/link";
+
 export default function Page() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
@@ -6,20 +10,42 @@ export default function Page() {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="font-display text-5xl md:text-7xl font-bold text-slate-800 tracking-tight leading-tight">
-                Už to skoro <span className="text-primary">bude!</span>
+                Volební kalkulačka je <span className="text-primary">tady!</span>
               </h1>
+
+              <p className="text-base md:text-lg font-light text-slate-500">
+                Volby do Poslanecké sněmovny Parlamentu České republiky 2025
+                <br />
+                3. a 4. října 2025
+              </p>
 
               <div className="space-y-3">
                 <p className="text-2xl md:text-3xl font-light text-slate-700 leading-relaxed">
-                  Tu pravou <span className="font-bold">Volební kalkulačku</span> pro Sněmovní volby 2025 spustíme každou chvíli
+                  Zatím vyzkoušejte <span className="font-bold">inventuru hlasování</span>.
                 </p>
-                <p className="text-lg md:text-xl text-slate-600">
-                  Volby do Poslanecké sněmovny Parlamentu České republiky 2025
-                  <br />
-                  3. a 4. října 2025
+                <p className="text-lg md:text-xl font-light text-slate-700 leading-relaxed">
+                  Klasickou <span className="font-bold">Volební kalkulačku</span> pro Sněmovní volby 2025 spustíme každou chvíli.
                 </p>
               </div>
             </div>
+          </div>
+
+          {/* Calculator Cards */}
+          <div className="flex justify-center max-w-3xl mx-auto">
+            <Link href="/volby/snemovni-2025/inventura" className="group block">
+              <Card shadow="hard" corner="topLeft">
+                <div className="grid gap-4 p-8">
+                  <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                    <span className="font-light">Sněmovní volby 2025</span>
+                  </div>
+                  <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Inventura hlasování</h3>
+                  <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
+                  <Button variant="fill" color="neutral">
+                    Spustit inventuru →
+                  </Button>
+                </div>
+              </Card>
+            </Link>
           </div>
 
           <div className="space-y-4 pt-12">
