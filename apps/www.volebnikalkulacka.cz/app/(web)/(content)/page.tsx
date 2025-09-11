@@ -31,20 +31,45 @@ export default function Page() {
           </div>
 
           {/* Calculator Cards */}
-          <div className="flex justify-center max-w-3xl mx-auto">
-            <Link href="/volby/snemovni-2025/inventura" className="group block">
-              <Card shadow="hard" corner="topLeft">
-                <div className="grid gap-4 p-8">
-                  <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
-                    <span className="font-light">Sněmovní volby 2025</span>
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto auto-rows-fr md:grid-cols-[1fr_1fr]">
+            <Link href="/volby/snemovni-2025/inventura" className="group block h-full">
+              <div className="h-full">
+                <Card shadow="hard" corner="topLeft">
+                  <div className="grid gap-4 p-8 h-full items-start">
+                    <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                      <span className="font-light">Sněmovní volby 2025</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Inventura hlasování</h3>
+                    <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
+                    <Button variant="fill" color="neutral">
+                      Spustit inventuru →
+                    </Button>
                   </div>
-                  <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Inventura hlasování</h3>
-                  <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
-                  <Button variant="fill" color="neutral">
-                    Spustit inventuru →
-                  </Button>
-                </div>
-              </Card>
+                </Card>
+              </div>
+            </Link>
+
+            <Link href="/volby/snemovni-2025/pro-mlade" className="group block h-full">
+              <div className="h-full">
+                <Card shadow="hard" corner="topLeft">
+                  <div className="grid gap-4 p-8 h-full items-start">
+                    <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                      <span className="font-light">Sněmovní volby 2025</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Kalkulačka pro mladé</h3>
+                    <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">
+                      Témata, která trápí mladou generaci. Ve spolupráci s{" "}
+                      <a href="https://dikyzemuzem.cz" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                        Díky, že můžem
+                      </a>
+                      .
+                    </p>
+                    <Button variant="fill" color="neutral">
+                      Spustit kalkulačku →
+                    </Button>
+                  </div>
+                </Card>
+              </div>
             </Link>
           </div>
 
