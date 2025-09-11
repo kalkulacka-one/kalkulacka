@@ -188,14 +188,14 @@
   @font-face {
     font-family: "Inter";
     font-weight: 300 700;
-    src: url("./fonts/inter/normal.woff2") format("woff2"), url("./fonts/inter/normal.woff") format("woff");
+    src: url("./fonts/inter/normal.woff2") format("woff2");
   }
 
   @font-face {
     font-family: "Inter";
     font-weight: 300 700;
     font-style: italic;
-    src: url("./fonts/geist/italic.woff2") format("woff2");
+    src: url("./fonts/inter/italic.woff2") format("woff2");
   }
 
 }
