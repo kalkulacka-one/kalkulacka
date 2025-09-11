@@ -5,5 +5,11 @@ export type NavigationCard = {
 };
 
 export function NavigationCard({ children }: NavigationCard) {
-  return <Card>{children}</Card>;
+  return (
+    <div className="grid justify-items-end m-4">
+      <Card corner="bottomRight" shadow="elevated">
+        <div className="p-4">{children}</div>
+      </Card>
+    </div>
+  );
 }

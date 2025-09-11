@@ -2,7 +2,7 @@ import { notFound, useRouter } from "next/navigation";
 import { useEffect, useReducer } from "react";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
-import { useAnswerViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswerViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 // Get current question number from URL
@@ -24,6 +24,7 @@ function getCurrentQuestionFromUrl(): number {
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
+  const calculator = useCalculatorViewModel();
   const { questions, total } = useQuestionsViewModel();
   const [, forceRender] = useReducer((x) => x + 1, 0);
 
@@ -57,8 +58,8 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   };
 
   const handlePreviousClick = () => {
-    if (currentQuestion === 1) {
-      router.push(routes.guide(segments, 2));
+    if (current === 1) {
+      router.push(routes.guide(segments));
     } else {
       const prevUrl = routes.question(segments, currentQuestion - 1);
       window.history.pushState(null, "", prevUrl);
@@ -67,11 +68,24 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     }
   };
 
+  const handleCloseClick = () => {
+    router.push("/");
+  };
+
   const answer = useAnswerViewModel(question.id);
 
   return (
     <div>
-      <AppQuestionPage question={question} number={currentQuestion} total={total} onPreviousClick={handlePreviousClick} onNextClick={handleNextClick} answer={answer} />
+      <AppQuestionPage
+        calculator={calculator}
+        question={question}
+        number={current}
+        total={total}
+        onPreviousClick={handlePreviousClick}
+        onNextClick={handleNextClick}
+        onCloseClick={handleCloseClick}
+        answer={answer}
+      />
     </div>
   );
 }

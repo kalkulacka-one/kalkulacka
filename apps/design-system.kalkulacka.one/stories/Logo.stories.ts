@@ -16,6 +16,9 @@ const meta: Meta<typeof Logo> = {
     text: {
       control: "boolean",
     },
+    monochrome: {
+      control: "boolean",
+    },
     size: {
       control: "select",
       options: ["small", "default"],
@@ -36,6 +39,22 @@ export const WithoutText: LogoStory = {
   args: {
     title: "Volební kalkulačka",
     text: false,
+  },
+};
+
+export const Monochrome: LogoStory = {
+  args: {
+    title: "Volební kalkulačka",
+    text: false,
+    monochrome: true,
+  },
+};
+
+export const MonochromeWithText: LogoStory = {
+  args: {
+    title: "Volební kalkulačka",
+    text: true,
+    monochrome: true,
   },
 };
 

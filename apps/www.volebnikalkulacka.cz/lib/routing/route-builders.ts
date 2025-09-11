@@ -9,18 +9,19 @@ export function createBaseSegment(segments: RouteSegments): string {
 
   if (embed) {
     if (second) {
-      return `embed/${embed}/${first}/${second}`;
+      return `embed/${embed}/volby/${first}/${second}`;
     }
-    return `embed/${embed}/${first}`;
+    return `embed/${embed}/volby/${first}`;
   }
   if (second) {
-    return `${first}/${second}`;
+    return `volby/${first}/${second}`;
   }
-  return first;
+  return `volby/${first}`;
 }
 
 export const routes = {
-  guide: (segments: RouteSegments, step: 1 | 2) => `/${createBaseSegment(segments)}/navod/${step}`,
+  introduction: (segments: RouteSegments) => `/${createBaseSegment(segments)}/uvod`,
+  guide: (segments: RouteSegments) => `/${createBaseSegment(segments)}/navod`,
   question: (segments: RouteSegments, questionNumber: number) => `/${createBaseSegment(segments)}/otazka/${questionNumber}`,
   review: (segments: RouteSegments) => `/${createBaseSegment(segments)}/rekapitulace`,
   result: (segments: RouteSegments) => `/${createBaseSegment(segments)}/vysledek`,

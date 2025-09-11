@@ -12,6 +12,7 @@ export type Icon = {
           decorative?: boolean;
         } & React.SVGProps<SVGSVGElement>
       >;
+  isIcon?: true;
 } & VariantProps<typeof IconVariants> &
   React.SVGProps<SVGSVGElement> &
   ({ title: string; decorative: false } | { title?: string; decorative: true });
@@ -33,13 +34,16 @@ const IconVariants = cva("", {
   },
 });
 
-export function Icon({ icon, size, title, decorative, ...props }: Icon) {
+export function Icon({ icon, size, title, decorative, isIcon = true, ...props }: Icon) {
   const titleId = useId();
+
+  // Don't pass isIcon to DOM elements
+  const { isIcon: _, ...domProps } = { isIcon, ...props };
 
   if (typeof icon === "string") {
     return (
       <svg
-        {...props}
+        {...domProps}
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden={decorative ? "true" : "false"}
         aria-labelledby={!decorative ? titleId : undefined}
@@ -59,7 +63,7 @@ export function Icon({ icon, size, title, decorative, ...props }: Icon) {
 
   return (
     <SvgIcon
-      {...props}
+      {...domProps}
       title={title}
       titleId={titleId}
       decorative={decorative}

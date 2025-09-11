@@ -13,12 +13,7 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang="cs">
       <body>
-        <EmbedProvider name={embed}>
-          <div>
-            <span className="text-[var(--ko-palette-primary)]">Embed: `{embed}`</span>
-            <main>{children}</main>
-          </div>
-        </EmbedProvider>
+        <EmbedProvider name={embed}>{children}</EmbedProvider>
       </body>
     </html>
   );

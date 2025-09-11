@@ -1,5 +1,7 @@
-import { ToggleButton } from "@repo/design-system/client";
+import { mdiHeart, mdiHeartOutline } from "@mdi/js";
+import { Icon, ToggleButton } from "@repo/design-system/client";
 import type { Meta, StoryObj } from "@storybook/react";
+import { createElement } from "react";
 import { useArgs } from "storybook/internal/preview-api";
 
 const meta: Meta<typeof ToggleButton> = {
@@ -48,6 +50,28 @@ export const AnswerNo: ToggleButtonStory = {
     return (
       <ToggleButton variant="answer" color="secondary" checked={checked} onChange={onChange}>
         Ne
+      </ToggleButton>
+    );
+  },
+} satisfies ToggleButtonStory;
+
+export const IconToggle: ToggleButtonStory = {
+  args: {
+    checked: false,
+  },
+  render: function Render() {
+    const [{ checked }, updateArgs] = useArgs();
+
+    function onChange() {
+      updateArgs({ checked: !checked });
+    }
+
+    return (
+      <ToggleButton variant="fill" color={checked ? "secondary" : "neutral"} checked={checked} onChange={onChange}>
+        {createElement(Icon, {
+          icon: checked ? mdiHeart : mdiHeartOutline,
+          decorative: true,
+        })}
       </ToggleButton>
     );
   },

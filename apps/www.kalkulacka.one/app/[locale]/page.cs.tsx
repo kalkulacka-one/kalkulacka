@@ -4,7 +4,7 @@ export default async function Page() {
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">
-        <h2 className="text-2xl font-medium">
+        <h2 className="text-2xl font-display font-medium">
           Tvoříme <span className="font-bold">Volební kalkulačku</span>, která vám pomáhá rozhodnout se koho volit
         </h2>
         <p>

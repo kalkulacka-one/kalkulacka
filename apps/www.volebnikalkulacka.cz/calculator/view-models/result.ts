@@ -1,8 +1,13 @@
+import { useMemo } from "react";
+
+import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
+import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
 import { calculateMatches } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
-import type { CandidateViewModel } from "./candidate";
-import { useCandidatesViewModel } from "./candidates";
+import { type CandidateViewModel, candidateViewModel } from "./candidate";
+import { organizationViewModel } from "./organization";
+import { personViewModel } from "./person";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
@@ -22,30 +27,29 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   return [...withOrder, ...withoutOrder];
 }
 
-export function useResultViewModel(): ResultViewModel {
-  const answers = useAnswersStore((state) => state.answers);
-  const candidates = useCandidatesViewModel();
-  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
-
+export function resultViewModel(answers: Answer[], candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswers): ResultViewModel {
   const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
 
-  const topLevelIds = candidates.map((c) => c.id);
+  const topLevelIds = candidates.map((candidate) => candidate.id);
   const topLevelAlgorithmMatches = algorithmMatches.filter((match) => topLevelIds.includes(match.id));
 
   const matches: CandidateMatchViewModel[] = candidates.map((candidate) => {
-    const matchIndex = topLevelAlgorithmMatches.findIndex((m) => m.id === candidate.id);
+    const matchIndex = topLevelAlgorithmMatches.findIndex((match) => match.id === candidate.id);
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
-    const order = matchIndex >= 0 ? matchIndex + 1 : undefined;
+
+    const order = match !== undefined ? topLevelAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === candidate.id) + 1 : undefined;
 
     let nestedMatches: CandidateMatchViewModel[] | undefined;
     if (candidate.nestedCandidates && candidate.nestedCandidates.length > 0) {
-      const nestedIds = candidate.nestedCandidates.map((nc) => nc.id);
+      const nestedIds = candidate.nestedCandidates.map((nestedCandidate) => nestedCandidate.id);
       const nestedAlgorithmMatches = algorithmMatches.filter((match) => nestedIds.includes(match.id));
 
       nestedMatches = candidate.nestedCandidates.map((nestedCandidate) => {
-        const nestedMatchIndex = nestedAlgorithmMatches.findIndex((m) => m.id === nestedCandidate.id);
+        const nestedMatchIndex = nestedAlgorithmMatches.findIndex((match) => match.id === nestedCandidate.id);
         const nestedMatch = nestedMatchIndex >= 0 ? nestedAlgorithmMatches[nestedMatchIndex]?.match : undefined;
-        const nestedOrder = nestedMatchIndex >= 0 ? nestedMatchIndex + 1 : undefined;
+
+        const nestedOrder =
+          nestedMatch !== undefined ? nestedAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === nestedCandidate.id) + 1 : undefined;
 
         return {
           candidate: nestedCandidate,
@@ -66,4 +70,21 @@ export function useResultViewModel(): ResultViewModel {
   });
 
   return { matches: sortByOrder(matches) };
+}
+
+export function useResultViewModel(options?: { showOnlyNested?: boolean }): ResultViewModel {
+  const answers = useAnswersStore((state) => state.answers);
+  const allCandidates = useCalculatorStore((state) => state.candidates);
+  const persons = useCalculatorStore((state) => state.persons);
+  const organizations = useCalculatorStore((state) => state.organizations);
+  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
+
+  const personsMap = useMemo(() => new Map(persons?.map((person) => [person.id, personViewModel(person)]) ?? []), [persons]);
+  const organizationsMap = useMemo(() => new Map(organizations?.map((organization) => [organization.id, organizationViewModel(organization)]) ?? []), [organizations]);
+
+  const candidates = options?.showOnlyNested ? allCandidates.flatMap((candidate) => candidate.nestedCandidates || []) : allCandidates;
+
+  const candidateViewModels = useMemo(() => candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap)), [candidates, personsMap, organizationsMap]);
+
+  return useMemo(() => resultViewModel(answers, candidateViewModels, candidatesAnswers), [answers, candidateViewModels, candidatesAnswers]);
 }

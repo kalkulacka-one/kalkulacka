@@ -1,11 +1,12 @@
 import { useRouter } from "next/navigation";
 
 import { ReviewPage as AppReviewPage } from "../../../../calculator/components/server";
-import { useAnswersViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswersViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
+  const calculator = useCalculatorViewModel();
   const questions = useQuestionsViewModel();
   const answers = useAnswersViewModel();
 
@@ -17,9 +18,13 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
     router.push(routes.question(segments, questions.total));
   };
 
+  const handleCloseClick = () => {
+    router.push("/");
+  };
+
   return (
     <div>
-      <AppReviewPage questions={questions} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} />
+      <AppReviewPage calculator={calculator} questions={questions} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} />
     </div>
   );
 }
