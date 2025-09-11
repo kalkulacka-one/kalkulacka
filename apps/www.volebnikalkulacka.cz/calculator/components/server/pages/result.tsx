@@ -15,6 +15,8 @@ export type ResultPage = {
 };
 
 export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange }: ResultPage) {
+  const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
+  const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
   return (
     <>
       <LayoutHeader>
@@ -42,24 +44,26 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
         </WithCondenseOnScroll>
       </LayoutHeader>
       <LayoutContent>
-        <div className="mb-6">
-          <div className="flex items-center gap-3 text-sm">
-            <div className="relative bg-gray-100 rounded-full p-1 flex">
-              <label
-                className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
-              >
-                <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
-                Kandidátní listiny
-              </label>
-              <label
-                className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
-              >
-                <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
-                Lidé
-              </label>
+        {shouldShowToggleComputed && (
+          <div className="mb-6">
+            <div className="flex items-center gap-3 text-sm">
+              <div className="relative bg-gray-100 rounded-full p-1 flex">
+                <label
+                  className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
+                >
+                  <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
+                  Kandidátní listiny
+                </label>
+                <label
+                  className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
+                >
+                  <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
+                  Lidé
+                </label>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="grid gap-4">
           {result.matches.map((match) => (
             <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
