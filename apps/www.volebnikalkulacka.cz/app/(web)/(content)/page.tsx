@@ -1,3 +1,4 @@
+import SubscribeForm from "./subscribeForm";
 export default function Page() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
@@ -21,7 +22,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-
+          <SubscribeForm />
           <div className="space-y-4 pt-12">
             <p className="text-lg text-slate-600">
               Sledujte <span className="font-bold">Volební kalkulačku</span> i na{" "}
