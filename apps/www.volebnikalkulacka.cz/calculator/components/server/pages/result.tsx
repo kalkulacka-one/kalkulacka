@@ -69,7 +69,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
         )}
         <div className="grid gap-4">
           {result.matches.map((match) => (
-            <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} />
+            <MatchCard key={match.candidate.id} candidate={match.candidate} order={match.order} match={match.match} respondent={match.respondent} />
           ))}
         </div>
       </LayoutContent>
