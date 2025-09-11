@@ -22,14 +22,14 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
   return (
     <NavigationCard>
       <div className="grid grid-flow-row gap-4">
-        <div className="grid grid-flow-col grid-cols-[1fr_auto_1fr] items-center gap-8">
+        <div className="grid grid-flow-col items-center">
           <Button variant="link" color="neutral" onClick={onPreviousClick}>
             {previousButtonLabel}
           </Button>
           <span className="tabular-nums">
             <span>
               <span style={{ visibility: "hidden" }}>{current.toString().padStart(2, "0").startsWith("0") ? "0" : ""}</span>
-              <span>
+              <span className="whitespace-nowrap">
                 <strong>{current}</strong> / {total}
               </span>
             </span>
