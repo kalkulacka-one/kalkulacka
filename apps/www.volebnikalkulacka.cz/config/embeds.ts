@@ -10,6 +10,7 @@ export const embedsConfig = {
   alarm: { theme: "alarm" },
   prima: { theme: "prima" },
   idnes: { theme: "default" },
+  nova: { theme: "default" },
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
