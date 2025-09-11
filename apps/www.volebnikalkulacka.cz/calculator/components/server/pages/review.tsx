@@ -75,7 +75,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
                   </Button>
                 </AppHeaderBottomLeft>
                 <AppHeaderBottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-3xl">Rekapitulace</h3>
+                  <h3 className="font-display font-semibold text-xl sm:text-3xl">Rekapitulace</h3>
                 </AppHeaderBottomMain>
               </AppHeaderBottom>
             </AppHeader>
