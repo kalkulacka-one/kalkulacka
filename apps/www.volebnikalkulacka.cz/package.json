@@ -15,12 +15,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@repo/database": "*",
     "@repo/design-system": "*",
     "next": "^15.5.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hook-form": "^7.60.0",
     "react-markdown": "^10.1.0",
+    "zod": "^3.22.3",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
