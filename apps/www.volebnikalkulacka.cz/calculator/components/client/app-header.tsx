@@ -11,10 +11,10 @@ type AppHeaderChildProps = {
 type AppHeaderProps = {
   children: ReactNode;
   condensed?: boolean;
-  logoTitle?: string;
+  logoTitle: string;
 };
 
-export function AppHeader({ children, condensed = false, logoTitle = "Volební kalkulačka" }: AppHeaderProps) {
+export function AppHeader({ children, condensed = false, logoTitle }: AppHeaderProps) {
   const { isEmbed } = useEmbed();
   const hasPageHeading = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === AppHeaderBottom);
 

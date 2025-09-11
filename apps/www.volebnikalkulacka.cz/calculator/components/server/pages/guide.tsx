@@ -17,7 +17,7 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }
   return (
     <>
       <LayoutHeader>
-        <AppHeader>
+        <AppHeader logoTitle="Volební kalkulačka">
           <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
           <AppHeaderRight>
             <HideOnEmbed>

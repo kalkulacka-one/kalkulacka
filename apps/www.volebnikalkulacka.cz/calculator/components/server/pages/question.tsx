@@ -60,7 +60,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed}>
+            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
               <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
               <AppHeaderRight>
                 <HideOnEmbed>

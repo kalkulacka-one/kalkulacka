@@ -23,7 +23,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed}>
+            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
               <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
               <AppHeaderRight>
                 <HideOnEmbed>

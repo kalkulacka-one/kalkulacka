@@ -16,7 +16,7 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick }: Intr
   return (
     <>
       <LayoutHeader>
-        <AppHeader>
+        <AppHeader logoTitle="Volební kalkulačka">
           <AppHeaderMain title="Volební kalkulačka" tertiaryTitle="Sněmovní volby 2025" />
           <AppHeaderRight>
             <HideOnEmbed>
