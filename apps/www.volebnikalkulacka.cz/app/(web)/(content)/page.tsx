@@ -26,7 +26,7 @@ export default function Page() {
                   Zatím vyzkoušejte <span className="font-bold">inventuru hlasování</span>.
                 </p>
                 <p className="text-lg md:text-xl font-light text-slate-700 leading-relaxed">
-                  Klasickou <span className="font-bold">Volební kalkulačku</span> pro Sněmovní volby 2025 spustíme každou chvíli.
+                  Klasickou <span className="font-bold">Volební kalkulačku</span> pro Sněmovní volby 2025 spustíme každou chvíli. Nechte nám na sebe e-mail a dáme vám vědět!
                 </p>
               </div>
             </div>
