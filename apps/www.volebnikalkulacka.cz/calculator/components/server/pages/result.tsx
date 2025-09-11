@@ -3,8 +3,8 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, LayoutContent, LayoutHeader, MatchCard } from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { LayoutContent, LayoutHeader, MatchCard } from "../components";
 
 export type ResultPage = {
   result: ResultViewModel;

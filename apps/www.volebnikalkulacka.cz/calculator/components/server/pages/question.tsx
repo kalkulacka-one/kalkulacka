@@ -3,8 +3,8 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
-import { WithCondenseOnScroll } from "../../client/app-header-with-scroll";
-import { AppHeader, AppHeaderMain, AppHeaderRight, LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { AppHeader, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
