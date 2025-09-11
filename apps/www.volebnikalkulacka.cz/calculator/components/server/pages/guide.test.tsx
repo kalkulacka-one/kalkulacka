@@ -14,7 +14,6 @@ vi.mock("../components", () => ({
   Introduction: vi.fn(() => null),
   Guide: vi.fn(() => null),
   GuideNavigationCard: vi.fn(() => null),
-  HideOnEmbed: vi.fn(({ children }) => children),
   LayoutHeader: vi.fn(({ children }) => children),
   LayoutBottomNavigation: vi.fn(({ children }) => children),
   LayoutContent: vi.fn(({ children }) => children),
@@ -24,6 +23,10 @@ vi.mock("../components", () => ({
   AppHeaderBottom: vi.fn(({ children }) => children),
   AppHeaderBottomLeft: vi.fn(({ children }) => children),
   AppHeaderBottomMain: vi.fn(({ children }) => children),
+}));
+
+vi.mock("../../../../components/client", () => ({
+  HideOnEmbed: vi.fn(({ children }) => children),
 }));
 
 const data = {
