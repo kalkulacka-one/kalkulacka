@@ -20,7 +20,7 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
   try {
     await prisma.subscription.create({
       data: {
-        email: body.email,
+        email: parsed.data.email,
       },
     });
     return { success: true };
