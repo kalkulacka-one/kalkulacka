@@ -7,7 +7,7 @@ import { z } from "zod";
 import { subscribe } from "../../server/subscribe";
 
 const subscribeSchema = z.object({
-  email: z.string().email("Neplatný formát emailu"),
+  email: z.string().email("Neplatný formát"),
 });
 
 type SubscribeData = z.infer<typeof subscribeSchema>;
