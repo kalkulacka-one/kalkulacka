@@ -1,33 +1,46 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Description, Field, Input, Label } from "@repo/design-system/client";
+import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { subscribe } from "../../server/subscribe";
-import { type SubscribeBody, subscribeBodySchema } from "../../types/subscribe";
+
+const subscribeSchema = z.object({
+  email: z.string().email("Neplatný formát emailu"),
+});
+
+type SubscribeData = z.infer<typeof subscribeSchema>;
 
 export function SubscribeForm() {
+  const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState(false);
   const {
     register,
     handleSubmit,
     reset,
     setError,
     setFocus,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm<SubscribeBody>({
-    resolver: zodResolver(subscribeBodySchema),
+    formState: { errors, isSubmitting },
+  } = useForm<SubscribeData>({
+    resolver: zodResolver(subscribeSchema),
   });
 
-  const onSubmit: SubmitHandler<SubscribeBody> = async (data) => {
+  const onSubmit: SubmitHandler<SubscribeData> = async (data) => {
+    setIsSuccessfullySubmitted(false);
     try {
       const response = await subscribe(data);
       if (response.success) {
         reset();
-      } else if (response.error.code === "duplicate-email") {
+        setIsSuccessfullySubmitted(true);
+      } else {
+        setError("root.serverError", {
+          message: response.error,
+        });
+        setFocus("email");
       }
     } catch (error) {
       setError("root.serverError", {
-        type: "400",
-        message: `Chyba na serveru: ${error}`,
+        message: "Chyba při připojení k serveru. Zkuste to prosím později.",
       });
       setFocus("email");
     }
@@ -35,7 +48,7 @@ export function SubscribeForm() {
 
   return (
     <>
-      {isSubmitSuccessful ? (
+      {isSuccessfullySubmitted ? (
         <div>Děkujeme za vyplnění</div>
       ) : (
         <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -49,8 +62,8 @@ export function SubscribeForm() {
             <Button disabled={isSubmitting} type="submit" variant="outline" color="primary">
               {isSubmitting ? "Odesílám" : "Odeslat"}
             </Button>
-            {errors.root?.serverError && <Description className="text-sm">⚠️ {errors.root?.serverError.message}</Description>}
           </div>
+          {errors.root?.serverError && <Description className="text-sm text-center">⚠️ {errors.root?.serverError.message}</Description>}
           <p className="text-sm leading-[1.23]">Odesláním souhlasíte se zasíláním novinek o volební kalkulačce.</p>
         </form>
       )}

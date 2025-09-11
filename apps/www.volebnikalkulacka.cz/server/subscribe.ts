@@ -2,42 +2,34 @@
 
 import { prisma } from "@repo/database";
 import { PrismaClientKnownRequestError } from "@repo/database/library";
+import { z } from "zod";
 
-import { type SubscribeBody, subscribeBodySchema } from "../types/subscribe";
-import { type EmptyObject, type GenericResponse, resultBasicError, resultSuccess } from "../utils/genericResponse";
+const subscribeBodySchema = z.object({
+  email: z.string().email("Neplatný formát"),
+});
 
-export async function subscribe(body: SubscribeBody): Promise<GenericResponse<EmptyObject>> {
-  // validation wrapper
+type SubscribeBody = z.infer<typeof subscribeBodySchema>;
+
+export async function subscribe(body: SubscribeBody): Promise<{ success: true } | { success: false; error: string }> {
   const parsed = subscribeBodySchema.safeParse(body);
+
   if (!parsed.success) {
-    const issues = parsed.error.issues.map((issue) => issue.message);
-    return resultBasicError({
-      type: "Invalid data",
-      code: "not-implemented",
-      message: `Validation issue: ${issues}`,
-    });
+    return { success: false, error: parsed.error.errors[0]?.message || "Neplatná data" };
   }
+
   try {
     await prisma.subscription.create({
       data: {
         email: body.email,
       },
     });
-    return resultSuccess({});
+    return { success: true };
   } catch (error) {
-    // catching errors wrapper
+    // Treat duplicate email as success to avoid information leakage
     if (error instanceof PrismaClientKnownRequestError && error.code === "P2002") {
-      return resultBasicError({
-        type: "Duplicate email",
-        code: "duplicate-email",
-        message: "Email already subscribed",
-      });
+      return { success: true };
     }
-    // error unexpected
-    return resultBasicError({
-      type: "Unexpected error",
-      code: "not-implemented",
-      message: "Unexpected error",
-    });
+
+    return { success: false, error: "Chyba při ukládání. Zkuste to prosím později." };
   }
 }
