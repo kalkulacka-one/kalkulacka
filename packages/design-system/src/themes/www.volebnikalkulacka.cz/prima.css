@@ -1,9 +1,8 @@
 :root {
-
-  --ko-palette-primary: #003C76;
-  --ko-palette-secondary: #D3161E;
-  --ko-palette-neutral: #4F5862;
-  --ko-palette-red: #D3161E;
-  --ko-palette-yellow: #FFD400;
+  --ko-palette-primary: #003c76;
+  --ko-palette-secondary: #d3161e;
+  --ko-palette-neutral: #4f5862;
+  --ko-palette-red: #d3161e;
+  --ko-palette-yellow: #ffd400;
   --ko-palette-green: #009826;
 }
