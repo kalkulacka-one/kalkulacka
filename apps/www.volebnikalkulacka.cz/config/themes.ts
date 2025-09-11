@@ -1,3 +1,3 @@
-export const themeNames = ["default", "alarm", "prima"] as const;
+export const themeNames = ["default", "diky-ze-muzem", "alarm", "prima"] as const;
 
 export type ThemeName = (typeof themeNames)[number];

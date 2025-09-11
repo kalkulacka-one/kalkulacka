@@ -1,19 +1,10 @@
 import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
+import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
-import {
-  AppHeader,
-  AppHeaderBottom,
-  AppHeaderBottomMain,
-  AppHeaderMain,
-  AppHeaderRight,
-  Introduction,
-  IntroductionNavigationCard,
-  LayoutBottomNavigation,
-  LayoutContent,
-  LayoutHeader,
-} from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
+import { Introduction, IntroductionNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
 
 export type IntroductionPage = {
   calculator: CalculatorViewModel;
@@ -25,12 +16,14 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick }: Intr
   return (
     <>
       <LayoutHeader>
-        <AppHeader>
+        <AppHeader logoTitle="Volební kalkulačka">
           <AppHeaderMain title="Volební kalkulačka" tertiaryTitle="Sněmovní volby 2025" />
           <AppHeaderRight>
-            <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
-              <Icon icon={mdiClose} size="medium" decorative />
-            </Button>
+            <HideOnEmbed>
+              <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+                <Icon icon={mdiClose} size="medium" decorative />
+              </Button>
+            </HideOnEmbed>
           </AppHeaderRight>
           <AppHeaderBottom>
             <AppHeaderBottomMain>

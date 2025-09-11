@@ -1,20 +1,10 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
+import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
-import {
-  AppHeader,
-  AppHeaderBottom,
-  AppHeaderBottomLeft,
-  AppHeaderBottomMain,
-  AppHeaderMain,
-  AppHeaderRight,
-  Guide,
-  GuideNavigationCard,
-  LayoutBottomNavigation,
-  LayoutContent,
-  LayoutHeader,
-} from "../components";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
+import { Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
@@ -27,12 +17,14 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }
   return (
     <>
       <LayoutHeader>
-        <AppHeader>
+        <AppHeader logoTitle="Volební kalkulačka">
           <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
           <AppHeaderRight>
-            <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
-              <Icon icon={mdiClose} size="medium" decorative />
-            </Button>
+            <HideOnEmbed>
+              <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+                <Icon icon={mdiClose} size="medium" decorative />
+              </Button>
+            </HideOnEmbed>
           </AppHeaderRight>
           <AppHeaderBottom>
             <AppHeaderBottomLeft condensed={false}>

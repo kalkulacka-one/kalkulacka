@@ -17,12 +17,19 @@ vi.mock("../components", () => ({
   LayoutHeader: vi.fn(({ children }) => children),
   LayoutBottomNavigation: vi.fn(({ children }) => children),
   LayoutContent: vi.fn(({ children }) => children),
+}));
+
+vi.mock("../../client", () => ({
   AppHeader: vi.fn(({ children }) => children),
   AppHeaderMain: vi.fn(() => null),
   AppHeaderRight: vi.fn(({ children }) => children),
   AppHeaderBottom: vi.fn(({ children }) => children),
   AppHeaderBottomLeft: vi.fn(({ children }) => children),
   AppHeaderBottomMain: vi.fn(({ children }) => children),
+}));
+
+vi.mock("../../../../components/client", () => ({
+  HideOnEmbed: vi.fn(({ children }) => children),
 }));
 
 const data = {
