@@ -9,7 +9,7 @@ export type Introduction = {
 export function Introduction({ calculator }: Introduction) {
   const { intro } = calculator;
   return (
-    <div className="grid gap-1 max-w-prose">
+    <div className="grid gap-2 max-w-prose">
       <Markdown
         allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]}
         skipHtml
