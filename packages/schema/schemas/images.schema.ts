@@ -46,6 +46,9 @@ export const imageSchema = z
   .object({
     type: z.enum(["avatar", "logo", "portrait", "opengraph", "twitter"]).describe("Type of the image"),
     urls: imageUrlsSchema,
+    width: z.number().int().min(1).describe("Width of the original image in pixels").optional(),
+    height: z.number().int().min(1).describe("Height of the original image in pixels").optional(),
+    alt: z.string().describe("Alternative text for the image, used for accessibility").optional(),
   })
   .describe("Specification of an image")
   .strict();
