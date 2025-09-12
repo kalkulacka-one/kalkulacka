@@ -30,22 +30,22 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
 
 function getRespondentValue(candidateId: string, candidatesAnswers: CandidatesAnswers): string {
   const candidateAnswers = candidatesAnswers[candidateId];
-  
+
   if (!candidateAnswers || candidateAnswers.length === 0) {
     return "candidate";
   }
-  
+
   const respondentValues = new Set<string>();
-  
+
   for (const answer of candidateAnswers) {
     const respondent = answer.respondent || "candidate";
     respondentValues.add(respondent);
   }
-  
+
   if (respondentValues.size > 1) {
     return "mixed";
   }
-  
+
   return Array.from(respondentValues)[0] || "candidate";
 }
 
@@ -60,7 +60,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
 
     const order = match !== undefined ? topLevelAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === candidate.id) + 1 : undefined;
-    
+
     const respondent = getRespondentValue(candidate.id, candidatesAnswers);
 
     let nestedMatches: CandidateMatchViewModel[] | undefined;
@@ -74,7 +74,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
 
         const nestedOrder =
           nestedMatch !== undefined ? nestedAlgorithmMatches.filter((match) => match.match !== undefined).findIndex((validMatch) => validMatch.id === nestedCandidate.id) + 1 : undefined;
-        
+
         const nestedRespondent = getRespondentValue(nestedCandidate.id, candidatesAnswers);
 
         return {

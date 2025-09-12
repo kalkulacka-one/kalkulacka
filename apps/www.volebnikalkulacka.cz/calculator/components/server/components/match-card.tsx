@@ -23,7 +23,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
           <div className="grid gap-1">
             <h3 className="text-xl font-bold leading-tight">{candidate.displayName}</h3>
             {candidate.organization && <p className="text-sm">{candidate.organization}</p>}
-            {respondent === "expert" && <p className="text-xs text-gray-500">Postoje podle veřejných zdrojů,<br/> strana neodpověděla na zaslané otázky.</p>}
+            {respondent === "expert" && (
+              <p className="text-xs text-gray-500">
+                Postoje podle veřejných zdrojů,
+                <br /> strana neodpověděla na zaslané otázky.
+              </p>
+            )}
           </div>
           <div>
             <span className="text-3xl font-bold">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
