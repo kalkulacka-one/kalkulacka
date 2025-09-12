@@ -7,6 +7,7 @@ import { type Organizations, organizationsSchema } from "../../../../../packages
 import { type Persons, personsSchema } from "../../../../../packages/schema/schemas/persons.schema";
 import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
 import { fetchFile, parseWithSchema } from ".";
+import { buildDataUrl } from "./url-builders";
 
 const DATA_CONFIG = {
   calculator: {
@@ -49,24 +50,9 @@ export type CalculatorData = {
 };
 
 export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
-  const endpoint = process.env.DATA_ENDPOINT;
-  if (!endpoint) throw new Error("Missing `DATA_ENDPOINT` environment variable");
-
-  let baseUrl: URL;
-  try {
-    baseUrl = new URL(endpoint.replace(/\/$/, ""));
-  } catch {
-    throw new Error("Invalid `DATA_ENDPOINT` environment variable");
-  }
-
-  const dataPath = group ? `${key}/${group}` : key;
-  const basePath = baseUrl.pathname === "/" ? "" : baseUrl.pathname.slice(1);
-  const fullPath = basePath ? `${basePath}/${dataPath}` : dataPath;
-  const dataUrl = new URL(fullPath, baseUrl.origin);
-
-  const fileEntries = Object.entries(DATA_CONFIG).map(([key, config]) => ({
-    key,
-    url: new URL(config.filename, `${dataUrl}/`).toString(),
+  const fileEntries = Object.entries(DATA_CONFIG).map(([entryKey, config]) => ({
+    key: entryKey,
+    url: buildDataUrl({ key, group, resourcePath: config.filename }),
     schema: config.schema,
     required: "required" in config && config.required,
   }));
