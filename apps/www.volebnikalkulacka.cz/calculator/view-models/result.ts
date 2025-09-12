@@ -36,7 +36,12 @@ function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<strin
 
   const respondents = new Set(answers.map((answer) => answer.respondent));
 
-  return respondents.size > 1 ? "mixed" : (respondents.values().next().value ?? "candidate");
+  if (respondents.size > 1) {
+    return "mixed";
+  } else {
+    const value = respondents.values().next().value;
+    return value !== undefined ? value : "candidate";
+  }
 }
 
 export function resultViewModel(
