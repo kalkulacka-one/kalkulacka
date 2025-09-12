@@ -5,7 +5,7 @@ import { calculateMatches } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
 import { type CandidateViewModel, candidateViewModel } from "./candidate";
-import { type CandidateAnswersViewModel, candidateAnswersViewModel } from "./candidate-answers";
+import { type CandidateAnswersViewModel, type CandidateAnswerViewModel, candidateAnswersViewModel } from "./candidate-answers";
 import { organizationViewModel } from "./organization";
 import { personViewModel } from "./person";
 
@@ -13,6 +13,7 @@ export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
   match?: number;
   order?: number;
+  candidateAnswers: CandidateAnswerViewModel[];
   nestedMatches?: CandidateMatchViewModel[];
 };
 
@@ -27,7 +28,12 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   return [...withOrder, ...withoutOrder];
 }
 
-export function resultViewModel(answers: Answer[], candidates: CandidateViewModel[], candidatesAnswers: CandidateAnswersViewModel): ResultViewModel {
+export function resultViewModel(
+  answers: Answer[],
+  candidates: CandidateViewModel[],
+  candidatesAnswers: CandidateAnswersViewModel,
+  candidatesAnswersMap: Map<string, CandidateAnswerViewModel[]>,
+): ResultViewModel {
   const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
 
   const topLevelIds = candidates.map((candidate) => candidate.id);
@@ -55,6 +61,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
           candidate: nestedCandidate,
           match: nestedMatch,
           order: nestedOrder,
+          candidateAnswers: candidatesAnswersMap.get(nestedCandidate.id) || [],
         };
       });
 
@@ -65,6 +72,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
       candidate,
       match,
       order,
+      candidateAnswers: candidatesAnswersMap.get(candidate.id) || [],
       nestedMatches,
     };
   });
@@ -81,6 +89,10 @@ export function useResultViewModel(options?: { showOnlyNested?: boolean }): Resu
 
   const personsMap = useMemo(() => new Map(personsData?.map((person) => [person.id, personViewModel(person)]) ?? []), [personsData]);
   const organizationsMap = useMemo(() => new Map(organizationsData?.map((organization) => [organization.id, organizationViewModel(organization)]) ?? []), [organizationsData]);
+  const candidatesAnswersMap = useMemo(() => {
+    const candidatesAnswers = candidateAnswersViewModel(candidatesAnswersData);
+    return new Map(Object.entries(candidatesAnswers));
+  }, [candidatesAnswersData]);
 
   const candidatesData = options?.showOnlyNested ? allCandidatesData.flatMap((candidate) => candidate.nestedCandidates || []) : allCandidatesData;
 
@@ -88,5 +100,5 @@ export function useResultViewModel(options?: { showOnlyNested?: boolean }): Resu
 
   const candidatesAnswers = useMemo(() => candidateAnswersViewModel(candidatesAnswersData), [candidatesAnswersData]);
 
-  return useMemo(() => resultViewModel(answersData, candidates, candidatesAnswers), [answersData, candidates, candidatesAnswers]);
+  return useMemo(() => resultViewModel(answersData, candidates, candidatesAnswers, candidatesAnswersMap), [answersData, candidates, candidatesAnswers, candidatesAnswersMap]);
 }
