@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import { useCalculatorStore } from "../stores";
 import { type CandidateAnswer, type CandidateAnswerViewModel, candidateAnswerViewModel } from "./candidate-answer";
 
-export type CandidateAnswersViewModel = Record<string, CandidateAnswerViewModel[]>;
+export type CandidatesAnswersViewModel = Record<string, CandidateAnswerViewModel[]>;
 
-export function candidateAnswersViewModel(candidatesAnswers: Record<string, CandidateAnswer[]>): CandidateAnswersViewModel {
-  const viewModel: CandidateAnswersViewModel = {};
+export function candidatesAnswersViewModel(candidatesAnswers: Record<string, CandidateAnswer[]>): CandidatesAnswersViewModel {
+  const viewModel: CandidatesAnswersViewModel = {};
 
   for (const [candidateId, answers] of Object.entries(candidatesAnswers)) {
     viewModel[candidateId] = answers.map(candidateAnswerViewModel);
@@ -15,7 +15,7 @@ export function candidateAnswersViewModel(candidatesAnswers: Record<string, Cand
   return viewModel;
 }
 
-export function useCandidateAnswers(): CandidateAnswersViewModel {
+export function useCandidatesAnswers(): CandidatesAnswersViewModel {
   const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
   return useMemo(() => {
     const filteredCandidatesAnswers: Record<string, CandidateAnswer[]> = {};
@@ -24,6 +24,6 @@ export function useCandidateAnswers(): CandidateAnswersViewModel {
       filteredCandidatesAnswers[candidateId] = answers.filter((answer): answer is CandidateAnswer => answer.respondent === "candidate" || answer.respondent === "expert");
     }
 
-    return candidateAnswersViewModel(filteredCandidatesAnswers);
+    return candidatesAnswersViewModel(filteredCandidatesAnswers);
   }, [candidatesAnswers]);
 }

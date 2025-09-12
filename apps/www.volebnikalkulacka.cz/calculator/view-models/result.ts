@@ -5,7 +5,8 @@ import { calculateMatches } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
 import { type CandidateViewModel, candidateViewModel } from "./candidate";
-import { type CandidateAnswersViewModel, type CandidateAnswerViewModel, candidateAnswersViewModel } from "./candidates-answers";
+import type { CandidateAnswer, CandidateAnswerViewModel } from "./candidate-answer";
+import { type CandidatesAnswersViewModel, candidatesAnswersViewModel } from "./candidate-answers";
 import { organizationViewModel } from "./organization";
 import { personViewModel } from "./person";
 
@@ -42,12 +43,8 @@ function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<strin
   return respondents.values().next().value ?? "candidate";
 }
 
-export function resultViewModel(
-  answers: Answer[],
-  candidates: CandidateViewModel[],
-  candidatesAnswers: CandidateAnswersViewModel,
-  candidatesAnswersMap: Map<string, CandidateAnswerViewModel[]>,
-): ResultViewModel {
+export function resultViewModel(answers: Answer[], candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswersViewModel): ResultViewModel {
+  const candidatesAnswersMap = new Map(Object.entries(candidatesAnswers));
   const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswers);
 
   const topLevelIds = candidates.map((candidate) => candidate.id);
@@ -105,16 +102,21 @@ export function useResultViewModel(options?: { showOnlyNested?: boolean }): Resu
 
   const personsMap = useMemo(() => new Map(personsData?.map((person) => [person.id, personViewModel(person)]) ?? []), [personsData]);
   const organizationsMap = useMemo(() => new Map(organizationsData?.map((organization) => [organization.id, organizationViewModel(organization)]) ?? []), [organizationsData]);
-  const candidatesAnswersMap = useMemo(() => {
-    const candidatesAnswers = candidateAnswersViewModel(candidatesAnswersData);
-    return new Map(Object.entries(candidatesAnswers));
+  const filteredCandidatesAnswers = useMemo(() => {
+    const filtered: Record<string, CandidateAnswer[]> = {};
+
+    for (const [candidateId, answers] of Object.entries(candidatesAnswersData)) {
+      filtered[candidateId] = answers.filter((answer): answer is CandidateAnswer => answer.respondent === "candidate" || answer.respondent === "expert");
+    }
+
+    return filtered;
   }, [candidatesAnswersData]);
 
   const candidatesData = options?.showOnlyNested ? allCandidatesData.flatMap((candidate) => candidate.nestedCandidates || []) : allCandidatesData;
 
   const candidates = useMemo(() => candidatesData.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap)), [candidatesData, personsMap, organizationsMap]);
 
-  const candidatesAnswers = useMemo(() => candidateAnswersViewModel(candidatesAnswersData), [candidatesAnswersData]);
+  const candidatesAnswers = useMemo(() => candidatesAnswersViewModel(filteredCandidatesAnswers), [filteredCandidatesAnswers]);
 
-  return useMemo(() => resultViewModel(answersData, candidates, candidatesAnswers, candidatesAnswersMap), [answersData, candidates, candidatesAnswers, candidatesAnswersMap]);
+  return useMemo(() => resultViewModel(answersData, candidates, candidatesAnswers), [answersData, candidates, candidatesAnswers]);
 }
