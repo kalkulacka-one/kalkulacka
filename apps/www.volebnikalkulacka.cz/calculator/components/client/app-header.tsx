@@ -15,7 +15,7 @@ type AppHeaderProps = {
 };
 
 export function AppHeader({ children, condensed = false, logoTitle }: AppHeaderProps) {
-  const { isEmbed } = useEmbed();
+  const { logo } = useEmbed();
   const hasPageHeading = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === AppHeaderBottom);
 
   const expand = hasPageHeading && !condensed;
@@ -39,7 +39,7 @@ export function AppHeader({ children, condensed = false, logoTitle }: AppHeaderP
   return (
     <header className="sticky top-0 bg-white/60 backdrop-blur-md p-4 grid gap-4 items-center @container" style={headerStyles}>
       <div style={logoStyles}>
-        <Logo title={logoTitle} size="medium" monochrome={isEmbed} />
+        <Logo title={logoTitle} size="medium" monochrome={logo === "monochrome"} />
       </div>
       {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, { ...(child.props || {}), condensed }) : child))}
     </header>

@@ -2,13 +2,14 @@ import type { ThemeName } from "./themes";
 
 export type EmbedConfig = {
   theme: ThemeName;
+  logo?: "monochrome";
 };
 
 export const embedsConfig = {
   default: { theme: "default" },
   "diky-ze-muzem": { theme: "diky-ze-muzem" },
-  alarm: { theme: "alarm" },
-  prima: { theme: "prima" },
+  alarm: { theme: "alarm", logo: "monochrome" },
+  prima: { theme: "prima", logo: "monochrome" },
   idnes: { theme: "default" },
   nova: { theme: "default" },
   e15: { theme: "default" },
@@ -18,6 +19,7 @@ export const embedsConfig = {
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
+export type EmbedLogo = "monochrome" | undefined;
 
 export function isEmbedName(name: string): name is EmbedName {
   return Object.hasOwn(embedsConfig, name);
