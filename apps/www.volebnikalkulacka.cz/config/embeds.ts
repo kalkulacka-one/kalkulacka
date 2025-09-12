@@ -14,6 +14,7 @@ export const embedsConfig = {
   e15: { theme: "default" },
   reflex: { theme: "default" },
   blesk: { theme: "default" },
+  denik: { theme: "default" },
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
