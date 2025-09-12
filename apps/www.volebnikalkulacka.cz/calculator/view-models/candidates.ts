@@ -14,7 +14,7 @@ export function candidatesViewModel(
   return candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
 }
 
-export function useCandidatesViewModel(): CandidateViewModel[] {
+export function useCandidates(): CandidateViewModel[] {
   const candidates = useCalculatorStore((state) => state.candidates);
   const persons = useCalculatorStore((state) => state.persons);
   const organizations = useCalculatorStore((state) => state.organizations);

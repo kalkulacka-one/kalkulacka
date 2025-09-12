@@ -16,7 +16,7 @@ export function questionsViewModel(questions: Question[]): QuestionsViewModel {
   };
 }
 
-export function useQuestionsViewModel(): QuestionsViewModel {
+export function useQuestions(): QuestionsViewModel {
   const questions = useCalculatorStore((state) => state.questions);
   return useMemo(() => questionsViewModel(questions), [questions]);
 }

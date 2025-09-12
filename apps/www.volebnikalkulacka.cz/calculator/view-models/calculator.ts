@@ -9,7 +9,7 @@ export function calculatorViewModel(calculator: Calculator): CalculatorViewModel
   return calculator;
 }
 
-export function useCalculatorViewModel(): CalculatorViewModel {
+export function useCalculator(): CalculatorViewModel {
   const calculator = useCalculatorStore((s) => s.calculator);
   return useMemo(() => calculatorViewModel(calculator), [calculator]);
 }

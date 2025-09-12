@@ -2,15 +2,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { ResultPage as AppResultPage } from "../../../../calculator/components/server";
-import { useCalculatorViewModel, useResultViewModel } from "../../../../calculator/view-models";
+import { useCalculator, useResult } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
   const router = useRouter();
-  const calculator = useCalculatorViewModel();
+  const calculator = useCalculator();
 
-  const result = useResultViewModel({ showOnlyNested });
+  const result = useResult({ showOnlyNested });
 
   const handlePreviousClick = () => {
     router.push(routes.review(segments));

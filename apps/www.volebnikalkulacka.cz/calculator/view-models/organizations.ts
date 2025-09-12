@@ -8,7 +8,7 @@ export function organizationsViewModel(organizations: Organization[] | undefined
   return organizations?.map(organizationViewModel) ?? [];
 }
 
-export function useOrganizationsViewModel(): OrganizationViewModel[] {
+export function useOrganizations(): OrganizationViewModel[] {
   const organizations = useCalculatorStore((state) => state.organizations);
   return useMemo(() => organizationsViewModel(organizations), [organizations]);
 }

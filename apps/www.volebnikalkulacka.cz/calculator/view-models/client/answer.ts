@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useAnswersStore } from "../../stores/answers";
 import { type AnswerViewModel, answerViewModel } from "../server/answer";
 
-export function useAnswerViewModel(questionId: string): AnswerViewModel {
+export function useAnswer(questionId: string): AnswerViewModel {
   const setAnswer = useAnswersStore((state) => state.setAnswer);
   const answers = useAnswersStore((state) => state.answers);
 

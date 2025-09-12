@@ -98,7 +98,7 @@ export function resultViewModel(
   return { matches: sortByOrder(matches) };
 }
 
-export function useResultViewModel(options?: { showOnlyNested?: boolean }): ResultViewModel {
+export function useResult(options?: { showOnlyNested?: boolean }): ResultViewModel {
   const answersData = useAnswersStore((state) => state.answers);
   const allCandidatesData = useCalculatorStore((state) => state.candidates);
   const personsData = useCalculatorStore((state) => state.persons);
