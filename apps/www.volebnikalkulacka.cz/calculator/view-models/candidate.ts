@@ -1,7 +1,10 @@
 import { useMemo } from "react";
 
+import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
+import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
 import type { Candidate } from "../../../../packages/schema/schemas/candidate.schema";
 import { useCalculatorStore } from "../stores";
+import { useAnswersStore } from "../stores/answers";
 import { organizationViewModel } from "./organization";
 import { personViewModel } from "./person";
 
@@ -79,4 +82,62 @@ export function useCandidate(id: string): CandidateViewModel | undefined {
     const candidate = candidates.find((candidate) => candidate.id === id);
     return candidate ? candidateViewModel(candidate, personsMap, organizationsMap) : undefined;
   }, [candidates, personsMap, organizationsMap, id]);
+}
+
+export type AnswerComparison = {
+  questionId: string;
+  questionText?: string;
+  userAnswer: boolean | null | undefined;
+  candidateAnswer: boolean | null | undefined;
+  isImportant?: boolean;
+};
+
+export function getCandidateAnswerComparison(
+  candidateId: string,
+  userAnswers: Answer[],
+  candidatesAnswers: CandidatesAnswers,
+  questions: any[] = [],
+): AnswerComparison[] {
+  const candidateAnswers = candidatesAnswers[candidateId] || [];
+
+  // Create maps for quick lookup
+  const userAnswersMap = new Map(userAnswers.map((answer) => [answer.questionId, answer]));
+  const candidateAnswersMap = new Map(candidateAnswers.map((answer) => [answer.questionId, answer]));
+
+  // Iterate over the original questions array to preserve order
+  return questions.map((question) => {
+    const questionId = question.id;
+    const userAnswer = userAnswersMap.get(questionId);
+    const candidateAnswer = candidateAnswersMap.get(questionId);
+
+    return {
+      questionId,
+      questionText: question?.statement || question?.title || questionId,
+      userAnswer: userAnswer?.answer,
+      candidateAnswer: candidateAnswer?.answer,
+      isImportant: userAnswer?.isImportant,
+    };
+  });
+}
+
+export function useCandidateAnswerComparison(candidateId: string): AnswerComparison[] {
+  const userAnswers = useAnswersStore((state) => state.answers);
+  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
+  const questions = useCalculatorStore((state) => state.questions);
+  
+  return useMemo(() => {
+    return getCandidateAnswerComparison(candidateId, userAnswers, candidatesAnswers, questions);
+  }, [candidateId, userAnswers, candidatesAnswers, questions]);
+}
+
+export function hasDirectAnswers(candidateId: string, candidatesAnswers: CandidatesAnswers): boolean {
+  return candidateId in candidatesAnswers && (candidatesAnswers[candidateId]?.length ?? 0) > 0;
+}
+
+export function useHasDirectAnswers(candidateId: string): boolean {
+  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
+  
+  return useMemo(() => {
+    return hasDirectAnswers(candidateId, candidatesAnswers);
+  }, [candidateId, candidatesAnswers]);
 }
