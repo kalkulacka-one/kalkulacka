@@ -14,7 +14,7 @@
         "title": "Image type",
         "description": "Type of the image",
         "type": "string",
-        "enum": ["avatar", "logo", "portrait"],
+        "enum": ["avatar", "logo", "portrait", "opengraph", "twitter"],
         "examples": ["avatar"]
       },
       "urls": {
