@@ -38,7 +38,7 @@ export function AppHeader({ children, condensed = false, logoTitle }: AppHeaderP
   };
 
   return (
-    <header className="sticky top-0 bg-white/60 backdrop-blur-md p-4 grid gap-4 items-center @container" style={headerStyles}>
+    <header className="sticky top-0 bg-white/60 backdrop-blur-md p-4 flex flex-wrap justify-between sm:grid gap-4 items-center @container" style={headerStyles}>
       <div style={logoStyles}>
         <Logo title={logoTitle} size="medium" monochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
       </div>
@@ -63,7 +63,7 @@ type AppHeaderMainProps = {
 
 export function AppHeaderMain({ children, title, calculator }: AppHeaderMainProps) {
   return (
-    <div style={{ gridArea: "main" }} className="grid text-sm leading-none">
+    <div style={{ gridArea: "main" }} className="flex-1 sm:grid text-sm leading-none">
       <h1 className="font-light">{title}</h1>
       <div>
         <h2 className="font-semibold inline">{calculator?.title}</h2>
@@ -88,7 +88,7 @@ type AppHeaderBottomProps = {
 };
 
 export function AppHeaderBottom({ children }: AppHeaderBottomProps) {
-  return <div style={{ display: "contents" }}>{children}</div>;
+  return <div className="flex items-center sm:[display:contents]">{children}</div>;
 }
 
 type AppHeaderBottomLeftProps = {
@@ -113,8 +113,11 @@ type AppHeaderBottomMainProps = {
 export function AppHeaderBottomMain({ children, condensed }: AppHeaderBottomMainProps) {
   const bottomMainStyles = {
     gridArea: "bottom-main",
-    display: condensed ? "none" : "block",
   };
 
-  return <div style={bottomMainStyles}>{children}</div>;
+  return (
+    <div className={`${condensed ? "block sm:hidden" : "block"}`} style={bottomMainStyles}>
+      {children}
+    </div>
+  );
 }
