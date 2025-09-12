@@ -1,13 +1,8 @@
 import { Card, ProgressBar } from "@repo/design-system/server";
 
-import type { CandidateViewModel } from "../../../view-models";
+import type { CandidateMatchViewModel } from "../../../view-models";
 
-export type MatchCard = {
-  candidate: CandidateViewModel;
-  order?: number;
-  match?: number;
-  respondent?: string;
-};
+export type MatchCard = CandidateMatchViewModel;
 
 export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   return (
