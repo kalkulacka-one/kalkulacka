@@ -85,7 +85,7 @@ export function resultViewModel(answers: Answer[], candidates: CandidateViewMode
         };
       });
 
-      nestedMatches = nestedMatches ? sortByOrder(nestedMatches) : undefined;
+      nestedMatches = sortByOrder(nestedMatches);
     }
 
     return {
