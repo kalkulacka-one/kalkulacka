@@ -106,7 +106,7 @@ export function useResultViewModel(options?: { showOnlyNested?: boolean }): Resu
     const filtered: Record<string, CandidateAnswer[]> = {};
 
     for (const [candidateId, answers] of Object.entries(candidatesAnswersData)) {
-      filtered[candidateId] = answers.filter((answer): answer is CandidateAnswer => answer.respondent === "candidate" || answer.respondent === "expert");
+      filtered[candidateId] = answers.filter((answer): answer is CandidateAnswer => answer.respondent === "candidate" || answer.respondent === "expert" || answer.respondent === undefined);
     }
 
     return filtered;
