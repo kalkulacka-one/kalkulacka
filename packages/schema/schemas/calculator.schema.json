@@ -166,6 +166,9 @@
     },
     "tags": {
       "$ref": "#/$defs/tags"
+    },
+    "images": {
+      "$ref": "#/$defs/images"
     }
   },
   "unevaluatedProperties": false,
