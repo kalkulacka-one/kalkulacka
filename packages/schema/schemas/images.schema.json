@@ -80,6 +80,20 @@
         },
         "additionalProperties": false,
         "required": ["original"]
+      },
+      "width": {
+        "title": "Image width",
+        "description": "Width of the original image in pixels",
+        "type": "integer",
+        "minimum": 1,
+        "examples": [800]
+      },
+      "height": {
+        "title": "Image height",
+        "description": "Height of the original image in pixels",
+        "type": "integer",
+        "minimum": 1,
+        "examples": [800]
       }
     },
     "unevaluatedProperties": false,
