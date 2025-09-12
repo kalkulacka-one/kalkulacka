@@ -19,7 +19,6 @@ export const embedsConfig = {
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
-export type EmbedLogo = "monochrome" | undefined;
 
 export function isEmbedName(name: string): name is EmbedName {
   return Object.hasOwn(embedsConfig, name);
