@@ -38,10 +38,8 @@ function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<strin
 
   if (respondents.size > 1) {
     return "mixed";
-  } else {
-    const value = respondents.values().next().value;
-    return value !== undefined ? value : "candidate";
   }
+  return respondents.values().next().value ?? "candidate";
 }
 
 export function resultViewModel(
