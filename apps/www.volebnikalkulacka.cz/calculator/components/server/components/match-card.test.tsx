@@ -16,6 +16,8 @@ describe("MatchCard", () => {
     candidate: mockCandidate,
     order: 1,
     match: 85,
+    respondent: "candidate" as const,
+    candidateAnswers: [],
   };
 
   it("renders candidate information", () => {
