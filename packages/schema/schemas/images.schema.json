@@ -94,6 +94,12 @@
         "type": "integer",
         "minimum": 1,
         "examples": [800]
+      },
+      "alt": {
+        "title": "Alternative text",
+        "description": "Alternative text for the image, used for accessibility",
+        "type": "string",
+        "examples": ["Portrét Andreje Babiše"]
       }
     },
     "unevaluatedProperties": false,
