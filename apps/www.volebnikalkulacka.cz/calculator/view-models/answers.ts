@@ -18,7 +18,7 @@ export function answersViewModel(answers: Answer[], setAnswer: AnswersStore["set
   };
 }
 
-export function useAnswersViewModel(): AnswersViewModel {
+export function useAnswers(): AnswersViewModel {
   const answers = useAnswersStore((state) => state.answers);
   const setAnswer = useAnswersStore((state) => state.setAnswer);
   const clearAnswers = useAnswersStore((state) => state.clearAnswers);

@@ -1,18 +1,10 @@
 import { useMemo } from "react";
 
-import type { Candidate } from "../../../../packages/schema/schemas/candidate.schema";
-import { useCalculatorStore } from "../stores";
-import { type CandidateViewModel, candidateViewModel } from "./candidate";
-import { organizationViewModel } from "./organization";
-import { personViewModel } from "./person";
-
-export function candidatesViewModel(
-  candidates: Candidate[],
-  personsMap: Map<string, ReturnType<typeof personViewModel>>,
-  organizationsMap: Map<string, ReturnType<typeof organizationViewModel>>,
-): CandidateViewModel[] {
-  return candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
-}
+import { useCalculatorStore } from "../../stores";
+import type { CandidateViewModel } from "../server/candidate";
+import { candidatesViewModel } from "../server/candidates";
+import { organizationViewModel } from "../server/organization";
+import { personViewModel } from "../server/person";
 
 export function useCandidates(): CandidateViewModel[] {
   const candidates = useCalculatorStore((state) => state.candidates);

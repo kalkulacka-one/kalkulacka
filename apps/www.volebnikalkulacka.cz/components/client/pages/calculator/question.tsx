@@ -1,13 +1,13 @@
 import { notFound, useRouter } from "next/navigation";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
-import { useAnswerViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswer, useCalculator, useQuestions } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
-  const calculator = useCalculatorViewModel();
-  const { questions, total } = useQuestionsViewModel();
+  const calculator = useCalculator();
+  const { questions, total } = useQuestions();
   const question = questions[current - 1];
 
   if (!question) {
@@ -34,7 +34,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     router.push("/");
   };
 
-  const answer = useAnswerViewModel(question.id);
+  const answer = useAnswer(question.id);
 
   return (
     <div>

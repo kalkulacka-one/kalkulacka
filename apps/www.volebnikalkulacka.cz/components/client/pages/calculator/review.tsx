@@ -1,14 +1,14 @@
 import { useRouter } from "next/navigation";
 
 import { ReviewPage as AppReviewPage } from "../../../../calculator/components/server";
-import { useAnswersViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswers, useCalculator, useQuestions } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
-  const calculator = useCalculatorViewModel();
-  const questions = useQuestionsViewModel();
-  const answers = useAnswersViewModel();
+  const calculator = useCalculator();
+  const questions = useQuestions();
+  const answers = useAnswers();
 
   const handleNextClick = () => {
     router.push(routes.result(segments));

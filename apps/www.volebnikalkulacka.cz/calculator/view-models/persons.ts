@@ -8,7 +8,7 @@ export function personsViewModel(persons: Person[] | undefined): PersonViewModel
   return persons?.map(personViewModel) ?? [];
 }
 
-export function usePersonsViewModel(): PersonViewModel[] {
+export function usePersons(): PersonViewModel[] {
   const persons = useCalculatorStore((state) => state.persons);
   return useMemo(() => personsViewModel(persons), [persons]);
 }
