@@ -5,7 +5,7 @@ import { calculateMatches } from "../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../stores/answers";
 import { useCalculatorStore } from "../stores/calculator";
 import { type CandidateViewModel, candidateViewModel } from "./candidate";
-import { type CandidateAnswersViewModel, type CandidateAnswerViewModel, candidateAnswersViewModel } from "./candidate-answers";
+import { type CandidateAnswersViewModel, type CandidateAnswerViewModel, candidateAnswersViewModel } from "./candidates-answers";
 import { organizationViewModel } from "./organization";
 import { personViewModel } from "./person";
 
