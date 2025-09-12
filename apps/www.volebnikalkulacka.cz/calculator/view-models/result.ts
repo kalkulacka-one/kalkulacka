@@ -13,6 +13,7 @@ export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
   match?: number;
   order?: number;
+  respondent: "candidate" | "expert" | "mixed";
   candidateAnswers: CandidateAnswerViewModel[];
   nestedMatches?: CandidateMatchViewModel[];
 };
@@ -26,6 +27,16 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   const withoutOrder = items.filter((item) => item.order === undefined);
   withOrder.sort((a, b) => a.order - b.order);
   return [...withOrder, ...withoutOrder];
+}
+
+function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<string, CandidateAnswerViewModel[]>): "candidate" | "expert" | "mixed" {
+  const answers = candidatesAnswersMap.get(candidateId);
+
+  if (!answers?.length) return "candidate";
+
+  const respondents = new Set(answers.map((answer) => answer.respondent));
+
+  return respondents.size > 1 ? "mixed" : (respondents.values().next().value ?? "candidate");
 }
 
 export function resultViewModel(
@@ -61,6 +72,7 @@ export function resultViewModel(
           candidate: nestedCandidate,
           match: nestedMatch,
           order: nestedOrder,
+          respondent: getRespondentValue(nestedCandidate.id, candidatesAnswersMap),
           candidateAnswers: candidatesAnswersMap.get(nestedCandidate.id) || [],
         };
       });
@@ -72,6 +84,7 @@ export function resultViewModel(
       candidate,
       match,
       order,
+      respondent: getRespondentValue(candidate.id, candidatesAnswersMap),
       candidateAnswers: candidatesAnswersMap.get(candidate.id) || [],
       nestedMatches,
     };
