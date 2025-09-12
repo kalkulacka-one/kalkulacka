@@ -12,6 +12,7 @@ export const embedsConfig = {
   idnes: { theme: "default" },
   nova: { theme: "default" },
   e15: { theme: "default" },
+  reflex: { theme: "default" },
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
