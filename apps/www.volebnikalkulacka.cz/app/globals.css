@@ -6,6 +6,10 @@
   color-scheme: light;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 @theme static {
   --font-display: var(--ko-font-display);
   --font-sans: var(--ko-typeface-sans);
