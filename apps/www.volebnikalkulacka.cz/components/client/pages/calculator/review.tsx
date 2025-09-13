@@ -3,12 +3,14 @@ import { useRouter } from "next/navigation";
 import { ReviewPage as AppReviewPage } from "../../../../calculator/components/server";
 import { useAnswers, useCalculator, useQuestions } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
+import { useEmbed } from "../../../client/embed-context-provider";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculator();
   const questions = useQuestions();
   const answers = useAnswers();
+  const { isEmbed } = useEmbed();
 
   const handleNextClick = () => {
     router.push(routes.result(segments));
@@ -24,7 +26,15 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
 
   return (
     <div>
-      <AppReviewPage calculator={calculator} questions={questions} answers={answers} onNextClick={handleNextClick} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} />
+      <AppReviewPage
+        calculator={calculator}
+        questions={questions}
+        answers={answers}
+        onNextClick={handleNextClick}
+        onPreviousClick={handlePreviousClick}
+        onCloseClick={handleCloseClick}
+        isEmbed={isEmbed}
+      />
     </div>
   );
 }
