@@ -4,7 +4,7 @@ import { loadCalculatorData } from "../../calculator/lib";
 import { buildDataUrl } from "../../calculator/lib/data-fetching/url-builders";
 import { calculatorViewModel } from "../../calculator/view-models/server";
 
-export async function generateCalculatorMetadata({ key, group }: { key: string; group?: string }): Promise<Metadata> {
+export async function generateCalculatorMetadata({ key, group, canonicalUrl }: { key: string; group?: string; canonicalUrl: string }): Promise<Metadata> {
   const { calculator: calculatorData } = await loadCalculatorData({ key, group });
   const calculator = calculatorViewModel(calculatorData);
 
@@ -17,9 +17,13 @@ export async function generateCalculatorMetadata({ key, group }: { key: string; 
   const metadata: Metadata = {
     title: calculator.title || calculator.shortTitle,
     description: calculator.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: calculator.title || calculator.shortTitle,
       description: calculator.description,
+      url: canonicalUrl,
       ...(ogImageUrl && {
         images: [
           {
