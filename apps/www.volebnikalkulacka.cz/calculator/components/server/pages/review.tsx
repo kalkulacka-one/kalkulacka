@@ -13,9 +13,10 @@ export type ReviewPage = {
   onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
+export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, isEmbed }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -103,7 +104,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         </div>
       </LayoutContent>
       <LayoutBottomNavigation>
-        <ReviewNavigationCard onNextClick={onNextClick} />
+        <ReviewNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>
   );

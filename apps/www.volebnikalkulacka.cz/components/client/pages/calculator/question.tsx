@@ -3,12 +3,14 @@ import { notFound, useRouter } from "next/navigation";
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
 import { useAnswer, useCalculator, useQuestions } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
+import { useEmbed } from "../../../client/embed-context-provider";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculator();
   const { questions, total } = useQuestions();
   const question = questions[current - 1];
+  const embed = useEmbed();
 
   if (!question) {
     notFound();
@@ -35,6 +37,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   };
 
   const answer = useAnswer(question.id);
+  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
   return (
     <div>
@@ -47,6 +50,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
+        isEmbed={showAttribution}
       />
     </div>
   );

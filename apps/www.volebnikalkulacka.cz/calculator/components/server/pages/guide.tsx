@@ -11,9 +11,10 @@ export type GuidePage = {
   onNextClick: () => void;
   onBackClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
+export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, isEmbed }: GuidePage) {
   return (
     <>
       <LayoutHeader>
@@ -42,7 +43,7 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick }
         <Guide calculator={calculator} />
       </LayoutContent>
       <LayoutBottomNavigation>
-        <GuideNavigationCard onNextClick={onNextClick} />
+        <GuideNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>
   );

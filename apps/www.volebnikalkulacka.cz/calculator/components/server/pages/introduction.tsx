@@ -10,9 +10,10 @@ export type IntroductionPage = {
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function IntroductionPage({ calculator, onNextClick, onCloseClick }: IntroductionPage) {
+export function IntroductionPage({ calculator, onNextClick, onCloseClick, isEmbed }: IntroductionPage) {
   return (
     <>
       <LayoutHeader>
@@ -36,7 +37,7 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick }: Intr
         <Introduction calculator={calculator} />
       </LayoutContent>
       <LayoutBottomNavigation>
-        <IntroductionNavigationCard onNextClick={onNextClick} />
+        <IntroductionNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>
   );

@@ -15,9 +15,10 @@ export type QuestionPage = {
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, isEmbed }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -86,6 +87,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onAgreeChange={handleAgreeChange}
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
+          attribution={isEmbed}
         />
       </LayoutBottomNavigation>
     </>
