@@ -12,7 +12,7 @@ export async function generateCalculatorMetadata({ key, group, canonicalUrl }: {
   const twitterImage = calculator.images?.find((img) => img.type === "twitter");
 
   const ogImageUrl = ogImage?.urls?.original ? buildDataUrl({ key, group, resourcePath: ogImage.urls.original }) : undefined;
-  const twitterImageUrl = twitterImage?.urls?.original ? buildDataUrl({ key, group, resourcePath: twitterImage.urls.original }) : ogImageUrl;
+  const twitterImageUrl = twitterImage?.urls?.original ? buildDataUrl({ key, group, resourcePath: twitterImage.urls.original }) : undefined;
 
   const metadata: Metadata = {
     title: calculator.title || calculator.shortTitle,
@@ -37,8 +37,6 @@ export async function generateCalculatorMetadata({ key, group, canonicalUrl }: {
     },
     twitter: {
       card: "summary_large_image",
-      title: calculator.title || calculator.shortTitle,
-      description: calculator.description,
       ...(twitterImageUrl && { images: [twitterImageUrl] }),
     },
   };
