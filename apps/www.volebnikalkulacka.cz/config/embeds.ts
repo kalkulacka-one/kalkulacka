@@ -1,8 +1,8 @@
 import type { ThemeName } from "./themes";
 
 export type EmbedConfig = {
-  logo?: "monochrome";
   theme?: ThemeName;
+  logo?: "monochrome" | "color";
 };
 
 export const embedsConfig = {
