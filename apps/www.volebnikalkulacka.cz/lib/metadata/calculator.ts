@@ -4,7 +4,7 @@ import { loadCalculatorData } from "../../calculator/lib";
 import { buildDataUrl } from "../../calculator/lib/data-fetching/url-builders";
 import { calculatorViewModel } from "../../calculator/view-models/server";
 
-export async function generateCalculatorMetadata({ key, group }: { key: string; group?: string }): Promise<Metadata> {
+export async function generateCalculatorMetadata({ key, group, canonicalUrl }: { key: string; group?: string; canonicalUrl: string }): Promise<Metadata> {
   const { calculator: calculatorData } = await loadCalculatorData({ key, group });
   const calculator = calculatorViewModel(calculatorData);
 
@@ -12,14 +12,18 @@ export async function generateCalculatorMetadata({ key, group }: { key: string; 
   const twitterImage = calculator.images?.find((img) => img.type === "twitter");
 
   const ogImageUrl = ogImage?.urls?.original ? buildDataUrl({ key, group, resourcePath: ogImage.urls.original }) : undefined;
-  const twitterImageUrl = twitterImage?.urls?.original ? buildDataUrl({ key, group, resourcePath: twitterImage.urls.original }) : ogImageUrl;
+  const twitterImageUrl = twitterImage?.urls?.original ? buildDataUrl({ key, group, resourcePath: twitterImage.urls.original }) : undefined;
 
   const metadata: Metadata = {
     title: calculator.title || calculator.shortTitle,
     description: calculator.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: calculator.title || calculator.shortTitle,
       description: calculator.description,
+      url: canonicalUrl,
       ...(ogImageUrl && {
         images: [
           {
@@ -33,9 +37,13 @@ export async function generateCalculatorMetadata({ key, group }: { key: string; 
     },
     twitter: {
       card: "summary_large_image",
-      title: calculator.title || calculator.shortTitle,
-      description: calculator.description,
-      ...(twitterImageUrl && { images: [twitterImageUrl] }),
+      ...(process.env.X_HANDLE && { site: process.env.X_HANDLE }),
+      ...(twitterImageUrl && {
+        images: {
+          url: twitterImageUrl,
+          alt: twitterImage?.alt,
+        },
+      }),
     },
   };
 
