@@ -1,0 +1,21 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Contact: security@volebnikalkulacka.cz
+Contact: https://github.com/kalkulacka-one/security/security/advisories/new
+Expires: 2026-12-31T23:59:59.000Z
+Acknowledgments: https://www.volebnikalkulacka.cz/security-acknowledgments
+Preferred-Languages: cs, en
+Canonical: https://www.volebnikalkulacka.cz/.well-known/security.txt
+Policy: https://www.volebnikalkulacka.cz/security-policy
+
+# Security Policy for Volební kalkulačka
+# We take security seriously and appreciate responsible disclosure.
+# Please report security vulnerabilities through the channels above.
+# Do not disclose security issues publicly until we've had a chance to address them.
+
+-----BEGIN PGP SIGNATURE-----
+Comment: This security.txt file is signed to prevent tampering
+
+iQEzBAEBCAAdFiEE...
+-----END PGP SIGNATURE-----
