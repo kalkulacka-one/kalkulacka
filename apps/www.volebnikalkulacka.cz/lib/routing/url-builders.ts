@@ -12,6 +12,7 @@ function buildCanonicalUrl(path: string): string {
 }
 
 export const canonical = {
+  homepage: (): string => buildCanonicalUrl("/"),
   base: (segments: RouteSegments): string => buildCanonicalUrl(createBaseSegment(segments)),
   introduction: (segments: RouteSegments): string => buildCanonicalUrl(routes.introduction(segments)),
   guide: (segments: RouteSegments): string => buildCanonicalUrl(routes.guide(segments)),
