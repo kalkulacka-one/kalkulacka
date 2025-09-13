@@ -56,7 +56,7 @@ export function SubscribeForm() {
             <div className="grid grid-rows-2 gap-2 justify-center">
               <div className="flex gap-4 justify-center items-center">
                 <Label className="sr-only">Zadejte váš email</Label>
-                <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: '48px', minHeight: '48px' }} {...register("email")} />
+                <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
                 <Button disabled={isSubmitting} type="submit" variant="outline" color="neutral">
                   {isSubmitting ? "Odesílám" : "Odeslat"}
                 </Button>
