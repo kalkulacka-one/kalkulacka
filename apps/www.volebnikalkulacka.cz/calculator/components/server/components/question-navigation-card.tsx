@@ -33,7 +33,7 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           <div className="justify-self-center">
             <span className="tabular-nums">
               <span>
-                <span style={{ visibility: "hidden" }}>{"0".repeat(Math.max(total.toString().length - current.toString().length, 0))}</span>
+                <span className="font-bold invisible">{"0".repeat(Math.max(total.toString().length - current.toString().length, 0))}</span>
                 <span className="whitespace-nowrap">
                   <strong>{current}</strong> / {total}
                 </span>
