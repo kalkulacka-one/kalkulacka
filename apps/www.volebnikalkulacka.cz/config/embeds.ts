@@ -4,6 +4,7 @@ export type EmbedConfig = {
   theme?: ThemeName;
   logo?: "monochrome" | "color";
   navigationAttribution?: boolean;
+  donateCard?: number | false;
 };
 
 export const embedsConfig = {
