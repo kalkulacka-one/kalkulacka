@@ -6,7 +6,7 @@ export type MatchCard = CandidateMatchViewModel;
 
 export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   return (
-    <Card corner="topLeft" shadow="hard">
+    <Card corner="topLeft" shadow="hard" className="border border-slate-300">
       <div className="grid overflow-hidden rounded-3xl rounded-tl-none">
         {match !== undefined && <ProgressBar value={match} color={order === 1 ? "primary" : "neutral"} corner="sharp" />}
         <div className="grid grid-cols-[auto_1fr_auto] gap-4 items-center p-8">

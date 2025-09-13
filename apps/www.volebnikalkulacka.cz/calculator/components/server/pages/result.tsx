@@ -1,9 +1,10 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
+import React from "react";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, DonateCard, WithCondenseOnScroll } from "../../client";
 import { LayoutContent, LayoutHeader, MatchCard } from "../components";
 
 export type ResultPage = {
@@ -13,9 +14,10 @@ export type ResultPage = {
   onCloseClick: () => void;
   showOnlyNested: boolean;
   onFilterChange: (showOnlyNested: boolean) => void;
+  donateCardPosition: number | false;
 };
 
-export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange }: ResultPage) {
+export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
   const title = "Volební kalkulačka";
 
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
@@ -71,8 +73,12 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
           </div>
         )}
         <div className="grid gap-4">
-          {result.matches.map((match) => (
-            <MatchCard key={match.candidate.id} {...match} />
+          {donateCardPosition === 0 && <DonateCard />}
+          {result.matches.map((match, index) => (
+            <React.Fragment key={match.candidate.id}>
+              <MatchCard {...match} />
+              {donateCardPosition !== false && donateCardPosition > 0 && index === donateCardPosition - 1 && <DonateCard />}
+            </React.Fragment>
           ))}
         </div>
       </LayoutContent>
