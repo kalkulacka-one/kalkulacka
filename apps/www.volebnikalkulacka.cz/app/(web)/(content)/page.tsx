@@ -34,7 +34,7 @@ export default function Page() {
           <SubscribeForm />
           {/* Calculator Cards */}
           <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto auto-rows-fr md:grid-cols-[1fr_1fr]">
-            <Link href="/volby/snemovni-2025/inventura" className="group block h-full">
+            <div className="group block h-full">
               <div className="h-full">
                 <Card shadow="hard" corner="topLeft">
                   <div className="grid gap-4 p-8 h-full items-start">
@@ -43,13 +43,17 @@ export default function Page() {
                     </div>
                     <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Inventura hlasování</h3>
                     <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
-                    <Button variant="fill" color="neutral">
-                      Spustit inventuru →
-                    </Button>
+                    <div className="grid items-stretch">
+                      <Link href="/volby/snemovni-2025/inventura" className="grid">
+                        <Button variant="fill" color="neutral">
+                          Spustit inventuru →
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </Card>
               </div>
-            </Link>
+            </div>
 
             <div className="group block h-full">
               <Card shadow="hard" corner="topLeft">
@@ -65,11 +69,13 @@ export default function Page() {
                     </a>
                     .
                   </p>
-                  <Link href="/volby/snemovni-2025/pro-mlade">
-                    <Button variant="fill" color="neutral">
-                      Spustit kalkulačku →
-                    </Button>
-                  </Link>
+                  <div className="grid items-stretch">
+                    <Link href="/volby/snemovni-2025/pro-mlade" className="grid">
+                      <Button variant="fill" color="neutral">
+                        Spustit kalkulačku →
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </Card>
             </div>
