@@ -9,4 +9,11 @@
   --ko-palette-red: rgb(255, 19, 70);
   --ko-palette-yellow: yellow;
   --ko-palette-green: rgb(117, 242, 97);
+
+  --ko-palette-logo-check: rgb(0, 112, 244);
+  --ko-palette-logo-slash: rgb(29, 28, 28);
+  --ko-palette-logo-cross: rgb(208, 70, 70);
+  --ko-palette-logo-percent-numerator: rgb(0, 112, 244);
+  --ko-palette-logo-percent-slash: rgb(29, 28, 28);
+  --ko-palette-logo-percent-denominator: rgb(208, 70, 70);
 }
