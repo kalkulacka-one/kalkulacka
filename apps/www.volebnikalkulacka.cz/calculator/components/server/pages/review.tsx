@@ -2,6 +2,7 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
+import { canonical } from "../../../../lib/routing/url-builders";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
@@ -13,9 +14,10 @@ export type ReviewPage = {
   onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
+export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, isEmbed }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -103,7 +105,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         </div>
       </LayoutContent>
       <LayoutBottomNavigation>
-        <ReviewNavigationCard onNextClick={onNextClick} />
+        <ReviewNavigationCard onNextClick={onNextClick} attributionHref={isEmbed ? canonical.homepage() : undefined} />
       </LayoutBottomNavigation>
     </>
   );

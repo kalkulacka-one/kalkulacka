@@ -2,6 +2,7 @@ import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
+import { canonical } from "../../../../lib/routing/url-builders";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader, AppHeaderBottom, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
 import { Introduction, IntroductionNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
@@ -10,9 +11,10 @@ export type IntroductionPage = {
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function IntroductionPage({ calculator, onNextClick, onCloseClick }: IntroductionPage) {
+export function IntroductionPage({ calculator, onNextClick, onCloseClick, isEmbed }: IntroductionPage) {
   return (
     <>
       <LayoutHeader>
@@ -36,7 +38,7 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick }: Intr
         <Introduction calculator={calculator} />
       </LayoutContent>
       <LayoutBottomNavigation>
-        <IntroductionNavigationCard onNextClick={onNextClick} />
+        <IntroductionNavigationCard onNextClick={onNextClick} attributionHref={isEmbed ? canonical.homepage() : undefined} />
       </LayoutBottomNavigation>
     </>
   );

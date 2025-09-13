@@ -2,6 +2,7 @@ import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
+import { canonical } from "../../../../lib/routing/url-builders";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
@@ -15,9 +16,10 @@ export type QuestionPage = {
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
+  isEmbed?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, isEmbed }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -86,6 +88,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onAgreeChange={handleAgreeChange}
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
+          attributionHref={isEmbed ? canonical.homepage() : undefined}
         />
       </LayoutBottomNavigation>
     </>
