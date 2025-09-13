@@ -37,7 +37,12 @@ export async function generateCalculatorMetadata({ key, group, canonicalUrl }: {
     },
     twitter: {
       card: "summary_large_image",
-      ...(twitterImageUrl && { images: [twitterImageUrl] }),
+      ...(twitterImageUrl && {
+        images: {
+          url: twitterImageUrl,
+          alt: twitterImage?.alt,
+        },
+      }),
     },
   };
 
