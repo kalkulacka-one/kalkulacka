@@ -1,10 +1,9 @@
 import { createBaseSegment, type RouteSegments, routes } from "./route-builders";
 
-const CANONICAL_URL = process.env.CANONICAL_URL;
-
 function buildCanonicalUrl(path: string): string {
+  const CANONICAL_URL = process.env.NEXT_PUBLIC_CANONICAL_URL;
   if (!CANONICAL_URL) {
-    throw new Error("Missing `CANONICAL_URL` environment variable");
+    throw new Error("Missing `NEXT_PUBLIC_CANONICAL_URL` environment variable");
   }
   const baseUrl = CANONICAL_URL.replace(/\/$/, "");
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
