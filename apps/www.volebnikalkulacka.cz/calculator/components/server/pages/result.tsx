@@ -27,7 +27,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} logoTitle={title}>
-              <AppHeaderMain calculator={calculator} />
+              <AppHeaderMain title={title} calculator={calculator} />
               <AppHeaderRight>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>

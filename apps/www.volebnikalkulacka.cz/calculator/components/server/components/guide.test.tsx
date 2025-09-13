@@ -1,11 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { calculatorViewModel } from "../../../view-models";
 import { Guide } from ".";
 
 describe("Guide", () => {
   it("renders", () => {
-    const mockCalculator = {
+    const mockCalculator = calculatorViewModel({
       id: "test",
       createdAt: new Date().toISOString(),
       key: "test",
@@ -13,7 +14,7 @@ describe("Guide", () => {
       title: "Test Calculator",
       intro: "Test intro",
       methodology: "Test methodology",
-    };
+    });
 
     render(<Guide calculator={mockCalculator} />);
     expect(screen.getByText("Shoda")).toBeInTheDocument();

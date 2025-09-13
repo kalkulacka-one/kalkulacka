@@ -60,7 +60,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} logoTitle={title}>
-              <AppHeaderMain calculator={calculator} />
+              <AppHeaderMain title={title} calculator={calculator} />
               <AppHeaderRight>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>

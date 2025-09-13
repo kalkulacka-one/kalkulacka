@@ -1,7 +1,18 @@
 import type { Calculator } from "../../../../../packages/schema/schemas/calculator.schema";
 
-export type CalculatorViewModel = Calculator;
+export type CalculatorViewModel = Calculator & {
+  readonly title: string;
+  readonly secondaryTitle: string | undefined;
+};
 
 export function calculatorViewModel(calculator: Calculator): CalculatorViewModel {
-  return calculator;
+  const calculatorGroupShortTitle = "Sněmovní 2025";
+  const title = calculator?.shortTitle || calculatorGroupShortTitle;
+  const secondaryTitle = calculator?.shortTitle ? calculatorGroupShortTitle : undefined;
+
+  return {
+    ...calculator,
+    title,
+    secondaryTitle,
+  };
 }

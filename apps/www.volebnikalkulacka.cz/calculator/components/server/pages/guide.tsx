@@ -21,7 +21,7 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
     <>
       <LayoutHeader>
         <AppHeader logoTitle={title}>
-          <AppHeaderMain calculator={calculator} />
+          <AppHeaderMain title={title} calculator={calculator} />
           <AppHeaderRight>
             <HideOnEmbed>
               <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
