@@ -10,7 +10,7 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
   const calculator = useCalculator();
   const questions = useQuestions();
   const answers = useAnswers();
-  const { isEmbed } = useEmbed();
+  const embed = useEmbed();
 
   const handleNextClick = () => {
     router.push(routes.result(segments));
@@ -24,6 +24,8 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
     router.push("/");
   };
 
+  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+
   return (
     <div>
       <AppReviewPage
@@ -33,7 +35,7 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
         onNextClick={handleNextClick}
         onPreviousClick={handlePreviousClick}
         onCloseClick={handleCloseClick}
-        isEmbed={isEmbed}
+        isEmbed={showAttribution}
       />
     </div>
   );

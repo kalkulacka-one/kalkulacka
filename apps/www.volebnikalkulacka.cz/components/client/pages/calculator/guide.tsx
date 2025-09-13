@@ -8,7 +8,7 @@ import { useEmbed } from "../../../client/embed-context-provider";
 export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculator();
-  const { isEmbed } = useEmbed();
+  const embed = useEmbed();
 
   const handleNavigationNextClick = () => {
     router.push(routes.question(segments, 1));
@@ -22,5 +22,7 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     router.push("/");
   };
 
-  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} isEmbed={isEmbed} />;
+  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+
+  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} isEmbed={showAttribution} />;
 }
