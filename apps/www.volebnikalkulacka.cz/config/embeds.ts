@@ -7,7 +7,7 @@ export type EmbedConfig = {
 
 export const embedsConfig = {
   default: {},
-  "diky-ze-muzem": { theme: "diky-ze-muzem" },
+  "diky-ze-muzem": { theme: "diky-ze-muzem", logo: "monochrome" },
   alarm: { theme: "alarm", logo: "monochrome" },
   prima: { theme: "prima", logo: "monochrome" },
   idnes: {},
