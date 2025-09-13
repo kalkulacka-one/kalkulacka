@@ -11,12 +11,20 @@ export type Button = {
   VariantProps<typeof ButtonVariants>;
 
 export const ButtonVariants = cva(
-  ["ko:border-2", "ko:select-none ko:data-hover:cursor-pointer", "ko:font-semibold ko:tracking-[.01em]", "ko:rounded-br-none ko:rounded-2xl", "ko:text-s", "ko:data-disabled:cursor-not-allowed"],
+  [
+    "ko:border-2",
+    "ko:select-none ko:data-hover:cursor-pointer",
+    "ko:font-semibold ko:tracking-[.01em]",
+    "ko:rounded-br-none ko:rounded-2xl",
+    "ko:text-s",
+    "ko:data-disabled:cursor-not-allowed",
+    "ko:grid ko:grid-flow-col ko:place-items-center ko:gap-1",
+  ],
   {
     variants: {
       size: {
-        small: "ko:px-4 ko:py-2",
-        medium: "ko:px-5 ko:py-3",
+        small: "ko:h-10 ko:px-2",
+        medium: "ko:h-12 ko:px-3",
       },
       variant: {
         fill: [""],
@@ -149,7 +157,7 @@ export const ButtonVariants = cva(
 function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
   const isIconOnly = React.isValidElement(children) && (children as React.ReactElement).type === Icon;
 
-  const iconOnlyClasses = isIconOnly ? "ko:!rounded-full ko:aspect-square ko:flex ko:items-center ko:justify-center" : "";
+  const iconOnlyClasses = isIconOnly ? "ko:aspect-square ko:!p-0 ko:!rounded-full ko:grid ko:place-items-center" : "";
 
   return (
     <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses)} {...props} ref={ref}>
