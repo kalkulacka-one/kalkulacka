@@ -1,0 +1,47 @@
+# Robots.txt for Albanian Election Calculator
+# https://kalkulatorizgjedhor.al
+
+User-agent: *
+Allow: /
+Allow: /zgjedhjet/
+Allow: /rreth-nesh/
+Allow: /mbeshtetje/
+
+# Disallow admin and dynamic content
+Disallow: /embed/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /debug/
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+
+# Allow major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block AI training crawlers
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OpenAI
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Sitemap location
+Sitemap: https://kalkulatorizgjedhor.al/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
