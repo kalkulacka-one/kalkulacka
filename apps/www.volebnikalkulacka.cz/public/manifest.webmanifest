@@ -1,8 +1,42 @@
 {
-  "name": "Archiv volebních kalkulaček",
-  "short_name": "Archiv volebních kalkulaček",
-  "icons": [{ "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" }, { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }],
+  "name": "Volební kalkulačka — Sněmovní volby 2025",
+  "short_name": "Volební kalkulačka",
+  "description": "Nejužitečnějších 5 minut před sněmovními volbami 2025. Zjistěte, která strana či koalice se nejvíc shoduje s vašimi názory.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
   "theme_color": "#F8F7F7",
   "background_color": "#F8F7F7",
-  "display": "standalone"
+  "lang": "cs",
+  "dir": "ltr",
+  "categories": ["politics", "education", "government"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "type": "image/png",
+      "sizes": "1200x630",
+      "form_factor": "wide"
+    }
+  ],
+  "prefer_related_applications": false
 }
