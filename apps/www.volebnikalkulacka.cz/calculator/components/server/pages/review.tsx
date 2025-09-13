@@ -2,7 +2,6 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
-import { canonical } from "../../../../lib/routing/url-builders";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
@@ -105,7 +104,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         </div>
       </LayoutContent>
       <LayoutBottomNavigation>
-        <ReviewNavigationCard onNextClick={onNextClick} attributionHref={isEmbed ? canonical.homepage() : undefined} />
+        <ReviewNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>
   );

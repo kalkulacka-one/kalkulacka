@@ -4,12 +4,12 @@ import { NavigationCard } from "./navigation-card";
 
 export type IntroductionNavigationCard = {
   onNextClick: () => void;
-  attributionHref?: string;
+  attribution?: boolean;
 };
 
-export function IntroductionNavigationCard({ onNextClick, attributionHref }: IntroductionNavigationCard) {
+export function IntroductionNavigationCard({ onNextClick, attribution }: IntroductionNavigationCard) {
   return (
-    <NavigationCard attributionHref={attributionHref}>
+    <NavigationCard attribution={attribution}>
       <Button onClick={onNextClick}>Pokračovat</Button>
     </NavigationCard>
   );

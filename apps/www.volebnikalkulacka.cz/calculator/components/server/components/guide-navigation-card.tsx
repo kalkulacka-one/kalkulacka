@@ -4,12 +4,12 @@ import { NavigationCard } from "./navigation-card";
 
 export type GuideNavigationCard = {
   onNextClick: () => void;
-  attributionHref?: string;
+  attribution?: boolean;
 };
 
-export function GuideNavigationCard({ onNextClick, attributionHref }: GuideNavigationCard) {
+export function GuideNavigationCard({ onNextClick, attribution }: GuideNavigationCard) {
   return (
-    <NavigationCard attributionHref={attributionHref}>
+    <NavigationCard attribution={attribution}>
       <Button onClick={onNextClick}>Začít odpovídat</Button>
     </NavigationCard>
   );

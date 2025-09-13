@@ -2,7 +2,6 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
-import { canonical } from "../../../../lib/routing/url-builders";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
 import { Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
@@ -44,7 +43,7 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
         <Guide calculator={calculator} />
       </LayoutContent>
       <LayoutBottomNavigation>
-        <GuideNavigationCard onNextClick={onNextClick} attributionHref={isEmbed ? canonical.homepage() : undefined} />
+        <GuideNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>
   );
