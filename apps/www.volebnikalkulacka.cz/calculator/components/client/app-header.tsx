@@ -3,6 +3,20 @@ import type { ReactNode } from "react";
 import React from "react";
 
 import { useEmbed } from "../../../components/client";
+import type { CalculatorViewModel } from "../../view-models";
+
+function calculateTitles(calculator?: CalculatorViewModel) {
+  const title = "Volební kalkulačka";
+  let secondaryTitle: string | undefined = calculator?.shortTitle;
+  let tertiaryTitle: string | undefined = "Sněmovní 2025";
+
+  if (!calculator?.shortTitle) {
+    secondaryTitle = "Sněmovní 2025";
+    tertiaryTitle = undefined;
+  }
+
+  return { title, secondaryTitle, tertiaryTitle };
+}
 
 type AppHeaderChildProps = {
   condensed?: boolean;
@@ -59,16 +73,28 @@ type AppHeaderMainProps = {
   title?: string;
   secondaryTitle?: string;
   tertiaryTitle?: string;
+  calculator?: CalculatorViewModel;
 };
 
-export function AppHeaderMain({ children, title, secondaryTitle, tertiaryTitle }: AppHeaderMainProps) {
+export function AppHeaderMain({ children, title, secondaryTitle, tertiaryTitle, calculator }: AppHeaderMainProps) {
+  let finalTitle = title;
+  let finalSecondaryTitle = secondaryTitle;
+  let finalTertiaryTitle = tertiaryTitle;
+
+  if (calculator) {
+    const titles = calculateTitles(calculator);
+    finalTitle = titles.title;
+    finalSecondaryTitle = titles.secondaryTitle;
+    finalTertiaryTitle = titles.tertiaryTitle;
+  }
+
   return (
     <div style={{ gridArea: "main" }} className="grid text-sm leading-none">
-      <h1 className="font-light">{title}</h1>
+      <h1 className="font-light">{finalTitle}</h1>
       <div>
-        <h2 className="font-semibold inline">{secondaryTitle}</h2>
-        {secondaryTitle && tertiaryTitle && <span className="font-light hidden @[36rem]:inline"> • </span>}
-        <span className="font-light hidden @[36rem]:inline">{tertiaryTitle}</span>
+        <h2 className="font-semibold inline">{finalSecondaryTitle}</h2>
+        {finalSecondaryTitle && finalTertiaryTitle && <span className="font-light hidden @[36rem]:inline"> • </span>}
+        <span className="font-light hidden @[36rem]:inline">{finalTertiaryTitle}</span>
       </div>
       {children}
     </div>

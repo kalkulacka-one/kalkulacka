@@ -18,12 +18,6 @@ export type ReviewPage = {
 
 export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, isEmbed }: ReviewPage) {
   const title = "Volební kalkulačka";
-  let secondaryTitle: string | undefined = calculator?.shortTitle;
-  let tertiaryTitle: string | undefined = "Sněmovní 2025";
-  if (!calculator?.shortTitle) {
-    secondaryTitle = "Sněmovní 2025";
-    tertiaryTitle = undefined;
-  }
 
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
@@ -66,7 +60,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} logoTitle={title}>
-              <AppHeaderMain title={title} secondaryTitle={secondaryTitle} tertiaryTitle={tertiaryTitle} />
+              <AppHeaderMain calculator={calculator} />
               <AppHeaderRight>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
