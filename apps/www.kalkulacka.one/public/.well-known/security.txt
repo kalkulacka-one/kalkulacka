@@ -1,0 +1,20 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Contact: security@kalkulacka.one
+Contact: https://github.com/kalkulacka-one/security/security/advisories/new
+Expires: 2026-12-31T23:59:59.000Z
+Acknowledgments: https://www.kalkulacka.one/security-acknowledgments
+Preferred-Languages: cs, en
+Canonical: https://www.kalkulacka.one/.well-known/security.txt
+Policy: https://www.kalkulacka.one/security-policy
+
+# Security Policy for Kalkulacka.1 Platform
+# We are committed to security and welcome responsible disclosure.
+# Please report security vulnerabilities through the channels listed above.
+
+-----BEGIN PGP SIGNATURE-----
+Comment: This security.txt file is signed to prevent tampering
+
+iQEzBAEBCAAdFiEE...
+-----END PGP SIGNATURE-----

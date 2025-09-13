@@ -1,0 +1,30 @@
+{
+  "name": "Kalkulacka.1 — Multi-country Voting Advice Platform",
+  "short_name": "Kalkulacka.1",
+  "description": "Open-source platform for creating voting advice applications across multiple countries.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["politics", "education", "government", "productivity"],
+  "icons": [
+    {
+      "src": "/og-kalkulacka-one.png",
+      "type": "image/png",
+      "sizes": "1200x630",
+      "purpose": "any"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://www.volebnikalkulacka.cz",
+      "id": "cz.volebnikalkulacka.www"
+    }
+  ]
+}
