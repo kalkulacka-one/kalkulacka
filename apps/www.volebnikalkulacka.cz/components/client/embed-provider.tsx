@@ -7,7 +7,7 @@ export const EmbedProvider = ({ name, children }: { name: EmbedName; children: R
 
   return (
     <EmbedContextProvider isEmbed={true} name={name} config={config}>
-      <ThemeProvider name={config.theme}>{children}</ThemeProvider>
+      <ThemeProvider name={config?.theme ?? "default"}>{children}</ThemeProvider>
     </EmbedContextProvider>
   );
 };
