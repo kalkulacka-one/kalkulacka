@@ -16,15 +16,24 @@ export type ResultPage = {
 };
 
 export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange }: ResultPage) {
+  const title = "Volební kalkulačka";
+  let secondaryTitle: string | undefined = calculator?.shortTitle;
+  let tertiaryTitle: string | undefined = "Sněmovní 2025";
+  if (!calculator?.shortTitle) {
+    secondaryTitle = "Sněmovní 2025";
+    tertiaryTitle = undefined;
+  }
+
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
+
   return (
     <>
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
-              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+            <AppHeader condensed={condensed} logoTitle={title}>
+              <AppHeaderMain title={title} secondaryTitle={secondaryTitle} tertiaryTitle={tertiaryTitle} />
               <AppHeaderRight>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>

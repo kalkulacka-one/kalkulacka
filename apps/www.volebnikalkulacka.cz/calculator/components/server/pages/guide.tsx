@@ -15,11 +15,19 @@ export type GuidePage = {
 };
 
 export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, isEmbed }: GuidePage) {
+  const title = "Volební kalkulačka";
+  let secondaryTitle: string | undefined = calculator?.shortTitle;
+  let tertiaryTitle: string | undefined = "Sněmovní 2025";
+  if (!calculator?.shortTitle) {
+    secondaryTitle = "Sněmovní 2025";
+    tertiaryTitle = undefined;
+  }
+
   return (
     <>
       <LayoutHeader>
-        <AppHeader logoTitle="Volební kalkulačka">
-          <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+        <AppHeader logoTitle={title}>
+          <AppHeaderMain title={title} secondaryTitle={secondaryTitle} tertiaryTitle={tertiaryTitle} />
           <AppHeaderRight>
             <HideOnEmbed>
               <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
