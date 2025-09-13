@@ -11,9 +11,13 @@ export function NavigationCard({ children, attribution }: NavigationCard) {
   return (
     <div className="grid justify-items-end m-4">
       <Card corner="bottomRight" shadow="elevated">
-        <div className="p-4">
+        <div className="p-4 grid grid-flow-row gap-4">
           {children}
-          {attribution && <NavigationCardAttribution />}
+          {attribution && (
+            <div className="place-self-center">
+              <NavigationCardAttribution />
+            </div>
+          )}
         </div>
       </Card>
     </div>
