@@ -15,11 +15,13 @@ export type GuidePage = {
 };
 
 export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, isEmbed }: GuidePage) {
+  const title = "Volební kalkulačka";
+
   return (
     <>
       <LayoutHeader>
-        <AppHeader logoTitle="Volební kalkulačka">
-          <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+        <AppHeader logoTitle={title}>
+          <AppHeaderMain title={title} calculator={calculator} />
           <AppHeaderRight>
             <HideOnEmbed>
               <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>

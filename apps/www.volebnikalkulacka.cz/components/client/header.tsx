@@ -7,7 +7,7 @@ export function Header() {
       <WithCondenseOnScroll>
         {(condensed) => (
           <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
-            <AppHeaderMain title="Volební kalkulačka" secondaryTitle="Sněmovní volby 2025" />
+            <AppHeaderMain title="Volební kalkulačka" />
           </AppHeader>
         )}
       </WithCondenseOnScroll>

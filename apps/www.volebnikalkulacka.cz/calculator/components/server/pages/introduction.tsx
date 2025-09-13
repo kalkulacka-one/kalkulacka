@@ -14,11 +14,13 @@ export type IntroductionPage = {
 };
 
 export function IntroductionPage({ calculator, onNextClick, onCloseClick, isEmbed }: IntroductionPage) {
+  const title = "Volební kalkulačka";
+
   return (
     <>
       <LayoutHeader>
-        <AppHeader logoTitle="Volební kalkulačka">
-          <AppHeaderMain title="Volební kalkulačka" tertiaryTitle="Sněmovní volby 2025" />
+        <AppHeader logoTitle={title}>
+          <AppHeaderMain title={title} calculator={calculator} />
           <AppHeaderRight>
             <HideOnEmbed>
               <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
@@ -28,7 +30,7 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick, isEmbe
           </AppHeaderRight>
           <AppHeaderBottom>
             <AppHeaderBottomMain>
-              <h2 className="font-display font-semibold text-3xl">{calculator?.shortTitle}</h2>
+              <h2 className="font-display font-semibold text-3xl">{calculator?.shortTitle || "Sněmovní 2025"}</h2>
             </AppHeaderBottomMain>
           </AppHeaderBottom>
         </AppHeader>

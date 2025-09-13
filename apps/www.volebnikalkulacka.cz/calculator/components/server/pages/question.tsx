@@ -19,6 +19,8 @@ export type QuestionPage = {
 };
 
 export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, isEmbed }: QuestionPage) {
+  const title = "Volební kalkulačka";
+
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -61,8 +63,8 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
-              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
+            <AppHeader condensed={condensed} logoTitle={title}>
+              <AppHeaderMain title={title} calculator={calculator} />
               <AppHeaderRight>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>

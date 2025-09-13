@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import React from "react";
 
 import { useEmbed } from "../../../components/client";
+import type { CalculatorViewModel } from "../../view-models";
 
 type AppHeaderChildProps = {
   condensed?: boolean;
@@ -57,18 +58,17 @@ export function AppHeaderLeft({ children }: AppHeaderLeftProps) {
 type AppHeaderMainProps = {
   children?: ReactNode;
   title?: string;
-  secondaryTitle?: string;
-  tertiaryTitle?: string;
+  calculator?: CalculatorViewModel;
 };
 
-export function AppHeaderMain({ children, title, secondaryTitle, tertiaryTitle }: AppHeaderMainProps) {
+export function AppHeaderMain({ children, title, calculator }: AppHeaderMainProps) {
   return (
     <div style={{ gridArea: "main" }} className="grid text-sm leading-none">
       <h1 className="font-light">{title}</h1>
       <div>
-        <h2 className="font-semibold inline">{secondaryTitle}</h2>
-        {secondaryTitle && tertiaryTitle && <span className="font-light hidden @[36rem]:inline"> • </span>}
-        <span className="font-light hidden @[36rem]:inline">{tertiaryTitle}</span>
+        <h2 className="font-semibold inline">{calculator?.title}</h2>
+        {calculator?.title && calculator?.secondaryTitle && <span className="font-light hidden @[36rem]:inline"> • </span>}
+        <span className="font-light hidden @[36rem]:inline">{calculator?.secondaryTitle}</span>
       </div>
       {children}
     </div>

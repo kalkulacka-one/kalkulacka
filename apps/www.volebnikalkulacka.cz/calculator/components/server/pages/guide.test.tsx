@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
+import { calculatorViewModel } from "../../../view-models";
 import { Guide, GuideNavigationCard, Introduction } from "../components";
 import { GuidePage } from "./guide";
 
@@ -32,14 +33,14 @@ vi.mock("../../../../components/client", () => ({
   HideOnEmbed: vi.fn(({ children }) => children),
 }));
 
-const data = {
+const data = calculatorViewModel({
   id: "00000000-0000-0000-0000-000000000000",
   createdAt: new Date(0).toISOString(),
   key: "kalkulacka",
   shortTitle: "Sněmovní 2025",
   title: "Volební kalkulačka pro sněmovní volby 2025",
   intro: "Čeká vás 35 otázek, na které jsme se zeptali všech 26 kandidujících subjektů.",
-} satisfies Calculator;
+} satisfies Calculator);
 
 describe("GuidePage", () => {
   let onNextClick: ReturnType<typeof vi.fn>;
