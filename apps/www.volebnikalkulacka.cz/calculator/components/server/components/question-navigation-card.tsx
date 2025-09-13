@@ -23,7 +23,7 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
   return (
     <NavigationCard attribution={attribution}>
       <div className="grid grid-flow-row gap-2 sm:gap-4">
-        <div className="grid grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
+        <div className="grid grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 sm:gap-2 items-center">
           <div className="justify-self-start">
             <Button size="small" variant="link" color="neutral" onClick={onPreviousClick}>
               <Icon icon={mdiArrowLeft} decorative={true} />
