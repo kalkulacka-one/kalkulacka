@@ -4,7 +4,7 @@ import { canonical } from "../../../../lib/routing/url-builders";
 
 export function NavigationCardAttribution() {
   return (
-    <a href={canonical.homepage()} target="_blank" className="group p-2 flex items-center gap-2 rounded-lg text-sm text-slate-600 hover:text-slate-800 hover:bg-slate-100">
+    <a href={canonical.homepage()} target="_blank" className="group p-2 flex items-center gap-2 rounded-lg text-sm text-slate-600 hover:text-slate-800 hover:bg-slate-100 min-w-max">
       <span>Přináší</span>
       <div className="group-hover:hidden">
         <Logo title="Volební kalkulačka" size="small" monochrome />
