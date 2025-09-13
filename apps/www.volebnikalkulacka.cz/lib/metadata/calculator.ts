@@ -37,6 +37,7 @@ export async function generateCalculatorMetadata({ key, group, canonicalUrl }: {
     },
     twitter: {
       card: "summary_large_image",
+      ...(process.env.X_HANDLE && { site: process.env.X_HANDLE }),
       ...(twitterImageUrl && {
         images: {
           url: twitterImageUrl,
