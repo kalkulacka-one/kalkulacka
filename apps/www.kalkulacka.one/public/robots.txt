@@ -1,0 +1,53 @@
+# Robots.txt for Kalkulacka.1 - Multi-country Voting Advice Platform
+# https://www.kalkulacka.one
+
+User-agent: *
+Allow: /
+Allow: /cs/
+Allow: /en/
+Allow: /zapojte-se/
+Allow: /vlastni-kalkulacka/
+Allow: /podporte-kalkulacku/
+
+# Disallow admin and dynamic content
+Disallow: /embed/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /debug/
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+
+# Allow major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block AI training crawlers
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OpenAI
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Sitemap location
+Sitemap: https://www.kalkulacka.one/sitemap.xml
+Sitemap: https://www.kalkulacka.one/sitemap-countries.xml
+
+# Crawl delay
+Crawl-delay: 1
