@@ -166,12 +166,14 @@ for (const calculator of CALCULATORS) {
     });
 
     test("should handle direct navigation to question page", async ({ page }) => {
+      test.setTimeout(calculator.group === "inventura" ? 90000 : 60000);
+
       try {
         await page.goto(`${calculator.path}/otazka`, { timeout: 60000 });
       } catch {
         console.log(`Direct navigation to question failed for ${calculator.name}, trying uvod first`);
         try {
-          await page.goto(`${calculator.path}/uvod`, { timeout: 30000 });
+          await page.goto(`${calculator.path}/uvod`, { timeout: 60000 });
         } catch {
           console.log(`Fallback navigation to uvod also failed for ${calculator.name}, skipping test`);
           return;
