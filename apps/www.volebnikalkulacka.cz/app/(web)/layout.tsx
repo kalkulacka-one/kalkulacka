@@ -4,6 +4,7 @@ import Script from "next/script";
 import "../globals.css";
 
 import { EmbedContextProvider, ThemeProvider } from "../../components/client";
+import { allowCrawling } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: {
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: allowCrawling(),
+    follow: allowCrawling(),
   },
 };
 
