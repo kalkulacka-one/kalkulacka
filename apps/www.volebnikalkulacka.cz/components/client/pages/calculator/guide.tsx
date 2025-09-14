@@ -1,16 +1,28 @@
 import { useRouter } from "next/navigation";
 
 import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
-import { useCalculatorViewModel } from "../../../../calculator/view-models";
+import { useCalculator } from "../../../../calculator/view-models";
+import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
+import { useEmbed } from "../../../client/embed-context-provider";
 
-export function GuidePage({ step, navigationNextPath }: { step: 1 | 2; navigationNextPath: (currentStep: 1 | 2) => Promise<string> }) {
+export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
-  const calculator = useCalculatorViewModel();
+  const calculator = useCalculator();
+  const embed = useEmbed();
 
-  const handleNavigationNextClick = async () => {
-    const nextUrl = await navigationNextPath(step);
-    router.push(nextUrl);
+  const handleNavigationNextClick = () => {
+    router.push(routes.question(segments, 1));
   };
 
-  return <AppGuidePage calculator={calculator} step={step} onNavigationNextClick={handleNavigationNextClick} />;
+  const handleBackClick = () => {
+    router.push(routes.introduction(segments));
+  };
+
+  const handleCloseClick = () => {
+    router.push("/");
+  };
+
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+
+  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} attribution={attribution} />;
 }

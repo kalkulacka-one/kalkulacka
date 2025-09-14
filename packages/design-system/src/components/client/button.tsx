@@ -3,6 +3,8 @@ import { twMerge } from "@repo/design-system/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
+import { Icon } from "./icon";
+
 export type Button = {
   children: React.ReactNode;
 } & Omit<ButtonPropsHeadless, "className" | "as"> &
@@ -12,21 +14,22 @@ export const ButtonVariants = cva(
   [
     "ko:border-2",
     "ko:select-none ko:data-hover:cursor-pointer",
-    "ko:font-display ko:font-bold ko:uppercase ko:leading-[1.85] ko:tracking-[.07em]",
-    "ko:rounded-tr-none ko:rounded-2xl",
-    "ko:text-xs",
+    "ko:font-semibold ko:tracking-[.01em]",
+    "ko:rounded-br-none ko:rounded-2xl",
+    "ko:text-s",
     "ko:data-disabled:cursor-not-allowed",
+    "ko:grid ko:grid-flow-col ko:place-items-center ko:gap-1",
   ],
   {
     variants: {
       size: {
-        small: "ko:px-4 ko:py-2",
-        medium: "ko:p-4",
+        small: "ko:h-10 ko:px-2",
+        medium: "ko:h-12 ko:px-3",
       },
       variant: {
-        filled: [""],
+        fill: [""],
         outline: ["ko:bg-transparent"],
-        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
+        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent", "ko:hover:bg-neutral/10"],
         answer: ["ko:px-6"],
       },
       color: {
@@ -37,12 +40,12 @@ export const ButtonVariants = cva(
     },
     defaultVariants: {
       size: "medium",
-      variant: "filled",
+      variant: "fill",
       color: "primary",
     },
     compoundVariants: [
       {
-        variant: "filled",
+        variant: "fill",
         color: "primary",
         class: [
           "ko:bg-primary",
@@ -54,7 +57,7 @@ export const ButtonVariants = cva(
         ],
       },
       {
-        variant: "filled",
+        variant: "fill",
         color: "secondary",
         class: [
           "ko:bg-secondary",
@@ -66,7 +69,7 @@ export const ButtonVariants = cva(
         ],
       },
       {
-        variant: "filled",
+        variant: "fill",
         color: "neutral",
         class: [
           "ko:bg-neutral",
@@ -152,8 +155,12 @@ export const ButtonVariants = cva(
 );
 
 function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+  const isIconOnly = React.isValidElement(children) && (children as React.ReactElement).type === Icon;
+
+  const iconOnlyClasses = isIconOnly ? "ko:aspect-square ko:!p-0 ko:!rounded-full ko:grid ko:place-items-center" : "";
+
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }))} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses)} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );

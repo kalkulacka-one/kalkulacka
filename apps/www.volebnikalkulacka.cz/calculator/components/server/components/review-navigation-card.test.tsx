@@ -5,13 +5,13 @@ import { describe, expect, it, vi } from "vitest";
 import { ReviewNavigationCard } from "./review-navigation-card";
 
 describe("ReviewNavigationCard", () => {
-  it("renders 'Zobrazit výsledky' button", () => {
+  it("renders navigation button", () => {
     const onNextClick = vi.fn();
     render(<ReviewNavigationCard onNextClick={onNextClick} />);
     expect(screen.getByText("Zobrazit výsledky")).toBeInTheDocument();
   });
 
-  it("calls onNextClick when button is clicked", async () => {
+  it("calls onNextClick when 'Zobrazit výsledky' button is clicked", async () => {
     const onNextClick = vi.fn();
     const user = userEvent.setup();
     render(<ReviewNavigationCard onNextClick={onNextClick} />);

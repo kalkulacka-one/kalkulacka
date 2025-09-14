@@ -25,9 +25,8 @@ describe("QuestionCard", () => {
     expect(screen.getByText(`${props.current}/${props.total}`)).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
     expect(screen.getByText(props.question.statement)).toBeInTheDocument();
-    expect(screen.getByText(props.question.detail)).toBeInTheDocument();
-    for (const tag of props.question.tags) {
-      expect(screen.getByText(tag)).toBeInTheDocument();
+    if (props.question.detail) {
+      expect(screen.getByText(props.question.detail)).toBeInTheDocument();
     }
   });
 });

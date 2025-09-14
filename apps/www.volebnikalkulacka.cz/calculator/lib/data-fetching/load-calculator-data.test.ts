@@ -67,8 +67,20 @@ describe("loadCalculatorData", () => {
     const result = await loadCalculatorData({ key: "key" });
 
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/calculator.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/questions.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/candidates.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/candidates-answers.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/persons.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
-    expect(result).toEqual({ calculator: data });
+    expect(result).toEqual({
+      calculator: data,
+      questions: data,
+      candidates: data,
+      candidatesAnswers: data,
+      persons: data,
+      organizations: data,
+    });
   });
 
   it("should load calculator data successfully with key and group", async () => {
@@ -80,15 +92,27 @@ describe("loadCalculatorData", () => {
     const result = await loadCalculatorData({ key: "key", group: "group" });
 
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/calculator.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/questions.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/candidates.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/candidates-answers.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/persons.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
-    expect(result).toEqual({ calculator: data });
+    expect(result).toEqual({
+      calculator: data,
+      questions: data,
+      candidates: data,
+      candidatesAnswers: data,
+      persons: data,
+      organizations: data,
+    });
   });
 
   it("should throw error with details when fetch fails", async () => {
     process.env.DATA_ENDPOINT = DATA_ENDPOINT;
     mockFetchFile.mockRejectedValue(new Error("Network error"));
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch calculator data: Network error");
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(/Failed to fetch .* data: Network error/);
   });
 
   it("should throw error with details when parsing fails", async () => {
@@ -100,6 +124,49 @@ describe("loadCalculatorData", () => {
       throw new Error("Invalid data format");
     });
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to parse calculator data: Invalid data format");
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(/Failed to parse .* data: Invalid data format/);
+  });
+
+  it("should handle missing optional files gracefully", async () => {
+    process.env.DATA_ENDPOINT = DATA_ENDPOINT;
+
+    mockFetchFile.mockImplementation(({ url }) => {
+      if (url.includes("persons.json") || url.includes("organizations.json")) {
+        return Promise.reject(new Error("File not found"));
+      }
+      return Promise.resolve(data);
+    });
+    mockParseWithSchema.mockReturnValue(data);
+
+    const result = await loadCalculatorData({ key: "key" });
+
+    expect(result.persons).toBeUndefined();
+    expect(result.organizations).toBeUndefined();
+    expect(result.calculator).toEqual(data);
+    expect(result.questions).toEqual(data);
+    expect(result.candidates).toEqual(data);
+    expect(result.candidatesAnswers).toEqual(data);
+  });
+
+  it("should throw error when required files are missing", async () => {
+    process.env.DATA_ENDPOINT = DATA_ENDPOINT;
+
+    mockFetchFile.mockImplementation(({ url }) => {
+      if (url.includes("calculator.json")) {
+        return Promise.reject(new Error("File not found"));
+      }
+      return Promise.resolve(data);
+    });
+
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch calculator data: File not found");
+
+    mockFetchFile.mockImplementation(({ url }) => {
+      if (url.includes("questions.json")) {
+        return Promise.reject(new Error("File not found"));
+      }
+      return Promise.resolve(data);
+    });
+
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch questions data: File not found");
   });
 });

@@ -1,3 +1,13 @@
 @import "tailwindcss";
 
 @import "@repo/design-system/styles";
+
+:root {
+  color-scheme: light;
+}
+
+@theme static {
+  --font-display: var(--ko-font-display);
+  --font-sans: var(--ko-typeface-sans);
+  --font-mono: var(--ko-typeface-mono);
+}

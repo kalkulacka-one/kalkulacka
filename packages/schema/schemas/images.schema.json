@@ -14,7 +14,7 @@
         "title": "Image type",
         "description": "Type of the image",
         "type": "string",
-        "enum": ["avatar", "logo", "portrait"],
+        "enum": ["avatar", "logo", "portrait", "opengraph", "twitter"],
         "examples": ["avatar"]
       },
       "urls": {
@@ -80,6 +80,26 @@
         },
         "additionalProperties": false,
         "required": ["original"]
+      },
+      "width": {
+        "title": "Image width",
+        "description": "Width of the original image in pixels",
+        "type": "integer",
+        "minimum": 1,
+        "examples": [800]
+      },
+      "height": {
+        "title": "Image height",
+        "description": "Height of the original image in pixels",
+        "type": "integer",
+        "minimum": 1,
+        "examples": [800]
+      },
+      "alt": {
+        "title": "Alternative text",
+        "description": "Alternative text for the image, used for accessibility",
+        "type": "string",
+        "examples": ["Portrét Andreje Babiše"]
       }
     },
     "unevaluatedProperties": false,

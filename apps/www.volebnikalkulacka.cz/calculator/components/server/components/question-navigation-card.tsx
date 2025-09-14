@@ -1,6 +1,7 @@
-import { Button, ToggleButton } from "@repo/design-system/client";
+import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
+import { Button, Icon, ToggleButton } from "@repo/design-system/client";
 
-import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
+import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
 
 export type QuestionNavigationCard = {
@@ -8,38 +9,53 @@ export type QuestionNavigationCard = {
   total: number;
   onPreviousClick: () => void;
   onNextClick: () => void;
-  answer: Answer;
+  answer: AnswerViewModel;
   onAgreeChange: (agree: boolean) => void;
   onDisagreeChange: (disagree: boolean) => void;
   onImportantChange: (isImportant: boolean) => void;
+  attribution?: boolean;
 };
 
-export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
+export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange, attribution }: QuestionNavigationCard) {
+  const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
+  const nextButtonLabel = answer.answer?.answer !== undefined ? "Další" : "Přeskočit";
+
   return (
-    <NavigationCard>
-      <div>
-        <div>
-          <Button variant="link" onClick={onPreviousClick}>
-            Předchozí
-          </Button>
-          <span>
-            {current}/{total}
-          </span>
-          <Button variant="link" onClick={onNextClick}>
-            Další
-          </Button>
+    <NavigationCard attribution={attribution}>
+      <div className="grid grid-flow-row gap-2 sm:gap-3">
+        <div className="grid grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
+          <div className="justify-self-start">
+            <Button size="small" variant="link" color="neutral" onClick={onPreviousClick}>
+              <Icon icon={mdiArrowLeft} decorative={true} />
+              {previousButtonLabel}
+            </Button>
+          </div>
+          <div className="justify-self-center">
+            <span className="tabular-nums">
+              <span>
+                <span className="font-bold invisible">{"0".repeat(Math.max(total.toString().length - current.toString().length, 0))}</span>
+                <span className="whitespace-nowrap">
+                  <strong>{current}</strong> / {total}
+                </span>
+              </span>
+            </span>
+          </div>
+          <div className="justify-self-end">
+            <Button size="small" variant="link" color="neutral" onClick={onNextClick}>
+              {nextButtonLabel}
+              <Icon icon={mdiArrowRight} decorative={true} />
+            </Button>
+          </div>
         </div>
-        <div>
-          <ToggleButton variant="answer" color="primary" checked={answer.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+        <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
+          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
+            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
+          </ToggleButton>
+          <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             Ano
           </ToggleButton>
-          <ToggleButton variant="answer" color="secondary" checked={answer.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+          <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             Ne
-          </ToggleButton>
-        </div>
-        <div>
-          <ToggleButton variant="link" checked={answer.isImportant} onChange={(checked: boolean) => onImportantChange(checked)}>
-            Pro mě důležité
           </ToggleButton>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { z } from "zod";
 import * as calculatorGroupSchema from "./calculator-group.schema";
 import { districtSchema } from "./district.schema";
 import * as electionSchema from "./election.schema";
+import { imagesSchema } from "./images.schema";
 import { roundSchema } from "./round.schema";
 import { tagsSchema } from "./tags.schema";
 import { variantSchema } from "./variant.schema";
@@ -20,6 +21,7 @@ export const calculatorBaseSchema = z.object({
   methodology: z.string().describe("Methodology of a calculator").optional(),
   intro: z.string().describe("Intro text displayed before starting the calculator").optional(),
   tags: tagsSchema.describe("Tags of a calculator").optional(),
+  images: imagesSchema.describe("Images associated with the calculator").optional(),
 });
 
 const standaloneCalculatorSchema = calculatorBaseSchema
@@ -37,6 +39,7 @@ const groupCalculatorSchema = calculatorBaseSchema
   .extend({
     calculatorGroup: calculatorGroup,
     variant: variantSchema,
+    shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
   })
   .strict();
 
