@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
@@ -5,6 +6,14 @@ import "../../../globals.css";
 
 import { EmbedProvider } from "../../../../components/client";
 import { type EmbedName, isEmbedName } from "../../../../config/embeds";
+import { allowCrawling } from "../../../../lib/seo";
+
+export const metadata: Metadata = {
+  robots: {
+    index: allowCrawling(),
+    follow: allowCrawling(),
+  },
+};
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: Promise<{ embed: string }> }) {
   const { embed: embedParam } = await params;
