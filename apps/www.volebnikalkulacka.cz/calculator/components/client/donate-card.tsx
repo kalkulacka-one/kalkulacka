@@ -4,17 +4,9 @@ import { Card } from "@repo/design-system/server";
 import { useState } from "react";
 
 export function DonateCard() {
-  const [selectedAmount, setSelectedAmount] = useState<string | null>("200");
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) return null;
-
-  const getDarujmeUrl = (amount?: string) => {
-    if (amount) {
-      return `https://www.darujme.cz/darovat/1200653?frequency=once&amount=${amount}`;
-    }
-    return "https://www.darujme.cz/darovat/1200653";
-  };
 
   return (
     <div className="sm:mx-4 lg:mx-8">
@@ -37,46 +29,37 @@ export function DonateCard() {
             <p className="text-neutral text-sm leading-relaxed">Volební kalkulačka je nezávislá a nezisková. Podpořte demokracii a pomozte milionům voličů.</p>
           </div>
           <div className="@sm:col-start-2">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedAmount(selectedAmount === "100" ? null : "100");
-              }}
-              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "100" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
-              }`}
+            <a
+              href="https://www.darujme.cz/darovat/1200653?frequency=once&amount=100"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border border-neutral-300 bg-white text-neutral hover:bg-neutral-50 transition-all cursor-pointer w-full @sm:w-auto"
             >
               👍 100 Kč
-            </button>
+            </a>
           </div>
           <div className="@sm:col-start-3">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedAmount(selectedAmount === "200" ? null : "200");
-              }}
-              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "200" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
-              }`}
+            <a
+              href="https://www.darujme.cz/darovat/1200653?frequency=once&amount=200"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border border-slate-500 bg-slate-200 text-slate-700 transition-all cursor-pointer w-full @sm:w-auto"
             >
               ❤️ 200 Kč
-            </button>
+            </a>
           </div>
           <div className="@sm:col-start-4">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedAmount(selectedAmount === "500" ? null : "500");
-              }}
-              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "500" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
-              }`}
+            <a
+              href="https://www.darujme.cz/darovat/1200653?frequency=once&amount=500"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border border-neutral-300 bg-white text-neutral hover:bg-neutral-50 transition-all cursor-pointer w-full @sm:w-auto"
             >
               🤩 500 Kč
-            </button>
+            </a>
           </div>
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
-            <a href={getDarujmeUrl(selectedAmount || undefined)} target="_blank" className="grid">
+            <a href="https://www.darujme.cz/darovat/1200653" target="_blank" rel="noopener noreferrer" className="grid">
               <Button variant="outline" color="primary" size="medium">
                 Podpořit Volební kalkulačku
               </Button>
