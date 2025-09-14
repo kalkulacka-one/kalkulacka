@@ -12,15 +12,13 @@ export function QuestionCard({ question, current, total }: QuestionCard) {
   const { title, detail, statement } = question;
   return (
     <Card corner="topLeft" shadow="hard" border>
-      <div className="grid gap-3 p-4 sm:gap-4 sm:p-6">
-        <div className="grid grid-cols-[auto_1fr] gap-2 text-sm">
-          <span className="font-bold">
-            {current}/{total}
-          </span>
-          <span className="font-light">{title}</span>
+      <div className="p-3 sm:p-6 flex flex-col gap-4">
+        <div className="text-sm text-slate-500">
+          <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
+          <span>{title}</span>
         </div>
-        <h3 className="font-display text-2xl font-bold leading-tight break-words">{statement}</h3>
-        {detail && <p className="text-sm text-gray-900 leading-relaxed sm:text-base max-w-prose break-words">{detail}</p>}
+        <h3 className="font-display text-lg sm:text-2xl font-bold text-slate-700 leading-tight tracking-tighter break-words">{statement}</h3>
+        {detail && <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-prose break-words tracking-wide">{detail}</p>}
       </div>
     </Card>
   );
