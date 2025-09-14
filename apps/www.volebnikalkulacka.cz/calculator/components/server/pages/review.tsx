@@ -72,7 +72,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-3xl">Rekapitulace</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Rekapitulace</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>

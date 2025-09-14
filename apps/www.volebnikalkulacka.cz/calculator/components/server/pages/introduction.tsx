@@ -27,7 +27,7 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick, isEmbe
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomMain>
-              <h2 className="font-display font-semibold text-3xl">{calculator?.shortTitle || "Sněmovní 2025"}</h2>
+              <h2 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{calculator?.shortTitle || "Sněmovní 2025"}</h2>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
