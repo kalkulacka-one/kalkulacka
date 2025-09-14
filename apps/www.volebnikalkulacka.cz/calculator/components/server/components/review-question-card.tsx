@@ -17,7 +17,7 @@ export type ReviewQuestionCard = {
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
   const { title, detail, statement } = question;
   return (
-    <Card corner="topLeft" shadow="hard" className="border border-slate-300">
+    <Card corner="topLeft" shadow="hard" className="border border-slate-200">
       <div className="p-3 sm:p-6 flex flex-col gap-4">
         <div className="text-sm text-slate-500">
           <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>

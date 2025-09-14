@@ -10,7 +10,7 @@ export type Guide = {
 export function Guide({ calculator }: Guide) {
   return (
     <div className="grid gap-4">
-      <Card shadow="hard" className="border border-slate-300">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ✅
@@ -22,7 +22,7 @@ export function Guide({ calculator }: Guide) {
         </div>
       </Card>
 
-      <Card shadow="hard" className="border border-slate-300">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ❌
@@ -34,7 +34,7 @@ export function Guide({ calculator }: Guide) {
         </div>
       </Card>
 
-      <Card shadow="hard" className="border border-slate-300">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ⏭️
@@ -46,7 +46,7 @@ export function Guide({ calculator }: Guide) {
         </div>
       </Card>
 
-      <Card shadow="hard" className="border border-slate-300">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ⭐
