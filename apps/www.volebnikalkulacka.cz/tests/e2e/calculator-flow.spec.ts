@@ -1,14 +1,13 @@
 import type { Locator, Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
 
-interface CalculatorConfig {
+type CalculatorConfig = {
   key: string;
   group: string;
   name: string;
   path: string;
   expectedTitle?: string;
-  hasNavod?: boolean;
-}
+};
 
 const CALCULATORS: CalculatorConfig[] = [
   {
@@ -17,7 +16,6 @@ const CALCULATORS: CalculatorConfig[] = [
     name: "Inventura hlasování",
     path: "/volby/snemovni-2025/inventura",
     expectedTitle: "Inventura 2021–2025",
-    hasNavod: true,
   },
   {
     key: "snemovni-2025",
@@ -25,7 +23,6 @@ const CALCULATORS: CalculatorConfig[] = [
     name: "Kalkulačka pro mladé",
     path: "/volby/snemovni-2025/pro-mlade",
     expectedTitle: "Pro mladé",
-    hasNavod: true,
   },
 ];
 
@@ -147,9 +144,7 @@ for (const calculator of CALCULATORS) {
         return;
       }
 
-      if (calculator.hasNavod) {
-        await navigateToNavod(page, calculator);
-      }
+      await navigateToNavod(page, calculator);
 
       if (await startQuestions(page, calculator)) {
         await answerQuestions(page);
