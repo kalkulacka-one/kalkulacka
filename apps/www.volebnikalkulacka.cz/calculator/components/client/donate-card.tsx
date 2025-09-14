@@ -18,7 +18,7 @@ export function DonateCard() {
 
   return (
     <div className="sm:mx-4 lg:mx-8">
-      <Card corner="bottomRight" className="@container p-3 sm:p-4 !bg-slate-100 border border-slate-300">
+      <Card corner="bottomRight" className="@container p-3 sm:p-4 !bg-slate-100 border border-slate-200">
         <div className="grid gap-2 grid-cols-3 @sm:grid-cols-[1fr_auto_auto_auto]">
           <div className="col-span-2 @sm:col-span-1 @sm:row-start-5 @sm:col-start-1 @sm:self-center">
             <Logo title="Volební kalkulačka" size="small" />
