@@ -17,7 +17,7 @@ export type ReviewQuestionCard = {
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
   const { title, detail, statement } = question;
   return (
-    <Card corner="topLeft" shadow="hard">
+    <Card corner="topLeft" shadow="hard" border>
       <div className="grid gap-3 p-4 sm:gap-4 sm:p-6">
         <div className="grid grid-cols-[auto_1fr] gap-2 text-sm">
           <span className="font-bold">
