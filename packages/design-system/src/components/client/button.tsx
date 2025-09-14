@@ -156,6 +156,7 @@ export const ButtonVariants = cva(
           "ko:text-primary",
           "ko:hover:bg-primary ko:hover:text-on-bg-primary",
           "ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
+          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-primary ko:data-checked:active:bg-primary-active/10 ko:data-checked:active:border-primary",
           "ko:data-active:bg-primary-active ko:data-active:border-primary-active ko:data-active:hover:bg-primary-active ko:data-active:text-on-bg-primary",
         ],
       },
