@@ -22,7 +22,7 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     router.push("/");
   };
 
-  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
-  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} isEmbed={showAttribution} />;
+  return <AppGuidePage calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} attribution={attribution} />;
 }
