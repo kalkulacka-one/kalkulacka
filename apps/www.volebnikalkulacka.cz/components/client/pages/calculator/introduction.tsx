@@ -18,7 +18,7 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
     router.push("/");
   };
 
-  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
-  return <IntroductionPage calculator={calculator} onNextClick={handleNavigationNextClick} onCloseClick={handleCloseClick} isEmbed={showAttribution} />;
+  return <IntroductionPage calculator={calculator} onNextClick={handleNavigationNextClick} onCloseClick={handleCloseClick} attribution={attribution} />;
 }

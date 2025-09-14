@@ -24,7 +24,7 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
     router.push("/");
   };
 
-  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
   return (
     <div>
@@ -35,7 +35,7 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
         onNextClick={handleNextClick}
         onPreviousClick={handlePreviousClick}
         onCloseClick={handleCloseClick}
-        isEmbed={showAttribution}
+        attribution={attribution}
       />
     </div>
   );
