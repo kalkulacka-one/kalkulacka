@@ -1,4 +1,8 @@
 :root {
+  --ko-typeface-display: "Radio Canada";
+  --ko-typeface-sans: "Geist";
+  --ko-typeface-mono: "Geist Mono";
+
   --ko-palette-primary: #003c76;
   --ko-palette-secondary: #d3161e;
   --ko-palette-neutral: #4f5862;
