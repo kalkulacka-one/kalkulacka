@@ -10,7 +10,7 @@ export type NavigationCard = {
 export function NavigationCard({ children, attribution }: NavigationCard) {
   return (
     <div className="grid justify-items-end m-2 sm:m-3 lg:m-4">
-      <Card corner="bottomRight" shadow="elevated">
+      <Card corner="bottomRight" shadow="elevated" border>
         <div className="p-3 sm:p-4 grid grid-flow-row gap-2 sm:gap-3">
           {children}
           {attribution && (

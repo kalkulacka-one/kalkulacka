@@ -14,7 +14,7 @@ const CardVariants = cva("ko:rounded-3xl", {
     },
     corner: { topRight: "ko:rounded-tr-none", topLeft: "ko:rounded-tl-none", bottomRight: "ko:rounded-br-none", bottomLeft: "ko:rounded-bl-none" },
     border: {
-      true: "ko:border ko:border-neutral",
+      true: "ko:border border-slate-200",
       false: "",
     },
     shadow: {
