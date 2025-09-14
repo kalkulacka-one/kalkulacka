@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
@@ -19,8 +19,6 @@ export type QuestionPage = {
 };
 
 export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, isEmbed }: QuestionPage) {
-  const title = "Volební kalkulačka";
-
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -63,15 +61,14 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle={title}>
-              <AppHeaderMain title={title} calculator={calculator} />
-              <AppHeaderRight>
+            <AppHeader condensed={condensed} calculator={calculator}>
+              <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
-              </AppHeaderRight>
+              </AppHeader.Right>
             </AppHeader>
           )}
         </WithCondenseOnScroll>

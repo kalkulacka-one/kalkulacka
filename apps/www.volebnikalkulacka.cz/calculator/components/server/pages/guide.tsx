@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight } from "../../client";
+import { AppHeader } from "../../client";
 import { Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
 
 export type GuidePage = {
@@ -15,30 +15,27 @@ export type GuidePage = {
 };
 
 export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, isEmbed }: GuidePage) {
-  const title = "Volební kalkulačka";
-
   return (
     <>
       <LayoutHeader>
-        <AppHeader logoTitle={title}>
-          <AppHeaderMain title={title} calculator={calculator} />
-          <AppHeaderRight>
+        <AppHeader calculator={calculator}>
+          <AppHeader.Right>
             <HideOnEmbed>
               <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
             </HideOnEmbed>
-          </AppHeaderRight>
-          <AppHeaderBottom>
-            <AppHeaderBottomLeft condensed={false}>
+          </AppHeader.Right>
+          <AppHeader.Bottom>
+            <AppHeader.BottomLeft condensed={false}>
               <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Zpět na úvod">
                 <Icon icon={mdiArrowLeft} size="medium" decorative />
               </Button>
-            </AppHeaderBottomLeft>
-            <AppHeaderBottomMain condensed={false}>
+            </AppHeader.BottomLeft>
+            <AppHeader.BottomMain condensed={false}>
               <h3 className="font-display font-semibold text-3xl">Návod</h3>
-            </AppHeaderBottomMain>
-          </AppHeaderBottom>
+            </AppHeader.BottomMain>
+          </AppHeader.Bottom>
         </AppHeader>
       </LayoutHeader>
       <LayoutContent>

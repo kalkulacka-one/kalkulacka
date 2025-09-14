@@ -20,14 +20,22 @@ vi.mock("../components", () => ({
   LayoutContent: vi.fn(({ children }) => children),
 }));
 
-vi.mock("../../client", () => ({
-  AppHeader: vi.fn(({ children }) => children),
-  AppHeaderMain: vi.fn(() => null),
-  AppHeaderRight: vi.fn(({ children }) => children),
-  AppHeaderBottom: vi.fn(({ children }) => children),
-  AppHeaderBottomLeft: vi.fn(({ children }) => children),
-  AppHeaderBottomMain: vi.fn(({ children }) => children),
-}));
+vi.mock("../../client", () => {
+  const AppHeaderMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
+    Right: React.FC<{ children?: React.ReactNode }>;
+    Bottom: React.FC<{ children?: React.ReactNode }>;
+    BottomLeft: React.FC<{ children?: React.ReactNode }>;
+    BottomMain: React.FC<{ children?: React.ReactNode }>;
+  };
+  AppHeaderMock.Right = vi.fn(({ children }) => children);
+  AppHeaderMock.Bottom = vi.fn(({ children }) => children);
+  AppHeaderMock.BottomLeft = vi.fn(({ children }) => children);
+  AppHeaderMock.BottomMain = vi.fn(({ children }) => children);
+
+  return {
+    AppHeader: AppHeaderMock,
+  };
+});
 
 vi.mock("../../../../components/client", () => ({
   HideOnEmbed: vi.fn(({ children }) => children),
