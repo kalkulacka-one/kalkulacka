@@ -17,7 +17,7 @@ export function QuestionCard({ question, current, total }: QuestionCard) {
           <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
           <span>{title}</span>
         </div>
-        <h3 className="font-display text-lg sm:text-2xl font-bold text-slate-700 leading-tight tracking-tighter break-words">{statement}</h3>
+        <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-700 leading-tight tracking-tighter break-words">{statement}</h3>
         {detail && <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-prose break-words tracking-wide">{detail}</p>}
       </div>
     </Card>
