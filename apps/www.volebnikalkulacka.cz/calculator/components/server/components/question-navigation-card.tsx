@@ -22,15 +22,15 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
 
   return (
     <NavigationCard attribution={attribution}>
-      <div className="@container grid grid-flow-row gap-2 sm:gap-3">
-        <div className="grid grid-cols-[1fr_1fr] @[320px]:grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
+      <div className="grid grid-flow-row gap-2 sm:gap-3">
+        <div className="grid grid-cols-[1fr_1fr] sm:grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
           <div className="justify-self-start">
             <Button size="small" variant="link" color="neutral" onClick={onPreviousClick}>
               <Icon icon={mdiArrowLeft} decorative={true} />
               {previousButtonLabel}
             </Button>
           </div>
-          <div className="justify-self-center hidden @[320px]:block">
+          <div className="justify-self-center hidden sm:block">
             <span className="tabular-nums">
               <span>
                 <span className="font-bold invisible">{"0".repeat(Math.max(total.toString().length - current.toString().length, 0))}</span>
