@@ -155,8 +155,10 @@ export const ButtonVariants = cva(
         class: [
           "ko:text-primary",
           "ko:hover:bg-primary ko:hover:text-on-bg-primary",
+          "ko:data-[just-clicked]:hover:!bg-transparent ko:data-[just-clicked]:hover:!text-primary",
           "ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
           "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-primary ko:data-checked:active:bg-primary-active/10 ko:data-checked:active:border-primary",
+          "ko:data-checked:data-[just-clicked]:hover:!bg-primary ko:data-checked:data-[just-clicked]:hover:!text-on-bg-primary",
           "ko:data-active:bg-primary-active ko:data-active:border-primary-active ko:data-active:hover:bg-primary-active ko:data-active:text-on-bg-primary",
         ],
       },
@@ -166,7 +168,10 @@ export const ButtonVariants = cva(
         class: [
           "ko:text-secondary",
           "ko:hover:bg-secondary ko:hover:text-on-bg-secondary",
+          "ko:data-[just-clicked]:hover:!bg-transparent ko:data-[just-clicked]:hover:!text-secondary",
           "ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
+          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-secondary ko:data-checked:active:bg-secondary-active/10 ko:data-checked:active:border-secondary",
+          "ko:data-checked:data-[just-clicked]:hover:!bg-secondary ko:data-checked:data-[just-clicked]:hover:!text-on-bg-secondary",
           "ko:data-active:bg-secondary-active ko:data-active:border-secondary-active ko:data-active:hover:bg-secondary-active ko:data-active:text-on-bg-secondary",
         ],
       },
@@ -176,7 +181,10 @@ export const ButtonVariants = cva(
         class: [
           "ko:text-neutral",
           "ko:hover:bg-neutral ko:hover:text-on-bg-neutral",
+          "ko:data-[just-clicked]:hover:!bg-transparent ko:data-[just-clicked]:hover:!text-neutral",
           "ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral",
+          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-neutral ko:data-checked:active:bg-neutral-active/10 ko:data-checked:active:border-neutral",
+          "ko:data-checked:data-[just-clicked]:hover:!bg-neutral ko:data-checked:data-[just-clicked]:hover:!text-on-bg-neutral",
           "ko:data-active:bg-neutral-active ko:data-active:border-neutral-active ko:data-active:hover:bg-neutral-active ko:data-active:text-on-bg-neutral",
         ],
       },
