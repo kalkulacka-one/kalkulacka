@@ -11,7 +11,7 @@ export function LayoutHeader({ children }: { children: React.ReactNode }) {
 }
 
 export function LayoutContent({ children }: { children: React.ReactNode }) {
-  return <main className="max-w-xl mx-auto px-4 py-6">{children}</main>;
+  return <main className="max-w-xl mx-auto p-2 sm:p-4">{children}</main>;
 }
 
 export function LayoutBottomNavigation({ children, spacer = "5rem" }: { children: React.ReactNode; spacer?: string | false }) {
