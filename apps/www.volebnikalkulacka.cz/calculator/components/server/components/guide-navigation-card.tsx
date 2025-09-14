@@ -10,7 +10,9 @@ export type GuideNavigationCard = {
 export function GuideNavigationCard({ onNextClick, attribution }: GuideNavigationCard) {
   return (
     <NavigationCard attribution={attribution}>
-      <Button onClick={onNextClick}>Začít odpovídat</Button>
+      <Button color="neutral" onClick={onNextClick}>
+        Začít odpovídat
+      </Button>
     </NavigationCard>
   );
 }

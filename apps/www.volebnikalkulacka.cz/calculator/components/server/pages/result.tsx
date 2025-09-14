@@ -41,7 +41,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-3xl">Výsledek</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Výsledek</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -52,16 +52,12 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
         {shouldShowToggleComputed && (
           <div className="mb-6">
             <div className="flex items-center gap-3 text-sm">
-              <div className="relative bg-gray-100 rounded-full p-1 flex">
-                <label
-                  className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
-                >
+              <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
+                <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
                   Kandidátní listiny
                 </label>
-                <label
-                  className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
-                >
+                <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
                   Lidé
                 </label>

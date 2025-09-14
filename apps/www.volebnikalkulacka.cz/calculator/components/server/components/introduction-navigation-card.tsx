@@ -10,7 +10,9 @@ export type IntroductionNavigationCard = {
 export function IntroductionNavigationCard({ onNextClick, attribution }: IntroductionNavigationCard) {
   return (
     <NavigationCard attribution={attribution}>
-      <Button onClick={onNextClick}>Pokračovat</Button>
+      <Button color="neutral" onClick={onNextClick}>
+        Pokračovat
+      </Button>
     </NavigationCard>
   );
 }

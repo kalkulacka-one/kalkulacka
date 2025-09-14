@@ -33,7 +33,7 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
               </Button>
             </AppHeader.BottomLeft>
             <AppHeader.BottomMain condensed={false}>
-              <h3 className="font-display font-semibold text-3xl">Návod</h3>
+              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Návod</h3>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>

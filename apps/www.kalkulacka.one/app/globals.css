@@ -7,4 +7,6 @@
   --font-display: var(--ko-font-display);
   --font-sans: var(--ko-typeface-sans);
   --font-mono: var(--ko-typeface-mono);
+
+  --ko-drop-shadow-hard-light: var(--color-slate-100);
 }

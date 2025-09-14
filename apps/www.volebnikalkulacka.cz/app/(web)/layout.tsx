@@ -60,7 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
       </head>
-      <body className="min-h-dvh">
+      <body className="min-h-dvh bg-slate-50">
         <EmbedContextProvider isEmbed={false}>
           <ThemeProvider name="default">{children}</ThemeProvider>
         </EmbedContextProvider>

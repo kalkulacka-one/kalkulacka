@@ -10,7 +10,9 @@ export type ReviewNavigationCard = {
 export function ReviewNavigationCard({ onNextClick, attribution }: ReviewNavigationCard) {
   return (
     <NavigationCard attribution={attribution}>
-      <Button onClick={onNextClick}>Zobrazit výsledky</Button>
+      <Button color="neutral" onClick={onNextClick}>
+        Zobrazit výsledky
+      </Button>
     </NavigationCard>
   );
 }
