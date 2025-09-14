@@ -18,15 +18,13 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
   const { title, detail, statement } = question;
   return (
     <Card corner="topLeft" shadow="hard" border>
-      <div className="grid gap-3 p-4 sm:gap-4 sm:p-6">
-        <div className="grid grid-cols-[auto_1fr] gap-2 text-sm">
-          <span className="font-bold">
-            {current}/{total}
-          </span>
-          <span className="font-light">{title}</span>
+      <div className="p-3 sm:p-6 flex flex-col gap-4">
+        <div className="text-sm text-slate-500">
+          <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
+          <span>{title}</span>
         </div>
-        <h3 className="font-display text-lg font-bold leading-tight break-words">{statement}</h3>
-        {detail && <p className="text-sm text-gray-900 leading-relaxed sm:text-base max-w-prose break-words">{detail}</p>}
+        <h3 className="font-display text-lg sm:text-xl font-bold text-slate-700 leading-tight tracking-tight break-words">{statement}</h3>
+        {detail && <p className="hidden sm:block text-sm text-slate-600 leading-relaxed max-w-prose break-words tracking-wide">{detail}</p>}
         <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
