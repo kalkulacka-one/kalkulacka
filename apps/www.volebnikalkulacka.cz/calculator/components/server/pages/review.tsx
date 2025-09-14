@@ -102,7 +102,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
           })}
         </div>
       </LayoutContent>
-      <LayoutBottomNavigation>
+      <LayoutBottomNavigation spacer={isEmbed ? "8rem" : "5rem"}>
         <ReviewNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>

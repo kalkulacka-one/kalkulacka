@@ -41,7 +41,7 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
       <LayoutContent>
         <Guide calculator={calculator} />
       </LayoutContent>
-      <LayoutBottomNavigation>
+      <LayoutBottomNavigation spacer={isEmbed ? "8rem" : "5rem"}>
         <GuideNavigationCard onNextClick={onNextClick} attribution={isEmbed} />
       </LayoutBottomNavigation>
     </>
