@@ -15,18 +15,19 @@ export type ReviewQuestionCard = {
 };
 
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
-  const { title, statement } = question;
+  const { title, detail, statement } = question;
   return (
     <Card corner="topLeft" shadow="hard">
-      <div className="grid gap-4 p-8">
+      <div className="grid gap-3 p-4 sm:gap-4 sm:p-6">
         <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
           <span className="font-bold">
             {current}/{total}
           </span>
           <span className="font-light">{title}</span>
         </div>
-        <h3 className="font-display text-lg font-bold leading-tight max-w-2xl break-words">{statement}</h3>
-        <div className="grid gap-3 items-center" style={{ gridTemplateColumns: "max-content 1fr 1fr" }}>
+        <h3 className="font-display text-lg font-bold leading-tight break-words">{statement}</h3>
+        {detail && <p className="text-sm text-gray-900 leading-relaxed sm:text-base max-w-prose break-words">{detail}</p>}
+        <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
