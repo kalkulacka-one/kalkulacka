@@ -59,7 +59,7 @@ export function DonateCard() {
             </a>
           </div>
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
-            <a href="https://www.darujme.cz/darovat/1200653" target="_blank" rel="noopener noreferrer" className="grid">
+            <a href="https://www.darujme.cz/projekt/1200653" target="_blank" rel="noopener noreferrer" className="grid">
               <Button variant="outline" color="primary" size="medium">
                 Podpořit Volební kalkulačku
               </Button>
