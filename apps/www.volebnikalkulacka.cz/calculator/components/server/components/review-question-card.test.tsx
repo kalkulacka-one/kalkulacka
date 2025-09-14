@@ -36,7 +36,8 @@ describe("ReviewQuestionCard", () => {
   it("renders question information and answer buttons", () => {
     render(<ReviewQuestionCard {...props} />);
 
-    expect(screen.getByText(`${props.current}/${props.total}`)).toBeInTheDocument();
+    expect(screen.getByText(props.current.toString())).toBeInTheDocument();
+    expect(screen.getByText(props.total.toString())).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
     expect(screen.getByText(props.question.statement)).toBeInTheDocument();
     expect(screen.getByText("Ano")).toBeInTheDocument();
