@@ -37,7 +37,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   };
 
   const answer = useAnswer(question.id);
-  const showAttribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
   return (
     <div>
@@ -50,7 +50,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
-        isEmbed={showAttribution}
+        attribution={attribution}
       />
     </div>
   );
