@@ -14,12 +14,12 @@ const CardVariants = cva("ko:rounded-3xl", {
     },
     corner: { topRight: "ko:rounded-tr-none", topLeft: "ko:rounded-tl-none", bottomRight: "ko:rounded-br-none", bottomLeft: "ko:rounded-bl-none" },
     border: {
-      true: "ko:border border-slate-200",
+      true: "ko:border ko:border-neutral",
       false: "",
     },
     shadow: {
-      elevated: "ko:drop-shadow-2xl shadow-slate-200",
-      hard: "ko:shadow-[6px_6px_0px_#f1f5f9]",
+      elevated: "ko:drop-shadow-2xl",
+      hard: "ko:drop-shadow-hard",
       false: "",
     },
   },

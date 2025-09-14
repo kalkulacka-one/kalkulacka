@@ -124,7 +124,7 @@ export const ButtonVariants = cva(
         variant: "answer",
         color: "primary",
         class: [
-          "ko:text-neutral",
+          "ko:text-primary",
           "ko:hover:bg-primary ko:hover:text-on-bg-primary",
           "ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
           "ko:data-active:bg-primary-active ko:data-active:border-primary-active ko:data-active:hover:bg-primary-active",
@@ -134,7 +134,7 @@ export const ButtonVariants = cva(
         variant: "answer",
         color: "secondary",
         class: [
-          "ko:text-neutral",
+          "ko:text-secondary",
           "ko:hover:bg-secondary ko:hover:text-on-bg-secondary",
           "ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
           "ko:data-active:bg-secondary-active ko:data-active:border-secondary-active ko:data-active:hover:bg-secondary-active",
