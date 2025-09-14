@@ -4,7 +4,7 @@ import React from "react";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, DonateCard, WithCondenseOnScroll } from "../../client";
+import { AppHeader, DonateCard, WithCondenseOnScroll } from "../../client";
 import { LayoutContent, LayoutHeader, MatchCard } from "../components";
 
 export type ResultPage = {
@@ -18,8 +18,6 @@ export type ResultPage = {
 };
 
 export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
-  const title = "Volební kalkulačka";
-
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -28,25 +26,24 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle={title}>
-              <AppHeaderMain title={title} calculator={calculator} />
-              <AppHeaderRight>
+            <AppHeader condensed={condensed} calculator={calculator}>
+              <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
-              </AppHeaderRight>
-              <AppHeaderBottom>
-                <AppHeaderBottomLeft condensed={condensed}>
+              </AppHeader.Right>
+              <AppHeader.Bottom>
+                <AppHeader.BottomLeft condensed={condensed}>
                   <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Back">
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
-                </AppHeaderBottomLeft>
-                <AppHeaderBottomMain condensed={condensed}>
+                </AppHeader.BottomLeft>
+                <AppHeader.BottomMain condensed={condensed}>
                   <h3 className="font-display font-semibold text-3xl">Výsledek</h3>
-                </AppHeaderBottomMain>
-              </AppHeaderBottom>
+                </AppHeader.BottomMain>
+              </AppHeader.Bottom>
             </AppHeader>
           )}
         </WithCondenseOnScroll>

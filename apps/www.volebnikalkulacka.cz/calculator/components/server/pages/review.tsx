@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
@@ -17,8 +17,6 @@ export type ReviewPage = {
 };
 
 export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, isEmbed }: ReviewPage) {
-  const title = "Volební kalkulačka";
-
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -59,25 +57,24 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle={title}>
-              <AppHeaderMain title={title} calculator={calculator} />
-              <AppHeaderRight>
+            <AppHeader condensed={condensed} calculator={calculator}>
+              <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
-              </AppHeaderRight>
-              <AppHeaderBottom>
-                <AppHeaderBottomLeft condensed={condensed}>
+              </AppHeader.Right>
+              <AppHeader.Bottom>
+                <AppHeader.BottomLeft condensed={condensed}>
                   <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Zpět na otázky">
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
-                </AppHeaderBottomLeft>
-                <AppHeaderBottomMain condensed={condensed}>
+                </AppHeader.BottomLeft>
+                <AppHeader.BottomMain condensed={condensed}>
                   <h3 className="font-display font-semibold text-3xl">Rekapitulace</h3>
-                </AppHeaderBottomMain>
-              </AppHeaderBottom>
+                </AppHeader.BottomMain>
+              </AppHeader.Bottom>
             </AppHeader>
           )}
         </WithCondenseOnScroll>
