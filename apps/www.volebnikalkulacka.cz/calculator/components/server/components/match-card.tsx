@@ -16,8 +16,8 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
             <span className="text-2xl font-bold">{order !== undefined ? order : "—"}</span>
           </div>
           <div className="grid gap-1">
-            <h3 className="font-display text-lg font-bold leading-tight">{candidate.displayName}</h3>
-            {candidate.organization && <p className="text-sm">{candidate.organization}</p>}
+            <h3 className="text-lg font-bold leading-tight text-slate-700">{candidate.displayName}</h3>
+            {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
             {respondent === "expert" && (
               <p className="text-xs text-gray-500">
                 Postoje podle veřejných zdrojů,
@@ -26,7 +26,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
             )}
           </div>
           <div>
-            <span className="font-display text-3xl font-bold">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
+            <span className="text-3xl font-bold tracking-tight text-slate-800">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
           </div>
         </div>
       </div>
