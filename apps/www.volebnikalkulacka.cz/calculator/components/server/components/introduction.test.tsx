@@ -2,18 +2,19 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
+import { calculatorViewModel } from "../../../view-models";
 import { Introduction } from ".";
 
-const data = {
+const data = calculatorViewModel({
   id: "00000000-0000-0000-0000-000000000000",
   createdAt: new Date(0).toISOString(),
   key: "kalkulacka",
   shortTitle: "Sněmovní 2025",
   title: "Volební kalkulačka pro sněmovní volby 2025",
   intro: "Čeká vás 35 otázek, na které jsme se zeptali všech 26 kandidujících subjektů.",
-} satisfies Calculator;
+} satisfies Calculator);
 
-const dataWithMarkdown = {
+const dataWithMarkdown = calculatorViewModel({
   ...data,
   intro: [
     "Čeká vás **35 otázek**, na které jsme se zeptali *všech 26* kandidujících subjektů.",
@@ -21,13 +22,14 @@ const dataWithMarkdown = {
     ["Postup:", "1. První krok", "2. Druhý krok", "3. Třetí krok"].join("\n"),
     "Více informací najdete na [kalkulacka.one](https://www.kalkulacka.one).",
   ].join("\n\n"),
-};
+});
 
 describe("Introduction", () => {
-  it("renders title and intro", () => {
+  it("renders intro content", () => {
     render(<Introduction calculator={data} />);
-    expect(screen.getByText(data.title)).toBeInTheDocument();
-    expect(screen.getByText(data.intro)).toBeInTheDocument();
+    if (data.intro) {
+      expect(screen.getByText(data.intro)).toBeInTheDocument();
+    }
   });
 
   describe("Markdown formatting", () => {
@@ -90,8 +92,7 @@ describe("Introduction", () => {
       );
 
       const h1Elements = container.querySelectorAll("h1");
-      expect(h1Elements).toHaveLength(1);
-      expect(h1Elements[0]?.textContent).toBe(data.title);
+      expect(h1Elements).toHaveLength(0);
       expect(screen.getByText("This paragraph should remain.")).toBeInTheDocument();
       expect(screen.queryByText("This heading should be stripped")).not.toBeInTheDocument();
     });
