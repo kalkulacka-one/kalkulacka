@@ -1,7 +1,7 @@
 import { Card, ProgressBar } from "@repo/design-system/server";
 
-import type { CandidateMatchViewModel } from "../../../view-models";
-import { useCandidateAnswerComparison, useHasDirectAnswers } from "../../../view-models/client/candidate";
+import type { CandidateMatchViewModel } from "../../view-models";
+import { useCandidateAnswerComparison, useHasDirectAnswers } from "../../view-models/client/candidate";
 
 export type MatchCard = CandidateMatchViewModel;
 
