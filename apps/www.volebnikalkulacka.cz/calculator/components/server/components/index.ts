@@ -1,4 +1,5 @@
 export * from "./embed-attribution";
+export * from "./embed-footer";
 export * from "./guide";
 export * from "./guide-navigation-card";
 export * from "./introduction";
