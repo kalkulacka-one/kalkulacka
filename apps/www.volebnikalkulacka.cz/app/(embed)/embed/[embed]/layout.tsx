@@ -23,7 +23,7 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang="cs">
       <head>
-        <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
+        <Script defer data-domain="volebnikalkulacka.cz" src="https://plausible.io/js/script.tagged-events.outbound-links.js" />
       </head>
       <body>
         <EmbedProvider name={embed}>{children}</EmbedProvider>
