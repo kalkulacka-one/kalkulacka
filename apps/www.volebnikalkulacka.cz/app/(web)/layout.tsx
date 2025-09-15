@@ -59,7 +59,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="cs">
       <head>
-        <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
+        <Script defer data-domain="volebnikalkulacka.cz" src="https://plausible.io/js/script.tagged-events.outbound-links.js" />
       </head>
       <body className="min-h-dvh bg-slate-50">
         <EmbedContextProvider isEmbed={false}>
