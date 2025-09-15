@@ -117,40 +117,6 @@ export default function Page() {
           <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
             <div className="p-6 h-full flex flex-col">
               <div className="text-xs text-slate-600">
-                <span className="rounded-full bg-amber-50 px-2.5 py-1 font-semibold text-amber-700">Rodina</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Nejdůležitější témata pro rodinu</h4>
-              <p className="mt-1 text-slate-500">Rodičovství, školství, bydlení.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/rodina" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
-
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="text-xs text-slate-600">
-                <span className="rounded-full bg-green-50 px-2.5 py-1 font-semibold text-green-700">Klimatická</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Změna klimatu a energie</h4>
-              <p className="mt-1 text-slate-500">Energetika, emise a adaptace.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/klima" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
-
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="text-xs text-slate-600">
                 <span className="rounded-full bg-slate-100 px-2.5 py-1 text-slate-700">Pro mladé</span>
               </div>
               <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kalkulačka pro mladé</h4>
