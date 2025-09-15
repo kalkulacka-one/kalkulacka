@@ -13,7 +13,7 @@ function ExpandableCardComponent(props: ExpandableCard, ref: React.Ref<HTMLDivEl
   const cardProps = {
     ...rest,
     interactive: true,
-    className: twMerge("ko:grid ko:grid-flow-row", typeof className === "string" ? className : undefined),
+    className: twMerge("ko:grid ko:grid-flow-row", className),
   };
   return (
     <Disclosure {...cardProps} as={Card} ref={ref}>
