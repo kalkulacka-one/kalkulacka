@@ -1,22 +1,7 @@
 import { useMemo } from "react";
 
-import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
-import { useCalculatorStore } from "../stores";
-
-export type CandidateAnswer = Omit<Answer, "respondent"> & {
-  respondent?: "candidate" | "expert";
-};
-
-export type CandidateAnswerViewModel = Omit<Answer, "respondent"> & {
-  respondent: "candidate" | "expert";
-};
-
-export function candidateAnswerViewModel(answer: CandidateAnswer): CandidateAnswerViewModel {
-  return {
-    ...answer,
-    respondent: answer.respondent ?? "candidate",
-  };
-}
+import { useCalculatorStore } from "../../stores";
+import { type CandidateAnswerViewModel, candidateAnswerViewModel } from "../server/candidate-answer";
 
 export function useCandidateAnswer(candidateId: string, questionId: string): CandidateAnswerViewModel | undefined {
   const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);

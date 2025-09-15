@@ -4,6 +4,7 @@ import Script from "next/script";
 import "../globals.css";
 
 import { EmbedContextProvider, ThemeProvider } from "../../components/client";
+import { allowCrawling } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: {
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: allowCrawling(),
+    follow: allowCrawling(),
   },
 };
 
@@ -60,8 +61,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
       </head>
-      <body className="min-h-dvh">
-        <EmbedContextProvider isEmbed={false} name={null}>
+      <body className="min-h-dvh bg-slate-50">
+        <EmbedContextProvider isEmbed={false}>
           <ThemeProvider name="default">{children}</ThemeProvider>
         </EmbedContextProvider>
       </body>

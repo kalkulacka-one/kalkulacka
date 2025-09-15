@@ -1,120 +1,157 @@
 import { Logo } from "@repo/design-system/client";
+import { twMerge } from "@repo/design-system/utils";
 import type { ReactNode } from "react";
 import React from "react";
 
 import { useEmbed } from "../../../components/client";
+import type { CalculatorViewModel } from "../../view-models";
+
+const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);
+
+const hasNestedChildOfType = (children: ReactNode, parentType: React.ElementType, childType: React.ElementType) =>
+  React.Children.toArray(children).some((child) => {
+    if (React.isValidElement(child) && child.type === parentType) {
+      const childProps = child.props as { children?: ReactNode };
+      return hasChildOfType(childProps.children, childType);
+    }
+    return false;
+  });
 
 type AppHeaderChildProps = {
   condensed?: boolean;
 };
 
 type AppHeaderProps = {
-  children: ReactNode;
+  children?: ReactNode;
   condensed?: boolean;
-  logoTitle: string;
+  calculator?: CalculatorViewModel;
 };
 
-export function AppHeader({ children, condensed = false, logoTitle }: AppHeaderProps) {
-  const { isEmbed } = useEmbed();
-  const hasPageHeading = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === AppHeaderBottom);
-
+export function AppHeader({ children, condensed = false, calculator }: AppHeaderProps) {
+  const embed = useEmbed();
+  const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
+  const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
-  const spanLogo = !hasPageHeading && !condensed;
 
-  const headerStyles = {
-    gridTemplateAreas: expand
-      ? `"left logo main right"
-         "bottom-left bottom-left bottom-main bottom-right"`
-      : `"left logo main right"`,
-    gridTemplateColumns: "max-content max-content 1fr max-content",
-    gridTemplateRows: expand ? "auto 3.75rem" : "auto",
-  };
+  const gridClasses = "grid grid-cols-[auto_1fr_auto] items-center";
+  const expandedRowsClasses = "grid-rows-[3rem_auto]";
+  const collapsedRowsClasses = "grid-rows-[3rem]";
+  const gridSpacingClasses = "gap-x-2 sm:gap-x-3 gap-y-1";
+  const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
-  const logoStyles = {
-    gridArea: !condensed ? "left" : "logo",
-    gridColumnStart: spanLogo ? 1 : undefined,
-    gridColumnEnd: spanLogo ? 3 : undefined,
-  };
+  const mainGrid = "grid grid-flow-col grid-cols-[auto_1fr] gap-2";
+  const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "col-span-2" : "";
+  const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "col-start-2" : "";
+  const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent);
+
+  const bottomExpanded = "col-span-3 flex items-center h-full";
+  const bottomCondensed = "row-start-1";
+  const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
   return (
-    <header className="sticky top-0 bg-white/60 backdrop-blur-md p-4 grid gap-4 items-center @container" style={headerStyles}>
-      <div style={logoStyles}>
-        <Logo title={logoTitle} size="medium" monochrome={isEmbed} />
+    <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
+      <div className={headerGridClasses}>
+        <div className={mainClasses}>
+          <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+        </div>
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type === AppHeaderRight) {
+            return (child.props as { children: ReactNode }).children;
+          }
+          return null;
+        })}
+        {(expand || (condensed && hasBottomLeft)) && (
+          <div className={bottomClasses}>
+            {React.Children.map(children, (child) => {
+              if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
+                return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
+                  ...(child.props || {}),
+                  condensed,
+                });
+              }
+              return null;
+            })}
+          </div>
+        )}
       </div>
-      {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, { ...(child.props || {}), condensed }) : child))}
     </header>
   );
 }
 
-type AppHeaderLeftProps = {
+type AppHeaderLeft = {
   children?: ReactNode;
 };
 
-export function AppHeaderLeft({ children }: AppHeaderLeftProps) {
-  return <div style={{ gridArea: "left" }}>{children}</div>;
+export function AppHeaderLeft({ children }: AppHeaderLeft) {
+  return <>{children}</>;
 }
 
-type AppHeaderMainProps = {
+type AppHeaderMain = {
   children?: ReactNode;
-  title?: string;
-  secondaryTitle?: string;
-  tertiaryTitle?: string;
+  title: string;
+  calculator?: CalculatorViewModel;
+  logoMonochrome?: boolean;
 };
 
-export function AppHeaderMain({ children, title, secondaryTitle, tertiaryTitle }: AppHeaderMainProps) {
+function AppHeaderMain({ children, title, calculator, logoMonochrome }: AppHeaderMain) {
   return (
-    <div style={{ gridArea: "main" }} className="grid text-sm leading-none">
-      <h1 className="font-light">{title}</h1>
-      <div>
-        <h2 className="font-semibold inline">{secondaryTitle}</h2>
-        {secondaryTitle && tertiaryTitle && <span className="font-light hidden @[36rem]:inline"> • </span>}
-        <span className="font-light hidden @[36rem]:inline">{tertiaryTitle}</span>
+    <div className="grid grid-flow-col items-center gap-2">
+      <Logo title={title} size="small" monochrome={logoMonochrome} />
+      <div className="grid text-sm text-slate-700 leading-none">
+        <h1 className="font-light">{title}</h1>
+        <div>
+          <h2 className="font-semibold inline">{calculator?.title}</h2>
+          {calculator?.title && calculator?.secondaryTitle && <span className="font-light hidden @[24rem]:inline"> • </span>}
+          <span className="font-light hidden @[24rem]:inline">{calculator?.secondaryTitle}</span>
+        </div>
+        {children}
       </div>
-      {children}
     </div>
   );
 }
 
-type AppHeaderRightProps = {
+type AppHeaderRight = {
   children: ReactNode;
 };
 
-export function AppHeaderRight({ children }: AppHeaderRightProps) {
-  return <div style={{ gridArea: "right" }}>{children}</div>;
+export function AppHeaderRight({ children }: AppHeaderRight) {
+  return <>{children}</>;
 }
 
-type AppHeaderBottomProps = {
+type AppHeaderBottom = {
   children: ReactNode;
 };
 
-export function AppHeaderBottom({ children }: AppHeaderBottomProps) {
-  return <div style={{ display: "contents" }}>{children}</div>;
+export function AppHeaderBottom({ children }: AppHeaderBottom) {
+  return <div className="grid grid-flow-col items-center gap-2">{children}</div>;
 }
 
-type AppHeaderBottomLeftProps = {
-  children: ReactNode;
-  condensed?: boolean;
-};
-
-export function AppHeaderBottomLeft({ children, condensed }: AppHeaderBottomLeftProps) {
-  const bottomLeftStyles = {
-    gridArea: condensed ? "left" : "bottom-left",
-    justifySelf: condensed ? "auto" : "end",
-  };
-
-  return <div style={bottomLeftStyles}>{children}</div>;
-}
-
-type AppHeaderBottomMainProps = {
+export type AppHeaderBottomLeft = {
   children: ReactNode;
   condensed?: boolean;
 };
 
-export function AppHeaderBottomMain({ children, condensed }: AppHeaderBottomMainProps) {
-  const bottomMainStyles = {
-    gridArea: "bottom-main",
-    display: condensed ? "none" : "block",
-  };
-
-  return <div style={bottomMainStyles}>{children}</div>;
+export function AppHeaderBottomLeft({ children, condensed }: AppHeaderBottomLeft) {
+  if (condensed) {
+    return <div className="row-start-1 col-start-1 grid grid-flow-col items-center gap-1">{children}</div>;
+  }
+  return <>{children}</>;
 }
+
+export type AppHeaderBottomMain = {
+  children: ReactNode;
+  condensed?: boolean;
+};
+
+export function AppHeaderBottomMain({ children, condensed }: AppHeaderBottomMain) {
+  if (condensed) {
+    return null;
+  }
+  return <>{children}</>;
+}
+
+AppHeader.Left = AppHeaderLeft;
+AppHeader.Right = AppHeaderRight;
+AppHeader.Bottom = AppHeaderBottom;
+AppHeader.BottomLeft = AppHeaderBottomLeft;
+AppHeader.BottomMain = AppHeaderBottomMain;

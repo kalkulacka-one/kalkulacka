@@ -23,18 +23,78 @@ export default function Page() {
 
               <div className="space-y-3">
                 <p className="text-2xl md:text-3xl font-light text-slate-700 leading-relaxed">
-                  Zatím vyzkoušejte <span className="font-bold">inventuru hlasování</span>.
-                </p>
-                <p className="text-lg md:text-xl font-light text-slate-700 leading-relaxed">
-                  Klasickou <span className="font-bold">Volební kalkulačku</span> pro Sněmovní volby 2025 spustíme každou chvíli. Nechte nám na sebe e-mail a dáme vám vědět!
+                  Vyberte si z <span className="font-bold">pěti verzí kalkulačky</span>.
                 </p>
               </div>
             </div>
           </div>
           <SubscribeForm />
           {/* Calculator Cards */}
-          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto auto-rows-fr md:grid-cols-[1fr_1fr]">
-            <Link href="/volby/snemovni-2025/inventura" className="group block h-full">
+          <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto auto-rows-fr md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
+            <div className="group block h-full">
+              <div className="h-full">
+                <Card shadow="hard" corner="topLeft">
+                  <div className="grid gap-4 p-8 h-full items-start">
+                    <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                      <span className="font-light">Sněmovní volby 2025</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Volební kalkulačka</h3>
+                    <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Klasická volební kalkulačka s kompletní sadou otázek.</p>
+                    <div className="grid items-stretch">
+                      <Link href="/volby/snemovni-2025/kalkulacka" className="grid">
+                        <Button variant="fill" color="neutral">
+                          Spustit kalkulačku →
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+
+            <div className="group block h-full">
+              <div className="h-full">
+                <Card shadow="hard" corner="topLeft">
+                  <div className="grid gap-4 p-8 h-full items-start">
+                    <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                      <span className="font-light">Sněmovní volby 2025</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Expresní kalkulačka</h3>
+                    <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Rychlá verze s klíčovými otázkami.</p>
+                    <div className="grid items-stretch">
+                      <Link href="/volby/snemovni-2025/expresni" className="grid">
+                        <Button variant="fill" color="neutral">
+                          Spustit kalkulačku →
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+
+            <div className="group block h-full">
+              <div className="h-full">
+                <Card shadow="hard" corner="topLeft">
+                  <div className="grid gap-4 p-8 h-full items-start">
+                    <div className="grid grid-flow-col auto-cols-max gap-2 items-center text-sm">
+                      <span className="font-light">Sněmovní volby 2025</span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Ultimátní kalkulačka</h3>
+                    <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Nejdetailnější verze s rozšířenými otázkami.</p>
+                    <div className="grid items-stretch">
+                      <Link href="/volby/snemovni-2025/ultimatni" className="grid">
+                        <Button variant="fill" color="neutral">
+                          Spustit kalkulačku →
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
+
+            <div className="group block h-full">
               <div className="h-full">
                 <Card shadow="hard" corner="topLeft">
                   <div className="grid gap-4 p-8 h-full items-start">
@@ -43,13 +103,17 @@ export default function Page() {
                     </div>
                     <h3 className="font-display text-2xl font-bold leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">Inventura hlasování</h3>
                     <p className="text-sm text-slate-900 leading-relaxed sm:text-base max-w-prose break-words">Zjistěte, kdo vás opravdu zastupoval ve sněmovně.</p>
-                    <Button variant="fill" color="neutral">
-                      Spustit inventuru →
-                    </Button>
+                    <div className="grid items-stretch">
+                      <Link href="/volby/snemovni-2025/inventura" className="grid">
+                        <Button variant="fill" color="neutral">
+                          Spustit inventuru →
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </Card>
               </div>
-            </Link>
+            </div>
 
             <div className="group block h-full">
               <Card shadow="hard" corner="topLeft">
@@ -65,11 +129,13 @@ export default function Page() {
                     </a>
                     .
                   </p>
-                  <Link href="/volby/snemovni-2025/pro-mlade">
-                    <Button variant="fill" color="neutral">
-                      Spustit kalkulačku →
-                    </Button>
-                  </Link>
+                  <div className="grid items-stretch">
+                    <Link href="/volby/snemovni-2025/pro-mlade" className="grid">
+                      <Button variant="fill" color="neutral">
+                        Spustit kalkulačku →
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </Card>
             </div>

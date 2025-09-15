@@ -10,50 +10,50 @@ export type Guide = {
 export function Guide({ calculator }: Guide) {
   return (
     <div className="grid gap-4">
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ✅
           </span>
           <div>
-            <p className="font-semibold">Shoda</p>
-            <p className="text-sm">Při shodě s Vaší odpovědí strana nebo politik dostane bod</p>
+            <p className="font-semibold text-slate-700">Shoda</p>
+            <p className="text-sm text-slate-500">Při shodě s Vaší odpovědí strana nebo politik dostane bod</p>
           </div>
         </div>
       </Card>
 
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ❌
           </span>
           <div>
-            <p className="font-semibold">Neshoda</p>
-            <p className="text-sm">Při neshodě bod naopak ztratí</p>
+            <p className="font-semibold text-slate-700">Neshoda</p>
+            <p className="text-sm text-slate-500">Při neshodě bod naopak ztratí</p>
           </div>
         </div>
       </Card>
 
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ⏭️
           </span>
           <div>
-            <p className="font-semibold">Přeskočit</p>
-            <p className="text-sm">Otázku můžete přeskočit a nebude se do výpočtu počítat</p>
+            <p className="font-semibold text-slate-700">Přeskočit</p>
+            <p className="text-sm text-slate-500">Otázku můžete přeskočit a nebude se do výpočtu počítat</p>
           </div>
         </div>
       </Card>
 
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
             ⭐
           </span>
           <div>
-            <p className="font-semibold">Důležité otázky</p>
-            <p className="text-sm">Pro vás důležité otázky označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
+            <p className="font-semibold text-slate-700">Důležité otázky</p>
+            <p className="text-sm text-slate-500">Pro vás důležité otázky označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
           </div>
         </div>
       </Card>

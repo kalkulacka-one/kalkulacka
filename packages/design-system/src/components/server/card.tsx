@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 export type Card = {
   children: React.ReactNode;
+  className?: string;
 } & VariantProps<typeof CardVariants>;
 
 const CardVariants = cva("ko:rounded-3xl", {
@@ -30,6 +31,6 @@ const CardVariants = cva("ko:rounded-3xl", {
   },
 });
 
-export function Card({ children, color, corner, border, shadow }: Card) {
-  return <div className={twMerge(CardVariants({ color, corner, border, shadow }))}>{children}</div>;
+export function Card({ children, color, corner, border, shadow, className }: Card) {
+  return <div className={twMerge(CardVariants({ color, corner, border, shadow }), className)}>{children}</div>;
 }
