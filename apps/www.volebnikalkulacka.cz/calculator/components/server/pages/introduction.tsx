@@ -1,19 +1,19 @@
 import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader } from "../../client";
-import { Introduction, IntroductionNavigationCard, Layout } from "../components";
+import { EmbedFooter, Introduction, IntroductionNavigationCard, Layout } from "../components";
 
 export type IntroductionPage = {
+  embedContext: EmbedContextType;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function IntroductionPage({ calculator, onNextClick, onCloseClick, attribution }: IntroductionPage) {
+export function IntroductionPage({ embedContext, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   return (
     <>
       <Layout.Header>
@@ -38,6 +38,11 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick, attrib
       <Layout.BottomNavigation spacer="5rem">
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
+      {embedContext.isEmbed && (
+        <Layout.Footer>
+          <EmbedFooter attribution={embedContext.config?.attribution} />
+        </Layout.Footer>
+      )}
     </>
   );
 }

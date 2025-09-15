@@ -1,12 +1,13 @@
 import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { Layout, QuestionCard, QuestionNavigationCard } from "../components";
+import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
+  embedContext: EmbedContextType;
   question: QuestionViewModel;
   number: number;
   total: number;
@@ -15,10 +16,9 @@ export type QuestionPage = {
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, attribution }: QuestionPage) {
+export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -88,6 +88,11 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onImportantChange={handleImportantChange}
         />
       </Layout.BottomNavigation>
+      {embedContext.isEmbed && (
+        <Layout.Footer>
+          <EmbedFooter attribution={embedContext.config?.attribution} />
+        </Layout.Footer>
+      )}
     </>
   );
 }

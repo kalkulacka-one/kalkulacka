@@ -1,22 +1,22 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
+import { EmbedFooter, Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
+  embedContext: EmbedContextType;
   questions: QuestionsViewModel;
   answers: AnswersViewModel;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, attribution }: ReviewPage) {
+export function ReviewPage({ embedContext, questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -105,6 +105,11 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
       <Layout.BottomNavigation spacer="5rem">
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
+      {embedContext.isEmbed && (
+        <Layout.Footer>
+          <EmbedFooter attribution={embedContext.config?.attribution} />
+        </Layout.Footer>
+      )}
     </>
   );
 }

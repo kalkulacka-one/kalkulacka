@@ -50,14 +50,26 @@ function BottomNavigation({ children, spacer = "5rem" }: LayoutBottomNavigation)
 
 BottomNavigation.displayName = "Layout.BottomNavigation";
 
+export type LayoutFooter = {
+  children: React.ReactNode;
+};
+
+function Footer({ children }: LayoutFooter) {
+  return <footer className="grid justify-items-center mt-2 sm:mt-3 lg:mt-4">{children}</footer>;
+}
+
+Footer.displayName = "Layout.Footer";
+
 type LayoutCompound = React.FC<Layout> & {
   Header: React.FC<LayoutHeader>;
   Content: React.FC<LayoutContent>;
   BottomNavigation: React.FC<LayoutBottomNavigation>;
+  Footer: React.FC<LayoutFooter>;
 };
 
 export const Layout = Object.assign(LayoutComponent, {
   Header,
   Content,
   BottomNavigation,
+  Footer,
 }) satisfies LayoutCompound;

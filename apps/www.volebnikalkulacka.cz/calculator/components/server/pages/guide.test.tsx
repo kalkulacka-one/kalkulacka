@@ -16,15 +16,18 @@ vi.mock("../components", () => {
     Header: React.FC<{ children?: React.ReactNode }>;
     Content: React.FC<{ children?: React.ReactNode }>;
     BottomNavigation: React.FC<{ children?: React.ReactNode }>;
+    Footer: React.FC<{ children?: React.ReactNode }>;
   };
   LayoutMock.Header = vi.fn(({ children }) => children);
   LayoutMock.Content = vi.fn(({ children }) => children);
   LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
+  LayoutMock.Footer = vi.fn(({ children }) => children);
 
   return {
     Introduction: vi.fn(() => null),
     Guide: vi.fn(() => null),
     GuideNavigationCard: vi.fn(() => null),
+    EmbedFooter: vi.fn(() => null),
     Layout: LayoutMock,
   };
 });
@@ -75,12 +78,12 @@ describe("GuidePage", () => {
   });
 
   it("renders Guide component", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    render(<GuidePage embedContext={{ isEmbed: false }} calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(Guide).toHaveBeenCalledTimes(1);
   });
 
   it("passes calculator to Guide component", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    render(<GuidePage embedContext={{ isEmbed: false }} calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(Guide).toHaveBeenCalledWith(
       expect.objectContaining({
         calculator: data,
@@ -90,17 +93,17 @@ describe("GuidePage", () => {
   });
 
   it("doesn't render Introduction", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    render(<GuidePage embedContext={{ isEmbed: false }} calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(Introduction).not.toHaveBeenCalled();
   });
 
   it("renders GuideNavigationCard", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    render(<GuidePage embedContext={{ isEmbed: false }} calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
   });
 
   it("passes onNextClick to GuideNavigationCard", () => {
-    render(<GuidePage calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    render(<GuidePage embedContext={{ isEmbed: false }} calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
     expect(GuideNavigationCard).toHaveBeenCalledWith(
       expect.objectContaining({
         onNextClick: onNextClick,

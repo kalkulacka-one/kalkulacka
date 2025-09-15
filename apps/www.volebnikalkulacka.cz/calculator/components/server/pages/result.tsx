@@ -2,12 +2,13 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 import React from "react";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, DonateCard, WithCondenseOnScroll } from "../../client";
-import { Layout, MatchCard } from "../components";
+import { EmbedFooter, Layout, MatchCard } from "../components";
 
 export type ResultPage = {
+  embedContext: EmbedContextType;
   result: ResultViewModel;
   calculator: CalculatorViewModel;
   onPreviousClick: () => void;
@@ -17,7 +18,7 @@ export type ResultPage = {
   donateCardPosition: number | false;
 };
 
-export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+export function ResultPage({ embedContext, result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -75,6 +76,11 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
           ))}
         </div>
       </Layout.Content>
+      {embedContext.isEmbed && (
+        <Layout.Footer>
+          <EmbedFooter attribution={embedContext.config?.attribution} />
+        </Layout.Footer>
+      )}
     </>
   );
 }

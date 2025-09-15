@@ -1,20 +1,20 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader } from "../../client";
-import { Guide, GuideNavigationCard, Layout } from "../components";
+import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "../components";
 
 export type GuidePage = {
+  embedContext: EmbedContextType;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onBackClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, attribution }: GuidePage) {
+export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
   return (
     <>
       <Layout.Header>
@@ -44,6 +44,11 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
       <Layout.BottomNavigation spacer="5rem">
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
+      {embedContext.isEmbed && (
+        <Layout.Footer>
+          <EmbedFooter attribution={embedContext.config?.attribution} />
+        </Layout.Footer>
+      )}
     </>
   );
 }
