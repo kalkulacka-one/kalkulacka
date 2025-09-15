@@ -26,6 +26,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   return (
     <AppResultPage
+      embedContext={embed}
       calculator={calculator}
       result={result}
       onPreviousClick={handlePreviousClick}
