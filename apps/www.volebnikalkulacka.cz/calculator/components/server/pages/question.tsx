@@ -76,7 +76,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutContent>
         <QuestionCard question={question} current={number} total={total} />
       </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "14rem" : "11rem"}>
+      <LayoutBottomNavigation spacer="11rem">
         <QuestionNavigationCard
           current={number}
           total={total}
@@ -86,7 +86,6 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onAgreeChange={handleAgreeChange}
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
-          attribution={attribution}
         />
       </LayoutBottomNavigation>
     </>

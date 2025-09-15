@@ -13,15 +13,14 @@ export type QuestionNavigationCard = {
   onAgreeChange: (agree: boolean) => void;
   onDisagreeChange: (disagree: boolean) => void;
   onImportantChange: (isImportant: boolean) => void;
-  attribution?: boolean;
 };
 
-export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange, attribution }: QuestionNavigationCard) {
+export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
   const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
   const nextButtonLabel = answer.answer?.answer !== undefined ? "Další" : "Přeskočit";
 
   return (
-    <NavigationCard attribution={attribution}>
+    <NavigationCard>
       <div className="grid grid-flow-row gap-2 sm:gap-3">
         <div className="grid grid-cols-[1fr_1fr] @[350px]:grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
           <div className="justify-self-start">

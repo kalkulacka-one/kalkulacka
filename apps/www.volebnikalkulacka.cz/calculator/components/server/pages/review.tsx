@@ -102,8 +102,8 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
           })}
         </div>
       </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "8rem" : "5rem"}>
-        <ReviewNavigationCard onNextClick={onNextClick} attribution={attribution} />
+      <LayoutBottomNavigation spacer="5rem">
+        <ReviewNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
     </>
   );

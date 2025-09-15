@@ -4,12 +4,11 @@ import { NavigationCard } from "./navigation-card";
 
 export type IntroductionNavigationCard = {
   onNextClick: () => void;
-  attribution?: boolean;
 };
 
-export function IntroductionNavigationCard({ onNextClick, attribution }: IntroductionNavigationCard) {
+export function IntroductionNavigationCard({ onNextClick }: IntroductionNavigationCard) {
   return (
-    <NavigationCard attribution={attribution}>
+    <NavigationCard>
       <Button color="neutral" onClick={onNextClick}>
         Pokračovat
       </Button>

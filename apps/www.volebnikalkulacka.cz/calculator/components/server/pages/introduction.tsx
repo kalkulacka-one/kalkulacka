@@ -35,8 +35,8 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick, attrib
       <LayoutContent>
         <Introduction calculator={calculator} />
       </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "8rem" : "5rem"}>
-        <IntroductionNavigationCard onNextClick={onNextClick} attribution={attribution} />
+      <LayoutBottomNavigation spacer="5rem">
+        <IntroductionNavigationCard onNextClick={onNextClick} />
       </LayoutBottomNavigation>
     </>
   );
