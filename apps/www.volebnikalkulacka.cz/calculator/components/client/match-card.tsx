@@ -1,5 +1,6 @@
 import { ExpandableCard } from "@repo/design-system/client";
 import { ProgressBar } from "@repo/design-system/server";
+import React, { useState } from "react";
 
 import type { CandidateMatchViewModel } from "../../view-models";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "../../view-models/client/candidate";
@@ -9,6 +10,7 @@ export type MatchCard = CandidateMatchViewModel;
 export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   const hasDirectAnswers = useHasDirectAnswers(candidate.id);
   const answerComparisons = useCandidateAnswerComparison(candidate.id);
+  const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
 
   return (
     <ExpandableCard corner="topLeft" shadow="hard" className="overflow-hidden border border-slate-200">
@@ -40,81 +42,115 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
           </ExpandableCard.Content>
 
           {hasDirectAnswers && (
-            <ExpandableCard.HiddenContent className="p-4 sm:p-6 pt-0 bg-slate-50 border-t border-slate-200">
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-slate-800">Answer Details</h4>
-
+            <ExpandableCard.HiddenContent className="px-4 sm:px-6 pb-4 sm:pb-6 bg-white">
+              <div className="border-t border-slate-200 pt-4">
+                {/* Answer Comparisons Grid */}
                 {answerComparisons.length > 0 && (
-                  <div className="space-y-3">
-                    {answerComparisons.map((comparison, index) => (
-                      <div key={comparison.questionId} className="bg-white p-4 rounded-lg border border-slate-200">
-                        <div className="font-semibold text-slate-800 mb-2">
-                          Question {index + 1}
-                          {comparison.isImportant && <span className="ml-2 text-sm text-slate-500 font-normal italic">(Important)</span>}
-                        </div>
+                  <div className="grid grid-cols-[1fr_auto] gap-y-2 gap-x-1 auto-rows-auto">
+                    <div className="col-span-2 text-right mb-2">
+                      <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
+                        <span>Betaverze porovnání. Ještě ladíme!</span>
+                      </div>
+                    </div>
+                    {/* Grid Header Row */}
+                    <div />
+                    <div>Já • Kandidát</div>
 
-                        <div className="text-slate-600 mb-3 italic">{comparison.questionText}</div>
+                    {answerComparisons.map((comparison) => (
+                      <React.Fragment key={comparison.questionId}>
+                        {/* Question + Metadata Wrapper */}
+                        <div className="space-y-2">
+                          {/* Question Text */}
+                          <div className="text-slate-800 font-medium text-sm">{comparison.questionText}</div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-3">
-                          <div>
-                            <strong className="text-slate-700">You:</strong> <span className="text-slate-600">{formatAnswer(comparison.userAnswer)}</span>
-                          </div>
-                          <div>
-                            <strong className="text-slate-700">Candidate:</strong> <span className="text-slate-600">{formatAnswer(comparison.candidateAnswer)}</span>
-                          </div>
-                          {comparison.expertAnswer !== undefined && (
-                            <div>
-                              <strong className="text-slate-700">Expert:</strong> <span className="text-slate-600">{formatAnswer(comparison.expertAnswer)}</span>
+                          {/* Comment if available - candidate or expert */}
+                          {(comparison.candidateComment || comparison.expertComment) && (
+                            <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">"{comparison.candidateComment || comparison.expertComment}"</blockquote>
+                          )}
+
+                          {/* Sources if available - candidate or expert */}
+                          {((comparison.candidateSources && comparison.candidateSources.length > 0) ||
+                            (comparison.expertSources && comparison.expertSources.length > 0) ||
+                            comparison.candidateAnswer === null ||
+                            comparison.candidateAnswer === undefined) && (
+                            <div className="text-xs text-slate-500">
+                              {comparison.candidateAnswer === null || comparison.candidateAnswer === undefined ? (
+                                <div className="space-y-1">
+                                  <div>
+                                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs">
+                                      <span>Postoj strany se nepodařilo z veřejných zdrojů zjistit</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : (
+                                (comparison.candidateSources || comparison.expertSources)?.map((source, i) => {
+                                  const sourceKey = `${comparison.questionId}-${i}`;
+                                  const isExpanded = expandedSources.has(sourceKey);
+
+                                  return (
+                                    <div key={source.url || `source-${i}`} className="space-y-1">
+                                      <div>
+                                        <button
+                                          type="button"
+                                          className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs"
+                                          onClick={() => {
+                                            const newExpanded = new Set(expandedSources);
+                                            if (isExpanded) {
+                                              newExpanded.delete(sourceKey);
+                                            } else {
+                                              newExpanded.add(sourceKey);
+                                            }
+                                            setExpandedSources(newExpanded);
+                                          }}
+                                        >
+                                          <span>{source.title || source.url || "Zdroj"}</span>
+                                          <svg className="w-3 h-3" viewBox="0 0 24 24" aria-label="Info">
+                                            <path
+                                              fill="currentColor"
+                                              d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
+                                            />
+                                          </svg>
+                                        </button>
+                                      </div>
+
+                                      {isExpanded && (
+                                        <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">
+                                          {source.description || "Žádný popis není k dispozici"}
+                                          {source.url && (
+                                            <>
+                                              {" "}
+                                              <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">
+                                                (odkaz)
+                                              </a>
+                                            </>
+                                          )}
+                                        </blockquote>
+                                      )}
+                                    </div>
+                                  );
+                                })
+                              )}
                             </div>
                           )}
                         </div>
 
-                        {comparison.candidateComment && (
-                          <div className="mt-3 pt-3 border-t border-slate-100">
-                            <strong className="text-slate-700">Candidate's Comment:</strong>
-                            <p className="text-slate-600 mt-1">{comparison.candidateComment}</p>
+                        {/* Answer Comparison */}
+                        <div className="flex items-center gap-1">
+                          <div
+                            className={`px-3 py-1 rounded text-sm font-bold ${
+                              comparison.userAnswer === comparison.candidateAnswer && comparison.userAnswer !== null && comparison.userAnswer !== undefined
+                                ? comparison.userAnswer === true
+                                  ? "bg-blue-600 text-white"
+                                  : "bg-red-600 text-white"
+                                : "bg-transparent text-slate-600"
+                            }`}
+                          >
+                            <span>{comparison.userAnswer === true ? "✓" : comparison.userAnswer === false ? "✗" : "—"}</span>
+                            <span className="mx-1">•</span>
+                            <span>{comparison.candidateAnswer === true ? "✓" : comparison.candidateAnswer === false ? "✗" : "—"}</span>
                           </div>
-                        )}
-
-                        {comparison.candidateSources && comparison.candidateSources.length > 0 && (
-                          <div className="mt-3 pt-3 border-t border-slate-100">
-                            <strong className="text-slate-700">Candidate's Sources:</strong>
-                            <ul className="mt-1 pl-4 space-y-1">
-                              {comparison.candidateSources.map((source, i) => (
-                                <li key={source.url || i} className="text-slate-600">
-                                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">
-                                    {source.title || source.url}
-                                  </a>
-                                  {source.description && <span className="text-slate-500">: {source.description}</span>}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {comparison.expertComment && (
-                          <div className="mt-3 pt-3 border-t border-slate-100">
-                            <strong className="text-slate-700">Expert's Comment:</strong>
-                            <p className="text-slate-600 mt-1">{comparison.expertComment}</p>
-                          </div>
-                        )}
-
-                        {comparison.expertSources && comparison.expertSources.length > 0 && (
-                          <div className="mt-3 pt-3 border-t border-slate-100">
-                            <strong className="text-slate-700">Expert's Sources:</strong>
-                            <ul className="mt-1 pl-4 space-y-1">
-                              {comparison.expertSources.map((source, i) => (
-                                <li key={source.url || i} className="text-slate-600">
-                                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">
-                                    {source.title || source.url}
-                                  </a>
-                                  {source.description && <span className="text-slate-500">: {source.description}</span>}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
+                        </div>
+                      </React.Fragment>
                     ))}
                   </div>
                 )}
@@ -125,11 +161,4 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
       )}
     </ExpandableCard>
   );
-}
-
-function formatAnswer(answer: boolean | null | undefined): string {
-  if (answer === true) return "true";
-  if (answer === false) return "false";
-  if (answer === null) return "null";
-  return "undefined";
 }
