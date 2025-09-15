@@ -3,6 +3,7 @@
 export * from "./button";
 export * from "./clientTest";
 export * from "./description";
+export * from "./expandableCard";
 export * from "./field";
 export * from "./icon";
 export * from "./input";

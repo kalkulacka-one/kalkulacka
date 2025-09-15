@@ -1,4 +1,5 @@
-import { ToggleButton } from "@repo/design-system/client";
+import { mdiStar, mdiStarOutline } from "@mdi/js";
+import { Icon, ToggleButton } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 
 import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
@@ -14,37 +15,26 @@ export type ReviewQuestionCard = {
 };
 
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
-  const { title, statement, detail, tags } = question;
+  const { title, detail, statement } = question;
   return (
-    <Card corner="topLeft">
-      <div>
-        <div>
-          <div>
-            <span>
-              {current}/{total}
-            </span>
-            <span>{title}</span>
-            {tags?.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-          <h2>{statement}</h2>
+    <Card corner="topLeft" shadow="hard" className="border border-slate-200">
+      <div className="p-3 sm:p-6 flex flex-col gap-4">
+        <div className="text-sm text-slate-500">
+          <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
+          <span>{title}</span>
         </div>
-        {detail && <div>{detail}</div>}
-        <div>
-          <div>
-            <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
-              Jsem pro
-            </ToggleButton>
-            <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
-              Jsem proti
-            </ToggleButton>
-          </div>
-          <div>
-            <ToggleButton variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)}>
-              Pro mě důležité
-            </ToggleButton>
-          </div>
+        <h3 className="font-display text-lg sm:text-xl font-bold text-slate-700 leading-tight tracking-tight break-words">{statement}</h3>
+        {detail && <p className="hidden sm:block text-sm text-slate-600 leading-relaxed max-w-prose break-words tracking-wide">{detail}</p>}
+        <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
+          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
+            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
+          </ToggleButton>
+          <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+            Ano
+          </ToggleButton>
+          <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+            Ne
+          </ToggleButton>
         </div>
       </div>
     </Card>

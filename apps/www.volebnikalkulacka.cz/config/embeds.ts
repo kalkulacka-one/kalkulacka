@@ -1,12 +1,23 @@
 import type { ThemeName } from "./themes";
 
 export type EmbedConfig = {
-  theme: ThemeName;
+  theme?: ThemeName;
+  logo?: "monochrome" | "color";
+  navigationAttribution?: boolean;
+  donateCard?: number | false;
 };
 
 export const embedsConfig = {
-  default: { theme: "default" },
-  alarm: { theme: "alarm" },
+  default: {},
+  "diky-ze-muzem": { theme: "diky-ze-muzem", logo: "monochrome" },
+  alarm: { theme: "alarm", logo: "monochrome" },
+  prima: { theme: "prima", logo: "monochrome" },
+  idnes: {},
+  nova: {},
+  e15: {},
+  reflex: {},
+  blesk: {},
+  denik: {},
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;

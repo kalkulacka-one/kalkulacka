@@ -2,7 +2,7 @@ export default async function Page() {
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">
-        <h2 className="text-2xl font-medium">
+        <h2 className="text-2xl font-display font-medium">
           We build a voting advice app
           <br />
           to help you decide who to vote for
