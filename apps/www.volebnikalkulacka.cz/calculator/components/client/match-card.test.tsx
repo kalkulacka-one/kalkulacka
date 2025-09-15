@@ -24,7 +24,12 @@ describe("MatchCard", () => {
 
   it("renders candidate information", () => {
     const mockCalculatorData = {
-      calculator: {},
+      calculator: {
+        id: "test",
+        key: "test",
+        createdAt: "2024-01-01",
+        shortTitle: "Test Calculator",
+      },
       candidates: [],
       organizations: [],
       persons: [],
