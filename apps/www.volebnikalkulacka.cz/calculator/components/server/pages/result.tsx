@@ -4,8 +4,8 @@ import React from "react";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, DonateCard, WithCondenseOnScroll } from "../../client";
-import { LayoutContent, LayoutHeader, MatchCard } from "../components";
+import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
+import { LayoutContent, LayoutHeader } from "../components";
 
 export type ResultPage = {
   result: ResultViewModel;
