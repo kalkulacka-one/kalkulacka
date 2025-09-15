@@ -60,27 +60,40 @@ export type AnswerComparison = {
   questionText?: string;
   userAnswer: boolean | null | undefined;
   candidateAnswer: boolean | null | undefined;
+  candidateComment?: string;
+  candidateSources?: Answer["sources"];
+  expertAnswer?: boolean | null | undefined;
+  expertComment?: string;
+  expertSources?: Answer["sources"];
   isImportant?: boolean;
 };
 
 export function getCandidateAnswerComparison(candidateId: string, userAnswers: Answer[], candidatesAnswers: CandidatesAnswers, questions: Question[] = []): AnswerComparison[] {
   const candidateAnswers = candidatesAnswers[candidateId] || [];
+  const expertAnswers = candidatesAnswers["expert"] || [];
 
   // Create maps for quick lookup
   const userAnswersMap = new Map(userAnswers.map((answer) => [answer.questionId, answer]));
   const candidateAnswersMap = new Map(candidateAnswers.map((answer) => [answer.questionId, answer]));
+  const expertAnswersMap = new Map(expertAnswers.map((answer) => [answer.questionId, answer]));
 
   // Iterate over the original questions array to preserve order
   return questions.map((question) => {
     const questionId = question.id;
     const userAnswer = userAnswersMap.get(questionId);
     const candidateAnswer = candidateAnswersMap.get(questionId);
+    const expertAnswer = expertAnswersMap.get(questionId);
 
     return {
       questionId,
       questionText: question?.statement || question?.title || questionId,
       userAnswer: userAnswer?.answer,
       candidateAnswer: candidateAnswer?.answer,
+      candidateComment: candidateAnswer?.comment,
+      candidateSources: candidateAnswer?.sources,
+      expertAnswer: expertAnswer?.answer,
+      expertComment: expertAnswer?.comment,
+      expertSources: expertAnswer?.sources,
       isImportant: userAnswer?.isImportant,
     };
   });
