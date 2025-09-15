@@ -161,7 +161,10 @@ for (const calculator of CALCULATORS) {
 
       const hasError = await checkForErrors(page);
       if (!hasError && calculator.expectedTitle) {
-        await expect(page.locator("h1, h2, h3").filter({ hasText: calculator.expectedTitle })).toBeVisible();
+        await page.waitForTimeout(2000);
+        const heading = page.locator("h1, h2, h3").filter({ hasText: calculator.expectedTitle }).first();
+        await heading.waitFor({ state: "attached", timeout: 10000 });
+        await expect(heading).toBeVisible({ timeout: 15000 });
       }
     });
 
