@@ -16,6 +16,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: "/volby/snemovni-2025",
+        destination: "/volby/snemovni-2025/kalkulacka",
+        permanent: false,
+      },
+      {
         source: "/metodika-tvorby-otazek",
         destination: "/metodika",
         permanent: true,
