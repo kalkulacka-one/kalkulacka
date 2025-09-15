@@ -17,7 +17,7 @@ export function Guide({ calculator }: Guide) {
           </span>
           <div>
             <p className="font-semibold">Shoda</p>
-            <p className="text-sm">Při shodě s Vaší odpovědí strana nebo politik dostane bod</p>
+            <p className="text-sm">Při shodě s Vaší odpovědí strana nebo politik "dostane bod"</p>
           </div>
         </div>
       </Card>
@@ -53,7 +53,7 @@ export function Guide({ calculator }: Guide) {
           </span>
           <div>
             <p className="font-semibold">Důležité otázky</p>
-            <p className="text-sm">Pro vás důležité otázky označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
+            <p className="text-sm">Otázky, které jsou pro vás důležité, označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
           </div>
         </div>
       </Card>
@@ -61,11 +61,11 @@ export function Guide({ calculator }: Guide) {
       <Card shadow="hard">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
           <span className="text-2xl" aria-hidden="true">
-            ?
+            %
           </span>
           <div>
-            <p className="font-semibold">Neúčast poslanců</p>
-            <p className="text-sm">Pokud poslanec na hlasování chyběl, počítá se jeho hlas neutrálně, nevíme, jak by hlasoval. Pokud vůbec nebyl v době hlasování poslancem, otázka se pro něj nepočítá.</p>
+            <p className="font-semibold">Konečný výsledek shody</p>
+            <p className="text-sm">Na závěr se tyto body přepočtou na škálu 0 až 100 %.</p>
           </div>
         </div>
       </Card>
