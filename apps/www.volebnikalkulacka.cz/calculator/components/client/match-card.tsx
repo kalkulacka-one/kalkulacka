@@ -24,7 +24,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
               >
                 <span className="text-2xl font-bold">{order !== undefined ? order : "—"}</span>
               </div>
-              <div className="grid gap-1">
+              <div className="flex flex-col gap-1 items-start justify-center">
                 <h3 className="text-lg font-bold leading-tight text-slate-700">{candidate.displayName}</h3>
                 {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
                 {respondent === "expert" && (
