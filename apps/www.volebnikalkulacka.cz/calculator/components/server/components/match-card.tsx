@@ -1,13 +1,12 @@
 import { Card, ProgressBar } from "@repo/design-system/server";
 import { useState } from "react";
 
-import type { CandidateMatchViewModel, CandidateViewModel } from "../../../view-models";
+import type { CandidateMatchViewModel } from "../../../view-models";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "../../../view-models/client/candidate";
 
 export type MatchCard = CandidateMatchViewModel;
 
 export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
-  const [showAnswers, setShowAnswers] = useState(false);
   const hasDirectAnswers = useHasDirectAnswers(candidate.id);
   const answerComparisons = useCandidateAnswerComparison(candidate.id);
 
@@ -93,7 +92,52 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                     <div>
                       <strong>Candidate:</strong> {formatAnswer(comparison.candidateAnswer)}
                     </div>
+                    {comparison.expertAnswer !== undefined && (
+                      <div>
+                        <strong>Expert:</strong> {formatAnswer(comparison.expertAnswer)}
+                      </div>
+                    )}
                   </div>
+                  {comparison.candidateComment && (
+                    <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #eee" }}>
+                      <strong>Candidate's Comment:</strong> {comparison.candidateComment}
+                    </div>
+                  )}
+                  {comparison.candidateSources && comparison.candidateSources.length > 0 && (
+                    <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #eee" }}>
+                      <strong>Candidate's Sources:</strong>
+                      <ul style={{ margin: 0, paddingLeft: "1.5rem" }}>
+                        {comparison.candidateSources.map((source, i) => (
+                          <li key={source.url || i}>
+                            <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ color: "#0056b3", textDecoration: "underline" }}>
+                              {source.title || source.url}
+                            </a>
+                            {source.description && `: ${source.description}`}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {comparison.expertComment && (
+                    <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #eee" }}>
+                      <strong>Expert's Comment:</strong> {comparison.expertComment}
+                    </div>
+                  )}
+                  {comparison.expertSources && comparison.expertSources.length > 0 && (
+                    <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #eee" }}>
+                      <strong>Expert's Sources:</strong>
+                      <ul style={{ margin: 0, paddingLeft: "1.5rem" }}>
+                        {comparison.expertSources.map((source, i) => (
+                          <li key={source.url || i}>
+                            <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ color: "#0056b3", textDecoration: "underline" }}>
+                              {source.title || source.url}
+                            </a>
+                            {source.description && `: ${source.description}`}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
