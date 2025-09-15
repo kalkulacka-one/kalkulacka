@@ -3,7 +3,7 @@ import type { ThemeName } from "./themes";
 export type EmbedConfig = {
   theme?: ThemeName;
   logo?: "monochrome" | "color";
-  navigationAttribution?: boolean;
+  attribution?: boolean;
   donateCard?: number | false;
 };
 

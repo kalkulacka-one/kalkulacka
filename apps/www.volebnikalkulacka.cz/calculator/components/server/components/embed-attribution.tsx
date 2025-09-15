@@ -2,7 +2,7 @@ import { Logo } from "@repo/design-system/client";
 
 import { canonical } from "../../../../lib/routing/url-builders";
 
-export function NavigationCardAttribution() {
+export function EmbedAttribution() {
   return (
     <a href={canonical.homepage()} target="_blank" className="group p-2 flex items-center gap-2 rounded-lg text-sm text-slate-400 hover:text-slate-600 hover:bg-slate-100 min-w-max">
       <span>Přináší</span>
