@@ -12,6 +12,27 @@ type CalculatorConfig = {
 const CALCULATORS: CalculatorConfig[] = [
   {
     key: "snemovni-2025",
+    group: "kalkulacka",
+    name: "Volební kalkulačka",
+    path: "/volby/snemovni-2025/kalkulacka",
+    expectedTitle: "Volební kalkulačka",
+  },
+  {
+    key: "snemovni-2025",
+    group: "expresni",
+    name: "Expresní kalkulačka",
+    path: "/volby/snemovni-2025/expresni",
+    expectedTitle: "Expresní",
+  },
+  {
+    key: "snemovni-2025",
+    group: "ultimatni",
+    name: "Ultimátní kalkulačka",
+    path: "/volby/snemovni-2025/ultimatni",
+    expectedTitle: "Ultimátní",
+  },
+  {
+    key: "snemovni-2025",
     group: "inventura",
     name: "Inventura hlasování",
     path: "/volby/snemovni-2025/inventura",
@@ -85,7 +106,7 @@ async function startQuestions(page: Page, calculator: CalculatorConfig) {
   try {
     isVisible = await questionButton.isVisible();
   } catch {
-    if (calculator.group === "inventura") {
+    if (calculator.group === "inventura" || calculator.group === "expresni") {
       try {
         await page.goto(`${calculator.path}/uvod`);
         await page.waitForLoadState("load", { timeout: 15000 });
@@ -136,7 +157,7 @@ async function answerQuestions(page: Page, maxQuestions = 3) {
 for (const calculator of CALCULATORS) {
   test.describe(`Calculator Flow: ${calculator.name}`, () => {
     test("should complete the full calculator flow from homepage", async ({ page }) => {
-      test.setTimeout(calculator.group === "inventura" ? 90000 : 60000);
+      test.setTimeout(calculator.group === "inventura" || calculator.group === "expresni" ? 90000 : 60000);
 
       const hasError = await navigateToCalculator(page, calculator);
       if (hasError) {
@@ -169,7 +190,7 @@ for (const calculator of CALCULATORS) {
     });
 
     test("should handle direct navigation to question page", async ({ page }) => {
-      test.setTimeout(calculator.group === "inventura" ? 90000 : 60000);
+      test.setTimeout(calculator.group === "inventura" || calculator.group === "expresni" ? 90000 : 60000);
 
       try {
         await page.goto(`${calculator.path}/otazka`, { timeout: 60000 });
