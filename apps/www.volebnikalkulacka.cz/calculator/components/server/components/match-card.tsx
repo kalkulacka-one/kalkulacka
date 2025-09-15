@@ -1,5 +1,4 @@
 import { Card, ProgressBar } from "@repo/design-system/server";
-import { useState } from "react";
 
 import type { CandidateMatchViewModel } from "../../../view-models";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "../../../view-models/client/candidate";
