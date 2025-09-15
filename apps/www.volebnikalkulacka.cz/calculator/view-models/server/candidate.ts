@@ -1,6 +1,7 @@
 import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
-import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
 import type { Candidate } from "../../../../../packages/schema/schemas/candidate.schema";
+import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
+import type { Question } from "../../../../../packages/schema/schemas/question.schema";
 import { type OrganizationViewModel, organizationViewModel } from "./organization";
 import { type PersonViewModel, personViewModel } from "./person";
 
@@ -62,7 +63,7 @@ export type AnswerComparison = {
   isImportant?: boolean;
 };
 
-export function getCandidateAnswerComparison(candidateId: string, userAnswers: Answer[], candidatesAnswers: CandidatesAnswers, questions: any[] = []): AnswerComparison[] {
+export function getCandidateAnswerComparison(candidateId: string, userAnswers: Answer[], candidatesAnswers: CandidatesAnswers, questions: Question[] = []): AnswerComparison[] {
   const candidateAnswers = candidatesAnswers[candidateId] || [];
 
   // Create maps for quick lookup
