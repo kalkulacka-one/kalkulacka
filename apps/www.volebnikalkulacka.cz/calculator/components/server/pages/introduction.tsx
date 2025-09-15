@@ -4,7 +4,7 @@ import { Button, Icon } from "@repo/design-system/client";
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader } from "../../client";
-import { Introduction, IntroductionNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
+import { Introduction, IntroductionNavigationCard, Layout } from "../components";
 
 export type IntroductionPage = {
   calculator: CalculatorViewModel;
@@ -16,7 +16,7 @@ export type IntroductionPage = {
 export function IntroductionPage({ calculator, onNextClick, onCloseClick, attribution }: IntroductionPage) {
   return (
     <>
-      <LayoutHeader>
+      <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
@@ -31,13 +31,13 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick, attrib
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <Introduction calculator={calculator} />
-      </LayoutContent>
-      <LayoutBottomNavigation spacer="5rem">
+      </Layout.Content>
+      <Layout.BottomNavigation spacer="5rem">
         <IntroductionNavigationCard onNextClick={onNextClick} />
-      </LayoutBottomNavigation>
+      </Layout.BottomNavigation>
     </>
   );
 }

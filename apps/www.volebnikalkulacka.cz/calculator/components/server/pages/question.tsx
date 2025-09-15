@@ -4,7 +4,7 @@ import { Button, Icon } from "@repo/design-system/client";
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { Layout, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   question: QuestionViewModel;
@@ -58,7 +58,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
 
   return (
     <>
-      <LayoutHeader>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -72,11 +72,11 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <QuestionCard question={question} current={number} total={total} />
-      </LayoutContent>
-      <LayoutBottomNavigation spacer="11rem">
+      </Layout.Content>
+      <Layout.BottomNavigation spacer="11rem">
         <QuestionNavigationCard
           current={number}
           total={total}
@@ -87,7 +87,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
         />
-      </LayoutBottomNavigation>
+      </Layout.BottomNavigation>
     </>
   );
 }

@@ -11,14 +11,23 @@ vi.mock("@repo/design-system/client", () => ({
   Icon: vi.fn(() => null),
 }));
 
-vi.mock("../components", () => ({
-  Introduction: vi.fn(() => null),
-  Guide: vi.fn(() => null),
-  GuideNavigationCard: vi.fn(() => null),
-  LayoutHeader: vi.fn(({ children }) => children),
-  LayoutBottomNavigation: vi.fn(({ children }) => children),
-  LayoutContent: vi.fn(({ children }) => children),
-}));
+vi.mock("../components", () => {
+  const LayoutMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
+    Header: React.FC<{ children?: React.ReactNode }>;
+    Content: React.FC<{ children?: React.ReactNode }>;
+    BottomNavigation: React.FC<{ children?: React.ReactNode }>;
+  };
+  LayoutMock.Header = vi.fn(({ children }) => children);
+  LayoutMock.Content = vi.fn(({ children }) => children);
+  LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
+
+  return {
+    Introduction: vi.fn(() => null),
+    Guide: vi.fn(() => null),
+    GuideNavigationCard: vi.fn(() => null),
+    Layout: LayoutMock,
+  };
+});
 
 vi.mock("../../client", () => {
   const AppHeaderMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {

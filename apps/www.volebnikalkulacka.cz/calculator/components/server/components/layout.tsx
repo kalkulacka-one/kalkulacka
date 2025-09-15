@@ -1,20 +1,39 @@
-type LayoutProps = {
+export type Layout = {
   children: React.ReactNode;
 };
 
-export function Layout({ children }: LayoutProps) {
+function LayoutComponent({ children }: Layout) {
   return <>{children}</>;
 }
 
-export function LayoutHeader({ children }: { children: React.ReactNode }) {
+LayoutComponent.displayName = "Layout";
+
+export type LayoutHeader = {
+  children: React.ReactNode;
+};
+
+function Header({ children }: LayoutHeader) {
   return <div className="sticky top-0 z-10">{children}</div>;
 }
 
-export function LayoutContent({ children }: { children: React.ReactNode }) {
+Header.displayName = "Layout.Header";
+
+export type LayoutContent = {
+  children: React.ReactNode;
+};
+
+function Content({ children }: LayoutContent) {
   return <main className="max-w-xl mx-auto p-2 sm:p-4">{children}</main>;
 }
 
-export function LayoutBottomNavigation({ children, spacer = "5rem" }: { children: React.ReactNode; spacer?: string | false }) {
+Content.displayName = "Layout.Content";
+
+export type LayoutBottomNavigation = {
+  children: React.ReactNode;
+  spacer?: string | false;
+};
+
+function BottomNavigation({ children, spacer = "5rem" }: LayoutBottomNavigation) {
   return (
     <>
       <div className="fixed bottom-0 left-0 right-0">{children}</div>
@@ -28,3 +47,17 @@ export function LayoutBottomNavigation({ children, spacer = "5rem" }: { children
     </>
   );
 }
+
+BottomNavigation.displayName = "Layout.BottomNavigation";
+
+type LayoutCompound = React.FC<Layout> & {
+  Header: React.FC<LayoutHeader>;
+  Content: React.FC<LayoutContent>;
+  BottomNavigation: React.FC<LayoutBottomNavigation>;
+};
+
+export const Layout = Object.assign(LayoutComponent, {
+  Header,
+  Content,
+  BottomNavigation,
+}) satisfies LayoutCompound;

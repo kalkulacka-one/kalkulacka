@@ -4,7 +4,7 @@ import { Button, Icon } from "@repo/design-system/client";
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
+import { Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
   questions: QuestionsViewModel;
@@ -54,7 +54,7 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
 
   return (
     <>
-      <LayoutHeader>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -78,8 +78,8 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <div className="grid gap-4">
           {questions.questions.map((question, index) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
@@ -101,10 +101,10 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
             );
           })}
         </div>
-      </LayoutContent>
-      <LayoutBottomNavigation spacer="5rem">
+      </Layout.Content>
+      <Layout.BottomNavigation spacer="5rem">
         <ReviewNavigationCard onNextClick={onNextClick} />
-      </LayoutBottomNavigation>
+      </Layout.BottomNavigation>
     </>
   );
 }

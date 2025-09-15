@@ -5,7 +5,7 @@ import React from "react";
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, DonateCard, WithCondenseOnScroll } from "../../client";
-import { LayoutContent, LayoutHeader, MatchCard } from "../components";
+import { Layout, MatchCard } from "../components";
 
 export type ResultPage = {
   result: ResultViewModel;
@@ -23,7 +23,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
 
   return (
     <>
-      <LayoutHeader>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -47,8 +47,8 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         {shouldShowToggleComputed && (
           <div className="mb-6">
             <div className="flex items-center gap-3 text-sm">
@@ -74,7 +74,7 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
             </React.Fragment>
           ))}
         </div>
-      </LayoutContent>
+      </Layout.Content>
     </>
   );
 }

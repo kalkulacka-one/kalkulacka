@@ -4,7 +4,7 @@ import { Button, Icon } from "@repo/design-system/client";
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader } from "../../client";
-import { Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
+import { Guide, GuideNavigationCard, Layout } from "../components";
 
 export type GuidePage = {
   calculator: CalculatorViewModel;
@@ -17,7 +17,7 @@ export type GuidePage = {
 export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, attribution }: GuidePage) {
   return (
     <>
-      <LayoutHeader>
+      <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
@@ -37,13 +37,13 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <Guide calculator={calculator} />
-      </LayoutContent>
-      <LayoutBottomNavigation spacer="5rem">
+      </Layout.Content>
+      <Layout.BottomNavigation spacer="5rem">
         <GuideNavigationCard onNextClick={onNextClick} />
-      </LayoutBottomNavigation>
+      </Layout.BottomNavigation>
     </>
   );
 }
