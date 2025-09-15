@@ -3,10 +3,21 @@
   --ko-typeface-sans: "Geist";
   --ko-typeface-mono: "Geist Mono";
 
-  --ko-palette-primary: rgb(255, 19, 70);
-  --ko-palette-secondary: rgb(117, 242, 97);
+  --ko-palette-primary: rgb(117, 242, 97);
+  --ko-palette-secondary: rgb(255, 19, 70);
   --ko-palette-neutral: rgb(0, 0, 0);
   --ko-palette-red: rgb(255, 19, 70);
   --ko-palette-yellow: yellow;
   --ko-palette-green: rgb(117, 242, 97);
+
+  --ko-palette-brand-primary: rgb(0, 112, 244);
+  --ko-palette-brand-secondary: rgb(208, 70, 70);
+  --ko-palette-brand-neutral: oklch(37.2% 0.044 257.287); /* Tailwind's Slate 700 */
+
+  --ko-palette-logo-check: var(--ko-palette-brand-primary);
+  --ko-palette-logo-slash: var(--ko-palette-brand-neutral);
+  --ko-palette-logo-cross: var(--ko-palette-brand-secondary);
+  --ko-palette-logo-percent-numerator: var(--ko-palette-brand-primary);
+  --ko-palette-logo-percent-slash: var(--ko-palette-brand-neutral);
+  --ko-palette-logo-percent-denominator: var(--ko-palette-brand-secondary);
 }

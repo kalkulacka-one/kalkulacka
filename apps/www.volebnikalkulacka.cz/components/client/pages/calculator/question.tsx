@@ -1,13 +1,16 @@
 import { notFound, useRouter } from "next/navigation";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
-import { useAnswerViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswer, useCalculator, useQuestions } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
+import { useEmbed } from "../../../client/embed-context-provider";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
-  const { questions, total } = useQuestionsViewModel();
+  const calculator = useCalculator();
+  const { questions, total } = useQuestions();
   const question = questions[current - 1];
+  const embed = useEmbed();
 
   if (!question) {
     notFound();
@@ -23,17 +26,32 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   const handlePreviousClick = () => {
     if (current === 1) {
-      router.push(routes.guide(segments, 2));
+      router.push(routes.guide(segments));
     } else {
       router.push(routes.question(segments, current - 1));
     }
   };
 
-  const answer = useAnswerViewModel(question.id);
+  const handleCloseClick = () => {
+    router.push("/");
+  };
+
+  const answer = useAnswer(question.id);
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
   return (
     <div>
-      <AppQuestionPage question={question} number={current} total={total} onPreviousClick={handlePreviousClick} onNextClick={handleNextClick} answer={answer} />
+      <AppQuestionPage
+        calculator={calculator}
+        question={question}
+        number={current}
+        total={total}
+        onPreviousClick={handlePreviousClick}
+        onNextClick={handleNextClick}
+        onCloseClick={handleCloseClick}
+        answer={answer}
+        attribution={attribution}
+      />
     </div>
   );
 }

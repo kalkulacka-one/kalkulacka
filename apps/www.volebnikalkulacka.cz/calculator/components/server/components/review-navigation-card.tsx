@@ -3,19 +3,16 @@ import { Button } from "@repo/design-system/client";
 import { NavigationCard } from "./navigation-card";
 
 export type ReviewNavigationCard = {
-  onPreviousClick: () => void;
   onNextClick: () => void;
+  attribution?: boolean;
 };
 
-export function ReviewNavigationCard({ onPreviousClick, onNextClick }: ReviewNavigationCard) {
+export function ReviewNavigationCard({ onNextClick, attribution }: ReviewNavigationCard) {
   return (
-    <NavigationCard>
-      <div className="grid grid-flow-col gap-4">
-        <Button variant="outline" onClick={onPreviousClick}>
-          Zpět
-        </Button>
-        <Button onClick={onNextClick}>Zobrazit výsledky</Button>
-      </div>
+    <NavigationCard attribution={attribution}>
+      <Button color="neutral" onClick={onNextClick}>
+        Zobrazit výsledky
+      </Button>
     </NavigationCard>
   );
 }
