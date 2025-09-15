@@ -36,7 +36,7 @@ export type LayoutBottomNavigation = {
 function BottomNavigation({ children, spacer = "5rem" }: LayoutBottomNavigation) {
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0">{children}</div>
+      <div className="fixed bottom-0 left-0 right-0 pointer-events-none">{children}</div>
       {spacer && (
         <style jsx global>{`
           body {
