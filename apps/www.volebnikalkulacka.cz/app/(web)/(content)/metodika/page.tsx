@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div className="ko:max-w-4xl ko:mx-auto ko:p-6">
       <h1 className="ko:text-3xl ko:font-bold ko:mb-8">Metodika výběru a tvorby otázek</h1>
-      
+
       <div className="ko:space-y-8">
         {/* Introduction */}
         <div className="ko:bg-gray-50 ko:p-6 ko:rounded-lg">
@@ -29,7 +29,7 @@ export default function Page() {
         {/* Rule 1 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">1. Otázka se musí týkat toho, co mají zvolení politici šanci ovlivnit.</h2>
-          
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -69,7 +69,7 @@ export default function Page() {
           <p className="ko:text-gray-700 ko:mb-4">
             Při tvorbě si musíme umět představit lidi, kteří vybírají obě varianty odpovědi, ano i ne. Z otázky by také nemělo být poznat, jak na ni odpovídá sám autor otázky.
           </p>
-          
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -117,10 +117,9 @@ export default function Page() {
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">3. Otázky mají být důležité</h2>
           <p className="ko:text-gray-700 ko:mb-4">
-            Bereme např. v potaz, na co vydává dané zastupitelstvo/parlament nejvíce veřejných peněz.
-            Témata vybíráme tak, aby byla relevantní pro všechny skupiny voličů (věkové, příjmové, zájmové).
+            Bereme např. v potaz, na co vydává dané zastupitelstvo/parlament nejvíce veřejných peněz. Témata vybíráme tak, aby byla relevantní pro všechny skupiny voličů (věkové, příjmové, zájmové).
           </p>
-          
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -157,10 +156,8 @@ export default function Page() {
         {/* Rule 4 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">4. Otázka má být co nejkonkrétnější</h2>
-          <p className="ko:text-gray-700 ko:mb-4">
-            Jde nám o to, aby se dala odpověď zkontrolovat po 4 letech/na konci volebního období.
-          </p>
-          
+          <p className="ko:text-gray-700 ko:mb-4">Jde nám o to, aby se dala odpověď zkontrolovat po 4 letech/na konci volebního období.</p>
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -197,17 +194,19 @@ export default function Page() {
         {/* Rule 5 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">5. Otázka musí být krátká a srozumitelná</h2>
-          <p className="ko:text-gray-700 ko:mb-4">
-            Chceme, aby tázaný/á otázky opravdu pročetl/a a porozuměl/a jim. Formulujeme je tedy o max. délce 20 slov, případný popis omezujeme na 50 slov.
-          </p>
-          
+          <p className="ko:text-gray-700 ko:mb-4">Chceme, aby tázaný/á otázky opravdu pročetl/a a porozuměl/a jim. Formulujeme je tedy o max. délce 20 slov, případný popis omezujeme na 50 slov.</p>
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
                 <span className="ko:text-white ko:text-sm ko:font-bold">✕</span>
               </div>
               <div>
-                <p className="ko:font-medium ko:text-red-800">Hlasovali byste pro: zrušení sociálního příplatku pro sólo rodiče, redukci dávky – porodného jen na nízkopříjmové rodiče, jednotnou celkovou vyplacenou částku rodičovského příspěvku (220 000) a větší flexibilitu ve volbě výše a délky RP, snížení příspěvku na péči, snížení podpory v nezaměstnanosti a zrušení možnosti minimálního přivýdělku k podpoře, zavedení příspěvku pro začínající podnikatele/ky, zpřísnění podmínek nároku na nemocenské a mateřskou u OSVČ?</p>
+                <p className="ko:font-medium ko:text-red-800">
+                  Hlasovali byste pro: zrušení sociálního příplatku pro sólo rodiče, redukci dávky – porodného jen na nízkopříjmové rodiče, jednotnou celkovou vyplacenou částku rodičovského příspěvku
+                  (220 000) a větší flexibilitu ve volbě výše a délky RP, snížení příspěvku na péči, snížení podpory v nezaměstnanosti a zrušení možnosti minimálního přivýdělku k podpoře, zavedení
+                  příspěvku pro začínající podnikatele/ky, zpřísnění podmínek nároku na nemocenské a mateřskou u OSVČ?
+                </p>
                 <p className="ko:text-sm ko:text-red-600 ko:mt-1">Příliš dlouhá otázka s mnoha částmi</p>
               </div>
             </div>
@@ -227,10 +226,8 @@ export default function Page() {
         {/* Rule 6 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">6. Otázky s popisem musejí dávat smysl i bez něj</h2>
-          <p className="ko:text-gray-700 ko:mb-4">
-            Velký počet lidí totiž čte pouze otázku samotnou, ne její popis. Může se take stát, že popis na mobilním zařízení nezobrazí.
-          </p>
-          
+          <p className="ko:text-gray-700 ko:mb-4">Velký počet lidí totiž čte pouze otázku samotnou, ne její popis. Může se take stát, že popis na mobilním zařízení nezobrazí.</p>
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -267,10 +264,8 @@ export default function Page() {
         {/* Rule 7 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">7. Upřednostňujeme otázky v pozitivním tvaru, vyhýbáme se matoucí dvojité negaci.</h2>
-          <p className="ko:text-gray-700 ko:mb-4">
-            Z příkladu níže je viditelné, že dvojitá negace je zavádějící a nepřesná.
-          </p>
-          
+          <p className="ko:text-gray-700 ko:mb-4">Z příkladu níže je viditelné, že dvojitá negace je zavádějící a nepřesná.</p>
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -280,9 +275,12 @@ export default function Page() {
                 <p className="ko:font-medium ko:text-red-800">Na Vysočině by úložiště jaderného odpadu nemělo vzniknout za žádnou cenu.</p>
                 <p className="ko:text-sm ko:text-red-600 ko:mt-1">
                   Zde totiž není jasné, s čím tázaný/á nesouhlasí:
-                  <br />a) ne, nemělo by vzniknout,
-                  <br />b) nesouhlasím, mělo by vzniknout.
-                  <br /><br />
+                  <br />
+                  a) ne, nemělo by vzniknout,
+                  <br />
+                  b) nesouhlasím, mělo by vzniknout.
+                  <br />
+                  <br />
                   Správně formulována otázka by měla znít: "Měl by kraj učinit vše proti vzniku úložiště jaderného odpadu?"
                 </p>
               </div>
@@ -294,9 +292,7 @@ export default function Page() {
               </div>
               <div>
                 <p className="ko:font-medium ko:text-green-800">Střední školy by se měly nadále slučovat do větších celků.</p>
-                <p className="ko:text-sm ko:text-green-600 ko:mt-1">
-                  Nikoliv "Střední školy už by se nadále neměly slučovat do větších celků".
-                </p>
+                <p className="ko:text-sm ko:text-green-600 ko:mt-1">Nikoliv "Střední školy už by se nadále neměly slučovat do větších celků".</p>
               </div>
             </div>
           </div>
@@ -305,10 +301,8 @@ export default function Page() {
         {/* Rule 8 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">8. Otázka musí být psána snadno pochopitelným jazykem</h2>
-          <p className="ko:text-gray-700 ko:mb-4">
-            Otázky píšeme tak, aby ji a tématu porozuměli různé společenské skupiny.
-          </p>
-          
+          <p className="ko:text-gray-700 ko:mb-4">Otázky píšeme tak, aby ji a tématu porozuměli různé společenské skupiny.</p>
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-red-50 ko:border-l-4 ko:border-red-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-red-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
@@ -335,7 +329,7 @@ export default function Page() {
         {/* Rule 9 */}
         <section className="ko:space-y-4">
           <h2 className="ko:text-2xl ko:font-bold ko:mb-4">9. Vybíráme i otázky, které jsou zajímavé, i když ne zcela důležité.</h2>
-          
+
           <div className="ko:space-y-3">
             <div className="ko:flex ko:items-start ko:gap-3 ko:p-4 ko:bg-green-50 ko:border-l-4 ko:border-green-500 ko:rounded">
               <div className="ko:w-6 ko:h-6 ko:bg-green-500 ko:rounded-full ko:flex ko:items-center ko:justify-center ko:flex-shrink-0 ko:mt-1">
