@@ -53,7 +53,7 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
   };
 
   return (
-    <>
+    <Layout>
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
@@ -110,6 +110,6 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
           <EmbedFooter attribution={embedContext.config?.attribution} />
         </Layout.Footer>
       )}
-    </>
+    </Layout>
   );
 }

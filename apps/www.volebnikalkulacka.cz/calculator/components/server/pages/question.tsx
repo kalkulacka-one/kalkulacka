@@ -57,7 +57,7 @@ export function QuestionPage({ embedContext, question, number, total, calculator
   };
 
   return (
-    <>
+    <Layout>
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
@@ -93,6 +93,6 @@ export function QuestionPage({ embedContext, question, number, total, calculator
           <EmbedFooter attribution={embedContext.config?.attribution} />
         </Layout.Footer>
       )}
-    </>
+    </Layout>
   );
 }

@@ -16,7 +16,7 @@ export type GuidePage = {
 
 export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
   return (
-    <>
+    <Layout>
       <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
@@ -49,6 +49,6 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
           <EmbedFooter attribution={embedContext.config?.attribution} />
         </Layout.Footer>
       )}
-    </>
+    </Layout>
   );
 }

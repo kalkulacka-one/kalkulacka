@@ -15,7 +15,7 @@ export type IntroductionPage = {
 
 export function IntroductionPage({ embedContext, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   return (
-    <>
+    <Layout>
       <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
@@ -43,6 +43,6 @@ export function IntroductionPage({ embedContext, calculator, onNextClick, onClos
           <EmbedFooter attribution={embedContext.config?.attribution} />
         </Layout.Footer>
       )}
-    </>
+    </Layout>
   );
 }

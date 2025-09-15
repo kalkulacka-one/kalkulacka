@@ -23,7 +23,7 @@ export function ResultPage({ embedContext, result, calculator, onPreviousClick, 
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
   return (
-    <>
+    <Layout>
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
@@ -81,6 +81,6 @@ export function ResultPage({ embedContext, result, calculator, onPreviousClick, 
           <EmbedFooter attribution={embedContext.config?.attribution} />
         </Layout.Footer>
       )}
-    </>
+    </Layout>
   );
 }
