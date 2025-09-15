@@ -6,7 +6,9 @@ import * as React from "react";
 
 import { Icon } from "./icon";
 
-export type ExpandableCard = Omit<DisclosureProps<typeof Card>, "as">;
+export type ExpandableCard = Omit<DisclosureProps<typeof Card>, "as" | "className"> & {
+  className?: string;
+};
 
 function ExpandableCardComponent(props: ExpandableCard, ref: React.Ref<HTMLDivElement>) {
   const { className, ...rest } = props;
