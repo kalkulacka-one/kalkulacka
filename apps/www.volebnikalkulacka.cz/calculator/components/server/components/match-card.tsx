@@ -35,6 +35,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
         </div>
       </div>
 
+
       {hasDirectAnswers && (
         <div
           style={{

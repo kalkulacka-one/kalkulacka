@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { AnswersStoreContext, createAnswersStore } from "../../../stores/answers";
+import { CalculatorStoreContext, createCalculatorStore } from "../../../stores/calculator";
 import type { CandidateViewModel } from "../../../view-models";
 import { CalculatorStoreContext, createCalculatorStore } from "../../../stores/calculator";
 import { AnswersStoreContext, createAnswersStore } from "../../../stores/answers";
@@ -40,7 +42,11 @@ describe("MatchCard", () => {
         <AnswersStoreContext.Provider value={answersStore}>
           <MatchCard {...props} />
         </AnswersStoreContext.Provider>
+<<<<<<< HEAD
       </CalculatorStoreContext.Provider>
+=======
+      </CalculatorStoreContext.Provider>,
+>>>>>>> 04dd1284defeb0e58b4744db4eba18fd2d250e50
     );
 
     expect(screen.getByText("1")).toBeInTheDocument();
