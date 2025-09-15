@@ -63,10 +63,11 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                           {/* Question Text */}
                           <div className="text-slate-800 font-medium text-sm">{comparison.questionText}</div>
 
-                          {/* Comment if available - candidate or expert */}
-                          {(comparison.candidateComment || comparison.expertComment) && (
-                            <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">"{comparison.candidateComment || comparison.expertComment}"</blockquote>
-                          )}
+                          {/* Comment if available - candidate or expert - but not if showing expert no-data badge */}
+                          {(comparison.candidateComment || comparison.expertComment) &&
+                            !((comparison.candidateAnswer === null || comparison.candidateAnswer === undefined) && respondent === "expert") && (
+                              <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">"{comparison.candidateComment || comparison.expertComment}"</blockquote>
+                            )}
 
                           {/* Sources if available - candidate or expert */}
                           {((comparison.candidateSources && comparison.candidateSources.length > 0) ||
@@ -74,11 +75,14 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                             comparison.candidateAnswer === null ||
                             comparison.candidateAnswer === undefined) && (
                             <div className="text-xs text-slate-500">
-                              {comparison.candidateAnswer === null || comparison.candidateAnswer === undefined ? (
+                              {(comparison.candidateAnswer === null || comparison.candidateAnswer === undefined) && respondent === "expert" ? (
                                 <div className="space-y-1">
                                   <div>
                                     <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs">
-                                      <span>Postoj strany se nepodařilo z veřejných zdrojů zjistit</span>
+                                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
+                                      </svg>
+                                      <span>Postoj se nepodařilo zjistit</span>
                                     </div>
                                   </div>
                                 </div>
@@ -104,11 +108,8 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                           }}
                                         >
                                           <span>{source.title || source.url || "Zdroj"}</span>
-                                          <svg className="w-3 h-3" viewBox="0 0 24 24" aria-label="Info">
-                                            <path
-                                              fill="currentColor"
-                                              d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"
-                                            />
+                                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
                                           </svg>
                                         </button>
                                       </div>
