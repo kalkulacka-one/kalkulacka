@@ -27,7 +27,6 @@ export const Default: BadgeStory = {
 export const WithIcon: BadgeStory = {
   name: "With icon",
   args: {
-    icon: true,
     color: "green",
   },
   render: (args) => (

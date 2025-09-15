@@ -6,12 +6,8 @@ export type Badge = {
   children: React.ReactNode;
 } & VariantProps<typeof BadgeVariants>;
 
-const BadgeVariants = cva("ko:px-1.5 ko:border ko:w-fit ko:rounded-sm ko:text-xs", {
+const BadgeVariants = cva("ko:flex ko:gap-1.5 ko:items-center ko:px-1.5 ko:border ko:w-fit ko:rounded-sm ko:text-xs ko:[&>svg]:opacity-70", {
   variants: {
-    icon: {
-      true: "ko:flex ko:gap-1.5 ko:items-center ko:[&>svg]:opacity-70",
-      false: "",
-    },
     color: {
       primary: "ko:bg-primary/8 ko:text-primary ko:border-transparent",
       secondary: "ko:bg-secondary/8 ko:text-secondary ko:border-transparent",
@@ -25,6 +21,6 @@ const BadgeVariants = cva("ko:px-1.5 ko:border ko:w-fit ko:rounded-sm ko:text-xs
     color: "primary",
   },
 });
-export function Badge({ children, color, icon }: Badge) {
-  return <div className={twMerge(BadgeVariants({ color, icon }))}>{children}</div>;
+export function Badge({ children, color }: Badge) {
+  return <div className={twMerge(BadgeVariants({ color }))}>{children}</div>;
 }
