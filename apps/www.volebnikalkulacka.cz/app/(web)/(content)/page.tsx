@@ -1,18 +1,22 @@
 import { Button } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
 import Link from "next/link";
+import { useId } from "react";
 
 import { BeadRow } from "./BeadRow";
 
 export default function Page() {
+  const bgGridId = useId();
+  const otherCalcsHeadingId = useId();
+
   return (
     <div className="relative min-h-screen bg-slate-50">
       {/* Background dashed lines */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
         <div className="mx-auto h-full max-w-7xl px-6 sm:px-8">
-          <div id="bg-grid-root" className="relative h-full grid grid-cols-6 gap-x-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="relative">
+          <div id={bgGridId} className="relative h-full grid grid-cols-6 gap-x-6">
+            {Array.from({ length: 6 }, (_, i) => i).map((columnIndex) => (
+              <div key={`bg-grid-col-${columnIndex}`} className="relative">
                 <div className="absolute inset-y-0 left-0 border-l-2 border-dashed border-slate-200" />
               </div>
             ))}
@@ -70,7 +74,7 @@ export default function Page() {
         </div>
 
         {/* Other calculators */}
-        <h3 id="other-calcs-heading" className="mt-16 md:mt-20 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">
+        <h3 id={otherCalcsHeadingId} className="mt-16 md:mt-20 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">
           Další volební kalkulačky
         </h3>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 items-stretch">
