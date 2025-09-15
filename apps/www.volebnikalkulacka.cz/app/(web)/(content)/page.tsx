@@ -148,6 +148,22 @@ export default function Page() {
           </Card>
         </div>
 
+        {/* Archive section */}
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3 items-stretch">
+          <Card border className="h-full !border-slate-200 bg-slate-50/50">
+            <div className="p-6 h-full flex flex-col">
+              <p className="text-slate-600">Starší Volební kalkulačky najdete v archivu</p>
+              <div className="grid mt-auto pt-4">
+                <a href="https://archiv-2024.volebnikalkulacka.cz" target="_blank" rel="noopener noreferrer" className="grid">
+                  <Button variant="link" color="neutral">
+                    Přejít do archivu
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* Footer */}
         <div className="mt-16 border-t border-slate-200 pt-6 text-center text-slate-500">© 2025 Volební kalkulačka</div>
       </div>
