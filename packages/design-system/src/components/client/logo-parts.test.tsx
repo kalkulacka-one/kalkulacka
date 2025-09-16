@@ -9,12 +9,6 @@ describe("LogoCheck", () => {
     expect(svg).toBeInTheDocument();
   });
 
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoCheck title="Custom Check" />);
-    const title = screen.getByTitle("Custom Check");
-    expect(title).toBeInTheDocument();
-  });
-
   it("renders with default title", () => {
     render(<LogoCheck />);
     const title = screen.getByTitle("Check");
@@ -35,12 +29,6 @@ describe("LogoSlash", () => {
     expect(svg).toBeInTheDocument();
   });
 
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoSlash title="Custom Slash" />);
-    const title = screen.getByTitle("Custom Slash");
-    expect(title).toBeInTheDocument();
-  });
-
   it("renders with default title", () => {
     render(<LogoSlash />);
     const title = screen.getByTitle("Slash");
@@ -53,12 +41,6 @@ describe("LogoCross", () => {
     render(<LogoCross />);
     const svg = screen.getByRole("img");
     expect(svg).toBeInTheDocument();
-  });
-
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoCross title="Custom Cross" />);
-    const title = screen.getByTitle("Custom Cross");
-    expect(title).toBeInTheDocument();
   });
 
   it("renders with default title", () => {
@@ -75,16 +57,10 @@ describe("LogoPercent", () => {
     expect(svg).toBeInTheDocument();
   });
 
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoPercent title="Custom Percent" />);
-    const title = screen.getByTitle("Custom Percent");
-    expect(title).toBeInTheDocument();
-  });
-
-  it("renders with default title", () => {
+  it("renders with default aria-label", () => {
     render(<LogoPercent />);
-    const title = screen.getByTitle("Percent");
-    expect(title).toBeInTheDocument();
+    const element = screen.getByLabelText("Percent");
+    expect(element).toBeInTheDocument();
   });
 });
 
@@ -93,12 +69,6 @@ describe("LogoPercentNumerator", () => {
     render(<LogoPercentNumerator />);
     const svg = screen.getByRole("img");
     expect(svg).toBeInTheDocument();
-  });
-
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoPercentNumerator title="Custom Numerator" />);
-    const title = screen.getByTitle("Custom Numerator");
-    expect(title).toBeInTheDocument();
   });
 
   it("renders with default title", () => {
@@ -115,12 +85,6 @@ describe("LogoPercentSlash", () => {
     expect(svg).toBeInTheDocument();
   });
 
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoPercentSlash title="Custom Percent Slash" />);
-    const title = screen.getByTitle("Custom Percent Slash");
-    expect(title).toBeInTheDocument();
-  });
-
   it("renders with default title", () => {
     render(<LogoPercentSlash />);
     const title = screen.getByTitle("Percent slash");
@@ -133,12 +97,6 @@ describe("LogoPercentDenominator", () => {
     render(<LogoPercentDenominator />);
     const svg = screen.getByRole("img");
     expect(svg).toBeInTheDocument();
-  });
-
-  it("includes the correct <title> element inside SVG", () => {
-    render(<LogoPercentDenominator title="Custom Denominator" />);
-    const title = screen.getByTitle("Custom Denominator");
-    expect(title).toBeInTheDocument();
   });
 
   it("renders with default title", () => {

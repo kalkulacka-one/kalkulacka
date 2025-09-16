@@ -9,9 +9,6 @@ const meta: Meta = {
       control: "select",
       options: ["small", "medium", "large", "default"],
     },
-    title: {
-      control: "text",
-    },
   },
 };
 
@@ -21,7 +18,6 @@ export default meta;
 export const Check: StoryObj<typeof LogoCheck> = {
   render: (args) => <LogoCheck {...args} />,
   args: {
-    title: "Check mark",
     size: "default",
   },
 };
@@ -29,7 +25,6 @@ export const Check: StoryObj<typeof LogoCheck> = {
 export const Slash: StoryObj<typeof LogoSlash> = {
   render: (args) => <LogoSlash {...args} />,
   args: {
-    title: "Slash",
     size: "default",
   },
 };
@@ -37,7 +32,6 @@ export const Slash: StoryObj<typeof LogoSlash> = {
 export const Cross: StoryObj<typeof LogoCross> = {
   render: (args) => <LogoCross {...args} />,
   args: {
-    title: "Cross",
     size: "default",
   },
 };
@@ -45,7 +39,6 @@ export const Cross: StoryObj<typeof LogoCross> = {
 export const Percent: StoryObj<typeof LogoPercent> = {
   render: (args) => <LogoPercent {...args} />,
   args: {
-    title: "Percent",
     size: "default",
   },
 };
@@ -54,7 +47,6 @@ export const Percent: StoryObj<typeof LogoPercent> = {
 export const PercentNumerator: StoryObj<typeof LogoPercentNumerator> = {
   render: (args) => <LogoPercentNumerator {...args} />,
   args: {
-    title: "Percent numerator",
     size: "default",
   },
 };
@@ -62,7 +54,6 @@ export const PercentNumerator: StoryObj<typeof LogoPercentNumerator> = {
 export const PercentSlash: StoryObj<typeof LogoPercentSlash> = {
   render: (args) => <LogoPercentSlash {...args} />,
   args: {
-    title: "Percent slash",
     size: "default",
   },
 };
@@ -70,7 +61,6 @@ export const PercentSlash: StoryObj<typeof LogoPercentSlash> = {
 export const PercentDenominator: StoryObj<typeof LogoPercentDenominator> = {
   render: (args) => <LogoPercentDenominator {...args} />,
   args: {
-    title: "Percent denominator",
     size: "default",
   },
 };
