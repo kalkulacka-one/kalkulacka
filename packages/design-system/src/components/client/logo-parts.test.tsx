@@ -1,12 +1,4 @@
-import { 
-  LogoCheck, 
-  LogoSlash, 
-  LogoCross, 
-  LogoPercent, 
-  LogoPercentNumerator, 
-  LogoPercentSlash, 
-  LogoPercentDenominator 
-} from "@repo/design-system/client";
+import { LogoCheck, LogoCross, LogoPercent, LogoPercentDenominator, LogoPercentNumerator, LogoPercentSlash, LogoSlash } from "@repo/design-system/client";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

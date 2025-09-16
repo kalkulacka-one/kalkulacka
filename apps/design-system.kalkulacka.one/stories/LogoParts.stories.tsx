@@ -1,12 +1,4 @@
-import { 
-  LogoCheck, 
-  LogoSlash, 
-  LogoCross, 
-  LogoPercent, 
-  LogoPercentNumerator, 
-  LogoPercentSlash, 
-  LogoPercentDenominator 
-} from "@repo/design-system/client";
+import { LogoCheck, LogoCross, LogoPercent, LogoPercentDenominator, LogoPercentNumerator, LogoPercentSlash, LogoSlash } from "@repo/design-system/client";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta = {
@@ -111,13 +103,13 @@ export const AllParts: StoryObj = {
 export const SizeComparison: StoryObj = {
   render: () => (
     <div className="space-y-6">
-      {["small", "medium", "large", "default"].map((size) => (
-        <div key={size} className="flex items-center gap-4">
+      {(["small", "medium", "large", "default"] as const).map((size) => (
+        <div key={size} className="flex items-baseline gap-4">
           <span className="w-16 text-sm font-medium">{size}:</span>
-          <LogoCheck size={size as any} />
-          <LogoSlash size={size as any} />
-          <LogoCross size={size as any} />
-          <LogoPercent size={size as any} />
+          <LogoCheck size={size} />
+          <LogoSlash size={size} />
+          <LogoCross size={size} />
+          <LogoPercent size={size} />
         </div>
       ))}
     </div>

@@ -1,6 +1,6 @@
 import { mdiStar } from "@mdi/js";
+import { Icon, LogoCheck, LogoCross, LogoSlash } from "@repo/design-system/client";
 import { Card } from "@repo/design-system/server";
-import { LogoCheck, LogoCross, LogoSlash, Icon } from "@repo/design-system/client";
 import Markdown from "react-markdown";
 
 import type { CalculatorViewModel } from "../../../view-models";

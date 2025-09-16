@@ -26,6 +26,8 @@ const IconVariants = cva("", {
       medium: "ko:size-6 ko:min-w-6",
 
       large: "ko:size-8 ko:min-w-8",
+
+      custom: "",
     },
   },
 
@@ -34,7 +36,7 @@ const IconVariants = cva("", {
   },
 });
 
-export function Icon({ icon, size, title, decorative, isIcon = true, ...props }: Icon) {
+export function Icon({ icon, size, title, decorative, isIcon = true, className, viewBox = "0 0 24 24", ...props }: Icon) {
   const titleId = useId();
 
   // Don't pass isIcon to DOM elements
@@ -49,8 +51,8 @@ export function Icon({ icon, size, title, decorative, isIcon = true, ...props }:
         aria-labelledby={!decorative ? titleId : undefined}
         focusable="false"
         role={decorative ? undefined : "img"}
-        className={twMerge(IconVariants({ size }))}
-        viewBox="0 0 24 24"
+        className={twMerge(IconVariants({ size }), className)}
+        viewBox={viewBox}
         fill="currentColor"
       >
         {!decorative && title && <title id={titleId}>{title}</title>}
@@ -71,7 +73,7 @@ export function Icon({ icon, size, title, decorative, isIcon = true, ...props }:
       role={decorative ? undefined : "img"}
       aria-labelledby={!decorative ? titleId : undefined}
       aria-hidden={decorative ? "true" : "false"}
-      className={twMerge(IconVariants({ size }))}
+      className={twMerge(IconVariants({ size }), className)}
     />
   );
 }
