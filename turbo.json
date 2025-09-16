@@ -10,11 +10,12 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
-        "NEXT_PUBLIC_*",
-        "APPSIGNAL_PUSH_API_KEY",
-        "APPSIGNAL_NAME",
-        "APPSIGNAL_ENVIRONMENT",
-        "OTEL_EXPORTER_OTLP_ENDPOINT"
+        "CANONICAL_URL",
+        "DATA_ENDPOINT",
+        "X_HANDLE",
+        "ANALYTICS_DOMAIN",
+        "ANALYTICS_PROXY",
+        "ENABLE_ANALYTICS"
       ]
     },
     "dev": {
