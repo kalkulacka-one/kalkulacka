@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderBottom, AppHeaderBottomLeft, AppHeaderBottomMain, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
@@ -13,9 +13,10 @@ export type ReviewPage = {
   onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
+  attribution?: boolean;
 };
 
-export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
+export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, attribution }: ReviewPage) {
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -56,25 +57,24 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
-              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
-              <AppHeaderRight>
+            <AppHeader condensed={condensed} calculator={calculator}>
+              <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
-              </AppHeaderRight>
-              <AppHeaderBottom>
-                <AppHeaderBottomLeft condensed={condensed}>
+              </AppHeader.Right>
+              <AppHeader.Bottom>
+                <AppHeader.BottomLeft condensed={condensed}>
                   <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Zpět na otázky">
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
-                </AppHeaderBottomLeft>
-                <AppHeaderBottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-3xl">Rekapitulace</h3>
-                </AppHeaderBottomMain>
-              </AppHeaderBottom>
+                </AppHeader.BottomLeft>
+                <AppHeader.BottomMain condensed={condensed}>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Rekapitulace</h3>
+                </AppHeader.BottomMain>
+              </AppHeader.Bottom>
             </AppHeader>
           )}
         </WithCondenseOnScroll>
@@ -102,8 +102,8 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
           })}
         </div>
       </LayoutContent>
-      <LayoutBottomNavigation>
-        <ReviewNavigationCard onNextClick={onNextClick} />
+      <LayoutBottomNavigation spacer={attribution ? "8rem" : "5rem"}>
+        <ReviewNavigationCard onNextClick={onNextClick} attribution={attribution} />
       </LayoutBottomNavigation>
     </>
   );

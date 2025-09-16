@@ -2,8 +2,9 @@ import { notFound, useRouter } from "next/navigation";
 import { useEffect, useReducer } from "react";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
-import { useAnswerViewModel, useCalculatorViewModel, useQuestionsViewModel } from "../../../../calculator/view-models";
+import { useAnswer, useCalculator, useQuestions } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
+import { useEmbed } from "../../../client/embed-context-provider";
 
 // Get current question number from URL
 function getCurrentQuestionFromUrl(): number {
@@ -24,13 +25,14 @@ function getCurrentQuestionFromUrl(): number {
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
-  const calculator = useCalculatorViewModel();
-  const { questions, total } = useQuestionsViewModel();
+  const embed = useEmbed();
+  const calculator = useCalculator();
+  const { questions, total } = useQuestions();
   const [, forceRender] = useReducer((x) => x + 1, 0);
 
   // Use URL as source of truth, fallback to prop
   const currentQuestion = typeof window !== "undefined" ? getCurrentQuestionFromUrl() : current;
-  const question = questions[currentQuestion - 1];
+  const question = questions[current - 1];
 
   if (!question) {
     notFound();
@@ -72,7 +74,8 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     router.push("/");
   };
 
-  const answer = useAnswerViewModel(question.id);
+  const answer = useAnswer(question.id);
+  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
   return (
     <div>
@@ -85,6 +88,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
+        attribution={attribution}
       />
     </div>
   );

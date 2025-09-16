@@ -6,6 +6,17 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
     },
+    "www.volebnikalkulacka.cz#build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_PUBLIC_*",
+        "APPSIGNAL_PUSH_API_KEY",
+        "APPSIGNAL_NAME",
+        "APPSIGNAL_ENVIRONMENT",
+        "OTEL_EXPORTER_OTLP_ENDPOINT"
+      ]
+    },
     "dev": {
       "dependsOn": ["schema.kalkulacka.one#build:openapi", "@repo/database#build", "@repo/design-system#build"],
       "cache": false,

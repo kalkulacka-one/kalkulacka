@@ -7,9 +7,9 @@ type EmbedOnlyProps = {
 };
 
 export function EmbedOnly({ children, names }: EmbedOnlyProps) {
-  const { isEmbed, name } = useEmbed();
+  const embed = useEmbed();
 
-  if (!isEmbed) {
+  if (!embed.isEmbed) {
     return null;
   }
 
@@ -18,7 +18,7 @@ export function EmbedOnly({ children, names }: EmbedOnlyProps) {
   }
 
   const targetEmbeds = [names].flat();
-  const shouldShow = name && targetEmbeds.includes(name);
+  const shouldShow = targetEmbeds.includes(embed.name);
 
   return shouldShow ? children : null;
 }

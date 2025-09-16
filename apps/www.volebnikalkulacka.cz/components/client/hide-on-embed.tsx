@@ -7,9 +7,9 @@ type HideOnEmbedProps = {
 };
 
 export function HideOnEmbed({ children, names }: HideOnEmbedProps) {
-  const { isEmbed, name } = useEmbed();
+  const embed = useEmbed();
 
-  if (!isEmbed) {
+  if (!embed.isEmbed) {
     return <>{children}</>;
   }
 
@@ -18,7 +18,7 @@ export function HideOnEmbed({ children, names }: HideOnEmbedProps) {
   }
 
   const targetEmbeds = [names].flat();
-  const shouldHide = name && targetEmbeds.includes(name);
+  const shouldHide = targetEmbeds.includes(embed.name);
 
   return shouldHide ? null : children;
 }

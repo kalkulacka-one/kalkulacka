@@ -13,4 +13,12 @@ describe("Card", () => {
       expect(container.firstChild).toHaveClass("ko:bg-transparent");
     });
   });
+
+  describe("when given interactive prop", () => {
+    it("should not add any classes when interactive is true", () => {
+      const { container } = render(<Card interactive={true}>Children</Card>);
+      expect(container.firstChild).not.toHaveClass("ko:transition-colors");
+      expect(container.firstChild).not.toHaveClass("ko:duration-200");
+    });
+  });
 });

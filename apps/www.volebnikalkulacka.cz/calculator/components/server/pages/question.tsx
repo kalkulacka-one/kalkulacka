@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
-import { AppHeader, AppHeaderMain, AppHeaderRight, WithCondenseOnScroll } from "../../client";
+import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
@@ -15,9 +15,10 @@ export type QuestionPage = {
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
+  attribution?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, attribution }: QuestionPage) {
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -60,15 +61,14 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutHeader>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} logoTitle="Volební kalkulačka">
-              <AppHeaderMain title="Volební kalkulačka" secondaryTitle={calculator?.shortTitle} tertiaryTitle="Sněmovní volby 2025" />
-              <AppHeaderRight>
+            <AppHeader condensed={condensed} calculator={calculator}>
+              <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
-              </AppHeaderRight>
+              </AppHeader.Right>
             </AppHeader>
           )}
         </WithCondenseOnScroll>
@@ -76,7 +76,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
       <LayoutContent>
         <QuestionCard question={question} current={number} total={total} />
       </LayoutContent>
-      <LayoutBottomNavigation spacer="11rem">
+      <LayoutBottomNavigation spacer={attribution ? "14rem" : "11rem"}>
         <QuestionNavigationCard
           current={number}
           total={total}
@@ -86,6 +86,7 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onAgreeChange={handleAgreeChange}
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
+          attribution={attribution}
         />
       </LayoutBottomNavigation>
     </>

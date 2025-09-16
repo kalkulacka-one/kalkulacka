@@ -72,6 +72,9 @@
     "tags": {
       "$ref": "./tags.schema.json"
     },
+    "images": {
+      "$ref": "./images.schema.json"
+    },
     "calculatorGroup": {
       "title": "Calculator group",
       "description": "Reference to a calculator group the calculator belongs to",
@@ -163,6 +166,9 @@
     },
     "tags": {
       "$ref": "#/$defs/tags"
+    },
+    "images": {
+      "$ref": "#/$defs/images"
     }
   },
   "unevaluatedProperties": false,

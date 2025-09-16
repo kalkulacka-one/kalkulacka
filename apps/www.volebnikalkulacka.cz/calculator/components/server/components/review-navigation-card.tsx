@@ -4,12 +4,15 @@ import { NavigationCard } from "./navigation-card";
 
 export type ReviewNavigationCard = {
   onNextClick: () => void;
+  attribution?: boolean;
 };
 
-export function ReviewNavigationCard({ onNextClick }: ReviewNavigationCard) {
+export function ReviewNavigationCard({ onNextClick, attribution }: ReviewNavigationCard) {
   return (
-    <NavigationCard>
-      <Button onClick={onNextClick}>Zobrazit výsledky</Button>
+    <NavigationCard attribution={attribution}>
+      <Button color="neutral" onClick={onNextClick}>
+        Zobrazit výsledky
+      </Button>
     </NavigationCard>
   );
 }
