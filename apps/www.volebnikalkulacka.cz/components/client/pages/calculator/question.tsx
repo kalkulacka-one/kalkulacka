@@ -32,7 +32,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   // Use URL as source of truth, fallback to prop
   const currentQuestion = typeof window !== "undefined" ? getCurrentQuestionFromUrl() : current;
-  const question = questions[current - 1];
+  const question = questions[currentQuestion - 1];
 
   if (!question) {
     notFound();
