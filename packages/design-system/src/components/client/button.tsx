@@ -29,7 +29,7 @@ export const ButtonVariants = cva(
       variant: {
         fill: [""],
         outline: ["ko:bg-transparent"],
-        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent", "ko:hover:bg-neutral/10"],
+        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
         answer: ["ko:px-6"],
       },
       color: {
@@ -121,8 +121,8 @@ export const ButtonVariants = cva(
         color: "primary",
         class: [
           "ko:text-primary",
-          "ko:data-hover:text-primary-hover ko:data-focus:text-primary-hover",
-          "ko:data-active:text-primary-active",
+          "ko:data-hover:bg-primary/10 ko:data-hover:text-primary-hover ko:data-focus:text-primary-hover",
+          "ko:data-active:text-primary-active ko:data-active:bg-primary/10",
           "ko:data-hover:data-active:text-primary-active",
           "ko:data-disabled:text-primary-disabled",
         ],
@@ -132,8 +132,8 @@ export const ButtonVariants = cva(
         color: "secondary",
         class: [
           "ko:text-secondary",
-          "ko:data-hover:text-secondary-hover ko:data-focus:text-secondary-hover",
-          "ko:data-active:text-secondary-active",
+          "ko:data-hover:bg-secondary/10 ko:data-hover:text-secondary-hover ko:data-focus:text-secondary-hover",
+          "ko:data-active:text-secondary-active ko:data-active:bg-secondary/10",
           "ko:data-hover:data-active:text-secondary-active",
           "ko:data-disabled:text-secondary-disabled",
         ],
@@ -143,8 +143,8 @@ export const ButtonVariants = cva(
         color: "neutral",
         class: [
           "ko:text-neutral",
-          "ko:data-hover:text-neutral-hover ko:data-focus:text-neutral-hover",
-          "ko:data-active:text-neutral-active",
+          "ko:data-hover:bg-neutral/10 ko:data-hover:text-neutral-hover ko:data-focus:text-neutral-hover",
+          "ko:data-active:text-neutral-active ko:data-active:bg-neutral/10",
           "ko:data-hover:data-active:text-neutral-active",
           "ko:data-disabled:text-neutral-disabled",
         ],
