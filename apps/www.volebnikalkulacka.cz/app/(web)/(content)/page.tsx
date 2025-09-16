@@ -1,10 +1,9 @@
-import { mdiHistory } from "@mdi/js";
-import { Button, Icon } from "@repo/design-system/client";
+import { Button } from "@repo/design-system/client";
 import { Badge, Card } from "@repo/design-system/server";
 import Link from "next/link";
 import { useId } from "react";
 
-import { CalculatorCard, CalculatorCardCTA, CalculatorCardDescription, CalculatorCardHeader, CalculatorCardTitle } from "../../../calculator/components/client";
+import { CalculatorCard, CalculatorCardCTA, CalculatorCardDescription, CalculatorCardHeader, CalculatorCardTitle } from "../../../calculator/components/server/components/calculator-card";
 import { BeadRow } from "./BeadRow";
 
 export default function Page() {
