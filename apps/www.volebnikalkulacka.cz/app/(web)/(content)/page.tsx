@@ -4,6 +4,7 @@ import { Badge, Card } from "@repo/design-system/server";
 import Link from "next/link";
 import { useId } from "react";
 
+import { CalculatorCard, CalculatorCardCTA, CalculatorCardDescription, CalculatorCardHeader, CalculatorCardTitle } from "../../../calculator/components/client";
 import { BeadRow } from "./BeadRow";
 
 export default function Page() {
@@ -30,11 +31,10 @@ export default function Page() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16">
         {/* Heading */}
         <h1 className="font-display ko:font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Sněmovní volby 2025</h1>
-
         {/* Featured cards */}
         <div className="mt-10 md:mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 items-stretch">
           {/* Left featured */}
-          <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
+          {/* <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
             <div className="p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">Nejoblíbenější kalkulačka</span>
@@ -51,10 +51,30 @@ export default function Page() {
                 </Link>
               </div>
             </div>
-          </Card>
+          </Card> */}
+          <CalculatorCard>
+            <CalculatorCardHeader>
+              <Badge color="primary">Nejoblíbenější kalkulačka</Badge>
+              <Badge color="transparent">42 otázek</Badge>
+              <Badge color="transparent">10 min</Badge>
+            </CalculatorCardHeader>
+            <CalculatorCardTitle>
+              <h2 className="text-left text-slate-700 font-sans text-2xl md:text-3xl font-semibold tracking-tight leading-tight max-w-sm break-words">Kdo zastává vaše postoje?</h2>
+            </CalculatorCardTitle>
+            <CalculatorCardDescription>
+              <p className="text-slate-500">Klasická Volební kalkulačka, jak ji znáte už skoro 20 let.</p>
+            </CalculatorCardDescription>
+            <CalculatorCardCTA>
+              <Link href="/volby/snemovni-2025/kalkulacka" className="grid">
+                <Button variant="fill" color="neutral">
+                  Spustit kalkulačku
+                </Button>
+              </Link>
+            </CalculatorCardCTA>
+          </CalculatorCard>
 
           {/* Right featured */}
-          <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
+          {/* <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
             <div className="p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 font-semibold text-red-700">Inventura hlasování</span>
@@ -71,7 +91,27 @@ export default function Page() {
                 </Link>
               </div>
             </div>
-          </Card>
+          </Card> */}
+          <CalculatorCard>
+            <CalculatorCardHeader>
+              <Badge color="secondary">Inventura hlasování</Badge>
+              <Badge color="transparent">33 hlasování</Badge>
+              <Badge color="transparent">10 minut</Badge>
+            </CalculatorCardHeader>
+            <CalculatorCardTitle>
+              <h2 className="text-left text-slate-700 font-sans text-2xl md:text-3xl font-semibold tracking-tight leading-tight break-words">Kdo vás zastupoval ve Sněmovně?</h2>
+            </CalculatorCardTitle>
+            <CalculatorCardDescription>
+              <p className="text-slate-500">Žádné sliby, ale skutečná hlasování poslanců ve Sněmovně za končící volební období.</p>
+            </CalculatorCardDescription>
+            <CalculatorCardCTA>
+              <Link href="/volby/snemovni-2025/inventura" className="grid">
+                <Button variant="outline" color="neutral">
+                  Spustit inventuru hlasování
+                </Button>
+              </Link>
+            </CalculatorCardCTA>
+          </CalculatorCard>
         </div>
 
         {/* Other calculators */}
@@ -79,7 +119,7 @@ export default function Page() {
           Další volební kalkulačky
         </h3>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
+          {/* <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
             <div className="p-6 h-full flex flex-col">
               <div className="flex items-center gap-2 text-xs text-slate-600">
                 <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-1 font-semibold text-orange-700">Expresní kalkulačka</span>
@@ -96,9 +136,31 @@ export default function Page() {
                 </Link>
               </div>
             </div>
-          </Card>
+          </Card> */}
+          <CalculatorCard>
+            <CalculatorCardHeader>
+              <Badge color="secondary">Expresní kalkulačka</Badge>
+              <Badge color="transparent">25 otázek</Badge>
+              <Badge color="transparent">5 minut</Badge>
+            </CalculatorCardHeader>
+            <CalculatorCardTitle>
+              <h4 className="text-slate-700 font-sans text-xl font-semibold tracking-tight leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">
+                Nejužitečnějších 5 minut před volbami
+              </h4>
+            </CalculatorCardTitle>
+            <CalculatorCardDescription>
+              <p className="text-slate-500 text-sm">Těch 25 nejklíčovějších otázek, které vám zaberou jen 5 minut.</p>
+            </CalculatorCardDescription>
+            <CalculatorCardCTA>
+              <Link href="/volby/snemovni-2025/expresni" className="grid">
+                <Button variant="outline" color="neutral">
+                  Spustit kalkulačku
+                </Button>
+              </Link>
+            </CalculatorCardCTA>
+          </CalculatorCard>
 
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
+          {/* <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
             <div className="p-6 h-full flex flex-col">
               <div className="flex items-center gap-2 text-xs text-slate-600">
                 <span className="inline-flex items-center rounded-full bg-green-50 px-2.5 py-1 font-semibold text-green-700">Ultimátní kalkulačka</span>
@@ -115,13 +177,35 @@ export default function Page() {
                 </Link>
               </div>
             </div>
-          </Card>
+          </Card> */}
+          <CalculatorCard>
+            <CalculatorCardHeader>
+              <Badge color="green">Ultimátní kalkulačka</Badge>
+              <Badge color="transparent">100 otázek</Badge>
+              <Badge color="transparent">30 minut</Badge>
+            </CalculatorCardHeader>
+            <CalculatorCardTitle>
+              <h4 className="text-slate-700 font-sans text-xl font-semibold tracking-tight leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">
+                Všech 100 otázek pro „politické fajnšmekry"
+              </h4>
+            </CalculatorCardTitle>
+            <CalculatorCardDescription>
+              <p className="text-slate-500 text-sm">Nejrozsáhlější verze se všemi 100 otázkami, na které jsme se ptali.</p>
+            </CalculatorCardDescription>
+            <CalculatorCardCTA>
+              <Link href="/volby/snemovni-2025/ultimatni" className="grid">
+                <Button variant="outline" color="neutral">
+                  Spustit kalkulačku
+                </Button>
+              </Link>
+            </CalculatorCardCTA>
+          </CalculatorCard>
         </div>
 
         {/* Thematic calculators */}
         <h3 className="mt-12 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">Tématické volební kalkulačky</h3>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3 items-stretch">
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
+          {/* <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
             <div className="p-6 h-full flex flex-col">
               <div className="flex items-center gap-2 text-xs text-slate-600">
                 <span className="rounded-full px-2.5 py-1 font-semibold" style={{ backgroundColor: "rgb(156, 196, 232)", color: "rgb(40, 38, 92)" }}>
@@ -146,7 +230,35 @@ export default function Page() {
                 </Link>
               </div>
             </div>
-          </Card>
+          </Card> */}
+          <CalculatorCard>
+            <CalculatorCardHeader>
+              <Badge color="yellow">Pro mladé</Badge>
+              <Badge color="transparent">35 otázek</Badge>
+              <Badge color="transparent">10 minut</Badge>
+            </CalculatorCardHeader>
+            <CalculatorCardTitle>
+              <h4 className="text-slate-700 font-sans text-xl font-semibold tracking-tight leading-tight max-w-2xl break-words group-hover:text-primary transition-colors">
+                35 otázek, které pálí nejen mladou generaci
+              </h4>
+            </CalculatorCardTitle>
+            <CalculatorCardDescription>
+              <p className="text-slate-500 text-sm">
+                Témata, která podle výzkumu pálí mladou generaci. Ve spolupráci s{" "}
+                <a href="https://dikyzemuzem.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
+                  Díky, že můžem
+                </a>
+                .
+              </p>
+            </CalculatorCardDescription>
+            <CalculatorCardCTA>
+              <Link href="/volby/snemovni-2025/pro-mlade" className="grid">
+                <Button variant="outline" color="neutral">
+                  Spustit kalkulačku
+                </Button>
+              </Link>
+            </CalculatorCardCTA>
+          </CalculatorCard>
         </div>
 
         {/* Archive section */}
@@ -164,7 +276,6 @@ export default function Page() {
             </div>
           </Card>
         </div>
-
         {/* Footer */}
         <div className="mt-16 border-t border-slate-200 pt-6 text-center text-slate-500">© 2025 Volební kalkulačka</div>
       </div>

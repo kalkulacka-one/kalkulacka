@@ -21,11 +21,11 @@ type CalculatorCardCTA = {
 };
 
 function CalculatorCardHeader({ children }: CalculatorCardHeader) {
-  return <div className="flex gap-2">{children}</div>;
+  return <div className="flex gap-2 flex-wrap">{children}</div>;
 }
 
 function CalculatorCardTitle({ children }: CalculatorCardTitle) {
-  return <div className="justify-self-start max-w-sm text-left">{children}</div>;
+  return <div className="justify-self-start text-left">{children}</div>;
 }
 
 function CalculatorCardDescription({ children }: CalculatorCardDescription) {
@@ -33,13 +33,13 @@ function CalculatorCardDescription({ children }: CalculatorCardDescription) {
 }
 
 function CalculatorCardCTA({ children }: CalculatorCardCTA) {
-  return <div className="grid items-stretch">{children}</div>;
+  return <div className="grid mt-auto w-full">{children}</div>;
 }
 
 export function CalculatorCard({ children }: CalculatorCard) {
   return (
     <Card shadow="hard" corner="topLeft">
-      <div className="grid gap-4 px-8 py-7 h-full items-start">{children}</div>
+      <div className="flex flex-col gap-4 px-8 py-7 h-full items-start">{children}</div>
     </Card>
   );
 }
