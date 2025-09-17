@@ -1,19 +1,24 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
+import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
+import { IconBadge } from "@repo/design-system/server";
 
 import { HideOnEmbed } from "../../../../components/client";
-import type { CalculatorViewModel } from "../../../view-models";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutContent, LayoutHeader } from "../components";
+import { ComparisonQuestionCard, LayoutContent, LayoutHeader } from "../components";
 
 export type ComparisonPage = {
   calculator: CalculatorViewModel;
+  answers: AnswersViewModel;
+  questions: QuestionsViewModel;
   onPreviousClick: () => void;
   onCloseClick: () => void;
   attribution?: boolean;
 };
 
-export function ComparisonPage({ calculator, onPreviousClick, onCloseClick }: ComparisonPage) {
+export function ComparisonPage({ calculator, onPreviousClick, onCloseClick, questions, answers }: ComparisonPage) {
+  console.log("Questions", questions.questions);
   return (
     <>
       <LayoutHeader>
@@ -42,7 +47,31 @@ export function ComparisonPage({ calculator, onPreviousClick, onCloseClick }: Co
         </WithCondenseOnScroll>
       </LayoutHeader>
       <LayoutContent>
-        <div className="grid gap-4">Comparison</div>
+        <div className="flex">
+          <div className="grid gap-8">
+            {questions.questions.map((question, index) => {
+              const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
+              return (
+                <div className="grid grid-cols-2 place-items-center" key={question.id}>
+                  <div>
+                    <ComparisonQuestionCard current={index + 1} total={questions.total} question={question} />
+                  </div>
+                  <div>
+                    {userAnswer ? (
+                      <IconBadge color={userAnswer.answer?.answer === true ? "primary" : "secondary"}>
+                        <Icon decorative={true} icon={userAnswer.answer?.answer === true ? logoCheck : logoCross} />
+                      </IconBadge>
+                    ) : (
+                      <IconBadge color="neutral">
+                        <Icon decorative={true} icon={logoSlash} />
+                      </IconBadge>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </LayoutContent>
     </>
   );
