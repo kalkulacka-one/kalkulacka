@@ -25,4 +25,5 @@ export const routes = {
   question: (segments: RouteSegments, questionNumber: number) => `/${createBaseSegment(segments)}/otazka/${questionNumber}`,
   review: (segments: RouteSegments) => `/${createBaseSegment(segments)}/rekapitulace`,
   result: (segments: RouteSegments) => `/${createBaseSegment(segments)}/vysledek`,
+  comparison: (segments: RouteSegments) => `/${createBaseSegment(segments)}/porovnani`,
 } as const;
