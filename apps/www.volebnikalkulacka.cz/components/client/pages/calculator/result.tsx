@@ -14,6 +14,10 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   const result = useResult({ showOnlyNested });
 
+  const handleNextClick = () => {
+    router.push(routes.comparison(segments));
+  };
+
   const handlePreviousClick = () => {
     router.push(routes.review(segments));
   };
@@ -29,6 +33,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
       embedContext={embed}
       calculator={calculator}
       result={result}
+      onNextClick={handleNextClick}
       onPreviousClick={handlePreviousClick}
       onCloseClick={handleCloseClick}
       showOnlyNested={showOnlyNested}

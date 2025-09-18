@@ -6,11 +6,13 @@ import { type EmbedContextType, HideOnEmbed } from "../../../../components/clien
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout } from "../components";
+import { ResultNavigationCard } from "../components/result-navigation-card";
 
 export type ResultPage = {
   embedContext: EmbedContextType;
   result: ResultViewModel;
   calculator: CalculatorViewModel;
+  onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
   showOnlyNested: boolean;
@@ -18,7 +20,7 @@ export type ResultPage = {
   donateCardPosition: number | false;
 };
 
-export function ResultPage({ embedContext, result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -78,6 +80,9 @@ export function ResultPage({ embedContext, result, calculator, onPreviousClick, 
       </Layout.Content>
       {embedContext.isEmbed && (
         <Layout.Footer>
+          <Layout.BottomNavigation>
+            <ResultNavigationCard onNextClick={onNextClick} />
+          </Layout.BottomNavigation>
           <EmbedFooter attribution={embedContext.config?.attribution} />
         </Layout.Footer>
       )}

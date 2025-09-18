@@ -6,7 +6,7 @@ import { IconBadge } from "@repo/design-system/server";
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { ComparisonQuestionCard, LayoutContent, LayoutHeader } from "../components";
+import { ComparisonQuestionCard, Layout } from "../components";
 
 export type ComparisonPage = {
   calculator: CalculatorViewModel;
@@ -21,7 +21,7 @@ export function ComparisonPage({ calculator, onPreviousClick, onCloseClick, ques
   console.log("Questions", questions.questions);
   return (
     <>
-      <LayoutHeader>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -45,8 +45,8 @@ export function ComparisonPage({ calculator, onPreviousClick, onCloseClick, ques
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <div className="flex">
           <div className="grid gap-8">
             {questions.questions.map((question, index) => {
@@ -72,7 +72,7 @@ export function ComparisonPage({ calculator, onPreviousClick, onCloseClick, ques
             })}
           </div>
         </div>
-      </LayoutContent>
+      </Layout.Content>
     </>
   );
 }
