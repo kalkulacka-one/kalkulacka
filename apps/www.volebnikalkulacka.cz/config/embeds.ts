@@ -18,6 +18,7 @@ export const embedsConfig = {
   reflex: {},
   blesk: {},
   denik: {},
+  publico: {},
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
