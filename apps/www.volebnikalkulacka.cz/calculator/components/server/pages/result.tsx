@@ -5,11 +5,13 @@ import React from "react";
 import { HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
-import { LayoutContent, LayoutHeader } from "../components";
+import { LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
+import { ResultNavigationCard } from "../components/result-navigation-card";
 
 export type ResultPage = {
   result: ResultViewModel;
   calculator: CalculatorViewModel;
+  onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
   showOnlyNested: boolean;
@@ -17,7 +19,7 @@ export type ResultPage = {
   donateCardPosition: number | false;
 };
 
-export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+export function ResultPage({ result, calculator, onNextClick, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -75,6 +77,9 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
           ))}
         </div>
       </LayoutContent>
+      <LayoutBottomNavigation>
+        <ResultNavigationCard onNextClick={onNextClick} />
+      </LayoutBottomNavigation>
     </>
   );
 }
