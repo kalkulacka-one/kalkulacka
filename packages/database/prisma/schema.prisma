@@ -18,3 +18,7 @@ model Subscription {
     createdAt DateTime @default(now()) @db.Timestamptz(3)
     updatedAt DateTime @updatedAt @db.Timestamptz(3)
 }
+
+enum crdb_internal_region {
+  aws_eu_central_1 @map("aws-eu-central-1")
+}
