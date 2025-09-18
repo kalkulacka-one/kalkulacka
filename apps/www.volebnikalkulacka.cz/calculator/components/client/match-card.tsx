@@ -1,8 +1,9 @@
-import { ExpandableCard } from "@repo/design-system/client";
+import { ExpandableCard, Icon } from "@repo/design-system/client";
+import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
 import { ProgressBar } from "@repo/design-system/server";
 import React, { useState } from "react";
 
-import type { CandidateMatchViewModel } from "../../view-models";
+import type { AnswerComparison, CandidateMatchViewModel } from "../../view-models";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "../../view-models/client/candidate";
 
 export type MatchCard = CandidateMatchViewModel;
@@ -136,21 +137,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                         </div>
 
                         {/* Answer Comparison */}
-                        <div className="flex items-center gap-1">
-                          <div
-                            className={`px-3 py-1 rounded text-sm font-bold ${
-                              comparison.userAnswer === comparison.candidateAnswer && comparison.userAnswer !== null && comparison.userAnswer !== undefined
-                                ? comparison.userAnswer === true
-                                  ? "bg-blue-600 text-white"
-                                  : "bg-red-600 text-white"
-                                : "bg-transparent text-slate-600"
-                            }`}
-                          >
-                            <span>{comparison.userAnswer === true ? "✓" : comparison.userAnswer === false ? "✗" : "—"}</span>
-                            <span className="mx-1">•</span>
-                            <span>{comparison.candidateAnswer === true ? "✓" : comparison.candidateAnswer === false ? "✗" : "—"}</span>
-                          </div>
-                        </div>
+                        <MatchCardAnswerComparison comparison={comparison} />
                       </React.Fragment>
                     ))}
                   </div>
@@ -161,5 +148,41 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
         </>
       )}
     </ExpandableCard>
+  );
+}
+
+export type MatchCardAnswerComparison = {
+  comparison: AnswerComparison;
+};
+
+function MatchCardAnswerComparison({ comparison }: MatchCardAnswerComparison) {
+  const { userAnswer, candidateAnswer } = comparison;
+
+  function renderAnswerIcon(answer: boolean | null | undefined) {
+    switch (answer) {
+      case true:
+        return <Icon size="small" title="Shoda" decorative={false} icon={logoCheck} className="inline-flex" />;
+      case false:
+        return <Icon size="small" title="Neshoda" decorative={false} icon={logoCross} className="inline-flex" />;
+      default:
+        return <Icon size="small" title="Neutrální" decorative={false} icon={logoSlash} className="inline-flex" />;
+    }
+  }
+  return (
+    <div className="flex items-center justify-center gap-1">
+      <div
+        className={`px-3 py-1 rounded text-sm font-bold ${
+          userAnswer === candidateAnswer && userAnswer !== null && userAnswer !== undefined
+            ? comparison.userAnswer === true
+              ? "bg-[var(--ko-palette-primary)] text-white"
+              : "bg-[var(--ko-palette-secondary)] text-white"
+            : "bg-transparent text-slate-600"
+        }`}
+      >
+        <span>{renderAnswerIcon(userAnswer)}</span>
+        <span className="mx-1">•</span>
+        <span>{renderAnswerIcon(candidateAnswer)}</span>
+      </div>
+    </div>
   );
 }
