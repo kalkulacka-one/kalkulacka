@@ -78,8 +78,10 @@ export function QuestionPage({ embedContext, question, questions, number, total,
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content>
-        <QuestionCard question={question} current={number} total={total} />
-        <QuestionProgressBar questions={questions} current={number} answers={answers} />
+        <div className="flex flex-col gap-4">
+          <QuestionCard question={question} current={number} total={total} />
+          <QuestionProgressBar questions={questions} current={number} answers={answers} />
+        </div>
       </Layout.Content>
       <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
