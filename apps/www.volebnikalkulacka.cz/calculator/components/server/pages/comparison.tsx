@@ -6,7 +6,7 @@ import { IconBadge } from "@repo/design-system/server";
 import { HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { ComparisonQuestionCard, LayoutHeader } from "../components";
+import { ComparisonQuestionCard, LayoutContent, LayoutHeader } from "../components";
 
 export type ComparisonPage = {
   calculator: CalculatorViewModel;
@@ -46,7 +46,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
           )}
         </WithCondenseOnScroll>
       </LayoutHeader>
-      <main className="w-full p-2 sm:p-4">
+      <LayoutContent fullWidth>
         <div className="flex flex-col gap-8" style={{ minWidth: `${320 + result.matches.length * 80 + 1600}px` }}>
           {/* header */}
           <div className="sticky top-16 flex gap-4 bg-slate-50 z-20">
@@ -99,7 +99,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
             );
           })}
         </div>
-      </main>
+      </LayoutContent>
     </>
   );
 }
