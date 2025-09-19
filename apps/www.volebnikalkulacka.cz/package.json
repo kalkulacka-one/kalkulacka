@@ -15,11 +15,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@appsignal/javascript": "^1.6.0",
+    "@appsignal/plugin-breadcrumbs-network": "^1.1.23",
+    "@appsignal/plugin-window-events": "^1.0.25",
+    "@hookform/resolvers": "^3.3.4",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/api-logs": "^0.204.0",
     "@opentelemetry/instrumentation": "^0.204.0",
     "@opentelemetry/sdk-logs": "^0.204.0",
-    "@hookform/resolvers": "^3.3.4",
     "@repo/database": "*",
     "@repo/design-system": "*",
     "@vercel/otel": "^1.13.0",
