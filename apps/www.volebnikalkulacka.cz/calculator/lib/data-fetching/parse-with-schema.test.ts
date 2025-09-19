@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
 
-import { parseWithSchema } from ".";
+import { parseWithSchema } from "..";
 
 describe("parseWithSchema", () => {
   const schema = z.object({

@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, type Mock, vi } from "vitest";
 
+import { parseWithSchema } from "../utilities";
 import { fetchFile } from "./fetch-file";
 import { loadCalculatorData } from "./load-calculator-data";
-import { parseWithSchema } from "./parse-with-schema";
 
+vi.mock("../utilities");
 vi.mock("./fetch-file");
-vi.mock("./parse-with-schema");
 
 describe("loadCalculatorData", () => {
   const mockFetchFile = fetchFile as Mock;
