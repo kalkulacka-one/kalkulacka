@@ -7,7 +7,6 @@ import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard, QuestionProgressBar } from "../components";
 
 export type QuestionPage = {
-  question: QuestionViewModel;
   questions: QuestionsViewModel;
   number: number;
   total: number;
@@ -20,7 +19,9 @@ export type QuestionPage = {
   attribution?: boolean;
 };
 
-export function QuestionPage({ question, questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick, attribution }: QuestionPage) {
+export function QuestionPage({ questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick, attribution }: QuestionPage) {
+  const question = questions.questions[number - 1] as QuestionViewModel;
+
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
