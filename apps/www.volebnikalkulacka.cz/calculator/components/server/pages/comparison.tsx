@@ -47,51 +47,62 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content>
-        <div className="flex">
-          <div className="grid gap-8">
-            {questions.questions.map((question, index) => {
-              const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
-              return (
-                <div key={question.id} className="flex flex-col gap-4">
-                  <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
-                  {/* answers grid */}
-                  <div className="grid gap-4" style={{ gridTemplateColumns: `400px repeat(${result.matches.length}, 80px)` }}>
-                    {/* user answers */}
-                    <div className="flex justify-center items-center min-h-[40px] sticky left-0">
-                      {userAnswer ? (
-                        <IconBadge color={userAnswer.answer?.answer === true ? "primary" : "secondary"}>
-                          <Icon decorative={true} icon={userAnswer.answer?.answer === true ? logoCheck : logoCross} />
-                        </IconBadge>
-                      ) : (
-                        <IconBadge color="neutral">
-                          <Icon decorative={true} icon={logoSlash} />
-                        </IconBadge>
-                      )}
-                    </div>
-
-                    {/* candidate answers */}
-                    {result.matches.map((match, matchIndex) => {
-                      const answer = match.candidateAnswers.find((a) => a.questionId === question.id);
-                      return (
-                        <div key={`answer-${match.candidate.id}-${matchIndex}`} className="flex justify-center items-center min-h-[40px]">
-                          {answer && answer.answer !== null && answer.answer !== undefined ? (
-                            <IconBadge color={answer.answer === true ? "primary" : "secondary"}>
-                              <Icon decorative={true} icon={answer.answer === true ? logoCheck : logoCross} />
-                            </IconBadge>
-                          ) : (
-                            <IconBadge color="neutral">
-                              <Icon decorative={true} icon={logoSlash} />
-                            </IconBadge>
-                          )}
-                        </div>
-                      );
-                    })}
+        <main className="w-full p-2 sm:p-4">
+          <div className="overflow-x-auto">
+            <div className="flex flex-col gap-8" style={{ minWidth: `${320 + result.matches.length * 80 + 1600}px` }}>
+              {/* header */}
+              <div className="flex gap-4">
+                <div className="w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">Vaše odpovědi</div>
+                {result.matches.map((match, matchIndex) => (
+                  <div key={`header-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex items-center justify-center text-center text-xs">
+                    {match.candidate.displayName}
                   </div>
-                </div>
-              );
-            })}
+                ))}
+              </div>
+              {questions.questions.map((question, index) => {
+                const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
+                return (
+                  <div key={question.id} className="flex flex-col gap-4">
+                    <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
+                    {/* answers grid */}
+                    <div className="flex gap-4">
+                      {/* user answers */}
+                      <div className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0 z-10">
+                        {userAnswer ? (
+                          <IconBadge color={userAnswer.answer?.answer === true ? "primary" : "secondary"}>
+                            <Icon decorative={true} icon={userAnswer.answer?.answer === true ? logoCheck : logoCross} />
+                          </IconBadge>
+                        ) : (
+                          <IconBadge color="neutral">
+                            <Icon decorative={true} icon={logoSlash} />
+                          </IconBadge>
+                        )}
+                      </div>
+
+                      {/* candidate answers */}
+                      {result.matches.map((match, matchIndex) => {
+                        const answer = match.candidateAnswers.find((a) => a.questionId === question.id);
+                        return (
+                          <div key={`answer-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+                            {answer && answer.answer !== null && answer.answer !== undefined ? (
+                              <IconBadge color={answer.answer === true ? "primary" : "secondary"}>
+                                <Icon decorative={true} icon={answer.answer === true ? logoCheck : logoCross} />
+                              </IconBadge>
+                            ) : (
+                              <IconBadge color="neutral">
+                                <Icon decorative={true} icon={logoSlash} />
+                              </IconBadge>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </main>
       </Layout.Content>
     </>
   );
