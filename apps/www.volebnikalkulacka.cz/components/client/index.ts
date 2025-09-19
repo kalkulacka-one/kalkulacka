@@ -7,5 +7,6 @@ export * from "./header";
 export * from "./hide-on-embed";
 export * from "./pages";
 export * from "./provider-layout";
+export * from "./session-initializer";
 export * from "./subscribe-form";
 export * from "./theme-provider";
