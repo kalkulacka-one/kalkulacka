@@ -1,7 +1,8 @@
 import { cookies } from "next/headers";
 
 import { parseWithSchema } from "../../../calculator/lib";
-import { buildCookieName, sessionCookieSchema } from ".";
+import { buildCookieName } from "./cookie-name";
+import { sessionCookieSchema } from "./set-session-cookie";
 
 export async function getSessionCookie({ embedName }: { embedName?: string | null } = {}) {
   const cookieName = buildCookieName({ embedName });

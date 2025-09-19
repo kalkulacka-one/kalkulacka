@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { z } from "zod";
 
-import { buildCookieName } from ".";
+import { buildCookieName } from "./cookie-name";
 
 export const sessionCookieSchema = z.object({
   id: z.string().uuid(),
