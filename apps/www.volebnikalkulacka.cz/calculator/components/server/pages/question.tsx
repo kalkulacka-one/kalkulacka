@@ -8,7 +8,6 @@ import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, QuestionProg
 
 export type QuestionPage = {
   embedContext: EmbedContextType;
-  question: QuestionViewModel;
   questions: QuestionsViewModel;
   number: number;
   total: number;
@@ -20,8 +19,9 @@ export type QuestionPage = {
   onCloseClick: () => void;
 };
 
-export function QuestionPage({ embedContext, question, questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick }: QuestionPage) {
+export function QuestionPage({ embedContext, questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick }: QuestionPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+  const question = questions.questions[number - 1] as QuestionViewModel;
 
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
