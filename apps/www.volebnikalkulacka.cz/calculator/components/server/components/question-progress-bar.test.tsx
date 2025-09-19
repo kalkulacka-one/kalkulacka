@@ -3,8 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
-import { answersViewModel } from "../../../view-models/answers";
-import { questionsViewModel } from "../../../view-models/questions";
+import { answersViewModel, questionsViewModel } from "../../../view-models/";
 import { QuestionProgressBar } from "./question-progress-bar";
 
 describe("QuestionProgressBar", () => {
@@ -52,7 +51,7 @@ describe("QuestionProgressBar", () => {
 
   const props = {
     questions: questionsViewModel(mockQuestions),
-    answers: answersViewModel(mockAnswers, mockSetAnswer, mockClearAnswers, mockAnswersMap),
+    answers: answersViewModel(mockAnswers, mockAnswersMap, mockSetAnswer, mockClearAnswers),
     current: 2,
   };
 
@@ -88,7 +87,7 @@ describe("QuestionProgressBar", () => {
     const emptyAnswersMap = new Map();
     const noAnswersProps = {
       ...props,
-      answers: answersViewModel([], mockSetAnswer, mockClearAnswers, emptyAnswersMap),
+      answers: answersViewModel([], emptyAnswersMap, mockSetAnswer, mockClearAnswers),
     };
 
     render(<QuestionProgressBar {...noAnswersProps} />);
