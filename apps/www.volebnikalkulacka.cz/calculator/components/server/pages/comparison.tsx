@@ -46,7 +46,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
           )}
         </WithCondenseOnScroll>
       </Layout.Header>
-      <main className="w-full p-2 sm:p-4">
+      <Layout.Content fullWidth>
         <div className="flex flex-col gap-8" style={{ minWidth: `${320 + result.matches.length * 80 + 1600}px` }}>
           {/* header */}
           <div className="sticky top-16 flex gap-4 bg-slate-50 z-20">
@@ -99,7 +99,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
             );
           })}
         </div>
-      </main>
+      </Layout.Content>
     </>
   );
 }
