@@ -76,8 +76,10 @@ export function QuestionPage({ question, questions, number, total, calculator, o
         </WithCondenseOnScroll>
       </LayoutHeader>
       <LayoutContent>
-        <QuestionCard question={question} current={number} total={total} />
-        <QuestionProgressBar questions={questions} current={number} answers={answers} />
+        <div className="flex flex-col gap-4">
+          <QuestionCard question={question} current={number} total={total} />
+          <QuestionProgressBar questions={questions} current={number} answers={answers} />
+        </div>
       </LayoutContent>
       <LayoutBottomNavigation spacer={attribution ? "14rem" : "11rem"}>
         <QuestionNavigationCard
