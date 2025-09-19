@@ -24,7 +24,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} calculator={calculator}>
+            <AppHeader condensed={condensed} calculator={calculator} fixed>
               <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
@@ -47,7 +47,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content fullWidth>
-        <div className="flex flex-col gap-8" style={{ minWidth: `${320 + result.matches.length * 80 + 1600}px` }}>
+        <div className="mt-28 flex flex-col gap-8" style={{ minWidth: `${320 + result.matches.length * 80 + 1600}px` }}>
           {/* header */}
           <div className="sticky top-16 flex gap-4 bg-slate-50 z-20">
             <div className="w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">Vaše odpovědi</div>
@@ -65,7 +65,7 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
                 {/* answers grid */}
                 <div className="flex gap-4">
                   {/* user answers */}
-                  <div className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0 z-10">
+                  <div className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0">
                     {userAnswer ? (
                       <IconBadge color={userAnswer.answer?.answer === true ? "primary" : "secondary"}>
                         <Icon decorative={true} icon={userAnswer.answer?.answer === true ? logoCheck : logoCross} />
