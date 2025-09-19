@@ -4,7 +4,7 @@ import { z } from "zod";
 import { buildCookieName } from ".";
 
 export const sessionCookieSchema = z.object({
-  id: z.string(),
+  id: z.string().uuid(),
   calculators: z.array(z.string()),
 });
 
