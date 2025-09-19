@@ -66,7 +66,6 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
       <AppQuestionPage
         embedContext={embed}
         calculator={calculator}
-        question={question}
         questions={{ questions, total }}
         number={current}
         total={total}
