@@ -7,7 +7,7 @@ import { sessionCookieSchema } from "./set-session-cookie";
 export async function getSessionCookie({ embedName }: { embedName?: string | null } = {}) {
   const cookieName = buildCookieName({ embedName });
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(cookieName);
 
   if (!sessionCookie?.value) {

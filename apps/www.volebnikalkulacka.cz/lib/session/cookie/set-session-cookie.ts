@@ -13,7 +13,7 @@ export type SessionCookie = z.infer<typeof sessionCookieSchema>;
 export async function setSessionCookie({ sessionCookie, embedName }: { sessionCookie: SessionCookie; embedName?: string | null }): Promise<void> {
   const cookieName = buildCookieName({ embedName });
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   cookieStore.set(cookieName, JSON.stringify(sessionCookie), {
     path: "/",
     httpOnly: true,
