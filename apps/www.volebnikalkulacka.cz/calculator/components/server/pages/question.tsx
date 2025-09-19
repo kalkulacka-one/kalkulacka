@@ -2,15 +2,16 @@ import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { HideOnEmbed } from "../../../../components/client";
-import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
+import type { AnswersViewModel, AnswerViewModel, CalculatorViewModel, QuestionsViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard, QuestionProgressBar } from "../components";
 
 export type QuestionPage = {
-  question: QuestionViewModel;
+  questions: QuestionsViewModel;
   number: number;
   total: number;
   answer: AnswerViewModel;
+  answers: AnswersViewModel;
   calculator: CalculatorViewModel;
   onPreviousClick: () => void;
   onNextClick: () => void;
@@ -18,7 +19,9 @@ export type QuestionPage = {
   attribution?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, attribution }: QuestionPage) {
+export function QuestionPage({ questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick, attribution }: QuestionPage) {
+  const question = questions.questions[number - 1] as QuestionViewModel;
+
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -74,7 +77,10 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
         </WithCondenseOnScroll>
       </LayoutHeader>
       <LayoutContent>
-        <QuestionCard question={question} current={number} total={total} />
+        <div className="flex flex-col gap-4">
+          <QuestionCard question={question} current={number} total={total} />
+          <QuestionProgressBar questions={questions} current={number} answers={answers} />
+        </div>
       </LayoutContent>
       <LayoutBottomNavigation spacer={attribution ? "14rem" : "11rem"}>
         <QuestionNavigationCard
