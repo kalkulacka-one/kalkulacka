@@ -1,3 +1,5 @@
+export * from "./comparison-grid";
+export * from "./comparison-question-card";
 export * from "./guide";
 export * from "./guide-navigation-card";
 export * from "./introduction";

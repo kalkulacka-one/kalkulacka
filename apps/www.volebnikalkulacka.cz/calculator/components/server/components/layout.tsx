@@ -10,8 +10,8 @@ export function LayoutHeader({ children }: { children: React.ReactNode }) {
   return <div className="sticky top-0 z-10">{children}</div>;
 }
 
-export function LayoutContent({ children }: { children: React.ReactNode }) {
-  return <main className="max-w-xl mx-auto p-2 sm:p-4">{children}</main>;
+export function LayoutContent({ children, fullWidth = false }: { children: React.ReactNode; fullWidth?: boolean }) {
+  return <main className={`${fullWidth ? "w-full" : "max-w-xl"} mx-auto p-2 sm:p-4`}>{children}</main>;
 }
 
 export function LayoutBottomNavigation({ children, spacer = "5rem" }: { children: React.ReactNode; spacer?: string | false }) {
