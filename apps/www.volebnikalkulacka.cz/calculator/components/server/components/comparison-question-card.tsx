@@ -11,7 +11,7 @@ export type ComparisonQuestionCard = {
 export function ComparisonQuestionCard({ question, current, total }: ComparisonQuestionCard) {
   const { title, statement } = question;
   return (
-    <Card corner="topLeft" shadow="hard" className="border border-slate-200 w-fit sticky left-0">
+    <Card corner="topLeft" shadow="hard" className="border border-slate-200 w-fit sticky left-0 max-w-dvw">
       <div className="p-3 sm:p-6 flex flex-col gap-4">
         <div className="text-sm text-slate-500">
           <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
