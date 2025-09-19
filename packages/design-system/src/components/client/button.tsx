@@ -18,7 +18,7 @@ export const ButtonVariants = cva(
     "ko:rounded-br-none ko:rounded-2xl",
     "ko:text-s",
     "ko:data-disabled:cursor-not-allowed",
-    "ko:grid ko:grid-flow-col ko:place-items-center ko:gap-1",
+    "ko:grid ko:grid-flow-col ko:place-items-center ko:justify-center ko:gap-1",
   ],
   {
     variants: {
