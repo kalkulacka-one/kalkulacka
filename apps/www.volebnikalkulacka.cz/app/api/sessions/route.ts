@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
 async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams) {
   if (!cookieData.calculators.includes(fullKey)) {
     cookieData.calculators.push(fullKey);
-    await setSessionCookie({ ...params, sessionCookie: cookieData });
+    await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
     await createCalculatorSession({ ...params, sessionId: cookieData.id });
   }
 }
@@ -59,5 +59,5 @@ async function handleNewSession(fullKey: string, params: CreateCalculatorSession
     id: session.sessionId,
     calculators: [fullKey],
   };
-  await setSessionCookie({ ...params, sessionCookie: cookieData });
+  await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
 }
