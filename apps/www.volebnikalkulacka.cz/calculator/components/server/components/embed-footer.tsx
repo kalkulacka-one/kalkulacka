@@ -1,5 +1,7 @@
 import { EmbedAttribution } from "./embed-attribution";
 
+const HEIGHT = "h-9";
+
 export type EmbedFooter = {
   attribution?: boolean;
 };
@@ -11,3 +13,5 @@ export function EmbedFooter({ attribution = true }: EmbedFooter) {
 
   return <EmbedAttribution />;
 }
+
+EmbedFooter.heightClassNames = HEIGHT;

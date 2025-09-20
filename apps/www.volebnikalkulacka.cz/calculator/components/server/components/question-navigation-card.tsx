@@ -5,6 +5,8 @@ import { logoCheck, logoCross } from "@repo/design-system/icons";
 import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
 
+const HEIGHT = "h-[138px]";
+
 export type QuestionNavigationCard = {
   current: number;
   total: number;
@@ -64,3 +66,5 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
     </NavigationCard>
   );
 }
+
+QuestionNavigationCard.heightClassNames = HEIGHT;
