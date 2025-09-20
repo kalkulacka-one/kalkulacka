@@ -15,6 +15,8 @@ export type GuidePage = {
 };
 
 export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   return (
     <Layout>
       <Layout.Header>
@@ -42,7 +44,8 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
         <Guide calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={GuideNavigationCard.heightClassNames} />
-      <Layout.BottomNavigation>
+      {hasFooter && <Layout.BottomSpacer className={EmbedFooter.heightClassNames} />}
+      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.marginBottomClassNames : undefined}>
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>

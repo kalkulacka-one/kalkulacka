@@ -17,6 +17,8 @@ export type ReviewPage = {
 };
 
 export function ReviewPage({ embedContext, questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -103,7 +105,8 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
         </div>
       </Layout.Content>
       <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
-      <Layout.BottomNavigation>
+      {hasFooter && <Layout.BottomSpacer className={EmbedFooter.heightClassNames} />}
+      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.marginBottomClassNames : undefined}>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>

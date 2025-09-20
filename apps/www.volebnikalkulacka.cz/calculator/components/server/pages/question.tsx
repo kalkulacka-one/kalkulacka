@@ -19,6 +19,8 @@ export type QuestionPage = {
 };
 
 export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -77,7 +79,8 @@ export function QuestionPage({ embedContext, question, number, total, calculator
         <QuestionCard question={question} current={number} total={total} />
       </Layout.Content>
       <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
-      <Layout.BottomNavigation>
+      {hasFooter && <Layout.BottomSpacer className={EmbedFooter.heightClassNames} />}
+      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.marginBottomClassNames : undefined}>
         <QuestionNavigationCard
           current={number}
           total={total}

@@ -14,6 +14,8 @@ export type IntroductionPage = {
 };
 
 export function IntroductionPage({ embedContext, calculator, onNextClick, onCloseClick }: IntroductionPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   return (
     <Layout>
       <Layout.Header>
@@ -36,7 +38,8 @@ export function IntroductionPage({ embedContext, calculator, onNextClick, onClos
         <Introduction calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={IntroductionNavigationCard.heightClassNames} />
-      <Layout.BottomNavigation>
+      {hasFooter && <Layout.BottomSpacer className={EmbedFooter.heightClassNames} />}
+      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.marginBottomClassNames : undefined}>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
