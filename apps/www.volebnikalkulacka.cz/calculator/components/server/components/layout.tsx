@@ -1,3 +1,5 @@
+import { twMerge } from "@repo/design-system/utils";
+
 export type Layout = {
   children: React.ReactNode;
 };
@@ -30,10 +32,11 @@ Content.displayName = "Layout.Content";
 
 export type LayoutBottomNavigation = {
   children: React.ReactNode;
+  className?: string;
 };
 
-function BottomNavigation({ children }: LayoutBottomNavigation) {
-  return <div className="fixed bottom-0 left-0 right-0 pointer-events-none z-10">{children}</div>;
+function BottomNavigation({ children, className }: LayoutBottomNavigation) {
+  return <div className={twMerge("fixed bottom-0 left-0 right-0 pointer-events-none z-10", className)}>{children}</div>;
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";
