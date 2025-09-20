@@ -89,11 +89,7 @@ export function QuestionPage({ embedContext, question, number, total, calculator
           onImportantChange={handleImportantChange}
         />
       </Layout.BottomNavigation>
-      {embedContext.isEmbed && (
-        <Layout.Footer>
-          <EmbedFooter attribution={embedContext.config?.attribution} />
-        </Layout.Footer>
-      )}
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
     </Layout>
   );
 }

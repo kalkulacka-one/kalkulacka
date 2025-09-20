@@ -106,11 +106,7 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
       <Layout.BottomNavigation>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
-      {embedContext.isEmbed && (
-        <Layout.Footer>
-          <EmbedFooter attribution={embedContext.config?.attribution} />
-        </Layout.Footer>
-      )}
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
     </Layout>
   );
 }

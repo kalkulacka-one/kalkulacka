@@ -43,6 +43,9 @@ export type LayoutFooter = {
 };
 
 function Footer({ children }: LayoutFooter) {
+  if (!children) {
+    return null;
+  }
   return <footer className="grid justify-items-center mt-2 sm:mt-3 lg:mt-4">{children}</footer>;
 }
 

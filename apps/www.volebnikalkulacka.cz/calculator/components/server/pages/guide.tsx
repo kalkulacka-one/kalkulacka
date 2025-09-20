@@ -45,11 +45,7 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
       <Layout.BottomNavigation>
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
-      {embedContext.isEmbed && (
-        <Layout.Footer>
-          <EmbedFooter attribution={embedContext.config?.attribution} />
-        </Layout.Footer>
-      )}
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
     </Layout>
   );
 }
