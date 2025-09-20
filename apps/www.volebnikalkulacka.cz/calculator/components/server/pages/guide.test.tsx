@@ -17,11 +17,13 @@ vi.mock("../components", () => {
     Content: React.FC<{ children?: React.ReactNode }>;
     BottomNavigation: React.FC<{ children?: React.ReactNode }>;
     Footer: React.FC<{ children?: React.ReactNode }>;
+    BottomSpacer: React.FC<{ children?: React.ReactNode }>;
   };
   LayoutMock.Header = vi.fn(({ children }) => children);
   LayoutMock.Content = vi.fn(({ children }) => children);
   LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
   LayoutMock.Footer = vi.fn(({ children }) => children);
+  LayoutMock.BottomSpacer = vi.fn(({ children }) => children);
 
   return {
     Introduction: vi.fn(() => null),

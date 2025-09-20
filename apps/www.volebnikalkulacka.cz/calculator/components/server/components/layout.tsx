@@ -60,11 +60,22 @@ function Footer({ children }: LayoutFooter) {
 
 Footer.displayName = "Layout.Footer";
 
+export type LayoutBottomSpacer = {
+  className?: string;
+};
+
+function BottomSpacer({ className }: LayoutBottomSpacer) {
+  return <div className={className} aria-hidden="true" />;
+}
+
+BottomSpacer.displayName = "Layout.BottomSpacer";
+
 type LayoutCompound = React.FC<Layout> & {
   Header: React.FC<LayoutHeader>;
   Content: React.FC<LayoutContent>;
   BottomNavigation: React.FC<LayoutBottomNavigation>;
   Footer: React.FC<LayoutFooter>;
+  BottomSpacer: React.FC<LayoutBottomSpacer>;
 };
 
 export const Layout = Object.assign(LayoutComponent, {
@@ -72,4 +83,5 @@ export const Layout = Object.assign(LayoutComponent, {
   Content,
   BottomNavigation,
   Footer,
+  BottomSpacer,
 }) satisfies LayoutCompound;
