@@ -37,11 +37,11 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   };
 
   const answer = useAnswer(question.id);
-  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
 
   return (
     <div>
       <AppQuestionPage
+        embedContext={embed}
         calculator={calculator}
         question={question}
         number={current}
@@ -50,7 +50,6 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
-        attribution={attribution}
       />
     </div>
   );

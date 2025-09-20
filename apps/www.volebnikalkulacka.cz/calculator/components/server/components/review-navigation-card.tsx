@@ -2,17 +2,20 @@ import { Button } from "@repo/design-system/client";
 
 import { NavigationCard } from "./navigation-card";
 
+const HEIGHT = "h-22";
+
 export type ReviewNavigationCard = {
   onNextClick: () => void;
-  attribution?: boolean;
 };
 
-export function ReviewNavigationCard({ onNextClick, attribution }: ReviewNavigationCard) {
+export function ReviewNavigationCard({ onNextClick }: ReviewNavigationCard) {
   return (
-    <NavigationCard attribution={attribution}>
+    <NavigationCard>
       <Button color="neutral" onClick={onNextClick}>
         Zobrazit výsledky
       </Button>
     </NavigationCard>
   );
 }
+
+ReviewNavigationCard.heightClassNames = HEIGHT;
