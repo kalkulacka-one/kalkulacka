@@ -79,8 +79,8 @@ export function QuestionPage({ embedContext, question, number, total, calculator
         <QuestionCard question={question} current={number} total={total} />
       </Layout.Content>
       <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={EmbedFooter.heightClassNames} />}
-      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.marginBottomClassNames : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
         <QuestionNavigationCard
           current={number}
           total={total}

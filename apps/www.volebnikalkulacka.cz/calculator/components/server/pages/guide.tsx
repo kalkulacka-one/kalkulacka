@@ -44,8 +44,8 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
         <Guide calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={GuideNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={EmbedFooter.heightClassNames} />}
-      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.marginBottomClassNames : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
