@@ -25,7 +25,7 @@ export type LayoutContent = {
 };
 
 function Content({ children }: LayoutContent) {
-  return <main className="max-w-xl mx-auto p-2 sm:p-4 z-10">{children}</main>;
+  return <main className="max-w-xl w-full mx-auto p-2 sm:p-4 z-10">{children}</main>;
 }
 
 Content.displayName = "Layout.Content";
