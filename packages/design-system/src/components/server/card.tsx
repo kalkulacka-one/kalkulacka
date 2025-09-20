@@ -22,15 +22,20 @@ const CardVariants = cva("ko:rounded-3xl", {
       hard: "ko:drop-shadow-hard",
       false: "",
     },
+    interactive: {
+      true: "",
+      false: "",
+    },
   },
   defaultVariants: {
     color: "white",
     corner: "topLeft",
     border: false,
     shadow: true,
+    interactive: false,
   },
 });
 
-export function Card({ children, color, corner, border, shadow, className }: Card) {
-  return <div className={twMerge(CardVariants({ color, corner, border, shadow }), className)}>{children}</div>;
+export function Card({ children, color, corner, border, shadow, interactive, className }: Card) {
+  return <div className={twMerge(CardVariants({ color, corner, border, shadow, interactive }), className)}>{children}</div>;
 }

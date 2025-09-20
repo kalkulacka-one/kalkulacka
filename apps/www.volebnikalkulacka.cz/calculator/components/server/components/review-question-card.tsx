@@ -1,5 +1,6 @@
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 import { Icon, ToggleButton } from "@repo/design-system/client";
+import { logoCheck, logoCross } from "@repo/design-system/icons";
 import { Card } from "@repo/design-system/server";
 
 import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
@@ -30,9 +31,11 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+            <Icon icon={logoCheck} decorative={true} />
             Ano
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+            <Icon icon={logoCross} decorative={true} />
             Ne
           </ToggleButton>
         </div>

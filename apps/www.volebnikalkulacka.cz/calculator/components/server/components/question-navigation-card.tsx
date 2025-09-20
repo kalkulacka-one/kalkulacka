@@ -1,5 +1,6 @@
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { Button, Icon, ToggleButton } from "@repo/design-system/client";
+import { logoCheck, logoCross } from "@repo/design-system/icons";
 
 import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
@@ -51,9 +52,11 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+            <Icon icon={logoCheck} decorative={true} />
             Ano
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+            <Icon icon={logoCross} decorative={true} />
             Ne
           </ToggleButton>
         </div>

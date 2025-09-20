@@ -4,8 +4,8 @@ import React from "react";
 
 import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, DonateCard, WithCondenseOnScroll } from "../../client";
-import { EmbedFooter, Layout, MatchCard } from "../components";
+import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
+import { EmbedFooter, Layout } from "../components";
 
 export type ResultPage = {
   embedContext: EmbedContextType;
