@@ -49,7 +49,7 @@ function Footer({ children }: LayoutFooter) {
   if (!children) {
     return null;
   }
-  return <footer className="grid justify-items-center mt-2 sm:mt-3 lg:mt-4 fixed bottom-0 left-0 right-0 z-5">{children}</footer>;
+  return <footer className="grid justify-items-center fixed bottom-0 left-0 right-0 z-5 mt-2 sm:mt-3 lg:mt-4 p-1">{children}</footer>;
 }
 
 Footer.displayName = "Layout.Footer";

@@ -1,7 +1,7 @@
 import { EmbedAttribution } from "./embed-attribution";
 
-const HEIGHT = "h-9";
-const MARGIN_BOTTOM = "mb-9";
+const HEIGHT = "h-11";
+const MARGIN_BOTTOM = "mb-11";
 
 export type EmbedFooter = {
   attribution?: boolean;
