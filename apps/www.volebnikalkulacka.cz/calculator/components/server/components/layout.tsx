@@ -13,7 +13,7 @@ export type LayoutHeader = {
 };
 
 function Header({ children }: LayoutHeader) {
-  return <div className="sticky top-0 z-10">{children}</div>;
+  return <div className="sticky top-0 z-20">{children}</div>;
 }
 
 Header.displayName = "Layout.Header";
@@ -36,7 +36,7 @@ export type LayoutBottomNavigation = {
 function BottomNavigation({ children, spacer = "5rem" }: LayoutBottomNavigation) {
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 pointer-events-none">{children}</div>
+      <div className="fixed bottom-0 left-0 right-0 pointer-events-none z-10">{children}</div>
       {spacer && (
         <style jsx global>{`
           body {
