@@ -1,5 +1,8 @@
+const withMDX = require("@next/mdx")();
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@repo/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
@@ -75,4 +78,4 @@ module.exports = {
       },
     ];
   },
-};
+});
