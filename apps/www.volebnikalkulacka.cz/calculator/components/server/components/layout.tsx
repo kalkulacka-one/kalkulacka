@@ -15,7 +15,7 @@ export type LayoutHeader = {
 };
 
 function Header({ children }: LayoutHeader) {
-  return <div className="sticky top-0 z-20">{children}</div>;
+  return <div className="sticky top-0 z-30">{children}</div>;
 }
 
 Header.displayName = "Layout.Header";
@@ -25,7 +25,7 @@ export type LayoutContent = {
 };
 
 function Content({ children }: LayoutContent) {
-  return <main className="max-w-xl mx-auto p-2 sm:p-4">{children}</main>;
+  return <main className="max-w-xl mx-auto p-2 sm:p-4 z-10">{children}</main>;
 }
 
 Content.displayName = "Layout.Content";
@@ -36,7 +36,7 @@ export type LayoutBottomNavigation = {
 };
 
 function BottomNavigation({ children, className }: LayoutBottomNavigation) {
-  return <div className={twMerge("fixed bottom-0 left-0 right-0 pointer-events-none z-10", className)}>{children}</div>;
+  return <div className={twMerge("fixed bottom-0 left-0 right-0 pointer-events-none z-20", className)}>{children}</div>;
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";
@@ -49,7 +49,7 @@ function Footer({ children }: LayoutFooter) {
   if (!children) {
     return null;
   }
-  return <footer className="grid justify-items-center mt-2 sm:mt-3 lg:mt-4 fixed bottom-0 left-0 right-0">{children}</footer>;
+  return <footer className="grid justify-items-center mt-2 sm:mt-3 lg:mt-4 fixed bottom-0 left-0 right-0 z-5">{children}</footer>;
 }
 
 Footer.displayName = "Layout.Footer";
