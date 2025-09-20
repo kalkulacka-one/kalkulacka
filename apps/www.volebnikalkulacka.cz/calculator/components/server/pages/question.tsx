@@ -76,7 +76,8 @@ export function QuestionPage({ embedContext, question, number, total, calculator
       <Layout.Content>
         <QuestionCard question={question} current={number} total={total} />
       </Layout.Content>
-      <Layout.BottomNavigation spacer="11rem">
+      <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
+      <Layout.BottomNavigation>
         <QuestionNavigationCard
           current={number}
           total={total}

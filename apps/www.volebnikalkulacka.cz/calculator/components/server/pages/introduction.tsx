@@ -35,7 +35,8 @@ export function IntroductionPage({ embedContext, calculator, onNextClick, onClos
       <Layout.Content>
         <Introduction calculator={calculator} />
       </Layout.Content>
-      <Layout.BottomNavigation spacer="5rem">
+      <Layout.BottomSpacer className={IntroductionNavigationCard.heightClassNames} />
+      <Layout.BottomNavigation>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       {embedContext.isEmbed && (

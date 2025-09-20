@@ -102,7 +102,8 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
           })}
         </div>
       </Layout.Content>
-      <Layout.BottomNavigation spacer="5rem">
+      <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
+      <Layout.BottomNavigation>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       {embedContext.isEmbed && (

@@ -30,22 +30,10 @@ Content.displayName = "Layout.Content";
 
 export type LayoutBottomNavigation = {
   children: React.ReactNode;
-  spacer?: string | false;
 };
 
-function BottomNavigation({ children, spacer = "5rem" }: LayoutBottomNavigation) {
-  return (
-    <>
-      <div className="fixed bottom-0 left-0 right-0 pointer-events-none z-10">{children}</div>
-      {spacer && (
-        <style jsx global>{`
-          body {
-            padding-bottom: ${spacer};
-          }
-        `}</style>
-      )}
-    </>
-  );
+function BottomNavigation({ children }: LayoutBottomNavigation) {
+  return <div className="fixed bottom-0 left-0 right-0 pointer-events-none z-10">{children}</div>;
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";
