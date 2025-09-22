@@ -1,28 +1,30 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { ComparisonGrid, Layout } from "../components";
+import { ComparisonGrid, EmbedFooter, Layout } from "../components";
 
 export type ComparisonPage = {
+  embedContext: EmbedContextType;
   calculator: CalculatorViewModel;
   result: ResultViewModel;
   answers: AnswersViewModel;
   questions: QuestionsViewModel;
   onPreviousClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function ComparisonPage({ calculator, result, onPreviousClick, onCloseClick, questions, answers }: ComparisonPage) {
+export function ComparisonPage({ embedContext, calculator, result, onPreviousClick, onCloseClick, questions, answers }: ComparisonPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   return (
-    <>
+    <Layout>
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} calculator={calculator} fixed>
+            <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
@@ -47,6 +49,8 @@ export function ComparisonPage({ calculator, result, onPreviousClick, onCloseCli
       <Layout.Content fullWidth>
         <ComparisonGrid result={result} questions={questions} answers={answers} />
       </Layout.Content>
-    </>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+    </Layout>
   );
 }

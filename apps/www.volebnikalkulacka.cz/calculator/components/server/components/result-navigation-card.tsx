@@ -4,12 +4,11 @@ import { NavigationCard } from "./navigation-card";
 
 export type ResultNavigationCard = {
   onNextClick: () => void;
-  attribution?: boolean;
 };
 
-export function ResultNavigationCard({ onNextClick, attribution }: ResultNavigationCard) {
+export function ResultNavigationCard({ onNextClick }: ResultNavigationCard) {
   return (
-    <NavigationCard attribution={attribution}>
+    <NavigationCard>
       <Button color="neutral" onClick={onNextClick}>
         Zobrazit porovnání
       </Button>

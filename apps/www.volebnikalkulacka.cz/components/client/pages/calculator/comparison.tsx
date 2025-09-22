@@ -21,9 +21,15 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
     router.push("/");
   };
 
-  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
-
   return (
-    <ComparisonPage calculator={calculator} result={result} answers={answers} questions={questions} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} attribution={attribution} />
+    <ComparisonPage
+      embedContext={embed}
+      calculator={calculator}
+      result={result}
+      answers={answers}
+      questions={questions}
+      onPreviousClick={handlePreviousClick}
+      onCloseClick={handleCloseClick}
+    />
   );
 }
