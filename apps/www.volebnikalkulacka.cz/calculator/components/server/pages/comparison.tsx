@@ -24,7 +24,7 @@ export function ComparisonPage({ embedContext, calculator, result, onPreviousCli
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} calculator={calculator}>
+            <AppHeader fixed condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
