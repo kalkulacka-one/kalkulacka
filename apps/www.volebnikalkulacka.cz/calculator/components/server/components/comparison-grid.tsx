@@ -17,7 +17,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
       {/* header */}
       <div className="mt-28 flex flex-col gap-8" style={{ minWidth: `${320 + result.matches.length * 80 + 1600}px` }}>
         <div className="sticky top-16 flex gap-4 bg-slate-50 z-20">
-          <div className="w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">Vaše odpovědi</div>
+          <div className="sticky left-0 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center bg-slate-50">Moje odpovědi</div>
           {result.matches.map((match, matchIndex) => (
             <div key={`header-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex items-center justify-center text-center text-xs">
               {match.candidate.displayName}
