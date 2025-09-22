@@ -21,15 +21,5 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
     router.push("/");
   };
 
-  return (
-    <ComparisonPage
-      embedContext={embed}
-      calculator={calculator}
-      result={result}
-      answers={answers}
-      questions={questions}
-      onPreviousClick={handlePreviousClick}
-      onCloseClick={handleCloseClick}
-    />
-  );
+  return <ComparisonPage embedContext={embed} calculator={calculator} result={result} answers={answers} questions={questions} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} />;
 }
