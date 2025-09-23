@@ -21,6 +21,7 @@ export type ResultPage = {
 };
 
 export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -78,14 +79,12 @@ export function ResultPage({ embedContext, result, calculator, onNextClick, onPr
           ))}
         </div>
       </Layout.Content>
-      {embedContext.isEmbed && (
-        <Layout.Footer>
-          <Layout.BottomNavigation>
-            <ResultNavigationCard onNextClick={onNextClick} />
-          </Layout.BottomNavigation>
-          <EmbedFooter attribution={embedContext.config?.attribution} />
-        </Layout.Footer>
-      )}
+      <Layout.BottomSpacer className={ResultNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+        <ResultNavigationCard onNextClick={onNextClick} />
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
     </Layout>
   );
 }
