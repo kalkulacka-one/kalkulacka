@@ -57,7 +57,7 @@ export default function Page() {
             <div className="p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 font-semibold text-red-700">Inventura hlasování</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">33 hlasování</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">35 hlasování</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
               </div>
               <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo vás zastupoval ve Sněmovně?</h2>
