@@ -26,7 +26,7 @@ export type LayoutContent = {
 };
 
 function Content({ children, fullWidth }: LayoutContent) {
-  return <main className={`${fullWidth ? "w-full" : "max-w-xl"} mx-auto p-2 sm:p-4`}>{children}</main>;
+  return <main className={`${fullWidth ? "w-full" : "max-w-xl w-full"} mx-auto p-2 sm:p-4`}>{children}</main>;
 }
 
 Content.displayName = "Layout.Content";
