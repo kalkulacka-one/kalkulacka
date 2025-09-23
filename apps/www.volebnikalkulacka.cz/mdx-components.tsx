@@ -26,11 +26,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: ({ children }) => <ul className="list-disc list-outside mb-4 ml-8">{children}</ul>,
     ol: ({ children }) => <ol className="list-decimal list-outside mb-4 ml-8">{children}</ol>,
     li: ({ children }) => <li>{children}</li>,
-    a: ({ href, children }) => (
-      <a href={href} className="text-blue-500 underline hover:no-underline font-medium">
-        {children}
-      </a>
-    ),
+    a: ({ href, children }) => {
+      const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
+      return (
+        <a href={href} className="text-blue-500 underline hover:no-underline font-medium" {...(isExternal ? { target: "_blank" } : {})}>
+          {children}
+        </a>
+      );
+    },
     strong: ({ children }) => <span className="font-medium">{children}</span>,
     ...components,
   };
