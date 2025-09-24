@@ -2,7 +2,7 @@ import { createContext, useContext } from "react";
 
 import type { EmbedConfig, EmbedName } from "../../config/embeds";
 
-type EmbedContextType =
+export type EmbedContextType =
   | {
       isEmbed: false;
     }

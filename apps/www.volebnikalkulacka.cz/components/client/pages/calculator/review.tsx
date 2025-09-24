@@ -24,18 +24,16 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
     router.push("/");
   };
 
-  const attribution = embed.isEmbed && (embed.config?.navigationAttribution ?? true);
-
   return (
     <div>
       <AppReviewPage
+        embedContext={embed}
         calculator={calculator}
         questions={questions}
         answers={answers}
         onNextClick={handleNextClick}
         onPreviousClick={handlePreviousClick}
         onCloseClick={handleCloseClick}
-        attribution={attribution}
       />
     </div>
   );

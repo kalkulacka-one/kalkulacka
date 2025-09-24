@@ -1,22 +1,24 @@
 import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader } from "../../client";
-import { Introduction, IntroductionNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
+import { EmbedFooter, Introduction, IntroductionNavigationCard, Layout } from "../components";
 
 export type IntroductionPage = {
+  embedContext: EmbedContextType;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function IntroductionPage({ calculator, onNextClick, onCloseClick, attribution }: IntroductionPage) {
+export function IntroductionPage({ embedContext, calculator, onNextClick, onCloseClick }: IntroductionPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   return (
-    <>
-      <LayoutHeader>
+    <Layout>
+      <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
@@ -31,13 +33,16 @@ export function IntroductionPage({ calculator, onNextClick, onCloseClick, attrib
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <Introduction calculator={calculator} />
-      </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "8rem" : "5rem"}>
-        <IntroductionNavigationCard onNextClick={onNextClick} attribution={attribution} />
-      </LayoutBottomNavigation>
-    </>
+      </Layout.Content>
+      <Layout.BottomSpacer className={IntroductionNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+        <IntroductionNavigationCard onNextClick={onNextClick} />
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+    </Layout>
   );
 }

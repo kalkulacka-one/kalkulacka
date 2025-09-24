@@ -1,12 +1,13 @@
 import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutBottomNavigation, LayoutContent, LayoutHeader, QuestionCard, QuestionNavigationCard } from "../components";
+import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
+  embedContext: EmbedContextType;
   question: QuestionViewModel;
   number: number;
   total: number;
@@ -15,10 +16,11 @@ export type QuestionPage = {
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function QuestionPage({ question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, attribution }: QuestionPage) {
+export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
       answer.setAnswer({
@@ -57,8 +59,8 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
   };
 
   return (
-    <>
-      <LayoutHeader>
+    <Layout>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -72,11 +74,13 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <QuestionCard question={question} current={number} total={total} />
-      </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "14rem" : "11rem"}>
+      </Layout.Content>
+      <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
         <QuestionNavigationCard
           current={number}
           total={total}
@@ -86,9 +90,9 @@ export function QuestionPage({ question, number, total, calculator, onPreviousCl
           onAgreeChange={handleAgreeChange}
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
-          attribution={attribution}
         />
-      </LayoutBottomNavigation>
-    </>
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+    </Layout>
   );
 }

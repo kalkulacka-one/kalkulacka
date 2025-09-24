@@ -1,5 +1,9 @@
-/** @type {import('next').NextConfig} */
-module.exports = {
+import createMDX from "@next/mdx";
+import type { NextConfig } from "next";
+import rehypeSlug from "rehype-slug";
+
+const nextConfig: NextConfig = {
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@repo/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
@@ -76,3 +80,11 @@ module.exports = {
     ];
   },
 };
+
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [rehypeSlug],
+  },
+});
+
+export default withMDX(nextConfig);
