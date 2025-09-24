@@ -48,67 +48,33 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
     <>
       {/* Organization filter */}
       <div className={`${result.matches.some((match) => match.nestedMatches) ? "mt-16" : "mt-28"} flex flex-col gap-8 relative`} style={{ minWidth: `${320 + result.matches.length * 80 + 3600}px` }}>
-        {/* Background dashed lines */}
-        {result.matches.some((match) => match.nestedMatches) && (
-          <div aria-hidden className="pointer-events-none absolute z-0 sm:hidden" style={{ top: "220px", bottom: "0" }}>
-            <div className="h-full flex gap-4">
-              {/* User answers column line - sticky */}
-              <div className="w-[100px] sticky left-0">
-                <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
-              </div>
-              {/* Candidate columns */}
-              {result.matches.map((match, matchIndex) => {
-                const nestedMatches = filterNestedCandidates(match.nestedMatches);
-                if (!nestedMatches) {
-                  return (
-                    <div key={`bg-line-mobile-${match.candidate.id}-${matchIndex}`} className="w-[80px] relative">
-                      <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
-                    </div>
-                  );
-                }
-                return (
-                  <div key={`bg-line-mobile-group-${match.candidate.id}-${matchIndex}`} className="flex">
-                    {nestedMatches.map((nested) => (
-                      <div key={`bg-line-mobile-${nested.candidate.id}-${matchIndex}`} className="w-[80px] relative">
-                        <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
-                      </div>
-                    ))}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Background dashed lines */}
+        {/* Dashed lines overlay */}
         <div
-          aria-hidden
-          className="pointer-events-none absolute z-0 hidden sm:block"
+          className="absolute inset-0 pointer-events-none z-0"
           style={{
-            top: result.matches.some((match) => match.nestedMatches) ? "180px" : "0",
-            bottom: "0",
+            top: result.matches.some((match) => match.nestedMatches) ? "180px" : "0px",
           }}
         >
           <div className="h-full flex gap-4">
-            {/* User answers column line - sticky */}
-            <div className="w-[100px] sticky left-0">
-              <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
+            {/* User column line - sticky */}
+            <div className="w-[100px] flex justify-center sticky left-0">
+              <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
             </div>
-            {/* Candidate columns */}
+            {/* Candidate columns lines */}
             {result.matches.map((match, matchIndex) => {
               const nestedMatches = filterNestedCandidates(match.nestedMatches);
               if (!nestedMatches) {
                 return (
-                  <div key={`bg-line-desktop-${match.candidate.id}-${matchIndex}`} className="w-[80px] relative">
-                    <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
+                  <div key={`line-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex justify-center">
+                    <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
                   </div>
                 );
               }
               return (
-                <div key={`bg-line-desktop-group-${match.candidate.id}-${matchIndex}`} className="flex">
+                <div key={`line-group-${match.candidate.id}-${matchIndex}`} className="flex">
                   {nestedMatches.map((nested) => (
-                    <div key={`bg-line-desktop-${nested.candidate.id}-${matchIndex}`} className="w-[80px] relative">
-                      <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
+                    <div key={`line-${nested.candidate.id}-${matchIndex}`} className="w-[80px] flex justify-center">
+                      <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
                     </div>
                   ))}
                 </div>
@@ -116,24 +82,6 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
             })}
           </div>
         </div>
-
-        {/* Background dashed lines - Non-nested version (all screen sizes) */}
-        {!result.matches.some((match) => match.nestedMatches) && (
-          <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
-            <div className="h-full flex gap-4">
-              {/* User answers column line - sticky */}
-              <div className="w-[100px] sticky left-0">
-                <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
-              </div>
-              {/* Candidate columns */}
-              {result.matches.map((match, matchIndex) => (
-                <div key={`bg-line-simple-${match.candidate.id}-${matchIndex}`} className="w-[80px] relative">
-                  <div className="absolute inset-y-0 left-1/2 border-r-2 border-dashed border-slate-200" />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
         {organizations.length > 0 && (
           <div className="mt-16 sticky left-0 max-w-fit z-10">
             <h3 className="text-sm font-medium mb-3">Vyberte stranu:</h3>
@@ -211,12 +159,13 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
         {questions.questions.map((question, index) => {
           const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
           return (
-            <div key={question.id} className="flex flex-col gap-4 relative z-10">
+            <div key={question.id} className="flex flex-col gap-4 relative z-40">
               <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
               {/* answers grid */}
-              <div className="flex gap-4">
+              <div className="flex gap-4 relative">
+                <div className="bg-red-400 h-32 absolute left-0 top-0" />
                 {/* user answers */}
-                <div className="w-[100px] bg-slate-50  z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0">
+                <div className="w-[100px] bg-slate-50 z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0">
                   <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
                 </div>
                 {/* candidate answers */}
