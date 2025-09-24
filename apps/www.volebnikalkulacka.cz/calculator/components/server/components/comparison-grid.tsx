@@ -55,7 +55,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
             top: result.matches.some((match) => match.nestedMatches) ? "180px" : "0px",
           }}
         >
-          <div className="h-full flex gap-4">
+          <div className="h-full flex gap-8">
             {/* User column line - sticky */}
             <div className="w-[100px] flex justify-center sticky left-0">
               <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
@@ -65,15 +65,15 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
               const nestedMatches = filterNestedCandidates(match.nestedMatches);
               if (!nestedMatches) {
                 return (
-                  <div key={`line-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex justify-center">
+                  <div key={`line-${match.candidate.id}-${matchIndex}`} className="w-[100px] flex justify-center">
                     <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
                   </div>
                 );
               }
               return (
-                <div key={`line-group-${match.candidate.id}-${matchIndex}`} className="flex">
+                <div key={`line-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
                   {nestedMatches.map((nested) => (
-                    <div key={`line-${nested.candidate.id}-${matchIndex}`} className="w-[80px] flex justify-center">
+                    <div key={`line-${nested.candidate.id}-${matchIndex}`} className="w-[100px] flex justify-center">
                       <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
                     </div>
                   ))}
@@ -83,7 +83,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           </div>
         </div>
         {organizations.length > 0 && (
-          <div className="mt-16 sticky left-0 max-w-fit z-10">
+          <div className="pl-4 mt-16 sticky left-0 max-w-fit z-10">
             <h3 className="text-sm font-medium mb-3">Vyberte stranu:</h3>
             <div className="relative bg-slate-100 rounded-full p-1 flex flex-wrap gap-1 max-w-dvw sm:w-auto">
               <label
@@ -129,13 +129,18 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           </div>
         )}
         {/* header */}
-        <div className="sticky top-16 flex gap-4 bg-slate-50 z-50">
-          <div className="bg-slate-50 z-60 min-h-fit sticky left-0 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">Vaše odpovědi</div>
+        <div className="sticky top-32 gap-8 flex z-50">
+          <div className="rounded-xl bg-blue-300/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-fit sticky left-0 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+            Vaše odpovědi
+          </div>
           {/* dummy header for nested and normal */}
           {result.matches.map((match, matchIndex) => {
             const nestedMatches = filterNestedCandidates(match.nestedMatches);
             const nestedCandidates = nestedMatches?.map((nested) => (
-              <div key={`header-${nested.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex items-center justify-center text-center text-xs">
+              <div
+                key={`header-${nested.candidate.id}-${matchIndex}`}
+                className=" rounded-xl bg-slate-300/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+              >
                 <span>
                   {nested.candidate.displayName}
                   <br />({nested.candidate.organization})
@@ -144,13 +149,16 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
             ));
             if (!nestedMatches) {
               return (
-                <div key={`header-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex items-center justify-center text-center text-xs">
+                <div
+                  key={`header-${match.candidate.id}-${matchIndex}`}
+                  className="rounded-xl bg-slate-300/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+                >
                   {match.candidate.displayName}
                 </div>
               );
             }
             return (
-              <div key={`header-group-${match.candidate.id}-${matchIndex}`} className="flex">
+              <div key={`header-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
                 {nestedCandidates}
               </div>
             );
@@ -165,10 +173,10 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
               </div>
 
               {/* answers grid */}
-              <div className="flex gap-4 relative">
+              <div className="flex gap-8 relative">
                 <div className="bg-red-400 h-32 absolute left-0 top-0" />
                 {/* user answers */}
-                <div className="w-[100px] bg-slate-50 z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0">
+                <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0">
                   <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
                 </div>
                 {/* candidate answers */}
@@ -177,17 +185,17 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
                   if (!nestedMatches) {
                     const answer = match.candidateAnswers.find((a) => a.questionId === question.id);
                     return (
-                      <div key={`answer-${match.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+                      <div key={`answer-${match.candidate.id}-${matchIndex}`} className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
                         <ComparisonAnswerIcon answer={answer?.answer} />
                       </div>
                     );
                   }
                   return (
-                    <div key={`answer-group-${match.candidate.id}-${matchIndex}`} className="flex">
+                    <div key={`answer-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
                       {nestedMatches.map((nested) => {
                         const answer = nested.candidateAnswers.find((a) => a.questionId === question.id);
                         return (
-                          <div key={`answer-${nested.candidate.id}-${matchIndex}`} className="w-[80px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+                          <div key={`answer-${nested.candidate.id}-${matchIndex}`} className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
                             <ComparisonAnswerIcon answer={answer?.answer} />
                           </div>
                         );
