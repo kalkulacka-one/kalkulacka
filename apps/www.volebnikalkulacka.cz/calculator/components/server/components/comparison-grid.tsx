@@ -47,7 +47,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
   return (
     <>
       {/* Organization filter */}
-      <div className={`${result.matches.some((match) => match.nestedMatches) ? "mt-16" : "mt-28"} flex flex-col gap-8 relative`} style={{ minWidth: `${320 + result.matches.length * 80 + 3600}px` }}>
+      <div className={`${result.matches.some((match) => match.nestedMatches) ? "mt-16" : "mt-28"} flex flex-col gap-8 relative`} style={{ minWidth: `${320 + result.matches.length * 80 + 5200}px` }}>
         {/* Dashed lines overlay */}
         <div
           className="absolute inset-0 pointer-events-none z-0"
@@ -177,7 +177,9 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
                 <div className="h-32 absolute left-0 top-0" />
                 {/* user answers */}
                 <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
-                  <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
+                  <div className="rounded-full bg-slate-50 -z-0">
+                    <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
+                  </div>
                 </div>
                 {/* candidate answers */}
                 {result.matches.map((match, matchIndex) => {
