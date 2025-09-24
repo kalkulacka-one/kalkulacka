@@ -2,7 +2,7 @@
 import { Icon } from "@repo/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
 import { IconBadge } from "@repo/design-system/server";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models";
 import { ComparisonQuestionCard } from "./comparison-question-card";
@@ -22,6 +22,18 @@ export type ComparisonGrid = {
 };
 
 export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Extract unique organizations from nested candidates
   const allOrganizations = new Set<string>();
   for (const match of result.matches) {
@@ -129,7 +141,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           </div>
         )}
         {/* header */}
-        <div className="sticky top-32 gap-8 flex z-50">
+        <div className={`sticky ${isScrolled ? "top-[4.75rem]" : "top-32"} gap-8 flex z-50 transition-all duration-500 ease-in-out`}>
           <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
             Vaše odpovědi
           </div>
@@ -168,7 +180,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
           return (
             <div key={question.id} className="flex flex-col gap-4 relative z-40">
-              <div className="px-4 flex justify-start sticky left-4 max-w-dvw">
+              <div className="px-4 flex justify-start sticky left-4 max-w-[calc(100dvw_-_5dvw)]">
                 <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
               </div>
 
