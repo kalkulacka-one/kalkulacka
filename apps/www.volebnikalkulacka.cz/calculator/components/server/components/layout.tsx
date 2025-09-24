@@ -15,7 +15,7 @@ export type LayoutHeader = {
 };
 
 function Header({ children }: LayoutHeader) {
-  return <div className="sticky top-0 z-30">{children}</div>;
+  return <div className="sticky top-0 z-[100]">{children}</div>;
 }
 
 Header.displayName = "Layout.Header";

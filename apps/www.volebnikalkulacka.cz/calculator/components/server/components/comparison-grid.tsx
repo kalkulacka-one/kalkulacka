@@ -129,8 +129,8 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           </div>
         )}
         {/* header */}
-        <div className="sticky top-16 flex gap-4 bg-slate-50 z-30">
-          <div className="bg-slate-50 min-h-fit sticky left-0 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">Vaše odpovědi</div>
+        <div className="sticky top-16 flex gap-4 bg-slate-50 z-50">
+          <div className="bg-slate-50 z-60 min-h-fit sticky left-0 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">Vaše odpovědi</div>
           {/* dummy header for nested and normal */}
           {result.matches.map((match, matchIndex) => {
             const nestedMatches = filterNestedCandidates(match.nestedMatches);
