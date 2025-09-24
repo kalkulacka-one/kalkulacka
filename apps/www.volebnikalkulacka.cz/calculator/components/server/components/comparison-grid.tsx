@@ -160,7 +160,10 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
           return (
             <div key={question.id} className="flex flex-col gap-4 relative z-40">
-              <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
+              <div className="px-4 flex justify-start sticky left-0 max-w-dvw">
+                <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
+              </div>
+
               {/* answers grid */}
               <div className="flex gap-4 relative">
                 <div className="bg-red-400 h-32 absolute left-0 top-0" />
