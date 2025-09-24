@@ -130,7 +130,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
         )}
         {/* header */}
         <div className="sticky top-32 gap-8 flex z-50">
-          <div className="rounded-xl bg-blue-300/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+          <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
             Vaše odpovědi
           </div>
           {/* dummy header for nested and normal */}
@@ -139,7 +139,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
             const nestedCandidates = nestedMatches?.map((nested) => (
               <div
                 key={`header-${nested.candidate.id}-${matchIndex}`}
-                className=" rounded-xl bg-slate-300/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+                className=" rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
               >
                 <span>
                   {nested.candidate.displayName}
@@ -151,7 +151,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
               return (
                 <div
                   key={`header-${match.candidate.id}-${matchIndex}`}
-                  className="rounded-xl bg-slate-300/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+                  className="rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
                 >
                   {match.candidate.displayName}
                 </div>
@@ -174,7 +174,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
 
               {/* answers grid */}
               <div className="flex gap-8 relative">
-                <div className="bg-red-400 h-32 absolute left-0 top-0" />
+                <div className="h-32 absolute left-0 top-0" />
                 {/* user answers */}
                 <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
                   <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
