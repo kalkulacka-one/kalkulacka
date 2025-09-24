@@ -130,7 +130,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
         )}
         {/* header */}
         <div className="sticky top-32 gap-8 flex z-50">
-          <div className="rounded-xl bg-blue-300/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-fit sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+          <div className="rounded-xl bg-blue-300/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
             Vaše odpovědi
           </div>
           {/* dummy header for nested and normal */}
