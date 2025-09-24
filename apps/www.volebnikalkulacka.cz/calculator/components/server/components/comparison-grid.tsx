@@ -57,7 +57,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
         >
           <div className="h-full flex gap-8">
             {/* User column line - sticky */}
-            <div className="w-[100px] flex justify-center sticky left-0">
+            <div className="w-[100px] flex justify-center sticky left-4">
               <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
             </div>
             {/* Candidate columns lines */}
@@ -130,7 +130,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
         )}
         {/* header */}
         <div className="sticky top-32 gap-8 flex z-50">
-          <div className="rounded-xl bg-blue-300/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-fit sticky left-0 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+          <div className="rounded-xl bg-blue-300/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-fit sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
             Vaše odpovědi
           </div>
           {/* dummy header for nested and normal */}
@@ -168,7 +168,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
           const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
           return (
             <div key={question.id} className="flex flex-col gap-4 relative z-40">
-              <div className="px-4 flex justify-start sticky left-0 max-w-dvw">
+              <div className="px-4 flex justify-start sticky left-4 max-w-dvw">
                 <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
               </div>
 
@@ -176,7 +176,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
               <div className="flex gap-8 relative">
                 <div className="bg-red-400 h-32 absolute left-0 top-0" />
                 {/* user answers */}
-                <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-0">
+                <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
                   <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
                 </div>
                 {/* candidate answers */}
