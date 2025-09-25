@@ -2,18 +2,22 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
-import type { CalculatorViewModel } from "../../../view-models";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
+import { ComparisonGrid } from "../../client/comparison-grid";
 import { EmbedFooter, Layout } from "../components";
 
 export type ComparisonPage = {
   embedContext: EmbedContextType;
   calculator: CalculatorViewModel;
+  result: ResultViewModel;
+  answers: AnswersViewModel;
+  questions: QuestionsViewModel;
   onPreviousClick: () => void;
   onCloseClick: () => void;
 };
 
-export function ComparisonPage({ embedContext, calculator, onPreviousClick, onCloseClick }: ComparisonPage) {
+export function ComparisonPage({ embedContext, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
@@ -44,7 +48,7 @@ export function ComparisonPage({ embedContext, calculator, onPreviousClick, onCl
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content>
-        <div className="grid gap-4">Comparison</div>
+        <ComparisonGrid questions={questions} result={result} answers={answers} />
       </Layout.Content>
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>

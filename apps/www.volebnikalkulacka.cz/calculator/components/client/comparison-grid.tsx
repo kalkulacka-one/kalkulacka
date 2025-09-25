@@ -1,0 +1,226 @@
+import { Icon } from "@repo/design-system/client";
+import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
+import { IconBadge } from "@repo/design-system/server";
+import { useEffect, useState } from "react";
+
+import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "../../view-models";
+import { ComparisonQuestionCard } from "../server";
+
+function ComparisonAnswerIcon({ answer }: { answer: boolean | null | undefined }) {
+  return (
+    <IconBadge color={answer === null || answer === undefined ? "neutral" : answer ? "primary" : "secondary"}>
+      <Icon decorative={true} icon={answer === null || answer === undefined ? logoSlash : answer ? logoCheck : logoCross} />
+    </IconBadge>
+  );
+}
+
+export type ComparisonGrid = {
+  questions: QuestionsViewModel;
+  result: ResultViewModel;
+  answers: AnswersViewModel;
+};
+
+export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Extract unique organizations from nested candidates
+  const allOrganizations = new Set<string>();
+  for (const match of result.matches) {
+    if (match.nestedMatches) {
+      for (const nested of match.nestedMatches) {
+        if (nested.candidate.organization) {
+          allOrganizations.add(nested.candidate.organization);
+        }
+      }
+    }
+  }
+
+  const organizations = Array.from(allOrganizations);
+  const [selectedOrganizations, setSelectedOrganizations] = useState<Set<string>>(new Set());
+
+  // Filter function for nested candidates
+  const filterNestedCandidates = (nestedMatches: (typeof result.matches)[0]["nestedMatches"]) => {
+    if (!nestedMatches) return nestedMatches;
+    if (selectedOrganizations.size === 0) return nestedMatches;
+    return nestedMatches.filter((nested) => nested.candidate.organization && selectedOrganizations.has(nested.candidate.organization));
+  };
+
+  return (
+    <>
+      {/* Organization filter */}
+      <div className={"flex flex-col gap-8 relative"} style={{ minWidth: `${320 + result.matches.length * 80 + 5200}px` }}>
+        {/* Dashed lines overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none z-0"
+          style={{
+            top: result.matches.some((match) => match.nestedMatches) ? "180px" : "0px",
+          }}
+        >
+          <div className="h-full flex gap-8">
+            {/* User column line - sticky */}
+            <div className="w-[100px] flex justify-center sticky left-4">
+              <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+            </div>
+            {/* Candidate columns lines */}
+            {result.matches.map((match, matchIndex) => {
+              const nestedMatches = filterNestedCandidates(match.nestedMatches);
+              if (!nestedMatches) {
+                return (
+                  <div key={`line-${match.candidate.id}-${matchIndex}`} className="w-[100px] flex justify-center">
+                    <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+                  </div>
+                );
+              }
+              return (
+                <div key={`line-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
+                  {nestedMatches.map((nested) => (
+                    <div key={`line-${nested.candidate.id}-${matchIndex}`} className="w-[100px] flex justify-center">
+                      <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        {organizations.length > 0 && (
+          <div className="pl-4 sticky left-0 max-w-fit z-10">
+            <h3 className="text-sm font-medium mb-3">Vyberte stranu:</h3>
+            <div className="relative bg-slate-100 rounded-full p-1 flex flex-wrap gap-1 max-w-dvw sm:w-auto">
+              <label
+                className={` text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${selectedOrganizations.size === 0 ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+              >
+                <input
+                  type="checkbox"
+                  checked={selectedOrganizations.size === 0}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedOrganizations(new Set());
+                    } else {
+                      setSelectedOrganizations(new Set(organizations));
+                    }
+                  }}
+                  className="sr-only"
+                />
+                Vybrat vše
+              </label>
+              {organizations.map((org) => (
+                <label
+                  key={org}
+                  className={`text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${selectedOrganizations.has(org) ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedOrganizations.has(org)}
+                    onChange={(e) => {
+                      const newSelected = new Set(selectedOrganizations);
+                      if (e.target.checked) {
+                        newSelected.add(org);
+                      } else {
+                        newSelected.delete(org);
+                      }
+                      setSelectedOrganizations(newSelected);
+                    }}
+                    className="sr-only"
+                  />
+                  {org}
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+        {/* header */}
+        <div className={`sticky ${isScrolled ? "top-[4.75rem]" : "top-32"} gap-8 flex z-50 transition-all duration-500 ease-in-out`}>
+          <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+            Vaše odpovědi
+          </div>
+          {/* dummy header for nested and normal */}
+          {result.matches.map((match, matchIndex) => {
+            const nestedMatches = filterNestedCandidates(match.nestedMatches);
+            const nestedCandidates = nestedMatches?.map((nested) => (
+              <div
+                key={`header-${nested.candidate.id}-${matchIndex}`}
+                className=" rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+              >
+                <span>
+                  {nested.candidate.displayName}
+                  <br />({nested.candidate.organization})
+                </span>
+              </div>
+            ));
+            if (!nestedMatches) {
+              return (
+                <div
+                  key={`header-${match.candidate.id}-${matchIndex}`}
+                  className="rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+                >
+                  {match.candidate.displayName}
+                </div>
+              );
+            }
+            return (
+              <div key={`header-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
+                {nestedCandidates}
+              </div>
+            );
+          })}
+        </div>
+        {questions.questions.map((question, index) => {
+          const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
+          return (
+            <div key={question.id} className="flex flex-col gap-4 relative z-40">
+              <div className="px-4 flex justify-start sticky left-4 max-w-[calc(100dvw_-_5dvw)]">
+                <ComparisonQuestionCard question={question} current={index + 1} total={questions.questions.length} />
+              </div>
+
+              {/* answers grid */}
+              <div className="flex gap-8 relative">
+                <div className="h-32 absolute left-0 top-0" />
+                {/* user answers */}
+                <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
+                  <div className="rounded-full bg-slate-50 -z-0">
+                    <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
+                  </div>
+                </div>
+                {/* candidate answers */}
+                {result.matches.map((match, matchIndex) => {
+                  const nestedMatches = filterNestedCandidates(match.nestedMatches);
+                  if (!nestedMatches) {
+                    const answer = match.candidateAnswers.find((a) => a.questionId === question.id);
+                    return (
+                      <div key={`answer-${match.candidate.id}-${matchIndex}`} className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+                        <ComparisonAnswerIcon answer={answer?.answer} />
+                      </div>
+                    );
+                  }
+                  return (
+                    <div key={`answer-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
+                      {nestedMatches.map((nested) => {
+                        const answer = nested.candidateAnswers.find((a) => a.questionId === question.id);
+                        return (
+                          <div key={`answer-${nested.candidate.id}-${matchIndex}`} className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+                            <ComparisonAnswerIcon answer={answer?.answer} />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+}
