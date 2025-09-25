@@ -153,9 +153,9 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">20 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">5 minut</span>
               </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo myslí na budoucnost naší planety?</h4>
+              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo má plán  pro klima?</h4>
               <p className="mt-1 text-slate-500">
-                Povolenky, energetika, doprava: výběr otázek týkajících se změny klimatu. Ve spolupráci s{" "}
+                Výběr otázek ke klimatické změně:  povolenky, energetika, doprava. Ve spolupráci s{" "}
                 <a href="https://faktaoklimatu.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
                   Fakty o klimatu
                 </a>
