@@ -18,4 +18,5 @@ export const canonical = {
   question: (segments: RouteSegments, questionNumber: number): string => buildCanonicalUrl(routes.question(segments, questionNumber)),
   review: (segments: RouteSegments): string => buildCanonicalUrl(routes.review(segments)),
   result: (segments: RouteSegments): string => buildCanonicalUrl(routes.result(segments)),
+  comparison: (segments: RouteSegments): string => buildCanonicalUrl(routes.comparison(segments)),
 } as const;
