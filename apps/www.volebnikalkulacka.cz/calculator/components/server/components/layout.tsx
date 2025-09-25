@@ -15,17 +15,18 @@ export type LayoutHeader = {
 };
 
 function Header({ children }: LayoutHeader) {
-  return <div className="sticky top-0 z-30">{children}</div>;
+  return <div className="sticky top-0 z-50">{children}</div>;
 }
 
 Header.displayName = "Layout.Header";
 
 export type LayoutContent = {
   children: React.ReactNode;
+  fullWidth?: boolean;
 };
 
-function Content({ children }: LayoutContent) {
-  return <main className="max-w-xl w-full mx-auto p-2 sm:p-4 z-10">{children}</main>;
+function Content({ children, fullWidth }: LayoutContent) {
+  return <main className={`${fullWidth ? "w-full" : "max-w-xl w-full"} mx-auto p-2 sm:p-4`}>{children}</main>;
 }
 
 Content.displayName = "Layout.Content";

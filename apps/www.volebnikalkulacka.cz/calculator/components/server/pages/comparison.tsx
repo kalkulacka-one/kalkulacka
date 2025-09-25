@@ -47,7 +47,7 @@ export function ComparisonPage({ embedContext, calculator, result, answers, ques
           )}
         </WithCondenseOnScroll>
       </Layout.Header>
-      <Layout.Content>
+      <Layout.Content fullWidth>
         <ComparisonGrid questions={questions} result={result} answers={answers} />
       </Layout.Content>
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
