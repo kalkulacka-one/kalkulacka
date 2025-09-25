@@ -24,10 +24,11 @@ type AppHeaderChildProps = {
 type AppHeaderProps = {
   children?: ReactNode;
   condensed?: boolean;
+  fixed?: boolean;
   calculator?: CalculatorViewModel;
 };
 
-export function AppHeader({ children, condensed = false, calculator }: AppHeaderProps) {
+export function AppHeader({ children, fixed = false, condensed = false, calculator }: AppHeaderProps) {
   const embed = useEmbed();
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
@@ -49,7 +50,7 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
   return (
-    <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
+    <header className={`@container ${fixed ? "fixed top-0 left-0 right-0 z-50" : "sticky top-0"} p-2 sm:p-3 bg-white/60 backdrop-blur-md`}>
       <div className={headerGridClasses}>
         <div className={mainClasses}>
           <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
