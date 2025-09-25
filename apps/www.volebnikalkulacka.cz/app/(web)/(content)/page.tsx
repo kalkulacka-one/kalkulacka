@@ -146,6 +146,30 @@ export default function Page() {
               </div>
             </div>
           </Card>
+          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
+            <div className="p-6 h-full flex flex-col">
+              <div className="flex items-center gap-2 text-xs text-slate-600">
+                <span className="rounded-full px-2.5 py-1 font-semibold bg-green-100 text-green-600">Klimatická</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">20 otázek</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">5 minut</span>
+              </div>
+              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo myslí na budoucnost naší planety?</h4>
+              <p className="mt-1 text-slate-500">
+                Povolenky, energetika, doprava: výběr otázek týkajících se změny klimatu. Ve spolupráci s{" "}
+                <a href="https://faktaoklimatu.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
+                  Fakty o klimatu
+                </a>
+                .
+              </p>
+              <div className="grid mt-auto pt-4 md:pt-6">
+                <Link href="/volby/snemovni-2025/klimaticka" className="grid">
+                  <Button variant="outline" color="neutral">
+                    Spustit kalkulačku
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Archive section */}
