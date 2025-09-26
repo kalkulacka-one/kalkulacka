@@ -130,8 +130,8 @@ export type ComparisonHeader = {
 
 function ComparisonHeader({ condensed = false, result, filterNestedCandidates }: ComparisonHeader) {
   return (
-    <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-50 transition-all duration-500 ease-in-out`}>
-      <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+    <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-40 transition-all duration-500 ease-in-out`}>
+      <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
         Vaše odpovědi
       </div>
       {result.matches.map((match, matchIndex) => {
@@ -180,7 +180,7 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
   const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
 
   return (
-    <div key={question.id} className="flex flex-col gap-4 relative z-40">
+    <div key={question.id} className="flex flex-col gap-4 relative z-30">
       <div className="px-4 flex justify-start sticky left-4 max-w-[calc(100dvw_-_5dvw)]">
         <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} />
       </div>
@@ -190,7 +190,7 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
         <div className="h-32 absolute left-0 top-0" />
         {/* user answers */}
         <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
-          <div className="rounded-full bg-slate-50 -z-0">
+          <div className="rounded-full bg-slate-50">
             <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
           </div>
         </div>
