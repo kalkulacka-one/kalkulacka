@@ -1,7 +1,7 @@
 import { Icon } from "@repo/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
 import { IconBadge } from "@repo/design-system/server";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "../../view-models";
 import { ComparisonQuestionCard } from "../server";
@@ -123,14 +123,14 @@ function ComparisonAnswerIcon({ answer }: ComparisonAnswerIcon) {
 }
 
 export type ComparisonHeader = {
-  isScrolled: boolean;
+  condensed?: boolean;
   result: ResultViewModel;
   filterNestedCandidates: (nestedMatches: ResultViewModel["matches"][0]["nestedMatches"]) => ResultViewModel["matches"][0]["nestedMatches"];
 };
 
-function ComparisonHeader({ isScrolled, result, filterNestedCandidates }: ComparisonHeader) {
+function ComparisonHeader({ condensed = false, result, filterNestedCandidates }: ComparisonHeader) {
   return (
-    <div className={`sticky ${isScrolled ? "top-[4.75rem]" : "top-32"} gap-8 flex z-50 transition-all duration-500 ease-in-out`}>
+    <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-50 transition-all duration-500 ease-in-out`}>
       <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-60 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
         Vaše odpovědi
       </div>
@@ -227,21 +227,11 @@ export type ComparisonGrid = {
   questions: QuestionsViewModel;
   result: ResultViewModel;
   answers: AnswersViewModel;
+  condensed?: boolean;
 };
 
-export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
-  const [isScrolled, setIsScrolled] = useState(false);
+export function ComparisonGrid({ questions, answers, result, condensed = false }: ComparisonGrid) {
   const [selectedOrganizations, setSelectedOrganizations] = useState<Set<string>>(new Set());
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const allOrganizations = new Set<string>();
   for (const match of result.matches) {
@@ -266,7 +256,7 @@ export function ComparisonGrid({ questions, answers, result }: ComparisonGrid) {
       <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
       <div className="mr-[100dvw] flex flex-col gap-8">
         <ComparisonGridDashlinesOverlay result={result} filterNestedCandidates={filterNestedCandidates} />
-        <ComparisonHeader isScrolled={isScrolled} result={result} filterNestedCandidates={filterNestedCandidates} />
+        <ComparisonHeader condensed={condensed} result={result} filterNestedCandidates={filterNestedCandidates} />
         {questions.questions.map((question, index) => (
           <ComparisonQuestionRow
             key={question.id}
