@@ -6,6 +6,7 @@ import { buildCookieName } from "./cookie-name";
 export const sessionCookieSchema = z.object({
   id: z.string().uuid(),
   calculators: z.array(z.string()),
+  createdAt: z.string().optional(),
 });
 
 export type SessionCookie = z.infer<typeof sessionCookieSchema>;
