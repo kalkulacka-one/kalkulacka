@@ -35,7 +35,7 @@ model CalculatorSession {
 
   data CalculatorSessionData?
 
-  @@unique([sessionId, calculatorId, calculatorGroup, embedName])
+  @@unique([sessionId, calculatorId])
   @@index([sessionId])
   @@index([calculatorId])
   @@index([calculatorKey])
