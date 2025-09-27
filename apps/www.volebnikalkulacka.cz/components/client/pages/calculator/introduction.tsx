@@ -4,6 +4,7 @@ import { IntroductionPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useCalculator } from "../../../../calculator/view-models";
 import { saveSessionData } from "../../../../lib/api/session-data";
+import { reportError } from "../../../../lib/monitoring";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 import { useEmbed } from "../../../client/embed-context-provider";
 
@@ -18,7 +19,11 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   };
 
   const handleCloseClick = async () => {
-    await saveSessionData(calculator.id, answersStore);
+    try {
+      await saveSessionData(calculator.id, answersStore);
+    } catch (error) {
+      reportError(error);
+    }
     router.push("/");
   };
 
