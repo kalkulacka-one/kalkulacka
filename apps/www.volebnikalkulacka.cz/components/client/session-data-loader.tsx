@@ -28,7 +28,12 @@ export function SessionDataLoader() {
           setAnswers(savedAnswers);
         }
       })
-      .catch(reportError);
+      .catch((error) => {
+        if (error.status === 404 || error.status === 401) {
+          return;
+        }
+        reportError(error);
+      });
   }, [calculator.id, answers.length, setAnswers]);
 
   return null;
