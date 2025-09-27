@@ -1,5 +1,4 @@
 import type { CreateCalculatorSessionParams } from "../session";
-import { handleResponseError } from "./handle-response-error";
 
 export async function initializeSession(params: CreateCalculatorSessionParams): Promise<void> {
   const response = await fetch("/api/sessions", {
@@ -11,6 +10,6 @@ export async function initializeSession(params: CreateCalculatorSessionParams): 
   });
 
   if (!response.ok) {
-    await handleResponseError(response, "Session initialization failed");
+    throw response;
   }
 }

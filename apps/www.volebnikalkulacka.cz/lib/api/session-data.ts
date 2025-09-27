@@ -1,5 +1,4 @@
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
-import { handleResponseError } from "./handle-response-error";
 
 export async function saveSessionData(calculatorId: string, answers: Answer[]): Promise<void> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
@@ -11,7 +10,7 @@ export async function saveSessionData(calculatorId: string, answers: Answer[]): 
   });
 
   if (!response.ok) {
-    await handleResponseError(response, "Failed to save session data");
+    throw response;
   }
 }
 
@@ -19,7 +18,7 @@ export async function loadSessionData(calculatorId: string): Promise<Answer[]> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`);
 
   if (!response.ok) {
-    await handleResponseError(response, "Failed to load session data");
+    throw response;
   }
 
   try {

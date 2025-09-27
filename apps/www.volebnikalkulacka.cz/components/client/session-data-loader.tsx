@@ -28,11 +28,15 @@ export function SessionDataLoader() {
           setAnswers(savedAnswers);
         }
       })
-      .catch((error) => {
-        if (error.status === 404 || error.status === 401) {
-          return;
+      .catch((error: Response | Error) => {
+        if (error instanceof Response) {
+          if (error.status === 404 || error.status === 401) {
+            return;
+          }
+          reportError(new Error(`Failed to load session data: ${error.status} ${error.statusText}`));
+        } else {
+          reportError(error);
         }
-        reportError(error);
       });
   }, [calculator.id, answers.length, setAnswers]);
 
