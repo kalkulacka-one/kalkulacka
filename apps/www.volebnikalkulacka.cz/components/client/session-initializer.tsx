@@ -35,7 +35,16 @@ export function SessionInitializer() {
       calculatorKey,
       calculatorGroup,
       embedName: embed.isEmbed ? embed.name : undefined,
-    }).catch(reportError);
+    }).catch((error: Response | Error) => {
+      if (error instanceof Response) {
+        if (error.status === 404 || error.status === 401) {
+          return;
+        }
+        reportError(new Error(`Session initialization failed: ${error.status} ${error.statusText}`));
+      } else {
+        reportError(error);
+      }
+    });
   }, [calculator, embed]);
 
   return null;
