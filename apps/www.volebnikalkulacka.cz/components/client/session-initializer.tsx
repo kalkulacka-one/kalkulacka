@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { useCalculatorStore } from "../../calculator/stores/calculator";
 import { initializeSession } from "../../lib/api";
+import { reportError } from "../../lib/monitoring";
 import { useEmbed } from "./embed-context-provider";
 
 type CalculatorWithVariant = {
@@ -34,7 +35,7 @@ export function SessionInitializer() {
       calculatorKey,
       calculatorGroup,
       embedName: embed.isEmbed ? embed.name : undefined,
-    });
+    }).catch(reportError);
   }, [calculator, embed]);
 
   return null;
