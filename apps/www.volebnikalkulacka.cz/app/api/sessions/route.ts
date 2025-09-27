@@ -29,7 +29,11 @@ export async function POST(request: NextRequest) {
     const fullKey = calculatorFullKey(parsed);
     const existingCookieData = await getSessionCookie(parsed);
 
-    if (existingCookieData) {
+    const databaseInitializedAt = process.env.DATABASE_INITIALIZED_AT ? new Date(process.env.DATABASE_INITIALIZED_AT) : new Date(0);
+    const cookieCreatedAt = existingCookieData?.createdAt ? new Date(existingCookieData.createdAt) : null;
+    const isCookieStale = existingCookieData && (!cookieCreatedAt || cookieCreatedAt < databaseInitializedAt);
+
+    if (existingCookieData && !isCookieStale) {
       await handleExistingSession(existingCookieData, fullKey, parsed);
     } else {
       await handleNewSession(fullKey, parsed);
@@ -58,6 +62,7 @@ async function handleNewSession(fullKey: string, params: CreateCalculatorSession
   const cookieData = {
     id: session.sessionId,
     calculators: [fullKey],
+    createdAt: session.createdAt.toISOString(),
   };
   await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
 }

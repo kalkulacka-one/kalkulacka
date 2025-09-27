@@ -1,7 +1,10 @@
 import { useRouter } from "next/navigation";
 
 import { IntroductionPage } from "../../../../calculator/components/server";
+import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useCalculator } from "../../../../calculator/view-models";
+import { saveSessionData } from "../../../../lib/api/session-data";
+import { reportError } from "../../../../lib/monitoring";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 import { useEmbed } from "../../../client/embed-context-provider";
 
@@ -9,12 +12,18 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   const router = useRouter();
   const calculator = useCalculator();
   const embed = useEmbed();
+  const answersStore = useAnswersStore((state) => state.answers);
 
   const handleNavigationNextClick = () => {
     router.push(routes.guide(segments));
   };
 
-  const handleCloseClick = () => {
+  const handleCloseClick = async () => {
+    try {
+      await saveSessionData(calculator.id, answersStore);
+    } catch (error) {
+      reportError(error);
+    }
     router.push("/");
   };
 

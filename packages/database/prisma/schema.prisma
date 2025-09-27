@@ -33,7 +33,9 @@ model CalculatorSession {
   updatedAt DateTime  @updatedAt @db.Timestamptz(3)
   deletedAt DateTime? @db.Timestamptz(3)
 
-  @@unique([sessionId, calculatorId, calculatorGroup, embedName])
+  data CalculatorSessionData?
+
+  @@unique([sessionId, calculatorId])
   @@index([sessionId])
   @@index([calculatorId])
   @@index([calculatorKey])
@@ -42,4 +44,16 @@ model CalculatorSession {
   @@index([createdAt])
   @@index([updatedAt])
   @@index([deletedAt])
+}
+
+model CalculatorSessionData {
+  id        String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionId String @unique @db.Uuid
+  answers   Json
+
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+
+  session CalculatorSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 }

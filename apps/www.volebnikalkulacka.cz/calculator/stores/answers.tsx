@@ -9,6 +9,7 @@ type AnswersStoreState = {
 
 type AnswersStoreActions = {
   setAnswer: (answer: Partial<Answer> & { questionId: string }) => void;
+  setAnswers: (answers: Answer[]) => void;
   getAnswer: (questionId: string) => Answer | undefined;
   clearAnswers: () => void;
 };
@@ -29,6 +30,9 @@ export const createAnswersStore = () => {
         const newAnswer: Answer = { ...answer };
         return { answers: [...state.answers, newAnswer] };
       });
+    },
+    setAnswers: (answers: Answer[]) => {
+      set({ answers });
     },
     getAnswer: (questionId: string) => {
       return get().answers.find((answer) => answer.questionId === questionId);
