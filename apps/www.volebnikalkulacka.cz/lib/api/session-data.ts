@@ -1,4 +1,5 @@
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
+import { handleResponseError } from "./handle-response-error";
 
 export async function saveSessionData(calculatorId: string, answers: Answer[]): Promise<void> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
@@ -10,12 +11,7 @@ export async function saveSessionData(calculatorId: string, answers: Answer[]): 
   });
 
   if (!response.ok) {
-    try {
-      const errorData = await response.json();
-      throw new Error(`Failed to save session data: ${errorData.title || errorData.type || "Unknown error"}`);
-    } catch {
-      throw new Error(`Failed to save session data: HTTP ${response.status}`);
-    }
+    await handleResponseError(response, "Failed to save session data");
   }
 }
 
@@ -23,12 +19,7 @@ export async function loadSessionData(calculatorId: string): Promise<Answer[]> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`);
 
   if (!response.ok) {
-    try {
-      const errorData = await response.json();
-      throw new Error(`Failed to load session data: ${errorData.title || errorData.type || "Unknown error"}`);
-    } catch {
-      throw new Error(`Failed to load session data: HTTP ${response.status}`);
-    }
+    await handleResponseError(response, "Failed to load session data");
   }
 
   try {
