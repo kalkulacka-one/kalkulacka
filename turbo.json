@@ -42,6 +42,14 @@
       "dependsOn": ["^build"],
       "cache": false
     },
+    "e2e": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "e2e:ui": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
     "typecheck": {
       "dependsOn": ["^typecheck"]
     }
