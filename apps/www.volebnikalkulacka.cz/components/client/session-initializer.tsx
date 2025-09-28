@@ -34,6 +34,7 @@ export function SessionInitializer() {
       calculatorId: calculator.id,
       calculatorKey,
       calculatorGroup,
+      calculatorVersion: calculator.version,
       embedName: embed.isEmbed ? embed.name : undefined,
     }).catch((error: Response | Error) => {
       if (error instanceof Response) {

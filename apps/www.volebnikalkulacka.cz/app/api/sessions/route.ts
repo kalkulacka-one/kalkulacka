@@ -8,6 +8,10 @@ const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
   calculatorKey: z.string(),
   calculatorGroup: z.string().optional(),
+  calculatorVersion: z
+    .string()
+    .regex(/^\d+\.\d+\.\d+$/)
+    .optional(),
   embedName: z.string().optional(),
 });
 
