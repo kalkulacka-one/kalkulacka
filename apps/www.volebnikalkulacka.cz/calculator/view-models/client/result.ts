@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { calculateMatches } from "../../lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "../../stores/answers";
 import { useCalculatorStore } from "../../stores/calculator";
 import { candidateViewModel } from "../server/candidate";
@@ -9,8 +10,15 @@ import { organizationViewModel } from "../server/organization";
 import { personViewModel } from "../server/person";
 import { type ResultViewModel, resultViewModel } from "../server/result";
 
-export function useResult(options?: { showOnlyNested?: boolean }): ResultViewModel {
+export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);
+  const allCandidatesData = useCalculatorStore((state) => state.candidates);
+  const candidatesAnswersData = useCalculatorStore((state) => state.candidatesAnswers);
+
+  return useMemo(() => calculateMatches(answersData, allCandidatesData, candidatesAnswersData), [answersData, allCandidatesData, candidatesAnswersData]);
+}
+
+export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>, options?: { showOnlyNested?: boolean }): ResultViewModel {
   const allCandidatesData = useCalculatorStore((state) => state.candidates);
   const personsData = useCalculatorStore((state) => state.persons);
   const organizationsData = useCalculatorStore((state) => state.organizations);
@@ -34,5 +42,5 @@ export function useResult(options?: { showOnlyNested?: boolean }): ResultViewMod
 
   const candidatesAnswers = useMemo(() => candidatesAnswersViewModel(filteredCandidatesAnswersData), [filteredCandidatesAnswersData]);
 
-  return useMemo(() => resultViewModel(answersData, candidates, candidatesAnswers, filteredCandidatesAnswersData), [answersData, candidates, candidatesAnswers, filteredCandidatesAnswersData]);
+  return useMemo(() => resultViewModel(candidates, candidatesAnswers, algorithmMatches), [candidates, candidatesAnswers, algorithmMatches]);
 }
