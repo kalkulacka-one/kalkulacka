@@ -1,7 +1,6 @@
-import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
-import { calculateMatches } from "../../lib/result-calculation/calculate-matches";
+import type { calculateMatches } from "../../lib/result-calculation/calculate-matches";
 import type { CandidateViewModel } from "./candidate";
-import type { CandidateAnswer, CandidateAnswerViewModel } from "./candidate-answer";
+import type { CandidateAnswerViewModel } from "./candidate-answer";
 import type { CandidatesAnswersViewModel } from "./candidate-answers";
 
 export type CandidateMatchViewModel = {
@@ -37,14 +36,8 @@ function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<strin
   return respondents.values().next().value ?? "candidate";
 }
 
-export function resultViewModel(
-  answers: Answer[],
-  candidates: CandidateViewModel[],
-  candidatesAnswers: CandidatesAnswersViewModel,
-  candidatesAnswersData: Record<string, CandidateAnswer[]>,
-): ResultViewModel {
+export function resultViewModel(candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswersViewModel, algorithmMatches: ReturnType<typeof calculateMatches>): ResultViewModel {
   const candidatesAnswersMap = new Map(Object.entries(candidatesAnswers));
-  const algorithmMatches = calculateMatches(answers, candidates, candidatesAnswersData);
 
   const topLevelIds = candidates.map((candidate) => candidate.id);
   const topLevelAlgorithmMatches = algorithmMatches.filter((match) => topLevelIds.includes(match.id));
