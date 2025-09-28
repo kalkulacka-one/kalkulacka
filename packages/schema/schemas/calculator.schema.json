@@ -202,6 +202,9 @@
     "id": {
       "$ref": "#/$defs/id"
     },
+    "version": {
+      "$ref": "#/$defs/version"
+    },
     "createdAt": {
       "$ref": "#/$defs/createdAt"
     },
@@ -232,9 +235,6 @@
     "images": {
       "$ref": "#/$defs/images"
     },
-    "version": {
-      "$ref": "#/$defs/version"
-    },
     "checksums": {
       "$ref": "#/$defs/checksums"
     },
@@ -251,9 +251,6 @@
       "properties": {
         "key": {
           "$ref": "#/$defs/key"
-        },
-        "version": {
-          "$ref": "#/$defs/version"
         }
       },
       "required": ["key", "shortTitle"],

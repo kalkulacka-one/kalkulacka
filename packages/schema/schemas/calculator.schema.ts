@@ -66,7 +66,6 @@ const standaloneCalculatorSchema = calculatorBaseSchema
       .string()
       .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
       .describe("Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format"),
-    version: versionSchema.optional(),
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
   })
 
