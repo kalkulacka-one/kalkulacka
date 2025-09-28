@@ -1,12 +1,13 @@
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
+import type { calculateMatches } from "../../calculator/lib/result-calculation/calculate-matches";
 
-export async function saveSessionData(calculatorId: string, answers: Answer[]): Promise<void> {
+export async function saveSessionData(calculatorId: string, answers: Answer[], matches?: ReturnType<typeof calculateMatches>): Promise<void> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ answers }),
+    body: JSON.stringify({ answers, matches }),
   });
 
   if (!response.ok) {
@@ -14,7 +15,7 @@ export async function saveSessionData(calculatorId: string, answers: Answer[]): 
   }
 }
 
-export async function loadSessionData(calculatorId: string): Promise<Answer[]> {
+export async function loadSessionData(calculatorId: string): Promise<{ answers: Answer[]; matches?: ReturnType<typeof calculateMatches> }> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`);
 
   if (!response.ok) {
@@ -23,7 +24,10 @@ export async function loadSessionData(calculatorId: string): Promise<Answer[]> {
 
   try {
     const data = await response.json();
-    return data.answers || [];
+    return {
+      answers: data.answers,
+      matches: data.matches,
+    };
   } catch {
     throw new Error("Failed to parse session data response");
   }

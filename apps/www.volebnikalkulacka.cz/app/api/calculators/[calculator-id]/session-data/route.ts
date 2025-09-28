@@ -6,8 +6,14 @@ import { answerSchema } from "../../../../../../../packages/schema/schemas/answe
 import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "../../../../../lib/errors";
 import { getSessionCookie } from "../../../../../lib/session";
 
+const matchSchema = z.object({
+  id: z.string().uuid(),
+  match: z.number().min(0).max(100).optional(),
+});
+
 const postRequestSchema = z.object({
   answers: z.array(answerSchema),
+  matches: z.array(matchSchema).optional(),
 });
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
@@ -46,7 +52,19 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
       return new InternalServerError().toResponse();
     }
 
-    return Response.json({ answers: result.data });
+    let parsedMatches: z.infer<typeof matchSchema>[] | undefined;
+    if (session.data.result) {
+      const matchesValidation = z.array(matchSchema).safeParse(session.data.result);
+      if (!matchesValidation.success) {
+        return new InternalServerError().toResponse();
+      }
+      parsedMatches = matchesValidation.data;
+    }
+
+    return Response.json({
+      answers: result.data,
+      matches: parsedMatches,
+    });
   } catch (error) {
     if (error instanceof HttpError) {
       return error.toResponse();
@@ -91,16 +109,29 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
       return new NotFoundError("Session not found for this calculator").toResponse();
     }
 
+    const updateData: {
+      answers: typeof parsed.answers;
+      result?: typeof parsed.matches;
+      completedAt?: Date;
+    } = {
+      answers: parsed.answers,
+    };
+
+    if (parsed.matches) {
+      updateData.result = parsed.matches;
+      updateData.completedAt = new Date();
+    }
+
     await prisma.calculatorSessionData.upsert({
       where: {
         sessionId: session.id,
       },
-      update: {
-        answers: parsed.answers,
-      },
+      update: updateData,
       create: {
         sessionId: session.id,
         answers: parsed.answers,
+        result: parsed.matches,
+        completedAt: parsed.matches ? new Date() : null,
       },
     });
 
