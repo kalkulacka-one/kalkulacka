@@ -23,11 +23,12 @@ enum crdb_internal_region {
 model CalculatorSession {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
 
-  sessionId       String  @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  calculatorId    String  @db.Uuid
-  calculatorKey   String
-  calculatorGroup String?
-  embedName       String?
+  sessionId         String  @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  calculatorId      String  @db.Uuid
+  calculatorKey     String
+  calculatorGroup   String?
+  calculatorVersion String?
+  embedName         String?
 
   createdAt DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt DateTime  @updatedAt @db.Timestamptz(3)
@@ -50,6 +51,7 @@ model CalculatorSessionData {
   id        String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   sessionId String @unique @db.Uuid
   answers   Json
+  result    Json?
 
   createdAt   DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
