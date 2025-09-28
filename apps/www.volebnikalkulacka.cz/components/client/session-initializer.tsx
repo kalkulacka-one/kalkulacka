@@ -28,12 +28,13 @@ export function SessionInitializer() {
 
     const calc = calculator as CalculatorWithVariant | CalculatorWithKey;
     const calculatorKey = "variant" in calc ? calc.variant.key : calc.key;
-    const calculatorGroup = "variant" in calc ? calc.calculatorGroup.key : calc.calculatorGroup?.key;
+    const calculatorGroup = "variant" in calc ? calc.calculatorGroup.key : undefined;
 
     initializeSession({
       calculatorId: calculator.id,
       calculatorKey,
       calculatorGroup,
+      calculatorVersion: calculator.version,
       embedName: embed.isEmbed ? embed.name : undefined,
     }).catch((error: Response | Error) => {
       if (error instanceof Response) {

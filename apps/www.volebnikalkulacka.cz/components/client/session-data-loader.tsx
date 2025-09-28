@@ -23,9 +23,9 @@ export function SessionDataLoader() {
     loadedCalculatorId.current = calculator.id;
 
     loadSessionData(calculator.id)
-      .then((savedAnswers) => {
-        if (savedAnswers.length > 0) {
-          setAnswers(savedAnswers);
+      .then((sessionData) => {
+        if (sessionData.answers.length > 0) {
+          setAnswers(sessionData.answers);
         }
       })
       .catch((error: Response | Error) => {

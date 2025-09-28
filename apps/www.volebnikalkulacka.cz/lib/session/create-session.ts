@@ -9,6 +9,7 @@ export async function createCalculatorSession(params: CreateCalculatorSessionPar
     data: {
       ...params,
       calculatorGroup: params.calculatorGroup ?? null,
+      calculatorVersion: params.calculatorVersion ?? null,
       embedName: params.embedName ?? null,
     },
   });
