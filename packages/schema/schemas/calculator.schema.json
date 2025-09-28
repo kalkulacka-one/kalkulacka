@@ -169,7 +169,7 @@
     },
     "changes": {
       "title": "Changes",
-      "description": "Change history of the calculator",
+      "description": "Changelog of the calculator data",
       "type": "array",
       "items": {
         "type": "object",
