@@ -41,7 +41,9 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
+      if (answersStore.length > 0) {
+        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
+      }
     } catch (error) {
       reportError(error);
     }
