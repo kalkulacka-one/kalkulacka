@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ResultPage as AppResultPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
@@ -18,6 +18,12 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   const algorithmMatches = useCalculatedMatches();
   const result = useResult(algorithmMatches, { showOnlyNested });
+
+  useEffect(() => {
+    if (algorithmMatches && answersStore.length > 0) {
+      saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version).catch(reportError);
+    }
+  }, [algorithmMatches, answersStore, calculator.id, calculator.version]);
 
   const handlePreviousClick = () => {
     router.push(routes.review(segments));

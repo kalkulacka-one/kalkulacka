@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { ReviewPage as AppReviewPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useAnswers, useCalculator, useQuestions } from "../../../../calculator/view-models";
+import { useAutoSave } from "../../../../hooks/auto-save";
 import { saveSessionData } from "../../../../lib/api/session-data";
 import { reportError } from "../../../../lib/monitoring";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
@@ -15,6 +16,8 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
   const answersStore = useAnswersStore((state) => state.answers);
   const answers = useAnswers();
   const embed = useEmbed();
+
+  useAutoSave();
 
   const handleNextClick = () => {
     router.push(routes.result(segments));
