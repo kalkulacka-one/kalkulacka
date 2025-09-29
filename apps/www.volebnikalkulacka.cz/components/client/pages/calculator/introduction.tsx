@@ -20,7 +20,7 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
 
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore);
+      await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
     } catch (error) {
       reportError(error);
     }

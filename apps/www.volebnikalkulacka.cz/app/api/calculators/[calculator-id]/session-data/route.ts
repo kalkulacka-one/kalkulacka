@@ -14,6 +14,10 @@ const matchSchema = z.object({
 const postRequestSchema = z.object({
   answers: z.array(answerSchema),
   matches: z.array(matchSchema).optional(),
+  calculatorVersion: z
+    .string()
+    .regex(/^\d+\.\d+\.\d+$/)
+    .optional(),
 });
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
@@ -64,6 +68,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     return Response.json({
       answers: result.data,
       matches: parsedMatches,
+      calculatorVersion: session.calculatorVersion,
     });
   } catch (error) {
     if (error instanceof HttpError) {
@@ -122,17 +127,26 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
       updateData.completedAt = new Date();
     }
 
-    await prisma.calculatorSessionData.upsert({
-      where: {
-        sessionId: session.id,
-      },
-      update: updateData,
-      create: {
-        sessionId: session.id,
-        answers: parsed.answers,
-        result: parsed.matches,
-        completedAt: parsed.matches ? new Date() : null,
-      },
+    await prisma.$transaction(async (tx) => {
+      if (parsed.calculatorVersion) {
+        await tx.calculatorSession.update({
+          where: { id: session.id },
+          data: { calculatorVersion: parsed.calculatorVersion },
+        });
+      }
+
+      await tx.calculatorSessionData.upsert({
+        where: {
+          sessionId: session.id,
+        },
+        update: updateData,
+        create: {
+          sessionId: session.id,
+          answers: parsed.answers,
+          result: parsed.matches,
+          completedAt: parsed.matches ? new Date() : null,
+        },
+      });
     });
 
     return new Response(null, { status: 204 });
