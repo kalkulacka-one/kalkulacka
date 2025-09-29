@@ -20,11 +20,8 @@ export async function saveSessionDataWithBeacon(calculatorId: string, answers: A
   const data = JSON.stringify({ answers, matches, calculatorVersion });
 
   if (navigator.sendBeacon) {
-    const formData = new FormData();
-    formData.append("json", data);
-    formData.append("content-type", "application/json");
-
-    const success = navigator.sendBeacon(url, formData);
+    const blob = new Blob([data], { type: "application/json" });
+    const success = navigator.sendBeacon(url, blob);
 
     if (success) {
       return;
