@@ -25,7 +25,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore, algorithmMatches);
+      await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
     } catch (error) {
       reportError(error);
     }
