@@ -20,7 +20,10 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const result = useResult(algorithmMatches, { showOnlyNested });
 
   useEffect(() => {
-    if (algorithmMatches && answersStore.length > 0) {
+    const hasAnsweredQuestions = answersStore.some((answer) => answer.answer !== undefined);
+    const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
+
+    if (hasAnsweredQuestions && hasValidMatches) {
       saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version).catch(reportError);
     }
   }, [algorithmMatches, answersStore, calculator.id, calculator.version]);
@@ -31,7 +34,12 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
+      const hasAnsweredQuestions = answersStore.some((answer) => answer.answer !== undefined);
+      const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
+
+      if (hasAnsweredQuestions && hasValidMatches) {
+        await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
+      }
     } catch (error) {
       reportError(error);
     }

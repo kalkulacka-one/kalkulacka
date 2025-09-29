@@ -25,9 +25,20 @@ export function useAutoSave({ matches, enabled = true }: UseAutoSaveOptions = {}
 
       try {
         const answers = store?.getState().answers;
-        if (answers && answers.length > 0) {
-          await saveSessionDataWithBeacon(calculator.id, answers, matches, calculator.version);
+
+        const hasAnsweredQuestions = answers?.some((answer) => answer.answer !== undefined);
+        if (!hasAnsweredQuestions) {
+          return;
         }
+
+        if (matches) {
+          const hasValidMatches = matches.some((match) => match.match !== undefined);
+          if (!hasValidMatches) {
+            return;
+          }
+        }
+
+        await saveSessionDataWithBeacon(calculator.id, answers, matches, calculator.version);
       } catch (error) {
         reportError(error);
       } finally {
