@@ -20,10 +20,9 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const result = useResult(algorithmMatches, { showOnlyNested });
 
   useEffect(() => {
-    const hasAnsweredQuestions = answersStore.some((answer) => answer.answer !== undefined);
     const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
 
-    if (hasAnsweredQuestions && hasValidMatches) {
+    if (answersStore.length > 0 && hasValidMatches) {
       saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version).catch(reportError);
     }
   }, [algorithmMatches, answersStore, calculator.id, calculator.version]);
@@ -34,10 +33,9 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   const handleCloseClick = async () => {
     try {
-      const hasAnsweredQuestions = answersStore.some((answer) => answer.answer !== undefined);
       const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
 
-      if (hasAnsweredQuestions && hasValidMatches) {
+      if (answersStore.length > 0 && hasValidMatches) {
         await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
       }
     } catch (error) {

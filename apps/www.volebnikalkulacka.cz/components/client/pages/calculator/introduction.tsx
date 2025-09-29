@@ -23,8 +23,7 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
 
   const handleCloseClick = async () => {
     try {
-      const hasAnsweredQuestions = answersStore.some((answer) => answer.answer !== undefined);
-      if (hasAnsweredQuestions) {
+      if (answersStore.length > 0) {
         await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
       }
     } catch (error) {

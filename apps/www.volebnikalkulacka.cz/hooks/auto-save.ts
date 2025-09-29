@@ -26,8 +26,7 @@ export function useAutoSave({ matches, enabled = true }: UseAutoSaveOptions = {}
       try {
         const answers = store?.getState().answers;
 
-        const hasAnsweredQuestions = answers?.some((answer) => answer.answer !== undefined);
-        if (!hasAnsweredQuestions) {
+        if (!answers || answers.length === 0) {
           return;
         }
 
