@@ -5,6 +5,7 @@ import { z } from "zod";
 import { answerSchema } from "../../../../../../../packages/schema/schemas/answer.schema";
 import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "../../../../../lib/errors";
 import { getSessionCookie } from "../../../../../lib/session";
+import { getEmbedNameFromRequest } from "../../../../../lib/session/get-embed-name-from-request";
 
 const matchSchema = z.object({
   id: z.string().uuid(),
@@ -20,11 +21,12 @@ const postRequestSchema = z.object({
     .optional(),
 });
 
-export async function GET(_request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
   try {
     const { "calculator-id": calculatorId } = await params;
 
-    const sessionCookie = await getSessionCookie();
+    const embedName = getEmbedNameFromRequest(request);
+    const sessionCookie = await getSessionCookie({ embedName });
     if (!sessionCookie) {
       return new UnauthorizedError("Session required").toResponse();
     }
@@ -83,7 +85,8 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
   try {
     const { "calculator-id": calculatorId } = await params;
 
-    const sessionCookie = await getSessionCookie();
+    const embedName = getEmbedNameFromRequest(request);
+    const sessionCookie = await getSessionCookie({ embedName });
     if (!sessionCookie) {
       return new UnauthorizedError("Session required").toResponse();
     }
