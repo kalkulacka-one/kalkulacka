@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { z } from "zod";
 
 import { HttpError, JsonParseError, UnauthorizedError, ValidationError } from "../../../lib/errors";
-import { type CreateCalculatorSessionParams, calculatorFullKey, createCalculatorSession, getSessionCookie, type SessionCookie, setSessionCookie } from "../../../lib/session";
+import { type CreateCalculatorSessionParams, calculatorFullKey, createCalculatorSession, getSessionCookie, getSessionFromRequest, type SessionCookie, setSessionCookie } from "../../../lib/session";
 import { getEmbedNameFromRequest } from "../../../lib/session/get-embed-name-from-request";
 
 const postRequestSchema = z.object({
@@ -20,8 +20,9 @@ export async function GET(request: NextRequest) {
   try {
     const embedName = getEmbedNameFromRequest(request);
     const cookieData = await getSessionCookie({ embedName });
+    const sessionId = cookieData?.id || getSessionFromRequest(request);
 
-    if (!cookieData?.id) {
+    if (!sessionId) {
       return new UnauthorizedError("Session required").toResponse();
     }
 
