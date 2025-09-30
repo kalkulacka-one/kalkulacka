@@ -12,7 +12,7 @@ export function ResultNavigationCard({ onNextClick }: ResultNavigationCard) {
   return (
     <NavigationCard>
       <Button color="neutral" variant="outline" onClick={onNextClick}>
-        Zobrazit porovnání
+        Porovnat
       </Button>
     </NavigationCard>
   );

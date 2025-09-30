@@ -8,15 +8,15 @@ describe("ResultNavigationCard", () => {
   it("renders navigation button", () => {
     const onNextClick = vi.fn();
     render(<ResultNavigationCard onNextClick={onNextClick} />);
-    expect(screen.getByText("Zobrazit porovnání")).toBeInTheDocument();
+    expect(screen.getByText("Porovnat")).toBeInTheDocument();
   });
 
-  it("calls onNextClick when 'Zobrazit porovnání' button is clicked", async () => {
+  it("calls onNextClick when 'Porovnat' button is clicked", async () => {
     const onNextClick = vi.fn();
     const user = userEvent.setup();
     render(<ResultNavigationCard onNextClick={onNextClick} />);
 
-    await user.click(screen.getByText("Zobrazit porovnání"));
+    await user.click(screen.getByText("Porovnat"));
     expect(onNextClick).toHaveBeenCalledTimes(1);
   });
 });
