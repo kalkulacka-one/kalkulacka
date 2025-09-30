@@ -9,7 +9,7 @@
     "www.volebnikalkulacka.cz#build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["NEXT_PUBLIC_*", "DATA_ENDPOINT", "X_HANDLE", "ANALYTICS_DOMAIN", "ANALYTICS_PROXY", "ENABLE_ANALYTICS", "SESSION_COOKIE_NAME", "DATABASE_URL"]
+      "env": ["NEXT_PUBLIC_*", "DATA_ENDPOINT", "X_HANDLE", "ANALYTICS_DOMAIN", "ANALYTICS_PROXY", "ENABLE_ANALYTICS", "DATABASE_URL"]
     },
     "dev": {
       "dependsOn": ["schema.kalkulacka.one#build:openapi", "@repo/database#build", "@repo/design-system#build"],
