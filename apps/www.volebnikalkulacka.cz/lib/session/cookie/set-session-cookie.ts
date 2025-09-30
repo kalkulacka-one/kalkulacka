@@ -19,7 +19,7 @@ export async function setSessionCookie({ sessionCookie, embedName }: { sessionCo
   cookieStore.set(cookieName, JSON.stringify(sessionCookie), {
     path: "/",
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: isEmbed || process.env.NODE_ENV === "production",
     sameSite: isEmbed ? "none" : "lax",
     maxAge: 90 * 24 * 60 * 60, // 90 days
   });
