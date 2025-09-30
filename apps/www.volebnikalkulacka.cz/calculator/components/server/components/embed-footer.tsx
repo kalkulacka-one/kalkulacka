@@ -8,11 +8,14 @@ export type EmbedFooter = {
 };
 
 export function EmbedFooter({ attribution = true }: EmbedFooter) {
-  if (!attribution) {
-    return null;
-  }
-
-  return <EmbedAttribution />;
+  return (
+    <div className="flex items-baseline gap-4">
+      {attribution && <EmbedAttribution />}
+      <a href="/soukromi" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-400 hover:text-slate-600 hover:underline">
+        Soukromí
+      </a>
+    </div>
+  );
 }
 
 EmbedFooter.heightClassNames = HEIGHT;
