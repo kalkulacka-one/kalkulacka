@@ -29,6 +29,7 @@ model CalculatorSession {
   calculatorGroup   String?
   calculatorVersion String?
   embedName         String?
+  publicId          String? @unique @db.Uuid
 
   createdAt DateTime  @default(now()) @db.Timestamptz(3)
   updatedAt DateTime  @updatedAt @db.Timestamptz(3)
@@ -42,6 +43,7 @@ model CalculatorSession {
   @@index([calculatorKey])
   @@index([calculatorKey, calculatorGroup])
   @@index([embedName])
+  @@index([publicId])
   @@index([createdAt])
   @@index([updatedAt])
   @@index([deletedAt])
