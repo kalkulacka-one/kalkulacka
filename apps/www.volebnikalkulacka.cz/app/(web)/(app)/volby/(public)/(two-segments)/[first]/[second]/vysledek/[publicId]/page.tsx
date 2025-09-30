@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
       images: [
         {
           url: ogImageUrl,
-          width: 1200,
-          height: 630,
+          width: 2400,
+          height: 1260,
         },
       ],
     },
