@@ -103,6 +103,14 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
                 LinkedIn
               </Button>
             </div>
+
+            <p className="text-slate-500 text-xs mt-4">
+              Sdílením výsledků souhlasíte s našimi{" "}
+              <a href="/soukromi" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline">
+                zásadami ochrany osobních údajů
+              </a>
+              .
+            </p>
           </>
         )}
       </div>
