@@ -15,6 +15,7 @@ export async function saveSessionData(calculatorId: string, answers: Answer[], m
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
     method: "POST",
     headers,
+    credentials: "include",
     body: JSON.stringify({ answers, matches, calculatorVersion }),
   });
 
@@ -49,6 +50,7 @@ export async function loadSessionData(calculatorId: string): Promise<{ answers: 
 
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
     headers,
+    credentials: "include",
   });
 
   if (!response.ok) {

@@ -11,6 +11,7 @@ export async function shareSession(calculatorId: string): Promise<{ publicId: st
   const response = await fetch(`/api/calculators/${calculatorId}/sessions:share`, {
     method: "POST",
     headers,
+    credentials: "include",
   });
 
   if (!response.ok) {
