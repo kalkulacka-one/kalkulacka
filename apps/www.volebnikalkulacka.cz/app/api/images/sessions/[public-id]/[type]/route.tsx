@@ -73,18 +73,40 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
-                backgroundColor: "#e2e8f0",
-                color: "#475569",
-                fontSize: 42,
-                fontWeight: 400,
-                padding: "18px 36px",
-                borderRadius: 18,
+                gap: 18,
+                flexWrap: "wrap",
                 marginBottom: 36,
-                alignSelf: "flex-start",
               }}
             >
-              Sněmovní volby 2025
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "#e2e8f0",
+                  color: "#475569",
+                  fontSize: 42,
+                  fontWeight: 400,
+                  padding: "18px 36px",
+                  borderRadius: 18,
+                }}
+              >
+                Sněmovní volby 2025
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "#e2e8f0",
+                  color: "#475569",
+                  fontSize: 42,
+                  fontWeight: 400,
+                  padding: "18px 36px",
+                  borderRadius: 18,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {calculatorData.calculator.shortTitle}
+              </div>
             </div>
             <div
               style={{
