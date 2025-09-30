@@ -18,7 +18,7 @@ export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   return useMemo(() => calculateMatches(answersData, allCandidatesData, candidatesAnswersData), [answersData, allCandidatesData, candidatesAnswersData]);
 }
 
-export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>, options?: { showOnlyNested?: boolean }): ResultViewModel {
+export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>, sessionId: string, options?: { showOnlyNested?: boolean }): ResultViewModel {
   const allCandidatesData = useCalculatorStore((state) => state.candidates);
   const personsData = useCalculatorStore((state) => state.persons);
   const organizationsData = useCalculatorStore((state) => state.organizations);
@@ -42,5 +42,5 @@ export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>,
 
   const candidatesAnswers = useMemo(() => candidatesAnswersViewModel(filteredCandidatesAnswersData), [filteredCandidatesAnswersData]);
 
-  return useMemo(() => resultViewModel(candidates, candidatesAnswers, algorithmMatches), [candidates, candidatesAnswers, algorithmMatches]);
+  return useMemo(() => resultViewModel(candidates, candidatesAnswers, algorithmMatches, sessionId), [candidates, candidatesAnswers, algorithmMatches, sessionId]);
 }

@@ -1,4 +1,5 @@
 import type { calculateMatches } from "../../lib/result-calculation/calculate-matches";
+import { sortingKeyGenerator } from "../../lib/utilities/sortingKeyGenerator";
 import type { CandidateViewModel } from "./candidate";
 import type { CandidateAnswerViewModel } from "./candidate-answer";
 import type { CandidatesAnswersViewModel } from "./candidate-answers";
@@ -10,17 +11,29 @@ export type CandidateMatchViewModel = {
   respondent: "candidate" | "expert" | "mixed";
   candidateAnswers: CandidateAnswerViewModel[];
   nestedMatches?: CandidateMatchViewModel[];
+  sortKey?: number;
 };
 
 export type ResultViewModel = {
   matches: CandidateMatchViewModel[];
 };
 
-function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
-  const withOrder = items.filter((item): item is T & { order: number } => item.order !== undefined);
-  const withoutOrder = items.filter((item) => item.order === undefined);
-  withOrder.sort((a, b) => a.order - b.order);
-  return [...withOrder, ...withoutOrder];
+function sortByOrder<T extends { match?: number; sortKey?: number; order?: number }>(items: T[]): T[] {
+  const sorted = items.sort((a, b) => {
+    if (a.match !== b.match) {
+      if (a.match === undefined) return 1;
+      if (b.match === undefined) return -1;
+      return b.match - a.match;
+    }
+    if (a.match === b.match && a.sortKey !== undefined && b.sortKey !== undefined) {
+      return b.sortKey - a.sortKey;
+    }
+    if (a.order !== undefined && b.order !== undefined) {
+      return a.order - b.order;
+    }
+    return 0;
+  });
+  return sorted;
 }
 
 function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<string, CandidateAnswerViewModel[]>): "candidate" | "expert" | "mixed" {
@@ -36,13 +49,19 @@ function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<strin
   return respondents.values().next().value ?? "candidate";
 }
 
-export function resultViewModel(candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswersViewModel, algorithmMatches: ReturnType<typeof calculateMatches>): ResultViewModel {
+export function resultViewModel(
+  candidates: CandidateViewModel[],
+  candidatesAnswers: CandidatesAnswersViewModel,
+  algorithmMatches: ReturnType<typeof calculateMatches>,
+  sessionId: string,
+): ResultViewModel {
   const candidatesAnswersMap = new Map(Object.entries(candidatesAnswers));
 
   const topLevelIds = candidates.map((candidate) => candidate.id);
   const topLevelAlgorithmMatches = algorithmMatches.filter((match) => topLevelIds.includes(match.id));
 
   const matches: CandidateMatchViewModel[] = candidates.map((candidate) => {
+    const sortKey = sortingKeyGenerator(`${sessionId}${candidate.id}`)();
     const matchIndex = topLevelAlgorithmMatches.findIndex((match) => match.id === candidate.id);
     const match = matchIndex >= 0 ? topLevelAlgorithmMatches[matchIndex]?.match : undefined;
 
@@ -54,6 +73,7 @@ export function resultViewModel(candidates: CandidateViewModel[], candidatesAnsw
       const nestedAlgorithmMatches = algorithmMatches.filter((match) => nestedIds.includes(match.id));
 
       nestedMatches = candidate.nestedCandidates.map((nestedCandidate) => {
+        const sortKey = sortingKeyGenerator(`${sessionId}${nestedCandidate.id}`)();
         const nestedMatchIndex = nestedAlgorithmMatches.findIndex((match) => match.id === nestedCandidate.id);
         const nestedMatch = nestedMatchIndex >= 0 ? nestedAlgorithmMatches[nestedMatchIndex]?.match : undefined;
 
@@ -66,6 +86,7 @@ export function resultViewModel(candidates: CandidateViewModel[], candidatesAnsw
           order: nestedOrder,
           respondent: getRespondentValue(nestedCandidate.id, candidatesAnswersMap),
           candidateAnswers: candidatesAnswersMap.get(nestedCandidate.id) || [],
+          sortKey,
         };
       });
 
@@ -79,8 +100,17 @@ export function resultViewModel(candidates: CandidateViewModel[], candidatesAnsw
       respondent: getRespondentValue(candidate.id, candidatesAnswersMap),
       candidateAnswers: candidatesAnswersMap.get(candidate.id) || [],
       nestedMatches,
+      sortKey: sortKey,
     };
   });
 
-  return { matches: sortByOrder(matches) };
+  const sortedMatches = sortByOrder(matches);
+
+  // Recalculate order numbers after final sorting
+  const matchesWithCorrectOrder = sortedMatches.map((match, index) => ({
+    ...match,
+    order: match.match !== undefined ? index + 1 : undefined,
+  }));
+
+  return { matches: matchesWithCorrectOrder };
 }

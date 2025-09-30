@@ -9,6 +9,7 @@ import { saveSessionData } from "../../../../lib/api/session-data";
 import { reportError } from "../../../../lib/monitoring";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 import { useEmbed } from "../../embed-context-provider";
+import { useSession } from "../../session-context-provider";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
@@ -16,10 +17,11 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const router = useRouter();
   const calculator = useCalculator();
   const embed = useEmbed();
+  const { sessionId } = useSession();
   const answersStore = useAnswersStore((state) => state.answers);
 
   const algorithmMatches = useCalculatedMatches();
-  const result = useResult(algorithmMatches, { showOnlyNested });
+  const result = useResult(algorithmMatches, sessionId || calculator.id, { showOnlyNested });
 
   useEffect(() => {
     const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);

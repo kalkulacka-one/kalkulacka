@@ -43,5 +43,5 @@ export default async function Page({ params }: { params: Promise<{ first: string
   const answers = session.data.answers as Answer[];
   const result = session.data.result as ReturnType<typeof calculateMatches>;
 
-  return <PublicResultPageWithData algorithmMatches={result} answers={answers} segments={{ first }} />;
+  return <PublicResultPageWithData algorithmMatches={result} answers={answers} segments={{ first }} publicId={publicId} />;
 }

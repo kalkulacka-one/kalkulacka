@@ -35,7 +35,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     const candidatesVm = calculatorData.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
     const candidatesAnswersVm = candidatesAnswersViewModel(calculatorData.candidatesAnswers);
 
-    const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches);
+    const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches, publicId);
 
     const topMatches = result.matches.slice(0, 5).map((match) => ({
       id: match.candidate.id,

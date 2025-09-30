@@ -8,11 +8,21 @@ import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useCalculator, useResult } from "../../../../calculator/view-models";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
-export function PublicResultPageWithData({ algorithmMatches, answers, segments }: { algorithmMatches: ReturnType<typeof calculateMatches>; answers: Answer[]; segments: RouteSegments }) {
+export function PublicResultPageWithData({
+  algorithmMatches,
+  answers,
+  segments,
+  publicId,
+}: {
+  algorithmMatches: ReturnType<typeof calculateMatches>;
+  answers: Answer[];
+  segments: RouteSegments;
+  publicId: string;
+}) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
   const router = useRouter();
   const calculator = useCalculator();
-  const result = useResult(algorithmMatches, { showOnlyNested });
+  const result = useResult(algorithmMatches, publicId, { showOnlyNested });
   const setAnswers = useAnswersStore((state) => state.setAnswers);
 
   useEffect(() => {
