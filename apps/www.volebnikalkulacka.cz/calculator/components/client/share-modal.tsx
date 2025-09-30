@@ -1,6 +1,6 @@
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { shareSession } from "../../../lib/api/sessions/share-session";
 import type { RouteSegments } from "../../../lib/routing/route-builders";
@@ -18,6 +18,8 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
   const [isLoading, setIsLoading] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasClipboardAccess, setHasClipboardAccess] = useState(true);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isOpen && !publicId) {
@@ -35,6 +37,19 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
         });
     }
   }, [isOpen, publicId, calculatorId]);
+
+  useEffect(() => {
+    if (isOpen && navigator.permissions) {
+      navigator.permissions
+        .query({ name: "clipboard-write" as PermissionName })
+        .then((result) => {
+          setHasClipboardAccess(result.state !== "denied");
+        })
+        .catch(() => {
+          setHasClipboardAccess(true);
+        });
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (publicId) {
@@ -58,8 +73,12 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
   const shareText = xHandle ? `Podívejte se, jak mi vyšla ${xHandle}:` : "Podívejte se, jak mi vyšla Volební kalkulačka:";
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(shareUrl);
-    setIsCopied(true);
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setIsCopied(true);
+    } catch {
+      inputRef.current?.select();
+    }
   };
 
   const twitterUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
@@ -117,13 +136,15 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
             <p className="text-slate-600 text-sm mb-4">Sdílejte svůj výsledek se svými blízkými:</p>
 
             <div className="flex gap-2 mb-6">
-              <input type="text" readOnly value={shareUrl} className="flex-1 min-w-0 px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-sm truncate" />
-              <div className="shrink-0">
-                <Button onClick={handleCopy} variant="outline" color="neutral" size="small">
-                  <Icon icon={isCopied ? mdiCheck : mdiContentCopy} size="medium" decorative />
-                  {isCopied ? "Zkopírováno" : "Kopírovat"}
-                </Button>
-              </div>
+              <input ref={inputRef} type="text" readOnly value={shareUrl} className="flex-1 min-w-0 px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-sm truncate" />
+              {hasClipboardAccess && (
+                <div className="shrink-0">
+                  <Button onClick={handleCopy} variant="outline" color="neutral" size="small">
+                    <Icon icon={isCopied ? mdiCheck : mdiContentCopy} size="medium" decorative />
+                    {isCopied ? "Zkopírováno" : "Kopírovat"}
+                  </Button>
+                </div>
+              )}
             </div>
 
             <div className="mb-2">
