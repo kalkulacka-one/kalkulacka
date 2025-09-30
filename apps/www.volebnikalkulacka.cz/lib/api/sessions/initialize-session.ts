@@ -1,4 +1,4 @@
-import type { CreateCalculatorSessionParams } from "../session";
+import type { CreateCalculatorSessionParams } from "../../session";
 
 export async function initializeSession(params: CreateCalculatorSessionParams): Promise<void> {
   const response = await fetch("/api/sessions", {
