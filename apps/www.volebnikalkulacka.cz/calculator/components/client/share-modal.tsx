@@ -78,7 +78,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
             <p className="text-slate-600 text-sm mb-4">Sdílejte svůj výsledek se svými blízkými:</p>
 
             <div className="flex gap-2 mb-6">
-              <input type="text" readOnly value={shareUrl} className="flex-1 px-4 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-sm" />
+              <input type="text" readOnly value={shareUrl} className="flex-1 px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-sm max-w-xs truncate" />
               <Button onClick={handleCopy} variant="outline" color="neutral" size="small">
                 <Icon icon={isCopied ? mdiCheck : mdiContentCopy} size="medium" decorative />
                 {isCopied ? "Zkopírováno" : "Kopírovat"}
