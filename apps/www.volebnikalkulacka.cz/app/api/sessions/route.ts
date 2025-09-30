@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       await handleNewSession(fullKey, parsed);
     }
 
-    return new Response(null, { status: 204 });
+    return Response.json(result, { status: 200 });
   } catch (error) {
     if (error instanceof HttpError) {
       return error.toResponse();
@@ -73,15 +73,16 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams) {
+async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams): Promise<{ sessionId: string }> {
   if (!cookieData.calculators.includes(fullKey)) {
     cookieData.calculators.push(fullKey);
     await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
     await createCalculatorSession({ ...params, sessionId: cookieData.id });
   }
+  return { sessionId: cookieData.id };
 }
 
-async function handleNewSession(fullKey: string, params: CreateCalculatorSessionParams) {
+async function handleNewSession(fullKey: string, params: CreateCalculatorSessionParams): Promise<{ sessionId: string }> {
   const session = await createCalculatorSession(params);
   const cookieData = {
     id: session.sessionId,
@@ -89,4 +90,5 @@ async function handleNewSession(fullKey: string, params: CreateCalculatorSession
     createdAt: session.createdAt.toISOString(),
   };
   await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
+  return { sessionId: session.sessionId };
 }
