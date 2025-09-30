@@ -16,6 +16,10 @@ const postRequestSchema = z.object({
   embedName: z.string().optional(),
 });
 
+type SessionResponse = {
+  sessionId: string;
+};
+
 export async function GET(request: NextRequest) {
   try {
     const embedName = getEmbedNameFromRequest(request);
@@ -58,13 +62,14 @@ export async function POST(request: NextRequest) {
     const cookieCreatedAt = existingCookieData?.createdAt ? new Date(existingCookieData.createdAt) : null;
     const isCookieStale = existingCookieData && (!cookieCreatedAt || cookieCreatedAt < databaseInitializedAt);
 
+    let sessionResponse: SessionResponse;
     if (existingCookieData && !isCookieStale) {
-      await handleExistingSession(existingCookieData, fullKey, parsed);
+      sessionResponse = await handleExistingSession(existingCookieData, fullKey, parsed);
     } else {
-      await handleNewSession(fullKey, parsed);
+      sessionResponse = await handleNewSession(fullKey, parsed);
     }
 
-    return Response.json(result, { status: 200 });
+    return Response.json(sessionResponse, { status: 200 });
   } catch (error) {
     if (error instanceof HttpError) {
       return error.toResponse();
@@ -74,7 +79,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams): Promise<{ sessionId: string }> {
+async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams): Promise<SessionResponse> {
   if (!cookieData.calculators.includes(fullKey)) {
     cookieData.calculators.push(fullKey);
     await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
@@ -83,7 +88,7 @@ async function handleExistingSession(cookieData: SessionCookie, fullKey: string,
   return { sessionId: cookieData.id };
 }
 
-async function handleNewSession(fullKey: string, params: CreateCalculatorSessionParams): Promise<{ sessionId: string }> {
+async function handleNewSession(fullKey: string, params: CreateCalculatorSessionParams): Promise<SessionResponse> {
   const session = await createCalculatorSession(params);
   const cookieData = {
     id: session.sessionId,
