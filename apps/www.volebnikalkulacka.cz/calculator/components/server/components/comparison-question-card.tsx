@@ -17,7 +17,7 @@ export function ComparisonQuestionCard({ question, current, total }: ComparisonQ
           <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
           <span>{title}</span>
         </div>
-        <h3 className="font-display text-xl sm:text-2xl font-bold text-slate-700 leading-tight tracking-tighter break-words">{statement}</h3>
+        <h3 className="font-display text-lg sm:text-xl font-bold text-slate-700 leading-tight tracking-tighter break-words">{statement}</h3>
       </div>
     </Card>
   );
