@@ -11,29 +11,18 @@ import { buildCanonicalUrl, canonical } from "../../../../../../../../../../lib/
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }): Promise<Metadata> {
   const { first, second, publicId } = await params;
   const canonicalUrl = canonical.publicResult({ first, second }, publicId);
-  const baseMetadata = await generateCalculatorMetadata({ key: first, group: second, canonicalUrl });
-
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
 
-  return {
-    ...baseMetadata,
-    openGraph: {
-      ...baseMetadata.openGraph,
-      images: [
-        {
-          url: ogImageUrl,
-          width: 2400,
-          height: 1260,
-        },
-      ],
+  return await generateCalculatorMetadata({
+    key: first,
+    group: second,
+    canonicalUrl,
+    ogImage: {
+      url: ogImageUrl,
+      width: 2400,
+      height: 1260,
     },
-    twitter: {
-      ...baseMetadata.twitter,
-      images: {
-        url: ogImageUrl,
-      },
-    },
-  };
+  });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }) {
