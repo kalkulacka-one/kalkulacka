@@ -1,8 +1,9 @@
 import type { NextRequest } from "next/server";
 import { z } from "zod";
 
-import { HttpError, JsonParseError, ValidationError } from "../../../lib/errors";
+import { HttpError, JsonParseError, UnauthorizedError, ValidationError } from "../../../lib/errors";
 import { type CreateCalculatorSessionParams, calculatorFullKey, createCalculatorSession, getSessionCookie, type SessionCookie, setSessionCookie } from "../../../lib/session";
+import { getEmbedNameFromRequest } from "../../../lib/session/get-embed-name-from-request";
 
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
@@ -14,6 +15,25 @@ const postRequestSchema = z.object({
     .optional(),
   embedName: z.string().optional(),
 });
+
+export async function GET(request: NextRequest) {
+  try {
+    const embedName = getEmbedNameFromRequest(request);
+    const cookieData = await getSessionCookie({ embedName });
+
+    if (!cookieData?.id) {
+      return new UnauthorizedError("Session required").toResponse();
+    }
+
+    return new Response(null, { status: 204 });
+  } catch (error) {
+    if (error instanceof HttpError) {
+      return error.toResponse();
+    }
+
+    throw error;
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
