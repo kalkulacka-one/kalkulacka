@@ -43,6 +43,9 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
       },
     });
 
+    const ogImageUrl = new URL(`/api/images/sessions/${publicId}/opengraph`, _request.url);
+    void fetch(ogImageUrl.toString()).catch(() => {});
+
     return Response.json({
       publicId,
     });
