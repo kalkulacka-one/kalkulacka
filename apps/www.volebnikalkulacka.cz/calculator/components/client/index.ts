@@ -6,3 +6,4 @@ export * from "./app-header-with-scroll";
 export * from "./calculator-store-provider";
 export * from "./donate-card";
 export * from "./match-card";
+export * from "./share-modal";

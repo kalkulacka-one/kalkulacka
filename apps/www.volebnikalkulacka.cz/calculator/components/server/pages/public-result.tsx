@@ -1,18 +1,16 @@
-import React from "react";
-
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
-import { Layout } from "../components";
+import { AppHeader, MatchCard, WithCondenseOnScroll } from "../../client";
+import { Layout, PublicResultNavigationCard } from "../components";
 
 export type PublicResultPageProps = {
   result: ResultViewModel;
   calculator: CalculatorViewModel;
   showOnlyNested: boolean;
   onFilterChange: (showOnlyNested: boolean) => void;
-  donateCardPosition: number | false;
+  onStartCalculator: () => void;
 };
 
-export function PublicResultPage({ result, calculator, showOnlyNested, onFilterChange, donateCardPosition }: PublicResultPageProps) {
+export function PublicResultPage({ result, calculator, showOnlyNested, onFilterChange, onStartCalculator }: PublicResultPageProps) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -49,15 +47,15 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
           </div>
         )}
         <div className="grid gap-4">
-          {donateCardPosition === 0 && <DonateCard />}
-          {result.matches.map((match, index) => (
-            <React.Fragment key={match.candidate.id}>
-              <MatchCard {...match} />
-              {donateCardPosition !== false && donateCardPosition > 0 && index === donateCardPosition - 1 && <DonateCard />}
-            </React.Fragment>
+          {result.matches.map((match) => (
+            <MatchCard key={match.candidate.id} {...match} />
           ))}
         </div>
       </Layout.Content>
+      <Layout.BottomSpacer className={PublicResultNavigationCard.heightClassNames} />
+      <Layout.BottomNavigation>
+        <PublicResultNavigationCard onStartClick={onStartCalculator} />
+      </Layout.BottomNavigation>
     </Layout>
   );
 }
