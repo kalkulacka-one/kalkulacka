@@ -19,4 +19,5 @@ export const canonical = {
   review: (segments: RouteSegments): string => buildCanonicalUrl(routes.review(segments)),
   result: (segments: RouteSegments): string => buildCanonicalUrl(routes.result(segments)),
   publicResult: (segments: RouteSegments, publicId: string): string => buildCanonicalUrl(routes.publicResult(segments, publicId)),
+  comparison: (segments: RouteSegments): string => buildCanonicalUrl(routes.comparison(segments)),
 } as const;

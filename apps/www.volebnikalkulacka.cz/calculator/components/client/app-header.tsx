@@ -49,7 +49,7 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
   return (
-    <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
+    <header className="@container fixed top-0 left-0 right-0 z-50 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
           <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />

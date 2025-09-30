@@ -6,11 +6,13 @@ import { type EmbedContextType, HideOnEmbed } from "../../../../components/clien
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout } from "../components";
+import { ResultNavigationCard } from "../components/result-navigation-card";
 
 export type ResultPage = {
   embedContext: EmbedContextType;
   result: ResultViewModel;
   calculator: CalculatorViewModel;
+  onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
   showOnlyNested: boolean;
@@ -18,9 +20,10 @@ export type ResultPage = {
   donateCardPosition: number | false;
 };
 
-export function ResultPage({ embedContext, result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
     <Layout>
@@ -76,11 +79,12 @@ export function ResultPage({ embedContext, result, calculator, onPreviousClick, 
           ))}
         </div>
       </Layout.Content>
-      {embedContext.isEmbed && (
-        <Layout.Footer>
-          <EmbedFooter attribution={embedContext.config?.attribution} />
-        </Layout.Footer>
-      )}
+      <Layout.BottomSpacer className={ResultNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+        <ResultNavigationCard onNextClick={onNextClick} />
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
     </Layout>
   );
 }

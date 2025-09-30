@@ -31,6 +31,10 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     router.push(routes.review(segments));
   };
 
+  const handleNextClick = () => {
+    router.push(routes.comparison(segments));
+  };
+
   const handleCloseClick = async () => {
     try {
       const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
@@ -51,6 +55,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
       embedContext={embed}
       calculator={calculator}
       result={result}
+      onNextClick={handleNextClick}
       onPreviousClick={handlePreviousClick}
       onCloseClick={handleCloseClick}
       showOnlyNested={showOnlyNested}
