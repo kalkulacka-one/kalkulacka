@@ -68,13 +68,13 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
   const handleDownloadInstagramStory = async () => {
     if (!instagramStoryUrl) return;
 
-    if (navigator.share && navigator.canShare) {
+    if (navigator.share) {
       try {
         const response = await fetch(instagramStoryUrl);
         const blob = await response.blob();
         const file = new File([blob], "Moje Volební kalkulačka.png", { type: "image/png" });
 
-        if (navigator.canShare({ files: [file] })) {
+        if (navigator.canShare?.({ files: [file] })) {
           await navigator.share({
             files: [file],
             title: "Volební kalkulačka",
@@ -117,11 +117,13 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
             <p className="text-slate-600 text-sm mb-4">Sdílejte svůj výsledek se svými blízkými:</p>
 
             <div className="flex gap-2 mb-6">
-              <input type="text" readOnly value={shareUrl} className="flex-1 px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-sm max-w-xs truncate" />
-              <Button onClick={handleCopy} variant="outline" color="neutral" size="small">
-                <Icon icon={isCopied ? mdiCheck : mdiContentCopy} size="medium" decorative />
-                {isCopied ? "Zkopírováno" : "Kopírovat"}
-              </Button>
+              <input type="text" readOnly value={shareUrl} className="flex-1 min-w-0 px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 text-sm truncate" />
+              <div className="shrink-0">
+                <Button onClick={handleCopy} variant="outline" color="neutral" size="small">
+                  <Icon icon={isCopied ? mdiCheck : mdiContentCopy} size="medium" decorative />
+                  {isCopied ? "Zkopírováno" : "Kopírovat"}
+                </Button>
+              </div>
             </div>
 
             <div className="mb-2">
