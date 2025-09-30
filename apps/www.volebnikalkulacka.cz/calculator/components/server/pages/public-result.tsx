@@ -1,15 +1,16 @@
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { Layout } from "../components";
 import { AppHeader, MatchCard, WithCondenseOnScroll } from "../../client";
+import { Layout, PublicResultNavigationCard } from "../components";
 
 export type PublicResultPageProps = {
   result: ResultViewModel;
   calculator: CalculatorViewModel;
   showOnlyNested: boolean;
   onFilterChange: (showOnlyNested: boolean) => void;
+  onStartCalculator: () => void;
 };
 
-export function PublicResultPage({ result, calculator, showOnlyNested, onFilterChange }: PublicResultPageProps) {
+export function PublicResultPage({ result, calculator, showOnlyNested, onFilterChange, onStartCalculator }: PublicResultPageProps) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -51,6 +52,10 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
           ))}
         </div>
       </Layout.Content>
+      <Layout.BottomSpacer className={PublicResultNavigationCard.heightClassNames} />
+      <Layout.BottomNavigation>
+        <PublicResultNavigationCard onStartClick={onStartCalculator} />
+      </Layout.BottomNavigation>
     </Layout>
   );
 }
