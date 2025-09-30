@@ -12,7 +12,7 @@ export function getEmbedNameFromRequest(request: NextRequest): string | undefine
     const pathParts = url.pathname.split("/").filter(Boolean);
 
     const embedIndex = pathParts.indexOf("embed");
-    if (embedIndex >= 0 && pathParts[embedIndex + 1]) {
+    if (embedIndex !== -1 && pathParts[embedIndex + 1]) {
       return pathParts[embedIndex + 1];
     }
   } catch {
