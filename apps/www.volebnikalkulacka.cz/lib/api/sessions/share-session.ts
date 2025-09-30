@@ -1,6 +1,16 @@
+import { getRuntimeSessionId } from "../../session/runtime-session";
+
 export async function shareSession(calculatorId: string): Promise<{ publicId: string }> {
+  const headers: HeadersInit = {};
+
+  const sessionId = getRuntimeSessionId();
+  if (sessionId) {
+    headers.Authorization = `Bearer ${sessionId}`;
+  }
+
   const response = await fetch(`/api/calculators/${calculatorId}/sessions:share`, {
     method: "POST",
+    headers,
   });
 
   if (!response.ok) {

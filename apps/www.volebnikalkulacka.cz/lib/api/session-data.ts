@@ -1,12 +1,20 @@
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 import type { calculateMatches } from "../../calculator/lib/result-calculation/calculate-matches";
+import { getRuntimeSessionId } from "../session/runtime-session";
 
 export async function saveSessionData(calculatorId: string, answers: Answer[], matches?: ReturnType<typeof calculateMatches>, calculatorVersion?: string): Promise<void> {
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
+  };
+
+  const sessionId = getRuntimeSessionId();
+  if (sessionId) {
+    headers.Authorization = `Bearer ${sessionId}`;
+  }
+
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
     body: JSON.stringify({ answers, matches, calculatorVersion }),
   });
 
@@ -32,7 +40,16 @@ export async function saveSessionDataWithBeacon(calculatorId: string, answers: A
 }
 
 export async function loadSessionData(calculatorId: string): Promise<{ answers: Answer[]; matches?: ReturnType<typeof calculateMatches>; calculatorVersion?: string }> {
-  const response = await fetch(`/api/calculators/${calculatorId}/session-data`);
+  const headers: HeadersInit = {};
+
+  const sessionId = getRuntimeSessionId();
+  if (sessionId) {
+    headers.Authorization = `Bearer ${sessionId}`;
+  }
+
+  const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
+    headers,
+  });
 
   if (!response.ok) {
     throw response;
