@@ -1,6 +1,7 @@
 import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
 import type { Candidate } from "../../../../../packages/schema/schemas/candidate.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
+import type { Image } from "../../../../../packages/schema/schemas/images.schema";
 import type { Question } from "../../../../../packages/schema/schemas/question.schema";
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";
@@ -8,6 +9,7 @@ import type { PersonViewModel } from "./person";
 export type CandidateViewModel = Omit<Candidate, "nestedCandidates"> & {
   displayName: string | undefined;
   organization?: string | undefined;
+  avatarImage?: Image;
   nestedCandidates?: CandidateViewModel[];
 };
 
@@ -42,15 +44,26 @@ function getCandidateOrganization(candidate: Candidate, personsMap: Map<string, 
   return undefined;
 }
 
+function getCandidateAvatarImage(candidate: Candidate, personsMap: Map<string, PersonViewModel>): Image | undefined {
+  const firstReference = candidate.references?.[0];
+  if (firstReference?.type === "person") {
+    const person = personsMap.get(firstReference.id);
+    return person?.avatarImage;
+  }
+  return undefined;
+}
+
 export function candidateViewModel(candidate: Candidate, personsMap: Map<string, PersonViewModel>, organizationsMap: Map<string, OrganizationViewModel>): CandidateViewModel {
   const displayName = getCandidateDisplayName(candidate, personsMap, organizationsMap);
   const organization = getCandidateOrganization(candidate, personsMap, organizationsMap);
+  const avatarImage = getCandidateAvatarImage(candidate, personsMap);
   const nestedCandidates = candidate.nestedCandidates?.map((nested) => candidateViewModel(nested, personsMap, organizationsMap));
 
   return {
     ...candidate,
     displayName,
     organization,
+    avatarImage,
     nestedCandidates,
   };
 }
