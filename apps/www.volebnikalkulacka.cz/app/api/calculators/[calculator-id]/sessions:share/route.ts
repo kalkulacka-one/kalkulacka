@@ -3,12 +3,14 @@ import type { NextRequest } from "next/server";
 
 import { HttpError, NotFoundError, UnauthorizedError } from "../../../../../lib/errors";
 import { getSessionCookie } from "../../../../../lib/session";
+import { getEmbedNameFromRequest } from "../../../../../lib/session/get-embed-name-from-request";
 
-export async function POST(_request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
   try {
     const { "calculator-id": calculatorId } = await params;
 
-    const sessionCookie = await getSessionCookie();
+    const embedName = getEmbedNameFromRequest(request);
+    const sessionCookie = await getSessionCookie({ embedName });
     if (!sessionCookie) {
       return new UnauthorizedError("Session required").toResponse();
     }
@@ -43,7 +45,7 @@ export async function POST(_request: NextRequest, { params }: { params: Promise<
       },
     });
 
-    const ogImageUrl = new URL(`/api/images/sessions/${publicId}/opengraph`, _request.url);
+    const ogImageUrl = new URL(`/api/images/sessions/${publicId}/opengraph`, request.url);
     void fetch(ogImageUrl.toString()).catch(() => {});
 
     return Response.json({
