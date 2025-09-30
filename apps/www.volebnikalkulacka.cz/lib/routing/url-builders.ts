@@ -1,6 +1,6 @@
 import { createBaseSegment, type RouteSegments, routes } from "./route-builders";
 
-function buildCanonicalUrl(path: string): string {
+export function buildCanonicalUrl(path: string): string {
   const NEXT_PUBLIC_CANONICAL_URL = process.env.NEXT_PUBLIC_CANONICAL_URL;
   if (!NEXT_PUBLIC_CANONICAL_URL) {
     throw new Error("Missing `NEXT_PUBLIC_CANONICAL_URL` environment variable");
