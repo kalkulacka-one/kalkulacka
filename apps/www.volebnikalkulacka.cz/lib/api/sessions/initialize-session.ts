@@ -1,4 +1,5 @@
 import type { CreateCalculatorSessionParams } from "../../session";
+import { verifySession } from "./verify-session";
 
 export async function initializeSession(params: CreateCalculatorSessionParams): Promise<void> {
   const response = await fetch("/api/sessions", {
@@ -11,5 +12,11 @@ export async function initializeSession(params: CreateCalculatorSessionParams): 
 
   if (!response.ok) {
     throw response;
+  }
+
+  const verifySessionResponse = await verifySession();
+
+  if (verifySessionResponse) {
+    return;
   }
 }
