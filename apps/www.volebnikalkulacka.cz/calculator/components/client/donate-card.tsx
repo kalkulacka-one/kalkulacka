@@ -40,29 +40,16 @@ export function DonateCard() {
             <button
               type="button"
               onClick={() => {
-                setSelectedAmount(selectedAmount === "100" ? null : "100");
-              }}
-              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "100" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
-              }`}
-            >
-              👍 100 Kč
-            </button>
-          </div>
-          <div className="@sm:col-start-3">
-            <button
-              type="button"
-              onClick={() => {
                 setSelectedAmount(selectedAmount === "200" ? null : "200");
               }}
               className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
                 selectedAmount === "200" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
               }`}
             >
-              ❤️ 200 Kč
+              👍 200 Kč
             </button>
           </div>
-          <div className="@sm:col-start-4">
+          <div className="@sm:col-start-3">
             <button
               type="button"
               onClick={() => {
@@ -72,7 +59,20 @@ export function DonateCard() {
                 selectedAmount === "500" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
               }`}
             >
-              🤩 500 Kč
+              ❤️ 500 Kč
+            </button>
+          </div>
+          <div className="@sm:col-start-4">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedAmount(selectedAmount === "1000" ? null : "1000");
+              }}
+              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
+                selectedAmount === "1000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
+              }`}
+            >
+              🤩 1 000 Kč
             </button>
           </div>
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
