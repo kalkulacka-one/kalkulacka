@@ -21,6 +21,7 @@ export async function setSessionCookie({ sessionCookie, embedName }: { sessionCo
     httpOnly: true,
     secure: isEmbed || process.env.NODE_ENV === "production",
     sameSite: isEmbed ? "none" : "lax",
+    partitioned: isEmbed ? true : undefined,
     maxAge: 90 * 24 * 60 * 60, // 90 days
   });
 }
