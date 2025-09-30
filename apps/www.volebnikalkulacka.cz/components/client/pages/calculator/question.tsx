@@ -1,4 +1,5 @@
 import { notFound, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
@@ -16,8 +17,15 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const question = questions[current - 1];
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
+  const setAnswer = useAnswersStore((state) => state.setAnswer);
 
   useAutoSave();
+
+  useEffect(() => {
+    if (question) {
+      setAnswer({ questionId: question.id });
+    }
+  }, [question, setAnswer]);
 
   if (!question) {
     notFound();
