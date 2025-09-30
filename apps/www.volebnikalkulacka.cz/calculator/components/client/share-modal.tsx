@@ -1,4 +1,4 @@
-import { mdiCheck, mdiClose, mdiContentCopy, mdiFacebook, mdiLinkedin } from "@mdi/js";
+import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 import { useEffect, useState } from "react";
 
@@ -54,9 +54,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
     setIsCopied(true);
   };
 
-  const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   const twitterUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
-  const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose} role="dialog" aria-modal="true">
@@ -87,22 +85,12 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
               </Button>
             </div>
 
-            <div className="flex gap-2">
-              <Button onClick={() => window.open(facebookUrl, "_blank", "noopener,noreferrer")} variant="outline" color="neutral" size="small">
-                <Icon icon={mdiFacebook} size="medium" decorative />
-                Facebook
-              </Button>
-              <Button onClick={() => window.open(twitterUrl, "_blank", "noopener,noreferrer")} variant="outline" color="neutral" size="small">
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
-                </svg>
-                X
-              </Button>
-              <Button onClick={() => window.open(linkedinUrl, "_blank", "noopener,noreferrer")} variant="outline" color="neutral" size="small">
-                <Icon icon={mdiLinkedin} size="medium" decorative />
-                LinkedIn
-              </Button>
-            </div>
+            <Button onClick={() => window.open(twitterUrl, "_blank", "noopener,noreferrer")} variant="outline" color="neutral" size="small">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+              </svg>
+              Sdílet na X
+            </Button>
 
             <p className="text-slate-500 text-xs mt-4">
               Sdílením výsledků souhlasíte s našimi{" "}
