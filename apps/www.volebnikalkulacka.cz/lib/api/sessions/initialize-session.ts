@@ -1,4 +1,5 @@
 import type { CreateCalculatorSessionParams } from "../../session";
+import { setRuntimeSessionId } from "../../session/runtime-session";
 import { verifySession } from "./verify-session";
 
 export async function initializeSession(params: CreateCalculatorSessionParams): Promise<void> {
@@ -19,5 +20,10 @@ export async function initializeSession(params: CreateCalculatorSessionParams): 
 
   if (verifySessionResponse) {
     return;
+  }
+
+  const data = await response.json();
+  if (data.sessionId) {
+    setRuntimeSessionId(data.sessionId);
   }
 }
