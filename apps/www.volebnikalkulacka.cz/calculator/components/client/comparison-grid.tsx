@@ -254,7 +254,7 @@ export function ComparisonGrid({ questions, answers, result, condensed = false }
   return (
     <div className="mt-28 flex flex-col gap-8 relative">
       <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
-      <div className="mr-[100dvw] flex flex-col gap-8">
+      <div className="mr-[calc(100dvw-100px-2rem-100px-1rem)] flex flex-col gap-8">
         <ComparisonGridDashlinesOverlay result={result} filterNestedCandidates={filterNestedCandidates} />
         <ComparisonHeader condensed={condensed} result={result} filterNestedCandidates={filterNestedCandidates} />
         {questions.questions.map((question, index) => (
