@@ -16,7 +16,5 @@ export function PublicResultPageWithData({ algorithmMatches, answers }: { algori
     setAnswers(answers);
   }, [answers, setAnswers]);
 
-  const donateCardPosition = 5;
-
-  return <AppPublicResultPage calculator={calculator} result={result} showOnlyNested={showOnlyNested} onFilterChange={setShowOnlyNested} donateCardPosition={donateCardPosition} />;
+  return <AppPublicResultPage calculator={calculator} result={result} showOnlyNested={showOnlyNested} onFilterChange={setShowOnlyNested} />;
 }
