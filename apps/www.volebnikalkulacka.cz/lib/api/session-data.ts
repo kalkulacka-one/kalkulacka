@@ -15,6 +15,22 @@ export async function saveSessionData(calculatorId: string, answers: Answer[], m
   }
 }
 
+export async function saveSessionDataWithBeacon(calculatorId: string, answers: Answer[], matches?: ReturnType<typeof calculateMatches>, calculatorVersion?: string): Promise<void> {
+  const url = `/api/calculators/${calculatorId}/session-data`;
+  const data = JSON.stringify({ answers, matches, calculatorVersion });
+
+  if (navigator.sendBeacon) {
+    const blob = new Blob([data], { type: "application/json" });
+    const success = navigator.sendBeacon(url, blob);
+
+    if (success) {
+      return;
+    }
+  }
+
+  return await saveSessionData(calculatorId, answers, matches, calculatorVersion);
+}
+
 export async function loadSessionData(calculatorId: string): Promise<{ answers: Answer[]; matches?: ReturnType<typeof calculateMatches>; calculatorVersion?: string }> {
   const response = await fetch(`/api/calculators/${calculatorId}/session-data`);
 

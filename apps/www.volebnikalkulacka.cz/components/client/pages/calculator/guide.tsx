@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { GuidePage as AppGuidePage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useCalculator } from "../../../../calculator/view-models";
+import { useAutoSave } from "../../../../hooks/auto-save";
 import { saveSessionData } from "../../../../lib/api/session-data";
 import { reportError } from "../../../../lib/monitoring";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
@@ -14,6 +15,8 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
 
+  useAutoSave();
+
   const handleNavigationNextClick = () => {
     router.push(routes.question(segments, 1));
   };
@@ -24,7 +27,9 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
 
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
+      if (answersStore.length > 0) {
+        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
+      }
     } catch (error) {
       reportError(error);
     }

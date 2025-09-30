@@ -1,8 +1,10 @@
 import { notFound, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useAnswer, useCalculator, useQuestions } from "../../../../calculator/view-models";
+import { useAutoSave } from "../../../../hooks/auto-save";
 import { saveSessionData } from "../../../../lib/api/session-data";
 import { reportError } from "../../../../lib/monitoring";
 import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
@@ -15,6 +17,15 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const question = questions[current - 1];
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
+  const setAnswer = useAnswersStore((state) => state.setAnswer);
+
+  useAutoSave();
+
+  useEffect(() => {
+    if (question) {
+      setAnswer({ questionId: question.id });
+    }
+  }, [question, setAnswer]);
 
   if (!question) {
     notFound();
@@ -38,7 +49,9 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
+      if (answersStore.length > 0) {
+        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
+      }
     } catch (error) {
       reportError(error);
     }

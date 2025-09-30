@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { ResultPage as AppResultPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
@@ -19,17 +19,29 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const algorithmMatches = useCalculatedMatches();
   const result = useResult(algorithmMatches, { showOnlyNested });
 
-  const handleNextClick = () => {
-    router.push(routes.comparison(segments));
-  };
+  useEffect(() => {
+    const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
+
+    if (answersStore.length > 0 && hasValidMatches) {
+      saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version).catch(reportError);
+    }
+  }, [algorithmMatches, answersStore, calculator.id, calculator.version]);
 
   const handlePreviousClick = () => {
     router.push(routes.review(segments));
   };
 
+  const handleNextClick = () => {
+    router.push(routes.comparison(segments));
+  };
+
   const handleCloseClick = async () => {
     try {
-      await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
+      const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
+
+      if (answersStore.length > 0 && hasValidMatches) {
+        await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
+      }
     } catch (error) {
       reportError(error);
     }
