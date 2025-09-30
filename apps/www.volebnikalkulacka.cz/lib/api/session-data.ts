@@ -7,6 +7,7 @@ export async function saveSessionData(calculatorId: string, answers: Answer[], m
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({ answers, matches, calculatorVersion }),
   });
 
@@ -32,7 +33,9 @@ export async function saveSessionDataWithBeacon(calculatorId: string, answers: A
 }
 
 export async function loadSessionData(calculatorId: string): Promise<{ answers: Answer[]; matches?: ReturnType<typeof calculateMatches>; calculatorVersion?: string }> {
-  const response = await fetch(`/api/calculators/${calculatorId}/session-data`);
+  const response = await fetch(`/api/calculators/${calculatorId}/session-data`, {
+    credentials: "include",
+  });
 
   if (!response.ok) {
     throw response;
