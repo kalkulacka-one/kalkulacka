@@ -13,13 +13,14 @@ export type SessionCookie = z.infer<typeof sessionCookieSchema>;
 
 export async function setSessionCookie({ sessionCookie, embedName }: { sessionCookie: SessionCookie; embedName?: string | null }): Promise<void> {
   const cookieName = buildCookieName({ embedName });
+  const isEmbed = !!embedName;
 
   const cookieStore = await cookies();
   cookieStore.set(cookieName, JSON.stringify(sessionCookie), {
     path: "/",
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: isEmbed ? true : process.env.NODE_ENV === "production",
+    sameSite: isEmbed ? "none" : "lax",
     maxAge: 90 * 24 * 60 * 60, // 90 days
   });
 }
