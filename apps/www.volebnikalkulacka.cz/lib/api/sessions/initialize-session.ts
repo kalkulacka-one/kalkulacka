@@ -7,6 +7,7 @@ export async function initializeSession(params: CreateCalculatorSessionParams): 
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(params),
   });
 
