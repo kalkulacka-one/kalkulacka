@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { answerSchema } from "../../../../../../../packages/schema/schemas/answer.schema";
 import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "../../../../../lib/errors";
-import { getSessionCookie } from "../../../../../lib/session";
+import { getSessionCookie, getSessionFromRequest } from "../../../../../lib/session";
 import { getEmbedNameFromRequest } from "../../../../../lib/session/get-embed-name-from-request";
 
 const matchSchema = z.object({
@@ -26,15 +26,16 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const { "calculator-id": calculatorId } = await params;
 
     const embedName = getEmbedNameFromRequest(request);
-    const sessionCookie = await getSessionCookie({ embedName });
-    if (!sessionCookie) {
+    const cookieData = await getSessionCookie({ embedName });
+    const sessionId = cookieData?.id || getSessionFromRequest(request);
+    if (!sessionId) {
       return new UnauthorizedError("Session required").toResponse();
     }
 
     const session = await prisma.calculatorSession.findUnique({
       where: {
         sessionId_calculatorId: {
-          sessionId: sessionCookie.id,
+          sessionId,
           calculatorId,
         },
       },
@@ -86,8 +87,9 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const { "calculator-id": calculatorId } = await params;
 
     const embedName = getEmbedNameFromRequest(request);
-    const sessionCookie = await getSessionCookie({ embedName });
-    if (!sessionCookie) {
+    const cookieData = await getSessionCookie({ embedName });
+    const sessionId = cookieData?.id || getSessionFromRequest(request);
+    if (!sessionId) {
       return new UnauthorizedError("Session required").toResponse();
     }
 
@@ -107,7 +109,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const session = await prisma.calculatorSession.findUnique({
       where: {
         sessionId_calculatorId: {
-          sessionId: sessionCookie.id,
+          sessionId,
           calculatorId,
         },
       },

@@ -1,8 +1,9 @@
 import type { NextRequest } from "next/server";
 import { z } from "zod";
 
-import { HttpError, JsonParseError, ValidationError } from "../../../lib/errors";
-import { type CreateCalculatorSessionParams, calculatorFullKey, createCalculatorSession, getSessionCookie, type SessionCookie, setSessionCookie } from "../../../lib/session";
+import { HttpError, JsonParseError, UnauthorizedError, ValidationError } from "../../../lib/errors";
+import { type CreateCalculatorSessionParams, calculatorFullKey, createCalculatorSession, getSessionCookie, getSessionFromRequest, type SessionCookie, setSessionCookie } from "../../../lib/session";
+import { getEmbedNameFromRequest } from "../../../lib/session/get-embed-name-from-request";
 
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
@@ -14,6 +15,26 @@ const postRequestSchema = z.object({
     .optional(),
   embedName: z.string().optional(),
 });
+
+export async function GET(request: NextRequest) {
+  try {
+    const embedName = getEmbedNameFromRequest(request);
+    const cookieData = await getSessionCookie({ embedName });
+    const sessionId = cookieData?.id || getSessionFromRequest(request);
+
+    if (!sessionId) {
+      return new UnauthorizedError("Session required").toResponse();
+    }
+
+    return new Response(null, { status: 204 });
+  } catch (error) {
+    if (error instanceof HttpError) {
+      return error.toResponse();
+    }
+
+    throw error;
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,7 +64,7 @@ export async function POST(request: NextRequest) {
       await handleNewSession(fullKey, parsed);
     }
 
-    return new Response(null, { status: 204 });
+    return Response.json(result, { status: 200 });
   } catch (error) {
     if (error instanceof HttpError) {
       return error.toResponse();
@@ -53,15 +74,16 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams) {
+async function handleExistingSession(cookieData: SessionCookie, fullKey: string, params: CreateCalculatorSessionParams): Promise<{ sessionId: string }> {
   if (!cookieData.calculators.includes(fullKey)) {
     cookieData.calculators.push(fullKey);
     await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
     await createCalculatorSession({ ...params, sessionId: cookieData.id });
   }
+  return { sessionId: cookieData.id };
 }
 
-async function handleNewSession(fullKey: string, params: CreateCalculatorSessionParams) {
+async function handleNewSession(fullKey: string, params: CreateCalculatorSessionParams): Promise<{ sessionId: string }> {
   const session = await createCalculatorSession(params);
   const cookieData = {
     id: session.sessionId,
@@ -69,4 +91,5 @@ async function handleNewSession(fullKey: string, params: CreateCalculatorSession
     createdAt: session.createdAt.toISOString(),
   };
   await setSessionCookie({ sessionCookie: cookieData, embedName: params.embedName });
+  return { sessionId: session.sessionId };
 }
