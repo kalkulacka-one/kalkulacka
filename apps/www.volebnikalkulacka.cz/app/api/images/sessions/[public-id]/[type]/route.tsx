@@ -4,8 +4,10 @@ import type { NextRequest } from "next/server";
 import { loadCalculatorData } from "../../../../../../calculator/lib";
 import type { calculateMatches } from "../../../../../../calculator/lib/result-calculation/calculate-matches";
 import { candidateViewModel } from "../../../../../../calculator/view-models/server/candidate";
+import { candidatesAnswersViewModel } from "../../../../../../calculator/view-models/server/candidate-answers";
 import { organizationViewModel } from "../../../../../../calculator/view-models/server/organization";
 import { personViewModel } from "../../../../../../calculator/view-models/server/person";
+import { resultViewModel } from "../../../../../../calculator/view-models/server/result";
 import { HttpError, NotFoundError } from "../../../../../../lib/errors";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "public-id": string; type: string }> }) {
@@ -20,7 +22,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     }
 
     const sessionData = await sessionResponse.json();
-    const resultData = sessionData.matches as ReturnType<typeof calculateMatches>;
+    const algorithmMatches = sessionData.matches as ReturnType<typeof calculateMatches>;
 
     const calculatorData = await loadCalculatorData({
       key: sessionData.calculatorGroup || sessionData.calculatorKey,
@@ -30,16 +32,16 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     const personsMap = new Map((calculatorData.persons || []).map((person) => [person.id, personViewModel(person)]));
     const organizationsMap = new Map((calculatorData.organizations || []).map((organization) => [organization.id, organizationViewModel(organization)]));
 
-    const topMatches = resultData.slice(0, 5).map((match) => {
-      const candidate = calculatorData.candidates.find((c) => c.id === match.id);
-      const candidateVm = candidate ? candidateViewModel(candidate, personsMap, organizationsMap) : undefined;
+    const candidatesVm = calculatorData.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
+    const candidatesAnswersVm = candidatesAnswersViewModel(calculatorData.candidatesAnswers);
 
-      return {
-        id: match.id,
-        match: Math.round(match.match ?? 0),
-        name: candidateVm?.displayName || "Unknown",
-      };
-    });
+    const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches);
+
+    const topMatches = result.matches.slice(0, 5).map((match) => ({
+      id: match.candidate.id,
+      match: Math.round(match.match ?? 0),
+      name: match.candidate.displayName || "Unknown",
+    }));
 
     const geistRegular = await fetch("https://fonts.gstatic.com/s/geist/v4/gyBhhwUxId8gMGYQMKR3pzfaWI_RnOM4nQ.ttf").then((res) => res.arrayBuffer());
     const geistSemiBold = await fetch("https://fonts.gstatic.com/s/geist/v4/gyBhhwUxId8gMGYQMKR3pzfaWI_RQuQ4nQ.ttf").then((res) => res.arrayBuffer());
