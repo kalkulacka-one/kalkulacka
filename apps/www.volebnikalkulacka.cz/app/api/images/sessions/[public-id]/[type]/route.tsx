@@ -29,11 +29,11 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
       group: sessionData.calculatorGroup ? sessionData.calculatorKey : undefined,
     });
 
-    const personsMap = new Map((calculatorData.persons || []).map((person) => [person.id, personViewModel(person)]));
-    const organizationsMap = new Map((calculatorData.organizations || []).map((organization) => [organization.id, organizationViewModel(organization)]));
+    const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person)]));
+    const organizationsMap = new Map((calculatorData.data.organizations || []).map((organization) => [organization.id, organizationViewModel(organization)]));
 
-    const candidatesVm = calculatorData.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
-    const candidatesAnswersVm = candidatesAnswersViewModel(calculatorData.candidatesAnswers);
+    const candidatesVm = calculatorData.data.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
+    const candidatesAnswersVm = candidatesAnswersViewModel(calculatorData.data.candidatesAnswers);
 
     const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches);
 
@@ -102,7 +102,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                   whiteSpace: "nowrap",
                 }}
               >
-                {calculatorData.calculator.shortTitle}
+                {calculatorData.data.calculator.shortTitle}
               </div>
             </div>
 
@@ -351,7 +351,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                   whiteSpace: "nowrap",
                 }}
               >
-                {calculatorData.calculator.shortTitle}
+                {calculatorData.data.calculator.shortTitle}
               </div>
             </div>
             <div

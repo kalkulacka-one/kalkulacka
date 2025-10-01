@@ -12,17 +12,17 @@ import { type ResultViewModel, resultViewModel } from "../server/result";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);
-  const allCandidatesData = useCalculatorStore((state) => state.candidates);
-  const candidatesAnswersData = useCalculatorStore((state) => state.candidatesAnswers);
+  const allCandidatesData = useCalculatorStore((state) => state.data.candidates);
+  const candidatesAnswersData = useCalculatorStore((state) => state.data.candidatesAnswers);
 
   return useMemo(() => calculateMatches(answersData, allCandidatesData, candidatesAnswersData), [answersData, allCandidatesData, candidatesAnswersData]);
 }
 
 export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>, options?: { showOnlyNested?: boolean }): ResultViewModel {
-  const allCandidatesData = useCalculatorStore((state) => state.candidates);
-  const personsData = useCalculatorStore((state) => state.persons);
-  const organizationsData = useCalculatorStore((state) => state.organizations);
-  const candidatesAnswersData = useCalculatorStore((state) => state.candidatesAnswers);
+  const allCandidatesData = useCalculatorStore((state) => state.data.candidates);
+  const personsData = useCalculatorStore((state) => state.data.persons);
+  const organizationsData = useCalculatorStore((state) => state.data.organizations);
+  const candidatesAnswersData = useCalculatorStore((state) => state.data.candidatesAnswers);
 
   const personsMap = useMemo(() => new Map(personsData?.map((person) => [person.id, personViewModel(person)]) ?? []), [personsData]);
   const organizationsMap = useMemo(() => new Map(organizationsData?.map((organization) => [organization.id, organizationViewModel(organization)]) ?? []), [organizationsData]);

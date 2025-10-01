@@ -17,7 +17,7 @@ type CalculatorWithKey = {
 
 export function SessionInitializer() {
   const initialized = useRef(false);
-  const calculator = useCalculatorStore((state) => state.calculator);
+  const calculator = useCalculatorStore((state) => state.data.calculator);
   const embed = useEmbed();
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { reportError } from "../../lib/monitoring";
 
 export function SessionDataLoader() {
   const loadedCalculatorId = useRef<string | null>(null);
-  const calculator = useCalculatorStore((state) => state.calculator);
+  const calculator = useCalculatorStore((state) => state.data.calculator);
   const answers = useAnswersStore((state) => state.answers);
   const setAnswers = useAnswersStore((state) => state.setAnswers);
 

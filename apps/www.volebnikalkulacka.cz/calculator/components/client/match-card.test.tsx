@@ -24,17 +24,20 @@ describe("MatchCard", () => {
 
   it("renders candidate information", () => {
     const mockCalculatorData = {
-      calculator: {
-        id: "test",
-        key: "test",
-        createdAt: "2024-01-01",
-        shortTitle: "Test Calculator",
+      data: {
+        calculator: {
+          id: "test",
+          key: "test",
+          createdAt: "2024-01-01",
+          shortTitle: "Test Calculator",
+        },
+        candidates: [],
+        organizations: [],
+        persons: [],
+        questions: [],
+        candidatesAnswers: {},
       },
-      candidates: [],
-      organizations: [],
-      persons: [],
-      questions: [],
-      candidatesAnswers: {},
+      baseUrl: "https://data.example.com",
     };
 
     const calculatorStore = createCalculatorStore(mockCalculatorData);
