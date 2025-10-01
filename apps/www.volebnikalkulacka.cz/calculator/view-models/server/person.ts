@@ -4,19 +4,22 @@ import { findImageByType, resolveImageUrls } from "../../lib/data-fetching/image
 
 export type PersonViewModel = Person & {
   displayName: string;
-  avatarUrls?: ImageUrls;
+  avatar?: {
+    type: "avatar" | "portrait";
+    urls: ImageUrls;
+  };
 };
 
 function getPersonDisplayName(person: Person): string {
   return person.name || `${person.givenName || ""} ${person.familyName || ""}`.trim();
 }
 
-function getPersonAvatarUrls(person: Person, baseUrl: string): ImageUrls | undefined {
+function getPersonAvatar(person: Person, baseUrl: string): { type: "avatar" | "portrait"; urls: ImageUrls } | undefined {
   const avatar = findImageByType(person.images, "avatar");
-  if (avatar) return resolveImageUrls(avatar.urls, baseUrl);
+  if (avatar) return { type: "avatar", urls: resolveImageUrls(avatar.urls, baseUrl) };
 
   const portrait = findImageByType(person.images, "portrait");
-  if (portrait) return resolveImageUrls(portrait.urls, baseUrl);
+  if (portrait) return { type: "portrait", urls: resolveImageUrls(portrait.urls, baseUrl) };
 
   return undefined;
 }
@@ -25,6 +28,6 @@ export function personViewModel(person: Person, baseUrl: string): PersonViewMode
   return {
     ...person,
     displayName: getPersonDisplayName(person),
-    avatarUrls: getPersonAvatarUrls(person, baseUrl),
+    avatar: getPersonAvatar(person, baseUrl),
   };
 }
