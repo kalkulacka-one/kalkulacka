@@ -33,6 +33,9 @@ export function Footer() {
             </div>
             <div />
             <div>
+              <Link href="https://status.volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
+                Status
+              </Link>
               <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
                 Soukromí
               </Link>
