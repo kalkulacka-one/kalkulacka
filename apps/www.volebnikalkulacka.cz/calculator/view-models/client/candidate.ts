@@ -10,14 +10,15 @@ export function useCandidate(id: string): CandidateViewModel | undefined {
   const candidates = useCalculatorStore((state) => state.data.candidates);
   const persons = useCalculatorStore((state) => state.data.persons);
   const organizations = useCalculatorStore((state) => state.data.organizations);
+  const baseUrl = useCalculatorStore((state) => state.baseUrl);
 
-  const personsMap = useMemo(() => new Map(persons?.map((p) => [p.id, personViewModel(p)]) ?? []), [persons]);
-  const organizationsMap = useMemo(() => new Map(organizations?.map((o) => [o.id, organizationViewModel(o)]) ?? []), [organizations]);
+  const personsMap = useMemo(() => new Map(persons?.map((p) => [p.id, personViewModel(p, baseUrl)]) ?? []), [persons, baseUrl]);
+  const organizationsMap = useMemo(() => new Map(organizations?.map((o) => [o.id, organizationViewModel(o, baseUrl)]) ?? []), [organizations, baseUrl]);
 
   return useMemo(() => {
     const candidate = candidates.find((candidate) => candidate.id === id);
-    return candidate ? candidateViewModel(candidate, personsMap, organizationsMap) : undefined;
-  }, [candidates, personsMap, organizationsMap, id]);
+    return candidate ? candidateViewModel(candidate, personsMap, organizationsMap, baseUrl) : undefined;
+  }, [candidates, personsMap, organizationsMap, id, baseUrl]);
 }
 
 export function useCandidateAnswerComparison(candidateId: string): AnswerComparison[] {
