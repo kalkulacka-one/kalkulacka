@@ -29,10 +29,10 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
       group: sessionData.calculatorGroup ? sessionData.calculatorKey : undefined,
     });
 
-    const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person)]));
-    const organizationsMap = new Map((calculatorData.data.organizations || []).map((organization) => [organization.id, organizationViewModel(organization)]));
+    const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person, calculatorData.baseUrl)]));
+    const organizationsMap = new Map((calculatorData.data.organizations || []).map((organization) => [organization.id, organizationViewModel(organization, calculatorData.baseUrl)]));
 
-    const candidatesVm = calculatorData.data.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap));
+    const candidatesVm = calculatorData.data.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap, calculatorData.baseUrl));
     const candidatesAnswersVm = candidatesAnswersViewModel(calculatorData.data.candidatesAnswers);
 
     const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches);
