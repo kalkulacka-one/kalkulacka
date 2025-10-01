@@ -32,7 +32,7 @@ export function Footer() {
               </div>
             </div>
             <div />
-            <div className="grid grid-flow-col gap-2">
+            <div className="grid grid-flow-row gap-2">
               <Link href="https://status.volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
                 Status
               </Link>
