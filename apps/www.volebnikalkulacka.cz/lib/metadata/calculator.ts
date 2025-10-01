@@ -25,8 +25,8 @@ export async function generateCalculatorMetadata({
     alt?: string;
   };
 }): Promise<Metadata> {
-  const { calculator: calculatorData } = await loadCalculatorData({ key, group });
-  const calculator = calculatorViewModel(calculatorData);
+  const calculatorData = await loadCalculatorData({ key, group });
+  const calculator = calculatorViewModel(calculatorData.data.calculator);
 
   const ogImage = calculator.images?.find((img) => img.type === "opengraph");
   const twitterImage = calculator.images?.find((img) => img.type === "twitter");

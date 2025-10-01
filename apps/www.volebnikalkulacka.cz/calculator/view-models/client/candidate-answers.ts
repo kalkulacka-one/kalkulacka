@@ -5,7 +5,7 @@ import type { CandidateAnswer } from "../server/candidate-answer";
 import { type CandidatesAnswersViewModel, candidatesAnswersViewModel } from "../server/candidate-answers";
 
 export function useCandidatesAnswers(): CandidatesAnswersViewModel {
-  const candidatesAnswers = useCalculatorStore((state) => state.candidatesAnswers);
+  const candidatesAnswers = useCalculatorStore((state) => state.data.candidatesAnswers);
   return useMemo(() => {
     const filteredCandidatesAnswers: Record<string, CandidateAnswer[]> = {};
 

@@ -1,13 +1,20 @@
 import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
 import type { Candidate } from "../../../../../packages/schema/schemas/candidate.schema";
 import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
+import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
 import type { Question } from "../../../../../packages/schema/schemas/question.schema";
+import { findImageByType, resolveImageUrls } from "../../lib/data-fetching/image-url-builder";
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";
 
 export type CandidateViewModel = Omit<Candidate, "nestedCandidates"> & {
   displayName: string | undefined;
   organization?: string | undefined;
+  avatar?: {
+    type: "avatar" | "logo" | "portrait";
+    urls: ImageUrls;
+  };
+  type?: "person" | "organization";
   nestedCandidates?: CandidateViewModel[];
 };
 
@@ -42,15 +49,58 @@ function getCandidateOrganization(candidate: Candidate, personsMap: Map<string, 
   return undefined;
 }
 
-export function candidateViewModel(candidate: Candidate, personsMap: Map<string, PersonViewModel>, organizationsMap: Map<string, OrganizationViewModel>): CandidateViewModel {
+function getCandidateAvatar(
+  candidate: Candidate,
+  personsMap: Map<string, PersonViewModel>,
+  organizationsMap: Map<string, OrganizationViewModel>,
+  baseUrl: string,
+): { type: "avatar" | "logo" | "portrait"; urls: ImageUrls } | undefined {
+  const avatar = findImageByType(candidate.images, "avatar");
+  if (avatar) return { type: "avatar", urls: resolveImageUrls(avatar.urls, baseUrl) };
+
+  const logo = findImageByType(candidate.images, "logo");
+  if (logo) return { type: "logo", urls: resolveImageUrls(logo.urls, baseUrl) };
+
+  const portrait = findImageByType(candidate.images, "portrait");
+  if (portrait) return { type: "portrait", urls: resolveImageUrls(portrait.urls, baseUrl) };
+
+  const firstReference = candidate.references?.[0];
+  if (!firstReference) return undefined;
+
+  if (firstReference.type === "person") {
+    return personsMap.get(firstReference.id)?.avatar;
+  }
+
+  if (firstReference.type === "organization") {
+    return organizationsMap.get(firstReference.id)?.avatar;
+  }
+
+  return undefined;
+}
+
+function getCandidateType(candidate: Candidate): "person" | "organization" | undefined {
+  const firstReference = candidate.references?.[0];
+  if (!firstReference) return undefined;
+
+  if (firstReference.type === "person") return "person";
+  if (firstReference.type === "organization") return "organization";
+
+  return undefined;
+}
+
+export function candidateViewModel(candidate: Candidate, personsMap: Map<string, PersonViewModel>, organizationsMap: Map<string, OrganizationViewModel>, baseUrl: string): CandidateViewModel {
   const displayName = getCandidateDisplayName(candidate, personsMap, organizationsMap);
   const organization = getCandidateOrganization(candidate, personsMap, organizationsMap);
-  const nestedCandidates = candidate.nestedCandidates?.map((nested) => candidateViewModel(nested, personsMap, organizationsMap));
+  const avatar = getCandidateAvatar(candidate, personsMap, organizationsMap, baseUrl);
+  const type = getCandidateType(candidate);
+  const nestedCandidates = candidate.nestedCandidates?.map((nested) => candidateViewModel(nested, personsMap, organizationsMap, baseUrl));
 
   return {
     ...candidate,
     displayName,
     organization,
+    avatar,
+    type,
     nestedCandidates,
   };
 }
