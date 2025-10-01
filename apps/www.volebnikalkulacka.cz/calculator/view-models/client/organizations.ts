@@ -6,5 +6,6 @@ import { organizationsViewModel } from "../server/organizations";
 
 export function useOrganizations(): OrganizationViewModel[] {
   const organizations = useCalculatorStore((state) => state.data.organizations);
-  return useMemo(() => organizationsViewModel(organizations), [organizations]);
+  const baseUrl = useCalculatorStore((state) => state.baseUrl);
+  return useMemo(() => organizationsViewModel(organizations, baseUrl), [organizations, baseUrl]);
 }

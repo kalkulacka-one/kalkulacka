@@ -5,9 +5,10 @@ import { type OrganizationViewModel, organizationViewModel } from "../server/org
 
 export function useOrganization(id: string): OrganizationViewModel | undefined {
   const organizations = useCalculatorStore((state) => state.data.organizations);
+  const baseUrl = useCalculatorStore((state) => state.baseUrl);
 
   return useMemo(() => {
     const organization = organizations?.find((organization) => organization.id === id);
-    return organization ? organizationViewModel(organization) : undefined;
-  }, [organizations, id]);
+    return organization ? organizationViewModel(organization, baseUrl) : undefined;
+  }, [organizations, id, baseUrl]);
 }
