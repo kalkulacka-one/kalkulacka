@@ -1,5 +1,5 @@
 import { ExpandableCard } from "@repo/design-system/client";
-import { ProgressBar } from "@repo/design-system/server";
+import { Avatar, ProgressBar } from "@repo/design-system/server";
 import React, { useState } from "react";
 
 import type { CandidateMatchViewModel } from "../../view-models";
@@ -19,11 +19,23 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
           {match !== undefined && <ProgressBar value={match} color={order === 1 ? "primary" : "neutral"} corner="sharp" />}
           <ExpandableCard.Content className="grid gap-3 p-4 sm:gap-4 sm:p-6">
             <div className="grid grid-cols-[auto_1fr_auto] gap-4 items-center">
-              <div
-                className={`flex h-14 w-14 items-center justify-center rounded-2xl ${order === 1 ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "bg-slate-700 text-slate-50"}`}
-              >
-                <span className="text-2xl font-bold">{order !== undefined ? order : "—"}</span>
-              </div>
+              {candidate.avatar ? (
+                <Avatar
+                  image={candidate.avatar.urls}
+                  backgroundColor="#e2e8f0"
+                  shape={candidate.type === "person" ? "circle" : "square"}
+                  alignment={candidate.avatar.type === "portrait" ? "top" : "center"}
+                  fit={candidate.avatar.type === "logo" ? "contain" : "cover"}
+                  padding={candidate.avatar.type === "logo" || candidate.avatar.type === "avatar"}
+                  size="large"
+                />
+              ) : (
+                <div
+                  className={`flex h-20 w-20 items-center justify-center rounded-2xl ${order === 1 ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "bg-white text-slate-700"}`}
+                >
+                  <span className="text-3xl font-bold">{order !== undefined ? order : "—"}</span>
+                </div>
+              )}
               <div className="flex flex-col gap-1 items-start justify-center">
                 <h3 className="text-lg font-bold leading-tight text-slate-700">{candidate.displayName}</h3>
                 {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
