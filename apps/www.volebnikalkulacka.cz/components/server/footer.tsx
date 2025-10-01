@@ -36,6 +36,9 @@ export function Footer() {
               <Link href="https://status.volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
                 Status
               </Link>
+              <Link href="https://plausible.io/volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
+                Statistiky
+              </Link>
               <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
                 Soukromí
               </Link>
