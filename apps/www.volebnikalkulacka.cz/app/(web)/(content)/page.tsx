@@ -170,6 +170,24 @@ export default function Page() {
               </div>
             </div>
           </Card>
+          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
+            <div className="p-6 h-full flex flex-col">
+              <div className="flex items-center gap-2 text-xs text-slate-600">
+                <span className="rounded-full px-2.5 py-1 font-semibold bg-purple-100 text-purple-700">Volební kompas</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">25 otázek</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
+              </div>
+              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo sdílí vaše hodnoty?</h4>
+              <p className="mt-1 text-slate-500">Hodnotové otázky místo konkrétních návrhů. Zjistěte, které strany zastávají podobné hodnoty jako vy.</p>
+              <div className="grid mt-auto pt-4 md:pt-6">
+                <Link href="/volby/snemovni-2025/kompas" className="grid">
+                  <Button variant="outline" color="neutral">
+                    Spustit kalkulačku
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Archive section */}
