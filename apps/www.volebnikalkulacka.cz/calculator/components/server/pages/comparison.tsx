@@ -25,7 +25,7 @@ export function ComparisonPage({ embedContext, calculator, result, answers, ques
       <WithCondenseOnScroll>
         {(condensed) => (
           <>
-            <Layout.Header>
+            <Layout.Header fixed>
               <AppHeader condensed={condensed} calculator={calculator}>
                 <AppHeader.Right>
                   <HideOnEmbed>

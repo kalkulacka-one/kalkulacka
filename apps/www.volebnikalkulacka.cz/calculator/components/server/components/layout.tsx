@@ -12,10 +12,11 @@ LayoutComponent.displayName = "Layout";
 
 export type LayoutHeader = {
   children: React.ReactNode;
+  fixed?: boolean;
 };
 
-function Header({ children }: LayoutHeader) {
-  return <div className="sticky top-0 z-50">{children}</div>;
+function Header({ children, fixed }: LayoutHeader) {
+  return <div className={` ${fixed ? "fixed left-0 w-full" : "sticky"} top-0 z-50`}>{children}</div>;
 }
 
 Header.displayName = "Layout.Header";
@@ -23,6 +24,7 @@ Header.displayName = "Layout.Header";
 export type LayoutContent = {
   children: React.ReactNode;
   fullWidth?: boolean;
+  fixed?: boolean;
 };
 
 function Content({ children, fullWidth }: LayoutContent) {
