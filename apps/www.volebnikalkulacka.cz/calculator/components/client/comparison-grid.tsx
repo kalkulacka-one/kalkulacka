@@ -181,8 +181,25 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
 
   return (
     <div key={question.id} className="flex flex-col gap-4 relative z-30">
-      <div className="px-4 flex justify-start sticky left-4 max-w-[calc(100dvw_-_5dvw)]">
-        <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} />
+      <div className="flex gap-8 relative w-max">
+        <div className="h-auto absolute left-0 top-0" />
+        <div className="px-4 flex justify-start sticky left-4 w-[95dvw]">
+          <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} />
+        </div>
+        <div className="w-[100px] flex-shrink-0" />
+        {result.matches.map((match, matchIndex) => {
+          const nestedMatches = filterNestedCandidates(match.nestedMatches);
+          if (!nestedMatches) {
+            return <div key={`spacer-${match.candidate.id}-${matchIndex}`} className="w-[100px] flex-shrink-0" />;
+          }
+          return (
+            <div key={`spacer-group-${match.candidate.id}-${matchIndex}`} className="flex gap-8">
+              {nestedMatches.map((nested) => (
+                <div key={`spacer-${nested.candidate.id}-${matchIndex}`} className="w-[100px] flex-shrink-0" />
+              ))}
+            </div>
+          );
+        })}
       </div>
 
       {/* answers grid */}
@@ -254,7 +271,7 @@ export function ComparisonGrid({ questions, answers, result, condensed = false }
   return (
     <div className="mt-28 flex flex-col gap-8 relative">
       <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
-      <div className="mr-[calc(100dvw-100px-2rem-100px-1rem)] flex flex-col gap-8">
+      <div className="mr-[calc(5dvw)] flex flex-col gap-8">
         <ComparisonGridDashlinesOverlay result={result} filterNestedCandidates={filterNestedCandidates} />
         <ComparisonHeader condensed={condensed} result={result} filterNestedCandidates={filterNestedCandidates} />
         {questions.questions.map((question, index) => (
