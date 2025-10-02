@@ -183,7 +183,7 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
     <div key={question.id} className="flex flex-col gap-4 relative z-30">
       <div className="flex gap-8 relative w-max">
         <div className="h-auto absolute left-0 top-0" />
-        <div className="px-4 flex justify-start sticky left-4 w-fit">
+        <div className="px-4 flex justify-start sticky left-4 w-[95dvw]">
           <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} />
         </div>
         <div className="w-[100px] flex-shrink-0" />
@@ -271,7 +271,7 @@ export function ComparisonGrid({ questions, answers, result, condensed = false }
   return (
     <div className="mt-28 flex flex-col gap-8 relative">
       <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
-      <div className="mr-[calc(100dvw-5*100px-5*2rem-5*100px-5*1rem)] flex flex-col gap-8">
+      <div className="mr-[calc(5dvw)] flex flex-col gap-8">
         <ComparisonGridDashlinesOverlay result={result} filterNestedCandidates={filterNestedCandidates} />
         <ComparisonHeader condensed={condensed} result={result} filterNestedCandidates={filterNestedCandidates} />
         {questions.questions.map((question, index) => (
