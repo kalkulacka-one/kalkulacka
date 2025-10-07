@@ -2,28 +2,33 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 import React from "react";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
-import { AppHeader, DonateCard, WithCondenseOnScroll } from "../../client";
-import { LayoutContent, LayoutHeader, MatchCard } from "../components";
+import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
+import { EmbedFooter, Layout } from "../components";
+import { ResultNavigationCard } from "../components/result-navigation-card";
 
 export type ResultPage = {
+  embedContext: EmbedContextType;
   result: ResultViewModel;
   calculator: CalculatorViewModel;
+  onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
+  onShareClick: () => void;
   showOnlyNested: boolean;
   onFilterChange: (showOnlyNested: boolean) => void;
   donateCardPosition: number | false;
 };
 
-export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, onShareClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
-    <>
-      <LayoutHeader>
+    <Layout>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -41,27 +46,23 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-3xl">Výsledek</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Výsledek</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         {shouldShowToggleComputed && (
           <div className="mb-6">
             <div className="flex items-center gap-3 text-sm">
-              <div className="relative bg-gray-100 rounded-full p-1 flex">
-                <label
-                  className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
-                >
+              <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
+                <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
                   Kandidátní listiny
                 </label>
-                <label
-                  className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "text-[var(--ko-color-neutral)] hover:text-[var(--ko-color-neutral-hover)]"}`}
-                >
+                <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
                   Lidé
                 </label>
@@ -78,7 +79,13 @@ export function ResultPage({ result, calculator, onPreviousClick, onCloseClick, 
             </React.Fragment>
           ))}
         </div>
-      </LayoutContent>
-    </>
+      </Layout.Content>
+      <Layout.BottomSpacer className={ResultNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+        <ResultNavigationCard onNextClick={onNextClick} onShareClick={onShareClick} />
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+    </Layout>
   );
 }

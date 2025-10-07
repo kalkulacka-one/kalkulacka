@@ -1,3 +1,6 @@
+import { mdiArrowRight, mdiStar } from "@mdi/js";
+import { Icon } from "@repo/design-system/client";
+import { logoCheck, logoCross } from "@repo/design-system/icons";
 import { Card } from "@repo/design-system/server";
 import Markdown from "react-markdown";
 
@@ -10,50 +13,42 @@ export type Guide = {
 export function Guide({ calculator }: Guide) {
   return (
     <div className="grid gap-4">
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ✅
-          </span>
+          <Icon icon={logoCheck} decorative={true} className="text-[var(--ko-palette-primary)]" />
           <div>
-            <p className="font-semibold">Shoda</p>
-            <p className="text-sm">Při shodě s Vaší odpovědí strana nebo politik dostane bod</p>
+            <p className="font-semibold text-slate-700">Shoda</p>
+            <p className="text-sm text-slate-500">Při shodě s Vaší odpovědí strana nebo politik dostane bod</p>
           </div>
         </div>
       </Card>
 
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ❌
-          </span>
+          <Icon icon={logoCross} decorative={true} className="text-[var(--ko-palette-secondary)]" />
           <div>
-            <p className="font-semibold">Neshoda</p>
-            <p className="text-sm">Při neshodě bod naopak ztratí</p>
+            <p className="font-semibold text-slate-700">Neshoda</p>
+            <p className="text-sm text-slate-500">Při neshodě bod naopak ztratí</p>
           </div>
         </div>
       </Card>
 
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ⏭️
-          </span>
+          <Icon icon={mdiArrowRight} decorative={true} />
           <div>
-            <p className="font-semibold">Přeskočit</p>
-            <p className="text-sm">Otázku můžete přeskočit a nebude se do výpočtu počítat</p>
+            <p className="font-semibold text-slate-700">Přeskočit</p>
+            <p className="text-sm text-slate-500">Otázku můžete přeskočit a nebude se do výpočtu počítat</p>
           </div>
         </div>
       </Card>
 
-      <Card shadow="hard">
+      <Card shadow="hard" className="border border-slate-200">
         <div className="flex items-start gap-3 px-6 py-4 max-w-prose">
-          <span className="text-2xl" aria-hidden="true">
-            ⭐
-          </span>
+          <Icon icon={mdiStar} decorative={true} />
           <div>
-            <p className="font-semibold">Důležité otázky</p>
-            <p className="text-sm">Pro vás důležité otázky označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
+            <p className="font-semibold text-slate-700">Důležité otázky</p>
+            <p className="text-sm text-slate-500">Pro vás důležité otázky označte hvězdičkou. Odpověď pak bude mít ve výpočtu shody dvojnásobnou váhu.</p>
           </div>
         </div>
       </Card>

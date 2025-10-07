@@ -1,11 +1,11 @@
 import { beforeEach, describe, expect, it, type Mock, vi } from "vitest";
 
+import { parseWithSchema } from "../utilities";
 import { fetchFile } from "./fetch-file";
 import { loadCalculatorData } from "./load-calculator-data";
-import { parseWithSchema } from "./parse-with-schema";
 
+vi.mock("../utilities");
 vi.mock("./fetch-file");
-vi.mock("./parse-with-schema");
 
 describe("loadCalculatorData", () => {
   const mockFetchFile = fetchFile as Mock;
@@ -74,12 +74,15 @@ describe("loadCalculatorData", () => {
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
     expect(result).toEqual({
-      calculator: data,
-      questions: data,
-      candidates: data,
-      candidatesAnswers: data,
-      persons: data,
-      organizations: data,
+      data: {
+        calculator: data,
+        questions: data,
+        candidates: data,
+        candidatesAnswers: data,
+        persons: data,
+        organizations: data,
+      },
+      baseUrl: `${DATA_ENDPOINT}/key`,
     });
   });
 
@@ -99,12 +102,15 @@ describe("loadCalculatorData", () => {
     expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
     expect(result).toEqual({
-      calculator: data,
-      questions: data,
-      candidates: data,
-      candidatesAnswers: data,
-      persons: data,
-      organizations: data,
+      data: {
+        calculator: data,
+        questions: data,
+        candidates: data,
+        candidatesAnswers: data,
+        persons: data,
+        organizations: data,
+      },
+      baseUrl: `${DATA_ENDPOINT}/key/group`,
     });
   });
 
@@ -140,12 +146,12 @@ describe("loadCalculatorData", () => {
 
     const result = await loadCalculatorData({ key: "key" });
 
-    expect(result.persons).toBeUndefined();
-    expect(result.organizations).toBeUndefined();
-    expect(result.calculator).toEqual(data);
-    expect(result.questions).toEqual(data);
-    expect(result.candidates).toEqual(data);
-    expect(result.candidatesAnswers).toEqual(data);
+    expect(result.data.persons).toBeUndefined();
+    expect(result.data.organizations).toBeUndefined();
+    expect(result.data.calculator).toEqual(data);
+    expect(result.data.questions).toEqual(data);
+    expect(result.data.candidates).toEqual(data);
+    expect(result.data.candidatesAnswers).toEqual(data);
   });
 
   it("should throw error when required files are missing", async () => {

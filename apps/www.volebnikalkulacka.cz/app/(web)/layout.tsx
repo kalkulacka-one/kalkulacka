@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 
 import "../globals.css";
 
 import { EmbedContextProvider, ThemeProvider } from "../../components/client";
+import { PlausibleScript } from "../../components/server";
+import { allowCrawling } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: {
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: {
-    index: true,
-    follow: true,
+    index: allowCrawling(),
+    follow: allowCrawling(),
   },
 };
 
@@ -58,9 +59,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="cs">
       <head>
-        <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
+        <PlausibleScript />
       </head>
-      <body className="min-h-dvh">
+      <body className="min-h-dvh bg-slate-50">
         <EmbedContextProvider isEmbed={false}>
           <ThemeProvider name="default">{children}</ThemeProvider>
         </EmbedContextProvider>

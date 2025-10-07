@@ -1,8 +1,11 @@
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { Button, Icon, ToggleButton } from "@repo/design-system/client";
+import { logoCheck, logoCross } from "@repo/design-system/icons";
 
 import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
+
+const HEIGHT = "h-[138px]";
 
 export type QuestionNavigationCard = {
   current: number;
@@ -13,15 +16,14 @@ export type QuestionNavigationCard = {
   onAgreeChange: (agree: boolean) => void;
   onDisagreeChange: (disagree: boolean) => void;
   onImportantChange: (isImportant: boolean) => void;
-  attribution?: boolean;
 };
 
-export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange, attribution }: QuestionNavigationCard) {
+export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
   const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
   const nextButtonLabel = answer.answer?.answer !== undefined ? "Další" : "Přeskočit";
 
   return (
-    <NavigationCard attribution={attribution}>
+    <NavigationCard>
       <div className="grid grid-flow-row gap-2 sm:gap-3">
         <div className="grid grid-cols-[1fr_1fr] @[350px]:grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
           <div className="justify-self-start">
@@ -52,9 +54,11 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+            <Icon icon={logoCheck} decorative={true} />
             Ano
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+            <Icon icon={logoCross} decorative={true} />
             Ne
           </ToggleButton>
         </div>
@@ -62,3 +66,5 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
     </NavigationCard>
   );
 }
+
+QuestionNavigationCard.heightClassNames = HEIGHT;

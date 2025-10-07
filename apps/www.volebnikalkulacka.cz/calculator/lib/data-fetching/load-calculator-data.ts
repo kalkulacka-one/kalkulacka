@@ -6,8 +6,7 @@ import { type CandidatesAnswers, candidatesAnswers } from "../../../../../packag
 import { type Organizations, organizationsSchema } from "../../../../../packages/schema/schemas/organizations.schema";
 import { type Persons, personsSchema } from "../../../../../packages/schema/schemas/persons.schema";
 import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
-import { fetchFile, parseWithSchema } from ".";
-import { buildDataUrl } from "./url-builders";
+import { buildDataUrl, fetchFile, parseWithSchema } from "..";
 
 const DATA_CONFIG = {
   calculator: {
@@ -41,12 +40,15 @@ const DATA_CONFIG = {
 } as const;
 
 export type CalculatorData = {
-  calculator: Calculator;
-  questions: Questions;
-  candidates: Candidates;
-  candidatesAnswers: CandidatesAnswers;
-  persons?: Persons;
-  organizations?: Organizations;
+  data: {
+    calculator: Calculator;
+    questions: Questions;
+    candidates: Candidates;
+    candidatesAnswers: CandidatesAnswers;
+    persons?: Persons;
+    organizations?: Organizations;
+  };
+  baseUrl: string;
 };
 
 export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
@@ -80,5 +82,8 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
     })
     .filter((entry): entry is [string, unknown] => entry !== undefined);
 
-  return Object.fromEntries(parsedData) as CalculatorData;
+  return {
+    data: Object.fromEntries(parsedData) as CalculatorData["data"],
+    baseUrl: buildDataUrl({ key, group }),
+  };
 }

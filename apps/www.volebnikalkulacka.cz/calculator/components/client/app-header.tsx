@@ -97,7 +97,7 @@ function AppHeaderMain({ children, title, calculator, logoMonochrome }: AppHeade
   return (
     <div className="grid grid-flow-col items-center gap-2">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
-      <div className="grid text-sm leading-none">
+      <div className="grid text-sm text-slate-700 leading-none">
         <h1 className="font-light">{title}</h1>
         <div>
           <h2 className="font-semibold inline">{calculator?.title}</h2>

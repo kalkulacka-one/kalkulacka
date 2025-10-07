@@ -1,20 +1,63 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "cockroachdb"
-    url      = env("DATABASE_URL")
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
 }
 
 model Subscription {
-    id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
 
-    email String @unique
+  email String @unique
 
-    createdAt DateTime @default(now()) @db.Timestamptz(3)
-    updatedAt DateTime @updatedAt @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+enum crdb_internal_region {
+  aws_eu_central_1 @map("aws-eu-central-1")
+}
+
+model CalculatorSession {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  sessionId         String  @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  calculatorId      String  @db.Uuid
+  calculatorKey     String
+  calculatorGroup   String?
+  calculatorVersion String?
+  embedName         String?
+  publicId          String? @unique @db.Uuid
+
+  createdAt DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(3)
+  deletedAt DateTime? @db.Timestamptz(3)
+
+  data CalculatorSessionData?
+
+  @@unique([sessionId, calculatorId])
+  @@index([sessionId])
+  @@index([calculatorId])
+  @@index([calculatorKey])
+  @@index([calculatorKey, calculatorGroup])
+  @@index([embedName])
+  @@index([publicId])
+  @@index([createdAt])
+  @@index([updatedAt])
+  @@index([deletedAt])
+}
+
+model CalculatorSessionData {
+  id        String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionId String @unique @db.Uuid
+  answers   Json
+  result    Json?
+
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+
+  session CalculatorSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 }

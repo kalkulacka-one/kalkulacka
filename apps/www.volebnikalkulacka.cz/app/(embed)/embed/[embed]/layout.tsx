@@ -1,10 +1,19 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 
 import "../../../globals.css";
 
 import { EmbedProvider } from "../../../../components/client";
+import { PlausibleScript } from "../../../../components/server";
 import { type EmbedName, isEmbedName } from "../../../../config/embeds";
+import { allowCrawling } from "../../../../lib/seo";
+
+export const metadata: Metadata = {
+  robots: {
+    index: allowCrawling(),
+    follow: allowCrawling(),
+  },
+};
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: Promise<{ embed: string }> }) {
   const { embed: embedParam } = await params;
@@ -14,7 +23,7 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang="cs">
       <head>
-        <Script defer data-domain="volebnikalkulacka.cz" src="/js/script.tagged-events.outbound-links.js" />
+        <PlausibleScript />
       </head>
       <body>
         <EmbedProvider name={embed}>{children}</EmbedProvider>

@@ -1,23 +1,25 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { CalculatorViewModel } from "../../../view-models";
 import { AppHeader } from "../../client";
-import { Guide, GuideNavigationCard, LayoutBottomNavigation, LayoutContent, LayoutHeader } from "../components";
+import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "../components";
 
 export type GuidePage = {
+  embedContext: EmbedContextType;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onBackClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, attribution }: GuidePage) {
+export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   return (
-    <>
-      <LayoutHeader>
+    <Layout>
+      <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
@@ -33,17 +35,20 @@ export function GuidePage({ calculator, onNextClick, onBackClick, onCloseClick, 
               </Button>
             </AppHeader.BottomLeft>
             <AppHeader.BottomMain condensed={false}>
-              <h3 className="font-display font-semibold text-3xl">Návod</h3>
+              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Návod</h3>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <Guide calculator={calculator} />
-      </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "8rem" : "5rem"}>
-        <GuideNavigationCard onNextClick={onNextClick} attribution={attribution} />
-      </LayoutBottomNavigation>
-    </>
+      </Layout.Content>
+      <Layout.BottomSpacer className={GuideNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+        <GuideNavigationCard onNextClick={onNextClick} />
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+    </Layout>
   );
 }

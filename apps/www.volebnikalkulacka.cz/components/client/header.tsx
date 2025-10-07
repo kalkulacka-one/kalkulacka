@@ -1,10 +1,10 @@
 import { AppHeader, WithCondenseOnScroll } from "../../calculator/components/client";
-import { LayoutHeader } from "../../calculator/components/server/components";
+import { Layout } from "../../calculator/components/server/components";
 
 export function Header() {
   return (
-    <LayoutHeader>
+    <Layout.Header>
       <WithCondenseOnScroll>{(condensed) => <AppHeader condensed={condensed} />}</WithCondenseOnScroll>
-    </LayoutHeader>
+    </Layout.Header>
   );
 }

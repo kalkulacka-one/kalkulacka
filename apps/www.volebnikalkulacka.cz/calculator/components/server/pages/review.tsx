@@ -1,22 +1,24 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { HideOnEmbed } from "../../../../components/client";
+import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { LayoutBottomNavigation, LayoutContent, LayoutHeader, ReviewNavigationCard, ReviewQuestionCard } from "../components";
+import { EmbedFooter, Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {
+  embedContext: EmbedContextType;
   questions: QuestionsViewModel;
   answers: AnswersViewModel;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onPreviousClick: () => void;
   onCloseClick: () => void;
-  attribution?: boolean;
 };
 
-export function ReviewPage({ questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick, attribution }: ReviewPage) {
+export function ReviewPage({ embedContext, questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
+  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
       answers.setAnswer({
@@ -53,8 +55,8 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
   };
 
   return (
-    <>
-      <LayoutHeader>
+    <Layout>
+      <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -72,14 +74,14 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-3xl">Rekapitulace</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Rekapitulace</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </LayoutHeader>
-      <LayoutContent>
+      </Layout.Header>
+      <Layout.Content>
         <div className="grid gap-4">
           {questions.questions.map((question, index) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
@@ -101,10 +103,13 @@ export function ReviewPage({ questions, answers, calculator, onNextClick, onPrev
             );
           })}
         </div>
-      </LayoutContent>
-      <LayoutBottomNavigation spacer={attribution ? "8rem" : "5rem"}>
-        <ReviewNavigationCard onNextClick={onNextClick} attribution={attribution} />
-      </LayoutBottomNavigation>
-    </>
+      </Layout.Content>
+      <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+        <ReviewNavigationCard onNextClick={onNextClick} />
+      </Layout.BottomNavigation>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+    </Layout>
   );
 }

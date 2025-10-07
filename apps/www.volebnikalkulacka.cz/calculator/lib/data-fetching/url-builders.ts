@@ -1,4 +1,4 @@
-export function buildDataUrl({ key, group, resourcePath }: { key: string; group?: string; resourcePath: string }): string {
+export function buildDataUrl({ key, group, resourcePath }: { key: string; group?: string; resourcePath?: string }): string {
   const endpoint = process.env.DATA_ENDPOINT;
   if (!endpoint) throw new Error("Missing `DATA_ENDPOINT` environment variable");
 
@@ -13,6 +13,8 @@ export function buildDataUrl({ key, group, resourcePath }: { key: string; group?
   const basePath = baseUrl.pathname === "/" ? "" : baseUrl.pathname.slice(1);
   const fullPath = basePath ? `${basePath}/${dataPath}` : dataPath;
   const dataUrl = new URL(fullPath, baseUrl.origin);
+
+  if (!resourcePath) return dataUrl.toString();
 
   return new URL(resourcePath, `${dataUrl}/`).toString();
 }

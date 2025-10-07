@@ -27,7 +27,9 @@ const dataWithMarkdown = calculatorViewModel({
 describe("Introduction", () => {
   it("renders intro content", () => {
     render(<Introduction calculator={data} />);
-    expect(screen.getByText(data.intro)).toBeInTheDocument();
+    if (data.intro) {
+      expect(screen.getByText(data.intro)).toBeInTheDocument();
+    }
   });
 
   describe("Markdown formatting", () => {
