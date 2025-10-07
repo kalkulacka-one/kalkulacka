@@ -8,7 +8,7 @@ export default async function Page({ params }: { params: I18nParams }) {
   try {
     const Component = (await import(`./page.${locale}`)).default;
     return <Component />;
-  } catch (error) {
+  } catch {
     notFound();
   }
 }

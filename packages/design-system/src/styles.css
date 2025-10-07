@@ -138,6 +138,11 @@
     var(--ko-palette-logo-percent-denominator-light, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary))),
     var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary)))
   );
+
+  --drop-shadow-hard: 6px 6px 0px light-dark(
+    var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
+    var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))
+  );
 }
 
 @layer base {
@@ -179,4 +184,18 @@
     font-style: italic;
     src: url("./fonts/geist-mono/italic.woff2") format("woff2");
   }
+
+  @font-face {
+    font-family: "Inter";
+    font-weight: 300 700;
+    src: url("./fonts/inter/normal.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Inter";
+    font-weight: 300 700;
+    font-style: italic;
+    src: url("./fonts/inter/italic.woff2") format("woff2");
+  }
+
 }

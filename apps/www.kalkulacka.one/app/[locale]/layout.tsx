@@ -1,12 +1,18 @@
-import { hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import type { Viewport } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import type { I18nParams } from "../../i18n/params";
 import { routing } from "../../i18n/routing";
 
 import "../globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export async function generateMetadata({ params }: { params: I18nParams }) {
   const { locale } = await params;
@@ -18,13 +24,7 @@ export async function generateMetadata({ params }: { params: I18nParams }) {
   };
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: I18nParams;
-}) {
+export default async function RootLayout({ children, params }: { children: React.ReactNode; params: I18nParams }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();

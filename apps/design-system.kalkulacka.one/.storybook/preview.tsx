@@ -1,15 +1,24 @@
 import { DocsContainer } from "@storybook/addon-docs/blocks";
 import type { Preview } from "@storybook/nextjs";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "@repo/design-system/styles";
 
 const themeLoaders: Record<string, () => Promise<string>> = {
   "Kalkulacka.1": async () =>
-    // @ts-ignore
+    // @ts-expect-error
     (await import("!css-loader!@repo/design-system/themes/www.kalkulacka.one/default")).default,
   "Volební kalkulačka (CZ)": async () =>
-    // @ts-ignore
+    // @ts-expect-error
     (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/default")).default,
+  "Volební kalkulačka (CZ) — Díky, že můžem": async () =>
+    // @ts-expect-error
+    (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/diky-ze-muzem")).default,
+  "Volební kalkulačka (CZ) — Alarm": async () =>
+    // @ts-expect-error
+    (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/alarm")).default,
+  "Volební kalkulačka (CZ) — Prima": async () =>
+    // @ts-expect-error
+    (await import("!css-loader!@repo/design-system/themes/www.volebnikalkulacka.cz/prima")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);

@@ -1,11 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
 import { Card } from "@repo/design-system/server";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
   component: Card,
   tags: ["autodocs"],
+  args: {
+    color: "white",
+    corner: "topLeft",
+    border: false,
+    shadow: false,
+  },
   argTypes: {
     children: {
       control: false,
@@ -22,7 +27,8 @@ const meta: Meta<typeof Card> = {
       control: "boolean",
     },
     shadow: {
-      control: "boolean",
+      control: "select",
+      options: [true, "hard", undefined],
     },
   },
 };
@@ -30,8 +36,33 @@ const meta: Meta<typeof Card> = {
 type CardStory = StoryObj<typeof meta>;
 
 export const Default: CardStory = {
+  name: "Default card",
   args: {
     children: "Card",
+  },
+};
+
+export const Transparent: CardStory = {
+  name: "Transparent card",
+  args: {
+    color: "transparent",
+    children: "Transparent card",
+  },
+};
+
+export const ElevatedShadow: CardStory = {
+  name: "Card with elevated shadow",
+  args: {
+    shadow: "elevated",
+    children: "Card with elevated shadow",
+  },
+};
+
+export const HardShadow: CardStory = {
+  name: "Hard shadow",
+  args: {
+    shadow: "hard",
+    children: "Card with hard shadow",
   },
 };
 

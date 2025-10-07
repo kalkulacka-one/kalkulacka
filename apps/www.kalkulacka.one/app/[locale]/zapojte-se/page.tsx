@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: I18nParams }) {
   return (
     <section className="max-w-2xl grid gap-8">
       <section className="grid gap-2">
-        <h2 className="text-3xl font-bold">Přidejte se k našemu týmu dobrovolníků a&nbsp;podpořte demokracii</h2>
+        <h2 className="text-3xl font-display font-bold">Přidejte se k našemu týmu dobrovolníků a&nbsp;podpořte demokracii</h2>
         <p>
           Připravit každou volební kalkulačku zabere našemu týmu dobrovolníků i 120 hodin. Vyvíjíme open-source aplikaci a podporujeme zahraniční partnery v&nbsp;přípravě lokálních volebních
           kalkulaček.

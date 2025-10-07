@@ -1,0 +1,23 @@
+:root {
+  --ko-typeface-display: "Radio Canada";
+  --ko-typeface-sans: "Geist";
+  --ko-typeface-mono: "Geist Mono";
+
+  --ko-palette-primary: #003c76;
+  --ko-palette-secondary: #d3161e;
+  --ko-palette-neutral: #4f5862;
+  --ko-palette-red: #d3161e;
+  --ko-palette-yellow: #ffd400;
+  --ko-palette-green: #009826;
+
+  --ko-palette-brand-primary: rgb(0, 112, 244);
+  --ko-palette-brand-secondary: rgb(208, 70, 70);
+  --ko-palette-brand-neutral: oklch(37.2% 0.044 257.287); /* Tailwind's Slate 700 */
+
+  --ko-palette-logo-check: var(--ko-palette-brand-primary);
+  --ko-palette-logo-slash: var(--ko-palette-brand-neutral);
+  --ko-palette-logo-cross: var(--ko-palette-brand-secondary);
+  --ko-palette-logo-percent-numerator: var(--ko-palette-brand-primary);
+  --ko-palette-logo-percent-slash: var(--ko-palette-brand-neutral);
+  --ko-palette-logo-percent-denominator: var(--ko-palette-brand-secondary);
+}

@@ -1,0 +1,22 @@
+:root {
+  --ko-typeface-display: "Inter";
+  --ko-typeface-sans: "Inter";
+
+  --ko-palette-primary: rgb(40, 38, 92);
+  --ko-palette-secondary: rgb(240, 3, 70);
+  --ko-palette-neutral: rgb(51, 65, 85);
+  --ko-palette-red: rgb(240, 3, 70);
+  --ko-palette-yellow: rgb(242, 184, 7);
+  --ko-palette-green: rgb(33, 150, 83);
+
+  --ko-palette-brand-primary: rgb(0, 112, 244);
+  --ko-palette-brand-secondary: rgb(208, 70, 70);
+  --ko-palette-brand-neutral: oklch(37.2% 0.044 257.287); /* Tailwind's Slate 700 */
+
+  --ko-palette-logo-check: var(--ko-palette-brand-primary);
+  --ko-palette-logo-slash: var(--ko-palette-brand-neutral);
+  --ko-palette-logo-cross: var(--ko-palette-brand-secondary);
+  --ko-palette-logo-percent-numerator: var(--ko-palette-brand-primary);
+  --ko-palette-logo-percent-slash: var(--ko-palette-brand-neutral);
+  --ko-palette-logo-percent-denominator: var(--ko-palette-brand-secondary);
+}

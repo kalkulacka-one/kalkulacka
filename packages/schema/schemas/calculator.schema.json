@@ -19,6 +19,13 @@
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "examples": ["doprava-v-praze"]
     },
+    "version": {
+      "title": "Version",
+      "description": "Semantic version of the calculator",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "examples": ["1.2.3"]
+    },
     "createdAt": {
       "title": "Created at",
       "description": "Time of the creation of a calculator in the ISO 8601 format",
@@ -71,6 +78,9 @@
     },
     "tags": {
       "$ref": "./tags.schema.json"
+    },
+    "images": {
+      "$ref": "./images.schema.json"
     },
     "calculatorGroup": {
       "title": "Calculator group",
@@ -131,11 +141,69 @@
       },
       "unevaluatedProperties": false,
       "required": ["number"]
+    },
+    "checksums": {
+      "title": "Checksums",
+      "description": "Checksums for calculator data",
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "object",
+          "description": "Checksum of the questions data",
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "enum": ["sha256"]
+            },
+            "value": {
+              "type": "string",
+              "description": "Checksum value",
+              "examples": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"]
+            }
+          },
+          "required": ["algorithm", "value"],
+          "unevaluatedProperties": false
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "changes": {
+      "title": "Changes",
+      "description": "Changelog of the calculator data",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "description": "Semantic version of this change"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": ["2021-01-01T00:00:00+01:00"]
+          },
+          "title": {
+            "type": "string",
+            "examples": ["Oprava překlepu v otázce 3"]
+          },
+          "description": {
+            "type": "string",
+            "examples": ["V otázce 3 byl opraven překlep ve slově demokracie."]
+          }
+        },
+        "required": ["version", "updatedAt"],
+        "unevaluatedProperties": false
+      }
     }
   },
   "properties": {
     "id": {
       "$ref": "#/$defs/id"
+    },
+    "version": {
+      "$ref": "#/$defs/version"
     },
     "createdAt": {
       "$ref": "#/$defs/createdAt"
@@ -163,6 +231,15 @@
     },
     "tags": {
       "$ref": "#/$defs/tags"
+    },
+    "images": {
+      "$ref": "#/$defs/images"
+    },
+    "checksums": {
+      "$ref": "#/$defs/checksums"
+    },
+    "changes": {
+      "$ref": "#/$defs/changes"
     }
   },
   "unevaluatedProperties": false,

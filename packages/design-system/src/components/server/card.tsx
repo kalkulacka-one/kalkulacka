@@ -1,11 +1,12 @@
 import { twMerge } from "@repo/design-system/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 export type Card = {
   children: React.ReactNode;
+  className?: string;
 } & VariantProps<typeof CardVariants>;
 
-const CardVariants = cva("ko:rounded-lg", {
+const CardVariants = cva("ko:rounded-3xl", {
   variants: {
     color: {
       white: "ko:bg-white",
@@ -17,18 +18,24 @@ const CardVariants = cva("ko:rounded-lg", {
       false: "",
     },
     shadow: {
-      true: "ko:shadow-md",
+      elevated: "ko:drop-shadow-2xl",
+      hard: "ko:drop-shadow-hard",
+      false: "",
+    },
+    interactive: {
+      true: "",
       false: "",
     },
   },
   defaultVariants: {
     color: "white",
-    border: true,
-    corner: "bottomRight",
+    corner: "topLeft",
+    border: false,
     shadow: true,
+    interactive: false,
   },
 });
 
-export function Card({ children, color, corner, border, shadow }: Card) {
-  return <div className={twMerge(CardVariants({ color, corner, border, shadow }))}>{children}</div>;
+export function Card({ children, color, corner, border, shadow, interactive, className }: Card) {
+  return <div className={twMerge(CardVariants({ color, corner, border, shadow, interactive }), className)}>{children}</div>;
 }
