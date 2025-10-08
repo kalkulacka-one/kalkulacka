@@ -61,12 +61,24 @@ const CALCULATORS: CalculatorConfig[] = [
   },
 ];
 
+const TIMEOUTS = {
+  DEFAULT: 30000,
+  STANDARD: 60000,
+  EXTENDED: 90000,
+  LOAD_STATE: 15000,
+  RETRY_DELAY: 1000,
+  ACTION_DELAY: 500,
+  QUESTION_DELAY: 2000,
+  VISIBILITY_CHECK: 10000,
+  HEADING_VISIBILITY: 15000,
+} as const;
+
 // Helper functions
-async function waitForPageLoad(page: Page, timeout = 30000) {
+async function waitForPageLoad(page: Page, timeout = TIMEOUTS.DEFAULT) {
   try {
     await page.waitForLoadState("networkidle", { timeout });
   } catch {
-    await page.waitForLoadState("load", { timeout: 15000 });
+    await page.waitForLoadState("load", { timeout: TIMEOUTS.LOAD_STATE });
   }
 }
 
@@ -75,14 +87,14 @@ async function checkForErrors(page: Page): Promise<boolean> {
   return (await errorElement.count()) > 0;
 }
 
-async function clickWithRetry(locator: Locator, maxRetries = 3, timeout = 10000) {
+async function clickWithRetry(locator: Locator, maxRetries = 3, timeout = TIMEOUTS.VISIBILITY_CHECK) {
   for (let retry = 0; retry < maxRetries; retry++) {
     try {
       await locator.click({ timeout });
       return true;
     } catch {
       if (retry < maxRetries - 1) {
-        await locator.page().waitForTimeout(1000);
+        await locator.page().waitForTimeout(TIMEOUTS.RETRY_DELAY);
       }
     }
   }
@@ -92,7 +104,7 @@ async function clickWithRetry(locator: Locator, maxRetries = 3, timeout = 10000)
 async function navigateToCalculator(page: Page, calculator: CalculatorConfig) {
   await page.goto("/");
   await page.locator(`a[href="${calculator.path}"]`).click();
-  await page.waitForURL(new RegExp(`.*${calculator.path}/uvod`), { timeout: 60000 });
+  await page.waitForURL(new RegExp(`.*${calculator.path}/uvod`), { timeout: TIMEOUTS.STANDARD });
   await expect(page).toHaveURL(new RegExp(`.*${calculator.path}/uvod`));
   await waitForPageLoad(page);
   await expect(page.locator("main")).toBeVisible();
@@ -104,7 +116,7 @@ async function navigateToNavod(page: Page, calculator: CalculatorConfig) {
   if (await navodButton.isVisible()) {
     await navodButton.click();
     try {
-      await page.waitForURL(new RegExp(`.*${calculator.path}/navod`), { timeout: 60000 });
+      await page.waitForURL(new RegExp(`.*${calculator.path}/navod`), { timeout: TIMEOUTS.STANDARD });
       await expect(page).toHaveURL(new RegExp(`.*${calculator.path}/navod`));
       await expect(page.locator("main")).toBeVisible();
     } catch {
@@ -123,7 +135,7 @@ async function startQuestions(page: Page, calculator: CalculatorConfig) {
     if (calculator.group === "inventura" || calculator.group === "expresni") {
       try {
         await page.goto(`${calculator.path}/uvod`);
-        await page.waitForLoadState("load", { timeout: 15000 });
+        await page.waitForLoadState("load", { timeout: TIMEOUTS.LOAD_STATE });
         isVisible = await questionButton.isVisible();
       } catch {
         return false;
@@ -134,7 +146,7 @@ async function startQuestions(page: Page, calculator: CalculatorConfig) {
   if (isVisible) {
     await questionButton.click();
     try {
-      await page.waitForURL(new RegExp(`.*${calculator.path}/(otazka|otazka/1)`), { timeout: 60000 });
+      await page.waitForURL(new RegExp(`.*${calculator.path}/(otazka|otazka/1)`), { timeout: TIMEOUTS.STANDARD });
     } catch {
       console.log(`Question navigation timeout for ${calculator.name}`);
     }
@@ -153,15 +165,15 @@ async function answerQuestions(page: Page, maxQuestions = 3) {
       if ((await answerOptions.count()) === 0) break;
 
       if (!(await clickWithRetry(answerOptions.first()))) break;
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(TIMEOUTS.ACTION_DELAY);
 
       const nextButton = page.locator('button:has-text("Další"), button:has-text("Pokračovat"), a:has-text("Další")').first();
       if (!(await nextButton.isVisible())) break;
 
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(TIMEOUTS.ACTION_DELAY);
       if (!(await clickWithRetry(nextButton))) break;
 
-      await page.waitForTimeout(2000);
+      await page.waitForTimeout(TIMEOUTS.QUESTION_DELAY);
     } catch {
       break;
     }
@@ -171,7 +183,7 @@ async function answerQuestions(page: Page, maxQuestions = 3) {
 for (const calculator of CALCULATORS) {
   test.describe(`Calculator Flow: ${calculator.name}`, () => {
     test("should complete the full calculator flow from homepage", async ({ page }) => {
-      test.setTimeout(calculator.group === "inventura" || calculator.group === "expresni" ? 90000 : 60000);
+      test.setTimeout(calculator.group === "inventura" || calculator.group === "expresni" ? TIMEOUTS.EXTENDED : TIMEOUTS.STANDARD);
 
       const hasError = await navigateToCalculator(page, calculator);
       if (hasError) {
@@ -196,22 +208,22 @@ for (const calculator of CALCULATORS) {
 
       const hasError = await checkForErrors(page);
       if (!hasError && calculator.expectedTitle) {
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(TIMEOUTS.QUESTION_DELAY);
         const heading = page.locator("h1, h2, h3").filter({ hasText: calculator.expectedTitle }).first();
-        await heading.waitFor({ state: "attached", timeout: 10000 });
-        await expect(heading).toBeVisible({ timeout: 15000 });
+        await heading.waitFor({ state: "attached", timeout: TIMEOUTS.VISIBILITY_CHECK });
+        await expect(heading).toBeVisible({ timeout: TIMEOUTS.HEADING_VISIBILITY });
       }
     });
 
     test("should handle direct navigation to question page", async ({ page }) => {
-      test.setTimeout(calculator.group === "inventura" || calculator.group === "expresni" ? 90000 : 60000);
+      test.setTimeout(calculator.group === "inventura" || calculator.group === "expresni" ? TIMEOUTS.EXTENDED : TIMEOUTS.STANDARD);
 
       try {
-        await page.goto(`${calculator.path}/otazka`, { timeout: 60000 });
+        await page.goto(`${calculator.path}/otazka`, { timeout: TIMEOUTS.STANDARD });
       } catch {
         console.log(`Direct navigation to question failed for ${calculator.name}, trying uvod first`);
         try {
-          await page.goto(`${calculator.path}/uvod`, { timeout: 60000 });
+          await page.goto(`${calculator.path}/uvod`, { timeout: TIMEOUTS.STANDARD });
         } catch {
           console.log(`Fallback navigation to uvod also failed for ${calculator.name}, skipping test`);
           return;
