@@ -15,7 +15,7 @@ const CALCULATORS: CalculatorConfig[] = [
     group: "kalkulacka",
     name: "Volební kalkulačka",
     path: "/volby/snemovni-2025/kalkulacka",
-    expectedTitle: "Volební kalkulačka",
+    expectedTitle: "Sněmovní 2025",
   },
   {
     key: "snemovni-2025",
@@ -44,6 +44,20 @@ const CALCULATORS: CalculatorConfig[] = [
     name: "Kalkulačka pro mladé",
     path: "/volby/snemovni-2025/pro-mlade",
     expectedTitle: "Pro mladé",
+  },
+  {
+    key: "snemovni-2025",
+    group: "klimaticka",
+    name: "Klimatická",
+    path: "/volby/snemovni-2025/klimaticka",
+    expectedTitle: "Klimatická",
+  },
+  {
+    key: "snemovni-2025",
+    group: "klimaticka",
+    name: "Volební kompas 2025",
+    path: "/volby/snemovni-2025/kompas",
+    expectedTitle: "Volební kompas",
   },
 ];
 
