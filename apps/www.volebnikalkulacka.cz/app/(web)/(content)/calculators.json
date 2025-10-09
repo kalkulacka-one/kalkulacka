@@ -1,0 +1,331 @@
+[
+  {
+    "id": "75c4b804-ed05-4029-b561-5255ec97848c",
+    "version": "2.0.1",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "kalkulacka"
+    },
+    "description": "Ta pravá Volební kalkulačka pro Sněmovní volby 2025",
+    "intro": "Vítejte ve Volební kalkulačce pro Sněmovní volby 2025!\n\nVybrali jsme **42 otázek** tak, abyste se za **10 minut** dozvěděli, které strany, hnutí či koalice zastávají vaše názory.\n\nOslovili jsme všech 26 kandidujících subjektů. 21 z nich odpovědělo a za další 2 z těch, které neodpověděly, jsme doplnily expertní odpovědi podle jejich programu, hlasování v parlamentu nebo jejich veřejných proslovů čelních představitelů.",
+    "createdAt": "2025-09-13T18:30:00+01:00",
+    "tags": ["sněmovní volby", "2025", "Poslanecká sněmovna"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Sněmovní volby 2025. Kdo zastává vaše postoje? Vyplnit kalkulačku. Volební kalkulačka."
+      }
+    ],
+    "updatedAt": "2025-10-01T08:47:43+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "2d266a6282d4ae91fc3d36bb9f58d6da800dd46497104c032a3dc77d614f75dd"
+      }
+    },
+    "card": {
+      "title": "Kdo zastává vaše postoje?",
+      "description": "Klasická Volební kalkulačka, jak ji znáte už skoro 20 let.",
+      "link": "/volby/snemovni-2025/kalkulacka",
+      "badges": [{ "text": "Nejoblíbenější kalkulačka", "color": "primary" }, { "text": "42 otázek", "color": "neutral" }, { "text": "10 minut", "color": "neutral" }],
+      "buttonText": "Spustit kalkulačku",
+      "buttonVariant": "fill",
+      "featured": true
+    }
+  },
+  {
+    "id": "f6268ab5-7fd1-4c51-aeef-ccfb8bb53482",
+    "version": "2.0.2",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "inventura"
+    },
+    "createdAt": "2025-09-07T14:33:00+02:00",
+    "title": "Inventura hlasování Poslanecké sněmovny 2021–2025",
+    "shortTitle": "Inventura 2021–2025",
+    "description": "Inventura hlasování Poslanecké sněmovny Parlamentu České republiky od listopadu 2021 do června 2025.",
+    "intro": "Vybrali jsme pro vás **35 důležitých hlasování** ze Sněmovny v období 2021–2025.\n\nMůžete si porovnat, jak se vaše názory shodují s tím, jak skutečně hlasovali poslanci.\n\nZároveň uvidíte i shodu s celými stranami.",
+    "tags": ["sněmovní volby", "2025", "inventura hlasování", "poslanecká sněmovna"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Kdo vás zastupoval ve Sněmovně? Vyplnit inventuru hlasování. Volební kalkulačka."
+      }
+    ],
+    "updatedAt": "2025-09-29T13:15:07+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "082d35cfafdfe6cdcb2469d0748be182b0a1f7482f210a1bc5cd1fbb46d66642"
+      }
+    },
+    "card": {
+      "title": "Kdo vás zastupoval ve Sněmovně?",
+      "description": "Žádné sliby, ale skutečná hlasování poslanců ve Sněmovně za končící volební období.",
+      "link": "/volby/snemovni-2025/inventura",
+      "badges": [{ "text": "Inventura hlasování", "color": "secondary" }, { "text": "35 hlasování", "color": "neutral" }, { "text": "10 minut", "color": "neutral" }],
+      "buttonText": "Spustit inventuru hlasování",
+      "buttonVariant": "outline",
+      "featured": true
+    }
+  },
+  {
+    "id": "expresni-kalkulacka-2025",
+    "version": "1.0.0",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "expresni"
+    },
+    "description": "Expresní volební kalkulačka s nejklíčovějšími otázkami",
+    "intro": "Těch 25 nejklíčovějších otázek, které vám zaberou jen 5 minut.",
+    "createdAt": "2025-09-01T10:00:00+01:00",
+    "tags": ["sněmovní volby", "2025", "expresní"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Expresní volební kalkulačka 2025"
+      }
+    ],
+    "updatedAt": "2025-10-01T08:47:43+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "example-checksum-expresni"
+      }
+    },
+    "card": {
+      "title": "Nejužitečnějších 5 minut před volbami",
+      "description": "Těch 25 nejklíčovějších otázek, které vám zaberou jen 5 minut.",
+      "link": "/volby/snemovni-2025/expresni",
+      "badges": [{ "text": "Expresní kalkulačka", "color": "yellow" }, { "text": "25 otázek", "color": "neutral" }, { "text": "5 minut", "color": "neutral" }],
+      "buttonText": "Spustit kalkulačku",
+      "buttonVariant": "outline"
+    }
+  },
+  {
+    "id": "ultimatni-kalkulacka-2025",
+    "version": "1.0.0",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "ultimatni"
+    },
+    "description": "Ultimátní volební kalkulačka se všemi otázkami",
+    "intro": "Nejrozsáhlější verze se všemi 100 otázkami, na které jsme se ptali.",
+    "createdAt": "2025-09-01T10:00:00+01:00",
+    "tags": ["sněmovní volby", "2025", "ultimátní"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Ultimátní volební kalkulačka 2025"
+      }
+    ],
+    "updatedAt": "2025-10-01T08:47:43+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "example-checksum-ultimatni"
+      }
+    },
+    "card": {
+      "title": "Všech 100 otázek pro \"politické fajnšmekry\"",
+      "description": "Nejrozsáhlější verze se všemi 100 otázkami, na které jsme se ptali.",
+      "link": "/volby/snemovni-2025/ultimatni",
+      "badges": [{ "text": "Ultimátní kalkulačka", "color": "green" }, { "text": "100 otázek", "color": "neutral" }, { "text": "30 minut", "color": "neutral" }],
+      "buttonText": "Spustit kalkulačku",
+      "buttonVariant": "outline"
+    }
+  },
+  {
+    "id": "pro-mlade-2025",
+    "version": "1.0.0",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "pro-mlade"
+    },
+    "description": "Volební kalkulačka zaměřená na témata mladé generace",
+    "intro": "35 otázek, které pálí nejen mladou generaci. Ve spolupráci s Díky, že můžem.",
+    "createdAt": "2025-09-01T10:00:00+01:00",
+    "tags": ["sněmovní volby", "2025", "pro mladé"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Volební kalkulačka pro mladé 2025"
+      }
+    ],
+    "updatedAt": "2025-10-01T08:47:43+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "example-checksum-pro-mlade"
+      }
+    },
+    "card": {
+      "title": "35 otázek, které pálí nejen mladou generaci",
+      "description": "Témata, která podle výzkumu pálí mladou generaci. Ve spolupráci s Díky, že můžem.",
+      "link": "/volby/snemovni-2025/pro-mlade",
+      "badges": [{ "text": "Pro mladé", "color": "primary" }, { "text": "35 otázek", "color": "neutral" }, { "text": "10 minut", "color": "neutral" }],
+      "buttonText": "Spustit kalkulačku",
+      "buttonVariant": "outline",
+      "partnership": {
+        "text": "Ve spolupráci s",
+        "partner": "Díky, že můžem",
+        "url": "https://dikyzemuzem.cz"
+      }
+    }
+  },
+  {
+    "id": "klimaticka-2025",
+    "version": "1.0.0",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "klimaticka"
+    },
+    "description": "Klimatická volební kalkulačka zaměřená na životní prostředí",
+    "intro": "Výběr otázek ke klimatické změně: povolenky, energetika, doprava. Ve spolupráci s Fakty o klimatu.",
+    "createdAt": "2025-09-01T10:00:00+01:00",
+    "tags": ["sněmovní volby", "2025", "klimatická"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Klimatická volební kalkulačka 2025"
+      }
+    ],
+    "updatedAt": "2025-10-01T08:47:43+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "example-checksum-klimaticka"
+      }
+    },
+    "card": {
+      "title": "Kdo má plán pro klima?",
+      "description": "Výběr otázek ke klimatické změně: povolenky, energetika, doprava. Ve spolupráci s Fakty o klimatu.",
+      "link": "/volby/snemovni-2025/klimaticka",
+      "badges": [{ "text": "Klimatická", "color": "green" }, { "text": "20 otázek", "color": "neutral" }, { "text": "5 minut", "color": "neutral" }],
+      "buttonText": "Spustit kalkulačku",
+      "buttonVariant": "outline",
+      "partnership": {
+        "text": "Ve spolupráci s",
+        "partner": "Fakty o klimatu",
+        "url": "https://faktaoklimatu.cz"
+      }
+    }
+  },
+  {
+    "id": "kompas-2025",
+    "version": "1.0.0",
+    "calculatorGroup": {
+      "id": "9c45ffc6-9193-43db-ae3c-fce8e61da487",
+      "key": "snemovni-2025"
+    },
+    "election": {
+      "id": "dce69841-42df-4140-9238-c459d25b2eeb",
+      "key": "snemovni-2025"
+    },
+    "variant": {
+      "key": "kompas"
+    },
+    "description": "Volební kompas zaměřený na hodnoty a postoje",
+    "intro": "Hodnotové otázky místo konkrétních návrhů. Zjistěte, které strany zastávají podobné hodnoty jako vy.",
+    "createdAt": "2025-09-01T10:00:00+01:00",
+    "tags": ["sněmovní volby", "2025", "kompas"],
+    "images": [
+      {
+        "type": "opengraph",
+        "urls": {
+          "original": "opengraph-image.png"
+        },
+        "width": 1714,
+        "height": 900,
+        "alt": "Volební kompas 2025"
+      }
+    ],
+    "updatedAt": "2025-10-01T08:47:43+00:00",
+    "checksums": {
+      "questions": {
+        "algorithm": "sha256",
+        "value": "example-checksum-kompas"
+      }
+    },
+    "card": {
+      "title": "Kdo sdílí vaše hodnoty?",
+      "description": "Hodnotové otázky místo konkrétních návrhů. Zjistěte, které strany zastávají podobné hodnoty jako vy.",
+      "link": "/volby/snemovni-2025/kompas",
+      "badges": [{ "text": "Volební kompas", "color": "secondary" }, { "text": "25 otázek", "color": "neutral" }, { "text": "10 minut", "color": "neutral" }],
+      "buttonText": "Spustit kalkulačku",
+      "buttonVariant": "outline"
+    }
+  }
+]
