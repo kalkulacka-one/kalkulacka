@@ -2,24 +2,26 @@ import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
 import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
-import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
+import type { AnswersViewModel, AnswerViewModel, CalculatorViewModel, QuestionsViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
+import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, QuestionProgressBar } from "../components";
 
 export type QuestionPage = {
   embedContext: EmbedContextType;
-  question: QuestionViewModel;
+  questions: QuestionsViewModel;
   number: number;
   total: number;
   answer: AnswerViewModel;
+  answers: AnswersViewModel;
   calculator: CalculatorViewModel;
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
 };
 
-export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+export function QuestionPage({ embedContext, questions, number, total, calculator, onPreviousClick, onNextClick, answer, answers, onCloseClick }: QuestionPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+  const question = questions.questions[number - 1] as QuestionViewModel;
 
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
@@ -76,7 +78,10 @@ export function QuestionPage({ embedContext, question, number, total, calculator
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content>
-        <QuestionCard question={question} current={number} total={total} />
+        <div className="flex flex-col gap-4">
+          <QuestionCard question={question} current={number} total={total} />
+          <QuestionProgressBar questions={questions} current={number} answers={answers} />
+        </div>
       </Layout.Content>
       <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
