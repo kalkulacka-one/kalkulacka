@@ -54,7 +54,7 @@ const CALCULATORS: CalculatorConfig[] = [
   },
   {
     key: "snemovni-2025",
-    group: "klimaticka",
+    group: "kompas",
     name: "Volební kompas 2025",
     path: "/volby/snemovni-2025/kompas",
     expectedTitle: "Volební kompas",
