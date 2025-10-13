@@ -47,11 +47,9 @@ describe("QuestionProgressBar", () => {
   const mockSetAnswer = () => {};
   const mockClearAnswers = () => {};
 
-  const mockAnswersMap = new Map(mockAnswers.map((a) => [a.questionId, a.answer]));
-
   const props = {
     questions: questionsViewModel(mockQuestions),
-    answers: answersViewModel(mockAnswers, mockAnswersMap, mockSetAnswer, mockClearAnswers),
+    answers: answersViewModel(mockAnswers, mockSetAnswer, mockClearAnswers),
     current: 2,
   };
 
@@ -84,10 +82,9 @@ describe("QuestionProgressBar", () => {
   });
 
   it("should handle questions without answers", () => {
-    const emptyAnswersMap = new Map();
     const noAnswersProps = {
       ...props,
-      answers: answersViewModel([], emptyAnswersMap, mockSetAnswer, mockClearAnswers),
+      answers: answersViewModel([], mockSetAnswer, mockClearAnswers),
     };
 
     render(<QuestionProgressBar {...noAnswersProps} />);

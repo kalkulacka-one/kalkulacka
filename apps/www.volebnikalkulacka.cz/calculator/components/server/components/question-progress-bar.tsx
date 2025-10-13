@@ -9,10 +9,13 @@ export type QuestionProgressBarProps = {
 };
 
 export function QuestionProgressBar({ questions, current, answers }: QuestionProgressBarProps) {
-  const stepItems = questions.questions.map((question) => ({
-    id: question.id,
-    status: answers.answersMap.get(question.id),
-  }));
+  const stepItems = questions.questions.map((question) => {
+    const currentAnswer = answers.answers.find((answer) => question.id === answer.answer?.questionId);
+    return {
+      id: question.id,
+      status: currentAnswer?.answer?.answer,
+    };
+  });
 
   return <SteppedProgressBar stepItems={stepItems} stepCurrent={current} stepTotal={questions.questions.length} idKey="id" statusKey="status" />;
 }

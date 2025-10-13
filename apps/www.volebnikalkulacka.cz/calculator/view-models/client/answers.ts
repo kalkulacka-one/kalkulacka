@@ -7,7 +7,6 @@ export function useAnswers(): AnswersViewModel {
   const answers = useAnswersStore((state) => state.answers);
   const setAnswer = useAnswersStore((state) => state.setAnswer);
   const clearAnswers = useAnswersStore((state) => state.clearAnswers);
-  const answersMap = useMemo(() => new Map(answers.map((a) => [a.questionId, a.answer])), [answers]);
 
-  return useMemo(() => answersViewModel(answers, answersMap, setAnswer, clearAnswers), [answers, answersMap, setAnswer, clearAnswers]);
+  return useMemo(() => answersViewModel(answers, setAnswer, clearAnswers), [answers, setAnswer, clearAnswers]);
 }
