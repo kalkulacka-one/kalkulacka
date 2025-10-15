@@ -1,5 +1,4 @@
-import { Logo } from "@repo/design-system/client";
-import { twMerge } from "@repo/design-system/utils";
+import { Header, Logo } from "@repo/design-system/client";
 import type { ReactNode } from "react";
 import React from "react";
 
@@ -29,52 +28,42 @@ type AppHeaderProps = {
 
 export function AppHeader({ children, condensed = false, calculator }: AppHeaderProps) {
   const embed = useEmbed();
+
+  // Analyze children to determine layout behavior
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
 
-  const gridClasses = "grid grid-cols-[auto_1fr_auto] items-center";
-  const expandedRowsClasses = "grid-rows-[3rem_auto]";
-  const collapsedRowsClasses = "grid-rows-[3rem]";
-  const gridSpacingClasses = "gap-x-2 sm:gap-x-3 gap-y-1";
-  const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
-
-  const mainGrid = "grid grid-flow-col grid-cols-[auto_1fr] gap-2";
-  const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "col-span-2" : "";
-  const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "col-start-2" : "";
-  const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent);
-
-  const bottomExpanded = "col-span-3 flex items-center h-full";
-  const bottomCondensed = "row-start-1";
-  const bottomClasses = expand ? bottomExpanded : bottomCondensed;
-
   return (
-    <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
-      <div className={headerGridClasses}>
-        <div className={mainClasses}>
-          <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
-        </div>
+    <Header expanded={expand}>
+      {/* Main section with logo and title */}
+      <Header.Main expanded={expand} hasBottomLeftContent={hasBottomLeft} condensed={condensed}>
+        <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+      </Header.Main>
+
+      {/* Right section for buttons/actions */}
+      <Header.Right>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {
             return (child.props as { children: ReactNode }).children;
           }
           return null;
         })}
-        {(expand || (condensed && hasBottomLeft)) && (
-          <div className={bottomClasses}>
-            {React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
-                return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
-                  ...(child.props || {}),
-                  condensed,
-                });
-              }
-              return null;
-            })}
-          </div>
-        )}
-      </div>
-    </header>
+      </Header.Right>
+
+      {/* Bottom section for navigation/breadcrumbs */}
+      <Header.Bottom expanded={expand} condensed={condensed} hasBottomLeftContent={hasBottomLeft}>
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
+            return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
+              ...(child.props || {}),
+              condensed,
+            });
+          }
+          return null;
+        })}
+      </Header.Bottom>
+    </Header>
   );
 }
 
