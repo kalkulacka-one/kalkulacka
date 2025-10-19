@@ -11,9 +11,6 @@
     "type": "string",
     "minLength": 1,
     "maxLength": 100,
-    "examples": [
-      "prezidentské",
-      "2023"
-    ]
+    "examples": ["prezidentské", "2023"]
   }
 }

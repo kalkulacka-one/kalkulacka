@@ -38,7 +38,9 @@ export function Guide({ calculator }: Guide) {
           <Icon icon={mdiArrowRight} decorative={true} />
           <div>
             <p className="font-semibold text-slate-700">Kihagyás</p>
-            <p className="text-sm text-slate-500">Amennyiben nincs álláspontod a témáról, vagy nem szeretnél válaszolni, a jobb oldalon található nyíllal továbbléphetsz. A kérdést nem vesszük figyelembe az eredmények kiszámításánál.</p>
+            <p className="text-sm text-slate-500">
+              Amennyiben nincs álláspontod a témáról, vagy nem szeretnél válaszolni, a jobb oldalon található nyíllal továbbléphetsz. A kérdést nem vesszük figyelembe az eredmények kiszámításánál.
+            </p>
           </div>
         </div>
       </Card>
