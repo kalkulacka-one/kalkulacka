@@ -25,6 +25,11 @@ export default function Page() {
         </div>
       </div>
 
+      {/* Test version disclaimer */}
+      <div className="absolute inset-x-0 bottom-0 z-10 bg-slate-50 py-2 text-center text-xs text-slate-500">
+        <p>Ez egy tesztverzió. Hibák és pontatlanságok előfordulhatnak.</p>
+      </div>
+
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16">
         {/* Heading */}
