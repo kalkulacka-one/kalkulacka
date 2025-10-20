@@ -306,7 +306,7 @@ describe("Result calculation algorithm", () => {
       });
 
       it("sorts candidates deterministically based on sessionId", () => {
-        const sessionId = "test-session-123";
+        const sessionId = "session-abc";
         const results1 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId);
         const results2 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId);
 
@@ -318,8 +318,8 @@ describe("Result calculation algorithm", () => {
       });
 
       it("sorts candidates differently with different sessionIds", () => {
-        const sessionId1 = "session-abc";
-        const sessionId2 = "session-xyz";
+        const sessionId1 = "session-def";
+        const sessionId2 = "session-ghi";
 
         const results1 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId1);
         const results2 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId2);
@@ -332,6 +332,10 @@ describe("Result calculation algorithm", () => {
 
         expect(new Set(results1.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
         expect(new Set(results2.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
+
+        const order1 = results1.map((r) => r.id);
+        const order2 = results2.map((r) => r.id);
+        expect(order1).not.toEqual(order2);
       });
 
       it("sorts candidates randomly when useRandomTieBreaker is true", () => {

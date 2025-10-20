@@ -67,6 +67,11 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
     }
   }
 
+  const matchGroups = new Map<number | undefined, number>();
+  for (const result of finalResults) {
+    matchGroups.set(result.match, (matchGroups.get(result.match) || 0) + 1);
+  }
+
   return finalResults.sort((a, b) => {
     // Handle potentially undefined matches
     const bMatch = b.match ?? -1;
@@ -81,7 +86,7 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
     }
 
     if (tieBreakerSeed) {
-      const candidatesWithSameScore = finalResults.filter((result) => result.match === a.match).length;
+      const candidatesWithSameScore = matchGroups.get(a.match) || 0;
 
       if (candidatesWithSameScore > 1) {
         const HASH_MODULUS = 1000000007;
