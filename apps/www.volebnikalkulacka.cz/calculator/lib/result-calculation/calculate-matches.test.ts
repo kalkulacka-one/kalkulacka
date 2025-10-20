@@ -296,9 +296,80 @@ describe("Result calculation algorithm", () => {
     describe("and user answered Yes, Yes, Yes", () => {
       const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
 
-      it("sorts candidates randomly", () => {
+      it("sorts candidates alphabetically when no sessionId provided", () => {
         const results = calculateMatches(userAnswers, candidates, candidatesAnswers);
+        expect(results).toEqual([
+          { id: "A", match: 100 },
+          { id: "B", match: 100 },
+          { id: "C", match: 100 },
+        ]);
+      });
+
+      it("sorts candidates deterministically based on sessionId", () => {
+        const sessionId = "session-abc";
+        const results1 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId);
+        const results2 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId);
+
+        expect(results1).toEqual(results2);
+
+        expect(results1.every((r) => r.match === 100)).toBe(true);
+
+        expect(new Set(results1.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
+      });
+
+      it("sorts candidates differently with different sessionIds", () => {
+        const sessionId1 = "session-def";
+        const sessionId2 = "session-ghi";
+
+        const results1 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId1);
+        const results2 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId2);
+
+        const results1_repeat = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId1);
+        const results2_repeat = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId2);
+
+        expect(results1).toEqual(results1_repeat);
+        expect(results2).toEqual(results2_repeat);
+
+        expect(new Set(results1.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
+        expect(new Set(results2.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
+
+        const order1 = results1.map((r) => r.id);
+        const order2 = results2.map((r) => r.id);
+        expect(order1).not.toEqual(order2);
+      });
+
+      it("sorts candidates randomly when useRandomTieBreaker is true", () => {
+        const results = calculateMatches(userAnswers, candidates, candidatesAnswers, undefined, true);
         expect(new Set(results.map((r) => r.id))).toEqual(new Set(["A", "B", "C"]));
+      });
+    });
+
+    describe("with mixed match scores and ties", () => {
+      const candidates: Candidates = prepareCandidates(["A", "B", "C", "D"]);
+      const candidatesAnswers: CandidatesAnswers = {
+        A: prepareAnswers([Yes(), Yes(), Yes()]),
+        B: prepareAnswers([Yes(), Yes(), No()]),
+        C: prepareAnswers([Yes(), Yes(), No()]),
+        D: prepareAnswers([Yes(), No(), No()]),
+      };
+
+      const userAnswers: Answers = prepareAnswers([Yes(), Yes(), Yes()]);
+
+      it("applies tie-breaker only to candidates with identical scores", () => {
+        const sessionId = "tie-test-session";
+        const results = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId);
+
+        expect(results[0]).toEqual({ id: "A", match: 100 });
+
+        expect(results[3]).toEqual({ id: "D", match: expect.closeTo(33.3, 0.1) });
+
+        const middleResults = results.slice(1, 3);
+        const middleIds = middleResults.map((r) => r.id).sort();
+        expect(middleIds).toEqual(["B", "C"]);
+        expect(middleResults.every((r) => expect.closeTo(66.6, 0.1).asymmetricMatch(r.match))).toBe(true);
+
+        const results2 = calculateMatches(userAnswers, candidates, candidatesAnswers, sessionId);
+        expect(results).toEqual(results2);
       });
     });
   });

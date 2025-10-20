@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
       return new UnauthorizedError("Session required").toResponse();
     }
 
-    return new Response(null, { status: 204 });
+    return Response.json({ sessionId }, { status: 200 });
   } catch (error) {
     if (error instanceof HttpError) {
       return error.toResponse();
