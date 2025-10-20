@@ -49,18 +49,22 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
-          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Számomra fontos">
-            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
-          </ToggleButton>
-          <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
-            <Icon icon={logoCheck} decorative={true} />
-            Egyetértek
-          </ToggleButton>
-          <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
-            <Icon icon={logoCross} decorative={true} />
-            Nem értek egyet
-          </ToggleButton>
+        <div className="flex flex-col @[500px]:flex-row gap-2 @sm:gap-4 items-stretch">
+          <div className="flex-shrink-0">
+            <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Számomra fontos">
+              <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
+            </ToggleButton>
+          </div>
+          <div className="flex flex-col @[500px]:flex-row gap-2 flex-1">
+            <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+              <Icon icon={logoCheck} decorative={true} />
+              Egyetértek
+            </ToggleButton>
+            <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+              <Icon icon={logoCross} decorative={true} />
+              Nem értek egyet
+            </ToggleButton>
+          </div>
         </div>
       </div>
     </NavigationCard>
