@@ -5,6 +5,7 @@ export * from "./clientTest";
 export * from "./description";
 export * from "./expandableCard";
 export * from "./field";
+export * from "./header";
 export * from "./icon";
 export * from "./input";
 export * from "./label";
