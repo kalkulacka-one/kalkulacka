@@ -110,15 +110,15 @@ describe("Header", () => {
       expect(screen.getByRole("button")).toHaveTextContent("Action");
     });
 
-    it("accepts custom className", () => {
+    it("renders content correctly", () => {
       const { container } = render(
-        <Header.Right className="custom-class">
+        <Header.Right>
           <div>Content</div>
         </Header.Right>,
       );
 
       const rightElement = container.firstElementChild;
-      expect(rightElement).toHaveClass("custom-class");
+      expect(rightElement).toBeInTheDocument();
     });
   });
 

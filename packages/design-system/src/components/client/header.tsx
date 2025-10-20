@@ -1,97 +1,162 @@
 import { twMerge } from "@repo/design-system/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 
 export type Header = {
   children?: React.ReactNode;
-  expanded?: boolean;
-  className?: string;
-};
+} & VariantProps<typeof HeaderVariants>;
 
-export function Header({ children, expanded = false, className }: Header) {
-  const gridClasses = "ko:grid ko:grid-cols-[auto_1fr_auto] ko:items-center";
-  const expandedRowsClasses = "ko:grid-rows-[3rem_auto]";
-  const collapsedRowsClasses = "ko:grid-rows-[3rem]";
-  const gridSpacingClasses = "ko:gap-x-2 sm:ko:gap-x-3 ko:gap-y-1";
+const HeaderVariants = cva("ko:@container ko:sticky ko:top-0 ko:p-2 ko:sm:p-3 ko:bg-white/60 ko:backdrop-blur-md", {
+  variants: {
+    expanded: {
+      true: "",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    expanded: false,
+  },
+});
 
-  const headerGridClasses = twMerge(gridClasses, expanded ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses, className);
+const HeaderGridVariants = cva("ko:grid ko:grid-cols-[auto_1fr_auto] ko:items-center ko:gap-x-2 ko:sm:gap-x-3 ko:gap-y-1", {
+  variants: {
+    expanded: {
+      true: "ko:grid-rows-[3rem_auto]",
+      false: "ko:grid-rows-[3rem]",
+    },
+  },
+  defaultVariants: {
+    expanded: false,
+  },
+});
 
+export function Header({ children, expanded }: Header) {
   return (
-    <header className="ko:@container ko:sticky ko:top-0 ko:p-2 sm:ko:p-3 ko:bg-white/60 ko:backdrop-blur-md">
-      <div className={headerGridClasses}>{children}</div>
+    <header className={twMerge(HeaderVariants({ expanded }))}>
+      <div className={twMerge(HeaderGridVariants({ expanded }))}>{children}</div>
     </header>
   );
 }
 
 export type HeaderMain = {
   children?: React.ReactNode;
-  expanded?: boolean;
-  hasBottomLeftContent?: boolean;
-  condensed?: boolean;
-  className?: string;
-};
+} & VariantProps<typeof HeaderMainVariants>;
 
-export function HeaderMain({ children, expanded = false, hasBottomLeftContent = false, condensed = false, className }: HeaderMain) {
-  const mainGrid = "ko:grid ko:grid-flow-col ko:grid-cols-[auto_1fr] ko:gap-2";
-  const mainExpandedOrNoLeftContent = expanded || !hasBottomLeftContent ? "ko:col-span-2" : "";
-  const mainCondensedWithLeftContent = condensed && hasBottomLeftContent ? "ko:col-start-2" : "";
+const HeaderMainVariants = cva("ko:grid ko:grid-flow-col ko:grid-cols-[auto_1fr] ko:gap-2", {
+  variants: {
+    expanded: {
+      true: "ko:col-span-2",
+      false: "",
+    },
+    hasBottomLeftContent: {
+      true: "",
+      false: "ko:col-span-2",
+    },
+    condensed: {
+      true: "",
+      false: "",
+    },
+  },
+  compoundVariants: [
+    {
+      condensed: true,
+      hasBottomLeftContent: true,
+      class: "ko:col-start-2",
+    },
+  ],
+  defaultVariants: {
+    expanded: false,
+    hasBottomLeftContent: false,
+    condensed: false,
+  },
+});
 
-  const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent, className);
-
-  return <div className={mainClasses}>{children}</div>;
+export function HeaderMain({ children, expanded, hasBottomLeftContent, condensed }: HeaderMain) {
+  return <div className={twMerge(HeaderMainVariants({ expanded, hasBottomLeftContent, condensed }))}>{children}</div>;
 }
 
 export type HeaderRight = {
   children?: React.ReactNode;
-  className?: string;
 };
 
-export function HeaderRight({ children, className }: HeaderRight) {
-  return <div className={twMerge("", className)}>{children}</div>;
+export function HeaderRight({ children }: HeaderRight) {
+  return <div>{children}</div>;
 }
 
 export type HeaderBottom = {
   children?: React.ReactNode;
-  expanded?: boolean;
-  condensed?: boolean;
-  hasBottomLeftContent?: boolean;
-  className?: string;
-};
+} & VariantProps<typeof HeaderBottomVariants>;
 
-export function HeaderBottom({ children, expanded = false, condensed = false, hasBottomLeftContent = false, className }: HeaderBottom) {
+const HeaderBottomVariants = cva("", {
+  variants: {
+    expanded: {
+      true: "ko:col-span-3 ko:flex ko:items-center ko:h-full",
+      false: "ko:row-start-1",
+    },
+    condensed: {
+      true: "",
+      false: "",
+    },
+    hasBottomLeftContent: {
+      true: "",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    expanded: false,
+    condensed: false,
+    hasBottomLeftContent: false,
+  },
+});
+
+export function HeaderBottom({ children, expanded, condensed, hasBottomLeftContent }: HeaderBottom) {
   if (!expanded && !(condensed && hasBottomLeftContent)) {
     return null;
   }
 
-  const bottomExpanded = "ko:col-span-3 ko:flex ko:items-center ko:h-full";
-  const bottomCondensed = "ko:row-start-1";
-  const bottomClasses = twMerge(expanded ? bottomExpanded : bottomCondensed, className);
-
-  return <div className={bottomClasses}>{children}</div>;
+  return <div className={twMerge(HeaderBottomVariants({ expanded, condensed, hasBottomLeftContent }))}>{children}</div>;
 }
 
 export type HeaderBottomLeft = {
   children?: React.ReactNode;
-  condensed?: boolean;
-  className?: string;
-};
+} & VariantProps<typeof HeaderBottomLeftVariants>;
 
-export function HeaderBottomLeft({ children, condensed = false, className }: HeaderBottomLeft) {
-  if (condensed) {
-    return <div className={twMerge("ko:row-start-1 ko:col-start-1 ko:grid ko:grid-flow-col ko:items-center ko:gap-1", className)}>{children}</div>;
-  }
-  return <div className={className}>{children}</div>;
+const HeaderBottomLeftVariants = cva("", {
+  variants: {
+    condensed: {
+      true: "ko:row-start-1 ko:col-start-1 ko:grid ko:grid-flow-col ko:items-center ko:gap-1",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    condensed: false,
+  },
+});
+
+export function HeaderBottomLeft({ children, condensed }: HeaderBottomLeft) {
+  return <div className={twMerge(HeaderBottomLeftVariants({ condensed }))}>{children}</div>;
 }
 
 export type HeaderBottomMain = {
   children?: React.ReactNode;
-  condensed?: boolean;
-  className?: string;
-};
+} & VariantProps<typeof HeaderBottomMainVariants>;
 
-export function HeaderBottomMain({ children, condensed = false, className }: HeaderBottomMain) {
+const HeaderBottomMainVariants = cva("", {
+  variants: {
+    condensed: {
+      true: "",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    condensed: false,
+  },
+});
+
+export function HeaderBottomMain({ children, condensed }: HeaderBottomMain) {
   if (condensed) {
     return null;
   }
-  return <div className={className}>{children}</div>;
+  return <div className={twMerge(HeaderBottomMainVariants({ condensed }))}>{children}</div>;
 }
 
 Header.Main = HeaderMain;
