@@ -16,9 +16,23 @@ export async function initializeSession(params: CreateCalculatorSessionParams): 
     throw response;
   }
 
-  const verifySessionResponse = await verifySession();
+  const isSessionVerified = await verifySession();
 
-  if (verifySessionResponse) {
+  if (isSessionVerified) {
+    const sessionResponse = await fetch("/api/sessions", {
+      credentials: "include",
+    });
+
+    if (sessionResponse.ok) {
+      try {
+        const sessionData = await sessionResponse.json();
+        if (sessionData.sessionId) {
+          setRuntimeSessionId(sessionData.sessionId);
+        }
+      } catch {
+        // If we can't get sessionId, continue without it
+      }
+    }
     return;
   }
 
