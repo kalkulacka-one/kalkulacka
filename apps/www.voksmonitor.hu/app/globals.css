@@ -11,3 +11,11 @@
   --font-sans: var(--ko-typeface-sans);
   --font-mono: var(--ko-typeface-mono);
 }
+
+.ko\:text-logo-cross, .ko\:text-logo-percent-denominator {
+  fill: #f00;
+}
+
+.ko\:text-logo-check, .ko\:text-logo-percent-numerator {
+  fill: #0c7c59;
+}
