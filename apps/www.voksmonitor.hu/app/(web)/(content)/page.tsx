@@ -46,7 +46,7 @@ export default function Page() {
                   <span className="rounded-full bg-slate-100 px-2.5 py-1">10 perc</span>
                 </div>
                 <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Budapesti közgyűlés voksmonitor</h2>
-                <p className="mt-2 text-slate-500">Nem ígéretek, hanem valós képviselői szavazások a Parlamentben a lezáruló választási ciklusban.</p>
+                <p className="mt-2 text-slate-500">Ez a Voksmonitor a Budapesti Közgyűlés szavazásainak eredményein nyugszik. Így nem ígéretek, hanem valódi döntések alapján nézhetsz rá a képviselők munkájára.</p>
                 <div className="grid mt-auto pt-4 md:pt-6">
                   <Link href="/volby/budapest-kozgyules/inventory" className="grid">
                     <Button variant="outline" color="neutral">
