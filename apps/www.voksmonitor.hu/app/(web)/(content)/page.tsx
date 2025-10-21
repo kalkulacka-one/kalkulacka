@@ -11,6 +11,10 @@ export default function Page() {
 
   return (
     <div className="relative min-h-screen bg-slate-50 z-0 flex flex-col">
+      {/* Test version disclaimer */}
+      <div className="relative z-10 bg-yellow-50 py-3 text-center border-t-2 border-yellow-200">
+        <p className="text-sm font-semibold text-yellow-800">⚠️ Ez egy tesztverzió. Hibák és pontatlanságok előfordulhatnak.</p>
+      </div>
       {/* Background dashed lines */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
         <div className="mx-auto h-full max-w-7xl px-6 sm:px-8">
