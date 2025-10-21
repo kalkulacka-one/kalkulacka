@@ -33,14 +33,14 @@ export function Footer() {
             </div>
             <div />
             <div className="grid grid-flow-row gap-2">
-              <Link href="https://status.volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
-                Status
+              <Link href="/rolunk" className="text-sm text-slate-400 hover:text-white">
+                Rólunk
               </Link>
-              <Link href="https://plausible.io/volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
-                Statistiky
+              <Link href="/modszertan" className="text-sm text-slate-400 hover:text-white">
+                Módszertan
               </Link>
-              <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
-                Soukromí
+              <Link href="https://tamogatas.k-monitor.hu/" target="_blank" className="text-sm text-slate-400 hover:text-white">
+                Támogatás
               </Link>
             </div>
             <div />
