@@ -1,311 +1,555 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://schema.kalkulacka.one/calculator.schema.json",
-  "title": "Calculator",
-  "description": "Calculator is a set of questions, candidates and their answers",
-  "type": "object",
-  "$defs": {
-    "id": {
-      "title": "ID",
-      "description": "Unique identifier of a calculator in the format of UUID",
-      "type": "string",
-      "format": "uuid",
-      "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
-    },
-    "key": {
-      "title": "Key",
-      "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
-      "type": "string",
-      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-      "examples": ["doprava-v-praze"]
-    },
-    "version": {
-      "title": "Version",
-      "description": "Semantic version of the calculator",
-      "type": "string",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "examples": ["1.2.3"]
-    },
-    "createdAt": {
-      "title": "Created at",
-      "description": "Time of the creation of a calculator in the ISO 8601 format",
-      "type": "string",
-      "format": "date-time",
-      "examples": ["2021-01-01T00:00:00+01:00"]
-    },
-    "updatedAt": {
-      "title": "Updated at",
-      "description": "Time of the last update of a calculator in the ISO 8601 format",
-      "type": "string",
-      "format": "date-time",
-      "examples": ["2021-01-01T00:00:00+01:00"]
-    },
-    "publishedAt": {
-      "title": "Published at",
-      "description": "Time when a calculator should be published in the ISO 8601 format",
-      "type": "string",
-      "format": "date-time",
-      "examples": ["2021-01-01T00:00:00+01:00"]
-    },
-    "title": {
-      "title": "Title",
-      "description": "Title of a calculator",
-      "type": "string",
-      "examples": ["2. kolo prezidentských voleb 2023"]
-    },
-    "shortTitle": {
-      "title": "shortTitle",
-      "description": "Short title of a calculator with a maximum of 25 characters",
-      "type": "string",
-      "maxLength": 25,
-      "examples": ["Prezidentské (2. kolo)"]
-    },
-    "description": {
-      "title": "Description",
-      "description": "Description of a calculator",
-      "type": "string",
-      "examples": ["Volební kalkulačka pro 2. kolo prezidentských voleb 2023"]
-    },
-    "methodology": {
-      "title": "Methodology",
-      "description": "Methodology of a calculator",
-      "type": "string",
-      "examples": ["Pokud kandidát neodpověděl na otázku, jeho odpověď se nezapočítává do výsledku kalkulačky."]
-    },
-    "intro": {
-      "type": "string",
-      "description": "Intro text displayed before starting the calculator"
-    },
-    "tags": {
-      "$ref": "./tags.schema.json"
-    },
-    "images": {
-      "$ref": "./images.schema.json"
-    },
-    "calculatorGroup": {
-      "title": "Calculator group",
-      "description": "Reference to a calculator group the calculator belongs to",
+  "anyOf": [
+    {
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "./calculator-group.schema.json#/properties/id"
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+          "title": "ID",
+          "description": "Unique identifier of a calculator in the format of UUID",
+          "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
         },
-        "key": {
-          "$ref": "./calculator-group.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["id", "key"]
-    },
-    "election": {
-      "title": "Election",
-      "description": "Reference to an election the calculator belongs to",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "./election.schema.json#/properties/id"
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "title": "Version",
+          "description": "Semantic version of the calculator",
+          "examples": ["1.2.3"]
         },
-        "key": {
-          "$ref": "./election.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["id", "key"]
-    },
-    "variant": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "./variant.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["key"]
-    },
-    "district": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "./district.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["key"]
-    },
-    "round": {
-      "type": "object",
-      "properties": {
-        "number": {
-          "$ref": "./round.schema.json#/properties/number"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["number"]
-    },
-    "checksums": {
-      "title": "Checksums",
-      "description": "Checksums for calculator data",
-      "type": "object",
-      "properties": {
-        "questions": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Created at",
+          "description": "Time of the creation of a calculator in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Updated at",
+          "description": "Time of the last update of a calculator in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Published at",
+          "description": "Time when a calculator should be published in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "Title of a calculator",
+          "examples": ["2. kolo prezidentských voleb 2023"]
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Description of a calculator",
+          "examples": ["Volební kalkulačka pro 2. kolo prezidentských voleb 2023"]
+        },
+        "methodology": {
+          "type": "string",
+          "title": "Methodology",
+          "description": "Methodology of a calculator",
+          "examples": ["Pokud kandidát neodpověděl na otázku, jeho odpověď se nezapočítává do výsledku kalkulačky."]
+        },
+        "intro": {
+          "type": "string",
+          "title": "Intro",
+          "description": "Intro text displayed before starting the calculator"
+        },
+        "tags": {},
+        "images": {},
+        "checksums": {
           "type": "object",
-          "description": "Checksum of the questions data",
           "properties": {
-            "algorithm": {
-              "type": "string",
-              "enum": ["sha256"]
-            },
-            "value": {
-              "type": "string",
-              "description": "Checksum value",
-              "examples": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"]
+            "questions": {
+              "type": "object",
+              "properties": {
+                "algorithm": {
+                  "type": "string",
+                  "enum": ["sha256"]
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": ["algorithm", "value"],
+              "additionalProperties": false
             }
           },
-          "required": ["algorithm", "value"],
-          "unevaluatedProperties": false
-        }
-      },
-      "unevaluatedProperties": false
-    },
-    "changes": {
-      "title": "Changes",
-      "description": "Changelog of the calculator data",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "type": "string",
-            "pattern": "^\\d+\\.\\d+\\.\\d+$",
-            "description": "Semantic version of this change"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": ["2021-01-01T00:00:00+01:00"]
-          },
-          "title": {
-            "type": "string",
-            "examples": ["Oprava překlepu v otázce 3"]
-          },
-          "description": {
-            "type": "string",
-            "examples": ["V otázce 3 byl opraven překlep ve slově demokracie."]
-          }
+          "required": ["questions"],
+          "additionalProperties": false,
+          "title": "Checksums",
+          "description": "Checksums for calculator data"
         },
-        "required": ["version", "updatedAt"],
-        "unevaluatedProperties": false
-      }
-    }
-  },
-  "properties": {
-    "id": {
-      "$ref": "#/$defs/id"
-    },
-    "version": {
-      "$ref": "#/$defs/version"
-    },
-    "createdAt": {
-      "$ref": "#/$defs/createdAt"
-    },
-    "updatedAt": {
-      "$ref": "#/$defs/updatedAt"
-    },
-    "publishedAt": {
-      "$ref": "#/$defs/publishedAt"
-    },
-    "title": {
-      "$ref": "#/$defs/title"
-    },
-    "shortTitle": {
-      "$ref": "#/$defs/shortTitle"
-    },
-    "description": {
-      "$ref": "#/$defs/description"
-    },
-    "methodology": {
-      "$ref": "#/$defs/methodology"
-    },
-    "intro": {
-      "$ref": "#/$defs/intro"
-    },
-    "tags": {
-      "$ref": "#/$defs/tags"
-    },
-    "images": {
-      "$ref": "#/$defs/images"
-    },
-    "checksums": {
-      "$ref": "#/$defs/checksums"
-    },
-    "changes": {
-      "$ref": "#/$defs/changes"
-    }
-  },
-  "unevaluatedProperties": false,
-  "required": ["id", "createdAt"],
-  "oneOf": [
-    {
-      "title": "Standalone calculator",
-      "description": "Standalone calculator is a calculator that is not part of a calculator group",
-      "properties": {
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                "title": "Version",
+                "description": "Semantic version of the calculator",
+                "examples": ["1.2.3"]
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+                "title": "Updated at",
+                "description": "Time of the last update of a calculator in the ISO 8601 format",
+                "examples": ["2021-01-01T00:00:00+01:00"]
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": ["version", "updatedAt"],
+            "additionalProperties": false
+          },
+          "title": "Changes",
+          "description": "Changelog of the calculator data"
+        },
         "key": {
-          "$ref": "#/$defs/key"
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "title": "Key",
+          "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+          "examples": ["doprava-v-praze"]
+        },
+        "shortTitle": {
+          "type": "string",
+          "maxLength": 25,
+          "title": "shortTitle",
+          "description": "Short title of a calculator with a maximum of 25 characters",
+          "examples": ["Prezidentské (2. kolo)"]
         }
       },
-      "required": ["key", "shortTitle"],
-      "not": {
-        "required": ["calculatorGroup", "election"]
-      }
+      "required": ["id", "version", "createdAt", "key", "shortTitle"],
+      "additionalProperties": false,
+      "title": "Standalone calculator",
+      "description": "Standalone calculator is a calculator that is not part of a calculator group"
     },
     {
-      "title": "Calculator from a group",
-      "description": "Calculator that is part of a calculator group",
+      "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+          "title": "ID",
+          "description": "Unique identifier of a calculator in the format of UUID",
+          "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "title": "Version",
+          "description": "Semantic version of the calculator",
+          "examples": ["1.2.3"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Created at",
+          "description": "Time of the creation of a calculator in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Updated at",
+          "description": "Time of the last update of a calculator in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Published at",
+          "description": "Time when a calculator should be published in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "Title of a calculator",
+          "examples": ["2. kolo prezidentských voleb 2023"]
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Description of a calculator",
+          "examples": ["Volební kalkulačka pro 2. kolo prezidentských voleb 2023"]
+        },
+        "methodology": {
+          "type": "string",
+          "title": "Methodology",
+          "description": "Methodology of a calculator",
+          "examples": ["Pokud kandidát neodpověděl na otázku, jeho odpověď se nezapočítává do výsledku kalkulačky."]
+        },
+        "intro": {
+          "type": "string",
+          "title": "Intro",
+          "description": "Intro text displayed before starting the calculator"
+        },
+        "tags": {},
+        "images": {},
+        "checksums": {
+          "type": "object",
+          "properties": {
+            "questions": {
+              "type": "object",
+              "properties": {
+                "algorithm": {
+                  "type": "string",
+                  "enum": ["sha256"]
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": ["algorithm", "value"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["questions"],
+          "additionalProperties": false,
+          "title": "Checksums",
+          "description": "Checksums for calculator data"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                "title": "Version",
+                "description": "Semantic version of the calculator",
+                "examples": ["1.2.3"]
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+                "title": "Updated at",
+                "description": "Time of the last update of a calculator in the ISO 8601 format",
+                "examples": ["2021-01-01T00:00:00+01:00"]
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": ["version", "updatedAt"],
+            "additionalProperties": false
+          },
+          "title": "Changes",
+          "description": "Changelog of the calculator data"
+        },
         "calculatorGroup": {
-          "$ref": "#/$defs/calculatorGroup"
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+              "title": "ID",
+              "description": "Unique identifier of a calculator in the format of UUID",
+              "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
+            },
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+              "title": "Key",
+              "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+              "examples": ["doprava-v-praze"]
+            }
+          },
+          "required": ["id", "key"],
+          "additionalProperties": false,
+          "title": "Calculator group",
+          "description": "Reference to a calculator group the calculator belongs to"
         },
         "variant": {
-          "$ref": "#/$defs/variant"
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+              "title": "Key",
+              "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+              "examples": ["doprava-v-praze"]
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "title": "Variant",
+          "description": "Reference to a variant the calculator belongs to"
+        },
+        "shortTitle": {
+          "type": "string",
+          "maxLength": 25,
+          "title": "shortTitle",
+          "description": "Short title of a calculator with a maximum of 25 characters",
+          "examples": ["Prezidentské (2. kolo)"]
         }
       },
-      "required": ["calculatorGroup", "variant"],
-      "not": {
-        "required": ["election"]
-      }
+      "required": ["id", "version", "createdAt", "calculatorGroup", "variant"],
+      "additionalProperties": false,
+      "title": "Calculator from a group",
+      "description": "Calculator that is part of a calculator group"
     },
     {
-      "title": "Calculator from an election",
-      "description": "Calculator that is part of an election",
+      "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+          "title": "ID",
+          "description": "Unique identifier of a calculator in the format of UUID",
+          "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "title": "Version",
+          "description": "Semantic version of the calculator",
+          "examples": ["1.2.3"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Created at",
+          "description": "Time of the creation of a calculator in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Updated at",
+          "description": "Time of the last update of a calculator in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "publishedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+          "title": "Published at",
+          "description": "Time when a calculator should be published in the ISO 8601 format",
+          "examples": ["2021-01-01T00:00:00+01:00"]
+        },
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "description": "Title of a calculator",
+          "examples": ["2. kolo prezidentských voleb 2023"]
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Description of a calculator",
+          "examples": ["Volební kalkulačka pro 2. kolo prezidentských voleb 2023"]
+        },
+        "methodology": {
+          "type": "string",
+          "title": "Methodology",
+          "description": "Methodology of a calculator",
+          "examples": ["Pokud kandidát neodpověděl na otázku, jeho odpověď se nezapočítává do výsledku kalkulačky."]
+        },
+        "intro": {
+          "type": "string",
+          "title": "Intro",
+          "description": "Intro text displayed before starting the calculator"
+        },
+        "tags": {},
+        "images": {},
+        "checksums": {
+          "type": "object",
+          "properties": {
+            "questions": {
+              "type": "object",
+              "properties": {
+                "algorithm": {
+                  "type": "string",
+                  "enum": ["sha256"]
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": ["algorithm", "value"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["questions"],
+          "additionalProperties": false,
+          "title": "Checksums",
+          "description": "Checksums for calculator data"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$",
+                "title": "Version",
+                "description": "Semantic version of the calculator",
+                "examples": ["1.2.3"]
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+                "title": "Updated at",
+                "description": "Time of the last update of a calculator in the ISO 8601 format",
+                "examples": ["2021-01-01T00:00:00+01:00"]
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": ["version", "updatedAt"],
+            "additionalProperties": false
+          },
+          "title": "Changes",
+          "description": "Changelog of the calculator data"
+        },
         "calculatorGroup": {
-          "$ref": "#/$defs/calculatorGroup"
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+              "title": "ID",
+              "description": "Unique identifier of a calculator in the format of UUID",
+              "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
+            },
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+              "title": "Key",
+              "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+              "examples": ["doprava-v-praze"]
+            }
+          },
+          "required": ["id", "key"],
+          "additionalProperties": false,
+          "title": "Calculator group",
+          "description": "Reference to a calculator group the calculator belongs to"
         },
         "election": {
-          "$ref": "#/$defs/election"
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+              "title": "ID",
+              "description": "Unique identifier of a calculator in the format of UUID",
+              "examples": ["e2cf4fec-81e0-490c-a056-7f63177dc6a7"]
+            },
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+              "title": "Key",
+              "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+              "examples": ["doprava-v-praze"]
+            }
+          },
+          "required": ["id", "key"],
+          "additionalProperties": false,
+          "title": "Election",
+          "description": "Reference to an election the calculator belongs to"
         },
         "variant": {
-          "$ref": "#/$defs/variant"
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+              "title": "Key",
+              "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+              "examples": ["doprava-v-praze"]
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "title": "Variant",
+          "description": "Reference to a variant the calculator belongs to"
         },
         "district": {
-          "$ref": "#/$defs/district"
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+              "title": "Key",
+              "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+              "examples": ["doprava-v-praze"]
+            }
+          },
+          "required": ["key"],
+          "additionalProperties": false,
+          "title": "District",
+          "description": "Reference to a district the calculator belongs to"
         },
         "round": {
-          "$ref": "#/$defs/round"
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "number"
+            }
+          },
+          "required": ["number"],
+          "additionalProperties": false,
+          "title": "Round",
+          "description": "Reference to a round the calculator belongs to"
+        },
+        "shortTitle": {
+          "type": "string",
+          "maxLength": 25,
+          "title": "shortTitle",
+          "description": "Short title of a calculator with a maximum of 25 characters",
+          "examples": ["Prezidentské (2. kolo)"]
         }
       },
-      "required": ["calculatorGroup", "election"],
-      "anyOf": [
-        {
-          "required": ["variant"]
-        },
-        {
-          "required": ["district"]
-        },
-        {
-          "required": ["round"]
-        }
-      ]
+      "required": ["id", "version", "createdAt", "calculatorGroup", "election"],
+      "additionalProperties": false,
+      "title": "Calculator from an election",
+      "description": "Calculator that is part of an election"
     }
-  ]
+  ],
+  "title": "Calculator",
+  "description": "Calculator is a set of questions, candidates and their answers",
+  "$id": "https://schema.kalkulacka.one/calculator.schema.json"
 }
