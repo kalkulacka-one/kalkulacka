@@ -3,6 +3,7 @@ import { Card } from "@repo/design-system/server";
 import Link from "next/link";
 import { useId } from "react";
 
+import { SubscribeForm } from "../../../components/client";
 import { BeadRow } from "./BeadRow";
 
 export default function Page() {
@@ -77,6 +78,11 @@ export default function Page() {
               </div>
             </Card>
           </div>
+        </div>
+
+        {/* Newsletter subscription */}
+        <div className="mt-16 max-w-md mx-auto">
+          <SubscribeForm />
         </div>
 
         {/* Footer */}

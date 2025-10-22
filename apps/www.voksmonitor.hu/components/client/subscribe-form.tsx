@@ -7,7 +7,7 @@ import { z } from "zod";
 import { subscribe } from "../../server/subscribe";
 
 const subscribeSchema = z.object({
-  email: z.string().email("Neplatný formát"),
+  email: z.string().email("Érvénytelen formátum"),
 });
 
 type SubscribeData = z.infer<typeof subscribeSchema>;
@@ -40,7 +40,7 @@ export function SubscribeForm() {
       }
     } catch (_error) {
       setError("root.serverError", {
-        message: "Chyba při připojení k serveru. Zkuste to prosím později.",
+        message: "Szerverhiba. Kérjük, próbálja újra később.",
       });
       setFocus("email");
     }
@@ -49,22 +49,22 @@ export function SubscribeForm() {
   return (
     <>
       {isSuccessfullySubmitted ? (
-        <div>Děkujeme za vyplnění</div>
+        <div>Köszönjük a feliratkozást</div>
       ) : (
         <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
           <Field disabled={isSubmitting}>
             <div className="grid grid-rows-2 gap-2 justify-center">
               <div className="flex gap-4 justify-center items-center">
-                <Label className="sr-only">Zadejte váš email</Label>
+                <Label className="sr-only">Adja meg az e-mail címét</Label>
                 <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
                 <Button disabled={isSubmitting} type="submit" variant="outline" color="neutral">
-                  {isSubmitting ? "Odesílám" : "Odeslat"}
+                  {isSubmitting ? "Küldés" : "Küldés"}
                 </Button>
               </div>
               <div className="text-center space-y-1">
                 {errors.email && <Description className="text-xs text-[var(--ko-palette-secondary)]">{errors.email.message}</Description>}
                 {errors.root?.serverError && <Description className="text-sm">⚠️ {errors.root?.serverError.message}</Description>}
-                <p className="text-sm leading-[1.23]">Odesláním souhlasíte se zasíláním novinek o volební kalkulačce.</p>
+                <p className="text-sm leading-[1.23]">Az elküldéssel hozzájárul a voksmonitorral kapcsolatos hírlevelek fogadásához.</p>
               </div>
             </div>
           </Field>
