@@ -80,6 +80,18 @@ export default function Page() {
           </div>
         </div>
 
+        {/* Methodology section */}
+        <div className="mt-12 flex justify-center">
+          <div className="w-full max-w-2xl">
+            <Card border className="h-full !border-slate-200 bg-white">
+              <div className="p-6 md:p-8 h-full flex flex-col">
+                <h2 className="font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl">Módszertan</h2>
+                <p className="mt-4 text-slate-600">A Voksmonitor módszertanának részletes leírása hamarosan elérhető lesz.</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+
         {/* Newsletter subscription */}
         <div className="mt-16 max-w-md mx-auto">
           <SubscribeForm />
