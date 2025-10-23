@@ -51,7 +51,7 @@ export type CalculatorData = {
   baseUrl: string;
 };
 
-export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
+export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData | null> {
   const fileEntries = Object.entries(DATA_CONFIG).map(([entryKey, config]) => ({
     key: entryKey,
     url: buildDataUrl({ key, group, resourcePath: config.filename }),
@@ -59,15 +59,20 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
     required: "required" in config && config.required,
   }));
 
-  const fetchPromises = fileEntries.map(({ key, url, required }) =>
-    fetchFile({ url }).catch((error) => {
+  const fetchPromises = fileEntries.map(({ url, required }) =>
+    fetchFile({ url }).catch(() => {
       if (required) {
-        throw new Error(`Failed to fetch ${key} data: ${error.message}`);
+        return null;
       }
       return undefined;
     }),
   );
+
   const results = await Promise.all(fetchPromises);
+
+  if (results.includes(null)) {
+    return null;
+  }
 
   const parsedData = fileEntries
     .map(({ key, schema }, index) => {
@@ -75,7 +80,7 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
       if (data === undefined) return undefined;
 
       try {
-        return [key, parseWithSchema({ data, schema: schema as z.ZodSchema })];
+        return [key, parseWithSchema({ data, schema: schema as unknown as z.ZodType<unknown> })];
       } catch (error) {
         throw new Error(`Failed to parse ${key} data: ${(error as Error).message}`);
       }

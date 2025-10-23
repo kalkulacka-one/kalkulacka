@@ -13,7 +13,7 @@ const matchSchema = z.object({
 });
 
 const postRequestSchema = z.object({
-  answers: z.array(answerSchema),
+  answers: z.array(answerSchema as unknown as z.ZodTypeAny),
   matches: z.array(matchSchema).optional(),
   calculatorVersion: z
     .string()
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     const answers = session.data.answers;
-    const result = z.array(answerSchema).safeParse(answers);
+    const result = z.array(answerSchema as unknown as z.ZodTypeAny).safeParse(answers);
 
     if (!result.success) {
       return new InternalServerError().toResponse();

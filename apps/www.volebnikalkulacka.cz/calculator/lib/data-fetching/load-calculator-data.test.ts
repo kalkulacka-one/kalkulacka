@@ -114,11 +114,12 @@ describe("loadCalculatorData", () => {
     });
   });
 
-  it("should throw error with details when fetch fails", async () => {
+  it("should return null when required files fail to fetch", async () => {
     process.env.DATA_ENDPOINT = DATA_ENDPOINT;
     mockFetchFile.mockRejectedValue(new Error("Network error"));
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(/Failed to fetch .* data: Network error/);
+    const result = await loadCalculatorData({ key: "key" });
+    expect(result).toBeNull();
   });
 
   it("should throw error with details when parsing fails", async () => {
@@ -146,15 +147,16 @@ describe("loadCalculatorData", () => {
 
     const result = await loadCalculatorData({ key: "key" });
 
-    expect(result.data.persons).toBeUndefined();
-    expect(result.data.organizations).toBeUndefined();
-    expect(result.data.calculator).toEqual(data);
-    expect(result.data.questions).toEqual(data);
-    expect(result.data.candidates).toEqual(data);
-    expect(result.data.candidatesAnswers).toEqual(data);
+    expect(result).not.toBeNull();
+    expect(result?.data.persons).toBeUndefined();
+    expect(result?.data.organizations).toBeUndefined();
+    expect(result?.data.calculator).toEqual(data);
+    expect(result?.data.questions).toEqual(data);
+    expect(result?.data.candidates).toEqual(data);
+    expect(result?.data.candidatesAnswers).toEqual(data);
   });
 
-  it("should throw error when required files are missing", async () => {
+  it("should return null when required files are missing", async () => {
     process.env.DATA_ENDPOINT = DATA_ENDPOINT;
 
     mockFetchFile.mockImplementation(({ url }) => {
@@ -164,7 +166,8 @@ describe("loadCalculatorData", () => {
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch calculator data: File not found");
+    const result = await loadCalculatorData({ key: "key" });
+    expect(result).toBeNull();
 
     mockFetchFile.mockImplementation(({ url }) => {
       if (url.includes("questions.json")) {
@@ -173,6 +176,7 @@ describe("loadCalculatorData", () => {
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch questions data: File not found");
+    const result2 = await loadCalculatorData({ key: "key" });
+    expect(result2).toBeNull();
   });
 });
