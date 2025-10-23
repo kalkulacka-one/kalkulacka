@@ -64,12 +64,12 @@ export function SubscribeForm() {
                   autoComplete="email"
                   type="email"
                   placeholder="E-mail"
-                  style={{ height: "48px", minHeight: "48px" }}
+                  style={{ height: "48px", minHeight: "48px", backgroundColor: "white" }}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isSubmitting}
                 />
-                <Button disabled={isSubmitting || !consent} type="submit" variant="outline" color="neutral">
+                <Button disabled={isSubmitting || !consent} type="submit" variant="outline" color="neutral" style={{ backgroundColor: "white" }}>
                   {isSubmitting ? "Küldés" : "Küldés"}
                 </Button>
               </div>
