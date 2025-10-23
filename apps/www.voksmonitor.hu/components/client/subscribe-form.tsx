@@ -1,48 +1,51 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Description, Field, Input, Label } from "@repo/design-system/client";
-import { useState } from "react";
-import { type SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
-
-import { subscribe } from "../../server/subscribe";
-
-const subscribeSchema = z.object({
-  email: z.string().email("Érvénytelen formátum"),
-});
-
-type SubscribeData = z.infer<typeof subscribeSchema>;
+import { type FormEvent, useState } from "react";
 
 export function SubscribeForm() {
   const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setError,
-    setFocus,
-    formState: { errors, isSubmitting },
-  } = useForm<SubscribeData>({
-    resolver: zodResolver(subscribeSchema),
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-  const onSubmit: SubmitHandler<SubscribeData> = async (data) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
     setIsSuccessfullySubmitted(false);
+
+    if (!consent) {
+      setError("Kérjük, fogadja el az adatkezelési tájékoztatót.");
+      return;
+    }
+
+    if (!email || !email.includes("@")) {
+      setError("Érvénytelen formátum");
+      return;
+    }
+
+    setIsSubmitting(true);
+
     try {
-      const response = await subscribe(data);
-      if (response.success) {
-        reset();
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("consent", "1");
+
+      const response = await fetch("https://k-monitor.hu/email_subscribe", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setEmail("");
+        setConsent(false);
         setIsSuccessfullySubmitted(true);
       } else {
-        setError("root.serverError", {
-          message: response.error,
-        });
-        setFocus("email");
+        setError("Hiba történt a feliratkozás során. Kérjük, próbálja újra.");
       }
     } catch (_error) {
-      setError("root.serverError", {
-        message: "Szerverhiba. Kérjük, próbálja újra később.",
-      });
-      setFocus("email");
+      setError("Szerverhiba. Kérjük, próbálja újra később.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -51,20 +54,37 @@ export function SubscribeForm() {
       {isSuccessfullySubmitted ? (
         <div>Köszönjük a feliratkozást</div>
       ) : (
-        <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form className="flex flex-col gap-4 items-center" onSubmit={onSubmit} noValidate>
           <Field disabled={isSubmitting}>
             <div className="grid grid-rows-2 gap-2 justify-center">
               <div className="flex gap-4 justify-center items-center">
                 <Label className="sr-only">Adja meg az e-mail címét</Label>
-                <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
-                <Button disabled={isSubmitting} type="submit" variant="outline" color="neutral">
+                <Input
+                  invalid={!!error && !consent}
+                  autoComplete="email"
+                  type="email"
+                  placeholder="E-mail"
+                  style={{ height: "48px", minHeight: "48px" }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isSubmitting}
+                />
+                <Button disabled={isSubmitting || !consent} type="submit" variant="outline" color="neutral">
                   {isSubmitting ? "Küldés" : "Küldés"}
                 </Button>
               </div>
               <div className="text-center space-y-1">
-                {errors.email && <Description className="text-xs text-[var(--ko-palette-secondary)]">{errors.email.message}</Description>}
-                {errors.root?.serverError && <Description className="text-sm">⚠️ {errors.root?.serverError.message}</Description>}
-                <p className="text-sm leading-[1.23]">Az elküldéssel hozzájárul a voksmonitorral kapcsolatos hírlevelek fogadásához.</p>
+                <label className="flex items-center justify-center gap-2 text-sm cursor-pointer">
+                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} disabled={isSubmitting} />
+                  <span>
+                    Elolvastam és elfogadom a K-Monitor{" "}
+                    <a href="https://adatbazis.k-monitor.hu/egyeb/adatkezelesi-tajekoztato" target="_blank" rel="noopener noreferrer" className="underline">
+                      adatkezelési tájékoztatóját
+                    </a>
+                    .
+                  </span>
+                </label>
+                {error && <Description className="text-xs text-[var(--ko-palette-secondary)]">{error}</Description>}
               </div>
             </div>
           </Field>
