@@ -26,13 +26,15 @@ export function SubscribeForm() {
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData();
-      formData.append("email", email);
-      formData.append("consent", "1");
-
-      const response = await fetch("https://k-monitor.hu/email_subscribe", {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          consent: true,
+        }),
       });
 
       if (response.ok) {
@@ -40,7 +42,8 @@ export function SubscribeForm() {
         setConsent(false);
         setIsSuccessfullySubmitted(true);
       } else {
-        setError("Hiba történt a feliratkozás során. Kérjük, próbálja újra.");
+        const data = await response.json().catch(() => ({}));
+        setError(data.error || "Hiba történt a feliratkozás során. Kérjük, próbálja újra.");
       }
     } catch (_error) {
       setError("Szerverhiba. Kérjük, próbálja újra később.");
