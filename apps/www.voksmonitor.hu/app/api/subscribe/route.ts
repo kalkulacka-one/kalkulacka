@@ -18,19 +18,13 @@ export async function POST(request: NextRequest) {
 
     const parseResult = subscribeRequestSchema.safeParse(body);
     if (!parseResult.success) {
-      return NextResponse.json(
-        { error: "Invalid request data", details: parseResult.error.issues },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid request data", details: parseResult.error.issues }, { status: 400 });
     }
 
     const { email, consent } = parseResult.data;
 
     if (!consent) {
-      return NextResponse.json(
-        { error: "Consent is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Consent is required" }, { status: 400 });
     }
 
     // Step 1: Fetch the k-monitor.hu homepage to get the CSRF token
@@ -43,10 +37,7 @@ export async function POST(request: NextRequest) {
 
     if (!homeResponse.ok) {
       console.error("Failed to fetch k-monitor.hu homepage:", homeResponse.status);
-      return NextResponse.json(
-        { error: "Failed to initialize subscription" },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: "Failed to initialize subscription" }, { status: 502 });
     }
 
     // Extract XSRF-TOKEN and laravel_session from Set-Cookie header
@@ -61,7 +52,7 @@ export async function POST(request: NextRequest) {
         if (xsrfMatch?.[1]) {
           xsrfToken = decodeURIComponent(xsrfMatch[1]);
         }
-        
+
         const sessionMatch = cookie.match(/laravel_session=([^;]+)/);
         if (sessionMatch?.[1]) {
           laravelSession = decodeURIComponent(sessionMatch[1]);
@@ -71,18 +62,12 @@ export async function POST(request: NextRequest) {
 
     if (!xsrfToken) {
       console.error("XSRF-TOKEN not found in cookies");
-      return NextResponse.json(
-        { error: "Failed to obtain security token" },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: "Failed to obtain security token" }, { status: 502 });
     }
 
     if (!laravelSession) {
       console.error("laravel_session not found in cookies");
-      return NextResponse.json(
-        { error: "Failed to obtain session" },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: "Failed to obtain session" }, { status: 502 });
     }
 
     // Step 2: Submit the subscription with the CSRF token
@@ -101,23 +86,13 @@ export async function POST(request: NextRequest) {
     });
 
     if (!subscribeResponse.ok) {
-      console.error(
-        "Subscription failed:",
-        subscribeResponse.status,
-        await subscribeResponse.text()
-      );
-      return NextResponse.json(
-        { error: "Subscription failed" },
-        { status: subscribeResponse.status }
-      );
+      console.error("Subscription failed:", subscribeResponse.status, await subscribeResponse.text());
+      return NextResponse.json({ error: "Subscription failed" }, { status: subscribeResponse.status });
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error("Subscription error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
