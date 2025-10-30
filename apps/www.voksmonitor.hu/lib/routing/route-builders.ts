@@ -9,14 +9,14 @@ export function createBaseSegment(segments: RouteSegments): string {
 
   if (embed) {
     if (second) {
-      return `embed/${embed}/volby/${first}/${second}`;
+      return `embed/${embed}/vm/${first}/${second}`;
     }
-    return `embed/${embed}/volby/${first}`;
+    return `embed/${embed}/vm/${first}`;
   }
   if (second) {
-    return `volby/${first}/${second}`;
+    return `vm/${first}/${second}`;
   }
-  return `volby/${first}`;
+  return `vm/${first}`;
 }
 
 export const routes = {

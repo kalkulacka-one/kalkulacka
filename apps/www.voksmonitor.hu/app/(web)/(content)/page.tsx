@@ -51,7 +51,7 @@ export default function Page() {
                   Ez a Voksmonitor a Budapesti Közgyűlés szavazásainak eredményein nyugszik. Így nem ígéretek, hanem valódi döntések alapján nézhetsz rá a képviselők munkájára.
                 </p>
                 <div className="grid mt-auto pt-4 md:pt-6">
-                  <Link href="/volby/budapest-kozgyules/inventory" className="grid">
+                  <Link href="/vm/budapest-kozgyules/inventory" className="grid">
                     <Button variant="outline" color="neutral">
                       Szavazások leltárának indítása
                     </Button>
