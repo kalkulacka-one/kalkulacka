@@ -1,5 +1,6 @@
 import { Logo } from "@repo/design-system/client";
 import { twMerge } from "@repo/design-system/utils";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import React from "react";
 
@@ -96,7 +97,9 @@ type AppHeaderMain = {
 function AppHeaderMain({ children, title, calculator, logoMonochrome }: AppHeaderMain) {
   return (
     <div className="grid grid-flow-col items-center gap-2">
-      <Logo title={title} size="small" monochrome={logoMonochrome} />
+      <Link href="/">
+        <Logo title={title} size="small" monochrome={logoMonochrome} />
+      </Link>
       <div className="grid text-sm text-slate-700 leading-none">
         <h1 className="font-light">{title}</h1>
         <div>
