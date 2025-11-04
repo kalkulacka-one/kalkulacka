@@ -29,6 +29,10 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
       group: sessionData.calculatorGroup ? sessionData.calculatorKey : undefined,
     });
 
+    if (!calculatorData) {
+      return new NotFoundError("Calculator data not found").toResponse();
+    }
+
     const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person, calculatorData.baseUrl)]));
     const organizationsMap = new Map((calculatorData.data.organizations || []).map((organization) => [organization.id, organizationViewModel(organization, calculatorData.baseUrl)]));
 

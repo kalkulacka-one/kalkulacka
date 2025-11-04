@@ -26,6 +26,11 @@ export async function generateCalculatorMetadata({
   };
 }): Promise<Metadata> {
   const calculatorData = await loadCalculatorData({ key, group });
+
+  if (!calculatorData) {
+    throw new Error(`Calculator data not found for key: ${key}${group ? `, group: ${group}` : ""}`);
+  }
+
   const calculator = calculatorViewModel(calculatorData.data.calculator);
 
   const ogImage = calculator.images?.find((img) => img.type === "opengraph");
