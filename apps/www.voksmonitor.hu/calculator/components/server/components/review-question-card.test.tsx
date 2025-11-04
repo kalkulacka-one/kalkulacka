@@ -40,9 +40,9 @@ describe("ReviewQuestionCard", () => {
     expect(screen.getByText(props.total.toString())).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
     expect(screen.getByText(props.question.statement)).toBeInTheDocument();
-    expect(screen.getByText("Ano")).toBeInTheDocument();
-    expect(screen.getByText("Ne")).toBeInTheDocument();
-    expect(screen.getByLabelText("Pro mě důležité")).toBeInTheDocument();
+    expect(screen.getByText("Egyetértek")).toBeInTheDocument();
+    expect(screen.getByText("Nem értek egyet")).toBeInTheDocument();
+    expect(screen.getByLabelText("Számomra fontos")).toBeInTheDocument();
   });
 
   describe("interactions", () => {
@@ -57,21 +57,21 @@ describe("ReviewQuestionCard", () => {
     it("calls onAgreeChange when agree button is clicked", async () => {
       render(<ReviewQuestionCard {...props} onAgreeChange={mockHandler} />);
 
-      await user.click(screen.getByText("Ano"));
+      await user.click(screen.getByText("Egyetértek"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
       render(<ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />);
 
-      await user.click(screen.getByText("Ne"));
+      await user.click(screen.getByText("Nem értek egyet"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
       render(<ReviewQuestionCard {...props} onImportantChange={mockHandler} />);
 
-      await user.click(screen.getByLabelText("Pro mě důležité"));
+      await user.click(screen.getByLabelText("Számomra fontos"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
   });

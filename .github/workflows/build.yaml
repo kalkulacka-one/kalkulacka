@@ -26,9 +26,9 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
-      # - name: Test
-      #   run: npm run test
-      # - name: Install Playwright Browsers
-      #   run: npx playwright install --with-deps
-      # - name: Run E2E Tests
-      #   run: npm run e2e
+      - name: Test
+        run: npm run test
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run E2E Tests
+        run: npm run e2e

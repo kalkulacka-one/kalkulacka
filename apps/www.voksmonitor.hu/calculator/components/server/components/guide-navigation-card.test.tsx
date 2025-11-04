@@ -5,10 +5,10 @@ import { describe, expect, it, vi } from "vitest";
 import { GuideNavigationCard } from "./guide-navigation-card";
 
 describe("GuideNavigationCard", () => {
-  it("renders 'Začít odpovídat' button", () => {
+  it("renders 'Válaszadás megkezdése' button", () => {
     const onNextClick = vi.fn();
     render(<GuideNavigationCard onNextClick={onNextClick} />);
-    expect(screen.getByText("Začít odpovídat")).toBeInTheDocument();
+    expect(screen.getByText("Válaszadás megkezdése")).toBeInTheDocument();
   });
 
   it("calls onNextClick when button is clicked", async () => {
@@ -16,7 +16,7 @@ describe("GuideNavigationCard", () => {
     const user = userEvent.setup();
     render(<GuideNavigationCard onNextClick={onNextClick} />);
 
-    await user.click(screen.getByText("Začít odpovídat"));
+    await user.click(screen.getByText("Válaszadás megkezdése"));
     expect(onNextClick).toHaveBeenCalledTimes(1);
   });
 });

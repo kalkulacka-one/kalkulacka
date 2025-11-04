@@ -41,39 +41,39 @@ describe("QuestionNavigationCard", () => {
     it("renders navigation buttons", () => {
       render(<QuestionNavigationCard {...defaultProps} />);
 
-      expect(screen.getByText("Předchozí")).toBeInTheDocument();
-      expect(screen.getByText("Přeskočit")).toBeInTheDocument();
+      expect(screen.getByText("Előző")).toBeInTheDocument();
+      expect(screen.getByText("Kihagyás")).toBeInTheDocument();
     });
 
-    it("shows 'Další' when answer is provided", () => {
+    it("shows 'Következő' when answer is provided", () => {
       render(<QuestionNavigationCard {...defaultProps} answer={mockAnswerWithResponse} />);
-      expect(screen.getByText("Další")).toBeInTheDocument();
+      expect(screen.getByText("Következő")).toBeInTheDocument();
     });
 
-    it("shows 'Návod' for first question", () => {
+    it("shows 'Útmutató' for first question", () => {
       render(<QuestionNavigationCard {...defaultProps} current={1} />);
-      expect(screen.getByText("Návod")).toBeInTheDocument();
-      expect(screen.queryByText("Předchozí")).not.toBeInTheDocument();
+      expect(screen.getByText("Útmutató")).toBeInTheDocument();
+      expect(screen.queryByText("Előző")).not.toBeInTheDocument();
     });
 
     it("renders answer buttons", () => {
       render(<QuestionNavigationCard {...defaultProps} />);
 
-      expect(screen.getByText("Ano")).toBeInTheDocument();
-      expect(screen.getByText("Ne")).toBeInTheDocument();
+      expect(screen.getByText("Egyetértek")).toBeInTheDocument();
+      expect(screen.getByText("Nem értek egyet")).toBeInTheDocument();
     });
 
     it("renders important button", () => {
       render(<QuestionNavigationCard {...defaultProps} />);
-      expect(screen.getByLabelText("Pro mě důležité")).toBeInTheDocument();
+      expect(screen.getByLabelText("Számomra fontos")).toBeInTheDocument();
     });
 
     it("shows correct state when answer is provided", () => {
       render(<QuestionNavigationCard {...defaultProps} answer={mockAnswerWithResponse} />);
 
-      expect(screen.getByText("Ano")).toBeChecked();
-      expect(screen.getByText("Ne")).not.toBeChecked();
-      expect(screen.getByLabelText("Pro mě důležité")).toBeChecked();
+      expect(screen.getByText("Egyetértek")).toBeChecked();
+      expect(screen.getByText("Nem értek egyet")).not.toBeChecked();
+      expect(screen.getByLabelText("Számomra fontos")).toBeChecked();
     });
   });
 
@@ -88,43 +88,43 @@ describe("QuestionNavigationCard", () => {
 
     it("calls onPreviousClick when previous button is clicked", async () => {
       render(<QuestionNavigationCard {...defaultProps} onPreviousClick={mockHandler} />);
-      await user.click(screen.getByText("Předchozí"));
+      await user.click(screen.getByText("Előző"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
-    it("calls onPreviousClick when 'Návod' button is clicked on first question", async () => {
+    it("calls onPreviousClick when 'Útmutató' button is clicked on first question", async () => {
       render(<QuestionNavigationCard {...defaultProps} current={1} onPreviousClick={mockHandler} />);
-      await user.click(screen.getByText("Návod"));
+      await user.click(screen.getByText("Útmutató"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onNextClick when next button is clicked", async () => {
       render(<QuestionNavigationCard {...defaultProps} onNextClick={mockHandler} />);
-      await user.click(screen.getByText("Přeskočit")); // No answer, so shows "Přeskočit"
+      await user.click(screen.getByText("Kihagyás")); // No answer, so shows "Kihagyás"
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
-    it("calls onNextClick when 'Další' button is clicked with answer", async () => {
+    it("calls onNextClick when 'Következő' button is clicked with answer", async () => {
       render(<QuestionNavigationCard {...defaultProps} answer={mockAnswerWithResponse} onNextClick={mockHandler} />);
-      await user.click(screen.getByText("Další"));
+      await user.click(screen.getByText("Következő"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onAgreeChange when agree button is clicked", async () => {
       render(<QuestionNavigationCard {...defaultProps} onAgreeChange={mockHandler} />);
-      await user.click(screen.getByText("Ano"));
+      await user.click(screen.getByText("Egyetértek"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
       render(<QuestionNavigationCard {...defaultProps} onDisagreeChange={mockHandler} />);
-      await user.click(screen.getByText("Ne"));
+      await user.click(screen.getByText("Nem értek egyet"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
       render(<QuestionNavigationCard {...defaultProps} onImportantChange={mockHandler} />);
-      await user.click(screen.getByLabelText("Pro mě důležité"));
+      await user.click(screen.getByLabelText("Számomra fontos"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
   });

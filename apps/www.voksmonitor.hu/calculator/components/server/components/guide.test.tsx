@@ -17,6 +17,6 @@ describe("Guide", () => {
     });
 
     render(<Guide calculator={mockCalculator} />);
-    expect(screen.getByText("Shoda")).toBeInTheDocument();
+    expect(screen.getByText("Egyetért")).toBeInTheDocument();
   });
 });
