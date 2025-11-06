@@ -4,16 +4,17 @@ import { Card } from "@repo/design-system/server";
 import { useState } from "react";
 
 export function DonateCard() {
-  const [selectedAmount, setSelectedAmount] = useState<string | null>("200");
+  const [selectedAmount, setSelectedAmount] = useState<string | null>("1000");
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) return null;
 
-  const getDarujmeUrl = (amount?: string) => {
+  const getPayPalUrl = (amount?: string) => {
+    const baseUrl = "https://www.paypal.me/kmonitor";
     if (amount) {
-      return `https://www.darujme.cz/darovat/1200653?frequency=once&amount=${amount}`;
+      return `${baseUrl}/${amount}HUF`;
     }
-    return "https://www.darujme.cz/darovat/1200653";
+    return baseUrl;
   };
 
   return (
@@ -30,39 +31,13 @@ export function DonateCard() {
           </div>
           <div className="col-span-2 @sm:col-span-3">
             <h3 className="text-lg font-display font-bold text-slate-700 tracking-tight">
-              Pomohla vám <span className="whitespace-nowrap">Voksmonitor?</span>
+              Voksmonitor támogatása
             </h3>
           </div>
           <div className="col-span-3 @sm:col-span-3">
-            <p className="text-neutral text-sm leading-relaxed text-slate-600">Volební kalkulačka je nezávislá a nezisková. Podpořte demokracii a pomozte milionům voličů.</p>
+            <p className="text-neutral text-sm leading-relaxed text-slate-600">Támogasd a Voksmonitort készítő K-Monitor egyesületet!</p>
           </div>
           <div className="@sm:col-start-2">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedAmount(selectedAmount === "200" ? null : "200");
-              }}
-              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "200" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
-              }`}
-            >
-              👍 200 Kč
-            </button>
-          </div>
-          <div className="@sm:col-start-3">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedAmount(selectedAmount === "500" ? null : "500");
-              }}
-              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "500" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
-              }`}
-            >
-              ❤️ 500 Kč
-            </button>
-          </div>
-          <div className="@sm:col-start-4">
             <button
               type="button"
               onClick={() => {
@@ -72,13 +47,39 @@ export function DonateCard() {
                 selectedAmount === "1000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
               }`}
             >
-              🤩 1 000 Kč
+              👍 1 000 Ft
+            </button>
+          </div>
+          <div className="@sm:col-start-3">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedAmount(selectedAmount === "5000" ? null : "5000");
+              }}
+              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
+                selectedAmount === "5000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
+              }`}
+            >
+              ❤️ 5 000 Ft
+            </button>
+          </div>
+          <div className="@sm:col-start-4">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedAmount(selectedAmount === "10000" ? null : "10000");
+              }}
+              className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
+                selectedAmount === "10000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
+              }`}
+            >
+              🤩 10 000 Ft
             </button>
           </div>
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
-            <a href={getDarujmeUrl(selectedAmount || undefined)} target="_blank" className="grid">
+            <a href={getPayPalUrl(selectedAmount || undefined)} target="_blank" className="grid">
               <Button variant="outline" color="primary" size="medium">
-                Podpořit Volební kalkulačku
+                Támogatom a Voksminitort
               </Button>
             </a>
           </div>
