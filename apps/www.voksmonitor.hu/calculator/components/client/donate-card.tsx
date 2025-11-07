@@ -30,9 +30,7 @@ export function DonateCard() {
             </Button>
           </div>
           <div className="col-span-2 @sm:col-span-3">
-            <h3 className="text-lg font-display font-bold text-slate-700 tracking-tight">
-              Voksmonitor támogatása
-            </h3>
+            <h3 className="text-lg font-display font-bold text-slate-700 tracking-tight">Voksmonitor támogatása</h3>
           </div>
           <div className="col-span-3 @sm:col-span-3">
             <p className="text-neutral text-sm leading-relaxed text-slate-600">Támogasd a Voksmonitort készítő K-Monitor egyesületet!</p>
@@ -44,7 +42,7 @@ export function DonateCard() {
                 setSelectedAmount(selectedAmount === "1000" ? null : "1000");
               }}
               className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "1000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
+                selectedAmount === "1000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-gray-50"
               }`}
             >
               👍 1 000 Ft
@@ -57,7 +55,7 @@ export function DonateCard() {
                 setSelectedAmount(selectedAmount === "5000" ? null : "5000");
               }}
               className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "5000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
+                selectedAmount === "5000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-gray-50"
               }`}
             >
               ❤️ 5 000 Ft
@@ -70,7 +68,7 @@ export function DonateCard() {
                 setSelectedAmount(selectedAmount === "10000" ? null : "10000");
               }}
               className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded border transition-all cursor-pointer w-full @sm:w-auto ${
-                selectedAmount === "10000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-neutral-50"
+                selectedAmount === "10000" ? "border-slate-500 bg-slate-200 text-slate-700" : "border-neutral-300 bg-white text-neutral hover:bg-gray-50"
               }`}
             >
               🤩 10 000 Ft

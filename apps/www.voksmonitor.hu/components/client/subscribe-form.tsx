@@ -58,7 +58,7 @@ export function SubscribeForm() {
         <div>Köszönjük a feliratkozást</div>
       ) : (
         <>
-          <p className="text-center text-slate-700 font-semibold mb-4">Iratkozz fel a K-Monitor hírlevelére!</p>
+          <p className="text-center text-gray-700 font-semibold mb-4">Iratkozz fel a K-Monitor hírlevelére!</p>
           <form className="flex flex-col gap-4 items-center" onSubmit={onSubmit} noValidate>
             <Field disabled={isSubmitting}>
               <div className="grid grid-rows-2 gap-2 justify-center">

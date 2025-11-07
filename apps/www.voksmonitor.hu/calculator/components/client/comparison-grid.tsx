@@ -22,7 +22,7 @@ function ComparisonGridDashlinesOverlay({ result, filterNestedCandidates }: Comp
       <div className="h-full flex gap-8">
         {/* User column line - sticky */}
         <div className="w-[100px] flex justify-center sticky left-4">
-          <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+          <div className="w-0 h-full border-r-2 border-dashed border-gray-200" />
         </div>
         {/* Candidate columns lines */}
         {result.matches.map((match, matchIndex) => {
@@ -30,7 +30,7 @@ function ComparisonGridDashlinesOverlay({ result, filterNestedCandidates }: Comp
           if (!nestedMatches) {
             return (
               <div key={`line-${match.candidate.id}-${matchIndex}`} className="w-[100px] flex justify-center">
-                <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+                <div className="w-0 h-full border-r-2 border-dashed border-gray-200" />
               </div>
             );
           }
@@ -61,10 +61,10 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
   return (
     <div className="sticky left-4 max-w-dvw z-10 flex flex-col gap-2">
       <h3 className="text-sm font-medium">Válassz pártot:</h3>
-      <div className="relative bg-slate-100 rounded-full p-1 flex flex-wrap gap-1 max-w-[90dvw] sm:w-fit">
+      <div className="relative bg-gray-100 rounded-full p-1 flex flex-wrap gap-1 max-w-[90dvw] sm:w-fit">
         <label
           className={` text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${
-            selectedOrganizations.size === 0 ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+            selectedOrganizations.size === 0 ? "bg-gray-700 text-gray-50" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
           }`}
         >
           <input
@@ -84,9 +84,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
         {organizations.map((org) => (
           <label
             key={org}
-            className={`text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${
-              selectedOrganizations.has(org) ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-            }`}
+            className={`text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${selectedOrganizations.has(org) ? "bg-gray-700 text-gray-50" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
           >
             <input
               type="checkbox"
@@ -131,7 +129,7 @@ export type ComparisonHeader = {
 function ComparisonHeader({ condensed = false, result, filterNestedCandidates }: ComparisonHeader) {
   return (
     <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-40 transition-all duration-500 ease-in-out`}>
-      <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+      <div className="rounded-xl bg-green-200/60 backdrop-blur-lg border-emerald-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
         Te
       </div>
       {result.matches.map((match, matchIndex) => {
@@ -139,7 +137,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
         const nestedCandidates = nestedMatches?.map((nested: NonNullable<ResultViewModel["matches"][0]["nestedMatches"]>[0]) => (
           <div
             key={`header-${nested.candidate.id}-${matchIndex}`}
-            className=" rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+            className=" rounded-xl bg-gray-100/60 backdrop-blur-lg border-gray-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
           >
             <span>
               {nested.candidate.displayName}
@@ -151,7 +149,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
           return (
             <div
               key={`header-${match.candidate.id}-${matchIndex}`}
-              className="rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+              className="rounded-xl bg-gray-100/60 backdrop-blur-lg border-gray-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
             >
               {match.candidate.displayName}
             </div>
@@ -207,7 +205,7 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
         <div className="h-32 absolute left-0 top-0" />
         {/* user answers */}
         <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
-          <div className="rounded-full bg-slate-50">
+          <div className="rounded-full bg-gray-50">
             <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
           </div>
         </div>

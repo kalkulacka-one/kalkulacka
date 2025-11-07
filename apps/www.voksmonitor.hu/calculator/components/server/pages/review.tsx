@@ -74,7 +74,7 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Összegzés</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-gray-700">Összegzés</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>

@@ -61,7 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <PlausibleScript />
       </head>
-      <body className="min-h-dvh bg-slate-50">
+      <body className="min-h-dvh bg-gray-50">
         <EmbedContextProvider isEmbed={false}>
           <ThemeProvider name="default">{children}</ThemeProvider>
         </EmbedContextProvider>

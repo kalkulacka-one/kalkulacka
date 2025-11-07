@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-slate-800 text-white">
+    <footer className="bg-gray-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -16,28 +16,23 @@ export function Footer() {
                 A <strong>Voksmonitor</strong> összeveti a véleményedet a pártok programjaival.
               </p>
               <div className="grid grid-cols-2 gap-2 mt-4 w-fit">
-                <Link
-                  href="https://www.instagram.com/kmonitorhu/"
-                  target="_blank"
-                  className="text-slate-400 hover:text-white transition-colors flex items-center justify-center"
-                  aria-label="Instagram"
-                >
+                <Link href="https://www.instagram.com/kmonitorhu/" target="_blank" className="text-gray-400 hover:text-white transition-colors flex items-center justify-center" aria-label="Instagram">
                   <Icon icon={mdiInstagram} size="medium" decorative />
                 </Link>
-                <Link href="https://www.facebook.com/Kmonitor/" target="_blank" className="text-slate-400 hover:text-white transition-colors flex items-center justify-center" aria-label="Facebook">
+                <Link href="https://www.facebook.com/Kmonitor/" target="_blank" className="text-gray-400 hover:text-white transition-colors flex items-center justify-center" aria-label="Facebook">
                   <Icon icon={mdiFacebook} size="medium" decorative />
                 </Link>
               </div>
             </div>
             <div />
             <div className="grid grid-flow-row gap-2">
-              <Link href="/rolunk" className="text-sm text-slate-400 hover:text-white">
+              <Link href="/rolunk" className="text-sm text-gray-400 hover:text-white">
                 Rólunk
               </Link>
-              <Link href="/modszertan" className="text-sm text-slate-400 hover:text-white">
+              <Link href="/modszertan" className="text-sm text-gray-400 hover:text-white">
                 Módszertan
               </Link>
-              <Link href="https://tamogatas.k-monitor.hu/" target="_blank" className="text-sm text-slate-400 hover:text-white">
+              <Link href="https://tamogatas.k-monitor.hu/" target="_blank" className="text-sm text-gray-400 hover:text-white">
                 Támogatás
               </Link>
             </div>

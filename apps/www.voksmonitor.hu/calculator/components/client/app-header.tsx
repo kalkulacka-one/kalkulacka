@@ -100,8 +100,8 @@ function AppHeaderMain({ children, title, calculator, logoMonochrome }: AppHeade
       <Link href="/">
         <Logo title={title} size="small" monochrome={logoMonochrome} />
       </Link>
-      <div className="grid text-sm text-slate-700 leading-none">
-        <h1 className="font-light">{title}</h1>
+      <div className="grid text-sm text-gray-900 leading-none" style={{ fontFamily: "'Radio Canada', sans-serif" }}>
+        <h1 className="font-bold uppercase">{title}</h1>
         <div>
           <h2 className="font-semibold inline">{calculator?.title}</h2>
           {calculator?.title && calculator?.secondaryTitle && <span className="font-light hidden @[24rem]:inline"> • </span>}

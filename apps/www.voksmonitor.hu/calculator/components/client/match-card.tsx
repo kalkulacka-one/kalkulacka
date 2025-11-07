@@ -13,7 +13,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
 
   return (
-    <ExpandableCard corner="topLeft" shadow="hard" className="overflow-hidden border border-slate-200">
+    <ExpandableCard corner="topLeft" shadow="hard" className="overflow-hidden border border-gray-200">
       {({ open }) => (
         <>
           {match !== undefined && <ProgressBar value={match} color={order === 1 ? "primary" : "neutral"} corner="sharp" />}
@@ -31,14 +31,14 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 />
               ) : (
                 <div
-                  className={`flex h-20 w-20 items-center justify-center rounded-2xl ${order === 1 ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "bg-white text-slate-700"}`}
+                  className={`flex h-20 w-20 items-center justify-center rounded-2xl ${order === 1 ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "bg-white text-gray-700"}`}
                 >
                   <span className="text-3xl font-bold">{order !== undefined ? order : "—"}</span>
                 </div>
               )}
               <div className="flex flex-col gap-1 items-start justify-center">
-                <h3 className="text-lg font-bold leading-tight text-slate-700">{candidate.displayName}</h3>
-                {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
+                <h3 className="text-lg font-bold leading-tight text-gray-700">{candidate.displayName}</h3>
+                {candidate.organization && <p className="text-sm text-gray-500">{candidate.organization}</p>}
                 {respondent === "expert" && (
                   <p className="text-xs text-gray-500">
                     Postoje podle veřejných zdrojů,
@@ -47,15 +47,15 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 )}
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-3xl font-bold tracking-tight text-slate-800">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
-                {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="text-slate-400" />}
+                <span className="text-3xl font-bold tracking-tight text-gray-800">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
+                {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="text-gray-400" />}
               </div>
             </div>
           </ExpandableCard.Content>
 
           {hasDirectAnswers && (
             <ExpandableCard.HiddenContent className="px-4 sm:px-6 pb-4 sm:pb-6 bg-white">
-              <div className="border-t border-slate-200 pt-4">
+              <div className="border-t border-gray-200 pt-4">
                 {/* Answer Comparisons Grid */}
                 {answerComparisons.length > 0 && (
                   <div className="grid grid-cols-[1fr_auto] gap-y-2 gap-x-1 auto-rows-auto">
@@ -73,12 +73,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                         {/* Question + Metadata Wrapper */}
                         <div className="space-y-2">
                           {/* Question Text */}
-                          <div className="text-slate-800 font-medium text-sm">{comparison.questionText}</div>
+                          <div className="text-gray-800 font-medium text-sm">{comparison.questionText}</div>
 
                           {/* Comment if available - candidate or expert - but not if showing expert no-data badge */}
                           {(comparison.candidateComment || comparison.expertComment) &&
                             !((comparison.candidateAnswer === null || comparison.candidateAnswer === undefined) && respondent === "expert") && (
-                              <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">"{comparison.candidateComment || comparison.expertComment}"</blockquote>
+                              <blockquote className="text-gray-600 italic pl-4 border-l-2 border-gray-200 text-sm">"{comparison.candidateComment || comparison.expertComment}"</blockquote>
                             )}
 
                           {/* Sources if available - candidate or expert */}
@@ -86,11 +86,11 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                             (comparison.expertSources && comparison.expertSources.length > 0) ||
                             comparison.candidateAnswer === null ||
                             comparison.candidateAnswer === undefined) && (
-                            <div className="text-xs text-slate-500">
+                            <div className="text-xs text-gray-500">
                               {(comparison.candidateAnswer === null || comparison.candidateAnswer === undefined) && respondent === "expert" ? (
                                 <div className="space-y-1">
                                   <div>
-                                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs">
+                                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-gray-100 text-gray-700 text-xs">
                                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
                                       </svg>
@@ -108,7 +108,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                       <div>
                                         <button
                                           type="button"
-                                          className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs"
+                                          className="inline-flex items-center gap-1 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 text-xs"
                                           onClick={() => {
                                             const newExpanded = new Set(expandedSources);
                                             if (isExpanded) {
@@ -127,7 +127,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                       </div>
 
                                       {isExpanded && (
-                                        <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">
+                                        <blockquote className="text-gray-600 italic pl-4 border-l-2 border-gray-200 text-sm">
                                           {source.description || "Žádný popis není k dispozici"}
                                           {source.url && (
                                             <>
@@ -155,7 +155,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                 ? comparison.userAnswer === true
                                   ? "bg-blue-600 text-white"
                                   : "bg-red-600 text-white"
-                                : "bg-transparent text-slate-600"
+                                : "bg-transparent text-gray-600"
                             }`}
                           >
                             <span>{comparison.userAnswer === true ? "✓" : comparison.userAnswer === false ? "✗" : "—"}</span>
