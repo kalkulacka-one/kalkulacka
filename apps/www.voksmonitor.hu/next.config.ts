@@ -37,44 +37,28 @@ const nextConfig: NextConfig = {
       },
       // 2024 archive redirects
       {
-        source: "/o-volbach",
-        destination: "https://archiv-2024.volebnikalkulacka.cz/o-volbach",
+        source: "/a-voksmonitor-modszertana",
+        destination: "https://old.voksmonitor.hu/a-voksmonitor-modszertana",
         permanent: false,
       },
       {
-        source: "/archiv",
-        destination: "https://archiv-2024.volebnikalkulacka.cz/archiv",
+        source: "/a-voksmonitorrol",
+        destination: "https://old.voksmonitor.hu/a-voksmonitorrol",
         permanent: false,
       },
       {
-        source: "/volby/krajske-2024/:path*",
-        destination: "https://archiv-2024.volebnikalkulacka.cz/volby/krajske-2024/:path*",
+        source: "/adatvedelem",
+        destination: "https://old.voksmonitor.hu/adatvedelem",
         permanent: false,
       },
       {
-        source: "/volby/senatni-2024/:path*",
-        destination: "https://archiv-2024.volebnikalkulacka.cz/volby/senatni-2024/:path*",
+        source: "/valasztasok/europai-2024/:path*",
+        destination: "https://old.voksmonitor.hu/valasztasok/europai-2024/:path*",
         permanent: false,
       },
       {
-        source: "/volby/evropske-2024/:path*",
-        destination: "https://archiv-2024.volebnikalkulacka.cz/volby/evropske-2024/:path*",
-        permanent: false,
-      },
-      // 2022 archive redirects
-      {
-        source: "/volby/prezidentske-2023/:path*",
-        destination: "https://archiv.volebnikalkulacka.cz/volby/prezidentske-2023/:path*",
-        permanent: false,
-      },
-      {
-        source: "/volby/senatni-2022/:path*",
-        destination: "https://archiv.volebnikalkulacka.cz/volby/senatni-2022/:path*",
-        permanent: false,
-      },
-      {
-        source: "/volby/komunalni-2022/:path*",
-        destination: "https://archiv.volebnikalkulacka.cz/volby/komunalni-2022/:path*",
+        source: "/valasztasok/onkormanyzati-2024/:path*",
+        destination: "https://old.voksmonitor.hu/valasztasok/onkormanyzati-2024/:path*",
         permanent: false,
       },
     ];

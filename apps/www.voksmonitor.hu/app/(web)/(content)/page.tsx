@@ -58,7 +58,7 @@ export default function Page() {
                 <div className="p-6 h-full flex flex-col">
                   <p className="text-gray-600">A régebbi voksmonitorokat az archívumban találod</p>
                   <div className="grid mt-auto pt-4">
-                    <a href="https://archiv-2024.volebnikalkulacka.cz" target="_blank" rel="noopener noreferrer" className="grid">
+                    <a href="https://old.voksmonitor.hu" target="_blank" rel="noopener noreferrer" className="grid">
                       <Button variant="link" color="neutral">
                         Ugrás az archívumra
                       </Button>
