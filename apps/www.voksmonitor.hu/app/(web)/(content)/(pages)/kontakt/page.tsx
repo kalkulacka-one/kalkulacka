@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <h1>Kontakt</h1>;
+  return <h1>Kapcsolat</h1>;
 }
