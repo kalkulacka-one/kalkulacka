@@ -1,7 +1,6 @@
+import type { Answer } from "@repo/schema/schemas";
 import { createContext, useContext } from "react";
 import { createStore, type StoreApi, useStore } from "zustand";
-
-import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 
 type AnswersStoreState = {
   answers: Answer[];

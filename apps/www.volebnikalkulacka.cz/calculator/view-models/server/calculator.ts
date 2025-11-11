@@ -1,4 +1,4 @@
-import type { Calculator } from "../../../../../packages/schema/schemas/calculator.schema";
+import type { Calculator } from "@repo/schema/schemas";
 
 export type CalculatorViewModel = Calculator & {
   readonly title: string;

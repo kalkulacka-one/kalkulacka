@@ -1,5 +1,5 @@
-import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
-import type { Person } from "../../../../../packages/schema/schemas/person.schema";
+import type { ImageUrls, Person } from "@repo/schema/schemas";
+
 import { findImageByType, resolveImageUrls } from "../../lib/data-fetching/image-url-builder";
 
 export type PersonViewModel = Person & {

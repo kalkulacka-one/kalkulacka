@@ -1,4 +1,5 @@
-import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
+import type { Answer } from "@repo/schema/schemas";
+
 import { booleanAnswerToNumber } from "./boolean-answer-to-number";
 import { calculateBaseScore } from "./calculate-base-score";
 export function processSingleAnswer(userAnswer: Answer, candidateAnswer: Answer) {

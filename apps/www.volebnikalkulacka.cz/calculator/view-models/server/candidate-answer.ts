@@ -1,4 +1,4 @@
-import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
+import type { Answer } from "@repo/schema/schemas";
 
 export type CandidateAnswer = Omit<Answer, "respondent"> & {
   respondent?: "candidate" | "expert";

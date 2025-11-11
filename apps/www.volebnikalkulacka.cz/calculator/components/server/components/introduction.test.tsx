@@ -1,7 +1,7 @@
+import type { Calculator } from "@repo/schema/schemas";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
 import { calculatorViewModel } from "../../../view-models";
 import { Introduction } from ".";
 

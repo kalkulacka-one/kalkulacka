@@ -1,4 +1,4 @@
-import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
+import type { ImageUrls } from "@repo/schema/schemas";
 
 export function findImageByType(images: { type: string; urls: ImageUrls }[] | undefined, type: string): { urls: ImageUrls } | undefined {
   return images?.find((img) => img.type === type);

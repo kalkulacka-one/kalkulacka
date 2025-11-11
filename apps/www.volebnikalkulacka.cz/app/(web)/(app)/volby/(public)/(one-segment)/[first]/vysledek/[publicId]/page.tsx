@@ -1,8 +1,8 @@
 import { prisma } from "@repo/database";
+import type { Answer } from "@repo/schema/schemas";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import type { Answer } from "../../../../../../../../../../../packages/schema/schemas/answer.schema";
 import type { calculateMatches } from "../../../../../../../../../calculator/lib/result-calculation/calculate-matches";
 import { PublicResultPageWithData } from "../../../../../../../../../components/client";
 import { generateCalculatorMetadata } from "../../../../../../../../../lib/metadata/calculator";

@@ -1,4 +1,5 @@
-import type { Question } from "../../../../../packages/schema/schemas/question.schema";
+import type { Question } from "@repo/schema/schemas";
+
 import { type QuestionViewModel, questionViewModel } from "./question";
 
 export type QuestionsViewModel = {

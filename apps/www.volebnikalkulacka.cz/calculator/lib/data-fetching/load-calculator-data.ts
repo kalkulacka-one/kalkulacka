@@ -1,11 +1,19 @@
+import {
+  type Calculator,
+  type Candidates,
+  type CandidatesAnswers,
+  calculatorSchema,
+  candidatesAnswers,
+  candidatesSchema,
+  type Organizations,
+  organizationsSchema,
+  type Persons,
+  personsSchema,
+  type Questions,
+  questionsSchema,
+} from "@repo/schema/schemas";
 import type { z } from "zod";
 
-import { type Calculator, calculatorSchema } from "../../../../../packages/schema/schemas/calculator.schema";
-import { type Candidates, candidatesSchema } from "../../../../../packages/schema/schemas/candidates.schema";
-import { type CandidatesAnswers, candidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import { type Organizations, organizationsSchema } from "../../../../../packages/schema/schemas/organizations.schema";
-import { type Persons, personsSchema } from "../../../../../packages/schema/schemas/persons.schema";
-import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
 import { buildDataUrl, fetchFile, parseWithSchema } from "..";
 
 const DATA_CONFIG = {

@@ -1,8 +1,5 @@
-import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
-import type { Candidate } from "../../../../../packages/schema/schemas/candidate.schema";
-import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
-import type { Question } from "../../../../../packages/schema/schemas/question.schema";
+import type { Answer, Candidate, CandidatesAnswers, ImageUrls, Question } from "@repo/schema/schemas";
+
 import { findImageByType, resolveImageUrls } from "../../lib/data-fetching/image-url-builder";
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";

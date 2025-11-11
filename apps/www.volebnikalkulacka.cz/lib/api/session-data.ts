@@ -1,4 +1,5 @@
-import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
+import type { Answer } from "@repo/schema/schemas";
+
 import type { calculateMatches } from "../../calculator/lib/result-calculation/calculate-matches";
 import { getRuntimeSessionId } from "../session/runtime-session";
 

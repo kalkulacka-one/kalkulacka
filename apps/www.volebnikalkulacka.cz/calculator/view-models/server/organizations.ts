@@ -1,4 +1,5 @@
-import type { Organization } from "../../../../../packages/schema/schemas/organization.schema";
+import type { Organization } from "@repo/schema/schemas";
+
 import { type OrganizationViewModel, organizationViewModel } from "./organization";
 
 export function organizationsViewModel(organizations: Organization[] | undefined, baseUrl: string): OrganizationViewModel[] {

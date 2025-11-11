@@ -1,4 +1,5 @@
-import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
+import type { Answers } from "@repo/schema/schemas";
+
 import { processSingleAnswer } from "./process-single-answer";
 
 export function aggregateAnswersMatchScore(userAnswers: Answers, candidateAnswers: Answers) {

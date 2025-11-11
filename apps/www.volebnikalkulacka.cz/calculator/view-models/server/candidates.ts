@@ -1,4 +1,5 @@
-import type { Candidate } from "../../../../../packages/schema/schemas/candidate.schema";
+import type { Candidate } from "@repo/schema/schemas";
+
 import { type CandidateViewModel, candidateViewModel } from "./candidate";
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";

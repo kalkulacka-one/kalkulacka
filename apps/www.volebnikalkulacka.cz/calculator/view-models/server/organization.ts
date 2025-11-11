@@ -1,5 +1,5 @@
-import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
-import type { Organization } from "../../../../../packages/schema/schemas/organization.schema";
+import type { ImageUrls, Organization } from "@repo/schema/schemas";
+
 import { findImageByType, resolveImageUrls } from "../../lib/data-fetching/image-url-builder";
 
 export type OrganizationViewModel = Organization & {
