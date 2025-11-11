@@ -77,7 +77,7 @@ export function DonateCard() {
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
             <a href={getPayPalUrl(selectedAmount || undefined)} target="_blank" className="grid">
               <Button variant="outline" color="primary" size="medium">
-                Támogatom a Voksminitort
+                Támogatom a Voksmonitort
               </Button>
             </a>
           </div>
