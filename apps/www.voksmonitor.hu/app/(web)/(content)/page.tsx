@@ -32,17 +32,17 @@ export default function Page() {
                 <div className="p-6 md:p-8 h-full flex flex-col">
                   <div className="flex flex-wrap items-center gap-2 text-xs text-gray-600">
                     <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 font-semibold text-red-700">Szavazások leltára</span>
-                    <span className="rounded-full bg-gray-100 px-2.5 py-1">35 szavazás</span>
+                    <span className="rounded-full bg-gray-100 px-2.5 py-1">39 kérdés</span>
                     <span className="rounded-full bg-gray-100 px-2.5 py-1">10 perc</span>
                   </div>
-                  <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-gray-700 text-2xl md:text-3xl">Budapesti közgyűlés voksmonitor</h2>
+                  <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-gray-700 text-2xl md:text-3xl">Budapesti Fővárosi Közgyűlés Voksmonitor</h2>
                   <p className="mt-2 text-gray-500">
-                    Ez a Voksmonitor a Budapesti Közgyűlés szavazásainak eredményein nyugszik. Így nem ígéretek, hanem valódi döntések alapján nézhetsz rá a képviselők munkájára.
+                   A Voksmonitor célja, hogy a választók a politikával ne csak a pártok kommunikációján keresztül találkozzanak – hanem megismerjék a különböző politikai szereplők (esetünkben frakciók és képviselők) álláspontját a legfontosabb várospolitikai és szakmai kérdésekben. Az alkalmazás a válaszadóhoz rendeli azt a frakciót, illetve képviselőt, amelynek álláspontja a válaszok alapján legközelebb áll a kitöltő értékrendjéhez.
                   </p>
                   <div className="grid mt-auto pt-4 md:pt-6">
                     <Link href="/vm/budapest-kozgyules/inventory" className="grid">
                       <Button variant="fill" color="primary">
-                        Szavazások leltárának indítása
+                        Kérdések indítása
                       </Button>
                     </Link>
                   </div>
@@ -56,7 +56,7 @@ export default function Page() {
             <div className="w-full max-w-2xl">
               <Card border className="h-full !border-gray-200 bg-gray-50/50">
                 <div className="p-6 h-full flex flex-col">
-                  <p className="text-gray-600">A régebbi voksmonitorokat az archívumban találod</p>
+                  <p className="text-gray-600">A korábbi Voksmonitorokat az archívumban találod</p>
                   <div className="grid mt-auto pt-4">
                     <a href="https://old.voksmonitor.hu" target="_blank" rel="noopener noreferrer" className="grid">
                       <Button variant="link" color="neutral">
