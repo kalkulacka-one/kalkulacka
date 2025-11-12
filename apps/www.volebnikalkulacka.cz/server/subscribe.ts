@@ -6,6 +6,7 @@ import { z } from "zod";
 
 const subscribeBodySchema = z.object({
   email: z.string().email("Neplatný formát"),
+  origin: z.string(),
 });
 
 type SubscribeBody = z.infer<typeof subscribeBodySchema>;
@@ -21,6 +22,7 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
     await prisma.subscription.create({
       data: {
         email: parsed.data.email,
+        origin: parsed.data.origin,
       },
     });
     return { success: true };
