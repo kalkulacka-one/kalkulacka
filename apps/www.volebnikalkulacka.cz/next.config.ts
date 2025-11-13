@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 import rehypeSlug from "rehype-slug";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@repo/design-system"],
   productionBrowserSourceMaps: true,
