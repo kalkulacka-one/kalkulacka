@@ -1,6 +1,6 @@
 import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
 import type { Person } from "../../../../../packages/schema/schemas/person.schema";
-import { findImageByType, resolveImageUrls } from "../../lib/data-fetching/image-url-builder";
+import { findImageByType, resolveImageUrls } from "@/lib/data-fetching/image-url-builder";
 
 export type PersonViewModel = Person & {
   displayName: string;

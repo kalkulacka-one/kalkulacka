@@ -3,7 +3,7 @@ import { Icon, ToggleButton } from "@repo/design-system/client";
 import { logoCheck, logoCross } from "@repo/design-system/icons";
 import { Card } from "@repo/design-system/server";
 
-import type { AnswerViewModel, QuestionViewModel } from "../../../view-models";
+import type { AnswerViewModel, QuestionViewModel } from "@/calculator/view-models";
 
 export type ReviewQuestionCard = {
   question: QuestionViewModel;

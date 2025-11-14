@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { calculatorViewModel } from "../../../view-models";
+import { calculatorViewModel } from "@/calculator/view-models";
 import { Guide } from ".";
 
 describe("Guide", () => {

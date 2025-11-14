@@ -2,11 +2,11 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 import React from "react";
 
-import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
-import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
+import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout } from "../components";
-import { ResultNavigationCard } from "../components/result-navigation-card";
+import { ResultNavigationCard } from "@/components/result-navigation-card";
 
 export type ResultPage = {
   embedContext: EmbedContextType;

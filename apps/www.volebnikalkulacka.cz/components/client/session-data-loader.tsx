@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 
-import { useAnswersStore } from "../../calculator/stores/answers";
-import { useCalculatorStore } from "../../calculator/stores/calculator";
-import { loadSessionData } from "../../lib/api/session-data";
-import { reportError } from "../../lib/monitoring";
+import { useAnswersStore } from "@/calculator/stores/answers";
+import { useCalculatorStore } from "@/calculator/stores/calculator";
+import { loadSessionData } from "@/lib/api/session-data";
+import { reportError } from "@/lib/monitoring";
 
 export function SessionDataLoader() {
   const loadedCalculatorId = useRef<string | null>(null);

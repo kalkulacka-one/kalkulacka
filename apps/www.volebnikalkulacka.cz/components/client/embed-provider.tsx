@@ -1,4 +1,4 @@
-import { type EmbedConfig, type EmbedName, embedsConfig } from "../../config/embeds";
+import { type EmbedConfig, type EmbedName, embedsConfig } from "@/config/embeds";
 import { EmbedContextProvider } from "./embed-context-provider";
 import { ThemeProvider } from "./theme-provider";
 

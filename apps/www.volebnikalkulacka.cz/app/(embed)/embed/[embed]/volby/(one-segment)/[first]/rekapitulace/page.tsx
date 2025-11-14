@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import { ReviewPageWithRouting } from "../../../../../../../../components/client";
-import { generateCalculatorMetadata } from "../../../../../../../../lib/metadata/calculator";
-import { canonical } from "../../../../../../../../lib/routing/url-builders";
+import { ReviewPageWithRouting } from "@/components/client";
+import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
+import { canonical } from "@/lib/routing/url-builders";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string }> }): Promise<Metadata> {
   const { first } = await params;

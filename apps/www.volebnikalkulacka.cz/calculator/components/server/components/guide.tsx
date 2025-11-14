@@ -4,7 +4,7 @@ import { logoCheck, logoCross } from "@repo/design-system/icons";
 import { Card } from "@repo/design-system/server";
 import Markdown from "react-markdown";
 
-import type { CalculatorViewModel } from "../../../view-models";
+import type { CalculatorViewModel } from "@/calculator/view-models";
 
 export type Guide = {
   calculator: CalculatorViewModel;

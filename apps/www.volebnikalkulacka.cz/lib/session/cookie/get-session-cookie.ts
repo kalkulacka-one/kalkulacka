@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import { parseWithSchema } from "../../../calculator/lib";
+import { parseWithSchema } from "@/calculator/lib";
 import { buildCookieName } from "./cookie-name";
 import { sessionCookieSchema } from "./set-session-cookie";
 
