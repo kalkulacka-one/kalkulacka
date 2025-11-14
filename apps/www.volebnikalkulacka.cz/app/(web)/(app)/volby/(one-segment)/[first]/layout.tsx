@@ -1,5 +1,5 @@
-import { loadCalculatorData } from "../../../../../../calculator/lib";
-import { SessionProviderLayout } from "../../../../../../components/client";
+import { loadCalculatorData } from "@/calculator/lib";
+import { SessionProviderLayout } from "@/components/client";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
   const { first } = await params;

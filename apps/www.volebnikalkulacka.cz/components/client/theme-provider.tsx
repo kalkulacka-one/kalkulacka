@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
-
-import type { ThemeName } from "../../config/themes";
+import type { ThemeName } from "@/config/themes";
 
 const themes = {
   default: dynamic(() => import("./themes/default-theme").then((mod) => mod.DefaultTheme)),
