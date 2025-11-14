@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { appsignal } from "@/lib/monitoring";
 
 interface ErrorReporterProps {

@@ -1,6 +1,5 @@
 import { notFound, usePathname, useRouter } from "next/navigation";
 import { useEffect, useReducer } from "react";
-
 import { QuestionPage as AppQuestionPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores/answers";
 import { useAnswer, useCalculator, useQuestions } from "@/calculator/view-models";
@@ -9,6 +8,7 @@ import { saveSessionData } from "@/lib/api/session-data";
 import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing/route-builders";
 import { params } from "@/lib/routing/route-parsers";
+
 import { useEmbed } from "../../../client/embed-context-provider";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {

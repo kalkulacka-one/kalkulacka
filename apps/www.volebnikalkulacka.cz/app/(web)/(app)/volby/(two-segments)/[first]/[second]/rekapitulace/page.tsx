@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import { ReviewPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
 import { canonical } from "@/lib/routing/url-builders";

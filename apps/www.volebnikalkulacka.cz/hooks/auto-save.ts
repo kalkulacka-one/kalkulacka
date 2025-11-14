@@ -1,5 +1,4 @@
 import { useContext, useEffect, useRef } from "react";
-
 import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
 import { AnswersStoreContext } from "@/calculator/stores/answers";
 import { useCalculator } from "@/calculator/view-models";

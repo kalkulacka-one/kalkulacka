@@ -2,7 +2,7 @@ import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { Button, Icon, ToggleButton } from "@repo/design-system/client";
 import { logoCheck, logoCross } from "@repo/design-system/icons";
 
-import type { AnswerViewModel } from "@/calculator/view-models";
+import type { AnswerViewModel } from "../../../view-models";
 import { NavigationCard } from "../../server/components/navigation-card";
 
 const HEIGHT = "h-[138px]";

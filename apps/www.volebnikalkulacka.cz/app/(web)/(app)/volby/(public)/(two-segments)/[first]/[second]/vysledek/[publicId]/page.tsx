@@ -1,12 +1,12 @@
 import { prisma } from "@repo/database";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-
-import type { Answer } from "../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
 import { buildCanonicalUrl, canonical } from "@/lib/routing/url-builders";
+
+import type { Answer } from "../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }): Promise<Metadata> {
   const { first, second, publicId } = await params;

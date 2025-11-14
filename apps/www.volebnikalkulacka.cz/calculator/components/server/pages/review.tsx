@@ -1,8 +1,8 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
-
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/calculator/view-models";
+
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 

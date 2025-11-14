@@ -1,4 +1,4 @@
-import type { calculateMatches } from "@/lib/result-calculation/calculate-matches";
+import type { calculateMatches } from "../../lib/result-calculation/calculate-matches";
 import type { CandidateViewModel } from "./candidate";
 import type { CandidateAnswerViewModel } from "./candidate-answer";
 import type { CandidatesAnswersViewModel } from "./candidate-answers";

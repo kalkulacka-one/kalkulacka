@@ -2,8 +2,8 @@ import { Logo } from "@repo/design-system/client";
 import { twMerge } from "@repo/design-system/utils";
 import type { ReactNode } from "react";
 import React from "react";
-
 import { useEmbed } from "@/components/client";
+
 import type { CalculatorViewModel } from "../../view-models";
 
 const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);

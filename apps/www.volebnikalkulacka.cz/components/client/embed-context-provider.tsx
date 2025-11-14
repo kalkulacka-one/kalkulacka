@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-
 import type { EmbedConfig, EmbedName } from "@/config/embeds";
 
 export type EmbedContextType =

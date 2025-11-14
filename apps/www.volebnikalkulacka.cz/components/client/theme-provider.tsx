@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-
 import type { ThemeName } from "@/config/themes";
 
 const themes = {

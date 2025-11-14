@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores/answers";
@@ -8,6 +7,7 @@ import { useCalculatedMatches, useCalculator, useResult } from "@/calculator/vie
 import { saveSessionData } from "@/lib/api/session-data";
 import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing/route-builders";
+
 import { useEmbed } from "../../embed-context-provider";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
