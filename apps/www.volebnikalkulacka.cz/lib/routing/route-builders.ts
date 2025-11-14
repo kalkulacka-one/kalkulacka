@@ -1,6 +1,7 @@
 export type RouteSegments = {
   first: string;
   second?: string;
+  third?: string;
   embed?: string;
 };
 
@@ -14,18 +15,24 @@ export const ROUTE_SEGMENTS = {
 } as const;
 
 export function createBaseSegment(segments: RouteSegments): string {
-  const { first, second, embed } = segments;
+  const { first, second, third, embed } = segments;
 
   if (embed) {
-    if (second) {
-      return `embed/${embed}/volby/${first}/${second}`;
+    if (third) {
+      return `embed/${embed}/${first}/${second}/${third}`;
     }
-    return `embed/${embed}/volby/${first}`;
+    if (second) {
+      return `embed/${embed}/${first}/${second}`;
+    }
+    return `embed/${embed}/${first}`;
+  }
+  if (third) {
+    return `${first}/${second}/${third}`;
   }
   if (second) {
-    return `volby/${first}/${second}`;
+    return `${first}/${second}`;
   }
-  return `volby/${first}`;
+  return first;
 }
 
 export const routes = {
