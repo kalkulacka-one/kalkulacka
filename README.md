@@ -2,14 +2,23 @@
 
 The _one_ voting advice application used by millions of voters across 7 countries:
 
-- 🇨🇿 **[Volební kalkulačka](https://www.volebnikalkulacka.cz)** in Czechia
-- 🇸🇰 **[Volebná kalkulačka](https://www.volebnakalkulacka.sk)** in Slovakia
-- 🇭🇺 **[Voksmonitor](https://www.voksmonitor.hu)** in Hungary
-- 🇦🇹 **[Wahlrechner](https://www.wahlrechner.at)** in Austria
+- 🇸🇰 **[Volebná kalkulačka](https://www.volebnakalkulacka.sk)** in Slovakia  
+— _March 2026: Municipal & Regional_  
+— _2027: Parliamentary_
+- 🇽🇰 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.org)** in Kosovo  
+— _March 2026: Presidential_
+- 🇭🇺 **[Voksmonitor](https://www.voksmonitor.hu)** in Hungary  
+— _April 2026: Parliamentary_
+- 🇦🇹 **[Wahlrechner](https://www.wahlrechner.at)** in Austria  
+— _September 2026 & 2027: Regional elections_
+- 🇨🇿 **[Volební kalkulačka](https://www.volebnikalkulacka.cz)** in Czechia  
+— _October 2026: Municipal & Senate_
+- 🇦🇱 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.al)** in Albania  
+— _2027: Local elections_
 - 🇷🇴 **[TestVot](https://www.testvot.eu)** in Romania
-- 🇽🇰 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.org)** in Kosovo
-- 🇦🇱 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.al)** in Albania
-- 🇲🇰 **[Glasomer](https://www.glasomer.mk)** in North Macedonia *(coming October 2025)*
+- 🇲🇰 **[Glasomer](https://www.glasomer.mk)** in North Macedonia
+
+---
 
 ## Contributing
 
