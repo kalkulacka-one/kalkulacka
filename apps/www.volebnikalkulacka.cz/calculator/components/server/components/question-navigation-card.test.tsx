@@ -3,9 +3,19 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { AnswerViewModel } from "../../../view-models";
-import { QuestionNavigationCard } from "./question-navigation-card";
+import { QuestionNavigationCard, type QuestionNavigationCardTranslations } from "./question-navigation-card";
 
 describe("QuestionNavigationCard", () => {
+  const mockTranslations: QuestionNavigationCardTranslations = {
+    agree: "Ano",
+    disagree: "Ne",
+    previous: "Předchozí",
+    next: "Další",
+    guide: "Návod",
+    skip: "Přeskočit",
+    important: "Pro mě důležité",
+  };
+
   const mockAnswerWithResponse: AnswerViewModel = {
     answer: {
       questionId: "550e8400-e29b-41d4-a716-446655440000",
@@ -29,6 +39,7 @@ describe("QuestionNavigationCard", () => {
     onDisagreeChange: vi.fn(),
     onImportantChange: vi.fn(),
     answer: mockAnswerNoResponse,
+    translations: mockTranslations,
   } as const;
 
   describe("rendering", () => {
