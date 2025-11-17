@@ -11,7 +11,7 @@ export type ReviewNavigationCard = {
 export function ReviewNavigationCard({ onNextClick }: ReviewNavigationCard) {
   return (
     <NavigationCard>
-      <Button color="neutral" onClick={onNextClick}>
+      <Button color="primary" onClick={onNextClick}>
         Eredmények mutatása
       </Button>
     </NavigationCard>

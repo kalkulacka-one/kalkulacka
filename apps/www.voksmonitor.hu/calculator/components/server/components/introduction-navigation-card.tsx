@@ -11,7 +11,7 @@ export type IntroductionNavigationCard = {
 export function IntroductionNavigationCard({ onNextClick }: IntroductionNavigationCard) {
   return (
     <NavigationCard>
-      <Button color="neutral" onClick={onNextClick}>
+      <Button color="primary" onClick={onNextClick}>
         Tovább
       </Button>
     </NavigationCard>

@@ -11,7 +11,7 @@ export type GuideNavigationCard = {
 export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
   return (
     <NavigationCard>
-      <Button color="neutral" onClick={onNextClick}>
+      <Button color="primary" onClick={onNextClick}>
         Válaszadás megkezdése
       </Button>
     </NavigationCard>
