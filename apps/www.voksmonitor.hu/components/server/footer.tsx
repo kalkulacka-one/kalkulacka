@@ -29,6 +29,9 @@ export function Footer() {
               <Link href="/rolunk" className="text-sm text-gray-400 hover:text-white">
                 Rólunk
               </Link>
+              <Link href="/voksmonitorrol" className="text-sm text-gray-400 hover:text-white">
+                A Voksmonitorról
+              </Link>
               <Link href="/modszertan" className="text-sm text-gray-400 hover:text-white">
                 Módszertan
               </Link>
