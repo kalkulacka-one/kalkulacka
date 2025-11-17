@@ -18,7 +18,7 @@ export function Guide({ calculator }: Guide) {
           <Icon icon={logoCheck} decorative={true} className="text-[var(--ko-palette-primary)]" />
           <div>
             <p className="font-semibold text-slate-700">Egyetért</p>
-            <p className="text-sm text-slate-500">Amennyiben egy válasz megegyezik egy párt válaszával, az egy pontot ér.</p>
+            <p className="text-sm text-slate-500">Amennyiben egy válasz megegyezik egy frakció vagy egy képviselő válaszával, az egy pontot ér.</p>
           </div>
         </div>
       </Card>

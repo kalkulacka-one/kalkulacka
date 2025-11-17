@@ -60,11 +60,11 @@ export function ResultPage({ embedContext, result, calculator, onNextClick, onPr
               <div className="relative bg-gray-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-gray-700 text-gray-50" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
-                  Jelöltlisták
+                  Frakciók
                 </label>
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-gray-700 text-gray-50" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
-                  Emberek
+                  Képviselők
                 </label>
               </div>
             </div>

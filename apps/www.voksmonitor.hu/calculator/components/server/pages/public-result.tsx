@@ -36,11 +36,11 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
               <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
-                  Jelöltlisták
+                  Frakciók
                 </label>
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
-                  Emberek
+                  Képviselők
                 </label>
               </div>
             </div>
