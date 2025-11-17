@@ -1,4 +1,4 @@
-import { mdiFacebook, mdiInstagram } from "@mdi/js";
+import { mdiEmail, mdiFacebook, mdiInstagram, mdiPhone } from "@mdi/js";
 import { Icon, Logo } from "@repo/design-system/client";
 import Link from "next/link";
 
@@ -36,7 +36,19 @@ export function Footer() {
                 Támogatás
               </Link>
             </div>
-            <div />
+            <div>
+              <h3 className="mb-4">Kapcsolat</h3>
+              <div className="space-y-3">
+                <a href="mailto:info@k-monitor.hu" className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
+                  <Icon icon={mdiEmail} size="medium" decorative />
+                  <span>info@k-monitor.hu</span>
+                </a>
+                <a href="tel:+3617895005" className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
+                  <Icon icon={mdiPhone} size="medium" decorative />
+                  <span>+36 1 789 5005</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
