@@ -82,7 +82,7 @@ export default function Page() {
       <h2 className="font-display ko:font-display font-bold tracking-tight text-gray-800 text-2xl md:text-xl mb-2 mt-8">Támogasd a Voksmonitor elkészítését!</h2>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-6">Tetszik a Voksmonitor? Kérjük, támogasd az elkészítését!</p>
-      <DonateCard></DonateCard>
+      <DonateCard />
     </div>
   );
 }
