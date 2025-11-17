@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Voksmonitor - Budapesti Közgyűlés",
+        alt: "Voksmonitor - Fővárosi Közgyűlés",
       },
     ],
     locale: "hu_HU",
