@@ -10,6 +10,7 @@
   --font-display: var(--ko-font-display);
   --font-sans: var(--ko-typeface-sans);
   --font-mono: var(--ko-typeface-mono);
+  --color-gray-700: #1d1c1c;
 }
 
 .ko\:text-logo-cross, .ko\:text-logo-percent-denominator {
