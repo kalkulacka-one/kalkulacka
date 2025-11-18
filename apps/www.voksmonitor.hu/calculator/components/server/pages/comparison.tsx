@@ -41,7 +41,7 @@ export function ComparisonPage({ embedContext, calculator, result, answers, ques
                     </Button>
                   </AppHeader.BottomLeft>
                   <AppHeader.BottomMain condensed={condensed}>
-                    <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Összehasonlítás</h3>
+                    <h3 className="font-display font-semibold text-2xl tracking-tight text-gray-700">Összehasonlítás</h3>
                   </AppHeader.BottomMain>
                 </AppHeader.Bottom>
               </AppHeader>
