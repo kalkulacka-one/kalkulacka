@@ -60,8 +60,8 @@ export default function Page() {
               <Card border className="h-full !border-gray-200 bg-gray-50/50">
                 <div className="p-6 h-full flex flex-col">
                   <p className="text-gray-600 text-center">
-                    A K-Monitor a Voksmonitort 2014 óta működtetiés az országgyűlési, európai parlamenti illetve önkormányzati (ill. főpolgármesteri) választásokra készíti el magyar és angol nyelvű
-                    választási kalkulátorát. A korábbi Voksmonitorokat az archívumban találod!
+                    A K-Monitor 2014 óta működteti a Voksmonitort, és az országgyűlési, európai parlamenti, valamint önkormányzati (illetve főpolgármesteri) választásokhoz készíti el magyar és angol
+                    nyelvű választási kalkulátorát. A korábbi Voksmonitorokat az archívumban találod.
                   </p>
                   <div className="grid mt-auto pt-4">
                     <a href="https://old.voksmonitor.hu" target="_blank" rel="noopener noreferrer" className="grid">
