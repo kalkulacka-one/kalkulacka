@@ -4,11 +4,7 @@ import { Button, Icon } from "@repo/design-system/client";
 import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, type QuestionNavigationCardTranslations } from "../components";
-
-export type QuestionPageTranslations = {
-  navigationCard: QuestionNavigationCardTranslations;
-};
+import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {
   embedContext: EmbedContextType;
@@ -20,10 +16,9 @@ export type QuestionPage = {
   onPreviousClick: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
-  translations: QuestionPageTranslations;
 };
 
-export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick, translations }: QuestionPage) {
+export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   const handleAgreeChange = (checked: boolean) => {
@@ -95,7 +90,6 @@ export function QuestionPage({ embedContext, question, number, total, calculator
           onAgreeChange={handleAgreeChange}
           onDisagreeChange={handleDisagreeChange}
           onImportantChange={handleImportantChange}
-          translations={translations.navigationCard}
         />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>

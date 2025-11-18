@@ -16,7 +16,8 @@
           "next": "Next",
           "previous": "Previous",
           "guide": "Guide",
-          "skip": "Skip"
+          "skip": "Skip",
+          "important": "Important"
         }
       }
     }

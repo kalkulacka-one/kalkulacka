@@ -1,5 +1,4 @@
 import { notFound, usePathname, useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
 import { useEffect, useReducer } from "react";
 
 import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
@@ -18,7 +17,6 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const calculator = useCalculator();
   const { questions, total } = useQuestions();
   const [, forceRender] = useReducer((x) => x + 1, 0);
-  const t = useTranslations("calculator.pages");
 
   const currentQuestion = (() => {
     try {
@@ -98,17 +96,6 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
-        translations={{
-          navigationCard: {
-            agree: t("question.navigationCard.yes"),
-            disagree: t("question.navigationCard.no"),
-            next: t("question.navigationCard.next"),
-            previous: t("question.navigationCard.previous"),
-            guide: t("question.navigationCard.guide"),
-            skip: t("question.navigationCard.skip"),
-            important: t("question.navigationCard.important"),
-          },
-        }}
       />
     </div>
   );
