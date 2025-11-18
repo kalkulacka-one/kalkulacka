@@ -1,7 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { ShareModal } from "../../../../calculator/components/client";
 import { ResultPage as AppResultPage } from "../../../../calculator/components/server";
 import { useAnswersStore } from "../../../../calculator/stores/answers";
 import { useCalculatedMatches, useCalculator, useResult } from "../../../../calculator/view-models";
@@ -12,7 +11,6 @@ import { useEmbed } from "../../embed-context-provider";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const router = useRouter();
   const calculator = useCalculator();
   const embed = useEmbed();
@@ -51,26 +49,34 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   };
 
   const handleShareClick = () => {
-    setIsShareModalOpen(true);
+    // Only execute on client side
+    if (typeof window === "undefined") return;
+
+    // Get the current page URL
+    const currentUrl = window.location.href.replace("/egyezeseim", "");
+    console.log("Sharing URL:", currentUrl);
+
+    // Facebook share dialog URL
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+
+    // Open Facebook share dialog in a new window
+    window.open(facebookShareUrl, "_blank", "noopener,noreferrer,width=600,height=400");
   };
 
   const donateCardPosition = embed.isEmbed ? (embed.config?.donateCard ?? 1) : 5;
 
   return (
-    <>
-      <AppResultPage
-        embedContext={embed}
-        calculator={calculator}
-        result={result}
-        onNextClick={handleNextClick}
-        onPreviousClick={handlePreviousClick}
-        onCloseClick={handleCloseClick}
-        onShareClick={handleShareClick}
-        showOnlyNested={showOnlyNested}
-        onFilterChange={setShowOnlyNested}
-        donateCardPosition={donateCardPosition}
-      />
-      <ShareModal calculatorId={calculator.id} segments={segments} isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
-    </>
+    <AppResultPage
+      embedContext={embed}
+      calculator={calculator}
+      result={result}
+      onNextClick={handleNextClick}
+      onPreviousClick={handlePreviousClick}
+      onCloseClick={handleCloseClick}
+      onShareClick={handleShareClick}
+      showOnlyNested={showOnlyNested}
+      onFilterChange={setShowOnlyNested}
+      donateCardPosition={donateCardPosition}
+    />
   );
 }
