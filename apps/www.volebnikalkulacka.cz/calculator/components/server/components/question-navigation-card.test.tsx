@@ -5,6 +5,19 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { AnswerViewModel } from "../../../view-models";
 import { QuestionNavigationCard } from "./question-navigation-card";
 
+// Mock the translation hook
+vi.mock("../../../../i18n/hooks", () => ({
+  useQuestionNavigationCardTranslations: () => ({
+    agree: "Ano",
+    disagree: "Ne",
+    previous: "Předchozí",
+    next: "Další",
+    guide: "Návod",
+    skip: "Přeskočit",
+    important: "Pro mě důležité",
+  }),
+}));
+
 describe("QuestionNavigationCard", () => {
   const mockAnswerWithResponse: AnswerViewModel = {
     answer: {

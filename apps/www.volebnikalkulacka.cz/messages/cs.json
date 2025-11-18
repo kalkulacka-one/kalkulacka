@@ -1,0 +1,25 @@
+{
+  "layouts": {
+    "root": {
+      "metadata": {
+        "description": "Ta pravá volební kalkulačka pro miliony voličů v 7 zemích"
+      },
+      "headline": "Ta <em>pravá</em> volební kalkulačka pro miliony voličů v 7 zemích"
+    }
+  },
+  "calculator": {
+    "pages": {
+      "question": {
+        "navigationCard": {
+          "yes": "Ano",
+          "no": "Ne",
+          "next": "Další",
+          "previous": "Předchozí",
+          "guide": "Návod",
+          "skip": "Přeskočit",
+          "important": "Pro mě důležité"
+        }
+      }
+    }
+  }
+}

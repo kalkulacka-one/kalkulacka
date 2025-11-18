@@ -1,0 +1,25 @@
+{
+  "layouts": {
+    "root": {
+      "metadata": {
+        "description": "The one voting advice application for millions of voters across 7 countries"
+      },
+      "headline": "The <em>one</em> voting advice application for millions of voters across 7 countries"
+    }
+  },
+  "calculator": {
+    "pages": {
+      "question": {
+        "navigationCard": {
+          "yes": "Yes",
+          "no": "No",
+          "next": "Next",
+          "previous": "Previous",
+          "guide": "Guide",
+          "skip": "Skip",
+          "important": "Important"
+        }
+      }
+    }
+  }
+}
