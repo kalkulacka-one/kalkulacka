@@ -17,7 +17,7 @@ function getShuffleSeed(calculatorId: string, sessionId?: string): string {
 
   // Create a session-persistent seed using sessionStorage
   const storageKey = `calculator-shuffle-seed-${calculatorId}`;
-  
+
   if (typeof window !== "undefined" && window.sessionStorage) {
     const existingSeed = sessionStorage.getItem(storageKey);
     if (existingSeed) {
@@ -35,10 +35,10 @@ function getShuffleSeed(calculatorId: string, sessionId?: string): string {
 }
 
 export const createCalculatorStore = (calculatorData: CalculatorData, sessionId?: string) => {
-  // Get a consistent seed for shuffling - uses session ID when available, 
+  // Get a consistent seed for shuffling - uses session ID when available,
   // otherwise creates a session-persistent seed
   const seed = getShuffleSeed(calculatorData.data.calculator.id, sessionId);
-  
+
   // Shuffle questions using seed for consistent randomization per session
   const shuffledData = {
     ...calculatorData,
