@@ -4,6 +4,7 @@ import type { StoreApi } from "zustand";
 import type { CalculatorData } from "../../lib";
 import type { CalculatorStore } from "../../stores/calculator";
 import { CalculatorStoreContext, createCalculatorStore } from "../../stores/calculator";
+import { getRuntimeSessionId } from "../../../lib/session/runtime-session";
 
 export type CalculatorStoreProviderProps = {
   children: ReactNode;
@@ -13,7 +14,8 @@ export type CalculatorStoreProviderProps = {
 export const CalculatorStoreProvider = ({ children, calculatorData }: CalculatorStoreProviderProps) => {
   const storeRef = useRef<StoreApi<CalculatorStore> | undefined>(undefined);
   if (!storeRef.current) {
-    storeRef.current = createCalculatorStore(calculatorData);
+    const sessionId = getRuntimeSessionId();
+    storeRef.current = createCalculatorStore(calculatorData, sessionId);
   }
 
   return <CalculatorStoreContext.Provider value={storeRef.current}>{children}</CalculatorStoreContext.Provider>;
