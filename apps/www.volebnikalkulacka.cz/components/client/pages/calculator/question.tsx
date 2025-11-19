@@ -5,10 +5,9 @@ import { QuestionPage as AppQuestionPage } from "@/calculator/components/server"
 import { useAnswersStore } from "@/calculator/stores/answers";
 import { useAnswer, useCalculator, useQuestions } from "@/calculator/view-models";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api/session-data";
+import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing/route-builders";
-import { params } from "@/lib/routing/route-parsers";
+import { params, type RouteSegments, routes } from "@/lib/routing";
 
 import { useEmbed } from "../../../client/embed-context-provider";
 

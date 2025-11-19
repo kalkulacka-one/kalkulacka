@@ -5,7 +5,7 @@ import { PublicResultPage as AppPublicResultPage } from "@/calculator/components
 import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
 import { useAnswersStore } from "@/calculator/stores/answers";
 import { useCalculator, useResult } from "@/calculator/view-models";
-import { type RouteSegments, routes } from "@/lib/routing/route-builders";
+import { type RouteSegments, routes } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 

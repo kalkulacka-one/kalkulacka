@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 
 import { ComparisonPage } from "@/calculator/components/server";
 import { useAnswers, useCalculatedMatches, useCalculator, useQuestions, useResult } from "@/calculator/view-models";
-import { type RouteSegments, routes } from "@/lib/routing/route-builders";
+import { type RouteSegments, routes } from "@/lib/routing";
 
 import { useEmbed } from "../../embed-context-provider";
 

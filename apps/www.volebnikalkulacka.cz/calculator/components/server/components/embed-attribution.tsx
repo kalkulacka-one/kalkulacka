@@ -1,6 +1,6 @@
 import { Logo } from "@repo/design-system/client";
 
-import { canonical } from "@/lib/routing/url-builders";
+import { canonical } from "@/lib/routing";
 
 export function EmbedAttribution() {
   return (
