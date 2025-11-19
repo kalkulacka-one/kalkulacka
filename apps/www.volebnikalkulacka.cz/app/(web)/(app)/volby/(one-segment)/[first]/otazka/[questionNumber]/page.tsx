@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { QuestionPageWithRouting } from "@/components/client";
-import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
+import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, questionNumberGuard } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; questionNumber: string }> }): Promise<Metadata> {

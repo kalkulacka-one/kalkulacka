@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
 import { PublicResultPageWithData } from "@/components/client";
-import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
+import { generateCalculatorMetadata } from "@/lib/metadata";
 import { buildCanonicalUrl, canonical } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../packages/schema/schemas/answer.schema";

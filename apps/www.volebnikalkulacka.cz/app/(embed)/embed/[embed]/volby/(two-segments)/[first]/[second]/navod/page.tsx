@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { GuidePageWithRouting } from "@/components/client";
-import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
+import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string }> }): Promise<Metadata> {

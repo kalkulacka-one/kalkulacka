@@ -2,8 +2,16 @@ import type { NextRequest } from "next/server";
 import { z } from "zod";
 
 import { HttpError, JsonParseError, UnauthorizedError, ValidationError } from "@/lib/errors";
-import { type CreateCalculatorSessionParams, calculatorFullKey, createCalculatorSession, getSessionCookie, getSessionFromRequest, type SessionCookie, setSessionCookie } from "@/lib/session";
-import { getEmbedNameFromRequest } from "@/lib/session/get-embed-name-from-request";
+import {
+  type CreateCalculatorSessionParams,
+  calculatorFullKey,
+  createCalculatorSession,
+  getEmbedNameFromRequest,
+  getSessionCookie,
+  getSessionFromRequest,
+  type SessionCookie,
+  setSessionCookie,
+} from "@/lib/session";
 
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
