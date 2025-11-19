@@ -1,5 +1,6 @@
+import { setRuntimeSessionId } from "@/lib/session";
+
 import type { CreateCalculatorSessionParams } from "../../session";
-import { setRuntimeSessionId } from "../../session/runtime-session";
 import { verifySession } from "./verify-session";
 
 export async function initializeSession(params: CreateCalculatorSessionParams): Promise<void> {
