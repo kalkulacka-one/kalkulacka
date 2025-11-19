@@ -2,8 +2,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { PublicResultPage as AppPublicResultPage } from "@/calculator/components/server";
-import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
-import { useAnswersStore } from "@/calculator/stores/answers";
+import type { calculateMatches } from "@/calculator/lib";
+import { useAnswersStore } from "@/calculator/stores";
 import { useCalculator, useResult } from "@/calculator/view-models";
 import { type RouteSegments, routes } from "@/lib/routing";
 

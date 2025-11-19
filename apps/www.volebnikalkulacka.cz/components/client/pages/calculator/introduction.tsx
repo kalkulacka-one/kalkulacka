@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 
 import { IntroductionPage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores/answers";
+import { useAnswersStore } from "@/calculator/stores";
 import { useCalculator } from "@/calculator/view-models";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";

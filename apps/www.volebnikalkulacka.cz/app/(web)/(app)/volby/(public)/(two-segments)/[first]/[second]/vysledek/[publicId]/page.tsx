@@ -2,7 +2,7 @@ import { prisma } from "@repo/database";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
+import type { calculateMatches } from "@/calculator/lib";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { buildCanonicalUrl, canonical } from "@/lib/routing";
