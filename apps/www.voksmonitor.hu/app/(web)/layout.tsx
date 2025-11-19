@@ -6,12 +6,14 @@ import { EmbedContextProvider, ThemeProvider } from "../../components/client";
 import { PlausibleScript } from "../../components/server";
 import { allowCrawling } from "../../lib/seo";
 
+const baseUrl = process.env.NEXT_PUBLIC_CANONICAL_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: {
     default: "Voksmonitor",
     template: "%s — Voksmonitor",
   },
-  description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
+  description: "Voksmonitor 2025 - Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -22,17 +24,18 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/manifest.webmanifest",
+  metadataBase: new URL(baseUrl),
   openGraph: {
-    title: "Voksmonitor",
-    description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
-    url: "https://www.voksmonitor.hu",
+    title: "Fővárosi Közgyűlés Voksmonitor 2025",
+    description: "Voksmonitor 2025 - Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
+    url: baseUrl,
     siteName: "Voksmonitor",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Voksmonitor - Fővárosi Közgyűlés",
+        alt: "Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
       },
     ],
     locale: "hu_HU",
@@ -40,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voksmonitor",
-    description: "Nejužitečnějších 5 minut před sněmovními volbami 2025",
+    title: "Fővárosi Közgyűlés Voksmonitor 2025",
+    description: "Voksmonitor 2025 - Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
     images: ["/og-image.png"],
   },
   robots: {
