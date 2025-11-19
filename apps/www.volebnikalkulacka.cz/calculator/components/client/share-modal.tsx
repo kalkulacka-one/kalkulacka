@@ -1,6 +1,7 @@
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 import { useEffect, useRef, useState } from "react";
+
 import { shareSession } from "@/lib/api/sessions/share-session";
 import type { RouteSegments } from "@/lib/routing/route-builders";
 import { canonical } from "@/lib/routing/url-builders";

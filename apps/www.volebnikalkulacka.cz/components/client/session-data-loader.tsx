@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+
 import { useAnswersStore } from "@/calculator/stores/answers";
 import { useCalculatorStore } from "@/calculator/stores/calculator";
 import { loadSessionData } from "@/lib/api/session-data";

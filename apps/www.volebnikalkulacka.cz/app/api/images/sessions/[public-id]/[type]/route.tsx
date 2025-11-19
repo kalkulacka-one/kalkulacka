@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
+
 import { loadCalculatorData } from "@/calculator/lib";
 import type { calculateMatches } from "@/calculator/lib/result-calculation/calculate-matches";
 import { candidateViewModel } from "@/calculator/view-models/server/candidate";

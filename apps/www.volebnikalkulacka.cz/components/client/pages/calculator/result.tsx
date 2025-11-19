@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores/answers";

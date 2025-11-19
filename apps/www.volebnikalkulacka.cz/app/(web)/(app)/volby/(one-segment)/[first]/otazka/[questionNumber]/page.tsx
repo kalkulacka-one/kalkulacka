@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import { QuestionPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata/calculator";
 import { questionNumberGuard } from "@/lib/routing/guards/question-number";
