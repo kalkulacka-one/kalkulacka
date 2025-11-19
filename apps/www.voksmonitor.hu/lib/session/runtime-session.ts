@@ -5,6 +5,11 @@ let sessionId: string | undefined;
 export function getRuntimeSessionId(): string | undefined {
   if (sessionId) return sessionId;
 
+  // Only access sessionStorage in the browser
+  if (typeof window === "undefined" || typeof sessionStorage === "undefined") {
+    return undefined;
+  }
+
   const storageKey = buildCookieName();
   sessionId = sessionStorage.getItem(storageKey) || undefined;
 
@@ -13,6 +18,11 @@ export function getRuntimeSessionId(): string | undefined {
 
 export function setRuntimeSessionId(id: string): void {
   sessionId = id;
+
+  // Only access sessionStorage in the browser
+  if (typeof window === "undefined" || typeof sessionStorage === "undefined") {
+    return;
+  }
 
   const storageKey = buildCookieName();
   sessionStorage.setItem(storageKey, id);
