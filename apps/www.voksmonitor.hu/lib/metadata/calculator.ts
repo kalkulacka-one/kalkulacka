@@ -25,6 +25,7 @@ export async function generateCalculatorMetadata({
     alt?: string;
   };
 }): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_CANONICAL_URL || "http://localhost:3000";
   const calculatorData = await loadCalculatorData({ key, group });
   const calculator = calculatorViewModel(calculatorData.data.calculator);
 
@@ -68,20 +69,19 @@ export async function generateCalculatorMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
+    metadataBase: new URL(baseUrl),
     openGraph: {
       title: calculator.title || calculator.shortTitle,
       description: calculator.description,
       url: canonicalUrl,
-      ...(ogImageUrl && {
-        images: [
-          {
-            url: ogImageUrl,
-            width: ogImageWidth,
-            height: ogImageHeight,
-            alt: ogImageAlt,
-          },
-        ],
-      }),
+      images: [
+        {
+          url: ogImageUrl || "/og-image.png",
+          width: ogImageWidth || 1200,
+          height: ogImageHeight || 630,
+          alt: ogImageAlt || "Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
