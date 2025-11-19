@@ -3,8 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 import { useEffect, useRef, useState } from "react";
 
 import { shareSession } from "@/lib/api";
-import type { RouteSegments } from "@/lib/routing";
-import { canonical } from "@/lib/routing";
+import { canonical, type RouteSegments } from "@/lib/routing";
 
 export type ShareModalProps = {
   calculatorId: string;
