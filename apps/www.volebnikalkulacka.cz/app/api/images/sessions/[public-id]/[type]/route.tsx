@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-import type { calculateMatches } from "@/calculator/lib";
-import { loadCalculatorData } from "@/calculator/lib";
+import { loadCalculatorData } from "@/calculator/data-fetching";
+import type { calculateMatches } from "@/calculator/result-calculation";
 import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, resultViewModel } from "@/calculator/view-models";
 import { HttpError, NotFoundError } from "@/lib/errors";
 

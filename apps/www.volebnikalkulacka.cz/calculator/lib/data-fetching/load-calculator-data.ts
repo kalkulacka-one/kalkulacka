@@ -6,7 +6,9 @@ import { type CandidatesAnswers, candidatesAnswers } from "../../../../../packag
 import { type Organizations, organizationsSchema } from "../../../../../packages/schema/schemas/organizations.schema";
 import { type Persons, personsSchema } from "../../../../../packages/schema/schemas/persons.schema";
 import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
-import { buildDataUrl, fetchFile, parseWithSchema } from "..";
+import { parseWithSchema } from "../utilities";
+import { fetchFile } from "./fetch-file";
+import { buildDataUrl } from "./url-builders";
 
 const DATA_CONFIG = {
   calculator: {

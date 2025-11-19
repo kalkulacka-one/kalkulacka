@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 
-import type { CalculatorData } from "@/calculator/lib";
+import type { CalculatorData } from "@/calculator/data-fetching";
 
 import { ProviderLayout } from "./provider-layout";
 import { SessionDataLoader } from "./session-data-loader";

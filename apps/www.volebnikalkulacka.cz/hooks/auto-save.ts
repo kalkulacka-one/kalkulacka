@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 
-import type { calculateMatches } from "@/calculator/lib";
+import type { calculateMatches } from "@/calculator/result-calculation";
 import { AnswersStoreContext } from "@/calculator/stores";
 import { useCalculator } from "@/calculator/view-models";
 import { saveSessionDataWithBeacon } from "@/lib/api";
