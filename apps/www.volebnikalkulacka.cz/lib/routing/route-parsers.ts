@@ -26,19 +26,19 @@ function parseCalculatorKey(path: string): string {
   const segments = path.split("/").filter(Boolean);
 
   if (segments.length === 1) {
-    return segments[0];
+    return segments[0] as string;
   }
 
   if (segments.length === 2) {
     const [first, second] = segments;
-    if (isPrefix(first)) {
-      return second;
+    if (isPrefix(first as string)) {
+      return second as string;
     }
-    return first;
+    return first as string;
   }
 
   if (segments.length === 3) {
-    return segments[1];
+    return segments[1] as string;
   }
 
   throw new Error(`Invalid path for calculator key: ${path}`);
@@ -53,14 +53,14 @@ function parseCalculatorGroupKey(path: string): string | undefined {
 
   if (segments.length === 2) {
     const [first, second] = segments;
-    if (isPrefix(first)) {
+    if (isPrefix(first as string)) {
       return undefined;
     }
-    return second;
+    return second as string;
   }
 
   if (segments.length === 3) {
-    return segments[2];
+    return segments[2] as string;
   }
 
   throw new Error(`Invalid path for calculator group key: ${path}`);
