@@ -1,4 +1,8 @@
-import { ALLOWED_PREFIXES } from "../allowed-prefixes";
+export const ALLOWED_PREFIXES = ["volby", "inventura"];
+
+export function isAllowedPrefix(segment: string): boolean {
+  return ALLOWED_PREFIXES.includes(segment);
+}
 
 export function validateAllowedPrefix(prefix: string): string {
   if (!ALLOWED_PREFIXES.includes(prefix)) {

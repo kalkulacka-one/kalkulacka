@@ -53,14 +53,14 @@ The routing system supports 1, 2, and 3 segment URL patterns. Route segments are
 ---
 
 ### 3. Three-Segment Routes
-**Pattern:** `/{prefix}/{calculator-key}/{group}`
+**Pattern:** `/{prefix}/{group}/{calculator-key}`
 
 **Example:** `/volby/krajske-2026/moravskoslezsky`
 
 **Behavior:**
 - Validates prefix (404 on invalid)
-- Data loading: `key: second, group: third`
-- Root redirects to: `/{prefix}/{calculator-key}/{group}/uvod`
+- Data loading: `key: third, group: second` (backwards mapping!)
+- Root redirects to: `/{prefix}/{group}/{calculator-key}/uvod`
 
 **Use cases:**
 - Namespaced calculators with grouping
@@ -116,7 +116,7 @@ app/(web)/(app)/
 │       └── [subroutes...]
 └── (three-segments)/
     └── [first]/[second]/[third]/
-        ├── layout.tsx       # Validates prefix, loads: key=second,group=third
+        ├── layout.tsx       # Validates prefix, loads: key=third,group=second
         ├── page.tsx         # Redirects to introduction
         └── [subroutes...]
 ```
@@ -137,7 +137,7 @@ if (isAllowedPrefix(first)) {
 }
 
 // Three-segments
-loadCalculatorData({ key: second, group: third })
+loadCalculatorData({ key: third, group: second })
 ```
 
 ### Prefix Validation

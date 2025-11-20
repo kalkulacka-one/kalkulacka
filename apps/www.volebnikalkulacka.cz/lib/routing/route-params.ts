@@ -1,4 +1,5 @@
-import { allowedPrefixGuard, isAllowedPrefix } from "./allowed-prefixes";
+import { allowedPrefixGuard } from "./guards";
+import { isAllowedPrefix } from "./validators";
 
 /**
  * Determines calculator data loading parameters for two-segment routes.

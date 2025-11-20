@@ -7,6 +7,6 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   allowedPrefixGuard(first);
 
-  const calculatorData = await loadCalculatorData({ key: second, group: third });
+  const calculatorData = await loadCalculatorData({ key: third, group: second });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }
