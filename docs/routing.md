@@ -129,11 +129,12 @@ Layouts load calculator data using the backwards mapping:
 // One-segment
 loadCalculatorData({ key: first })
 
-// Two-segments (prefixed)
-loadCalculatorData({ key: second })
-
-// Two-segments (non-prefixed) - TODO: Not yet implemented
-loadCalculatorData({ key: first, group: second })
+// Two-segments (conditional based on prefix check)
+if (isAllowedPrefix(first)) {
+  loadCalculatorData({ key: second })
+} else {
+  loadCalculatorData({ key: first, group: second })
+}
 
 // Three-segments
 loadCalculatorData({ key: second, group: third })
@@ -141,16 +142,20 @@ loadCalculatorData({ key: second, group: third })
 
 ### Prefix Validation
 
-The `allowedPrefixGuard` function handles prefix validation:
+The routing system provides two functions for prefix handling:
 
 ```typescript
-// Validates and returns 404 if invalid
-allowedPrefixGuard(first);
+// Check if segment is an allowed prefix (returns boolean)
+isAllowedPrefix(first)
+
+// Validate and return 404 if invalid (guard pattern)
+allowedPrefixGuard(first)
 ```
 
 Follows the guard/validator pattern:
-- `validators/allowed-prefix.ts` - Throws on invalid prefix
-- `guards/allowed-prefix.ts` - Calls `notFound()` on validation failure
+- `allowed-prefixes.ts` - Exports `ALLOWED_PREFIXES` and `isAllowedPrefix()`
+- `validators/allowed-prefix.ts` - `validateAllowedPrefix()` throws on invalid prefix
+- `guards/allowed-prefix.ts` - `allowedPrefixGuard()` calls `notFound()` on validation failure
 
 ---
 
@@ -158,29 +163,24 @@ Follows the guard/validator pattern:
 
 ### ✅ Implemented
 - One-segment routes (standalone calculators)
+- Two-segment routes with conditional logic (prefixed + group calculators)
 - Three-segment routes (prefixed with groups)
-- Prefix validation system
+- Prefix validation system with `isAllowedPrefix()` helper
 - Route builders supporting all patterns
 - Guard/validator pattern for prefix checking
-
-### ⚠️ Partially Implemented
-- Two-segment routes currently only support prefixed pattern
-- Need conditional logic to support both prefixed and non-prefixed
+- Conditional data loading based on prefix detection
 
 ### 📋 TODOs
-1. **Two-segment conditional logic:**
-   - Check if `first` is in `ALLOWED_PREFIXES`
-   - If yes: validate prefix, load `key: second`
-   - If no: skip validation, load `key: first, group: second`
-
-2. **Election landing page:**
+1. **Election landing page:**
    - Replace redirect with actual landing page content
    - Show election information, calculator list, etc.
+   - Currently: all root pages redirect to introduction
 
-3. **Testing:**
+2. **Testing:**
    - Verify all route patterns work correctly
    - Test prefix validation (valid/invalid prefixes)
    - Test data loading for each pattern
+   - Verify group calculators load correct data
 
 ---
 
@@ -191,21 +191,22 @@ Follows the guard/validator pattern:
 ```
 ✅ /sametova-kalkulacka
    → key: "sametova-kalkulacka"
+   → Redirects to: /sametova-kalkulacka/uvod
 
 ✅ /volby/snemovni-2025
    → prefix: "volby" (validated)
    → key: "snemovni-2025"
+   → Redirects to: /volby/snemovni-2025/uvod
+
+✅ /inventura-2025/expresni
+   → key: "inventura-2025"
+   → group: "expresni"
+   → No prefix validation (not in ALLOWED_PREFIXES)
+   → Redirects to: /inventura-2025/expresni/uvod
 
 ✅ /volby/krajske-2026/moravskoslezsky
    → prefix: "volby" (validated)
    → key: "krajske-2026"
    → group: "moravskoslezsky"
-```
-
-### Not Yet Working
-
-```
-❌ /inventura-2025/expresni
-   → Should be: key: "inventura-2025", group: "expresni"
-   → Currently: Tries to validate "inventura-2025" as prefix → 404
+   → Redirects to: /volby/krajske-2026/moravskoslezsky/uvod
 ```
