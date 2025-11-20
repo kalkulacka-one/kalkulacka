@@ -8,7 +8,7 @@ import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { buildCanonicalUrl, canonical } from "@/lib/routing";
 
-import type { Answer } from "../../../../../../../../../../../packages/schema/schemas/answer.schema";
+import type { Answer } from "../../../../../../../../../../packages/schema/schemas/answer.schema";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; publicId: string }> }): Promise<Metadata> {
   const { first, publicId } = await params;
