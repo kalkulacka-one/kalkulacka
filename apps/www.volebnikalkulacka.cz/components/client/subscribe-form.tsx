@@ -4,7 +4,7 @@ import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { subscribe } from "../../server/subscribe";
+import { subscribe } from "@/server/subscribe";
 
 const subscribeSchema = z.object({
   email: z.string().email("Neplatný formát"),
