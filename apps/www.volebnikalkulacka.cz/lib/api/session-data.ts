@@ -1,5 +1,5 @@
 import type { calculateMatches } from "@/calculator/result-calculation";
-import { getRuntimeSessionId } from "@/lib/session";
+import { getRuntimeSessionId } from "@/lib/session/client";
 
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 

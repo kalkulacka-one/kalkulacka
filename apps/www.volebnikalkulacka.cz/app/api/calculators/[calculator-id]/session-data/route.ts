@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { z } from "zod";
 
 import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "@/lib/errors";
-import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/lib/session";
+import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/lib/session/server";
 
 import { answerSchema } from "../../../../../../../packages/schema/schemas/answer.schema";
 

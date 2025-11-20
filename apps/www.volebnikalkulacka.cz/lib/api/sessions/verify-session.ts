@@ -1,4 +1,4 @@
-import { getRuntimeSessionId } from "@/lib/session";
+import { getRuntimeSessionId } from "@/lib/session/client";
 
 export async function verifySession(): Promise<boolean> {
   const headers: HeadersInit = {};
