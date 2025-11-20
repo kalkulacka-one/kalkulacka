@@ -4,7 +4,6 @@ import { mdiClose } from "@mdi/js";
 import { AppHeader } from "@/calculator/components/client";
 import type { CalculatorViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
-
 import { EmbedFooter, Introduction, IntroductionNavigationCard, Layout } from "../components";
 
 export type IntroductionPage = {

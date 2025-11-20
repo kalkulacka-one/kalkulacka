@@ -70,9 +70,9 @@ The codebase follows a Turborepo structure with two main directories:
 
 ### Import Organization
 Biome organizes imports in this order:
-1. URL and package imports
+1. URL and package imports (3rd party)
 2. `@kalkulacka-one/**` workspace imports
-3. Relative path imports
+3. Local imports (`@/**` path aliases and relative paths)
 
 ## Tech Stack
 - Node.js 22.x required

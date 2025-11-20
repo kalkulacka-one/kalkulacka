@@ -4,7 +4,6 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
-
 import { EmbedFooter, Layout } from "../components";
 
 export type ComparisonPage = {

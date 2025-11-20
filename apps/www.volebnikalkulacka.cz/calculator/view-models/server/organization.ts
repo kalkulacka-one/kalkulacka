@@ -1,5 +1,4 @@
 import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching";
-
 import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
 import type { Organization } from "../../../../../packages/schema/schemas/organization.schema";
 

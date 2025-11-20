@@ -3,7 +3,6 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
-
 import { QuestionNavigationCard } from "./question-navigation-card";
 
 describe("QuestionNavigationCard", () => {

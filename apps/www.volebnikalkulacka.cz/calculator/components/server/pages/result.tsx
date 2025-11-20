@@ -5,7 +5,6 @@ import React from "react";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "@/calculator/components/client";
 import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
-
 import { EmbedFooter, Layout } from "../components";
 import { ResultNavigationCard } from "../components/result-navigation-card";
 

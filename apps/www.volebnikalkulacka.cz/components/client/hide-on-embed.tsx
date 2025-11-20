@@ -1,5 +1,4 @@
 import type { EmbedName } from "@/config/embeds";
-
 import { useEmbed } from "./embed-context-provider";
 
 type HideOnEmbedProps = {
