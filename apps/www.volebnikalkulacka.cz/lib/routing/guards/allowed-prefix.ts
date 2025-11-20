@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { validateAllowedPrefix } from "../validators/allowed-prefix";
+import { validateAllowedPrefix } from "../validators";
 
 export function allowedPrefixGuard(prefix: string): string {
   try {
