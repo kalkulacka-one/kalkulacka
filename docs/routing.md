@@ -26,8 +26,7 @@ This means it is possible to use nice, human-friendly paths like:
 **Example**: `/green-deal`
 
 - No validation
-- Data loading: `key: first` (standalone calculator)
-- Root redirects to introduction: `/{key}` → `/{key}/introduction`
+- Params mapping: `key: first` (standalone calculator)
 
 ### 2. Two-segment routes
 
@@ -37,13 +36,11 @@ This means it is possible to use nice, human-friendly paths like:
 
 If `first` is in allowed prefixes:
 
-- Data loading: `key: second` (standalone calculator)
-- Root redirects to introduction: `/{prefix}/{key}` → `/{prefix}/{key}/introduction`
+- Params mapping: `key: second` (standalone calculator)
 
 If `first` is not in allowed prefixes:
 
-- Data loading: `group: first, key: second`
-- Root redirects to introduction: `/{group}/{key}` → `/{group}/{key}/introduction`
+- Params mapping: `group: first, key: second`
 
 ### 3. Three-segment routes
 
@@ -52,17 +49,32 @@ If `first` is not in allowed prefixes:
 **Example**: `/election/senate-2026/prague`
 
 - Prefix validation
-- Data loading: `group: second, key: third`
-- Root redirects to introduction: `/{prefix}/{group}/{key}` → `/{prefix}/{group}/{key}/introduction`
+- Params mapping: `group: second, key: third`
 
 ## Subroutes
 
 All calculator routes include these subroutes:
 
+- Root `/` redirects to `/introduction`
 - `/introduction`
 - `/guide`
-- `/question/[number]`
+- `/question` redirects to `/question/1`
+- `/question/[questionNumber]`
 - `/review`
 - `/result`
 - `/comparison`
 - + `/result/[publicId]`
+
+## Embeds
+
+All route patterns are also available as embeds with the prefix `/embed/[embed]`.
+
+**Pattern**: `/embed/{embed name}/…`
+
+**Examples**:
+
+- `/embed/bbc/green-deal`
+- `/embed/bbc/election/presidential-2028`
+- `/embed/bbc/election/senate-2026/prague`
+
+Embed name is validated, all embed subroutes follow the same data loading logic as their non-embed counterparts.
