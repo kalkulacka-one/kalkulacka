@@ -11,9 +11,9 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   return generateCalculatorMetadata({ key: first, canonicalUrl });
 }
 
-export default async function Page({ params }: { params: Promise<{ embed: string; first: string; questionNumber: string }> }) {
-  const { embed, first, questionNumber } = await params;
+export default async function Page({ params }: { params: Promise<{ first: string; questionNumber: string }> }) {
+  const { first, questionNumber } = await params;
   const currentQuestionNumber = questionNumberGuard(questionNumber);
 
-  return <QuestionPageWithRouting current={currentQuestionNumber} segments={{ first, embed }} />;
+  return <QuestionPageWithRouting current={currentQuestionNumber} segments={{ first }} />;
 }
