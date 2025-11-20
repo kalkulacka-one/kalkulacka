@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import type { calculateMatches } from "@/calculator/result-calculation";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { buildCanonicalUrl, canonical } from "@/lib/routing";
+import { buildCanonicalUrl, canonical, isAllowedPrefix } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
@@ -15,8 +15,21 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const canonicalUrl = canonical.publicResult({ first, second }, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
 
+  if (isAllowedPrefix(first)) {
+    return await generateCalculatorMetadata({
+      key: second,
+      canonicalUrl,
+      ogImage: {
+        url: ogImageUrl,
+        width: 2400,
+        height: 1260,
+      },
+    });
+  }
+
   return await generateCalculatorMetadata({
-    key: second,
+    key: first,
+    group: second,
     canonicalUrl,
     ogImage: {
       url: ogImageUrl,
