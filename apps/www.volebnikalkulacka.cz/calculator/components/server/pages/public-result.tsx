@@ -1,5 +1,6 @@
 import { AppHeader, MatchCard, WithCondenseOnScroll } from "@/calculator/components/client";
 import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models/server";
+
 import { Layout, PublicResultNavigationCard } from "../components";
 
 export type PublicResultPageProps = {
