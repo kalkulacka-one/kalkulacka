@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { ProgressBar } from "@/src/components/server/progressBar";
+import { ProgressBar } from "./progressBar";
 
 describe("ProgressBar", () => {
   describe("when given valid value", () => {

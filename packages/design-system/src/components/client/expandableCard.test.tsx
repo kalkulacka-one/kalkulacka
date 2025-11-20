@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { ExpandableCard } from "@/src/components/client/expandableCard";
+import { ExpandableCard } from "./expandableCard";
 
 describe("ExpandableCard", () => {
   it("renders content without expanded content", () => {
