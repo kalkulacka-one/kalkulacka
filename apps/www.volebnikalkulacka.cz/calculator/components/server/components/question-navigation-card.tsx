@@ -4,7 +4,7 @@ import { logoCheck, logoCross } from "@repo/design-system/icons";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
 
-import { NavigationCard } from "../../server/components/navigation-card";
+import { NavigationCard } from "./navigation-card";
 
 const HEIGHT = "h-[138px]";
 
