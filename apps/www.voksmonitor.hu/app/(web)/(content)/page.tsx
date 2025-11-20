@@ -15,11 +15,6 @@ export default function Page() {
   return (
     <Background hasBlobs={true} blobsHeight="80%" blueBlobX="5%" blueBlobY="10%" redBlobX="50%" redBlobY="20%">
       <div className="relative min-h-screen z-0 flex flex-col">
-        {/* Test version disclaimer */}
-        <div className="relative z-10 bg-yellow-50 py-3 text-center border-t-2 border-yellow-200">
-          <p className="text-sm font-semibold text-yellow-800">⚠️ Ez egy tesztverzió. Hibák és pontatlanságok előfordulhatnak.</p>
-        </div>
-
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-12 md:pt-16 lg:pt-20 pb-4 md:pb-6 flex-1">
           {/* Heading */}
