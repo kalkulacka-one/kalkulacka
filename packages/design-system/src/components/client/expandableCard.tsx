@@ -1,7 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, type DisclosureProps } from "@headlessui/react";
-import { mdiChevronDown } from "@mdi/js";
 import { Card } from "@kalkulacka-one/design-system/server";
 import { twMerge } from "@kalkulacka-one/design-system/utils";
+import { mdiChevronDown } from "@mdi/js";
 import * as React from "react";
 
 import { Icon } from "./icon";
