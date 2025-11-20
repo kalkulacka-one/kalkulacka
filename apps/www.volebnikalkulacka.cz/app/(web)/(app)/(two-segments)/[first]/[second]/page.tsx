@@ -1,15 +1,12 @@
-import { allowedPrefixGuard } from "@/lib/routing";
+import { redirect } from "next/navigation";
 
+import { allowedPrefixGuard, routes } from "@/lib/routing";
+
+// TODO: Election landing page
 export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {
   const { first, second } = await params;
 
   allowedPrefixGuard(first);
 
-  return (
-    <div>
-      <h1>Election Landing Page</h1>
-      <p>Prefix: {first}</p>
-      <p>Election: {second}</p>
-    </div>
-  );
+  redirect(routes.introduction({ first, second }));
 }
