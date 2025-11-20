@@ -1,11 +1,10 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
+import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { AppHeader, WithCondenseOnScroll } from "../../client";
-import { ComparisonGrid } from "../../client/comparison-grid";
 import { EmbedFooter, Layout } from "../components";
 
 export type ComparisonPage = {

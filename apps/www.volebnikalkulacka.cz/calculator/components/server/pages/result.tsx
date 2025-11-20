@@ -2,10 +2,10 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 import React from "react";
 
+import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "@/calculator/components/client";
 import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout } from "../components";
 import { ResultNavigationCard } from "../components/result-navigation-card";
 

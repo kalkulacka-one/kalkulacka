@@ -1,10 +1,10 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
+import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {

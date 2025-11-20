@@ -1,10 +1,10 @@
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
+import { AppHeader } from "@/calculator/components/client";
 import type { CalculatorViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { AppHeader } from "../../client";
 import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "../components";
 
 export type GuidePage = {
