@@ -1,4 +1,4 @@
-export const ALLOWED_PREFIXES = ["volby", "inventura"];
+export const ALLOWED_PREFIXES = ["volby"];
 
 export function isAllowedPrefix(segment: string): boolean {
   return ALLOWED_PREFIXES.includes(segment);
