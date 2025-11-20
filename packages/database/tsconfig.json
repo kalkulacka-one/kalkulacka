@@ -2,6 +2,9 @@
   "extends": "@kalkulacka-one/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "outDir": "dist"
   },
   "include": ["src"],

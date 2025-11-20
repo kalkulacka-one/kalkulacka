@@ -3,6 +3,10 @@
   "include": ["**/*.mdx", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "public", "build"],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
