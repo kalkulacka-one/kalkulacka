@@ -22,9 +22,9 @@
       "types": "./dist/components/icons/index.d.ts",
       "default": "./dist/components/icons/index.js"
     },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "default": "./dist/utils/index.js"
+    "./utilities": {
+      "types": "./dist/utilities/index.d.ts",
+      "default": "./dist/utilities/index.js"
     }
   },
   "scripts": {

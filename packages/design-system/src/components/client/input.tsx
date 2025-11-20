@@ -1,5 +1,5 @@
 import type { Icon } from "@kalkulacka-one/design-system/client";
-import { twMerge } from "@kalkulacka-one/design-system/utils";
+import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
 import { Input as InputHeadless, type InputProps as InputPropsHeadless } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";

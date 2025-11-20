@@ -1,5 +1,5 @@
 import { Button, ButtonVariants } from "@kalkulacka-one/design-system/client";
-import { twMerge } from "@kalkulacka-one/design-system/utils";
+import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
