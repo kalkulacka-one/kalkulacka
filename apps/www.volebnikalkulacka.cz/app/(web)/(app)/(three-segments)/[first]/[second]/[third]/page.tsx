@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { allowedPrefixGuard } from "@/lib/routing";
-import { routes } from "@/lib/routing";
+import { allowedPrefixGuard, routes } from "@/lib/routing";
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; third: string }> }) {
   const { first, second, third } = await params;
