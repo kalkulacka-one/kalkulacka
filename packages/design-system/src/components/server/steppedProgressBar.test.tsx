@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { SteppedProgressBar } from "./steppedProgressBar";
+import { SteppedProgressBar } from "@/src/components/server/steppedProgressBar";
 
 const stepItems = [
   { id: "1", status: true },

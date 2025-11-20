@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-import type { I18nParams } from "../../i18n/params";
-import { routing } from "../../i18n/routing";
+import type { I18nParams } from "@/i18n/params";
+import { routing } from "@/i18n/routing";
 
 import "../globals.css";
 

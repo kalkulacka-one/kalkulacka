@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import type { I18nParams } from "../../../i18n/params";
+import type { I18nParams } from "@/i18n/params";
 
 export default async function Page({ params }: { params: I18nParams }) {
   const { locale } = await params;

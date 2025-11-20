@@ -4,7 +4,7 @@ import { Button as ButtonHeadless, type ButtonProps as ButtonPropsHeadless } fro
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
-import { Icon } from "./icon";
+import { Icon } from "@/src/components/client/icon";
 
 export type Button = {
   children: React.ReactNode;

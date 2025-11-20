@@ -5,7 +5,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, type DisclosureProps } f
 import { mdiChevronDown } from "@mdi/js";
 import * as React from "react";
 
-import { Icon } from "./icon";
+import { Icon } from "@/src/components/client/icon";
 
 export type ExpandableCard = Omit<DisclosureProps<typeof Card>, "as" | "className"> & {
   className?: string;
