@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import type { calculateMatches } from "@/calculator/result-calculation";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { buildCanonicalUrl, canonical, getThreeSegmentMetadataParams } from "@/lib/routing";
+import { buildCanonicalUrl, canonical } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const { first, second, third, publicId } = await params;
   const canonicalUrl = canonical.publicResult({ first, second, third }, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
-  const metadataParams = getThreeSegmentMetadataParams(first, second, third);
 
   return await generateCalculatorMetadata({
-    ...metadataParams,
+    key: third,
+    group: second,
     canonicalUrl,
     ogImage: {
       url: ogImageUrl,
