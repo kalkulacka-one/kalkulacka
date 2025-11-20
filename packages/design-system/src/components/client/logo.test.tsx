@@ -1,4 +1,4 @@
-import { Logo } from "@repo/design-system/client";
+import { Logo } from "@kalkulacka-one/design-system/client";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

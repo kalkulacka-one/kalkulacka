@@ -1,6 +1,6 @@
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
-import { Button, Icon, ToggleButton } from "@repo/design-system/client";
-import { logoCheck, logoCross } from "@repo/design-system/icons";
+import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
 

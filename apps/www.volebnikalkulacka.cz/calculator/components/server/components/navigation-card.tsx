@@ -1,4 +1,4 @@
-import { Card } from "@repo/design-system/server";
+import { Card } from "@kalkulacka-one/design-system/server";
 
 export type NavigationCard = {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-import { Field } from "@repo/design-system/client";
+import { Field } from "@kalkulacka-one/design-system/client";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Field> = {

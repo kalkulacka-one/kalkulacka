@@ -1,4 +1,4 @@
-import { type CalculatorSession, type Prisma, prisma } from "@repo/database";
+import { type CalculatorSession, type Prisma, prisma } from "@kalkulacka-one/database";
 
 export type CreateCalculatorSessionParams = Omit<Prisma.CalculatorSessionCreateInput, "createdAt" | "updatedAt" | "deletedAt" | "sessionId"> & {
   sessionId?: string;

@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Description, Field, Input, Label } from "@repo/design-system/client";
+import { Button, Description, Field, Input, Label } from "@kalkulacka-one/design-system/client";
 import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";

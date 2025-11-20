@@ -1,4 +1,4 @@
-import { DotIndicator } from "@repo/design-system/server";
+import { DotIndicator } from "@kalkulacka-one/design-system/server";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof DotIndicator> = {

@@ -1,6 +1,6 @@
 import { mdiClose } from "@mdi/js";
-import { Button, Icon, Logo } from "@repo/design-system/client";
-import { Card } from "@repo/design-system/server";
+import { Button, Icon, Logo } from "@kalkulacka-one/design-system/client";
+import { Card } from "@kalkulacka-one/design-system/server";
 import { useState } from "react";
 
 export function DonateCard() {

@@ -1,4 +1,4 @@
-import { prisma } from "@repo/database";
+import { prisma } from "@kalkulacka-one/database";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 

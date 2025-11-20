@@ -1,5 +1,5 @@
 {
-  "name": "@repo/design-system",
+  "name": "@kalkulacka-one/design-system",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -43,7 +43,7 @@
   },
   "packageManager": "npm@11.5.2",
   "devDependencies": {
-    "@repo/typescript-config": "*",
+    "@kalkulacka-one/typescript-config": "*",
     "@tailwindcss/cli": "^4.1.12",
     "@tailwindcss/postcss": "^4.1.12",
     "@testing-library/jest-dom": "^6.8.0",

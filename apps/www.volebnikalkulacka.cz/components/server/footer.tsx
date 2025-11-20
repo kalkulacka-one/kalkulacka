@@ -1,5 +1,5 @@
 import { mdiInstagram } from "@mdi/js";
-import { Icon, Logo } from "@repo/design-system/client";
+import { Icon, Logo } from "@kalkulacka-one/design-system/client";
 import Link from "next/link";
 
 export function Footer() {

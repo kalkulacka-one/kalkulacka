@@ -15,15 +15,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/database": "*",
-    "@repo/design-system": "*",
+    "@kalkulacka-one/database": "*",
+    "@kalkulacka-one/design-system": "*",
     "next": "15.5.2",
     "next-intl": "^4.3.5",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "*",
+    "@kalkulacka-one/typescript-config": "*",
     "@tailwindcss/postcss": "^4.1.12",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
