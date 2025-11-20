@@ -2,10 +2,10 @@ import { prisma } from "@repo/database";
 import type { NextRequest } from "next/server";
 import { z } from "zod";
 
+import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "@/lib/errors";
+import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/lib/session/server";
+
 import { answerSchema } from "../../../../../../../packages/schema/schemas/answer.schema";
-import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "../../../../../lib/errors";
-import { getSessionCookie, getSessionFromRequest } from "../../../../../lib/session";
-import { getEmbedNameFromRequest } from "../../../../../lib/session/get-embed-name-from-request";
 
 const matchSchema = z.object({
   id: z.string().uuid(),

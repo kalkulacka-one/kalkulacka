@@ -1,12 +1,14 @@
 import type { z } from "zod";
 
-import { type Calculator, calculatorSchema } from "../../../../../packages/schema/schemas/calculator.schema";
-import { type Candidates, candidatesSchema } from "../../../../../packages/schema/schemas/candidates.schema";
-import { type CandidatesAnswers, candidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
-import { type Organizations, organizationsSchema } from "../../../../../packages/schema/schemas/organizations.schema";
-import { type Persons, personsSchema } from "../../../../../packages/schema/schemas/persons.schema";
-import { type Questions, questionsSchema } from "../../../../../packages/schema/schemas/questions.schema";
-import { buildDataUrl, fetchFile, parseWithSchema } from "..";
+import { type Calculator, calculatorSchema } from "../../../../packages/schema/schemas/calculator.schema";
+import { type Candidates, candidatesSchema } from "../../../../packages/schema/schemas/candidates.schema";
+import { type CandidatesAnswers, candidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
+import { type Organizations, organizationsSchema } from "../../../../packages/schema/schemas/organizations.schema";
+import { type Persons, personsSchema } from "../../../../packages/schema/schemas/persons.schema";
+import { type Questions, questionsSchema } from "../../../../packages/schema/schemas/questions.schema";
+import { parseWithSchema } from "../utilities";
+import { fetchFile } from "./fetch-file";
+import { buildDataUrl } from "./url-builders";
 
 const DATA_CONFIG = {
   calculator: {

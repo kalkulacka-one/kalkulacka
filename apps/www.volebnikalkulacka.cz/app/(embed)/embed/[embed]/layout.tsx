@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 
 import "../../../globals.css";
 
-import { EmbedProvider } from "../../../../components/client";
-import { PlausibleScript } from "../../../../components/server";
-import { type EmbedName, isEmbedName } from "../../../../config/embeds";
-import { allowCrawling } from "../../../../lib/seo";
+import { EmbedProvider } from "@/components/client";
+import { PlausibleScript } from "@/components/server";
+import { type EmbedName, isEmbedName } from "@/config/embeds";
+import { allowCrawling } from "@/lib/seo";
 
 export const metadata: Metadata = {
   robots: {

@@ -1,9 +1,10 @@
 import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@repo/design-system/client";
 
-import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
-import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
-import { AppHeader, WithCondenseOnScroll } from "../../client";
+import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
+import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/calculator/view-models/server";
+import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+
 import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {

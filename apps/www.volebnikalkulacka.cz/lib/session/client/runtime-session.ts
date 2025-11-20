@@ -1,4 +1,4 @@
-import { buildCookieName } from "./cookie/cookie-name";
+import { buildCookieName } from "../shared";
 
 let sessionId: string | undefined;
 

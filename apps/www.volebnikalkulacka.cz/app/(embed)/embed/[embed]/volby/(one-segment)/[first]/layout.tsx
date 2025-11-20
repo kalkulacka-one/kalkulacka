@@ -1,3 +1,3 @@
-import Layout from "../../../../../../(web)/(app)/volby/(one-segment)/[first]/layout";
+import Layout from "@/app/(web)/(app)/volby/(one-segment)/[first]/layout";
 
 export default Layout;

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import { ComparisonPageWithRouting } from "../../../../../../../components/client";
-import { generateCalculatorMetadata } from "../../../../../../../lib/metadata/calculator";
-import { canonical } from "../../../../../../../lib/routing/url-builders";
+import { ComparisonPageWithRouting } from "@/components/client";
+import { generateCalculatorMetadata } from "@/lib/metadata";
+import { canonical } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string }> }): Promise<Metadata> {
   const { first } = await params;

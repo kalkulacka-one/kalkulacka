@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef } from "react";
 
-import type { calculateMatches } from "../calculator/lib/result-calculation/calculate-matches";
-import { AnswersStoreContext } from "../calculator/stores/answers";
-import { useCalculator } from "../calculator/view-models";
-import { saveSessionDataWithBeacon } from "../lib/api/session-data";
-import { reportError } from "../lib/monitoring";
+import type { calculateMatches } from "@/calculator/result-calculation";
+import { AnswersStoreContext } from "@/calculator/stores";
+import { useCalculator } from "@/calculator/view-models/client";
+import { saveSessionDataWithBeacon } from "@/lib/api";
+import { reportError } from "@/lib/monitoring";
 
 export type UseAutoSaveOptions = {
   matches?: ReturnType<typeof calculateMatches>;

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
-import { QuestionPageWithRouting } from "../../../../../../../../../components/client";
-import { generateCalculatorMetadata } from "../../../../../../../../../lib/metadata/calculator";
-import { questionNumberGuard } from "../../../../../../../../../lib/routing/guards/question-number";
-import { canonical } from "../../../../../../../../../lib/routing/url-builders";
+import { QuestionPageWithRouting } from "@/components/client";
+import { generateCalculatorMetadata } from "@/lib/metadata";
+import { canonical, questionNumberGuard } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; questionNumber: string }> }): Promise<Metadata> {
   const { first, questionNumber } = await params;

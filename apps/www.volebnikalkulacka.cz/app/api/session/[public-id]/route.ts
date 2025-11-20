@@ -1,7 +1,7 @@
 import { prisma } from "@repo/database";
 import type { NextRequest } from "next/server";
 
-import { HttpError, NotFoundError } from "../../../../lib/errors";
+import { HttpError, NotFoundError } from "@/lib/errors";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "public-id": string }> }) {
   try {
