@@ -1,7 +1,8 @@
+import { Icon } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
+import { Card } from "@kalkulacka-one/design-system/server";
+
 import { mdiArrowRight, mdiStar } from "@mdi/js";
-import { Icon } from "@repo/design-system/client";
-import { logoCheck, logoCross } from "@repo/design-system/icons";
-import { Card } from "@repo/design-system/server";
 import Markdown from "react-markdown";
 
 import type { CalculatorViewModel } from "@/calculator/view-models/server";

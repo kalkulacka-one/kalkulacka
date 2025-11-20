@@ -1,7 +1,8 @@
+import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
+import { Card } from "@kalkulacka-one/design-system/server";
+
 import { mdiStar, mdiStarOutline } from "@mdi/js";
-import { Icon, ToggleButton } from "@repo/design-system/client";
-import { logoCheck, logoCross } from "@repo/design-system/icons";
-import { Card } from "@repo/design-system/server";
 
 import type { AnswerViewModel, QuestionViewModel } from "@/calculator/view-models/server";
 

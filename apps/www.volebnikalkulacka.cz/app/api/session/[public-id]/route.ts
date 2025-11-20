@@ -1,4 +1,5 @@
-import { prisma } from "@repo/database";
+import { prisma } from "@kalkulacka-one/database";
+
 import type { NextRequest } from "next/server";
 
 import { HttpError, NotFoundError } from "@/lib/errors";

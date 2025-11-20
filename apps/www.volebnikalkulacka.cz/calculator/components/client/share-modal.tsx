@@ -1,5 +1,6 @@
+import { Button, Icon } from "@kalkulacka-one/design-system/client";
+
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
-import { Button, Icon } from "@repo/design-system/client";
 import { useEffect, useRef, useState } from "react";
 
 import { shareSession } from "@/lib/api";
