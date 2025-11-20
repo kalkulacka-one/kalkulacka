@@ -1,4 +1,4 @@
-import type { AnswersStore } from "@/calculator/stores/answers";
+import type { AnswersStore } from "@/calculator/stores";
 
 import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
 import { type AnswerViewModel, answerViewModel } from "./answer";

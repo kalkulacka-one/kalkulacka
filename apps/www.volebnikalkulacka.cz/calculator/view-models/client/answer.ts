@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { useAnswersStore } from "@/calculator/stores/answers";
+import { useAnswersStore } from "@/calculator/stores";
 
 import { type AnswerViewModel, answerViewModel } from "../server/answer";
 

@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { AnswersStoreContext, createAnswersStore } from "@/calculator/stores/answers";
-import { CalculatorStoreContext, createCalculatorStore } from "@/calculator/stores/calculator";
+import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/calculator/stores";
 import type { CandidateViewModel } from "@/calculator/view-models/client";
 
 import { MatchCard } from "./match-card";
