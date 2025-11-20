@@ -1,15 +1,12 @@
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
-import { isAllowedPrefix } from "@/lib/routing";
+import { allowedPrefixGuard } from "@/lib/routing";
 import { routes } from "@/lib/routing";
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; third: string }> }) {
   const { first, second, third } = await params;
 
-  // Validate prefix
-  if (!isAllowedPrefix(first)) {
-    notFound();
-  }
+  allowedPrefixGuard(first);
 
   redirect(routes.introduction({ first, second, third }));
 }

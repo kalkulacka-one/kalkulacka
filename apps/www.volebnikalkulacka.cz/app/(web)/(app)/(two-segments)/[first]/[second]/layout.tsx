@@ -1,18 +1,12 @@
-import { notFound } from "next/navigation";
-
 import { loadCalculatorData } from "@/calculator/data-fetching";
 import { SessionProviderLayout } from "@/components/client";
-import { isAllowedPrefix } from "@/lib/routing";
+import { allowedPrefixGuard } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
   const { first, second } = await params;
 
-  // Validate prefix
-  if (!isAllowedPrefix(first)) {
-    notFound();
-  }
+  allowedPrefixGuard(first);
 
-  // Load calculator data with key=second (no group for 2-segment routes)
   const calculatorData = await loadCalculatorData({ key: second });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }
