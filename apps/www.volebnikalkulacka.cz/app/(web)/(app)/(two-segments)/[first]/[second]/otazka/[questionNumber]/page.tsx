@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const { first, second, questionNumber } = await params;
   const currentQuestionNumber = questionNumberGuard(questionNumber);
   const canonicalUrl = canonical.question({ first, second }, currentQuestionNumber);
-  return generateCalculatorMetadata({ key: first, group: second, canonicalUrl });
+  return generateCalculatorMetadata({ key: second, canonicalUrl });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; questionNumber: string }> }) {

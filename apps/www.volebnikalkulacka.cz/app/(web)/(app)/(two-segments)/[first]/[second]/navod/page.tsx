@@ -7,7 +7,7 @@ import { canonical } from "@/lib/routing";
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string }> }): Promise<Metadata> {
   const { first, second } = await params;
   const canonicalUrl = canonical.guide({ first, second });
-  return generateCalculatorMetadata({ key: first, group: second, canonicalUrl });
+  return generateCalculatorMetadata({ key: second, canonicalUrl });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {

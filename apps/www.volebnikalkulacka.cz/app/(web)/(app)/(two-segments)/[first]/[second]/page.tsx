@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { isAllowedPrefix } from "../../../../../../lib/routing/allowed-prefixes";
+import { isAllowedPrefix } from "@/lib/routing/allowed-prefixes";
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {
   const { first, second } = await params;
