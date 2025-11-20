@@ -1,6 +1,6 @@
-import type { Answers } from "../../../../../packages/schema/schemas/answers.schema";
-import type { Candidates } from "../.././../../../packages/schema/schemas/candidates.schema";
-import type { CandidatesAnswers } from "../../../../../packages/schema/schemas/candidates-answers.schema";
+import type { Answers } from "../../../../packages/schema/schemas/answers.schema";
+import type { Candidates } from "../../../../packages/schema/schemas/candidates.schema";
+import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
