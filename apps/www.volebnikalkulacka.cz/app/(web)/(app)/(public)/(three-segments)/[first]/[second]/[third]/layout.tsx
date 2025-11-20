@@ -1,6 +1,6 @@
 import { loadCalculatorData } from "@/calculator/data-fetching";
 import { ProviderLayout } from "@/components/client";
-import { params as routeParams, prefixGuard } from "@/lib/routing";
+import { prefixGuard, params as routeParams } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string; third: string }> }) {
   const { first, second, third } = await params;
