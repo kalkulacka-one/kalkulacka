@@ -4,7 +4,6 @@ import { z } from "zod";
 import { HttpError, JsonParseError, UnauthorizedError, ValidationError } from "@/lib/errors";
 import {
   type CreateCalculatorSessionParams,
-  calculatorFullKey,
   createCalculatorSession,
   getEmbedNameFromRequest,
   getSessionCookie,
@@ -12,6 +11,7 @@ import {
   type SessionCookie,
   setSessionCookie,
 } from "@/lib/session/server";
+import { calculatorFullKey } from "@/lib/session/shared";
 
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
