@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import { useAnswersStore } from "../../stores/answers";
+import { useAnswersStore } from "@/calculator/stores/answers";
+
 import { type AnswerViewModel, answerViewModel } from "../server/answer";
 
 export function useAnswer(questionId: string): AnswerViewModel {

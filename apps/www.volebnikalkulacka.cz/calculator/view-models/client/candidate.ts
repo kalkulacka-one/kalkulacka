@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 
-import { useCalculatorStore } from "../../stores";
-import { useAnswersStore } from "../../stores/answers";
+import { useCalculatorStore } from "@/calculator/stores";
+import { useAnswersStore } from "@/calculator/stores/answers";
+
 import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers } from "../server/candidate";
 import { organizationViewModel } from "../server/organization";
 import { personViewModel } from "../server/person";

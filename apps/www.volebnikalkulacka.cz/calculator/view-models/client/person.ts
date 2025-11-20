@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import { useCalculatorStore } from "../../stores";
+import { useCalculatorStore } from "@/calculator/stores";
+
 import { type PersonViewModel, personViewModel } from "../server/person";
 
 export function usePerson(id: string): PersonViewModel | undefined {

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import { useCalculatorStore } from "../../stores";
+import { useCalculatorStore } from "@/calculator/stores";
+
 import type { OrganizationViewModel } from "../server/organization";
 import { organizationsViewModel } from "../server/organizations";
 

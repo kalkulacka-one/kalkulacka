@@ -1,6 +1,7 @@
+import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching/image-url-builder";
+
 import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
 import type { Organization } from "../../../../../packages/schema/schemas/organization.schema";
-import { findImageByType, resolveImageUrls } from "../../data-fetching/image-url-builder";
 
 export type OrganizationViewModel = Organization & {
   displayName: string;

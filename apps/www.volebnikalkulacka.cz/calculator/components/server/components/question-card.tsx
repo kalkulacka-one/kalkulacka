@@ -1,6 +1,6 @@
 import { Card } from "@repo/design-system/server";
 
-import type { QuestionViewModel } from "../../../view-models/server";
+import type { QuestionViewModel } from "@/calculator/view-models/server";
 
 export type QuestionCard = {
   question: QuestionViewModel;
