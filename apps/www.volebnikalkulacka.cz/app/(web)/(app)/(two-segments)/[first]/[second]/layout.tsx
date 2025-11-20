@@ -1,18 +1,15 @@
 import { loadCalculatorData } from "@/calculator/data-fetching";
 import { SessionProviderLayout } from "@/components/client";
-import { isPrefix, params, prefixGuard } from "@/lib/routing";
+import { isPrefix, params as routeParams, prefixGuard } from "@/lib/routing";
 
-export default async function Layout({ children, params: routeParams }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
-  const { first, second } = await routeParams;
+export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
+  const { first, second } = await params;
 
   if (isPrefix(first)) {
     prefixGuard(first);
   }
 
-  const path = `/${first}/${second}`;
-  const calculatorData = await loadCalculatorData({
-    key: params.calculatorKey(path),
-    group: params.calculatorGroupKey(path),
-  });
+  const { key, group } = routeParams.fromTwoSegments({ first, second });
+  const calculatorData = await loadCalculatorData({ key, group });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }

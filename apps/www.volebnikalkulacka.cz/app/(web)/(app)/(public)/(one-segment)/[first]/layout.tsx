@@ -4,11 +4,7 @@ import { params as routeParams } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
   const { first } = await params;
-
-  const path = `/${first}`;
-  const calculatorData = await loadCalculatorData({
-    key: routeParams.calculatorKey(path),
-    group: routeParams.calculatorGroupKey(path),
-  });
+  const { key, group } = routeParams.fromOneSegment({ first });
+  const calculatorData = await loadCalculatorData({ key, group });
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
 }

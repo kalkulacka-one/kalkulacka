@@ -22,52 +22,24 @@ function parseQuestionNumber(path: string): number {
   return validateQuestionNumber(questionNumberString);
 }
 
-function parseCalculatorKey(path: string): string {
-  const segments = path.split("/").filter(Boolean);
-
-  if (segments.length === 1) {
-    return segments[0] as string;
-  }
-
-  if (segments.length === 2) {
-    const [first, second] = segments;
-    if (isPrefix(first as string)) {
-      return second as string;
-    }
-    return first as string;
-  }
-
-  if (segments.length === 3) {
-    return segments[1] as string;
-  }
-
-  throw new Error(`Invalid path for calculator key: ${path}`);
+function parseOneSegmentParams({ first }: { first: string }): { key: string; group: string | undefined } {
+  return { key: first, group: undefined };
 }
 
-function parseCalculatorGroupKey(path: string): string | undefined {
-  const segments = path.split("/").filter(Boolean);
-
-  if (segments.length === 1) {
-    return undefined;
+function parseTwoSegmentParams({ first, second }: { first: string; second: string }): { key: string; group: string | undefined } {
+  if (isPrefix(first)) {
+    return { key: second, group: undefined };
   }
+  return { key: first, group: second };
+}
 
-  if (segments.length === 2) {
-    const [first, second] = segments;
-    if (isPrefix(first as string)) {
-      return undefined;
-    }
-    return second as string;
-  }
-
-  if (segments.length === 3) {
-    return segments[2] as string;
-  }
-
-  throw new Error(`Invalid path for calculator group key: ${path}`);
+function parseThreeSegmentParams({ second, third }: { first: string; second: string; third: string }): { key: string; group: string | undefined } {
+  return { key: second, group: third };
 }
 
 export const params = {
   questionNumber: (path: string): number => parseQuestionNumber(path),
-  calculatorKey: (path: string): string => parseCalculatorKey(path),
-  calculatorGroupKey: (path: string): string | undefined => parseCalculatorGroupKey(path),
+  fromOneSegment: (params: { first: string }) => parseOneSegmentParams(params),
+  fromTwoSegments: (params: { first: string; second: string }) => parseTwoSegmentParams(params),
+  fromThreeSegments: (params: { first: string; second: string; third: string }) => parseThreeSegmentParams(params),
 } as const;

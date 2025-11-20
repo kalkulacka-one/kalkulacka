@@ -9,12 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const { first, second, third, questionNumber } = await params;
   const currentQuestionNumber = questionNumberGuard(questionNumber);
   const canonicalUrl = canonical.question({ first, second, third }, currentQuestionNumber);
-  const path = `/${first}/${second}/${third}`;
-  return generateCalculatorMetadata({
-    key: routeParams.calculatorKey(path),
-    group: routeParams.calculatorGroupKey(path),
-    canonicalUrl,
-  });
+  const { key, group } = routeParams.fromThreeSegments({ first, second, third });
+  return generateCalculatorMetadata({ key, group, canonicalUrl });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; third: string; questionNumber: string }> }) {
