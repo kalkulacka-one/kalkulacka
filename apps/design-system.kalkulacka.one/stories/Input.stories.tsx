@@ -1,5 +1,6 @@
 import { Icon, Input } from "@kalkulacka-one/design-system/client";
 import { EnvelopeIcon } from "@kalkulacka-one/design-system/icons";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Input> = {

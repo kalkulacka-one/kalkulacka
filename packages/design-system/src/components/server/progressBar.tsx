@@ -1,4 +1,5 @@
 import { twMerge } from "@kalkulacka-one/design-system/utils";
+
 import { cva, type VariantProps } from "class-variance-authority";
 
 export type ProgressBar = {

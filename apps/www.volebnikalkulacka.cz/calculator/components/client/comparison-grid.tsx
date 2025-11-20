@@ -1,6 +1,7 @@
 import { Icon } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
 import { IconBadge } from "@kalkulacka-one/design-system/server";
+
 import { useState } from "react";
 
 import { ComparisonQuestionCard } from "@/calculator/components/server";

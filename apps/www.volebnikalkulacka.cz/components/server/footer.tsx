@@ -1,4 +1,5 @@
 import { Icon, Logo } from "@kalkulacka-one/design-system/client";
+
 import { mdiInstagram } from "@mdi/js";
 import Link from "next/link";
 

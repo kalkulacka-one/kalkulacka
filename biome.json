@@ -10,7 +10,7 @@
           "level": "on",
           "options": {
             "identifierOrder": "natural",
-            "groups": [[":URL:", ":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:"], ":BLANK_LINE:", "@kalkulacka-one/**", ":BLANK_LINE:", "@/**", ":BLANK_LINE:", ":PATH:"]
+            "groups": ["@kalkulacka-one/**", ":BLANK_LINE:", [":URL:", ":PACKAGE_WITH_PROTOCOL:", ":PACKAGE:"], ":BLANK_LINE:", "@/**", ":BLANK_LINE:", ":PATH:"]
           }
         }
       }

@@ -1,5 +1,6 @@
 import { ExpandableCard } from "@kalkulacka-one/design-system/client";
 import { Avatar, ProgressBar } from "@kalkulacka-one/design-system/server";
+
 import React, { useState } from "react";
 
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/calculator/view-models/client/candidate";

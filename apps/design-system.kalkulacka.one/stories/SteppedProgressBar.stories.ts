@@ -1,4 +1,5 @@
 import { SteppedProgressBar } from "@kalkulacka-one/design-system/server";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const stepItems = [

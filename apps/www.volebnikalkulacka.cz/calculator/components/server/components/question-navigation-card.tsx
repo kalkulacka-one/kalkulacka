@@ -1,5 +1,6 @@
 import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
+
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";

@@ -1,6 +1,7 @@
-import { Input as InputHeadless, type InputProps as InputPropsHeadless } from "@headlessui/react";
 import type { Icon } from "@kalkulacka-one/design-system/client";
 import { twMerge } from "@kalkulacka-one/design-system/utils";
+
+import { Input as InputHeadless, type InputProps as InputPropsHeadless } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 

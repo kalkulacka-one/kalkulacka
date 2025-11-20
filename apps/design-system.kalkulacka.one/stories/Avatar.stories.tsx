@@ -1,4 +1,5 @@
 import { Avatar } from "@kalkulacka-one/design-system/server";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Avatar> = {

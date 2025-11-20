@@ -1,5 +1,6 @@
-import { Button as ButtonHeadless, type ButtonProps as ButtonPropsHeadless } from "@headlessui/react";
 import { twMerge } from "@kalkulacka-one/design-system/utils";
+
+import { Button as ButtonHeadless, type ButtonProps as ButtonPropsHeadless } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
