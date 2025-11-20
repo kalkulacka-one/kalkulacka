@@ -2,6 +2,8 @@
 
 This document describes the flexible routing system for the Kalkulačka.1 platform, which supports multiple URL patterns for different calculator types.
 
+**Note:** This routing architecture is specific to **Next.js applications** using the App Router. It leverages Next.js dynamic routes, layouts, and server components.
+
 ## Overview
 
 The routing system supports 1, 2, and 3 segment URL patterns. Route segments are mapped **backwards**:
