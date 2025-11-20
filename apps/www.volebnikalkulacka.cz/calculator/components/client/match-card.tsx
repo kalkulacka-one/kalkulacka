@@ -2,8 +2,8 @@ import { ExpandableCard } from "@repo/design-system/client";
 import { Avatar, ProgressBar } from "@repo/design-system/server";
 import React, { useState } from "react";
 
-import type { CandidateMatchViewModel } from "@/calculator/view-models/client";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/calculator/view-models/client/candidate";
+import type { CandidateMatchViewModel } from "@/calculator/view-models/server";
 
 export type MatchCard = CandidateMatchViewModel;
 

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/calculator/stores";
-import type { CandidateViewModel } from "@/calculator/view-models/client";
+import type { CandidateViewModel } from "@/calculator/view-models/server";
 
 import { MatchCard } from "./match-card";
 

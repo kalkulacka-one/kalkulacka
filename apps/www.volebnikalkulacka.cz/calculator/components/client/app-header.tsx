@@ -3,7 +3,7 @@ import { twMerge } from "@repo/design-system/utils";
 import type { ReactNode } from "react";
 import React from "react";
 
-import type { CalculatorViewModel } from "@/calculator/view-models/client";
+import type { CalculatorViewModel } from "@/calculator/view-models/server";
 import { useEmbed } from "@/components/client";
 
 const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);
