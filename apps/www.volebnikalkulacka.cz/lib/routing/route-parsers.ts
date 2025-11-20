@@ -22,31 +22,52 @@ function parseQuestionNumber(path: string): number {
   return validateQuestionNumber(questionNumberString);
 }
 
+function parseCalculatorKey(path: string): string {
+  const segments = path.split("/").filter(Boolean);
+
+  if (segments.length === 1) {
+    return segments[0];
+  }
+
+  if (segments.length === 2) {
+    const [first, second] = segments;
+    if (isPrefix(first)) {
+      return second;
+    }
+    return first;
+  }
+
+  if (segments.length === 3) {
+    return segments[1];
+  }
+
+  throw new Error(`Invalid path for calculator key: ${path}`);
+}
+
+function parseCalculatorGroupKey(path: string): string | undefined {
+  const segments = path.split("/").filter(Boolean);
+
+  if (segments.length === 1) {
+    return undefined;
+  }
+
+  if (segments.length === 2) {
+    const [first, second] = segments;
+    if (isPrefix(first)) {
+      return undefined;
+    }
+    return second;
+  }
+
+  if (segments.length === 3) {
+    return segments[2];
+  }
+
+  throw new Error(`Invalid path for calculator group key: ${path}`);
+}
+
 export const params = {
   questionNumber: (path: string): number => parseQuestionNumber(path),
-
-  oneSegment: {
-    calculatorKey: (first: string): string => first,
-    calculatorGroupKey: (_first: string): undefined => undefined,
-  },
-
-  twoSegment: {
-    calculatorKey: (first: string, second: string): string => {
-      if (isPrefix(first)) {
-        return second;
-      }
-      return first;
-    },
-    calculatorGroupKey: (first: string, second: string): string | undefined => {
-      if (isPrefix(first)) {
-        return undefined;
-      }
-      return second;
-    },
-  },
-
-  threeSegment: {
-    calculatorKey: (_first: string, second: string, _third: string): string => second,
-    calculatorGroupKey: (_first: string, _second: string, third: string): string => third,
-  },
+  calculatorKey: (path: string): string => parseCalculatorKey(path),
+  calculatorGroupKey: (path: string): string | undefined => parseCalculatorGroupKey(path),
 } as const;

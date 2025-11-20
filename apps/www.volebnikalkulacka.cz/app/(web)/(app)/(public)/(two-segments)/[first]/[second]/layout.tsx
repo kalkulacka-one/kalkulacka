@@ -9,9 +9,10 @@ export default async function Layout({ children, params: routeParams }: { childr
     prefixGuard(first);
   }
 
+  const path = `/${first}/${second}`;
   const calculatorData = await loadCalculatorData({
-    key: params.twoSegment.calculatorKey(first, second),
-    group: params.twoSegment.calculatorGroupKey(first, second),
+    key: params.calculatorKey(path),
+    group: params.calculatorGroupKey(path),
   });
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
 }
