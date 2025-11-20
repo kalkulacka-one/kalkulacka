@@ -4,6 +4,15 @@ export type RouteSegments = {
   embed?: string;
 };
 
+export const ROUTE_SEGMENTS = {
+  INTRODUCTION: "uvod",
+  GUIDE: "navod",
+  QUESTION: "otazka",
+  REVIEW: "rekapitulace",
+  RESULT: "vysledek",
+  COMPARISON: "porovnani",
+} as const;
+
 export function createBaseSegment(segments: RouteSegments): string {
   const { first, second, embed } = segments;
 
@@ -20,11 +29,11 @@ export function createBaseSegment(segments: RouteSegments): string {
 }
 
 export const routes = {
-  introduction: (segments: RouteSegments) => `/${createBaseSegment(segments)}/uvod`,
-  guide: (segments: RouteSegments) => `/${createBaseSegment(segments)}/navod`,
-  question: (segments: RouteSegments, questionNumber: number) => `/${createBaseSegment(segments)}/otazka/${questionNumber}`,
-  review: (segments: RouteSegments) => `/${createBaseSegment(segments)}/rekapitulace`,
-  result: (segments: RouteSegments) => `/${createBaseSegment(segments)}/vysledek`,
-  publicResult: (segments: RouteSegments, publicId: string) => `/${createBaseSegment(segments)}/vysledek/${publicId}`,
-  comparison: (segments: RouteSegments) => `/${createBaseSegment(segments)}/porovnani`,
+  introduction: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.INTRODUCTION}`,
+  guide: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.GUIDE}`,
+  question: (segments: RouteSegments, questionNumber: number) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.QUESTION}/${questionNumber}`,
+  review: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.REVIEW}`,
+  result: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.RESULT}`,
+  publicResult: (segments: RouteSegments, publicId: string) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.RESULT}/${publicId}`,
+  comparison: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.COMPARISON}`,
 } as const;

@@ -2,16 +2,13 @@ import type { Metadata } from "next";
 
 import { QuestionPageWithRouting } from "../../../../../../../../../components/client";
 import { generateCalculatorMetadata } from "../../../../../../../../../lib/metadata/calculator";
-import { questionNumberGuard, validateQuestionNumber } from "../../../../../../../../../lib/routing/guards/question-number";
+import { questionNumberGuard } from "../../../../../../../../../lib/routing/guards/question-number";
 import { canonical } from "../../../../../../../../../lib/routing/url-builders";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; questionNumber: string }> }): Promise<Metadata> {
   const { first, questionNumber } = await params;
-  const validatedNumber = validateQuestionNumber(questionNumber);
-  if (validatedNumber === null) {
-    throw new Error(`Invalid question number \`${questionNumber}\``);
-  }
-  const canonicalUrl = canonical.question({ first }, validatedNumber);
+  const currentQuestionNumber = questionNumberGuard(questionNumber);
+  const canonicalUrl = canonical.question({ first }, currentQuestionNumber);
   return generateCalculatorMetadata({ key: first, canonicalUrl });
 }
 

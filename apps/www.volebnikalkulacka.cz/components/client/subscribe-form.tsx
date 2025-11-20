@@ -28,7 +28,7 @@ export function SubscribeForm() {
   const onSubmit: SubmitHandler<SubscribeData> = async (data) => {
     setIsSuccessfullySubmitted(false);
     try {
-      const response = await subscribe(data);
+      const response = await subscribe({ ...data, origin: "subscribe-form" });
       if (response.success) {
         reset();
         setIsSuccessfullySubmitted(true);
