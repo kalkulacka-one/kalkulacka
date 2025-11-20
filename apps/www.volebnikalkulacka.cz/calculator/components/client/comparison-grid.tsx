@@ -3,7 +3,8 @@ import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
 import { IconBadge } from "@repo/design-system/server";
 import { useState } from "react";
 
-import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "../../view-models";
+import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator/view-models/client";
+
 import { ComparisonQuestionCard } from "../server";
 
 export type ComparisonGridDashlinesOverlay = {

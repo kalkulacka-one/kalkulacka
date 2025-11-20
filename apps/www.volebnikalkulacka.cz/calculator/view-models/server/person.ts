@@ -1,4 +1,4 @@
-import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching/image-url-builder";
+import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching";
 
 import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
 import type { Person } from "../../../../../packages/schema/schemas/person.schema";

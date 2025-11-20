@@ -4,12 +4,11 @@ import { useEffect, useReducer } from "react";
 import { QuestionPage as AppQuestionPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores";
 import { useAnswer, useCalculator, useQuestions } from "@/calculator/view-models/client";
+import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 import { params, type RouteSegments, routes } from "@/lib/routing";
-
-import { useEmbed } from "../../../client/embed-context-provider";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();

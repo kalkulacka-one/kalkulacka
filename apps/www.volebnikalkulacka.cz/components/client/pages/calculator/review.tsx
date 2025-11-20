@@ -3,12 +3,11 @@ import { useRouter } from "next/navigation";
 import { ReviewPage as AppReviewPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores";
 import { useAnswers, useCalculator, useQuestions } from "@/calculator/view-models/client";
+import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing";
-
-import { useEmbed } from "../../../client/embed-context-provider";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
