@@ -1,4 +1,3 @@
-import { prefixGuard } from "./guards";
 import { ROUTE_SEGMENTS } from "./route-builders";
 import { isPrefix } from "./validators";
 import { validateQuestionNumber } from "./validators/question-number";
@@ -25,7 +24,6 @@ function parseQuestionNumber(path: string): number {
 
 function parseTwoSegmentCalculatorParams(first: string, second: string): { key: string; group?: string } {
   if (isPrefix(first)) {
-    prefixGuard(first);
     return { key: second };
   }
   return { key: first, group: second };
