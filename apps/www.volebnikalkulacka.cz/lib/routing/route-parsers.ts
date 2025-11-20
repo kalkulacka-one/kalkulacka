@@ -1,3 +1,4 @@
+import { paramsMapper } from "./params-mapper";
 import { ROUTE_SEGMENTS } from "./route-builders";
 import { validateQuestionNumber } from "./validators/question-number";
 
@@ -22,3 +23,4 @@ function parseQuestionNumber(path: string): number {
 }
 
 export const parseQuestionNumberFromPath = parseQuestionNumber;
+export const params = paramsMapper;

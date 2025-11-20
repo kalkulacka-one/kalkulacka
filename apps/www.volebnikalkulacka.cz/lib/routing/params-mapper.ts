@@ -36,7 +36,7 @@ function parseGroup(params: RouteParams): string | undefined {
   return undefined;
 }
 
-export const params = {
+export const paramsMapper = {
   key: (params: RouteParams) => parseKey(params),
   group: (params: RouteParams) => parseGroup(params),
 } as const;
