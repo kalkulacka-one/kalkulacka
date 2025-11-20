@@ -1,4 +1,6 @@
+import { prefixGuard } from "./guards";
 import { ROUTE_SEGMENTS } from "./route-builders";
+import { isPrefix } from "./validators";
 import { validateQuestionNumber } from "./validators/question-number";
 
 function parseQuestionNumber(path: string): number {
@@ -21,6 +23,23 @@ function parseQuestionNumber(path: string): number {
   return validateQuestionNumber(questionNumberString);
 }
 
+function parseTwoSegmentCalculatorParams(first: string, second: string): { key: string; group?: string } {
+  if (isPrefix(first)) {
+    prefixGuard(first);
+    return { key: second };
+  }
+  return { key: second, group: first };
+}
+
+function parseTwoSegmentMetadataParams(first: string, second: string): { key: string; group?: string } {
+  if (isPrefix(first)) {
+    return { key: second };
+  }
+  return { key: second, group: first };
+}
+
 export const params = {
   questionNumber: (path: string): number => parseQuestionNumber(path),
+  twoSegmentCalculator: (first: string, second: string) => parseTwoSegmentCalculatorParams(first, second),
+  twoSegmentMetadata: (first: string, second: string) => parseTwoSegmentMetadataParams(first, second),
 } as const;

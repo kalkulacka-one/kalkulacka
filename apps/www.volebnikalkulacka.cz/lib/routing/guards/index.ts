@@ -1,2 +1,2 @@
-export * from "./allowed-prefix";
+export * from "./prefix";
 export * from "./question-number";
