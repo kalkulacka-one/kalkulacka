@@ -43,7 +43,7 @@ The routing system supports 1, 2, and 3 segment URL patterns. Route segments are
 
 - **If `first` is NOT in `ALLOWED_PREFIXES`:**
   - No prefix validation
-  - Data loading: `key: first, group: second`
+  - Data loading: `key: second, group: first` (backwards mapping!)
   - Root redirects to: `/{group}/{calculator-key}/uvod`
 
 **Use cases:**

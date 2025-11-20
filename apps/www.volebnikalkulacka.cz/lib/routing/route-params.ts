@@ -4,7 +4,7 @@ import { isAllowedPrefix } from "./validators";
 /**
  * Determines calculator data loading parameters for two-segment routes.
  *
- * Two-segment routes use backwards mapping:
+ * Two-segment routes use backwards mapping (last segment = calculator key):
  * - If first segment is an allowed prefix (e.g., "volby"):
  *   → Validates the prefix
  *   → Returns: key = second segment (calculator key)
@@ -12,15 +12,15 @@ import { isAllowedPrefix } from "./validators";
  *
  * - If first segment is NOT an allowed prefix:
  *   → No validation
- *   → Returns: key = first segment, group = second segment
- *   → Example: /inventura-2025/expresni → key: "inventura-2025", group: "expresni"
+ *   → Returns: key = second segment (calculator key), group = first segment
+ *   → Example: /inventura-2025/expresni → key: "expresni", group: "inventura-2025"
  */
 export function getTwoSegmentCalculatorParams(first: string, second: string): { key: string; group?: string } {
   if (isAllowedPrefix(first)) {
     allowedPrefixGuard(first);
     return { key: second };
   }
-  return { key: first, group: second };
+  return { key: second, group: first };
 }
 
 /**
@@ -33,5 +33,5 @@ export function getTwoSegmentMetadataParams(first: string, second: string): { ke
   if (isAllowedPrefix(first)) {
     return { key: second };
   }
-  return { key: first, group: second };
+  return { key: second, group: first };
 }
