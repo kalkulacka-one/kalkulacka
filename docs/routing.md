@@ -1,212 +1,68 @@
-# Routing Architecture
+# Routing
 
-This document describes the flexible routing system for Next.js applications in the Kalkulačka.1 platform, which supports multiple URL patterns for different calculator types using the App Router with dynamic routes, layouts, and server components.
+This document describes the flexible routing system for Next.js-based voting advice applications, which support multiple path patterns for different calculator types.
 
 ## Overview
 
-The routing system supports 1, 2, and 3 segment URL patterns. Route segments are mapped **backwards**:
+The routing system supports 1, 2, and 3 segment path patterns. Route segments are mapped backwards:
+
 - Last segment = calculator key
 - Second-to-last segment = group key (if present)
 - First segment = prefix (validated but not passed to data layer)
 
-## URL Patterns & Requirements
+This means it is possible to use nice, human-friendly paths like:
 
-### 1. One-Segment Routes
-**Pattern:** `/{calculator-key}`
+- `/green-deal`
+- `/energy/solar`
+- `/election/presidential-2028`
+- `/election/senate-2026/prague`
 
-**Example:** `/sametova-kalkulacka`
+## Path patterns
 
-**Behavior:**
-- No prefix validation
-- Data loading: `key: first` (no group)
-- Root redirects to introduction: `/{calculator-key}/uvod`
+### 1. One-segment routes
 
-**Use cases:**
-- Standalone calculators
-- Simple calculators without grouping
+**Pattern**: `/{key}`
 
----
+**Example**: `/green-deal`
 
-### 2. Two-Segment Routes
-**Pattern:** `/{prefix}/{calculator-key}` OR `/{group}/{calculator-key}`
+- No validation
+- Data loading: `key: first` (standalone calculator)
+- Root redirects to introduction: `/{key}` → `/{key}/introduction`
 
-**Examples:**
-- `/volby/prezidentske-2028` (prefixed)
-- `/inventura-2025/expresni` (group calculator)
+### 2. Two-segment routes
 
-**Behavior:**
-- **If `first` is in `ALLOWED_PREFIXES`:**
-  - Validates prefix (404 on invalid)
-  - Data loading: `key: second` (no group)
-  - Root shows election landing page (TODO)
-  - Currently redirects to: `/{prefix}/{calculator-key}/uvod`
+**Pattern**: `/{prefix}/{key}` or `/{group}/{key}`
 
-- **If `first` is NOT in `ALLOWED_PREFIXES`:**
-  - No prefix validation
-  - Data loading: `key: second, group: first` (backwards mapping!)
-  - Root redirects to: `/{group}/{calculator-key}/uvod`
+**Example**: `/election/presidential-2028` or `/energy/solar`
 
-**Use cases:**
-- Election landing pages with calculator (e.g., `/volby/prezidentske-2028`)
-- Group calculators (e.g., `/inventura-2025/expresni`)
+If `first` is in allowed prefixes:
 
----
+- Data loading: `key: second` (standalone calculator)
+- Root redirects to introduction: `/{prefix}/{key}` → `/{prefix}/{key}/introduction`
 
-### 3. Three-Segment Routes
-**Pattern:** `/{prefix}/{group}/{calculator-key}`
+If `first` is not in allowed prefixes:
 
-**Example:** `/volby/krajske-2026/moravskoslezsky`
+- Data loading: `group: first, key: second`
+- Root redirects to introduction: `/{group}/{key}` → `/{group}/{key}/introduction`
 
-**Behavior:**
-- Validates prefix (404 on invalid)
-- Data loading: `key: third, group: second` (backwards mapping!)
-- Root redirects to: `/{prefix}/{group}/{calculator-key}/uvod`
+### 3. Three-segment routes
 
-**Use cases:**
-- Namespaced calculators with grouping
-- Regional/district-specific calculators
+**Pattern**: `/{prefix}/{group}/{key}`
 
----
+**Example**: `/election/senate-2026/prague`
 
-## Allowed Prefixes
+- Prefix validation
+- Data loading: `group: second, key: third`
+- Root redirects to introduction: `/{prefix}/{group}/{key}` → `/{prefix}/{group}/{key}/introduction`
 
-Prefixes that trigger validation in multi-segment routes:
-
-```typescript
-export const ALLOWED_PREFIXES = ["volby", "inventura"];
-```
-
-- `volby` - Elections
-- `inventura` - Inventory/audits
-
----
-
-## Route Structure
+## Subroutes
 
 All calculator routes include these subroutes:
-- `/uvod` - Introduction
-- `/navod` - Guide/instructions
-- `/otazka/[number]` - Question pages
-- `/rekapitulace` - Review/summary
-- `/vysledek` - Results
-- `/vysledek/[publicId]` - Public results
-- `/porovnani` - Comparison
 
----
-
-## Implementation Details
-
-### File Structure
-```
-app/(web)/(app)/
-├── (one-segment)/
-│   └── [first]/
-│       ├── layout.tsx       # Loads: key=first
-│       ├── page.tsx         # Redirects to introduction
-│       ├── uvod/
-│       ├── navod/
-│       ├── otazka/[questionNumber]/
-│       ├── rekapitulace/
-│       ├── vysledek/
-│       └── porovnani/
-├── (two-segments)/
-│   └── [first]/[second]/
-│       ├── layout.tsx       # Validates prefix, loads: key=second OR key=first,group=second
-│       ├── page.tsx         # Landing page or redirect to introduction
-│       └── [subroutes...]
-└── (three-segments)/
-    └── [first]/[second]/[third]/
-        ├── layout.tsx       # Validates prefix, loads: key=third,group=second
-        ├── page.tsx         # Redirects to introduction
-        └── [subroutes...]
-```
-
-### Data Loading
-
-Layouts load calculator data using the backwards mapping:
-
-```typescript
-// One-segment
-loadCalculatorData({ key: first })
-
-// Two-segments (conditional based on prefix check)
-if (isAllowedPrefix(first)) {
-  loadCalculatorData({ key: second })
-} else {
-  loadCalculatorData({ key: first, group: second })
-}
-
-// Three-segments
-loadCalculatorData({ key: third, group: second })
-```
-
-### Prefix Validation
-
-The routing system provides two functions for prefix handling:
-
-```typescript
-// Check if segment is an allowed prefix (returns boolean)
-isAllowedPrefix(first)
-
-// Validate and return 404 if invalid (guard pattern)
-allowedPrefixGuard(first)
-```
-
-Follows the guard/validator pattern:
-- `allowed-prefixes.ts` - Exports `ALLOWED_PREFIXES` and `isAllowedPrefix()`
-- `validators/allowed-prefix.ts` - `validateAllowedPrefix()` throws on invalid prefix
-- `guards/allowed-prefix.ts` - `allowedPrefixGuard()` calls `notFound()` on validation failure
-
----
-
-## Current Status & TODOs
-
-### ✅ Implemented
-- One-segment routes (standalone calculators)
-- Two-segment routes with conditional logic (prefixed + group calculators)
-- Three-segment routes (prefixed with groups)
-- Prefix validation system with `isAllowedPrefix()` helper
-- Route builders supporting all patterns
-- Guard/validator pattern for prefix checking
-- Conditional data loading based on prefix detection
-
-### 📋 TODOs
-1. **Election landing page:**
-   - Replace redirect with actual landing page content
-   - Show election information, calculator list, etc.
-   - Currently: all root pages redirect to introduction
-
-2. **Testing:**
-   - Verify all route patterns work correctly
-   - Test prefix validation (valid/invalid prefixes)
-   - Test data loading for each pattern
-   - Verify group calculators load correct data
-
----
-
-## Examples
-
-### Working Examples
-
-```
-✅ /sametova-kalkulacka
-   → key: "sametova-kalkulacka"
-   → Redirects to: /sametova-kalkulacka/uvod
-
-✅ /volby/prezidentske-2028
-   → prefix: "volby" (validated)
-   → key: "prezidentske-2028"
-   → Redirects to: /volby/prezidentske-2028/uvod
-
-✅ /inventura-2025/expresni
-   → key: "inventura-2025"
-   → group: "expresni"
-   → No prefix validation (not in ALLOWED_PREFIXES)
-   → Redirects to: /inventura-2025/expresni/uvod
-
-✅ /volby/krajske-2026/moravskoslezsky
-   → prefix: "volby" (validated)
-   → key: "krajske-2026"
-   → group: "moravskoslezsky"
-   → Redirects to: /volby/krajske-2026/moravskoslezsky/uvod
-```
+- `/introduction`
+- `/guide`
+- `/question/[number]`
+- `/review`
+- `/result`
+- `/comparison`
+- + `/result/[publicId]`
