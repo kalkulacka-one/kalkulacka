@@ -64,15 +64,15 @@ export async function generateCalculatorMetadata({
   }
 
   const metadata: Metadata = {
-    title: calculator.title || calculator.shortTitle,
-    description: calculator.description,
+    title: "Fővárosi Közgyűlés Voksmonitor 2025",
+    description: "Voksmonitor 2025 - Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
     alternates: {
       canonical: canonicalUrl,
     },
     metadataBase: new URL(baseUrl),
     openGraph: {
-      title: calculator.title || calculator.shortTitle,
-      description: calculator.description,
+      title: "Fővárosi Közgyűlés Voksmonitor 2025",
+      description: "Voksmonitor 2025 - Hasonlítsd össze az álláspontod a frakciók és a képviselők álláspontjával!",
       url: canonicalUrl,
       images: [
         {
