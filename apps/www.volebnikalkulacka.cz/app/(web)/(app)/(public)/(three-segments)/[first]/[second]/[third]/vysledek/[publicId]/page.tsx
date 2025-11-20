@@ -1,4 +1,5 @@
-import { prisma } from "@repo/database";
+import { prisma } from "@kalkulacka-one/database";
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -15,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
 
   return await generateCalculatorMetadata({
-    key: second,
-    group: third,
+    key: third,
+    group: second,
     canonicalUrl,
     ogImage: {
       url: ogImageUrl,
