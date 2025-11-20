@@ -8,8 +8,11 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const { first, second } = await routeParams;
   const canonicalUrl = canonical.review({ first, second });
 
-  const metadataParams = params.twoSegment(first, second);
-  return generateCalculatorMetadata({ ...metadataParams, canonicalUrl });
+  return generateCalculatorMetadata({
+    key: params.twoSegment.calculatorKey(first, second),
+    group: params.twoSegment.calculatorGroupKey(first, second),
+    canonicalUrl,
+  });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {

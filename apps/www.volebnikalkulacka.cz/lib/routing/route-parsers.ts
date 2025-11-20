@@ -22,14 +22,31 @@ function parseQuestionNumber(path: string): number {
   return validateQuestionNumber(questionNumberString);
 }
 
-function parseTwoSegmentParams(first: string, second: string): { key: string; group?: string } {
-  if (isPrefix(first)) {
-    return { key: second };
-  }
-  return { key: first, group: second };
-}
-
 export const params = {
   questionNumber: (path: string): number => parseQuestionNumber(path),
-  twoSegment: (first: string, second: string) => parseTwoSegmentParams(first, second),
+
+  oneSegment: {
+    calculatorKey: (first: string): string => first,
+    calculatorGroupKey: (_first: string): undefined => undefined,
+  },
+
+  twoSegment: {
+    calculatorKey: (first: string, second: string): string => {
+      if (isPrefix(first)) {
+        return second;
+      }
+      return first;
+    },
+    calculatorGroupKey: (first: string, second: string): string | undefined => {
+      if (isPrefix(first)) {
+        return undefined;
+      }
+      return second;
+    },
+  },
+
+  threeSegment: {
+    calculatorKey: (_first: string, second: string, _third: string): string => second,
+    calculatorGroupKey: (_first: string, _second: string, third: string): string => third,
+  },
 } as const;
