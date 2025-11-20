@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { loadCalculatorData } from "@/calculator";
+import { loadCalculatorData } from "@/calculator/data-fetching";
 import { SessionProviderLayout } from "@/components/client";
 import { isAllowedPrefix } from "@/lib/routing";
 
