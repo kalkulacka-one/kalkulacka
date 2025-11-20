@@ -28,14 +28,14 @@ function parseTwoSegmentCalculatorParams(first: string, second: string): { key: 
     prefixGuard(first);
     return { key: second };
   }
-  return { key: second, group: first };
+  return { key: first, group: second };
 }
 
 function parseTwoSegmentMetadataParams(first: string, second: string): { key: string; group?: string } {
   if (isPrefix(first)) {
     return { key: second };
   }
-  return { key: second, group: first };
+  return { key: first, group: second };
 }
 
 export const params = {
