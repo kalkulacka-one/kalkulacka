@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { loadCalculatorData } from "@/calculator";
 import { ProviderLayout } from "@/components/client";
-import { isAllowedPrefix } from "@/lib/routing/allowed-prefixes";
+import { isAllowedPrefix } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string; third: string }> }) {
   const { first, second, third } = await params;
