@@ -1,5 +1,4 @@
-import { setRuntimeSessionId } from "@/lib/session";
-import type { CreateCalculatorSessionParams } from "@/lib/session/server";
+import { type CreateCalculatorSessionParams, setRuntimeSessionId } from "@/lib/session";
 
 import { verifySession } from "./verify-session";
 

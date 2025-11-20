@@ -2,7 +2,7 @@ import { prisma } from "@repo/database";
 import type { NextRequest } from "next/server";
 
 import { HttpError, NotFoundError, UnauthorizedError } from "@/lib/errors";
-import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/lib/session/server";
+import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/lib/session";
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
   try {

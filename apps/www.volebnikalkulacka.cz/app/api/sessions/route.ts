@@ -11,7 +11,7 @@ import {
   getSessionFromRequest,
   type SessionCookie,
   setSessionCookie,
-} from "@/lib/session/server";
+} from "@/lib/session";
 
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
