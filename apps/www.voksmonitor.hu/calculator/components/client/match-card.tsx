@@ -59,11 +59,6 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 {/* Answer Comparisons Grid */}
                 {answerComparisons.length > 0 && (
                   <div className="grid grid-cols-[1fr_auto] gap-y-2 gap-x-1 auto-rows-auto">
-                    <div className="col-span-2 text-right mb-2">
-                      <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
-                        <span>Összehasonlítás kezdeti verziója. Még finomítjuk!</span>
-                      </div>
-                    </div>
                     {/* Grid Header Row */}
                     <div />
                     <div>Te • Jelölt</div>
