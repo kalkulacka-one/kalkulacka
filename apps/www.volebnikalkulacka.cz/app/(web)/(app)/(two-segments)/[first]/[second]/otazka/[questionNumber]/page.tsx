@@ -9,7 +9,7 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const currentQuestionNumber = questionNumberGuard(questionNumber);
   const canonicalUrl = canonical.question({ first, second }, currentQuestionNumber);
 
-  const metadataParams = params.twoSegmentMetadata(first, second);
+  const metadataParams = params.twoSegment(first, second);
   return generateCalculatorMetadata({ ...metadataParams, canonicalUrl });
 }
 

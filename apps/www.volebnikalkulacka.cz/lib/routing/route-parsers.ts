@@ -22,14 +22,7 @@ function parseQuestionNumber(path: string): number {
   return validateQuestionNumber(questionNumberString);
 }
 
-function parseTwoSegmentCalculatorParams(first: string, second: string): { key: string; group?: string } {
-  if (isPrefix(first)) {
-    return { key: second };
-  }
-  return { key: first, group: second };
-}
-
-function parseTwoSegmentMetadataParams(first: string, second: string): { key: string; group?: string } {
+function parseTwoSegmentParams(first: string, second: string): { key: string; group?: string } {
   if (isPrefix(first)) {
     return { key: second };
   }
@@ -38,6 +31,5 @@ function parseTwoSegmentMetadataParams(first: string, second: string): { key: st
 
 export const params = {
   questionNumber: (path: string): number => parseQuestionNumber(path),
-  twoSegmentCalculator: (first: string, second: string) => parseTwoSegmentCalculatorParams(first, second),
-  twoSegmentMetadata: (first: string, second: string) => parseTwoSegmentMetadataParams(first, second),
+  twoSegment: (first: string, second: string) => parseTwoSegmentParams(first, second),
 } as const;
