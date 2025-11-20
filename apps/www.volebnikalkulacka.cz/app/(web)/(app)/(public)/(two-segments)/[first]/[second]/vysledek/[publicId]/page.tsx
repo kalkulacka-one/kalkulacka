@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import type { calculateMatches } from "@/calculator/result-calculation";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { buildCanonicalUrl, canonical, getTwoSegmentMetadataParams } from "@/lib/routing";
+import { buildCanonicalUrl, canonical, isAllowedPrefix } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
@@ -14,17 +14,27 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const { first, second, publicId } = await params;
   const canonicalUrl = canonical.publicResult({ first, second }, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
-  const metadataParams = getTwoSegmentMetadataParams(first, second);
 
-  return await generateCalculatorMetadata({
-    ...metadataParams,
-    canonicalUrl,
-    ogImage: {
-      url: ogImageUrl,
-      width: 2400,
-      height: 1260,
-    },
-  });
+  return isAllowedPrefix(first)
+    ? await generateCalculatorMetadata({
+        key: second,
+        canonicalUrl,
+        ogImage: {
+          url: ogImageUrl,
+          width: 2400,
+          height: 1260,
+        },
+      })
+    : await generateCalculatorMetadata({
+        key: second,
+        group: first,
+        canonicalUrl,
+        ogImage: {
+          url: ogImageUrl,
+          width: 2400,
+          height: 1260,
+        },
+      });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }) {
