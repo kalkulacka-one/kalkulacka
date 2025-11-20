@@ -1,8 +1,6 @@
 # Routing Architecture
 
-This document describes the flexible routing system for the Kalkulačka.1 platform, which supports multiple URL patterns for different calculator types.
-
-**Note:** This routing architecture is specific to **Next.js applications** using the App Router. It leverages Next.js dynamic routes, layouts, and server components.
+This document describes the flexible routing system for Next.js applications in the Kalkulačka.1 platform, which supports multiple URL patterns for different calculator types using the App Router with dynamic routes, layouts, and server components.
 
 ## Overview
 
@@ -33,7 +31,7 @@ The routing system supports 1, 2, and 3 segment URL patterns. Route segments are
 **Pattern:** `/{prefix}/{calculator-key}` OR `/{group}/{calculator-key}`
 
 **Examples:**
-- `/volby/snemovni-2025` (prefixed)
+- `/volby/prezidentske-2028` (prefixed)
 - `/inventura-2025/expresni` (group calculator)
 
 **Behavior:**
@@ -49,7 +47,7 @@ The routing system supports 1, 2, and 3 segment URL patterns. Route segments are
   - Root redirects to: `/{group}/{calculator-key}/uvod`
 
 **Use cases:**
-- Election landing pages with calculator (e.g., `/volby/snemovni-2025`)
+- Election landing pages with calculator (e.g., `/volby/prezidentske-2028`)
 - Group calculators (e.g., `/inventura-2025/expresni`)
 
 ---
@@ -195,10 +193,10 @@ Follows the guard/validator pattern:
    → key: "sametova-kalkulacka"
    → Redirects to: /sametova-kalkulacka/uvod
 
-✅ /volby/snemovni-2025
+✅ /volby/prezidentske-2028
    → prefix: "volby" (validated)
-   → key: "snemovni-2025"
-   → Redirects to: /volby/snemovni-2025/uvod
+   → key: "prezidentske-2028"
+   → Redirects to: /volby/prezidentske-2028/uvod
 
 ✅ /inventura-2025/expresni
    → key: "inventura-2025"

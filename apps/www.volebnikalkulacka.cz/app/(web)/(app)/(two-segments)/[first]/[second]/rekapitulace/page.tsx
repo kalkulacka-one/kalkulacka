@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 
 import { ReviewPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { canonical, isAllowedPrefix } from "@/lib/routing";
+import { canonical, getTwoSegmentMetadataParams } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string }> }): Promise<Metadata> {
   const { first, second } = await params;
   const canonicalUrl = canonical.review({ first, second });
+  const metadataParams = getTwoSegmentMetadataParams(first, second);
 
-  if (isAllowedPrefix(first)) {
-    return generateCalculatorMetadata({ key: second, canonicalUrl });
-  }
-  return generateCalculatorMetadata({ key: first, group: second, canonicalUrl });
+  return generateCalculatorMetadata({ ...metadataParams, canonicalUrl });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string }> }) {
