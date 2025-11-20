@@ -9,7 +9,8 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const currentQuestionNumber = questionNumberGuard(questionNumber);
   const canonicalUrl = canonical.question({ first, second }, currentQuestionNumber);
 
-  const path = `/${first}/${second}`;  return generateCalculatorMetadata({
+  const path = `/${first}/${second}`;
+  return generateCalculatorMetadata({
     key: params.calculatorKey(path),
     group: params.calculatorGroupKey(path),
     canonicalUrl,

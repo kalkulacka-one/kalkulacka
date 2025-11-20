@@ -8,7 +8,8 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const { first, second } = await routeParams;
   const canonicalUrl = canonical.introduction({ first, second });
 
-  const path = `/${first}/${second}`;  return generateCalculatorMetadata({
+  const path = `/${first}/${second}`;
+  return generateCalculatorMetadata({
     key: params.calculatorKey(path),
     group: params.calculatorGroupKey(path),
     canonicalUrl,
