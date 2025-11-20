@@ -4,7 +4,7 @@ import React from "react";
 
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
+import type { CalculatorViewModel, ResultViewModel } from "../../../view-models/server";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout } from "../components";
 import { ResultNavigationCard } from "../components/result-navigation-card";

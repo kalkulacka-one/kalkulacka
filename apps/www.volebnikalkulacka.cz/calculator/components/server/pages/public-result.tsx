@@ -1,4 +1,4 @@
-import type { CalculatorViewModel, ResultViewModel } from "../../../view-models";
+import type { CalculatorViewModel, ResultViewModel } from "../../../view-models/server";
 import { AppHeader, MatchCard, WithCondenseOnScroll } from "../../client";
 import { Layout, PublicResultNavigationCard } from "../components";
 

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores";
-import { useCalculatedMatches, useCalculator, useResult } from "@/calculator/view-models";
+import { useCalculatedMatches, useCalculator, useResult } from "@/calculator/view-models/client";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing";

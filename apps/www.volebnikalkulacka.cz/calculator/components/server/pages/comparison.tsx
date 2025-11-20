@@ -3,7 +3,7 @@ import { Button, Icon } from "@repo/design-system/client";
 
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models/server";
 import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { ComparisonGrid } from "../../client/comparison-grid";
 import { EmbedFooter, Layout } from "../components";

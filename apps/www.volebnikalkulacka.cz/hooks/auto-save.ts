@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 
 import type { calculateMatches } from "@/calculator/result-calculation";
 import { AnswersStoreContext } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models";
+import { useCalculator } from "@/calculator/view-models/client";
 import { saveSessionDataWithBeacon } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 

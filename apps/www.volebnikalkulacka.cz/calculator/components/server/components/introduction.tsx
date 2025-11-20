@@ -1,6 +1,6 @@
 import Markdown from "react-markdown";
 
-import type { CalculatorViewModel } from "../../../view-models";
+import type { CalculatorViewModel } from "../../../view-models/server";
 
 export type Introduction = {
   calculator: CalculatorViewModel;
