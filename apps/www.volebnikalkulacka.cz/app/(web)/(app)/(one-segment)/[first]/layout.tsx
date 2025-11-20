@@ -4,7 +4,8 @@ import { params as routeParams } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
   const { first } = await params;
-  const { key, group } = routeParams.fromOneSegment({ first });
+  const key = routeParams.key({ first });
+  const group = routeParams.group({ first });
   const calculatorData = await loadCalculatorData({ key, group });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }

@@ -14,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
   const { first, second, third, publicId } = await params;
   const canonicalUrl = canonical.publicResult({ first, second, third }, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
-  const { key, group } = routeParams.fromThreeSegments({ first, second, third });
+  const key = routeParams.key({ first, second, third });
+  const group = routeParams.group({ first, second, third });
 
   return await generateCalculatorMetadata({
     key,

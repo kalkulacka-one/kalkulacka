@@ -1,22 +1,48 @@
 import { isPrefix } from "./validators";
 
-function parseOneSegmentParams({ first }: { first: string }): { key: string; group: string | undefined } {
-  return { key: first, group: undefined };
-}
+type RouteParams = { first: string } | { first: string; second: string } | { first: string; second: string; third: string };
 
-function parseTwoSegmentParams({ first, second }: { first: string; second: string }): { key: string; group: string | undefined } {
-  if (isPrefix(first)) {
-    return { key: second, group: undefined };
+function parseKey(params: RouteParams): string {
+  const { first } = params;
+
+  if ("third" in params) {
+    // Three segments: /{prefix}/{key}/{group}
+    return params.second;
   }
-  return { key: first, group: second };
+
+  if ("second" in params) {
+    // Two segments: /{prefix}/{key} or /{key}/{group}
+    if (isPrefix(first)) {
+      return params.second;
+    }
+    return first;
+  }
+
+  // One segment: /{key}
+  return first;
 }
 
-function parseThreeSegmentParams({ second, third }: { first: string; second: string; third: string }): { key: string; group: string | undefined } {
-  return { key: second, group: third };
+function parseGroup(params: RouteParams): string | undefined {
+  const { first } = params;
+
+  if ("third" in params) {
+    // Three segments: /{prefix}/{key}/{group}
+    return params.third;
+  }
+
+  if ("second" in params) {
+    // Two segments: /{prefix}/{key} or /{key}/{group}
+    if (isPrefix(first)) {
+      return undefined;
+    }
+    return params.second;
+  }
+
+  // One segment: /{key}
+  return undefined;
 }
 
 export const params = {
-  fromOneSegment: (params: { first: string }) => parseOneSegmentParams(params),
-  fromTwoSegments: (params: { first: string; second: string }) => parseTwoSegmentParams(params),
-  fromThreeSegments: (params: { first: string; second: string; third: string }) => parseThreeSegmentParams(params),
+  key: (params: RouteParams) => parseKey(params),
+  group: (params: RouteParams) => parseGroup(params),
 } as const;

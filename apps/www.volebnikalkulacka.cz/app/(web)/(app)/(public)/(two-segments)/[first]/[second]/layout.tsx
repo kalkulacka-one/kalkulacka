@@ -9,7 +9,8 @@ export default async function Layout({ children, params }: { children: React.Rea
     prefixGuard(first);
   }
 
-  const { key, group } = routeParams.fromTwoSegments({ first, second });
+  const key = routeParams.key({ first, second });
+  const group = routeParams.group({ first, second });
   const calculatorData = await loadCalculatorData({ key, group });
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
 }
