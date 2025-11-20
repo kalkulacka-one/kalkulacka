@@ -15,10 +15,11 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const canonicalUrl = canonical.publicResult({ first, second }, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
 
-  const path = `/${first}/${second}`;
+  const key = params.key({ first, second });
+  const group = params.group({ first, second });
   return await generateCalculatorMetadata({
-    key: params.calculatorKey(path),
-    group: params.calculatorGroupKey(path),
+    key,
+    group,
     canonicalUrl,
     ogImage: {
       url: ogImageUrl,
