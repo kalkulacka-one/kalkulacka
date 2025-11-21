@@ -1,10 +1,11 @@
-import { Icon } from "@repo/design-system/client";
-import { logoCheck, logoCross, logoSlash } from "@repo/design-system/icons";
-import { IconBadge } from "@repo/design-system/server";
+import { Icon } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
+import { IconBadge } from "@kalkulacka-one/design-system/server";
+
 import { useState } from "react";
 
-import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "../../view-models";
-import { ComparisonQuestionCard } from "../server";
+import { ComparisonQuestionCard } from "@/calculator/components/server";
+import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator/view-models/server";
 
 export type ComparisonGridDashlinesOverlay = {
   result: ResultViewModel;

@@ -1,5 +1,7 @@
-import type { CreateCalculatorSessionParams } from "../../session";
-import { setRuntimeSessionId } from "../../session/runtime-session";
+import { setRuntimeSessionId } from "@/lib/session/client";
+import type { CreateCalculatorSessionParams } from "@/lib/session/server";
+
+import { verifySession } from "./verify-session";
 
 export async function initializeSession(params: CreateCalculatorSessionParams): Promise<void> {
   const response = await fetch("/api/sessions", {

@@ -1,10 +1,10 @@
+import { Button, Icon } from "@kalkulacka-one/design-system/client";
+
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
-import { Button, Icon } from "@repo/design-system/client";
 import { useEffect, useRef, useState } from "react";
 
-import { shareSession } from "../../../lib/api/sessions/share-session";
-import type { RouteSegments } from "../../../lib/routing/route-builders";
-import { canonical } from "../../../lib/routing/url-builders";
+import { shareSession } from "@/lib/api";
+import { canonical, type RouteSegments } from "@/lib/routing";
 
 export type ShareModalProps = {
   calculatorId: string;
@@ -67,7 +67,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
 
   if (!isOpen) return null;
 
-  const nonEmbedSegments = { first: segments.first, second: segments.second };
+  const nonEmbedSegments = { first: segments.first, second: segments.second, third: segments.third };
   const shareUrl = publicId ? canonical.publicResult(nonEmbedSegments, publicId) : "";
   const xHandle = process.env.NEXT_PUBLIC_X_HANDLE;
   const shareText = xHandle ? `Podívejte se, jak mi vyšla ${xHandle}:` : "Podívejte se, jak mi vyšla Volební kalkulačka:";

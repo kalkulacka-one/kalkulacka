@@ -37,11 +37,11 @@ The codebase follows a Turborepo structure with two main directories:
   - `localhost:3020` - Czech Volební kalkulačka
 
 ### `/packages` - Shared Libraries
-- `@repo/design-system` - Presentational components and themes
-- `@repo/app` - Core voting advice application logic (state management, calculations)
-- `@repo/schema` - Data validation and type definitions
-- `@repo/database` - ORM client and database schema
-- `@repo/typescript-config` - Shared TypeScript configuration
+- `@kalkulacka-one/design-system` - Presentational components and themes
+- `@kalkulacka-one/app` - Core voting advice application logic (state management, calculations)
+- `@kalkulacka-one/schema` - Data validation and type definitions
+- `@kalkulacka-one/database` - ORM client and database schema
+- `@kalkulacka-one/typescript-config` - Shared TypeScript configuration
 
 ## Development Standards
 
@@ -56,7 +56,7 @@ The codebase follows a Turborepo structure with two main directories:
 - The `ko:` prefix must ALWAYS come first before any responsive modifiers
 - Correct: `ko:lg:grid-cols-3`, `ko:sm:hidden`, `ko:md:flex`
 - Incorrect: `lg:ko:grid-cols-3`, `sm:ko:hidden`, `md:ko:flex`
-- This applies to all Tailwind utilities in the `@repo/design-system` package
+- This applies to all Tailwind utilities in the `@kalkulacka-one/design-system` package
 
 ### Testing
 - Vitest for unit testing
@@ -69,10 +69,13 @@ The codebase follows a Turborepo structure with two main directories:
 - No non-null assertions
 
 ### Import Organization
-Biome organizes imports in this order:
-1. URL and package imports
-2. `@repo/**` workspace imports
-3. Relative path imports
+
+Biome organizes imports in this order (with blank line between each group):
+
+1. `@kalkulacka-one/**` workspace imports
+2. 3rd party packages (including URL imports)
+3. `@/**` path aliases
+4. Relative path imports
 
 ## Tech Stack
 - Node.js 22.x required
