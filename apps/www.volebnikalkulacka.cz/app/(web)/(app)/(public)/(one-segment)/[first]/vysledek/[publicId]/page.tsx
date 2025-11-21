@@ -13,12 +13,10 @@ import type { Answer } from "../../../../../../../../../../packages/schema/schem
 export async function generateMetadata({ params: routeParams }: { params: Promise<{ first: string; publicId: string }> }): Promise<Metadata> {
   const { publicId, ...segments } = await routeParams;
   const key = mappedParams.key(segments);
-  const group = mappedParams.group(segments);
   const canonicalUrl = canonical.publicResult(segments, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
   return await generateCalculatorMetadata({
     key,
-    group,
     canonicalUrl,
     ogImage: {
       url: ogImageUrl,
