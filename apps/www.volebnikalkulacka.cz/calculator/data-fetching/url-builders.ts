@@ -9,7 +9,7 @@ export function buildDataUrl({ key, group, resourcePath }: { key: string; group?
     throw new Error("Invalid `DATA_ENDPOINT` environment variable");
   }
 
-  const dataPath = group ? `${group}/${key}` : key;
+  const dataPath = group ? `${key}/${group}` : key;
   const basePath = baseUrl.pathname === "/" ? "" : baseUrl.pathname.slice(1);
   const fullPath = basePath ? `${basePath}/${dataPath}` : dataPath;
   const dataUrl = new URL(fullPath, baseUrl.origin);
