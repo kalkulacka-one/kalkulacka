@@ -1,7 +1,7 @@
 import { ROUTE_SEGMENTS } from "./route-builders";
 import { validateQuestionNumber } from "./validators/question-number";
 
-function parseQuestionNumber(path: string): number {
+export function parseQuestionNumber(path: string): number {
   const segments = path.split("/").filter(Boolean);
   const questionIndex = segments.indexOf(ROUTE_SEGMENTS.QUESTION);
 
@@ -20,5 +20,3 @@ function parseQuestionNumber(path: string): number {
 
   return validateQuestionNumber(questionNumberString);
 }
-
-export const parseQuestionNumberFromPath = parseQuestionNumber;

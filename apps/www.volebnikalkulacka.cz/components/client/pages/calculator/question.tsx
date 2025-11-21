@@ -8,7 +8,7 @@ import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
-import { parseQuestionNumberFromPath, type RouteSegments, routes } from "@/lib/routing";
+import { parseQuestionNumber, type RouteSegments, routes } from "@/lib/routing";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
@@ -19,7 +19,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   const currentQuestion = (() => {
     try {
-      return parseQuestionNumberFromPath(pathname);
+      return parseQuestionNumber(pathname);
     } catch {
       return current;
     }
