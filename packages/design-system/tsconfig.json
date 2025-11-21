@@ -1,10 +1,6 @@
 {
   "extends": "@kalkulacka-one/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
     "outDir": "dist",
     "rootDir": "./src",
     "types": ["vitest/globals", "@testing-library/jest-dom"]
