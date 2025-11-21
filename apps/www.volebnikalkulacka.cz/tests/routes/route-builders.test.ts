@@ -7,27 +7,70 @@ describe("Route Builders", () => {
   describe("createBaseSegment", () => {
     it("should create one-segment base path", () => {
       const segments: RouteSegments = { first: "snemovni-2025" };
-      expect(createBaseSegment(segments)).toBe("volby/snemovni-2025");
+      expect(createBaseSegment(segments)).toBe("snemovni-2025");
     });
 
     it("should create two-segment base path", () => {
-      const segments: RouteSegments = { first: "krajske-2024", second: "jihomoravsky" };
+      const segments: RouteSegments = { first: "volby", second: "snemovni-2025" };
+      expect(createBaseSegment(segments)).toBe("volby/snemovni-2025");
+    });
+
+    it("should create three-segment base path", () => {
+      const segments: RouteSegments = { first: "volby", second: "krajske-2024", third: "jihomoravsky" };
       expect(createBaseSegment(segments)).toBe("volby/krajske-2024/jihomoravsky");
     });
 
     it("should create one-segment embed base path", () => {
       const segments: RouteSegments = { first: "snemovni-2025", embed: MOCK_EMBED_NAME };
-      expect(createBaseSegment(segments)).toBe(`embed/${MOCK_EMBED_NAME}/volby/snemovni-2025`);
+      expect(createBaseSegment(segments)).toBe(`embed/${MOCK_EMBED_NAME}/snemovni-2025`);
     });
 
     it("should create two-segment embed base path", () => {
-      const segments: RouteSegments = { first: "krajske-2024", second: "jihomoravsky", embed: MOCK_EMBED_NAME };
+      const segments: RouteSegments = { first: "volby", second: "snemovni-2025", embed: MOCK_EMBED_NAME };
+      expect(createBaseSegment(segments)).toBe(`embed/${MOCK_EMBED_NAME}/volby/snemovni-2025`);
+    });
+
+    it("should create three-segment embed base path", () => {
+      const segments: RouteSegments = { first: "volby", second: "krajske-2024", third: "jihomoravsky", embed: MOCK_EMBED_NAME };
       expect(createBaseSegment(segments)).toBe(`embed/${MOCK_EMBED_NAME}/volby/krajske-2024/jihomoravsky`);
     });
   });
 
   describe("One-segment routes", () => {
     const segments: RouteSegments = { first: "snemovni-2025" };
+
+    it("should build introduction route", () => {
+      expect(routes.introduction(segments)).toBe("/snemovni-2025/uvod");
+    });
+
+    it("should build guide route", () => {
+      expect(routes.guide(segments)).toBe("/snemovni-2025/navod");
+    });
+
+    it("should build question route with number", () => {
+      expect(routes.question(segments, 1)).toBe("/snemovni-2025/otazka/1");
+      expect(routes.question(segments, 5)).toBe("/snemovni-2025/otazka/5");
+    });
+
+    it("should build review route", () => {
+      expect(routes.review(segments)).toBe("/snemovni-2025/rekapitulace");
+    });
+
+    it("should build result route", () => {
+      expect(routes.result(segments)).toBe("/snemovni-2025/vysledek");
+    });
+
+    it("should build public result route with public ID", () => {
+      expect(routes.publicResult(segments, MOCK_PUBLIC_ID)).toBe(`/snemovni-2025/vysledek/${MOCK_PUBLIC_ID}`);
+    });
+
+    it("should build comparison route", () => {
+      expect(routes.comparison(segments)).toBe("/snemovni-2025/porovnani");
+    });
+  });
+
+  describe("Two-segment routes", () => {
+    const segments: RouteSegments = { first: "volby", second: "snemovni-2025" };
 
     it("should build introduction route", () => {
       expect(routes.introduction(segments)).toBe("/volby/snemovni-2025/uvod");
@@ -39,7 +82,7 @@ describe("Route Builders", () => {
 
     it("should build question route with number", () => {
       expect(routes.question(segments, 1)).toBe("/volby/snemovni-2025/otazka/1");
-      expect(routes.question(segments, 5)).toBe("/volby/snemovni-2025/otazka/5");
+      expect(routes.question(segments, 3)).toBe("/volby/snemovni-2025/otazka/3");
     });
 
     it("should build review route", () => {
@@ -59,8 +102,8 @@ describe("Route Builders", () => {
     });
   });
 
-  describe("Two-segment routes", () => {
-    const segments: RouteSegments = { first: "krajske-2024", second: "jihomoravsky" };
+  describe("Three-segment routes", () => {
+    const segments: RouteSegments = { first: "volby", second: "krajske-2024", third: "jihomoravsky" };
 
     it("should build introduction route", () => {
       expect(routes.introduction(segments)).toBe("/volby/krajske-2024/jihomoravsky/uvod");
@@ -72,7 +115,7 @@ describe("Route Builders", () => {
 
     it("should build question route with number", () => {
       expect(routes.question(segments, 1)).toBe("/volby/krajske-2024/jihomoravsky/otazka/1");
-      expect(routes.question(segments, 3)).toBe("/volby/krajske-2024/jihomoravsky/otazka/3");
+      expect(routes.question(segments, 4)).toBe("/volby/krajske-2024/jihomoravsky/otazka/4");
     });
 
     it("should build review route", () => {
@@ -96,6 +139,39 @@ describe("Route Builders", () => {
     const segments: RouteSegments = { first: "snemovni-2025", embed: MOCK_EMBED_NAME };
 
     it("should build introduction route", () => {
+      expect(routes.introduction(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/uvod`);
+    });
+
+    it("should build guide route", () => {
+      expect(routes.guide(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/navod`);
+    });
+
+    it("should build question route with number", () => {
+      expect(routes.question(segments, 1)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/otazka/1`);
+      expect(routes.question(segments, 2)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/otazka/2`);
+    });
+
+    it("should build review route", () => {
+      expect(routes.review(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/rekapitulace`);
+    });
+
+    it("should build result route", () => {
+      expect(routes.result(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/vysledek`);
+    });
+
+    it("should build public result route with public ID", () => {
+      expect(routes.publicResult(segments, MOCK_PUBLIC_ID)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/vysledek/${MOCK_PUBLIC_ID}`);
+    });
+
+    it("should build comparison route", () => {
+      expect(routes.comparison(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/snemovni-2025/porovnani`);
+    });
+  });
+
+  describe("Embed routes - two segments", () => {
+    const segments: RouteSegments = { first: "volby", second: "snemovni-2025", embed: MOCK_EMBED_NAME };
+
+    it("should build introduction route", () => {
       expect(routes.introduction(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/volby/snemovni-2025/uvod`);
     });
 
@@ -105,7 +181,7 @@ describe("Route Builders", () => {
 
     it("should build question route with number", () => {
       expect(routes.question(segments, 1)).toBe(`/embed/${MOCK_EMBED_NAME}/volby/snemovni-2025/otazka/1`);
-      expect(routes.question(segments, 2)).toBe(`/embed/${MOCK_EMBED_NAME}/volby/snemovni-2025/otazka/2`);
+      expect(routes.question(segments, 4)).toBe(`/embed/${MOCK_EMBED_NAME}/volby/snemovni-2025/otazka/4`);
     });
 
     it("should build review route", () => {
@@ -125,8 +201,8 @@ describe("Route Builders", () => {
     });
   });
 
-  describe("Embed routes - two segments", () => {
-    const segments: RouteSegments = { first: "krajske-2024", second: "jihomoravsky", embed: MOCK_EMBED_NAME };
+  describe("Embed routes - three segments", () => {
+    const segments: RouteSegments = { first: "volby", second: "krajske-2024", third: "jihomoravsky", embed: MOCK_EMBED_NAME };
 
     it("should build introduction route", () => {
       expect(routes.introduction(segments)).toBe(`/embed/${MOCK_EMBED_NAME}/volby/krajske-2024/jihomoravsky/uvod`);
