@@ -10,14 +10,20 @@ export function buildCanonicalUrl(path: string): string {
   return `${baseUrl}${normalizedPath}`;
 }
 
+function stripEmbed(segments: RouteSegments): RouteSegments {
+  const { embed, ...rest } = segments;
+  void embed;
+  return rest;
+}
+
 export const canonical = {
   homepage: (): string => buildCanonicalUrl("/"),
-  base: (segments: RouteSegments): string => buildCanonicalUrl(createBaseSegment(segments)),
-  introduction: (segments: RouteSegments): string => buildCanonicalUrl(routes.introduction(segments)),
-  guide: (segments: RouteSegments): string => buildCanonicalUrl(routes.guide(segments)),
-  question: (segments: RouteSegments, questionNumber: number): string => buildCanonicalUrl(routes.question(segments, questionNumber)),
-  review: (segments: RouteSegments): string => buildCanonicalUrl(routes.review(segments)),
-  result: (segments: RouteSegments): string => buildCanonicalUrl(routes.result(segments)),
-  publicResult: (segments: RouteSegments, publicId: string): string => buildCanonicalUrl(routes.publicResult(segments, publicId)),
-  comparison: (segments: RouteSegments): string => buildCanonicalUrl(routes.comparison(segments)),
+  base: (segments: RouteSegments): string => buildCanonicalUrl(createBaseSegment(stripEmbed(segments))),
+  introduction: (segments: RouteSegments): string => buildCanonicalUrl(routes.introduction(stripEmbed(segments))),
+  guide: (segments: RouteSegments): string => buildCanonicalUrl(routes.guide(stripEmbed(segments))),
+  question: (segments: RouteSegments, questionNumber: number): string => buildCanonicalUrl(routes.question(stripEmbed(segments), questionNumber)),
+  review: (segments: RouteSegments): string => buildCanonicalUrl(routes.review(stripEmbed(segments))),
+  result: (segments: RouteSegments): string => buildCanonicalUrl(routes.result(stripEmbed(segments))),
+  publicResult: (segments: RouteSegments, publicId: string): string => buildCanonicalUrl(routes.publicResult(stripEmbed(segments), publicId)),
+  comparison: (segments: RouteSegments): string => buildCanonicalUrl(routes.comparison(stripEmbed(segments))),
 } as const;
