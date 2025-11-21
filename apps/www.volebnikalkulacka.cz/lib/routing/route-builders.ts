@@ -1,30 +1,46 @@
 export type RouteSegments = {
   first: string;
   second?: string;
+  third?: string;
   embed?: string;
 };
 
+export const ROUTE_SEGMENTS = {
+  INTRODUCTION: "uvod",
+  GUIDE: "navod",
+  QUESTION: "otazka",
+  REVIEW: "rekapitulace",
+  RESULT: "vysledek",
+  COMPARISON: "porovnani",
+} as const;
+
 export function createBaseSegment(segments: RouteSegments): string {
-  const { first, second, embed } = segments;
+  const { first, second, third, embed } = segments;
 
   if (embed) {
-    if (second) {
-      return `embed/${embed}/volby/${first}/${second}`;
+    if (third) {
+      return `embed/${embed}/${first}/${second}/${third}`;
     }
-    return `embed/${embed}/volby/${first}`;
+    if (second) {
+      return `embed/${embed}/${first}/${second}`;
+    }
+    return `embed/${embed}/${first}`;
+  }
+  if (third) {
+    return `${first}/${second}/${third}`;
   }
   if (second) {
-    return `volby/${first}/${second}`;
+    return `${first}/${second}`;
   }
-  return `volby/${first}`;
+  return first;
 }
 
 export const routes = {
-  introduction: (segments: RouteSegments) => `/${createBaseSegment(segments)}/uvod`,
-  guide: (segments: RouteSegments) => `/${createBaseSegment(segments)}/navod`,
-  question: (segments: RouteSegments, questionNumber: number) => `/${createBaseSegment(segments)}/otazka/${questionNumber}`,
-  review: (segments: RouteSegments) => `/${createBaseSegment(segments)}/rekapitulace`,
-  result: (segments: RouteSegments) => `/${createBaseSegment(segments)}/vysledek`,
-  publicResult: (segments: RouteSegments, publicId: string) => `/${createBaseSegment(segments)}/vysledek/${publicId}`,
-  comparison: (segments: RouteSegments) => `/${createBaseSegment(segments)}/porovnani`,
+  introduction: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.INTRODUCTION}`,
+  guide: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.GUIDE}`,
+  question: (segments: RouteSegments, questionNumber: number) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.QUESTION}/${questionNumber}`,
+  review: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.REVIEW}`,
+  result: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.RESULT}`,
+  publicResult: (segments: RouteSegments, publicId: string) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.RESULT}/${publicId}`,
+  comparison: (segments: RouteSegments) => `/${createBaseSegment(segments)}/${ROUTE_SEGMENTS.COMPARISON}`,
 } as const;

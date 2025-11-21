@@ -1,20 +1,30 @@
-import { notFound, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { notFound, usePathname, useRouter } from "next/navigation";
+import { useEffect, useReducer } from "react";
 
-import { QuestionPage as AppQuestionPage } from "../../../../calculator/components/server";
-import { useAnswersStore } from "../../../../calculator/stores/answers";
-import { useAnswer, useAnswers, useCalculator, useQuestions } from "../../../../calculator/view-models";
-import { useAutoSave } from "../../../../hooks/auto-save";
-import { saveSessionData } from "../../../../lib/api/session-data";
-import { reportError } from "../../../../lib/monitoring";
-import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
-import { useEmbed } from "../../../client/embed-context-provider";
+import { QuestionPage as AppQuestionPage } from "@/calculator/components/server";
+import { useAnswersStore } from "@/calculator/stores";
+import { useAnswer, useAnswers, useCalculator, useQuestions } from "@/calculator/view-models/client";
+import { useEmbed } from "@/components/client";
+import { useAutoSave } from "@/hooks/auto-save";
+import { saveSessionData } from "@/lib/api";
+import { reportError } from "@/lib/monitoring";
+import { parsedParams, type RouteSegments, routes } from "@/lib/routing";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
+  const pathname = usePathname();
   const calculator = useCalculator();
   const { questions, total } = useQuestions();
-  const question = questions[current - 1];
+  const [, forceRender] = useReducer((x) => x + 1, 0);
+
+  const currentQuestion = (() => {
+    try {
+      return parsedParams.questionNumber(pathname);
+    } catch {
+      return current;
+    }
+  })();
+  const question = questions[currentQuestion - 1];
   const answers = useAnswers();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
@@ -28,23 +38,36 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     }
   }, [question, setAnswer]);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      forceRender();
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   if (!question) {
     notFound();
   }
 
   const handleNextClick = () => {
-    if (current < total) {
-      router.push(routes.question(segments, current + 1));
+    if (currentQuestion < total) {
+      const nextUrl = routes.question(segments, currentQuestion + 1);
+      window.history.pushState(null, "", nextUrl);
+      forceRender();
     } else {
       router.push(routes.review(segments));
     }
   };
 
   const handlePreviousClick = () => {
-    if (current === 1) {
+    if (currentQuestion === 1) {
       router.push(routes.guide(segments));
     } else {
-      router.push(routes.question(segments, current - 1));
+      const prevUrl = routes.question(segments, currentQuestion - 1);
+      window.history.pushState(null, "", prevUrl);
+      forceRender();
     }
   };
 
@@ -67,7 +90,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
         embedContext={embed}
         calculator={calculator}
         questions={{ questions, total }}
-        number={current}
+        number={currentQuestion}
         total={total}
         onPreviousClick={handlePreviousClick}
         onNextClick={handleNextClick}

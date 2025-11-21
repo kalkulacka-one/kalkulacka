@@ -1,9 +1,11 @@
-import { mdiClose } from "@mdi/js";
-import { Button, Icon } from "@repo/design-system/client";
+import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
-import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
-import type { AnswersViewModel, AnswerViewModel, CalculatorViewModel, QuestionsViewModel, QuestionViewModel } from "../../../view-models";
-import { AppHeader, WithCondenseOnScroll } from "../../client";
+import { mdiClose } from "@mdi/js";
+
+import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
+import type { AnswersViewModel, AnswerViewModel, CalculatorViewModel, QuestionsViewModel, QuestionViewModel } from "@/calculator/view-models/server";
+import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+
 import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, QuestionProgressBar } from "../components";
 
 export type QuestionPage = {

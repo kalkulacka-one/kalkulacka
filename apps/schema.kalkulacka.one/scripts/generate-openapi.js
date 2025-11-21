@@ -13,7 +13,7 @@ const outputFile = path.join(buildDir, "openapi.yaml");
 const schemaFiles = fs.readdirSync(buildDir).filter((file) => file.endsWith(".schema.json"));
 const schemaDocsFiles = new Set(fs.readdirSync(buildDir).filter((file) => file.endsWith(".md")));
 
-const version = JSON.parse(fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.resolve("@repo/schema"))), "package.json"), "utf-8")).version;
+const version = JSON.parse(fs.readFileSync(path.resolve(path.dirname(fileURLToPath(import.meta.resolve("@kalkulacka-one/schema"))), "package.json"), "utf-8")).version;
 
 const openapiDoc = {
   openapi: "3.1.0",
