@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 import { GuidePageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { canonical, params as routeParams } from "@/lib/routing";
+import { canonical, mappedParams } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string; third: string }> }): Promise<Metadata> {
   const { first, second, third } = await params;
   const canonicalUrl = canonical.guide({ first, second, third });
-  const key = routeParams.key({ first, second, third });
-  const group = routeParams.group({ first, second, third });
+  const key = mappedParams.key({ first, second, third });
+  const group = mappedParams.group({ first, second, third });
   return generateCalculatorMetadata({ key, group, canonicalUrl });
 }
 

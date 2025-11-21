@@ -1,15 +1,14 @@
+import type { RouteSegments } from "./route-builders";
 import { isPrefix } from "./validators";
 
-type RouteParams = { first: string } | { first: string; second: string } | { first: string; second: string; third: string };
-
-function parseKey(params: RouteParams): string {
+function parseKey(params: RouteSegments): string {
   const { first } = params;
 
-  if ("third" in params) {
-    return params.second;
+  if (params.third) {
+    return params.second!;
   }
 
-  if ("second" in params) {
+  if (params.second) {
     if (isPrefix(first)) {
       return params.second;
     }
@@ -19,14 +18,14 @@ function parseKey(params: RouteParams): string {
   return first;
 }
 
-function parseGroup(params: RouteParams): string | undefined {
+function parseGroup(params: RouteSegments): string | undefined {
   const { first } = params;
 
-  if ("third" in params) {
+  if (params.third) {
     return params.third;
   }
 
-  if ("second" in params) {
+  if (params.second) {
     if (isPrefix(first)) {
       return undefined;
     }
@@ -36,7 +35,7 @@ function parseGroup(params: RouteParams): string | undefined {
   return undefined;
 }
 
-export const paramsMapper = {
-  key: (params: RouteParams) => parseKey(params),
-  group: (params: RouteParams) => parseGroup(params),
+export const mappedParams = {
+  key: (params: RouteSegments) => parseKey(params),
+  group: (params: RouteSegments) => parseGroup(params),
 } as const;
