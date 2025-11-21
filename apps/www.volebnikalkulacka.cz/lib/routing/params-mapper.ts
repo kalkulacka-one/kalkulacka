@@ -9,7 +9,10 @@ function parseKey(segments: RouteSegments): string {
   }
 
   if (segments.second) {
-    return segments.second;
+    if (isPrefix(first)) {
+      return segments.second;
+    }
+    return first;
   }
 
   return first;
@@ -26,7 +29,7 @@ function parseGroup(segments: RouteSegments): string | undefined {
     if (isPrefix(first)) {
       return undefined;
     }
-    return first;
+    return segments.second;
   }
 
   return undefined;
