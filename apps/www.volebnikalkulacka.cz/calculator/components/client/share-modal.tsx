@@ -67,11 +67,12 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
 
   if (!isOpen) return null;
 
-  const shareUrl = publicId ? canonical.publicResult(segments, publicId) : "";
+  const shareUrl = publicId ? canonical.publicResult(segments, publicId) : null;
   const xHandle = process.env.NEXT_PUBLIC_X_HANDLE;
   const shareText = xHandle ? `Podívejte se, jak mi vyšla ${xHandle}:` : "Podívejte se, jak mi vyšla Volební kalkulačka:";
 
   const handleCopy = async () => {
+    if (!shareUrl) return;
     try {
       await navigator.clipboard.writeText(shareUrl);
       setIsCopied(true);
@@ -80,8 +81,8 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
     }
   };
 
-  const twitterUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
-  const instagramStoryUrl = publicId ? `/api/images/sessions/${publicId}/instagram` : "";
+  const twitterUrl = shareUrl ? `https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}` : null;
+  const instagramStoryUrl = publicId ? `/api/images/sessions/${publicId}/instagram` : null;
 
   const handleDownloadInstagramStory = async () => {
     if (!instagramStoryUrl) return;
@@ -156,7 +157,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
             </div>
 
             <div>
-              <Button onClick={() => window.open(twitterUrl, "_blank", "noopener,noreferrer")} variant="outline" color="neutral" size="small">
+              <Button onClick={() => twitterUrl && window.open(twitterUrl, "_blank", "noopener,noreferrer")} variant="outline" color="neutral" size="small">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
                 </svg>
