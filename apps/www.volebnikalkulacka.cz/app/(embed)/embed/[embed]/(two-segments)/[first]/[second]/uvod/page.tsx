@@ -4,7 +4,7 @@ import { IntroductionPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams } from "@/lib/routing";
 
-export async function generateMetadata({ params: routeParams }: { params: Promise<{ first: string; second: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params: routeParams }: { params: Promise<{ embed: string; first: string; second: string }> }): Promise<Metadata> {
   const segments = await routeParams;
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
