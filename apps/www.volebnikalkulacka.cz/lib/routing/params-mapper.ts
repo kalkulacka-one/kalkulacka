@@ -4,8 +4,8 @@ import { isPrefix } from "./validators";
 function parseKey(params: RouteSegments): string {
   const { first } = params;
 
-  if (params.third) {
-    return params.second!;
+  if (params.second && params.third) {
+    return params.second;
   }
 
   if (params.second) {
