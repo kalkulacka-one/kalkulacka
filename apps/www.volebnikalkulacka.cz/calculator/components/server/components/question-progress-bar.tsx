@@ -1,6 +1,6 @@
 import { SteppedProgressBar } from "@repo/design-system/server";
 
-import type { AnswersViewModel, QuestionsViewModel } from "../../../view-models";
+import type { AnswersViewModel, QuestionsViewModel } from "@/calculator/view-models/server";
 
 export type QuestionProgressBarProps = {
   questions: QuestionsViewModel;

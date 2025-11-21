@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
-import { answersViewModel, questionsViewModel } from "../../../view-models/";
+import { answersViewModel, questionsViewModel } from "@/calculator/view-models/server";
+
 import { QuestionProgressBar } from "./question-progress-bar";
 
 describe("QuestionProgressBar", () => {
