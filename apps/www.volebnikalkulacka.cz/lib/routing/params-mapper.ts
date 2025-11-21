@@ -5,7 +5,7 @@ function parseKey(segments: RouteSegments): string {
   const { first } = segments;
 
   if (segments.second && segments.third) {
-    return segments.second;
+    return segments.third;
   }
 
   if (segments.second) {
@@ -22,7 +22,7 @@ function parseGroup(segments: RouteSegments): string | undefined {
   const { first } = segments;
 
   if (segments.third) {
-    return segments.third;
+    return segments.second;
   }
 
   if (segments.second) {
