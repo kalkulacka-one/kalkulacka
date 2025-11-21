@@ -2,20 +2,50 @@
 
 ## Overview
 
-Create comprehensive integration tests for the existing routing implementation in `apps/www.volebnikalkulacka.cz` to verify all routes work correctly before refactoring. Tests should be clear, readable, and serve as documentation of expected routing behavior.
+Create comprehensive integration tests for the existing routing implementation in `apps/www.volebnikalkulacka.cz` to verify all routes work correctly. Tests should be clear, readable, and serve as documentation of expected routing behavior.
 
-## Current Routes to Test
+## Current Routing Implementation
+
+The app now has **flexible routing without hardcoded `/volby` prefix**:
 
 ### Route Structures
 
-**One-segment routes:** `/volby/[first]/`
-- Example: `/volby/snemovni-2025/kalkulacka`
+**One-segment routes:** `/[first]/`
+- Example: `/sametova-kalkulacka`
+- No prefix validation
+- Direct calculator access
 
-**Two-segment routes:** `/volby/[first]/[second]/`
-- Example: `/volby/krajske-2024/jihomoravsky`
+**Two-segment routes:** `/[first]/[second]/`
+- Examples:
+  - `/volby/snemovni-2025` (prefix + election)
+  - `/inventura-2025/expresni` (group + calculator)
+- Validates first segment if it's in `PREFIXES` list
+- Root redirects to `/uvod`
 
-**Both patterns support these subroutes:**
-- `/` - Calculator intro page
+**Three-segment routes:** `/[first]/[second]/[third]/`
+- Example: `/volby/krajske-2026/moravskoslezsky`
+- **Always validates first segment** (must be in PREFIXES)
+- Prefix + group + calculator
+
+### Parameter Mapping
+
+Segments map **from the end backwards**:
+- **Last segment** = calculator key (always)
+- **Second-to-last** = group key (if exists and first segment is not a prefix)
+- **First segment** = validated prefix (for 2/3-segment routes)
+
+### Allowed Prefixes
+
+Currently only `"volby"` is allowed (defined in `lib/routing/validators/prefix.ts`):
+```typescript
+export const PREFIXES = ["volby"];
+```
+
+Invalid prefixes return **404**.
+
+### All Routes Support These Subroutes:
+
+- `/` - Calculator intro (or redirect to `/uvod` for two-segments)
 - `/uvod` - Introduction
 - `/navod` - Instructions/guide
 - `/otazka` - Questions redirect
@@ -25,11 +55,16 @@ Create comprehensive integration tests for the existing routing implementation i
 - `/vysledek` - Results page
 - `/vysledek/[publicId]` - Public shared results
 
-**Embed routes:** Same structure under `/embed/[embed]/volby/...`
+### Embed Routes
+
+Same structure under `/embed/[embed]/`:
+- `/embed/[embed]/[first]/` (one-segment)
+- `/embed/[embed]/[first]/[second]/` (two-segments)
+- `/embed/[embed]/[first]/[second]/[third]/` (three-segments)
 
 ## Mock Data Structure
 
-Create mock calculator data based on the real data structure from `http://data.kalkulacka.one/www.volebnikalkulacka.cz/snemovni-2025/expresni/calculator.json` (if accessible) or use the schema from `loadCalculatorData`:
+Create mock calculator data based on `loadCalculatorData` return type:
 
 ```typescript
 const mockCalculatorData = {
@@ -94,60 +129,110 @@ const mockCalculatorData = {
 
 Test that all routes return 200 status (or appropriate status) and render without errors:
 
-**One-segment pattern** (e.g., `/volby/snemovni-2025/kalkulacka`):
+#### One-segment routes: `/[first]/`
+
 ```typescript
-describe("One-segment routes: /volby/[first]", () => {
-  const baseRoute = "/volby/snemovni-2025/kalkulacka";
+describe("One-segment routes: /[first]", () => {
+  describe("/sametova-kalkulacka", () => {
+    const baseRoute = "/sametova-kalkulacka";
 
-  it("should render calculator intro page", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka
-  });
+    it("should render calculator intro page", async () => {
+      // Test GET /sametova-kalkulacka
+      // Verify loadCalculatorData({ key: "sametova-kalkulacka" }) is called
+    });
 
-  it("should render introduction page (/uvod)", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/uvod
-  });
+    it("should render introduction page (/uvod)", async () => {
+      // Test GET /sametova-kalkulacka/uvod
+    });
 
-  it("should render instructions page (/navod)", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/navod
-  });
+    it("should render instructions page (/navod)", async () => {
+      // Test GET /sametova-kalkulacka/navod
+    });
 
-  it("should render question pages (/otazka/1, /otazka/2, etc.)", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/otazka/1
-    // Test GET /volby/snemovni-2025/kalkulacka/otazka/2
-  });
+    it("should render question pages (/otazka/1, /otazka/2, etc.)", async () => {
+      // Test GET /sametova-kalkulacka/otazka/1
+      // Test GET /sametova-kalkulacka/otazka/2
+    });
 
-  it("should render comparison page (/porovnani)", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/porovnani
-  });
+    it("should render comparison page (/porovnani)", async () => {
+      // Test GET /sametova-kalkulacka/porovnani
+    });
 
-  it("should render recap page (/rekapitulace)", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/rekapitulace
-  });
+    it("should render recap page (/rekapitulace)", async () => {
+      // Test GET /sametova-kalkulacka/rekapitulace
+    });
 
-  it("should render results page (/vysledek)", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/vysledek
-  });
+    it("should render results page (/vysledek)", async () => {
+      // Test GET /sametova-kalkulacka/vysledek
+    });
 
-  it("should render public shared results (/vysledek/[publicId])", async () => {
-    // Test GET /volby/snemovni-2025/kalkulacka/vysledek/abc123
+    it("should render public shared results (/vysledek/[publicId])", async () => {
+      // Test GET /sametova-kalkulacka/vysledek/abc123
+    });
   });
 });
 ```
 
-**Two-segment pattern** (e.g., `/volby/krajske-2024/jihomoravsky`):
+#### Two-segment routes: `/[first]/[second]/`
+
+Test both with and without prefix:
+
 ```typescript
-describe("Two-segment routes: /volby/[first]/[second]", () => {
-  const baseRoute = "/volby/krajske-2024/jihomoravsky";
+describe("Two-segment routes: /[first]/[second]", () => {
+  describe("With prefix: /volby/snemovni-2025", () => {
+    const baseRoute = "/volby/snemovni-2025";
 
-  it("should render calculator intro page", async () => {
-    // Test GET /volby/krajske-2024/jihomoravsky
+    it("should redirect root to introduction (/uvod)", async () => {
+      // Test GET /volby/snemovni-2025
+      // Verify it redirects to /volby/snemovni-2025/uvod
+      // Verify loadCalculatorData({ key: "snemovni-2025" }) is called
+    });
+
+    it("should render introduction page (/uvod)", async () => {
+      // Test GET /volby/snemovni-2025/uvod
+    });
+
+    it("should render all other subroutes", async () => {
+      // Test /navod, /otazka/1, /porovnani, /rekapitulace, /vysledek
+    });
   });
 
-  it("should render introduction page (/uvod)", async () => {
-    // Test GET /volby/krajske-2024/jihomoravsky/uvod
+  describe("Without prefix: /inventura-2025/expresni", () => {
+    const baseRoute = "/inventura-2025/expresni";
+
+    it("should redirect root to introduction (/uvod)", async () => {
+      // Test GET /inventura-2025/expresni
+      // Verify loadCalculatorData({ key: "expresni", group: "inventura-2025" }) is called
+    });
+
+    it("should render all subroutes", async () => {
+      // Test all subroutes
+    });
+  });
+});
+```
+
+#### Three-segment routes: `/[first]/[second]/[third]/`
+
+```typescript
+describe("Three-segment routes: /[first]/[second]/[third]", () => {
+  describe("/volby/krajske-2026/moravskoslezsky", () => {
+    const baseRoute = "/volby/krajske-2026/moravskoslezsky";
+
+    it("should validate prefix and render calculator intro", async () => {
+      // Test GET /volby/krajske-2026/moravskoslezsky
+      // Verify loadCalculatorData({ key: "moravskoslezsky", group: "krajske-2026" }) is called
+    });
+
+    it("should render all subroutes", async () => {
+      // Test /uvod, /navod, /otazka/1, /porovnani, /rekapitulace, /vysledek
+    });
   });
 
-  // ... same subroutes as one-segment
+  it("should return 404 for invalid prefix", async () => {
+    // Test GET /invalid-prefix/krajske-2026/moravskoslezsky
+    // Verify 404 response
+  });
 });
 ```
 
@@ -156,32 +241,92 @@ describe("Two-segment routes: /volby/[first]/[second]", () => {
 Test embed routes work identically to regular routes:
 
 ```typescript
-describe("Embed routes: /embed/[embed]/volby/...", () => {
+describe("Embed routes: /embed/[embed]/...", () => {
   const embedName = "test-embed";
 
   describe("One-segment embed routes", () => {
-    const baseRoute = `/embed/${embedName}/volby/snemovni-2025/kalkulacka`;
-
-    it("should render calculator intro page", async () => {
+    it("should render /embed/test-embed/sametova-kalkulacka", async () => {
       // Test embed route works
     });
 
-    // ... test all subroutes
+    it("should render all subroutes", async () => {
+      // Test /uvod, /navod, etc.
+    });
   });
 
   describe("Two-segment embed routes", () => {
-    const baseRoute = `/embed/${embedName}/volby/krajske-2024/jihomoravsky`;
-
-    it("should render calculator intro page", async () => {
+    it("should render /embed/test-embed/volby/snemovni-2025", async () => {
       // Test embed route works
     });
 
-    // ... test all subroutes
+    it("should render /embed/test-embed/inventura-2025/expresni", async () => {
+      // Test non-prefixed embed route
+    });
+  });
+
+  describe("Three-segment embed routes", () => {
+    it("should render /embed/test-embed/volby/krajske-2026/moravskoslezsky", async () => {
+      // Test embed route works
+    });
+
+    it("should return 404 for invalid prefix in embed", async () => {
+      // Test /embed/test-embed/invalid/krajske-2026/moravskoslezsky
+    });
   });
 });
 ```
 
-### 3. Redirects Tests
+### 3. Prefix Validation Tests
+
+Test that only allowed prefixes work:
+
+```typescript
+describe("Prefix validation", () => {
+  it("should allow 'volby' prefix", async () => {
+    // Test /volby/snemovni-2025 works
+  });
+
+  it("should return 404 for invalid prefixes in three-segment routes", async () => {
+    // Test /invalid/krajske-2026/moravskoslezsky → 404
+  });
+
+  it("should allow non-prefix two-segment routes", async () => {
+    // Test /inventura-2025/expresni works
+    // "inventura-2025" is not validated as a prefix
+  });
+});
+```
+
+### 4. Parameter Mapping Tests
+
+Test that `loadCalculatorData` receives correct parameters:
+
+```typescript
+describe("Parameter mapping (loadCalculatorData calls)", () => {
+  it("should map one-segment correctly", async () => {
+    // /sametova-kalkulacka
+    // Verify: loadCalculatorData({ key: "sametova-kalkulacka" })
+  });
+
+  it("should map two-segment with prefix correctly", async () => {
+    // /volby/snemovni-2025
+    // Verify: loadCalculatorData({ key: "snemovni-2025" })
+    // group should be undefined
+  });
+
+  it("should map two-segment without prefix correctly", async () => {
+    // /inventura-2025/expresni
+    // Verify: loadCalculatorData({ key: "expresni", group: "inventura-2025" })
+  });
+
+  it("should map three-segment correctly", async () => {
+    // /volby/krajske-2026/moravskoslezsky
+    // Verify: loadCalculatorData({ key: "moravskoslezsky", group: "krajske-2026" })
+  });
+});
+```
+
+### 5. Redirects Tests
 
 Test redirects defined in `next.config.ts`:
 
@@ -213,38 +358,27 @@ describe("Redirects from next.config.ts", () => {
 });
 ```
 
-### 4. Data Loading Tests
-
-Test that routes correctly load calculator data:
-
-```typescript
-describe("Calculator data loading", () => {
-  it("should load one-segment calculator with only key param", async () => {
-    // Verify loadCalculatorData({ key: "snemovni-2025" }) is called
-  });
-
-  it("should load two-segment calculator with key and group params", async () => {
-    // Verify loadCalculatorData({ key: "krajske-2024", group: "jihomoravsky" }) is called
-  });
-});
-```
-
-### 5. Error Handling Tests
+### 6. Error Handling Tests
 
 Test error cases:
 
 ```typescript
 describe("Error handling", () => {
-  it("should return 404 for non-existent routes", async () => {
-    // Test /volby/non-existent-election
+  it("should return 404 for non-existent calculators", async () => {
+    // Test /non-existent-calculator
   });
 
   it("should return 404 for invalid question numbers", async () => {
-    // Test /volby/snemovni-2025/kalkulacka/otazka/999
+    // Test /sametova-kalkulacka/otazka/999
+  });
+
+  it("should return 404 for invalid three-segment prefixes", async () => {
+    // Test /badprefix/krajske-2026/moravskoslezsky
   });
 
   it("should handle missing calculator data gracefully", async () => {
     // Mock loadCalculatorData to fail
+    // Verify appropriate error handling
   });
 });
 ```
@@ -259,9 +393,11 @@ apps/www.volebnikalkulacka.cz/
     routes/
       one-segment.test.ts       # One-segment route tests
       two-segments.test.ts      # Two-segment route tests
+      three-segments.test.ts    # Three-segment route tests
       embed.test.ts             # Embed route tests
       redirects.test.ts         # Redirect tests
-      data-loading.test.ts      # Data loading verification
+      parameter-mapping.test.ts # loadCalculatorData param verification
+      prefix-validation.test.ts # Prefix guard tests
       error-handling.test.ts    # Error cases
     fixtures/
       mock-calculator-data.ts   # Shared mock data
@@ -271,36 +407,63 @@ apps/www.volebnikalkulacka.cz/
 
 1. **Use descriptive test names** that clearly state what's being tested
 2. **Mock `loadCalculatorData`** to return consistent test data
-3. **Group related tests** using `describe` blocks
-4. **Test both success and failure cases**
-5. **Verify response status codes** (200, 301, 307, 404, etc.)
-6. **Check rendered content** contains expected elements (titles, questions, etc.)
-7. **Use test fixtures** for reusable mock data
-8. **Add comments** explaining non-obvious test logic
+3. **Mock prefix validation** if needed (or test against real PREFIXES list)
+4. **Group related tests** using `describe` blocks
+5. **Test both success and failure cases**
+6. **Verify response status codes** (200, 301, 307, 404, etc.)
+7. **Check rendered content** contains expected elements (titles, questions, etc.)
+8. **Use test fixtures** for reusable mock data
+9. **Add comments** explaining non-obvious test logic
+10. **Verify `loadCalculatorData` is called with correct params** using spies/mocks
 
 ## Testing Approach
 
-Use one of these approaches:
-
-**Option A: Integration tests with Next.js test utilities**
+Use **integration tests with Next.js test utilities**:
 - Use `@testing-library/react` for rendering
-- Mock Next.js routing with `next-router-mock`
-- Mock data fetching functions
+- Mock Next.js routing with appropriate test utilities
+- Mock `loadCalculatorData` and other data fetching functions
+- Test with Vitest (already configured in the project)
 
-**Option B: E2E tests with Playwright** (if Playwright is already set up)
-- Start dev server
-- Navigate to routes
-- Verify page content
+The project already has:
+- Vitest configured with jsdom environment
+- Path aliases set up (`@/` → root)
+- React Testing Library available
 
-**Recommended:** Start with **Option A** (integration tests) for faster feedback, as the project already uses Vitest with jsdom.
+## Mock Setup Example
+
+```typescript
+// tests/fixtures/mock-calculator-data.ts
+import { vi } from "vitest";
+import type { CalculatorData } from "@/calculator/data-fetching";
+
+export const mockCalculatorData: CalculatorData = {
+  data: {
+    calculator: {
+      id: "test-calculator",
+      title: "Test Calculator",
+      // ... full mock data
+    },
+    questions: { questions: [/* ... */] },
+    candidates: { candidates: [/* ... */] },
+    candidatesAnswers: { answers: [/* ... */] },
+  },
+  baseUrl: "https://data.kalkulacka.one/test",
+};
+
+export function mockLoadCalculatorData() {
+  return vi.fn().mockResolvedValue(mockCalculatorData);
+}
+```
 
 ## Success Criteria
 
 - ✅ All one-segment routes render successfully
-- ✅ All two-segment routes render successfully
+- ✅ All two-segment routes (with and without prefix) render successfully
+- ✅ All three-segment routes render successfully
+- ✅ Invalid prefixes return 404
 - ✅ All embed routes work correctly
 - ✅ All redirects work as configured
-- ✅ Calculator data loads with correct parameters
+- ✅ `loadCalculatorData` receives correct parameters for each route pattern
 - ✅ Error cases return appropriate status codes
 - ✅ Tests are readable and serve as documentation
 - ✅ Mock data matches real data structure
@@ -311,17 +474,21 @@ Use one of these approaches:
 1. Create mock calculator data fixtures matching real data structure
 2. Set up test utilities for route testing
 3. Write one-segment route tests
-4. Write two-segment route tests
-5. Write embed route tests
-6. Write redirect tests
-7. Write data loading tests
-8. Write error handling tests
-9. Ensure all tests pass
-10. Run `npm run typecheck` and `npm run lint:fix`
+4. Write two-segment route tests (both prefixed and non-prefixed)
+5. Write three-segment route tests
+6. Write embed route tests
+7. Write prefix validation tests
+8. Write parameter mapping tests (verify `loadCalculatorData` calls)
+9. Write redirect tests
+10. Write error handling tests
+11. Ensure all tests pass
+12. Run `npm run typecheck` and `npm run lint:fix`
 
 ## Notes
 
-- These tests will serve as **regression tests** during the refactoring to remove hardcoded `/volby` prefix
-- Tests should be **comprehensive** but **maintainable** - focus on behavior, not implementation details
+- These tests document the **current flexible routing implementation**
+- Tests verify the backward-mapping param logic (last segment = key, second-to-last = group)
+- Tests confirm prefix validation works correctly
 - Use **snapshot testing sparingly** - prefer explicit assertions about critical content
 - Mock external data sources to make tests fast and deterministic
+- Tests should be **comprehensive** but **maintainable**
