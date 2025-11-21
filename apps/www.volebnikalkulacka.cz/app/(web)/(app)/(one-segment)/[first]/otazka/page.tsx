@@ -3,6 +3,6 @@ import { redirect } from "next/navigation";
 import { routes } from "@/lib/routing";
 
 export default async function Page({ params }: { params: Promise<{ first: string }> }) {
-  const { first } = await params;
-  redirect(routes.question({ first }, 1));
+  const segments = await params;
+  redirect(routes.question(segments, 1));
 }
