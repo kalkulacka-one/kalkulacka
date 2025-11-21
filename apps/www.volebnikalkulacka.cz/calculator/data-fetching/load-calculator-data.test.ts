@@ -94,12 +94,12 @@ describe("loadCalculatorData", () => {
 
     const result = await loadCalculatorData({ key: "key", group: "group" });
 
-    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/calculator.json` });
-    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/questions.json` });
-    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/candidates.json` });
-    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/candidates-answers.json` });
-    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/persons.json` });
-    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/key/group/organizations.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/group/key/calculator.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/group/key/questions.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/group/key/candidates.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/group/key/candidates-answers.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/group/key/persons.json` });
+    expect(mockFetchFile).toHaveBeenCalledWith({ url: `${DATA_ENDPOINT}/group/key/organizations.json` });
     expect(mockParseWithSchema).toHaveBeenCalledWith({ data, schema: expect.any(Object) });
     expect(result).toEqual({
       data: {
@@ -110,7 +110,7 @@ describe("loadCalculatorData", () => {
         persons: data,
         organizations: data,
       },
-      baseUrl: `${DATA_ENDPOINT}/key/group`,
+      baseUrl: `${DATA_ENDPOINT}/group/key`,
     });
   });
 
