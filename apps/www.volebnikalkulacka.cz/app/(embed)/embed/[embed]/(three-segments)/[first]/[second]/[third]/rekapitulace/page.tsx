@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 
 import { ReviewPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { canonical } from "@/lib/routing";
+import { canonical, mappedParams } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string; third: string }> }): Promise<Metadata> {
-  const { first, second, third } = await params;
-  const canonicalUrl = canonical.review({ first, second, third });
-  return generateCalculatorMetadata({ key: third, group: second, canonicalUrl });
+  const segments = await params;
+  const key = mappedParams.key(segments);
+  const group = mappedParams.group(segments);
+  const canonicalUrl = canonical.review(segments);
+  return generateCalculatorMetadata({ key, group, canonicalUrl });
 }
 
 export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string; third: string }> }) {

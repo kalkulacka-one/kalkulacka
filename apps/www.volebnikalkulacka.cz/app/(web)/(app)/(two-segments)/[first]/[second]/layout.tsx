@@ -3,14 +3,15 @@ import { SessionProviderLayout } from "@/components/client";
 import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
-  const { first, second } = await params;
+  const segments = await params;
+  const { first } = segments;
 
   if (isPrefix(first)) {
     prefixGuard(first);
   }
 
-  const key = mappedParams.key({ first, second });
-  const group = mappedParams.group({ first, second });
+  const key = mappedParams.key(segments);
+  const group = mappedParams.group(segments);
   const calculatorData = await loadCalculatorData({ key, group });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }

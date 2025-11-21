@@ -5,12 +5,11 @@ import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams, questionNumberGuard } from "@/lib/routing";
 
 export async function generateMetadata({ params: routeParams }: { params: Promise<{ first: string; second: string; questionNumber: string }> }): Promise<Metadata> {
-  const { first, second, questionNumber } = await routeParams;
+  const { questionNumber, ...segments } = await routeParams;
+  const key = mappedParams.key(segments);
+  const group = mappedParams.group(segments);
   const currentQuestionNumber = questionNumberGuard(questionNumber);
-  const canonicalUrl = canonical.question({ first, second }, currentQuestionNumber);
-
-  const key = mappedParams.key({ first, second });
-  const group = mappedParams.group({ first, second });
+  const canonicalUrl = canonical.question(segments, currentQuestionNumber);
   return generateCalculatorMetadata({ key, group, canonicalUrl });
 }
 
