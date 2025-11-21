@@ -11,8 +11,7 @@ export function buildCanonicalUrl(path: string): string {
 }
 
 function stripEmbed(segments: RouteSegments): RouteSegments {
-  const { embed, ...rest } = segments;
-  void embed;
+  const { embed: _embed, ...rest } = segments;
   return rest;
 }
 
