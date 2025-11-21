@@ -21,6 +21,6 @@ function parseQuestionNumber(path: string): number {
   return validateQuestionNumber(questionNumberString);
 }
 
-export const params = {
+export const parsedParams = {
   questionNumber: (path: string): number => parseQuestionNumber(path),
 } as const;
