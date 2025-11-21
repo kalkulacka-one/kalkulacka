@@ -1,6 +1,6 @@
 import { loadCalculatorData } from "@/calculator/data-fetching";
 import { SessionProviderLayout } from "@/components/client";
-import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
+import { isPrefix, prefixGuard, mappedParams } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
   const segments = await params;
