@@ -14,6 +14,5 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; embed: string }> }) {
   const segments = await params;
-
   return <GuidePageWithRouting segments={segments} />;
 }
