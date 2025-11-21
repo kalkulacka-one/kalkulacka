@@ -21,8 +21,8 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     const algorithmMatches = sessionData.matches as ReturnType<typeof calculateMatches>;
 
     const calculatorData = await loadCalculatorData({
-      key: sessionData.calculatorGroup || sessionData.calculatorKey,
-      group: sessionData.calculatorGroup ? sessionData.calculatorKey : undefined,
+      key: sessionData.calculatorKey,
+      group: sessionData.calculatorGroup || undefined,
     });
 
     const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person, calculatorData.baseUrl)]));
