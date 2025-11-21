@@ -4,8 +4,8 @@ import { QuestionPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams, questionNumberGuard } from "@/lib/routing";
 
-export async function generateMetadata({ params: routeParams }: { params: Promise<{ first: string; second: string; third: string; questionNumber: string }> }): Promise<Metadata> {
-  const { questionNumber, ...segments } = await routeParams;
+export async function generateMetadata({ params }: { params: Promise<{ first: string; second: string; third: string; questionNumber: string }> }): Promise<Metadata> {
+  const { questionNumber, ...segments } = await params;
   const currentQuestionNumber = questionNumberGuard(questionNumber);
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
