@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import type { calculateMatches } from "@/calculator/result-calculation";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
-import { buildCanonicalUrl, canonical, params } from "@/lib/routing";
+import { buildCanonicalUrl, canonical, mappedParams } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
@@ -15,8 +15,8 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const canonicalUrl = canonical.publicResult({ first, second }, publicId);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
 
-  const key = params.key({ first, second });
-  const group = params.group({ first, second });
+  const key = mappedParams.key({ first, second });
+  const group = mappedParams.group({ first, second });
   return await generateCalculatorMetadata({
     key,
     group,
