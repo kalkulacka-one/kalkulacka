@@ -14,8 +14,8 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
 }
 
 export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string; third: string; questionNumber: string }> }) {
-  const { embed, first, second, third, questionNumber } = await params;
+  const { questionNumber, ...segments } = await params;
   const currentQuestionNumber = questionNumberGuard(questionNumber);
 
-  return <QuestionPageWithRouting current={currentQuestionNumber} segments={{ first, second, third, embed }} />;
+  return <QuestionPageWithRouting current={currentQuestionNumber} segments={segments} />;
 }

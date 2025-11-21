@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ first: st
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string }> }) {
-  const { first } = await params;
+  const segments = await params;
 
-  return <ReviewPageWithRouting segments={{ first }} />;
+  return <ReviewPageWithRouting segments={segments} />;
 }

@@ -13,7 +13,7 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
 }
 
 export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string }> }) {
-  const { embed, first, second } = await params;
+  const segments = await params;
 
-  return <ComparisonPageWithRouting segments={{ first, second, embed }} />;
+  return <ComparisonPageWithRouting segments={segments} />;
 }

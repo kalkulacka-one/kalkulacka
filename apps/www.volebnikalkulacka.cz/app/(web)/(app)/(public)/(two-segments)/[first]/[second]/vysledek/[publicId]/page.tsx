@@ -29,7 +29,7 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }) {
-  const { first, second, publicId } = await params;
+  const { publicId, ...segments } = await params;
 
   const session = await prisma.calculatorSession.findUnique({
     where: {
@@ -47,5 +47,5 @@ export default async function Page({ params }: { params: Promise<{ first: string
   const answers = session.data.answers as Answer[];
   const result = session.data.result as ReturnType<typeof calculateMatches>;
 
-  return <PublicResultPageWithData algorithmMatches={result} answers={answers} segments={{ first, second }} />;
+  return <PublicResultPageWithData algorithmMatches={result} answers={answers} segments={segments} />;
 }
