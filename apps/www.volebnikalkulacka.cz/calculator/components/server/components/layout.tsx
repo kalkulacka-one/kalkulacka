@@ -1,1 +1,1 @@
-export { Layout } from "@repo/design-system/server";
+export { Layout } from "@kalkulacka-one/design-system/server";
