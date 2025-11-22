@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /
 Allow: /api/images/
 Disallow: /api/
 Disallow: /*/vysledek$
