@@ -1,5 +1,5 @@
 {
-  "name": "@repo/database",
+  "name": "@kalkulacka-one/database",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -26,7 +26,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/typescript-config": "*",
+    "@kalkulacka-one/typescript-config": "*",
     "@types/node": "^22.15.29",
     "prisma": "^6.15.0",
     "ts-node": "^10.9.2",

@@ -1,6 +1,7 @@
+import { Icon } from "@kalkulacka-one/design-system/client";
+import { Badge } from "@kalkulacka-one/design-system/server";
+
 import { mdiHistory } from "@mdi/js";
-import { Icon } from "@repo/design-system/client";
-import { Badge } from "@repo/design-system/server";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Badge> = {
