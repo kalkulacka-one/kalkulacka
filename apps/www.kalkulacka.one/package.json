@@ -24,15 +24,15 @@
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@testing-library/jest-dom": "^6.8.0",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.19.1",
     "@types/react": "19.1.12",
     "@types/react-dom": "19.1.8",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.4.22",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.12",
-    "typescript": "^5.9.2"
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
   }
 }
