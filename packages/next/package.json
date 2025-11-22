@@ -1,0 +1,25 @@
+{
+  "name": "@kalkulacka-one/next",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u"
+  },
+  "devDependencies": {
+    "@kalkulacka-one/typescript-config": "*",
+    "@types/node": "^22.15.29",
+    "typescript": "^5.9.2"
+  },
+  "packageManager": "npm@11.5.2"
+}

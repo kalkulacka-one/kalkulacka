@@ -30,6 +30,7 @@
     "@opentelemetry/api-logs": "^0.204.0",
     "@opentelemetry/instrumentation": "^0.204.0",
     "@opentelemetry/sdk-logs": "^0.204.0",
+    "@kalkulacka-one/next": "*",
     "@vercel/otel": "^1.13.0",
     "next": "^15.5.2",
     "next-intl": "^4.5.5",
