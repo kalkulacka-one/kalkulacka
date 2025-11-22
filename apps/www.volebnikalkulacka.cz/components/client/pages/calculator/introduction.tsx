@@ -1,13 +1,13 @@
 import { useRouter } from "next/navigation";
 
-import { IntroductionPage } from "../../../../calculator/components/server";
-import { useAnswersStore } from "../../../../calculator/stores/answers";
-import { useCalculator } from "../../../../calculator/view-models";
-import { useAutoSave } from "../../../../hooks/auto-save";
-import { saveSessionData } from "../../../../lib/api/session-data";
-import { reportError } from "../../../../lib/monitoring";
-import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
-import { useEmbed } from "../../../client/embed-context-provider";
+import { IntroductionPage } from "@/calculator/components/server";
+import { useAnswersStore } from "@/calculator/stores";
+import { useCalculator } from "@/calculator/view-models/client";
+import { useEmbed } from "@/components/client";
+import { useAutoSave } from "@/hooks/auto-save";
+import { saveSessionData } from "@/lib/api";
+import { reportError } from "@/lib/monitoring";
+import { type RouteSegments, routes } from "@/lib/routing";
 
 export function IntroductionPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();

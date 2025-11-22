@@ -1,7 +1,8 @@
+import { Card } from "@kalkulacka-one/design-system/server";
+import { twMerge } from "@kalkulacka-one/design-system/utilities";
+
 import { Disclosure, DisclosureButton, DisclosurePanel, type DisclosureProps } from "@headlessui/react";
 import { mdiChevronDown } from "@mdi/js";
-import { Card } from "@repo/design-system/server";
-import { twMerge } from "@repo/design-system/utils";
 import * as React from "react";
 
 import { Icon } from "./icon";
