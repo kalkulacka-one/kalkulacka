@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import { loadCalculatorData } from "@/calculator/data-fetching";
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams } from "@/lib/routing";
@@ -6,5 +8,6 @@ export default async function Layout({ children, params }: { children: React.Rea
   const segments = await params;
   const key = mappedParams.key(segments);
   const calculatorData = await loadCalculatorData({ key });
+  if (!calculatorData) notFound();
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }
