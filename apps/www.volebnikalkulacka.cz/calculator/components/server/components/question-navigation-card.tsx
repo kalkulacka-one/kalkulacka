@@ -1,9 +1,11 @@
-import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
-import { Button, Icon, ToggleButton } from "@repo/design-system/client";
-import { logoCheck, logoCross } from "@repo/design-system/icons";
+import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 
-import type { AnswerViewModel } from "../../../view-models";
-import { NavigationCard } from "../../server/components/navigation-card";
+import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
+
+import type { AnswerViewModel } from "@/calculator/view-models/server";
+
+import { NavigationCard } from "./navigation-card";
 
 const HEIGHT = "h-[138px]";
 

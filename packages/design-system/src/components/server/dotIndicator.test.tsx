@@ -1,4 +1,5 @@
-import { DotIndicator } from "@repo/design-system/server";
+import { DotIndicator } from "@kalkulacka-one/design-system/server";
+
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

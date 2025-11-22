@@ -1,4 +1,5 @@
-import { Description, Field } from "@repo/design-system/client";
+import { Description, Field } from "@kalkulacka-one/design-system/client";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Description> = {

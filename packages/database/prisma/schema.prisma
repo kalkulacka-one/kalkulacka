@@ -10,7 +10,8 @@ datasource db {
 model Subscription {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
 
-  email String @unique
+  email  String @unique
+  origin String
 
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   updatedAt DateTime @updatedAt @db.Timestamptz(3)

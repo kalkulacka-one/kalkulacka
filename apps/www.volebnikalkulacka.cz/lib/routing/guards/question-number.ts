@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { validateQuestionNumber } from "../validators/question-number";
+import { validateQuestionNumber } from "../validators";
 
 export function questionNumberGuard(questionNumber: string): number {
   try {

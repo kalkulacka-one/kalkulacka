@@ -1,12 +1,13 @@
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { calculatorViewModel } from "@/calculator/view-models/server";
+
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { calculatorViewModel } from "../../../view-models";
 import { Guide, GuideNavigationCard, Introduction } from "../components";
 import { GuidePage } from "./guide";
 
-vi.mock("@repo/design-system/client", () => ({
+vi.mock("@kalkulacka-one/design-system/client", () => ({
   Button: vi.fn(({ children }) => children),
   Icon: vi.fn(() => null),
 }));

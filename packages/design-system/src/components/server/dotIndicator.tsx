@@ -1,4 +1,5 @@
-import { twMerge } from "@repo/design-system/utils";
+import { twMerge } from "@kalkulacka-one/design-system/utilities";
+
 import { cva } from "class-variance-authority";
 
 export type DotIndicator = {

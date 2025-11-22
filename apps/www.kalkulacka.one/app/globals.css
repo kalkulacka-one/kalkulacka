@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-@import "@repo/design-system/themes/www.kalkulacka.one/default";
-@import "@repo/design-system/styles";
+@import "@kalkulacka-one/design-system/themes/www.kalkulacka.one/default";
+@import "@kalkulacka-one/design-system/styles";
 
 @theme static {
   --font-display: var(--ko-font-display);

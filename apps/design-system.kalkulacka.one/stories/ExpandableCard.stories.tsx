@@ -1,4 +1,5 @@
-import { ExpandableCard } from "@repo/design-system/client";
+import { ExpandableCard } from "@kalkulacka-one/design-system/client";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ExpandableCard> = {

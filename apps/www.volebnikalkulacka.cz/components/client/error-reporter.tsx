@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { appsignal } from "../../lib/monitoring";
+import { appsignal } from "@/lib/monitoring";
 
 interface ErrorReporterProps {
   error: Error & { digest?: string };

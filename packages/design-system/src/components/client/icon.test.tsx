@@ -1,6 +1,7 @@
+import { Icon } from "@kalkulacka-one/design-system/client";
+import { EnvelopeIcon } from "@kalkulacka-one/design-system/icons";
+
 import { mdiAccount } from "@mdi/js";
-import { Icon } from "@repo/design-system/client";
-import { EnvelopeIcon } from "@repo/design-system/icons";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

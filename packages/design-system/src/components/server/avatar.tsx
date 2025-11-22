@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { twMerge } from "../../utils";
+import { twMerge } from "../../utilities";
 
 export type ImageUrls = {
   original: string;

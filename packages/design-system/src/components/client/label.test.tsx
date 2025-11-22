@@ -1,4 +1,5 @@
-import { Field, Label } from "@repo/design-system/client";
+import { Field, Label } from "@kalkulacka-one/design-system/client";
+
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

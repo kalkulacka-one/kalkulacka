@@ -1,4 +1,4 @@
-import { Button } from "@repo/design-system/client";
+import { Button } from "@kalkulacka-one/design-system/client";
 
 import { NavigationCard } from "./navigation-card";
 

@@ -1,14 +1,10 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-import { loadCalculatorData } from "../../../../../../calculator/lib";
-import type { calculateMatches } from "../../../../../../calculator/lib/result-calculation/calculate-matches";
-import { candidateViewModel } from "../../../../../../calculator/view-models/server/candidate";
-import { candidatesAnswersViewModel } from "../../../../../../calculator/view-models/server/candidate-answers";
-import { organizationViewModel } from "../../../../../../calculator/view-models/server/organization";
-import { personViewModel } from "../../../../../../calculator/view-models/server/person";
-import { resultViewModel } from "../../../../../../calculator/view-models/server/result";
-import { HttpError, NotFoundError } from "../../../../../../lib/errors";
+import { loadCalculatorData } from "@/calculator/data-fetching";
+import type { calculateMatches } from "@/calculator/result-calculation";
+import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, resultViewModel } from "@/calculator/view-models/server";
+import { HttpError, NotFoundError } from "@/lib/errors";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "public-id": string; type: string }> }) {
   try {
@@ -25,8 +21,8 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     const algorithmMatches = sessionData.matches as ReturnType<typeof calculateMatches>;
 
     const calculatorData = await loadCalculatorData({
-      key: sessionData.calculatorGroup || sessionData.calculatorKey,
-      group: sessionData.calculatorGroup ? sessionData.calculatorKey : undefined,
+      key: sessionData.calculatorKey,
+      group: sessionData.calculatorGroup || undefined,
     });
 
     const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person, calculatorData.baseUrl)]));

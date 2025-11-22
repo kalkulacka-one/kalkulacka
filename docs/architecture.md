@@ -17,11 +17,11 @@ graph TD
   end
   
   subgraph packages [packages]
-    design-system["`@repo/design-system`"]
+    design-system["`@kalkulacka-one/design-system`"]
     themes["`/src/themes`"]
-    app["`@repo/app`"]
-    schema["`@repo/schema`"]
-    database["`@repo/database`"]
+    app["`@kalkulacka-one/app`"]
+    schema["`@kalkulacka-one/schema`"]
+    database["`@kalkulacka-one/database`"]
   end
   
   app -->|built with| design-system

@@ -1,14 +1,14 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { ShareModal } from "../../../../calculator/components/client";
-import { ResultPage as AppResultPage } from "../../../../calculator/components/server";
-import { useAnswersStore } from "../../../../calculator/stores/answers";
-import { useCalculatedMatches, useCalculator, useResult } from "../../../../calculator/view-models";
-import { saveSessionData } from "../../../../lib/api/session-data";
-import { reportError } from "../../../../lib/monitoring";
-import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
-import { useEmbed } from "../../embed-context-provider";
+import { ShareModal } from "@/calculator/components/client";
+import { ResultPage as AppResultPage } from "@/calculator/components/server";
+import { useAnswersStore } from "@/calculator/stores";
+import { useCalculatedMatches, useCalculator, useResult } from "@/calculator/view-models/client";
+import { useEmbed } from "@/components/client";
+import { saveSessionData } from "@/lib/api";
+import { reportError } from "@/lib/monitoring";
+import { type RouteSegments, routes } from "@/lib/routing";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
