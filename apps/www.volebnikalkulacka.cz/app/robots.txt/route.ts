@@ -4,12 +4,12 @@ import { fileURLToPath } from "node:url";
 
 import { allowCrawling } from "@/lib/seo";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const currentDir = dirname(fileURLToPath(import.meta.url));
 
 export async function GET() {
   const allowIndexing = allowCrawling();
   const fileName = allowIndexing ? "robots.txt.production" : "robots.txt.staging";
-  const filePath = join(__dirname, "../../lib/seo/robots", fileName);
+  const filePath = join(currentDir, "../../lib/seo/robots", fileName);
 
   const robotsTxt = readFileSync(filePath, "utf-8");
 
