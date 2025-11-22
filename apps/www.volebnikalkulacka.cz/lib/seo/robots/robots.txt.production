@@ -10,5 +10,3 @@ Disallow: /api/
 # Block session-specific pages (no SEO value)
 Disallow: /*/vysledek$
 Disallow: /*/rekapitulace
-
-Sitemap: https://www.volebnikalkulacka.cz/sitemap.xml
