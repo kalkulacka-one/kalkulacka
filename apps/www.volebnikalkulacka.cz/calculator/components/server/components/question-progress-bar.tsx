@@ -1,4 +1,4 @@
-import { SteppedProgressBar } from "@repo/design-system/server";
+import { SteppedProgressBar } from "@kalkulacka-one/design-system/server";
 
 import type { AnswersViewModel, QuestionsViewModel } from "@/calculator/view-models/server";
 
