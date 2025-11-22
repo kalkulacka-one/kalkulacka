@@ -30,7 +30,7 @@
     "@types/node": "^22.15.29",
     "prisma": "^6.15.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@prisma/client": "^6.15.0"
