@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 
 import type { I18nParams } from "../../i18n/params";
 import { routing } from "../../i18n/routing";
+import { allowCrawling } from "../../lib/seo";
 
 import "../globals.css";
 
@@ -21,6 +22,10 @@ export async function generateMetadata({ params }: { params: I18nParams }) {
   return {
     title: "Kalkulacka.1",
     description: t("metadata.description"),
+    robots: {
+      index: allowCrawling(),
+      follow: allowCrawling(),
+    },
   };
 }
 
