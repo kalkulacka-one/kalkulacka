@@ -1,11 +1,13 @@
 "use server";
 
-import { prisma } from "@repo/database";
-import { PrismaClientKnownRequestError } from "@repo/database/library";
+import { prisma } from "@kalkulacka-one/database";
+import { PrismaClientKnownRequestError } from "@kalkulacka-one/database/library";
+
 import { z } from "zod";
 
 const subscribeBodySchema = z.object({
   email: z.string().email("Neplatný formát"),
+  origin: z.string(),
 });
 
 type SubscribeBody = z.infer<typeof subscribeBodySchema>;
@@ -21,6 +23,7 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
     await prisma.subscription.create({
       data: {
         email: parsed.data.email,
+        origin: parsed.data.origin,
       },
     });
     return { success: true };

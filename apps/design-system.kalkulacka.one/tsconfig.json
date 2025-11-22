@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
+  "extends": "@kalkulacka-one/typescript-config/react-library.json",
   "include": ["**/*.mdx", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "public", "build"],
   "compilerOptions": {

@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 
 import "../globals.css";
 
-import { EmbedContextProvider, ThemeProvider } from "../../components/client";
-import { PlausibleScript } from "../../components/server";
-import { allowCrawling } from "../../lib/seo";
+import { EmbedContextProvider, ThemeProvider } from "@/components/client";
+import { PlausibleScript } from "@/components/server";
+import { allowCrawling } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: {
