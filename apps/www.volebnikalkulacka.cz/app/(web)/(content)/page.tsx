@@ -4,11 +4,20 @@ import { Card } from "@kalkulacka-one/design-system/server";
 import Link from "next/link";
 import { useId } from "react";
 
+import { CalculatorCard } from "../../../calculator/components/server/components/calculator-card";
+import type { CalculatorViewModel } from "../../../calculator/view-models/server/calculator";
 import { BeadRow } from "./BeadRow";
+import calculatorsData from "./calculators.json";
 
+const calculators = calculatorsData as CalculatorViewModel[];
 export default function Page() {
   const bgGridId = useId();
   const otherCalcsHeadingId = useId();
+  const featuredCalculators = calculators.filter((calculator) => calculator.card?.featured);
+  const otherCalculators = calculators.filter((calculator) => "variant" in calculator && (calculator.variant?.key === "expresni" || calculator.variant?.key === "ultimatni"));
+  const thematicCalculators = calculators.filter(
+    (calculator) => "variant" in calculator && (calculator.variant?.key === "pro-mlade" || calculator.variant?.key === "klimaticka" || calculator.variant?.key === "kompas"),
+  );
 
   return (
     <div className="relative min-h-screen bg-slate-50 z-0">
@@ -30,165 +39,51 @@ export default function Page() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16">
         {/* Heading */}
         <h1 className="font-display ko:font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Sněmovní volby 2025</h1>
-
         {/* Featured cards */}
         <div className="mt-10 md:mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 items-stretch">
-          {/* Left featured */}
-          <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
-            <div className="p-6 md:p-8 h-full flex flex-col">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">Nejoblíbenější kalkulačka</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">42 otázek</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
-              </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo zastává vaše postoje?</h2>
-              <p className="mt-2 text-slate-500">Klasická Volební kalkulačka, jak ji znáte už skoro 20 let.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/kalkulacka" className="grid">
-                  <Button variant="fill" color="neutral">
-                    Spustit kalkulačku
+          {featuredCalculators.map((calculator) => (
+            <CalculatorCard key={calculator.id} calculator={calculator}>
+              {calculator.card?.link && (
+                <Link href={calculator.card.link} className="grid">
+                  <Button variant={calculator.card.buttonVariant || "outline"} color="neutral">
+                    {calculator.card.buttonText || "Spustit kalkulačku"}
                   </Button>
                 </Link>
-              </div>
-            </div>
-          </Card>
-
-          {/* Right featured */}
-          <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
-            <div className="p-6 md:p-8 h-full flex flex-col">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 font-semibold text-red-700">Inventura hlasování</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">35 hlasování</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
-              </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo vás zastupoval ve Sněmovně?</h2>
-              <p className="mt-2 text-slate-500">Žádné sliby, ale skutečná hlasování poslanců ve Sněmovně za končící volební období.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/inventura" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit inventuru hlasování
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
+              )}
+            </CalculatorCard>
+          ))}
         </div>
-
         {/* Other calculators */}
         <h3 id={otherCalcsHeadingId} className="mt-16 md:mt-20 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">
           Další volební kalkulačky
         </h3>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center rounded-full bg-orange-50 px-2.5 py-1 font-semibold text-orange-700">Expresní kalkulačka</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">25 otázek</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">5 minut</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Nejužitečnějších 5 minut před volbami</h4>
-              <p className="mt-1 text-slate-500">Těch 25 nejklíčovějších otázek, které vám zaberou jen 5 minut.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/expresni" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
+          {otherCalculators.map((calculator) => (
+            <CalculatorCard key={calculator.id} calculator={calculator}>
+              {calculator.card?.link && (
+                <Link href={calculator.card.link} className="grid">
+                  <Button variant={calculator.card.buttonVariant || "outline"} color="neutral">
+                    {calculator.card.buttonText || "Spustit kalkulačku"}
                   </Button>
                 </Link>
-              </div>
-            </div>
-          </Card>
-
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center rounded-full bg-green-50 px-2.5 py-1 font-semibold text-green-700">Ultimátní kalkulačka</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">100 otázek</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">30 minut</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Všech 100 otázek pro „politické fajnšmekry"</h4>
-              <p className="mt-1 text-slate-500">Nejrozsáhlější verze se všemi 100 otázkami, na které jsme se ptali.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/ultimatni" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
+              )}
+            </CalculatorCard>
+          ))}
         </div>
-
         {/* Thematic calculators */}
         <h3 className="mt-12 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">Tématické volební kalkulačky</h3>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3 items-stretch">
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center gap-2 text-xs text-slate-600">
-                <span className="rounded-full px-2.5 py-1 font-semibold" style={{ backgroundColor: "rgb(156, 196, 232)", color: "rgb(40, 38, 92)" }}>
-                  Pro mladé
-                </span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">35 otázek</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">35 otázek, které pálí nejen mladou generaci</h4>
-              <p className="mt-1 text-slate-500">
-                Témata, která podle výzkumu pálí mladou generaci. Ve spolupráci s{" "}
-                <a href="https://dikyzemuzem.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
-                  Díky, že můžem
-                </a>
-                .
-              </p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/pro-mlade" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
+          {thematicCalculators.map((calculator) => (
+            <CalculatorCard key={calculator.id} calculator={calculator}>
+              {calculator.card?.link && (
+                <Link href={calculator.card.link} className="grid">
+                  <Button variant={calculator.card.buttonVariant || "outline"} color="neutral">
+                    {calculator.card.buttonText || "Spustit kalkulačku"}
                   </Button>
                 </Link>
-              </div>
-            </div>
-          </Card>
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center gap-2 text-xs text-slate-600">
-                <span className="rounded-full px-2.5 py-1 font-semibold bg-green-100 text-green-600">Klimatická</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">20 otázek</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">5 minut</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo má plán  pro klima?</h4>
-              <p className="mt-1 text-slate-500">
-                Výběr otázek ke klimatické změně:  povolenky, energetika, doprava. Ve spolupráci s{" "}
-                <a href="https://faktaoklimatu.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
-                  Fakty o klimatu
-                </a>
-                .
-              </p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/klimaticka" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
-          <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center gap-2 text-xs text-slate-600">
-                <span className="rounded-full px-2.5 py-1 font-semibold bg-purple-100 text-purple-700">Volební kompas</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">25 otázek</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
-              </div>
-              <h4 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo sdílí vaše hodnoty?</h4>
-              <p className="mt-1 text-slate-500">Hodnotové otázky místo konkrétních návrhů. Zjistěte, které strany zastávají podobné hodnoty jako vy.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/kompas" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
+              )}
+            </CalculatorCard>
+          ))}
         </div>
 
         {/* Archive section */}
@@ -206,7 +101,6 @@ export default function Page() {
             </div>
           </Card>
         </div>
-
         {/* Footer */}
         <div className="mt-16 border-t border-slate-200 pt-6 text-center text-slate-500">© 2025 Volební kalkulačka</div>
       </div>
