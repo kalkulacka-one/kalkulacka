@@ -1,6 +1,6 @@
-# Security Policy
+# Security policy
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
 Please report security vulnerabilities via:
 
