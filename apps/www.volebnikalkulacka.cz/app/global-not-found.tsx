@@ -1,4 +1,5 @@
 import "./globals.css";
+
 import type { Metadata } from "next";
 
 import { NotFoundPage } from "../calculator/components/server";
