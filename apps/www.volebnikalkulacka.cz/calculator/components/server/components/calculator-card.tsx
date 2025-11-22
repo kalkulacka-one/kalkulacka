@@ -1,6 +1,6 @@
-import { Badge, Card } from "@repo/design-system/server";
+import { Badge, Card } from "@kalkulacka-one/design-system/server";
 
-import type { Badge as BadgeType, CalculatorViewModel } from "../../../view-models";
+import type { Badge as BadgeType, CalculatorViewModel } from "@/calculator/view-models/server";
 
 export type CalculatorCard = {
   calculator: CalculatorViewModel;
