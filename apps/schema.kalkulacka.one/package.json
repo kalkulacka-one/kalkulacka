@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@redocly/cli": "^1.34.3",
-    "@repo/schema": "*",
+    "@kalkulacka-one/schema": "*",
     "wrangler": "^4.33.0",
     "yaml": "^2.8.1"
   }

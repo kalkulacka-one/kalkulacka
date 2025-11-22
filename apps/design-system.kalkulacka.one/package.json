@@ -12,12 +12,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/design-system": "*",
+    "@kalkulacka-one/design-system": "*",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "*",
+    "@kalkulacka-one/typescript-config": "*",
     "@storybook/addon-docs": "^9.1.3",
     "@storybook/addon-links": "^9.1.3",
     "@storybook/addon-onboarding": "^9.1.3",

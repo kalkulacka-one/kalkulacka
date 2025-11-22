@@ -1,17 +1,11 @@
 import { notFound } from "next/navigation";
 
-export function validateQuestionNumber(questionNumber: string): number | null {
-  const number = Number.parseInt(questionNumber, 10);
-  if (Number.isNaN(number) || number < 1) {
-    return null;
-  }
-  return number;
-}
+import { validateQuestionNumber } from "../validators";
 
 export function questionNumberGuard(questionNumber: string): number {
-  const validatedNumber = validateQuestionNumber(questionNumber);
-  if (validatedNumber === null) {
+  try {
+    return validateQuestionNumber(questionNumber);
+  } catch {
     notFound();
   }
-  return validatedNumber;
 }
