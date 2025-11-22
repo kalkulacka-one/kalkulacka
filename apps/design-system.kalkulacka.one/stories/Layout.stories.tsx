@@ -1,4 +1,5 @@
-import { Layout } from "@repo/design-system/server";
+import { Layout } from "@kalkulacka-one/design-system/server";
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Layout> = {
