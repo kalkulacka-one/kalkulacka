@@ -1,10 +1,11 @@
-import { Logo } from "@repo/design-system/client";
-import { twMerge } from "@repo/design-system/utils";
+import { Logo } from "@kalkulacka-one/design-system/client";
+import { twMerge } from "@kalkulacka-one/design-system/utilities";
+
 import type { ReactNode } from "react";
 import React from "react";
 
-import { useEmbed } from "../../../components/client";
-import type { CalculatorViewModel } from "../../view-models";
+import type { CalculatorViewModel } from "@/calculator/view-models/server";
+import { useEmbed } from "@/components/client";
 
 const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);
 

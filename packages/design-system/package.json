@@ -1,5 +1,5 @@
 {
-  "name": "@repo/design-system",
+  "name": "@kalkulacka-one/design-system",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -22,9 +22,9 @@
       "types": "./dist/components/icons/index.d.ts",
       "default": "./dist/components/icons/index.js"
     },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "default": "./dist/utils/index.js"
+    "./utilities": {
+      "types": "./dist/utilities/index.d.ts",
+      "default": "./dist/utilities/index.js"
     }
   },
   "scripts": {
@@ -43,24 +43,24 @@
   },
   "packageManager": "npm@11.5.2",
   "devDependencies": {
-    "@repo/typescript-config": "*",
-    "@tailwindcss/cli": "^4.1.12",
-    "@tailwindcss/postcss": "^4.1.12",
-    "@testing-library/jest-dom": "^6.8.0",
+    "@kalkulacka-one/typescript-config": "*",
+    "@tailwindcss/cli": "^4.1.17",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.19.1",
     "@turbo/gen": "^2.5.6",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.8",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.4.22",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.7",
+    "@headlessui/react": "^2.2.9",
     "@mdi/js": "^7.4.47",
     "class-variance-authority": "^0.7.1",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.4.0"
   }
 }

@@ -15,14 +15,14 @@
     "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.2",
+    "@biomejs/biome": "2.3.7",
+    "@kalkulacka-one/typescript-config": "*",
     "@playwright/test": "^1.56.1",
-    "@repo/typescript-config": "*",
     "@vitejs/plugin-react": "^4.5.0",
     "@vitest/ui": "^3.1.4",
     "jsdom": "^26.1.0",
-    "npm-check-updates": "^18.0.0",
-    "turbo": "^2.4.4",
+    "npm-check-updates": "^18.3.1",
+    "turbo": "^2.6.1",
     "vitest": "^3.1.4"
   },
   "engines": {

@@ -4,7 +4,7 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@repo/design-system"],
+  transpilePackages: ["@kalkulacka-one/design-system"],
   async rewrites() {
     return [
       {
