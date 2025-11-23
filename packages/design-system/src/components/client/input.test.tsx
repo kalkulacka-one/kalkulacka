@@ -2,8 +2,7 @@ import { Input } from "@kalkulacka-one/design-system/client";
 import { EnvelopeIcon } from "@kalkulacka-one/design-system/icons";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 describe("Input", () => {

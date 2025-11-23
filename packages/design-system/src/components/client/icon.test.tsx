@@ -2,8 +2,7 @@ import { Icon } from "@kalkulacka-one/design-system/client";
 import { EnvelopeIcon } from "@kalkulacka-one/design-system/icons";
 
 import { mdiAccount } from "@mdi/js";
-import { screen } from "@testing-library/dom";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 describe("Icon", () => {
