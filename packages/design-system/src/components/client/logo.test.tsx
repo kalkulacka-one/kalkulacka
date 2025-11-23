@@ -1,6 +1,7 @@
 import { Logo } from "@kalkulacka-one/design-system/client";
 
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/dom";
+import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 describe("Logo", () => {

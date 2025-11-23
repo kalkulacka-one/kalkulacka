@@ -1,7 +1,8 @@
 import { Button, ButtonVariants } from "@kalkulacka-one/design-system/client";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/dom";
+import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 describe("Button", () => {
