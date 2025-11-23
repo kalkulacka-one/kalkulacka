@@ -9,6 +9,9 @@
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u"
   },
+  "dependencies": {
+    "zod": "^4.1.12"
+  },
   "exports": {
     ".": "./index.js",
     "./*": "./schemas/**/*.{schema.ts,schema.json,md}"
