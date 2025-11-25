@@ -6,6 +6,18 @@ import type { AnswerViewModel } from "@/calculator/view-models/server";
 
 import { QuestionNavigationCard } from "./question-navigation-card";
 
+vi.mock("@/i18n/hooks", () => ({
+  useQuestionNavigationCardTranslations: () => ({
+    agree: "Ano",
+    disagree: "Ne",
+    previous: "Předchozí",
+    next: "Další",
+    guide: "Návod",
+    skip: "Přeskočit",
+    important: "Pro mě důležité",
+  }),
+}));
+
 describe("QuestionNavigationCard", () => {
   const mockAnswerWithResponse: AnswerViewModel = {
     answer: {

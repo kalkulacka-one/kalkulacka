@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { getMessages, setRequestLocale } from "next-intl/server";
 
 import type { I18nParams } from "../../i18n/params";
 import { routing } from "../../i18n/routing";
@@ -70,8 +70,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  const messages = await getMessages({ locale });
 
-  // Enable static rendering
   setRequestLocale(locale);
 
   return (
@@ -80,9 +80,11 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <PlausibleScript />
       </head>
       <body className="min-h-dvh bg-slate-50">
-        <EmbedContextProvider isEmbed={false}>
-          <ThemeProvider name="default">{children}</ThemeProvider>
-        </EmbedContextProvider>
+        <NextIntlClientProvider messages={messages}>
+          <EmbedContextProvider isEmbed={false}>
+            <ThemeProvider name="default">{children}</ThemeProvider>
+          </EmbedContextProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

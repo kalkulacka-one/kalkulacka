@@ -4,6 +4,7 @@ import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
+import { useQuestionNavigationCardTranslations } from "@/i18n/hooks";
 
 import { NavigationCard } from "./navigation-card";
 
@@ -21,8 +22,9 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
-  const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
-  const nextButtonLabel = answer.answer?.answer !== undefined ? "Další" : "Přeskočit";
+  const t = useQuestionNavigationCardTranslations();
+  const previousButtonLabel = current === 1 ? t.guide : t.previous;
+  const nextButtonLabel = answer.answer?.answer !== undefined ? t.next : t.skip;
 
   return (
     <NavigationCard>
@@ -52,16 +54,16 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </div>
         </div>
         <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
-          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
+          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t.important}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             <Icon icon={logoCheck} decorative={true} />
-            Ano
+            {t.agree}
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             <Icon icon={logoCross} decorative={true} />
-            Ne
+            {t.disagree}
           </ToggleButton>
         </div>
       </div>
