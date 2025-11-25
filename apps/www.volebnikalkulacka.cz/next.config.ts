@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/",
+        destination: "/cs",
+      },
+      {
+        source: "/volby/:path*",
+        destination: "/cs/volby/:path*",
+      },
+      {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
       },
@@ -23,6 +31,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/cs/:path*",
+        destination: "/:path*",
+        permanent: false,
+      },
       {
         source: "/volby/snemovni-2025",
         destination: "/volby/snemovni-2025/kalkulacka",
