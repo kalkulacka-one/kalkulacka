@@ -1,0 +1,21 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import { EmbedProvider } from "../../../../../components/client";
+import { type EmbedName, isEmbedName } from "../../../../../config/embeds";
+import { allowCrawling } from "../../../../../lib/seo";
+
+export const metadata: Metadata = {
+  robots: {
+    index: allowCrawling(),
+    follow: allowCrawling(),
+  },
+};
+
+export default async function EmbedLayout({ children, params }: { children: React.ReactNode; params: Promise<{ embed: string }> }) {
+  const { embed: embedParam } = await params;
+  if (!isEmbedName(embedParam)) notFound();
+  const embed: EmbedName = embedParam;
+
+  return <EmbedProvider name={embed}>{children}</EmbedProvider>;
+}

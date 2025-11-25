@@ -2,6 +2,9 @@ import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 import rehypeSlug from "rehype-slug";
 
+const createNextIntlPlugin = require("next-intl/plugin");
+const withNextIntl = createNextIntlPlugin();
+
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
@@ -88,3 +91,5 @@ const withMDX = createMDX({
 });
 
 export default withMDX(nextConfig);
+
+module.exports = withNextIntl(withMDX(nextConfig));
