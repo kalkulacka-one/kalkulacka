@@ -103,6 +103,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
-
-module.exports = withNextIntl(withMDX(nextConfig));
+export default withNextIntl(withMDX(nextConfig));
