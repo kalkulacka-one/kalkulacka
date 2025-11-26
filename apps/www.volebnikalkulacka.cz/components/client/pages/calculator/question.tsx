@@ -3,7 +3,7 @@ import { useEffect, useReducer } from "react";
 
 import { QuestionPage as AppQuestionPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores";
-import { useAnswer, useCalculator, useQuestions } from "@/calculator/view-models/client";
+import { useAnswer, useAnswers, useCalculator, useQuestions } from "@/calculator/view-models/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
@@ -25,6 +25,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     }
   })();
   const question = questions[currentQuestion - 1];
+  const answers = useAnswers();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
   const setAnswer = useAnswersStore((state) => state.setAnswer);
@@ -88,13 +89,14 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
       <AppQuestionPage
         embedContext={embed}
         calculator={calculator}
-        question={question}
+        questions={{ questions, total }}
         number={currentQuestion}
         total={total}
         onPreviousClick={handlePreviousClick}
         onNextClick={handleNextClick}
         onCloseClick={handleCloseClick}
         answer={answer}
+        answers={answers}
       />
     </div>
   );
