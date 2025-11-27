@@ -6,8 +6,8 @@ import type { AnswerViewModel } from "@/calculator/view-models/server";
 
 import { QuestionNavigationCard } from "./question-navigation-card";
 
-vi.mock("@/i18n/hooks/useCalculatorTranslations", () => ({
-  useCalculatorTranslations: () => (key: string) => {
+vi.mock("next-intl", () => ({
+  useTranslations: () => (key: string) => {
     const translations: Record<string, string> = {
       "components.question-navigation-card.yes": "Ano",
       "components.question-navigation-card.no": "Ne",

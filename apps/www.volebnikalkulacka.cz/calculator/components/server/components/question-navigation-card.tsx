@@ -2,9 +2,9 @@ import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
+import { useTranslations } from "next-intl";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
-import { useCalculatorTranslations } from "@/i18n/hooks/useCalculatorTranslations";
 
 import { NavigationCard } from "./navigation-card";
 
@@ -22,7 +22,7 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
-  const t = useCalculatorTranslations("calculator");
+  const t = useTranslations("calculator");
   const previousButtonLabel = current === 1 ? t("components.question-navigation-card.guide") : t("components.question-navigation-card.previous");
   const nextButtonLabel = answer.answer?.answer !== undefined ? t("components.question-navigation-card.next") : t("components.question-navigation-card.skip");
 
