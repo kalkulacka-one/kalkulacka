@@ -1,16 +1,14 @@
 {
   "calculator": {
-    "pages": {
-      "question": {
-        "navigationCard": {
-          "yes": "Yes",
-          "no": "No",
-          "next": "Next",
-          "previous": "Previous",
-          "guide": "Guide",
-          "skip": "Skip",
-          "important": "Mark as important"
-        }
+    "components": {
+      "question-navigation-card": {
+        "yes": "Yes",
+        "no": "No",
+        "next": "Next",
+        "previous": "Previous",
+        "guide": "Guide",
+        "skip": "Skip",
+        "important": "Mark as important"
       }
     }
   }

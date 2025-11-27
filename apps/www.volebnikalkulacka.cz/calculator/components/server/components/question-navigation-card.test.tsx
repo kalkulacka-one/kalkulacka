@@ -9,13 +9,13 @@ import { QuestionNavigationCard } from "./question-navigation-card";
 vi.mock("@/i18n/hooks/useCalculatorTranslations", () => ({
   useCalculatorTranslations: () => (key: string) => {
     const translations: Record<string, string> = {
-      "pages.question.navigationCard.yes": "Ano",
-      "pages.question.navigationCard.no": "Ne",
-      "pages.question.navigationCard.previous": "Předchozí",
-      "pages.question.navigationCard.next": "Další",
-      "pages.question.navigationCard.guide": "Návod",
-      "pages.question.navigationCard.skip": "Přeskočit",
-      "pages.question.navigationCard.important": "Pro mě důležité",
+      "components.question-navigation-card.yes": "Ano",
+      "components.question-navigation-card.no": "Ne",
+      "components.question-navigation-card.previous": "Předchozí",
+      "components.question-navigation-card.next": "Další",
+      "components.question-navigation-card.guide": "Návod",
+      "components.question-navigation-card.skip": "Přeskočit",
+      "components.question-navigation-card.important": "Pro mě důležité",
     };
     return translations[key] || key;
   },

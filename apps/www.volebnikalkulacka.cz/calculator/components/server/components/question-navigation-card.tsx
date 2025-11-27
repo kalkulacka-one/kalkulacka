@@ -23,8 +23,8 @@ export type QuestionNavigationCard = {
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
   const t = useCalculatorTranslations("calculator");
-  const previousButtonLabel = current === 1 ? t("pages.question.navigationCard.guide") : t("pages.question.navigationCard.previous");
-  const nextButtonLabel = answer.answer?.answer !== undefined ? t("pages.question.navigationCard.next") : t("pages.question.navigationCard.skip");
+  const previousButtonLabel = current === 1 ? t("components.question-navigation-card.guide") : t("components.question-navigation-card.previous");
+  const nextButtonLabel = answer.answer?.answer !== undefined ? t("components.question-navigation-card.next") : t("components.question-navigation-card.skip");
 
   return (
     <NavigationCard>
@@ -59,17 +59,17 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
             variant="link"
             checked={answer.answer?.isImportant || false}
             onChange={(checked: boolean) => onImportantChange(checked)}
-            aria-label={t("pages.question.navigationCard.important")}
+            aria-label={t("components.question-navigation-card.important")}
           >
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             <Icon icon={logoCheck} decorative={true} />
-            {t("pages.question.navigationCard.yes")}
+            {t("components.question-navigation-card.yes")}
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             <Icon icon={logoCross} decorative={true} />
-            {t("pages.question.navigationCard.no")}
+            {t("components.question-navigation-card.no")}
           </ToggleButton>
         </div>
       </div>
