@@ -1,7 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
 
 import type { I18nParams } from "@/i18n/params";
 import { routing } from "@/i18n/routing";
@@ -9,7 +6,7 @@ import { routing } from "@/i18n/routing";
 import "./../../globals.css";
 
 import { EmbedContextProvider, ThemeProvider } from "../../../components/client";
-import { PlausibleScript } from "../../../components/server";
+import { I18nProvider, PlausibleScript } from "../../../components/server";
 import { allowCrawling } from "../../../lib/seo";
 
 export const metadata: Metadata = {
@@ -67,12 +64,6 @@ export function generateStaticParams() {
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: I18nParams }) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-  const messages = await getMessages({ locale });
-
-  setRequestLocale(locale);
 
   return (
     <html lang={locale}>
@@ -80,11 +71,11 @@ export default async function RootLayout({ children, params }: { children: React
         <PlausibleScript />
       </head>
       <body className="min-h-dvh bg-slate-50">
-        <NextIntlClientProvider messages={messages}>
+        <I18nProvider locale={locale}>
           <EmbedContextProvider isEmbed={false}>
             <ThemeProvider name="default">{children}</ThemeProvider>
           </EmbedContextProvider>
-        </NextIntlClientProvider>
+        </I18nProvider>
       </body>
     </html>
   );
