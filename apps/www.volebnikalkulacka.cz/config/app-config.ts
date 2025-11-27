@@ -9,8 +9,6 @@ export const appConfig: AppConfig = {
   },
 
   footer: {
-    showStatus: true,
     statusUrl: "https://status.volebnikalkulacka.cz",
-    showAnalytics: true,
   },
 };
