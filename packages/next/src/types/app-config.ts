@@ -3,7 +3,7 @@ export interface AppConfig {
 
   i18n: {
     defaultLocale: string;
-    locales: string[];
+    locales: readonly string[];
     localePrefix?: "always" | "as-needed" | "never";
   };
 
