@@ -6,16 +6,19 @@ import type { AnswerViewModel } from "@/calculator/view-models/server";
 
 import { QuestionNavigationCard } from "./question-navigation-card";
 
-vi.mock("@/i18n/hooks", () => ({
-  useQuestionNavigationCardTranslations: () => ({
-    agree: "Ano",
-    disagree: "Ne",
-    previous: "Předchozí",
-    next: "Další",
-    guide: "Návod",
-    skip: "Přeskočit",
-    important: "Pro mě důležité",
-  }),
+vi.mock("@/i18n/hooks/useCalculatorTranslations", () => ({
+  useCalculatorTranslations: () => (key: string) => {
+    const translations: Record<string, string> = {
+      "pages.question.navigationCard.yes": "Ano",
+      "pages.question.navigationCard.no": "Ne",
+      "pages.question.navigationCard.previous": "Předchozí",
+      "pages.question.navigationCard.next": "Další",
+      "pages.question.navigationCard.guide": "Návod",
+      "pages.question.navigationCard.skip": "Přeskočit",
+      "pages.question.navigationCard.important": "Pro mě důležité",
+    };
+    return translations[key] || key;
+  },
 }));
 
 describe("QuestionNavigationCard", () => {

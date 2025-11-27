@@ -4,7 +4,7 @@ import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
-import { useQuestionNavigationCardTranslations } from "@/i18n/hooks";
+import { useCalculatorTranslations } from "@/i18n/hooks/useCalculatorTranslations";
 
 import { NavigationCard } from "./navigation-card";
 
@@ -22,9 +22,9 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
-  const t = useQuestionNavigationCardTranslations();
-  const previousButtonLabel = current === 1 ? t.guide : t.previous;
-  const nextButtonLabel = answer.answer?.answer !== undefined ? t.next : t.skip;
+  const t = useCalculatorTranslations("calculator");
+  const previousButtonLabel = current === 1 ? t("pages.question.navigationCard.guide") : t("pages.question.navigationCard.previous");
+  const nextButtonLabel = answer.answer?.answer !== undefined ? t("pages.question.navigationCard.next") : t("pages.question.navigationCard.skip");
 
   return (
     <NavigationCard>
@@ -54,16 +54,22 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </div>
         </div>
         <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
-          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t.important}>
+          <ToggleButton
+            color="neutral"
+            variant="link"
+            checked={answer.answer?.isImportant || false}
+            onChange={(checked: boolean) => onImportantChange(checked)}
+            aria-label={t("pages.question.navigationCard.important")}
+          >
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             <Icon icon={logoCheck} decorative={true} />
-            {t.agree}
+            {t("pages.question.navigationCard.yes")}
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             <Icon icon={logoCross} decorative={true} />
-            {t.disagree}
+            {t("pages.question.navigationCard.no")}
           </ToggleButton>
         </div>
       </div>

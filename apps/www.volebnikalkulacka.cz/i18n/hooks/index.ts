@@ -1,1 +1,1 @@
-export * from "./question-navigation-card";
+export * from "./useCalculatorTranslations";
