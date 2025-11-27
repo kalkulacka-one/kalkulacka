@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         alt: "Volební kalkulačka - Sněmovní volby 2025",
       },
     ],
-    locale: `${appConfig.i18n.defaultLocale}_${appConfig.i18n.defaultLocale.toUpperCase()}`,
+    locale: "cs_CZ",
     type: "website",
   },
   twitter: {
