@@ -7,6 +7,8 @@ import "@/app/globals.css";
 
 import { EmbedContextProvider, ThemeProvider } from "@/components/client";
 import { I18nProvider, PlausibleScript } from "@/components/server";
+import { appConfig } from "@/config/app-config";
+import type { ThemeName } from "@/config/themes";
 import { allowCrawling } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -64,6 +66,7 @@ export function generateStaticParams() {
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: I18nParams }) {
   const { locale } = await params;
+  const defaultTheme = appConfig.theme.defaultTheme as ThemeName;
 
   return (
     <html lang={locale}>
@@ -73,7 +76,7 @@ export default async function RootLayout({ children, params }: { children: React
       <body className="min-h-dvh bg-slate-50">
         <I18nProvider locale={locale}>
           <EmbedContextProvider isEmbed={false}>
-            <ThemeProvider name="default">{children}</ThemeProvider>
+            <ThemeProvider name={defaultTheme}>{children}</ThemeProvider>
           </EmbedContextProvider>
         </I18nProvider>
       </body>

@@ -3,7 +3,14 @@ import { Icon, Logo } from "@kalkulacka-one/design-system/client";
 import { mdiInstagram } from "@mdi/js";
 import Link from "next/link";
 
+import { appConfig } from "@/config/app-config";
+
 export function Footer() {
+  const showStatus = appConfig.footer.showStatus;
+  const statusUrl = appConfig.footer.statusUrl;
+  const showAnalytics = appConfig.footer.showAnalytics;
+  const analyticsUrl = appConfig.footer.analyticsUrl ?? (process.env.ANALYTICS_DOMAIN ? `https://plausible.io/${process.env.ANALYTICS_DOMAIN}` : undefined);
+
   return (
     <footer className="bg-slate-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,12 +41,16 @@ export function Footer() {
             </div>
             <div />
             <div className="grid grid-flow-row gap-2">
-              <Link href="https://status.volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
-                Status
-              </Link>
-              <Link href="https://plausible.io/volebnikalkulacka.cz" target="_blank" className="text-sm text-slate-400 hover:text-white">
-                Statistiky
-              </Link>
+              {showStatus && statusUrl && (
+                <Link href={statusUrl} target="_blank" className="text-sm text-slate-400 hover:text-white">
+                  Status
+                </Link>
+              )}
+              {showAnalytics && analyticsUrl && (
+                <Link href={analyticsUrl} target="_blank" className="text-sm text-slate-400 hover:text-white">
+                  Statistiky
+                </Link>
+              )}
               <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
                 Soukromí
               </Link>
