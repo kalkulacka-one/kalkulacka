@@ -1,4 +1,4 @@
-import type messages from "@/messages/en.json";
+import type messages from "@/messages/cs.json";
 
 declare module "next-intl" {
   interface AppConfig {
