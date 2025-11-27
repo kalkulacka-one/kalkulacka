@@ -1,6 +1,9 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
@@ -8,6 +11,18 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   async rewrites() {
     return [
+      {
+        source: "/",
+        destination: "/cs",
+      },
+      {
+        source: "/embed/:path*",
+        destination: "/cs/embed/:path*",
+      },
+      {
+        source: "/volby/:path*",
+        destination: "/cs/volby/:path*",
+      },
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
@@ -20,6 +35,16 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/cs/embed/:path*",
+        destination: "/embed/:path*",
+        permanent: false,
+      },
+      {
+        source: "/cs/:path((?!embed).*)*",
+        destination: "/:path*",
+        permanent: false,
+      },
       {
         source: "/volby/snemovni-2025",
         destination: "/volby/snemovni-2025/kalkulacka",
@@ -87,4 +112,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default withNextIntl(withMDX(nextConfig));
