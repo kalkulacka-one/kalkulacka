@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
         destination: "/cs",
       },
       {
+        source: "/embed/:path*",
+        destination: "/cs/embed/:path*",
+      },
+      {
         source: "/volby/:path*",
         destination: "/cs/volby/:path*",
       },
@@ -32,7 +36,12 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/cs/:path*",
+        source: "/cs/embed/:path*",
+        destination: "/embed/:path*",
+        permanent: false,
+      },
+      {
+        source: "/cs/:path((?!embed).*)*",
         destination: "/:path*",
         permanent: false,
       },
