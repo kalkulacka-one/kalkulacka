@@ -66,7 +66,7 @@ export function generateStaticParams() {
 
 export default async function RootLayout({ children, params }: { children: React.ReactNode; params: I18nParams }) {
   const { locale } = await params;
-  const defaultTheme = (appConfig.theme?.defaultTheme ?? "default") as ThemeName;
+  const defaultTheme = appConfig.theme.defaultTheme as ThemeName;
 
   return (
     <html lang={locale}>

@@ -6,10 +6,10 @@ import Link from "next/link";
 import { appConfig } from "@/config/app-config";
 
 export function Footer() {
-  const showStatus = appConfig.footer?.showStatus ?? true;
-  const statusUrl = appConfig.footer?.statusUrl;
-  const showAnalytics = appConfig.footer?.showAnalytics ?? true;
-  const analyticsUrl = appConfig.footer?.analyticsUrl ?? (process.env.ANALYTICS_DOMAIN ? `https://plausible.io/${process.env.ANALYTICS_DOMAIN}` : undefined);
+  const showStatus = appConfig.footer.showStatus;
+  const statusUrl = appConfig.footer.statusUrl;
+  const showAnalytics = appConfig.footer.showAnalytics;
+  const analyticsUrl = appConfig.footer.analyticsUrl ?? (process.env.ANALYTICS_DOMAIN ? `https://plausible.io/${process.env.ANALYTICS_DOMAIN}` : undefined);
 
   return (
     <footer className="bg-slate-800 text-white">
