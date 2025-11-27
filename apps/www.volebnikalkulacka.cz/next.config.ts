@@ -10,7 +10,7 @@ const withNextIntl = createNextIntlPlugin();
 function getLocaleRewrites() {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
-  if (localePrefix === "as-needed" || localePrefix === undefined) {
+  if (localePrefix === "as-needed") {
     return [
       {
         source: "/",
@@ -33,7 +33,7 @@ function getLocaleRewrites() {
 function getLocaleRedirects() {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
-  if (localePrefix === "as-needed" || localePrefix === undefined) {
+  if (localePrefix === "as-needed") {
     return [
       {
         source: `/${defaultLocale}/embed/:path*`,

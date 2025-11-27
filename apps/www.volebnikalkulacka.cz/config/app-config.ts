@@ -1,6 +1,6 @@
-import type { AppConfig } from "@kalkulacka-one/next";
+import { withDefaults } from "@kalkulacka-one/next";
 
-export const appConfig: AppConfig = {
+export const appConfig = withDefaults({
   domainPath: "www.volebnikalkulacka.cz",
 
   i18n: {
@@ -11,4 +11,4 @@ export const appConfig: AppConfig = {
   footer: {
     statusUrl: "https://status.volebnikalkulacka.cz",
   },
-};
+});
