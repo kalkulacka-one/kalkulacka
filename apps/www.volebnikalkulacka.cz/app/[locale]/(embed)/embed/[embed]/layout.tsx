@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import "./../../../../globals.css";
+import "@/app/globals.css";
 
 import { EmbedProvider } from "@/components/client";
 import { I18nProvider, PlausibleScript } from "@/components/server";

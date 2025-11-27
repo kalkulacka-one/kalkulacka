@@ -3,11 +3,11 @@ import type { Metadata, Viewport } from "next";
 import type { I18nParams } from "@/i18n/params";
 import { routing } from "@/i18n/routing";
 
-import "./../../globals.css";
+import "@/app/globals.css";
 
-import { EmbedContextProvider, ThemeProvider } from "../../../components/client";
-import { I18nProvider, PlausibleScript } from "../../../components/server";
-import { allowCrawling } from "../../../lib/seo";
+import { EmbedContextProvider, ThemeProvider } from "@/components/client";
+import { I18nProvider, PlausibleScript } from "@/components/server";
+import { allowCrawling } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: {
