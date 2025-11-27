@@ -6,21 +6,6 @@ import type { AnswerViewModel } from "@/calculator/view-models/server";
 
 import { QuestionNavigationCard } from "./question-navigation-card";
 
-vi.mock("next-intl", () => ({
-  useTranslations: () => (key: string) => {
-    const translations: Record<string, string> = {
-      "components.question-navigation-card.yes": "Ano",
-      "components.question-navigation-card.no": "Ne",
-      "components.question-navigation-card.previous": "Předchozí",
-      "components.question-navigation-card.next": "Další",
-      "components.question-navigation-card.guide": "Návod",
-      "components.question-navigation-card.skip": "Přeskočit",
-      "components.question-navigation-card.important": "Pro mě důležité",
-    };
-    return translations[key] || key;
-  },
-}));
-
 describe("QuestionNavigationCard", () => {
   const mockAnswerWithResponse: AnswerViewModel = {
     answer: {
