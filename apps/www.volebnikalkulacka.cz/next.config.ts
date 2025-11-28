@@ -7,6 +7,85 @@ import { appConfig } from "./config/app-config";
 
 const withNextIntl = createNextIntlPlugin();
 
+/**
+ * Localized URL slugs mapping.
+ * Maps internal (English) route segment names to localized URL slugs.
+ */
+const SLUG_MAPPING = {
+  introduction: { cs: "uvod", en: "introduction" },
+  guide: { cs: "navod", en: "guide" },
+  question: { cs: "otazka", en: "question" },
+  review: { cs: "rekapitulace", en: "review" },
+  result: { cs: "vysledek", en: "result" },
+  comparison: { cs: "porovnani", en: "comparison" },
+} as const;
+
+/**
+ * Route patterns with their slug configurations.
+ * Each pattern defines the URL structure and which slugs have additional params.
+ */
+const ROUTE_PATTERNS = {
+  // Web routes
+  web1: { prefix: "/volby/:p1", hasId: ["result"] },
+  web2: { prefix: "/volby/:p1/:p2", hasId: ["result"] },
+  web3: { prefix: "/volby/:p1/:p2/:p3", hasId: ["result"] },
+  // Embed routes
+  embed1: { prefix: "/embed/:embed/:p1", hasId: [] as string[] },
+  embed2: { prefix: "/embed/:embed/:p1/:p2", hasId: [] as string[] },
+  embed3: { prefix: "/embed/:embed/:p1/:p2/:p3", hasId: [] as string[] },
+} as const;
+
+/**
+ * Generate Czech slug rewrites for a single route pattern.
+ * Maps Czech URLs to English filesystem routes.
+ */
+function generateCzechSlugRewrites(prefix: string, hasIdSlugs: readonly string[], defaultLocale: string) {
+  const rewrites: Array<{ source: string; destination: string }> = [];
+
+  for (const [slug, translations] of Object.entries(SLUG_MAPPING)) {
+    const czechSlug = translations.cs;
+    const englishSlug = slug;
+
+    // Base rewrite: /prefix/czechSlug → /locale/prefix/englishSlug
+    rewrites.push({
+      source: `${prefix}/${czechSlug}`,
+      destination: `/${defaultLocale}${prefix}/${englishSlug}`,
+    });
+
+    // Question has :num param
+    if (slug === "question") {
+      rewrites.push({
+        source: `${prefix}/${czechSlug}/:num`,
+        destination: `/${defaultLocale}${prefix}/${englishSlug}/:num`,
+      });
+    }
+
+    // Result can have :id param for public results
+    if (hasIdSlugs.includes(slug)) {
+      rewrites.push({
+        source: `${prefix}/${czechSlug}/:id`,
+        destination: `/${defaultLocale}${prefix}/${englishSlug}/:id`,
+      });
+    }
+  }
+
+  return rewrites;
+}
+
+/**
+ * Generate all Czech slug rewrites (Czech URLs → English routes).
+ */
+function getCzechSlugRewrites() {
+  const { defaultLocale } = appConfig.i18n;
+  const rewrites: Array<{ source: string; destination: string }> = [];
+
+  for (const pattern of Object.values(ROUTE_PATTERNS)) {
+    rewrites.push(...generateCzechSlugRewrites(pattern.prefix, pattern.hasId, defaultLocale));
+  }
+
+  return rewrites;
+}
+
 function getLocaleRewrites() {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
@@ -28,66 +107,6 @@ function getLocaleRewrites() {
   }
 
   return [];
-}
-
-function getCzechSlugRewrites() {
-  const { defaultLocale } = appConfig.i18n;
-
-  // Czech route slug rewrites (Czech URLs → English routes)
-  // These must come BEFORE the fallback locale rewrites to take precedence
-  return [
-    // Embed routes (one segment)
-    { source: "/embed/:embed/:p1/uvod", destination: `/${defaultLocale}/embed/:embed/:p1/introduction` },
-    { source: "/embed/:embed/:p1/navod", destination: `/${defaultLocale}/embed/:embed/:p1/guide` },
-    { source: "/embed/:embed/:p1/otazka", destination: `/${defaultLocale}/embed/:embed/:p1/question` },
-    { source: "/embed/:embed/:p1/otazka/:num", destination: `/${defaultLocale}/embed/:embed/:p1/question/:num` },
-    { source: "/embed/:embed/:p1/rekapitulace", destination: `/${defaultLocale}/embed/:embed/:p1/review` },
-    { source: "/embed/:embed/:p1/vysledek", destination: `/${defaultLocale}/embed/:embed/:p1/result` },
-    { source: "/embed/:embed/:p1/porovnani", destination: `/${defaultLocale}/embed/:embed/:p1/comparison` },
-    // Embed routes (two segments)
-    { source: "/embed/:embed/:p1/:p2/uvod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/introduction` },
-    { source: "/embed/:embed/:p1/:p2/navod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/guide` },
-    { source: "/embed/:embed/:p1/:p2/otazka", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/question` },
-    { source: "/embed/:embed/:p1/:p2/otazka/:num", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/question/:num` },
-    { source: "/embed/:embed/:p1/:p2/rekapitulace", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/review` },
-    { source: "/embed/:embed/:p1/:p2/vysledek", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/result` },
-    { source: "/embed/:embed/:p1/:p2/porovnani", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/comparison` },
-    // Embed routes (three segments)
-    { source: "/embed/:embed/:p1/:p2/:p3/uvod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/introduction` },
-    { source: "/embed/:embed/:p1/:p2/:p3/navod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/guide` },
-    { source: "/embed/:embed/:p1/:p2/:p3/otazka", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/question` },
-    { source: "/embed/:embed/:p1/:p2/:p3/otazka/:num", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/question/:num` },
-    { source: "/embed/:embed/:p1/:p2/:p3/rekapitulace", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/review` },
-    { source: "/embed/:embed/:p1/:p2/:p3/vysledek", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/result` },
-    { source: "/embed/:embed/:p1/:p2/:p3/porovnani", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/comparison` },
-    // Web routes (one segment)
-    { source: "/volby/:p1/uvod", destination: `/${defaultLocale}/volby/:p1/introduction` },
-    { source: "/volby/:p1/navod", destination: `/${defaultLocale}/volby/:p1/guide` },
-    { source: "/volby/:p1/otazka", destination: `/${defaultLocale}/volby/:p1/question` },
-    { source: "/volby/:p1/otazka/:num", destination: `/${defaultLocale}/volby/:p1/question/:num` },
-    { source: "/volby/:p1/rekapitulace", destination: `/${defaultLocale}/volby/:p1/review` },
-    { source: "/volby/:p1/vysledek", destination: `/${defaultLocale}/volby/:p1/result` },
-    { source: "/volby/:p1/vysledek/:id", destination: `/${defaultLocale}/volby/:p1/result/:id` },
-    { source: "/volby/:p1/porovnani", destination: `/${defaultLocale}/volby/:p1/comparison` },
-    // Web routes (two segments)
-    { source: "/volby/:p1/:p2/uvod", destination: `/${defaultLocale}/volby/:p1/:p2/introduction` },
-    { source: "/volby/:p1/:p2/navod", destination: `/${defaultLocale}/volby/:p1/:p2/guide` },
-    { source: "/volby/:p1/:p2/otazka", destination: `/${defaultLocale}/volby/:p1/:p2/question` },
-    { source: "/volby/:p1/:p2/otazka/:num", destination: `/${defaultLocale}/volby/:p1/:p2/question/:num` },
-    { source: "/volby/:p1/:p2/rekapitulace", destination: `/${defaultLocale}/volby/:p1/:p2/review` },
-    { source: "/volby/:p1/:p2/vysledek", destination: `/${defaultLocale}/volby/:p1/:p2/result` },
-    { source: "/volby/:p1/:p2/vysledek/:id", destination: `/${defaultLocale}/volby/:p1/:p2/result/:id` },
-    { source: "/volby/:p1/:p2/porovnani", destination: `/${defaultLocale}/volby/:p1/:p2/comparison` },
-    // Web routes (three segments)
-    { source: "/volby/:p1/:p2/:p3/uvod", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/introduction` },
-    { source: "/volby/:p1/:p2/:p3/navod", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/guide` },
-    { source: "/volby/:p1/:p2/:p3/otazka", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/question` },
-    { source: "/volby/:p1/:p2/:p3/otazka/:num", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/question/:num` },
-    { source: "/volby/:p1/:p2/:p3/rekapitulace", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/review` },
-    { source: "/volby/:p1/:p2/:p3/vysledek", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/result` },
-    { source: "/volby/:p1/:p2/:p3/vysledek/:id", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/result/:id` },
-    { source: "/volby/:p1/:p2/:p3/porovnani", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/comparison` },
-  ];
 }
 
 function getLocaleRedirects() {
@@ -112,64 +131,57 @@ function getLocaleRedirects() {
 }
 
 /**
- * Redirects from English slugs to Czech slugs.
- * This ensures that if someone visits /volby/.../introduction,
- * they get redirected to /volby/.../uvod (the canonical Czech URL).
+ * Generate rewrites that send English slug URLs to a non-existent path (404).
+ * This prevents English URLs from working on the Czech app.
  */
-function getEnglishToCzechRedirects() {
-  return [
-    // Web routes (one segment)
-    { source: "/volby/:p1/introduction", destination: "/volby/:p1/uvod", permanent: true },
-    { source: "/volby/:p1/guide", destination: "/volby/:p1/navod", permanent: true },
-    { source: "/volby/:p1/question", destination: "/volby/:p1/otazka", permanent: true },
-    { source: "/volby/:p1/question/:num", destination: "/volby/:p1/otazka/:num", permanent: true },
-    { source: "/volby/:p1/review", destination: "/volby/:p1/rekapitulace", permanent: true },
-    { source: "/volby/:p1/result", destination: "/volby/:p1/vysledek", permanent: true },
-    { source: "/volby/:p1/result/:id", destination: "/volby/:p1/vysledek/:id", permanent: true },
-    { source: "/volby/:p1/comparison", destination: "/volby/:p1/porovnani", permanent: true },
-    // Web routes (two segments)
-    { source: "/volby/:p1/:p2/introduction", destination: "/volby/:p1/:p2/uvod", permanent: true },
-    { source: "/volby/:p1/:p2/guide", destination: "/volby/:p1/:p2/navod", permanent: true },
-    { source: "/volby/:p1/:p2/question", destination: "/volby/:p1/:p2/otazka", permanent: true },
-    { source: "/volby/:p1/:p2/question/:num", destination: "/volby/:p1/:p2/otazka/:num", permanent: true },
-    { source: "/volby/:p1/:p2/review", destination: "/volby/:p1/:p2/rekapitulace", permanent: true },
-    { source: "/volby/:p1/:p2/result", destination: "/volby/:p1/:p2/vysledek", permanent: true },
-    { source: "/volby/:p1/:p2/result/:id", destination: "/volby/:p1/:p2/vysledek/:id", permanent: true },
-    { source: "/volby/:p1/:p2/comparison", destination: "/volby/:p1/:p2/porovnani", permanent: true },
-    // Web routes (three segments)
-    { source: "/volby/:p1/:p2/:p3/introduction", destination: "/volby/:p1/:p2/:p3/uvod", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/guide", destination: "/volby/:p1/:p2/:p3/navod", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/question", destination: "/volby/:p1/:p2/:p3/otazka", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/question/:num", destination: "/volby/:p1/:p2/:p3/otazka/:num", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/review", destination: "/volby/:p1/:p2/:p3/rekapitulace", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/result", destination: "/volby/:p1/:p2/:p3/vysledek", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/result/:id", destination: "/volby/:p1/:p2/:p3/vysledek/:id", permanent: true },
-    { source: "/volby/:p1/:p2/:p3/comparison", destination: "/volby/:p1/:p2/:p3/porovnani", permanent: true },
-    // Embed routes (one segment)
-    { source: "/embed/:embed/:p1/introduction", destination: "/embed/:embed/:p1/uvod", permanent: true },
-    { source: "/embed/:embed/:p1/guide", destination: "/embed/:embed/:p1/navod", permanent: true },
-    { source: "/embed/:embed/:p1/question", destination: "/embed/:embed/:p1/otazka", permanent: true },
-    { source: "/embed/:embed/:p1/question/:num", destination: "/embed/:embed/:p1/otazka/:num", permanent: true },
-    { source: "/embed/:embed/:p1/review", destination: "/embed/:embed/:p1/rekapitulace", permanent: true },
-    { source: "/embed/:embed/:p1/result", destination: "/embed/:embed/:p1/vysledek", permanent: true },
-    { source: "/embed/:embed/:p1/comparison", destination: "/embed/:embed/:p1/porovnani", permanent: true },
-    // Embed routes (two segments)
-    { source: "/embed/:embed/:p1/:p2/introduction", destination: "/embed/:embed/:p1/:p2/uvod", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/guide", destination: "/embed/:embed/:p1/:p2/navod", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/question", destination: "/embed/:embed/:p1/:p2/otazka", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/question/:num", destination: "/embed/:embed/:p1/:p2/otazka/:num", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/review", destination: "/embed/:embed/:p1/:p2/rekapitulace", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/result", destination: "/embed/:embed/:p1/:p2/vysledek", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/comparison", destination: "/embed/:embed/:p1/:p2/porovnani", permanent: true },
-    // Embed routes (three segments)
-    { source: "/embed/:embed/:p1/:p2/:p3/introduction", destination: "/embed/:embed/:p1/:p2/:p3/uvod", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/:p3/guide", destination: "/embed/:embed/:p1/:p2/:p3/navod", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/:p3/question", destination: "/embed/:embed/:p1/:p2/:p3/otazka", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/:p3/question/:num", destination: "/embed/:embed/:p1/:p2/:p3/otazka/:num", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/:p3/review", destination: "/embed/:embed/:p1/:p2/:p3/rekapitulace", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/:p3/result", destination: "/embed/:embed/:p1/:p2/:p3/vysledek", permanent: true },
-    { source: "/embed/:embed/:p1/:p2/:p3/comparison", destination: "/embed/:embed/:p1/:p2/:p3/porovnani", permanent: true },
-  ];
+function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly string[]) {
+  const rewrites: Array<{ source: string; destination: string }> = [];
+
+  for (const [slug, translations] of Object.entries(SLUG_MAPPING)) {
+    const englishSlug = translations.en;
+    const czechSlug = translations.cs;
+
+    // Skip if English and Czech slugs are the same (no need to block)
+    if (englishSlug === czechSlug) continue;
+
+    // Base rewrite: /prefix/englishSlug → /__404__
+    rewrites.push({
+      source: `${prefix}/${englishSlug}`,
+      destination: "/__invalid_route_404__",
+    });
+
+    // Question has :num param
+    if (slug === "question") {
+      rewrites.push({
+        source: `${prefix}/${englishSlug}/:num`,
+        destination: "/__invalid_route_404__",
+      });
+    }
+
+    // Result can have :id param
+    if (hasIdSlugs.includes(slug)) {
+      rewrites.push({
+        source: `${prefix}/${englishSlug}/:id`,
+        destination: "/__invalid_route_404__",
+      });
+    }
+  }
+
+  return rewrites;
+}
+
+/**
+ * Generate all English slug 404 rewrites.
+ * These must come BEFORE the fallback locale rewrites.
+ */
+function getEnglishSlug404Rewrites() {
+  const rewrites: Array<{ source: string; destination: string }> = [];
+
+  for (const pattern of Object.values(ROUTE_PATTERNS)) {
+    rewrites.push(...generateEnglishSlug404Rewrites(pattern.prefix, pattern.hasId));
+  }
+
+  return rewrites;
 }
 
 const nextConfig: NextConfig = {
@@ -178,7 +190,9 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   async rewrites() {
     return [
-      // Czech slug rewrites must come first (before fallback locale rewrites)
+      // English slug 404 rewrites (block English URLs) - must come first
+      ...getEnglishSlug404Rewrites(),
+      // Czech slug rewrites (Czech URLs → English routes)
       ...getCzechSlugRewrites(),
       // Fallback locale rewrites
       ...getLocaleRewrites(),
@@ -194,8 +208,6 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // English → Czech slug redirects (must come first)
-      ...getEnglishToCzechRedirects(),
       ...getLocaleRedirects(),
       {
         source: "/volby/snemovni-2025",
