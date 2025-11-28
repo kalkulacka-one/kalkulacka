@@ -1,3 +1,4 @@
+import { Guide, GuideNavigationCard, Layout } from "@kalkulacka-one/app/components/server/components";
 import type { CalculatorViewModel } from "@kalkulacka-one/app/view-models/server";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
@@ -6,7 +7,7 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { AppHeader } from "@/calculator/components/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "../components";
+import { EmbedFooter } from "../components";
 
 export type GuidePage = {
   embedContext: EmbedContextType;

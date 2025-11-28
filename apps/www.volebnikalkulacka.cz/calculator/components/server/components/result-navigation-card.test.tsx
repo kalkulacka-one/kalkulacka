@@ -1,8 +1,8 @@
+import { ResultNavigationCard } from "@kalkulacka-one/app/components/server/components";
+
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-
-import { ResultNavigationCard } from ".";
 
 describe("ResultNavigationCard", () => {
   it("renders both navigation buttons", () => {

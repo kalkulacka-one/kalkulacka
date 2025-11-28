@@ -1,9 +1,8 @@
+import { Guide } from "@kalkulacka-one/app/components/server/components";
 import { calculatorViewModel } from "@kalkulacka-one/app/view-models/server";
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { Guide } from ".";
 
 describe("Guide", () => {
   it("renders", () => {

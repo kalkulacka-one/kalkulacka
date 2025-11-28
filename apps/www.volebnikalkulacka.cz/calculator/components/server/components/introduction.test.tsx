@@ -1,10 +1,10 @@
+import { Introduction } from "@kalkulacka-one/app/components/server/components";
 import { calculatorViewModel } from "@kalkulacka-one/app/view-models/server";
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { Introduction } from ".";
 
 const data = calculatorViewModel({
   id: "00000000-0000-0000-0000-000000000000",

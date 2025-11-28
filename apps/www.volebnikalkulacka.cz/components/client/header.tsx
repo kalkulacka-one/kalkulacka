@@ -1,10 +1,12 @@
-import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
-import { Layout } from "@/calculator/components/server/components";
+import { WithCondenseOnScroll } from "@kalkulacka-one/app/components/client";
+import { Layout } from "@kalkulacka-one/app/components/server/components";
+
+import { AppHeader } from "@/calculator/components/client";
 
 export function Header() {
   return (
     <Layout.Header>
-      <WithCondenseOnScroll>{(condensed) => <AppHeader condensed={condensed} />}</WithCondenseOnScroll>
+      <WithCondenseOnScroll>{(condensed: boolean) => <AppHeader condensed={condensed} />}</WithCondenseOnScroll>
     </Layout.Header>
   );
 }

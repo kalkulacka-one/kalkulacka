@@ -1,7 +1,7 @@
+import { NavigationCard } from "@kalkulacka-one/app/components/server/components";
+
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { NavigationCard } from ".";
 
 describe("NavigationCard", () => {
   it("renders children", () => {

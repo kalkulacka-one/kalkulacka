@@ -1,10 +1,9 @@
+import { ReviewQuestionCard } from "@kalkulacka-one/app/components/server/components";
 import type { AnswerViewModel, QuestionViewModel } from "@kalkulacka-one/app/view-models/server";
 
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-import { ReviewQuestionCard } from ".";
 
 describe("ReviewQuestionCard", () => {
   const mockQuestion: QuestionViewModel = {
