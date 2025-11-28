@@ -4,7 +4,8 @@ import type { CandidatesAnswers } from "@kalkulacka-one/schema/schemas/candidate
 import type { ImageUrls } from "@kalkulacka-one/schema/schemas/images.schema";
 import type { Question } from "@kalkulacka-one/schema/schemas/question.schema";
 
-import { findImageByType, resolveImageUrls } from "../../data-fetching";
+import { findImageByType, resolveImageUrls } from "@/data-fetching";
+
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";
 

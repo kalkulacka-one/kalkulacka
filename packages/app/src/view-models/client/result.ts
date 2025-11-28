@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 
-import { calculateMatches } from "../../result-calculation";
-import { useAnswersStore, useCalculatorStore } from "../../stores";
-import { candidateViewModel } from "../server/candidate";
-import type { CandidateAnswer } from "../server/candidate-answer";
-import { candidatesAnswersViewModel } from "../server/candidate-answers";
-import { organizationViewModel } from "../server/organization";
-import { personViewModel } from "../server/person";
-import { type ResultViewModel, resultViewModel } from "../server/result";
+import { calculateMatches } from "@/result-calculation";
+import { useAnswersStore, useCalculatorStore } from "@/stores";
+import { candidateViewModel } from "@/view-models/server/candidate";
+import type { CandidateAnswer } from "@/view-models/server/candidate-answer";
+import { candidatesAnswersViewModel } from "@/view-models/server/candidate-answers";
+import { organizationViewModel } from "@/view-models/server/organization";
+import { personViewModel } from "@/view-models/server/person";
+import { type ResultViewModel, resultViewModel } from "@/view-models/server/result";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);

@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
-import { useAnswersStore, useCalculatorStore } from "../../stores";
-import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers } from "../server/candidate";
-import { organizationViewModel } from "../server/organization";
-import { personViewModel } from "../server/person";
+import { useAnswersStore, useCalculatorStore } from "@/stores";
+import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers } from "@/view-models/server/candidate";
+import { organizationViewModel } from "@/view-models/server/organization";
+import { personViewModel } from "@/view-models/server/person";
 
 export function useCandidate(id: string): CandidateViewModel | undefined {
   const candidates = useCalculatorStore((state) => state.data.candidates);

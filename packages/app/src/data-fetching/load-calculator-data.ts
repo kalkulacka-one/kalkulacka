@@ -7,7 +7,8 @@ import { type Questions, questionsSchema } from "@kalkulacka-one/schema/schemas/
 
 import type { z } from "zod";
 
-import { parseWithSchema } from "../utilities";
+import { parseWithSchema } from "@/utilities";
+
 import { fetchFile } from "./fetch-file";
 import { buildDataUrl } from "./url-builders";
 

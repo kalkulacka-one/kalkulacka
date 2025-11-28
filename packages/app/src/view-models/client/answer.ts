@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
-import { useAnswersStore } from "../../stores";
-import { type AnswerViewModel, answerViewModel } from "../server/answer";
+import { useAnswersStore } from "@/stores";
+import { type AnswerViewModel, answerViewModel } from "@/view-models/server/answer";
 
 export function useAnswer(questionId: string): AnswerViewModel {
   const setAnswer = useAnswersStore((state) => state.setAnswer);

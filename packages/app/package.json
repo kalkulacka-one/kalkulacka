@@ -54,7 +54,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "typecheck": "tsc --noEmit",
@@ -78,6 +78,7 @@
     "@testing-library/react": "^16.3.0",
     "@types/node": "^22.19.1",
     "@types/react": "^19.1.12",
+    "tsc-alias": "^1.8.16",
     "typescript": "^5.9.3"
   },
   "packageManager": "npm@11.5.2"
