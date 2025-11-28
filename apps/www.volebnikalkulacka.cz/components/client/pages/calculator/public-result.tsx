@@ -1,4 +1,4 @@
-import type { calculateMatches } from "@kalkulacka-one/app/calculation";
+import type { calculateMatches } from "@kalkulacka-one/app/result-calculation";
 import { useAnswersStore } from "@kalkulacka-one/app/stores";
 import { useCalculator, useResult } from "@kalkulacka-one/app/view-models/client";
 

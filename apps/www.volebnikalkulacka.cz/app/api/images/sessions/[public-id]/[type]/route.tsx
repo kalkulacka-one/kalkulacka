@@ -1,5 +1,5 @@
-import type { calculateMatches } from "@kalkulacka-one/app/calculation";
 import { loadCalculatorData } from "@kalkulacka-one/app/data-fetching";
+import type { calculateMatches } from "@kalkulacka-one/app/result-calculation";
 import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app/view-models/server";
 
 import { ImageResponse } from "next/og";

@@ -12,9 +12,9 @@
       "types": "./dist/stores/index.d.ts",
       "default": "./dist/stores/index.js"
     },
-    "./calculation": {
-      "types": "./dist/calculation/index.d.ts",
-      "default": "./dist/calculation/index.js"
+    "./result-calculation": {
+      "types": "./dist/result-calculation/index.d.ts",
+      "default": "./dist/result-calculation/index.js"
     },
     "./view-models": {
       "types": "./dist/view-models/index.d.ts",
