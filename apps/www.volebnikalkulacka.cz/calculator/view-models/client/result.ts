@@ -4,13 +4,17 @@ import { calculateMatches } from "@/calculator/result-calculation";
 import { useAnswersStore, useCalculatorStore } from "@/calculator/stores";
 import type { CandidateAnswer } from "@/calculator/view-models/server";
 import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "@/calculator/view-models/server";
+import { getRuntimeSessionId } from "@/lib/session/client";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);
   const allCandidatesData = useCalculatorStore((state) => state.data.candidates);
   const candidatesAnswersData = useCalculatorStore((state) => state.data.candidatesAnswers);
 
-  return useMemo(() => calculateMatches(answersData, allCandidatesData, candidatesAnswersData), [answersData, allCandidatesData, candidatesAnswersData]);
+  return useMemo(() => {
+    const sessionId = getRuntimeSessionId();
+    return calculateMatches(answersData, allCandidatesData, candidatesAnswersData, sessionId);
+  }, [answersData, allCandidatesData, candidatesAnswersData]);
 }
 
 export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>, options?: { showOnlyNested?: boolean }): ResultViewModel {

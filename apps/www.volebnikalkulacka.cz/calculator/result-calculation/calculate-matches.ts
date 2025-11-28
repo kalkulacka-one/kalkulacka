@@ -1,11 +1,12 @@
 import type { Answers } from "../../../../packages/schema/schemas/answers.schema";
 import type { Candidates } from "../../../../packages/schema/schemas/candidates.schema";
 import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
+import { stringHash } from "../utilities";
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
-export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers, useRandomTieBreaker: boolean = false) {
-  const finalResults = [];
+export function calculateMatches(userAnswers: Answers, candidates: Candidates, allCandidatesAnswers: CandidatesAnswers, tieBreakerSeed?: string, useRandomTieBreaker: boolean = false) {
+  const finalResults: Array<{ id: string; match: number | undefined }> = [];
 
   const allCandidatesAnswersId = Object.keys(allCandidatesAnswers);
   for (const candidate of candidates) {
@@ -65,6 +66,12 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
       });
     }
   }
+
+  const matchGroups = new Map<number | undefined, number>();
+  for (const result of finalResults) {
+    matchGroups.set(result.match, (matchGroups.get(result.match) || 0) + 1);
+  }
+
   return finalResults.sort((a, b) => {
     // Handle potentially undefined matches
     const bMatch = b.match ?? -1;
@@ -73,7 +80,24 @@ export function calculateMatches(userAnswers: Answers, candidates: Candidates, a
     if (bMatch !== aMatch) {
       return bMatch - aMatch;
     }
-    // Tie-breaker: random if enabled, otherwise deterministic by ID
-    return useRandomTieBreaker ? Math.random() - 0.5 : a.id.localeCompare(b.id);
+
+    if (useRandomTieBreaker) {
+      return Math.random() - 0.5;
+    }
+
+    if (tieBreakerSeed) {
+      const candidatesWithSameScore = matchGroups.get(a.match) || 0;
+
+      if (candidatesWithSameScore > 1) {
+        const HASH_MODULUS = 1000000007;
+
+        const aSortKey = (stringHash(a.id) * stringHash(tieBreakerSeed)) % HASH_MODULUS;
+        const bSortKey = (stringHash(b.id) * stringHash(tieBreakerSeed)) % HASH_MODULUS;
+
+        return bSortKey - aSortKey;
+      }
+    }
+
+    return a.id.localeCompare(b.id);
   });
 }
