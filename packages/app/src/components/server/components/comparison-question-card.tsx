@@ -1,5 +1,6 @@
-import type { QuestionViewModel } from "@kalkulacka-one/app/view-models/server";
 import { Card } from "@kalkulacka-one/design-system/server";
+
+import type { QuestionViewModel } from "../../../view-models/server";
 
 export type ComparisonQuestionCard = {
   question: QuestionViewModel;
