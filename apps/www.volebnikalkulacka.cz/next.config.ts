@@ -4,21 +4,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
 import { appConfig } from "./config/app-config";
+import { LOCALIZED_SLUGS, type PageType } from "./lib/routing/route-builders";
 
 const withNextIntl = createNextIntlPlugin();
-
-/**
- * Localized URL slugs mapping.
- * Maps internal (English) route segment names to localized URL slugs.
- */
-const SLUG_MAPPING = {
-  introduction: { cs: "uvod", en: "introduction" },
-  guide: { cs: "navod", en: "guide" },
-  question: { cs: "otazka", en: "question" },
-  review: { cs: "rekapitulace", en: "review" },
-  result: { cs: "vysledek", en: "result" },
-  comparison: { cs: "porovnani", en: "comparison" },
-} as const;
 
 /**
  * Route patterns with their slug configurations.
@@ -36,35 +24,39 @@ const ROUTE_PATTERNS = {
 } as const;
 
 /**
- * Generate Czech slug rewrites for a single route pattern.
- * Maps Czech URLs to English filesystem routes.
+ * Generate localized slug rewrites for a single route pattern.
+ * Maps localized URLs to English filesystem routes.
  */
-function generateCzechSlugRewrites(prefix: string, hasIdSlugs: readonly string[], defaultLocale: string) {
+function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: string, hasIdSlugs: readonly string[]) {
   const rewrites: Array<{ source: string; destination: string }> = [];
 
-  for (const [slug, translations] of Object.entries(SLUG_MAPPING)) {
-    const czechSlug = translations.cs;
-    const englishSlug = slug;
+  const fromSlugs = LOCALIZED_SLUGS[fromLocale];
+  if (!fromSlugs) {
+    throw new Error(`Locale '${fromLocale}' not found in LOCALIZED_SLUGS`);
+  }
 
-    // Base rewrite: /prefix/czechSlug → /locale/prefix/englishSlug
+  for (const [pageType, localizedSlug] of Object.entries(fromSlugs)) {
+    const filesystemSlug = pageType as PageType; // English filesystem route
+
+    // Base rewrite: /prefix/localizedSlug → /toLocale/prefix/filesystemSlug
     rewrites.push({
-      source: `${prefix}/${czechSlug}`,
-      destination: `/${defaultLocale}${prefix}/${englishSlug}`,
+      source: `${prefix}/${localizedSlug}`,
+      destination: `/${toLocale}${prefix}/${filesystemSlug}`,
     });
 
     // Question has :num param
-    if (slug === "question") {
+    if (pageType === "question") {
       rewrites.push({
-        source: `${prefix}/${czechSlug}/:num`,
-        destination: `/${defaultLocale}${prefix}/${englishSlug}/:num`,
+        source: `${prefix}/${localizedSlug}/:num`,
+        destination: `/${toLocale}${prefix}/${filesystemSlug}/:num`,
       });
     }
 
     // Result can have :id param for public results
-    if (hasIdSlugs.includes(slug)) {
+    if (hasIdSlugs.includes(pageType)) {
       rewrites.push({
-        source: `${prefix}/${czechSlug}/:id`,
-        destination: `/${defaultLocale}${prefix}/${englishSlug}/:id`,
+        source: `${prefix}/${localizedSlug}/:id`,
+        destination: `/${toLocale}${prefix}/${filesystemSlug}/:id`,
       });
     }
   }
@@ -73,14 +65,14 @@ function generateCzechSlugRewrites(prefix: string, hasIdSlugs: readonly string[]
 }
 
 /**
- * Generate all Czech slug rewrites (Czech URLs → English routes).
+ * Generate slug rewrites for a specific locale (localized URLs → English routes).
  */
-function getCzechSlugRewrites() {
+function getSlugRewrites(fromLocale: string) {
   const { defaultLocale } = appConfig.i18n;
   const rewrites: Array<{ source: string; destination: string }> = [];
 
   for (const pattern of Object.values(ROUTE_PATTERNS)) {
-    rewrites.push(...generateCzechSlugRewrites(pattern.prefix, pattern.hasId, defaultLocale));
+    rewrites.push(...generateSlugRewrites(fromLocale, defaultLocale, pattern.prefix, pattern.hasId));
   }
 
   return rewrites;
@@ -136,10 +128,17 @@ function getLocaleRedirects() {
  */
 function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly string[]) {
   const rewrites: Array<{ source: string; destination: string }> = [];
+  const { defaultLocale } = appConfig.i18n;
 
-  for (const [slug, translations] of Object.entries(SLUG_MAPPING)) {
-    const englishSlug = translations.en;
-    const czechSlug = translations.cs;
+  const englishSlugs = LOCALIZED_SLUGS.en;
+  const czechSlugs = LOCALIZED_SLUGS[defaultLocale];
+
+  if (!englishSlugs || !czechSlugs) {
+    return rewrites;
+  }
+
+  for (const [pageType, englishSlug] of Object.entries(englishSlugs)) {
+    const czechSlug = czechSlugs[pageType as PageType];
 
     // Skip if English and Czech slugs are the same (no need to block)
     if (englishSlug === czechSlug) continue;
@@ -151,7 +150,7 @@ function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly str
     });
 
     // Question has :num param
-    if (slug === "question") {
+    if (pageType === "question") {
       rewrites.push({
         source: `${prefix}/${englishSlug}/:num`,
         destination: "/__invalid_route_404__",
@@ -159,7 +158,7 @@ function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly str
     }
 
     // Result can have :id param
-    if (hasIdSlugs.includes(slug)) {
+    if (hasIdSlugs.includes(pageType)) {
       rewrites.push({
         source: `${prefix}/${englishSlug}/:id`,
         destination: "/__invalid_route_404__",
@@ -189,11 +188,12 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
+    const { defaultLocale } = appConfig.i18n;
     return [
       // English slug 404 rewrites (block English URLs) - must come first
       ...getEnglishSlug404Rewrites(),
       // Czech slug rewrites (Czech URLs → English routes)
-      ...getCzechSlugRewrites(),
+      ...getSlugRewrites(defaultLocale),
       // Fallback locale rewrites
       ...getLocaleRewrites(),
       {
