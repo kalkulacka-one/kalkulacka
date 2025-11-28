@@ -4,7 +4,7 @@ import type { CandidateViewModel } from "@kalkulacka-one/app/view-models/server"
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { MatchCard } from "./match-card";
+import { MatchCard } from ".";
 
 describe("MatchCard", () => {
   const mockCandidate: CandidateViewModel = {

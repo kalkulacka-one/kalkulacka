@@ -1,14 +1,6 @@
-export * from "./comparison-question-card";
+// Re-export from package
+export * from "@kalkulacka-one/app/components/server/components";
+
+// Local exports (not in package)
 export * from "./embed-attribution";
 export * from "./embed-footer";
-export * from "./guide";
-export * from "./guide-navigation-card";
-export * from "./introduction";
-export * from "./introduction-navigation-card";
-export * from "./layout";
-export * from "./navigation-card";
-export * from "./public-result-navigation-card";
-export * from "./question-card";
-export * from "./question-navigation-card";
-export * from "./review-navigation-card";
-export * from "./review-question-card";

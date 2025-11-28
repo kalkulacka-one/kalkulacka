@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import type { Question } from "../../../../../../packages/schema/schemas/question.schema";
-import { QuestionCard } from "./question-card";
+import { QuestionCard } from ".";
 
 describe("QuestionCard", () => {
   const mockQuestion: Question = {

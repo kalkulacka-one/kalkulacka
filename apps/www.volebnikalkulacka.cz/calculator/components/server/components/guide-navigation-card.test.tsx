@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { GuideNavigationCard } from "./guide-navigation-card";
+import { GuideNavigationCard } from ".";
 
 describe("GuideNavigationCard", () => {
   it("renders 'Začít odpovídat' button", () => {
