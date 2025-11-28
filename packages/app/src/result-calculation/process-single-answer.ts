@@ -1,5 +1,4 @@
-import type { Answer } from "@kalkulacka-one/schema/schemas/answer.schema";
-
+import type { Answer } from "../../../schema/schemas/answer.schema";
 import { booleanAnswerToNumber } from "./boolean-answer-to-number";
 import { calculateBaseScore } from "./calculate-base-score";
 

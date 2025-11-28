@@ -1,14 +1,13 @@
-import { type Calculator, calculatorSchema } from "@kalkulacka-one/schema/schemas/calculator.schema";
-import { type Candidates, candidatesSchema } from "@kalkulacka-one/schema/schemas/candidates.schema";
-import { type CandidatesAnswers, candidatesAnswers } from "@kalkulacka-one/schema/schemas/candidates-answers.schema";
-import { type Organizations, organizationsSchema } from "@kalkulacka-one/schema/schemas/organizations.schema";
-import { type Persons, personsSchema } from "@kalkulacka-one/schema/schemas/persons.schema";
-import { type Questions, questionsSchema } from "@kalkulacka-one/schema/schemas/questions.schema";
-
 import type { z } from "zod";
 
 import { parseWithSchema } from "@/utilities";
 
+import { type Calculator, calculatorSchema } from "../../../schema/schemas/calculator.schema";
+import { type Candidates, candidatesSchema } from "../../../schema/schemas/candidates.schema";
+import { type CandidatesAnswers, candidatesAnswers } from "../../../schema/schemas/candidates-answers.schema";
+import { type Organizations, organizationsSchema } from "../../../schema/schemas/organizations.schema";
+import { type Persons, personsSchema } from "../../../schema/schemas/persons.schema";
+import { type Questions, questionsSchema } from "../../../schema/schemas/questions.schema";
 import { fetchFile } from "./fetch-file";
 import { buildDataUrl } from "./url-builders";
 

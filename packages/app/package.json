@@ -5,56 +5,56 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "types": "./dist/app/src/index.d.ts",
+      "default": "./dist/app/src/index.js"
     },
     "./stores": {
-      "types": "./dist/stores/index.d.ts",
-      "default": "./dist/stores/index.js"
+      "types": "./dist/app/src/stores/index.d.ts",
+      "default": "./dist/app/src/stores/index.js"
     },
     "./result-calculation": {
-      "types": "./dist/result-calculation/index.d.ts",
-      "default": "./dist/result-calculation/index.js"
+      "types": "./dist/app/src/result-calculation/index.d.ts",
+      "default": "./dist/app/src/result-calculation/index.js"
     },
     "./view-models": {
-      "types": "./dist/view-models/index.d.ts",
-      "default": "./dist/view-models/index.js"
+      "types": "./dist/app/src/view-models/index.d.ts",
+      "default": "./dist/app/src/view-models/index.js"
     },
     "./view-models/server": {
-      "types": "./dist/view-models/server/index.d.ts",
-      "default": "./dist/view-models/server/index.js"
+      "types": "./dist/app/src/view-models/server/index.d.ts",
+      "default": "./dist/app/src/view-models/server/index.js"
     },
     "./view-models/client": {
-      "types": "./dist/view-models/client/index.d.ts",
-      "default": "./dist/view-models/client/index.js"
+      "types": "./dist/app/src/view-models/client/index.d.ts",
+      "default": "./dist/app/src/view-models/client/index.js"
     },
     "./data-fetching": {
-      "types": "./dist/data-fetching/index.d.ts",
-      "default": "./dist/data-fetching/index.js"
+      "types": "./dist/app/src/data-fetching/index.d.ts",
+      "default": "./dist/app/src/data-fetching/index.js"
     },
     "./utilities": {
-      "types": "./dist/utilities/index.d.ts",
-      "default": "./dist/utilities/index.js"
+      "types": "./dist/app/src/utilities/index.d.ts",
+      "default": "./dist/app/src/utilities/index.js"
     },
     "./components": {
-      "types": "./dist/components/index.d.ts",
-      "default": "./dist/components/index.js"
+      "types": "./dist/app/src/components/index.d.ts",
+      "default": "./dist/app/src/components/index.js"
     },
     "./components/client": {
-      "types": "./dist/components/client/index.d.ts",
-      "default": "./dist/components/client/index.js"
+      "types": "./dist/app/src/components/client/index.d.ts",
+      "default": "./dist/app/src/components/client/index.js"
     },
     "./components/server": {
-      "types": "./dist/components/server/index.d.ts",
-      "default": "./dist/components/server/index.js"
+      "types": "./dist/app/src/components/server/index.d.ts",
+      "default": "./dist/app/src/components/server/index.js"
     },
     "./components/server/components": {
-      "types": "./dist/components/server/components/index.d.ts",
-      "default": "./dist/components/server/components/index.js"
+      "types": "./dist/app/src/components/server/components/index.d.ts",
+      "default": "./dist/app/src/components/server/components/index.js"
     }
   },
   "scripts": {
-    "build": "tsc && tsc-alias",
+    "build": "tsc && tsc-alias --outDir dist/app/src",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "typecheck": "tsc --noEmit",

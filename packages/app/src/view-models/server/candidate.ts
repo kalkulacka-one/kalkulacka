@@ -1,11 +1,10 @@
-import type { Answer } from "@kalkulacka-one/schema/schemas/answer.schema";
-import type { Candidate } from "@kalkulacka-one/schema/schemas/candidate.schema";
-import type { CandidatesAnswers } from "@kalkulacka-one/schema/schemas/candidates-answers.schema";
-import type { ImageUrls } from "@kalkulacka-one/schema/schemas/images.schema";
-import type { Question } from "@kalkulacka-one/schema/schemas/question.schema";
-
 import { findImageByType, resolveImageUrls } from "@/data-fetching";
 
+import type { Answer } from "../../../../schema/schemas/answer.schema";
+import type { Candidate } from "../../../../schema/schemas/candidate.schema";
+import type { CandidatesAnswers } from "../../../../schema/schemas/candidates-answers.schema";
+import type { ImageUrls } from "../../../../schema/schemas/images.schema";
+import type { Question } from "../../../../schema/schemas/question.schema";
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";
 
