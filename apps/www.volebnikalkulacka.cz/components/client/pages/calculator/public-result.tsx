@@ -1,10 +1,11 @@
+import type { calculateMatches } from "@kalkulacka-one/app/calculation";
+import { useAnswersStore } from "@kalkulacka-one/app/stores";
+import { useCalculator, useResult } from "@kalkulacka-one/app/view-models/client";
+
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { PublicResultPage as AppPublicResultPage } from "@/calculator/components/server";
-import type { calculateMatches } from "@/calculator/result-calculation";
-import { useAnswersStore } from "@/calculator/stores";
-import { useCalculator, useResult } from "@/calculator/view-models/client";
 import { type RouteSegments, routes } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";

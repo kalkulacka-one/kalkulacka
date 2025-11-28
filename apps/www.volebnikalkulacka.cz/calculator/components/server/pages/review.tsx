@@ -1,9 +1,9 @@
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app/view-models/server";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 import { EmbedFooter, Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";

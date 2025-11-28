@@ -1,9 +1,10 @@
+import { useAnswersStore } from "@kalkulacka-one/app/stores";
+import { useAnswer, useCalculator, useQuestions } from "@kalkulacka-one/app/view-models/client";
+
 import { notFound, usePathname, useRouter } from "next/navigation";
 import { useEffect, useReducer } from "react";
 
 import { QuestionPage as AppQuestionPage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useAnswer, useCalculator, useQuestions } from "@/calculator/view-models/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";

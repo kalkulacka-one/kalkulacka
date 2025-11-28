@@ -1,10 +1,9 @@
+import { useCandidateAnswerComparison, useHasDirectAnswers } from "@kalkulacka-one/app/view-models/client";
+import type { CandidateMatchViewModel } from "@kalkulacka-one/app/view-models/server";
 import { ExpandableCard } from "@kalkulacka-one/design-system/client";
 import { Avatar, ProgressBar } from "@kalkulacka-one/design-system/server";
 
 import React, { useState } from "react";
-
-import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/calculator/view-models/client/candidate";
-import type { CandidateMatchViewModel } from "@/calculator/view-models/server";
 
 export type MatchCard = CandidateMatchViewModel;
 

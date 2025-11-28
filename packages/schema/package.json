@@ -11,7 +11,7 @@
   },
   "exports": {
     ".": "./index.js",
-    "./*": "./schemas/**/*.{schema.ts,schema.json,md}"
+    "./schemas/*.schema": "./schemas/*.schema.ts"
   },
   "packageManager": "npm@11.5.2"
 }

@@ -1,10 +1,9 @@
+import type { AnswerViewModel, QuestionViewModel } from "@kalkulacka-one/app/view-models/server";
 import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { Card } from "@kalkulacka-one/design-system/server";
 
 import { mdiStar, mdiStarOutline } from "@mdi/js";
-
-import type { AnswerViewModel, QuestionViewModel } from "@/calculator/view-models/server";
 
 export type ReviewQuestionCard = {
   question: QuestionViewModel;

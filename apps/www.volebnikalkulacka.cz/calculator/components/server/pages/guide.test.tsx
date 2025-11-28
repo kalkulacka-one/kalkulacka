@@ -1,7 +1,7 @@
+import { calculatorViewModel } from "@kalkulacka-one/app/view-models/server";
+
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-
-import { calculatorViewModel } from "@/calculator/view-models/server";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
 import { Guide, GuideNavigationCard, Introduction } from "../components";
