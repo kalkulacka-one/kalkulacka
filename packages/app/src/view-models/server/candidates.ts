@@ -1,4 +1,5 @@
-import type { Candidate } from "../../../../schema/schemas/candidate.schema";
+import type { Candidate } from "@kalkulacka-one/schema/schemas/candidate.schema";
+
 import { type CandidateViewModel, candidateViewModel } from "./candidate";
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";

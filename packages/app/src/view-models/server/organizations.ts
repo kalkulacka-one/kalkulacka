@@ -1,4 +1,5 @@
-import type { Organization } from "../../../../schema/schemas/organization.schema";
+import type { Organization } from "@kalkulacka-one/schema/schemas/organization.schema";
+
 import { type OrganizationViewModel, organizationViewModel } from "./organization";
 
 export function organizationsViewModel(organizations: Organization[] | undefined, baseUrl: string): OrganizationViewModel[] {

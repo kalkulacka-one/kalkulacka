@@ -1,6 +1,7 @@
-import type { Answers } from "../../../schema/schemas/answers.schema";
-import type { Candidates } from "../../../schema/schemas/candidates.schema";
-import type { CandidatesAnswers } from "../../../schema/schemas/candidates-answers.schema";
+import type { Answers } from "@kalkulacka-one/schema/schemas/answers.schema";
+import type { Candidates } from "@kalkulacka-one/schema/schemas/candidates.schema";
+import type { CandidatesAnswers } from "@kalkulacka-one/schema/schemas/candidates-answers.schema";
+
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
