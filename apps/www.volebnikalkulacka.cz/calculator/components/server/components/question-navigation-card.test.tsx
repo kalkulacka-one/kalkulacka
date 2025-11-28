@@ -1,10 +1,9 @@
+import { QuestionNavigationCard } from "@kalkulacka-one/app/components/server/components";
+import type { AnswerViewModel } from "@kalkulacka-one/app/view-models/server";
+
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-import type { AnswerViewModel } from "@/calculator/view-models/server";
-
-import { QuestionNavigationCard } from "./question-navigation-card";
 
 describe("QuestionNavigationCard", () => {
   const mockAnswerWithResponse: AnswerViewModel = {

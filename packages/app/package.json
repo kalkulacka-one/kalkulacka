@@ -1,0 +1,85 @@
+{
+  "name": "@kalkulacka-one/app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/app/src/index.d.ts",
+      "default": "./dist/app/src/index.js"
+    },
+    "./stores": {
+      "types": "./dist/app/src/stores/index.d.ts",
+      "default": "./dist/app/src/stores/index.js"
+    },
+    "./result-calculation": {
+      "types": "./dist/app/src/result-calculation/index.d.ts",
+      "default": "./dist/app/src/result-calculation/index.js"
+    },
+    "./view-models": {
+      "types": "./dist/app/src/view-models/index.d.ts",
+      "default": "./dist/app/src/view-models/index.js"
+    },
+    "./view-models/server": {
+      "types": "./dist/app/src/view-models/server/index.d.ts",
+      "default": "./dist/app/src/view-models/server/index.js"
+    },
+    "./view-models/client": {
+      "types": "./dist/app/src/view-models/client/index.d.ts",
+      "default": "./dist/app/src/view-models/client/index.js"
+    },
+    "./data-fetching": {
+      "types": "./dist/app/src/data-fetching/index.d.ts",
+      "default": "./dist/app/src/data-fetching/index.js"
+    },
+    "./utilities": {
+      "types": "./dist/app/src/utilities/index.d.ts",
+      "default": "./dist/app/src/utilities/index.js"
+    },
+    "./components": {
+      "types": "./dist/app/src/components/index.d.ts",
+      "default": "./dist/app/src/components/index.js"
+    },
+    "./components/client": {
+      "types": "./dist/app/src/components/client/index.d.ts",
+      "default": "./dist/app/src/components/client/index.js"
+    },
+    "./components/server": {
+      "types": "./dist/app/src/components/server/index.d.ts",
+      "default": "./dist/app/src/components/server/index.js"
+    },
+    "./components/server/components": {
+      "types": "./dist/app/src/components/server/components/index.d.ts",
+      "default": "./dist/app/src/components/server/components/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc && tsc-alias --outDir dist/app/src",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u"
+  },
+  "dependencies": {
+    "@kalkulacka-one/design-system": "*",
+    "@kalkulacka-one/schema": "*",
+    "@mdi/js": "^7.4.47",
+    "next-intl": "^4.1.0",
+    "react": "^19.1.1",
+    "zod": "^3.22.3",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@kalkulacka-one/typescript-config": "*",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.1.12",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "npm@11.5.2"
+}

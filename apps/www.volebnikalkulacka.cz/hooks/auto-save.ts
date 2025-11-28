@@ -1,8 +1,9 @@
+import type { calculateMatches } from "@kalkulacka-one/app/result-calculation";
+import { AnswersStoreContext } from "@kalkulacka-one/app/stores";
+import { useCalculator } from "@kalkulacka-one/app/view-models/client";
+
 import { useContext, useEffect, useRef } from "react";
 
-import type { calculateMatches } from "@/calculator/result-calculation";
-import { AnswersStoreContext } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models/client";
 import { saveSessionDataWithBeacon } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 

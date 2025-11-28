@@ -1,9 +1,8 @@
+import { ComparisonQuestionCard } from "@kalkulacka-one/app/components/server/components";
+import type { QuestionViewModel } from "@kalkulacka-one/app/view-models/server";
+
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import type { QuestionViewModel } from "@/calculator/view-models/server";
-
-import { ComparisonQuestionCard } from "./comparison-question-card";
 
 describe("ComparisonQuestionCard", () => {
   const mockQuestion: QuestionViewModel = {

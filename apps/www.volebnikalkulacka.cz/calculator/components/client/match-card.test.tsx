@@ -1,10 +1,9 @@
+import { MatchCard } from "@kalkulacka-one/app/components/client";
+import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@kalkulacka-one/app/stores";
+import type { CandidateViewModel } from "@kalkulacka-one/app/view-models/server";
+
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/calculator/stores";
-import type { CandidateViewModel } from "@/calculator/view-models/server";
-
-import { MatchCard } from "./match-card";
 
 describe("MatchCard", () => {
   const mockCandidate: CandidateViewModel = {

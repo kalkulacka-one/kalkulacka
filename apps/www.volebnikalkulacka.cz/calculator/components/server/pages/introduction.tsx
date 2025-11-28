@@ -1,12 +1,13 @@
+import { Introduction, IntroductionNavigationCard, Layout } from "@kalkulacka-one/app/components/server/components";
+import type { CalculatorViewModel } from "@kalkulacka-one/app/view-models/server";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 
 import { AppHeader } from "@/calculator/components/client";
-import type { CalculatorViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Introduction, IntroductionNavigationCard, Layout } from "../components";
+import { EmbedFooter } from "../components";
 
 export type IntroductionPage = {
   embedContext: EmbedContextType;

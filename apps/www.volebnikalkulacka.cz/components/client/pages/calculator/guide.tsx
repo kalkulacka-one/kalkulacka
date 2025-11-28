@@ -1,8 +1,9 @@
+import { useAnswersStore } from "@kalkulacka-one/app/stores";
+import { useCalculator } from "@kalkulacka-one/app/view-models/client";
+
 import { useRouter } from "next/navigation";
 
 import { GuidePage as AppGuidePage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
