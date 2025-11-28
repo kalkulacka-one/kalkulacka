@@ -40,6 +40,20 @@ export const LOCALIZED_SLUGS: Record<string, Record<PageType, string>> = {
 };
 
 /**
+ * English slugs that should be blocked on the Czech app.
+ * If a URL contains any of these, it should 404.
+ */
+export const BLOCKED_ENGLISH_SLUGS = new Set(["introduction", "guide", "question", "review", "result", "comparison"]);
+
+/**
+ * Check if a path segment is a blocked English slug.
+ * Use this in pages to return notFound() for English URLs.
+ */
+export function isBlockedEnglishSlug(segment: string): boolean {
+  return BLOCKED_ENGLISH_SLUGS.has(segment);
+}
+
+/**
  * Get the localized URL slug for a page type.
  * Falls back to English if locale is not found.
  */
