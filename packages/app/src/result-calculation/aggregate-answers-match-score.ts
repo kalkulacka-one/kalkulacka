@@ -1,5 +1,4 @@
-import type { Answers } from "@kalkulacka-one/schema/schemas/answers.schema";
-
+import type { Answers } from "../../../schema/schemas/answers.schema";
 import { processSingleAnswer } from "./process-single-answer";
 
 export function aggregateAnswersMatchScore(userAnswers: Answers, candidateAnswers: Answers) {

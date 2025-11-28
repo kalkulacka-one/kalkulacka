@@ -2,11 +2,11 @@
   "extends": "@kalkulacka-one/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "./src",
+    "rootDir": "..",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "../schema/schemas"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }
