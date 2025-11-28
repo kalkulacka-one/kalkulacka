@@ -6,12 +6,12 @@ export type RouteSegments = {
 };
 
 export const ROUTE_SEGMENTS = {
-  INTRODUCTION: "uvod",
-  GUIDE: "navod",
-  QUESTION: "otazka",
-  REVIEW: "rekapitulace",
-  RESULT: "vysledek",
-  COMPARISON: "porovnani",
+  INTRODUCTION: "introduction",
+  GUIDE: "guide",
+  QUESTION: "question",
+  REVIEW: "review",
+  RESULT: "result",
+  COMPARISON: "comparison",
 } as const;
 
 export function createBaseSegment(segments: RouteSegments): string {
