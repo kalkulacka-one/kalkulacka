@@ -30,6 +30,66 @@ function getLocaleRewrites() {
   return [];
 }
 
+function getCzechSlugRewrites() {
+  const { defaultLocale } = appConfig.i18n;
+
+  // Czech route slug rewrites (Czech URLs → English routes)
+  // These must come BEFORE the fallback locale rewrites to take precedence
+  return [
+    // Embed routes (one segment)
+    { source: "/embed/:embed/:p1/uvod", destination: `/${defaultLocale}/embed/:embed/:p1/introduction` },
+    { source: "/embed/:embed/:p1/navod", destination: `/${defaultLocale}/embed/:embed/:p1/guide` },
+    { source: "/embed/:embed/:p1/otazka", destination: `/${defaultLocale}/embed/:embed/:p1/question` },
+    { source: "/embed/:embed/:p1/otazka/:num", destination: `/${defaultLocale}/embed/:embed/:p1/question/:num` },
+    { source: "/embed/:embed/:p1/rekapitulace", destination: `/${defaultLocale}/embed/:embed/:p1/review` },
+    { source: "/embed/:embed/:p1/vysledek", destination: `/${defaultLocale}/embed/:embed/:p1/result` },
+    { source: "/embed/:embed/:p1/porovnani", destination: `/${defaultLocale}/embed/:embed/:p1/comparison` },
+    // Embed routes (two segments)
+    { source: "/embed/:embed/:p1/:p2/uvod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/introduction` },
+    { source: "/embed/:embed/:p1/:p2/navod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/guide` },
+    { source: "/embed/:embed/:p1/:p2/otazka", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/question` },
+    { source: "/embed/:embed/:p1/:p2/otazka/:num", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/question/:num` },
+    { source: "/embed/:embed/:p1/:p2/rekapitulace", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/review` },
+    { source: "/embed/:embed/:p1/:p2/vysledek", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/result` },
+    { source: "/embed/:embed/:p1/:p2/porovnani", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/comparison` },
+    // Embed routes (three segments)
+    { source: "/embed/:embed/:p1/:p2/:p3/uvod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/introduction` },
+    { source: "/embed/:embed/:p1/:p2/:p3/navod", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/guide` },
+    { source: "/embed/:embed/:p1/:p2/:p3/otazka", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/question` },
+    { source: "/embed/:embed/:p1/:p2/:p3/otazka/:num", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/question/:num` },
+    { source: "/embed/:embed/:p1/:p2/:p3/rekapitulace", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/review` },
+    { source: "/embed/:embed/:p1/:p2/:p3/vysledek", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/result` },
+    { source: "/embed/:embed/:p1/:p2/:p3/porovnani", destination: `/${defaultLocale}/embed/:embed/:p1/:p2/:p3/comparison` },
+    // Web routes (one segment)
+    { source: "/volby/:p1/uvod", destination: `/${defaultLocale}/volby/:p1/introduction` },
+    { source: "/volby/:p1/navod", destination: `/${defaultLocale}/volby/:p1/guide` },
+    { source: "/volby/:p1/otazka", destination: `/${defaultLocale}/volby/:p1/question` },
+    { source: "/volby/:p1/otazka/:num", destination: `/${defaultLocale}/volby/:p1/question/:num` },
+    { source: "/volby/:p1/rekapitulace", destination: `/${defaultLocale}/volby/:p1/review` },
+    { source: "/volby/:p1/vysledek", destination: `/${defaultLocale}/volby/:p1/result` },
+    { source: "/volby/:p1/vysledek/:id", destination: `/${defaultLocale}/volby/:p1/result/:id` },
+    { source: "/volby/:p1/porovnani", destination: `/${defaultLocale}/volby/:p1/comparison` },
+    // Web routes (two segments)
+    { source: "/volby/:p1/:p2/uvod", destination: `/${defaultLocale}/volby/:p1/:p2/introduction` },
+    { source: "/volby/:p1/:p2/navod", destination: `/${defaultLocale}/volby/:p1/:p2/guide` },
+    { source: "/volby/:p1/:p2/otazka", destination: `/${defaultLocale}/volby/:p1/:p2/question` },
+    { source: "/volby/:p1/:p2/otazka/:num", destination: `/${defaultLocale}/volby/:p1/:p2/question/:num` },
+    { source: "/volby/:p1/:p2/rekapitulace", destination: `/${defaultLocale}/volby/:p1/:p2/review` },
+    { source: "/volby/:p1/:p2/vysledek", destination: `/${defaultLocale}/volby/:p1/:p2/result` },
+    { source: "/volby/:p1/:p2/vysledek/:id", destination: `/${defaultLocale}/volby/:p1/:p2/result/:id` },
+    { source: "/volby/:p1/:p2/porovnani", destination: `/${defaultLocale}/volby/:p1/:p2/comparison` },
+    // Web routes (three segments)
+    { source: "/volby/:p1/:p2/:p3/uvod", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/introduction` },
+    { source: "/volby/:p1/:p2/:p3/navod", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/guide` },
+    { source: "/volby/:p1/:p2/:p3/otazka", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/question` },
+    { source: "/volby/:p1/:p2/:p3/otazka/:num", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/question/:num` },
+    { source: "/volby/:p1/:p2/:p3/rekapitulace", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/review` },
+    { source: "/volby/:p1/:p2/:p3/vysledek", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/result` },
+    { source: "/volby/:p1/:p2/:p3/vysledek/:id", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/result/:id` },
+    { source: "/volby/:p1/:p2/:p3/porovnani", destination: `/${defaultLocale}/volby/:p1/:p2/:p3/comparison` },
+  ];
+}
+
 function getLocaleRedirects() {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
@@ -57,6 +117,9 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   async rewrites() {
     return [
+      // Czech slug rewrites must come first (before fallback locale rewrites)
+      ...getCzechSlugRewrites(),
+      // Fallback locale rewrites
       ...getLocaleRewrites(),
       {
         source: "/js/script.tagged-events.outbound-links.js",
