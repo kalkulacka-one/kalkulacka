@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { AnswersStoreContext, createAnswersStore } from "../../stores/answers";
-import { CalculatorStoreContext, createCalculatorStore } from "../../stores/calculator";
-import type { CandidateViewModel } from "../../view-models";
+import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/calculator/stores";
+import type { CandidateViewModel } from "@/calculator/view-models/server";
+
 import { MatchCard } from "./match-card";
 
 describe("MatchCard", () => {

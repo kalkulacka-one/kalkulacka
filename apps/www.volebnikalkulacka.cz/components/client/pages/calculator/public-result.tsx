@@ -1,12 +1,13 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { PublicResultPage as AppPublicResultPage } from "@/calculator/components/server";
+import type { calculateMatches } from "@/calculator/result-calculation";
+import { useAnswersStore } from "@/calculator/stores";
+import { useCalculator, useResult } from "@/calculator/view-models/client";
+import { type RouteSegments, routes } from "@/lib/routing";
+
 import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
-import { PublicResultPage as AppPublicResultPage } from "../../../../calculator/components/server";
-import type { calculateMatches } from "../../../../calculator/lib/result-calculation/calculate-matches";
-import { useAnswersStore } from "../../../../calculator/stores/answers";
-import { useCalculator, useResult } from "../../../../calculator/view-models";
-import { type RouteSegments, routes } from "../../../../lib/routing/route-builders";
 
 export function PublicResultPageWithData({ algorithmMatches, answers, segments }: { algorithmMatches: ReturnType<typeof calculateMatches>; answers: Answer[]; segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);

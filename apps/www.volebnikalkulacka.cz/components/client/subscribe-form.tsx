@@ -1,10 +1,11 @@
+import { Button, Description, Field, Input, Label } from "@kalkulacka-one/design-system/client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Description, Field, Input, Label } from "@repo/design-system/client";
 import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { subscribe } from "../../server/subscribe";
+import { subscribe } from "@/server/subscribe";
 
 const subscribeSchema = z.object({
   email: z.string().email("Neplatný formát"),

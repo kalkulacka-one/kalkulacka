@@ -1,9 +1,12 @@
-import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
-import { Button, Icon, ToggleButton } from "@repo/design-system/client";
-import { logoCheck, logoCross } from "@repo/design-system/icons";
+import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 
-import type { AnswerViewModel } from "../../../view-models";
-import { NavigationCard } from "../../server/components/navigation-card";
+import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
+import { useTranslations } from "next-intl";
+
+import type { AnswerViewModel } from "@/calculator/view-models/server";
+
+import { NavigationCard } from "./navigation-card";
 
 const HEIGHT = "h-[138px]";
 
@@ -19,8 +22,9 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
-  const previousButtonLabel = current === 1 ? "Návod" : "Předchozí";
-  const nextButtonLabel = answer.answer?.answer !== undefined ? "Další" : "Přeskočit";
+  const t = useTranslations("calculator");
+  const previousButtonLabel = current === 1 ? t("components.question-navigation-card.guide") : t("components.question-navigation-card.previous");
+  const nextButtonLabel = answer.answer?.answer !== undefined ? t("components.question-navigation-card.next") : t("components.question-navigation-card.skip");
 
   return (
     <NavigationCard>
@@ -50,16 +54,22 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </div>
         </div>
         <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
-          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
+          <ToggleButton
+            color="neutral"
+            variant="link"
+            checked={answer.answer?.isImportant || false}
+            onChange={(checked: boolean) => onImportantChange(checked)}
+            aria-label={t("components.question-navigation-card.important")}
+          >
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             <Icon icon={logoCheck} decorative={true} />
-            Ano
+            {t("components.question-navigation-card.yes")}
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             <Icon icon={logoCross} decorative={true} />
-            Ne
+            {t("components.question-navigation-card.no")}
           </ToggleButton>
         </div>
       </div>

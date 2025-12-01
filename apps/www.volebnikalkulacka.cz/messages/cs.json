@@ -1,0 +1,15 @@
+{
+  "calculator": {
+    "components": {
+      "question-navigation-card": {
+        "yes": "Ano",
+        "no": "Ne",
+        "next": "Další",
+        "previous": "Předchozí",
+        "guide": "Návod",
+        "skip": "Přeskočit",
+        "important": "Pro mě důležité"
+      }
+    }
+  }
+}

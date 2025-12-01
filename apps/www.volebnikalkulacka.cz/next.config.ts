@@ -1,13 +1,63 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
+
+import { appConfig } from "./config/app-config";
+
+const withNextIntl = createNextIntlPlugin();
+
+function getLocaleRewrites() {
+  const { defaultLocale, localePrefix } = appConfig.i18n;
+
+  if (localePrefix === "as-needed") {
+    return [
+      {
+        source: "/",
+        destination: `/${defaultLocale}`,
+      },
+      {
+        source: "/embed/:path*",
+        destination: `/${defaultLocale}/embed/:path*`,
+      },
+      {
+        source: "/volby/:path*",
+        destination: `/${defaultLocale}/volby/:path*`,
+      },
+    ];
+  }
+
+  return [];
+}
+
+function getLocaleRedirects() {
+  const { defaultLocale, localePrefix } = appConfig.i18n;
+
+  if (localePrefix === "as-needed") {
+    return [
+      {
+        source: `/${defaultLocale}/embed/:path*`,
+        destination: "/embed/:path*",
+        permanent: false,
+      },
+      {
+        source: `/${defaultLocale}/:path((?!embed).*)*`,
+        destination: "/:path*",
+        permanent: false,
+      },
+    ];
+  }
+
+  return [];
+}
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  transpilePackages: ["@repo/design-system"],
+  transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
     return [
+      ...getLocaleRewrites(),
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
@@ -20,6 +70,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...getLocaleRedirects(),
       {
         source: "/volby/snemovni-2025",
         destination: "/volby/snemovni-2025/kalkulacka",
@@ -87,4 +138,4 @@ const withMDX = createMDX({
   },
 });
 
-export default withMDX(nextConfig);
+export default withNextIntl(withMDX(nextConfig));
