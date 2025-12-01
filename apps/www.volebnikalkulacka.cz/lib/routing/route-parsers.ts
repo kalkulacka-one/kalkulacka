@@ -1,4 +1,5 @@
-import { LOCALIZED_SLUGS } from "./route-builders";
+import { LOCALIZED_SLUGS } from "@/config/localized-slugs";
+
 import { validateQuestionNumber } from "./validators/question-number";
 
 function parseQuestionNumber(path: string): number {
