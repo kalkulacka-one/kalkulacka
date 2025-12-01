@@ -1,5 +1,5 @@
-import { Logo } from "@repo/design-system/client";
-import { twMerge } from "@repo/design-system/utils";
+import { Logo } from "@kalkulacka-one/design-system/client";
+import { twMerge } from "@kalkulacka-one/design-system/utilities";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import React from "react";

@@ -1,4 +1,4 @@
-import { prisma } from "@repo/database";
+import { prisma } from "@kalkulacka-one/database";
 
 export async function getUserSessions(sessionId: string) {
   return await prisma.calculatorSession.findMany({

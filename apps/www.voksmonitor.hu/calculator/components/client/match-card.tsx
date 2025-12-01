@@ -1,5 +1,5 @@
-import { ExpandableCard } from "@repo/design-system/client";
-import { Avatar, ProgressBar } from "@repo/design-system/server";
+import { ExpandableCard } from "@kalkulacka-one/design-system/client";
+import { Avatar, ProgressBar } from "@kalkulacka-one/design-system/server";
 import React, { useState } from "react";
 
 import type { CandidateMatchViewModel } from "../../view-models";

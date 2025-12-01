@@ -6,7 +6,7 @@ import { calculatorViewModel } from "../../../view-models";
 import { Guide, GuideNavigationCard, Introduction } from "../components";
 import { GuidePage } from "./guide";
 
-vi.mock("@repo/design-system/client", () => ({
+vi.mock("@kalkulacka-one/design-system/client", () => ({
   Button: vi.fn(({ children }) => children),
   Icon: vi.fn(() => null),
 }));

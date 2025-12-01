@@ -1,4 +1,4 @@
-import { Button, Description, Field, Input, Label } from "@repo/design-system/client";
+import { Button, Description, Field, Input, Label } from "@kalkulacka-one/design-system/client";
 import { type FormEvent, useState } from "react";
 
 export function SubscribeForm() {

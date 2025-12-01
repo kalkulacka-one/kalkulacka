@@ -1,4 +1,4 @@
-import { Card } from "@repo/design-system/server";
+import { Card } from "@kalkulacka-one/design-system/server";
 
 import type { QuestionViewModel } from "../../../view-models";
 
