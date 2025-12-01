@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
-import { LOCALIZED_SLUGS, type PageType } from "@/config/localized-slugs";
+import { BLOCKED_ENGLISH_SLUGS, LOCALIZED_SLUGS, type PageType } from "@/config/localized-slugs";
 
 import { appConfig } from "./config/app-config";
 
@@ -131,14 +131,14 @@ function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly str
   const rewrites: Array<{ source: string; destination: string }> = [];
   const { defaultLocale } = appConfig.i18n;
 
-  const englishSlugs = LOCALIZED_SLUGS.en;
   const czechSlugs = LOCALIZED_SLUGS[defaultLocale];
-
-  if (!englishSlugs || !czechSlugs) {
+  if (!czechSlugs) {
     return rewrites;
   }
 
-  for (const [pageType, englishSlug] of Object.entries(englishSlugs)) {
+  // Iterate over PageTypes, treating them as the English slugs (filesystem routes)
+  for (const pageType of BLOCKED_ENGLISH_SLUGS) {
+    const englishSlug = pageType; // English slug = filesystem route = PageType
     const czechSlug = czechSlugs[pageType as PageType];
 
     // Skip if English and Czech slugs are the same (no need to block)
@@ -169,7 +169,6 @@ function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly str
 
   return rewrites;
 }
-
 /**
  * Generate all English slug 404 rewrites.
  * These must come BEFORE the fallback locale rewrites.

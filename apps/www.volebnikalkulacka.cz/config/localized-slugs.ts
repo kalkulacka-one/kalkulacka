@@ -11,6 +11,8 @@ export const LOCALIZED_SLUGS: Record<string, Record<PageType, string>> = {
   },
 };
 
+export const BLOCKED_ENGLISH_SLUGS = new Set<string>(["introduction", "guide", "question", "review", "result", "comparison"]);
+
 export function getLocalizedSlug(locale: string, pageType: PageType): string {
   const localizedSlug = LOCALIZED_SLUGS[locale]?.[pageType];
   if (localizedSlug) {
