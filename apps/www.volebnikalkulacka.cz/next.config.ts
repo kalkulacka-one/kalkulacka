@@ -3,8 +3,9 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
+import { LOCALIZED_SLUGS, type PageType } from "@/config/localized-slugs";
+
 import { appConfig } from "./config/app-config";
-import { LOCALIZED_SLUGS, type PageType } from "./lib/routing/route-builders";
 
 const withNextIntl = createNextIntlPlugin();
 
