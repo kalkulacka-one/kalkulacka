@@ -92,6 +92,10 @@ export function getLocaleRewrites() {
         source: "/volby/:path*",
         destination: `/${defaultLocale}/volby/:path*`,
       },
+      {
+        source: "/:path*",
+        destination: `/${defaultLocale}/:path*`,
+      },
     ];
   }
 
