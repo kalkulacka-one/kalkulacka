@@ -10,11 +10,11 @@ import { buildCanonicalUrl, canonical, mappedParams } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
-export async function generateMetadata({ params: routeParams }: { params: Promise<{ first: string; second: string; third: string; publicId: string }> }): Promise<Metadata> {
-  const { publicId, ...segments } = await routeParams;
+export async function generateMetadata({ params: routeParams }: { params: Promise<{ locale: string; first: string; second: string; third: string; publicId: string }> }): Promise<Metadata> {
+  const { locale, publicId, ...segments } = await routeParams;
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
-  const canonicalUrl = canonical.publicResult(segments, publicId);
+  const canonicalUrl = canonical.publicResult(segments, publicId, locale);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
   return await generateCalculatorMetadata({
     key,
