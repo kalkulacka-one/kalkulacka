@@ -1,5 +1,6 @@
-import { mdiEmail, mdiFacebook, mdiInstagram, mdiPhone } from "@mdi/js";
 import { Icon, Logo } from "@kalkulacka-one/design-system/client";
+
+import { mdiEmail, mdiFacebook, mdiInstagram, mdiPhone } from "@mdi/js";
 import Link from "next/link";
 
 export function Footer() {

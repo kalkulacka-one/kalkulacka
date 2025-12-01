@@ -2,6 +2,7 @@
 
 import { prisma } from "@kalkulacka-one/database";
 import { PrismaClientKnownRequestError } from "@kalkulacka-one/database/library";
+
 import { z } from "zod";
 
 const subscribeBodySchema = z.object({

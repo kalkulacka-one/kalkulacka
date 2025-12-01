@@ -1,5 +1,6 @@
-import { mdiClose } from "@mdi/js";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
+
+import { mdiClose } from "@mdi/js";
 
 import { type EmbedContextType, HideOnEmbed } from "../../../../components/client";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models";
