@@ -1,4 +1,4 @@
-import { LOCALIZED_SLUGS } from "@/config/localized-slugs";
+import { PAGE_SLUGS } from "@/config/localized-slugs";
 
 import { validateQuestionNumber } from "./validators/question-number";
 
@@ -6,7 +6,7 @@ function parseQuestionNumber(path: string): number {
   const segments = path.split("/").filter(Boolean);
 
   const questionIndex = (() => {
-    for (const slugs of Object.values(LOCALIZED_SLUGS)) {
+    for (const slugs of Object.values(PAGE_SLUGS)) {
       const index = segments.indexOf(slugs.question);
       if (index !== -1) return index;
     }
