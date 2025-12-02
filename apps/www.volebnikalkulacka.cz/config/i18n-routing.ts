@@ -1,10 +1,11 @@
+import type { Locale } from "next-intl";
 import { hasLocale } from "next-intl";
 
 import { routing } from "../i18n/routing";
 import { appConfig } from "./app-config";
 import { getPrefixSlug, PAGE_SLUGS, type PageType } from "./localized-slugs";
 
-function getRoutePatterns(locale: string) {
+function getRoutePatterns(locale: Locale) {
   const electionPrefix = getPrefixSlug(locale, "election");
   return {
     // Web routes
@@ -18,7 +19,7 @@ function getRoutePatterns(locale: string) {
   } as const;
 }
 
-function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: string, hasIdSlugs: readonly string[]) {
+function generateSlugRewrites(fromLocale: Locale, toLocale: Locale, prefix: string, hasIdSlugs: readonly string[]) {
   if (!hasLocale(routing.locales, fromLocale)) {
     throw new Error(`Invalid fromLocale: "${fromLocale}"`);
   }
@@ -58,7 +59,7 @@ function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: stri
   return rewrites;
 }
 
-export function getSlugRewrites(fromLocale: string) {
+export function getSlugRewrites(fromLocale: Locale) {
   if (!hasLocale(routing.locales, fromLocale)) {
     throw new Error(`Invalid locale: "${fromLocale}"`);
   }
@@ -74,7 +75,7 @@ export function getSlugRewrites(fromLocale: string) {
 }
 
 export function getLocaleRewrites() {
-  const defaultLocale = appConfig.i18n.defaultLocale;
+  const defaultLocale = appConfig.i18n.defaultLocale as Locale;
   const { localePrefix } = appConfig.i18n;
 
   if (localePrefix === "as-needed") {

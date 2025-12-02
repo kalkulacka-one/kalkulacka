@@ -1,3 +1,4 @@
+import type { Locale } from "next-intl";
 import { hasLocale } from "next-intl";
 
 import { appConfig } from "@/config/app-config";
@@ -32,7 +33,7 @@ export function createBaseSegment(segments: RouteSegments): string {
   return first;
 }
 
-function addLocalePrefix(path: string, locale: string): string {
+function addLocalePrefix(path: string, locale: Locale): string {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
   if (localePrefix === "never") {
@@ -47,49 +48,49 @@ function addLocalePrefix(path: string, locale: string): string {
 }
 
 export const routes = {
-  introduction: (segments: RouteSegments, locale: string = appConfig.i18n.defaultLocale) => {
+  introduction: (segments: RouteSegments, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }
     const path = `/${createBaseSegment(segments)}/${getPageSlug(locale, "introduction")}`;
     return addLocalePrefix(path, locale);
   },
-  guide: (segments: RouteSegments, locale: string = appConfig.i18n.defaultLocale) => {
+  guide: (segments: RouteSegments, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }
     const path = `/${createBaseSegment(segments)}/${getPageSlug(locale, "guide")}`;
     return addLocalePrefix(path, locale);
   },
-  question: (segments: RouteSegments, questionNumber: number, locale: string = appConfig.i18n.defaultLocale) => {
+  question: (segments: RouteSegments, questionNumber: number, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }
     const path = `/${createBaseSegment(segments)}/${getPageSlug(locale, "question")}/${questionNumber}`;
     return addLocalePrefix(path, locale);
   },
-  review: (segments: RouteSegments, locale: string = appConfig.i18n.defaultLocale) => {
+  review: (segments: RouteSegments, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }
     const path = `/${createBaseSegment(segments)}/${getPageSlug(locale, "review")}`;
     return addLocalePrefix(path, locale);
   },
-  result: (segments: RouteSegments, locale: string = appConfig.i18n.defaultLocale) => {
+  result: (segments: RouteSegments, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }
     const path = `/${createBaseSegment(segments)}/${getPageSlug(locale, "result")}`;
     return addLocalePrefix(path, locale);
   },
-  publicResult: (segments: RouteSegments, publicId: string, locale: string = appConfig.i18n.defaultLocale) => {
+  publicResult: (segments: RouteSegments, publicId: string, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }
     const path = `/${createBaseSegment(segments)}/${getPageSlug(locale, "result")}/${publicId}`;
     return addLocalePrefix(path, locale);
   },
-  comparison: (segments: RouteSegments, locale: string = appConfig.i18n.defaultLocale) => {
+  comparison: (segments: RouteSegments, locale: Locale) => {
     if (!hasLocale(routing.locales, locale)) {
       throw new Error(`Invalid locale: "${locale}"`);
     }

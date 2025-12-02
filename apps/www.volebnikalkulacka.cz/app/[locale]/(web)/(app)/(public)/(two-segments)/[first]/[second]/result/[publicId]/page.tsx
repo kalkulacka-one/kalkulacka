@@ -2,6 +2,7 @@ import { prisma } from "@kalkulacka-one/database";
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { Locale } from "next-intl";
 
 import type { calculateMatches } from "@/calculator/result-calculation";
 import { PublicResultPageWithData } from "@/components/client";
@@ -10,7 +11,7 @@ import { buildCanonicalUrl, canonical, mappedParams } from "@/lib/routing";
 
 import type { Answer } from "../../../../../../../../../../../../packages/schema/schemas/answer.schema";
 
-export async function generateMetadata({ params: routeParams }: { params: Promise<{ locale: string; first: string; second: string; publicId: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params: routeParams }: { params: Promise<{ locale: Locale; first: string; second: string; publicId: string }> }): Promise<Metadata> {
   const { locale, publicId, ...segments } = await routeParams;
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);

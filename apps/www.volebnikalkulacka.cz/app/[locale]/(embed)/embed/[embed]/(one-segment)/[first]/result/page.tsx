@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
 
 import { ResultPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams } from "@/lib/routing";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; embed: string; first: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; embed: string; first: string }> }): Promise<Metadata> {
   const { locale, ...segments } = await params;
   const key = mappedParams.key(segments);
   const canonicalUrl = canonical.result(segments, locale);
