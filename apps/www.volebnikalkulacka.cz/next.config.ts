@@ -1,5 +1,6 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import type { Locale } from "next-intl";
 import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
@@ -17,7 +18,7 @@ const nextConfig: NextConfig = {
     const { locales } = appConfig.i18n;
     return [
       ...getLocaleRewrites(),
-      ...locales.flatMap((locale) => getSlugRewrites(locale)),
+      ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
