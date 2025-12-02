@@ -1,31 +1,26 @@
 import { appConfig } from "./app-config";
-import { BLOCKED_ENGLISH_SLUGS, LOCALIZED_SLUGS, type PageType } from "./localized-slugs";
+import { BLOCKED_ENGLISH_SLUGS, getPrefixSlug, PAGE_SLUGS, type PageType } from "./localized-slugs";
 
-/**
- * Route patterns with their slug configurations.
- * Each pattern defines the URL structure and which slugs have additional params.
- */
-export const ROUTE_PATTERNS = {
-  // Web routes
-  web1: { prefix: "/volby/:p1", hasId: ["result"] },
-  web2: { prefix: "/volby/:p1/:p2", hasId: ["result"] },
-  web3: { prefix: "/volby/:p1/:p2/:p3", hasId: ["result"] },
-  // Embed routes
-  embed1: { prefix: "/embed/:embed/:p1", hasId: [] as string[] },
-  embed2: { prefix: "/embed/:embed/:p1/:p2", hasId: [] as string[] },
-  embed3: { prefix: "/embed/:embed/:p1/:p2/:p3", hasId: [] as string[] },
-} as const;
+function getRoutePatterns(locale: string) {
+  const electionPrefix = getPrefixSlug(locale, "election");
+  return {
+    // Web routes
+    web1: { prefix: `/${electionPrefix}/:p1`, hasId: ["result"] },
+    web2: { prefix: `/${electionPrefix}/:p1/:p2`, hasId: ["result"] },
+    web3: { prefix: `/${electionPrefix}/:p1/:p2/:p3`, hasId: ["result"] },
+    // Embed routes
+    embed1: { prefix: "/embed/:embed/:p1", hasId: [] as string[] },
+    embed2: { prefix: "/embed/:embed/:p1/:p2", hasId: [] as string[] },
+    embed3: { prefix: "/embed/:embed/:p1/:p2/:p3", hasId: [] as string[] },
+  } as const;
+}
 
-/**
- * Generate localized slug rewrites for a single route pattern.
- * Maps localized URLs to English filesystem routes.
- */
 function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: string, hasIdSlugs: readonly string[]) {
   const rewrites: Array<{ source: string; destination: string }> = [];
 
-  const fromSlugs = LOCALIZED_SLUGS[fromLocale];
+  const fromSlugs = PAGE_SLUGS[fromLocale];
   if (!fromSlugs) {
-    throw new Error(`Locale '${fromLocale}' not found in LOCALIZED_SLUGS`);
+    throw new Error(`Locale '${fromLocale}' not found in PAGE_SLUGS`);
   }
 
   for (const [pageType, localizedSlug] of Object.entries(fromSlugs)) {
@@ -63,8 +58,9 @@ function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: stri
 export function getSlugRewrites(fromLocale: string) {
   const { defaultLocale } = appConfig.i18n;
   const rewrites: Array<{ source: string; destination: string }> = [];
+  const routePatterns = getRoutePatterns(fromLocale);
 
-  for (const pattern of Object.values(ROUTE_PATTERNS)) {
+  for (const pattern of Object.values(routePatterns)) {
     rewrites.push(...generateSlugRewrites(fromLocale, defaultLocale, pattern.prefix, pattern.hasId));
   }
 
@@ -79,6 +75,7 @@ export function getLocaleRewrites() {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
   if (localePrefix === "as-needed") {
+    const electionPrefix = getPrefixSlug(defaultLocale, "election");
     return [
       {
         source: "/",
@@ -89,8 +86,8 @@ export function getLocaleRewrites() {
         destination: `/${defaultLocale}/embed/:path*`,
       },
       {
-        source: "/volby/:path*",
-        destination: `/${defaultLocale}/volby/:path*`,
+        source: `/${electionPrefix}/:path*`,
+        destination: `/${defaultLocale}/${electionPrefix}/:path*`,
       },
       {
         source: "/:path*",
@@ -135,7 +132,7 @@ function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly str
   const rewrites: Array<{ source: string; destination: string }> = [];
   const { defaultLocale } = appConfig.i18n;
 
-  const czechSlugs = LOCALIZED_SLUGS[defaultLocale];
+  const czechSlugs = PAGE_SLUGS[defaultLocale];
   if (!czechSlugs) {
     return rewrites;
   }
@@ -179,9 +176,11 @@ function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly str
  * These must come BEFORE the fallback locale rewrites.
  */
 export function getEnglishSlug404Rewrites() {
+  const { defaultLocale } = appConfig.i18n;
   const rewrites: Array<{ source: string; destination: string }> = [];
+  const routePatterns = getRoutePatterns(defaultLocale);
 
-  for (const pattern of Object.values(ROUTE_PATTERNS)) {
+  for (const pattern of Object.values(routePatterns)) {
     rewrites.push(...generateEnglishSlug404Rewrites(pattern.prefix, pattern.hasId));
   }
 
