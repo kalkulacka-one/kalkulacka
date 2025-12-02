@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
-import { getEnglishSlug404Rewrites, getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "@/config/i18n-routing";
+import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "@/config/i18n-routing";
 
 import { appConfig } from "./config/app-config";
 
@@ -14,14 +14,10 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
-    const { defaultLocale } = appConfig.i18n;
+    const { locales } = appConfig.i18n;
     return [
-      // English slug 404 rewrites (block English URLs) - must come first
-      ...getEnglishSlug404Rewrites(),
-      // Czech slug rewrites (Czech URLs → English routes)
-      ...getSlugRewrites(defaultLocale),
-      // Fallback locale rewrites
       ...getLocaleRewrites(),
+      ...locales.flatMap((locale) => getSlugRewrites(locale)),
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
