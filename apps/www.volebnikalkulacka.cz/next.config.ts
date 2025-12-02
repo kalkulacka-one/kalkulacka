@@ -52,6 +52,9 @@ function getLocaleRedirects() {
 }
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
