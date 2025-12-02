@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 import { IntroductionPage } from "@/calculator/components/server";
 import { useAnswersStore } from "@/calculator/stores";
@@ -14,11 +15,12 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   const calculator = useCalculator();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
+  const locale = useLocale();
 
   useAutoSave();
 
   const handleNavigationNextClick = () => {
-    router.push(routes.guide(segments));
+    router.push(routes.guide(segments, locale));
   };
 
   const handleCloseClick = async () => {

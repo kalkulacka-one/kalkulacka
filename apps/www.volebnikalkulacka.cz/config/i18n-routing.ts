@@ -1,5 +1,8 @@
+import { hasLocale } from "next-intl";
+
+import { routing } from "../i18n/routing";
 import { appConfig } from "./app-config";
-import { BLOCKED_ENGLISH_SLUGS, getPrefixSlug, PAGE_SLUGS, type PageType } from "./localized-slugs";
+import { getPrefixSlug, PAGE_SLUGS, type PageType } from "./localized-slugs";
 
 function getRoutePatterns(locale: string) {
   const electionPrefix = getPrefixSlug(locale, "election");
@@ -16,6 +19,12 @@ function getRoutePatterns(locale: string) {
 }
 
 function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: string, hasIdSlugs: readonly string[]) {
+  if (!hasLocale(routing.locales, fromLocale)) {
+    throw new Error(`Invalid fromLocale: "${fromLocale}"`);
+  }
+  if (!hasLocale(routing.locales, toLocale)) {
+    throw new Error(`Invalid toLocale: "${toLocale}"`);
+  }
   const rewrites: Array<{ source: string; destination: string }> = [];
 
   const fromSlugs = PAGE_SLUGS[fromLocale];
@@ -24,26 +33,23 @@ function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: stri
   }
 
   for (const [pageType, localizedSlug] of Object.entries(fromSlugs)) {
-    const filesystemSlug = pageType as PageType; // English filesystem route
+    const filesystemSlug = pageType as PageType;
 
-    // Base rewrite: /prefix/localizedSlug → /toLocale/prefix/filesystemSlug
     rewrites.push({
-      source: `${prefix}/${localizedSlug}`,
+      source: `/${fromLocale}${prefix}/${localizedSlug}`,
       destination: `/${toLocale}${prefix}/${filesystemSlug}`,
     });
 
-    // Question has :num param
     if (pageType === "question") {
       rewrites.push({
-        source: `${prefix}/${localizedSlug}/:num`,
+        source: `/${fromLocale}${prefix}/${localizedSlug}/:num`,
         destination: `/${toLocale}${prefix}/${filesystemSlug}/:num`,
       });
     }
 
-    // Result can have :id param for public results
     if (hasIdSlugs.includes(pageType)) {
       rewrites.push({
-        source: `${prefix}/${localizedSlug}/:id`,
+        source: `/${fromLocale}${prefix}/${localizedSlug}/:id`,
         destination: `/${toLocale}${prefix}/${filesystemSlug}/:id`,
       });
     }
@@ -52,30 +58,29 @@ function generateSlugRewrites(fromLocale: string, toLocale: string, prefix: stri
   return rewrites;
 }
 
-/**
- * Generate slug rewrites for a specific locale (localized URLs → English routes).
- */
 export function getSlugRewrites(fromLocale: string) {
-  const { defaultLocale } = appConfig.i18n;
+  if (!hasLocale(routing.locales, fromLocale)) {
+    throw new Error(`Invalid locale: "${fromLocale}"`);
+  }
+  const toLocale = fromLocale;
   const rewrites: Array<{ source: string; destination: string }> = [];
   const routePatterns = getRoutePatterns(fromLocale);
 
   for (const pattern of Object.values(routePatterns)) {
-    rewrites.push(...generateSlugRewrites(fromLocale, defaultLocale, pattern.prefix, pattern.hasId));
+    rewrites.push(...generateSlugRewrites(fromLocale, toLocale, pattern.prefix, pattern.hasId));
   }
 
   return rewrites;
 }
 
-/**
- * Generate rewrites that map root paths to default locale paths.
- * Used when localePrefix is "as-needed".
- */
 export function getLocaleRewrites() {
-  const { defaultLocale, localePrefix } = appConfig.i18n;
+  const defaultLocale = appConfig.i18n.defaultLocale;
+  const { localePrefix } = appConfig.i18n;
 
   if (localePrefix === "as-needed") {
     const electionPrefix = getPrefixSlug(defaultLocale, "election");
+    const localesPattern = routing.locales.join("|");
+
     return [
       {
         source: "/",
@@ -90,7 +95,7 @@ export function getLocaleRewrites() {
         destination: `/${defaultLocale}/${electionPrefix}/:path*`,
       },
       {
-        source: "/:path*",
+        source: `/:path((?!${localesPattern}/).*)*`,
         destination: `/${defaultLocale}/:path*`,
       },
     ];
@@ -99,10 +104,6 @@ export function getLocaleRewrites() {
   return [];
 }
 
-/**
- * Generate redirects that remove default locale prefix from URLs.
- * Used when localePrefix is "as-needed".
- */
 export function getLocaleRedirects() {
   const { defaultLocale, localePrefix } = appConfig.i18n;
 
@@ -122,67 +123,4 @@ export function getLocaleRedirects() {
   }
 
   return [];
-}
-
-/**
- * Generate rewrites that send English slug URLs to a non-existent path (404).
- * This prevents English URLs from working on the Czech app.
- */
-function generateEnglishSlug404Rewrites(prefix: string, hasIdSlugs: readonly string[]) {
-  const rewrites: Array<{ source: string; destination: string }> = [];
-  const { defaultLocale } = appConfig.i18n;
-
-  const czechSlugs = PAGE_SLUGS[defaultLocale];
-  if (!czechSlugs) {
-    return rewrites;
-  }
-
-  // Iterate over PageTypes, treating them as the English slugs (filesystem routes)
-  for (const pageType of BLOCKED_ENGLISH_SLUGS) {
-    const englishSlug = pageType; // English slug = filesystem route = PageType
-    const czechSlug = czechSlugs[pageType as PageType];
-
-    // Skip if English and Czech slugs are the same (no need to block)
-    if (englishSlug === czechSlug) continue;
-
-    // Base rewrite: /prefix/englishSlug → /__404__
-    rewrites.push({
-      source: `${prefix}/${englishSlug}`,
-      destination: "/__invalid_route_404__",
-    });
-
-    // Question has :num param
-    if (pageType === "question") {
-      rewrites.push({
-        source: `${prefix}/${englishSlug}/:num`,
-        destination: "/__invalid_route_404__",
-      });
-    }
-
-    // Result can have :id param
-    if (hasIdSlugs.includes(pageType)) {
-      rewrites.push({
-        source: `${prefix}/${englishSlug}/:id`,
-        destination: "/__invalid_route_404__",
-      });
-    }
-  }
-
-  return rewrites;
-}
-
-/**
- * Generate all English slug 404 rewrites.
- * These must come BEFORE the fallback locale rewrites.
- */
-export function getEnglishSlug404Rewrites() {
-  const { defaultLocale } = appConfig.i18n;
-  const rewrites: Array<{ source: string; destination: string }> = [];
-  const routePatterns = getRoutePatterns(defaultLocale);
-
-  for (const pattern of Object.values(routePatterns)) {
-    rewrites.push(...generateEnglishSlug404Rewrites(pattern.prefix, pattern.hasId));
-  }
-
-  return rewrites;
 }
