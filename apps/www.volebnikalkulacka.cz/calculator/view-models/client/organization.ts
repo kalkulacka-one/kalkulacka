@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 
 import { type OrganizationViewModel, organizationViewModel } from "@/calculator";
-import { useCalculatorStore } from "@/calculator/client";
+
+import { useCalculatorStore } from "../../stores";
 
 export function useOrganization(id: string): OrganizationViewModel | undefined {
   const organizations = useCalculatorStore((state) => state.data.organizations);

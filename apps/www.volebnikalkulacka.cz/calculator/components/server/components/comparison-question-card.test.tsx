@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import type { QuestionViewModel } from "@/calculator";
-
+import type { QuestionViewModel } from "../../../view-models/server";
 import { ComparisonQuestionCard } from "./comparison-question-card";
 
 describe("ComparisonQuestionCard", () => {

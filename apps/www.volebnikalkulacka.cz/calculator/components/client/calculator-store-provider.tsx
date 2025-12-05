@@ -2,7 +2,8 @@ import { type ReactNode, useRef } from "react";
 import type { StoreApi } from "zustand";
 
 import type { CalculatorData } from "@/calculator";
-import { type CalculatorStore, CalculatorStoreContext, createCalculatorStore } from "@/calculator/client";
+
+import { type CalculatorStore, CalculatorStoreContext, createCalculatorStore } from "../../stores";
 
 export type CalculatorStoreProviderProps = {
   children: ReactNode;
