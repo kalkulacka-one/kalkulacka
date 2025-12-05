@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
+import { getPageSlug } from "@/config/localized-slugs";
+import { routing } from "@/i18n/routing";
 import { IntroductionPageWithRouting } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams } from "@/lib/routing";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({
+    locale,
+    introduction: getPageSlug(locale, "introduction"),
+  }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; embed: string; first: string; second: string; third: string }> }): Promise<Metadata> {
   const { locale, ...segments } = await params;
