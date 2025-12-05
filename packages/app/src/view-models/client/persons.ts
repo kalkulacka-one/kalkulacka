@@ -1,0 +1,10 @@
+import { useMemo } from "react";
+
+import { type PersonViewModel, personsViewModel } from "../../server";
+import { useCalculatorStore } from "../../stores";
+
+export function usePersons(): PersonViewModel[] {
+  const persons = useCalculatorStore((state) => state.data.persons);
+  const baseUrl = useCalculatorStore((state) => state.baseUrl);
+  return useMemo(() => personsViewModel(persons, baseUrl), [persons, baseUrl]);
+}

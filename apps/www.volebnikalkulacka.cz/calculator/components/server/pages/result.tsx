@@ -3,12 +3,11 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import React from "react";
 
+import type { CalculatorViewModel, ResultViewModel } from "@/calculator";
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
-import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
-import { ResultNavigationCard } from "../components/result-navigation-card";
+import { EmbedFooter, Layout, ResultNavigationCard } from "../components";
 
 export type ResultPage = {
   embedContext: EmbedContextType;
