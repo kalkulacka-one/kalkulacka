@@ -1,7 +1,6 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
-import rehypeSlug from "rehype-slug";
 
 import { appConfig } from "./config/app-config";
 
@@ -134,7 +133,7 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    rehypePlugins: [rehypeSlug],
+    rehypePlugins: [["rehype-slug"]],
   },
 });
 

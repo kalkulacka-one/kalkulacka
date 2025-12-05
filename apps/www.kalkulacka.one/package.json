@@ -17,8 +17,8 @@
   "dependencies": {
     "@kalkulacka-one/database": "*",
     "@kalkulacka-one/design-system": "*",
-    "next": "15.5.2",
-    "next-intl": "^4.3.5",
+    "next": "16.0.7",
+    "next-intl": "^4.5.5",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
