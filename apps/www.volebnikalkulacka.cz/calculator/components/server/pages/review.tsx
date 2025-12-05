@@ -1,5 +1,4 @@
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app";
-import { Layout, ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
+import { type AnswersViewModel, type CalculatorViewModel, Layout, type QuestionsViewModel, ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
 import { WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
