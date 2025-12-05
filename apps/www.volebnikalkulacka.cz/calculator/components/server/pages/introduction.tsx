@@ -2,10 +2,10 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 
+import type { CalculatorViewModel } from "@/calculator";
+import { AppHeader } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import type { CalculatorViewModel } from "../../../view-models/server";
-import { AppHeader } from "../../client";
 import { EmbedFooter, Introduction, IntroductionNavigationCard, Layout } from "../components";
 
 export type IntroductionPage = {

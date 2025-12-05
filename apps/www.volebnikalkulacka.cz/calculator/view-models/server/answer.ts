@@ -1,5 +1,6 @@
+import type { AnswersStore } from "@/calculator/client";
+
 import type { Answer } from "../../../../../packages/schema/schemas/answer.schema";
-import type { AnswersStore } from "../../stores";
 
 export type AnswerViewModel = {
   answer: Answer | undefined;

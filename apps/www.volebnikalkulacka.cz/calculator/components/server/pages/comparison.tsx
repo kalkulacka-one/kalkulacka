@@ -2,10 +2,10 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator";
+import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "../../../view-models/server";
-import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout } from "../components";
 
 export type ComparisonPage = {

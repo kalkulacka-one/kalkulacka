@@ -4,9 +4,8 @@ import { twMerge } from "@kalkulacka-one/design-system/utilities";
 import type { ReactNode } from "react";
 import React from "react";
 
+import type { CalculatorViewModel } from "@/calculator";
 import { useEmbed } from "@/components/client";
-
-import type { CalculatorViewModel } from "../../view-models/server";
 
 const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);
 
