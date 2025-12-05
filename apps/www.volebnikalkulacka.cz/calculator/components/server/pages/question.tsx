@@ -2,10 +2,10 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 
-import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
-import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
+import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "../../../view-models/server";
+import { AppHeader, WithCondenseOnScroll } from "../../client";
 import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
 
 export type QuestionPage = {

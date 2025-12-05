@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 
-import { useCalculatorStore } from "@/calculator/stores";
-
+import { useCalculatorStore } from "../../stores";
 import { type CandidateAnswerViewModel, candidateAnswerViewModel } from "../server/candidate-answer";
 
 export function useCandidateAnswer(candidateId: string, questionId: string): CandidateAnswerViewModel | undefined {

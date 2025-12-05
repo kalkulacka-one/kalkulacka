@@ -1,8 +1,7 @@
 import { useRouter } from "next/navigation";
 
-import { ReviewPage as AppReviewPage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useAnswers, useCalculator, useQuestions } from "@/calculator/view-models/client";
+import { useAnswers, useAnswersStore, useCalculator, useQuestions } from "@/calculator/client";
+import { ReviewPage as AppReviewPage } from "@/calculator/server";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";

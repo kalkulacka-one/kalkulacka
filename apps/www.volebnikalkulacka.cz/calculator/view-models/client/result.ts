@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
-import { calculateMatches } from "@/calculator/result-calculation";
-import { useAnswersStore, useCalculatorStore } from "@/calculator/stores";
-import type { CandidateAnswer } from "@/calculator/view-models/server";
-import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "@/calculator/view-models/server";
+import { calculateMatches } from "../../result-calculation";
+import { useAnswersStore, useCalculatorStore } from "../../stores";
+import type { CandidateAnswer } from "../server";
+import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "../server";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);

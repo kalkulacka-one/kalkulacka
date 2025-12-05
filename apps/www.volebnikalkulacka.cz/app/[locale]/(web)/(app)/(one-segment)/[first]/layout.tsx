@@ -1,4 +1,4 @@
-import { loadCalculatorData } from "@/calculator/data-fetching";
+import { loadCalculatorData } from "@/calculator/server";
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams } from "@/lib/routing";
 

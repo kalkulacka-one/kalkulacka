@@ -5,7 +5,7 @@ import { Card } from "@kalkulacka-one/design-system/server";
 import { mdiArrowRight, mdiStar } from "@mdi/js";
 import Markdown from "react-markdown";
 
-import type { CalculatorViewModel } from "@/calculator/view-models/server";
+import type { CalculatorViewModel } from "../../../view-models/server";
 
 export type Guide = {
   calculator: CalculatorViewModel;

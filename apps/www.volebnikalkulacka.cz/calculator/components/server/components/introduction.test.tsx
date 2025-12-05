@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { calculatorViewModel } from "@/calculator/view-models/server";
-
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
+import { calculatorViewModel } from "../../../view-models/server";
 import { Introduction } from ".";
 
 const data = calculatorViewModel({

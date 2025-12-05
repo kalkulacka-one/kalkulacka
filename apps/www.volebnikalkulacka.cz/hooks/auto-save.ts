@@ -1,8 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 
-import type { calculateMatches } from "@/calculator/result-calculation";
-import { AnswersStoreContext } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models/client";
+import { AnswersStoreContext, useCalculator } from "@/calculator/client";
+import type { calculateMatches } from "@/calculator/server";
 import { saveSessionDataWithBeacon } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 

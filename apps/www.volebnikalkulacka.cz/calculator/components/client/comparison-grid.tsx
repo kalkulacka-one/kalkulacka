@@ -4,8 +4,8 @@ import { IconBadge } from "@kalkulacka-one/design-system/server";
 
 import { useState } from "react";
 
-import { ComparisonQuestionCard } from "@/calculator/components/server";
-import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator/view-models/server";
+import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "../../view-models/server";
+import { ComparisonQuestionCard } from "../server";
 
 export type ComparisonGridDashlinesOverlay = {
   result: ResultViewModel;

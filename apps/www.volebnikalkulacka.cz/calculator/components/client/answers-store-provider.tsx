@@ -1,7 +1,7 @@
 import { type ReactNode, useRef } from "react";
 import type { StoreApi } from "zustand";
 
-import { type AnswersStore, AnswersStoreContext, createAnswersStore } from "@/calculator/stores";
+import { type AnswersStore, AnswersStoreContext, createAnswersStore } from "../../stores";
 
 export type AnswersStoreProviderProps = {
   children: ReactNode;
