@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { useCalculatorStore } from "@/calculator/stores";
+import { useCalculatorStore } from "@/calculator/client";
 import { initializeSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 

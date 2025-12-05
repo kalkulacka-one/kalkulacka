@@ -1,8 +1,7 @@
 import { useRouter } from "next/navigation";
 
-import { GuidePage as AppGuidePage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models/client";
+import { GuidePage as AppGuidePage } from "@/calculator";
+import { useAnswersStore, useCalculator } from "@/calculator/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
