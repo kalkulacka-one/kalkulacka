@@ -1,4 +1,5 @@
-import { loadCalculatorData } from "@/calculator";
+import { loadCalculatorData } from "@kalkulacka-one/app";
+
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams } from "@/lib/routing";
 

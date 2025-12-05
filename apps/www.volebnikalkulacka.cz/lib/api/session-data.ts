@@ -1,4 +1,5 @@
-import type { calculateMatches } from "@/calculator";
+import type { calculateMatches } from "@kalkulacka-one/app";
+
 import { getRuntimeSessionId } from "@/lib/session/client";
 
 import type { Answer } from "../../../../packages/schema/schemas/answer.schema";

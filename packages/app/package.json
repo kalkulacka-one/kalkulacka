@@ -1,0 +1,36 @@
+{
+  "name": "@kalkulacka-one/app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/server.ts",
+    "./client": "./src/client.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@kalkulacka-one/design-system": "*",
+    "next-intl": "^4.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0",
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "@kalkulacka-one/typescript-config": "*",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^5.1.1",
+    "jsdom": "^26.0.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  }
+}

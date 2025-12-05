@@ -1,10 +1,9 @@
+import { calculatorViewModel, Guide, GuideNavigationCard, Introduction } from "@kalkulacka-one/app";
+
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { calculatorViewModel } from "@/calculator/view-models/server";
-
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { Guide, GuideNavigationCard, Introduction } from "../components";
 import { GuidePage } from "./guide";
 
 vi.mock("@kalkulacka-one/design-system/client", () => ({
@@ -12,7 +11,8 @@ vi.mock("@kalkulacka-one/design-system/client", () => ({
   Icon: vi.fn(() => null),
 }));
 
-vi.mock("../components", () => {
+vi.mock("@kalkulacka-one/app", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@kalkulacka-one/app")>();
   const LayoutMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
     Header: React.FC<{ children?: React.ReactNode }>;
     Content: React.FC<{ children?: React.ReactNode }>;
@@ -27,13 +27,17 @@ vi.mock("../components", () => {
   LayoutMock.BottomSpacer = vi.fn(({ children }) => children);
 
   return {
+    ...original,
     Introduction: vi.fn(() => null),
     Guide: vi.fn(() => null),
     GuideNavigationCard: vi.fn(() => null),
-    EmbedFooter: vi.fn(() => null),
     Layout: LayoutMock,
   };
 });
+
+vi.mock("../components", () => ({
+  EmbedFooter: vi.fn(() => null),
+}));
 
 vi.mock("../../client", () => {
   const AppHeaderMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
