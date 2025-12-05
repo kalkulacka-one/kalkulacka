@@ -1,9 +1,17 @@
-import { ROUTE_SEGMENTS } from "./route-builders";
+import { PAGE_SLUGS } from "@/config/localized-slugs";
+
 import { validateQuestionNumber } from "./validators/question-number";
 
 function parseQuestionNumber(path: string): number {
   const segments = path.split("/").filter(Boolean);
-  const questionIndex = segments.indexOf(ROUTE_SEGMENTS.QUESTION);
+
+  const questionIndex = (() => {
+    for (const slugs of Object.values(PAGE_SLUGS)) {
+      const index = segments.indexOf(slugs.question);
+      if (index !== -1) return index;
+    }
+    return -1;
+  })();
 
   if (questionIndex === -1) {
     throw new Error("Question segment not found in path");

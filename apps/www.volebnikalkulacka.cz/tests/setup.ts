@@ -22,4 +22,7 @@ vi.mock("next-intl", () => ({
       return typeof value === "string" ? value : key;
     };
   },
+  hasLocale: (locales: readonly string[], locale: string) => {
+    return locales.includes(locale);
+  },
 }));
