@@ -1,7 +1,7 @@
-import { Logo } from "@kalkulacka-one/design-system/client";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { Logo } from "./logo";
 
 describe("Logo", () => {
   it("renders the SVG as an image", () => {
