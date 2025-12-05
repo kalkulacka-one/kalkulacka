@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from "react";
 
-import { AnswersStoreProvider, CalculatorStoreProvider } from "@/calculator/components/client";
-import { Layout as AppLayout } from "@/calculator/components/server";
-import type { CalculatorData } from "@/calculator/data-fetching";
+import { Layout as AppLayout, type CalculatorData } from "@/calculator";
+import { AnswersStoreProvider, CalculatorStoreProvider } from "@/calculator/client";
 
 export type ProviderLayout = PropsWithChildren<{
   calculatorData: CalculatorData;

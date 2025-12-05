@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { calculatorViewModel } from "@/calculator/view-models/server";
 
-import { Guide } from ".";
+import { Guide } from "./guide";
 
 describe("Guide", () => {
   it("renders", () => {

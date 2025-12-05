@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { calculatorViewModel } from "@/calculator/view-models/server";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { Introduction } from ".";
+import { Introduction } from "./introduction";
 
 const data = calculatorViewModel({
   id: "00000000-0000-0000-0000-000000000000",

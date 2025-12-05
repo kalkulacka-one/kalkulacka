@@ -3,8 +3,8 @@ import { Avatar, ProgressBar } from "@kalkulacka-one/design-system/server";
 
 import React, { useState } from "react";
 
-import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/calculator/view-models/client/candidate";
-import type { CandidateMatchViewModel } from "@/calculator/view-models/server";
+import type { CandidateMatchViewModel } from "@/calculator";
+import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/calculator/view-models/client";
 
 export type MatchCard = CandidateMatchViewModel;
 

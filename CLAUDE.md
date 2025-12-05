@@ -62,6 +62,10 @@ The codebase follows a Turborepo structure with two main directories:
 - Vitest for unit testing
 - React Testing Library for component testing
 - JSDOM environment configured
+- Tests are always in the same folder as the component they're testing
+- Tests use relative imports for the component being tested (e.g., `import { Component } from "./component"`)
+- Test files are named `{component}.test.tsx` or `{module}.test.ts`
+- Do not import from barrel files (`.` or `./index`) in tests; import directly from the component file
 
 ### TypeScript
 - Strict type checking enabled

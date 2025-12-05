@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
 
-import type { calculateMatches } from "@/calculator/result-calculation";
+import type { calculateMatches } from "@/calculator";
 import { PublicResultPageWithData } from "@/components/client";
 import { generateCalculatorMetadata } from "@/lib/metadata";
 import { buildCanonicalUrl, canonical, mappedParams } from "@/lib/routing";

@@ -2,7 +2,7 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
-import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/components/client";
+import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/client";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 

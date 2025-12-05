@@ -1,7 +1,7 @@
-import { Field } from "@kalkulacka-one/design-system/client";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { Field } from "./field";
 
 describe("Field", () => {
   it("should render children", () => {

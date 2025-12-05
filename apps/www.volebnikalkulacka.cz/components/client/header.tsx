@@ -1,5 +1,5 @@
-import { AppHeader, WithCondenseOnScroll } from "@/calculator/components/client";
-import { Layout } from "@/calculator/components/server/components";
+import { Layout } from "@/calculator";
+import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
 
 export function Header() {
   return (

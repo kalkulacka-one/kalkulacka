@@ -1,6 +1,6 @@
 import { describe, expect, it, type MockedFunction, vi } from "vitest";
 
-import { fetchFile } from ".";
+import { fetchFile } from "./fetch-file";
 
 global.fetch = vi.fn();
 

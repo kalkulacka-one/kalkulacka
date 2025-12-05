@@ -1,10 +1,7 @@
 import { useMemo } from "react";
 
+import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers, organizationViewModel, personViewModel } from "@/calculator";
 import { useAnswersStore, useCalculatorStore } from "@/calculator/stores";
-
-import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers } from "../server/candidate";
-import { organizationViewModel } from "../server/organization";
-import { personViewModel } from "../server/person";
 
 export function useCandidate(id: string): CandidateViewModel | undefined {
   const candidates = useCalculatorStore((state) => state.data.candidates);
