@@ -113,12 +113,12 @@ export function getLocaleRedirects() {
       {
         source: `/${defaultLocale}/embed/:path*`,
         destination: "/embed/:path*",
-        permanent: false,
+        permanent: true,
       },
       {
         source: `/${defaultLocale}/:path((?!embed).*)*`,
         destination: "/:path*",
-        permanent: false,
+        permanent: true,
       },
     ];
   }
