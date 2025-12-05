@@ -1,4 +1,4 @@
-import { calculatorViewModel, Guide, GuideNavigationCard, Introduction } from "@kalkulacka-one/app/server";
+import { calculatorViewModel, Guide, GuideNavigationCard, Introduction } from "@kalkulacka-one/app";
 
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -11,8 +11,8 @@ vi.mock("@kalkulacka-one/design-system/client", () => ({
   Icon: vi.fn(() => null),
 }));
 
-vi.mock("@kalkulacka-one/app/server", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@kalkulacka-one/app/server")>();
+vi.mock("@kalkulacka-one/app", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@kalkulacka-one/app")>();
   const LayoutMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
     Header: React.FC<{ children?: React.ReactNode }>;
     Content: React.FC<{ children?: React.ReactNode }>;

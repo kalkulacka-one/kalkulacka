@@ -1,4 +1,4 @@
-import { buildDataUrl, calculatorViewModel, loadCalculatorData } from "@kalkulacka-one/app/server";
+import { buildDataUrl, calculatorViewModel, loadCalculatorData } from "@kalkulacka-one/app";
 
 import type { Metadata } from "next";
 

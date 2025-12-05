@@ -1,6 +1,6 @@
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app";
+import { Layout, ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
 import { WithCondenseOnScroll } from "@kalkulacka-one/app/client";
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app/server";
-import { Layout, ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app/server";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";

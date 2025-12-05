@@ -1,5 +1,5 @@
+import { Layout } from "@kalkulacka-one/app";
 import { WithCondenseOnScroll } from "@kalkulacka-one/app/client";
-import { Layout } from "@kalkulacka-one/app/server";
 
 import { AppHeader } from "@/calculator/client";
 

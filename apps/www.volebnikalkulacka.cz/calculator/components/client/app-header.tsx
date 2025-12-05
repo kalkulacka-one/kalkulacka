@@ -1,4 +1,4 @@
-import type { CalculatorViewModel } from "@kalkulacka-one/app/server";
+import type { CalculatorViewModel } from "@kalkulacka-one/app";
 import { Logo } from "@kalkulacka-one/design-system/client";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
 

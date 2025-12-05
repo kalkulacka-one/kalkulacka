@@ -1,4 +1,4 @@
-import { type calculateMatches, candidatesAnswersViewModel, candidateViewModel, loadCalculatorData, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app/server";
+import { type calculateMatches, candidatesAnswersViewModel, candidateViewModel, loadCalculatorData, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app";
 
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";

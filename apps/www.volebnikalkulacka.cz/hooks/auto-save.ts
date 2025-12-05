@@ -1,5 +1,5 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
 import { AnswersStoreContext, useCalculator } from "@kalkulacka-one/app/client";
-import type { calculateMatches } from "@kalkulacka-one/app/server";
 
 import { useContext, useEffect, useRef } from "react";
 

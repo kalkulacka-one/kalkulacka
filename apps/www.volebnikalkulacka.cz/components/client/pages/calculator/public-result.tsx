@@ -1,5 +1,5 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
 import { useAnswersStore, useCalculator, useResult } from "@kalkulacka-one/app/client";
-import type { calculateMatches } from "@kalkulacka-one/app/server";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import { parseWithSchema } from "@kalkulacka-one/app/server";
+import { parseWithSchema } from "@kalkulacka-one/app";
 
 import { cookies } from "next/headers";
 

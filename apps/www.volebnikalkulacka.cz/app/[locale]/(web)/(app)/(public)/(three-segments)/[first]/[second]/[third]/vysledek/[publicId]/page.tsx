@@ -1,4 +1,4 @@
-import type { calculateMatches } from "@kalkulacka-one/app/server";
+import type { calculateMatches } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
 
 import type { Metadata } from "next";

@@ -1,4 +1,4 @@
-import type { CalculatorData } from "@kalkulacka-one/app/server";
+import type { CalculatorData } from "@kalkulacka-one/app";
 
 import type { PropsWithChildren } from "react";
 
