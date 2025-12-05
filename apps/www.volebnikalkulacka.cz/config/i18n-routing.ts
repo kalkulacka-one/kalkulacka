@@ -75,7 +75,12 @@ export function getSlugRewrites(fromLocale: Locale) {
 }
 
 export function getLocaleRewrites() {
-  const defaultLocale = appConfig.i18n.defaultLocale as Locale;
+  const defaultLocale = appConfig.i18n.defaultLocale;
+
+  if (!hasLocale(routing.locales, defaultLocale)) {
+    throw new Error(`Invalid default locale \`${defaultLocale}\``);
+  }
+
   const { localePrefix } = appConfig.i18n;
 
   if (localePrefix === "as-needed") {
