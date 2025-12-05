@@ -1,4 +1,4 @@
-import { loadCalculatorData } from "@/calculator/server";
+import { loadCalculatorData } from "@/calculator";
 import { SessionProviderLayout } from "@/components/client";
 import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { buildDataUrl, calculatorViewModel, loadCalculatorData } from "@/calculator/server";
+import { buildDataUrl, calculatorViewModel, loadCalculatorData } from "@/calculator";
 
 export async function generateCalculatorMetadata({
   key,

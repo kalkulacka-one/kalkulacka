@@ -1,8 +1,8 @@
 import { notFound, usePathname, useRouter } from "next/navigation";
 import { useEffect, useReducer } from "react";
 
+import { QuestionPage as AppQuestionPage } from "@/calculator";
 import { useAnswer, useAnswersStore, useCalculator, useQuestions } from "@/calculator/client";
-import { QuestionPage as AppQuestionPage } from "@/calculator/server";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
