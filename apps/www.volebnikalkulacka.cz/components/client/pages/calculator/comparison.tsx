@@ -1,7 +1,8 @@
+import { useAnswers, useCalculatedMatches, useCalculator, useQuestions, useResult } from "@kalkulacka-one/app/client";
+
 import { useRouter } from "next/navigation";
 
 import { ComparisonPage } from "@/calculator";
-import { useAnswers, useCalculatedMatches, useCalculator, useQuestions, useResult } from "@/calculator/client";
 import { useEmbed } from "@/components/client";
 import { type RouteSegments, routes } from "@/lib/routing";
 

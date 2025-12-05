@@ -1,12 +1,14 @@
+import { ComparisonGrid, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@kalkulacka-one/app/server";
+import { Layout } from "@kalkulacka-one/app/server";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/calculator";
-import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/client";
+import { AppHeader } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
+import { EmbedFooter } from "../components";
 
 export type ComparisonPage = {
   embedContext: EmbedContextType;

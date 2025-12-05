@@ -1,8 +1,10 @@
+import { useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
+
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { ResultPage as AppResultPage } from "@/calculator";
-import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@/calculator/client";
+import { ShareModal } from "@/calculator/client";
 import { useEmbed } from "@/components/client";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
