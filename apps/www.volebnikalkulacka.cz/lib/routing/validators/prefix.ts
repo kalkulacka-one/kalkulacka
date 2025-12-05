@@ -9,7 +9,7 @@ if (!hasLocale(routing.locales, defaultLocale)) {
   throw new Error(`Invalid defaultLocale: "${defaultLocale}"`);
 }
 
-export const PREFIXES = Object.values(PREFIX_SLUGS[defaultLocale] || {});
+export const PREFIXES = routing.locales.flatMap((locale) => Object.values(PREFIX_SLUGS[locale] || {}));
 
 export function isPrefix(segment: string): boolean {
   return PREFIXES.includes(segment);
