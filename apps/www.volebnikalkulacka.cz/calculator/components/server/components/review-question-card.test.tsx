@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { AnswerViewModel, QuestionViewModel } from "@/calculator/view-models/server";
 
+import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 import { ReviewQuestionCard } from "./review-question-card";
 
 describe("ReviewQuestionCard", () => {
@@ -21,7 +22,7 @@ describe("ReviewQuestionCard", () => {
       answer: true,
       isImportant: true,
     },
-    setAnswer: vi.fn(),
+    setAnswer: vi.fn() as (answer: Partial<Answer> & { questionId: string }) => void,
   };
 
   const props = {
@@ -29,9 +30,9 @@ describe("ReviewQuestionCard", () => {
     answer: mockAnswer,
     current: 5,
     total: 40,
-    onAgreeChange: vi.fn(),
-    onDisagreeChange: vi.fn(),
-    onImportantChange: vi.fn(),
+    onAgreeChange: vi.fn() as (agree: boolean) => void,
+    onDisagreeChange: vi.fn() as (disagree: boolean) => void,
+    onImportantChange: vi.fn() as (isImportant: boolean) => void,
   };
 
   it("renders question information and answer buttons", () => {
@@ -48,32 +49,33 @@ describe("ReviewQuestionCard", () => {
 
   describe("interactions", () => {
     let user: ReturnType<typeof userEvent.setup>;
-    let mockHandler: ReturnType<typeof vi.fn>;
 
     beforeEach(() => {
       user = userEvent.setup();
-      mockHandler = vi.fn();
     });
 
     it("calls onAgreeChange when agree button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onAgreeChange={mockHandler} />);
+      const mockAgreeHandler = vi.fn() as (agree: boolean) => void;
+      render(<ReviewQuestionCard {...props} onAgreeChange={mockAgreeHandler} />);
 
       await user.click(screen.getByText("Ano"));
-      expect(mockHandler).toHaveBeenCalledTimes(1);
+      expect(mockAgreeHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />);
+      const mockDisagreeHandler = vi.fn() as (disagree: boolean) => void;
+      render(<ReviewQuestionCard {...props} onDisagreeChange={mockDisagreeHandler} />);
 
       await user.click(screen.getByText("Ne"));
-      expect(mockHandler).toHaveBeenCalledTimes(1);
+      expect(mockDisagreeHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onImportantChange={mockHandler} />);
+      const mockImportantHandler = vi.fn() as (isImportant: boolean) => void;
+      render(<ReviewQuestionCard {...props} onImportantChange={mockImportantHandler} />);
 
       await user.click(screen.getByLabelText("Pro mě důležité"));
-      expect(mockHandler).toHaveBeenCalledTimes(1);
+      expect(mockImportantHandler).toHaveBeenCalledTimes(1);
     });
   });
 });

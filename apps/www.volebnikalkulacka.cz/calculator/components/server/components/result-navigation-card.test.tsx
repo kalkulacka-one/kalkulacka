@@ -6,16 +6,16 @@ import { ResultNavigationCard } from "./result-navigation-card";
 
 describe("ResultNavigationCard", () => {
   it("renders both navigation buttons", () => {
-    const onNextClick = vi.fn();
-    const onShareClick = vi.fn();
+    const onNextClick = vi.fn() as () => void;
+    const onShareClick = vi.fn() as () => void;
     render(<ResultNavigationCard onNextClick={onNextClick} onShareClick={onShareClick} />);
     expect(screen.getByText("Porovnat")).toBeInTheDocument();
     expect(screen.getByText("Sdílet")).toBeInTheDocument();
   });
 
   it("calls onNextClick when 'Porovnat' button is clicked", async () => {
-    const onNextClick = vi.fn();
-    const onShareClick = vi.fn();
+    const onNextClick = vi.fn() as () => void;
+    const onShareClick = vi.fn() as () => void;
     const user = userEvent.setup();
     render(<ResultNavigationCard onNextClick={onNextClick} onShareClick={onShareClick} />);
 
@@ -24,8 +24,8 @@ describe("ResultNavigationCard", () => {
   });
 
   it("calls onShareClick when 'Sdílet' button is clicked", async () => {
-    const onNextClick = vi.fn();
-    const onShareClick = vi.fn();
+    const onNextClick = vi.fn() as () => void;
+    const onShareClick = vi.fn() as () => void;
     const user = userEvent.setup();
     render(<ResultNavigationCard onNextClick={onNextClick} onShareClick={onShareClick} />);
 
