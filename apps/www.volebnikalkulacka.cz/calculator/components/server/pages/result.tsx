@@ -4,9 +4,9 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import React from "react";
 
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
+import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import type { CalculatorViewModel, ResultViewModel } from "../../../view-models/server";
 import { EmbedFooter, Layout } from "../components";
 import { ResultNavigationCard } from "../components/result-navigation-card";
 

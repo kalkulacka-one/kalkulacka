@@ -1,8 +1,7 @@
 import { useMemo } from "react";
 
 import { type QuestionViewModel, questionViewModel } from "@/calculator";
-
-import { useCalculatorStore } from "../../stores";
+import { useCalculatorStore } from "@/calculator/stores";
 
 export function useQuestion(id: string): QuestionViewModel | undefined {
   const questions = useCalculatorStore((state) => state.data.questions);

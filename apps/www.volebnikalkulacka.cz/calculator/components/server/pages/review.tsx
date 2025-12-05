@@ -3,9 +3,9 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "../../../view-models/server";
 import { EmbedFooter, Layout, ReviewNavigationCard, ReviewQuestionCard } from "../components";
 
 export type ReviewPage = {

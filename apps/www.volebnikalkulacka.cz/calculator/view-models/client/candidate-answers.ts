@@ -2,8 +2,7 @@ import { useMemo } from "react";
 
 import type { CandidateAnswer } from "@/calculator";
 import { type CandidatesAnswersViewModel, candidatesAnswersViewModel } from "@/calculator";
-
-import { useCalculatorStore } from "../../stores";
+import { useCalculatorStore } from "@/calculator/stores";
 
 export function useCandidatesAnswers(): CandidatesAnswersViewModel {
   const candidatesAnswers = useCalculatorStore((state) => state.data.candidatesAnswers);
