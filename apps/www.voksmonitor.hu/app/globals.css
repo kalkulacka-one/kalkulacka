@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@import "@kalkulacka-one/design-system/styles";
+
+:root {
+  color-scheme: light;
+}
+
+@theme static {
+  --font-display: var(--ko-font-display);
+  --font-sans: var(--ko-typeface-sans);
+  --font-mono: var(--ko-typeface-mono);
+  --color-gray-700: #1d1c1c;
+}
+
+.ko\:text-logo-cross, .ko\:text-logo-percent-denominator {
+  fill: #f00;
+}
+
+.ko\:text-logo-check, .ko\:text-logo-percent-numerator {
+  fill: #0c7c59;
+}
