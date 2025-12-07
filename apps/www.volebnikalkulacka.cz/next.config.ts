@@ -17,8 +17,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     const { locales } = appConfig.i18n;
     return [
-      ...getLocaleRewrites(),
       ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
+      ...getLocaleRewrites(),
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
