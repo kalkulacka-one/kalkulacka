@@ -1,7 +1,5 @@
 import { withDefaults } from "@kalkulacka-one/next";
 
-/**
- */
 export const appConfig = withDefaults({
   domainPath: "www.volebnikalkulacka.cz",
 
