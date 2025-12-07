@@ -33,24 +33,29 @@ function generateSlugRewrites(fromLocale: Locale, toLocale: Locale, prefix: stri
     throw new Error(`Locale '${fromLocale}' not found in PAGE_SLUGS`);
   }
 
+  // For "as-needed" strategy, default locale doesn't have prefix in source URLs
+  const { defaultLocale, localePrefix } = appConfig.i18n;
+  const isDefaultLocale = fromLocale === defaultLocale;
+  const sourceLocalePrefix = localePrefix === "as-needed" && isDefaultLocale ? "" : `/${fromLocale}`;
+
   for (const [pageType, localizedSlug] of Object.entries(fromSlugs)) {
     const filesystemSlug = pageType as PageType;
 
     rewrites.push({
-      source: `/${fromLocale}${prefix}/${localizedSlug}`,
+      source: `${sourceLocalePrefix}${prefix}/${localizedSlug}`,
       destination: `/${toLocale}${prefix}/${filesystemSlug}`,
     });
 
     if (pageType === "question") {
       rewrites.push({
-        source: `/${fromLocale}${prefix}/${localizedSlug}/:num`,
+        source: `${sourceLocalePrefix}${prefix}/${localizedSlug}/:num`,
         destination: `/${toLocale}${prefix}/${filesystemSlug}/:num`,
       });
     }
 
     if (hasIdSlugs.includes(pageType)) {
       rewrites.push({
-        source: `/${fromLocale}${prefix}/${localizedSlug}/:id`,
+        source: `${sourceLocalePrefix}${prefix}/${localizedSlug}/:id`,
         destination: `/${toLocale}${prefix}/${filesystemSlug}/:id`,
       });
     }
