@@ -106,7 +106,7 @@ export function getLocaleRewrites() {
         destination: `/${defaultLocale}/${electionPrefix}/:path*`,
       },
       {
-        source: `/:path((?!${localesPattern}/).*)*`,
+        source: `/:path((?!(?:${localesPattern}|api|_next|favicon\\.ico)(?:/|$)).*)*`,
         destination: `/${defaultLocale}/:path*`,
       },
     ];
