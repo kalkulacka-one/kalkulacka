@@ -4,9 +4,8 @@ import type { Locale } from "next-intl";
 import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
-import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "@/config/i18n-routing";
-
 import { appConfig } from "./config/app-config";
+import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config/i18n-routing";
 
 const withNextIntl = createNextIntlPlugin();
 
