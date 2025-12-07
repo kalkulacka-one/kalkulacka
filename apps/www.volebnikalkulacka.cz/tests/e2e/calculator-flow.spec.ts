@@ -120,7 +120,7 @@ async function navigateToNavod(page: Page, calculator: CalculatorConfig) {
       await expect(page).toHaveURL(new RegExp(`.*${calculator.path}/navod`));
       await expect(page.locator("main")).toBeVisible();
     } catch {
-      console.log(`Navigation to navod failed for ${calculator.name}`);
+      console.log(`Navigation to guide failed for ${calculator.name}`);
     }
   }
 }

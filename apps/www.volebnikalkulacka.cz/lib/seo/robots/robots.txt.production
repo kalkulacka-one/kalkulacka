@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /api/images/
 Disallow: /api/
-Disallow: /*/vysledek$
 Disallow: /*/rekapitulace
+Disallow: /*/vysledek
+Allow: /*/vysledek/

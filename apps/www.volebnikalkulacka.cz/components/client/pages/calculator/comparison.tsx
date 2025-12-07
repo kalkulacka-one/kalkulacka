@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 import { ComparisonPage } from "@/calculator";
 import { useAnswers, useCalculatedMatches, useCalculator, useQuestions, useResult } from "@/calculator/client";
@@ -13,9 +14,10 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
   const answers = useAnswers();
   const questions = useQuestions();
   const embed = useEmbed();
+  const locale = useLocale();
 
   const handlePreviousClick = () => {
-    router.push(routes.result(segments));
+    router.push(routes.result(segments, locale));
   };
 
   const handleCloseClick = () => {
