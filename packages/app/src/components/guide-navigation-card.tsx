@@ -2,7 +2,7 @@ import { Button } from "@kalkulacka-one/design-system/client";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "h-22";
+const HEIGHT = "koa:h-22";
 
 export type GuideNavigationCard = {
   onNextClick: () => void;
