@@ -3,14 +3,12 @@ import { hasLocale } from "next-intl";
 
 import { routing } from "../i18n/routing";
 import csMessages from "../messages/cs.json";
-import enMessages from "../messages/en.json";
 
 export type PageType = keyof Messages["routing"]["pages"];
 export type PrefixType = keyof Messages["routing"]["prefixes"];
 
 const MESSAGES_BY_LOCALE: Record<Locale, Messages> = {
   cs: csMessages,
-  en: enMessages,
 };
 
 export const PREFIX_SLUGS = Object.fromEntries(Object.entries(MESSAGES_BY_LOCALE).map(([locale, messages]) => [locale, messages.routing.prefixes])) as Record<Locale, Messages["routing"]["prefixes"]>;
