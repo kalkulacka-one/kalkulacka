@@ -22,7 +22,7 @@
     "@vitest/ui": "^3.1.4",
     "jsdom": "^26.1.0",
     "npm-check-updates": "^18.3.1",
-    "turbo": "^2.6.1",
+    "turbo": "^2.6.3",
     "vitest": "^3.1.4"
   },
   "engines": {
