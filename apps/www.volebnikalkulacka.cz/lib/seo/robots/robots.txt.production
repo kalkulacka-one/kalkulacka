@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /api/images/
 Disallow: /api/
-# Block result and review pages (both English routes and Czech URLs)
-Disallow: /*/result$
 Disallow: /*/review
-Disallow: /*/vysledek$
 Disallow: /*/rekapitulace
+Disallow: /*/vysledek
+Disallow: /*/result
+Allow: /*/vysledek/
+Allow: /*/result/
