@@ -1,9 +1,9 @@
 import { notFound, usePathname, useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useEffect, useReducer } from "react";
 
-import { QuestionPage as AppQuestionPage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useAnswer, useCalculator, useQuestions } from "@/calculator/view-models/client";
+import { QuestionPage as AppQuestionPage } from "@/calculator";
+import { useAnswer, useAnswersStore, useCalculator, useQuestions } from "@/calculator/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
@@ -16,6 +16,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const calculator = useCalculator();
   const { questions, total } = useQuestions();
   const [, forceRender] = useReducer((x) => x + 1, 0);
+  const locale = useLocale();
 
   const currentQuestion = (() => {
     try {
@@ -52,19 +53,19 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
 
   const handleNextClick = () => {
     if (currentQuestion < total) {
-      const nextUrl = routes.question(segments, currentQuestion + 1);
+      const nextUrl = routes.question(segments, currentQuestion + 1, locale);
       window.history.pushState(null, "", nextUrl);
       forceRender();
     } else {
-      router.push(routes.review(segments));
+      router.push(routes.review(segments, locale));
     }
   };
 
   const handlePreviousClick = () => {
     if (currentQuestion === 1) {
-      router.push(routes.guide(segments));
+      router.push(routes.guide(segments, locale));
     } else {
-      const prevUrl = routes.question(segments, currentQuestion - 1);
+      const prevUrl = routes.question(segments, currentQuestion - 1, locale);
       window.history.pushState(null, "", prevUrl);
       forceRender();
     }

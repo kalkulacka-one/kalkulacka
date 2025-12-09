@@ -1,3 +1,5 @@
+import type { Locale } from "next-intl";
+
 import { createBaseSegment, type RouteSegments, routes } from "./route-builders";
 
 export function buildCanonicalUrl(path: string): string {
@@ -18,11 +20,11 @@ function stripEmbed(segments: RouteSegments): RouteSegments {
 export const canonical = {
   homepage: (): string => buildCanonicalUrl("/"),
   base: (segments: RouteSegments): string => buildCanonicalUrl(createBaseSegment(stripEmbed(segments))),
-  introduction: (segments: RouteSegments): string => buildCanonicalUrl(routes.introduction(stripEmbed(segments))),
-  guide: (segments: RouteSegments): string => buildCanonicalUrl(routes.guide(stripEmbed(segments))),
-  question: (segments: RouteSegments, questionNumber: number): string => buildCanonicalUrl(routes.question(stripEmbed(segments), questionNumber)),
-  review: (segments: RouteSegments): string => buildCanonicalUrl(routes.review(stripEmbed(segments))),
-  result: (segments: RouteSegments): string => buildCanonicalUrl(routes.result(stripEmbed(segments))),
-  publicResult: (segments: RouteSegments, publicId: string): string => buildCanonicalUrl(routes.publicResult(stripEmbed(segments), publicId)),
-  comparison: (segments: RouteSegments): string => buildCanonicalUrl(routes.comparison(stripEmbed(segments))),
+  introduction: (segments: RouteSegments, locale: Locale): string => buildCanonicalUrl(routes.introduction(stripEmbed(segments), locale)),
+  guide: (segments: RouteSegments, locale: Locale): string => buildCanonicalUrl(routes.guide(stripEmbed(segments), locale)),
+  question: (segments: RouteSegments, questionNumber: number, locale: Locale): string => buildCanonicalUrl(routes.question(stripEmbed(segments), questionNumber, locale)),
+  review: (segments: RouteSegments, locale: Locale): string => buildCanonicalUrl(routes.review(stripEmbed(segments), locale)),
+  result: (segments: RouteSegments, locale: Locale): string => buildCanonicalUrl(routes.result(stripEmbed(segments), locale)),
+  publicResult: (segments: RouteSegments, publicId: string, locale: Locale): string => buildCanonicalUrl(routes.publicResult(stripEmbed(segments), publicId, locale)),
+  comparison: (segments: RouteSegments, locale: Locale): string => buildCanonicalUrl(routes.comparison(stripEmbed(segments), locale)),
 } as const;

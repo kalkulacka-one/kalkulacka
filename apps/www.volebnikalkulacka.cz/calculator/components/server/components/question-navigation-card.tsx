@@ -1,3 +1,4 @@
+import { NavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 
@@ -5,8 +6,6 @@ import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import type { AnswerViewModel } from "@/calculator/view-models/server";
-
-import { NavigationCard } from "./navigation-card";
 
 const HEIGHT = "h-[138px]";
 

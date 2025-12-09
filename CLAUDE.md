@@ -52,16 +52,24 @@ The codebase follows a Turborepo structure with two main directories:
 - Line width: 200 characters
 - Self-closing JSX elements required
 
-### Tailwind CSS Classes (Design System Package)
-- The `ko:` prefix must ALWAYS come first before any responsive modifiers
-- Correct: `ko:lg:grid-cols-3`, `ko:sm:hidden`, `ko:md:flex`
-- Incorrect: `lg:ko:grid-cols-3`, `sm:ko:hidden`, `md:ko:flex`
-- This applies to all Tailwind utilities in the `@kalkulacka-one/design-system` package
+### Tailwind CSS Classes
+- **Design System Package (`@kalkulacka-one/design-system`)**: Uses the `ko:` prefix
+  - The `ko:` prefix must ALWAYS come first before any responsive modifiers
+  - Correct: `ko:lg:grid-cols-3`, `ko:sm:hidden`, `ko:md:flex`
+  - Incorrect: `lg:ko:grid-cols-3`, `sm:ko:hidden`, `md:ko:flex`
+- **App Package (`@kalkulacka-one/app`)**: Uses the `koa:` prefix
+  - The `koa:` prefix must ALWAYS come first before any responsive modifiers
+  - Correct: `koa:lg:grid-cols-3`, `koa:sm:hidden`, `koa:md:flex`
+  - Incorrect: `lg:koa:grid-cols-3`, `sm:koa:hidden`, `md:koa:flex`
 
 ### Testing
 - Vitest for unit testing
 - React Testing Library for component testing
 - JSDOM environment configured
+- Tests are always in the same folder as the component they're testing
+- Tests use relative imports for the component being tested (e.g., `import { Component } from "./component"`)
+- Test files are named `{component}.test.tsx` or `{module}.test.ts`
+- Do not import from barrel files (`.` or `./index`) in tests; import directly from the component file
 
 ### TypeScript
 - Strict type checking enabled

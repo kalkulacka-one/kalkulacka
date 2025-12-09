@@ -1,7 +1,7 @@
-import { DotIndicator } from "@kalkulacka-one/design-system/server";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { DotIndicator } from "./dotIndicator";
 
 describe("Dot indicator", () => {
   describe("when given valid steps", () => {

@@ -17,10 +17,10 @@
   "dependencies": {
     "@kalkulacka-one/database": "*",
     "@kalkulacka-one/design-system": "*",
-    "next": "15.5.2",
+    "next": "15.5.7",
     "next-intl": "^4.3.5",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",

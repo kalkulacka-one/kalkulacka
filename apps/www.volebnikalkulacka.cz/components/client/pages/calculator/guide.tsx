@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
-import { GuidePage as AppGuidePage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models/client";
+import { GuidePage as AppGuidePage } from "@/calculator";
+import { useAnswersStore, useCalculator } from "@/calculator/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
@@ -14,15 +14,16 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
   const calculator = useCalculator();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
+  const locale = useLocale();
 
   useAutoSave();
 
   const handleNavigationNextClick = () => {
-    router.push(routes.question(segments, 1));
+    router.push(routes.question(segments, 1, locale));
   };
 
   const handleBackClick = () => {
-    router.push(routes.introduction(segments));
+    router.push(routes.introduction(segments, locale));
   };
 
   const handleCloseClick = async () => {

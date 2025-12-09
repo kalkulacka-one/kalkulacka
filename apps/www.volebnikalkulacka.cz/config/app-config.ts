@@ -6,6 +6,7 @@ export const appConfig = withDefaults({
   i18n: {
     defaultLocale: "cs",
     locales: ["cs"],
+    localePrefix: "as-needed" as const,
   },
 
   footer: {

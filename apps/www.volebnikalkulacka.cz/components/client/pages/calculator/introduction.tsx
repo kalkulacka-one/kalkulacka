@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
-import { IntroductionPage } from "@/calculator/components/server";
-import { useAnswersStore } from "@/calculator/stores";
-import { useCalculator } from "@/calculator/view-models/client";
+import { IntroductionPage } from "@/calculator";
+import { useAnswersStore, useCalculator } from "@/calculator/client";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
@@ -14,11 +14,12 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   const calculator = useCalculator();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
+  const locale = useLocale();
 
   useAutoSave();
 
   const handleNavigationNextClick = () => {
-    router.push(routes.guide(segments));
+    router.push(routes.guide(segments, locale));
   };
 
   const handleCloseClick = async () => {

@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { ShareModal } from "@/calculator/components/client";
@@ -17,6 +18,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const calculator = useCalculator();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
+  const locale = useLocale();
 
   const algorithmMatches = useCalculatedMatches();
   const result = useResult(algorithmMatches, { showOnlyNested });
@@ -30,11 +32,11 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   }, [algorithmMatches, answersStore, calculator.id, calculator.version]);
 
   const handlePreviousClick = () => {
-    router.push(routes.review(segments));
+    router.push(routes.review(segments, locale));
   };
 
   const handleNextClick = () => {
-    router.push(routes.comparison(segments));
+    router.push(routes.comparison(segments, locale));
   };
 
   const handleCloseClick = async () => {

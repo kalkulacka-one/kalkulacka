@@ -1,15 +1,21 @@
+import { GuideNavigationCard } from "@kalkulacka-one/app";
+
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { calculatorViewModel } from "@/calculator/view-models/server";
 
 import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
-import { Guide, GuideNavigationCard, Introduction } from "../components";
+import { Guide, Introduction } from "../components";
 import { GuidePage } from "./guide";
 
 vi.mock("@kalkulacka-one/design-system/client", () => ({
   Button: vi.fn(({ children }) => children),
   Icon: vi.fn(() => null),
+}));
+
+vi.mock("@kalkulacka-one/app", () => ({
+  GuideNavigationCard: vi.fn(() => null),
 }));
 
 vi.mock("../components", () => {
@@ -29,7 +35,6 @@ vi.mock("../components", () => {
   return {
     Introduction: vi.fn(() => null),
     Guide: vi.fn(() => null),
-    GuideNavigationCard: vi.fn(() => null),
     EmbedFooter: vi.fn(() => null),
     Layout: LayoutMock,
   };

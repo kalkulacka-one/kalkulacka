@@ -1,62 +1,22 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import type { Locale } from "next-intl";
 import createNextIntlPlugin from "next-intl/plugin";
 import rehypeSlug from "rehype-slug";
 
 import { appConfig } from "./config/app-config";
+import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config/i18n-routing";
 
 const withNextIntl = createNextIntlPlugin();
-
-function getLocaleRewrites() {
-  const { defaultLocale, localePrefix } = appConfig.i18n;
-
-  if (localePrefix === "as-needed") {
-    return [
-      {
-        source: "/",
-        destination: `/${defaultLocale}`,
-      },
-      {
-        source: "/embed/:path*",
-        destination: `/${defaultLocale}/embed/:path*`,
-      },
-      {
-        source: "/volby/:path*",
-        destination: `/${defaultLocale}/volby/:path*`,
-      },
-    ];
-  }
-
-  return [];
-}
-
-function getLocaleRedirects() {
-  const { defaultLocale, localePrefix } = appConfig.i18n;
-
-  if (localePrefix === "as-needed") {
-    return [
-      {
-        source: `/${defaultLocale}/embed/:path*`,
-        destination: "/embed/:path*",
-        permanent: false,
-      },
-      {
-        source: `/${defaultLocale}/:path((?!embed).*)*`,
-        destination: "/:path*",
-        permanent: false,
-      },
-    ];
-  }
-
-  return [];
-}
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
+    const { locales } = appConfig.i18n;
     return [
+      ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
       ...getLocaleRewrites(),
       {
         source: "/js/script.tagged-events.outbound-links.js",
