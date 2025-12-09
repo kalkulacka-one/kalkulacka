@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @import "@kalkulacka-one/design-system/styles";
+@import "@kalkulacka-one/app/styles";
 
 :root {
   color-scheme: light;

@@ -1,7 +1,7 @@
-import { IconBadge } from "@kalkulacka-one/design-system/server";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { IconBadge } from "./iconBadge";
 
 describe("IconBadge", () => {
   it("should render children", () => {

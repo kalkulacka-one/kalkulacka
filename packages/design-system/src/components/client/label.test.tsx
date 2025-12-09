@@ -1,7 +1,8 @@
-import { Field, Label } from "@kalkulacka-one/design-system/client";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { Field } from "./field";
+import { Label } from "./label";
 
 describe("Label", () => {
   it("should render children", () => {

@@ -1,6 +1,7 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
+import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 import { shareSession } from "@/lib/api";
@@ -14,6 +15,7 @@ export type ShareModalProps = {
 };
 
 export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareModalProps) {
+  const locale = useLocale();
   const [publicId, setPublicId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -68,7 +70,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
   if (!isOpen) return null;
 
   const nonEmbedSegments = { first: segments.first, second: segments.second, third: segments.third };
-  const shareUrl = publicId ? canonical.publicResult(nonEmbedSegments, publicId) : "";
+  const shareUrl = publicId ? canonical.publicResult(nonEmbedSegments, publicId, locale) : "";
   const xHandle = process.env.NEXT_PUBLIC_X_HANDLE;
   const shareText = xHandle ? `Podívejte se, jak mi vyšla ${xHandle}:` : "Podívejte se, jak mi vyšla Volební kalkulačka:";
 

@@ -1,9 +1,10 @@
-import { Icon } from "@kalkulacka-one/design-system/client";
 import { EnvelopeIcon } from "@kalkulacka-one/design-system/icons";
 
 import { mdiAccount } from "@mdi/js";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { Icon } from "./icon";
 
 describe("Icon", () => {
   it("should render when given a path string", () => {
