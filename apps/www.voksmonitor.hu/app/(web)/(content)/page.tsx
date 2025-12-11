@@ -81,8 +81,8 @@ export default function Page() {
               <div className="bg-gray-50 rounded-lg p-8 md:p-12">
                 <h2 className="font-display ko:font-display font-bold tracking-tight text-gray-700 text-3xl md:text-4xl text-center mb-4">Hogyan készül a Voksmonitor?</h2>
                 <p className="text-center text-gray-600 max-w-4xl mx-auto mb-12">
-                  A Voksmonitor a K-Monitor és a KohoVolit.eu nonprofit szervezetek közös projektje, amely segít megismerni, hogy a Budapesti Fővárosi Közgyűlésben dolgozó frakciók és képviselők
-                  hogyan viszonyulnak a főváros legfontosabb ügyeihez.
+                  A Voksmonitor a K-Monitor és a KohoVolit.eu nonprofit szervezetek közös projektje, amely segít megismerni, hogy a Fővárosi Közgyűlésben dolgozó frakciók és képviselők hogyan
+                  viszonyulnak a főváros legfontosabb ügyeihez.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -92,7 +92,7 @@ export default function Page() {
                       <Image src="/methodology/1.png" alt="Kérdőív" width={64} height={64} />
                     </div>
                     <p className="text-gray-700 text-sm leading-relaxed">
-                      A kérdőív 39 olyan közgyűlési ügyet tartalmaz, amelyekről 2024. október 4. és 2025. május 28. között vita és döntés is született.
+                      A kérdőív 28 olyan közgyűlési ügyet tartalmaz, amelyekről 2024. október 4. és 2025. május 28. között vita és döntés is született.
                     </p>
                   </div>
 

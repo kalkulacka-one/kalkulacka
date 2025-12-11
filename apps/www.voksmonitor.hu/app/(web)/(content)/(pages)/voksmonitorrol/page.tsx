@@ -14,8 +14,8 @@ export default function Page() {
       <h3 className="font-display ko:font-display font-bold tracking-tight text-gray-800 text-xl md:text-lg mb-2 mt-8">Mi az a Voksmonitor?</h3>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
-        A Voksmonitor egy online alkalmazás, amely összehasonlítja az Ön véleményét a Budapesti Fővárosi Közgyűlésben dolgozó frakciók és képviselők álláspontjaival. A Voksmonitorhoz hasonló magyar
-        (pl. Vokskabin) és külföldi (pl.Stemwijzer, Wahl-O-Mat,Wahlrechner) választási kalkulátorok történetéről és a világ minden tájáról származó sikeres példákról bővebben a Wikipédián olvashat.
+        A Voksmonitor egy online alkalmazás, amely összehasonlítja az Ön véleményét a Fővárosi Közgyűlésben dolgozó frakciók és képviselők álláspontjaival. A Voksmonitorhoz hasonló magyar (pl.
+        Vokskabin) és külföldi (pl.Stemwijzer, Wahl-O-Mat,Wahlrechner) választási kalkulátorok történetéről és a világ minden tájáról származó sikeres példákról bővebben a Wikipédián olvashat.
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
@@ -32,8 +32,8 @@ export default function Page() {
       <p className="text-lg text-gray-700 leading-relaxed mb-0">A Voksmonitort a K-Monitor és a KohoVolit.eu nonprofit szervezetek közösen fejlesztik és üzemeltetik.</p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
-        A mostani kiadás a Budapesti Fővárosi Közgyűlés 2024. október 4-i alakuló ülése és 2025. május 28. közötti időszakból válogat 39 olyan ügyet, amelyekben a képviselők vitáztak, közösen
-        gondolkodtak és döntést hoztak.
+        A mostani kiadás a Fővárosi Közgyűlés 2024. október 4-i alakuló ülése és 2025. május 28. közötti időszakból válogat 28 olyan ügyet, amelyekben a képviselők vitáztak, közösen gondolkodtak és
+        döntést hoztak.
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
@@ -46,7 +46,7 @@ export default function Page() {
       <h3 className="font-display ko:font-display font-bold tracking-tight text-gray-800 text-xl md:text-lg mb-2 mt-8">Hogyan működik?</h3>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
-        A Voksmonitor kérdőíve 39 közgyűlési ügyet mutat be, mindegyiket támogató és ellenző állításokon keresztül, hogy segítse a kitöltőt saját álláspontja kialakításában.
+        A Voksmonitor kérdőíve 28 közgyűlési ügyet mutat be, mindegyiket támogató és ellenző állításokon keresztül, hogy segítse a kitöltőt saját álláspontja kialakításában.
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">A kitöltők minden állítással kapcsolatban jelezhetik, hogy egyetértenek-e vele, illetve mennyire tartják fontosnak az adott témát.</p>
