@@ -1,2 +1,2 @@
-export { GuideNavigationCard } from "./guide-navigation-card";
-export { NavigationCard } from "./navigation-card";
+export * from "./guide-navigation-card";
+export * from "./navigation-card";
