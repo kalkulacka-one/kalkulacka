@@ -20,7 +20,10 @@ export async function I18nProvider({ children, locale }: { children: React.React
   const messages = await getMessages({ locale });
   setRequestLocale(locale);
 
-  const appMessages = APP_MESSAGES[locale as SupportedLocale] ?? {};
+  const appMessages = APP_MESSAGES[locale as SupportedLocale];
+  if (!appMessages) {
+    throw new Error(`Missing app messages for locale: ${locale}`);
+  }
 
   return (
     <NextIntlClientProvider messages={messages}>
