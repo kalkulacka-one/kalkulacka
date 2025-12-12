@@ -1,6 +1,6 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "@/components/navigation-card";
 

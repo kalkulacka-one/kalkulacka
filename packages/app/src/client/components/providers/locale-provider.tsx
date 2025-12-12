@@ -1,6 +1,5 @@
+import { type AbstractIntlMessages, IntlProvider } from "next-intl";
 import type { ReactNode } from "react";
-import type { AbstractIntlMessages } from "use-intl";
-import { IntlProvider } from "use-intl";
 
 import type { SupportedLocale } from "@/locales";
 
