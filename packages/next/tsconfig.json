@@ -1,5 +1,5 @@
 {
-  "extends": "@kalkulacka-one/typescript-config/base.json",
+  "extends": "@kalkulacka-one/typescript-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "./src",
