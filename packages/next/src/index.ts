@@ -1,2 +1,2 @@
-export * from "./config-helpers";
-export * from "./types/app-config";
+export * from "./config-helpers.js";
+export * from "./types/app-config.js";
