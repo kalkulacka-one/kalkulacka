@@ -1,6 +1,6 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 
-import { useIntl } from "react-intl";
+import { useTranslations } from "use-intl";
 
 import { NavigationCard } from "@/components/navigation-card";
 
@@ -11,12 +11,12 @@ export type GuideNavigationCard = {
 };
 
 export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
-  const intl = useIntl();
+  const t = useTranslations("components.guideNavigationCard");
 
   return (
     <NavigationCard>
       <Button color="neutral" onClick={onNextClick}>
-        {intl.formatMessage({ id: "components.guideNavigationCard.startButton" })}
+        {t("startButton")}
       </Button>
     </NavigationCard>
   );

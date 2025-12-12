@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
-import { IntlProvider } from "react-intl";
+import type { AbstractIntlMessages } from "use-intl";
+import { IntlProvider } from "use-intl";
 
 import type { SupportedLocale } from "@/locales";
 
 export type LocaleProvider = {
   locale: SupportedLocale;
-  messages: Record<string, string>;
+  messages: AbstractIntlMessages;
   children: ReactNode;
 };
 

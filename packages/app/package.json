@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@kalkulacka-one/design-system": "*",
-    "react-intl": "^7.1.14"
+    "use-intl": "^4.3.9"
   },
   "peerDependencies": {
     "react": "^19.2.1"

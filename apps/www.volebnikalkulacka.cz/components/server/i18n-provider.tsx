@@ -1,14 +1,15 @@
-import { czechTranslations, type SupportedLocale } from "@kalkulacka-one/app";
+import { csMessages, type SupportedLocale } from "@kalkulacka-one/app";
 import { LocaleProvider } from "@kalkulacka-one/app/client";
 
 import { notFound } from "next/navigation";
+import type { AbstractIntlMessages } from "next-intl";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 
-const APP_MESSAGES: Partial<Record<SupportedLocale, Record<string, string>>> = {
-  cs: czechTranslations,
+const APP_MESSAGES: Partial<Record<SupportedLocale, AbstractIntlMessages>> = {
+  cs: csMessages,
 };
 
 export async function I18nProvider({ children, locale }: { children: React.ReactNode; locale: string }) {
