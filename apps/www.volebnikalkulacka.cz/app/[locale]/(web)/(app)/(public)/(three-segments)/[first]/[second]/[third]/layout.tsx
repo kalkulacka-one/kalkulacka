@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import { loadCalculatorData } from "@/calculator";
 import { ProviderLayout } from "@/components/client";
 import { mappedParams, prefixGuard } from "@/lib/routing";
@@ -10,6 +12,11 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
-  const calculatorData = await loadCalculatorData({ key, group });
-  return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
+  try {
+    const calculatorData = await loadCalculatorData({ key, group });
+    return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
+  } catch (error) {
+    console.error("Failed to load calculator data:", error);
+    notFound();
+  }
 }
