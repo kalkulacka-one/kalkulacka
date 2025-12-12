@@ -1,4 +1,4 @@
-import { GuideNavigationCard } from "@kalkulacka-one/app";
+import { GuideNavigationCard } from "@kalkulacka-one/app/client";
 
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -14,7 +14,7 @@ vi.mock("@kalkulacka-one/design-system/client", () => ({
   Icon: vi.fn(() => null),
 }));
 
-vi.mock("@kalkulacka-one/app", () => ({
+vi.mock("@kalkulacka-one/app/client", () => ({
   GuideNavigationCard: vi.fn(() => null),
 }));
 
