@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-import { LocaleProvider } from "@/client";
 import { csMessages } from "@/locales";
 
 import { GuideNavigationCard } from "./guide-navigation-card";
+import { LocaleProvider } from "./providers";
 
 describe("GuideNavigationCard", () => {
   it("renders 'Začít odpovídat' button", () => {
