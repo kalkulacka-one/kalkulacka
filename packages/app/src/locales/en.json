@@ -3,6 +3,9 @@
     "components": {
       "guideNavigationCard": {
         "startButton": "Start answering"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Continue"
       }
     }
   }

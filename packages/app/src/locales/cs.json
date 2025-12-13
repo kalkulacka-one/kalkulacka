@@ -3,6 +3,9 @@
     "components": {
       "guideNavigationCard": {
         "startButton": "Začít odpovídat"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Pokračovat"
       }
     }
   }

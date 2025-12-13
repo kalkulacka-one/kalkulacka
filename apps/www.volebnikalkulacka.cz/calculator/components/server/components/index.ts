@@ -3,7 +3,6 @@ export * from "./embed-attribution";
 export * from "./embed-footer";
 export * from "./guide";
 export * from "./introduction";
-export * from "./introduction-navigation-card";
 export * from "./layout";
 export * from "./public-result-navigation-card";
 export * from "./question-card";
