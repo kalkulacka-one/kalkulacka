@@ -6,6 +6,9 @@
       },
       "introductionNavigationCard": {
         "continueButton": "Continue"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Show results"
       }
     }
   }

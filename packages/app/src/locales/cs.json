@@ -6,6 +6,9 @@
       },
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Zobrazit výsledky"
       }
     }
   }
