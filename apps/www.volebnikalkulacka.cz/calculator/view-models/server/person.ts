@@ -1,7 +1,6 @@
-import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching";
+import type { ImageUrls, Person } from "@kalkulacka-one/schema";
 
-import type { ImageUrls } from "../../../../../packages/schema/schemas/images.schema";
-import type { Person } from "../../../../../packages/schema/schemas/person.schema";
+import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching";
 
 export type PersonViewModel = Person & {
   displayName: string;

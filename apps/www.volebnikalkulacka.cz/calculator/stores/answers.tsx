@@ -1,7 +1,7 @@
+import type { Answer } from "@kalkulacka-one/schema";
+
 import { createContext, useContext } from "react";
 import { createStore, type StoreApi, useStore } from "zustand";
-
-import type { Answer } from "../../../../packages/schema/schemas/answer.schema";
 
 type AnswersStoreState = {
   answers: Answer[];
