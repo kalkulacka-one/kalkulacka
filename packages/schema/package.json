@@ -18,7 +18,11 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./json": {
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json"
   },
   "packageManager": "npm@11.5.2"
 }
