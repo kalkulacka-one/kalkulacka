@@ -1,8 +1,24 @@
 {
-  "ko": {
+  "koa": {
     "components": {
+      "embedAttribution": {
+        "broughtBy": "Brought by"
+      },
       "guideNavigationCard": {
         "startButton": "Start answering"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Continue"
+      },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Fill your own calculator"
+      },
+      "resultNavigationCard": {
+        "compareButton": "Compare",
+        "shareButton": "Share"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Show results"
       }
     }
   }

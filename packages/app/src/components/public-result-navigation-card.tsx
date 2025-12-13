@@ -1,5 +1,8 @@
-import { NavigationCard } from "@kalkulacka-one/app";
 import { Button } from "@kalkulacka-one/design-system/client";
+
+import { useTranslations } from "next-intl";
+
+import { NavigationCard } from "./navigation-card";
 
 const HEIGHT = "h-22";
 
@@ -8,10 +11,12 @@ export type PublicResultNavigationCard = {
 };
 
 export function PublicResultNavigationCard({ onStartClick }: PublicResultNavigationCard) {
+  const t = useTranslations("koa.components.publicResultNavigationCard");
+
   return (
     <NavigationCard>
       <Button color="neutral" variant="fill" onClick={onStartClick}>
-        Vyplnit vlastní kalkulačku
+        {t("fillOwnCalculatorButton")}
       </Button>
     </NavigationCard>
   );

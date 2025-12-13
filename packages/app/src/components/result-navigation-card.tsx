@@ -1,5 +1,8 @@
-import { NavigationCard } from "@kalkulacka-one/app";
 import { Button } from "@kalkulacka-one/design-system/client";
+
+import { useTranslations } from "next-intl";
+
+import { NavigationCard } from "./navigation-card";
 
 const HEIGHT = "h-22";
 
@@ -9,17 +12,19 @@ export type ResultNavigationCard = {
 };
 
 export function ResultNavigationCard({ onNextClick, onShareClick }: ResultNavigationCard) {
+  const t = useTranslations("koa.components.resultNavigationCard");
+
   return (
     <NavigationCard>
       <div className="flex gap-2 w-full">
         <div className="flex-1">
           <Button color="neutral" variant="outline" onClick={onNextClick}>
-            Porovnat
+            {t("compareButton")}
           </Button>
         </div>
         <div className="flex-1">
           <Button color="neutral" variant="fill" onClick={onShareClick}>
-            Sdílet
+            {t("shareButton")}
           </Button>
         </div>
       </div>

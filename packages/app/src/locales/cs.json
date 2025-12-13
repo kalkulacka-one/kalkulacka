@@ -1,8 +1,24 @@
 {
-  "ko": {
+  "koa": {
     "components": {
+      "embedAttribution": {
+        "broughtBy": "Přináší"
+      },
       "guideNavigationCard": {
         "startButton": "Začít odpovídat"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Pokračovat"
+      },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
+      },
+      "resultNavigationCard": {
+        "compareButton": "Porovnat",
+        "shareButton": "Sdílet"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Zobrazit výsledky"
       }
     }
   }
