@@ -12,6 +12,6 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
-  const calculatorData = await loadCalculatorData({ key, group });
+  const calculatorData = await loadCalculatorData({ dataEndpoint: process.env.DATA_ENDPOINT ?? "", key, group });
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
 }

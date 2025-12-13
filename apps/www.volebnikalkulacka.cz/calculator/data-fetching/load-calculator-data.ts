@@ -16,7 +16,7 @@ import {
 
 import type { z } from "zod";
 
-import { buildDataUrl } from "./url-builders";
+import { buildDataUrl } from "@kalkulacka-one/app";
 
 const DATA_CONFIG = {
   calculator: {
@@ -61,10 +61,10 @@ export type CalculatorData = {
   baseUrl: string;
 };
 
-export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
+export async function loadCalculatorData({ dataEndpoint, key, group }: { dataEndpoint: string; key: string; group?: string }): Promise<CalculatorData> {
   const fileEntries = Object.entries(DATA_CONFIG).map(([entryKey, config]) => ({
     key: entryKey,
-    url: buildDataUrl({ key, group, resourcePath: config.filename }),
+    url: buildDataUrl({ dataEndpoint, key, group, resourcePath: config.filename }),
     schema: config.schema,
     required: "required" in config && config.required,
   }));
@@ -94,6 +94,6 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
 
   return {
     data: Object.fromEntries(parsedData) as CalculatorData["data"],
-    baseUrl: buildDataUrl({ key, group }),
+    baseUrl: buildDataUrl({ dataEndpoint, key, group }),
   };
 }

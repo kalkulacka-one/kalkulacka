@@ -18,7 +18,12 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     const sessionData = await sessionResponse.json();
     const algorithmMatches = sessionData.matches as ReturnType<typeof calculateMatches>;
 
+    if (!process.env.DATA_ENDPOINT) {
+      throw new Error("DATA_ENDPOINT environment variable is not set");
+    }
+
     const calculatorData = await loadCalculatorData({
+      dataEndpoint: process.env.DATA_ENDPOINT,
       key: sessionData.calculatorKey,
       group: sessionData.calculatorGroup || undefined,
     });

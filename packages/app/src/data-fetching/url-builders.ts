@@ -1,12 +1,11 @@
-export function buildDataUrl({ key, group, resourcePath }: { key: string; group?: string; resourcePath?: string }): string {
-  const endpoint = process.env.DATA_ENDPOINT;
-  if (!endpoint) throw new Error("Missing `DATA_ENDPOINT` environment variable");
+export function buildDataUrl({ dataEndpoint, key, group, resourcePath }: { dataEndpoint: string; key: string; group?: string; resourcePath?: string }): string {
+  if (!dataEndpoint) throw new Error("Missing `dataEndpoint` parameter");
 
   let baseUrl: URL;
   try {
-    baseUrl = new URL(endpoint.replace(/\/$/, ""));
+    baseUrl = new URL(dataEndpoint.replace(/\/$/, ""));
   } catch {
-    throw new Error("Invalid `DATA_ENDPOINT` environment variable");
+    throw new Error("Invalid `dataEndpoint` parameter");
   }
 
   const dataPath = group ? `${group}/${key}` : key;
