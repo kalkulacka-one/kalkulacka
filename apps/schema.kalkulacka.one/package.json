@@ -15,8 +15,8 @@
     "ncu:upgrade": "ncu -u"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.34.5",
     "@kalkulacka-one/schema": "*",
+    "@redocly/cli": "^1.34.5",
     "wrangler": "^4.50.0",
     "yaml": "^2.8.1"
   }
