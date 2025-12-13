@@ -7,6 +7,10 @@
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
       },
+      "resultNavigationCard": {
+        "compareButton": "Porovnat",
+        "shareButton": "Sdílet"
+      },
       "reviewNavigationCard": {
         "showResultsButton": "Zobrazit výsledky"
       }

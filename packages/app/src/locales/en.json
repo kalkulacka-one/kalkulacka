@@ -7,6 +7,10 @@
       "introductionNavigationCard": {
         "continueButton": "Continue"
       },
+      "resultNavigationCard": {
+        "compareButton": "Compare",
+        "shareButton": "Share"
+      },
       "reviewNavigationCard": {
         "showResultsButton": "Show results"
       }
