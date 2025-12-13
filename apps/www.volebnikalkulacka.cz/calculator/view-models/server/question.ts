@@ -1,4 +1,4 @@
-import type { Question } from "../../../../../packages/schema/schemas/question.schema";
+import type { Question } from "@kalkulacka-one/schema";
 
 export type QuestionViewModel = Question;
 

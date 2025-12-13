@@ -1,8 +1,7 @@
+import type { Answers, Candidates, CandidatesAnswers } from "@kalkulacka-one/schema";
+
 import { describe, expect, it } from "vitest";
 
-import type { Answers } from "../../../../packages/schema/schemas/answers.schema";
-import type { Candidates } from "../../../../packages/schema/schemas/candidates.schema";
-import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
 import { calculateMatches } from "./calculate-matches";
 
 describe("Result calculation algorithm", () => {

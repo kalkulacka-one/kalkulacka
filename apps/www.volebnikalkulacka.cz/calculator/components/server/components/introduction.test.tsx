@@ -1,9 +1,10 @@
+import type { Calculator } from "@kalkulacka-one/schema";
+
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { calculatorViewModel } from "@/calculator/view-models/server";
 
-import type { Calculator } from "../../../../../../packages/schema/schemas/calculator.schema";
 import { Introduction } from "./introduction";
 
 const data = calculatorViewModel({

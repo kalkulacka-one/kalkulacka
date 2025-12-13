@@ -1,6 +1,5 @@
-import type { Answers } from "../../../../packages/schema/schemas/answers.schema";
-import type { Candidates } from "../../../../packages/schema/schemas/candidates.schema";
-import type { CandidatesAnswers } from "../../../../packages/schema/schemas/candidates-answers.schema";
+import type { Answers, Candidates, CandidatesAnswers } from "@kalkulacka-one/schema";
+
 import { aggregateAnswersMatchScore } from "./aggregate-answers-match-score";
 import { calculateMatchScorePercentage } from "./calculate-match-score-percentage";
 
