@@ -1,5 +1,8 @@
+import { notFound } from "next/navigation";
+
 import { loadCalculatorData } from "@/calculator";
 import { SessionProviderLayout } from "@/components/client";
+import { NotFoundError } from "@/lib/errors";
 import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
@@ -12,6 +15,14 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
-  const calculatorData = await loadCalculatorData({ key, group });
-  return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
+
+  try {
+    const calculatorData = await loadCalculatorData({ key, group });
+    return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
+  } catch (error) {
+    if (error instanceof NotFoundError) {
+      notFound();
+    }
+    throw error;
+  }
 }

@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, type Mock, vi } from "vitest";
 
 import { parseWithSchema } from "@/calculator/utilities";
+import { NotFoundError } from "@/lib/errors";
 
 import { fetchFile } from "./fetch-file";
 import { loadCalculatorData } from "./load-calculator-data";
@@ -155,25 +156,25 @@ describe("loadCalculatorData", () => {
     expect(result.data.candidatesAnswers).toEqual(data);
   });
 
-  it("should throw error when required files are missing", async () => {
+  it("should throw NotFoundError when required files are missing", async () => {
     process.env.DATA_ENDPOINT = DATA_ENDPOINT;
 
     mockFetchFile.mockImplementation(({ url }) => {
       if (url.includes("calculator.json")) {
-        return Promise.reject(new Error("File not found"));
+        return Promise.reject(new NotFoundError("File not found"));
       }
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch calculator data: File not found");
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(NotFoundError);
 
     mockFetchFile.mockImplementation(({ url }) => {
       if (url.includes("questions.json")) {
-        return Promise.reject(new Error("File not found"));
+        return Promise.reject(new NotFoundError("File not found"));
       }
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow("Failed to fetch questions data: File not found");
+    await expect(loadCalculatorData({ key: "key" })).rejects.toThrow(NotFoundError);
   });
 });
