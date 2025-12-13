@@ -16,7 +16,7 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
   const parsed = subscribeBodySchema.safeParse(body);
 
   if (!parsed.success) {
-    return { success: false, error: parsed.error.errors[0]?.message || "Neplatná data" };
+    return { success: false, error: parsed.error.issues[0]?.message || "Neplatná data" };
   }
 
   try {

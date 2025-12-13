@@ -34,6 +34,6 @@ describe("parseWithSchema", () => {
   it("should include Zod error message in thrown error", () => {
     const invalidData = { id: "123e4567-e89b-12d3-a456-426614174000", title: 123 };
 
-    expect(() => parseWithSchema({ data: invalidData, schema })).toThrow(/Expected string, received number/);
+    expect(() => parseWithSchema({ data: invalidData, schema })).toThrow(/expected string, received number/);
   });
 });
