@@ -1,6 +1,7 @@
 import type { z } from "zod";
 
 import { parseWithSchema } from "@/calculator/utilities";
+import { InternalServerError, NotFoundError } from "@/lib/errors";
 
 import { type Calculator, calculatorSchema } from "../../../../packages/schema/schemas/calculator.schema";
 import { type Candidates, candidatesSchema } from "../../../../packages/schema/schemas/candidates.schema";
@@ -65,7 +66,15 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
   const fetchPromises = fileEntries.map(({ key, url, required }) =>
     fetchFile({ url }).catch((error) => {
       if (required) {
-        throw new Error(`Failed to fetch ${key} data: ${error.message}`);
+        if (error instanceof NotFoundError) {
+          throw new NotFoundError(`Failed to fetch ${key} data: ${error.message}`);
+        }
+        if (error instanceof InternalServerError) {
+          throw new InternalServerError(`Failed to fetch ${key} data: ${error.message}`);
+        }
+        if (error instanceof Error) {
+          throw new Error(`Failed to fetch ${key} data: ${error.message}`);
+        }
       }
       return undefined;
     }),
