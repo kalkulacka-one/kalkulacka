@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import type { SupportedLocale } from "@/locales";
 
 export type LocaleProvider = {
-  locale: SupportedLocale;
+  locale: SupportedLocale | string;
   messages: AbstractIntlMessages;
   children: ReactNode;
 };
