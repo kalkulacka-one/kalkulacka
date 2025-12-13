@@ -7,6 +7,9 @@
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
       },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
+      },
       "resultNavigationCard": {
         "compareButton": "Porovnat",
         "shareButton": "Sdílet"

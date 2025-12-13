@@ -4,7 +4,6 @@ export * from "./embed-footer";
 export * from "./guide";
 export * from "./introduction";
 export * from "./layout";
-export * from "./public-result-navigation-card";
 export * from "./question-card";
 export * from "./question-navigation-card";
 export * from "./review-question-card";

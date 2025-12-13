@@ -7,6 +7,9 @@
       "introductionNavigationCard": {
         "continueButton": "Continue"
       },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Fill your own calculator"
+      },
       "resultNavigationCard": {
         "compareButton": "Compare",
         "shareButton": "Share"
