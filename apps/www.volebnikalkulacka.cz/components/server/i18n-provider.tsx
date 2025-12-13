@@ -1,5 +1,4 @@
 import { csMessages, type SupportedLocale } from "@kalkulacka-one/app";
-import { LocaleProvider } from "@kalkulacka-one/app/client";
 
 import { notFound } from "next/navigation";
 import type { AbstractIntlMessages } from "next-intl";
@@ -25,11 +24,10 @@ export async function I18nProvider({ children, locale }: { children: React.React
     throw new Error(`Missing app messages for locale: ${locale}`);
   }
 
-  return (
-    <NextIntlClientProvider messages={messages}>
-      <LocaleProvider locale={locale as SupportedLocale} messages={appMessages}>
-        {children}
-      </LocaleProvider>
-    </NextIntlClientProvider>
-  );
+  const mergedMessages = {
+    ...appMessages,
+    ...messages,
+  };
+
+  return <NextIntlClientProvider messages={mergedMessages}>{children}</NextIntlClientProvider>;
 }
