@@ -1,6 +1,9 @@
 {
   "koa": {
     "components": {
+      "embedAttribution": {
+        "broughtBy": "Přináší"
+      },
       "guideNavigationCard": {
         "startButton": "Začít odpovídat"
       },

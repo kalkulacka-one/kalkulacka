@@ -1,6 +1,9 @@
 {
   "koa": {
     "components": {
+      "embedAttribution": {
+        "broughtBy": "Brought by"
+      },
       "guideNavigationCard": {
         "startButton": "Start answering"
       },

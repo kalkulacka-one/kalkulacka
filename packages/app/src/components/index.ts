@@ -1,3 +1,4 @@
+export * from "./embed-attribution";
 export * from "./guide-navigation-card";
 export * from "./introduction-navigation-card";
 export * from "./navigation-card";
