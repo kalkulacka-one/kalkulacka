@@ -1,7 +1,9 @@
 {
-  "components": {
-    "guideNavigationCard": {
-      "startButton": "Start answering"
+  "ko": {
+    "components": {
+      "guideNavigationCard": {
+        "startButton": "Start answering"
+      }
     }
   }
 }

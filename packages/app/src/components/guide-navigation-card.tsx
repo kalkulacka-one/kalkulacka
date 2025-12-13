@@ -11,7 +11,7 @@ export type GuideNavigationCard = {
 };
 
 export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
-  const t = useTranslations("components.guideNavigationCard");
+  const t = useTranslations("ko.components.guideNavigationCard");
 
   return (
     <NavigationCard>

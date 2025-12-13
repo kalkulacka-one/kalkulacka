@@ -1,7 +1,9 @@
 {
-  "components": {
-    "guideNavigationCard": {
-      "startButton": "Začít odpovídat"
+  "ko": {
+    "components": {
+      "guideNavigationCard": {
+        "startButton": "Začít odpovídat"
+      }
     }
   }
 }
