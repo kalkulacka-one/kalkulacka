@@ -1,6 +1,7 @@
+import { type CalculatorViewModel, calculatorViewModel } from "@kalkulacka-one/app";
+
 import { useMemo } from "react";
 
-import { type CalculatorViewModel, calculatorViewModel } from "@/calculator";
 import { useCalculatorStore } from "@/calculator/stores";
 
 export function useCalculator(): CalculatorViewModel {

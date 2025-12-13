@@ -1,5 +1,4 @@
 export * from "./components/server";
 export * from "./data-fetching";
 export * from "./result-calculation";
-export * from "./utilities";
 export * from "./view-models/server";
