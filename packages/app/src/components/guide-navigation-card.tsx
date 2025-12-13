@@ -1,6 +1,8 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 
-import { NavigationCard } from "./navigation-card";
+import { useTranslations } from "next-intl";
+
+import { NavigationCard } from "@/components/navigation-card";
 
 const HEIGHT = "koa:h-22";
 
@@ -9,10 +11,12 @@ export type GuideNavigationCard = {
 };
 
 export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
+  const t = useTranslations("ko.components.guideNavigationCard");
+
   return (
     <NavigationCard>
       <Button color="neutral" onClick={onNextClick}>
-        Začít odpovídat
+        {t("startButton")}
       </Button>
     </NavigationCard>
   );

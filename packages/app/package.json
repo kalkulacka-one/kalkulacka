@@ -42,7 +42,8 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@kalkulacka-one/design-system": "*"
+    "@kalkulacka-one/design-system": "*",
+    "next-intl": "^4.3.9"
   },
   "peerDependencies": {
     "react": "^19.2.1"
