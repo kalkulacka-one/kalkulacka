@@ -1,12 +1,17 @@
+import { fetchFile, parseWithSchema } from "@kalkulacka-one/app";
+
 import { beforeEach, describe, expect, it, type Mock, vi } from "vitest";
 
-import { parseWithSchema } from "@/calculator/utilities";
-
-import { fetchFile } from "./fetch-file";
 import { loadCalculatorData } from "./load-calculator-data";
 
-vi.mock("../utilities");
-vi.mock("./fetch-file");
+vi.mock("@kalkulacka-one/app", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@kalkulacka-one/app")>();
+  return {
+    ...actual,
+    fetchFile: vi.fn(),
+    parseWithSchema: vi.fn(),
+  };
+});
 
 describe("loadCalculatorData", () => {
   const mockFetchFile = fetchFile as Mock;
