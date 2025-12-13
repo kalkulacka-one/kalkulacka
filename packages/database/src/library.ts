@@ -1,1 +1,1 @@
-export { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+export { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
