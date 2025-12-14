@@ -1,6 +1,5 @@
+import type { AnswersStore } from "@/client/stores";
 import type { Answer } from "@kalkulacka-one/schema";
-
-import type { AnswersStore } from "@kalkulacka-one/app/client";
 
 import { type AnswerViewModel, answerViewModel } from "./answer";
 
