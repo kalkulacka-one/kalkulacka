@@ -1,16 +1,8 @@
-import {
-  type CandidateAnswer,
-  calculateMatches,
-  candidatesAnswersViewModel,
-  candidateViewModel,
-  organizationViewModel,
-  personViewModel,
-  type ResultViewModel,
-  resultViewModel,
-} from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculatorStore } from "@kalkulacka-one/app/client";
-
 import { useMemo } from "react";
+
+import { useAnswersStore, useCalculatorStore } from "@/client/stores";
+import { calculateMatches } from "@/result-calculation";
+import { type CandidateAnswer, candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "@/view-models";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);
