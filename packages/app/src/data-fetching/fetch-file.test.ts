@@ -28,9 +28,7 @@ describe("fetchFile", () => {
       statusText: "Not Found",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrowError(
-      new Error("File `https://example.com/missing.json` not found"),
-    );
+    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrowError(new Error("File `https://example.com/missing.json` not found"));
   });
 
   it("should throw error for 500 status", async () => {
@@ -40,9 +38,7 @@ describe("fetchFile", () => {
       statusText: "Internal Server Error",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrowError(
-      new Error("Server error while fetching `https://example.com/error.json` file"),
-    );
+    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrowError(new Error("Server error while fetching `https://example.com/error.json` file"));
   });
 
   it("should throw error for other HTTP errors", async () => {

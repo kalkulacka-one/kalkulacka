@@ -1,7 +1,8 @@
+import { type CandidateAnswer, candidatesAnswersViewModel } from "@kalkulacka-one/app";
+
 import { useMemo } from "react";
 
-import type { CandidateAnswer } from "@/calculator";
-import { calculateMatches, candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "@/calculator";
+import { calculateMatches, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "@/calculator";
 import { useAnswersStore, useCalculatorStore } from "@/calculator/stores";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {

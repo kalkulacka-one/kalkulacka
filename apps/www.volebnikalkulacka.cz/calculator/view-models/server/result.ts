@@ -1,8 +1,8 @@
+import type { CandidateAnswerViewModel, CandidatesAnswersViewModel } from "@kalkulacka-one/app";
+
 import type { calculateMatches } from "@/calculator/result-calculation";
 
 import type { CandidateViewModel } from "./candidate";
-import type { CandidateAnswerViewModel } from "./candidate-answer";
-import type { CandidatesAnswersViewModel } from "./candidate-answers";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;

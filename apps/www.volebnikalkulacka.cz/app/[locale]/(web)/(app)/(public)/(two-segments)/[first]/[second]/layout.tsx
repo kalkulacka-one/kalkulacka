@@ -3,6 +3,10 @@ import { ProviderLayout } from "@/components/client";
 import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
+  if (!process.env.DATA_ENDPOINT) {
+    throw new Error("DATA_ENDPOINT environment variable is not set");
+  }
+
   const segments = await params;
   const { first } = segments;
 
@@ -12,6 +16,6 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
-  const calculatorData = await loadCalculatorData({ dataEndpoint: process.env.DATA_ENDPOINT ?? "", key, group });
+  const calculatorData = await loadCalculatorData({ dataEndpoint: process.env.DATA_ENDPOINT, key, group });
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
 }
