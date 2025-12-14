@@ -22,9 +22,9 @@ export type QuestionNavigationCard = {
 };
 
 export function QuestionNavigationCard({ current, total, onPreviousClick, onNextClick, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionNavigationCard) {
-  const t = useTranslations("calculator");
-  const previousButtonLabel = current === 1 ? t("components.question-navigation-card.guide") : t("components.question-navigation-card.previous");
-  const nextButtonLabel = answer.answer?.answer !== undefined ? t("components.question-navigation-card.next") : t("components.question-navigation-card.skip");
+  const t = useTranslations("koa.components.questionNavigationCard");
+  const previousButtonLabel = current === 1 ? t("guide") : t("previous");
+  const nextButtonLabel = answer.answer?.answer !== undefined ? t("next") : t("skip");
 
   return (
     <NavigationCard>
@@ -54,22 +54,16 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
           </div>
         </div>
         <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
-          <ToggleButton
-            color="neutral"
-            variant="link"
-            checked={answer.answer?.isImportant || false}
-            onChange={(checked: boolean) => onImportantChange(checked)}
-            aria-label={t("components.question-navigation-card.important")}
-          >
+          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
             <Icon icon={logoCheck} decorative={true} />
-            {t("components.question-navigation-card.yes")}
+            {t("yes")}
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
             <Icon icon={logoCross} decorative={true} />
-            {t("components.question-navigation-card.no")}
+            {t("no")}
           </ToggleButton>
         </div>
       </div>
