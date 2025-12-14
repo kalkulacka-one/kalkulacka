@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { parseWithSchema } from "@/utilities/parse-with-schema";
+import { parseWithSchema } from "@/utilities";
 
 import { fetchFile } from "./fetch-file";
 import { loadCalculatorData } from "./load-calculator-data";

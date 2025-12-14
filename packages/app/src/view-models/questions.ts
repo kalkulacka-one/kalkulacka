@@ -1,6 +1,6 @@
 import type { Question } from "@kalkulacka-one/schema";
 
-import { type QuestionViewModel, questionViewModel } from "@/view-models/question";
+import { type QuestionViewModel, questionViewModel } from "./question";
 
 export type QuestionsViewModel = {
   questions: QuestionViewModel[];
