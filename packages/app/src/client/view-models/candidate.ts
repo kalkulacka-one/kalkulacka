@@ -1,7 +1,7 @@
-import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers, organizationViewModel, personViewModel } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculatorStore } from "@kalkulacka-one/app/client";
-
 import { useMemo } from "react";
+
+import { useAnswersStore, useCalculatorStore } from "@/client/stores";
+import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers, organizationViewModel, personViewModel } from "@/view-models";
 
 export function useCandidate(id: string): CandidateViewModel | undefined {
   const candidates = useCalculatorStore((state) => state.data.candidates);
