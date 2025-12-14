@@ -1,15 +1,11 @@
-import type { CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app";
-import { ReviewNavigationCard } from "@kalkulacka-one/app";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app";
+import { ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
-import type { AnswersViewModel } from "@kalkulacka-one/app";
-
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
-
-import { ReviewQuestionCard } from "@kalkulacka-one/app";
 
 import { EmbedFooter, Layout } from "../components";
 

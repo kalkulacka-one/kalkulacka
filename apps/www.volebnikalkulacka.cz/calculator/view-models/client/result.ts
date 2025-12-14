@@ -8,10 +8,9 @@ import {
   type ResultViewModel,
   resultViewModel,
 } from "@kalkulacka-one/app";
+import { useAnswersStore, useCalculatorStore } from "@kalkulacka-one/app/client";
 
 import { useMemo } from "react";
-
-import { useAnswersStore, useCalculatorStore } from "@kalkulacka-one/app/client";
 
 export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
   const answersData = useAnswersStore((state) => state.answers);

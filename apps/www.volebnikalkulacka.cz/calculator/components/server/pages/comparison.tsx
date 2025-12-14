@@ -1,9 +1,7 @@
-import type { CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@kalkulacka-one/app";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
-
-import type { AnswersViewModel } from "@kalkulacka-one/app";
 
 import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";

@@ -1,8 +1,7 @@
 import { type CandidateAnswerViewModel, candidateAnswerViewModel } from "@kalkulacka-one/app";
+import { useCalculatorStore } from "@kalkulacka-one/app/client";
 
 import { useMemo } from "react";
-
-import { useCalculatorStore } from "@kalkulacka-one/app/client";
 
 export function useCandidateAnswer(candidateId: string, questionId: string): CandidateAnswerViewModel | undefined {
   const candidatesAnswers = useCalculatorStore((state) => state.data.candidatesAnswers);

@@ -1,8 +1,6 @@
-import { buildDataUrl, calculatorViewModel } from "@kalkulacka-one/app";
+import { buildDataUrl, calculatorViewModel, loadCalculatorData } from "@kalkulacka-one/app";
 
 import type { Metadata } from "next";
-
-import { loadCalculatorData } from "@kalkulacka-one/app";
 
 export async function generateCalculatorMetadata({
   key,

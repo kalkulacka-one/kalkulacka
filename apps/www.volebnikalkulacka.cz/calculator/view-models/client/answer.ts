@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-
 import { type AnswerViewModel, answerViewModel } from "@kalkulacka-one/app";
 import { useAnswersStore } from "@kalkulacka-one/app/client";
+
+import { useMemo } from "react";
 
 export function useAnswer(questionId: string): AnswerViewModel {
   const setAnswer = useAnswersStore((state) => state.setAnswer);

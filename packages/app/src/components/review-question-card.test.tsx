@@ -1,10 +1,8 @@
-import type { QuestionViewModel } from "@kalkulacka-one/app";
+import type { AnswerViewModel, QuestionViewModel } from "@kalkulacka-one/app";
 
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-
-import type { AnswerViewModel } from "@kalkulacka-one/app";
 
 import { ReviewQuestionCard } from "./review-question-card";
 

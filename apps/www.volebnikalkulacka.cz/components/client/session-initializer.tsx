@@ -1,6 +1,7 @@
+import { useCalculatorStore } from "@kalkulacka-one/app/client";
+
 import { useEffect, useRef } from "react";
 
-import { useCalculatorStore } from "@kalkulacka-one/app/client";
 import { initializeSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 

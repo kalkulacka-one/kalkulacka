@@ -1,11 +1,10 @@
+import type { AnswerViewModel } from "@kalkulacka-one/app";
 import { NavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
-
-import type { AnswerViewModel } from "@kalkulacka-one/app";
 
 const HEIGHT = "h-[138px]";
 
