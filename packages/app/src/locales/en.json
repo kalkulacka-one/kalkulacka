@@ -4,6 +4,24 @@
       "embedAttribution": {
         "broughtBy": "Brought by"
       },
+      "guide": {
+        "agreement": {
+          "title": "Agreement",
+          "description": "When you agree with an answer, the party or politician receives a point"
+        },
+        "disagreement": {
+          "title": "Disagreement",
+          "description": "When you disagree, they lose a point"
+        },
+        "skip": {
+          "title": "Skip",
+          "description": "You can skip a question and it won't be included in the calculation"
+        },
+        "important": {
+          "title": "Important questions",
+          "description": "Mark important questions with a star. Agreements and disagreements will be weighted more heavily."
+        }
+      },
       "guideNavigationCard": {
         "startButton": "Start answering"
       },

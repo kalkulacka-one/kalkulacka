@@ -1,8 +1,9 @@
-import { calculatorViewModel } from "@kalkulacka-one/app";
 import type { Calculator } from "@kalkulacka-one/schema";
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { calculatorViewModel } from "@/view-models/calculator";
 
 import { Introduction } from "./introduction";
 
