@@ -15,7 +15,7 @@ import {
 
 import type { z } from "zod";
 
-import { parseWithSchema } from "@/utilities/parse-with-schema";
+import { parseWithSchema } from "@/utilities";
 
 import { fetchFile } from "./fetch-file";
 import { buildDataUrl } from "./url-builders";
