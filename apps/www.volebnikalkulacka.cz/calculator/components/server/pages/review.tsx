@@ -6,7 +6,7 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
 import type { AnswersViewModel } from "@kalkulacka-one/app";
 
-import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
+import { AppHeader, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 import { ReviewQuestionCard } from "@kalkulacka-one/app";
