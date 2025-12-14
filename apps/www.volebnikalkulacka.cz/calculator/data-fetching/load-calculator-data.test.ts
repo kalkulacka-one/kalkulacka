@@ -28,12 +28,12 @@ describe("loadCalculatorData", () => {
     vi.clearAllMocks();
   });
 
-  it("should throw error when endpoint parameter is missing", async () => {
-    await expect(loadCalculatorData({ endpoint: "", key: "test" })).rejects.toThrow("Missing endpoint");
-  });
-
   it("should throw error when endpoint parameter is invalid URL", async () => {
     await expect(loadCalculatorData({ endpoint: "not-a-valid-url", key: "test" })).rejects.toThrow("Invalid endpoint");
+  });
+
+  it("should throw error when endpoint parameter is empty string", async () => {
+    await expect(loadCalculatorData({ endpoint: "", key: "test" })).rejects.toThrow("Invalid endpoint");
   });
 
   it("should handle trailing slash in endpoint parameter", async () => {

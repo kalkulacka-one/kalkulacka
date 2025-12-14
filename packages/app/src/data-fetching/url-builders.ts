@@ -1,6 +1,4 @@
 export function buildDataUrl({ endpoint, key, group, resourcePath }: { endpoint: string; key: string; group?: string; resourcePath?: string }): string {
-  if (!endpoint) throw new Error("Missing endpoint");
-
   let baseUrl: URL;
   try {
     baseUrl = new URL(endpoint.replace(/\/$/, ""));
