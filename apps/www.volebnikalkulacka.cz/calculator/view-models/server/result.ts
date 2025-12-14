@@ -68,7 +68,7 @@ export function resultViewModel(candidates: CandidateViewModel[], candidatesAnsw
         };
       });
 
-      nestedMatches = sortByOrder(nestedMatches ?? []);
+      nestedMatches = sortByOrder(nestedMatches);
     }
 
     return {
