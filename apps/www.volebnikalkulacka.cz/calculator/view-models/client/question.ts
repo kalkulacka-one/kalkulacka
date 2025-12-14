@@ -2,7 +2,7 @@ import { type QuestionViewModel, questionViewModel } from "@kalkulacka-one/app";
 
 import { useMemo } from "react";
 
-import { useCalculatorStore } from "@/calculator/stores";
+import { useCalculatorStore } from "@kalkulacka-one/app/client";
 
 export function useQuestion(id: string): QuestionViewModel | undefined {
   const questions = useCalculatorStore((state) => state.data.questions);

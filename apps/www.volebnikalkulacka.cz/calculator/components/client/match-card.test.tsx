@@ -3,7 +3,7 @@ import type { CandidateViewModel } from "@kalkulacka-one/app";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/calculator/stores";
+import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@kalkulacka-one/app/client";
 
 import { MatchCard } from "./match-card";
 
