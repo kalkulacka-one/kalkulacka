@@ -1,6 +1,7 @@
+import { type PersonViewModel, personViewModel } from "@kalkulacka-one/app";
+
 import { useMemo } from "react";
 
-import { type PersonViewModel, personViewModel } from "@/calculator";
 import { useCalculatorStore } from "@/calculator/stores";
 
 export function usePerson(id: string): PersonViewModel | undefined {

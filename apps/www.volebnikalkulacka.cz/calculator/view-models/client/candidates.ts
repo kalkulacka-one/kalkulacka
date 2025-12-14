@@ -1,6 +1,7 @@
+import { type CandidateViewModel, candidatesViewModel, organizationViewModel, personViewModel } from "@kalkulacka-one/app";
+
 import { useMemo } from "react";
 
-import { type CandidateViewModel, candidatesViewModel, organizationViewModel, personViewModel } from "@/calculator";
 import { useCalculatorStore } from "@/calculator/stores";
 
 export function useCandidates(): CandidateViewModel[] {

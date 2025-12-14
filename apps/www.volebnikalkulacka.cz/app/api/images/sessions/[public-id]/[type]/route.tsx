@@ -1,7 +1,10 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
+import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app";
+
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-import { type calculateMatches, candidatesAnswersViewModel, candidateViewModel, loadCalculatorData, organizationViewModel, personViewModel, resultViewModel } from "@/calculator";
+import { loadCalculatorData } from "@/calculator";
 import { HttpError, NotFoundError } from "@/lib/errors";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "public-id": string; type: string }> }) {
@@ -18,7 +21,12 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     const sessionData = await sessionResponse.json();
     const algorithmMatches = sessionData.matches as ReturnType<typeof calculateMatches>;
 
+    if (!process.env.DATA_ENDPOINT) {
+      throw new Error("DATA_ENDPOINT environment variable is not set");
+    }
+
     const calculatorData = await loadCalculatorData({
+      endpoint: process.env.DATA_ENDPOINT,
       key: sessionData.calculatorKey,
       group: sessionData.calculatorGroup || undefined,
     });

@@ -1,6 +1,6 @@
 import type { Answer, Candidate, CandidatesAnswers, ImageUrls, Question } from "@kalkulacka-one/schema";
 
-import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching";
+import { findImageByType, resolveImageUrls } from "@/data-fetching";
 
 import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";

@@ -1,6 +1,6 @@
 import type { ImageUrls, Organization } from "@kalkulacka-one/schema";
 
-import { findImageByType, resolveImageUrls } from "@/calculator/data-fetching";
+import { findImageByType, resolveImageUrls } from "@/data-fetching";
 
 export type OrganizationViewModel = Organization & {
   displayName: string;

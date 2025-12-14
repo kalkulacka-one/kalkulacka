@@ -1,3 +1,4 @@
+import { buildDataUrl, fetchFile, parseWithSchema } from "@kalkulacka-one/app";
 import {
   type Calculator,
   type Candidates,
@@ -14,11 +15,6 @@ import {
 } from "@kalkulacka-one/schema";
 
 import type { z } from "zod";
-
-import { parseWithSchema } from "@/calculator/utilities";
-
-import { fetchFile } from "./fetch-file";
-import { buildDataUrl } from "./url-builders";
 
 const DATA_CONFIG = {
   calculator: {
@@ -63,10 +59,10 @@ export type CalculatorData = {
   baseUrl: string;
 };
 
-export async function loadCalculatorData({ key, group }: { key: string; group?: string }): Promise<CalculatorData> {
+export async function loadCalculatorData({ endpoint, key, group }: { endpoint: string; key: string; group?: string }): Promise<CalculatorData> {
   const fileEntries = Object.entries(DATA_CONFIG).map(([entryKey, config]) => ({
     key: entryKey,
-    url: buildDataUrl({ key, group, resourcePath: config.filename }),
+    url: buildDataUrl({ endpoint, key, group, resourcePath: config.filename }),
     schema: config.schema,
     required: "required" in config && config.required,
   }));
@@ -96,6 +92,6 @@ export async function loadCalculatorData({ key, group }: { key: string; group?: 
 
   return {
     data: Object.fromEntries(parsedData) as CalculatorData["data"],
-    baseUrl: buildDataUrl({ key, group }),
+    baseUrl: buildDataUrl({ endpoint, key, group }),
   };
 }

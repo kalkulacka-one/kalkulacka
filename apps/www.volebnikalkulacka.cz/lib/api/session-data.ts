@@ -1,6 +1,6 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
 import type { Answer } from "@kalkulacka-one/schema";
 
-import type { calculateMatches } from "@/calculator";
 import { getRuntimeSessionId } from "@/lib/session/client";
 
 export async function saveSessionData(calculatorId: string, answers: Answer[], matches?: ReturnType<typeof calculateMatches>, calculatorVersion?: string): Promise<void> {

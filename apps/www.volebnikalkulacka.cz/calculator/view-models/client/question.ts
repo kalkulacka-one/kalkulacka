@@ -1,6 +1,7 @@
+import { type QuestionViewModel, questionViewModel } from "@kalkulacka-one/app";
+
 import { useMemo } from "react";
 
-import { type QuestionViewModel, questionViewModel } from "@/calculator";
 import { useCalculatorStore } from "@/calculator/stores";
 
 export function useQuestion(id: string): QuestionViewModel | undefined {

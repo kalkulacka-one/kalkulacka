@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
+import { parseWithSchema } from "@kalkulacka-one/app";
 
-import { parseWithSchema } from "@/calculator";
+import { cookies } from "next/headers";
 
 import { buildCookieName } from "../shared";
 import { sessionCookieSchema } from "./set-session-cookie";
