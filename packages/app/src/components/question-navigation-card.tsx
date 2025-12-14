@@ -28,32 +28,32 @@ export function QuestionNavigationCard({ current, total, onPreviousClick, onNext
 
   return (
     <NavigationCard>
-      <div className="grid grid-flow-row gap-2 sm:gap-3">
-        <div className="grid grid-cols-[1fr_1fr] @[350px]:grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] gap-1 @sm:gap-2 items-center">
-          <div className="justify-self-start">
+      <div className="koa:grid koa:grid-flow-row koa:gap-2 koa:sm:gap-3">
+        <div className="koa:grid koa:grid-cols-[1fr_1fr] koa:@[350px]:grid-cols-[minmax(8rem,1fr)_auto_minmax(8rem,1fr)] koa:gap-1 koa:@sm:gap-2 koa:items-center">
+          <div className="koa:justify-self-start">
             <Button size="small" variant="link" color="neutral" onClick={onPreviousClick}>
               <Icon icon={mdiArrowLeft} decorative={true} />
               {previousButtonLabel}
             </Button>
           </div>
-          <div className="justify-self-center hidden @[350px]:block">
-            <span className="tabular-nums">
+          <div className="koa:justify-self-center koa:hidden koa:@[350px]:block">
+            <span className="koa:tabular-nums">
               <span>
-                <span className="font-bold invisible">{"0".repeat(Math.max(total.toString().length - current.toString().length, 0))}</span>
-                <span className="whitespace-nowrap">
-                  <strong>{current}</strong> / {total}
+                <span className="koa:font-bold koa:invisible">{"0".repeat(Math.max(total.toString().length - current.toString().length, 0))}</span>
+                <span className="koa:whitespace-nowrap">
+                  <strong>{current}</strong> / {total}
                 </span>
               </span>
             </span>
           </div>
-          <div className="justify-self-end">
+          <div className="koa:justify-self-end">
             <Button size="small" variant="link" color="neutral" onClick={onNextClick}>
               {nextButtonLabel}
               <Icon icon={mdiArrowRight} decorative={true} />
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
+        <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-4 koa:items-stretch">
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>

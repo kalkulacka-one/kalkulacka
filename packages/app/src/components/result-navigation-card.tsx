@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "h-22";
+const HEIGHT = "koa:h-22";
 
 export type ResultNavigationCard = {
   onNextClick: () => void;
@@ -16,13 +16,13 @@ export function ResultNavigationCard({ onNextClick, onShareClick }: ResultNaviga
 
   return (
     <NavigationCard>
-      <div className="flex gap-2 w-full">
-        <div className="flex-1">
+      <div className="koa:flex koa:gap-2 koa:w-full">
+        <div className="koa:flex-1">
           <Button color="neutral" variant="outline" onClick={onNextClick}>
             {t("compareButton")}
           </Button>
         </div>
-        <div className="flex-1">
+        <div className="koa:flex-1">
           <Button color="neutral" variant="fill" onClick={onShareClick}>
             {t("shareButton")}
           </Button>

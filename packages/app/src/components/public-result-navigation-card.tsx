@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "h-22";
+const HEIGHT = "koa:h-22";
 
 export type PublicResultNavigationCard = {
   onStartClick: () => void;

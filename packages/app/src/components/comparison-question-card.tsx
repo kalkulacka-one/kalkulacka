@@ -11,13 +11,13 @@ export type ComparisonQuestionCard = {
 export function ComparisonQuestionCard({ question, current, total }: ComparisonQuestionCard) {
   const { title, statement } = question;
   return (
-    <Card corner="topLeft" shadow="hard" className="border border-slate-200 w-fit">
-      <div className="p-3 sm:p-6 flex flex-col gap-4">
-        <div className="text-sm text-slate-500">
-          <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
+    <Card corner="topLeft" shadow="hard" className="koa:border koa:border-slate-200 koa:w-fit">
+      <div className="koa:p-3 koa:sm:p-6 koa:flex koa:flex-col koa:gap-4">
+        <div className="koa:text-sm koa:text-slate-500">
+          <span className="koa:font-bold koa:text-slate-600">{current}</span>/<span className="koa:mr-3">{total}</span>
           <span>{title}</span>
         </div>
-        <h3 className="font-display text-lg sm:text-xl font-bold text-slate-700 leading-tight tracking-tighter break-words">{statement}</h3>
+        <h3 className="koa:font-display koa:text-lg koa:sm:text-xl koa:font-bold koa:text-slate-700 koa:leading-tight koa:tracking-tighter koa:break-words">{statement}</h3>
       </div>
     </Card>
   );
