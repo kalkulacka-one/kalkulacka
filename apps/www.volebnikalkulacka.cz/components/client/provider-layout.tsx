@@ -1,6 +1,8 @@
 import type { PropsWithChildren } from "react";
 
-import { Layout as AppLayout, type CalculatorData } from "@/calculator";
+import type { CalculatorData } from "@kalkulacka-one/app";
+
+import { Layout as AppLayout } from "@/calculator";
 import { AnswersStoreProvider, CalculatorStoreProvider } from "@/calculator/client";
 
 export type ProviderLayout = PropsWithChildren<{
