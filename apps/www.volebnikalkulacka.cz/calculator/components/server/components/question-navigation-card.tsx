@@ -5,7 +5,7 @@ import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { mdiArrowLeft, mdiArrowRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import type { AnswerViewModel } from "@/calculator/view-models/server";
+import type { AnswerViewModel } from "@/calculator";
 
 const HEIGHT = "h-[138px]";
 

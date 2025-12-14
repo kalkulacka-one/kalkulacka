@@ -8,3 +8,5 @@ export * from "./organizations";
 export * from "./person";
 export * from "./persons";
 export * from "./question";
+export * from "./questions";
+export * from "./result";
