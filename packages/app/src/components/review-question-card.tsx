@@ -5,7 +5,7 @@ import { Card } from "@kalkulacka-one/design-system/server";
 
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 
-import type { AnswerViewModel } from "@/calculator/view-models/server";
+import type { AnswerViewModel } from "@kalkulacka-one/app";
 
 export type ReviewQuestionCard = {
   question: QuestionViewModel;
