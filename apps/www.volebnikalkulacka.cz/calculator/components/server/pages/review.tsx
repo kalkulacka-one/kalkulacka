@@ -1,5 +1,4 @@
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@kalkulacka-one/app";
-import { ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
+import { type AnswersViewModel, type CalculatorViewModel, type QuestionsViewModel, ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";

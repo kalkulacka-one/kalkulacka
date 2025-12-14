@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { createStore, type StoreApi, useStore } from "zustand";
 
-import type { CalculatorData } from "@/data-fetching/load-calculator-data";
+import type { CalculatorData } from "@/data-fetching";
 
 export type CalculatorStore = CalculatorData;
 

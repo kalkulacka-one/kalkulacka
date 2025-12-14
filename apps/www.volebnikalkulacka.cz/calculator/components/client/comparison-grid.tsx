@@ -1,5 +1,4 @@
-import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "@kalkulacka-one/app";
-import { ComparisonQuestionCard } from "@kalkulacka-one/app";
+import { type AnswersViewModel, ComparisonQuestionCard, type QuestionsViewModel, type ResultViewModel } from "@kalkulacka-one/app";
 import { Icon } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
 import { IconBadge } from "@kalkulacka-one/design-system/server";
