@@ -1,11 +1,11 @@
-export function buildDataUrl({ dataEndpoint, key, group, resourcePath }: { dataEndpoint: string; key: string; group?: string; resourcePath?: string }): string {
-  if (!dataEndpoint) throw new Error("Missing `dataEndpoint` parameter");
+export function buildDataUrl({ endpoint, key, group, resourcePath }: { endpoint: string; key: string; group?: string; resourcePath?: string }): string {
+  if (!endpoint) throw new Error("Missing endpoint");
 
   let baseUrl: URL;
   try {
-    baseUrl = new URL(dataEndpoint.replace(/\/$/, ""));
+    baseUrl = new URL(endpoint.replace(/\/$/, ""));
   } catch {
-    throw new Error("Invalid `dataEndpoint` parameter");
+    throw new Error("Invalid endpoint");
   }
 
   const dataPath = group ? `${group}/${key}` : key;

@@ -25,7 +25,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
     }
 
     const calculatorData = await loadCalculatorData({
-      dataEndpoint: process.env.DATA_ENDPOINT,
+      endpoint: process.env.DATA_ENDPOINT,
       key: sessionData.calculatorKey,
       group: sessionData.calculatorGroup || undefined,
     });

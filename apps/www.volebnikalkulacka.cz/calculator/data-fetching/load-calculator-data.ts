@@ -59,10 +59,10 @@ export type CalculatorData = {
   baseUrl: string;
 };
 
-export async function loadCalculatorData({ dataEndpoint, key, group }: { dataEndpoint: string; key: string; group?: string }): Promise<CalculatorData> {
+export async function loadCalculatorData({ endpoint, key, group }: { endpoint: string; key: string; group?: string }): Promise<CalculatorData> {
   const fileEntries = Object.entries(DATA_CONFIG).map(([entryKey, config]) => ({
     key: entryKey,
-    url: buildDataUrl({ dataEndpoint, key, group, resourcePath: config.filename }),
+    url: buildDataUrl({ endpoint, key, group, resourcePath: config.filename }),
     schema: config.schema,
     required: "required" in config && config.required,
   }));
@@ -92,6 +92,6 @@ export async function loadCalculatorData({ dataEndpoint, key, group }: { dataEnd
 
   return {
     data: Object.fromEntries(parsedData) as CalculatorData["data"],
-    baseUrl: buildDataUrl({ dataEndpoint, key, group }),
+    baseUrl: buildDataUrl({ endpoint, key, group }),
   };
 }
