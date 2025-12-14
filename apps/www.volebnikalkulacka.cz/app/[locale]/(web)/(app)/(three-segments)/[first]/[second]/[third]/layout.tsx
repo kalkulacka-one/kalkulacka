@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-
 import { loadCalculatorData } from "@kalkulacka-one/app";
+
+import { notFound } from "next/navigation";
 
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams, prefixGuard } from "@/lib/routing";
