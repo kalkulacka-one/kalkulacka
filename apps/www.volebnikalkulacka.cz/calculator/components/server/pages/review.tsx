@@ -4,11 +4,14 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
+import type { AnswersViewModel } from "@kalkulacka-one/app";
+
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
-import type { AnswersViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout, ReviewQuestionCard } from "../components";
+import { ReviewQuestionCard } from "@kalkulacka-one/app";
+
+import { EmbedFooter, Layout } from "../components";
 
 export type ReviewPage = {
   embedContext: EmbedContextType;

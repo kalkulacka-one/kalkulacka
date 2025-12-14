@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { type AnswersViewModel, answersViewModel } from "@/calculator";
+import { type AnswersViewModel, answersViewModel } from "@kalkulacka-one/app";
 import { useAnswersStore } from "@kalkulacka-one/app/client";
 
 export function useAnswers(): AnswersViewModel {

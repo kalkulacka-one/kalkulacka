@@ -3,11 +3,14 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 
+import type { AnswerViewModel } from "@kalkulacka-one/app";
+
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
-import type { AnswerViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout, QuestionCard, QuestionNavigationCard } from "../components";
+import { QuestionCard, QuestionNavigationCard } from "@kalkulacka-one/app";
+
+import { EmbedFooter, Layout } from "../components";
 
 export type QuestionPage = {
   embedContext: EmbedContextType;

@@ -1,4 +1,4 @@
-import { loadCalculatorData } from "@/calculator";
+import { loadCalculatorData } from "@kalkulacka-one/app";
 import { ProviderLayout } from "@/components/client";
 import { mappedParams, prefixGuard } from "@/lib/routing";
 
