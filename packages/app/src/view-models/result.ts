@@ -1,8 +1,8 @@
 import type { calculateMatches } from "@/result-calculation";
 
+import type { CandidateViewModel } from "./candidate";
 import type { CandidateAnswerViewModel } from "./candidate-answer";
 import type { CandidatesAnswersViewModel } from "./candidate-answers";
-import type { CandidateViewModel } from "./candidate";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
