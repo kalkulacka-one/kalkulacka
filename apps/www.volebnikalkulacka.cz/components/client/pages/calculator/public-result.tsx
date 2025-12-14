@@ -1,10 +1,11 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
 import type { Answer } from "@kalkulacka-one/schema";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { PublicResultPage as AppPublicResultPage, type calculateMatches } from "@/calculator";
+import { PublicResultPage as AppPublicResultPage } from "@/calculator";
 import { useAnswersStore, useCalculator, useResult } from "@/calculator/client";
 import { type RouteSegments, routes } from "@/lib/routing";
 

@@ -1,9 +1,10 @@
-import { candidatesAnswersViewModel } from "@kalkulacka-one/app";
+import type { calculateMatches } from "@kalkulacka-one/app";
+import { candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel } from "@kalkulacka-one/app";
 
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-import { type calculateMatches, candidateViewModel, loadCalculatorData, organizationViewModel, personViewModel, resultViewModel } from "@/calculator";
+import { loadCalculatorData, resultViewModel } from "@/calculator";
 import { HttpError, NotFoundError } from "@/lib/errors";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "public-id": string; type: string }> }) {

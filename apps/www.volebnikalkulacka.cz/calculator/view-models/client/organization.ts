@@ -1,6 +1,7 @@
+import { type OrganizationViewModel, organizationViewModel } from "@kalkulacka-one/app";
+
 import { useMemo } from "react";
 
-import { type OrganizationViewModel, organizationViewModel } from "@/calculator";
 import { useCalculatorStore } from "@/calculator/stores";
 
 export function useOrganization(id: string): OrganizationViewModel | undefined {
