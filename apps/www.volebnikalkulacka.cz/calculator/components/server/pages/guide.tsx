@@ -4,7 +4,7 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
-import { AppHeader } from "@kalkulacka-one/app/client";
+import { AppHeader } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 import { EmbedFooter, Guide, Layout } from "../components";
