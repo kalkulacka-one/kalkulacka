@@ -1,12 +1,13 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
+import { useAnswersStore, useCalculator, useResult } from "@kalkulacka-one/app/client";
+import type { Answer } from "@kalkulacka-one/schema";
+
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { PublicResultPage as AppPublicResultPage, type calculateMatches } from "@/calculator";
-import { useAnswersStore, useCalculator, useResult } from "@/calculator/client";
+import { PublicResultPage as AppPublicResultPage } from "@/calculator";
 import { type RouteSegments, routes } from "@/lib/routing";
-
-import type { Answer } from "../../../../../../packages/schema/schemas/answer.schema";
 
 export function PublicResultPageWithData({ algorithmMatches, answers, segments }: { algorithmMatches: ReturnType<typeof calculateMatches>; answers: Answer[]; segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
