@@ -1,7 +1,7 @@
-import type { QuestionViewModel } from "@kalkulacka-one/app";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import type { QuestionViewModel } from "@/view-models/question";
 
 import { ComparisonQuestionCard } from "./comparison-question-card";
 

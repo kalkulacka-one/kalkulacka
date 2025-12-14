@@ -1,4 +1,3 @@
-import { buildDataUrl, fetchFile, parseWithSchema } from "@kalkulacka-one/app";
 import {
   type Calculator,
   type Candidates,
@@ -15,6 +14,11 @@ import {
 } from "@kalkulacka-one/schema";
 
 import type { z } from "zod";
+
+import { parseWithSchema } from "@/utilities";
+
+import { fetchFile } from "./fetch-file";
+import { buildDataUrl } from "./url-builders";
 
 const DATA_CONFIG = {
   calculator: {

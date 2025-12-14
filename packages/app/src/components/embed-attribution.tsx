@@ -11,12 +11,16 @@ export function EmbedAttribution({ href, title }: EmbedAttribution) {
   const t = useTranslations("koa.components.embedAttribution");
 
   return (
-    <a href={href} target="_blank" className="group p-2 flex items-center gap-2 rounded-lg text-sm text-slate-400 hover:text-slate-600 hover:bg-slate-100 min-w-max">
+    <a
+      href={href}
+      target="_blank"
+      className="koa:group koa:p-2 koa:flex koa:items-center koa:gap-2 koa:rounded-lg koa:text-sm koa:text-slate-400 koa:hover:text-slate-600 koa:hover:bg-slate-100 koa:min-w-max"
+    >
       <span>{t("broughtBy")}</span>
-      <div className="group-hover:hidden">
+      <div className="koa:group-hover:hidden">
         <Logo title={title} size="small" monochrome />
       </div>
-      <div className="hidden group-hover:block">
+      <div className="koa:hidden koa:group-hover:block">
         <Logo title={title} size="small" />
       </div>
       <span>{title}</span>

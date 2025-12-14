@@ -1,11 +1,10 @@
-import type { QuestionViewModel } from "@kalkulacka-one/app";
 import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { Card } from "@kalkulacka-one/design-system/server";
 
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 
-import type { AnswerViewModel } from "@/calculator/view-models/server";
+import type { AnswerViewModel, QuestionViewModel } from "@/view-models";
 
 export type ReviewQuestionCard = {
   question: QuestionViewModel;
@@ -20,15 +19,15 @@ export type ReviewQuestionCard = {
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
   const { title, detail, statement } = question;
   return (
-    <Card corner="topLeft" shadow="hard" className="border border-slate-200">
-      <div className="p-3 sm:p-6 flex flex-col gap-4">
-        <div className="text-sm text-slate-500">
-          <span className="font-bold text-slate-600">{current}</span>/<span className="mr-3">{total}</span>
+    <Card corner="topLeft" shadow="hard" className="koa:border koa:border-slate-200">
+      <div className="koa:p-3 koa:sm:p-6 koa:flex koa:flex-col koa:gap-4">
+        <div className="koa:text-sm koa:text-slate-500">
+          <span className="koa:font-bold koa:text-slate-600">{current}</span>/<span className="koa:mr-3">{total}</span>
           <span>{title}</span>
         </div>
-        <h3 className="font-display text-lg sm:text-xl font-bold text-slate-700 leading-tight tracking-tight break-words">{statement}</h3>
-        {detail && <p className="hidden sm:block text-sm text-slate-600 leading-relaxed max-w-prose break-words tracking-wide">{detail}</p>}
-        <div className="grid grid-cols-[auto_1fr_1fr] gap-4 items-stretch">
+        <h3 className="koa:font-display koa:text-lg koa:sm:text-xl koa:font-bold koa:text-slate-700 koa:leading-tight koa:tracking-tight koa:break-words">{statement}</h3>
+        {detail && <p className="koa:hidden koa:sm:block koa:text-sm koa:text-slate-600 koa:leading-relaxed koa:max-w-prose koa:break-words koa:tracking-wide">{detail}</p>}
+        <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-4 koa:items-stretch">
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label="Pro mě důležité">
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>

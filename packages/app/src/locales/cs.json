@@ -13,6 +13,15 @@
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
       },
+      "questionNavigationCard": {
+        "guide": "Návod",
+        "previous": "Předchozí",
+        "next": "Další",
+        "skip": "Přeskočit",
+        "yes": "Ano",
+        "no": "Ne",
+        "important": "Pro mě důležité"
+      },
       "resultNavigationCard": {
         "compareButton": "Porovnat",
         "shareButton": "Sdílet"

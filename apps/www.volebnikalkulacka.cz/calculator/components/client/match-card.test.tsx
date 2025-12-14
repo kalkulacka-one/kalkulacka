@@ -1,9 +1,8 @@
 import type { CandidateViewModel } from "@kalkulacka-one/app";
+import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@kalkulacka-one/app/client";
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/calculator/stores";
 
 import { MatchCard } from "./match-card";
 

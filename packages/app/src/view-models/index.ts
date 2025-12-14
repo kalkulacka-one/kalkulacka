@@ -1,3 +1,5 @@
+export * from "./answer";
+export * from "./answers";
 export * from "./calculator";
 export * from "./candidate";
 export * from "./candidate-answer";

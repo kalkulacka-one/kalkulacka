@@ -13,6 +13,15 @@
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Fill your own calculator"
       },
+      "questionNavigationCard": {
+        "guide": "Guide",
+        "previous": "Previous",
+        "next": "Next",
+        "skip": "Skip",
+        "yes": "Yes",
+        "no": "No",
+        "important": "Important to me"
+      },
       "resultNavigationCard": {
         "compareButton": "Compare",
         "shareButton": "Share"
