@@ -1,7 +1,6 @@
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@kalkulacka-one/app";
 import { QuestionCard, QuestionNavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
-
 import { mdiClose } from "@mdi/js";
 
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
