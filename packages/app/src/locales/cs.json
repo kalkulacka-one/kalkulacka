@@ -4,6 +4,24 @@
       "embedAttribution": {
         "broughtBy": "Přináší"
       },
+      "guide": {
+        "agreement": {
+          "title": "Shoda",
+          "description": "Při shodě s Vaší odpovědí strana nebo politik dostane bod"
+        },
+        "disagreement": {
+          "title": "Neshoda",
+          "description": "Při neshodě bod naopak ztratí"
+        },
+        "skip": {
+          "title": "Přeskočit",
+          "description": "Otázku můžete přeskočit a nebude se do výpočtu počítat"
+        },
+        "important": {
+          "title": "Důležité otázky",
+          "description": "Pro vás důležité otázky označte hvězdičkou. Shody a neshody pak budou váženější."
+        }
+      },
       "guideNavigationCard": {
         "startButton": "Začít odpovídat"
       },

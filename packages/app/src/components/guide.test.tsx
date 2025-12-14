@@ -1,9 +1,11 @@
-import { calculatorViewModel } from "@kalkulacka-one/app";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
+import { csMessages } from "@/locales";
+import { calculatorViewModel } from "@/view-models/calculator";
+
 import { Guide } from "./guide";
+import { LocaleProvider } from "./providers";
 
 describe("Guide", () => {
   it("renders", () => {
@@ -17,7 +19,11 @@ describe("Guide", () => {
       methodology: "Test methodology",
     });
 
-    render(<Guide calculator={mockCalculator} />);
+    render(
+      <LocaleProvider locale="cs" messages={csMessages}>
+        <Guide calculator={mockCalculator} />
+      </LocaleProvider>,
+    );
     expect(screen.getByText("Shoda")).toBeInTheDocument();
   });
 });
