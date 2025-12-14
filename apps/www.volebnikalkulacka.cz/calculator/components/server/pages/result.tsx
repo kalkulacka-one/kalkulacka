@@ -1,14 +1,14 @@
+import type { CalculatorViewModel, ResultViewModel } from "@kalkulacka-one/app";
+import { ResultNavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import React from "react";
 
 import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
-import type { CalculatorViewModel, ResultViewModel } from "@/calculator/view-models/server";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 import { EmbedFooter, Layout } from "../components";
-import { ResultNavigationCard } from "../components/result-navigation-card";
 
 export type ResultPage = {
   embedContext: EmbedContextType;

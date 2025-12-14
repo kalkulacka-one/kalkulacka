@@ -1,10 +1,15 @@
 import { notFound } from "next/navigation";
 
-import { loadCalculatorData } from "@/calculator";
+import { loadCalculatorData } from "@kalkulacka-one/app";
+
 import { SessionProviderLayout } from "@/components/client";
 import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
+  if (!process.env.DATA_ENDPOINT) {
+    throw new Error("DATA_ENDPOINT environment variable is not set");
+  }
+
   const segments = await params;
   const { first } = segments;
 
@@ -15,7 +20,7 @@ export default async function Layout({ children, params }: { children: React.Rea
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
   try {
-    const calculatorData = await loadCalculatorData({ key, group });
+    const calculatorData = await loadCalculatorData({ endpoint: process.env.DATA_ENDPOINT, key, group });
     return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
   } catch (error) {
     console.error("Failed to load calculator data:", error);

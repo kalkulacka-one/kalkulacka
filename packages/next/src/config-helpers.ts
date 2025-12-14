@@ -1,4 +1,4 @@
-import type { AppConfig } from "./types/app-config";
+import type { AppConfig } from "@/types/app-config";
 
 type AppConfigWithDefaults = AppConfig & {
   i18n: AppConfig["i18n"] & {
