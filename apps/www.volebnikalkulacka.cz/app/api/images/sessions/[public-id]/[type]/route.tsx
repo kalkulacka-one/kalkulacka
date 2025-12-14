@@ -1,6 +1,5 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { candidatesAnswersViewModel, candidateViewModel, loadCalculatorData, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app";
-
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
