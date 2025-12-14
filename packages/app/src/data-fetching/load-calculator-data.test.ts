@@ -29,11 +29,11 @@ describe("loadCalculatorData", () => {
   });
 
   it("should throw error when endpoint parameter is invalid URL", async () => {
-    await expect(loadCalculatorData({ endpoint: "not-a-valid-url", key: "test" })).rejects.toThrow("Invalid endpoint");
+    await expect(loadCalculatorData({ endpoint: "not-a-valid-url", key: "test" })).rejects.toThrowError(new Error("Invalid endpoint"));
   });
 
   it("should throw error when endpoint parameter is empty string", async () => {
-    await expect(loadCalculatorData({ endpoint: "", key: "test" })).rejects.toThrow("Invalid endpoint");
+    await expect(loadCalculatorData({ endpoint: "", key: "test" })).rejects.toThrowError(new Error("Invalid endpoint"));
   });
 
   it("should handle trailing slash in endpoint parameter", async () => {
@@ -109,7 +109,7 @@ describe("loadCalculatorData", () => {
   it("should throw error with details when fetch fails", async () => {
     mockFetchFile.mockRejectedValue(new Error("Network error"));
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrow(/Failed to fetch .* data: Network error/);
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch calculator data: Network error"));
   });
 
   it("should throw error with details when parsing fails", async () => {
@@ -120,7 +120,7 @@ describe("loadCalculatorData", () => {
       throw new Error("Invalid data format");
     });
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrow(/Failed to parse .* data: Invalid data format/);
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to parse calculator data: Invalid data format"));
   });
 
   it("should handle missing optional files gracefully", async () => {
@@ -150,7 +150,7 @@ describe("loadCalculatorData", () => {
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrow("Failed to fetch calculator data: File not found");
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch calculator data: File not found"));
 
     mockFetchFile.mockImplementation(({ url }) => {
       if (url.includes("questions.json")) {
@@ -159,6 +159,6 @@ describe("loadCalculatorData", () => {
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrow("Failed to fetch questions data: File not found");
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch questions data: File not found"));
   });
 });
