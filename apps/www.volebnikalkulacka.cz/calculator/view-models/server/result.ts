@@ -1,8 +1,6 @@
-import type { CandidateAnswerViewModel, CandidatesAnswersViewModel } from "@kalkulacka-one/app";
+import type { CandidateAnswerViewModel, CandidatesAnswersViewModel, CandidateViewModel } from "@kalkulacka-one/app";
 
 import type { calculateMatches } from "@/calculator/result-calculation";
-
-import type { CandidateViewModel } from "./candidate";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
@@ -70,7 +68,7 @@ export function resultViewModel(candidates: CandidateViewModel[], candidatesAnsw
         };
       });
 
-      nestedMatches = sortByOrder(nestedMatches);
+      nestedMatches = sortByOrder(nestedMatches ?? []);
     }
 
     return {
