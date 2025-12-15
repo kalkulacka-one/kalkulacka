@@ -1,4 +1,4 @@
-import { InternalServerError, NotFoundError } from "@kalkulacka-one/app";
+import { InternalServerError, NotFoundError } from "@/errors";
 
 export async function fetchFile({ url }: { url: string }): Promise<unknown> {
   const response = await fetch(url);
