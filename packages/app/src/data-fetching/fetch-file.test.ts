@@ -1,6 +1,6 @@
-import { InternalServerError, NotFoundError } from "@/errors";
-
 import { describe, expect, it, type MockedFunction, vi } from "vitest";
+
+import { InternalServerError, NotFoundError } from "@/errors";
 
 import { fetchFile } from "./fetch-file";
 

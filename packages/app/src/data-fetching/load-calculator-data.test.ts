@@ -1,7 +1,6 @@
-import { NotFoundError } from "@/errors";
-
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import { NotFoundError } from "@/errors";
 import { parseWithSchema } from "@/utilities";
 
 import { fetchFile } from "./fetch-file";
