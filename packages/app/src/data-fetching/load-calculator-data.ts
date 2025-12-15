@@ -1,4 +1,3 @@
-import { InternalServerError, NotFoundError } from "@kalkulacka-one/app";
 import {
   type Calculator,
   type Candidates,
@@ -72,18 +71,10 @@ export async function loadCalculatorData({ endpoint, key, group }: { endpoint: s
     required: "required" in config && config.required,
   }));
 
-  const fetchPromises = fileEntries.map(({ key, url, required }) =>
+  const fetchPromises = fileEntries.map(({ url, required }) =>
     fetchFile({ url }).catch((error) => {
       if (required) {
-        if (error instanceof NotFoundError) {
-          throw new NotFoundError(`Failed to fetch ${key} data: ${error.message}`);
-        }
-        if (error instanceof InternalServerError) {
-          throw new InternalServerError(`Failed to fetch ${key} data: ${error.message}`);
-        }
-        if (error instanceof Error) {
-          throw new Error(`Failed to fetch ${key} data: ${error.message}`);
-        }
+        throw error;
       }
       return undefined;
     }),
