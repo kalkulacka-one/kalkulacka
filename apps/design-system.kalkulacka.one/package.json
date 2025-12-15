@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@kalkulacka-one/design-system": "*",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
@@ -23,8 +23,8 @@
     "@storybook/addon-onboarding": "^10.0.8",
     "@storybook/nextjs": "^10.0.8",
     "@types/node": "^22.19.1",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.8",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "storybook": "^10.0.8",
     "typescript": "^5.9.3"
   },
