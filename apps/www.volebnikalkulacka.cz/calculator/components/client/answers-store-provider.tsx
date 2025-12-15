@@ -1,7 +1,7 @@
+import { type AnswersStore, AnswersStoreContext, createAnswersStore } from "@kalkulacka-one/app/client";
+
 import { type ReactNode, useRef } from "react";
 import type { StoreApi } from "zustand";
-
-import { type AnswersStore, AnswersStoreContext, createAnswersStore } from "@/calculator/stores";
 
 export type AnswersStoreProviderProps = {
   children: ReactNode;
