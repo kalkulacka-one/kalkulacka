@@ -29,7 +29,7 @@ export default function Page() {
                 <div className="p-6 md:p-8 h-full flex flex-col">
                   <div className="flex flex-wrap items-center gap-2 text-xs text-gray-600">
                     <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 font-semibold text-red-700">Témák leltára</span>
-                    <span className="rounded-full bg-gray-100 px-2.5 py-1">39 kérdés</span>
+                    <span className="rounded-full bg-gray-100 px-2.5 py-1">28 kérdés</span>
                     <span className="rounded-full bg-gray-100 px-2.5 py-1">10 perc</span>
                   </div>
                   <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-gray-700 text-2xl md:text-3xl">Fővárosi Közgyűlés Voksmonitor</h2>
