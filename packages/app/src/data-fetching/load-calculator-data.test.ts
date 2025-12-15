@@ -1,4 +1,4 @@
-import { NotFoundError } from "@kalkulacka-one/app";
+import { NotFoundError } from "@/errors";
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
