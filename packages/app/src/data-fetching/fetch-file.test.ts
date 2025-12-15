@@ -30,7 +30,7 @@ describe("fetchFile", () => {
       statusText: "Not Found",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrow(NotFoundError);
+    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrowError(NotFoundError);
   });
 
   it("should throw InternalServerError for 500 status", async () => {
@@ -40,7 +40,7 @@ describe("fetchFile", () => {
       statusText: "Internal Server Error",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrow(InternalServerError);
+    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrowError(InternalServerError);
   });
 
   it("should throw Error for other HTTP errors", async () => {
@@ -50,7 +50,7 @@ describe("fetchFile", () => {
       statusText: "Forbidden",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/forbidden.json" })).rejects.toThrow(Error);
+    await expect(fetchFile({ url: "https://example.com/forbidden.json" })).rejects.toThrowError(Error);
   });
 
   it("should handle network errors", async () => {
