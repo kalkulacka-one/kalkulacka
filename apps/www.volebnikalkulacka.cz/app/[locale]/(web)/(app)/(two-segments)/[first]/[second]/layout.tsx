@@ -1,4 +1,4 @@
-import { loadCalculatorData, NotFoundError } from "@kalkulacka-one/app";
+import { calculatorDataLoader } from "@kalkulacka-one/app";
 
 import { notFound } from "next/navigation";
 
@@ -20,13 +20,12 @@ export default async function Layout({ children, params }: { children: React.Rea
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
 
-  try {
-    const calculatorData = await loadCalculatorData({ endpoint: process.env.DATA_ENDPOINT, key, group });
-    return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
-  } catch (error) {
-    if (error instanceof NotFoundError) {
-      notFound();
-    }
-    throw error;
-  }
+  const calculatorData = await calculatorDataLoader({
+    endpoint: process.env.DATA_ENDPOINT,
+    key,
+    group,
+    onNotFound: notFound,
+  });
+
+  return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }
