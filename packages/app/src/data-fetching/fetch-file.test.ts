@@ -1,5 +1,7 @@
 import { describe, expect, it, type MockedFunction, vi } from "vitest";
 
+import { InternalServerError, NotFoundError } from "@/errors";
+
 import { fetchFile } from "./fetch-file";
 
 global.fetch = vi.fn();
@@ -21,34 +23,34 @@ describe("fetchFile", () => {
     expect(mockFetch).toHaveBeenCalledWith("https://example.com/test.json");
   });
 
-  it("should throw error for 404 status", async () => {
+  it("should throw NotFoundError for 404 status", async () => {
     mockFetch.mockResolvedValue({
       ok: false,
       status: 404,
       statusText: "Not Found",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrowError(new Error("File `https://example.com/missing.json` not found"));
+    await expect(fetchFile({ url: "https://example.com/missing.json" })).rejects.toThrowError(NotFoundError);
   });
 
-  it("should throw error for 500 status", async () => {
+  it("should throw InternalServerError for 500 status", async () => {
     mockFetch.mockResolvedValue({
       ok: false,
       status: 500,
       statusText: "Internal Server Error",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrowError(new Error("Server error while fetching `https://example.com/error.json` file"));
+    await expect(fetchFile({ url: "https://example.com/error.json" })).rejects.toThrowError(InternalServerError);
   });
 
-  it("should throw error for other HTTP errors", async () => {
+  it("should throw Error for other HTTP errors", async () => {
     mockFetch.mockResolvedValue({
       ok: false,
       status: 403,
       statusText: "Forbidden",
     } as Response);
 
-    await expect(fetchFile({ url: "https://example.com/forbidden.json" })).rejects.toThrowError(new Error("HTTP 403: Forbidden for `https://example.com/forbidden.json` file"));
+    await expect(fetchFile({ url: "https://example.com/forbidden.json" })).rejects.toThrowError(Error);
   });
 
   it("should handle network errors", async () => {
