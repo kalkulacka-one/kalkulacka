@@ -111,7 +111,7 @@ describe("loadCalculatorData", () => {
   it("should throw error with details when fetch fails", async () => {
     mockFetchFile.mockRejectedValue(new Error("Network error"));
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch calculator data: Network error"));
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Network error"));
   });
 
   it("should throw error with details when parsing fails", async () => {
