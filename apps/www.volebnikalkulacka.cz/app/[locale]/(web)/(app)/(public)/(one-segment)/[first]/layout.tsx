@@ -1,9 +1,5 @@
-import { calculatorDataLoader } from "@kalkulacka-one/app";
-
-import { notFound } from "next/navigation";
-
 import { ProviderLayout } from "@/components/client";
-import { mappedParams } from "@/lib/routing";
+import { calculatorDataLoader, mappedParams } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
   if (!process.env.DATA_ENDPOINT) {
@@ -16,7 +12,6 @@ export default async function Layout({ children, params }: { children: React.Rea
   const calculatorData = await calculatorDataLoader({
     endpoint: process.env.DATA_ENDPOINT,
     key,
-    onNotFound: notFound,
   });
 
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
