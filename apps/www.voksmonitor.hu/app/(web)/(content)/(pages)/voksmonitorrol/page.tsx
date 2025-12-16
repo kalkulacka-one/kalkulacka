@@ -19,8 +19,7 @@ export default function Page() {
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
-        Célja, hogy a választók a politikával ne csak kommunikáción és kampányokon keresztül találkozzanak, hanem megismerjék, hogyan viszonyulnak a döntéshozók a legfontosabb várospolitikai
-        kérdésekhez.
+        Célja, hogy a választók a politikával ne csak kommunikáción és kampányokon keresztül találkozzanak, hanem megismerjék, hogyan viszonyulnak a döntéshozók a várospolitikai kérdésekhez.
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
@@ -37,8 +36,8 @@ export default function Page() {
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">
-        A kérdéseket a K-Monitor munkatársai állították össze úgy, hogy lefedjék a közgyűlés legfontosabb döntési területeit – a közlekedéstől és lakhatástól kezdve a zöldfelületek kezelésén és
-        átláthatóságon át a városfejlesztési kérdésekig.
+        A kérdéseket a K-Monitor munkatársai annak érdekében állították össze, hogy a közgyűlés döntéshozatalának különböző területei megjelenjenek bennük – a közlekedés, a lakhatás, a zöldfelületek
+        kezelése, az átláthatóság és a városfejlesztés kérdései egyaránt.
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-0">A képviselők válaszait a közgyűlési szavazások alapján határoztuk meg.</p>

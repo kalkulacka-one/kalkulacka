@@ -34,9 +34,9 @@ export default function Page() {
                   </div>
                   <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-gray-700 text-2xl md:text-3xl">Fővárosi Közgyűlés Voksmonitor</h2>
                   <p className="mt-2 text-gray-500">
-                    A Voksmonitor célja, hogy a választók a politikával ne csak a pártok kommunikációján keresztül találkozzanak – hanem megismerjék a különböző politikai szereplők (esetünkben
-                    frakciók és képviselők) álláspontját a legfontosabb várospolitikai és szakmai kérdésekben. Az alkalmazás a válaszadóhoz rendeli azt a frakciót, illetve képviselőt, amelynek
-                    álláspontja a válaszok alapján legközelebb áll a kitöltő értékrendjéhez.
+                    A Voksmonitor célja, hogy a választók a politikával ne csak a pártok kommunikációján keresztül találkozzanak, hanem megismerjék a különböző politikai szereplők (esetünkben frakciók
+                    és képviselők) álláspontját a várospolitikai és szakmai kérdések széles körében. Az alkalmazás a válaszadóhoz rendeli azt a frakciót, illetve képviselőt, amelynek álláspontja a
+                    válaszok alapján legközelebb áll a kitöltő értékrendjéhez.
                   </p>
                   <div className="grid mt-auto pt-4 md:pt-6">
                     <Link href="/vm/fovarosi-kozgyules/inventory" className="grid">
@@ -78,7 +78,7 @@ export default function Page() {
                 <h2 className="font-display ko:font-display font-bold tracking-tight text-gray-700 text-3xl md:text-4xl text-center mb-4">Hogyan készül a Voksmonitor?</h2>
                 <p className="text-center text-gray-600 max-w-4xl mx-auto mb-12">
                   A Voksmonitor a K-Monitor és a KohoVolit.eu nonprofit szervezetek közös projektje, amely segít megismerni, hogy a Fővárosi Közgyűlésben dolgozó frakciók és képviselők hogyan
-                  viszonyulnak a főváros legfontosabb ügyeihez.
+                  viszonyulnak a főváros ügyeihez.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

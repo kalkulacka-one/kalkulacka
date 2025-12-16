@@ -13,8 +13,8 @@ export default function Page() {
       <div className="prose prose-gray max-w-none">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
           A Voksmonitor a <strong className="font-semibold text-gray-900">K-Monitor</strong> és a <strong className="font-semibold text-gray-900">KohoVolit.eu</strong> közös projektje, amelynek célja,
-          hogy a választók a politikával ne csak a frakciók és képviselők kommunikációján keresztül találkozzanak, hanem megismerjék álláspontjukat a Fővárosi Közgyűlés legfontosabb várospolitikai és
-          szakmai kérdéseiben.
+          hogy a választók a politikával ne csak a frakciók és képviselők kommunikációján keresztül találkozzanak, hanem megismerjék álláspontjukat a Fővárosi Közgyűlés várospolitikai és szakmai
+          kérdéseiben.
         </p>
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Az alkalmazás a felhasználó válaszait összeveti a közgyűlésben dolgozó frakciók és képviselők álláspontjaival, majd megmutatja, kik gondolkodnak a leginkább hasonlóan a kitöltőhöz.
