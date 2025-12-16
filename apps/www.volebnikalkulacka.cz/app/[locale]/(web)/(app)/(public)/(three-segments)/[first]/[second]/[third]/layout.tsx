@@ -12,7 +12,7 @@ export default async function Layout({ children, params }: { children: React.Rea
   const segments = await params;
   const { first } = segments;
 
-  prefixGuard(first, PREFIXES);
+  prefixGuard({ prefix: first, validPrefixes: PREFIXES });
 
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);

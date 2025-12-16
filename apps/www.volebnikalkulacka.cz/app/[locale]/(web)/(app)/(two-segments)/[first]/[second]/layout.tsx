@@ -12,8 +12,8 @@ export default async function Layout({ children, params }: { children: React.Rea
   const segments = await params;
   const { first } = segments;
 
-  if (isPrefix(first, PREFIXES)) {
-    prefixGuard(first, PREFIXES);
+  if (isPrefix({ segment: first, validPrefixes: PREFIXES })) {
+    prefixGuard({ prefix: first, validPrefixes: PREFIXES });
   }
 
   const key = mappedParams.key(segments);

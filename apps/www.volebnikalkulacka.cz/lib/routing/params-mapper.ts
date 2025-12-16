@@ -25,7 +25,7 @@ function parseGroup(segments: RouteSegments): string | undefined {
   }
 
   if (segments.second) {
-    if (isPrefix(first, PREFIXES)) {
+    if (isPrefix({ segment: first, validPrefixes: PREFIXES })) {
       return undefined;
     }
     return first;
