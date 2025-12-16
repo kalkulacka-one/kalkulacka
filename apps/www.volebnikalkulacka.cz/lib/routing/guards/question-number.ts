@@ -1,11 +1,1 @@
-import { notFound } from "next/navigation";
-
-import { validateQuestionNumber } from "../validators";
-
-export function questionNumberGuard(questionNumber: string): number {
-  try {
-    return validateQuestionNumber(questionNumber);
-  } catch {
-    notFound();
-  }
-}
+export { questionNumberGuard } from "@kalkulacka-one/next";

@@ -1,3 +1,5 @@
+import { createPrefixValidator } from "@kalkulacka-one/next";
+
 import { hasLocale } from "next-intl";
 
 import { appConfig } from "@/config/app-config";
@@ -11,13 +13,5 @@ if (!hasLocale(routing.locales, defaultLocale)) {
 
 export const PREFIXES = routing.locales.flatMap((locale) => Object.values(PREFIX_SLUGS[locale] || {}));
 
-export function isPrefix(segment: string): boolean {
-  return PREFIXES.includes(segment);
-}
-
-export function validatePrefix(prefix: string): string {
-  if (!PREFIXES.includes(prefix)) {
-    throw new Error(`Invalid prefix \`${prefix}\``);
-  }
-  return prefix;
-}
+const { isPrefix, validatePrefix } = createPrefixValidator(PREFIXES);
+export { isPrefix, validatePrefix };

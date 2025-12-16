@@ -1,11 +1,5 @@
-import { notFound } from "next/navigation";
+import { createPrefixGuard } from "@kalkulacka-one/next";
 
-import { validatePrefix } from "../validators";
+import { PREFIXES } from "@/lib/routing/validators";
 
-export function prefixGuard(prefix: string): string {
-  try {
-    return validatePrefix(prefix);
-  } catch {
-    notFound();
-  }
-}
+export const prefixGuard = createPrefixGuard(PREFIXES);
