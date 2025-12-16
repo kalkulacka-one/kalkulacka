@@ -7,11 +7,10 @@ export default async function Layout({ children, params }: { children: React.Rea
   }
 
   const segments = await params;
-  const key = mappedParams.key(segments);
 
   const calculatorData = await calculatorDataLoader({
     endpoint: process.env.DATA_ENDPOINT,
-    key,
+    key: mappedParams.key(segments),
   });
 
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;

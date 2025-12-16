@@ -13,13 +13,10 @@ export default async function Layout({ children, params }: { children: React.Rea
     prefixGuard(first);
   }
 
-  const key = mappedParams.key(segments);
-  const group = mappedParams.group(segments);
-
   const calculatorData = await calculatorDataLoader({
     endpoint: process.env.DATA_ENDPOINT,
-    key,
-    group,
+    key: mappedParams.key(segments),
+    group: mappedParams.group(segments),
   });
 
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
