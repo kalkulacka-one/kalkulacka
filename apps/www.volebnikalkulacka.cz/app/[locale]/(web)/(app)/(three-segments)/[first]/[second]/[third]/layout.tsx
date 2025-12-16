@@ -1,7 +1,8 @@
 import { loadCalculatorData } from "@kalkulacka-one/app";
+import { prefixGuard } from "@kalkulacka-one/next";
 
 import { SessionProviderLayout } from "@/components/client";
-import { mappedParams, prefixGuard } from "@/lib/routing";
+import { mappedParams, PREFIXES } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string; third: string }> }) {
   if (!process.env.DATA_ENDPOINT) {
@@ -11,7 +12,7 @@ export default async function Layout({ children, params }: { children: React.Rea
   const segments = await params;
   const { first } = segments;
 
-  prefixGuard(first);
+  prefixGuard(first, PREFIXES);
 
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);

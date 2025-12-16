@@ -1,5 +1,7 @@
+import { isPrefix } from "@kalkulacka-one/next";
+
+import { PREFIXES } from "./prefixes";
 import type { RouteSegments } from "./route-builders";
-import { isPrefix } from "./validators";
 
 function parseKey(segments: RouteSegments): string {
   const { first } = segments;
@@ -23,7 +25,7 @@ function parseGroup(segments: RouteSegments): string | undefined {
   }
 
   if (segments.second) {
-    if (isPrefix(first)) {
+    if (isPrefix(first, PREFIXES)) {
       return undefined;
     }
     return first;
