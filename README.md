@@ -16,7 +16,7 @@ The _one_ voting advice application used by millions of voters across 7 countrie
 - 🇦🇱 **[Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.al)** in Albania  
 — _2027: Local elections_
 - 🇷🇴 **[TestVot](https://www.testvot.eu)** in Romania
-- 🇲🇰 **[Glasomer](https://www.glasomer.mk)** in North Macedonia
+- 🇲🇰 **[Izborenkalkulator](https://www.izborenkalkulator.mk)** in North Macedonia
 
 ---
 
