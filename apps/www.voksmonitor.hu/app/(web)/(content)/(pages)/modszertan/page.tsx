@@ -29,26 +29,28 @@ export default function Page() {
           Átláthatóságról, 3 a Környezetvédelem és Fenntarthatóságról, 6 a Közlekedés és Mobilitás kérdéséről, 1 a Közösség és kultúra témájáról, 5 Szociális és lakhatási ügyekről, 1 Társadalmi ügyek
           és esélyegyenlőségről, 4 Városfejlesztésről és 5 Városüzemeltetésről szólt.
         </p>
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           A Voksmonitor elkészítését alapos kutatómunka előzte meg. Először átböngésztük a sajtóanyagokat és a közgyűlési jegyzőkönyveket, hogy megtaláljuk azokat a témákat, amelyek élénk vitát
           váltottak ki, vagy jól bemutatják a közgyűlés működését és döntéshozatali logikáját vagy mert fontosnak ítéltük a város szempontjából.
         </p>
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Természetesen a közgyűlés nem csak ezzel a 28 üggyel foglalkozott, sok olyan téma is kimaradt, amely túl technikai, nehezen értelmezhető vagy nem egyértelműen kibontható kérdés volt. Célunk
           az volt, hogy olyan ügyeket válasszunk, amelyek érthetők, relevánsak, és valóban hatással vannak Budapest életére.
         </p>
 
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Az előterjesztések átlagosan 35-50%-a a városvezetéstől származik, hivatali előkészítés után vagy főjegyzői vagy főpolgármesteri előterjesztésként. Ehhez képest ezeknek az előterjesztéseknek
           az aránya a Voksmonitorban 20% alatt van és a nagy többsége a behozott témáknak képviselői kezdeményezés. Ennek az aránytalanságnak a fő oka, hogy a városvezetés előterjesztései jellemzően
           olyan döntések, amelyek vagy a napi működéshez vagy már futó projektek végrehajtásához kapcsolódnak, személyi döntések vagy pedig kimondottan összetett rendeletekre vonatkoznak, például a
           városrendezési jogszabályok elfogadására, amelyeket nehéz lett volna egy közpolitikai állítás keretében összefoglalni.
         </p>
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Ilyen értelemben az a módszertani döntés, hogy alapvetően új kezdeményezésekről szóljon a Voksmonitor kedvezett a politikailag “kihangosított”, de tartalmában sokszor egyszerűbb, egy fókuszú
           képviselői indítványoknak, szemben a hosszútávú folyamatok aktuálisan napirendre kerülő résztémáival.
         </p>
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Miután kiválasztottuk a témákat, összepárosítottuk őket a kapcsolódó szavazásokkal. A fővárosi közgyűlés jegyzőkönyveiből a név szerinti szavazások eredményeit saját fejlesztésű
           programkóddal nyertük ki és rendeztük táblázatba, majd ezeket hozzárendeltük a kiválasztott várospolitikai ügyekhez. Tekintettel arra, hogy végül egy konkrét szavazás eredményét jelenítjük
           meg, ezért többször az eredetileg tágan megfogalmazott közpolitikai témát egy részterületre kellett szűkíteni, hogy a szavazási eredmény reprezentatív maradjon az állításra vonatkozóan. Sőt,
@@ -56,12 +58,13 @@ export default function Page() {
           esetekben is végül egy konkrét szavazást kellett választanunk, ami nem feltétlenül adja vissza az év során alakuló politikai pozíciókat, de ilyenkor próbáltuk a legteljesebb képet adó
           szavazást kiválasztani.
         </p>
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Minden kérdéshez rövid magyarázat tartozik, amely összefoglalja a vita főbb álláspontjait. A kitöltők anonim módon, „egyetért”, „nem ért egyet” vagy „kihagyás” válaszokkal jelezhetik
           véleményüket, az egyes kérdéseket fontosnak is jelölhetik. Az eredmény tájékozódást segítő jellegű: megmutatja, mely frakciók és képviselők állnak a legközelebb a kitöltő értékrendjéhez.
         </p>
 
-        <p className="text-lg text-gray-700 leading-relaxed mb-0">
+        <p className="text-lg text-gray-700 leading-relaxed mb-6">
           A szavazási eredmények értelmezése tekintetében még fontos jelezni, hogy a közgyűlési szavazásokat sokszor megelőzi vita a szakbizottságokban és egyes módosító javaslatok már ott elbukhatnak
           vagy integrálásra kerülnek a bizottság összesítő módosító javaslatában. A közgyűlési vitában így előfordulhat, hogy már egy eleve kompromisszumos javaslatot látunk, amit könnyebben támogat a
           frakciók többsége. Továbbá előfordulhat, hogy a leginkább vitás kérdéseket külön módosítók formájában vagy határozati pontokra külön szavazás kérésével szavazzák le, sőt, esetenként még
