@@ -16,6 +16,9 @@
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u"
   },
+  "dependencies": {
+    "@kalkulacka-one/app": "*"
+  },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
     "@types/node": "^22.19.1",
