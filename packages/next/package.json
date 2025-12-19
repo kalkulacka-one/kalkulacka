@@ -6,6 +6,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./config": {
+      "types": "./dist/config-helpers.d.ts",
+      "default": "./dist/config-helpers.js"
     }
   },
   "scripts": {
