@@ -156,7 +156,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                           >
                             <span>{comparison.userAnswer === true ? "✓" : comparison.userAnswer === false ? "✗" : "—"}</span>
                             <span className="mx-1">•</span>
-                            <span>{comparison.candidateAnswer === true ? "✓" : comparison.candidateAnswer === false ? "✗" : "—"}</span>
+                            <span>{comparison.candidateAnswer === true ? "✓" : comparison.candidateAnswer === false ? "✗" : comparison.candidateAnswer === null ? "—" : ""}</span>
                           </div>
                         </div>
                       </React.Fragment>

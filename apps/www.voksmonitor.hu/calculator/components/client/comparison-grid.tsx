@@ -114,9 +114,16 @@ export type ComparisonAnswerIcon = {
 };
 
 function ComparisonAnswerIcon({ answer }: ComparisonAnswerIcon) {
+  if (answer === undefined) {
+    return (
+      <IconBadge color="neutral">
+        <span className="p-3" />
+      </IconBadge>
+    );
+  }
   return (
-    <IconBadge color={answer === null || answer === undefined ? "neutral" : answer ? "primary" : "secondary"}>
-      <Icon decorative={true} icon={answer === null || answer === undefined ? logoSlash : answer ? logoCheck : logoCross} />
+    <IconBadge color={answer === null ? "neutral" : answer ? "primary" : "secondary"}>
+      <Icon decorative={true} icon={answer === null ? logoSlash : answer ? logoCheck : logoCross} />
     </IconBadge>
   );
 }

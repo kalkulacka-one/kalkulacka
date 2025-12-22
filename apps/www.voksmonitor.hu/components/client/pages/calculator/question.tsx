@@ -18,14 +18,19 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
   const setAnswer = useAnswersStore((state) => state.setAnswer);
+  const getAnswer = useAnswersStore((state) => state.getAnswer);
 
   useAutoSave();
 
   useEffect(() => {
     if (question) {
-      setAnswer({ questionId: question.id });
+      const existingAnswer = getAnswer(question.id);
+      // Only initialize with null if there's no existing answer record
+      if (!existingAnswer) {
+        setAnswer({ questionId: question.id, answer: null });
+      }
     }
-  }, [question, setAnswer]);
+  }, [question, setAnswer, getAnswer]);
 
   if (!question) {
     notFound();
