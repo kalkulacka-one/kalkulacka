@@ -1,36 +1,74 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
-
-import { appConfig } from "./config/app-config";
-
-const withNextIntl = createNextIntlPlugin();
-
-const { defaultLocale, locales } = appConfig.i18n;
-const localesPattern = locales.join("|");
+import rehypeSlug from "rehype-slug";
 
 const nextConfig: NextConfig = {
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
+  productionBrowserSourceMaps: true,
   async rewrites() {
     return [
       {
-        source: "/",
-        destination: `/${defaultLocale}`,
+        source: "/js/script.tagged-events.outbound-links.js",
+        destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
       },
       {
-        source: `/:path((?!(?:${localesPattern}|api|_next|favicon\\.ico)(?:/|$)).*)*`,
-        destination: `/${defaultLocale}/:path*`,
+        source: "/api/event",
+        destination: "https://plausible.io/api/event",
       },
     ];
   },
   async redirects() {
     return [
       {
-        source: `/${defaultLocale}/:path((?!embed).*)*`,
-        destination: "/:path*",
+        source: "/volby/snemovni-2025",
+        destination: "/volby/snemovni-2025/kalkulacka",
+        permanent: false,
+      },
+      {
+        source: "/metodika-tvorby-otazek",
+        destination: "/metodika",
         permanent: true,
+      },
+      {
+        source: "/ochrana-dat",
+        destination: "/soukromi",
+        permanent: true,
+      },
+      // 2024 archive redirects
+      {
+        source: "/a-voksmonitor-modszertana",
+        destination: "https://old.voksmonitor.hu/a-voksmonitor-modszertana",
+        permanent: false,
+      },
+      {
+        source: "/a-voksmonitorrol",
+        destination: "https://old.voksmonitor.hu/a-voksmonitorrol",
+        permanent: false,
+      },
+      {
+        source: "/adatvedelem",
+        destination: "https://old.voksmonitor.hu/adatvedelem",
+        permanent: false,
+      },
+      {
+        source: "/valasztasok/europai-2024/:path*",
+        destination: "https://old.voksmonitor.hu/valasztasok/europai-2024/:path*",
+        permanent: false,
+      },
+      {
+        source: "/valasztasok/onkormanyzati-2024/:path*",
+        destination: "https://old.voksmonitor.hu/valasztasok/onkormanyzati-2024/:path*",
+        permanent: false,
       },
     ];
   },
 };
 
-export default withNextIntl(nextConfig);
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [rehypeSlug],
+  },
+});
+
+export default withMDX(nextConfig);
