@@ -1,8 +1,7 @@
+import { HttpError, NotFoundError } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
 
 import type { NextRequest } from "next/server";
-
-import { HttpError, NotFoundError } from "@/lib/errors";
 
 export async function GET(_request: NextRequest, { params }: { params: Promise<{ "public-id": string }> }) {
   try {

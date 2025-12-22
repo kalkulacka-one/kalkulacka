@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import { NotFoundError } from "@/errors";
 import { parseWithSchema } from "@/utilities";
 
 import { fetchFile } from "./fetch-file";
@@ -109,7 +110,7 @@ describe("loadCalculatorData", () => {
   it("should throw error with details when fetch fails", async () => {
     mockFetchFile.mockRejectedValue(new Error("Network error"));
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch calculator data: Network error"));
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Network error"));
   });
 
   it("should throw error with details when parsing fails", async () => {
@@ -142,23 +143,25 @@ describe("loadCalculatorData", () => {
     expect(result.data.candidatesAnswers).toEqual(data);
   });
 
-  it("should throw error when required files are missing", async () => {
+  it("should throw NotFoundError when calculator.json is missing", async () => {
     mockFetchFile.mockImplementation(({ url }) => {
       if (url.includes("calculator.json")) {
-        return Promise.reject(new Error("File not found"));
+        return Promise.reject(new NotFoundError("File not found"));
       }
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch calculator data: File not found"));
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrow(NotFoundError);
+  });
 
+  it("should throw NotFoundError when questions.json is missing", async () => {
     mockFetchFile.mockImplementation(({ url }) => {
       if (url.includes("questions.json")) {
-        return Promise.reject(new Error("File not found"));
+        return Promise.reject(new NotFoundError("File not found"));
       }
       return Promise.resolve(data);
     });
 
-    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrowError(new Error("Failed to fetch questions data: File not found"));
+    await expect(loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "key" })).rejects.toThrow(NotFoundError);
   });
 });

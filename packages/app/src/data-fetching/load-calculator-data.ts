@@ -71,10 +71,10 @@ export async function loadCalculatorData({ endpoint, key, group }: { endpoint: s
     required: "required" in config && config.required,
   }));
 
-  const fetchPromises = fileEntries.map(({ key, url, required }) =>
+  const fetchPromises = fileEntries.map(({ url, required }) =>
     fetchFile({ url }).catch((error) => {
       if (required) {
-        throw new Error(`Failed to fetch ${key} data: ${error.message}`);
+        throw error;
       }
       return undefined;
     }),
