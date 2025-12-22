@@ -6,6 +6,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./config": {
+      "types": "./dist/config-helpers.d.ts",
+      "default": "./dist/config-helpers.js"
     }
   },
   "scripts": {
@@ -16,11 +20,17 @@
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u"
   },
+  "dependencies": {
+    "@kalkulacka-one/app": "*"
+  },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
     "@types/node": "^22.19.1",
     "tsc-alias": "^1.8.16",
     "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "next": ">=14.0.0"
   },
   "packageManager": "npm@11.5.2"
 }

@@ -1,6 +1,6 @@
-import { PAGE_SLUGS } from "@/config/localized-slugs";
+import { validateQuestionNumber } from "@kalkulacka-one/next";
 
-import { validateQuestionNumber } from "./validators/question-number";
+import { PAGE_SLUGS } from "@/config/localized-slugs";
 
 function parseQuestionNumber(path: string): number {
   const segments = path.split("/").filter(Boolean);

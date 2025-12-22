@@ -1,4 +1,4 @@
-import { loadCalculatorData } from "@kalkulacka-one/app";
+import { dataLoaderGuard } from "@kalkulacka-one/next";
 
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams } from "@/lib/routing";
@@ -9,7 +9,6 @@ export default async function Layout({ children, params }: { children: React.Rea
   }
 
   const segments = await params;
-  const key = mappedParams.key(segments);
-  const calculatorData = await loadCalculatorData({ endpoint: process.env.DATA_ENDPOINT, key });
+  const calculatorData = await dataLoaderGuard({ endpoint: process.env.DATA_ENDPOINT, key: mappedParams.key(segments) });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }

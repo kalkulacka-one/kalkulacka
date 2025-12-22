@@ -1,7 +1,7 @@
-import { loadCalculatorData } from "@kalkulacka-one/app";
+import { dataLoaderGuard, isPrefix, prefixGuard } from "@kalkulacka-one/next";
 
 import { ProviderLayout } from "@/components/client";
-import { isPrefix, mappedParams, prefixGuard } from "@/lib/routing";
+import { mappedParams, PREFIXES } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
   if (!process.env.DATA_ENDPOINT) {
@@ -11,12 +11,14 @@ export default async function Layout({ children, params }: { children: React.Rea
   const segments = await params;
   const { first } = segments;
 
-  if (isPrefix(first)) {
-    prefixGuard(first);
+  if (isPrefix({ segment: first, validPrefixes: PREFIXES })) {
+    prefixGuard({ prefix: first, validPrefixes: PREFIXES });
   }
 
-  const key = mappedParams.key(segments);
-  const group = mappedParams.group(segments);
-  const calculatorData = await loadCalculatorData({ endpoint: process.env.DATA_ENDPOINT, key, group });
+  const calculatorData = await dataLoaderGuard({
+    endpoint: process.env.DATA_ENDPOINT,
+    key: mappedParams.key(segments),
+    group: mappedParams.group(segments),
+  });
   return <ProviderLayout calculatorData={calculatorData}>{children}</ProviderLayout>;
 }
