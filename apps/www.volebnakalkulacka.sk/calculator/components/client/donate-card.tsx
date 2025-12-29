@@ -1,3 +1,5 @@
+// TODO [TENANT-004]: Implement SK donation card with Slovak donation platform and EUR currency
+
 import { Button, Icon, Logo } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
