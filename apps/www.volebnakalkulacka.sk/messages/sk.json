@@ -1,5 +1,31 @@
 {
   "homepage": {
-    "title": "Ahoj, Slovensko!"
+    "title": "Volebná kalkulačka"
+  },
+  "routing": {
+    "prefixes": {
+      "election": "volby"
+    },
+    "pages": {
+      "introduction": "uvod",
+      "guide": "navod",
+      "question": "otazka",
+      "review": "rekapitulacia",
+      "result": "vysledok",
+      "comparison": "porovnanie"
+    }
+  },
+  "calculator": {
+    "components": {
+      "question-navigation-card": {
+        "yes": "Áno",
+        "no": "Nie",
+        "next": "Ďalej",
+        "previous": "Späť",
+        "guide": "Návod",
+        "skip": "Preskočiť",
+        "important": "Pre mňa dôležité"
+      }
+    }
   }
 }
