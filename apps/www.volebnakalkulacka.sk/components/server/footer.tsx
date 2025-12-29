@@ -1,3 +1,5 @@
+// TODO [TENANT-006]: Extract footer text to i18n, configure SK social links
+
 import { Icon, Logo } from "@kalkulacka-one/design-system/client";
 
 import { mdiInstagram } from "@mdi/js";
@@ -18,10 +20,10 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="text-white">
-                <Logo title="Volební kalkulačka" size="small" monochrome />
+                <Logo title="Volebná kalkulačka" size="small" monochrome />
               </div>
               <p className="text-sm text-white mt-3">
-                <strong>Volební kalkulačka</strong> vám pomáhá rozhodnout se koho volit
+                <strong>Volebná kalkulačka</strong> vám pomáha rozhodnúť sa koho voliť
               </p>
               <div className="grid grid-cols-2 gap-2 mt-4 w-fit">
                 <Link
@@ -48,11 +50,11 @@ export function Footer() {
               )}
               {showAnalytics && analyticsUrl && (
                 <Link href={analyticsUrl} target="_blank" className="text-sm text-slate-400 hover:text-white">
-                  Statistiky
+                  Štatistiky
                 </Link>
               )}
               <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
-                Soukromí
+                Súkromie
               </Link>
             </div>
             <div />
