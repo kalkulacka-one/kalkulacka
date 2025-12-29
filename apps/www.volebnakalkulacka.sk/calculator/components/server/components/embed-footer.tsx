@@ -1,3 +1,5 @@
+// TODO [TENANT-007]: Extract embed footer text to i18n
+
 import { EmbedAttribution } from "@kalkulacka-one/app";
 
 import { canonical } from "@/lib/routing";
@@ -12,9 +14,9 @@ export type EmbedFooter = {
 export function EmbedFooter({ attribution = true }: EmbedFooter) {
   return (
     <div className="flex items-baseline gap-4">
-      {attribution && <EmbedAttribution href={canonical.homepage()} title="Volební kalkulačka" />}
+      {attribution && <EmbedAttribution href={canonical.homepage()} title="Volebná kalkulačka" />}
       <a href="/soukromi" target="_blank" rel="noopener noreferrer" className="text-xs text-slate-400 hover:text-slate-600 hover:underline">
-        Soukromí
+        Súkromie
       </a>
     </div>
   );
