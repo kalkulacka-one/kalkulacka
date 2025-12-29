@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 
 import { vi } from "vitest";
 
-import messages from "@/messages/cs.json";
+import messages from "@/messages/sk.json";
 
 vi.mock("next-intl", () => ({
   useTranslations: (namespace: string) => {

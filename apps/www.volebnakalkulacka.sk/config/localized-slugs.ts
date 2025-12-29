@@ -2,13 +2,14 @@ import type { Locale, Messages } from "next-intl";
 import { hasLocale } from "next-intl";
 
 import { routing } from "../i18n/routing";
-import csMessages from "../messages/cs.json";
+import skMessages from "../messages/sk.json";
 
 export type PageType = keyof Messages["routing"]["pages"];
 export type PrefixType = keyof Messages["routing"]["prefixes"];
 
+// TODO [TENANT-002]: Extract locale messages mapping to shared config
 const MESSAGES_BY_LOCALE: Record<Locale, Messages> = {
-  cs: csMessages,
+  sk: skMessages,
 };
 
 export const PREFIX_SLUGS = Object.fromEntries(Object.entries(MESSAGES_BY_LOCALE).map(([locale, messages]) => [locale, messages.routing.prefixes])) as Record<Locale, Messages["routing"]["prefixes"]>;
