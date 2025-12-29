@@ -1,3 +1,5 @@
+// TODO [TENANT-009]: Translate about page to Slovak
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

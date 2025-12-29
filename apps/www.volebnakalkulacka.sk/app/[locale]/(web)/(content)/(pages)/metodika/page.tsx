@@ -1,3 +1,5 @@
+// TODO [TENANT-012]: Translate methodology page to Slovak
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
