@@ -53,7 +53,8 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
     <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
-          <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+          {/* TODO [TENANT-003]: Extract app title to i18n messages */}
+          <AppHeaderMain title="Volebná kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
         </div>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {
