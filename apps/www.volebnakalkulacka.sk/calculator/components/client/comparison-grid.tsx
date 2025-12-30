@@ -1,3 +1,4 @@
+// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
 import { type AnswersViewModel, ComparisonQuestionCard, type QuestionsViewModel, type ResultViewModel } from "@kalkulacka-one/app";
 import { Icon } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
@@ -78,7 +79,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
             }}
             className="sr-only"
           />
-          Vybrat vše
+          Vybrať všetko
         </label>
         {organizations.map((org) => (
           <label
@@ -131,7 +132,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
   return (
     <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-40 transition-all duration-500 ease-in-out`}>
       <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
-        Vaše odpovědi
+        Vaše odpovede
       </div>
       {result.matches.map((match, matchIndex) => {
         const nestedMatches = filterNestedCandidates(match.nestedMatches);

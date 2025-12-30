@@ -13,13 +13,13 @@ export default function Page() {
 
       <div className="ko:space-y-6">
         <section>
-          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Co je volební kalkulačka</h2>
+          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Čo je Volebná kalkulačka</h2>
           <p className="ko:mb-3">
-            Volební kalkulačka® (anglicky Voting Advice Application, VAA) je online nástroj, který porovnává vaše politické postoje s postoji stran, kandidátů nebo zákonodárců. Pomáhá voličům lépe se
-            orientovat v programech a rozhodovat se podle skutečných postojů.
+            Volebná kalkulačka® (anglicky Voting Advice Application, VAA) je online nástroj, ktorý porovnáva vaše politické postoje s postojmi strán, kandidátov alebo zákonodarcov. Pomáha voličom
+            lepšie sa orientovať v programoch a rozhodovať sa podľa skutočných postojov.
           </p>
           <p>
-            Od svého vzniku se kalkulačky staly důležitou součástí demokratických voleb po celém světě – více o historii najdete na{" "}
+            Od svojho vzniku sa kalkulačky stali dôležitou súčasťou demokratických volieb po celom svete – viac o histórii nájdete na{" "}
             <a href="https://cs.wikipedia.org/wiki/Volební_kalkulačka" className="ko:text-primary ko:underline hover:ko:no-underline" target="_blank" rel="noopener noreferrer">
               Wikipedii
             </a>
@@ -28,16 +28,16 @@ export default function Page() {
         </section>
 
         <section>
-          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Kdo ji tvoří</h2>
+          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Kto ju tvorí</h2>
           <p className="ko:mb-3">
-            V Česku a na Slovensku vyvíjí a provozuje volební kalkulačky spolek{" "}
+            V Česku a na Slovensku vyvíja a prevádzkuje volebné kalkulačky združenie{" "}
             <a href="https://kohovolit.eu" className="ko:text-primary ko:underline hover:ko:no-underline" target="_blank" rel="noopener noreferrer">
               KohoVolit.eu
             </a>{" "}
-            už od roku 2006. Od té doby jsme vytvořili přes 150 kalkulaček pro všechny typy voleb – evropské, prezidentské, parlamentní, krajské i komunální.
+            už od roku 2006. Odvtedy sme vytvorili viac ako 150 kalkulačiek pre všetky typy volieb – európske, prezidentské, parlamentné, krajské aj komunálne.
           </p>
           <p className="ko:mb-3">
-            Naše kalkulačky využily miliony voličů – například v prezidentských volbách 2023 v ČR více než 2,5 milionu. Spolupracujeme i s partnery v dalších evropských zemích.
+            Naše kalkulačky využili milióny voličov – napríklad v prezidentských voľbách 2023 v ČR viac než 2,5 milióna. Spolupracujeme aj s partnermi v ďalších európskych krajinách.
           </p>
           <p>Naše partnerské kalkulačky:</p>
           <ul className="ko:list-disc ko:list-inside ko:space-y-1 ko:mt-2">
@@ -53,7 +53,7 @@ export default function Page() {
               <a href="https://www.wahlrechner.at" className="ko:text-primary ko:underline hover:ko:no-underline" target="_blank" rel="noopener noreferrer">
                 Wahlrechner
               </a>{" "}
-              v Rakousku
+              v Rakúsku
             </li>
             <li>
               🇸🇰{" "}
@@ -67,14 +67,14 @@ export default function Page() {
               <a href="https://www.kalkulatorizgjedhor.org" className="ko:text-primary ko:underline hover:ko:no-underline" target="_blank" rel="noopener noreferrer">
                 Kalkulatori zgjedhor
               </a>{" "}
-              v Kosovu
+              v Kosove
             </li>
             <li>
               🇦🇱{" "}
               <a href="https://www.kalkulatorizgjedhor.al" className="ko:text-primary ko:underline hover:ko:no-underline" target="_blank" rel="noopener noreferrer">
                 Kalkulatori zgjedhor
               </a>{" "}
-              v Albánii
+              v Albánsku
             </li>
             <li>
               🇷🇴{" "}
@@ -86,47 +86,47 @@ export default function Page() {
           </ul>
         </section>
         <section>
-          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Typy kalkulaček</h2>
+          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Typy kalkulačiek</h2>
           <div className="ko:space-y-3">
             <div>
-              <h3 className="ko:font-semibold ko:mb-1">Volební kalkulačka (názorový test)</h3>
-              <p className="ko:text-sm ko:text-gray-600">Srovnává vaše odpovědi s odpověďmi stran a kandidátů.</p>
+              <h3 className="ko:font-semibold ko:mb-1">Volebná kalkulačka (názorový test)</h3>
+              <p className="ko:text-sm ko:text-gray-600">Porovnáva vaše odpovede s odpoveďami strán a kandidátov.</p>
             </div>
             <div>
-              <h3 className="ko:font-semibold ko:mb-1">Inventura hlasování</h3>
-              <p className="ko:text-sm ko:text-gray-600">Porovnává vaše postoje s reálnými hlasováními poslanců či europoslanců v uplynulém období.</p>
+              <h3 className="ko:font-semibold ko:mb-1">Inventúra hlasovaní</h3>
+              <p className="ko:text-sm ko:text-gray-600">Porovnáva vaše postoje so skutočnými hlasovaniami poslancov alebo europoslancov v uplynulom období.</p>
             </div>
           </div>
         </section>
         <section>
-          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Jak vyhodnocujeme shodu</h2>
+          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Ako vyhodnocujeme zhodu</h2>
           <p className="ko:mb-3">
-            Otázka, u níž neodpovíte „Ano" či „Ne", se do výpočtu nezahrnuje. Pokud na otázku odpovíte „Ano", strany či kandidáti, kteří rovněž odpověděli „Ano", získávají jeden bod. Strany či
-            kandidáti, kteří odpověděli „Ne", jeden bod ztrácejí. Pokud odpovíte „Ne", získávají jeden bod strany či kandidáti, kteří rovněž odpověděli „Ne". Ti, kteří odpověděli „Ano", naopak jeden
-            bod ztrácejí. Strany či kandidáti, kteří na otázku neodpověděli „Ano" ani „Ne", nezískávají ani neztrácí žádné body.
+            Otázka, na ktorú neodpoviete „Áno“ alebo „Nie“, sa do výpočtu nezahrnie. Ak odpoviete „Áno“, strany či kandidáti, ktorí odpovedali tiež „Áno“, získajú jeden bod. Tí, ktorí odpovedali
+            „Nie“, jeden bod stratia. Ak odpoviete „Nie“, získajú bod strany či kandidáti, ktorí odpovedali tiež „Nie“. Tí, ktorí odpovedali „Áno“, naopak jeden bod stratia. Strany či kandidáti, ktorí
+            na otázku neodpovedali „Áno“ ani „Nie“, nezískajú ani nestratia žiadne body.
           </p>
           <p className="ko:mb-3">
-            U Inventury hlasování platí, že pokud se poslanec daného hlasování nezúčastnil, je jeho postoj neutrální (nevíme, jak by hlasoval) a nezíská ani neztratí bod. Pokud v té době vůbec nebyl
-            poslancem, toto hlasování se do shody s ním vůbec nezapočte.
+            Pri Inventúre hlasovaní platí: ak sa poslanec hlasovania nezúčastnil, jeho postoj je neutrálny (nevieme, ako by hlasoval) a nezíska ani nestratí bod. Ak v danom čase vôbec nebol poslancom,
+            toto hlasovanie sa do zhody s ním vôbec nezapočíta.
           </p>
           <p className="ko:mb-3">
-            Následně se každé straně či kandidátovi sečtou body za všechny otázky, u nichž jste odpověděli „Ano" či „Ne", a výsledek se vydělí počtem takových otázek. Tím je získána shoda v rozmezí
-            -100 % až 100 %. Pro větší názornost se shoda převádí na rozmezí 0 % až 100 % tak, že se vydělí dvěma a přičte se k ní 50 % (u kalkulaček od poloviny roku 2013).
-          </p>
-
-          <h3 className="ko:text-lg ko:font-semibold ko:mb-2">Důležitost otázek a hlasování</h3>
-          <p className="ko:mb-3">
-            U každé otázky či hlasování máte možnost nastavit, jakou pro Vás má shoda důležitost, tedy váhu s jakou se má zahrnout do celkového součtu shody. Každé ze dvou úrovní důležitosti
-            (normální, vysoká) odpovídá jistá váha a celková shoda je pak váženým průměrem shody v jednotlivých otázkách či hlasováních. Ve skutečnosti se tedy místo jednoho bodu ke shodě přičte,
-            resp. odečte váha příslušné otázky či hlasování a na konci se dělí nikoli počtem otázek či hlasování, ale součtem absolutních hodnot jejich vah. Nastavení vah je takové, že vysoká
-            důležitost má oproti normální důležitosti dvojnásobnou váhu.
+            Následne sa každej strane či kandidátovi sčítajú body za všetky otázky, pri ktorých ste odpovedali „Áno“ alebo „Nie“, a výsledok sa vydelí počtom takých otázok. Tým vznikne zhoda v rozsahu
+            -100 % až 100 %. Pre väčšiu názornosť sa zhoda prevádza na rozsah 0 % až 100 % tak, že sa vydelí dvomi a pripočíta sa 50 % (pri kalkulačkách od polovice roka 2013).
           </p>
 
-          <h3 className="ko:text-lg ko:font-semibold ko:mb-2">Zobrazení výsledné shody</h3>
-          <p>Může se stát, že Vám vyjde stejná shoda se dvěma nebo více stranami či osobami. V tom případě je pořadí stran či osob při zobrazení výsledné shody určeno náhodně.</p>
+          <h3 className="ko:text-lg ko:font-semibold ko:mb-2">Dôležitosť otázok a hlasovaní</h3>
+          <p className="ko:mb-3">
+            Pri každej otázke či hlasovaní si môžete nastaviť, akú dôležitosť má pre vás zhoda — teda váhu, s akou sa má zahrnúť do celkového súčtu. Každej z úrovní dôležitosti (normálna, vysoká)
+            zodpovedá určitá váha a celková zhoda je potom váženým priemerom zhody v jednotlivých otázkach či hlasovaniach. V praxi sa teda namiesto jedného bodu pripočíta alebo odpočíta váha danej
+            otázky či hlasovania a na konci sa nedelí počtom otázok, ale súčtom absolútnych hodnôt ich váh. Nastavenie váh je také, že vysoká dôležitosť má oproti normálnej dôležitosti dvojnásobnú
+            váhu.
+          </p>
+
+          <h3 className="ko:text-lg ko:font-semibold ko:mb-2">Zobrazenie výslednej zhody</h3>
+          <p>Môže sa stať, že vám vyjde rovnaká zhoda s dvomi alebo viacerými stranami či osobami. V tom prípade je poradie pri zobrazení výslednej zhody určené náhodne.</p>
         </section>
         <section>
-          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Současnou Volební kalkulačku připravili</h2>
+          <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Súčasnú Volebnú kalkulačku pripravili</h2>
           <div className="ko:grid ko:grid-cols-1 ko:md:grid-cols-2 ko:gap-4">
             <div className="ko:space-y-3">
               <div>
@@ -150,7 +150,7 @@ export default function Page() {
                 >
                   Kateřina Mahdalová
                 </a>
-                <span className="ko:text-sm ko:text-gray-600 ko:ml-2">obsah a komunikace</span>
+                <span className="ko:text-sm ko:text-gray-600 ko:ml-2">obsah a komunikácia</span>
               </div>
               <div>
                 <a href="https://www.linkedin.com/in/mwenisch/" className="ko:text-primary ko:underline hover:ko:no-underline ko:font-medium" target="_blank" rel="noopener noreferrer">

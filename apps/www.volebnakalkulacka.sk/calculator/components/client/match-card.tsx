@@ -1,3 +1,4 @@
+// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
 import type { CandidateMatchViewModel } from "@kalkulacka-one/app";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "@kalkulacka-one/app/client";
 import { ExpandableCard } from "@kalkulacka-one/design-system/client";
@@ -41,8 +42,8 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
                 {respondent === "expert" && (
                   <p className="text-xs text-gray-500">
-                    Postoje podle veřejných zdrojů,
-                    <br /> strana neodpověděla na zaslané otázky.
+                    Postoje podľa verejných zdrojov,
+                    <br /> strana neodpovedala na zaslané otázky.
                   </p>
                 )}
               </div>
@@ -61,12 +62,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                   <div className="grid grid-cols-[1fr_auto] gap-y-2 gap-x-1 auto-rows-auto">
                     <div className="col-span-2 text-right mb-2">
                       <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
-                        <span>Betaverze porovnání. Ještě ladíme!</span>
+                        <span>Betaverzia porovnania. Ešte ladíme!</span>
                       </div>
                     </div>
                     {/* Grid Header Row */}
                     <div />
-                    <div>Já • Kandidát</div>
+                    <div>Ja • Kandidát</div>
 
                     {answerComparisons.map((comparison) => (
                       <React.Fragment key={comparison.questionId}>
@@ -94,7 +95,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
                                       </svg>
-                                      <span>Postoj se nepodařilo zjistit</span>
+                                      <span>Postoj sa nepodarilo zistiť</span>
                                     </div>
                                   </div>
                                 </div>
@@ -128,7 +129,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
 
                                       {isExpanded && (
                                         <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">
-                                          {source.description || "Žádný popis není k dispozici"}
+                                          {source.description || "Žiadny popis nie je k dispozícii"}
                                           {source.url && (
                                             <>
                                               {" "}

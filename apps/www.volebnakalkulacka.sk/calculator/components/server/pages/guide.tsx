@@ -1,3 +1,4 @@
+// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
 import type { CalculatorViewModel } from "@kalkulacka-one/app";
 import { Guide, GuideNavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
@@ -26,14 +27,14 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+              <Button variant="link" color="neutral" size="small" aria-label="Zavrieť" onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
             </HideOnEmbed>
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomLeft condensed={false}>
-              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Zpět na úvod">
+              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Späť na úvod">
                 <Icon icon={mdiArrowLeft} size="medium" decorative />
               </Button>
             </AppHeader.BottomLeft>
