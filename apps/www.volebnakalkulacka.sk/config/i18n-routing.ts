@@ -8,10 +8,14 @@ import { getPrefixSlug, PAGE_SLUGS, type PageType } from "./localized-slugs";
 function getRoutePatterns(locale: Locale) {
   const electionPrefix = getPrefixSlug(locale, "election");
   return {
-    // Web routes
+    // Web routes (with prefix)
     web1: { prefix: `/${electionPrefix}/:p1`, hasId: ["result"] },
     web2: { prefix: `/${electionPrefix}/:p1/:p2`, hasId: ["result"] },
     web3: { prefix: `/${electionPrefix}/:p1/:p2/:p3`, hasId: ["result"] },
+    // Web routes (without prefix - for direct calculator URLs like /inventura-2023-2025)
+    webDirect1: { prefix: "/:p1", hasId: ["result"] },
+    webDirect2: { prefix: "/:p1/:p2", hasId: ["result"] },
+    webDirect3: { prefix: "/:p1/:p2/:p3", hasId: ["result"] },
     // Embed routes
     embed1: { prefix: "/embed/:embed/:p1", hasId: [] as string[] },
     embed2: { prefix: "/embed/:embed/:p1/:p2", hasId: [] as string[] },
