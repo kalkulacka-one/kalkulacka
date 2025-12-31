@@ -1,6 +1,8 @@
 import type { I18nParams } from "@/i18n/params";
 import { routing } from "@/i18n/routing";
 
+import "@/app/globals.css";
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
