@@ -253,17 +253,18 @@ export function ComparisonGrid({ questions, answers, result, condensed = false }
   const matchesWithNested = result.matches.filter((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const hasNestedCandidates = matchesWithNested.length > 0;
 
-  const organizations = matchesWithNested.map((match) => match.candidate.displayName);
+  const partyKey = (match: (typeof result.matches)[0]) => match.candidate.displayName ?? match.candidate.id;
+  const partyLabel = (match: (typeof result.matches)[0]) => match.candidate.displayName ?? match.candidate.id;
 
-  const filteredMatches = selectedOrganizations.size === 0 ? matchesWithNested : matchesWithNested.filter((match) => selectedOrganizations.has(match.candidate.displayName));
+  const organizations = matchesWithNested.map((match) => partyLabel(match));
+
+  const filteredMatches = selectedOrganizations.size === 0 ? matchesWithNested : matchesWithNested.filter((match) => selectedOrganizations.has(partyKey(match)));
 
   const filterNestedCandidates = (nestedMatches: (typeof result.matches)[0]["nestedMatches"]) => nestedMatches;
 
   return (
     <div className="mt-28 flex flex-col gap-8 relative">
-      {hasNestedCandidates && (
-        <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
-      )}
+      {hasNestedCandidates && <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />}
       <div className="mr-[calc(5dvw)] flex flex-col gap-8">
         <ComparisonGridDashlinesOverlay result={{ ...result, matches: filteredMatches }} filterNestedCandidates={filterNestedCandidates} />
         <ComparisonHeader condensed={condensed} result={{ ...result, matches: filteredMatches }} filterNestedCandidates={filterNestedCandidates} />

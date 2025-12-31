@@ -2,6 +2,6 @@
 
 import { ErrorReporter } from "@/components/client";
 
-export default function ErrorBoundary({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function ErrorBoundary({ error }: { error: Error & { digest?: string } }) {
   return <ErrorReporter error={error} />;
 }
