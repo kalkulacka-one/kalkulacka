@@ -143,7 +143,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
           >
             <span>
               {nested.candidate.displayName}
-              <br />({match.candidate.displayName})
+              <br />({nested.candidate.organization})
             </span>
           </div>
         ));
@@ -250,23 +250,30 @@ export type ComparisonGrid = {
 export function ComparisonGrid({ questions, answers, result, condensed = false }: ComparisonGrid) {
   const [selectedOrganizations, setSelectedOrganizations] = useState<Set<string>>(new Set());
 
-  const matchesWithNested = result.matches.filter((match) => match.nestedMatches && match.nestedMatches.length > 0);
-  const hasNestedCandidates = matchesWithNested.length > 0;
+  const allOrganizations = new Set<string>();
+  for (const match of result.matches) {
+    if (match.nestedMatches) {
+      for (const nested of match.nestedMatches) {
+        if (nested.candidate.organization) {
+          allOrganizations.add(nested.candidate.organization);
+        }
+      }
+    }
+  }
+  const organizations = Array.from(allOrganizations);
 
-  const organizations = matchesWithNested.map((match) => match.candidate.displayName);
-
-  const filteredMatches = selectedOrganizations.size === 0 ? matchesWithNested : matchesWithNested.filter((match) => selectedOrganizations.has(match.candidate.displayName));
-
-  const filterNestedCandidates = (nestedMatches: (typeof result.matches)[0]["nestedMatches"]) => nestedMatches;
+  const filterNestedCandidates = (nestedMatches: (typeof result.matches)[0]["nestedMatches"]) => {
+    if (!nestedMatches) return nestedMatches;
+    if (selectedOrganizations.size === 0) return nestedMatches;
+    return nestedMatches.filter((nested) => nested.candidate.organization && selectedOrganizations.has(nested.candidate.organization));
+  };
 
   return (
     <div className="mt-28 flex flex-col gap-8 relative">
-      {hasNestedCandidates && (
-        <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
-      )}
+      <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
       <div className="mr-[calc(5dvw)] flex flex-col gap-8">
-        <ComparisonGridDashlinesOverlay result={{ ...result, matches: filteredMatches }} filterNestedCandidates={filterNestedCandidates} />
-        <ComparisonHeader condensed={condensed} result={{ ...result, matches: filteredMatches }} filterNestedCandidates={filterNestedCandidates} />
+        <ComparisonGridDashlinesOverlay result={result} filterNestedCandidates={filterNestedCandidates} />
+        <ComparisonHeader condensed={condensed} result={result} filterNestedCandidates={filterNestedCandidates} />
         {questions.questions.map((question, index) => (
           <ComparisonQuestionRow
             key={question.id}
@@ -274,7 +281,7 @@ export function ComparisonGrid({ questions, answers, result, condensed = false }
             index={index}
             totalQuestions={questions.questions.length}
             answers={answers}
-            result={{ ...result, matches: filteredMatches }}
+            result={result}
             filterNestedCandidates={filterNestedCandidates}
           />
         ))}
