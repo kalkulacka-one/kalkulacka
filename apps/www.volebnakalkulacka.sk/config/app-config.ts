@@ -1,4 +1,4 @@
-import { withDefaults } from "@kalkulacka-one/next";
+import { withDefaults } from "@kalkulacka-one/next/config";
 
 export const appConfig = withDefaults({
   domainPath: "www.volebnakalkulacka.sk",

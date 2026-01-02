@@ -1,0 +1,51 @@
+import type { calculateMatches } from "@kalkulacka-one/app";
+import { prisma } from "@kalkulacka-one/database";
+import type { Answer } from "@kalkulacka-one/schema";
+
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { Locale } from "next-intl";
+
+import { PublicResultPageWithData } from "@/components/client";
+import { generateCalculatorMetadata } from "@/lib/metadata";
+import { buildCanonicalUrl, canonical, mappedParams } from "@/lib/routing";
+
+export async function generateMetadata({ params: routeParams }: { params: Promise<{ locale: Locale; first: string; second: string; publicId: string }> }): Promise<Metadata> {
+  const { locale, publicId, ...segments } = await routeParams;
+  const key = mappedParams.key(segments);
+  const group = mappedParams.group(segments);
+  const canonicalUrl = canonical.publicResult(segments, publicId, locale);
+  const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
+  return await generateCalculatorMetadata({
+    key,
+    group,
+    canonicalUrl,
+    ogImage: {
+      url: ogImageUrl,
+      width: 2400,
+      height: 1260,
+    },
+  });
+}
+
+export default async function Page({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }) {
+  const { publicId, ...segments } = await params;
+
+  const session = await prisma.calculatorSession.findUnique({
+    where: {
+      publicId,
+    },
+    include: {
+      data: true,
+    },
+  });
+
+  if (!session || !session.data) {
+    notFound();
+  }
+
+  const answers = session.data.answers as Answer[];
+  const result = session.data.result as ReturnType<typeof calculateMatches>;
+
+  return <PublicResultPageWithData algorithmMatches={result} answers={answers} segments={segments} />;
+}

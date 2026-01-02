@@ -27,7 +27,14 @@
       "env": ["NEXT_PUBLIC_*", "DATA_ENDPOINT", "X_HANDLE", "ANALYTICS_DOMAIN", "ANALYTICS_PROXY"]
     },
     "dev": {
-      "dependsOn": ["@kalkulacka-one/schema#build", "schema.kalkulacka.one#build:openapi", "@kalkulacka-one/app#build", "@kalkulacka-one/database#build", "@kalkulacka-one/design-system#build", "@kalkulacka-one/next#build"],
+      "dependsOn": [
+        "@kalkulacka-one/schema#build",
+        "schema.kalkulacka.one#build:openapi",
+        "@kalkulacka-one/app#build",
+        "@kalkulacka-one/database#build",
+        "@kalkulacka-one/design-system#build",
+        "@kalkulacka-one/next#build"
+      ],
       "cache": false,
       "persistent": true
     },
