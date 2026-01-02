@@ -6,9 +6,8 @@ export type CalculatorViewModel = Calculator & {
 };
 
 export function calculatorViewModel(calculator: Calculator): CalculatorViewModel {
-  const calculatorGroupShortTitle = "Sněmovní 2025";
-  const title = calculator?.shortTitle || calculatorGroupShortTitle;
-  const secondaryTitle = calculator?.shortTitle ? calculatorGroupShortTitle : undefined;
+  const title = calculator?.title || calculator?.shortTitle || "";
+  const secondaryTitle = undefined;
 
   return {
     ...calculator,
