@@ -12,9 +12,7 @@ export default function Page() {
       <div className="ko:space-y-6">
         <section>
           <h2 className="ko:text-xl ko:font-semibold ko:mb-3">Контактирајте нè</h2>
-          <p className="ko:mb-3">
-            За сите прашања поврзани со Изборниот калкулатор, можете да нè контактирате на:
-          </p>
+          <p className="ko:mb-3">За сите прашања поврзани со Изборниот калкулатор, можете да нè контактирате на:</p>
           <p className="ko:mb-3">
             <a href="mailto:info@izborenkalkulator.mk" className="ko:text-primary ko:underline hover:ko:no-underline">
               info@izborenkalkulator.mk

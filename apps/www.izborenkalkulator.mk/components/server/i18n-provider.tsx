@@ -1,4 +1,4 @@
-import { type SupportedLocale, mkMessages } from "@kalkulacka-one/app";
+import { mkMessages, type SupportedLocale } from "@kalkulacka-one/app";
 
 import { notFound } from "next/navigation";
 import type { AbstractIntlMessages } from "next-intl";
