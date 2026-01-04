@@ -29,7 +29,70 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    return [...getLocaleRedirects()];
+    return [
+      ...getLocaleRedirects(),
+      {
+        source: "/metodika-tvorby-otazok",
+        destination: "/metodika",
+        permanent: true,
+      },
+      {
+        source: "/ochrana-dat",
+        destination: "/soukromi",
+        permanent: true,
+      },
+      // 2024 archive redirects
+      {
+        source: "/volby/europske-2024/kalkulacka/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/europske-2024/kalkulacka/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/europske-2024/expres/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/europske-2024/expres/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/europske-2024/inventura/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/europske-2024/inventura/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/prezidentske-2024/kalkulacka/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/prezidentske-2024/kalkulacka/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/prezidentske-2024/kalkulacka-2-kolo/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/prezidentske-2024/kalkulacka-2-kolo/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/prezidentske-2024/pre-mladych/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/prezidentske-2024/pre-mladych/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/prezidentske-2024/pre-mladych-2-kolo/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/prezidentske-2024/pre-mladych-2-kolo/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/nrsr-2023/kalkulacka/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/nrsr-2023/kalkulacka/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/nrsr-2023/pre-mladych/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/nrsr-2023/pre-mladych/:path*",
+        permanent: false,
+      },
+      {
+        source: "/volby/nrsr-2023/inventura-2020-2023/:path*",
+        destination: "https://archiv.volebnakalkulacka.sk/volby/nrsr-2023/inventura-2020-2023/:path*",
+        permanent: false,
+      },
+    ];
   },
 };
 
