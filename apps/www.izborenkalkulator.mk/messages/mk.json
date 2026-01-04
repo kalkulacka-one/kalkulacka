@@ -1,5 +1,31 @@
 {
   "homepage": {
-    "title": "Здраво, Македонија!"
+    "title": "Изборен калкулатор"
+  },
+  "routing": {
+    "prefixes": {
+      "election": "izbori"
+    },
+    "pages": {
+      "introduction": "uvod",
+      "guide": "vodic",
+      "question": "prasanje",
+      "review": "pregled",
+      "result": "rezultat",
+      "comparison": "sporedba"
+    }
+  },
+  "calculator": {
+    "components": {
+      "question-navigation-card": {
+        "yes": "Да",
+        "no": "Не",
+        "next": "Следно",
+        "previous": "Назад",
+        "guide": "Водич",
+        "skip": "Прескокни",
+        "important": "Важно за мене"
+      }
+    }
   }
 }
