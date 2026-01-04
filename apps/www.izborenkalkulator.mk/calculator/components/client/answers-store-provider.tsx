@@ -1,0 +1,17 @@
+import { type AnswersStore, AnswersStoreContext, createAnswersStore } from "@kalkulacka-one/app/client";
+
+import { type ReactNode, useRef } from "react";
+import type { StoreApi } from "zustand";
+
+export type AnswersStoreProviderProps = {
+  children: ReactNode;
+};
+
+export const AnswersStoreProvider = ({ children }: AnswersStoreProviderProps) => {
+  const storeRef = useRef<StoreApi<AnswersStore> | undefined>(undefined);
+  if (!storeRef.current) {
+    storeRef.current = createAnswersStore();
+  }
+
+  return <AnswersStoreContext.Provider value={storeRef.current}>{children}</AnswersStoreContext.Provider>;
+};
