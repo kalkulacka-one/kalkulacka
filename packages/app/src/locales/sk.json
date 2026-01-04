@@ -1,0 +1,52 @@
+{
+  "koa": {
+    "components": {
+      "embedAttribution": {
+        "broughtBy": "Prináša"
+      },
+      "guide": {
+        "agreement": {
+          "title": "Zhoda",
+          "description": "Pri zhode s Vašou odpoveďou strana alebo politik dostane bod"
+        },
+        "disagreement": {
+          "title": "Nezhoda",
+          "description": "Pri nezhode bod naopak stratí"
+        },
+        "skip": {
+          "title": "Preskočiť",
+          "description": "Otázku môžete preskočiť a nebude sa do výpočtu počítať"
+        },
+        "important": {
+          "title": "Dôležité otázky",
+          "description": "Pre vás dôležité otázky označte hviezdičkou. Zhody a nezhody potom budú závažnejšie."
+        }
+      },
+      "guideNavigationCard": {
+        "startButton": "Začať odpovedať"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Pokračovať"
+      },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Vyplniť vlastnú kalkulačku"
+      },
+      "questionNavigationCard": {
+        "guide": "Návod",
+        "previous": "Predchádzajúca",
+        "next": "Ďalšia",
+        "skip": "Preskočiť",
+        "yes": "Áno",
+        "no": "Nie",
+        "important": "Pre mňa dôležité"
+      },
+      "resultNavigationCard": {
+        "compareButton": "Porovnať",
+        "shareButton": "Zdieľať"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Zobraziť výsledky"
+      }
+    }
+  }
+}
