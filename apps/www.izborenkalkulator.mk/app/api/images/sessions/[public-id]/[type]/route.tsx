@@ -1,4 +1,3 @@
-// TODO [TENANT-013]: Update election name for SK elections
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { candidatesAnswersViewModel, candidateViewModel, HttpError, loadCalculatorData, NotFoundError, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app";
 
@@ -87,7 +86,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                   borderRadius: 16,
                 }}
               >
-                Parlamentné voľby 2025
+                Парламентарни избори 2025
               </div>
               <div
                 style={{
@@ -116,7 +115,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                 marginBottom: 72,
               }}
             >
-              Takto mi vyšla Volebná kalkulačka
+              Така ми излезе Изборниот калкулатор
             </div>
 
             <div
@@ -224,7 +223,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                 fontWeight: "600",
               }}
             >
-              Vyplň si ju tiež na volebnakalkulacka.sk
+              Пополни го и ти на izborenkalkulator.mk
             </div>
           </div>
 
@@ -260,7 +259,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                 fontWeight: "600",
               }}
             >
-              Volebná kalkulačka
+              Изборен калкулатор
             </div>
           </div>
         </div>,
@@ -336,7 +335,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                   borderRadius: 18,
                 }}
               >
-                Parlamentné voľby 2025
+                Парламентарни избори 2025
               </div>
               <div
                 style={{
@@ -364,7 +363,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                 marginBottom: 84,
               }}
             >
-              Takto mi vyšla Volebná kalkulačka
+              Така ми излезе Изборниот калкулатор
             </div>
             <div
               style={{
@@ -378,7 +377,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                 alignSelf: "flex-start",
               }}
             >
-              Vyplniť kalkulačku
+              Пополни калкулатор
             </div>
           </div>
 
@@ -414,7 +413,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
                 fontWeight: "600",
               }}
             >
-              Volebná kalkulačka
+              Изборен калкулатор
             </div>
           </div>
         </div>
