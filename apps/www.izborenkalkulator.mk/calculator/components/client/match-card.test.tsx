@@ -10,7 +10,7 @@ describe("MatchCard", () => {
   const mockCandidate: CandidateViewModel = {
     id: "1",
     references: [],
-    displayName: "Občanská demokratická strana",
+    displayName: "Демократска партија",
     number: 1,
   };
 

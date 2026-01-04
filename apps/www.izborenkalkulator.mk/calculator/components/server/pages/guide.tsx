@@ -27,19 +27,19 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <Button variant="link" color="neutral" size="small" aria-label="Zavrieť" onClick={onCloseClick}>
+              <Button variant="link" color="neutral" size="small" aria-label="Затвори" onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
             </HideOnEmbed>
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomLeft condensed={false}>
-              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Späť na úvod">
+              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Назад кон вовед">
                 <Icon icon={mdiArrowLeft} size="medium" decorative />
               </Button>
             </AppHeader.BottomLeft>
             <AppHeader.BottomMain condensed={false}>
-              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Návod</h3>
+              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Водич</h3>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>

@@ -37,19 +37,19 @@ export function ResultPage({ embedContext, result, calculator, onNextClick, onPr
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label="Zavrieť" onClick={onCloseClick}>
+                  <Button variant="link" color="neutral" size="small" aria-label="Затвори" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
               </AppHeader.Right>
               <AppHeader.Bottom>
                 <AppHeader.BottomLeft condensed={condensed}>
-                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Späť">
+                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Назад">
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Výsledok</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Резултат</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -63,11 +63,11 @@ export function ResultPage({ embedContext, result, calculator, onNextClick, onPr
               <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
-                  Kandidátne listiny
+                  Кандидатски листи
                 </label>
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
-                  Ľudia
+                  Лица
                 </label>
               </div>
             </div>

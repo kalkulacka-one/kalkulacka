@@ -60,7 +60,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
 
   return (
     <div className="sticky left-4 max-w-dvw z-10 flex flex-col gap-2">
-      <h3 className="text-sm font-medium">Vyberte stranu:</h3>
+      <h3 className="text-sm font-medium">Изберете партија:</h3>
       <div className="relative bg-slate-100 rounded-full p-1 flex flex-wrap gap-1 max-w-[90dvw] sm:w-fit">
         <label
           className={` text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${
@@ -79,7 +79,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
             }}
             className="sr-only"
           />
-          Vybrať všetko
+          Избери сите
         </label>
         {organizations.map((org) => (
           <label
@@ -132,7 +132,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
   return (
     <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-40 transition-all duration-500 ease-in-out`}>
       <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
-        Vaše odpovede
+        Вашите одговори
       </div>
       {result.matches.map((match, matchIndex) => {
         const nestedMatches = filterNestedCandidates(match.nestedMatches);

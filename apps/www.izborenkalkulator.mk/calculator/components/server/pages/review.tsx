@@ -65,19 +65,19 @@ export function ReviewPage({ embedContext, questions, answers, calculator, onNex
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label="Zavrieť" onClick={onCloseClick}>
+                  <Button variant="link" color="neutral" size="small" aria-label="Затвори" onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
               </AppHeader.Right>
               <AppHeader.Bottom>
                 <AppHeader.BottomLeft condensed={condensed}>
-                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Späť na otázky">
+                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Назад кон прашањата">
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Rekapitulácia</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Преглед</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
