@@ -1,7 +1,4 @@
-import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
-
-import Link from "next/link";
 
 export default function Page() {
   return (
@@ -21,39 +18,20 @@ export default function Page() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16">
-        {/* Single featured card */}
+        {/* Welcome message */}
         <div className="mt-10 md:mt-12 grid grid-cols-1 gap-8 items-stretch max-w-2xl">
           <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
             <div className="p-6 md:p-8 h-full flex flex-col">
-              <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-1 rounded-full bg-red-50 px-2.5 py-1 font-semibold text-red-700">Inventúra hlasovania</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minút</span>
-              </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kto vás naozaj zastupuje?</h2>
-              <p className="mt-2 text-slate-500">Žiadne sľuby, ale skutočné hlasovania 2023-2025.</p>
-              <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/inventura-2023-2025" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustiť inventúru hlasovania
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Archive section */}
-        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3 items-stretch">
-          <Card border className="h-full !border-slate-200 bg-slate-50/50">
-            <div className="p-6 h-full flex flex-col">
-              <p className="text-slate-600">Staršie Volebné kalkulačky nájdete v archíve</p>
-              <div className="grid mt-auto pt-4">
-                <a href="https://archiv.volebnakalkulacka.sk" target="_blank" rel="noopener noreferrer" className="grid">
-                  <Button variant="link" color="neutral">
-                    Prejsť do archívu
-                  </Button>
+              <h2 className="font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Добредојдовте на Изборен калкулатор</h2>
+              <p className="mt-4 text-slate-500">
+                Изборниот калкулатор ви помага да ги споредите вашите политички ставови со ставовите на партиите и кандидатите. Наскоро ќе биде достапен првиот калкулатор за Северна Македонија.
+              </p>
+              <p className="mt-4 text-slate-500">
+                За повеќе информации, следете нè или контактирајте нè на{" "}
+                <a href="mailto:info@izborenkalkulator.mk" className="text-blue-600 hover:text-blue-800 underline">
+                  info@izborenkalkulator.mk
                 </a>
-              </div>
+              </p>
             </div>
           </Card>
         </div>
