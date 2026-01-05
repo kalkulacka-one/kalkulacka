@@ -9,6 +9,7 @@ export type EmbedConfig = {
 
 export const embedsConfig = {
   default: {},
+  aktuality: { logo: "monochrome" },
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
