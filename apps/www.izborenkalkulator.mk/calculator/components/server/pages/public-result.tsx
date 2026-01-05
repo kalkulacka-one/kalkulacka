@@ -1,4 +1,4 @@
-// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
+// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
 import type { CalculatorViewModel, ResultViewModel } from "@kalkulacka-one/app";
 import { PublicResultNavigationCard } from "@kalkulacka-one/app";
 
@@ -26,7 +26,7 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Bottom>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Môj výsledok</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Мој резултат</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -40,11 +40,11 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
               <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
-                  Strany
+                  Партии
                 </label>
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
-                  Ľudia
+                  Луѓе
                 </label>
               </div>
             </div>
