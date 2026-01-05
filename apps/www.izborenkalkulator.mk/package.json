@@ -10,8 +10,7 @@
     "start": "next start",
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
+    "test": "echo 'No tests'",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -44,8 +43,6 @@
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
     "@tailwindcss/postcss": "^4.1.17",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
     "@types/node": "^22.19.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
