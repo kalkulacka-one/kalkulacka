@@ -1,0 +1,8 @@
+{
+  "name": "Изборен калкулатор",
+  "short_name": "Изборен калкулатор",
+  "icons": [{ "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" }, { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }],
+  "theme_color": "#F8F7F7",
+  "background_color": "#F8F7F7",
+  "display": "standalone"
+}

@@ -1,5 +1,38 @@
 {
   "homepage": {
-    "title": "Здраво, Македонија!"
+    "title": "Изборен калкулатор",
+    "calculator": {
+      "badge": "Избори 2025",
+      "duration": "10 минути",
+      "heading": "Кој најмногу ги претставува вашите ставови?",
+      "description": "Споредете ги вашите политички ставови со ставовите на партиите и кандидатите.",
+      "button": "Започни"
+    }
+  },
+  "routing": {
+    "prefixes": {
+      "election": "izbori"
+    },
+    "pages": {
+      "introduction": "voved",
+      "guide": "vodic",
+      "question": "prasanje",
+      "review": "pregled",
+      "result": "rezultat",
+      "comparison": "sporedba"
+    }
+  },
+  "calculator": {
+    "components": {
+      "question-navigation-card": {
+        "yes": "Да",
+        "no": "Не",
+        "next": "Следно",
+        "previous": "Назад",
+        "guide": "Водич",
+        "skip": "Прескокни",
+        "important": "Важно за мене"
+      }
+    }
   }
 }

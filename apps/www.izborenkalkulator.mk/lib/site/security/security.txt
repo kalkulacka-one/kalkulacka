@@ -1,0 +1,7 @@
+Contact: mailto:security@kalkulacka.one
+Contact: https://github.com/kalkulacka-one/kalkulacka/security/advisories/new
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: mk, en
+Canonical: https://www.izborenkalkulator.mk/.well-known/security.txt
+Policy: https://github.com/kalkulacka-one/kalkulacka/blob/main/SECURITY.md
+Acknowledgments: https://github.com/kalkulacka-one/kalkulacka/security/advisories

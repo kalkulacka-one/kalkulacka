@@ -1,0 +1,52 @@
+{
+  "koa": {
+    "components": {
+      "embedAttribution": {
+        "broughtBy": "Овозможено од"
+      },
+      "guide": {
+        "agreement": {
+          "title": "Согласност",
+          "description": "При согласност со вашиот одговор, партијата или политичарот добива поен"
+        },
+        "disagreement": {
+          "title": "Несогласност",
+          "description": "При несогласност, поенот се губи"
+        },
+        "skip": {
+          "title": "Прескокни",
+          "description": "Прашањето може да се прескокне и нема да се пресметува"
+        },
+        "important": {
+          "title": "Важни прашања",
+          "description": "Означете ги важните прашања со ѕвездичка. Согласностите и несогласностите тогаш ќе бидат позначајни."
+        }
+      },
+      "guideNavigationCard": {
+        "startButton": "Започни со одговарање"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Продолжи"
+      },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Пополни свој калкулатор"
+      },
+      "questionNavigationCard": {
+        "guide": "Водич",
+        "previous": "Претходно",
+        "next": "Следно",
+        "skip": "Прескокни",
+        "yes": "Да",
+        "no": "Не",
+        "important": "Важно за мене"
+      },
+      "resultNavigationCard": {
+        "compareButton": "Спореди",
+        "shareButton": "Сподели"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Прикажи резултати"
+      }
+    }
+  }
+}
