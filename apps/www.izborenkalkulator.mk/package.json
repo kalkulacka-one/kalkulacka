@@ -10,7 +10,7 @@
     "start": "next start",
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "echo 'No tests'",
+    "test": "vitest --passWithNoTests",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
