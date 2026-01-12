@@ -2,7 +2,7 @@
 
 import { Icon, Logo } from "@kalkulacka-one/design-system/client";
 
-import { mdiInstagram } from "@mdi/js";
+import { mdiEmailOutline, mdiInstagram, mdiPhoneOutline } from "@mdi/js";
 import Link from "next/link";
 
 import { appConfig } from "@/config/app-config";
@@ -41,8 +41,8 @@ export function Footer() {
                 </Link>
               </div>
             </div>
-            <div />
             <div className="grid grid-flow-row gap-2">
+              <div className="text-sm font-semibold text-white">Odkazy</div>
               {showStatus && statusUrl && (
                 <Link href={statusUrl} target="_blank" className="text-sm text-slate-400 hover:text-white">
                   Status
@@ -56,6 +56,20 @@ export function Footer() {
               <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
                 Súkromie
               </Link>
+              <Link href="/o-projekte" className="text-sm text-slate-400 hover:text-white">
+                O projekte
+              </Link>
+            </div>
+            <div className="grid grid-flow-row gap-2">
+              <div className="text-sm font-semibold text-white">Kontakt</div>
+              <a href="mailto:info@volebnakalkulacka.sk" className="text-sm text-slate-400 hover:text-white inline-flex items-center gap-2">
+                <Icon icon={mdiEmailOutline} size="small" decorative />
+                info@volebnakalkulacka.sk
+              </a>
+              <a href="tel:+420735518529" className="text-sm text-slate-400 hover:text-white inline-flex items-center gap-2">
+                <Icon icon={mdiPhoneOutline} size="small" decorative />
+                +420 735 518 529
+              </a>
             </div>
             <div />
           </div>

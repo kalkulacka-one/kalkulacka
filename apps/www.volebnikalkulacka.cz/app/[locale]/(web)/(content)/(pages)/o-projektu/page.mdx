@@ -1,0 +1,77 @@
+export const metadata = {
+  title: "O projektu",
+};
+
+# O projektu
+
+## Co je volební kalkulačka
+
+Volební kalkulačka® (anglicky Voting Advice Application, VAA) je online nástroj, který porovnává vaše politické postoje s postoji stran, kandidátů nebo zákonodárců. Pomáhá voličům lépe se orientovat v programech a rozhodovat se podle skutečných postojů.
+
+Od svého vzniku se kalkulačky staly důležitou součástí demokratických voleb po celém světě – více o historii najdete na [Wikipedii](https://cs.wikipedia.org/wiki/Volební_kalkulačka).
+
+## Kdo ji tvoří
+
+V Česku a na Slovensku vyvíjí a provozuje volební kalkulačky spolek [KohoVolit.eu](https://kohovolit.eu) už od roku 2006. Od té doby jsme vytvořili přes 150 kalkulaček pro všechny typy voleb – evropské, prezidentské, parlamentní, krajské i komunální.
+
+Naše kalkulačky využily miliony voličů – například v prezidentských volbách 2023 v ČR více než 2,5 milionu. Spolupracujeme i s partnery v dalších evropských zemích.
+
+Naše partnerské kalkulačky:
+
+- 🇭🇺 [Voksmonitor](https://www.voksmonitor.hu) v Maďarsku
+- 🇦🇹 [Wahlrechner](https://www.wahlrechner.at) v Rakousku
+- 🇸🇰 [Volebná kalkulačka](https://www.volebnakalkulacka.sk) na Slovensku
+- 🇽🇰 [Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.org) v Kosovu
+- 🇦🇱 [Kalkulatori zgjedhor](https://www.kalkulatorizgjedhor.al) v Albánii
+- 🇷🇴 [Testvot](https://www.testvot.eu) v Rumunsku
+- 🇲🇰 [Изборен калкулатор (Izboren kalkulator)](https://www.izborenkalkulator.mk) v Severní Makedonii
+
+## Typy kalkulaček
+
+### Volební kalkulačka (názorový test)
+
+Srovnává vaše odpovědi s odpověďmi stran a kandidátů.
+
+### Inventura hlasování
+
+Porovnává vaše postoje s reálnými hlasováními poslanců či europoslanců v uplynulém období.
+
+## Jak vyhodnocujeme shodu
+
+Otázka, u níž neodpovíte „Ano" či „Ne", se do výpočtu nezahrnuje. Pokud na otázku odpovíte „Ano", strany či kandidáti, kteří rovněž odpověděli „Ano", získávají jeden bod. Strany či kandidáti, kteří odpověděli „Ne", jeden bod ztrácejí. Pokud odpovíte „Ne", získávají jeden bod strany či kandidáti, kteří rovněž odpověděli „Ne". Ti, kteří odpověděli „Ano", naopak jeden bod ztrácejí. Strany či kandidáti, kteří na otázku neodpověděli „Ano" ani „Ne", nezískávají ani neztrácí žádné body.
+
+U Inventury hlasování platí, že pokud se poslanec daného hlasování nezúčastnil, je jeho postoj neutrální (nevíme, jak by hlasoval) a nezíská ani neztratí bod. Pokud v té době vůbec nebyl poslancem, toto hlasování se do shody s ním vůbec nezapočte.
+
+Následně se každé straně či kandidátovi sečtou body za všechny otázky, u nichž jste odpověděli „Ano" či „Ne", a výsledek se vydělí počtem takových otázek. Tím je získána shoda v rozmezí -100 % až 100 %. Pro větší názornost se shoda převádí na rozmezí 0 % až 100 % tak, že se vydělí dvěma a přičte se k ní 50 % (u kalkulaček od poloviny roku 2013).
+
+### Důležitost otázek a hlasování
+
+U každé otázky či hlasování máte možnost nastavit, jakou pro Vás má shoda důležitost, tedy váhu s jakou se má zahrnout do celkového součtu shody. Každé ze dvou úrovní důležitosti (normální, vysoká) odpovídá jistá váha a celková shoda je pak váženým průměrem shody v jednotlivých otázkách či hlasováních. Ve skutečnosti se tedy místo jednoho bodu ke shodě přičte, resp. odečte váha příslušné otázky či hlasování a na konci se dělí nikoli počtem otázek či hlasování, ale součtem absolutních hodnot jejich vah. Nastavení vah je takové, že vysoká důležitost má oproti normální důležitosti dvojnásobnou váhu.
+
+### Zobrazení výsledné shody
+
+Může se stát, že Vám vyjde stejná shoda se dvěma nebo více stranami či osobami. V tom případě je pořadí stran či osob při zobrazení výsledné shody určeno náhodně.
+
+## Současnou Volební kalkulačku připravili
+
+- [Michal Škop](https://www.linkedin.com/in/skopmichal/) — KohoVolit.eu
+- [Kryštof Korb](https://www.linkedin.com/in/krystofk/) — Tech Lead
+- [Kateřina Mahdalová](https://www.linkedin.com/in/katerina-mahdalova-89050a70/) — obsah a komunikace
+- [Martin Wenisch](https://www.linkedin.com/in/mwenisch/) — Tech
+- [Michał Wierzgoń](https://www.linkedin.com/in/mew-dev/) — Development
+- [Klára Schoelleová](https://www.linkedin.com/in/klara-scholleova/) — UX/UI
+- [Natália Bebjaková](https://www.linkedin.com/in/klara-scholleova/) — UX/UI
+
+---
+
+Volební kalkulačka byla podpořena od **Visegrad Fund** v rámci projektu
+[Expanding Access to Popular Voting Advice Applications through Visegrad into Western Balkan](https://kohovolit.eu/expanding-access-to-popular-voting-advice-applications-through-visegrad-into-western-balkan/).
+
+<div style={{ marginTop: "16px", marginBottom: "24px" }}>
+  <a href="https://www.visegradfund.org/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block" }}>
+    <img src="/images/logo-visegrad.svg" alt="Visegrad Fund" style={{ width: "220px", height: "auto", display: "block" }} />
+  </a>
+</div>
+
+Projekt je spolufinancován vládami Česka, Maďarska, Polska a Slovenska prostřednictvím Visegrádských grantů Mezinárodního visegrádského fondu.
+Posláním fondu je podporovat myšlenky udržitelné regionální spolupráce ve střední Evropě.

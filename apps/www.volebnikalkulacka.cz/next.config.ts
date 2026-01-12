@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
     return [
       ...getLocaleRedirects(),
       {
+        source: "/o-nas",
+        destination: "/o-projektu",
+        permanent: true,
+      },
+      {
         source: "/volby/snemovni-2025",
         destination: "/volby/snemovni-2025/kalkulacka",
         permanent: false,
