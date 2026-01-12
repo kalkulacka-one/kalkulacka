@@ -93,6 +93,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                   <div>
                                     <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs">
                                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                        <title>Info</title>
                                         <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
                                       </svg>
                                       <span>Ставот не можеше да се утврди</span>
@@ -122,6 +123,7 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                         >
                                           <span>{source.title || source.url || "Извор"}</span>
                                           <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                            <title>External link</title>
                                             <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
                                           </svg>
                                         </button>
