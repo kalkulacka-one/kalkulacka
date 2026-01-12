@@ -2,8 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+import { csMessages } from "@/locales";
 import type { AnswerViewModel, QuestionViewModel } from "@/view-models";
 
+import { LocaleProvider } from "./providers";
 import { ReviewQuestionCard } from "./review-question-card";
 
 describe("ReviewQuestionCard", () => {
@@ -35,7 +37,11 @@ describe("ReviewQuestionCard", () => {
   };
 
   it("renders question information and answer buttons", () => {
-    render(<ReviewQuestionCard {...props} />);
+    render(
+      <LocaleProvider locale="cs" messages={csMessages}>
+        <ReviewQuestionCard {...props} />
+      </LocaleProvider>,
+    );
 
     expect(screen.getByText(props.current.toString())).toBeInTheDocument();
     expect(screen.getByText(props.total.toString())).toBeInTheDocument();
@@ -56,21 +62,33 @@ describe("ReviewQuestionCard", () => {
     });
 
     it("calls onAgreeChange when agree button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onAgreeChange={mockHandler} />);
+      render(
+        <LocaleProvider locale="cs" messages={csMessages}>
+          <ReviewQuestionCard {...props} onAgreeChange={mockHandler} />
+        </LocaleProvider>,
+      );
 
       await user.click(screen.getByText("Ano"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />);
+      render(
+        <LocaleProvider locale="cs" messages={csMessages}>
+          <ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />
+        </LocaleProvider>,
+      );
 
       await user.click(screen.getByText("Ne"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onImportantChange={mockHandler} />);
+      render(
+        <LocaleProvider locale="cs" messages={csMessages}>
+          <ReviewQuestionCard {...props} onImportantChange={mockHandler} />
+        </LocaleProvider>,
+      );
 
       await user.click(screen.getByLabelText("Pro mě důležité"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
