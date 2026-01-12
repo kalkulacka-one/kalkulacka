@@ -29,7 +29,7 @@ export default function Page() {
           <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
             <div className="p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-2.5 py-1 font-semibold text-primary-700">{t("calculator.badge")}</span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-2.5 py-1 font-semibold text-primary-700">{t("calculator.title")}</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">{t("calculator.duration")}</span>
               </div>
               <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">{t("calculator.heading")}</h2>

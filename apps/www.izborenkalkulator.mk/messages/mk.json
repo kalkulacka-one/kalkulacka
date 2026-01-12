@@ -2,11 +2,43 @@
   "homepage": {
     "title": "Изборен калкулатор",
     "calculator": {
-      "badge": "Избори 2025",
+      "title": "Изборен компас",
       "duration": "10 минути",
-      "heading": "Кој најмногу ги претставува вашите ставови?",
-      "description": "Споредете ги вашите политички ставови со ставовите на партиите и кандидатите.",
+      "heading": "Кој ги споделува вашите вредности?",
+      "description": "Откријте кои партии застапуваат слични вредности како вас.",
       "button": "Започни"
+    }
+  },
+  "koa": {
+    "components": {
+      "embedAttribution": {
+        "broughtBy": "Обезбедено од"
+      },
+      "guideNavigationCard": {
+        "startButton": "Започни со одговарање"
+      },
+      "introductionNavigationCard": {
+        "continueButton": "Продолжи"
+      },
+      "publicResultNavigationCard": {
+        "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"
+      },
+      "questionNavigationCard": {
+        "guide": "Водич",
+        "previous": "Назад",
+        "next": "Следно",
+        "skip": "Прескокни",
+        "yes": "Да",
+        "no": "Не",
+        "important": "Важно за мене"
+      },
+      "resultNavigationCard": {
+        "compareButton": "Спореди",
+        "shareButton": "Сподели"
+      },
+      "reviewNavigationCard": {
+        "showResultsButton": "Прикажи резултати"
+      }
     }
   },
   "routing": {
