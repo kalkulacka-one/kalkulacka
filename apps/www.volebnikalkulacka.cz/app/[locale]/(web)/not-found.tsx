@@ -1,4 +1,4 @@
-import { NotFoundPage } from "@/calculator";
+import { NotFoundPage } from "@/components/client";
 
 export default function NotFound() {
   return <NotFoundPage />;

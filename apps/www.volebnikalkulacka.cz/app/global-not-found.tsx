@@ -3,8 +3,8 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 
-import { NotFoundPage } from "@/calculator";
-import { ThemeProvider } from "@/components/client";
+import { NotFoundPage, ThemeProvider } from "@/components/client";
+import { I18nProvider } from "@/components/server";
 import { appConfig } from "@/config/app-config";
 import type { ThemeName } from "@/config/themes";
 
@@ -20,9 +20,11 @@ export default async function GlobalNotFound() {
   return (
     <html lang={locale}>
       <body>
-        <ThemeProvider name={defaultTheme}>
-          <NotFoundPage />
-        </ThemeProvider>
+        <I18nProvider locale={locale}>
+          <ThemeProvider name={defaultTheme}>
+            <NotFoundPage />
+          </ThemeProvider>
+        </I18nProvider>
       </body>
     </html>
   );
