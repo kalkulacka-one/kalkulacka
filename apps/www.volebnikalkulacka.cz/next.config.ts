@@ -10,6 +10,9 @@ import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
