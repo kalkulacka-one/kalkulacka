@@ -1,21 +1,28 @@
-import "./globals.css";
+import "@/app/globals.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { getLocale } from "next-intl/server";
 
-const inter = Inter({ subsets: ["latin"] });
+import { NotFoundPage } from "@/calculator";
+import { ThemeProvider } from "@/components/client";
+import { appConfig } from "@/config/app-config";
+import type { ThemeName } from "@/config/themes";
 
 export const metadata: Metadata = {
   title: "404 - Page Not Found",
   description: "The page you are looking for does not exist.",
 };
 
-export default function GlobalNotFound() {
+export default async function GlobalNotFound() {
+  const locale = await getLocale();
+  const defaultTheme = appConfig.theme.defaultTheme as ThemeName;
+
   return (
-    <html lang="en" className={inter.className}>
+    <html lang={locale}>
       <body>
-        <h1>404 - Page Not Found</h1>
-        <p>This page does not exist.</p>
+        <ThemeProvider name={defaultTheme}>
+          <NotFoundPage />
+        </ThemeProvider>
       </body>
     </html>
   );
