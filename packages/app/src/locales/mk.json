@@ -2,7 +2,7 @@
   "koa": {
     "components": {
       "embedAttribution": {
-        "broughtBy": "Овозможено од"
+        "broughtBy": "Обезбедено од"
       },
       "guide": {
         "agreement": {
@@ -29,11 +29,11 @@
         "continueButton": "Продолжи"
       },
       "publicResultNavigationCard": {
-        "fillOwnCalculatorButton": "Пополни свој калкулатор"
+        "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"
       },
       "questionNavigationCard": {
         "guide": "Водич",
-        "previous": "Претходно",
+        "previous": "Назад",
         "next": "Следно",
         "skip": "Прескокни",
         "yes": "Да",
