@@ -1,3 +1,5 @@
+// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
+
 import { Button, Description, Field, Input, Label } from "@kalkulacka-one/design-system/client";
 
 import { zodResolver } from "@hookform/resolvers/zod";

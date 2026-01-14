@@ -1,3 +1,5 @@
+// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
+
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 

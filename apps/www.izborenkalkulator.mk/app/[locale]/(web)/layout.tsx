@@ -1,3 +1,5 @@
+// TODO [TENANT-001]: Extract site metadata to appConfig
+
 import type { Metadata, Viewport } from "next";
 
 import type { I18nParams } from "@/i18n/params";
