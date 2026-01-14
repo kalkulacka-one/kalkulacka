@@ -18,14 +18,16 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-white">
-                <Logo title="Volebná kalkulačka" size="small" monochrome />
+            <div className="grid grid-flow-row auto-rows-max gap-4">
+              <div className="grid grid-flow-row auto-rows-max gap-2">
+                <div className="text-white">
+                  <Logo title="Volebná kalkulačka" size="small" monochrome />
+                </div>
+                <p className="text-sm text-white">
+                  <strong>Volebná kalkulačka</strong> vám pomáha rozhodnúť sa koho voliť
+                </p>
               </div>
-              <p className="text-sm text-white mt-3">
-                <strong>Volebná kalkulačka</strong> vám pomáha rozhodnúť sa koho voliť
-              </p>
-              <div className="grid grid-cols-2 gap-2 mt-4 w-fit">
+              <div className="grid grid-cols-2 gap-2 w-fit">
                 <Link
                   href="https://www.instagram.com/volebnikalk"
                   target="_blank"
@@ -41,8 +43,12 @@ export function Footer() {
                 </Link>
               </div>
             </div>
-            <div className="grid grid-flow-row gap-2">
-              <div className="text-sm font-semibold text-white">Odkazy</div>
+            <div className="grid grid-flow-row auto-rows-max gap-2">
+              <Link href="/o-projekte" className="text-sm text-slate-400 hover:text-white">
+                O projekte
+              </Link>
+            </div>
+            <div className="grid grid-flow-row auto-rows-max gap-2">
               {showStatus && statusUrl && (
                 <Link href={statusUrl} target="_blank" className="text-sm text-slate-400 hover:text-white">
                   Status
@@ -56,15 +62,11 @@ export function Footer() {
               <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
                 Súkromie
               </Link>
-              <Link href="/o-projekte" className="text-sm text-slate-400 hover:text-white">
-                O projekte
-              </Link>
             </div>
-            <div className="grid grid-flow-row gap-2">
-              <div className="text-sm font-semibold text-white">Kontakt</div>
-              <a href="mailto:info@volebnakalkulacka.sk" className="text-sm text-slate-400 hover:text-white inline-flex items-center gap-2">
+            <div className="grid grid-flow-row auto-rows-max gap-2">
+              <a href="mailto:ahoj@volebnakalkulacka.sk" className="text-sm text-slate-400 hover:text-white inline-flex items-center gap-2">
                 <Icon icon={mdiEmailOutline} size="small" decorative />
-                info@volebnakalkulacka.sk
+                ahoj@volebnakalkulacka.sk
               </a>
               <a href="tel:+420735518529" className="text-sm text-slate-400 hover:text-white inline-flex items-center gap-2">
                 <Icon icon={mdiPhoneOutline} size="small" decorative />
