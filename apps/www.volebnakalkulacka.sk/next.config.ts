@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
     return [
       ...getLocaleRedirects(),
       {
+        source: "/o-nas",
+        destination: "/o-projekte",
+        permanent: true,
+      },
+      {
         source: "/metodika-tvorby-otazok",
         destination: "/metodika",
         permanent: true,
