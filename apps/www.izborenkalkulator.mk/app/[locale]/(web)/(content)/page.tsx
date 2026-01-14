@@ -2,11 +2,8 @@ import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 
 export default function Page() {
-  const t = useTranslations("homepage");
-
   return (
     <div className="relative bg-slate-50 z-0">
       {/* Background dashed lines */}
@@ -29,15 +26,15 @@ export default function Page() {
           <Card shadow="hard" border corner="topLeft" className="bg-white h-full !border-slate-200">
             <div className="p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-2.5 py-1 font-semibold text-primary-700">{t("calculator.title")}</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">{t("calculator.duration")}</span>
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-2.5 py-1 font-semibold text-primary-700">Изборен компас</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">10 минути</span>
               </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">{t("calculator.heading")}</h2>
-              <p className="mt-2 text-slate-500">{t("calculator.description")}</p>
+              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Кој ги споделува вашите вредности?</h2>
+              <p className="mt-2 text-slate-500">Откријте кои партии застапуваат слични вредности како вас.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/kalkulator-2025" className="grid">
                   <Button variant="outline" color="neutral">
-                    {t("calculator.button")}
+                    Започни
                   </Button>
                 </Link>
               </div>
