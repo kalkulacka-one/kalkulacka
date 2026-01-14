@@ -37,9 +37,6 @@ export function Footer() {
                   Статистики
                 </Link>
               )}
-              <Link href="/soukromi" className="text-sm text-slate-400 hover:text-white">
-                Приватност
-              </Link>
             </div>
             <div />
           </div>

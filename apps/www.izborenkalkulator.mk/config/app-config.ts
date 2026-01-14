@@ -7,4 +7,8 @@ export const appConfig = withDefaults({
     defaultLocale: "mk",
     locales: ["mk"],
   },
+
+  footer: {
+    showAnalytics: false,
+  },
 });
