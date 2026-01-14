@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
+import { enMessages } from "@/locales";
 import type { AnswerViewModel, QuestionViewModel } from "@/view-models";
 
+import { LocaleProvider } from "./providers";
 import { ReviewQuestionCard } from "./review-question-card";
 
 describe("ReviewQuestionCard", () => {
@@ -35,44 +37,58 @@ describe("ReviewQuestionCard", () => {
   };
 
   it("renders question information and answer buttons", () => {
-    render(<ReviewQuestionCard {...props} />);
+    render(
+      <LocaleProvider locale="en" messages={enMessages}>
+        <ReviewQuestionCard {...props} />
+      </LocaleProvider>,
+    );
 
     expect(screen.getByText(props.current.toString())).toBeInTheDocument();
     expect(screen.getByText(props.total.toString())).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
     expect(screen.getByText(props.question.statement)).toBeInTheDocument();
-    expect(screen.getByText("Ano")).toBeInTheDocument();
-    expect(screen.getByText("Ne")).toBeInTheDocument();
-    expect(screen.getByLabelText("Pro mě důležité")).toBeInTheDocument();
+    expect(screen.getByText("Yes")).toBeInTheDocument();
+    expect(screen.getByText("No")).toBeInTheDocument();
+    expect(screen.getByLabelText("Important to me")).toBeInTheDocument();
   });
 
   describe("interactions", () => {
-    let user: ReturnType<typeof userEvent.setup>;
-    let mockHandler: ReturnType<typeof vi.fn>;
-
-    beforeEach(() => {
-      user = userEvent.setup();
-      mockHandler = vi.fn();
-    });
-
     it("calls onAgreeChange when agree button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onAgreeChange={mockHandler} />);
+      const mockHandler = vi.fn();
+      const user = userEvent.setup();
+      render(
+        <LocaleProvider locale="en" messages={enMessages}>
+          <ReviewQuestionCard {...props} onAgreeChange={mockHandler} />
+        </LocaleProvider>,
+      );
 
-      await user.click(screen.getByText("Ano"));
+      await user.click(screen.getByText("Yes"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onDisagreeChange when disagree button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />);
+      const mockHandler = vi.fn();
+      const user = userEvent.setup();
+      render(
+        <LocaleProvider locale="en" messages={enMessages}>
+          <ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />
+        </LocaleProvider>,
+      );
 
-      await user.click(screen.getByText("Ne"));
+      await user.click(screen.getByText("No"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
     it("calls onImportantChange when important button is clicked", async () => {
-      render(<ReviewQuestionCard {...props} onImportantChange={mockHandler} />);
+      const mockHandler = vi.fn();
+      const user = userEvent.setup();
+      render(
+        <LocaleProvider locale="en" messages={enMessages}>
+          <ReviewQuestionCard {...props} onImportantChange={mockHandler} />
+        </LocaleProvider>,
+      );
 
-      await user.click(screen.getByLabelText("Pro mě důležité"));
+      await user.click(screen.getByLabelText("Important to me"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
   });

@@ -46,6 +46,11 @@
       },
       "reviewNavigationCard": {
         "showResultsButton": "Zobraziť výsledky"
+      },
+      "reviewQuestionCard": {
+        "yes": "Áno",
+        "no": "Nie",
+        "important": "Pre mňa dôležité"
       }
     }
   }
