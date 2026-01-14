@@ -1,3 +1,5 @@
+// TODO [TENANT-007]: Extract embed footer text to i18n
+
 import { EmbedAttribution } from "@kalkulacka-one/app";
 
 import { canonical } from "@/lib/routing";

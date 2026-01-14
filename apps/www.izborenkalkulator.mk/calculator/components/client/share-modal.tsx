@@ -1,3 +1,5 @@
+// TODO [TENANT-005]: Translate share modal strings to Macedonian
+
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";

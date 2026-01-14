@@ -1,4 +1,4 @@
-// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
+// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
 import type { CandidateMatchViewModel } from "@kalkulacka-one/app";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "@kalkulacka-one/app/client";
 import { ExpandableCard } from "@kalkulacka-one/design-system/client";

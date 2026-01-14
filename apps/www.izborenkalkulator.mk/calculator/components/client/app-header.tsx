@@ -1,3 +1,5 @@
+// TODO [TENANT-003]: Extract app title to i18n messages
+
 import type { CalculatorViewModel } from "@kalkulacka-one/app";
 import { Logo } from "@kalkulacka-one/design-system/client";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";

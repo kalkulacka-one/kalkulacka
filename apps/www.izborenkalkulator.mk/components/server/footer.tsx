@@ -1,3 +1,5 @@
+// TODO [TENANT-006]: Extract footer text to i18n, configure MK social links
+
 import { Logo } from "@kalkulacka-one/design-system/client";
 
 import Link from "next/link";
