@@ -18,7 +18,7 @@ export type ReviewQuestionCard = {
 };
 
 export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
-  const t = useTranslations("koa.components.questionNavigationCard");
+  const t = useTranslations("koa.components.reviewQuestionCard");
   const { title, detail, statement } = question;
   return (
     <Card corner="topLeft" shadow="hard" className="koa:border koa:border-slate-200">

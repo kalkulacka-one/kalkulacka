@@ -46,6 +46,11 @@
       },
       "reviewNavigationCard": {
         "showResultsButton": "Прикажи резултати"
+      },
+      "reviewQuestionCard": {
+        "yes": "Да",
+        "no": "Не",
+        "important": "Важно за мене"
       }
     }
   }
