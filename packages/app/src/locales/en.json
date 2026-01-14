@@ -46,6 +46,11 @@
       },
       "reviewNavigationCard": {
         "showResultsButton": "Show results"
+      },
+      "reviewQuestionCard": {
+        "yes": "Yes",
+        "no": "No",
+        "important": "Important to me"
       }
     }
   }
