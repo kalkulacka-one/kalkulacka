@@ -14,7 +14,7 @@
   },
   "calculator": {
     "pages": {
-      "not-found-page": {
+      "not-found": {
         "heading": "Jejda, nějak jsme se přepočítali",
         "paragraph": "Litujeme, ale požadovaný obsah není k dispozici. Co říkáte na svěží start?",
         "cta": "Začít znovu"
