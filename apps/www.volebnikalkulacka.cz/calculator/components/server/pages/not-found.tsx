@@ -7,7 +7,7 @@ export type NotFoundPage = {
 };
 
 export function NotFoundPage({ onBackHomeClick }: NotFoundPage) {
-  const t = useTranslations("calculator.pages.not-found");
+  const t = useTranslations("calculator.pages.not-found.content");
 
   return (
     <div className="h-screen flex flex-col justify-center items-start lg:items-center gap-4 mx-auto max-w-7xl px-6 sm:px-8 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16">

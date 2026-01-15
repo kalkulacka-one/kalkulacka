@@ -15,9 +15,15 @@
   "calculator": {
     "pages": {
       "not-found": {
-        "heading": "Jejda, nějak jsme se přepočítali",
-        "paragraph": "Litujeme, ale požadovaný obsah není k dispozici. Co říkáte na svěží start?",
-        "cta": "Začít znovu"
+        "metadata": {
+          "title": "404 - Jejda, nějak jsme se přepočítali",
+          "description": "Litujeme, ale požadovaný obsah není k dispozici. Co říkáte na svěží start?"
+        },
+        "content": {
+          "heading": "Jejda, nějak jsme se přepočítali",
+          "paragraph": "Litujeme, ale požadovaný obsah není k dispozici. Co říkáte na svěží start?",
+          "cta": "Začít znovu"
+        }
       }
     },
     "components": {

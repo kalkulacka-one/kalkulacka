@@ -1,17 +1,22 @@
 import "@/app/globals.css";
 
 import type { Metadata } from "next";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { NotFoundPage, ThemeProvider } from "@/components/client";
 import { I18nProvider } from "@/components/server";
 import { appConfig } from "@/config/app-config";
 import type { ThemeName } from "@/config/themes";
 
-export const metadata: Metadata = {
-  title: "404 - Page Not Found",
-  description: "The page you are looking for does not exist.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "calculator.pages.not-found.metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default async function GlobalNotFound() {
   const locale = await getLocale();
