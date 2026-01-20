@@ -27,5 +27,8 @@
   "peerDependencies": {
     "zod": "^4.0.0"
   },
-  "packageManager": "npm@11.5.2"
+  "packageManager": "npm@11.5.2",
+  "dependencies": {
+    "zod": "^4.1.12"
+  }
 }
