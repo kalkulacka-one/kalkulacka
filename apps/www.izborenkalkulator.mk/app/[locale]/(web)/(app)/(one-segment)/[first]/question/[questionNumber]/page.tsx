@@ -1,10 +1,10 @@
 import { questionNumberGuard } from "@kalkulacka-one/next";
+import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
 
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
 import { QuestionPageWithRouting } from "@/components/client";
-import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; first: string; questionNumber: string }> }): Promise<Metadata> {

@@ -1,10 +1,10 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { shareSession } from "@kalkulacka-one/next/api";
 
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
 import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
-import { shareSession } from "@/lib/api";
 import { canonical, type RouteSegments } from "@/lib/routing";
 
 export type ShareModalProps = {

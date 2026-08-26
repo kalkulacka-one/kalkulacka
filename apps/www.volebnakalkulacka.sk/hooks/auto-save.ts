@@ -1,9 +1,9 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { AnswersStoreContext, useCalculator } from "@kalkulacka-one/app/client";
+import { saveSessionDataWithBeacon } from "@kalkulacka-one/next/api";
 
 import { useContext, useEffect, useRef } from "react";
 
-import { saveSessionDataWithBeacon } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 
 export type UseAutoSaveOptions = {

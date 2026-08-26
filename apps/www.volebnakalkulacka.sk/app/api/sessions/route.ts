@@ -1,8 +1,5 @@
 import { HttpError, JsonParseError, UnauthorizedError, ValidationError } from "@kalkulacka-one/app";
-
-import type { NextRequest } from "next/server";
-import { z } from "zod";
-
+import { calculatorFullKey } from "@kalkulacka-one/next/session";
 import {
   type CreateCalculatorSessionParams,
   createCalculatorSession,
@@ -11,8 +8,10 @@ import {
   getSessionFromRequest,
   type SessionCookie,
   setSessionCookie,
-} from "@/lib/session/server";
-import { calculatorFullKey } from "@/lib/session/shared";
+} from "@kalkulacka-one/next/session/server";
+
+import type { NextRequest } from "next/server";
+import { z } from "zod";
 
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),

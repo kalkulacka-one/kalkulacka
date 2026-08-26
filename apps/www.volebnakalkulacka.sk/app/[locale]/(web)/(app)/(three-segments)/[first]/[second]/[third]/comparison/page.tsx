@@ -1,8 +1,9 @@
+import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
+
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
 import { ComparisonPageWithRouting } from "@/components/client";
-import { generateCalculatorMetadata } from "@/lib/metadata";
 import { canonical, mappedParams } from "@/lib/routing";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; first: string; second: string; third: string }> }): Promise<Metadata> {

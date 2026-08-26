@@ -10,6 +10,26 @@
     "./config": {
       "types": "./dist/config-helpers.d.ts",
       "default": "./dist/config-helpers.js"
+    },
+    "./api": {
+      "types": "./dist/api/index.d.ts",
+      "default": "./dist/api/index.js"
+    },
+    "./metadata": {
+      "types": "./dist/metadata/index.d.ts",
+      "default": "./dist/metadata/index.js"
+    },
+    "./session": {
+      "types": "./dist/session/shared/index.d.ts",
+      "default": "./dist/session/shared/index.js"
+    },
+    "./session/client": {
+      "types": "./dist/session/client/index.d.ts",
+      "default": "./dist/session/client/index.js"
+    },
+    "./session/server": {
+      "types": "./dist/session/server/index.d.ts",
+      "default": "./dist/session/server/index.js"
     }
   },
   "scripts": {
@@ -21,7 +41,10 @@
     "ncu:upgrade": "ncu -u"
   },
   "dependencies": {
-    "@kalkulacka-one/app": "*"
+    "@kalkulacka-one/app": "*",
+    "@kalkulacka-one/database": "*",
+    "@kalkulacka-one/schema": "*",
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",

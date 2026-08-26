@@ -3,11 +3,12 @@ import { notFound } from "next/navigation";
 
 import "@/app/globals.css";
 
+import { allowCrawling } from "@kalkulacka-one/next";
+
 import { EmbedProvider } from "@/components/client";
 import { I18nProvider, PlausibleScript } from "@/components/server";
 import { type EmbedName, isEmbedName } from "@/config/embeds";
 import { routing } from "@/i18n/routing";
-import { allowCrawling } from "@/lib/seo";
 
 export const metadata: Metadata = {
   robots: {
