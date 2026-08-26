@@ -1,3 +1,4 @@
+import { QuestionPage as AppQuestionPage } from "@kalkulacka-one/app";
 import { useAnswer, useAnswersStore, useCalculator, useQuestions } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
 
@@ -5,7 +6,6 @@ import { notFound, usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useReducer } from "react";
 
-import { QuestionPage as AppQuestionPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";

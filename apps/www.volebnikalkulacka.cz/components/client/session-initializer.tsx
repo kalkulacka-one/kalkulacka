@@ -1,11 +1,9 @@
-import { useCalculatorStore } from "@kalkulacka-one/app/client";
+import { useCalculatorStore, useEmbed } from "@kalkulacka-one/app/client";
 import { initializeSession } from "@kalkulacka-one/next/api";
 
 import { useEffect, useRef } from "react";
 
 import { reportError } from "@/lib/monitoring";
-
-import { useEmbed } from "./embed-context-provider";
 
 type CalculatorWithVariant = {
   variant: { key: string };

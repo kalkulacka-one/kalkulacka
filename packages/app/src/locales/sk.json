@@ -1,8 +1,17 @@
 {
   "koa": {
+    "appTitle": "Volebná kalkulačka",
     "components": {
+      "comparisonGrid": {
+        "selectParty": "Vyberte stranu:",
+        "selectAll": "Vybrať všetko",
+        "yourAnswers": "Vaše odpovede"
+      },
       "embedAttribution": {
         "broughtBy": "Prináša"
+      },
+      "embedFooter": {
+        "privacy": "Súkromie"
       },
       "guide": {
         "agreement": {
@@ -28,6 +37,16 @@
       "introductionNavigationCard": {
         "continueButton": "Pokračovať"
       },
+      "matchCard": {
+        "expertNoteLine1": "Postoje podľa verejných zdrojov,",
+        "expertNoteLine2": "strana neodpovedala na zaslané otázky.",
+        "beta": "Betaverzia porovnania. Ešte ladíme!",
+        "meCandidate": "Ja • Kandidát",
+        "positionUnknown": "Postoj sa nepodarilo zistiť",
+        "source": "Zdroj",
+        "noDescription": "Žiadny popis nie je k dispozícii",
+        "link": "(odkaz)"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplniť vlastnú kalkulačku"
       },
@@ -51,6 +70,50 @@
         "yes": "Áno",
         "no": "Nie",
         "important": "Pre mňa dôležité"
+      },
+      "shareModal": {
+        "title": "Zdieľať výsledok",
+        "creating": "Vytváranie odkazu...",
+        "error": "Nepodarilo sa vytvoriť odkaz na zdieľanie",
+        "intro": "Zdieľajte svoj výsledok so svojimi blízkymi:",
+        "copy": "Kopírovať",
+        "copied": "Skopírované",
+        "shareInstagram": "Zdieľať na Instagram",
+        "shareX": "Zdieľať na X",
+        "consentPrefix": "Zdieľaním výsledkov súhlasíte s našimi",
+        "privacyPolicy": "zásadami ochrany osobných údajov",
+        "shareText": "Pozrite sa, ako mi vyšla Volebná kalkulačka:",
+        "shareTextWithHandle": "Pozrite sa, ako mi vyšla {handle}:",
+        "shareFileText": "Pozrite sa, ako mi vyšla Volebná kalkulačka",
+        "fileName": "Moja Volebná kalkulačka.png"
+      }
+    },
+    "pages": {
+      "common": {
+        "close": "Zavrieť"
+      },
+      "comparison": {
+        "title": "Porovnanie",
+        "back": "Späť na výsledky"
+      },
+      "guide": {
+        "title": "Návod",
+        "back": "Späť na úvod"
+      },
+      "publicResult": {
+        "title": "Môj výsledok",
+        "candidateLists": "Strany",
+        "people": "Ľudia"
+      },
+      "result": {
+        "title": "Výsledok",
+        "back": "Späť",
+        "candidateLists": "Strany",
+        "people": "Ľudia"
+      },
+      "review": {
+        "title": "Rekapitulácia",
+        "back": "Späť na otázky"
       }
     }
   }

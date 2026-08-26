@@ -1,8 +1,17 @@
 {
   "koa": {
+    "appTitle": "Изборен калкулатор",
     "components": {
+      "comparisonGrid": {
+        "selectParty": "Изберете партија:",
+        "selectAll": "Избери сите",
+        "yourAnswers": "Вашите одговори"
+      },
       "embedAttribution": {
         "broughtBy": "Обезбедено од"
+      },
+      "embedFooter": {
+        "privacy": "Приватност"
       },
       "guide": {
         "agreement": {
@@ -28,6 +37,16 @@
       "introductionNavigationCard": {
         "continueButton": "Продолжи"
       },
+      "matchCard": {
+        "expertNoteLine1": "Ставови според јавни извори,",
+        "expertNoteLine2": "партијата не одговори на испратените прашања.",
+        "beta": "Бета верзија на споредбата. Уште подесуваме!",
+        "meCandidate": "Јас • Кандидат",
+        "positionUnknown": "Ставот не можеше да се утврди",
+        "source": "Извор",
+        "noDescription": "Нема достапен опис",
+        "link": "(линк)"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"
       },
@@ -51,6 +70,50 @@
         "yes": "Да",
         "no": "Не",
         "important": "Важно за мене"
+      },
+      "shareModal": {
+        "title": "Сподели резултат",
+        "creating": "Креирање линк...",
+        "error": "Не успеа да се креира линк за споделување",
+        "intro": "Споделете го вашиот резултат со блиските:",
+        "copy": "Копирај",
+        "copied": "Копирано",
+        "shareInstagram": "Сподели на Instagram",
+        "shareX": "Сподели на X",
+        "consentPrefix": "Со споделување на резултатите се согласувате со нашата",
+        "privacyPolicy": "политика за приватност",
+        "shareText": "Погледнете како ми излезе Изборниот калкулатор:",
+        "shareTextWithHandle": "Погледнете како ми излезе {handle}:",
+        "shareFileText": "Погледнете како ми излезе Изборниот калкулатор",
+        "fileName": "Мој Изборен калкулатор.png"
+      }
+    },
+    "pages": {
+      "common": {
+        "close": "Затвори"
+      },
+      "comparison": {
+        "title": "Споредба",
+        "back": "Назад кон резултатите"
+      },
+      "guide": {
+        "title": "Водич",
+        "back": "Назад кон вовед"
+      },
+      "publicResult": {
+        "title": "Мој резултат",
+        "candidateLists": "Партии",
+        "people": "Луѓе"
+      },
+      "result": {
+        "title": "Резултат",
+        "back": "Назад",
+        "candidateLists": "Кандидатски листи",
+        "people": "Лица"
+      },
+      "review": {
+        "title": "Преглед",
+        "back": "Назад кон прашањата"
       }
     }
   }

@@ -12,7 +12,7 @@
     "start": "next start",
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "vitest",
+    "test": "vitest --passWithNoTests",
     "test:ui": "vitest --ui",
     "typecheck": "tsc --noEmit"
   },

@@ -1,15 +1,16 @@
-import { useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
-import { saveSessionData } from "@kalkulacka-one/next/api";
+import { ResultPage as AppResultPage } from "@kalkulacka-one/app";
+import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
+import { saveSessionData, shareSession } from "@kalkulacka-one/next/api";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { ShareModal } from "@/calculator/components/client";
-import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { useEmbed } from "@/components/client";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
+
+import { DonateCard } from "../../donate-card";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
@@ -71,8 +72,14 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
         showOnlyNested={showOnlyNested}
         onFilterChange={setShowOnlyNested}
         donateCardPosition={donateCardPosition}
+        donateCard={<DonateCard />}
       />
-      <ShareModal calculatorId={calculator.id} segments={segments} isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        onShare={() => shareSession(calculator.id)}
+        buildShareUrl={(publicId) => canonical.publicResult({ first: segments.first, second: segments.second, third: segments.third }, publicId, locale)}
+      />
     </>
   );
 }

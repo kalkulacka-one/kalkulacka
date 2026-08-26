@@ -1,8 +1,17 @@
 {
   "koa": {
+    "appTitle": "Volební kalkulačka",
     "components": {
+      "comparisonGrid": {
+        "selectParty": "Vyberte stranu:",
+        "selectAll": "Vybrat vše",
+        "yourAnswers": "Vaše odpovědi"
+      },
       "embedAttribution": {
         "broughtBy": "Přináší"
+      },
+      "embedFooter": {
+        "privacy": "Soukromí"
       },
       "guide": {
         "agreement": {
@@ -28,6 +37,16 @@
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
       },
+      "matchCard": {
+        "expertNoteLine1": "Postoje podle veřejných zdrojů,",
+        "expertNoteLine2": "strana neodpověděla na zaslané otázky.",
+        "beta": "Betaverze porovnání. Ještě ladíme!",
+        "meCandidate": "Já • Kandidát",
+        "positionUnknown": "Postoj se nepodařilo zjistit",
+        "source": "Zdroj",
+        "noDescription": "Žádný popis není k dispozici",
+        "link": "(odkaz)"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
       },
@@ -51,6 +70,50 @@
         "yes": "Ano",
         "no": "Ne",
         "important": "Pro mě důležité"
+      },
+      "shareModal": {
+        "title": "Sdílet výsledek",
+        "creating": "Vytváření odkazu...",
+        "error": "Nepodařilo se vytvořit odkaz ke sdílení",
+        "intro": "Sdílejte svůj výsledek se svými blízkými:",
+        "copy": "Kopírovat",
+        "copied": "Zkopírováno",
+        "shareInstagram": "Sdílet na Instagram",
+        "shareX": "Sdílet na X",
+        "consentPrefix": "Sdílením výsledků souhlasíte s našimi",
+        "privacyPolicy": "zásadami ochrany osobních údajů",
+        "shareText": "Podívejte se, jak mi vyšla Volební kalkulačka:",
+        "shareTextWithHandle": "Podívejte se, jak mi vyšla {handle}:",
+        "shareFileText": "Podívejte se, jak mi vyšla Volební kalkulačka",
+        "fileName": "Moje Volební kalkulačka.png"
+      }
+    },
+    "pages": {
+      "common": {
+        "close": "Zavřít"
+      },
+      "comparison": {
+        "title": "Porovnání",
+        "back": "Zpět na výsledky"
+      },
+      "guide": {
+        "title": "Návod",
+        "back": "Zpět na úvod"
+      },
+      "publicResult": {
+        "title": "Můj výsledek",
+        "candidateLists": "Kandidátní listiny",
+        "people": "Lidé"
+      },
+      "result": {
+        "title": "Výsledek",
+        "back": "Zpět",
+        "candidateLists": "Kandidátní listiny",
+        "people": "Lidé"
+      },
+      "review": {
+        "title": "Rekapitulace",
+        "back": "Zpět na otázky"
       }
     }
   }

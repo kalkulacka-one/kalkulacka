@@ -1,8 +1,17 @@
 {
   "koa": {
+    "appTitle": "Election Calculator",
     "components": {
+      "comparisonGrid": {
+        "selectParty": "Select a party:",
+        "selectAll": "Select all",
+        "yourAnswers": "Your answers"
+      },
       "embedAttribution": {
         "broughtBy": "Brought by"
+      },
+      "embedFooter": {
+        "privacy": "Privacy"
       },
       "guide": {
         "agreement": {
@@ -28,6 +37,16 @@
       "introductionNavigationCard": {
         "continueButton": "Continue"
       },
+      "matchCard": {
+        "expertNoteLine1": "Positions based on public sources,",
+        "expertNoteLine2": "the party did not answer the questions sent.",
+        "beta": "Comparison beta. Still fine-tuning!",
+        "meCandidate": "Me • Candidate",
+        "positionUnknown": "Position could not be determined",
+        "source": "Source",
+        "noDescription": "No description available",
+        "link": "(link)"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Fill your own calculator"
       },
@@ -51,6 +70,50 @@
         "yes": "Yes",
         "no": "No",
         "important": "Important to me"
+      },
+      "shareModal": {
+        "title": "Share result",
+        "creating": "Creating link...",
+        "error": "Failed to create a sharing link",
+        "intro": "Share your result with your friends and family:",
+        "copy": "Copy",
+        "copied": "Copied",
+        "shareInstagram": "Share on Instagram",
+        "shareX": "Share on X",
+        "consentPrefix": "By sharing your results you agree to our",
+        "privacyPolicy": "privacy policy",
+        "shareText": "Check out my Election Calculator result:",
+        "shareTextWithHandle": "Check out my {handle} result:",
+        "shareFileText": "Check out my Election Calculator result",
+        "fileName": "My Election Calculator.png"
+      }
+    },
+    "pages": {
+      "common": {
+        "close": "Close"
+      },
+      "comparison": {
+        "title": "Comparison",
+        "back": "Back to results"
+      },
+      "guide": {
+        "title": "Guide",
+        "back": "Back to introduction"
+      },
+      "publicResult": {
+        "title": "My result",
+        "candidateLists": "Candidate lists",
+        "people": "People"
+      },
+      "result": {
+        "title": "Result",
+        "back": "Back",
+        "candidateLists": "Candidate lists",
+        "people": "People"
+      },
+      "review": {
+        "title": "Review",
+        "back": "Back to questions"
       }
     }
   }
