@@ -15,6 +15,10 @@
       "types": "./dist/api/index.d.ts",
       "default": "./dist/api/index.js"
     },
+    "./api/routes/*": {
+      "types": "./dist/api/routes/*.d.ts",
+      "default": "./dist/api/routes/*.js"
+    },
     "./metadata": {
       "types": "./dist/metadata/index.d.ts",
       "default": "./dist/metadata/index.js"
