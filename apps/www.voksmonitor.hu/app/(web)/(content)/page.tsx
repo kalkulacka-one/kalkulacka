@@ -47,6 +47,14 @@ export default function Page() {
                         {t("post-election-panel.analysis-button")}
                       </Button>
                     </a>
+                    <a
+                      href="https://k.blog.hu/2026/08/06/mire_vagytak_a_2026-os_voksmonitor_kitoltoi_es_mit_kaptak_a_valasztason"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-center text-sm font-semibold text-gray-600 underline underline-offset-2 hover:text-gray-900"
+                    >
+                      {t("post-election-panel.analysis-link")}
+                    </a>
                   </div>
                 </div>
               </Card>
