@@ -13,7 +13,7 @@ const subscribeSchema = z.object({
 
 type SubscribeData = z.infer<typeof subscribeSchema>;
 
-export function SubscribeForm() {
+export function SubscribeForm({ origin = "subscribe-form" }: { origin?: string }) {
   const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState(false);
   const {
     register,
@@ -29,7 +29,7 @@ export function SubscribeForm() {
   const onSubmit: SubmitHandler<SubscribeData> = async (data) => {
     setIsSuccessfullySubmitted(false);
     try {
-      const response = await subscribe({ ...data, origin: "subscribe-form" });
+      const response = await subscribe({ ...data, origin });
       if (response.success) {
         reset();
         setIsSuccessfullySubmitted(true);
@@ -41,7 +41,7 @@ export function SubscribeForm() {
       }
     } catch (_error) {
       setError("root.serverError", {
-        message: "Chyba při připojení k serveru. Zkuste to prosím později.",
+        message: "Chyba pri pripojení k serveru. Skúste to prosím neskôr.",
       });
       setFocus("email");
     }
@@ -50,22 +50,22 @@ export function SubscribeForm() {
   return (
     <>
       {isSuccessfullySubmitted ? (
-        <div>Děkujeme za vyplnění</div>
+        <div>Ďakujeme za vyplnenie</div>
       ) : (
         <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
           <Field disabled={isSubmitting}>
-            <div className="grid grid-rows-2 gap-2 justify-center">
-              <div className="flex gap-4 justify-center items-center">
-                <Label className="sr-only">Zadejte váš email</Label>
+            <div className="grid gap-3 justify-center">
+              <div className="flex gap-3 justify-center items-center">
+                <Label className="sr-only">Zadajte váš e-mail</Label>
                 <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
                 <Button disabled={isSubmitting} type="submit" variant="outline" color="neutral">
-                  {isSubmitting ? "Odesílám" : "Odeslat"}
+                  {isSubmitting ? "Odosielam" : "Odoslať"}
                 </Button>
               </div>
               <div className="text-center space-y-1">
                 {errors.email && <Description className="text-xs text-[var(--ko-palette-secondary)]">{errors.email.message}</Description>}
                 {errors.root?.serverError && <Description className="text-sm">⚠️ {errors.root?.serverError.message}</Description>}
-                <p className="text-sm leading-[1.23]">Odesláním souhlasíte se zasíláním novinek o volební kalkulačce.</p>
+                <p className="text-xs text-slate-500">Odoslaním súhlasíte so zasielaním noviniek o volebnej kalkulačke.</p>
               </div>
             </div>
           </Field>
