@@ -103,6 +103,9 @@ async function clickWithRetry(locator: Locator, maxRetries = 3, timeout = TIMEOU
 
 async function navigateToCalculator(page: Page, calculator: CalculatorConfig) {
   await page.goto("/");
+  await page.locator('a[href="/volby/snemovni-2025"]').click();
+  await page.waitForURL(/.*\/volby\/snemovni-2025$/, { timeout: TIMEOUTS.STANDARD });
+  await waitForPageLoad(page);
   await page.locator(`a[href="${calculator.path}"]`).click();
   await page.waitForURL(new RegExp(`.*${calculator.path}/uvod`), { timeout: TIMEOUTS.STANDARD });
   await expect(page).toHaveURL(new RegExp(`.*${calculator.path}/uvod`));
