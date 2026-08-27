@@ -18,7 +18,8 @@
       "description": "Jelenleg nincs folyamatban választás, de a legutóbbi Voksmonitort itt tudod kitölteni. Ha érdekel, mit ígértek a pártok a választóknak 2026-ban és hogyan nyilatkoztak egyes témákban, kattints a gombra, és böngészd át az álláspontjaikat!",
       "signature": "Találkozzunk a következő választáson!",
       "answers-button": "Pártok válaszainak böngészése",
-      "analysis-button": "Olvasd el elemzésünket a 2026-os Voksmonitor adataiból"
+      "analysis-button": "Olvasd el elemzésünket a 2026-os Voksmonitor adataiból",
+      "analysis-link": "Mire vágytak a 2026-os Voksmonitor kitöltői, és mit kaptak a választáson?"
     },
     "bp-card": {
       "tags": {

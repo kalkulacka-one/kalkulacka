@@ -18,7 +18,8 @@
       "description": "There is no election currently in progress, but you can still fill out the most recent Voksmonitor here. If you'd like to see what parties promised voters in 2026 and how they expressed their positions on various topics, click the button and browse their stances!",
       "signature": "See you at the next election!",
       "answers-button": "Browse party answers",
-      "analysis-button": "Read our analysis of the 2026 Voksmonitor data"
+      "analysis-button": "Read our analysis of the 2026 Voksmonitor data",
+      "analysis-link": "What did the 2026 Voksmonitor respondents want, and what did they get at the election?"
     },
     "bp-card": {
       "tags": {
