@@ -56,10 +56,10 @@ export default function Page() {
             <div className="p-6 md:p-8 h-full flex flex-col">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
                 <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 font-semibold text-slate-600">Sněmovní volby 2025</span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1">6 kalkulaček</span>
+                <span className="rounded-full bg-slate-100 px-2.5 py-1">7 kalkulaček</span>
               </div>
               <h3 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kalkulačky ke sněmovním volbám</h3>
-              <p className="mt-2 text-slate-500">Všech šest kalkulaček ke sněmovním volbám 2025 si můžete vyplnit i po volbách — od expresní po ultimátní.</p>
+              <p className="mt-2 text-slate-500">Všech sedm kalkulaček ke sněmovním volbám 2025 si můžete vyplnit i po volbách — od expresní po ultimátní.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/volby/snemovni-2025" className="grid">
                   <Button variant="outline" color="neutral">
