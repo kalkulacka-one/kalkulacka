@@ -16,7 +16,7 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
   const parsed = subscribeBodySchema.safeParse(body);
 
   if (!parsed.success) {
-    return { success: false, error: parsed.error.issues[0]?.message || "Neplatná data" };
+    return { success: false, error: parsed.error.issues[0]?.message || "Neplatné dáta" };
   }
 
   try {
@@ -33,6 +33,6 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
       return { success: true };
     }
 
-    return { success: false, error: "Chyba při ukládání. Zkuste to prosím později." };
+    return { success: false, error: "Chyba pri ukladaní. Skúste to prosím neskôr." };
   }
 }
