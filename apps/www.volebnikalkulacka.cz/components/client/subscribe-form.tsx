@@ -13,7 +13,7 @@ const subscribeSchema = z.object({
 
 type SubscribeData = z.infer<typeof subscribeSchema>;
 
-export function SubscribeForm({ origin = "subscribe-form" }: { origin?: string }) {
+export function SubscribeForm() {
   const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState(false);
   const {
     register,
@@ -29,7 +29,7 @@ export function SubscribeForm({ origin = "subscribe-form" }: { origin?: string }
   const onSubmit: SubmitHandler<SubscribeData> = async (data) => {
     setIsSuccessfullySubmitted(false);
     try {
-      const response = await subscribe({ ...data, origin });
+      const response = await subscribe({ ...data, origin: "subscribe-form" });
       if (response.success) {
         reset();
         setIsSuccessfullySubmitted(true);

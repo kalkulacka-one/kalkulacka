@@ -47,6 +47,20 @@ export default function Page() {
               </div>
             </div>
           </Card>
+
+          <Card border className="mt-8 !border-slate-200 bg-slate-50/50">
+            <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+              <div className="flex-1">
+                <h2 className="font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl md:text-2xl">Pomozte nám s kalkulačkou pro vaše město</h2>
+                <p className="mt-1 text-slate-500">Kalkulačky ke komunálním volbám vznikají s pomocí lidí přímo z místa.</p>
+              </div>
+              <Link href="/zapojte-se" className="grid md:shrink-0">
+                <Button variant="outline" color="neutral">
+                  Přidejte se
+                </Button>
+              </Link>
+            </div>
+          </Card>
         </div>
 
         {/* Sněmovní volby 2025 */}
