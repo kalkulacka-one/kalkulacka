@@ -1,0 +1,37 @@
+[
+  {
+    "id": "b822585e-3114-43f9-a1f3-0a4798316871",
+    "name": "Demokratikus Koalíció",
+    "shortName": "DK"
+  },
+  {
+    "id": "3fa89d65-4380-488b-808d-581e6b3d1837",
+    "name": "Fidesz-KDNP",
+    "shortName": "Fidesz-KDNP"
+  },
+  {
+    "id": "18e42263-68d1-4359-9dcf-a630e686d2cd",
+    "name": "Független",
+    "shortName": "Független"
+  },
+  {
+    "id": "830992da-d1fb-42e3-8410-56fb33f5688a",
+    "name": "Magyar Kétfarkú Kutya Párt",
+    "shortName": "MKKP"
+  },
+  {
+    "id": "55649c11-ad3a-45c0-9cef-9c66007d55aa",
+    "name": "Podmaniczky Mozgalom",
+    "shortName": "Podmaniczky Mozgalom"
+  },
+  {
+    "id": "e1cefed4-166e-4191-9ba3-40654f6a858c",
+    "name": "Párbeszéd - ZÖLDEK",
+    "shortName": "Párbeszéd"
+  },
+  {
+    "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405",
+    "name": "TISZA",
+    "shortName": "TISZA"
+  }
+]

@@ -1,0 +1,376 @@
+[
+  {
+    "id": "0c0c501b-2226-4410-8285-efd08e6f12cf",
+    "name": "Balogh Balázs",
+    "familyName": "Balázs",
+    "givenName": "Balogh",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "263b0699-586f-48cd-ac72-d8618fb6f3e5",
+    "name": "Barabás Richárd",
+    "familyName": "Richárd",
+    "givenName": "Barabás",
+    "memberOf": [
+      {
+        "id": "e1cefed4-166e-4191-9ba3-40654f6a858c"
+      }
+    ]
+  },
+  {
+    "id": "b318957e-47c7-4046-8646-b88b30511f93",
+    "name": "Baranyi Krisztina",
+    "familyName": "Krisztina",
+    "givenName": "Baranyi",
+    "memberOf": [
+      {
+        "id": "830992da-d1fb-42e3-8410-56fb33f5688a"
+      }
+    ]
+  },
+  {
+    "id": "25dc4348-6149-4c7a-85c1-daa1e3e166e4",
+    "name": "Barna Judit Annamária",
+    "familyName": "Annamária",
+    "givenName": "Barna Judit",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "1c121ec0-f53f-477a-b86d-ee17c9c58f58",
+    "name": "Bovier György",
+    "familyName": "György",
+    "givenName": "Bovier",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "16d6f4cd-1436-47dd-8b57-d37f17690aab",
+    "name": "Bujdosó Andrea",
+    "familyName": "Andrea",
+    "givenName": "Bujdosó",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "39fc9166-92e3-43b0-a8aa-ede7fce59ed5",
+    "name": "Béres András",
+    "familyName": "András",
+    "givenName": "Béres",
+    "memberOf": [
+      {
+        "id": "e1cefed4-166e-4191-9ba3-40654f6a858c"
+      }
+    ]
+  },
+  {
+    "id": "f0bb5ff6-372d-4e73-9c40-a8f9ee5a20a0",
+    "name": "Böjthe Péter",
+    "familyName": "Péter",
+    "givenName": "Böjthe",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "456fbc45-6e0a-4258-bca4-05b0942182aa",
+    "name": "Böröcz László",
+    "familyName": "László",
+    "givenName": "Böröcz",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "3d9bbf1d-b659-4f21-843a-8d2a8ac925ab",
+    "name": "Déri Tibor",
+    "familyName": "Tibor",
+    "givenName": "Déri",
+    "memberOf": [
+      {
+        "id": "b822585e-3114-43f9-a1f3-0a4798316871"
+      }
+    ]
+  },
+  {
+    "id": "6f85ddf3-1237-48b4-ab8f-2ecfa024f156",
+    "name": "Döme Zsuzsanna",
+    "familyName": "Zsuzsanna",
+    "givenName": "Döme",
+    "memberOf": [
+      {
+        "id": "830992da-d1fb-42e3-8410-56fb33f5688a"
+      }
+    ]
+  },
+  {
+    "id": "858e3859-bcf8-4418-9102-6efc41268064",
+    "name": "Gulyás Gergely Kristóf",
+    "familyName": "Kristóf",
+    "givenName": "Gulyás Gergely",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "ab458eb2-1a12-484e-b897-3fe112027bfe",
+    "name": "Gál József",
+    "familyName": "József",
+    "givenName": "Gál",
+    "memberOf": [
+      {
+        "id": "55649c11-ad3a-45c0-9cef-9c66007d55aa"
+      }
+    ]
+  },
+  {
+    "id": "b91a50fa-009d-4dbb-82cc-118f548e69e0",
+    "name": "Gémes Szilvia",
+    "familyName": "Szilvia",
+    "givenName": "Gémes",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "92ab53cb-3267-4def-b628-8101aef5737d",
+    "name": "Havasi Zoltán",
+    "familyName": "Zoltán",
+    "givenName": "Havasi",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "4e3c2ff4-d19c-4242-bf89-88173c77a3cb",
+    "name": "Janó -Veilandics Franciska",
+    "familyName": "Franciska",
+    "givenName": "Janó -Veilandics",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "cc5b481c-ba21-422d-8df4-5608a122b93e",
+    "name": "Karácsony Gergely",
+    "familyName": "Gergely",
+    "givenName": "Karácsony",
+    "memberOf": [
+      {
+        "id": "e1cefed4-166e-4191-9ba3-40654f6a858c"
+      }
+    ]
+  },
+  {
+    "id": "10cd37ce-43ae-4af8-9033-82fde22f0a7f",
+    "name": "Keszthelyi Dorottya",
+    "familyName": "Dorottya",
+    "givenName": "Keszthelyi",
+    "memberOf": [
+      {
+        "id": "b822585e-3114-43f9-a1f3-0a4798316871"
+      }
+    ]
+  },
+  {
+    "id": "c8a960ce-a86f-4020-a3ed-ce9e6861f075",
+    "name": "Kovács Gergely",
+    "familyName": "Gergely",
+    "givenName": "Kovács",
+    "memberOf": [
+      {
+        "id": "830992da-d1fb-42e3-8410-56fb33f5688a"
+      }
+    ]
+  },
+  {
+    "id": "6d3fe736-b125-4cc4-a6f4-94d6e3b7c4db",
+    "name": "Molnár Dániel",
+    "familyName": "Dániel",
+    "givenName": "Molnár",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "e517c842-42cd-47ff-bba2-5df4a93d1fb7",
+    "name": "Orbán Árpád István",
+    "familyName": "István",
+    "givenName": "Orbán Árpád",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "0ce34ea6-b399-47ee-87fc-c1e60209265b",
+    "name": "Ordas Eszter",
+    "familyName": "Eszter",
+    "givenName": "Ordas",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "04b5142d-2eb5-45be-92ca-309dcd17b764",
+    "name": "Porcher Áron",
+    "familyName": "Áron",
+    "givenName": "Porcher",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "1c74f464-1178-4d0c-bd11-1b5b8d4885dd",
+    "name": "Radics Béla",
+    "familyName": "Béla",
+    "givenName": "Radics",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "399e4708-8587-424d-9c61-b70b272ebf68",
+    "name": "Szaniszló Sándor",
+    "familyName": "Sándor",
+    "givenName": "Szaniszló",
+    "memberOf": [
+      {
+        "id": "b822585e-3114-43f9-a1f3-0a4798316871"
+      }
+    ]
+  },
+  {
+    "id": "c4f9c02a-4c21-4e1d-ad4d-4eb07cbf716e",
+    "name": "Szentkirályi Alexandra",
+    "familyName": "Alexandra",
+    "givenName": "Szentkirályi",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "a08c0d9f-1802-45df-9d83-af6575113f71",
+    "name": "Szepesfalvy Anna",
+    "familyName": "Anna",
+    "givenName": "Szepesfalvy",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "382b3ee5-2cf1-45f4-b169-14f683001850",
+    "name": "Szilágyi Anna Margit",
+    "familyName": "Margit",
+    "givenName": "Szilágyi Anna",
+    "memberOf": [
+      {
+        "id": "55649c11-ad3a-45c0-9cef-9c66007d55aa"
+      }
+    ]
+  },
+  {
+    "id": "69a97d5b-6009-4779-b4c2-3bf32567b2c8",
+    "name": "Szécsényi Dániel",
+    "familyName": "Dániel",
+    "givenName": "Szécsényi",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "80a1f859-8b3e-453b-b0af-fc39310c5018",
+    "name": "Tüttő Kata",
+    "familyName": "Kata",
+    "givenName": "Tüttő",
+    "memberOf": [
+      {
+        "id": "18e42263-68d1-4359-9dcf-a630e686d2cd"
+      }
+    ]
+  },
+  {
+    "id": "e234ae90-fb33-472a-b14a-0483896ac7c8",
+    "name": "Vitézy Dávid",
+    "familyName": "Dávid",
+    "givenName": "Vitézy",
+    "memberOf": [
+      {
+        "id": "55649c11-ad3a-45c0-9cef-9c66007d55aa"
+      }
+    ]
+  },
+  {
+    "id": "bd139101-bec8-4ae4-8269-2111c0ff63fe",
+    "name": "dr. Kollár Kinga",
+    "familyName": "Kinga",
+    "givenName": "dr. Kollár",
+    "memberOf": [
+      {
+        "id": "f3d6e7f9-5b59-441f-86fd-254e9039b405"
+      }
+    ]
+  },
+  {
+    "id": "067118ca-b006-45a8-acb1-ce9b62184bae",
+    "name": "dr. Lehoczki Ádám",
+    "familyName": "Ádám",
+    "givenName": "dr. Lehoczki",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  },
+  {
+    "id": "5bc40b84-abfe-4130-bae7-8097ec08c683",
+    "name": "Szalai Piroska",
+    "familyName": "Piroska",
+    "givenName": "Szalai",
+    "memberOf": [
+      {
+        "id": "3fa89d65-4380-488b-808d-581e6b3d1837"
+      }
+    ]
+  }
+]

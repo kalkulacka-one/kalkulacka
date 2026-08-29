@@ -1,0 +1,398 @@
+[
+  {
+    "id": "303c8a1c-1d3c-4299-9be6-aed9a104d1cb",
+    "title": "Taxation",
+    "statement": "Wealth exceeding one billion forints should be taxed.",
+    "detail": "According to research, half of all Hungarian household wealth is held by the richest 10% of the country, which can slow economic growth, worsen social mobility, and, in the long term, increase social tensions. Some argue that a wealth tax could reduce inequalities, increase government revenue, and enable the expansion of social and educational investments. Others, however, fear that a wealth tax would discourage investment, reduce innovation and increase tax evasion.",
+    "tags": [
+      "Taxation"
+    ]
+  },
+  {
+    "id": "6c13edb1-60a5-4a98-ac4f-a8b01cf989ef",
+    "title": "Constitutional Law",
+    "statement": "The office of prime minister should be limited to a maximum of two terms.",
+    "detail": "There is currently no limit in Hungary on how many times someone can serve as prime minister, while the president of the republic may serve a maximum of two terms. Supporters of introducing a limit argue that holding power for too long can distort a leader’s personality, and that limiting the number of terms would strengthen democratic competition and reduce the risk of corruption. Opponents, however, believe that without genuine constitutional safeguards, this would be merely a symbolic measure; moreover, it could undermine stable governance and would not encourage long-term planning.",
+    "tags": [
+      "Constitutional Law"
+    ]
+  },
+  {
+    "id": "cefec207-19b0-41e9-bda1-33479bbbd31f",
+    "title": "Taxation",
+    "statement": "A flat-rate personal income tax should remain so that everyone continues to pay the same proportion of their income as income tax.",
+    "detail": "Hungary introduced a flat-rate tax system in 2011, under which everyone pays 15% of their income as personal income tax. Its supporters argue that this creates a simpler system, reduces the shadow economy and leaves more money with higher earners, which can boost consumption. Critics, however, believe that it increases inequality and is unfair to low-income earners, as these groups should bear a proportionally smaller share of public burdens than high-income earners.",
+    "tags": [
+      "Taxation"
+    ]
+  },
+  {
+    "id": "3b0ab7b4-de1a-438c-995a-c72f7ab04bf9",
+    "title": "Transparency and Anti-corruption",
+    "statement": "Contracts made by the state should only enter into force after being made public.",
+    "detail": "Currently, many government contracts are not public, even though they should in principle, be disclosed, and freedom of information requests are cumbersome and often only succeed through litigation. One proposal suggests that all government contracts should be published in a central registry as a condition for their entry into force. Supporters argue that this would reduce corruption and overpricing, and that making publication a precondition would ensure that contracts are actually made public. Critics, however, believe that it would involve excessive administrative burdens, particularly due to the need to redact personal data, and would unnecessarily delay the contracts from taking effect.",
+    "tags": [
+      "Transparency and Anti-corruption"
+    ]
+  },
+  {
+    "id": "8bf0b7ec-d48b-4bf2-a9fb-8ef00d4f3b5d",
+    "title": "Healthcare",
+    "statement": "Emergency contraceptive pills should be available without a prescription.",
+    "detail": "The morning-after pill is used to prevent unwanted pregnancy. Hungary is currently the only country in the EU where this pill is available with a prescription only. Supporters of the change argue that prescription requirements can create humiliating situations and hinder quick access for women, so easier availability could reduce the number of unwanted pregnancies and abortions. Opponents, however, believe that medical supervision is needed due to potential side effects.",
+    "tags": [
+      "Healthcare"
+    ]
+  },
+  {
+    "id": "1ae65bf8-68ce-41a1-b426-e82df5cc4c72",
+    "title": "Healthcare",
+    "statement": "Social insurance should cover a broader range of private healthcare services than at present.",
+    "detail": "In Hungary, many patients are forced to use private care due to long waiting lists while continuing to pay social insurance (TB). The proposal is that TB could, in certain cases, also fund treatment at private providers. Supporters argue this would reduce waiting lists and relieve pressure on state hospitals. Critics, however, believe that instead of funding the private sector, more resources should be channelled into pubic healthcare to eliminate waiting lists and other anomalies.",
+    "tags": [
+      "Healthcare"
+    ]
+  },
+  {
+    "id": "d9e90967-09b6-46ae-97ec-ad88c4c15143",
+    "title": "Economy",
+    "statement": "Hungary's long-term energy supply must include nuclear energy.",
+    "detail": "The Paks Nuclear Power Plant provides approximately half of Hungary's electricity generation, and the Paks II project would further expand this capacity. Some argue that nuclear energy provides stable, cheap and carbon-free electricity, making it important for energy security and climate protection, and that without it the country's basic electricity supply cannot be guaranteed. Critics of nuclear energy emphasise the difficulty of managing radioactive waste, the environmental risks and the consequences of a potential accident. They argue that instead of renewing nuclear capacities, there should be a gradual shift to renewable energy sources.",
+    "tags": [
+      "Economy"
+    ]
+  },
+  {
+    "id": "99bf8ad5-707e-4749-89c9-62e46fa6a5bd",
+    "title": "Values",
+    "statement": "It is right that women considering abortion are required to listen to the foetal heartbeat before making their decision.",
+    "detail": "The government introduced the rule known as the \"heartbeat law\" in 2022, which makes it mandatory to listen to the foetal heartbeat before an abortion. Critics say this is humiliating and further burdens women in difficult situations, especially victims of sexual assault or minors, and does not reduce the number of abortions. Supporters, however, believe it is important that the weight of the decision to terminate a pregnancy be duly considered and not treated as just a medical procedure.",
+    "tags": [
+      "Values"
+    ]
+  },
+  {
+    "id": "c72032e4-43c1-4619-a967-b765a1fa1b5c",
+    "title": "Values",
+    "statement": "The use of soft drugs should be legalised.",
+    "detail": "As a result of the drug war declared past year, drug use is widely prosecuted in Hungary. Supporters of legalisation argue that current regulations punish drug users too harshly, as they often struggle with social or mental health problems. They believe that prohibition strengthens the black market and organised crime and makes it harder for addicts to seek help. Supporters of prohibition, however, argue that strong deterrence is needed, and that the force of law is necessary to prevent young people from experimenting with addictive substances.",
+    "tags": [
+      "Values"
+    ]
+  },
+  {
+    "id": "4be0de98-e20a-4dfb-99ee-8f350f91ff40",
+    "title": "Values",
+    "statement": "Same-sex marriage should be legalised.",
+    "detail": "In Hungary, same-sex couples may enter into registered partnerships but not marry. Supporters of marriage equality argue that marriage is the recognition of commitment and a stable relationship, which means that excluding same-sex couples from it is unjustifiable. They see marriage as a civil law act which, on the basis of equal rights, should also be made available to same-sex couples. Opponents, however, believe that marriage is traditionally the union of a man and a woman and the framework for having children, and that its extension to same-sex couples should not be supported on cultural-religious grounds or with reference to the interests of children.",
+    "tags": [
+      "Values"
+    ]
+  },
+  {
+    "id": "12edbe31-205b-45b3-9771-d427054b9f88",
+    "title": "Values",
+    "statement": "Only married couples should be permitted to adopt children.",
+    "detail": "In Hungary, generally only married couples can adopt, while singles or non-heterosexual couples may only do so with ministerial permission. Supporters of the restriction argue that marriage between a man and a woman provides the most stable environment for a child. Opponents, however, believe that other family forms can also provide a safe and loving home, which the institutional system of state care cannot.",
+    "tags": [
+      "Values"
+    ]
+  },
+  {
+    "id": "cc1472b9-22a1-4612-bffd-a0966d4fc701",
+    "title": "EU",
+    "statement": "Hungary should strive to introduce the euro as soon as possible.",
+    "detail": "The euro is currently the common currency of 21 EU member states and is also used outside the EU. Even peers of Hungary, such as Slovakia and, since 2026, Bulgaria also use the euro. Hungary committed to introducing the common currency when signing the EU accession treaty, but no specific date was set. Supporters argue that joining the eurozone would increase Hungary's economic stability and competitiveness and reduce costs for businesses and individuals. Others argue that an independent currency provides greater room for manoeuvre and competitiveness.",
+    "tags": [
+      "EU"
+    ]
+  },
+  {
+    "id": "76e678aa-a512-4339-a752-d887a2e679be",
+    "title": "EU",
+    "statement": "Hungary should support Ukraine's accession to the European Union.",
+    "detail": "In December 2023, EU leaders decided that accession talks with Ukraine could begin. Some argue that once the necessary conditions are met, Ukraine deserves EU membership, as it has historically belonged to Europe and has heroically resisted Russian aggression; moreover, a country of its size and population offers new opportunities for the Union. Others, however, contend that Ukraine’s accession is not in the EU’s interest, as the country is politically and economically unstable, and bringing it up to EU standards would currently entail incalculable costs for the member states.",
+    "tags": [
+      "EU"
+    ]
+  },
+  {
+    "id": "cff570fe-355f-412d-a27f-356342ebeef2",
+    "title": "EU",
+    "statement": "It may become necessary in the coming years for Hungary to leave the European Union.",
+    "detail": "Some argue that Hungary has partially lost its sovereignty through EU membership, as EU rules and obligations limit its economic and political room for manoeuvre. They believe the common migration policy and the freezing of Hungary's budgetary funds on rule-of-law grounds are unfair, and that withdrawal from the EU may become worth considering in the coming years. Others, however, argue that EU membership has brought unprecedented economic stability and development through EU funds and the single market. With withdrawal, these advantages would be lost, the country would become an internationally insignificant player, and its Western integration would be endangered.",
+    "tags": [
+      "EU"
+    ]
+  },
+  {
+    "id": "3a28e929-ec12-4114-a59a-36977062461b",
+    "title": "Economy",
+    "statement": "The government does well to encourage foreign direct investments through tax incentives and individual subsidies.",
+    "detail": "The government encourages foreign multinational companies, mostly car or battery manufacturers, to invest in Hungary through direct subsidies and tax incentives granted via particular government decisions. Supporters argue that these investments create jobs and strengthen the economy. Critics, however, say the overall economic benefits are not well-founded; such projects are often environmentally harmful, operate with low added value, and increase the country’s economic exposure. In their view, development policies should instead focus on improving the competitiveness of domestic small and medium-sized enterprises.",
+    "tags": [
+      "Economy"
+    ]
+  },
+  {
+    "id": "d42fa2ad-dd7a-4ccb-9c65-eb7f28572c5f",
+    "title": "Economy",
+    "statement": "The modernisation of railway lines and the rolling stock of the Hungarian State Railways (MÁV) should take priority over new road developments.",
+    "detail": "State transport development over the past 20-30 years has prioritised highway construction over railway development. The underfunding of railways is visible in MÁV's ageing tracks and rolling stock. Some argue that instead of building new highways, railway modernisation should be the focus of resources in the near future, as it is more energy-efficient and more suitable for mass transport. Others argue that railway developments only pay off over such a long time horizon that the construction of new highways must remain a priority in the interests of the Hungarian economy and rural regions.",
+    "tags": [
+      "Economy"
+    ]
+  },
+  {
+    "id": "6356aa84-e627-4943-8c94-382da198cef9",
+    "title": "Child Protection",
+    "statement": "The use of social media by minors should be subject to age restrictions.",
+    "detail": "In November 2025, the European Parliament proposed a resolution that would ban the use of social media for those under 16. Supporters of the proposal argue that these platforms are addictive, can harm young people’s self-image and social relationships, and that tech companies deliberately try to keep children engaged for as long as possible. Opponents, however, believe that such a ban would be difficult to enforce, and that the focus should instead be on education that promotes conscious and responsible internet use.",
+    "tags": [
+      "Child Protection"
+    ]
+  },
+  {
+    "id": "6bdbd914-d999-42ce-b572-d36e2766ab67",
+    "title": "Child Protection",
+    "statement": "The state should provide compensation to those who were victims of abuse or sexual violence within the child protection system.",
+    "detail": "Supporters of the proposal argue that the state not only has an ethical obligation to acknowledge its responsibility, but should also establish an automatic compensation fund to support victims’ therapy and help them start their lives, as it failed to guarantee their safety. Opponents, however, believe that the funds should instead be used to strengthen the system’s preventive capacity, increase professionals’ salaries, and implement stricter screening in order to prevent future abuse.",
+    "tags": [
+      "Child Protection"
+    ]
+  },
+  {
+    "id": "1f522f68-da8f-407c-b137-2a3566b2ea5c",
+    "title": "National Defence",
+    "statement": "In the long term, it is appropriate for Hungary to spend approximately 5 percent of its GDP on defence.",
+    "detail": "Hungary joined NATO in 1999, committing to spend a given proportion of GDP on defence. Instead of the previous 2% target, the alliance set a 5% target at the 2025 Hague summit, which would require more than doubling Hungary's current spending of around HUF 1,939 billion. Supporters argue that a gradual increase spread over 10 years could be realistic and would strengthen the country's security and defence industry. Opponents worry that it would impose such a significant budgetary burden that it would come at the expense of other developments, and they do not consider participation in an arms race to be morally justified.",
+    "tags": [
+      "National Defence"
+    ]
+  },
+  {
+    "id": "3bdba9a3-f475-4e7d-b5f5-2977258ac0f3",
+    "title": "Taxation",
+    "statement": "The current system of family tax allowances is an appropriate instrument for supporting child-rearing.",
+    "detail": "In Hungary, the family tax and social contribution allowance is the foundation of the family support system, which increases parents’ net income based on the number of their children. Supporters argue that it is effective because it encourages work and childbearing. Critics, however, believe that the allowance primarily benefits higher-income earners, while for the poorest families, the tax benefit does not cover the costs of raising children, and they may even miss out on it altogether (for example, in cases of unemployment). Therefore, they propose increasing family benefits and introducing need-based support.",
+    "tags": [
+      "Taxation"
+    ]
+  },
+  {
+    "id": "e01a77a2-7acd-4608-85a8-2a783b1469fb",
+    "title": "Pension",
+    "statement": "Pensions should be adjusted to both inflation and wage increases.",
+    "detail": "In Hungary, pension increase is mainly linked to inflation. Supporters of the change argue that this does not ensure that pensioners benefit from economic growth, and therefore propose the \"Swiss indexation\" which also takes wage increases into account. Opponents, however, argue that wage-linked increases would place a great burden on the budget in an ageing society and could jeopardise the long-term sustainability of the pension system.",
+    "tags": [
+      "Pension"
+    ]
+  },
+  {
+    "id": "bfa9e91e-4933-4233-a331-9fddb64c408a",
+    "title": "Climate and Environmental Protection",
+    "statement": "Combating the desertification of the Great Hungarian Plain is an urgent task of the state.",
+    "detail": "In the Great Hungarian Plain, particularly in the sand ridge between Duna and Tisza (\"Homokhátság\"), drought is becoming increasingly severe and groundwater levels are rapidly falling. Supporters of intervention argue that desertification threatens agriculture and the stability of food prices, and that comprehensive water retention and landscape rehabilitation programmes are needed. Opponents, however, citing the high costs and the global nature of climate change, consider strengthening adaptation and local innovation more important, and see the role of the state more in stimulating economic recovery.",
+    "tags": [
+      "Climate and Environmental Protection"
+    ]
+  },
+  {
+    "id": "dcd28e4b-1481-48d0-ad08-0c523cab1394",
+    "title": "Transparency and Anti-corruption",
+    "statement": "Extensive wealth investigations should be conducted among members of the political and economic elite.",
+    "detail": "Supporters of wealth investigations argue that in recent decades, representatives of Hungary's political and economic elite have used their influence to amass far greater wealth than would have been legally possible. The investigations would create an opportunity to uncover assets acquired through corruption and recover them for the public good. This could also strengthen citizens' faith in state accountability and serve as a deterrent against future corruption. Critics, however, argue that the authorities have already been doing their job well, and that such investigations entail risks of political abuse and the potential to undermine the rule of law.",
+    "tags": [
+      "Transparency and Anti-corruption"
+    ]
+  },
+  {
+    "id": "02bed490-44d3-46f2-befb-4c7749442535",
+    "title": "Transparency and Anti-corruption",
+    "statement": "Hungary should join the European Public Prosecutor's Office.",
+    "detail": "The European Public Prosecutor's Office was established in 2021 to strengthen the fight against fraud and corruption affecting the EU budget. Of the EU's 27 member states 24 have already joined, but Hungary has not. Supporters argue that participation would increase the effectiveness of the fight against corruption in cases where national authorities have no interest in doing so. Opponents, however, fear a reduction in national sovereignty and believe that Hungary's own prosecution system is also capable of investigating such cases.",
+    "tags": [
+      "Transparency and Anti-corruption"
+    ]
+  },
+  {
+    "id": "17756ca5-727a-406e-b07a-3fea1c6161e0",
+    "title": "Climate and Environmental Protection",
+    "statement": "Environmental regulations for battery factories and their enforcement should be tightened, even if this increases production costs.",
+    "detail": "Supporters argue that the high water and energy demands of battery manufacturing, as well as the use of hazardous materials, justify stricter controls and sanctions than at present, which could result in a more sustainable economy and less environmental damage in the long term. Opponents, however, fear that overly strict rules would damage competitiveness and deter investors, and believe that current regulations already adequately protect the environment and people.",
+    "tags": [
+      "Climate and Environmental Protection"
+    ]
+  },
+  {
+    "id": "a57fb9f6-3176-4ddd-8065-9234d86fd01a",
+    "title": "Transparency and Anti-corruption",
+    "statement": "Companies using public funds should proactively disclose their publicly funded contracts without request.",
+    "detail": "The aim of the proposal is to make it easy to determine what government contracts, subsidies, and real estate a business has obtained, without having to inquire at every possible public institution. Supporters argue that if companies also had such an automatic disclosure obligation, they would manage public funds more responsibly, reducing the risk of corruption and overpricing. Critics, however, argue that this would impose burdens on companies that could put them at a competitive disadvantage, and that the contracts could expose sensitive business information that might deter market players from accepting public orders.",
+    "tags": [
+      "Transparency and Anti-corruption"
+    ]
+  },
+  {
+    "id": "e1faf9fa-cc52-4b26-aebd-d0fbadd29b2b",
+    "title": "Constitutional Law",
+    "statement": "Hungary needs a new constitution.",
+    "detail": "Hungary's Fundamental Law was adopted in 2011 and entered into force in 2012. Some argue that the current text was not created through broad political consensus, so its long-term legitimacy is questionable; in contrast, a constitution adopted through broad social consultation would strengthen trust in democratic institutions. They argue that a new constitution could restore the system of checks and balances and guarantee fundamental rights for all. Opponents, however, argue that the Fundamental Law was lawfully adopted by a two-thirds majority of Parliament and thus has democratic legitimacy, and that in the interests of stability, amending the disputed points might be sufficient instead of a completely new constitution.",
+    "tags": [
+      "Constitutional Law"
+    ]
+  },
+  {
+    "id": "d0fce9e2-9600-4c2d-aed4-976fcac11301",
+    "title": "Constitutional Law",
+    "statement": "It is appropriate that Hungarian citizens who do not have and have never had a registered address in Hungary are entitled to vote in elections.",
+    "detail": "Hungarians living abroad have been able to vote for party lists in parliamentary elections since 2014. Supporters argue that citizenship is the basis for the right to vote, so it is due to every Hungarian citizen and can strengthen national cohesion. Opponents, however, argue that those living in the country mainly bear the consequences of elections, so voting rights tied to place of residence better reflect democratic responsibility.",
+    "tags": [
+      "Constitutional Law"
+    ]
+  },
+  {
+    "id": "11931d9a-e3fe-4437-b1dc-4b1ed6938b54",
+    "title": "Constitutional Law",
+    "statement": "Judicial enforcement should be nationalised.",
+    "detail": "The Völner-Schadl affair triggered a debate about the future of the profit-based bailiff system. Supporters argue that public management organised under the courts could provide greater transparency, more uniform operation and fewer opportunities for abuse. Opponents, however, fear that nationalisation would increase bureaucracy and slow down proceedings, and therefore consider maintaining a strictly regulated but private system to be more effective.",
+    "tags": [
+      "Constitutional Law"
+    ]
+  },
+  {
+    "id": "6be60a1b-8fb1-4b96-bfad-ba8ef8e20a58",
+    "title": "Foreign Policy",
+    "statement": "Hungary should pursue an independent foreign policy even if this conflicts with the common position in the European Union.",
+    "detail": "The Hungarian government often pursues an independent foreign policy within the EU: at times blocking common decisions with vetoes, while at other times, under the framework of the “Eastern Opening,” building partnerships that may strengthen competitors to the EU. Supporters of this independent approach argue that national interest is paramount, and that an autonomous direction can provide greater room for maneuver in international relations and economic cooperation. Opponents, however, believe that weakening EU unity may reduce Hungary’s ability to assert its interests and its security, and may also entail political and economic risks.",
+    "tags": [
+      "Foreign Policy"
+    ]
+  },
+  {
+    "id": "a2b9f23e-d66a-4986-ac6a-693c6935ff83",
+    "title": "Foreign Policy",
+    "statement": "It is in Hungary's long-term interest to reduce its dependence on Russian energy sources, even if this entails short-term costs.",
+    "detail": "Despite the Russian-Ukrainian war, 80-90% of Hungary's oil imports and 50-70% of its gas imports still come from Russian sources. Supporters of the statement argue that reducing dependency would increase the country's sovereignty, and that increasing the share of alternative sources and renewable energies could provide a more stable, environmentally friendly supply in the longer term. Opponents, however, fear that breaking away could cause significant price increases and a competitive disadvantage.",
+    "tags": [
+      "Foreign Policy"
+    ]
+  },
+  {
+    "id": "fc1d7860-82eb-4028-90b2-837fe90a7c56",
+    "title": "Housing",
+    "statement": "Access to home ownership should continue to be supported primarily through subsidised loans, regardless of financial situation.",
+    "detail": "According to analysts, the Otthon Start (Home Start) programme would cost around HUF 250 billion per year after five years, which, together with the CSOK (Familiy Housing Support Programme) and the Babaváró (childbirth incentive) loan, places a significant burden on the state budget. Critics of the schemes fear that they push up prices, indebt society and do not reach those most in need, so they propose state housing programmes and targeted social support instead. Supporters argue that subsidised loans help families purchase their own homes, increase stability and boost the construction industry.",
+    "tags": [
+      "Housing"
+    ]
+  },
+  {
+    "id": "20bb94c4-dbd1-48d0-a0a6-27024954b3c1",
+    "title": "Media",
+    "statement": "State media should be supervised by a body that is organisationally independent from the government and parliamentary parties.",
+    "detail": "Some argue that public media produces programming that is politically biased toward the government, and that its average daily operating costs can reach 450 million forints. In their view, the role of public media is to provide balanced, impartial information, which could be achieved through a new media law and an independent oversight body. Others argue that parliamentary oversight is the appropriate form of democratic control for publicly funded public media, so it is understandable that parliamentary representation should be reflected in organizational and personnel decisions.",
+    "tags": [
+      "Media"
+    ]
+  },
+  {
+    "id": "d7aac1d2-8e64-4b9f-8cf9-37484027884a",
+    "title": "Economy",
+    "statement": "It is appropriate for agricultural land to be treated as an investment product.",
+    "detail": "In 2025, the land trading law was amended to allow the purchase of agricultural land for the purpose of leasing it out, meaning that the owner does not have to cultivate the land themselves and can essentially treat it as an investment product. Supporters argue that land is a value-preserving investment and opening up the land market can increase efficiency, stimulate development and revitalise the rural economy. Opponents, however, fear that the investment purpose will drive up prices and push smaller farmers out of the market, while the primary role of agricultural land is to ensure food production and rural livelihoods.",
+    "tags": [
+      "Economy"
+    ]
+  },
+  {
+    "id": "2f7aa1e1-c24c-4ede-969d-b5d4f642399a",
+    "title": "Labour Affairs",
+    "statement": "The issuance of new work permits to guest workers from outside the European Union should be prohibited.",
+    "detail": "In Hungary, the number of guest workers from outside the EU has grown significantly in recent years. Some argue that the presence of guest workers pushes down wages, makes it harder for domestic workers to find employment and creates social tensions, and that the issuance of new work permits should therefore be completely banned. Others, however, warn that several sectors are already suffering from labour shortages and that a complete ban could cause economic recession and the absence of certain investments. They therefore primarily expect employers to give preference to domestic workers and would only reduce the number of work permits that can be issued.",
+    "tags": [
+      "Labour Affairs"
+    ]
+  },
+  {
+    "id": "082d23db-26d5-4e35-9586-6e710217dddc",
+    "title": "Labour Affairs",
+    "statement": "Overtime regulations should be tightened in order to protect workers.",
+    "detail": "The 2018 labour law amendment raised the annual overtime cap to 400 hours and allowed for three-year settlement periods. Those calling for tighter overtime regulation argue that the change made workers more vulnerable, and that excessive overtime can also be harmful to their health. Opponents, however, argue that flexible rules help companies cope with labour shortages and provide extra income for workers.",
+    "tags": [
+      "Labour Affairs"
+    ]
+  },
+  {
+    "id": "07273388-8b85-4e0b-aba2-3c02a755b414",
+    "title": "Labour Affairs",
+    "statement": "Employers who pay women lower wages for the same work should be penalised.",
+    "detail": "Research suggests that women in the same or similar positions are paid on average lower salaries than men. Supporters of stricter measures argue that the principle of \"equal pay for equal work\" must be enforced through effective supervision and sanctions. Opponents, however, argue that wage agreements are influenced by many factors, such as experience, performance or negotiating ability, and that excessive state interference in this area can increase administrative burdens and unduly restrict the room for manoeuvre of businesses.",
+    "tags": [
+      "Labour Affairs"
+    ]
+  },
+  {
+    "id": "ff952734-ad43-4e8b-8868-5b297f3f547f",
+    "title": "Labour Affairs",
+    "statement": "Both the duration and the amount of unemployment benefits should be increased.",
+    "detail": "In Hungary, the job-seekers' allowance is paid for a maximum of 90 days, which is the shortest duration in the EU. Supporters of longer support argue that in the current market environment it is very difficult to find new work within three months. A longer allowance providing genuine subsistence would help those who have lost their jobs to find work better suited to them, which is also worthwhile at the national economic level. Opponents, however, fear that more generous support could reduce motivation to work and increase budgetary burdens, and therefore prefer to focus state resources on job creation and active labour market interventions.",
+    "tags": [
+      "Labour Affairs"
+    ]
+  },
+  {
+    "id": "c8d636dc-4f26-4d5b-9a35-7d2ad8f1628f",
+    "title": "Labour Affairs",
+    "statement": "Home care should be recognised as a formal employment status.",
+    "detail": "In Hungary, more than 50,000 people care for a chronically ill or severely disabled relative at home, often 24 hours a day. Supporters argue that recognising home care as an employment status would provide fairer income and social insurance and pension entitlements. Opponents, however, warn that this would entail significant additional budgetary expenditure and raise legal questions about regulating employment.",
+    "tags": [
+      "Labour Affairs"
+    ]
+  },
+  {
+    "id": "45aaae46-ed60-4cc3-9906-e724474da1f1",
+    "title": "Education",
+    "statement": "Eliminating school segregation is an important task of education policy.",
+    "detail": "Some argue that teaching students with very different abilities and backgrounds together makes it difficult for teachers to do their job, so separate groups may be more effective for remedial education or developing talent. Others, however, believe that school segregation increases social inequality, and that eliminating it is an essential element of education policy. Mixed classes can strengthen social integration and mobility, and teach children solidarity and cooperation. Where this does not work, teacher training and support would be needed instead of segregation.",
+    "tags": [
+      "Education"
+    ]
+  },
+  {
+    "id": "2a5ee261-d57c-440c-9041-0703caba8441",
+    "title": "Education",
+    "statement": "It is harmful to the quality of public education when children from wealthier families leave it for private schools.",
+    "detail": "In Hungary, an increasing number of students attend private or denominational schools. Some argue that this further increases the inequalities already present in Hungarian education, since private schools attract not only students from better-off families but also more talented teachers, thereby further worsening the quality and attractiveness of public education. Others argue that private schools merely satisfy existing demand and that their negative impact is unclear, since they even free up resources in state education.",
+    "tags": [
+      "Education"
+    ]
+  },
+  {
+    "id": "115651d5-4e2a-4e82-bee4-73fcbdc28ac5",
+    "title": "Education",
+    "statement": "Universities that have undergone a model change should remain under private management.",
+    "detail": "In recent years, more than 20 Hungarian higher education institutions have been transferred to public trust funds performing a public function (KEKVAs). Supporters of the model change argue that this gives institutions greater economic independence and competitiveness, enabling them to launch more market-oriented programmes. Opponents, however, argue that the change did not make universities more efficient, while they have lost their autonomy as political appointees sit on the foundation boards and can enforce political considerations in university governance.",
+    "tags": [
+      "Education"
+    ]
+  },
+  {
+    "id": "e9cbaab9-ad2c-4b68-8cc6-35e76b99ba34",
+    "title": "Education",
+    "statement": "The compulsory school age should be restored to 18.",
+    "detail": "In 2011, the compulsory school age was reduced from 18 to 16. Some argue that young people who do not want to learn should not be kept in school but should rather be given opportunities in vocational training or the world of work. Others, however, argue that early school leaving worsens future prospects, while compulsory education up to the age of 18 could reduce inequalities and contribute to the development of a more flexible, better-trained workforce.",
+    "tags": [
+      "Education"
+    ]
+  },
+  {
+    "id": "8493ba8d-a88d-4fac-a348-04584668a8de",
+    "title": "Local Government",
+    "statement": "The autonomy of municipalities in organising local public services should be strengthened.",
+    "detail": "Since 2011, the management of several public services has been transferred into state hands in Hungary. Some argue that this is a misguided process, since municipalities know their communities' needs better and could therefore organise public services more effectively with greater autonomy, strengthening local democracy. Others, however, argue that state coordination can ensure more efficient operation and more balanced service qualities across different settlements in the country.",
+    "tags": [
+      "Local Government"
+    ]
+  }
+]

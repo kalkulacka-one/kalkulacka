@@ -1,0 +1,16 @@
+{
+  "id": "12c0b7cc-2206-5f5e-a407-6e3687b18a82",
+  "key": "voksmonitor-2026",
+  "version": "1.0.0",
+  "createdAt": "2026-04-02T23:39:17+00:00",
+  "title": "Országgyűlési választások 2026 Voksmonitor",
+  "shortTitle": "Voksmonitor 2026",
+  "description": "Voksmonitor 2026 - pártok álláspontjainak összehasonlítása.",
+  "intro": "Válaszolj a kérdésekre, és nézd meg, melyik párt áll legközelebb hozzád.",
+  "checksums": {
+    "questions": {
+      "algorithm": "sha256",
+      "value": "1ae7f1b4bb07c8e3bda9281fee5dce6c194f50fddad12d8ea95ecd013c0fa5fe"
+    }
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "homepage": {
+    "title": "Parliamentary Elections 2026 Voksmonitor",
+    "date": "April 12, 2026",
+    "other-calculators": "Previous Voksmonitors",
+    "2026-card": {
+      "tags": {
+        "questionnaire": "Question Inventory",
+        "questions": "44 questions",
+        "duration": "15 minutes"
+      },
+      "title": "Parliamentary Elections 2026 Voksmonitor",
+      "description": "The goal of the Voksmonitor created for the 2026 parliamentary elections is for voters to encounter politics not only through party campaign messages, but to also learn about the positions of the parties running in the election on important policy issues. The application matches the respondent with the party whose position is closest to the respondent's opinion based on their answers. The questions were compiled by <website>K-Monitor</website> staff to cover a wide range of policy areas that determine the operation of the country. Our goal was to present dilemmas that meaningfully influence public policy and are understandable to voters, for example, in the areas of the economy, social policy, education, healthcare, environmental protection, or the transparency of state operations.",
+      "start-button": "Start Questions",
+      "calculator-name": "2026-ogy-en"
+    },
+    "post-election-panel": {
+      "description": "There is no election currently in progress, but you can still fill out the most recent Voksmonitor here. If you'd like to see what parties promised voters in 2026 and how they expressed their positions on various topics, click the button and browse their stances!",
+      "signature": "See you at the next election!",
+      "answers-button": "Browse party answers",
+      "analysis-button": "Read our analysis of the 2026 Voksmonitor data",
+      "analysis-link": "What did the 2026 Voksmonitor respondents want, and what did they get at the election?"
+    },
+    "bp-card": {
+      "tags": {
+        "questionnaire": "Question Inventory",
+        "questions": "28 questions",
+        "duration": "10 minutes"
+      },
+      "title": "Metropolitan Assembly Voksmonitor",
+      "description": "The goal of Voksmonitor is for voters to encounter politics not only through party communications, but to also learn about the positions of various political actors (in our case, factions and representatives) on a wide range of urban policy and professional issues. The application matches the respondent with the faction or representative whose position is closest to the respondent's values based on their answers.",
+      "start-button": "Start Questions"
+    },
+    "archive-section": {
+      "description": "K-Monitor has been operating Voksmonitor since 2014, and prepares its Hungarian and English-language election calculator for parliamentary, European Parliament, and municipal (as well as mayoral) elections. You can find previous Voksmonitors in the archive.",
+      "archive-button": "Go to Archive"
+    },
+    "methodology-section": {
+      "title": "How is Voksmonitor made?",
+      "description": "Voksmonitor is a joint project of <website>K-Monitor</website> and the <koho>KohoVolit.eu</koho> nonprofit organizations, which helps weigh who to vote for based on party platforms.",
+      "step1-alt": "Questionnaire",
+      "step1-text": "The questionnaire assesses the respondent's position on current political topics in 44 questions.",
+      "step2-alt": "Parties",
+      "step2-text": "We submitted the questions to every party running a list with meaningful support.",
+      "step3-alt": "Comparison",
+      "step3-text": "We compare these results with your answers.",
+      "step4-alt": "Calculation",
+      "step4-text": "Voksmonitor thus shows which party's opinion is closest to your values.",
+      "footer-text": "The goal of Voksmonitor is to inform and assist voter deliberation. You make the final decision in the voting booth.",
+      "learn-more": "Learn more!"
+    },
+    "footer": "© 2026 Volební kalkulačka / Voksmonitor"
+  },
+  "routing": {
+    "prefixes": {
+      "election": "vm"
+    },
+    "pages": {
+      "introduction": "introduction",
+      "guide": "guide",
+      "question": "question",
+      "review": "review",
+      "result": "my-matches",
+      "comparison": "comparison"
+    }
+  },
+  "footer": {
+    "tagline": "<strong>Voksmonitor</strong> compares your opinions with the parties' platforms.",
+    "nav": {
+      "about-us": "About us",
+      "about-voksmonitor": "About Voksmonitor",
+      "methodology": "Methodology",
+      "privacy-policy": "Privacy Policy",
+      "support": "Support"
+    },
+    "contact": {
+      "heading": "Contact"
+    }
+  },
+  "subscribe-form": {
+    "heading": "Subscribe to the K-Monitor newsletter! Subscribers will be the first to receive content and analyses related to Voksmonitor.",
+    "email-label": "Enter your email address",
+    "email-placeholder": "Email",
+    "submit-button": "Submit",
+    "consent-text": "I have read and accept K-Monitor's privacy policy.",
+    "consent-link": "privacy policy",
+    "success": "Thank you for subscribing",
+    "error-no-consent": "Please accept the privacy policy.",
+    "error-invalid-email": "Invalid format",
+    "error-submit": "An error occurred during subscription. Please try again.",
+    "error-server": "Server error. Please try again later."
+  },
+  "pages": {
+    "rolunk": {
+      "meta-title": "About us",
+      "about-kmonitor-heading": "About K-Monitor",
+      "support-heading": "Support the creation of Voksmonitor!",
+      "support-text": "Do you like Voksmonitor? Please support its creation!",
+      "about-kmonitor": "At K-Monitor, we believe that corruption is a problem that affects every part of society and harms everyone – regardless of worldview, origin, gender, or political conviction. Corruption not only causes enormous economic damage, but also undermines trust in institutions and the rule of law. It endangers democracies and is particularly severe in regions where good governance would be essential for eliminating hunger, poverty, and violence. The best antidote to corruption is a society where citizens feel responsible for institutions and actively shape their own environment. As a nonprofit organization, K-Monitor supports institutions, journalists, and individuals in the fight against corruption through community building, technological development, advocacy, and research. The principles of our operation are transparency, independence, and critical thinking. If you are interested in learning more about our activities, visit our <website>website</website> or <blog>blog</blog>!",
+      "about-kmonitor-links": "If you are interested in learning more about our activities, visit our <website>website</website> or <blog>blog</blog>!"
+    },
+    "voksmonitorrol": {
+      "meta-title": "About Voksmonitor",
+      "heading": "About Voksmonitor",
+      "what-heading": "What is Voksmonitor?",
+      "who-heading": "Who makes Voksmonitor and how?",
+      "how-heading": "How does it work?",
+      "what": "Voksmonitor is an online election calculator that compares your political opinion with the positions of the parties running in the 2026 parliamentary elections. Hungarian applications similar to Voksmonitor (e.g. Vokskabin) and international applications (e.g. Stemwijzer, Wahl-O-Mat, Wahlrechner) aim to help voters navigate and make the political landscape more transparent. The goal of Voksmonitor is for voters to encounter politics not only through campaign messages and communications, but also to learn about the parties' specific platforms and the positions they hold on important policy issues. The application helps reveal which political actors' views are closest to or furthest from your values.",
+      "who": "Voksmonitor has been jointly developed and operated for years by <website>K-Monitor</website> and <koho>KohoVolit.eu</koho>. This year, <vox>Vox Populi</vox> Election Guide also joined our initiative. The questions are compiled by K-Monitor staff and experts in order to cover the most important policy topics relevant to the 2026 parliamentary elections. The topics include, for example, the economy, healthcare, education, environmental protection, energy, and the rule of law. We send the questionnaire to parties running in the election in advance, who are given the opportunity to provide their answers and comments. If a party does not respond, we reconstruct their position based on their public platform, statements, and past decisions. We provide every party involved with the opportunity to review and correct their answers.",
+      "how": "The Voksmonitor questionnaire contains 44 political questions relevant to the 2026 parliamentary elections. Each question comes with a short, neutral explanation that presents the different positions, helping the respondent form their own opinion. Users can indicate for each question whether they agree with the given statement (yes / no / don't know), and can also indicate how important they consider the given topic. The application then compares the answers with the parties' positions and calculates the degree of agreement. The result is displayed as a percentage, showing which parties are closest to your views. The results are informational in nature: their purpose is to help voters make decisions and provide an opportunity to compare their own position with the political landscape."
+    },
+    "modszertan": {
+      "meta-title": "Voksmonitor Methodology",
+      "heading": "Voksmonitor Methodology",
+      "p1": "The Voksmonitor is a joint project of <website>K-Monitor</website> and <koho>KohoVolit.eu</koho>, with the goal of allowing voters to encounter politics not only through party communications, but also to learn about the various parties' platforms and positions on the most important political issues relevant to the 2026 parliamentary elections. This year, the <vox>Vox Populi</vox> Election Guide also joined our initiative.",
+      "support-heading": "Support the creation of Voksmonitor!",
+      "support-text": "Do you like Voksmonitor? Please support its creation!",
+      "body": "The application ranks parties for users based on how closely their policy positions match the user's answers. Before creating the application, we send the questions to parties running in the election, who are given the opportunity to answer the questions and provide comments. If a party does not respond to our inquiry, we reconstruct their position based on their electoral platform, public statements, and past decisions. This naturally raises the possibility that the answers may differ from the parties' official positions; however, K-Monitor provides every political force featured in the application the opportunity to correct these. Voksmonitor helps respondents navigate 44 politically themed questions. These cover current nationally relevant political issues and policy topics. All questions can be answered anonymously with yes, no, or don't know. A short, neutral explanation is also available for users for each question, summarizing the main positions related to the question. The result is in all cases orientational in nature: it allows users to compare their own position with the parties' positions. After completing the questionnaire, users see a short, anonymous, optionally completable mini questionnaire, in which they can answer a few basic demographic questions as well as a question about party preference. We use this data exclusively for research purposes: it helps us better understand how different social groups relate to various political issues, and to what extent users' self-reported party preference differs from what the Voksmonitor result shows. This contributes to the development of the application's methodology and to more accurate mapping of voter attitudes."
+    },
+    "kontakt": {
+      "meta-title": "Contact",
+      "heading": "Contact"
+    }
+  },
+  "calculator": {
+    "introduction": {
+      "close-aria-label": "Close",
+      "next-button": "Next",
+      "voksmonitor-2026": {
+        "para1": "The goal of the Parliamentary Elections 2026 Voksmonitor is for voters to encounter politics not only through party campaign messages, but also to learn about the parties' positions on important policy issues. The application matches the respondent with the party whose position is closest to the respondent's opinion based on their answers.",
+        "para2": "The Parliamentary Elections 2026 Voksmonitor was created for the 2026 parliamentary elections. The questions were compiled by K-Monitor staff to cover a wide range of policy areas that determine the functioning of the country. Our goal was for the questions to present dilemmas that meaningfully influence public policy and are understandable to voters, for example, in the areas of the economy, social policy, education, healthcare, environmental protection, or the transparency of state operations.",
+        "para3": "The Parliamentary Elections 2026 Voksmonitor is a joint project of <website>K-Monitor</website>, <koho>KohoVolit.eu</koho>, and <vox>Vox Populi</vox>."
+      },
+      "fovarosi-kozgyules": {
+        "para1": "A Voksmonitor célja, hogy a választók a politikával ne csak a pártok kommunikációján keresztül találkozzanak, hanem megismerjék a különböző politikai szereplők (esetünkben frakciók és képviselők) álláspontját a várospolitikai és szakmai kérdések széles körében. Az alkalmazás a válaszadóhoz rendeli azt a frakciót, illetve képviselőt, amelynek álláspontja a válaszok alapján legközelebb áll a kitöltő értékrendjéhez.",
+        "para2": "A Voksmonitor a Fővárosi Közgyűlés 2024. október 4-i alakuló ülésétől 2025. május 28-ig tartó időszakból válogat 28 olyan ügyet, amelyekben a képviselők vitáztak, közösen gondolkodtak és döntést hoztak. A kérdéseket a K-Monitor munkatársai úgy állították össze, hogy lefedjék a Fővárosi Közgyűlés előtt tárgyalt döntési területek széles körét. Célunk az volt, hogy a kérdések tükrözzék a város működését érdemben befolyásoló és érthető dilemmákat – a közlekedéstől és lakhatástól kezdve a zöldfelületek kezelésén és átláthatóságon át a városi fejlesztésekig.",
+        "para3": "A Voksmonitor a <website>K-Monitor</website> és a <koho>KohoVolit.eu</koho> közös projektje, amelyet a Visegrad Fund támogatott."
+      }
+    },
+    "guide": {
+      "close-aria-label": "Close",
+      "agree-label": "Agree",
+      "agree-description": "If your answer matches a party's answer, it is worth one point.",
+      "disagree-label": "Disagree",
+      "disagree-description": "If your answer is contrary to a party's answer, one point is deducted.",
+      "skip-label": "Skip",
+      "skip-description": "If you have no position on the topic or do not wish to answer, you can proceed using the arrow on the right. The question will not be taken into account in the calculation of results.",
+      "important-label": "Important to me",
+      "important-description": "You can mark topics that are important to you with a star. The program counts these with double weight.",
+      "guide-heading": "Guide",
+      "start-answering-button": "Start answering",
+      "back-to-intro": "Back to introduction"
+    },
+    "question": {
+      "close-aria-label": "Close questionnaire",
+      "guide-button": "Guide",
+      "previous-button": "Previous",
+      "skip-button": "Skip",
+      "next-button": "Next",
+      "agree-button": "Agree",
+      "disagree-button": "Disagree",
+      "important-aria-label": "Important to me"
+    },
+    "review": {
+      "show-results-button": "Show results"
+    },
+    "demography-survey": {
+      "heading": "Questionnaire",
+      "description": "Not only the parties’ opinions matter, but voters’ views do too! Please support our work by answering a few short questions. Participation is completely anonymous and voluntary, and the data will be used exclusively for research purposes. By completing the survey, you help us better understand what different social groups think about important public issues.",
+      "close-aria-label": "Close",
+      "skip-button": "Skip",
+      "submit-button": "Submit and continue",
+      "confirm-empty-submit": "You have not answered every question. Are you sure you want to submit the questionnaire with empty answers?",
+      "submitting-button": "Submitting...",
+      "incomplete-warning": "Please answer every question, or choose the Skip button to proceed.",
+      "answered-count": "{count}/{total} answered",
+      "gender": {
+        "label": "What is your gender?",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "no-answer": "I do not wish to answer"
+      },
+      "age": {
+        "label": "Please provide your age",
+        "0-18": "0–18",
+        "18-24": "18–24",
+        "25-34": "25–34",
+        "35-44": "35–44",
+        "45-54": "45–54",
+        "55-64": "55–64",
+        "65+": "65+"
+      },
+      "residence": {
+        "label": "Please provide your place of residence!",
+        "budapest": "Budapest",
+        "county-seat": "County seat / city with county rights",
+        "other-city": "Other city",
+        "village": "Village / town",
+        "abroad": "Abroad"
+      },
+      "education": {
+        "label": "What is your highest completed level of education?",
+        "primary": "Primary (elementary school)",
+        "secondary-no-matura": "Secondary (without Matura)",
+        "secondary-matura": "Secondary (with Matura)",
+        "bachelor": "Bachelor's degree (BA/BSc)",
+        "master-or-higher": "Master's degree or higher (MA/MSc+)"
+      },
+      "would-vote": {
+        "label": "If there were an election this Sunday, which party would you vote for?",
+        "fidesz-kdnp": "Fidesz–KDNP",
+        "tisza": "TISZA Party",
+        "dk": "DK (Democratic Coalition)",
+        "mi-hazank": "Mi Hazánk Movement",
+        "mkkp": "Hungarian Two-Tailed Dog Party",
+        "other-party": "Other party",
+        "would-not-vote": "I would not go to vote",
+        "dont-know": "I don't know / I do not wish to answer"
+      }
+    },
+    "share": {
+      "title": "Share result",
+      "close-aria-label": "Close",
+      "loading": "Creating link...",
+      "error-create-link": "Failed to create the sharing link.",
+      "share-description": "Share your result with your friends:",
+      "copy-button": "Copy",
+      "copied-button": "Copied",
+      "share-instagram": "Share on Instagram",
+      "share-x": "Share on X",
+      "share-text": "I found out which parties are closest to me!",
+      "share-text-with-handle": "Check out my {handle} Voksmonitor result!",
+      "privacy-notice": "By sharing your results, you agree to our <privacyLink>privacy policy</privacyLink>.",
+      "filename": "My Voksmonitor result.png"
+    },
+    "comparison": {
+      "heading": "Comparison",
+      "back-aria-label": "Back to results",
+      "close-aria-label": "Close",
+      "choose-party": "Select a party",
+      "all-organizations": "All organizations",
+      "you": "You",
+      "read-more": "Read more!"
+    },
+    "answers": {
+      "heading": "Answers",
+      "back-aria-label": "Back to results",
+      "close-aria-label": "Close"
+    },
+    "result": {
+      "comparison-button": "Comparison",
+      "share-button": "Share",
+      "share-copy-link": "Copy link",
+      "share-copied": "Copied!",
+      "share-title": "Check out my Voksmonitor result!",
+      "factions-label": "Factions",
+      "representatives-label": "Representatives",
+      "my-result-heading": "My result",
+      "heading": "Results",
+      "close-aria-label": "Close",
+      "back-aria-label": "Back",
+      "show-all-parties": "Show all parties",
+      "show-fewer-parties": "Show fewer parties",
+      "description": "Results of the two largest parties"
+    },
+    "donate": {
+      "title": "Support Voksmonitor",
+      "description": "Support the K-Monitor Public Benefit Association that creates the Voksmonitor!",
+      "button": "Support Voksmonitor",
+      "paypal-button": "Support (PayPal)",
+      "more-options-button": "Support (more options)",
+      "close-aria-label": "Close"
+    },
+    "match": {
+      "you-candidate-header": "You • Candidate",
+      "expert-respondent-note": "The position was determined from public sources; the party did not respond to the submitted questions.",
+      "unknown-position": "Position could not be determined",
+      "source": "Source",
+      "no-description": "No description available",
+      "source-link": "link"
+    },
+    "feedback-survey": {
+      "heading": "Feedback",
+      "description": "Please help us improve the Voksmonitor by sharing your response!",
+      "close-aria-label": "Close",
+      "helpfulness-label": "How much did you feel that the questions addressed topics that are truly important to you?",
+      "star-aria-label": "{value} star",
+      "scale-low": "Not at all",
+      "scale-high": "Completely",
+      "skip-button": "Skip",
+      "submit-button": "Submit",
+      "submitting-button": "Submitting..."
+    }
+  },
+  "share-page": {
+    "heading": "Shared result",
+    "no-results": "No results found.",
+    "description": "Here you can see how closely each party's positions match my opinions.",
+    "cta-button": "Try it yourself!"
+  }
+}

@@ -5,6 +5,6 @@ export const appConfig = withDefaults({
 
   i18n: {
     defaultLocale: "hu",
-    locales: ["hu"],
+    locales: ["hu", "en"],
   },
 });
