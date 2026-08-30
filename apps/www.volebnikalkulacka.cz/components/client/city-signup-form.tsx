@@ -8,6 +8,8 @@ import { z } from "zod";
 import { campaignCities } from "@/config/campaign-cities";
 import { citySignup } from "@/server/city-signup";
 
+import { DonateCta } from "./donate-cta";
+
 const citySignupSchema = z.object({
   email: z.string().email("Neplatný formát"),
   city: z.enum(campaignCities, { message: "Vyberte město ze seznamu" }),
@@ -52,7 +54,14 @@ export function CitySignupForm() {
   return (
     <>
       {isSuccessfullySubmitted ? (
-        <div>Děkujeme! Ozveme se vám.</div>
+        <div className="grid gap-4">
+          <p className="text-slate-700">Děkujeme! Ozveme se vám.</p>
+          <DonateCta
+            source="city-signup-thanks"
+            heading="Pomozte i příspěvkem"
+            description="Kalkulačku pro vaše město připravíme společně. Váš příspěvek platí sběr otázek, oslovení kandidátů i provoz webu."
+          />
+        </div>
       ) : (
         <form className="flex flex-col gap-4 items-stretch" onSubmit={handleSubmit(onSubmit)} noValidate>
           <Field disabled={isSubmitting}>

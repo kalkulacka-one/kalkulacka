@@ -7,6 +7,8 @@ import { z } from "zod";
 
 import { subscribe } from "@/server/subscribe";
 
+import { DonateCta } from "./donate-cta";
+
 const subscribeSchema = z.object({
   email: z.string().email("Neplatný formát"),
 });
@@ -50,7 +52,10 @@ export function SubscribeForm() {
   return (
     <>
       {isSuccessfullySubmitted ? (
-        <div>Děkujeme za vyplnění</div>
+        <div className="grid gap-4">
+          <p className="text-slate-700">Děkujeme! Dáme vám vědět, jakmile kalkulačky spustíme.</p>
+          <DonateCta source="subscribe-thanks" />
+        </div>
       ) : (
         <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
           <Field disabled={isSubmitting}>
