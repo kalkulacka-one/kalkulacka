@@ -10,6 +10,16 @@ const calculatorKeySchema = z
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
   .describe("Key of the calculator; the last URL segment");
 
+const selectionSchema = z
+  .object({
+    title: z.string().describe("Heading of the calculator picker; overrides the app default for the district kind").optional(),
+    description: z.string().describe("Description shown in the calculator picker").optional(),
+    searchPlaceholder: z.string().describe("Placeholder of the search field in the calculator picker").optional(),
+    showCode: z.boolean().describe("Whether to display district codes next to district names; overrides the app default for the district kind").optional(),
+  })
+  .strict()
+  .describe("Optional copy and display overrides for the calculator picker");
+
 const calculatorGroupKeySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
@@ -34,6 +44,7 @@ export const calculatorGroupBaseSchema = z
     description: z.string().describe("Description of a calculator group").optional(),
     election: z.lazy((): z.ZodType<electionSchema.ElectionReference> => electionSchema.electionSchemaReference).optional(),
     variants: z.array(variantSchema).min(1).describe("Ordered list of calculator variants").optional(),
+    selection: selectionSchema.optional(),
   })
   .strict();
 
