@@ -6,11 +6,15 @@ import { Card } from "@kalkulacka-one/design-system/server";
 import { mdiClose } from "@mdi/js";
 import { useState } from "react";
 
+import { plausibleEvent } from "@/lib/analytics";
+
 export function DonateCard() {
   const [selectedAmount, setSelectedAmount] = useState<string | null>("9");
   const [isVisible, setIsVisible] = useState(true);
 
   if (!isVisible) return null;
+
+  const plausibleClassNames = plausibleEvent("Donate", { source: "result-card", amount: selectedAmount ?? "custom", currency: "EUR" });
 
   const getDarujmeUrl = (amount?: string) => {
     if (amount) {
@@ -79,7 +83,7 @@ export function DonateCard() {
             </button>
           </div>
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
-            <a href={getDarujmeUrl(selectedAmount || undefined)} target="_blank" className="grid">
+            <a href={getDarujmeUrl(selectedAmount || undefined)} target="_blank" className={`grid ${plausibleClassNames}`}>
               <Button variant="outline" color="primary" size="medium">
                 Podporiť Volebnú kalkulačku
               </Button>
