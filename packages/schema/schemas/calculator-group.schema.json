@@ -79,12 +79,7 @@
       "type": "array",
       "minItems": 1,
       "items": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "$ref": "./variant.schema.json#/properties/key"
-          }
-        }
+        "$ref": "./variant.schema.json"
       }
     }
   },
