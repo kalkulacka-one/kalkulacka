@@ -7,6 +7,8 @@ import { z } from "zod";
 
 import { subscribe } from "@/server/subscribe";
 
+import { DonateCard } from "./donate-card";
+
 const subscribeSchema = z.object({
   email: z.string().email("Neplatný formát"),
 });
@@ -50,7 +52,13 @@ export function SubscribeForm() {
   return (
     <>
       {isSuccessfullySubmitted ? (
-        <div>Děkujeme za vyplnění</div>
+        <div className="grid gap-4">
+          <p className="text-slate-700">Děkujeme! Dáme vám vědět, jakmile kalkulačky spustíme.</p>
+          <DonateCard source="subscribe-thanks">
+            <DonateCard.Heading>Přispějte na kalkulačku pro vaše město</DonateCard.Heading>
+            <DonateCard.Description>Kalkulačky ke komunálním volbám vznikají město po městě. Vaše příspěvky pomáhají, aby jich bylo co nejvíc.</DonateCard.Description>
+          </DonateCard>
+        </div>
       ) : (
         <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit(onSubmit)} noValidate>
           <Field disabled={isSubmitting}>
