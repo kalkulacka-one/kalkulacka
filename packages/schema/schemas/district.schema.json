@@ -20,7 +20,7 @@
     },
     "kind": {
       "title": "Kind",
-      "description": "Kind of the territorial unit; drives the district picker copy and whether the code is displayed",
+      "description": "Kind of the territorial unit: municipality (e.g. Brno), municipal-district (e.g. Praha 6), electoral-district (purpose-drawn, e.g. a Senate constituency), or region (e.g. kraj)",
       "type": "string",
       "enum": ["municipality", "municipal-district", "electoral-district", "region"]
     },
@@ -39,7 +39,7 @@
     },
     "parent": {
       "title": "Parent",
-      "description": "Key of the parent district (e.g. a city for its city district)",
+      "description": "Key of the parent district within the same election",
       "$ref": "#/properties/key"
     }
   },

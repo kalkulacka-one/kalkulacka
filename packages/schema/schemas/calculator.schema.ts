@@ -14,7 +14,7 @@ const election = z.lazy(() => electionSchema.electionSchemaReference).describe("
 const keySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-  .describe("Human-friendly unique key of a calculator in the hyphen-separated lowercased format; for calculators in a group it is the last URL segment");
+  .describe("Human-friendly unique key of a calculator in the hyphen-separated lowercased format; forms the last URL segment");
 
 const versionSchema = z
   .string()

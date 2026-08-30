@@ -14,7 +14,7 @@
     },
     "key": {
       "title": "Key",
-      "description": "Human-friendly unique key of a calculator in the hyphen-separated lowercased format; for calculators in a group it is the last URL segment",
+      "description": "Human-friendly unique key of a calculator in the hyphen-separated lowercased format; forms the last URL segment",
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "examples": ["doprava-v-praze"]
@@ -54,7 +54,7 @@
       "examples": ["2. kolo prezidentských voleb 2023"]
     },
     "shortTitle": {
-      "title": "shortTitle",
+      "title": "Short title",
       "description": "Short title of a calculator with a maximum of 25 characters",
       "type": "string",
       "maxLength": 25,

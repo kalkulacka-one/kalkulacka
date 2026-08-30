@@ -47,7 +47,7 @@
       "examples": ["Prezidentské volby 2023"]
     },
     "shortTitle": {
-      "title": "shortTitle",
+      "title": "Short title",
       "description": "Short title of a calculator group with a maximum of 25 characters",
       "type": "string",
       "maxLength": 25,
@@ -61,7 +61,7 @@
     },
     "election": {
       "title": "Election",
-      "description": "Reference to an election the calculator belongs to",
+      "description": "Reference to an election the calculator group belongs to",
       "type": "object",
       "properties": {
         "id": {
@@ -89,7 +89,7 @@
       "properties": {
         "title": {
           "title": "Title",
-          "description": "Heading of the calculator picker; overrides the app default for the district kind",
+          "description": "Heading of the calculator picker; overrides the app default",
           "type": "string",
           "examples": ["Zvolte své město"]
         },
@@ -100,13 +100,13 @@
         },
         "searchPlaceholder": {
           "title": "Search placeholder",
-          "description": "Placeholder of the search field in the calculator picker",
+          "description": "Placeholder of the calculator picker search field",
           "type": "string",
           "examples": ["Hledat město…"]
         },
         "showCode": {
           "title": "Show code",
-          "description": "Whether to display district codes next to district names; overrides the app default for the district kind",
+          "description": "Whether to display district codes next to district names; overrides the app default",
           "type": "boolean"
         }
       },
@@ -166,7 +166,7 @@
               },
               "key": {
                 "title": "Key",
-                "description": "Key of the calculator; the last URL segment",
+                "description": "Key of the calculator; forms the last URL segment",
                 "$ref": "./calculator.schema.json#/$defs/key"
               },
               "variant": {
@@ -198,7 +198,7 @@
               },
               "key": {
                 "title": "Key",
-                "description": "Key of the calculator; the last URL segment",
+                "description": "Key of the calculator; forms the last URL segment",
                 "$ref": "./calculator.schema.json#/$defs/key"
               },
               "variant": {

@@ -8,14 +8,14 @@ const calculatorGroupIdSchema = z.string().uuid().describe("Unique identifier of
 const calculatorKeySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-  .describe("Key of the calculator; the last URL segment");
+  .describe("Key of the calculator; forms the last URL segment");
 
 const selectionSchema = z
   .object({
-    title: z.string().describe("Heading of the calculator picker; overrides the app default for the district kind").optional(),
+    title: z.string().describe("Heading of the calculator picker; overrides the app default").optional(),
     description: z.string().describe("Description shown in the calculator picker").optional(),
-    searchPlaceholder: z.string().describe("Placeholder of the search field in the calculator picker").optional(),
-    showCode: z.boolean().describe("Whether to display district codes next to district names; overrides the app default for the district kind").optional(),
+    searchPlaceholder: z.string().describe("Placeholder of the calculator picker search field").optional(),
+    showCode: z.boolean().describe("Whether to display district codes next to district names; overrides the app default").optional(),
   })
   .strict()
   .describe("Optional copy and display overrides for the calculator picker");
@@ -23,7 +23,7 @@ const selectionSchema = z
 const calculatorGroupKeySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-  .describe("Human-friendly unique key of a standalone calculator group in the hyphen-separated lowercased format");
+  .describe("Human-friendly unique key of a calculator group in the hyphen-separated lowercased format");
 
 export const calculatorGroupSchemaReference = z
   .object({
