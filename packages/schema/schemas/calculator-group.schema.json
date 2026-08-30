@@ -178,7 +178,10 @@
           }
         }
       },
-      "required": ["shortTitle", "calculators"]
+      "required": ["shortTitle", "calculators"],
+      "not": {
+        "required": ["election"]
+      }
     },
     {
       "properties": {
@@ -224,7 +227,10 @@
           }
         }
       },
-      "required": ["election", "calculators"]
+      "required": ["election", "calculators"],
+      "not": {
+        "required": ["shortTitle"]
+      }
     }
   ]
 }
