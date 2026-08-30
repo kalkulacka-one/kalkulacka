@@ -11,6 +11,11 @@ import { variantReferenceSchema } from "./variant.schema";
 const calculatorGroup = z.lazy(() => calculatorGroupSchema.calculatorGroupSchemaReference).describe("Reference to a calculator group the calculator belongs to");
 const election = z.lazy(() => electionSchema.electionSchemaReference).describe("Reference to an election the calculator belongs to");
 
+const keySchema = z
+  .string()
+  .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+  .describe("Human-friendly unique key of a calculator in the hyphen-separated lowercased format; for calculators in a group it is the last URL segment");
+
 const versionSchema = z
   .string()
   .regex(/^\d+\.\d+\.\d+$/)
@@ -62,10 +67,7 @@ export const calculatorBaseSchema = z.object({
 
 const standaloneCalculatorSchema = calculatorBaseSchema
   .extend({
-    key: z
-      .string()
-      .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-      .describe("Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format"),
+    key: keySchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
   })
 
@@ -73,6 +75,7 @@ const standaloneCalculatorSchema = calculatorBaseSchema
 
 const groupCalculatorSchema = calculatorBaseSchema
   .extend({
+    key: keySchema.optional(),
     calculatorGroup: calculatorGroup,
     variant: variantReferenceSchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
@@ -81,6 +84,7 @@ const groupCalculatorSchema = calculatorBaseSchema
 
 const electionCalculatorSchema = calculatorBaseSchema
   .extend({
+    key: keySchema.optional(),
     calculatorGroup: calculatorGroup,
     election: election,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),

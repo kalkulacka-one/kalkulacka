@@ -14,7 +14,7 @@
     },
     "key": {
       "title": "Key",
-      "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+      "description": "Human-friendly unique key of a calculator in the hyphen-separated lowercased format; for calculators in a group it is the last URL segment",
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "examples": ["doprava-v-praze"]
@@ -246,13 +246,23 @@
       },
       "required": ["key", "shortTitle"],
       "not": {
-        "required": ["calculatorGroup", "election"]
+        "anyOf": [
+          {
+            "required": ["calculatorGroup"]
+          },
+          {
+            "required": ["election"]
+          }
+        ]
       }
     },
     {
       "title": "Calculator from a group",
       "description": "Calculator that is part of a calculator group",
       "properties": {
+        "key": {
+          "$ref": "#/$defs/key"
+        },
         "calculatorGroup": {
           "$ref": "#/$defs/calculatorGroup"
         },
@@ -269,6 +279,9 @@
       "title": "Calculator from an election",
       "description": "Calculator that is part of an election",
       "properties": {
+        "key": {
+          "$ref": "#/$defs/key"
+        },
         "calculatorGroup": {
           "$ref": "#/$defs/calculatorGroup"
         },

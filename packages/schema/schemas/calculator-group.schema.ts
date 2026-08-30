@@ -5,6 +5,11 @@ import * as electionSchema from "./election.schema";
 import { variantSchema } from "./variant.schema";
 
 const calculatorGroupIdSchema = z.string().uuid().describe("Unique identifier of a calculator group in the format of UUID");
+const calculatorKeySchema = z
+  .string()
+  .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+  .describe("Key of the calculator; the last URL segment");
+
 const calculatorGroupKeySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
@@ -36,6 +41,7 @@ export const calculatorItemSchema = z.lazy(() =>
   calculatorBaseSchema
     .pick({ id: true })
     .extend({
+      key: calculatorKeySchema,
       variant: calculatorVariantSchema,
     })
     .strict(),
@@ -53,6 +59,7 @@ export const electionCalculatorItemSchema = z.lazy(() =>
   calculatorBaseSchema
     .pick({ id: true })
     .extend({
+      key: calculatorKeySchema,
       variant: calculatorVariantSchema.optional(),
       district: calculatorDistrictSchema.optional(),
       round: calculatorRoundSchema.optional(),

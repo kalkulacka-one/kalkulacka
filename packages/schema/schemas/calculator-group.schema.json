@@ -131,12 +131,17 @@
               "id": {
                 "$ref": "./calculator.schema.json#/$defs/id"
               },
+              "key": {
+                "title": "Key",
+                "description": "Key of the calculator; the last URL segment",
+                "$ref": "./calculator.schema.json#/$defs/key"
+              },
               "variant": {
                 "$ref": "./calculator.schema.json#/$defs/variant"
               }
             },
             "unevaluatedProperties": false,
-            "required": ["id", "variant"]
+            "required": ["id", "key", "variant"]
           }
         }
       },
@@ -155,6 +160,11 @@
               "id": {
                 "$ref": "./calculator.schema.json#/$defs/id"
               },
+              "key": {
+                "title": "Key",
+                "description": "Key of the calculator; the last URL segment",
+                "$ref": "./calculator.schema.json#/$defs/key"
+              },
               "variant": {
                 "$ref": "./calculator.schema.json#/$defs/variant"
               },
@@ -166,7 +176,7 @@
               }
             },
             "unevaluatedProperties": false,
-            "required": ["id"],
+            "required": ["id", "key"],
             "anyOf": [
               {
                 "required": ["variant"]
