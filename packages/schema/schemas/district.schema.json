@@ -16,9 +16,33 @@
       "title": "Code",
       "description": "Official district code assigned by the election authority",
       "type": "string",
-      "examples": ["554782"]
+      "examples": ["27", "554782"]
+    },
+    "kind": {
+      "title": "Kind",
+      "description": "Kind of the territorial unit; drives the district picker copy and whether the code is displayed",
+      "type": "string",
+      "enum": ["municipality", "municipal-district", "electoral-district", "region"]
+    },
+    "title": {
+      "title": "Title",
+      "description": "Human-readable name of the district",
+      "type": "string",
+      "examples": ["Praha 6", "Cheb"]
+    },
+    "shortTitle": {
+      "title": "Short title",
+      "description": "Short name of the district with a maximum of 25 characters",
+      "type": "string",
+      "maxLength": 25,
+      "examples": ["Praha 6"]
+    },
+    "parent": {
+      "title": "Parent",
+      "description": "Key of the parent district (e.g. a city for its city district)",
+      "$ref": "#/properties/key"
     }
   },
   "unevaluatedProperties": false,
-  "required": ["key"]
+  "required": ["key", "kind", "title"]
 }
