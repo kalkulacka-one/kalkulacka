@@ -45,7 +45,7 @@ export const standaloneCalculatorInGroupSchema = calculatorGroupBaseSchema
   .extend({
     shortTitle: z.string().max(25).describe("Short title of a calculator group with a maximum of 25 characters"),
     calculators: z.array(calculatorItemSchema).min(1).describe("Ordered list of calculators"),
-    election: z.undefined(),
+    election: z.undefined().optional(),
   })
   .strict();
 
@@ -67,7 +67,7 @@ export const electionCalculatorGroupSchema = calculatorGroupBaseSchema
   .extend({
     election: z.lazy((): z.ZodType<electionSchema.ElectionReference> => electionSchema.electionSchemaReference),
     calculators: z.array(electionCalculatorItemSchema).min(1).describe("Ordered list of calculators from an election"),
-    shortTitle: z.undefined(),
+    shortTitle: z.undefined().optional(),
   })
   .strict();
 
