@@ -10,10 +10,12 @@ const calculatorGroupKeySchema = z
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
   .describe("Human-friendly unique key of a standalone calculator group in the hyphen-separated lowercased format");
 
-export const calculatorGroupSchemaReference = z.object({
-  id: calculatorGroupIdSchema,
-  key: calculatorGroupKeySchema,
-});
+export const calculatorGroupSchemaReference = z
+  .object({
+    id: calculatorGroupIdSchema,
+    key: calculatorGroupKeySchema,
+  })
+  .strict();
 
 export const calculatorGroupBaseSchema = z
   .object({

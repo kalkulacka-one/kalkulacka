@@ -165,7 +165,8 @@
           "unevaluatedProperties": false
         }
       },
-      "unevaluatedProperties": false
+      "unevaluatedProperties": false,
+      "required": ["questions"]
     },
     "changes": {
       "title": "Changes",

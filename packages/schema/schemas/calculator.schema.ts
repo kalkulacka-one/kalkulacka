@@ -1,12 +1,12 @@
 import { z } from "zod";
 
 import * as calculatorGroupSchema from "./calculator-group.schema";
-import { districtSchema } from "./district.schema";
+import { districtReferenceSchema } from "./district.schema";
 import * as electionSchema from "./election.schema";
 import { imagesSchema } from "./images.schema";
-import { roundSchema } from "./round.schema";
+import { roundReferenceSchema } from "./round.schema";
 import { tagsSchema } from "./tags.schema";
-import { variantSchema } from "./variant.schema";
+import { variantReferenceSchema } from "./variant.schema";
 
 const calculatorGroup = z.lazy(() => calculatorGroupSchema.calculatorGroupSchemaReference).describe("Reference to a calculator group the calculator belongs to");
 const election = z.lazy(() => electionSchema.electionSchemaReference).describe("Reference to an election the calculator belongs to");
@@ -74,8 +74,8 @@ const standaloneCalculatorSchema = calculatorBaseSchema
 const groupCalculatorSchema = calculatorBaseSchema
   .extend({
     calculatorGroup: calculatorGroup,
-    variant: variantSchema,
-    shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
+    variant: variantReferenceSchema,
+    shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
   })
   .strict();
 
@@ -84,9 +84,9 @@ const electionCalculatorSchema = calculatorBaseSchema
     calculatorGroup: calculatorGroup,
     election: election,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
-    variant: variantSchema.optional(),
-    district: districtSchema.optional(),
-    round: roundSchema.optional(),
+    variant: variantReferenceSchema.optional(),
+    district: districtReferenceSchema.optional(),
+    round: roundReferenceSchema.optional(),
   })
   .strict()
   .superRefine((data, ctx) => {
@@ -102,6 +102,6 @@ export const calculatorSchema = standaloneCalculatorSchema.or(groupCalculatorSch
 
 export type Calculator = z.infer<typeof calculatorSchema>;
 
-export const calculatorVariantSchema = variantSchema;
-export const calculatorDistrictSchema = districtSchema;
-export const calculatorRoundSchema = roundSchema;
+export const calculatorVariantSchema = variantReferenceSchema;
+export const calculatorDistrictSchema = districtReferenceSchema;
+export const calculatorRoundSchema = roundReferenceSchema;

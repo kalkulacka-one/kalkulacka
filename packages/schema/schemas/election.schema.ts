@@ -12,10 +12,12 @@ const electionKeySchema = z
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
   .describe("Human-friendly unique key of an election in the hyphen-separated lowercased format");
 
-export const electionSchemaReference = z.object({
-  id: electionIdSchema,
-  key: electionKeySchema,
-});
+export const electionSchemaReference = z
+  .object({
+    id: electionIdSchema,
+    key: electionKeySchema,
+  })
+  .strict();
 
 export const electionBaseSchema = z
   .object({
