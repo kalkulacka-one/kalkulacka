@@ -23,5 +23,19 @@
     }
   },
   "unevaluatedProperties": false,
-  "required": ["number"]
+  "required": ["number"],
+  "$defs": {
+    "reference": {
+      "title": "Round reference",
+      "description": "Reference to a round of an election",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/properties/number"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": ["number"]
+    }
+  }
 }

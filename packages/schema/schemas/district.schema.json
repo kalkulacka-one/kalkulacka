@@ -44,5 +44,19 @@
     }
   },
   "unevaluatedProperties": false,
-  "required": ["key", "kind", "title"]
+  "required": ["key", "kind", "title"],
+  "$defs": {
+    "reference": {
+      "title": "District reference",
+      "description": "Reference to a district of an election",
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/properties/key"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": ["key"]
+    }
+  }
 }

@@ -123,24 +123,14 @@
       "required": ["key"]
     },
     "district": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "./district.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["key"]
+      "title": "District",
+      "description": "Reference to a district of the election the calculator belongs to",
+      "$ref": "./district.schema.json#/$defs/reference"
     },
     "round": {
-      "type": "object",
-      "properties": {
-        "number": {
-          "$ref": "./round.schema.json#/properties/number"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["number"]
+      "title": "Round",
+      "description": "Reference to a round of the election the calculator belongs to",
+      "$ref": "./round.schema.json#/$defs/reference"
     },
     "checksums": {
       "title": "Checksums",
