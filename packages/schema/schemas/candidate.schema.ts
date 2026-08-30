@@ -21,8 +21,13 @@ export const candidateBaseSchema = z
     images: imagesSchema.optional(),
     motto: z.string().describe("Motto of a candidate").optional(),
     number: z.number().int().describe("Official candidate list (usually drawn) number assigned by a public authority").optional(),
-    rounds: z.array(z.number().int().min(1)).min(1).describe("Round numbers the candidate takes part in; omitted means all rounds of the election").optional(),
-    elected: z.boolean().describe("Whether the candidate has already been elected (e.g. in the first round)").optional(),
+    rounds: z
+      .array(z.number().int().min(1))
+      .min(1)
+      .refine((rounds) => new Set(rounds).size === rounds.length, { message: "Round numbers must be unique" })
+      .describe("Round numbers the candidate takes part in; omitted means all rounds")
+      .optional(),
+    elected: z.boolean().describe("Whether the candidate has already won the seat (e.g. in the first round)").optional(),
   })
   .strict()
   .describe("Candidate for a calculator");

@@ -77,18 +77,19 @@
     },
     "rounds": {
       "title": "Rounds",
-      "description": "Round numbers the candidate takes part in; omitted means all rounds of the election",
+      "description": "Round numbers the candidate takes part in; omitted means all rounds",
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "integer",
         "minimum": 1
       },
-      "examples": [[1], [1, 2]]
+      "examples": [[1], [1, 2]],
+      "uniqueItems": true
     },
     "elected": {
       "title": "Elected",
-      "description": "Whether the candidate has already been elected (e.g. in the first round)",
+      "description": "Whether the candidate has already won the seat (e.g. in the first round)",
       "type": "boolean"
     }
   },
