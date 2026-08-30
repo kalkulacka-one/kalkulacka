@@ -69,6 +69,7 @@ const standaloneCalculatorSchema = calculatorBaseSchema
   .extend({
     key: keySchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
+    election: election.optional(),
   })
 
   .strict();

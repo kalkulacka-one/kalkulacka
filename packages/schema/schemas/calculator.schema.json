@@ -238,22 +238,18 @@
   "oneOf": [
     {
       "title": "Standalone calculator",
-      "description": "Standalone calculator is a calculator that is not part of a calculator group",
+      "description": "Standalone calculator is a calculator that is not part of a calculator group, optionally referencing an election",
       "properties": {
         "key": {
           "$ref": "#/$defs/key"
+        },
+        "election": {
+          "$ref": "#/$defs/election"
         }
       },
       "required": ["key", "shortTitle"],
       "not": {
-        "anyOf": [
-          {
-            "required": ["calculatorGroup"]
-          },
-          {
-            "required": ["election"]
-          }
-        ]
+        "required": ["calculatorGroup"]
       }
     },
     {
