@@ -16,9 +16,47 @@
       "title": "Code",
       "description": "Official district code assigned by the election authority",
       "type": "string",
-      "examples": ["554782"]
+      "examples": ["27", "554782"]
+    },
+    "kind": {
+      "title": "Kind",
+      "description": "Kind of the territorial unit: municipality (e.g. Brno), municipal-district (e.g. Praha 6), electoral-district (purpose-drawn, e.g. a Senate constituency), or region (e.g. kraj)",
+      "type": "string",
+      "enum": ["municipality", "municipal-district", "electoral-district", "region"]
+    },
+    "title": {
+      "title": "Title",
+      "description": "Human-readable name of the district",
+      "type": "string",
+      "examples": ["Praha 6", "Cheb"]
+    },
+    "shortTitle": {
+      "title": "Short title",
+      "description": "Short name of the district with a maximum of 25 characters",
+      "type": "string",
+      "maxLength": 25,
+      "examples": ["Praha 6"]
+    },
+    "parent": {
+      "title": "Parent",
+      "description": "Key of the parent district within the same election",
+      "$ref": "#/properties/key"
     }
   },
   "unevaluatedProperties": false,
-  "required": ["key"]
+  "required": ["key", "kind", "title"],
+  "$defs": {
+    "reference": {
+      "title": "District reference",
+      "description": "Reference to a district of an election",
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/properties/key"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": ["key"]
+    }
+  }
 }

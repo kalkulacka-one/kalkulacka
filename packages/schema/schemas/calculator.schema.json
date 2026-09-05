@@ -14,7 +14,7 @@
     },
     "key": {
       "title": "Key",
-      "description": "Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format",
+      "description": "Human-friendly unique key of a calculator in the hyphen-separated lowercased format; forms the last URL segment",
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
       "examples": ["doprava-v-praze"]
@@ -54,7 +54,7 @@
       "examples": ["2. kolo prezidentských voleb 2023"]
     },
     "shortTitle": {
-      "title": "shortTitle",
+      "title": "Short title",
       "description": "Short title of a calculator with a maximum of 25 characters",
       "type": "string",
       "maxLength": 25,
@@ -123,24 +123,14 @@
       "required": ["key"]
     },
     "district": {
-      "type": "object",
-      "properties": {
-        "key": {
-          "$ref": "./district.schema.json#/properties/key"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["key"]
+      "title": "District",
+      "description": "Reference to a district of the election the calculator belongs to",
+      "$ref": "./district.schema.json#/$defs/reference"
     },
     "round": {
-      "type": "object",
-      "properties": {
-        "number": {
-          "$ref": "./round.schema.json#/properties/number"
-        }
-      },
-      "unevaluatedProperties": false,
-      "required": ["number"]
+      "title": "Round",
+      "description": "Reference to a round of the election the calculator belongs to",
+      "$ref": "./round.schema.json#/$defs/reference"
     },
     "checksums": {
       "title": "Checksums",
@@ -248,21 +238,27 @@
   "oneOf": [
     {
       "title": "Standalone calculator",
-      "description": "Standalone calculator is a calculator that is not part of a calculator group",
+      "description": "Standalone calculator is a calculator that is not part of a calculator group, optionally referencing an election",
       "properties": {
         "key": {
           "$ref": "#/$defs/key"
+        },
+        "election": {
+          "$ref": "#/$defs/election"
         }
       },
       "required": ["key", "shortTitle"],
       "not": {
-        "required": ["calculatorGroup", "election"]
+        "required": ["calculatorGroup"]
       }
     },
     {
       "title": "Calculator from a group",
       "description": "Calculator that is part of a calculator group",
       "properties": {
+        "key": {
+          "$ref": "#/$defs/key"
+        },
         "calculatorGroup": {
           "$ref": "#/$defs/calculatorGroup"
         },
@@ -279,6 +275,9 @@
       "title": "Calculator from an election",
       "description": "Calculator that is part of an election",
       "properties": {
+        "key": {
+          "$ref": "#/$defs/key"
+        },
         "calculatorGroup": {
           "$ref": "#/$defs/calculatorGroup"
         },

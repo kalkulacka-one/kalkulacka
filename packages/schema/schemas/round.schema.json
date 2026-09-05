@@ -7,10 +7,10 @@
   "properties": {
     "number": {
       "title": "Number",
-      "description": "Round ordinal number from 0",
+      "description": "Round ordinal number from 1",
       "type": "integer",
-      "minimum": 0,
-      "examples": [0, 1]
+      "minimum": 1,
+      "examples": [1, 2]
     },
     "votingHours": {
       "title": "Voting hours",
@@ -23,5 +23,19 @@
     }
   },
   "unevaluatedProperties": false,
-  "required": ["number"]
+  "required": ["number"],
+  "$defs": {
+    "reference": {
+      "title": "Round reference",
+      "description": "Reference to a round of an election",
+      "type": "object",
+      "properties": {
+        "number": {
+          "$ref": "#/properties/number"
+        }
+      },
+      "unevaluatedProperties": false,
+      "required": ["number"]
+    }
+  }
 }

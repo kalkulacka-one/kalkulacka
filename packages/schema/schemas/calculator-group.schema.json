@@ -47,7 +47,7 @@
       "examples": ["Prezidentské volby 2023"]
     },
     "shortTitle": {
-      "title": "shortTitle",
+      "title": "Short title",
       "description": "Short title of a calculator group with a maximum of 25 characters",
       "type": "string",
       "maxLength": 25,
@@ -61,7 +61,7 @@
     },
     "election": {
       "title": "Election",
-      "description": "Reference to an election the calculator belongs to",
+      "description": "Reference to an election the calculator group belongs to",
       "type": "object",
       "properties": {
         "id": {
@@ -81,6 +81,36 @@
       "items": {
         "$ref": "./variant.schema.json"
       }
+    },
+    "selection": {
+      "title": "Selection",
+      "description": "Optional copy and display overrides for the calculator picker",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "description": "Heading of the calculator picker; overrides the app default",
+          "type": "string",
+          "examples": ["Zvolte své město"]
+        },
+        "description": {
+          "title": "Description",
+          "description": "Description shown in the calculator picker",
+          "type": "string"
+        },
+        "searchPlaceholder": {
+          "title": "Search placeholder",
+          "description": "Placeholder of the calculator picker search field",
+          "type": "string",
+          "examples": ["Hledat město…"]
+        },
+        "showCode": {
+          "title": "Show code",
+          "description": "Whether to display district codes next to district names; overrides the app default",
+          "type": "boolean"
+        }
+      },
+      "unevaluatedProperties": false
     }
   },
   "properties": {
@@ -113,6 +143,9 @@
     },
     "description": {
       "$ref": "#/$defs/description"
+    },
+    "selection": {
+      "$ref": "#/$defs/selection"
     }
   },
   "unevaluatedProperties": false,
@@ -131,16 +164,24 @@
               "id": {
                 "$ref": "./calculator.schema.json#/$defs/id"
               },
+              "key": {
+                "title": "Key",
+                "description": "Key of the calculator; forms the last URL segment",
+                "$ref": "./calculator.schema.json#/$defs/key"
+              },
               "variant": {
                 "$ref": "./calculator.schema.json#/$defs/variant"
               }
             },
             "unevaluatedProperties": false,
-            "required": ["id", "variant"]
+            "required": ["id", "key", "variant"]
           }
         }
       },
-      "required": ["shortTitle", "calculators"]
+      "required": ["shortTitle", "calculators"],
+      "not": {
+        "required": ["election"]
+      }
     },
     {
       "properties": {
@@ -155,6 +196,11 @@
               "id": {
                 "$ref": "./calculator.schema.json#/$defs/id"
               },
+              "key": {
+                "title": "Key",
+                "description": "Key of the calculator; forms the last URL segment",
+                "$ref": "./calculator.schema.json#/$defs/key"
+              },
               "variant": {
                 "$ref": "./calculator.schema.json#/$defs/variant"
               },
@@ -166,7 +212,7 @@
               }
             },
             "unevaluatedProperties": false,
-            "required": ["id"],
+            "required": ["id", "key"],
             "anyOf": [
               {
                 "required": ["variant"]
@@ -181,7 +227,10 @@
           }
         }
       },
-      "required": ["election", "calculators"]
+      "required": ["election", "calculators"],
+      "not": {
+        "required": ["shortTitle"]
+      }
     }
   ]
 }

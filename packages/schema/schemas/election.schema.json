@@ -47,7 +47,7 @@
       "examples": ["Prezidentské volby 2023"]
     },
     "shortTitle": {
-      "title": "shortTitle",
+      "title": "Short title",
       "description": "Short title of an election with a maximum of 25 characters",
       "type": "string",
       "maxLength": 25,

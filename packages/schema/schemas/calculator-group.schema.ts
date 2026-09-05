@@ -5,10 +5,25 @@ import * as electionSchema from "./election.schema";
 import { variantSchema } from "./variant.schema";
 
 const calculatorGroupIdSchema = z.string().uuid().describe("Unique identifier of a calculator group in the format of UUID");
+const calculatorKeySchema = z
+  .string()
+  .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+  .describe("Key of the calculator; forms the last URL segment");
+
+const selectionSchema = z
+  .object({
+    title: z.string().describe("Heading of the calculator picker; overrides the app default").optional(),
+    description: z.string().describe("Description shown in the calculator picker").optional(),
+    searchPlaceholder: z.string().describe("Placeholder of the calculator picker search field").optional(),
+    showCode: z.boolean().describe("Whether to display district codes next to district names; overrides the app default").optional(),
+  })
+  .strict()
+  .describe("Optional copy and display overrides for the calculator picker");
+
 const calculatorGroupKeySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-  .describe("Human-friendly unique key of a standalone calculator group in the hyphen-separated lowercased format");
+  .describe("Human-friendly unique key of a calculator group in the hyphen-separated lowercased format");
 
 export const calculatorGroupSchemaReference = z
   .object({
@@ -29,6 +44,7 @@ export const calculatorGroupBaseSchema = z
     description: z.string().describe("Description of a calculator group").optional(),
     election: z.lazy((): z.ZodType<electionSchema.ElectionReference> => electionSchema.electionSchemaReference).optional(),
     variants: z.array(variantSchema).min(1).describe("Ordered list of calculator variants").optional(),
+    selection: selectionSchema.optional(),
   })
   .strict();
 
@@ -36,6 +52,7 @@ export const calculatorItemSchema = z.lazy(() =>
   calculatorBaseSchema
     .pick({ id: true })
     .extend({
+      key: calculatorKeySchema,
       variant: calculatorVariantSchema,
     })
     .strict(),
@@ -45,7 +62,7 @@ export const standaloneCalculatorInGroupSchema = calculatorGroupBaseSchema
   .extend({
     shortTitle: z.string().max(25).describe("Short title of a calculator group with a maximum of 25 characters"),
     calculators: z.array(calculatorItemSchema).min(1).describe("Ordered list of calculators"),
-    election: z.undefined(),
+    election: z.undefined().optional(),
   })
   .strict();
 
@@ -53,6 +70,7 @@ export const electionCalculatorItemSchema = z.lazy(() =>
   calculatorBaseSchema
     .pick({ id: true })
     .extend({
+      key: calculatorKeySchema,
       variant: calculatorVariantSchema.optional(),
       district: calculatorDistrictSchema.optional(),
       round: calculatorRoundSchema.optional(),
@@ -67,7 +85,7 @@ export const electionCalculatorGroupSchema = calculatorGroupBaseSchema
   .extend({
     election: z.lazy((): z.ZodType<electionSchema.ElectionReference> => electionSchema.electionSchemaReference),
     calculators: z.array(electionCalculatorItemSchema).min(1).describe("Ordered list of calculators from an election"),
-    shortTitle: z.undefined(),
+    shortTitle: z.undefined().optional(),
   })
   .strict();
 

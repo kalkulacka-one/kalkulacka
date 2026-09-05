@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { timePeriodSchema } from "./time-period.schema";
 
-const roundNumberSchema = z.number().int().min(0).describe("Round ordinal number from 0");
+const roundNumberSchema = z.number().int().min(1).describe("Round ordinal number from 1");
 
 export const roundReferenceSchema = z.object({ number: roundNumberSchema }).strict().describe("Reference to a round of an election");
 
