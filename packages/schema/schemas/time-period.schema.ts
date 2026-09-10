@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // TODO: refine date schema check or zod update (the latest miniflare stil lists zod@3.22 as its dep)
 export const dateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
-export const dateTimeSchema = z.string().datetime();
+export const dateTimeSchema = z.string().datetime({ offset: true });
 
 export const timePeriodSchema = z
   .object({

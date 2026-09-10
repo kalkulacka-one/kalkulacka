@@ -10,11 +10,14 @@ datasource db {
 model Subscription {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
 
-  email  String @unique
-  origin String
+  email    String
+  origin   String
+  metadata Json?
 
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@unique([email, origin])
 }
 
 enum crdb_internal_region {

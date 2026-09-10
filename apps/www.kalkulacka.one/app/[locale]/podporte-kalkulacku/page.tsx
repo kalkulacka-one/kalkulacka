@@ -21,10 +21,7 @@ export default function Page() {
       <section className="grid gap-2">
         <h2 className="text-3xl font-display font-bold">Podpořte Volební kalkulačku a&nbsp;demokracii</h2>
         <p>Líbí se vám Volební kalkulačka? Díky dobrovolníkům a štědrým dárcům můžeme kalkulačku poskytovat zdarma.</p>
-        <p>
-          Abychom však mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku, potřebujeme vaši pomoc. Přidejte se do klubu podporovatelů nebo nás podpořte jednorázově. Každý
-          příspěvek se počítá!
-        </p>
+        <p>Abychom však mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku, potřebujeme vaši pomoc. Podpořte nás finančním příspěvkem. Každý příspěvek se počítá!</p>
         <p>
           Nebo se{" "}
           <Link href="/cs/zapojit-se" className="underline hover:no-underline">
@@ -35,28 +32,8 @@ export default function Page() {
         <p>Vaše podpora je klíčová pro to, abychom mohli pokračovat v naší práci pro nadcházející volby a vylepšovat kalkulačku. Děkujeme!</p>
       </section>
       <section className="grid gap-2">
-        <h3 className="text-2xl font-bold">Přidejte se do klubu podporovatelů</h3>
-        <p>
-          Přidejte se do klubu podporovatelů Volební kalkulačky na{" "}
-          <a href="https://herohero.co/volebnikalkulacka" className="underline hover:no-underline">
-            Herohero
-          </a>{" "}
-          a kromě dobrého pocitu, že pomůžete zajistit tvorbu dalších kalkulaček a podpoříte demokracii:
-        </p>
-        <ul className="list-disc pl-6">
-          <li>vám poděkujeme v kalkulačce</li>
-          <li>získáte exkluzivní přístup ke kalkulačce den před oficiálním spuštěním</li>
-          <li>budete moci navrhnout otázku do kalkulačky a společně s ostatními podporovateli hlasovat, která otázka se do kalkulačky dostane</li>
-        </ul>
-        <div className="flex gap-2">
-          <a className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="https://herohero.co/volebnikalkulacka">
-            Přidat se na Herohero
-          </a>
-        </div>
-      </section>
-      <section className="grid gap-2">
         <h3 className="text-2xl font-bold">Jednorázový příspěvek</h3>
-        <p>Nebo nás můžete podpořit i jednorázově:</p>
+        <p>Podpořte nás jednorázovým příspěvkem:</p>
         <div className="max-w-md" data-darujme-widget-token="w2acrk0w61fgr3so">
           Načítám…
         </div>

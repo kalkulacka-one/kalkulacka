@@ -2,6 +2,7 @@
 
 export { EmbedContextProvider, type EmbedContextType, EmbedOnly, HideOnEmbed, useEmbed } from "@kalkulacka-one/app/client";
 
+export * from "./city-signup-form";
 export * from "./donate-card";
 export * from "./embed-provider";
 export * from "./error-reporter";

@@ -7,7 +7,7 @@ import { z } from "zod";
 
 const subscribeBodySchema = z.object({
   email: z.string().email("Neplatný formát"),
-  origin: z.string(),
+  origin: z.literal("subscribe-form"),
 });
 
 type SubscribeBody = z.infer<typeof subscribeBodySchema>;

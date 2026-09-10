@@ -1,15 +1,20 @@
 import { z } from "zod";
 
 import * as calculatorGroupSchema from "./calculator-group.schema";
-import { districtSchema } from "./district.schema";
+import { districtReferenceSchema } from "./district.schema";
 import * as electionSchema from "./election.schema";
 import { imagesSchema } from "./images.schema";
-import { roundSchema } from "./round.schema";
+import { roundReferenceSchema } from "./round.schema";
 import { tagsSchema } from "./tags.schema";
-import { variantSchema } from "./variant.schema";
+import { variantReferenceSchema } from "./variant.schema";
 
 const calculatorGroup = z.lazy(() => calculatorGroupSchema.calculatorGroupSchemaReference).describe("Reference to a calculator group the calculator belongs to");
 const election = z.lazy(() => electionSchema.electionSchemaReference).describe("Reference to an election the calculator belongs to");
+
+const keySchema = z
+  .string()
+  .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+  .describe("Human-friendly unique key of a calculator in the hyphen-separated lowercased format; forms the last URL segment");
 
 const versionSchema = z
   .string()
@@ -62,31 +67,31 @@ export const calculatorBaseSchema = z.object({
 
 const standaloneCalculatorSchema = calculatorBaseSchema
   .extend({
-    key: z
-      .string()
-      .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
-      .describe("Human-friendly unique key of a standalone calculator in the hyphen-separated lowercased format"),
+    key: keySchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
+    election: election.optional(),
   })
 
   .strict();
 
 const groupCalculatorSchema = calculatorBaseSchema
   .extend({
+    key: keySchema.optional(),
     calculatorGroup: calculatorGroup,
-    variant: variantSchema,
-    shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
+    variant: variantReferenceSchema,
+    shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
   })
   .strict();
 
 const electionCalculatorSchema = calculatorBaseSchema
   .extend({
+    key: keySchema.optional(),
     calculatorGroup: calculatorGroup,
     election: election,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
-    variant: variantSchema.optional(),
-    district: districtSchema.optional(),
-    round: roundSchema.optional(),
+    variant: variantReferenceSchema.optional(),
+    district: districtReferenceSchema.optional(),
+    round: roundReferenceSchema.optional(),
   })
   .strict()
   .superRefine((data, ctx) => {
@@ -102,6 +107,6 @@ export const calculatorSchema = standaloneCalculatorSchema.or(groupCalculatorSch
 
 export type Calculator = z.infer<typeof calculatorSchema>;
 
-export const calculatorVariantSchema = variantSchema;
-export const calculatorDistrictSchema = districtSchema;
-export const calculatorRoundSchema = roundSchema;
+export const calculatorVariantSchema = variantReferenceSchema;
+export const calculatorDistrictSchema = districtReferenceSchema;
+export const calculatorRoundSchema = roundReferenceSchema;
