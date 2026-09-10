@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
-import { useEmbed } from "@/components/client";
+import { DonateCard, useEmbed } from "@/components/client";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing";
@@ -71,6 +71,14 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
         showOnlyNested={showOnlyNested}
         onFilterChange={setShowOnlyNested}
         donateCardPosition={donateCardPosition}
+        donateCard={
+          <DonateCard source="result-card" className="sm:mx-4 lg:mx-8" logo dismissible>
+            <DonateCard.Heading>
+              Pomohla vám <span className="whitespace-nowrap">Volební kalkulačka?</span>
+            </DonateCard.Heading>
+            <DonateCard.Description>Volební kalkulačka je nezávislá a nezisková. Podpořte demokracii a pomozte milionům voličů.</DonateCard.Description>
+          </DonateCard>
+        }
       />
       <ShareModal calculatorId={calculator.id} segments={segments} isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
     </>
