@@ -1,7 +1,7 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose, mdiCog, mdiMagnify } from "@mdi/js";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { createElement } from "react";
 
 const meta: Meta<typeof Button> = {
