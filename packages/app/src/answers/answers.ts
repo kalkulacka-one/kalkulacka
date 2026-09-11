@@ -1,5 +1,5 @@
 // Ported from kalkulacka-2026/packages/core/src/answers/answers.ts — only countAnswered, countSkipped,
-// firstUnansweredIndex and the "visited" semantics; the transitions live in the answers store here.
+// firstUnansweredIndex, toSegments and the "visited" semantics; the transitions live in the answers store here.
 import type { Answer } from "@kalkulacka-one/schema";
 
 /**
@@ -15,6 +15,11 @@ import type { Answer } from "@kalkulacka-one/schema";
  */
 
 type QuestionLike = { id: string };
+
+/** How a question reads in the progress bar. Mirrors the design system's `SegmentState`. */
+export type AnswerSegmentState = "unanswered" | "agree" | "disagree" | "skipped";
+
+export type AnswerSegment = { state: AnswerSegmentState; important: boolean };
 
 /** A real position: yes, no, or an explicit neutral. */
 export function hasAnswer(answer?: Answer): boolean {
@@ -56,4 +61,28 @@ export function countSkipped(questions: readonly QuestionLike[], answers: readon
 export function firstUnansweredIndex(questions: readonly QuestionLike[], answers: readonly Answer[]): number {
   const lookup = byQuestion(answers);
   return questions.findIndex((question) => !isVisited(lookup.get(question.id)));
+}
+
+/**
+ * One segment per question, for the progress bar.
+ *
+ * `skipped` covers both a question visited and left without a position and an
+ * explicit neutral — the bar is a readout of how much is decided, and neither
+ * decides anything. The neutral still scores; only the bar declines to draw
+ * the distinction.
+ */
+export function toSegments(questions: readonly QuestionLike[], answers: readonly Answer[]): AnswerSegment[] {
+  const lookup = byQuestion(answers);
+
+  return questions.map((question) => {
+    const answer = lookup.get(question.id);
+    const important = answer?.isImportant === true;
+
+    if (!answer) return { state: "unanswered", important };
+    if (answer.answer === true) return { state: "agree", important };
+    if (answer.answer === false) return { state: "disagree", important };
+
+    // Visited without a position, or an explicit neutral: either reads as skipped in the bar.
+    return { state: "skipped", important };
+  });
 }

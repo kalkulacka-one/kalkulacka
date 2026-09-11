@@ -41,6 +41,29 @@
         "factRecapTitle": "Recap",
         "factRecapDescription": "At the end you'll see all the questions together and can still change your answers."
       },
+      "questionPage": {
+        "counter": "Question {position} of {total}",
+        "progressLabel": "Progress",
+        "agree": "Yes",
+        "disagree": "No",
+        "important": "Important to me",
+        "importantSuffix": " · Important to me",
+        "skip": "Skip",
+        "next": "Next",
+        "previous": "Previous",
+        "guide": "Guide",
+        "hints": {
+          "arrowLeft": "Left arrow",
+          "arrowRight": "Right arrow",
+          "arrowUp": "Up arrow",
+          "arrowDown": "Down arrow",
+          "comma": "Comma",
+          "period": "Period",
+          "important": "Important",
+          "browse": "Browse without answering"
+        },
+        "announce": "Question {position} of {total}: {statement}"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Fill your own calculator"
       },

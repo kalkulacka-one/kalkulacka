@@ -163,18 +163,21 @@ async function answerQuestions(page: Page, maxQuestions = 3) {
     try {
       await expect(page.locator("main")).toBeVisible();
 
-      const answerOptions = page.locator('button[role="radio"], input[type="radio"], button:has-text("Souhlasím"), button:has-text("Nesouhlasím"), button:has-text("Ano"), button:has-text("Ne")');
+      // By role, so the answer buttons on the cards stacked behind the active one
+      // (inert and `aria-hidden`, but earlier in the DOM) are never the first match.
+      const answerOptions = page.locator('button[role="radio"], input[type="radio"]').or(page.getByRole("button", { name: /^(Souhlasím|Nesouhlasím|Ano|Ne)$/ }));
 
       if ((await answerOptions.count()) === 0) break;
 
       if (!(await clickWithRetry(answerOptions.first()))) break;
       await page.waitForTimeout(TIMEOUTS.ACTION_DELAY);
 
+      // Answering moves to the next question on its own; a "Další" is only there to press when the question was already answered.
       const nextButton = page.locator('button:has-text("Další"), button:has-text("Pokračovat"), a:has-text("Další")').first();
-      if (!(await nextButton.isVisible())) break;
-
-      await page.waitForTimeout(TIMEOUTS.ACTION_DELAY);
-      if (!(await clickWithRetry(nextButton))) break;
+      if (await nextButton.isVisible()) {
+        await page.waitForTimeout(TIMEOUTS.ACTION_DELAY);
+        if (!(await clickWithRetry(nextButton))) break;
+      }
 
       await page.waitForTimeout(TIMEOUTS.QUESTION_DELAY);
     } catch {
