@@ -48,7 +48,6 @@ export function SteppedProgressBar<TItem extends Record<string, unknown>>({ step
   }
 
   return (
-    // biome-ignore lint/a11y/useFocusableInteractive: A non-interactive progressbar should not be focusable
     <div
       role="progressbar"
       aria-valuetext={`Question ${stepCurrent} of ${stepTotal}`}

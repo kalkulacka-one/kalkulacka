@@ -27,7 +27,6 @@ export function ProgressBar({ value, color, corner }: ProgressBar) {
   const width = value > 100 ? 100 : value < 0 ? 0 : value;
 
   return (
-    // biome-ignore lint/a11y/useFocusableInteractive: A non-interactive progressbar should not be focusable
     <div
       role="progressbar"
       aria-valuenow={width}

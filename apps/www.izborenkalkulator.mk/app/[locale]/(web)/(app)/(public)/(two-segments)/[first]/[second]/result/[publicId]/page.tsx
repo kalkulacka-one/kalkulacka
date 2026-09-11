@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: Promise<{ first: string
     },
   });
 
-  if (!session || !session.data) {
+  if (!session?.data) {
     notFound();
   }
 

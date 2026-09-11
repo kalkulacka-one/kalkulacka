@@ -24,7 +24,6 @@ export function DotIndicator({ stepTotal, stepCurrent }: DotIndicator) {
   }
   const stepArray = Array.from({ length: stepTotal }, (_, index) => index);
   return (
-    // biome-ignore lint/a11y/useFocusableInteractive: A non-interactive progressbar should not be focusable
     <div className={twMerge("ko:flex ko:gap-1")} role="progressbar" aria-valuenow={stepCurrent} aria-valuemin={1} aria-valuemax={stepTotal} aria-label={`Step ${stepCurrent} of ${stepTotal}`}>
       {stepArray.map((step, index) => {
         return (
