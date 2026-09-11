@@ -26,6 +26,62 @@ for the pages to live in the package; this port does exactly that, so the
 three instances share one implementation and a shared change is verified once
 per instance rather than re-implemented three times.
 
+## What is reused, extended, copied and rebuilt
+
+Nothing below the screens is rewritten.
+
+- **Kept as it is (this repository):** routing and localized rewrites, data
+  loading and guards, schema, database, session API routes, cookie and bearer
+  handling, autosave, embeds, theme selection, metadata, analytics script,
+  monitoring, homepage and content pages, CI. In `packages/app`: the zustand
+  stores, view models and hooks, and the result calculation (the 2026
+  algorithm is deliberately identical). Each country app's client wrappers
+  keep their hooks, route builders and session handling and are rewired, not
+  rewritten; they stay per app on purpose, so a national team can change them.
+- **Extended rather than added (design system):** Button (pill variants),
+  Icon (the thin icon set), ToggleButton, Logo, Card (elevation, card
+  corner), Avatar (initials, accent ring), ProgressBar → Meter,
+  SteppedProgressBar → ProgressSegments (issue #196), ExpandableCard,
+  Input → SearchField, Badge / IconBadge → Tag and tutorial badges.
+- **Copied from 2026 with light adaptation (pure TypeScript, no styling):**
+  swipe physics and the gesture hook, drag-to-dismiss, pointer-kind
+  detection, insights, recap grouping, answer helpers (adapted to this
+  repository's answer array), party colour, topic icon rules, the AI prompt
+  builder, colour mode, share mode, clipboard, the share-card export
+  pipeline, the icon paths, the strings, the analytics event names, and the
+  Testing-Library tests that go with them.
+- **Rebuilt in the `ko:` design system:** everything with no counterpart
+  here — dialog, menu, question card and deck, filter chips, option rows,
+  sticky bar, flow nav, keyboard hints, edge fade, backdrop, calculating
+  animation, match row, avatar stack, donut, comparison list, share card,
+  app header and screen shell.
+
+**Styling rule.** Layout, colour and spacing are `ko:` utilities inside
+`cva`, as in the existing components. Motion choreography and multi-property
+rules (deck flight, calculating film strip, backdrop gradients, fades) live in
+`packages/design-system/src/styles.css` under `@layer components` with
+`ko-*` class names. No CSS modules.
+
+**Attribution.** Every ported file cites its 2026 source path in its header
+comment and keeps the rationale comments that record why a value or rule is
+what it is. PR descriptions list the sources.
+
+## Carried, deferred, dropped
+
+Recorded so that nothing is lost silently.
+
+- **Carried:** the behaviour, the numbers (physics constants, timings,
+  thresholds, the contrast-capped dark palette), the rationale comments, the
+  tests, the strings, the icons, the analytics events.
+- **Deferred (proposals to raise once parity is demonstrated):** a
+  unit-testable URL grammar behind one catch-all route instead of the
+  per-route file matrix; a typed, validated theme contract (`defineTheme`)
+  that emits the `--ko-palette-*` CSS; the WebGL backdrop; the election
+  picker page; a share image that matches the new share card.
+- **Dropped (the existing platform already covers them):** the 2026 session
+  sync and localStorage answers store, its i18n runtime, its API routes and
+  adapters, its security headers, its homepage placeholder.
+
 ## Scope rules (aligned with `docs/agentic/contract.md`)
 
 - **Product scope** (UI only): design-system components, app-package
@@ -55,7 +111,8 @@ test flips it to ready.
 |---|---|---|---|---|---|
 | 0 | `port/00-roadmap` | Add the new UI port roadmap | docs | 1 | — |
 | 1 | `port/01-tokens` | Add surface, text, radius, motion and fluid tokens to the design system | design-system | 3 | — (no visible change; all apps build, screenshots identical) |
-| 2 | `port/02-button-icon` | Extend Button and Icon and add IconButton | design-system | 8 | — |
+| 2a | `port/02a-twmerge` | Fix twMerge prefix so conflicting classes actually merge | design-system | 3 | — (bug fix found during PR 2; own PR because it changes class merging for every component) |
+| 2 | `port/02-button-icon` | Extend Button and Icon and add IconButton | design-system | 12 | — |
 | 3 | `port/03-primitives` | Add Chip, Tag, AnswerMark and VisuallyHidden | design-system | 12 | — |
 | 4 | `port/04-shell` | Add AppHeader, Screen, StickyBar, EdgeFade and Backdrop | design-system | 14 | — |
 | 5 | `port/05-intro-page` | Add the introduction page to the app package and use it in the Czech app | design-system (TutorialStep), app, CZ | 12 | **C1** intro screen |
