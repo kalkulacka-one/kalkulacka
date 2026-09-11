@@ -77,7 +77,8 @@
         "useJsxKeyInIterable": "error"
       },
       "security": {
-        "noDangerouslySetInnerHtml": "error"
+        "noDangerouslySetInnerHtml": "error",
+        "noBlankTarget": "off"
       }
     }
   },

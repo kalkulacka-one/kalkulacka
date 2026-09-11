@@ -83,7 +83,7 @@ export function DonateCard() {
             </button>
           </div>
           <div className="col-span-3 @sm:col-start-2 @sm:col-span-3">
-            <a href={getDarujmeUrl(selectedAmount || undefined)} target="_blank" className={`grid ${plausibleClassNames}`} rel="noopener">
+            <a href={getDarujmeUrl(selectedAmount || undefined)} target="_blank" className={`grid ${plausibleClassNames}`}>
               <Button variant="outline" color="primary" size="medium">
                 Podporiť Volebnú kalkulačku
               </Button>
