@@ -92,7 +92,7 @@
     },
     "pages": {
       "common": {
-        "close": "Close"
+        "close": "Zavřít"
       },
       "comparison": {
         "title": "Porovnání",
@@ -109,7 +109,7 @@
       },
       "result": {
         "title": "Výsledek",
-        "back": "Back",
+        "back": "Zpět",
         "candidateLists": "Kandidátní listiny",
         "people": "Lidé"
       },
