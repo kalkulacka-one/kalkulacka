@@ -2,6 +2,16 @@
 
 :root {
   color-scheme: light dark;
+
+  /* Shared values that are not Tailwind theme tokens. */
+  --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
+  --ko-plate-blur: blur(12px) saturate(1.4);
+  --ko-fade-to-bottom: linear-gradient(to bottom, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+  --ko-fade-to-top: linear-gradient(to top, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+  --ko-pressable-scale-hover: 1.008;
+  --ko-pressable-scale-press: 0.985;
+  --ko-pressable-scale-open: 1.015;
+  --ko-pressable-scale-open-hover: 1.022;
 }
 
 @theme static {
@@ -143,9 +153,182 @@
     var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
     var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))
   );
+  /*
+   * Surfaces, text and answer semantics.
+   *
+   * Every token below is derived from the three palette colors, so existing
+   * themes keep working unchanged. A theme can pin any of them with
+   * `--ko-palette-<name>` (both modes) or `--ko-palette-<name>-light/-dark`.
+   *
+   * The chroma is capped at the neutral's own rather than fixed: an achromatic
+   * neutral (Alarm's pure black) has no hue, and a fixed chroma at hue 0 would
+   * paint its surfaces and text red.
+   */
+
+  --color-page: light-dark(
+    var(--ko-palette-page-light, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.984 min(c, 0.003) h))),
+    var(--ko-palette-page-dark, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.18 min(c, 0.037) h)))
+  );
+
+  --color-surface: light-dark(
+    var(--ko-palette-surface-light, var(--ko-palette-surface, white)),
+    var(--ko-palette-surface-dark, var(--ko-palette-surface, oklch(from var(--ko-palette-neutral) 0.265 min(c, 0.045) h)))
+  );
+
+  --color-surface-sunken: light-dark(
+    var(--ko-palette-surface-sunken-light, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.968 min(c, 0.007) h))),
+    var(--ko-palette-surface-sunken-dark, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.228 min(c, 0.037) h)))
+  );
+
+  --color-surface-hover: color-mix(in oklab, var(--ko-palette-neutral) 8%, transparent);
+
+  --color-text: light-dark(
+    var(--ko-palette-text-light, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.279 min(c, 0.041) h))),
+    var(--ko-palette-text-dark, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.945 min(c, 0.011) h)))
+  );
+
+  --color-text-muted: light-dark(
+    var(--ko-palette-text-muted-light, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.554 min(c, 0.046) h))),
+    var(--ko-palette-text-muted-dark, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.711 min(c, 0.035) h)))
+  );
+
+  --color-text-strong: oklch(from var(--ko-color-text) calc(l - 0.06) c h);
+  --color-text-subtle: oklch(from var(--ko-color-text-muted) calc(l + 0.12) c h);
+
+  --color-border: light-dark(
+    var(--ko-palette-border-light, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.929 min(c, 0.013) h))),
+    var(--ko-palette-border-dark, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.327 min(c, 0.036) h)))
+  );
+
+  --color-border-strong: oklch(from var(--ko-color-border) calc(l - 0.1) c h);
+
+  --color-focus: light-dark(
+    var(--ko-palette-focus-light, var(--ko-palette-focus, var(--ko-color-primary))),
+    var(--ko-palette-focus-dark, var(--ko-palette-focus, var(--ko-color-primary)))
+  );
+
+  /* "Ano" and "Ne" alias primary/secondary unless a theme says otherwise. */
+  --color-agree: light-dark(
+    var(--ko-palette-agree-light, var(--ko-palette-agree, var(--ko-color-primary))),
+    var(--ko-palette-agree-dark, var(--ko-palette-agree, var(--ko-color-primary)))
+  );
+  --color-agree-hover: oklch(from var(--ko-color-agree) calc(l - 0.05) c h);
+  --color-agree-active: oklch(from var(--ko-color-agree) calc(l - 0.1) c h);
+  --color-agree-soft: color-mix(in oklab, var(--ko-color-agree) 22%, var(--ko-color-surface));
+  --color-agree-wash: oklch(from var(--ko-color-agree) l c h / 0.14);
+  --color-agree-wash-strong: oklch(from var(--ko-color-agree) l c h / 0.22);
+  --color-on-agree: light-dark(
+    var(--ko-palette-on-agree-light, var(--ko-palette-on-agree, oklch(from var(--ko-color-agree) clamp(0, (0.62 - l) * 1000, 1) 0 h))),
+    var(--ko-palette-on-agree-dark, var(--ko-palette-on-agree, white))
+  );
+
+  --color-disagree: light-dark(
+    var(--ko-palette-disagree-light, var(--ko-palette-disagree, var(--ko-color-secondary))),
+    var(--ko-palette-disagree-dark, var(--ko-palette-disagree, var(--ko-color-secondary)))
+  );
+  --color-disagree-hover: oklch(from var(--ko-color-disagree) calc(l - 0.05) c h);
+  --color-disagree-active: oklch(from var(--ko-color-disagree) calc(l - 0.1) c h);
+  --color-disagree-soft: color-mix(in oklab, var(--ko-color-disagree) 22%, var(--ko-color-surface));
+  --color-disagree-wash: oklch(from var(--ko-color-disagree) l c h / 0.12);
+  --color-disagree-wash-strong: oklch(from var(--ko-color-disagree) l c h / 0.2);
+  --color-on-disagree: light-dark(
+    var(--ko-palette-on-disagree-light, var(--ko-palette-on-disagree, oklch(from var(--ko-color-disagree) clamp(0, (0.62 - l) * 1000, 1) 0 h))),
+    var(--ko-palette-on-disagree-dark, var(--ko-palette-on-disagree, white))
+  );
+
+  /* Skipped answers, toasts and the important toggle use the text ink. */
+  --color-neutral-ink: light-dark(
+    var(--ko-palette-neutral-ink-light, var(--ko-palette-neutral-ink, var(--ko-palette-neutral))),
+    var(--ko-palette-neutral-ink-dark, var(--ko-palette-neutral-ink, var(--ko-color-text)))
+  );
+  --color-neutral-soft: color-mix(in oklab, var(--ko-color-neutral-ink) 22%, var(--ko-color-surface));
+  --color-neutral-wash: oklch(from var(--ko-color-text-muted) l c h / 0.2);
+  --color-neutral-wash-strong: oklch(from var(--ko-color-text-muted) l c h / 0.32);
+  --color-on-neutral-ink: light-dark(
+    var(--ko-palette-on-neutral-ink-light, var(--ko-palette-on-neutral-ink, white)),
+    var(--ko-palette-on-neutral-ink-dark, var(--ko-palette-on-neutral-ink, var(--ko-color-page)))
+  );
+
+  /* Typeface for question statements; defaults to the sans face. */
+  --font-question: var(--ko-typeface-question, var(--ko-typeface-sans)), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Shape. The card's signature is a square top-left corner. */
+  --radius-card: var(--ko-shape-radius-card, 0 30px 30px 30px);
+  --radius-control: var(--ko-shape-radius-control, clamp(16px, 14.1633px + 0.4898vw, 22px));
+  --radius-chip: var(--ko-shape-radius-chip, 9px);
+  --radius-pill: var(--ko-shape-radius-pill, 100px);
+
+  /* Motion. Durations collapse under reduced motion (see @layer base). */
+  --duration-fast: var(--ko-motion-duration-fast, 120ms);
+  --duration-base: var(--ko-motion-duration-base, 150ms);
+  --duration-slow: var(--ko-motion-duration-slow, 250ms);
+  --ease-spring: var(--ko-motion-easing-spring, cubic-bezier(0.2, 0.9, 0.3, 1));
+  --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
+
+  /* Elevation, tinted with the neutral so shadows belong to the theme. */
+  --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
+  --shadow-card-next: 0 2px 8px -2px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -6px oklch(from var(--ko-shadow-color) l c h / 0.14);
+  --shadow-card-back: 0 2px 6px -2px oklch(from var(--ko-shadow-color) l c h / 0.06), 0 6px 18px -4px oklch(from var(--ko-shadow-color) l c h / 0.1);
+  --shadow-card-lifted: 0 8px 20px -4px oklch(from var(--ko-shadow-color) l c h / 0.14), 0 24px 52px -10px oklch(from var(--ko-shadow-color) l c h / 0.25);
+  --shadow-sticky: 0 -8px 24px -12px oklch(from var(--ko-shadow-color) l c h / 0.14);
+  --shadow-surface: 0 1px 2px -1px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -14px oklch(from var(--ko-shadow-color) l c h / 0.2);
+
+  /*
+   * Fluid scale: linear ramps between a 375px and a 1600px viewport, as
+   * clamp() so nothing listens to resize. Sizes live in the spacing namespace
+   * (ko:h-fluid-nav, ko:p-fluid-gutter), type sizes in the text namespace.
+   */
+  --spacing-fluid-gutter: clamp(18px, 10.0408px + 2.1224vw, 44px);
+  --spacing-fluid-header-top: clamp(8px, 1.8776px + 1.6327vw, 28px);
+  --spacing-fluid-progress-top: clamp(10px, 5.102px + 1.3061vw, 26px);
+  --spacing-fluid-card-pad-top: clamp(20px, 14.4898px + 1.4694vw, 38px);
+  --spacing-fluid-card-pad-side: clamp(18px, 12.4898px + 1.4694vw, 36px);
+  --spacing-fluid-card-pad-bottom: clamp(18px, 13.7143px + 1.1429vw, 32px);
+  --spacing-fluid-star: clamp(52px, 46.4898px + 1.4694vw, 70px);
+  --spacing-fluid-action: clamp(58px, 51.8776px + 1.6327vw, 78px);
+  --spacing-fluid-nav: clamp(62px, 54.6531px + 1.9592vw, 86px);
+  --spacing-fade-edge: 3rem;
+  --spacing-fade-action: 6rem;
+  --spacing-scroll-tail: max(4rem, env(safe-area-inset-bottom, 0px));
+
+  --text-fluid-brand: clamp(11px, 10.3878px + 0.1633vw, 13px);
+  --text-fluid-question: clamp(27px, 24.551px + 0.6531vw, 35px);
+  --text-fluid-question--line-height: 1.1;
+  --text-fluid-gist: clamp(15.5px, 15.0408px + 0.1224vw, 17px);
+  --text-fluid-gist--line-height: 1.45;
+  --text-fluid-chip: clamp(13.5px, 13.1939px + 0.0816vw, 14.5px);
+  --text-fluid-action-label: 19px;
+  --text-title: clamp(1.625rem, 1.3rem + 1.5vw, 2.25rem);
+  --text-title--line-height: 1.1;
+  --text-display: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-display--line-height: 1.1;
+
+  /* Edge fades: a six-stop page-colour ramp, the only sanctioned "more this way". */
+
+  /* Pressable cards grow in place; they never translate. */
 }
 
 @layer base {
+  /*
+   * An explicit mode wins over the OS preference; without the attribute the
+   * page follows `prefers-color-scheme` with no JavaScript at all.
+   */
+  :root[data-mode="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-mode="dark"] {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --ko-duration-fast: 0.01ms;
+      --ko-duration-base: 0.01ms;
+      --ko-duration-slow: 0.01ms;
+    }
+  }
+
   @font-face {
     font-family: "Radio Canada";
     font-weight: 300 700;
