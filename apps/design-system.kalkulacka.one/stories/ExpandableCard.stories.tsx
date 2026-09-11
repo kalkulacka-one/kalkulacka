@@ -119,7 +119,7 @@ export const NoExpandableContent: ExpandableCardStory = {
   },
   render: (args) => (
     <ExpandableCard {...args}>
-      {({ open }) => (
+      {() => (
         <>
           <ExpandableCard.Content>
             <div className="p-6">
@@ -142,7 +142,7 @@ export const MultipleCards: ExpandableCardStory = {
   render: (args) => (
     <div className="space-y-4">
       <ExpandableCard {...args}>
-        {({ open }) => (
+        {() => (
           <>
             <ExpandableCard.Content>
               <div className="p-6">
@@ -161,7 +161,7 @@ export const MultipleCards: ExpandableCardStory = {
       </ExpandableCard>
 
       <ExpandableCard {...args}>
-        {({ open }) => (
+        {() => (
           <>
             <ExpandableCard.Content>
               <div className="p-6">
@@ -183,7 +183,7 @@ export const MultipleCards: ExpandableCardStory = {
       </ExpandableCard>
 
       <ExpandableCard {...args}>
-        {({ open }) => (
+        {() => (
           <>
             <ExpandableCard.Content>
               <div className="p-6">

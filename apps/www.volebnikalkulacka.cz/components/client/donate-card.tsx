@@ -74,7 +74,7 @@ export function DonateCard({ source, defaultAmount = "500", logo = false, dismis
             </div>
           ))}
           <div className={`col-span-3 @sm:col-span-3 ${logo ? "@sm:col-start-2" : "@sm:col-start-1"}`}>
-            <a href={href} target="_blank" className={`grid ${plausibleClassNames}`}>
+            <a href={href} target="_blank" className={`grid ${plausibleClassNames}`} rel="noopener">
               <Button variant="outline" color="primary" size="medium">
                 Podpořit Volební kalkulačku
               </Button>

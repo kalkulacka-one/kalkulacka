@@ -14,6 +14,7 @@ export function EmbedAttribution({ href, title }: EmbedAttribution) {
     <a
       href={href}
       target="_blank"
+      rel="noopener"
       className="koa:group koa:p-2 koa:flex koa:items-center koa:gap-2 koa:rounded-lg koa:text-sm koa:text-slate-400 koa:hover:text-slate-600 koa:hover:bg-slate-100 koa:min-w-max"
     >
       <span>{t("broughtBy")}</span>
