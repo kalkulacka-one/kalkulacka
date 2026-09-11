@@ -2,7 +2,6 @@ import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 import type { Locale } from "next-intl";
 import createNextIntlPlugin from "next-intl/plugin";
-import rehypeSlug from "rehype-slug";
 
 import { appConfig } from "./config/app-config";
 import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config/i18n-routing";
@@ -103,7 +102,7 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   options: {
-    rehypePlugins: [rehypeSlug],
+    rehypePlugins: ["rehype-slug"],
   },
 });
 

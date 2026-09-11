@@ -30,7 +30,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "next": "^15.5.0"
+    "next": "^16.0.0"
   },
   "packageManager": "npm@11.5.2"
 }
