@@ -9,6 +9,7 @@ export * from "./dotIndicator";
 export * from "./edgeFade";
 export * from "./iconBadge";
 export * from "./progressBar";
+export * from "./progressSegments";
 export * from "./screen";
 export * from "./shell";
 export * from "./steppedProgressBar";
