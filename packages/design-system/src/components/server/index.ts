@@ -8,6 +8,7 @@ export * from "./chip";
 export * from "./dotIndicator";
 export * from "./edgeFade";
 export * from "./iconBadge";
+export * from "./keyboardHints";
 export * from "./progressBar";
 export * from "./progressSegments";
 export * from "./screen";
