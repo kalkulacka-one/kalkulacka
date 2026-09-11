@@ -2,7 +2,7 @@ import { Icon } from "@kalkulacka-one/design-system/client";
 import { IconBadge } from "@kalkulacka-one/design-system/server";
 
 import { mdiAbTesting } from "@mdi/js";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 const meta: Meta<typeof IconBadge> = {
   title: "Components/IconBadge",

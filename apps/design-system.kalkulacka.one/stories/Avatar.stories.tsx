@@ -1,6 +1,6 @@
 import { Avatar } from "@kalkulacka-one/design-system/server";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 const meta: Meta<typeof Avatar> = {
   title: "Components/Avatar",
