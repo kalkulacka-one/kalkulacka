@@ -1,7 +1,6 @@
 {
   "extends": "@kalkulacka-one/typescript-config/nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     },

@@ -1,8 +1,9 @@
 {
   "extends": "@kalkulacka-one/typescript-config/base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "./src",
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
