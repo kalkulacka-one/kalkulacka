@@ -110,11 +110,11 @@ describe("QuestionNavigationCard", () => {
 
   describe("interactions", () => {
     let user: ReturnType<typeof userEvent.setup>;
-    let mockHandler: ReturnType<typeof vi.fn>;
+    let mockHandler: ReturnType<typeof vi.fn<() => void>>;
 
     beforeEach(() => {
       user = userEvent.setup();
-      mockHandler = vi.fn();
+      mockHandler = vi.fn<() => void>();
     });
 
     it("calls onPreviousClick when previous button is clicked", async () => {

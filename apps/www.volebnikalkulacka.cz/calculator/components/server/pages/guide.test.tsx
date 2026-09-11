@@ -72,14 +72,14 @@ const data = calculatorViewModel({
 } satisfies Calculator);
 
 describe("GuidePage", () => {
-  let onNextClick: ReturnType<typeof vi.fn>;
-  let onBackClick: ReturnType<typeof vi.fn>;
-  let onCloseClick: ReturnType<typeof vi.fn>;
+  let onNextClick: ReturnType<typeof vi.fn<() => void>>;
+  let onBackClick: ReturnType<typeof vi.fn<() => void>>;
+  let onCloseClick: ReturnType<typeof vi.fn<() => void>>;
 
   beforeEach(() => {
-    onNextClick = vi.fn();
-    onBackClick = vi.fn();
-    onCloseClick = vi.fn();
+    onNextClick = vi.fn<() => void>();
+    onBackClick = vi.fn<() => void>();
+    onCloseClick = vi.fn<() => void>();
   });
 
   afterEach(() => {

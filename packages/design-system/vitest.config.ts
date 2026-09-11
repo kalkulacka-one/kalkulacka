@@ -1,17 +1,8 @@
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import react from "@vitejs/plugin-react";
 import { configDefaults, defineConfig } from "vitest/config";
 
-const rootDir = dirname(fileURLToPath(import.meta.url));
-
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      "@": `${rootDir}/src`,
-    },
-  },
   test: {
     exclude: [...configDefaults.exclude, "**/dist/**"],
     environment: "jsdom",
