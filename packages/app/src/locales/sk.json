@@ -25,6 +25,49 @@
       "guideNavigationCard": {
         "startButton": "Začať odpovedať"
       },
+      "guidePage": {
+        "title": "Ako to funguje",
+        "description": "Vyskúšajte si to na cvičnej karte — nič z nej sa nikam nezapočíta.",
+        "start": "Rozumiem, začať"
+      },
+      "guidePractice": {
+        "bodyTouch": "Ťahajte kartou do vyznačených smerov, alebo ťuknite na jednu z možností.",
+        "bodyPointer": "Ťahajte kartou do vyznačených smerov, alebo kliknite na jednu z možností.",
+        "progress": "Vyskúšané {done} zo {total}",
+        "feedbackAgree": "Áno — karta išla doľava.",
+        "feedbackDisagree": "Nie — karta išla doprava.",
+        "feedbackImportant": "Pre mňa dôležité — taká otázka má vo výsledku dvojnásobnú váhu.",
+        "feedbackSkip": "Preskočené — do výsledku sa nezapočíta.",
+        "done": "Máte to v rukách. Môžeme začať naozaj.",
+        "agree": "Áno",
+        "disagree": "Nie",
+        "important": "Pre mňa dôležité",
+        "importantSuffix": " · Pre mňa dôležité",
+        "skip": "Preskočiť",
+        "hints": {
+          "arrowLeft": "Šípka vľavo",
+          "arrowRight": "Šípka vpravo",
+          "arrowUp": "Šípka nahor",
+          "arrowDown": "Šípka nadol",
+          "important": "Dôležité"
+        }
+      },
+      "guideSteps": {
+        "agreeTitle": "Áno",
+        "agreeDescriptionTouch": "Ťahajte kartu doľava, alebo ťuknite na Áno.",
+        "agreeDescriptionPointer": "Ťahajte kartu doľava, stlačte šípku vľavo, alebo kliknite na Áno.",
+        "disagreeTitle": "Nie",
+        "disagreeDescriptionTouch": "Ťahajte kartu doprava, alebo ťuknite na Nie.",
+        "disagreeDescriptionPointer": "Ťahajte kartu doprava, stlačte šípku vpravo, alebo kliknite na Nie.",
+        "importantTitle": "Pre mňa dôležité",
+        "importantDescriptionTouch": "Ťahajte kartu šikmo nahor, alebo ťuknite na hviezdičku. Otázka s hviezdičkou má vo výsledku dvojnásobnú váhu.",
+        "importantDescriptionPointer": "Ťahajte kartu šikmo nahor, stlačte šípku nahor, alebo kliknite na hviezdičku. Otázka s hviezdičkou má vo výsledku dvojnásobnú váhu.",
+        "skipTitle": "Preskočiť",
+        "skipDescriptionTouch": "Otázku, na ktorú nechcete odpovedať, ťahajte nadol — do výsledku sa nezapočíta.",
+        "skipDescriptionPointer": "Otázku, na ktorú nechcete odpovedať, ťahajte nadol alebo stlačte šípku nadol — do výsledku sa nezapočíta.",
+        "recapTitle": "Rekapitulácia",
+        "recapDescription": "Na konci uvidíte všetky otázky pohromade a odpovede môžete ešte zmeniť."
+      },
       "introductionNavigationCard": {
         "continueButton": "Pokračovať"
       },

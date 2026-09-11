@@ -7,11 +7,12 @@ import { AppHeader, Screen, StickyBar, TutorialStep } from "@kalkulacka-one/desi
 
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import Markdown from "react-markdown";
 
 import { countAnswered, firstUnansweredIndex } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
 import { useQuestions } from "@/client/view-models";
+
+import { EditorialMarkdown } from "./editorial-markdown";
 
 /** Where a returning visitor picks up: the first unvisited question (1-based), or the recap once every question was visited. */
 export type IntroductionResumeTarget = { question: number } | { review: true };
@@ -112,7 +113,7 @@ export function IntroductionPage({ appTitle, electionName, calculatorName, candi
       */}
       <IntroFacts />
 
-      {intro ? <IntroMarkdown>{intro}</IntroMarkdown> : null}
+      {intro ? <EditorialMarkdown>{intro}</EditorialMarkdown> : null}
     </Screen>
   );
 }
@@ -149,26 +150,5 @@ function IntroFacts() {
       <TutorialStep icon={icons.neutral} title={t("factSkipTitle")} description={t("factSkipDescription")} />
       <TutorialStep icon={icons.results} title={t("factRecapTitle")} description={t("factRecapDescription")} />
     </ul>
-  );
-}
-
-/** The editorial intro from the calculator data — same allow-list and link styling as the legacy `Introduction`. */
-function IntroMarkdown({ children }: { children: string }) {
-  return (
-    <div className="koa:grid koa:gap-2 koa:max-w-prose koa:text-[0.9375rem] koa:leading-[1.55] koa:text-(--ko-color-text-muted)">
-      <Markdown
-        allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]}
-        skipHtml
-        components={{
-          a: ({ href, children }) => (
-            <a href={href} className="koa:text-[var(--ko-color-primary)] koa:hover:text-[var(--ko-color-primary-hover)] koa:underline koa:hover:no-underline" target="_blank" rel="noopener noreferrer">
-              {children}
-            </a>
-          ),
-        }}
-      >
-        {children}
-      </Markdown>
-    </div>
   );
 }

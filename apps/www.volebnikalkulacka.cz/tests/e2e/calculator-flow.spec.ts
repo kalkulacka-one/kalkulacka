@@ -129,7 +129,9 @@ async function navigateToNavod(page: Page, calculator: CalculatorConfig) {
 }
 
 async function startQuestions(page: Page, calculator: CalculatorConfig) {
-  const questionButton = page.locator('a[href*="/otazka"], button:has-text("Začít odpovídat"), button:has-text("Začít"), button:has-text("Pokračovat"), button:has-text("První otázka")').first();
+  const questionButton = page
+    .locator('a[href*="/otazka"], button:has-text("Rozumím, začít"), button:has-text("Začít odpovídat"), button:has-text("Začít"), button:has-text("Pokračovat"), button:has-text("První otázka")')
+    .first();
 
   let isVisible = false;
   try {
