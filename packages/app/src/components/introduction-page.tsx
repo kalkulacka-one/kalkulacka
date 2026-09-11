@@ -95,7 +95,7 @@ export function IntroductionPage({ appTitle, electionName, calculatorName, candi
         </StickyBar>
       }
     >
-      <p className="koa:m-0 koa:text-lg koa:leading-[1.55] koa:text-(--ko-color-text-muted)">{t("candidates", { count: candidateCount })}</p>
+      <p className="koa:m-0 koa:text-base koa:leading-[1.55] koa:text-(--ko-color-text-muted)">{t("candidates", { count: candidateCount })}</p>
 
       {inProgress ? (
         <p className="koa:m-0 koa:p-4 koa:rounded-(--ko-radius-control) koa:bg-(--ko-color-surface) koa:shadow-[inset_0_0_0_1.5px_var(--ko-color-border)] koa:text-[0.9375rem] koa:font-semibold koa:text-(--ko-color-text-strong)">

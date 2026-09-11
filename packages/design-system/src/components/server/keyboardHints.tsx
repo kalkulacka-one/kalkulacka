@@ -29,7 +29,7 @@ export type KeyboardHintsProps = {
  * Hidden with `display: none` rather than removed from the tree so the markup
  * is the same at every width — only the breakpoint decides, no JavaScript.
  */
-const hintsClasses = "ko:hidden ko:desk:flex ko:justify-center ko:flex-wrap ko:gap-x-6 ko:gap-y-2 ko:pt-4 ko:pb-2 ko:font-sans ko:text-sm ko:text-text-muted";
+const hintsClasses = "ko:hidden ko:desk:flex ko:justify-center ko:flex-wrap ko:gap-x-6 ko:gap-y-2 ko:pt-4 ko:pb-2 ko:font-sans ko:text-[0.8125rem] ko:text-text-muted";
 
 const hintClasses = "ko:inline-flex ko:items-center ko:gap-2 ko:whitespace-nowrap";
 

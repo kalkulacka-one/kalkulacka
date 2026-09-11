@@ -75,7 +75,7 @@ describe("KeyboardHints", () => {
   it("is hidden below the desk breakpoint but stays in the accessibility tree", () => {
     const { container } = render(<KeyboardHints hints={hints} />);
     const root = container.firstElementChild;
-    expect(root).toHaveClass("ko:hidden", "ko:desk:flex", "ko:text-text-muted", "ko:text-sm");
+    expect(root).toHaveClass("ko:hidden", "ko:desk:flex", "ko:text-text-muted", "ko:text-[0.8125rem]");
     expect(root).not.toHaveAttribute("aria-hidden");
     expect(container.querySelector("[aria-hidden='true']:not(svg)")).toBeNull();
   });

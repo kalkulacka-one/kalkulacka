@@ -43,7 +43,7 @@ export function Screen({ title, description, back, header, children, footer }: S
             {back}
 
             <h1 className="ko-screen-title ko:font-display ko:text-display ko:font-bold ko:tracking-[-0.045em] ko:text-text ko:text-balance">{title}</h1>
-            {description ? <p className="ko:max-w-[34rem] ko:font-sans ko:text-lg ko:leading-[1.55] ko:text-text-muted ko:text-pretty">{description}</p> : null}
+            {description ? <p className="ko:max-w-[34rem] ko:font-sans ko:text-base ko:leading-[1.55] ko:text-text-muted ko:text-pretty">{description}</p> : null}
           </header>
 
           {children}
