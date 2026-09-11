@@ -70,6 +70,24 @@
         "yes": "Ano",
         "no": "Ne",
         "important": "Pro mě důležité"
+      },
+      "shareModal": {
+        "close": "Zavřít",
+        "title": "Sdílet výsledek",
+        "creating": "Vytváření odkazu...",
+        "error": "Nepodařilo se vytvořit odkaz ke sdílení",
+        "intro": "Sdílejte svůj výsledek se svými blízkými:",
+        "copy": "Kopírovat",
+        "copied": "Zkopírováno",
+        "shareInstagram": "Sdílet na Instagram",
+        "shareX": "Sdílet na X",
+        "consentPrefix": "Sdílením výsledků souhlasíte s našimi",
+        "privacyPolicy": "zásadami ochrany osobních údajů",
+        "shareText": "Podívejte se, jak mi vyšla Volební kalkulačka:",
+        "shareTextWithHandle": "Podívejte se, jak mi vyšla {handle}:",
+        "shareTitle": "Volební kalkulačka",
+        "shareFileText": "Podívejte se, jak mi vyšla Volební kalkulačka",
+        "fileName": "Moje Volební kalkulačka.png"
       }
     }
   }
