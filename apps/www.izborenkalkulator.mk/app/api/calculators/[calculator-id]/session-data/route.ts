@@ -1,11 +1,10 @@
 import { HttpError, InternalServerError, JsonParseError, NotFoundError, UnauthorizedError, ValidationError } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
+import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@kalkulacka-one/next/session/server";
 import { answerSchema } from "@kalkulacka-one/schema";
 
 import type { NextRequest } from "next/server";
 import { z } from "zod";
-
-import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/lib/session/server";
 
 const matchSchema = z.object({
   id: z.string().uuid(),

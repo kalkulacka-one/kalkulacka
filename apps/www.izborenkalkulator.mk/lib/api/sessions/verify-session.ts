@@ -1,4 +1,4 @@
-import { getRuntimeSessionId } from "@/lib/session/client";
+import { getRuntimeSessionId } from "@kalkulacka-one/next/session/client";
 
 export async function verifySession(): Promise<boolean> {
   const headers: HeadersInit = {};
