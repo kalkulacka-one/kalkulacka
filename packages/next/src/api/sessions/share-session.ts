@@ -1,4 +1,4 @@
-import { getRuntimeSessionId } from "@kalkulacka-one/next/session/client";
+import { getRuntimeSessionId } from "@/session/client";
 
 export async function shareSession(calculatorId: string): Promise<{ publicId: string }> {
   const headers: HeadersInit = {};

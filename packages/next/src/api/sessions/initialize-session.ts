@@ -1,5 +1,5 @@
-import { setRuntimeSessionId } from "@kalkulacka-one/next/session/client";
-import type { CreateCalculatorSessionParams } from "@kalkulacka-one/next/session/server";
+import { setRuntimeSessionId } from "@/session/client";
+import type { CreateCalculatorSessionParams } from "@/session/server";
 
 import { verifySession } from "./verify-session";
 
