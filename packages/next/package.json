@@ -34,6 +34,10 @@
     "./analytics": {
       "types": "./dist/analytics/index.d.ts",
       "default": "./dist/analytics/index.js"
+    },
+    "./api/routes/*": {
+      "types": "./dist/api/routes/*.d.ts",
+      "default": "./dist/api/routes/*.js"
     }
   },
   "scripts": {

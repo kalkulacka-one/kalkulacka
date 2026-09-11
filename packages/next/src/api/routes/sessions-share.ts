@@ -1,8 +1,9 @@
 import { HttpError, NotFoundError, UnauthorizedError } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
-import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@kalkulacka-one/next/session/server";
 
 import type { NextRequest } from "next/server";
+
+import { getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest } from "@/session/server";
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ "calculator-id": string }> }) {
   try {
