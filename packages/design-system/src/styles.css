@@ -333,6 +333,50 @@
     }
   }
 
+  /*
+   * The recap's question dialog (`QuestionDialog`): the card arriving and, on
+   * a dismissal, leaving again, with the veil behind it fading either way.
+   * Ported from kalkulacka-2026/packages/ui/src/question-dialog/question-dialog.module.css
+   * (`card-in`, `card-out`, `veil-in`, `veil-out`). Theme animations so the
+   * card's two are plain `ko:animate-*` utilities the component switches
+   * between, while the veil's are read by `.ko-question-dialog::backdrop` in
+   * @layer components — a pseudo-element no utility can reach. Every duration
+   * is a token, so reduced motion collapses all four without a second rule;
+   * they still *run* (near-zero long), which the component relies on: it waits
+   * for `animationend` to close the element, and an animation switched off
+   * outright would never send one.
+   */
+  --animate-question-dialog-in: ko-question-dialog-in var(--ko-duration-slow) var(--ko-ease-spring);
+  --animate-question-dialog-out: ko-question-dialog-out var(--ko-duration-base) var(--ko-ease-exit) forwards;
+  --animate-veil-in: ko-veil-in var(--ko-duration-base) ease;
+  --animate-veil-out: ko-veil-out var(--ko-duration-base) ease forwards;
+
+  @keyframes ko-question-dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.97);
+    }
+  }
+
+  @keyframes ko-question-dialog-out {
+    to {
+      opacity: 0;
+      transform: translateY(6px) scale(0.97);
+    }
+  }
+
+  @keyframes ko-veil-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes ko-veil-out {
+    to {
+      opacity: 0;
+    }
+  }
+
   /* Elevation, tinted with the neutral so shadows belong to the theme. */
   --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
   --shadow-card-next: 0 2px 8px -2px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -6px oklch(from var(--ko-shadow-color) l c h / 0.14);
@@ -1210,5 +1254,111 @@
       radial-gradient(circle at 20% 25%, oklch(from var(--ko-color-agree) l c h / 0.11), transparent 50%),
       radial-gradient(circle at 80% 75%, oklch(from var(--ko-color-disagree) l c h / 0.094), transparent 50%),
       var(--ko-color-page);
+  }
+
+  /* --- Dialog ----------------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/dialog/dialog.module.css.
+   *
+   * Everything on the dialog's box and its panel is `ko:` utilities in
+   * dialog.tsx; what lives here is what a utility cannot reach — the
+   * `::backdrop` pseudo-element — and the open/close transition, which has to
+   * be stated on the element, its backdrop and its panel together to read as
+   * one movement.
+   *
+   * The source animated the panel *in* only: "a native dialog leaves the top
+   * layer the instant it closes, so an exit animation would play against an
+   * element that is already gone — better an honest snap out than a
+   * half-drawn one." The platform has since grown the pieces that make the
+   * exit honest: `transition-behavior: allow-discrete` keeps `display` (and,
+   * where supported, the `overlay` that holds the element in the top layer)
+   * at their open values until the transition ends, and `@starting-style`
+   * gives the entry a value to transition *from*. So both directions are the
+   * same transition, on the base duration, and the element still closes
+   * natively — `dialog.close()` runs at once and the CSS finishes the picture.
+   * A browser without `overlay` drops the element out of the top layer at
+   * once and snaps, exactly as the source did; `position: fixed; inset: 0`
+   * keeps that snap covering the viewport rather than reflowing into the page
+   * for a frame.
+   *
+   * Every duration is `--ko-duration-base`, which @layer base collapses under
+   * `prefers-reduced-motion` — so there is no motion to switch off separately.
+   */
+  .ko-dialog {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    transition:
+      opacity var(--ko-duration-base) ease,
+      display var(--ko-duration-base) allow-discrete,
+      overlay var(--ko-duration-base) allow-discrete;
+  }
+
+  .ko-dialog[open] {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  /*
+   * The veil: the neutral ink at low opacity, its lightness capped so a light
+   * theme's ink still dims the page rather than tinting it, and a light blur so
+   * what is behind reads as "still there" rather than as content.
+   */
+  .ko-dialog::backdrop {
+    background: oklch(from var(--ko-color-neutral-ink) min(l, 0.25) c h / 0.42);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition:
+      opacity var(--ko-duration-base) ease,
+      display var(--ko-duration-base) allow-discrete,
+      overlay var(--ko-duration-base) allow-discrete;
+  }
+
+  .ko-dialog[open]::backdrop {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  /* The panel settles up into place as the veil fades in, and drops back as it fades out. */
+  .ko-dialog-panel {
+    transform: translateY(8px) scale(0.98);
+    transition: transform var(--ko-duration-base) var(--ko-ease-spring);
+  }
+
+  .ko-dialog[open] .ko-dialog-panel {
+    transform: none;
+
+    @starting-style {
+      transform: translateY(8px) scale(0.98);
+    }
+  }
+
+  /* --- QuestionDialog --------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/question-dialog/question-dialog.module.css.
+   *
+   * The same veil as `Dialog`'s, but driven by keyframes rather than a
+   * transition on `[open]`: this dialog is not closed by the browser removing
+   * the attribute — the component keeps the element open until the card has
+   * finished fading or flying (see questionDialog.tsx), and only then closes
+   * it natively. `data-closing` is what says the fade-out has started, and the
+   * veil follows it. Both keyframes are theme animations (`--ko-animate-veil-*`
+   * in @theme), the same ones the card's own entrance and exit sit beside.
+   * Its hint toast is the deck's own (`.ko-deck-toast`): same pill, same
+   * timings, and the dialog's stage is a container for the same reason the
+   * deck is — so the pill parks over the bottom of the card.
+   */
+  .ko-question-dialog::backdrop {
+    background: oklch(from var(--ko-color-neutral-ink) min(l, 0.25) c h / 0.42);
+    backdrop-filter: blur(3px);
+    animation: var(--ko-animate-veil-in);
+  }
+
+  .ko-question-dialog[data-closing]::backdrop {
+    animation: var(--ko-animate-veil-out);
   }
 }
