@@ -1,0 +1,67 @@
+[
+  {
+    "id": "96d07277-ed2b-40ed-9b22-5dc4208a0e0d",
+    "name": "Demokratikus Koalíció",
+    "abbreviation": "DK",
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/DK.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cbe2d0a1-1796-4b28-9350-53a1ea449cad",
+    "name": "Magyar Kétfarkú Kutya Párt",
+    "abbreviation": "MKKP",
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/MKKP.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "f3a1e92f-00ee-4024-bacf-820a7bdbf268",
+    "name": "Mi Hazánk Mozgalom",
+    "abbreviation": "MI HAZÁNK",
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/MHM.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "af78f800-49d1-4239-8ea7-0bc2d74639b5",
+    "name": "Tisztelet és Szabadság Párt",
+    "abbreviation": "TISZA",
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/TISZA.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cf177ab5-1e70-40a7-afa0-afb2089259f0",
+    "name": "Fidesz–KDNP Szövetség",
+    "abbreviation": "FIDESZ",
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/Fidesz.png"
+        }
+      }
+    ]
+  }
+]

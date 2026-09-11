@@ -7,10 +7,10 @@
   "minItems": 1,
   "items": {
     "title": "Tag",
-    "description": "Tag with max. 25 characters",
+    "description": "Tag with max. 100 characters",
     "type": "string",
     "minLength": 1,
-    "maxLength": 25,
+    "maxLength": 100,
     "examples": ["prezidentské", "2023"]
   }
 }

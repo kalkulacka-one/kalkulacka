@@ -1,0 +1,398 @@
+[
+  {
+    "id": "e31c49ad-8ad5-45c3-9ae9-defb397345e0",
+    "title": "Adózás",
+    "statement": "Meg kellene adóztatni az egymilliárd forint feletti vagyonokat.",
+    "detail": "Egyes kutatások szerint a háztartások vagyonának fele az ország leggazdagabb 10%-ának kezében van, ami lassíthatja a gazdasági növekedést, ronthatja a társadalmi mobilitást és hosszabb távon növelheti a társadalmi feszültségeket. Egyesek szerint a vagyonadó csökkenthetné a különbségeket, növelné a költségvetési forrásokat, lehetővé tenné a szociális és oktatási beruházások bővítését. Mások viszont attól tartanak, hogy a vagyonadó visszafogja a befektetéseket, rontja az innovációs kedvet és növelheti az adóelkerülést.",
+    "tags": [
+      "Adózás"
+    ]
+  },
+  {
+    "id": "e835f338-b6d5-4ef1-93f2-e43f8ed47b9b",
+    "title": "Közjog",
+    "statement": "A miniszterelnöki mandátumot legfeljebb két ciklusig lehessen betölteni.",
+    "detail": "Magyarországon jelenleg nincs korlát arra, hogy valaki hányszor lehet miniszterelnök, míg a köztársasági elnök legfeljebb két ciklust tölthet ki. A korlátozás támogatói szerint a túl hosszú hatalom torzíthatja a vezető személyiségét, illetve a ciklusok számának korlátozása erősítené a demokratikus versengést és csökkentené a visszaélések esélyét. Az ellenzők viszont úgy vélik, valódi alkotmányos korlátok nélkül ez csupán egy látszatintézkedés, ráadásul veszélyeztetné a stabil kormányzást és nem ösztönözné a hosszú távú tervezést.",
+    "tags": [
+      "Közjog"
+    ]
+  },
+  {
+    "id": "4a22af02-fb8c-4e50-b2dd-b77ef43dd363",
+    "title": "Adózás",
+    "statement": "Az egykulcsos SZJA-t fenn kell tartani, hogy továbbra is mindenki jövedelme ugyanakkora hányadát fizesse jövedelemadóként.",
+    "detail": "Magyarországon 2011-ben vezették be az egykulcsos adózást, amely szerint mindenki bruttó jövedelmének 15%-át fizeti személyi jövedelemadóként. Támogatói szerint ez egyszerűbb rendszert teremt, csökkenti a feketegazdaságot és több pénzt hagy a magasabb jövedelműeknél, ami növelheti a fogyasztást. Kritikusai viszont úgy vélik, hogy növeli az egyenlőtlenségeket és igazságtalan az alacsony keresetűekkel szemben, mert véleményük szerint nekik arányosan kisebb részt kellene vállalniuk a közterhekből a magas jövedelműekhez képest.",
+    "tags": [
+      "Adózás"
+    ]
+  },
+  {
+    "id": "8fc9ae05-1188-4887-9688-028b67122e72",
+    "title": "Átláthatóság és antikorrupció",
+    "statement": "Az állam által kötött szerződések csak nyilvánosságra hozatal után léphessenek hatályba.",
+    "detail": "Jelenleg sok állami szerződés nem nyilvános még akkor sem, ha elvileg közzé kéne tenni, a közérdekű adatigénylések pedig nehézkesek és sokszor csak peres úton járnak sikerrel. Egy javaslat szerint minden állami szerződést egy központi nyilvántartásban kellene közzétenni a hatálybalépés feltételeként. A javaslat támogatói szerint ez csökkentené a korrupciót és a túlárazásokat, a hatálybalépési feltétel pedig garantálná, hogy valóban közzé is teszik a szerződéseket. Kritikusai viszont úgy vélik, hogy ez túl sok adminisztrációval járna többek között a személyes adatok kitakarása miatt és feleslegesen lassítaná a szerződések hatálybalépését.",
+    "tags": [
+      "Átláthatóság és antikorrupció"
+    ]
+  },
+  {
+    "id": "8f81d27e-4f40-4988-ab6a-54d7d90e489a",
+    "title": "Egészségügy",
+    "statement": "A sürgősségi fogamzásgátló tabletta legyen vény nélkül kapható.",
+    "detail": "Az esemény utáni tabletta a nem kívánt terhesség megelőzésére szolgál. Az EU-ban jelenleg Magyarország az egyetlen ország, ahol ez a tabletta vényköteles. A változtatás támogatói szerint a vénykötelesség megalázó helyzeteket teremthet és nehezíti a gyors hozzáférést, ezért a könnyebb elérés csökkenthetné a nem kívánt terhességek és az abortuszok számát. Az ellenzők viszont úgy vélik, hogy a lehetséges mellékhatások miatt szükség van az orvosi ellenőrzésre.",
+    "tags": [
+      "Egészségügy"
+    ]
+  },
+  {
+    "id": "34eba508-3511-428c-a276-ea1c6a7b9f30",
+    "title": "Egészségügy",
+    "statement": "A társadalombiztosításnak a jelenleginél szélesebb körben kellene finanszíroznia a magánegészségügyi ellátásokat.",
+    "detail": "Magyarországon sok beteg a hosszú várólisták miatt magánellátást vesz igénybe, miközben továbbra is fizeti a társadalombiztosítást (TB). A javaslat szerint a TB bizonyos esetekben magánszolgáltatóknál végzett ellátásokat is finanszírozhatna. Támogatói szerint ez csökkentené a várólistákat és tehermentesítené az állami kórházakat. Kritikusai viszont úgy vélik, hogy a magánszektor finanszírozása helyett az állami egészségügybe kéne több forrást bevonni a várólisták és egyéb anomáliák felszámolása érdekében.",
+    "tags": [
+      "Egészségügy"
+    ]
+  },
+  {
+    "id": "d89b06e4-3b47-499a-b35b-fce739f0e541",
+    "title": "Gazdaság",
+    "statement": "Magyarország hosszú távú energiaellátásának biztosításában feltétlenül építeni kell az atomenergiára is.",
+    "detail": "Magyarország áramtermelésének körülbelül felét a Paksi Atomerőmű adja, a Paks II. projekt pedig ezt a kapacitást bővítené. Egyesek szerint az atomenergia stabil, olcsó és szén-dioxid-mentes áramtermelést biztosít, így fontos az energiabiztonság és a klímavédelem szempontjából és nélküle nem biztosítható az ország alapvető villamosenergia-ellátása. Az atomenergia kritikusai viszont a radioaktív hulladék kezelését, a környezeti kockázatokat és egy esetleges baleset következményeit hangsúlyozzák. Álláspontjuk szerint a nukleáris kapacitások megújítása helyett fokozatosan át kéne állni atomenergiáról megújuló energiaforrásokra.",
+    "tags": [
+      "Gazdaság"
+    ]
+  },
+  {
+    "id": "b3c2c5cc-5cfb-45e9-8bfe-5a7719e36450",
+    "title": "Értékrend",
+    "statement": "Helyes, hogy az abortuszt mérlegelő nőknek a döntés előtt kötelező meghallgatni a magzat szívhangját.",
+    "detail": "A kormány 2022-ben vezette be a „szívhangtörvényként” ismert szabályt, amely abortusz előtt kötelezővé teszi a magzat szívdobogásának meghallgatását. Kritikusai szerint ez megalázó és tovább terheli a nehéz helyzetben lévő nőket, különösen erőszak áldozatait vagy kiskorúakat, és nem csökkenti az abortuszok számát. Szerintük inkább a szociális támogatás és a szexuális felvilágosítás erősítése lenne hatékony. Támogatói viszont úgy vélik, fontos, hogy a terhességmegszakítás döntésének súlya kellőképpen mérlegelve legyen és ne csak egy orvosi beavatkozás legyen.",
+    "tags": [
+      "Értékrend"
+    ]
+  },
+  {
+    "id": "973281b5-ce5f-42d4-ac13-f9e897273ae8",
+    "title": "Értékrend",
+    "statement": "Legalizálni kell a könnyű drogok használatát.",
+    "detail": "Az elmúlt évben meghirdetett drogellenes háború következtében a kábítószerrel való visszaélés széleskörűen üldözött bűncselekménynek számít Magyarországon. A legalizálás támogatói szerint a jelenlegi szabályozás túl szigorúan bünteti a szerhasználókat, akik gyakran szociális vagy mentális problémákkal küzdenek. Úgy vélik, a tiltás erősíti a feketepiacot és a szervezett bűnözést, valamint megnehezíti a függők segítségkérését. A tiltás hívei szerint viszont szükség van erős elrettentésre, és a törvény erejével szükséges megakadályozni, hogy fiatalok addiktív szerekkel kísérletezzenek.",
+    "tags": [
+      "Értékrend"
+    ]
+  },
+  {
+    "id": "e785ec63-f213-49da-9e4f-a3ab9aa28d76",
+    "title": "Értékrend",
+    "statement": "Lehetővé kell tenni az azonos nemű párok házasságát.",
+    "detail": "Magyarországon az azonos nemű párok bejegyzett élettársi kapcsolatot köthetnek, de házasságot nem. A házassági egyenlőség támogatói szerint a házasság az elköteleződés és a stabil kapcsolat elismerése, ezért abból nem indokolt kizárni az azonos nemű párokat. Szerintük a házasság egy polgári jogi aktus, amelyet a jogegyenlőség alapján a meleg párok számára is elérhetővé kell tenni. Az ellenzők viszont úgy vélik, hogy a házasság hagyományosan egy férfi és egy nő kapcsolata, egyben a gyerekvállalás kerete, amelynek az azonos nemű párokra történő kiterjesztését kulturális-vallási okokból, vagy a gyerekek érdekére való hivatkozással nem támogatják.",
+    "tags": [
+      "Értékrend"
+    ]
+  },
+  {
+    "id": "e9d1625b-6338-416b-a1f0-899516f6db21",
+    "title": "Értékrend",
+    "statement": "Kizárólag házasságban élő párok fogadhassanak örökbe gyereket.",
+    "detail": "Magyarországon főként házaspárok fogadhatnak örökbe, míg egyedülállók vagy nem heteroszexuális párok csak miniszteri engedéllyel. A korlátozás támogatói szerint a gyermek számára a férfi és nő közötti házasság biztosítja a legstabilabb környezetet. Az ellenzők viszont úgy vélik, más családformák is nyújthatnak biztonságos és szerető otthont, amire az állami gondozás intézményrendszere nem képes.",
+    "tags": [
+      "Értékrend"
+    ]
+  },
+  {
+    "id": "1c69b068-56a6-41ce-bd1d-3db1aa662851",
+    "title": "EU",
+    "statement": "Törekedni kell az euró mihamarabbi bevezetésére Magyarországon.",
+    "detail": "Az euró jelenleg 21 EU tagállam közös pénzneme, sőt az EU-n kívül is használják. Már Szlovákiában, sőt 2026-tól Bulgáriában is euróval fizetnek. Magyarország az uniós csatlakozási szerződés aláírásakor vállalta, hogy a jövőben bevezeti a közös valutát, de konkrét dátumot nem határoztak meg. Az euró bevezetésének támogatói szerint az euróövezethez való csatlakozás növelné Magyarország gazdasági stabilitását és versenyképességét, csökkentené a vállalkozások és egyének költségeit. Mások szerint pont az önálló valuta biztosít nagyobb mozgásteret és versenyképességet.",
+    "tags": [
+      "EU"
+    ]
+  },
+  {
+    "id": "416d07e5-b4ff-4004-85b1-e30ac4fb84c2",
+    "title": "EU",
+    "statement": "Magyarországnak támogatnia kellene, hogy Ukrajna az Európai Unió tagjává váljon.",
+    "detail": "Az uniós vezetők 2023 decemberében úgy határoztak, hogy megkezdődhetnek a csatlakozási tárgyalások Ukrajnával. Egyesek szerint a szükséges feltételek teljesítése után Ukrajnát megilleti az EU-s tagság, mert történelmileg Európához tartozik és hősiesen ellenállt az orosz agressziónak, ráadásul új lehetőségek rejlenek egy ekkora területű és lakosságú ország csatlakozásában. Mások szerint nem érdeke az EU-nak Ukrajna csatlakozása, mert az ország politikailag és gazdaságilag instabil, felzárkóztatása jelenleg felbecsülhetetlen költségekkel járna az uniós tagállamok számára.",
+    "tags": [
+      "EU"
+    ]
+  },
+  {
+    "id": "d6fbe175-7528-4d80-9795-3e4c3847b617",
+    "title": "EU",
+    "statement": "Az elkövetkező években szükségessé válhat, hogy Magyarország kilépjen az Európai Unióból.",
+    "detail": "Egyesek szerint Magyarország az EU-tagsággal részben elveszítette szuverenitását, mert az uniós szabályok és kötelezettségek korlátozzák a gazdasági és politikai mozgásterét. Szerintük a közös migrációs politika és a Magyarországnak járó költségvetési források jogállamisági alapon történő befagyasztása igazságtalanok, ezért megfontolandóvá válhat a következő években Magyarország kiléptetése az EU-ból. Mások szerint viszont az EU-tagság soha nem látott gazdasági stabilitást és fejlődést hozott az uniós támogatásokon és a közös piacon keresztül. A kilépéssel ezeket az előnyöket elvesztené és nemzetközileg súlytalan szereplővé válna az ország és veszélybe kerülne a nyugati integrációja.",
+    "tags": [
+      "EU"
+    ]
+  },
+  {
+    "id": "4970ca72-11cf-45e2-8cb3-8e61a978b961",
+    "title": "Gazdaság",
+    "statement": "Helyes, hogy a kormány külföldi vállalatok beruházásait adókedvezményekkel és egyedi támogatásokkal ösztönzi.",
+    "detail": "A kormány egyedi kormánydöntéseken keresztül közvetlen támogatásokkal és adókedvezményekkel ösztönzi külföldi nagyvállalatok - jellemzően autó- vagy akkumulátorgyártó cégek - magyarországi beruházásait. A támogatók szerint ezek a beruházások munkahelyeket teremtenek és erősítik a gazdaságot. A kritikusok szerint nem megalapozott a beruházások nemzetgazdasági haszna, sokszor környezetszennyezőek, alacsony hozzáadott értékkel működnek és növelik az ország kitettségét. Álláspontjuk szerint a támogatáspolitikának a hazai kis- és középvállalkozások versenyképességére kéne helyezni a hangsúlyt.",
+    "tags": [
+      "Gazdaság"
+    ]
+  },
+  {
+    "id": "494be752-c7ab-411a-b07b-81e947d3d387",
+    "title": "Gazdaság",
+    "statement": "A vasútvonalak és a MÁV járműparkjának korszerűsítése élvezzen elsőbbséget az új közúti fejlesztésekkel szemben.",
+    "detail": "Az állami közlekedésfejlesztés az elmúlt 20-30 évben az autópálya-építéseket priorizálta a vasútfejlesztéshez képest. A vasút alulfinanszírozottsága megjelenik a MÁV elöregedett pályáiban és járműveiben. Egyesek szerint újabb gyorsforgalmi utak építése helyett a közeljövőben a vasút korszerűsítésére kell fókuszálni a forrásokat, ami energiahatékonyabb és alkalmasabb a tömeges szállításra. Mások szerint a vasútfejlesztések olyan hosszú távon térülnek csak meg, hogy a magyar gazdaság és a vidéki térségek versenyképessége érdekében továbbra is prioritásként kell kezelni új gyorsforgalmi utak építését.",
+    "tags": [
+      "Gazdaság"
+    ]
+  },
+  {
+    "id": "91117647-0d14-479a-869e-15146eee6aee",
+    "title": "Gyermekvédelem",
+    "statement": "A kiskorúak közösségimédia-használatát korhatárhoz kellene kötni.",
+    "detail": "2025 novemberében az Európai Parlament egy határozatban javasolta, hogy 16 év alattiak számára tiltsák meg a közösségi média használatát. A javaslat támogatói szerint a platformok addiktívak, ronthatják a fiatalok önképét és társas kapcsolatait, ráadásul a techcégek tudatosan próbálják minél több időre ott tartani a gyerekeket. Az ellenzők szerint viszont a tiltás nehezen lenne betartható, ezért inkább a tudatos internethasználatot elősegítő edukációra kellene helyezni a hangsúlyt.",
+    "tags": [
+      "Gyermekvédelem"
+    ]
+  },
+  {
+    "id": "f6168b21-e645-4dfb-b50f-d7eb601836ee",
+    "title": "Gyermekvédelem",
+    "statement": "Az államnak kártérítést kellene nyújtania azoknak, akik a gyermekvédelmi rendszerben abúzus vagy szexuális bántalmazás áldozatai lettek.",
+    "detail": "A javaslat támogatói szerint az államnak nemcsak erkölcsi kötelessége elismerni felelősségét, hanem automatikus kártérítési alapot is kellene létrehoznia az áldozatok terápiájának és életkezdésének támogatására, mivel nem tudta garantálni biztonságukat. Az ellenzők viszont úgy vélik, a forrásokat inkább a rendszer megelőző képességének erősítésére, a szakemberek bérének emelésére és a  szigorúbb szűrésére kellene fordítani a jövőbeli bántalmazások megelőzése érdekében.",
+    "tags": [
+      "Gyermekvédelem"
+    ]
+  },
+  {
+    "id": "371dd1da-b012-436f-afa9-a08580bb6370",
+    "title": "Honvédelem",
+    "statement": "Helyes, hogy Magyarország hosszú távon a GDP mintegy 5 százalékát honvédelmi kiadásokra fordítsa.",
+    "detail": "Magyarország 1999-ben csatlakozott a NATO-hoz, vállalva, hogy a GDP egy részét védelmi kiadásokra fordítja. A korábbi 2%-os cél helyett a 2025-ös hágai csúcson a szövetség 5%-ot határozott meg, ami Magyarországon a jelenlegi mintegy 1939 milliárd forintos kiadás több mint duplájára emelését jelentené. Támogatói szerint 10 éves távlatban elnyújtott, fokozatos kiadásnövelés reális lehet és erősítené az ország biztonságát és hadiiparát. Ellenzői viszont aggódnak, hogy olyan jelentős költségvetési terhet jelentene, amely más fejlesztések kárára történne, valamint nem tartják helyesnek a fegyverkezési versenyben történő részvételt.",
+    "tags": [
+      "Honvédelem"
+    ]
+  },
+  {
+    "id": "12b4a950-3229-4574-87e7-1ef7fa51844e",
+    "title": "Adózás",
+    "statement": "A családi adókedvezmény jelenlegi rendszere megfelelő eszköz a gyermeknevelés támogatására.",
+    "detail": "Magyarországon a családi adó- és járulékkedvezmény a családtámogatási rendszer alapja, amely a gyermekek számától függően növeli a szülők nettó jövedelmét. Támogatói szerint hatékony, mert ösztönzi a munkát és a gyerekvállalást. Kritikusai viszont úgy vélik, a kedvezmény főként a magasabb jövedelműeknek kedvez, miközben a legszegényebb családok esetében az adókedvezmény nem fedezi a gyerekvállalás kiadásait, sőt, akár ki is maradhatnak belőle (pl. munkanélküliség esetén), ezért a családi pótlék emelését és rászorultságon alapuló támogatást javasolnak.",
+    "tags": [
+      "Adózás"
+    ]
+  },
+  {
+    "id": "61b90f3b-99e5-4b45-86c1-f3dd08007cca",
+    "title": "Nyugdíj",
+    "statement": "Fontos lenne a nyugdíjakat az infláción túl a bérek emelkedéséhez is hozzáigazítani.",
+    "detail": "Magyarországon a nyugdíjemelés főként az inflációhoz igazodik. A változtatás támogatói szerint ez nem biztosítja, hogy a nyugdíjasok részesüljenek a gazdasági növekedésből, ezért a béremelkedést is figyelembe vevő „svájci indexálást” javasolják. Az ellenzők szerint viszont a bérekhez kötött emelés nagy terhet róna a költségvetésre az elöregedő társadalomban, és veszélyeztetheti a nyugdíjrendszer hosszú távú fenntarthatóságát.",
+    "tags": [
+      "Nyugdíj"
+    ]
+  },
+  {
+    "id": "b25862bd-cc3c-46d8-8fb6-a41ad93e9d0a",
+    "title": "Klíma- és környezetvédelem",
+    "statement": "Az Alföld elsivatagosodása elleni küzdelem sürgős állami feladat.",
+    "detail": "Az Alföldön, különösen a Duna–Tisza közi Homokhátságon, egyre súlyosabb az aszály, és csökken a talajvízszint. A beavatkozás támogatói szerint az elsivatagosodás veszélyezteti a mezőgazdaságot és az élelmiszerárak stabilitását, ezért átfogó vízmegtartó és tájrehabilitációs programokra lenne szükség. Az ellenzők viszont a magas költségekre és a klímaváltozás globális jellegére hivatkozva inkább az alkalmazkodás és a helyi innováció erősítését tartják fontosnak, az állam szerepét pedig inkább a gazdasági fellendülés ösztönzésében látják.",
+    "tags": [
+      "Klíma- és környezetvédelem"
+    ]
+  },
+  {
+    "id": "eb5a4b3a-6663-4ca9-afb6-b04335501b72",
+    "title": "Átláthatóság és antikorrupció",
+    "statement": "Kiterjedt vagyonosodási vizsgálatokat kellene lefolytatni a politikai és gazdasági elit szereplői körében.",
+    "detail": "A vagyonosodási vizsgálatok támogatói szerint az elmúlt évtizedekben Magyarországon a politikai és gazdasági elit képviselői a befolyásukat arra használták, hogy a jogszerűen lehetségesnél jóval nagyobb vagyonra tegyenek szert. A vizsgálatok lehetőséget teremtenének a korrupcióval szerzett vagyonok feltárására és a köz számára történő visszaszerzésére. Az állami szervekbe vetett bizalmat is lehetne így erősíteni, míg a jövőbeli korrupcióval szemben elrettentő erőt jelentene. A kritikusok szerint a hatóságok eddig is jól végezték a munkájukat, emellett pedig a politikai visszaélések lehetőségére és a jogbiztonsági kockázatokra figyelmeztetnek.",
+    "tags": [
+      "Átláthatóság és antikorrupció"
+    ]
+  },
+  {
+    "id": "623eb138-677c-4f27-8842-f2c6d79543a3",
+    "title": "Átláthatóság és antikorrupció",
+    "statement": "Magyarország csatlakozzon az Európai Ügyészséghez.",
+    "detail": "Az Európai Ügyészség 2021-ben jött létre az uniós költségvetést érintő csalások és korrupció elleni fellépés erősítésére. Az EU 27 tagállamából 24 csatlakozott, Magyarország nem. A támogatók szerint a részvétel növelné a korrupció elleni fellépés hatékonyságát olyan esetekben, amikor ebben a nemzeti hatóságok nem érdekeltek. Az ellenzők viszont a nemzeti szuverenitás csökkenésétől tartanak, és úgy vélik, a magyar ügyészség rendszere is képes az ilyen ügyek kivizsgálására.",
+    "tags": [
+      "Átláthatóság és antikorrupció"
+    ]
+  },
+  {
+    "id": "3ad8b82d-b0b7-4ee2-a947-ce91e87985dd",
+    "title": "Klíma- és környezetvédelem",
+    "statement": "Az akkumulátorgyárak környezetvédelmi szabályait és azok betartását szigorítani kell akkor is, ha az növeli a termelés költségeit.",
+    "detail": "A javaslat támogatói szerint az akkumulátorgyártás nagy víz- és energiaigénye, valamint a veszélyes anyagok használata miatt indokolt a jelenleginél szigorúbb ellenőrzés és szankcionálás, ami hosszú távon fenntarthatóbb gazdaságot és kevesebb környezeti kárt eredményezhet. Az ellenzők viszont attól tartanak, hogy a túl szigorú szabályok rontják a versenyképességet és elriasztják a beruházókat, és úgy vélik, a jelenlegi szabályok kellőképpen védik a környezetet és az embereket.",
+    "tags": [
+      "Klíma- és környezetvédelem"
+    ]
+  },
+  {
+    "id": "c127f2a4-b5dc-4500-8d44-22b778c452c4",
+    "title": "Átláthatóság és antikorrupció",
+    "statement": "A közpénzt felhasználó cégek külön kérés nélkül hozzák nyilvánosságra a közpénzből finanszírozott szerződéseiket.",
+    "detail": "A javaslat célja, hogy könnyen megismerhető legyen, hogy egy vállalkozás milyen állami szerződésekhez, támogatásokhoz, ingatlanokhoz jutott, anélkül, hogy erről minden lehetséges közintézménynél érdeklődni kéne. A javaslat támogatói szerint, ha a cégeknek is lenne automatikus közzétételi kötelezettsége, akkor felelősebben gazdálkodnának a közpénzekkel, ami csökkentené a korrupció és túlárazás kockázatát. A kritikusok szerint viszont olyan terheket róna a cégekre, ami versenyhátrányt jelenthet, ráadásul a szerződésekkel olyan érzékeny üzleti információk kerülhetnének nyilvánosságra, ami visszatarthat piaci szereplőket állami megrendelések elvállalásától.",
+    "tags": [
+      "Átláthatóság és antikorrupció"
+    ]
+  },
+  {
+    "id": "d87b3eaa-576c-415d-bd81-35ef80c1953c",
+    "title": "Közjog",
+    "statement": "Szükség van egy új alkotmányra.",
+    "detail": "Magyarországon 2011-ben fogadták el az Alaptörvényt, amely 2012-ben lépett hatályba. Egyesek szerint a jelenlegi szöveg nem széles politikai konszenzussal született, ezért hosszú távú legitimitása vitatható, amivel szemben egy széles társadalmi egyeztetéssel elfogadott alkotmány erősítené a bizalmat a demokratikus intézményekben. Szerintük egy új alkotmány tudná visszaállítani a fékek-ellensúlyok rendszerét és biztosítani mindenki számára az alapjogokat. Az ellenzők viszont úgy vélik, hogy az Alaptörvényt az Országgyűlés kétharmados többséggel, jogszerűen fogadta el, ezért demokratikus legitimációval bír, és a stabilitás érdekében elegendő lehet a vitás pontok módosítása egy teljesen új alkotmány helyett.",
+    "tags": [
+      "Közjog"
+    ]
+  },
+  {
+    "id": "ac5d0b54-ae62-4b74-ac3a-152a6e3da5b2",
+    "title": "Közjog",
+    "statement": "Helyes, hogy azok a magyar állampolgárok is szavazhatnak a választásokon, akiknek nincs és nem is volt magyarországi lakcímük.",
+    "detail": "A külhoni magyarok 2014 óta szavazhatnak pártlistákra az országgyűlési választáson. A támogatók szerint az állampolgárság alapozza meg a választójogot, ezért minden magyar állampolgárt megillet, és erősítheti a nemzeti összetartozást. Az ellenzők viszont úgy vélik, a választások következményeit főként az országban élők viselik, ezért a lakóhelyhez kötött választójog jobban tükrözi a demokratikus felelősséget.",
+    "tags": [
+      "Közjog"
+    ]
+  },
+  {
+    "id": "51487756-ec05-40fc-8476-c89cf695d56b",
+    "title": "Közjog",
+    "statement": "A bírósági végrehajtást állami kézbe kell venni.",
+    "detail": "A Völner–Schadl ügy nyomán vita indult a profitalapú végrehajtási rendszer jövőjéről. A javaslat támogatói szerint a bíróságok alá szervezett állami fenntartás nagyobb átláthatóságot, egységesebb működést és kevesebb visszaélési lehetőséget biztosíthatna. Az ellenzők viszont attól tartanak, hogy az államosítás növelné a bürokráciát és lassítaná az eljárásokat, ezért inkább egy szigorúan szabályozott, de nem állami rendszer fenntartását tartják hatékonyabbnak.",
+    "tags": [
+      "Közjog"
+    ]
+  },
+  {
+    "id": "47421a23-9f7a-4adb-99c7-429d51604961",
+    "title": "Külpolitika",
+    "statement": "Magyarországnak akkor is érdemes önálló külpolitikai és külgazdasági irányvonalat követnie, ha ez szembemegy az Európai Unió közös álláspontjával.",
+    "detail": "A magyar kormány gyakran különutas külpolitikát folytat az EU-ban: néha vétóval blokkolva a közös döntéseket, máskor pedig a \"keleti nyitás\" jegyében olyan partnerségeket építve, amelyek akár az EU versenytársait is erősíthetik. A különutasság támogatói szerint a nemzeti érdek elsődleges, és az önálló irányvonal nagyobb mozgásteret adhat a nemzetközi kapcsolatokban és gazdasági együttműködésekben. Az ellenzők viszont úgy vélik, hogy az uniós egység gyengítése ronthatja Magyarország érdekérvényesítő képességét és biztonságát, valamint politikai és gazdasági kockázatokat hordozhat.",
+    "tags": [
+      "Külpolitika"
+    ]
+  },
+  {
+    "id": "d7aa65d9-4bf3-4aa8-a668-bf80ee93b8f8",
+    "title": "Külpolitika",
+    "statement": "Magyarország hosszú távú érdeke, hogy leváljon az orosz energiahordozók vásárlásáról, még akkor is, ha ez rövid távon költségekkel jár.",
+    "detail": "Az orosz–ukrán háború ellenére Magyarország olajimportjának 80-90%-a, a földgázimportnak pedig 50-70%-a továbbra is orosz forrásból érkezik. A leválás támogatói szerint a függőség csökkentése növelné az ország szuverenitását, és az alternatív források, valamint a megújuló energiatermelés fejlesztése hosszabb távon stabilabb, környezetbarátabb ellátást biztosíthat. Az ellenzők viszont attól tartanak, hogy a leválás jelentős áremelkedést és versenyképességi hátrányt okozhat.",
+    "tags": [
+      "Külpolitika"
+    ]
+  },
+  {
+    "id": "582ac06e-d5d9-4c09-8d51-3317d534a6da",
+    "title": "Lakhatás",
+    "statement": "A lakástulajdonhoz jutást, anyagi helyzettől függetlenül, továbbra is elsősorban kedvezményes hitelekkel kellene támogatni.",
+    "detail": "Elemzők szerint az Otthon Start program öt év után évi mintegy 250 milliárd forintos költséget jelentene, ami a CSOK-kal és a Babaváró hitelekkel együtt jelentős terhet jelent az ország költségvetésére nézve. A konstrukciók kritikusai attól tartanak, hogy ezek felhajtják az árakat, eladósítják a társadalmat és nem a leginkább rászorulókhoz jutnak, ezért inkább bérlakásprogramokat és célzott szociális támogatásokat javasolnak. Támogatói szerint a kedvezményes hitelek segítik a családok saját ingatlanhoz jutását, növelik a stabilitást és élénkítik az építőipart.",
+    "tags": [
+      "Lakhatás"
+    ]
+  },
+  {
+    "id": "3d5e1216-6f50-4d3a-84c6-18a80a21d101",
+    "title": "Média",
+    "statement": "A közmédia működését a kormánytól és a parlamenti pártoktól szervezetileg független testület ellenőrizze.",
+    "detail": "Egyesek szerint a közmédia a kormány felé politikailag elfogult műsorokat gyárt, ráadásul a működésének átlagos napi költsége elérheti a 450 millió forintot. Véleményük szerint a közmédia feladata a kiegyensúlyozott, pártatlan tájékoztatás, amit új médiatörvénnyel és egy független ellenőrző testülettel lehetne megvalósítani. Mások szerint a közpénzből működő közmédia a demokratikus kontrollját a parlament tudja biztosítani, így érthető, ha a parlamenti reprezentáció megjelenik a szervezeti és személyi döntésekben.",
+    "tags": [
+      "Média"
+    ]
+  },
+  {
+    "id": "d0f6ed22-f1dc-42d1-8231-17c9d77e6f6c",
+    "title": "Gazdaság",
+    "statement": "Helyes, hogy a mezőgazdasági földterületre befektetési termékként tekint a kormány.",
+    "detail": "2025-ben módosították a földforgalmi törvényt, lehetővé téve a termőföld vásárlását haszonbérbeadási céllal, ami azt jelenti, hogy nem a tulajdonosnak kell a földet művelnie, azt lényegében befektetési termékként kezelheti. A módosítás támogatói szerint a föld értékálló befektetés, a földpiac kinyitása növelheti a hatékonyságot, ösztönözheti a fejlesztéseket és élénkítheti a vidéki gazdaságot. Az ellenzők viszont attól tartanak, hogy a befektetési cél felhajtja az árakat és kiszorítja a kisebb gazdálkodókat, miközben a termőföld elsődleges szerepe az élelmiszer-termelés és a vidéki megélhetés biztosítása.",
+    "tags": [
+      "Gazdaság"
+    ]
+  },
+  {
+    "id": "fe18ff4f-c51c-49b3-a552-af2bf16f71a9",
+    "title": "Munkaügy",
+    "statement": "Meg kell tiltani az Európai Unión kívülről érkező vendégmunkások számára új munkavállalási engedélyek kiadását.",
+    "detail": "Magyarországon az elmúlt években jelentősen nőtt az EU-n kívülről érkező vendégmunkások száma. Egyesek szerint a vendégmunkások jelenléte lefelé nyomja a béreket, nehezíti a hazai munkavállalók elhelyezkedését és társadalmi feszültségeket szül, ezért teljesen meg kell tiltani új munkavállalási engedélyek kiadását. Mások viszont arra figyelmeztetnek, hogy több ágazat most is munkaerőhiánnyal küzd és a teljes tiltás gazdasági visszaesést és bizonyos beruházások elmaradását okozhatja. Ezért elsősorban a munkáltatóktól várnák el a hazai munkavállalók előnyben részesítését és csak csökkentenék a kiadható munkavállalási engedélyek számát.",
+    "tags": [
+      "Munkaügy"
+    ]
+  },
+  {
+    "id": "d28bebd9-1420-468c-bc8a-bcfb6e79b146",
+    "title": "Munkaügy",
+    "statement": "A túlórák szabályozását szigorítani kellene a munkavállalók védelme érdekében.",
+    "detail": "A 2018-as munkajogi módosítás 400 órára emelte az éves túlórakeretet, és hároméves elszámolást tett lehetővé. A túlóra-szabályozás szigorítását sürgetők szerint a változtatás kiszolgáltatottabbá tette a dolgozókat, akiknek az egészségére is káros lehet a sok túlóra. A szigorítást ellenzők viszont úgy vélik, a rugalmas szabályok segítik a vállalatokat a munkaerőhiány kezelésében, és plusz jövedelmet biztosítanak a munkavállalóknak.",
+    "tags": [
+      "Munkaügy"
+    ]
+  },
+  {
+    "id": "575718ec-4b8d-4cf7-a6c0-6ef9bb49812c",
+    "title": "Munkaügy",
+    "statement": "Meg kell büntetni azokat a munkáltatókat, akik ugyanazért a munkáért kevesebbet fizetnek a nőknek.",
+    "detail": "Kutatások szerint előfordul, hogy azonos vagy hasonló munkakörben a nők átlagosan alacsonyabb fizetést kapnak, mint a férfiak. A szigorúbb fellépést támogatók szerint az „azonos munkáért azonos bér” elvét hatékony ellenőrzéssel és szankciókkal kell érvényesíteni, mert ez erősítené az esélyegyenlőséget. Az ellenzők viszont úgy vélik, hogy a bérmegállapodást sok tényező, például tapasztalat, teljesítmény vagy tárgyalási képesség befolyásolja, és az ebbe való túlzott állami beavatkozás növelheti az adminisztrációs terheket és indokolatlanul korlátozhatja a vállalkozások mozgásterét.",
+    "tags": [
+      "Munkaügy"
+    ]
+  },
+  {
+    "id": "e051d209-81cf-4232-b9b8-faa7b2da5c4b",
+    "title": "Munkaügy",
+    "statement": "Az átmeneti munkanélküliek álláskeresési járadékának folyósítási idejét és összegét is növelni kellene.",
+    "detail": "Magyarországon az álláskeresési járadék legfeljebb 90 napig jár, ami az EU-ban a legrövidebb időtartam. A hosszabb ellátást támogatók szerint a jelenlegi piaci környezetben nagyon nehéz három hónap alatt új munkát találni. A hosszabb és valódi megélhetést biztosító járadék segítené, hogy a munkájukat elvesztők számukra megfelelőbb munkát találjanak, ami nemzetgazdasági szinten is kifizetődő. Az ellenzők viszont attól tartanak, hogy a bőkezűbb támogatás csökkentheti a munkavállalási motivációt és növelheti a költségvetési terheket, ezért inkább a munkahelyek teremtésére és aktív munkaerőpiaci beavatkozásokra (átképzés, állásközvetítés) fókuszálnák az állami erőforrásokat.",
+    "tags": [
+      "Munkaügy"
+    ]
+  },
+  {
+    "id": "6e47493c-c022-4e5c-b174-03c3de83a29c",
+    "title": "Munkaügy",
+    "statement": "Legyen elismert munkaviszony az otthonápolás.",
+    "detail": "Magyarországon több mint 50 000 ember ápol tartósan beteg vagy súlyosan fogyatékos hozzátartozót otthon, gyakran napi 24 órában. A támogatók szerint az otthonápolás munkaviszonyként való elismerése méltányosabb jövedelmet, valamint társadalombiztosítási és nyugdíjjogosultságot biztosítana. Az ellenzők viszont arra figyelmeztetnek, hogy ez jelentős költségvetési többletkiadással járna, és jogi kérdéseket vetne fel a munkaviszony szabályozásával kapcsolatban.",
+    "tags": [
+      "Munkaügy"
+    ]
+  },
+  {
+    "id": "c17739af-8dbd-45d3-8d29-7b98630b0a72",
+    "title": "Oktatás",
+    "statement": "Az iskolai szegregáció felszámolása az oktatáspolitika fontos feladata.",
+    "detail": "Egyesek szerint a nagyon eltérő képességű és hátterű diákok együtt tanítása megnehezíti a pedagógusok munkáját, ezért a külön csoportok hatékonyabbak lehetnek felzárkóztatásra vagy tehetséggondozásra. Mások viszont úgy vélik, az iskolai szegregáció növeli a társadalmi egyenlőtlenségeket, így annak felszámolása az oktatáspolitika lényeges eleme. A vegyes összetételű osztályok szerintük erősíthetik a társadalmi integrációt és mobilitást, illetve szolidaritásra és az együttműködésre nevelik a gyerekeket. Ahol ez nem működik, ott a pedagógusok képzésére, támogatására lenne szükség a szegregáció helyett.",
+    "tags": [
+      "Oktatás"
+    ]
+  },
+  {
+    "id": "8256ebb6-028b-4713-83a2-fb85cda30858",
+    "title": "Oktatás",
+    "statement": "Károsan hat a közoktatás színvonalára, ha a tehetősebb családok gyermekei kiválnak belőle és fizetős magániskolákban folytatják a tanulmányaikat.",
+    "detail": "Magyarországon egyre több diák jár nem állami fenntartású iskolába. Egyesek szerint ez tovább növeli a hazai oktatásban jelen lévő egyenlőtlenségeket, a magániskolák a jobb helyzetben lévő diákok mellett a tehetségesebb pedagógusokat is elszívják, ezzel tovább rontva a közoktatás minőségét és vonzerejét. Mások szerint a magániskolák csak létező keresletet elégítenek ki és nem egyértelmű a negatív hatásuk, hiszen még fel is szabadítanak erőforrásokat az állami oktatásban.",
+    "tags": [
+      "Oktatás"
+    ]
+  },
+  {
+    "id": "f7860efc-a314-4327-8492-0d1d105d55e4",
+    "title": "Oktatás",
+    "statement": "A modellváltó egyetemek maradjanak alapítványi fenntartásban.",
+    "detail": "Az elmúlt években több mint 20 magyar felsőoktatási intézmény került közérdekű vagyonkezelő alapítványok (kekva) fenntartásába. A modellváltás támogatói szerint ez nagyobb gazdasági önállóságot és versenyképességet ad az intézményeknek, amelyek piacképesebb képzéseket tudnak indítani. Az ellenzők szerint viszont nem lettek hatékonyabbak a modellváltó egyetemek, miközben elvesztették az autonómiájukat, hiszen az alapítványi kuratóriumokban politikai kinevezettek ülnek, akik politikai szempontokat érvényesíthetnek az egyetemek irányításában.",
+    "tags": [
+      "Oktatás"
+    ]
+  },
+  {
+    "id": "ece5c51e-c9b7-48e2-86b3-c6bb167e0a4f",
+    "title": "Oktatás",
+    "statement": "A tankötelezettség korhatárát vissza kell állítani 18 évre.",
+    "detail": "2011-ben a tankötelezettség korhatárát 18-ról 16 évre csökkentették. Egyesek szerint a tanulni nem akaró fiatalokat nem érdemes az iskolában tartani, inkább a szakmai képzésben vagy a munka világában kellene lehetőséget adni nekik. Mások viszont úgy vélik, a korai iskolaelhagyás rontja a későbbi esélyeket, a 18 éves korig tartó tankötelezettség viszont csökkentheti az egyenlőtlenségeket és hozzájárulhat a rugalmasabb, képzettebb munkaerő kialakulásához.",
+    "tags": [
+      "Oktatás"
+    ]
+  },
+  {
+    "id": "ff342143-4cdb-47e2-98e5-f508475b5c53",
+    "title": "Önkormányzat",
+    "statement": "Erősíteni kellene az önkormányzatok önállóságát a helyi közszolgáltatások megszervezésében.",
+    "detail": "2011 óta több közszolgáltatás irányítása került állami kézbe Magyarországon. Egyesek szerint ez elhibázott folyamat, hiszen a helyi önkormányzatok jobban ismerik településük igényeit, ezért nagyobb önállósággal hatékonyabban szervezhetnék a közszolgáltatásokat, és erősödhetne a helyi demokrácia. Mások viszont úgy vélik, az állami koordináció hatékonyabb működést és kiegyensúlyozottabb szolgáltatási színvonalat biztosíthat az ország különböző települései között.",
+    "tags": [
+      "Önkormányzat"
+    ]
+  }
+]

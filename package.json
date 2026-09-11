@@ -23,6 +23,8 @@
     "jsdom": "^26.1.0",
     "npm-check-updates": "^18.3.1",
     "turbo": "^2.6.1",
+    "npm-check-updates": "^18.3.1",
+    "turbo": "^2.6.1",
     "vitest": "^3.1.4"
   },
   "engines": {

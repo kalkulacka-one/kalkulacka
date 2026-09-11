@@ -1,0 +1,97 @@
+[
+  {
+    "id": "96d07277-ed2b-40ed-9b22-5dc4208a0e0d",
+    "references": [
+      {
+        "id": "96d07277-ed2b-40ed-9b22-5dc4208a0e0d",
+        "type": "organization"
+      }
+    ],
+    "displayName": "DK",
+    "number": 1,
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/DK.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cbe2d0a1-1796-4b28-9350-53a1ea449cad",
+    "references": [
+      {
+        "id": "cbe2d0a1-1796-4b28-9350-53a1ea449cad",
+        "type": "organization"
+      }
+    ],
+    "displayName": "MKKP",
+    "number": 2,
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/MKKP.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "f3a1e92f-00ee-4024-bacf-820a7bdbf268",
+    "references": [
+      {
+        "id": "f3a1e92f-00ee-4024-bacf-820a7bdbf268",
+        "type": "organization"
+      }
+    ],
+    "displayName": "MI HAZÁNK",
+    "number": 3,
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/MHM.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "af78f800-49d1-4239-8ea7-0bc2d74639b5",
+    "references": [
+      {
+        "id": "af78f800-49d1-4239-8ea7-0bc2d74639b5",
+        "type": "organization"
+      }
+    ],
+    "displayName": "TISZA",
+    "number": 4,
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/TISZA.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cf177ab5-1e70-40a7-afa0-afb2089259f0",
+    "references": [
+      {
+        "id": "cf177ab5-1e70-40a7-afa0-afb2089259f0",
+        "type": "organization"
+      }
+    ],
+    "displayName": "FIDESZ",
+    "number": 5,
+    "images": [
+      {
+        "type": "logo",
+        "urls": {
+          "original": "/logos/Fidesz.png"
+        }
+      }
+    ]
+  }
+]
