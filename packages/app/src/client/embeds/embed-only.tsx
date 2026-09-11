@@ -1,10 +1,8 @@
-import type { EmbedName } from "@/config/embeds";
-
 import { useEmbed } from "./embed-context-provider";
 
 type EmbedOnlyProps = {
   children: React.ReactNode;
-  names?: EmbedName | EmbedName[];
+  names?: string | string[];
 };
 
 export function EmbedOnly({ children, names }: EmbedOnlyProps) {

@@ -1,6 +1,11 @@
 import { createContext, useContext } from "react";
 
-import type { EmbedConfig, EmbedName } from "@/config/embeds";
+export type EmbedConfig = {
+  theme?: string;
+  logo?: "monochrome" | "color";
+  attribution?: boolean;
+  donateCard?: number | false;
+};
 
 export type EmbedContextType =
   | {
@@ -8,7 +13,7 @@ export type EmbedContextType =
     }
   | {
       isEmbed: true;
-      name: EmbedName;
+      name: string;
       config?: EmbedConfig;
     };
 
