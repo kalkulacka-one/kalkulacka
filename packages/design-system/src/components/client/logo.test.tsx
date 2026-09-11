@@ -28,6 +28,19 @@ describe("Logo", () => {
     expect(screen.queryByText("Volební kalkulačka")).not.toBeVisible();
   });
 
+  describe("size", () => {
+    it("has no fixed size by default", () => {
+      const { container } = render(<Logo title="Volební kalkulačka" />);
+      expect(container.firstElementChild?.className).not.toMatch(/ko:text-\[/);
+    });
+
+    it("renders a 12px mark as `xsmall`", () => {
+      const { container } = render(<Logo title="Volební kalkulačka" size="xsmall" />);
+      expect(container.firstElementChild).toHaveClass("ko:text-[0.1875rem]");
+      expect(container.querySelector("svg")).toHaveClass("ko:h-[4em]");
+    });
+  });
+
   describe("when `text` is true", () => {
     it("renders the visible text label", () => {
       render(<Logo title="Volební kalkulačka" text />);
