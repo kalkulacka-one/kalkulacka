@@ -6,19 +6,19 @@ import "@kalkulacka-one/design-system/styles";
 const themeLoaders: Record<string, () => Promise<string>> = {
   "Kalkulacka.1": async () =>
     // @ts-expect-error
-    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.kalkulacka.one/default")).default,
+    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.kalkulacka.one/default.css")).default,
   "Volební kalkulačka (CZ)": async () =>
     // @ts-expect-error
-    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/default")).default,
+    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/default.css")).default,
   "Volební kalkulačka (CZ) — Díky, že můžem": async () =>
     // @ts-expect-error
-    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/diky-ze-muzem")).default,
+    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/diky-ze-muzem.css")).default,
   "Volební kalkulačka (CZ) — Alarm": async () =>
     // @ts-expect-error
-    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/alarm")).default,
+    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/alarm.css")).default,
   "Volební kalkulačka (CZ) — Prima": async () =>
     // @ts-expect-error
-    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/prima")).default,
+    (await import("!css-loader!@kalkulacka-one/design-system/themes/www.volebnikalkulacka.cz/prima.css")).default,
 };
 
 const themeNames = Object.keys(themeLoaders);
