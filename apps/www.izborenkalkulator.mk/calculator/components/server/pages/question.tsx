@@ -1,11 +1,11 @@
 // TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
 
 import { type AnswerViewModel, type CalculatorViewModel, EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, type QuestionViewModel } from "@kalkulacka-one/app";
+import { AppHeader, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 
-import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 export type QuestionPage = {
