@@ -28,11 +28,14 @@
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
     "@types/node": "^22.19.1",
-    "prisma": "^6.19.0",
-    "ts-node": "^10.9.2",
+    "@types/pg": "^8.23.1",
+    "dotenv": "^16.4.7",
+    "prisma": "^7.10.0",
     "typescript": "^7.0.2"
   },
   "dependencies": {
-    "@prisma/client": "^6.19.0"
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "pg": "^8.23.0"
   }
 }
