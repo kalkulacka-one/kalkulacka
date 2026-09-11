@@ -2,6 +2,11 @@
   "koa": {
     "appTitle": "Volební kalkulačka",
     "components": {
+      "comparisonGrid": {
+        "selectParty": "Vyberte stranu:",
+        "selectAll": "Vybrat vše",
+        "yourAnswers": "Vaše odpovědi"
+      },
       "embedAttribution": {
         "broughtBy": "Přináší"
       },
@@ -31,6 +36,16 @@
       },
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
+      },
+      "matchCard": {
+        "expertNoteLine1": "Postoje podle veřejných zdrojů,",
+        "expertNoteLine2": "strana neodpověděla na zaslané otázky.",
+        "beta": "Betaverze porovnání. Ještě ladíme!",
+        "meCandidate": "Já • Kandidát",
+        "positionUnknown": "Postoj se nepodařilo zjistit",
+        "source": "Zdroj",
+        "noDescription": "Žádný popis není k dispozici",
+        "link": "(odkaz)"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
