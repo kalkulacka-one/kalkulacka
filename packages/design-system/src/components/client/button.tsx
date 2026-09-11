@@ -1,3 +1,4 @@
+import type { IconDefinition } from "@kalkulacka-one/design-system/icons";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
 import { Button as ButtonHeadless, type ButtonProps as ButtonPropsHeadless } from "@headlessui/react";
@@ -8,15 +9,37 @@ import { Icon } from "./icon";
 
 export type Button = {
   children: React.ReactNode;
+  /** Icon shown before the label. */
+  iconStart?: IconDefinition | string;
+  /** Icon shown after the label. */
+  iconEnd?: IconDefinition | string;
+  fullWidth?: boolean;
 } & Omit<ButtonPropsHeadless, "className" | "as"> &
   VariantProps<typeof ButtonVariants>;
+
+/*
+ * Shared by the pill-shaped variants (`solid`, `ghost`, `surface`, `plate`).
+ * They replace the base's border, corner radius, tracking and fixed heights,
+ * which `twMerge` resolves in their favour because they come later.
+ */
+const pillVariant = [
+  "ko:border-0 ko:rounded-pill",
+  "ko:font-semibold ko:tracking-[-0.01em] ko:whitespace-nowrap",
+  "ko:gap-2 ko:[&>svg]:translate-y-0",
+  "ko:transition-[background-color,color,transform] ko:duration-[var(--ko-duration-base),var(--ko-duration-base),var(--ko-duration-fast)]",
+  "ko:data-active:scale-[0.97]",
+  "ko:data-disabled:opacity-45 ko:data-disabled:cursor-default",
+  "ko:data-focus:outline-3 ko:data-focus:outline-offset-2 ko:data-focus:outline-focus/55",
+];
+
+const pillVariants = ["solid", "ghost", "surface", "plate"] as const;
 
 export const ButtonVariants = cva(
   [
     "ko:border-2",
     "ko:select-none ko:data-hover:cursor-pointer",
     "ko:font-semibold ko:tracking-[.01em]",
-    "ko:rounded-br-none ko:rounded-2xl",
+    "ko:rounded-2xl ko:rounded-br-none",
     "ko:text-s",
     "ko:data-disabled:cursor-not-allowed",
     "ko:grid ko:grid-flow-col ko:place-items-center ko:place-content-center ko:gap-1",
@@ -27,17 +50,36 @@ export const ButtonVariants = cva(
       size: {
         small: "ko:h-10 ko:px-2",
         medium: "ko:h-12 ko:px-3",
+        large: "ko:h-14 ko:px-4",
+      },
+      /* Listed before `variant` so a variant's own border (link's transparent one) wins the merge. */
+      color: {
+        primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
+        secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
+        neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
       },
       variant: {
         fill: [""],
         outline: ["ko:bg-transparent"],
         link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
         answer: ["ko:px-6"],
-      },
-      color: {
-        primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
-        secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
-        neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
+        solid: pillVariant,
+        ghost: [...pillVariant, "ko:bg-transparent ko:text-text", "ko:data-hover:bg-neutral-wash", "ko:data-active:bg-neutral-wash-strong"],
+        surface: [...pillVariant, "ko:bg-surface ko:text-text ko:shadow-[inset_0_0_0_1.5px_var(--ko-color-border)]", "ko:data-hover:bg-neutral-wash"],
+        /*
+         * Chrome that floats over the animated backdrop: the back link, the
+         * share action. Deliberately the same values as IconButton's `surface`
+         * variant — these sit within a few hundred pixels of each other on the
+         * results screen, and any drift between them reads as unrelated
+         * controls rather than one set. Translucent rather than opaque, because
+         * the contrast behind them is never the same two frames running.
+         */
+        plate: [
+          ...pillVariant,
+          "ko:bg-surface/72 ko:text-text-muted ko:shadow-[inset_0_0_0_1.5px_var(--ko-color-border)]",
+          "ko:backdrop-blur-[12px] ko:backdrop-saturate-[1.4]",
+          "ko:data-hover:bg-surface ko:data-hover:text-text-strong ko:data-hover:shadow-[inset_0_0_0_1.5px_var(--ko-color-border-strong),var(--ko-shadow-card-back)]",
+        ],
       },
     },
     defaultVariants: {
@@ -190,18 +232,51 @@ export const ButtonVariants = cva(
           "ko:data-active:bg-neutral-active ko:data-active:border-neutral-active ko:data-active:hover:bg-neutral-active ko:data-active:text-on-bg-neutral",
         ],
       },
+      {
+        variant: "solid",
+        color: "primary",
+        class: ["ko:bg-agree ko:text-on-agree", "ko:data-hover:bg-agree-hover", "ko:data-active:bg-agree-active"],
+      },
+      {
+        variant: "solid",
+        color: "secondary",
+        class: ["ko:bg-disagree ko:text-on-disagree", "ko:data-hover:bg-disagree-hover", "ko:data-active:bg-disagree-active"],
+      },
+      {
+        variant: "solid",
+        color: "neutral",
+        class: ["ko:bg-neutral-ink ko:text-on-neutral-ink", "ko:data-hover:bg-neutral-ink/90", "ko:data-active:bg-neutral-ink/80"],
+      },
+      /* The pill variants size by padding rather than by a fixed height. */
+      {
+        variant: [...pillVariants],
+        size: "small",
+        class: "ko:h-auto ko:px-4 ko:py-2 ko:text-sm",
+      },
+      {
+        variant: [...pillVariants],
+        size: "medium",
+        class: "ko:h-auto ko:px-6 ko:py-[0.8125rem] ko:text-[0.9375rem]",
+      },
+      {
+        variant: [...pillVariants],
+        size: "large",
+        class: "ko:h-auto ko:px-7 ko:py-4 ko:text-[1.0625rem]",
+      },
     ],
   },
 );
 
-function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+function ButtonComponent({ children, size, variant, color, iconStart, iconEnd, fullWidth = false, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
   const isIconOnly = React.isValidElement(children) && (children as React.ReactElement).type === Icon;
 
   const iconOnlyClasses = isIconOnly ? "ko:aspect-square ko:!p-0 ko:!rounded-full ko:grid ko:place-items-center" : "";
 
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses)} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), fullWidth && "ko:w-full", iconOnlyClasses)} {...props} ref={ref}>
+      {iconStart && <Icon icon={iconStart} size="xsmall" decorative />}
       {children}
+      {iconEnd && <Icon icon={iconEnd} size="xsmall" decorative />}
     </ButtonHeadless>
   );
 }

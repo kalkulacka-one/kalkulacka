@@ -1,4 +1,5 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { icons } from "@kalkulacka-one/design-system/icons";
 
 import { mdiClose, mdiCog, mdiMagnify } from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/nextjs";
@@ -15,18 +16,19 @@ const meta: Meta<typeof Button> = {
     size: "medium",
     type: "button",
     disabled: false,
+    fullWidth: false,
   },
   argTypes: {
     size: {
       control: "select",
-      options: ["small", "medium"],
+      options: ["small", "medium", "large"],
       defaultValue: {
         summary: "medium",
       },
     },
     variant: {
       control: "select",
-      options: ["fill", "outline", "link", "answer"],
+      options: ["fill", "outline", "link", "answer", "solid", "ghost", "surface", "plate"],
       defaultValue: {
         summary: "fill",
       },
@@ -50,6 +52,22 @@ const meta: Meta<typeof Button> = {
       defaultValue: {
         summary: false,
       },
+    },
+    fullWidth: {
+      control: "boolean",
+      defaultValue: {
+        summary: false,
+      },
+    },
+    iconStart: {
+      control: "select",
+      options: Object.keys(icons),
+      mapping: icons,
+    },
+    iconEnd: {
+      control: "select",
+      options: Object.keys(icons),
+      mapping: icons,
     },
   },
 };
@@ -87,6 +105,60 @@ export const Answer: ButtonStory = {
     children: "Answer",
     variant: "answer",
     color: "primary",
+  },
+};
+
+export const Solid: ButtonStory = {
+  args: {
+    children: "Pokračovat",
+    variant: "solid",
+    color: "neutral",
+  },
+};
+
+export const Ghost: ButtonStory = {
+  args: {
+    children: "Přeskočit",
+    variant: "ghost",
+    color: "neutral",
+  },
+};
+
+export const Surface: ButtonStory = {
+  args: {
+    children: "Zobrazit další",
+    variant: "surface",
+    color: "neutral",
+  },
+};
+
+export const Plate: ButtonStory = {
+  args: {
+    children: "Zpět",
+    variant: "plate",
+    color: "neutral",
+    iconStart: icons.arrowLeft,
+  },
+  decorators: [(Story) => createElement("div", { style: { padding: "2rem", background: "linear-gradient(135deg, var(--ko-color-agree-soft), var(--ko-color-disagree-soft))" } }, Story())],
+};
+
+export const WithIcons: ButtonStory = {
+  args: {
+    children: "Sdílet výsledek",
+    variant: "solid",
+    color: "primary",
+    iconStart: icons.share,
+    iconEnd: icons.arrowRight,
+  },
+};
+
+export const FullWidth: ButtonStory = {
+  args: {
+    children: "Zobrazit výsledky",
+    variant: "solid",
+    color: "neutral",
+    size: "large",
+    fullWidth: true,
   },
 };
 
