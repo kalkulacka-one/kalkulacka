@@ -38,11 +38,13 @@ Nothing below the screens is rewritten.
   algorithm is deliberately identical). Each country app's client wrappers
   keep their hooks, route builders and session handling and are rewired, not
   rewritten; they stay per app on purpose, so a national team can change them.
-- **Extended rather than added (design system):** Button (pill variants),
-  Icon (the thin icon set), ToggleButton, Logo, Card (elevation, card
-  corner), Avatar (initials, accent ring), ProgressBar → Meter,
-  SteppedProgressBar → ProgressSegments (issue #196), ExpandableCard,
-  Input → SearchField, Badge / IconBadge → Tag and tutorial badges.
+- **Restyled, not extended (design system):** the 2026 design is the
+  source of truth for the design system. Button, Card, Avatar, ProgressBar,
+  Input, Badge and the rest take the 2026 look when their PR comes; old
+  variant names survive only as aliases so the not-yet-ported screens keep
+  compiling, and those screens simply take the new look until they are
+  replaced. Nothing keeps the old identity alive next to the new one.
+  Storybook shows the new design, with real copy.
 - **Copied from 2026 with light adaptation (pure TypeScript, no styling):**
   swipe physics and the gesture hook, drag-to-dismiss, pointer-kind
   detection, insights, recap grouping, answer helpers (adapted to this
@@ -61,6 +63,10 @@ Nothing below the screens is rewritten.
 rules (deck flight, calculating film strip, backdrop gradients, fades) live in
 `packages/design-system/src/styles.css` under `@layer components` with
 `ko-*` class names. No CSS modules.
+
+**Design authority.** The design owner (the author of the 2026
+prototype) decides visual direction; the port applies the 2026 values,
+including the Czech palette, without hedging between old and new.
 
 **Attribution.** Every ported file cites its 2026 source path in its header
 comment and keeps the rationale comments that record why a value or rule is
@@ -115,6 +121,7 @@ test flips it to ready.
 | 2 | `port/02-button-icon` | Extend Button and Icon and add IconButton | design-system | 12 | — |
 | 3 | `port/03-primitives` | Add Chip, Tag, AnswerMark and VisuallyHidden | design-system | 12 | — |
 | 4 | `port/04-shell` | Add AppHeader, Screen, StickyBar, EdgeFade and Backdrop | design-system | 14 | — |
+| 4a | `port/04a-palette` | Align the Czech theme with the new palette | design-system | 1 | — (brand colour change, also visible on the old screens) |
 | 5 | `port/05-intro-page` | Add the introduction page to the app package and use it in the Czech app | design-system (TutorialStep), app, CZ | 12 | **C1** intro screen |
 | 6 | `port/06-question-card` | Add the question card to the design system | design-system | 4 | — |
 | 7 | `port/07-question-deck` | Add the swipeable question deck with drag guides and progress segments | design-system | 10 | **C2** deck in Storybook (desktop + touch) |
