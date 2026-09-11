@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { useEmbed } from "@/components/client";
-import { saveSessionData } from "@/lib/api";
+import { saveSessionData, shareSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [showOnlyNested, setShowOnlyNested] = useState(false);
@@ -72,7 +72,12 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
         onFilterChange={setShowOnlyNested}
         donateCardPosition={donateCardPosition}
       />
-      <ShareModal calculatorId={calculator.id} segments={segments} isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        onShare={() => shareSession(calculator.id)}
+        buildShareUrl={(publicId) => canonical.publicResult({ first: segments.first, second: segments.second, third: segments.third }, publicId, locale)}
+      />
     </>
   );
 }
