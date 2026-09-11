@@ -10,5 +10,6 @@ export * from "./icon-button";
 export * from "./input";
 export * from "./label";
 export * from "./logo";
+export * from "./questionCard";
 export * from "./scrollMode";
 export * from "./toggleButton";
