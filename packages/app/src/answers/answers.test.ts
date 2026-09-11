@@ -3,7 +3,7 @@ import type { Answer } from "@kalkulacka-one/schema";
 
 import { describe, expect, it } from "vitest";
 
-import { countAnswered, countSkipped, firstUnansweredIndex, hasAnswer, isVisited, toSegments } from "./answers";
+import { answersByQuestion, answerTone, countAnswered, countSkipped, firstUnansweredIndex, hasAnswer, isComplete, isVisited, toSegments } from "./answers";
 
 const questions = [{ id: "q1" }, { id: "q2" }, { id: "q3" }];
 
@@ -134,5 +134,55 @@ describe("toSegments", () => {
   it("ignores stored answers to questions this calculator no longer asks", () => {
     expect(toSegments(questions, [yes("retired-question")])).toHaveLength(3);
     expect(toSegments(questions, [yes("retired-question")]).every((segment) => segment.state === "unanswered")).toBe(true);
+  });
+});
+
+describe("answersByQuestion", () => {
+  it("keys the stored answers by question id", () => {
+    const lookup = answersByQuestion([yes("q1"), skipped("q2")]);
+
+    expect(lookup.get("q1")).toEqual({ questionId: "q1", answer: true });
+    expect(lookup.get("q2")).toEqual({ questionId: "q2" });
+    expect(lookup.get("q3")).toBeUndefined();
+  });
+});
+
+describe("isComplete", () => {
+  it("treats a skip as visited for completeness", () => {
+    expect(isComplete(questions, [yes("q1"), skipped("q2")])).toBe(false);
+    expect(isComplete(questions, [yes("q1"), skipped("q2"), no("q3")])).toBe(true);
+  });
+
+  it("is false while any question is still unreached", () => {
+    expect(isComplete(questions, [yes("q1"), yes("q3")])).toBe(false);
+    expect(isComplete(questions, [])).toBe(false);
+  });
+
+  it("is true for an empty question list", () => {
+    expect(isComplete([], [])).toBe(true);
+  });
+
+  it("ignores stored answers to questions this calculator no longer asks", () => {
+    expect(isComplete(questions, [yes("q1"), yes("q2"), yes("retired-question")])).toBe(false);
+  });
+});
+
+describe("answerTone", () => {
+  it("maps a position to its side", () => {
+    expect(answerTone(yes("q1"))).toBe("agree");
+    expect(answerTone(no("q1"))).toBe("disagree");
+  });
+
+  it("keeps an explicit neutral distinct from no answer at all", () => {
+    // The recap-only helper this replaced folded both into `none`, so a "Nevím"
+    // drew the same mark as an untouched question while the recap's filter
+    // counted it as answered.
+    expect(answerTone(neutral("q1"))).toBe("neutral");
+    expect(answerTone(skipped("q1"))).toBe("none");
+    expect(answerTone(undefined)).toBe("none");
+  });
+
+  it("does not read an important flag armed before an answer as a position", () => {
+    expect(answerTone({ questionId: "q1", isImportant: true })).toBe("none");
   });
 });

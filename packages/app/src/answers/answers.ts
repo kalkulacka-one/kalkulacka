@@ -1,5 +1,5 @@
-// Ported from kalkulacka-2026/packages/core/src/answers/answers.ts — only countAnswered, countSkipped,
-// firstUnansweredIndex, toSegments and the "visited" semantics; the transitions live in the answers store here.
+// Ported from kalkulacka-2026/packages/core/src/answers/answers.ts — countAnswered, countSkipped, firstUnansweredIndex,
+// isComplete, toSegments, answerTone and the "visited" semantics; the transitions live in the answers store here.
 import type { Answer } from "@kalkulacka-one/schema";
 
 /**
@@ -31,7 +31,8 @@ export function isVisited(answer?: Answer): boolean {
   return answer !== undefined;
 }
 
-function byQuestion(answers: readonly Answer[]): Map<string, Answer> {
+/** The stored answers keyed by question, for the helpers that walk a question list. */
+export function answersByQuestion(answers: readonly Answer[]): Map<string, Answer> {
   return new Map(answers.map((answer) => [answer.questionId, answer]));
 }
 
@@ -44,22 +45,28 @@ function byQuestion(answers: readonly Answer[]): Map<string, Answer> {
  * 42" — a total larger than the thing it was a total of.
  */
 export function countAnswered(questions: readonly QuestionLike[], answers: readonly Answer[]): number {
-  const lookup = byQuestion(answers);
+  const lookup = answersByQuestion(answers);
   return questions.filter((question) => hasAnswer(lookup.get(question.id))).length;
 }
 
 /** How many of these questions were visited but left without a position. */
 export function countSkipped(questions: readonly QuestionLike[], answers: readonly Answer[]): number {
-  const lookup = byQuestion(answers);
+  const lookup = answersByQuestion(answers);
   return questions.filter((question) => {
     const answer = lookup.get(question.id);
     return isVisited(answer) && !hasAnswer(answer);
   }).length;
 }
 
+/** Every question was visited — answered or skipped — so the flow can move on to the recap. */
+export function isComplete(questions: readonly QuestionLike[], answers: readonly Answer[]): boolean {
+  const lookup = answersByQuestion(answers);
+  return questions.every((question) => isVisited(lookup.get(question.id)));
+}
+
 /** Index of the first question with nothing recorded, or -1 when every question was visited. */
 export function firstUnansweredIndex(questions: readonly QuestionLike[], answers: readonly Answer[]): number {
-  const lookup = byQuestion(answers);
+  const lookup = answersByQuestion(answers);
   return questions.findIndex((question) => !isVisited(lookup.get(question.id)));
 }
 
@@ -72,7 +79,7 @@ export function firstUnansweredIndex(questions: readonly QuestionLike[], answers
  * the distinction.
  */
 export function toSegments(questions: readonly QuestionLike[], answers: readonly Answer[]): AnswerSegment[] {
-  const lookup = byQuestion(answers);
+  const lookup = answersByQuestion(answers);
 
   return questions.map((question) => {
     const answer = lookup.get(question.id);
@@ -85,4 +92,33 @@ export function toSegments(questions: readonly QuestionLike[], answers: readonly
     // Visited without a position, or an explicit neutral: either reads as skipped in the bar.
     return { state: "skipped", important };
   });
+}
+
+/**
+ * How a recorded position reads as a mark. Mirrors the design system's `AnswerMarkTone`.
+ *
+ * `neutral` is an explicit "Nevím" — a real answer that takes no side — and is
+ * deliberately distinct from `none`, the absence of any answer at all. Nothing
+ * in the question flow produces `null` today (the card offers agree and
+ * disagree only), but candidates' imported answers do, and the schema allows
+ * it, so the distinction is carried rather than collapsed.
+ */
+export type AnswerTone = "agree" | "disagree" | "neutral" | "none";
+
+/**
+ * The one mapping from a stored answer to the tone that draws it.
+ *
+ * Had been written out three separate times in the 2026 app — twice in the
+ * results screen's own components and once as a recap-only helper that folded
+ * `null` into `none`, so an explicit "Nevím" was indistinguishable from an
+ * unanswered question on the recap while the recap's *filter* counted it as
+ * answered. One definition removes that disagreement and the drift that
+ * produced it. Takes the stored entry rather than its value so a skip (an entry
+ * without `answer`) and a question never reached read the same way.
+ */
+export function answerTone(answer?: Answer): AnswerTone {
+  if (answer?.answer === true) return "agree";
+  if (answer?.answer === false) return "disagree";
+  if (answer?.answer === null) return "neutral";
+  return "none";
 }
