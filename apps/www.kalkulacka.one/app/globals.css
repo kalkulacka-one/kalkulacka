@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import "@kalkulacka-one/design-system/themes/www.kalkulacka.one/default";
+@import "@kalkulacka-one/design-system/themes/www.kalkulacka.one/default.css";
 @import "@kalkulacka-one/design-system/styles";
 
 @theme static {
