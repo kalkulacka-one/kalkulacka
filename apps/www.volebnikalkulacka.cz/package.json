@@ -20,7 +20,7 @@
     "@appsignal/javascript": "^1.6.1",
     "@appsignal/plugin-breadcrumbs-network": "^1.1.24",
     "@appsignal/plugin-window-events": "^1.0.26",
-    "@hookform/resolvers": "^3.3.4",
+    "@hookform/resolvers": "^5.9.1",
     "@kalkulacka-one/app": "*",
     "@kalkulacka-one/database": "*",
     "@kalkulacka-one/design-system": "*",
@@ -54,6 +54,6 @@
     "autoprefixer": "^10.4.22",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }

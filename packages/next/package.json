@@ -27,7 +27,7 @@
     "@kalkulacka-one/typescript-config": "*",
     "@types/node": "^22.19.1",
     "tsc-alias": "^1.8.16",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   },
   "peerDependencies": {
     "next": "^16.0.0"

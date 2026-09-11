@@ -4,9 +4,8 @@
     "outDir": "dist",
     "rootDir": "./src",
     "types": ["node", "vitest/globals", "@testing-library/jest-dom/vitest"],
-    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],
