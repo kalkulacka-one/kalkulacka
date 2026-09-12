@@ -126,6 +126,27 @@
       "reviewNavigationCard": {
         "showResultsButton": "Прикажи резултати"
       },
+      "reviewPage": {
+        "title": "Рекапитулација",
+        "description": "Проверете ги одговорите пред да го видите резултатот. Допрете на прашање за да го промените.",
+        "tally": "Одговорени {answered} од {total}",
+        "skipped": "Прескокнати {remaining}",
+        "filterLabel": "Филтрирај прашања",
+        "filterAll": "Сите",
+        "filterUnanswered": "Прескокнати",
+        "filterImportant": "Важни",
+        "empty": "Во овој избор нема прашања.",
+        "showAll": "Прикажи сè",
+        "showResults": "Прикажи резултати",
+        "back": "Назад кон прашањата",
+        "yes": "Да",
+        "no": "Не",
+        "neutral": "Не знам",
+        "none": "Без одговор",
+        "important": "Важно за мене",
+        "skip": "Прескокни",
+        "close": "Затвори"
+      },
       "reviewQuestionCard": {
         "yes": "Да",
         "no": "Не",

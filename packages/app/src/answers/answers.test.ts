@@ -3,7 +3,7 @@ import type { Answer } from "@kalkulacka-one/schema";
 
 import { describe, expect, it } from "vitest";
 
-import { answersByQuestion, answerTone, countAnswered, countSkipped, firstUnansweredIndex, hasAnswer, isComplete, isVisited, toSegments } from "./answers";
+import { answersByQuestion, answerTone, countAnswered, countSkipped, firstUnansweredIndex, hasAnswer, isComplete, isSkipped, isVisited, toSegments } from "./answers";
 
 const questions = [{ id: "q1" }, { id: "q2" }, { id: "q3" }];
 
@@ -38,6 +38,23 @@ describe("isVisited", () => {
 
   it("is false for a question never reached", () => {
     expect(isVisited(undefined)).toBe(false);
+  });
+});
+
+describe("isSkipped", () => {
+  it("is true for the record a skip leaves: visited, no position, the flag cleared", () => {
+    expect(isSkipped({ questionId: "q1", answer: undefined, isImportant: false })).toBe(true);
+  });
+
+  it("is false for a question only looked at, or starred before it was answered", () => {
+    expect(isSkipped(skipped("q1"))).toBe(false);
+    expect(isSkipped({ questionId: "q1", isImportant: true })).toBe(false);
+  });
+
+  it("is false for a real position and for a question never reached", () => {
+    expect(isSkipped(yes("q1"))).toBe(false);
+    expect(isSkipped({ questionId: "q1", answer: null, isImportant: false })).toBe(false);
+    expect(isSkipped(undefined)).toBe(false);
   });
 });
 

@@ -31,6 +31,22 @@ export function isVisited(answer?: Answer): boolean {
   return answer !== undefined;
 }
 
+/**
+ * Explicitly passed over: visited, no position, and the flag cleared with it.
+ *
+ * 2026 kept a `skipped` flag on the entry; this platform's `Answer` has none,
+ * and the three facts a recap row cares about have to be told apart from the
+ * shape of the record instead. The flow's skip (and the recap's) is the one
+ * write that leaves `isImportant: false` beside a missing position — an
+ * arrival writes neither, and the star alone writes `true` — so that pair *is*
+ * the flag. It keeps the star armable on a question that was only looked at,
+ * or starred before it was answered, and locked on one that was actually
+ * skipped.
+ */
+export function isSkipped(answer?: Answer): boolean {
+  return isVisited(answer) && !hasAnswer(answer) && answer?.isImportant === false;
+}
+
 /** The stored answers keyed by question, for the helpers that walk a question list. */
 export function answersByQuestion(answers: readonly Answer[]): Map<string, Answer> {
   return new Map(answers.map((answer) => [answer.questionId, answer]));
