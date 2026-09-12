@@ -25,6 +25,49 @@
       "guideNavigationCard": {
         "startButton": "Start answering"
       },
+      "guidePage": {
+        "title": "How it works",
+        "description": "Try it on a practice card — nothing from it counts anywhere.",
+        "start": "Got it, start"
+      },
+      "guidePractice": {
+        "bodyTouch": "Drag the card in the marked directions, or tap one of the options.",
+        "bodyPointer": "Drag the card in the marked directions, or click one of the options.",
+        "progress": "Tried {done} of {total}",
+        "feedbackAgree": "Yes — the card went left.",
+        "feedbackDisagree": "No — the card went right.",
+        "feedbackImportant": "Important to me — such a question counts double in the result.",
+        "feedbackSkip": "Skipped — it doesn't count towards the result.",
+        "done": "You've got the hang of it. Let's start for real.",
+        "agree": "Yes",
+        "disagree": "No",
+        "important": "Important to me",
+        "importantSuffix": " · Important to me",
+        "skip": "Skip",
+        "hints": {
+          "arrowLeft": "Left arrow",
+          "arrowRight": "Right arrow",
+          "arrowUp": "Up arrow",
+          "arrowDown": "Down arrow",
+          "important": "Important"
+        }
+      },
+      "guideSteps": {
+        "agreeTitle": "Yes",
+        "agreeDescriptionTouch": "Drag the card left, or tap Yes.",
+        "agreeDescriptionPointer": "Drag the card left, press the left arrow, or click Yes.",
+        "disagreeTitle": "No",
+        "disagreeDescriptionTouch": "Drag the card right, or tap No.",
+        "disagreeDescriptionPointer": "Drag the card right, press the right arrow, or click No.",
+        "importantTitle": "Important to me",
+        "importantDescriptionTouch": "Drag the card diagonally up, or tap the star. A starred question counts double in the result.",
+        "importantDescriptionPointer": "Drag the card diagonally up, press the up arrow, or click the star. A starred question counts double in the result.",
+        "skipTitle": "Skip",
+        "skipDescriptionTouch": "Drag a question you don't want to answer down — it doesn't count towards the result.",
+        "skipDescriptionPointer": "Drag a question you don't want to answer down or press the down arrow — it doesn't count towards the result.",
+        "recapTitle": "Recap",
+        "recapDescription": "At the end you'll see all the questions together and can still change your answers."
+      },
       "introductionNavigationCard": {
         "continueButton": "Continue"
       },

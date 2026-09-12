@@ -310,6 +310,29 @@
     }
   }
 
+  /*
+   * The practice card's nudge, until it is first used (the app's
+   * `GuidePractice`, via `animate-(--ko-animate-practice-nudge)`). Three
+   * passes and then still: the point is to say "this moves", and a card that
+   * keeps twitching beside the text explaining it competes with the text. The
+   * duration and the delay both hang off `--ko-duration-slow`, so reduced
+   * motion collapses the whole thing to nothing without a second rule.
+   */
+  --animate-practice-nudge: ko-practice-nudge calc(var(--ko-duration-slow) * 4) var(--ko-ease-spring) var(--ko-duration-slow) 3;
+
+  @keyframes ko-practice-nudge {
+    0%,
+    100% {
+      transform: translateX(0) rotate(0deg);
+    }
+    30% {
+      transform: translateX(-1.25rem) rotate(-1.2deg);
+    }
+    65% {
+      transform: translateX(0.75rem) rotate(0.7deg);
+    }
+  }
+
   /* Elevation, tinted with the neutral so shadows belong to the theme. */
   --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
   --shadow-card-next: 0 2px 8px -2px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -6px oklch(from var(--ko-shadow-color) l c h / 0.14);
