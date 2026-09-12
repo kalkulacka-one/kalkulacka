@@ -1,6 +1,5 @@
 @layer theme, base, components, utilities;
 
-/* layer() before prefix() — the other order emits invalid `@media layer(...)`. No preflight: this package is a guest. */
 @import 'tailwindcss/theme' layer(theme) prefix(koa);
 @import 'tailwindcss/utilities' layer(utilities) prefix(koa);
 
