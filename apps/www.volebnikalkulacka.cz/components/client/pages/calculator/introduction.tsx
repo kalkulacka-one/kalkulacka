@@ -8,6 +8,7 @@ import { CalculatorMenu, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
 import { useCalculatorActions } from "@/hooks/calculator-actions";
+import { trackEvent } from "@/lib/analytics";
 import { type RouteSegments, routes } from "@/lib/routing";
 
 export function IntroductionPageWithRouting({ segments }: { segments: RouteSegments }) {
@@ -37,6 +38,10 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   const logoMonochrome = embed.isEmbed && embed.config?.logo === "monochrome";
 
   const handleContinueClick = () => {
+    // Fired on the click, not on arrival at the guide: a tap here is the
+    // decision to start, and the tutorial after it is still onboarding, not
+    // a second start worth counting separately.
+    trackEvent("Calculator started", { calculator: calculator.id });
     router.push(routes.guide(segments, locale));
   };
 

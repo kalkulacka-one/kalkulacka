@@ -254,6 +254,83 @@ describe("ShareDialog", () => {
     });
   });
 
+  describe("reporting what was shared", () => {
+    it("names the download, and says nothing of one that failed", async () => {
+      const user = userEvent.setup();
+      const onShared = vi.fn();
+      mocks.renderShareCard.mockResolvedValue(png);
+      mocks.downloadImage.mockReturnValue(true);
+      renderDialog({ onShared });
+
+      await user.click(screen.getByRole("button", { name: "Stáhnout" }));
+      expect(onShared).toHaveBeenCalledWith("image-download");
+
+      mocks.renderShareCard.mockResolvedValue(null);
+      await user.click(screen.getByRole("button", { name: "Stáhnout" }));
+      expect(onShared).toHaveBeenCalledTimes(1);
+    });
+
+    it("tells a copied image from the download it fell back to, and says nothing of a failure", async () => {
+      const user = userEvent.setup();
+      const onShared = vi.fn();
+      mocks.copyShareCardImage.mockResolvedValue("copied");
+      renderDialog({ onShared });
+
+      await user.click(screen.getByRole("button", { name: "Zkopírovat obrázek" }));
+      expect(onShared).toHaveBeenLastCalledWith("image-copy");
+
+      mocks.copyShareCardImage.mockResolvedValue("downloaded");
+      await user.click(screen.getByRole("button", { name: "Zkopírovat obrázek" }));
+      expect(onShared).toHaveBeenLastCalledWith("image");
+
+      mocks.copyShareCardImage.mockResolvedValue("failed");
+      await user.click(screen.getByRole("button", { name: "Zkopírovat obrázek" }));
+      expect(onShared).toHaveBeenCalledTimes(2);
+    });
+
+    it("counts the OS sheet, and the download that stood in for it, as the image — never a dismissed sheet or a failure", async () => {
+      const user = userEvent.setup();
+      const onShared = vi.fn();
+      pointer("touch");
+      mocks.canShareImages.mockReturnValue(true);
+      mocks.renderShareCard.mockResolvedValue(png);
+      renderDialog({ onShared });
+      const sheet = () => screen.getByRole("button", { name: "Sdílet obrázek" });
+
+      mocks.shareImage.mockResolvedValue("shared");
+      await user.click(sheet());
+      expect(onShared).toHaveBeenLastCalledWith("image");
+
+      mocks.shareImage.mockResolvedValue("downloaded");
+      await user.click(sheet());
+      expect(onShared).toHaveBeenLastCalledWith("image");
+      expect(onShared).toHaveBeenCalledTimes(2);
+
+      mocks.shareImage.mockResolvedValue("cancelled");
+      await user.click(sheet());
+      mocks.shareImage.mockResolvedValue("failed");
+      await user.click(sheet());
+      expect(onShared).toHaveBeenCalledTimes(2);
+    });
+
+    it("names the link once it is on the clipboard, and says nothing of a mint or a copy that failed", async () => {
+      const user = userEvent.setup();
+      const onShared = vi.fn();
+      const onRequestShareLink = vi.fn().mockResolvedValue("https://example.test/volby/vysledek/abc");
+      mocks.copyText.mockResolvedValue(true);
+      renderDialog({ onRequestShareLink, onShared });
+
+      await user.click(screen.getByRole("button", { name: "Kopírovat odkaz" }));
+      expect(onShared).toHaveBeenCalledWith("link");
+
+      mocks.copyText.mockResolvedValue(false);
+      await user.click(screen.getByRole("button", { name: "Kopírovat odkaz" }));
+      onRequestShareLink.mockResolvedValue(null);
+      await user.click(screen.getByRole("button", { name: "Kopírovat odkaz" }));
+      expect(onShared).toHaveBeenCalledTimes(1);
+    });
+  });
+
   it("clears a message on its own, and sooner for good news than for bad", async () => {
     vi.useFakeTimers();
     mocks.renderShareCard.mockResolvedValue(png);

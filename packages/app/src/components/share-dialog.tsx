@@ -24,6 +24,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { usePointerKind } from "@/client/hooks";
 import { chooseShareMode, copyText } from "@/utilities";
 
+/** Which of the dialog's actions completed — how the result left the app. */
+export type ShareMethod = "image" | "image-copy" | "image-download" | "link";
+
 export type ShareDialog = {
   open: boolean;
   onClose: () => void;
@@ -49,6 +52,15 @@ export type ShareDialog = {
    * with no dead button explaining what it cannot do.
    */
   onRequestShareLink?: () => Promise<string | null>;
+  /**
+   * An action completed: the OS sheet took the picture — or, where the sheet
+   * fell through, the download that stood in for it — (`image`), the picture
+   * landed on the clipboard (`image-copy`), the file was saved
+   * (`image-download`), or the public link was copied (`link`). Nothing for a
+   * dismissed sheet or a failure: the app's analytics hook counts hand-offs,
+   * not attempts.
+   */
+  onShared?: (method: ShareMethod) => void;
 };
 
 /**
@@ -148,7 +160,7 @@ const statusClasses = "koa:m-0 koa:min-h-5 koa:font-(family-name:--ko-font-sans)
  *    image to the clipboard, or download it — neither of which routes
  *    through that sheet.
  */
-export function ShareDialog({ open, onClose, content, fileName, shareUrl, onRequestShareLink }: ShareDialog) {
+export function ShareDialog({ open, onClose, content, fileName, shareUrl, onRequestShareLink, onShared }: ShareDialog) {
   const t = useTranslations("koa.components.shareDialog");
   const [theme, setTheme] = useState<CardTheme>("light");
   const [cardFormat, setCardFormat] = useState<CardFormat>("story");
@@ -231,10 +243,15 @@ export function ShareDialog({ open, onClose, content, fileName, shareUrl, onRequ
       // nothing to report, and nothing to undo.
       if (result === "cancelled" || result === "shared") setStatus("idle");
       else setStatus(result === "downloaded" ? "saved" : "failed");
+
+      // Both the OS share sheet and the direct-download fallback are a
+      // completed hand-off of the image — a cancelled sheet or a failed
+      // export is not.
+      if (result === "shared" || result === "downloaded") onShared?.("image");
     } catch {
       setStatus("failed");
     }
-  }, [content, theme, cardFormat, exportName, shareUrl]);
+  }, [content, theme, cardFormat, exportName, shareUrl, onShared]);
 
   /**
    * Copy the card straight onto the clipboard, as a PNG.
@@ -251,9 +268,14 @@ export function ShareDialog({ open, onClose, content, fileName, shareUrl, onRequ
         if (result === "copied") setStatus("copied");
         else if (result === "downloaded") setStatus("copyFailedSaved");
         else setStatus("failed");
+
+        // The download the copy fell back to is still the picture leaving
+        // the app: reported as the image, as 2026 does, not as a copy.
+        if (result === "copied") onShared?.("image-copy");
+        else if (result === "downloaded") onShared?.("image");
       })
       .catch(() => setStatus("failed"));
-  }, [content, theme, cardFormat, exportName]);
+  }, [content, theme, cardFormat, exportName, onShared]);
 
   const onDownload = useCallback(async () => {
     setStatus("working");
@@ -261,10 +283,11 @@ export function ShareDialog({ open, onClose, content, fileName, shareUrl, onRequ
       const blob = await renderShareCard({ content, theme, format: cardFormat });
       const ok = blob ? downloadImage(blob, exportName) : false;
       setStatus(ok ? "saved" : "failed");
+      if (ok) onShared?.("image-download");
     } catch {
       setStatus("failed");
     }
-  }, [content, theme, cardFormat, exportName]);
+  }, [content, theme, cardFormat, exportName, onShared]);
 
   /**
    * Turn the result into an address, and put it on the clipboard.
@@ -287,7 +310,8 @@ export function ShareDialog({ open, onClose, content, fileName, shareUrl, onRequ
 
     const copied = await copyText(publicUrl);
     setLinkStatus(copied ? "copied" : "failed");
-  }, [onRequestShareLink]);
+    if (copied) onShared?.("link");
+  }, [onRequestShareLink, onShared]);
 
   /*
    * One line for every action. They cannot be mid-flight and finished at the

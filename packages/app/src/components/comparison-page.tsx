@@ -8,7 +8,7 @@ import { icons } from "@kalkulacka-one/design-system/icons";
 import { AnswerMark, type AnswerMarkTone, AppHeader, Avatar, Shell, Tag, VisuallyHidden } from "@kalkulacka-one/design-system/server";
 
 import { useTranslations } from "next-intl";
-import { type ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 
 import { answersByQuestion, answerTone } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
@@ -56,6 +56,12 @@ export type ComparisonPage = {
    * would only re-fetch it.
    */
   onFilterChange?: (filter: ComparisonFilter | undefined) => void;
+  /**
+   * The screen is up — once per mount, on arrival. The app's "viewed" hook;
+   * a filter change or an opened card is the same visit and reports nothing
+   * more.
+   */
+  onViewed?: () => void;
 };
 
 /** How many faces a collapsed row's stack shows before the "+n" disc. */
@@ -401,7 +407,7 @@ function AnswerGroup({
  * A button rather than a link for the way back, like the other screens: the
  * app owns the routes, and the page only says where the reader wants to go.
  */
-export function ComparisonPage({ appTitle, electionName, calculatorName, initialFilter, headerActions, attributionHref, logoMonochrome, onBackClick, onFilterChange }: ComparisonPage) {
+export function ComparisonPage({ appTitle, electionName, calculatorName, initialFilter, headerActions, attributionHref, logoMonochrome, onBackClick, onFilterChange, onViewed }: ComparisonPage) {
   const t = useTranslations("koa.components.comparisonPage");
 
   const { questions } = useQuestions();
@@ -421,6 +427,14 @@ export function ComparisonPage({ appTitle, electionName, calculatorName, initial
   );
   /** Which questions are open, by id. Reset when the filter changes. */
   const [expanded, setExpanded] = useState<ReadonlySet<string>>(() => new Set());
+
+  /* Once per mount: the ref, not the effect's deps, is what keeps a re-render — or a callback handed in with a fresh identity — from reporting a second visit. */
+  const viewed = useRef(false);
+  useEffect(() => {
+    if (viewed.current) return;
+    viewed.current = true;
+    onViewed?.();
+  }, [onViewed]);
 
   /*
    * The ranking decides the order of faces inside every group: the stacks are

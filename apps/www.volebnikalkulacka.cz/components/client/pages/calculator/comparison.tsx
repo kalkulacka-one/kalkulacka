@@ -3,9 +3,11 @@ import { useCalculatedMatches, useCalculator } from "@kalkulacka-one/app/client"
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
+import { useCallback } from "react";
 
 import { CalculatorMenu, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
+import { trackEvent } from "@/lib/analytics";
 import { COMPARISON_FILTER_PARAM, comparisonFilterQuery, parseComparisonFilter, type RouteSegments, routes } from "@/lib/routing";
 
 export function ComparisonPageWithRouting({ segments }: { segments: RouteSegments }) {
@@ -39,6 +41,10 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
    */
   const initialFilter = parseComparisonFilter(searchParams.get(COMPARISON_FILTER_PARAM));
 
+  const handleViewed = useCallback(() => {
+    trackEvent("Comparison viewed", { calculator: calculator.id });
+  }, [calculator.id]);
+
   const handleBackClick = () => {
     router.push(routes.result(segments, locale));
   };
@@ -60,6 +66,7 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
       logoMonochrome={logoMonochrome}
       onBackClick={handleBackClick}
       onFilterChange={handleFilterChange}
+      onViewed={handleViewed}
     />
   );
 }
