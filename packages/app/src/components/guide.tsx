@@ -19,7 +19,7 @@ export function Guide({ calculator }: Guide) {
     <div className="koa:grid koa:gap-4">
       <Card shadow="hard" className="koa:border koa:border-slate-200">
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
-          <Icon icon={logoCheck} decorative={true} className="koa:text-[var(--ko-palette-primary)]" />
+          <Icon icon={logoCheck} decorative={true} className="koa:text-primary" />
           <div>
             <p className="koa:font-semibold koa:text-slate-700">{t("agreement.title")}</p>
             <p className="koa:text-sm koa:text-slate-500">{t("agreement.description")}</p>
@@ -28,7 +28,7 @@ export function Guide({ calculator }: Guide) {
       </Card>
       <Card shadow="hard" className="koa:border koa:border-slate-200">
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
-          <Icon icon={logoCross} decorative={true} className="koa:text-[var(--ko-palette-secondary)]" />
+          <Icon icon={logoCross} decorative={true} className="koa:text-secondary" />
           <div>
             <p className="koa:font-semibold koa:text-slate-700">{t("disagreement.title")}</p>
             <p className="koa:text-sm koa:text-slate-500">{t("disagreement.description")}</p>

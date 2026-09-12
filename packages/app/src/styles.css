@@ -2,9 +2,6 @@
 
 @import 'tailwindcss/theme' layer(theme) prefix(koa);
 @import 'tailwindcss/utilities' layer(utilities) prefix(koa);
+@import '@kalkulacka-one/design-system/tokens.css';
 
 @source not "**/*.test.{ts,tsx}";
-
-@theme static {
-  --font-display: var(--ko-font-display);
-}
