@@ -1,7 +1,6 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
+import { getRuntimeSessionId } from "@kalkulacka-one/next/session/client";
 import type { Answer } from "@kalkulacka-one/schema";
-
-import { getRuntimeSessionId } from "@/lib/session/client";
 
 export async function saveSessionData(calculatorId: string, answers: Answer[], matches?: ReturnType<typeof calculateMatches>, calculatorVersion?: string): Promise<void> {
   const headers: HeadersInit = {
