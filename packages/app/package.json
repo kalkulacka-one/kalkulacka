@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "npm run tailwind && tsc && tsc-alias",
+    "dev": "npm run tailwind -- --watch",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "ncu": "ncu",
