@@ -11,7 +11,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { answerTone } from "@/answers";
 import { type AnswerDistribution, MIN_TOPIC_ANSWERS, type QuestionConsensus, type TopicMatch, topicIcon } from "@/insights";
 import { copyText } from "@/utilities";
-import type { CandidateViewModel } from "@/view-models";
+import { avatarSrc } from "@/view-models";
 
 export type ResultsDashboard = {
   distribution: AnswerDistribution;
@@ -157,13 +157,6 @@ const promptClasses = [
 
 const promptActionsClasses = "koa:flex koa:items-center koa:gap-3 koa:flex-wrap";
 const promptNoteClasses = `${noteClasses} koa:flex-1 koa:min-w-48`;
-
-/** The smallest picture the data layer serves — a stack of faces needs no more. */
-function avatarSrc(candidate: CandidateViewModel): string | undefined {
-  const urls = candidate.avatar?.urls;
-  if (!urls) return undefined;
-  return urls.xs ?? urls.sm ?? urls.md ?? urls.original;
-}
 
 /**
  * A question with how much company you had on it — shared by two of the cards.

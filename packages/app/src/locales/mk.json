@@ -1,6 +1,26 @@
 {
   "koa": {
     "components": {
+      "comparisonPage": {
+        "title": "Споредба на одговорите",
+        "description": "Како партиите одговараа на одделните прашања",
+        "back": "Назад кон резултатите",
+        "filterLabel": "Филтрирај прашања",
+        "filterAll": "Сите",
+        "filterImportant": "Важни",
+        "you": "Вие",
+        "groupOther": "Не знам / без одговор",
+        "stackYes": "Одговорија да",
+        "stackNo": "Одговорија не",
+        "close": "Затвори",
+        "emptyFilter": "Ниедно прашање не одговара на овој филтер.",
+        "emptyFilterAction": "Прикажи ги сите",
+        "important": "Важно за мене",
+        "yes": "Да",
+        "no": "Не",
+        "neutral": "Не знам",
+        "none": "Без одговор"
+      },
       "comparisonPane": {
         "close": "Затвори ја споредбата",
         "filterLabel": "Филтрирај одговори",
