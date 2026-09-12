@@ -141,6 +141,7 @@ function renderPage({ answers = userAnswers, data = calculatorData, props = {}, 
     onCompareTopicClick: vi.fn(),
     onCompareImportantClick: vi.fn(),
     onShareClick: vi.fn(),
+    onRankingShown: vi.fn(),
     onStartOwnClick: vi.fn(),
   };
   const answersStore = createAnswersStore();
@@ -210,6 +211,47 @@ describe("ResultPage", () => {
       expect(screen.queryByRole("status")).toBeNull();
       expect(heading()).toHaveTextContent("Moje shoda");
       for (const row of rows()) expect((row as HTMLElement).style.animationDelay).toBe("-1s");
+    });
+  });
+
+  describe("reporting the ranking", () => {
+    it("reports it once the rows are on screen — after the beat, not during it — and only once", () => {
+      vi.useFakeTimers();
+      try {
+        const { onRankingShown, answersStore } = renderPage({ seen: false });
+        expect(onRankingShown).not.toHaveBeenCalled();
+
+        act(() => {
+          vi.advanceTimersByTime(CALCULATING_MS);
+        });
+        expect(onRankingShown).toHaveBeenCalledTimes(1);
+
+        // A re-render is the same showing — even one that changes what the guard reads.
+        fireEvent.click(rowButton("Alfa"));
+        fireEvent.click(screen.getByRole("button", { name: /Zobrazit další strany/ }));
+        act(() => {
+          answersStore.getState().setAnswers(userAnswers.slice(0, 3));
+        });
+        expect(onRankingShown).toHaveBeenCalledTimes(1);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("reports it straight away on a revisit, where there is no beat to wait out", () => {
+      const { onRankingShown } = renderPage();
+      expect(onRankingShown).toHaveBeenCalledTimes(1);
+    });
+
+    it("reports nothing with nothing answered", () => {
+      const { onRankingShown } = renderPage({ answers: [{ questionId: q1 }] });
+      expect(onRankingShown).not.toHaveBeenCalled();
+    });
+
+    it("reports nothing on a shared result", () => {
+      const { onRankingShown } = renderPage({ seen: false, props: { shared: true } });
+      expect(rows()).toHaveLength(5);
+      expect(onRankingShown).not.toHaveBeenCalled();
     });
   });
 
@@ -762,5 +804,23 @@ describe("sharing", () => {
     renderPage({ props: { share: { onRequestShareLink: vi.fn().mockResolvedValue(null) } } });
     await user.click(screen.getByRole("button", { name: "Sdílet" }));
     expect(within(screen.getByRole("dialog", { name: "Sdílet výsledek" })).getByRole("button", { name: "Kopírovat odkaz" })).toBeInTheDocument();
+  });
+
+  it("tells the app how the result was shared, through the share configuration", async () => {
+    const user = userEvent.setup();
+    // After `setup()`: user-event installs a clipboard stub of its own, and this one has to win.
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
+    try {
+      const onShared = vi.fn();
+      renderPage({ props: { share: { onRequestShareLink: vi.fn().mockResolvedValue("https://example.test/volby/vysledek/abc"), onShared } } });
+
+      await user.click(screen.getByRole("button", { name: "Sdílet" }));
+      await user.click(within(screen.getByRole("dialog", { name: "Sdílet výsledek" })).getByRole("button", { name: "Kopírovat odkaz" }));
+      expect(writeText).toHaveBeenCalledWith("https://example.test/volby/vysledek/abc");
+      expect(onShared).toHaveBeenCalledWith("link");
+    } finally {
+      Reflect.deleteProperty(navigator, "clipboard");
+    }
   });
 });

@@ -72,6 +72,7 @@ type RenderOptions = {
 function renderPage({ answers = userAnswers, props = {} }: RenderOptions = {}) {
   const onBackClick = vi.fn();
   const onFilterChange = vi.fn();
+  const onViewed = vi.fn();
   const answersStore = createAnswersStore();
   answersStore.getState().setAnswers(answers);
 
@@ -79,13 +80,21 @@ function renderPage({ answers = userAnswers, props = {} }: RenderOptions = {}) {
     <LocaleProvider locale="cs" messages={csMessages}>
       <CalculatorStoreContext.Provider value={createCalculatorStore(calculatorData)}>
         <AnswersStoreContext.Provider value={answersStore}>
-          <ComparisonPage appTitle="Volební kalkulačka" electionName="Sněmovní volby 2025" calculatorName="Volební kalkulačka" onBackClick={onBackClick} onFilterChange={onFilterChange} {...props} />
+          <ComparisonPage
+            appTitle="Volební kalkulačka"
+            electionName="Sněmovní volby 2025"
+            calculatorName="Volební kalkulačka"
+            onBackClick={onBackClick}
+            onFilterChange={onFilterChange}
+            onViewed={onViewed}
+            {...props}
+          />
         </AnswersStoreContext.Provider>
       </CalculatorStoreContext.Provider>
     </LocaleProvider>,
   );
 
-  return { ...result, onBackClick, onFilterChange };
+  return { ...result, onBackClick, onFilterChange, onViewed };
 }
 
 /* The app bar, found from its wordmark. */
@@ -146,6 +155,17 @@ describe("ComparisonPage", () => {
       for (const entry of rows()) {
         expect(toggle(entry)).toHaveAttribute("aria-expanded", "false");
       }
+    });
+  });
+
+  describe("reporting the visit", () => {
+    it("reports it once, on arrival, and not again for a filter change or an opened card", () => {
+      const { onViewed } = renderPage();
+      expect(onViewed).toHaveBeenCalledTimes(1);
+
+      fireEvent.click(chip("Doprava"));
+      fireEvent.click(toggle(row("Tvrzení 1")));
+      expect(onViewed).toHaveBeenCalledTimes(1);
     });
   });
 

@@ -8,6 +8,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { CalculatorMenu, DonateCard, useEmbed, useSessionStatus } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
+import { trackEvent } from "@/lib/analytics";
 import { saveSessionData, shareSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 import { canonical, comparisonFilterQuery, type RouteSegments, routes, stripEmbed } from "@/lib/routing";
@@ -122,6 +123,16 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     }
   }, [calculator.id, canonicalSegments, locale]);
 
+  /*
+   * "Completed" the moment the ranking is first on screen for its owner —
+   * the page gates it past the calculating beat and off a shared result, so
+   * it means the same thing as the ranking `saveSessionData` marks the
+   * session finished with.
+   */
+  const handleRankingShown = useCallback(() => {
+    trackEvent("Calculator completed", { calculator: calculator.id });
+  }, [calculator.id]);
+
   const share = useMemo<ResultPageShare>(
     () => ({
       url: shareUrl,
@@ -129,8 +140,10 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
       // The card's pictures go through the same-origin proxy: the canvas
       // export needs readable pixels, and the data CDN sends no CORS header.
       assetUrl: (url) => toProxiedAssetUrl(url, { assetBase: baseUrl, group: calculatorGroup, key: calculatorKey }) ?? url,
+      // Only a completed hand-off reaches here — the dialog reports nothing for a dismissed sheet or a failure.
+      onShared: (method) => trackEvent("Result shared", { calculator: calculator.id, method }),
     }),
-    [shareUrl, sessionStatus, requestShareLink, baseUrl, calculatorGroup, calculatorKey],
+    [shareUrl, sessionStatus, requestShareLink, baseUrl, calculatorGroup, calculatorKey, calculator.id],
   );
 
   const donateCardPosition = embed.isEmbed ? (embed.config?.donateCard ?? 1) : 5;
@@ -147,6 +160,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
       onCompareClick={handleCompareClick}
       onCompareTopicClick={handleCompareTopicClick}
       onCompareImportantClick={handleCompareImportantClick}
+      onRankingShown={handleRankingShown}
       share={share}
       donateCardPosition={donateCardPosition}
       donateCard={

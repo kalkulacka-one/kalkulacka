@@ -7,7 +7,7 @@ import { AppHeader, Screen, Shell, StickyBar } from "@kalkulacka-one/design-syst
 import { prefersReducedMotion } from "@kalkulacka-one/design-system/utilities";
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { Fragment, type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+import { Fragment, type ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { countAnswered } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
@@ -17,7 +17,7 @@ import type { calculateMatches } from "@/result-calculation";
 
 import { ComparisonPane } from "./comparison-pane";
 import { ResultsDashboard } from "./results-dashboard";
-import { ShareDialog } from "./share-dialog";
+import { ShareDialog, type ShareMethod } from "./share-dialog";
 
 /**
  * What the app hands the share dialog — the two things it alone knows: where
@@ -41,6 +41,12 @@ export type ResultPageShare = {
    * it; the rows on screen keep loading the CDN directly.
    */
   assetUrl?: (url: string) => string;
+  /**
+   * An action in the dialog completed — which ones count is `ShareDialog`'s
+   * `onShared` to say. The app's analytics hook; nothing for a dismissed
+   * sheet or a failure.
+   */
+  onShared?: (method: ShareMethod) => void;
 };
 
 export type ResultPage = {
@@ -92,6 +98,15 @@ export type ResultPage = {
    * this is the whole action — the app opens whatever it still shares with.
    */
   onShareClick?: () => void;
+  /**
+   * The owner's ranking is on screen — once per mount, the first time the
+   * rows render: after the calculating beat, never during it, never again
+   * on a re-render, and never on a shared result (the visitor of a public
+   * link completed nothing) or the empty screen (which ranks nothing). The
+   * app's "completed" hook, gated so it means the same thing as the ranking
+   * the app saves.
+   */
+  onRankingShown?: () => void;
   /** Opts the page into the share dialog; the apps that still have a share surface of their own leave it out. */
   share?: ResultPageShare;
   /** A shared result's "Vyplnit vlastní kalkulačku". */
@@ -294,6 +309,7 @@ export function ResultPage({
   onCompareTopicClick,
   onCompareImportantClick,
   onShareClick,
+  onRankingShown,
   share,
   onStartOwnClick,
   donateCard,
@@ -364,6 +380,20 @@ export function ResultPage({
     }, CALCULATING_MS);
     return () => window.clearTimeout(timer);
   }, [shared, calculator.id]);
+
+  /*
+   * Once per mount, the moment the ranking is first on screen for its own
+   * owner. `waited` is in the guard: without it the calculating beat would
+   * be counted, not the result. A ref rather than state, so that a re-render
+   * — a row opened, the tail unfolded, an answer changed under the page —
+   * cannot report it a second time.
+   */
+  const rankingShown = useRef(false);
+  useEffect(() => {
+    if (shared || !waited || answered === 0 || rankingShown.current) return;
+    rankingShown.current = true;
+    onRankingShown?.();
+  }, [shared, waited, answered, onRankingShown]);
 
   /**
    * Whether the ranking's tail (below the fifth row) has been unfolded.
@@ -675,7 +705,15 @@ export function ResultPage({
         session for this calculator, which they have no reason to have.
       */}
       {!shared && share && shareMounted ? (
-        <ShareDialog open={shareOpen} onClose={closeShare} content={shareContent} fileName={`shoda-${calculator.id}`} shareUrl={share.url} onRequestShareLink={share.onRequestShareLink} />
+        <ShareDialog
+          open={shareOpen}
+          onClose={closeShare}
+          content={shareContent}
+          fileName={`shoda-${calculator.id}`}
+          shareUrl={share.url}
+          onRequestShareLink={share.onRequestShareLink}
+          onShared={share.onShared}
+        />
       ) : null}
     </Shell>
   );
