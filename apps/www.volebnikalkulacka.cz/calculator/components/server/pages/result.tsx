@@ -21,7 +21,7 @@ export type ResultPage = {
   showOnlyNested: boolean;
   onFilterChange: (showOnlyNested: boolean) => void;
   donateCardPosition: number | false;
-  donateCard: ReactNode;
+  donateCard?: ReactNode;
 };
 
 export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, onShareClick, showOnlyNested, onFilterChange, donateCardPosition, donateCard }: ResultPage) {

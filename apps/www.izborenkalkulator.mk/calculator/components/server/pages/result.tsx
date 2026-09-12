@@ -4,9 +4,9 @@ import { ResultNavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
-import React from "react";
+import React, { type ReactNode } from "react";
 
-import { AppHeader, DonateCard, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
+import { AppHeader, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 import { EmbedFooter, Layout } from "../components";
@@ -22,9 +22,10 @@ export type ResultPage = {
   showOnlyNested: boolean;
   onFilterChange: (showOnlyNested: boolean) => void;
   donateCardPosition: number | false;
+  donateCard?: ReactNode;
 };
 
-export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, onShareClick, showOnlyNested, onFilterChange, donateCardPosition }: ResultPage) {
+export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, onShareClick, showOnlyNested, onFilterChange, donateCardPosition, donateCard }: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
@@ -74,11 +75,11 @@ export function ResultPage({ embedContext, result, calculator, onNextClick, onPr
           </div>
         )}
         <div className="grid gap-4">
-          {donateCardPosition === 0 && <DonateCard />}
+          {donateCardPosition === 0 && donateCard}
           {result.matches.map((match, index) => (
             <React.Fragment key={match.candidate.id}>
               <MatchCard {...match} />
-              {donateCardPosition !== false && donateCardPosition > 0 && index === donateCardPosition - 1 && <DonateCard />}
+              {donateCardPosition !== false && donateCardPosition > 0 && index === donateCardPosition - 1 && donateCard}
             </React.Fragment>
           ))}
         </div>
