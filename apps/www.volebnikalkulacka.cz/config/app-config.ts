@@ -9,6 +9,10 @@ export const appConfig = withDefaults({
     localePrefix: "as-needed" as const,
   },
 
+  links: {
+    privacy: "/soukromi",
+  },
+
   footer: {
     statusUrl: "https://status.volebnikalkulacka.cz",
   },

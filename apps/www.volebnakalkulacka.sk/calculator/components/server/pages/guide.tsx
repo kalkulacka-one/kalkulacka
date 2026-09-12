@@ -1,6 +1,6 @@
 // TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
 import type { CalculatorViewModel } from "@kalkulacka-one/app";
-import { Guide, GuideNavigationCard } from "@kalkulacka-one/app";
+import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
@@ -8,17 +8,17 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { AppHeader } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
-
 export type GuidePage = {
   embedContext: EmbedContextType;
+  homepageHref: string;
+  privacyHref?: string;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onBackClick: () => void;
   onCloseClick: () => void;
 };
 
-export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
+export function GuidePage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
@@ -52,7 +52,7 @@ export function GuidePage({ embedContext, calculator, onNextClick, onBackClick, 
       <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
 }

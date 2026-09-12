@@ -8,7 +8,7 @@ import { ReviewPage as AppReviewPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
@@ -43,6 +43,7 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
   return (
     <div>
       <AppReviewPage
+        homepageHref={canonical.homepage()}
         embedContext={embed}
         calculator={calculator}
         questions={questions}

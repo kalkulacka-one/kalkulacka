@@ -1,4 +1,4 @@
-import { type AnswerViewModel, type CalculatorViewModel, QuestionCard, QuestionNavigationCard, type QuestionViewModel } from "@kalkulacka-one/app";
+import { type AnswerViewModel, type CalculatorViewModel, EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, type QuestionViewModel } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
@@ -6,10 +6,10 @@ import { mdiClose } from "@mdi/js";
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
-
 export type QuestionPage = {
   embedContext: EmbedContextType;
+  homepageHref: string;
+  privacyHref?: string;
   question: QuestionViewModel;
   number: number;
   total: number;
@@ -20,7 +20,7 @@ export type QuestionPage = {
   onCloseClick: () => void;
 };
 
-export function QuestionPage({ embedContext, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   const handleAgreeChange = (checked: boolean) => {
@@ -94,7 +94,7 @@ export function QuestionPage({ embedContext, question, number, total, calculator
           onImportantChange={handleImportantChange}
         />
       </Layout.BottomNavigation>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
 }

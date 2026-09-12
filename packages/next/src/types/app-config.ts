@@ -11,6 +11,10 @@ export interface AppConfig {
     defaultTheme?: string;
   };
 
+  links?: {
+    privacy?: string;
+  };
+
   footer?: {
     showStatus?: boolean;
     statusUrl?: string;

@@ -9,7 +9,7 @@ import { QuestionPage as AppQuestionPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
-import { parsedParams, type RouteSegments, routes } from "@/lib/routing";
+import { canonical, parsedParams, type RouteSegments, routes } from "@/lib/routing";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
@@ -88,6 +88,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   return (
     <div>
       <AppQuestionPage
+        homepageHref={canonical.homepage()}
         embedContext={embed}
         calculator={calculator}
         question={question}

@@ -1,8 +1,12 @@
 {
   "koa": {
+    "appTitle": "Volebná kalkulačka",
     "components": {
       "embedAttribution": {
         "broughtBy": "Prináša"
+      },
+      "embedFooter": {
+        "privacy": "Súkromie"
       },
       "guide": {
         "agreement": {

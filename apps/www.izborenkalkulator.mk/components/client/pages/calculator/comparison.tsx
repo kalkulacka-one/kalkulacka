@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 
 import { ComparisonPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ComparisonPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
@@ -25,5 +25,16 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
     router.push("/");
   };
 
-  return <ComparisonPage embedContext={embed} calculator={calculator} result={result} answers={answers} questions={questions} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} />;
+  return (
+    <ComparisonPage
+      homepageHref={canonical.homepage()}
+      embedContext={embed}
+      calculator={calculator}
+      result={result}
+      answers={answers}
+      questions={questions}
+      onPreviousClick={handlePreviousClick}
+      onCloseClick={handleCloseClick}
+    />
+  );
 }

@@ -1,8 +1,12 @@
 {
   "koa": {
+    "appTitle": "Election Calculator",
     "components": {
       "embedAttribution": {
         "broughtBy": "Brought by"
+      },
+      "embedFooter": {
+        "privacy": "Privacy"
       },
       "guide": {
         "agreement": {

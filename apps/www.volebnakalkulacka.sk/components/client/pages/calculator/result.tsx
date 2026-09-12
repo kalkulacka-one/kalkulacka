@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { DonateCard, useEmbed } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 import { reportError } from "@/lib/monitoring";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
@@ -61,6 +62,8 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   return (
     <>
       <AppResultPage
+        homepageHref={canonical.homepage()}
+        privacyHref={appConfig.links?.privacy}
         embedContext={embed}
         calculator={calculator}
         result={result}

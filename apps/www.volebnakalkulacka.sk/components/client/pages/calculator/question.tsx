@@ -7,9 +7,10 @@ import { useEffect, useReducer } from "react";
 
 import { QuestionPage as AppQuestionPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
-import { parsedParams, type RouteSegments, routes } from "@/lib/routing";
+import { canonical, parsedParams, type RouteSegments, routes } from "@/lib/routing";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
@@ -88,6 +89,8 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   return (
     <div>
       <AppQuestionPage
+        homepageHref={canonical.homepage()}
+        privacyHref={appConfig.links?.privacy}
         embedContext={embed}
         calculator={calculator}
         question={question}
