@@ -11,6 +11,8 @@ describe("MatchCard", () => {
     id: "1",
     references: [],
     displayName: "Občanská demokratická strana",
+    name: "Občanská demokratická strana",
+    shortName: "ODS",
     number: 1,
   };
 

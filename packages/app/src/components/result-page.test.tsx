@@ -8,6 +8,7 @@ import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, create
 import type { CalculatorData } from "@/data-fetching";
 import { csMessages } from "@/locales";
 
+import { CLOSE_MS } from "./comparison-pane";
 import { LocaleProvider } from "./providers";
 import { CALCULATING_MS, ResultPage, seenKey } from "./result-page";
 
@@ -30,6 +31,8 @@ const ids = {
   beta: "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
   gama: "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
   delta: "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+  /** The party behind Delta: the row is headed by its full name, the pane by its short one. */
+  deltaParty: "d0d0d0d0-d0d0-4d0d-8d0d-d0d0d0d0d0d0",
   epsilon: "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
   zeta: "ffffffff-ffff-4fff-8fff-ffffffffffff",
   ghost: "99999999-9999-4999-8999-999999999999",
@@ -78,12 +81,13 @@ const calculatorData: CalculatorData = {
       { id: ids.alfa, displayName: "Alfa", references: [] },
       { id: ids.beta, displayName: "Beta", references: [] },
       { id: ids.gama, displayName: "Gama", references: [] },
-      { id: ids.delta, displayName: "Delta", references: [] },
+      { id: ids.delta, references: [{ id: ids.deltaParty, type: "organization" }] },
       { id: ids.epsilon, displayName: "Epsilon", references: [] },
       { id: ids.zeta, displayName: "Zeta", references: [] },
       { id: ids.ghost, displayName: "Ghost", references: [] },
     ],
     candidatesAnswers,
+    organizations: [{ id: ids.deltaParty, name: "Demokratická strana", shortName: "Delta", abbreviation: "DS" }],
   },
   baseUrl: "https://data.kalkulacka.one/kalkulacka",
 };
@@ -242,7 +246,7 @@ describe("ResultPage", () => {
       renderPage();
       expect(rows()).toHaveLength(5);
       expect(rows().map(visibleText)).toEqual([
-        "Největší shoda1.Delta100\u00a0%",
+        "Největší shoda1.Demokratická strana100\u00a0%",
         "2.Alfa67\u00a0%",
         "3.Gama50\u00a0%",
         "4.Epsilon50\u00a0%",
@@ -294,11 +298,22 @@ describe("ResultPage", () => {
 
       await user.click(rowButton("Alfa"));
       expect(rowButton("Alfa")).toHaveAttribute("aria-pressed", "true");
-      expect(rowButton("Delta")).toHaveAttribute("aria-pressed", "false");
+      expect(rowButton("Demokratická strana")).toHaveAttribute("aria-pressed", "false");
 
-      await user.click(rowButton("Delta"));
-      expect(rowButton("Delta")).toHaveAttribute("aria-pressed", "true");
+      await user.click(rowButton("Demokratická strana"));
+      expect(rowButton("Demokratická strana")).toHaveAttribute("aria-pressed", "true");
       expect(rowButton("Alfa")).toHaveAttribute("aria-pressed", "false");
+    });
+
+    it("heads a party's row and the pane by its full name, and keeps the short one for the columns", async () => {
+      const user = userEvent.setup();
+      renderPage();
+
+      expect(rowButton("Demokratická strana")).toBeInTheDocument();
+      expect(within(ranking()).queryByRole("button", { name: /^1\. Delta/ })).toBeNull();
+
+      await user.click(rowButton("Demokratická strana"));
+      expect(screen.getByRole("region", { name: "Demokratická strana" })).toBeInTheDocument();
     });
 
     it("goes back, shares and compares through the app", async () => {
@@ -389,6 +404,78 @@ describe("ResultPage", () => {
       await user.click(screen.getByRole("button", { name: "Vyplnit vlastní kalkulačku" }));
       expect(onStartOwnClick).toHaveBeenCalledTimes(1);
       expect(onCompareClick).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("the comparison pane", () => {
+    const region = (name: string) => screen.getByRole("region", { name });
+
+    it("takes the dashboard's place when a row is opened, headed by the candidate and focused there", async () => {
+      const user = userEvent.setup();
+      renderPage();
+      expect(screen.getByRole("heading", { level: 2, name: "Jak jste odpovídali" })).toBeInTheDocument();
+
+      await user.click(rowButton("Alfa"));
+      expect(screen.queryByRole("heading", { level: 2, name: "Jak jste odpovídali" })).toBeNull();
+      expect(screen.getByRole("heading", { level: 2, name: "Alfa" })).toHaveFocus();
+      // Written the Czech way, with a no-break space before the sign — the same formatter the rows use.
+      expect(within(region("Alfa")).getByText("67 %").textContent).toBe("67\u00a0%");
+      // Only the five answered questions, in order; the skipped fourth says nothing about either side.
+      expect(
+        within(region("Alfa"))
+          .getAllByRole("listitem")
+          .map((row) => within(row as HTMLElement).getByText(/^Tvrzení/).textContent),
+      ).toEqual(["Tvrzení 1", "Tvrzení 2", "Tvrzení 3 (Pro mě důležité)", "Tvrzení 5", "Tvrzení 6"]);
+      expect(within(region("Alfa")).getByRole("group", { name: "Filtrovat odpovědi" })).toHaveTextContent("Vše5Shody3Neshody2Důležité1");
+    });
+
+    it("closes on Escape after the exit beat, and puts focus back on the row that opened it", () => {
+      vi.useFakeTimers();
+      try {
+        renderPage();
+        const row = rowButton("Demokratická strana");
+        row.focus();
+        fireEvent.click(row);
+        expect(screen.getByRole("heading", { level: 2, name: "Demokratická strana" })).toHaveFocus();
+        // Delta answered exactly as the reader did: nothing to filter as a mismatch.
+        expect(within(region("Demokratická strana")).getByRole("group", { name: "Filtrovat odpovědi" })).toHaveTextContent("Vše5Shody5Důležité1");
+
+        fireEvent.keyDown(window, { key: "Escape" });
+        expect(row).toHaveAttribute("aria-pressed", "false");
+        expect(row).toHaveFocus();
+        // Still rendered while the pane animates out…
+        expect(region("Demokratická strana")).toHaveAttribute("data-closing");
+
+        act(() => {
+          vi.advanceTimersByTime(CLOSE_MS);
+        });
+        // …then the dashboard is back.
+        expect(screen.queryByRole("region")).toBeNull();
+        expect(screen.getByRole("heading", { level: 2, name: "Jak jste odpovídali" })).toBeInTheDocument();
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("closes when the ranking switches to the people on the lists", async () => {
+      const user = userEvent.setup();
+      renderPage({
+        data: nestedCalculatorData,
+        answers: [
+          { questionId: q1, answer: true },
+          { questionId: q2, answer: false },
+        ],
+      });
+
+      await user.click(rowButton("Koalice"));
+      expect(region("Koalice")).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Lidé" }));
+      expect(screen.queryByRole("region")).toBeNull();
+      expect(rowButton("Marie")).toHaveAttribute("aria-pressed", "false");
+
+      await user.click(rowButton("Marie"));
+      expect(region("Marie")).toBeInTheDocument();
     });
   });
 
@@ -503,7 +590,7 @@ describe("ResultPage", () => {
         </CalculatorStoreContext.Provider>
       </LocaleProvider>,
     );
-    expect(rows()[0]).toHaveTextContent("Delta");
+    expect(rows()[0]).toHaveTextContent("Demokratická strana");
 
     // Flip every answer: Zeta, who said no on the two questions now answered no, is the perfect match.
     act(() => {

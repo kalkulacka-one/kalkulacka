@@ -11,7 +11,7 @@ import type { CandidateViewModel } from "@/view-models";
 import { LocaleProvider } from "./providers";
 import { ResultsDashboard } from "./results-dashboard";
 
-const candidate = (id: string, displayName: string): CandidateViewModel => ({ id, displayName, references: [] });
+const candidate = (id: string, displayName: string): CandidateViewModel => ({ id, displayName, name: displayName, shortName: displayName, references: [] });
 const question = (id: string, title: string): Question => ({ id, title, statement: `${title}.` });
 
 const alfa = candidate("alfa", "Alfa");

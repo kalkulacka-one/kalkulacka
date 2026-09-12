@@ -1495,6 +1495,220 @@
     }
   }
 
+  /* --- ComparisonPane --------------------------------------------------------
+   * Ported from kalkulacka-2026/apps/web/components/comparison-pane.module.css
+   * (`.detail`, `.detailBody`, `sheetIn`/`sheetOut`, `panelIn`/`panelOut`).
+   * The box the app's `ComparisonPane` renders into — the head, the grip and
+   * the filters inside it are `koa:` utilities in comparison-pane.tsx. It
+   * lives in this layer, like the recap header, because every rule keys on an
+   * attribute of the element (`data-open`, `data-closing`, `data-dragging`),
+   * switches wholesale under one media query, and carries keyframes — which
+   * a utility on each state would spell out several times and could drift on.
+   *
+   * One element, two presentations: the right-hand pane on a desktop, and a
+   * bottom sheet over the list on a phone once something is open. Rendering
+   * it twice — once per breakpoint — is how the scroll position and the
+   * filter's state end up differing between the two.
+   *
+   * `--ko-comparison-sheet-top` is how far the sheet stops short of the top
+   * edge. Named because the sheet's height is derived from it and the two
+   * must not drift.
+   */
+  .ko-comparison-pane {
+    --ko-comparison-sheet-top: max(4rem, env(safe-area-inset-top, 0px));
+
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /*
+   * On a phone, an open comparison is a bottom sheet.
+   *
+   * The recap established that changing an answer means opening the real
+   * question rather than unfolding a drawer under a row, and the same
+   * reasoning holds here: 42 comparison rows expanded inside a list leave you
+   * scrolling to find your way back out. It stops short of the top edge so
+   * the ranking stays visible behind it — the sheet is a layer over this
+   * screen, not a different screen.
+   *
+   * Closed, this element is just the dashboard sitting under the ranking, so
+   * nothing is duplicated to get both behaviours.
+   *
+   * Anchored to the top with an explicit height, rather than pinned with
+   * `bottom: 0`. A fixed box's bottom edge resolves against the *visible*
+   * viewport, so `0` would stop the sheet in a hard line above Safari's
+   * address bar; measured downward in `lvh` it reaches the bottom of the
+   * screen instead, and the comparison carries on under the glass exactly
+   * like the ranking behind it. Same reasoning as `<body>` in @layer base.
+   * `z-index: 20` — above the shell's sticky bar (5) in the content's own
+   * stacking context.
+   */
+  .ko-comparison-pane[data-open],
+  .ko-comparison-pane[data-closing] {
+    position: fixed;
+    top: var(--ko-comparison-sheet-top);
+    right: 0;
+    left: 0;
+    height: calc(100lvh - var(--ko-comparison-sheet-top));
+    z-index: 20;
+
+    border-radius: 1.25rem 1.25rem 0 0;
+    background: oklch(from var(--ko-color-surface) l c h / 0.86);
+    backdrop-filter: var(--ko-plate-blur);
+    box-shadow: var(--ko-shadow-card-lifted);
+    overflow: hidden;
+
+    transition: transform var(--ko-duration-base) var(--ko-ease-spring);
+  }
+
+  .ko-comparison-pane[data-open] {
+    animation: ko-comparison-sheet-in var(--ko-duration-slow) var(--ko-ease-spring);
+  }
+
+  /*
+   * The tap-to-close route (the X, Escape): the drag dismissal already
+   * animates itself by writing the transform directly as a finger releases it
+   * (see `use-drag-dismiss.ts`), so this only plays when there was no drag —
+   * the sheet sliding back down instead of the dashboard just appearing under
+   * it the instant the state clears.
+   */
+  .ko-comparison-pane[data-closing] {
+    animation: ko-comparison-sheet-out var(--ko-duration-base) var(--ko-ease-exit) forwards;
+  }
+
+  @keyframes ko-comparison-sheet-in {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes ko-comparison-sheet-out {
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  /* While a finger is on the handle the sheet must track it exactly; a transition
+     here would make it lag behind and feel elastic in the wrong way. */
+  .ko-comparison-pane[data-dragging] {
+    transition: none;
+  }
+
+  /*
+   * No padding of its own: `ComparisonList` carries its own inset so that its
+   * column heading can stick to this box's real top edge and span it fully.
+   */
+  .ko-comparison-pane-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0;
+  }
+
+  /*
+   * The sheet runs to the bottom of the layout viewport, a few pixels above the
+   * address bar rather than under it — a fixed box cannot reach past that on
+   * iOS, whatever height it is given. So this is ordinary breathing room under
+   * the last row, not clearance for a bar.
+   */
+  .ko-comparison-pane[data-open] .ko-comparison-pane-body,
+  .ko-comparison-pane[data-closing] .ko-comparison-pane-body {
+    padding-bottom: 1.5rem;
+  }
+
+  /*
+   * Closed, the pane is the dashboard flowing under the list — no surface of its
+   * own, because the cards inside it already have one.
+   */
+  .ko-comparison-pane:not([data-open]) .ko-comparison-pane-body {
+    overflow: visible;
+  }
+
+  /*
+   * Two panes. The width at which the ranking and a comparison can be read at
+   * once. Below it they take turns; above it the ranking never scrolls away
+   * while you read somebody's answers, which is the whole reason this screen
+   * has two panes. The ranking column's own half of this breakpoint lives in
+   * result-page.tsx (`lg`).
+   *
+   * Never a sheet at this width — the pane it would cover is the one thing
+   * the comparison is meant to be read against.
+   */
+  @media (min-width: 64rem) {
+    .ko-comparison-pane,
+    .ko-comparison-pane[data-open],
+    .ko-comparison-pane[data-closing] {
+      position: static;
+      inset: auto;
+      height: auto;
+      min-height: 0;
+      border-radius: var(--ko-radius-control);
+      transform: none;
+    }
+
+    .ko-comparison-pane[data-open],
+    .ko-comparison-pane[data-closing] {
+      background: oklch(from var(--ko-color-surface) l c h / 0.86);
+      backdrop-filter: var(--ko-plate-blur);
+      box-shadow: var(--ko-shadow-surface);
+    }
+
+    /*
+     * A popover rather than a sheet at this width: the comparison settles into
+     * place instead of sliding up from an edge, since there is no edge here for
+     * it to travel from.
+     */
+    .ko-comparison-pane[data-open] {
+      animation: ko-comparison-panel-in var(--ko-duration-slow) var(--ko-ease-spring);
+    }
+
+    .ko-comparison-pane[data-closing] {
+      animation: ko-comparison-panel-out var(--ko-duration-base) var(--ko-ease-exit) forwards;
+    }
+
+    @keyframes ko-comparison-panel-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+      }
+    }
+
+    @keyframes ko-comparison-panel-out {
+      to {
+        opacity: 0;
+        transform: translateY(4px) scale(0.98);
+      }
+    }
+
+    .ko-comparison-pane:not([data-open]):not([data-closing]) {
+      background: none;
+      backdrop-filter: none;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    /* Closed, a column that scrolls on its own so the ranking never moves
+       while the dashboard's cards are read. */
+    .ko-comparison-pane:not([data-open]):not([data-closing]) .ko-comparison-pane-body {
+      overflow-y: auto;
+      padding-bottom: 1.5rem;
+    }
+  }
+
+  /*
+   * The durations are tokens and already collapse under reduced motion; said
+   * outright as well so a `forwards`-filled exit never holds the pane at
+   * `opacity: 0` for the beat `closingId` keeps it rendered.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .ko-comparison-pane[data-open],
+    .ko-comparison-pane[data-closing] {
+      animation: none;
+    }
+  }
+
   /* --- Calculating -----------------------------------------------------------
    * Ported from kalkulacka-2026/packages/ui/src/calculating/calculating.module.css.
    *

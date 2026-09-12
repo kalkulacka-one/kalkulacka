@@ -1,7 +1,6 @@
 "use client";
 
-// Ported from kalkulacka-2026/apps/web/components/results.tsx (+ results.module.css), with the right pane's closed
-// state from comparison-pane.module.css — the comparison itself arrives with the next PR.
+// Ported from kalkulacka-2026/apps/web/components/results.tsx (+ results.module.css)
 import { Button, Calculating, FilterChips, MatchRow } from "@kalkulacka-one/design-system/client";
 import { icons } from "@kalkulacka-one/design-system/icons";
 import { AppHeader, Screen, Shell, StickyBar } from "@kalkulacka-one/design-system/server";
@@ -15,6 +14,7 @@ import { useAnswersStore } from "@/client/stores";
 import { useAnswerDistribution, useCalculatedMatches, useCalculator, useQuestionConsensus, useQuestions, useResult, useTopicMatches } from "@/client/view-models";
 import { buildAiPrompt, selectAgainstTheGrain, selectImportant, topicSlug } from "@/insights";
 
+import { ComparisonPane } from "./comparison-pane";
 import { ResultsDashboard } from "./results-dashboard";
 
 export type ResultPage = {
@@ -186,7 +186,7 @@ const shareBoxClasses = "koa:[grid-area:share] koa:justify-self-end koa:flex koa
  * That is the width at which the ranking and a comparison can be read at
  * once; below it they take turns.
  */
-const panesClasses = "koa:grid koa:grid-cols-[minmax(0,1fr)] koa:gap-5 koa:items-start koa:lg:flex-1 koa:lg:min-h-0 koa:lg:grid-cols-[30rem_minmax(0,1fr)] koa:lg:gap-6 koa:lg:items-stretch";
+const panesClasses = "koa:grid koa:grid-cols-[minmax(0,1fr)] koa:gap-6 koa:items-start koa:lg:flex-1 koa:lg:min-h-0 koa:lg:grid-cols-[30rem_minmax(0,1fr)] koa:lg:gap-8 koa:lg:items-stretch";
 
 /* Holds the ranking and the actions under it, so the grid's left column stays
    one child and the actions can sit outside the list's own scroll region. */
@@ -215,15 +215,6 @@ const donateItemClasses = "koa:list-none";
 /* Centred on a phone, where the whole column is centred reading; the desktop
    left-aligns them under the list's own edge instead. */
 const listActionsClasses = "koa:flex koa:flex-wrap koa:justify-center koa:gap-3 koa:lg:justify-start";
-
-/*
- * The right pane, closed: the dashboard flowing under the list on a phone, and
- * from `lg` a column that scrolls on its own so the ranking never moves while
- * the cards are read — the comparison that will replace the cards (next PR)
- * takes the same box.
- */
-const detailClasses = "koa:flex koa:flex-col koa:min-w-0 koa:lg:min-h-0";
-const detailBodyClasses = "koa:flex-1 koa:min-h-0 koa:overflow-visible koa:lg:overflow-y-auto koa:lg:overscroll-contain koa:lg:pb-5";
 
 /**
  * The ranking, and what the answers say beyond it.
@@ -281,10 +272,12 @@ export function ResultPage({
 
   /**
    * The candidate whose comparison is open. Nothing is open on arrival — the
-   * dashboard holds the pane. The pane itself comes with the next PR; the
-   * rows already report their choice so it can pick it up.
+   * dashboard holds the pane. Clearing this *starts* the pane closing; the exit
+   * animation belongs to `ComparisonPane`, which keeps rendering the comparison
+   * for a beat after this has already forgotten about it.
    */
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
+  const closeComparison = useCallback(() => setSelectedId(undefined), []);
   /*
    * The beat is skipped outright on a shared result: it exists to let someone
    * register that a ranking came out of the answers they just gave, and the
@@ -472,7 +465,13 @@ export function ResultPage({
                       { id: "people", label: t("viewPeople") },
                     ]}
                     value={showOnlyNested ? "people" : "lists"}
-                    onChange={(id) => setShowOnlyNested(id === "people")}
+                    /* The rows swap wholesale, and the one that was open is
+                       not among the new ones — so its comparison goes too,
+                       rather than lingering over a list it is not in. */
+                    onChange={(id) => {
+                      setShowOnlyNested(id === "people");
+                      setSelectedId(undefined);
+                    }}
                   />
                 </div>
               ) : null}
@@ -484,7 +483,9 @@ export function ResultPage({
                   <Fragment key={candidate.id}>
                     <MatchRow
                       rank={order}
-                      name={candidate.displayName ?? ""}
+                      /* The full name, as 2026 heads its rows: "Svoboda a přímá demokracie",
+                         with "SPD" kept for the comparison pane's tighter places. */
+                      name={candidate.name}
                       avatarImage={candidate.avatar?.urls}
                       matchPercentage={match}
                       percentLabel={match === undefined ? undefined : formatPercent(match)}
@@ -531,20 +532,24 @@ export function ResultPage({
               ) : null}
             </div>
 
-            <div className={detailClasses}>
-              <div className={detailBodyClasses}>
-                <ResultsDashboard
-                  distribution={distribution}
-                  topics={topics}
-                  important={important}
-                  againstTheGrain={againstTheGrain}
-                  prompt={prompt}
-                  formatPercent={formatPercent}
-                  onCompareTopicClick={shared ? undefined : (topic) => onCompareTopicClick(topicSlug(topic))}
-                  onCompareImportantClick={shared ? undefined : onCompareImportantClick}
-                />
-              </div>
-            </div>
+            {/*
+              The right pane: the dashboard flowing under the list on a phone
+              and a column of its own from `lg` — until a row is picked, when
+              the same box holds that candidate's comparison instead (a sheet
+              over the ranking on a phone, the column beside it on a desktop).
+            */}
+            <ComparisonPane matches={matches} selectedId={selectedId} onClose={closeComparison} formatPercent={formatPercent}>
+              <ResultsDashboard
+                distribution={distribution}
+                topics={topics}
+                important={important}
+                againstTheGrain={againstTheGrain}
+                prompt={prompt}
+                formatPercent={formatPercent}
+                onCompareTopicClick={shared ? undefined : (topic) => onCompareTopicClick(topicSlug(topic))}
+                onCompareImportantClick={shared ? undefined : onCompareImportantClick}
+              />
+            </ComparisonPane>
           </div>
         </div>
       </main>
