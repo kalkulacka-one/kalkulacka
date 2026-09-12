@@ -4,6 +4,7 @@
   "private": true,
   "exports": {
     "./themes/*.css": "./src/themes/*.css",
+    "./tokens.css": "./src/tokens.css",
     "./styles": "./dist/index.css",
     "./fonts": "./dist/fonts",
     "./server": {

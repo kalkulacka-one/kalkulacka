@@ -1,0 +1,28 @@
+@theme static {
+  --font-display: var(--ko-font-display);
+  --font-sans: var(--ko-font-sans);
+  --font-mono: var(--ko-font-mono);
+
+  --color-primary: var(--ko-color-primary);
+  --color-primary-hover: var(--ko-color-primary-hover);
+  --color-primary-active: var(--ko-color-primary-active);
+  --color-primary-disabled: var(--ko-color-primary-disabled);
+  --color-on-bg-primary: var(--ko-color-on-bg-primary);
+
+  --color-secondary: var(--ko-color-secondary);
+  --color-secondary-hover: var(--ko-color-secondary-hover);
+  --color-secondary-active: var(--ko-color-secondary-active);
+  --color-secondary-disabled: var(--ko-color-secondary-disabled);
+  --color-on-bg-secondary: var(--ko-color-on-bg-secondary);
+
+  --color-neutral: var(--ko-color-neutral);
+  --color-neutral-hover: var(--ko-color-neutral-hover);
+  --color-neutral-active: var(--ko-color-neutral-active);
+  --color-neutral-disabled: var(--ko-color-neutral-disabled);
+  --color-neutral-inactive: var(--ko-color-neutral-inactive);
+  --color-on-bg-neutral: var(--ko-color-on-bg-neutral);
+
+  --color-green: var(--ko-color-green);
+  --color-red: var(--ko-color-red);
+  --color-yellow: var(--ko-color-yellow);
+}
