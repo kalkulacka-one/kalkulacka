@@ -422,7 +422,9 @@ export function ResultPage({
       buildAiPrompt(
         {
           electionName: electionName ?? calculatorName,
-          districtName: calculatorName,
+          // A standalone calculator has no election: naming it twice read as
+          // "Inventúra… (Inventúra…)" on the Slovak site.
+          districtName: electionName ? calculatorName : undefined,
           answered,
           total: questions.length,
           matches,
@@ -432,6 +434,7 @@ export function ResultPage({
         },
         {
           intro: (values) => td("promptIntro", values),
+          introStandalone: (values) => td("promptIntroStandalone", values),
           matches: td("promptMatches"),
           topics: td("promptTopics"),
           important: td("promptImportant"),

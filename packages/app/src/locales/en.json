@@ -232,6 +232,7 @@
         "promptFallback": "Copying failed. The text is selected — copy it by hand.",
         "promptNote": "The summary was built here in your browser from your answers. Nothing is sent anywhere.",
         "promptIntro": "I am deciding in the {election} election ({district}). In the voting advice application I have answered {answered} of {total} questions.",
+        "promptIntroStandalone": "I am filling in the {calculator} voting advice application. I have answered {answered} of {total} questions.",
         "promptMatches": "I match most with these parties:",
         "promptTopics": "By topic, the closest to me are:",
         "promptImportant": "I have marked these questions as important:",

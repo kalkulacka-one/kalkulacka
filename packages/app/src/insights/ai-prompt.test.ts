@@ -10,6 +10,7 @@ import type { QuestionConsensus, TopicMatch } from "./insights";
 /* The Czech catalog's sentences, as the dashboard hands them over. */
 const labels: AiPromptLabels = {
   intro: ({ election, district, answered, total }) => `Rozhoduji se ve volbách ${election} (${district}). Ve volební kalkulačce mám zodpovězeno ${answered} ze ${total} otázek.`,
+  introStandalone: ({ calculator, answered, total }) => `Vyplňuji volební kalkulačku ${calculator}. Mám zodpovězeno ${answered} ze ${total} otázek.`,
   matches: "Nejvíc se shoduji s těmito stranami:",
   topics: "Podle jednotlivých témat mi je nejblíž:",
   important: "Jako důležité mám označené tyto otázky:",
@@ -99,5 +100,10 @@ describe("buildAiPrompt", () => {
     expect(sections[1]).toMatch(/^Nejvíc se shoduji/);
     expect(sections[2]).toMatch(/^U těchto otázek/);
     expect(sections[3]).toBe(labels.ask);
+  });
+  it("names a standalone calculator once, with no election to repeat", () => {
+    const prompt = buildAiPrompt({ electionName: "Inventúra 2023-2025", answered: 3, total: 21, matches: [], topics: [], important: [], againstTheGrain: [] }, labels);
+    expect(prompt.split("\n\n")[0]).toBe("Vyplňuji volební kalkulačku Inventúra 2023-2025. Mám zodpovězeno 3 ze 21 otázek.");
+    expect(prompt).not.toContain("(");
   });
 });

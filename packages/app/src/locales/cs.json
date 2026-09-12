@@ -232,6 +232,7 @@
         "promptFallback": "Zkopírovat se nepodařilo. Text je označený, zkopírujte ho ručně.",
         "promptNote": "Shrnutí vzniklo tady v prohlížeči z vašich odpovědí. Nikam se neodesílá.",
         "promptIntro": "Rozhoduji se ve volbách {election} ({district}). Ve volební kalkulačce mám zodpovězeno {answered} ze {total} otázek.",
+        "promptIntroStandalone": "Vyplňuji volební kalkulačku {calculator}. Mám zodpovězeno {answered} ze {total} otázek.",
         "promptMatches": "Nejvíc se shoduji s těmito stranami:",
         "promptTopics": "Podle jednotlivých témat mi je nejblíž:",
         "promptImportant": "Jako důležité mám označené tyto otázky:",

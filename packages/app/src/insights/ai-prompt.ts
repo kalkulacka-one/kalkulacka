@@ -14,7 +14,8 @@ export type AiPromptMatch = {
 
 export type AiPromptInput = {
   electionName: string;
-  districtName: string;
+  /** The calculator inside the election; absent for a standalone calculator, whose name is the election name. */
+  districtName?: string;
   answered: number;
   total: number;
   matches: readonly AiPromptMatch[];
@@ -31,6 +32,8 @@ export type AiPromptInput = {
 export type AiPromptLabels = {
   /** "Rozhoduji se ve volbách {election} ({district}). Ve volební kalkulačce mám zodpovězeno {answered} ze {total} otázek." */
   intro: (values: { election: string; district: string; answered: number; total: number }) => string;
+  /** "Vyplňuji volební kalkulačku {calculator}. Mám zodpovězeno {answered} ze {total} otázek." — a standalone calculator has no election to name twice. */
+  introStandalone: (values: { calculator: string; answered: number; total: number }) => string;
   /** "Nejvíc se shoduji s těmito stranami:" */
   matches: string;
   /** "Podle jednotlivých témat mi je nejblíž:" */
@@ -80,7 +83,7 @@ function positionOf(answer: boolean | null, labels: AiPromptLabels): string {
 export function buildAiPrompt({ electionName, districtName, answered, total, matches, topics, important, againstTheGrain }: AiPromptInput, labels: AiPromptLabels): string {
   const sections: string[] = [];
 
-  sections.push(labels.intro({ election: electionName, district: districtName, answered, total }));
+  sections.push(districtName ? labels.intro({ election: electionName, district: districtName, answered, total }) : labels.introStandalone({ calculator: electionName, answered, total }));
 
   const ranked = matches.filter((entry): entry is AiPromptMatch & { match: number } => entry.match !== undefined).slice(0, TOP_MATCHES);
 
