@@ -3,21 +3,16 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiCheck, mdiClose, mdiContentCopy } from "@mdi/js";
-import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
-import { shareSession } from "@/lib/api";
-import { canonical, type RouteSegments } from "@/lib/routing";
-
 export type ShareModalProps = {
-  calculatorId: string;
-  segments: RouteSegments;
   isOpen: boolean;
   onClose: () => void;
+  onShare: () => Promise<{ publicId: string }>;
+  buildShareUrl: (publicId: string) => string;
 };
 
-export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareModalProps) {
-  const locale = useLocale();
+export function ShareModal({ isOpen, onClose, onShare, buildShareUrl }: ShareModalProps) {
   const [publicId, setPublicId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
@@ -29,7 +24,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
     if (isOpen && !publicId) {
       setIsLoading(true);
       setError(null);
-      shareSession(calculatorId)
+      onShare()
         .then((data) => {
           setPublicId(data.publicId);
         })
@@ -40,7 +35,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
           setIsLoading(false);
         });
     }
-  }, [isOpen, publicId, calculatorId]);
+  }, [isOpen, publicId, onShare]);
 
   useEffect(() => {
     if (isOpen && navigator.permissions) {
@@ -71,8 +66,7 @@ export function ShareModal({ calculatorId, segments, isOpen, onClose }: ShareMod
 
   if (!isOpen) return null;
 
-  const nonEmbedSegments = { first: segments.first, second: segments.second, third: segments.third };
-  const shareUrl = publicId ? canonical.publicResult(nonEmbedSegments, publicId, locale) : "";
+  const shareUrl = publicId ? buildShareUrl(publicId) : "";
   const xHandle = process.env.NEXT_PUBLIC_X_HANDLE;
   const shareText = xHandle ? `Погледнете како ми излезе ${xHandle}:` : "Погледнете како ми излезе Изборниот калкулатор:";
 
