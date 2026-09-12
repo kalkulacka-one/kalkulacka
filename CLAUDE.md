@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Scoping Rules for Agents
+
+**Read [`AGENTS.md`](AGENTS.md) before changing any file.** Changes are classified mechanically
+by the paths they touch (product / platform / protected); run `npm run scope` before opening a
+PR and never edit platform or protected paths without explicit human approval.
+
 ## Project Overview
 
 Kalkulacka.1 is a multi-country voting advice application platform used by millions of voters across 7 countries. It's a Turborepo monorepo with modular architecture designed for reusability across different voting advice application instances.
