@@ -89,6 +89,34 @@
         "shareFileText": "Погледнете како ми излезе Изборниот калкулатор",
         "fileName": "Мој Изборен калкулатор.png"
       }
+    },
+    "pages": {
+      "common": {
+        "close": "Затвори"
+      },
+      "comparison": {
+        "title": "Споредба",
+        "back": "Назад кон резултатите"
+      },
+      "guide": {
+        "title": "Водич",
+        "back": "Назад кон вовед"
+      },
+      "publicResult": {
+        "title": "Мој резултат",
+        "candidateLists": "Партии",
+        "people": "Луѓе"
+      },
+      "result": {
+        "title": "Резултат",
+        "back": "Назад",
+        "candidateLists": "Кандидатски листи",
+        "people": "Лица"
+      },
+      "review": {
+        "title": "Преглед",
+        "back": "Назад кон прашањата"
+      }
     }
   }
 }
