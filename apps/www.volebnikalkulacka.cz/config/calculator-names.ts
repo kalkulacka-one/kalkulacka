@@ -19,7 +19,14 @@ export type CalculatorNames = {
 
 type ElectionNames = {
   name: string;
-  calculators: Record<string, string>;
+  /**
+   * Display names for the calculators of an election whose calculators are
+   * told apart by a variant (`snemovni-2025/expresni`). Elections whose
+   * calculators are told apart by a district (`komunalni-2026/beroun`) name
+   * them from the data instead — the district titles in `election.json` — so
+   * they list no calculators here.
+   */
+  calculators?: Record<string, string>;
 };
 
 /*
@@ -39,7 +46,20 @@ const ELECTIONS: Record<string, ElectionNames> = {
       kompas: "Volební kompas",
     },
   },
+  // District elections: one calculator per city / constituency, named from the
+  // data. Only the election's own name is configuration.
+  "komunalni-2026": {
+    name: "Komunální volby 2026",
+  },
+  "senatni-2026": {
+    name: "Senátní volby 2026",
+  },
 };
+
+/** The display name of an election, by its calculator group key. */
+export function electionName(group: string): string | undefined {
+  return ELECTIONS[group]?.name;
+}
 
 /**
  * The names for a calculator, from the config where it is listed and from the
@@ -48,7 +68,7 @@ const ELECTIONS: Record<string, ElectionNames> = {
  */
 export function calculatorNames({ group, key, fallback }: { group?: string; key?: string; fallback?: string }): CalculatorNames {
   const election = group ? ELECTIONS[group] : undefined;
-  const configured = key ? election?.calculators[key] : undefined;
+  const configured = key ? election?.calculators?.[key] : undefined;
 
   return {
     electionName: election?.name,
