@@ -1,5 +1,4 @@
 import { EnvelopeIcon } from "@kalkulacka-one/design-system/icons";
-import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
@@ -21,6 +20,7 @@ describe("Input", () => {
     );
     expect(screen.getByTestId("input")).toBeInTheDocument();
     expect(screen.getByTestId("icon")).toBeInTheDocument();
-    expect(screen.getByTestId("input")).toHaveClass(twMerge("ko:pl-14 ko:p-4"));
+    // both must survive the merge: the base padding and the extra room for the icon
+    expect(screen.getByTestId("input")).toHaveClass("ko:p-4", "ko:pl-14");
   });
 });

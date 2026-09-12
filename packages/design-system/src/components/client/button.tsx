@@ -16,7 +16,7 @@ export const ButtonVariants = cva(
     "ko:border-2",
     "ko:select-none ko:data-hover:cursor-pointer",
     "ko:font-semibold ko:tracking-[.01em]",
-    "ko:rounded-br-none ko:rounded-2xl",
+    "ko:rounded-2xl ko:rounded-br-none",
     "ko:text-s",
     "ko:data-disabled:cursor-not-allowed",
     "ko:grid ko:grid-flow-col ko:place-items-center ko:place-content-center ko:gap-1",
@@ -28,16 +28,18 @@ export const ButtonVariants = cva(
         small: "ko:h-10 ko:px-2",
         medium: "ko:h-12 ko:px-3",
       },
+      // `color` is declared before `variant` so that `link`'s transparent border
+      // and `answer`'s padding come last and win the merge, as they did the cascade.
+      color: {
+        primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
+        secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
+        neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
+      },
       variant: {
         fill: [""],
         outline: ["ko:bg-transparent"],
         link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
         answer: ["ko:px-6"],
-      },
-      color: {
-        primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
-        secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
-        neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
       },
     },
     defaultVariants: {
