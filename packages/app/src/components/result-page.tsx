@@ -587,7 +587,7 @@ export function ResultPage({
 
             {/* Not on a shared result: the answers on this screen aren't the
                 visitor's, so "svoje odpovědi" would be a false promise. */}
-            {shared ? null : <p className={listHintClasses}>{t("listHint")}</p>}
+            {shared ? null : <p className={listHintClasses}>{t(showOnlyNested ? "listHintPeople" : "listHint")}</p>}
 
             <div className={shareBoxClasses}>
               {shared ? (
@@ -682,7 +682,10 @@ export function ResultPage({
                 <div className={listActionsClasses}>
                   {hiddenMatches > 0 ? (
                     <Button variant="surface" onClick={() => setShowAllParties(true)}>
-                      {t("showMoreParties")} ({hiddenMatches})
+                      {/* The rows are people on the "Lidé" view — offering
+                          "další strany" over a list of councillors names the
+                          wrong thing, and so does the hint above the list. */}
+                      {t(showOnlyNested ? "showMorePeople" : "showMoreParties")} ({hiddenMatches})
                     </Button>
                   ) : null}
 

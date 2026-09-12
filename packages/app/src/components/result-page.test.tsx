@@ -441,6 +441,48 @@ describe("ResultPage", () => {
       expect(within(chips).getByRole("button", { name: "Kandidátní listiny" })).toHaveAttribute("aria-pressed", "true");
     });
 
+    it("names the rows for what they are on each view — candidates on the people's, parties on the lists'", async () => {
+      const user = userEvent.setup();
+      renderPage({
+        data: nestedCalculatorData,
+        answers: [
+          { questionId: q1, answer: true },
+          { questionId: q2, answer: false },
+        ],
+      });
+
+      expect(screen.getByText("Tapnutím na kandidáta můžete porovnat svoje odpovědi")).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Kandidátní listiny" }));
+      expect(screen.getByText("Tapnutím na stranu můžete porovnat svoje odpovědi")).toBeInTheDocument();
+    });
+
+    it("offers the tail as candidates on the people's view and as parties on the lists'", async () => {
+      const user = userEvent.setup();
+      /* Seven councillors, so the ranking folds its tail on the people's view too. */
+      const councillors = Array.from({ length: 7 }, (_, index) => ({
+        id: `${index}0000000-0000-4000-8000-000000000000`,
+        displayName: `Zastupitel ${index + 1}`,
+        references: [],
+      }));
+      const bigClub: CalculatorData = {
+        ...nestedCalculatorData,
+        data: {
+          ...nestedCalculatorData.data,
+          candidates: [{ id: ids.coalition, displayName: "Koalice", references: [], nestedCandidates: councillors }],
+          candidatesAnswers: Object.fromEntries(councillors.map((councillor) => [councillor.id, answersFor({ [q1]: true })])),
+        },
+      };
+
+      renderPage({ data: bigClub, answers: [{ questionId: q1, answer: true }] });
+
+      expect(screen.getByRole("button", { name: "Zobrazit další kandidáty (2)" })).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Kandidátní listiny" }));
+      // One party, so its own tail is not folded — the wording is what matters.
+      expect(screen.queryByRole("button", { name: /Zobrazit další kandidáty/ })).toBeNull();
+    });
+
     it("is not offered for a flat list of parties", () => {
       renderPage();
       expect(screen.queryByRole("group", { name: "Zobrazení výsledků" })).toBeNull();
