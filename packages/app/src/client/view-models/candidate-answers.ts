@@ -9,7 +9,14 @@ export function useCandidatesAnswers(): CandidatesAnswersViewModel {
     const filteredCandidatesAnswers: Record<string, CandidateAnswer[]> = {};
 
     for (const [candidateId, answers] of Object.entries(candidatesAnswers)) {
-      filteredCandidatesAnswers[candidateId] = answers.filter((answer): answer is CandidateAnswer => answer.respondent === "candidate" || answer.respondent === "expert");
+      // The same answers `useResult` scores the ranking on: an answer with no
+      // `respondent` is the candidate's own (the data leaves the field out for
+      // most parties), and dropping it left the dashboard counting only the
+      // parties an expert had filled in — "Souhlasí 1 z 2 stran" beside a
+      // ranking of 23.
+      filteredCandidatesAnswers[candidateId] = answers.filter(
+        (answer): answer is CandidateAnswer => answer.respondent === "candidate" || answer.respondent === "expert" || answer.respondent === undefined,
+      );
     }
 
     return candidatesAnswersViewModel(filteredCandidatesAnswers);

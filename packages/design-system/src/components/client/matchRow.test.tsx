@@ -154,4 +154,20 @@ describe("MatchRow", () => {
     const { button } = renderRow({ avatarImage: { original: "https://example.test/o.png", xs: "https://example.test/xs.png" } });
     expect(button.querySelector("img")).toHaveAttribute("srcset", "https://example.test/xs.png 100w");
   });
+
+  describe("note", () => {
+    it("captions the name with it, in the muted ink, on a row that can still be opened", () => {
+      const { button } = renderRow({ note: "Postoje podle veřejných zdrojů, strana neodpověděla na zaslané otázky." });
+      const note = screen.getByText("Postoje podle veřejných zdrojů, strana neodpověděla na zaslané otázky.");
+      expect(note).toHaveClass("ko:text-text-muted");
+      expect(note.parentElement).toContainElement(screen.getByText("Žijeme Pardubice"));
+      expect(button).not.toBeDisabled();
+    });
+
+    it("draws nothing without one", () => {
+      renderRow();
+      const identity = screen.getByText("Žijeme Pardubice").parentElement?.parentElement as HTMLElement;
+      expect(identity.querySelector(".ko\\:text-pretty")).not.toBeInTheDocument();
+    });
+  });
 });

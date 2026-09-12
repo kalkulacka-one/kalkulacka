@@ -31,6 +31,7 @@ const meta: Meta<typeof MatchRow> = {
     noAnswerLabel: { control: "text" },
     winner: { control: "boolean" },
     winnerLabel: { control: "text" },
+    note: { control: "text" },
     selected: { control: "boolean" },
     delay: { control: "number" },
     onSelect: { control: false },
@@ -64,6 +65,17 @@ export const Winner: MatchRowStory = {
 /** The row whose comparison is currently open. */
 export const Selected: MatchRowStory = {
   args: { selected: true },
+};
+
+/** A row scored on an expert's reading of public sources rather than the party's own answers — the app captions it. */
+export const WithNote: MatchRowStory = {
+  args: {
+    rank: 4,
+    name: "Komunistická strana Čech a Moravy",
+    matchPercentage: 38,
+    percentLabel: percent(38),
+    note: "Postoje podle veřejných zdrojů, strana neodpověděla na zaslané otázky.",
+  },
 };
 
 /**

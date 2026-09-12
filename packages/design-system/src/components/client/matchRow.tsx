@@ -25,6 +25,14 @@ export type MatchRowProps = {
   winner?: boolean;
   /** The winner's caption, e.g. "Největší shoda". */
   winnerLabel?: string;
+  /**
+   * A caption under the name, e.g. "Postoje podle veřejných zdrojů, strana
+   * neodpověděla na zaslané otázky." — how the platform says a row's answers
+   * were filled in by an expert rather than the candidate. Not in the 2026
+   * row, whose data never carried the distinction; the app passes it only for
+   * the rows it applies to.
+   */
+  note?: string;
   /** Whether this row's comparison is the one currently open. */
   selected?: boolean;
   onSelect: () => void;
@@ -142,6 +150,9 @@ const winnerNameClasses = "ko:text-base";
 /* Only ever inside a disabled row, so always in the subtle ink the source gave it there. */
 const noAnswerClasses = "ko:font-sans ko:text-xs ko:text-text-subtle";
 
+/* The expert note: a caption on the name, in the muted ink a live row can carry. */
+const noteClasses = "ko:font-sans ko:text-xs ko:leading-[1.35] ko:text-text-muted ko:text-pretty";
+
 const percentClasses = "ko:font-display ko:text-xl ko:font-bold ko:tracking-[-0.01em] ko:text-text-strong ko:tabular-nums ko:whitespace-nowrap";
 const winnerPercentClasses = "ko:text-2xl";
 
@@ -172,6 +183,7 @@ export function MatchRow({
   noAnswerLabel,
   winner = false,
   winnerLabel,
+  note,
   selected = false,
   onSelect,
   delay = 0,
@@ -222,6 +234,7 @@ export function MatchRow({
             <span className={twMerge(nameClasses, winner && winnerNameClasses)}>{name}</span>
           </span>
           {comparable ? null : <span className={noAnswerClasses}>{noAnswerLabel}</span>}
+          {note ? <span className={noteClasses}>{note}</span> : null}
         </span>
 
         <span className={twMerge(percentClasses, winner && winnerPercentClasses)}>{comparable ? percentLabel : null}</span>
