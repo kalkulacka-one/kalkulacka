@@ -3,6 +3,8 @@
 @import 'tailwindcss/theme' layer(theme) prefix(koa);
 @import 'tailwindcss/utilities' layer(utilities) prefix(koa);
 
+@source not "**/*.test.{ts,tsx}";
+
 @theme static {
   --font-display: var(--ko-font-display);
 }
