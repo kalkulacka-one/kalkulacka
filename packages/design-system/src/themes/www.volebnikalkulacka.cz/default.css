@@ -1,11 +1,45 @@
+/*
+ * The Czech theme, aligned with the 2026 design (kalkulacka-2026/packages/tokens/src/themes/default.theme.ts).
+ *
+ * Only colour varies by light/dark mode; typefaces, radii and motion are
+ * shared across a theme's modes on purpose, so a partner never ends up with a
+ * dark mode that is accidentally a different font.
+ *
+ * The dark accents are capped by contrast, not taste: the filled answer
+ * button pins white ink in dark mode, so agree/disagree can only go as light
+ * as still clears 4.5:1 against white (#2c6cee / #cb463f land at ~4.68:1).
+ * Disagree's chroma is pulled in further than agree's at the same lightness,
+ * because red at blue's chroma reads hotter than blue does.
+ */
 :root {
   --ko-typeface-display: "Radio Canada";
   --ko-typeface-sans: "Geist";
   --ko-typeface-mono: "Geist Mono";
 
-  --ko-palette-primary: rgb(0, 112, 244);
-  --ko-palette-secondary: rgb(208, 70, 70);
-  --ko-palette-neutral: oklch(37.2% 0.044 257.287); /* Tailwind's Slate 700 */
+  /* Brand accents: "Ano" and "Ne". */
+  --ko-palette-primary: #2563eb;
+  --ko-palette-primary-dark: #2c6cee;
+  --ko-palette-secondary: #dc2626;
+  --ko-palette-secondary-dark: #cb463f;
+  --ko-palette-neutral: #334155;
+  --ko-palette-neutral-ink-dark: #f2f5f9;
+
+  /* Surfaces and ink. */
+  --ko-palette-page-light: #f8fafc;
+  --ko-palette-page-dark: #0b1220;
+  --ko-palette-surface-light: #ffffff;
+  --ko-palette-surface-dark: #1b2740;
+  --ko-palette-surface-sunken-light: #f1f5f9;
+  --ko-palette-surface-sunken-dark: #151f30;
+  --ko-palette-text-light: #1e293b;
+  --ko-palette-text-dark: #e8eef7;
+  --ko-palette-text-muted-light: #64748b;
+  --ko-palette-text-muted-dark: #94a3b8;
+  --ko-palette-border-light: #e2e8f0;
+  --ko-palette-border-dark: #2b3648;
+  --ko-palette-focus-light: #2563eb;
+  --ko-palette-focus-dark: #3b82f6;
+
   --ko-palette-red: rgb(253, 36, 62);
   --ko-palette-yellow: rgb(242, 184, 7);
   --ko-palette-green: rgb(33, 150, 83);
