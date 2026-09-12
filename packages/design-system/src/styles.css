@@ -6,8 +6,35 @@
   /* Shared values that are not Tailwind theme tokens. */
   --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
   --ko-plate-blur: blur(12px) saturate(1.4);
-  --ko-fade-to-bottom: linear-gradient(to bottom, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
-  --ko-fade-to-top: linear-gradient(to top, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+  /*
+   * Edge fades (kalkulacka-2026/packages/tokens/src/base.css). The one way
+   * content is allowed to fade out at the edge of a scroll area: a plain ramp
+   * of the page colour, no blur. Whole gradients rather than heights alone so
+   * every consumer — the list fades (`EdgeFade`) and the scrim behind a
+   * floating `StickyBar` — ramps through exactly the same stops instead of
+   * each screen easing its own way. "To bottom" fades *out* towards the
+   * bottom: solid page colour at the edge it is anchored to, transparent at
+   * the far end. The stops approximate an ease-out curve; a two-stop linear
+   * ramp reads as a hard-edged band, not a fade.
+   */
+  --ko-fade-to-bottom: linear-gradient(
+    to bottom,
+    var(--ko-color-page) 0%,
+    oklch(from var(--ko-color-page) l c h / 0.92) 20%,
+    oklch(from var(--ko-color-page) l c h / 0.7) 45%,
+    oklch(from var(--ko-color-page) l c h / 0.4) 65%,
+    oklch(from var(--ko-color-page) l c h / 0.16) 82%,
+    oklch(from var(--ko-color-page) l c h / 0) 100%
+  );
+  --ko-fade-to-top: linear-gradient(
+    to top,
+    var(--ko-color-page) 0%,
+    oklch(from var(--ko-color-page) l c h / 0.92) 20%,
+    oklch(from var(--ko-color-page) l c h / 0.7) 45%,
+    oklch(from var(--ko-color-page) l c h / 0.4) 65%,
+    oklch(from var(--ko-color-page) l c h / 0.16) 82%,
+    oklch(from var(--ko-color-page) l c h / 0) 100%
+  );
   --ko-pressable-scale-hover: 1.008;
   --ko-pressable-scale-press: 0.985;
   --ko-pressable-scale-open: 1.015;
@@ -303,9 +330,14 @@
   --text-display: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
   --text-display--line-height: 1.1;
 
-  /* Edge fades: a six-stop page-colour ramp, the only sanctioned "more this way". */
-
-  /* Pressable cards grow in place; they never translate. */
+  /*
+   * Breakpoints beyond Tailwind's defaults. `lg` (64rem) is the default and
+   * doubles as the two-pane desktop breakpoint — the one where the shell's
+   * fixed frame returns (see the document modes in @layer base).
+   */
+  --breakpoint-xs: 34rem; /* cards and lists widen; StickyBar goes side by side */
+  --breakpoint-desk: 53.75rem; /* desktop nav chrome, a keyboard is assumed */
+  --breakpoint-wide: 56rem; /* the recap's two columns */
 }
 
 @layer base {
@@ -381,4 +413,540 @@
     src: url("./fonts/inter/italic.woff2") format("woff2");
   }
 
+}
+
+/*
+ * ── The shell's two document modes ───────────────────────────────────────
+ * Ported from kalkulacka-2026/apps/web/app/globals.css.
+ *
+ * Picked per screen by `Shell` (`ScrollMode` writes the attribute; the rules
+ * below are the two halves). Everything is keyed on `html[data-ko-scroll]`,
+ * which exists only while a `Shell` is mounted — legacy screens never carry
+ * it, so none of this touches them.
+ *
+ * ── What iOS 26 Safari actually does ──────────────────────────────────────
+ * Measured on an iPhone at `/probe`, screen 896:
+ *
+ *   layout viewport (100lvh, 100vh)   754   ← fixed elements are clipped here
+ *   100dvh, expanded bar              714
+ *   100dvh, minimised bar             754
+ *   100svh                            714
+ *   env(safe-area-inset-*)              0   ← reports nothing, notch included
+ *   the floating bar's real top edge  ~761
+ *
+ * Two consequences drive everything here. First, `position: fixed` content
+ * cannot paint below `100lvh`, so a pinned document can never put anything
+ * behind the glass — only content in normal flow, in a scrolling document,
+ * reaches the bottom of the screen. Second, the safe-area insets are useless
+ * on this browser: the bar is not described by `env()` at all, and `100dvh`
+ * reserves ~47px more than the bar actually occupies, which is why a bottom
+ * control sized against it floats visibly high.
+ *
+ * A scrolling document sidesteps both: `position: sticky` resolves against the
+ * layout viewport (754), landing a bar snugly above the glass, and the list
+ * behind it runs to the bottom edge. That is the `document` mode. It is not an
+ * iOS special case — it is the right answer everywhere, which is why there is
+ * no feature detection here.
+ */
+@layer base {
+  /*
+   * `pinned` — the question flow, which is never meant to scroll.
+   *
+   * `overflow: hidden` on the flow's own box only stops that box from
+   * scrolling; iOS Safari still elastic-bounces the *document* itself on any
+   * drag that starts outside the swipe card's `touch-action: none` area
+   * (header, progress bar, the gap around the nav). Pinning html/body directly
+   * is the only thing that stops that at the source.
+   */
+  html[data-ko-scroll],
+  html[data-ko-scroll] body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /*
+   * `document` — every reading screen. The document itself is the scroller, so
+   * its content is the one thing on the page that can pass under the browser's
+   * glass. `overscroll-behavior` stays: it is pull-to-refresh and scroll
+   * chaining that need suppressing, not scrolling itself.
+   */
+  html[data-ko-scroll="document"],
+  html[data-ko-scroll="document"] body {
+    height: auto;
+    overflow-y: visible;
+    /*
+     * …but never sideways. The tutorial's practice card is a real question
+     * deck, and a committed card flies 480px past the viewport's edge before
+     * it fades; the pre-swipe nudge leans the stage 20px out on its own. In a
+     * scrolling document that is horizontal overflow, and the reader gets a
+     * page that suddenly pans sideways under a finger meant to be dragging a
+     * card.
+     *
+     * `clip`, not `hidden`: `hidden` would make this a scroll container, and
+     * the whole point of `document` mode is that the document itself is the
+     * scroller.
+     */
+    overflow-x: clip;
+  }
+
+  /*
+   * …but only where the problem exists. A desktop window has no floating
+   * address bar to pass under, and the fixed frame reads better there: the
+   * header stays put and the results' two panes scroll independently, which
+   * needs a bounded height to scroll inside. Same breakpoint the two-pane
+   * layout uses.
+   */
+  @media (min-width: 64rem) {
+    html[data-ko-scroll="document"],
+    html[data-ko-scroll="document"] body {
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  /*
+   * Painted on the root as well as the body so the area behind iOS Safari's
+   * collapsing address bar is the page colour rather than white — that strip
+   * is outside the body's box whatever height it is given.
+   */
+  html[data-ko-scroll] {
+    background: var(--ko-color-page);
+  }
+
+  html[data-ko-scroll] body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    /*
+     * The layout viewport — as much of the screen as a pinned document can
+     * use. `lvh` and not `dvh` because a pinned document never lets the
+     * address bar minimise, so `dvh` is stuck at its most pessimistic reading
+     * and would leave a visible band of nothing along the bottom.
+     *
+     * `document` mode drops the pin below and this stops applying.
+     */
+    height: 100lvh;
+    background: var(--ko-color-page);
+    color: var(--ko-color-text);
+    font-family: var(--ko-font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*
+   * Unpinned, and tall enough to fill the screen when a screen's content is
+   * short. `min-height`, so a long recap can simply run past it.
+   */
+  html[data-ko-scroll="document"] body {
+    position: static;
+    height: auto;
+    min-height: 100lvh;
+  }
+
+  @media (min-width: 64rem) {
+    html[data-ko-scroll="document"] body {
+      position: fixed;
+      height: 100lvh;
+    }
+  }
+
+  /*
+   * The backdrop's layer. In 2026 this is the one element the router never
+   * replaces — a child of `<body>` in the root layout, so the animated wash is
+   * continuous across every navigation. Here `Shell` mounts it as its first
+   * child instead (see shell.tsx for why); the rule stays at the document
+   * level because a `position: fixed` box is laid out against the viewport
+   * regardless of where it sits in the tree.
+   */
+  .ko-backdrop-layer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    /*
+     * `100lvh`, not `100%`: a fixed box's percentage height resolves against
+     * the initial containing block, which is the *small* viewport, so `100%`
+     * stopped the wash ~40px short. `lvh` is as far as this can go — iOS clips
+     * fixed layers at the layout viewport, so the strip actually behind the
+     * glass is painted by `html`'s background instead. It is the same
+     * `--ko-color-page` the wash is mixed over, and it is only ever seen
+     * through a heavy blur.
+     */
+    height: 100lvh;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+@layer components {
+  /* --- .ko-pressable ---------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/tokens/src/base.css (`.vk-pressable`).
+   *
+   * One clickable card's hover, press and open states, as a global class.
+   *
+   * A design-system decision about how a card behaves under a pointer, and it
+   * had already been made twice in 2026 — the results ranking lifted and
+   * scaled, the recap rows only changed shadow — which is exactly the drift a
+   * shared piece exists to stop. A global class rather than a React wrapper
+   * because the cards that need it come in two element shapes (a plain tile;
+   * an `<li>` wrapping a `<button>`), and a class name costs nothing to reach
+   * for from any of them.
+   *
+   * Put it on the OUTER element of a card — the one that owns the card's
+   * shadow and radius, not the button inside. `:hover` and `:active` both
+   * propagate up from descendants, so a card whose actual control is nested
+   * still lights up as one piece, and a button with `overflow: hidden` (which
+   * clips its own shadow) still gets a shadow from its parent.
+   *
+   * Three states:
+   *   rest    — resting on the page
+   *   hover   — grows very slightly and its shadow deepens
+   *   :active — presses in, and faster, so the press reads as contact
+   *   open    — `data-open`, or the element's own `aria-pressed="true"`:
+   *             floats, for a card that has opened something and stays chosen
+   *             while it is open. `data-open` exists for the common split
+   *             where the pressed state lives on an inner control.
+   *
+   * Pressable cards grow in place; they never translate. Do not combine with
+   * an entrance animation that fills forwards (`animation: … both`) — a filled
+   * `transform: none` outranks every rule here and the card would never
+   * respond to a pointer again. Use `backwards`.
+   */
+  .ko-pressable {
+    box-shadow: var(--ko-shadow-surface);
+    transition:
+      transform var(--ko-duration-base) cubic-bezier(0.2, 0.9, 0.3, 1),
+      box-shadow var(--ko-duration-base) ease;
+  }
+
+  .ko-pressable:hover {
+    transform: scale(var(--ko-pressable-scale-hover));
+    box-shadow: var(--ko-shadow-card-back);
+  }
+
+  .ko-pressable:active {
+    transform: scale(var(--ko-pressable-scale-press));
+    transition-duration: var(--ko-duration-fast);
+  }
+
+  .ko-pressable[data-open],
+  .ko-pressable[aria-pressed="true"] {
+    transform: scale(var(--ko-pressable-scale-open));
+    box-shadow: var(--ko-shadow-card-lifted);
+  }
+
+  .ko-pressable[data-open]:hover,
+  .ko-pressable[aria-pressed="true"]:hover {
+    transform: scale(var(--ko-pressable-scale-open-hover));
+  }
+
+  .ko-pressable[data-open]:active,
+  .ko-pressable[aria-pressed="true"]:active {
+    transform: scale(var(--ko-pressable-scale-press));
+  }
+
+  /* --- Shell -----------------------------------------------------------------
+   * Ported from kalkulacka-2026/apps/web/components/app-shell.module.css.
+   *
+   * These live here rather than as `ko:` utilities because the `document`
+   * overrides below key on an attribute of `<html>`, and a utility (layered
+   * after components) would outrank any such override regardless of
+   * specificity. Everything a mode can change is therefore stated in this
+   * layer, base and override alike.
+   *
+   * Transparent: the backdrop is a fixed layer under the content, and `<body>`
+   * itself carries `--ko-color-page` for the case where the backdrop is off.
+   * Painting the page colour here too would cover the wash.
+   */
+  .ko-shell {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /*
+   * In `document` mode the shell must not cap or clip anything: the page is
+   * as tall as its content and the document is what scrolls. `min-height`
+   * still fills the screen so a short screen's footer sits at the bottom
+   * rather than halfway up.
+   */
+  html[data-ko-scroll="document"] .ko-shell {
+    height: auto;
+    min-height: 100lvh;
+    overflow: visible;
+
+    /* A column, so `.ko-shell-content` can claim the leftover height with
+       `flex: 1`. A percentage `min-height` cannot: against an auto-height
+       parent it resolves to `auto`, which left a short screen's footer
+       stranded under its content rather than at the bottom of the page. */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The fixed frame comes back on a desktop — see the matching rules in
+     @layer base. */
+  @media (min-width: 64rem) {
+    html[data-ko-scroll="document"] .ko-shell {
+      height: 100%;
+      min-height: 0;
+      overflow: hidden;
+    }
+  }
+
+  /*
+   * Needs its own stacking context so it paints above the backdrop layer
+   * regardless of DOM order — that layer is `position: fixed` with
+   * `z-index: 0`, so plain in-flow content here has to opt in to sitting on
+   * top explicitly.
+   */
+  .ko-shell-content {
+    position: relative;
+    z-index: 1;
+
+    /*
+     * The *visible* viewport, for `pinned` screens only: nothing here can
+     * scroll, so every control has to be inside what the browser promises is
+     * unobstructed — and `dvh` is that promise. It reads a little generous
+     * under iOS 26's floating bar; that slack is Safari's own reserve, and the
+     * only number it exposes. A reading screen escapes it by scrolling
+     * instead (see `.ko-shell`).
+     */
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  html[data-ko-scroll="document"] .ko-shell-content {
+    height: auto;
+    flex: 1;
+  }
+
+  @media (min-width: 64rem) {
+    html[data-ko-scroll="document"] .ko-shell-content {
+      height: 100%;
+    }
+  }
+
+  /*
+   * The header's own padding, not the shell's — the scrolling region below it
+   * must reach the bottom edge of the viewport, so the shell itself carries
+   * no vertical padding to share.
+   */
+  .ko-shell-bar {
+    flex: none;
+    padding-top: calc(var(--ko-spacing-fluid-header-top) + env(safe-area-inset-top, 0px));
+    padding-left: calc(var(--ko-spacing-fluid-gutter) + env(safe-area-inset-left, 0px));
+    padding-right: calc(var(--ko-spacing-fluid-gutter) + env(safe-area-inset-right, 0px));
+  }
+
+  /*
+   * Persistent in a pinned screen for free — it is simply the first row of a
+   * column that never moves. Once the document scrolls (`document` mode) it
+   * has to hold its own place instead, which is what `position: sticky` is
+   * for.
+   */
+  html[data-ko-scroll="document"] .ko-shell-bar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding-bottom: 0.75rem;
+  }
+
+  /*
+   * The glass surface — a `z-index: -1` layer behind the header's own content
+   * rather than painted on the bar directly, so it can fade in on its own
+   * instead of the header's background snapping in.
+   *
+   * It only appears once `ScrollMode` has marked the page as scrolled
+   * (`data-ko-header-surface`, set past a few pixels of movement). At rest —
+   * fresh load, or a screen shorter than the viewport — there is nothing
+   * behind the header for it to separate itself from, and a translucent
+   * panel with no content passing under it just draws a hard seam under the
+   * wordmark for no reason. Once something *is* scrolling underneath, the
+   * same translucent, blurred treatment the `plate` buttons use keeps the
+   * wash showing through rather than punching a flat panel out of it —
+   * tinted with the page colour, not the card colour, since this frames the
+   * *page*, not a card floating on it.
+   */
+  html[data-ko-scroll="document"] .ko-shell-bar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    opacity: 0;
+    background: oklch(from var(--ko-color-page) l c h / 0.82);
+    backdrop-filter: var(--ko-plate-blur);
+    box-shadow: 0 8px 20px -16px oklch(from var(--ko-shadow-color) l c h / 0.25);
+    transition: opacity var(--ko-duration-base) ease;
+  }
+
+  html[data-ko-scroll="document"][data-ko-header-surface] .ko-shell-bar::before {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html[data-ko-scroll="document"] .ko-shell-bar::before {
+      transition: none;
+    }
+  }
+
+  /* --- AppHeader -------------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/app-header/app-header.module.css.
+   *
+   * With `href` set (embeds), the brand is an anchor — but it is chrome first
+   * and attribution second, so it reads as plain header until pointed at.
+   */
+  a.ko-app-header-brand:hover .ko-app-header-title,
+  a.ko-app-header-brand:focus-visible .ko-app-header-title {
+    text-decoration: underline;
+  }
+
+  /* --- Screen ----------------------------------------------------------------
+   * Ported from kalkulacka-2026/apps/web/components/screen.module.css.
+   *
+   * Not a scroller. The document is (`Shell scroll="document"`), which is
+   * what lets this screen's content pass under the browser's glass address
+   * bar and what puts a `StickyBar` at the bottom of the layout viewport
+   * rather than at `dvh`. An inner scroller could do neither.
+   */
+  .ko-screen {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*
+   * On a desktop the frame is fixed again (see @layer base), so this screen
+   * goes back to being its own scroller. The column deliberately does *not*
+   * stretch to fill it: stretched, the footer's `margin-top: auto` pinned the
+   * actions to the bottom of the viewport with a field of nothing between
+   * them and a short screen's content — the tutorial's CTA hung a
+   * screen-width away from the card it belongs to. Left at content height,
+   * the actions sit under the content they act on, and the footer's
+   * `position: sticky` still pins them to the viewport's edge for exactly as
+   * long as the page actually overflows.
+   */
+  @media (min-width: 64rem) {
+    .ko-screen {
+      display: block;
+      overflow-y: auto;
+      /* The desktop frame is pinned, so `html` can't absorb a card flying
+         off the side of the practice deck — this box is the scroller here,
+         and without this it grows a horizontal scrollbar the moment one
+         does. */
+      overflow-x: clip;
+      overscroll-behavior: contain;
+    }
+  }
+
+  /* The last thing on the page has to be able to clear the floating address
+     bar — see `--ko-spacing-scroll-tail`. */
+  .ko-screen-inner {
+    padding-bottom: var(--ko-spacing-scroll-tail);
+  }
+
+  @media (min-width: 64rem) {
+    .ko-screen-inner {
+      padding-bottom: 3rem;
+    }
+  }
+
+  /*
+   * Only when a back link precedes it — a headline with nothing above it
+   * needs no clearance. The header's own gap keeps the title and its
+   * description reading as one unit; the back link above them gets this
+   * extra clearance on top of it, so the chip stops crowding the headline it
+   * has no relation to.
+   */
+  .ko-screen-title:not(:first-child) {
+    margin-top: 0.25rem;
+  }
+
+  /* --- StickyBar -------------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/sticky-bar/sticky-bar.module.css.
+   *
+   * The phone scrim — the same page-colour ramp every list edge uses
+   * (`--ko-fade-to-top`, shared with `EdgeFade`), painted behind the floating
+   * actions so the content sliding under them settles toward the page colour
+   * and the buttons read as chrome rather than as one more row.
+   *
+   * Full viewport width via the `left: 50% / 100vw` trick: the bar lives
+   * inside a gutter-padded, max-width column, and a scrim that stopped at the
+   * column's edges would draw two hard vertical seams on anything wider than
+   * the column. Phone-only (`width < 64rem`): that is the breakpoint where
+   * the desktop frame returns and the bar stops floating over a document
+   * that scrolls under it. Negative top/bottom stretch the band above the
+   * actions for the fade-in and below them through the bar's own bottom
+   * margin to the true viewport edge.
+   *
+   * Two layers, split at the bar's bottom edge: `::before` carries the fade
+   * above and behind the actions, `::after` carries *solid* page colour from
+   * there down through the page's own scroll tail. Without the solid tail,
+   * the scrim rode up with the bar at the very end of the scroll — the bar
+   * settles at its flow position, a `--ko-spacing-scroll-tail` of padding
+   * still lies below it, and the wash showed through the gap under a
+   * gradient now floating mid-air. Sized to end exactly at the page's bottom
+   * edge (tail + the bar's own margin), so it adds no scrollable overflow of
+   * its own.
+   */
+  @media (width < 64rem) {
+    .ko-sticky-bar-floating::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: -2rem;
+      bottom: 0;
+      left: 50%;
+      width: 100vw;
+      transform: translateX(-50%);
+      pointer-events: none;
+      background: var(--ko-fade-to-top);
+    }
+
+    .ko-sticky-bar-floating::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 100%;
+      height: calc(var(--ko-spacing-scroll-tail) + max(0.5rem, env(safe-area-inset-bottom, 0px)));
+      left: 50%;
+      width: 100vw;
+      transform: translateX(-50%);
+      pointer-events: none;
+      background: var(--ko-color-page);
+    }
+  }
+
+  /* --- Backdrop --------------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/backdrop/backdrop.tsx
+   * (`FallbackGradient`) and backdrop.module.css (`.host`, `.fallback`).
+   *
+   * The static approximation of the animated wash: the 2026 fallback for
+   * when WebGL is unavailable, which is the whole backdrop until the shader
+   * is ported. Fills whatever positioned ancestor the caller puts this in
+   * (`.ko-backdrop-layer`, or any `position: relative` box).
+   *
+   * Listed light-first because CSS paints the first layer on top — the same
+   * order the shader mixes in, so both paths lift the middle. The bright pass
+   * is the card colour, so it is the same white the content sits on — on a
+   * dark theme that is a *lighter* dark, which is exactly right: it lifts
+   * without going pale. The alphas are the 2026 hex ones (8c, 1c, 18) as
+   * fractions.
+   */
+  .ko-backdrop {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 50% 45%, oklch(from var(--ko-color-surface) l c h / 0.55), transparent 70%),
+      radial-gradient(circle at 20% 25%, oklch(from var(--ko-color-agree) l c h / 0.11), transparent 50%),
+      radial-gradient(circle at 80% 75%, oklch(from var(--ko-color-disagree) l c h / 0.094), transparent 50%),
+      var(--ko-color-page);
+  }
 }

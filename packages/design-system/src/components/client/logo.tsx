@@ -12,6 +12,8 @@ export type Logo = {
 const LogoVariants = cva("ko:flex ko:items-center ko:gap-[1.78125em]", {
   variants: {
     size: {
+      /* A 12px mark — the app header's wordmark. */
+      xsmall: "ko:text-[0.1875rem]",
       small: "ko:text-[0.25rem]",
       medium: "ko:text-[0.375rem]",
       large: "ko:text-[0.5rem]",

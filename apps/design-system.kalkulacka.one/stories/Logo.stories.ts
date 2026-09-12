@@ -22,7 +22,7 @@ const meta: Meta<typeof Logo> = {
     },
     size: {
       control: "select",
-      options: ["small", "default"],
+      options: ["xsmall", "small", "medium", "large", "default"],
     },
   },
 };
