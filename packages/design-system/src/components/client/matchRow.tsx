@@ -15,6 +15,8 @@ export type MatchRowProps = {
   avatarImage?: ImageUrls;
   /** The candidate's own accent colour — from data, or derived server-side from the logo. */
   color?: string;
+  /** Seeds the palette pick when no colour is given; defaults to `name`. The share card passes the full name here while showing the short one, so both surfaces agree on a party's colour. */
+  seed?: string;
   /** 0–100, or `undefined` for a candidate who never answered. */
   matchPercentage?: number;
   /** Pre-formatted, e.g. "74 %" — number formatting is locale work, so it happens above. */
@@ -178,6 +180,7 @@ export function MatchRow({
   avatarUrl,
   avatarImage,
   color,
+  seed,
   matchPercentage,
   percentLabel,
   noAnswerLabel,
@@ -194,7 +197,7 @@ export function MatchRow({
    * candidate has either; `partyColor` falls back to its seeded palette
    * otherwise, which is also what covers every party with no picture at all.
    */
-  const accent = partyColor(name, color);
+  const accent = partyColor(seed ?? name, color);
   const padding = paddingClasses[winner ? "winner" : "default"][comparable ? "edged" : "plain"];
 
   return (

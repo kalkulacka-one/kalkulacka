@@ -444,10 +444,12 @@ export function ResultPage({
           // the list — but they sit after everybody who does, so the index
           // is always a number the reader would agree with.
           rank: order ?? index + 1,
-          // The full name, as the rows on this screen head themselves — the
-          // card is a picture of *this* ranking, and the hashed party colour
-          // is seeded from the name, so a different name would recolour it.
-          name: candidate.name,
+          // The short name, as the prototype's card does — five rows at export
+          // size have no room for "Svoboda a přímá demokracie" — while the
+          // hashed party colour stays seeded from the full name, so the card
+          // and the rows on this screen agree on every party's accent.
+          name: candidate.shortName ?? candidate.name,
+          seed: candidate.name,
           // Routed through the app's same-origin proxy here only: the canvas
           // export needs readable pixels, everywhere else on this screen
           // keeps loading the CDN directly.

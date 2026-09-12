@@ -11,6 +11,8 @@ import { type CardColorSet, type CardTheme, cardColorScheme, cardCssVars, css } 
 export type ShareCardEntry = {
   rank: number;
   name: string;
+  /** Seed for the hashed party colour when `color` is absent — the full name, so the card and the screen agree while the card shows the short one. */
+  seed?: string;
   avatarUrl?: string;
   /** The candidate's own accent colour — from data, or derived server-side from the logo. */
   color?: string;
@@ -249,6 +251,7 @@ export function ShareCardLayout({ content, colors, theme, format }: ShareCardLay
             <StaticMatchRow
               key={`${entry.rank}-${entry.name}`}
               rank={entry.rank}
+              seed={entry.seed}
               name={entry.name}
               avatarUrl={entry.avatarUrl}
               color={entry.color}

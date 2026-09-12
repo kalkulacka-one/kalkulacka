@@ -646,16 +646,10 @@ describe("sharing", () => {
     const dialog = screen.getByRole("dialog", { name: "Sdílet výsledek" });
     expect(dialog).toHaveProperty("open", true);
 
-    // The preview is a picture of *this* ranking: the same five rows, the same names, the same numbers.
+    // The preview is a picture of *this* ranking: the same five rows and numbers, with the short names the card has room for.
     const preview = dialog.querySelector("[data-format='story']");
     if (!(preview instanceof HTMLElement)) throw new Error("No card in the preview");
-    expect(Array.from(preview.querySelectorAll("li")).map(visibleText)).toEqual([
-      "Největší shoda1.Demokratická strana100\u00a0%",
-      "2.Alfa67\u00a0%",
-      "3.Gama50\u00a0%",
-      "4.Epsilon50\u00a0%",
-      "5.Beta33\u00a0%",
-    ]);
+    expect(Array.from(preview.querySelectorAll("li")).map(visibleText)).toEqual(["Největší shoda1.Delta100\u00a0%", "2.Alfa67\u00a0%", "3.Gama50\u00a0%", "4.Epsilon50\u00a0%", "5.Beta33\u00a0%"]);
     expect(preview.querySelector("h2")).toHaveTextContent("Moje shoda");
     expect(preview.querySelector("header")).toHaveTextContent("Sněmovní volby Volební kalkulačka 2025");
 
