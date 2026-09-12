@@ -7,4 +7,8 @@ export const appConfig = withDefaults({
     defaultLocale: "sk",
     locales: ["sk"],
   },
+
+  links: {
+    privacy: "/soukromi",
+  },
 });
