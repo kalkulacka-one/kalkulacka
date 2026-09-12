@@ -3,6 +3,8 @@ import { twMerge } from "@kalkulacka-one/design-system/utilities";
 import { cva, type VariantProps } from "class-variance-authority";
 import { useId } from "react";
 
+import { logoPercentageDenominator, logoPercentageNominator, logoPercentageSlash } from "../icons/icons";
+
 export type Logo = {
   title: string;
   text?: boolean;
@@ -24,6 +26,51 @@ const LogoVariants = cva("ko:flex ko:items-center ko:gap-[1.78125em]", {
     size: "default",
   },
 });
+
+/**
+ * The percent sign's own tight box on the icon set's 24-grid: the three paths
+ * in `icons.ts` span x 5–19.57 and y 5–19.4, so this is what renders the mark
+ * alone at its true size rather than floating in the grid's margins.
+ */
+export const PERCENT_MARK_VIEWBOX = { x: 5, y: 5, width: 14.57, height: 14.4 } as const;
+
+/** The mark's geometry, verbatim from the icon set — one source, so it cannot drift from the header's wordmark. */
+export const PERCENT_MARK_PATHS = [logoPercentageNominator, logoPercentageSlash, logoPercentageDenominator] as const;
+
+export type PercentMark = {
+  /** Height in px. Width follows the mark's own aspect ratio. */
+  size?: number;
+  className?: string;
+};
+
+/**
+ * The percent sign out of the wordmark, on its own.
+ *
+ * Ported from kalkulacka-2026/packages/ui/src/logo/logo.tsx (`PercentMark`).
+ * The mark reads `✓ / ✗ %` — a check, a cut, a cross, and this: two dots with a
+ * slash between them, in the same flat-cut geometry as the rest. Lifted verbatim
+ * from the icon set's logo paths rather than redrawn, so the calculating screen
+ * resolves onto a shape that is literally the logo's. Decorative always, and
+ * drawn in `currentColor` so it follows the surrounding text colour.
+ */
+export function PercentMark({ size = 24, className }: PercentMark) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      width={Math.round((size * PERCENT_MARK_VIEWBOX.width) / PERCENT_MARK_VIEWBOX.height)}
+      height={size}
+      viewBox={`${PERCENT_MARK_VIEWBOX.x} ${PERCENT_MARK_VIEWBOX.y} ${PERCENT_MARK_VIEWBOX.width} ${PERCENT_MARK_VIEWBOX.height}`}
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {PERCENT_MARK_PATHS.map((d) => (
+        <path key={d} d={d} fill="currentColor" />
+      ))}
+    </svg>
+  );
+}
 
 export function Logo({ title, text, monochrome, size }: Logo) {
   const titleId = useId();

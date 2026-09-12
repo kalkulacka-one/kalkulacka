@@ -1,6 +1,8 @@
 "use client";
 
+export * from "./avatarStack";
 export * from "./button";
+export * from "./calculating";
 export * from "./clientTest";
 export * from "./description";
 export * from "./dialog";
@@ -14,6 +16,7 @@ export * from "./icon-button";
 export * from "./input";
 export * from "./label";
 export * from "./logo";
+export * from "./matchRow";
 export * from "./questionCard";
 export * from "./questionDeck/questionDeck";
 export { PHYSICS, type SwipeZone } from "./questionDeck/swipePhysics";

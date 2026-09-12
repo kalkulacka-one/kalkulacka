@@ -5,6 +5,7 @@ export * from "./backdrop";
 export * from "./badge";
 export * from "./card";
 export * from "./chip";
+export * from "./donut";
 export * from "./dotIndicator";
 export * from "./edgeFade";
 export * from "./iconBadge";
