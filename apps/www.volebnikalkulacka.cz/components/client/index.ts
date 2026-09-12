@@ -1,13 +1,12 @@
 "use client";
 
+export { EmbedContextProvider, type EmbedContextType, EmbedOnly, HideOnEmbed, useEmbed } from "@kalkulacka-one/app/client";
+
 export * from "./city-signup-form";
 export * from "./donate-card";
-export * from "./embed-context-provider";
-export * from "./embed-only";
 export * from "./embed-provider";
 export * from "./error-reporter";
 export * from "./header";
-export * from "./hide-on-embed";
 export * from "./pages";
 export * from "./provider-layout";
 export * from "./session-initializer";
