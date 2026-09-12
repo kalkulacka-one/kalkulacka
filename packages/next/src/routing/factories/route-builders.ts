@@ -1,9 +1,9 @@
+import type { AppConfigWithDefaults } from "@/config-helpers";
 import type { PageType } from "@/routing/localized-slugs";
 import { createBaseSegment, type RouteSegments } from "@/routing/segments";
-import type { AppConfig } from "@/types/app-config";
 
-export function createRouteBuilders({ i18n, pageSlugs }: { i18n: AppConfig["i18n"]; pageSlugs: Record<string, Record<PageType, string>> }) {
-  const { locales, defaultLocale, localePrefix = "as-needed" } = i18n;
+export function createRouteBuilders({ i18n, pageSlugs }: { i18n: AppConfigWithDefaults["i18n"]; pageSlugs: Record<string, Record<PageType, string>> }) {
+  const { locales, defaultLocale, localePrefix } = i18n;
 
   function validateLocale(locale: string): void {
     if (!locales.includes(locale)) {
