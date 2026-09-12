@@ -1,16 +1,13 @@
 import { IntroductionPage, type IntroductionResumeTarget } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculator, useCandidates } from "@kalkulacka-one/app/client";
-import { IconButton } from "@kalkulacka-one/design-system/client";
-import { icons } from "@kalkulacka-one/design-system/icons";
+import { useCalculator, useCandidates } from "@kalkulacka-one/app/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
-import { HideOnEmbed, useEmbed } from "@/components/client";
+import { CalculatorMenu, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api";
-import { reportError } from "@/lib/monitoring";
+import { useCalculatorActions } from "@/hooks/calculator-actions";
 import { type RouteSegments, routes } from "@/lib/routing";
 
 export function IntroductionPageWithRouting({ segments }: { segments: RouteSegments }) {
@@ -18,8 +15,10 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   const calculator = useCalculator();
   const candidates = useCandidates();
   const embed = useEmbed();
-  const answersStore = useAnswersStore((state) => state.answers);
   const locale = useLocale();
+  // The same restart the shell menu offers — the intro's own "Začít znovu"
+  // must land in the same place, so the two share one handler.
+  const { restart } = useCalculatorActions({ segments });
 
   useAutoSave();
 
@@ -45,32 +44,18 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
     router.push("review" in target ? routes.review(segments, locale) : routes.question(segments, target.question, locale));
   };
 
-  const handleCloseClick = async () => {
-    try {
-      if (answersStore.length > 0) {
-        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
-  };
-
   return (
     <IntroductionPage
       appTitle="Volební kalkulačka"
       electionName={electionName}
       calculatorName={calculatorName}
       candidateCount={candidates.length}
-      headerActions={
-        <HideOnEmbed>
-          <IconButton icon={icons.close} label="Zavřít" variant="surface" onClick={handleCloseClick} />
-        </HideOnEmbed>
-      }
+      headerActions={<CalculatorMenu segments={segments} />}
       attributionHref={attributionHref}
       logoMonochrome={logoMonochrome}
       onContinueClick={handleContinueClick}
       onResumeClick={handleResumeClick}
+      onRestartClick={restart}
     />
   );
 }

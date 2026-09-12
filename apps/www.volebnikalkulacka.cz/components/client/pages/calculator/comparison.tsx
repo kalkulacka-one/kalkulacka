@@ -1,15 +1,11 @@
 import { type ComparisonFilter, ComparisonPage } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculatedMatches, useCalculator } from "@kalkulacka-one/app/client";
-import { IconButton } from "@kalkulacka-one/design-system/client";
-import { icons } from "@kalkulacka-one/design-system/icons";
+import { useCalculatedMatches, useCalculator } from "@kalkulacka-one/app/client";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
 
-import { HideOnEmbed, useEmbed } from "@/components/client";
+import { CalculatorMenu, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
-import { saveSessionData } from "@/lib/api";
-import { reportError } from "@/lib/monitoring";
 import { COMPARISON_FILTER_PARAM, comparisonFilterQuery, parseComparisonFilter, type RouteSegments, routes } from "@/lib/routing";
 
 export function ComparisonPageWithRouting({ segments }: { segments: RouteSegments }) {
@@ -17,7 +13,6 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
   const searchParams = useSearchParams();
   const calculator = useCalculator();
   const embed = useEmbed();
-  const answersStore = useAnswersStore((state) => state.answers);
   const algorithmMatches = useCalculatedMatches();
   const locale = useLocale();
 
@@ -54,30 +49,13 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
     window.history.replaceState(null, "", `${comparisonRoute}${comparisonFilterQuery(filter)}`);
   };
 
-  const handleCloseClick = async () => {
-    try {
-      const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
-
-      if (answersStore.length > 0 && hasValidMatches) {
-        await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
-  };
-
   return (
     <ComparisonPage
       appTitle="Volební kalkulačka"
       electionName={electionName}
       calculatorName={calculatorName}
       initialFilter={initialFilter}
-      headerActions={
-        <HideOnEmbed>
-          <IconButton icon={icons.close} label="Zavřít" variant="surface" onClick={handleCloseClick} />
-        </HideOnEmbed>
-      }
+      headerActions={<CalculatorMenu segments={segments} matches={algorithmMatches} />}
       attributionHref={attributionHref}
       logoMonochrome={logoMonochrome}
       onBackClick={handleBackClick}

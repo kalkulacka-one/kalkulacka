@@ -299,8 +299,12 @@ export function QuestionPage({ appTitle, electionName, calculatorName, initialPo
       // `event.target` is not always an Element (it's `window`/`document` for
       // some synthetically dispatched or unfocused-body keydowns) — guard
       // before calling an Element-only method on it.
+      //
+      // A key typed into a modal dialog, the shell menu or its trigger is
+      // theirs, not the flow's — the help sheet opens over this screen, and
+      // a window listener still hears what the top layer is being told.
       const target = event.target;
-      if (target instanceof HTMLElement && target.closest("input, textarea, select, [contenteditable]")) return;
+      if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable], dialog, [role="menu"], [aria-haspopup="menu"]')) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
 
       if (event.key === ",") {

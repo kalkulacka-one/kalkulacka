@@ -1,17 +1,13 @@
 import { QuestionPage } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculator, useQuestions } from "@kalkulacka-one/app/client";
-import { IconButton } from "@kalkulacka-one/design-system/client";
-import { icons } from "@kalkulacka-one/design-system/icons";
+import { useCalculator, useQuestions } from "@kalkulacka-one/app/client";
 
 import { notFound, usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useCallback, useEffect, useReducer } from "react";
 
-import { HideOnEmbed, useEmbed } from "@/components/client";
+import { CalculatorMenu, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api";
-import { reportError } from "@/lib/monitoring";
 import { parsedParams, type RouteSegments, routes } from "@/lib/routing";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
@@ -22,7 +18,6 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
   const [, forceRender] = useReducer((x) => x + 1, 0);
   const locale = useLocale();
   const embed = useEmbed();
-  const answersStore = useAnswersStore((state) => state.answers);
 
   useAutoSave();
 
@@ -90,28 +85,13 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     router.push(routes.guide(segments, locale));
   };
 
-  const handleCloseClick = async () => {
-    try {
-      if (answersStore.length > 0) {
-        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
-  };
-
   return (
     <QuestionPage
       appTitle="Volební kalkulačka"
       electionName={electionName}
       calculatorName={calculatorName}
       initialPosition={currentQuestion}
-      headerActions={
-        <HideOnEmbed>
-          <IconButton icon={icons.close} label="Zavřít" variant="surface" onClick={handleCloseClick} />
-        </HideOnEmbed>
-      }
+      headerActions={<CalculatorMenu segments={segments} />}
       attributionHref={attributionHref}
       logoMonochrome={logoMonochrome}
       onPositionChange={handlePositionChange}

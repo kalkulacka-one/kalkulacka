@@ -18,6 +18,7 @@ export * from "./input";
 export * from "./label";
 export * from "./logo";
 export * from "./matchRow";
+export * from "./menu";
 export * from "./questionCard";
 export * from "./questionDeck/questionDeck";
 export { PHYSICS, type SwipeZone } from "./questionDeck/swipePhysics";

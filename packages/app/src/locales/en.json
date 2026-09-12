@@ -1,6 +1,19 @@
 {
   "koa": {
     "components": {
+      "appMenu": {
+        "label": "Menu",
+        "help": "How it works",
+        "helpDetail": "A reminder of how to answer",
+        "darkMode": "Dark mode",
+        "darkModeDetail": "Switches the app to the dark look",
+        "lightMode": "Light mode",
+        "lightModeDetail": "Switches the app to the light look",
+        "restart": "Start over",
+        "restartDetail": "Deletes your answers",
+        "leave": "Leave the calculator",
+        "leaveDetail": "Your progress stays saved"
+      },
       "comparisonPage": {
         "title": "Answer comparison",
         "description": "How the parties answered each question",
@@ -102,6 +115,10 @@
         "recapTitle": "Recap",
         "recapDescription": "At the end you'll see all the questions together and can still change your answers."
       },
+      "helpDialog": {
+        "title": "How it works",
+        "close": "Close"
+      },
       "introductionNavigationCard": {
         "continueButton": "Continue"
       },
@@ -111,12 +128,20 @@
         "progress": "You have answered {answered} of {total}.",
         "start": "Continue",
         "continue": "Continue answering",
+        "restart": "Start over",
         "factImportantTitle": "Important to me",
         "factImportantDescription": "You can mark a question you particularly care about as important. It then counts double in the result.",
         "factSkipTitle": "Skipping",
         "factSkipDescription": "You don't have to answer everything. A skipped question doesn't count towards the result.",
         "factRecapTitle": "Recap",
         "factRecapDescription": "At the end you'll see all the questions together and can still change your answers."
+      },
+      "leaveDialog": {
+        "title": "Leave the calculator?",
+        "description": "Your answers are saved as you go, so you can come back in this browser and pick up where you left off. In a private window, though, they are lost once it's closed.",
+        "cancel": "Cancel",
+        "confirm": "Leave",
+        "close": "Close"
       },
       "questionPage": {
         "counter": "Question {position} of {total}",
@@ -140,6 +165,13 @@
           "browse": "Browse without answering"
         },
         "announce": "Question {position} of {total}: {statement}"
+      },
+      "restartDialog": {
+        "title": "Start over?",
+        "description": "We'll delete all your answers in this calculator and take you back to the first question. This can't be undone.",
+        "cancel": "Cancel",
+        "confirm": "Delete and start over",
+        "close": "Close"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Fill your own calculator"

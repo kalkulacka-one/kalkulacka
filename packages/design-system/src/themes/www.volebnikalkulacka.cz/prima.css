@@ -1,3 +1,18 @@
+:root,
+:root[data-mode] {
+  /*
+   * Single-mode. The partner palette below is authored for light surfaces
+   * only, so the scheme is pinned here, and a dark override stored on the
+   * main site cannot leak into the embed (partner accents on the default
+   * theme's dark surfaces is a palette nobody authored). The second selector
+   * ties the specificity of the design system's `:root[data-mode="dark"]`
+   * and wins the way every theme rule beats the base styles: by loading
+   * after them. The app withholds the light/dark toggle under this theme for
+   * the same reason.
+   */
+  color-scheme: light;
+}
+
 :root {
   --ko-typeface-display: "Radio Canada";
   --ko-typeface-sans: "Geist";

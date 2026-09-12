@@ -41,6 +41,27 @@
   --ko-pressable-scale-open-hover: 1.022;
 }
 
+/*
+ * An explicit mode wins over the OS preference. The app writes the attribute
+ * when someone picks a mode in its menu (and again before hydration, so a
+ * stored preference does not flash the OS one first); absent an override it
+ * is simply not set, `color-scheme: light dark` above stands, and the page
+ * tracks the OS pick with no JavaScript at all.
+ *
+ * Unlayered, like the `:root` block it overrides: inside `@layer base` these
+ * would lose to that block's unlayered declaration whatever their
+ * specificity, and the attribute would do nothing. A single-mode theme pins
+ * its own scheme back over these with `:root[data-mode]` — the same
+ * specificity, winning by loading later (see the partner themes).
+ */
+:root[data-mode="light"] {
+  color-scheme: light;
+}
+
+:root[data-mode="dark"] {
+  color-scheme: dark;
+}
+
 @theme static {
   --font-display: var(--ko-typeface-display), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans: var(--ko-typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -293,6 +314,20 @@
   --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
 
   /*
+   * The shell menu's popover growing out of the trigger it hangs from
+   * (`Menu`). A theme animation for the same reason as the segment pop: one
+   * `ko:animate-menu-in` utility, switched off by `ko:motion-reduce:animate-none`.
+   */
+  --animate-menu-in: ko-menu-in var(--ko-duration-base) var(--ko-ease-spring);
+
+  @keyframes ko-menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.96);
+    }
+  }
+
+  /*
    * The progress bar's current segment popping in (`ProgressSegments`). A
    * theme animation so it is one `ko:animate-segment-pop` utility, which
    * `ko:motion-reduce:animate-none` can switch off.
@@ -518,18 +553,6 @@
 }
 
 @layer base {
-  /*
-   * An explicit mode wins over the OS preference; without the attribute the
-   * page follows `prefers-color-scheme` with no JavaScript at all.
-   */
-  :root[data-mode="light"] {
-    color-scheme: light;
-  }
-
-  :root[data-mode="dark"] {
-    color-scheme: dark;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     :root {
       --ko-duration-fast: 0.01ms;

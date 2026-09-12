@@ -1,23 +1,18 @@
 import { GuidePage } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculator } from "@kalkulacka-one/app/client";
-import { IconButton } from "@kalkulacka-one/design-system/client";
-import { icons } from "@kalkulacka-one/design-system/icons";
+import { useCalculator } from "@kalkulacka-one/app/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
-import { HideOnEmbed, useEmbed } from "@/components/client";
+import { CalculatorMenu, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api";
-import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing";
 
 export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculator();
   const embed = useEmbed();
-  const answersStore = useAnswersStore((state) => state.answers);
   const locale = useLocale();
 
   useAutoSave();
@@ -44,27 +39,12 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     router.push(routes.introduction(segments, locale));
   };
 
-  const handleCloseClick = async () => {
-    try {
-      if (answersStore.length > 0) {
-        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
-  };
-
   return (
     <GuidePage
       appTitle="Volební kalkulačka"
       electionName={electionName}
       calculatorName={calculatorName}
-      headerActions={
-        <HideOnEmbed>
-          <IconButton icon={icons.close} label="Zavřít" variant="surface" onClick={handleCloseClick} />
-        </HideOnEmbed>
-      }
+      headerActions={<CalculatorMenu segments={segments} />}
       attributionHref={attributionHref}
       logoMonochrome={logoMonochrome}
       onBackClick={handleBackClick}

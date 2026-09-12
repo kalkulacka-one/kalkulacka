@@ -1,6 +1,19 @@
 {
   "koa": {
     "components": {
+      "appMenu": {
+        "label": "Nabídka",
+        "help": "Jak to funguje",
+        "helpDetail": "Připomenutí, jak se odpovídá",
+        "darkMode": "Tmavý režim",
+        "darkModeDetail": "Přepne aplikaci do tmavého vzhledu",
+        "lightMode": "Světlý režim",
+        "lightModeDetail": "Přepne aplikaci do světlého vzhledu",
+        "restart": "Začít znovu",
+        "restartDetail": "Smaže vaše odpovědi",
+        "leave": "Opustit kalkulačku",
+        "leaveDetail": "Postup zůstane uložený"
+      },
       "comparisonPage": {
         "title": "Porovnání odpovědí",
         "description": "Jak strany odpovídaly na jednotlivé otázky",
@@ -102,6 +115,10 @@
         "recapTitle": "Rekapitulace",
         "recapDescription": "Na konci uvidíte všechny otázky pohromadě a můžete odpovědi ještě změnit."
       },
+      "helpDialog": {
+        "title": "Jak to funguje",
+        "close": "Zavřít"
+      },
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
       },
@@ -111,12 +128,20 @@
         "progress": "Máte odpovězeno {answered} z {total}.",
         "start": "Pokračovat",
         "continue": "Pokračovat v odpovídání",
+        "restart": "Začít znovu",
         "factImportantTitle": "Pro mě důležité",
         "factImportantDescription": "Otázku, na které vám obzvlášť záleží, můžete označit jako důležitou. Ve výsledku pak má dvojnásobnou váhu.",
         "factSkipTitle": "Přeskočení",
         "factSkipDescription": "Odpovídat nemusíte na všechno. Přeskočená otázka se do výsledku nezapočítá.",
         "factRecapTitle": "Rekapitulace",
         "factRecapDescription": "Na konci uvidíte všechny otázky pohromadě a odpovědi můžete ještě změnit."
+      },
+      "leaveDialog": {
+        "title": "Opustit kalkulačku?",
+        "description": "Vaše odpovědi průběžně ukládáme, takže se k nim v tomhle prohlížeči můžete vrátit a pokračovat tam, kde jste skončili. V anonymním okně se ale po jeho zavření ztratí.",
+        "cancel": "Zrušit",
+        "confirm": "Opustit",
+        "close": "Zavřít"
       },
       "questionPage": {
         "counter": "Otázka {position} z {total}",
@@ -140,6 +165,13 @@
           "browse": "Procházet bez odpovědi"
         },
         "announce": "Otázka {position} z {total}: {statement}"
+      },
+      "restartDialog": {
+        "title": "Začít znovu?",
+        "description": "Smažeme všechny vaše odpovědi v této kalkulačce a vrátíme vás na první otázku. Tuhle akci nelze vzít zpět.",
+        "cancel": "Zrušit",
+        "confirm": "Smazat a začít znovu",
+        "close": "Zavřít"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
