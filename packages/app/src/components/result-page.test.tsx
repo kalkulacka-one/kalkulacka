@@ -156,7 +156,7 @@ function renderPage({ answers = userAnswers, data = calculatorData, props = {}, 
     </LocaleProvider>,
   );
 
-  return { ...result, ...handlers };
+  return { ...result, ...handlers, answersStore };
 }
 
 const heading = () => screen.getByRole("heading", { level: 1 });
@@ -210,13 +210,6 @@ describe("ResultPage", () => {
       expect(screen.queryByRole("status")).toBeNull();
       expect(heading()).toHaveTextContent("Moje shoda");
       for (const row of rows()) expect((row as HTMLElement).style.animationDelay).toBe("-1s");
-    });
-
-    it("is skipped on a shared result, which is never remembered as seen", () => {
-      renderPage({ seen: false, props: { shared: true } });
-      expect(screen.queryByRole("status")).toBeNull();
-      expect(heading()).toHaveTextContent("Sdílená shoda");
-      expect(window.sessionStorage.getItem(seenKey(calculatorId))).toBeNull();
     });
   });
 
@@ -386,24 +379,123 @@ describe("ResultPage", () => {
     });
   });
 
-  describe("a shared result", () => {
-    it("says whose result it is and offers the visitor their own calculator instead of the ways out of this one", async () => {
-      const user = userEvent.setup();
-      const { onStartOwnClick, onCompareClick } = renderPage({ props: { shared: true } });
-
-      expect(screen.getByText("Tenhle výsledek s vámi někdo sdílel. Vaše vlastní odpovědi zůstávají nedotčené.")).toBeInTheDocument();
-      expect(screen.queryByText("Tapnutím na stranu můžete porovnat svoje odpovědi")).toBeNull();
-      expect(screen.queryByRole("button", { name: "Zpět na rekapitulaci" })).toBeNull();
-      expect(screen.queryByRole("button", { name: "Sdílet" })).toBeNull();
+  describe("without a way into the comparison", () => {
+    it("drops the link under the list and turns the dashboard's rows inert, and leaves everything else standing", () => {
+      renderPage({ props: { onCompareClick: undefined, onCompareTopicClick: undefined, onCompareImportantClick: undefined } });
       expect(screen.queryByRole("button", { name: "Porovnat odpovědi" })).toBeNull();
+      expect(within(card("Podle témat")).queryByRole("button")).toBeNull();
       expect(screen.queryByRole("button", { name: "Porovnat důležité otázky" })).toBeNull();
-      expect(screen.queryByRole("button", { name: /Porovnat odpovědi k tématu/ })).toBeNull();
-      // The tail still unfolds; only the comparisons go.
+
+      expect(screen.getByRole("button", { name: "Zpět na rekapitulaci" })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Sdílet" })).toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Zobrazit další strany (2)" })).toBeInTheDocument();
+    });
+  });
+
+  describe("a shared result", () => {
+    /* Never "seen" beforehand: the beat and its memory are the owner's, and the visitor of a public link is not the owner. */
+    const renderShared = (props: Partial<ResultPage> = {}) => renderPage({ seen: false, props: { shared: true, ...props } });
+    const topicsCard = () => card("Podle témat");
+
+    it("shows the ranking straight away, with no calculating beat", () => {
+      vi.useFakeTimers();
+      try {
+        renderShared();
+        expect(screen.queryByRole("status")).toBeNull();
+        expect(rows()).toHaveLength(5);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("says whose numbers these are, above a title of its own", () => {
+      renderShared();
+      expect(screen.getByText("Tenhle výsledek s vámi někdo sdílel. Vaše vlastní odpovědi zůstávají nedotčené.")).toBeInTheDocument();
+      expect(heading()).toHaveTextContent("Sdílená shoda");
+      // The invitation to open a row promises "svoje odpovědi", which these aren't.
+      expect(screen.queryByText("Tapnutím na stranu můžete porovnat svoje odpovědi")).toBeNull();
+    });
+
+    it("offers no way back", () => {
+      renderShared();
+      expect(screen.queryByRole("button", { name: "Zpět na rekapitulaci" })).toBeNull();
+    });
+
+    it("offers nothing to share, even with a share configuration", () => {
+      const { onShareClick } = renderShared({ share: { onRequestShareLink: vi.fn().mockResolvedValue(null) } });
+      expect(screen.queryByRole("button", { name: "Sdílet" })).toBeNull();
+      expect(screen.queryByRole("dialog", { hidden: true })).toBeNull();
+      expect(onShareClick).not.toHaveBeenCalled();
+    });
+
+    it("offers the visitor their own calculator instead", async () => {
+      const user = userEvent.setup();
+      const { onStartOwnClick, onBackClick } = renderShared();
 
       await user.click(screen.getByRole("button", { name: "Vyplnit vlastní kalkulačku" }));
       expect(onStartOwnClick).toHaveBeenCalledTimes(1);
+      expect(onBackClick).not.toHaveBeenCalled();
+    });
+
+    it("drops the comparison under the list", () => {
+      const { onCompareClick } = renderShared();
+      expect(screen.queryByRole("button", { name: "Porovnat odpovědi" })).toBeNull();
       expect(onCompareClick).not.toHaveBeenCalled();
+    });
+
+    it("keeps the dashboard's rows inert, with no way into the comparison", async () => {
+      const user = userEvent.setup();
+      const { onCompareTopicClick, onCompareImportantClick } = renderShared();
+
+      // The finding is still there; it just isn't a control.
+      const [topic] = within(topicsCard()).getAllByRole("listitem");
+      expect(visibleText(topic as HTMLElement)).toBe("Doprava3Delta100\u00a0%");
+      expect(within(topicsCard()).queryByRole("button")).toBeNull();
+      expect(screen.queryByRole("button", { name: /Porovnat odpovědi k tématu/ })).toBeNull();
+      expect(screen.queryByRole("button", { name: "Porovnat důležité otázky" })).toBeNull();
+
+      await user.click(topic as HTMLElement);
+      expect(onCompareTopicClick).not.toHaveBeenCalled();
+      expect(onCompareImportantClick).not.toHaveBeenCalled();
+    });
+
+    it("still unfolds the tail, and still opens a party's comparison beside the ranking", async () => {
+      const user = userEvent.setup();
+      renderShared();
+
+      await user.click(screen.getByRole("button", { name: "Zobrazit další strany (2)" }));
+      expect(rows()).toHaveLength(7);
+      // Nothing is left under the list once the tail is out.
+      expect(screen.queryByRole("button", { name: /Zobrazit další strany/ })).toBeNull();
+
+      await user.click(rowButton("Alfa"));
+      expect(screen.getByRole("region", { name: "Alfa" })).toBeInTheDocument();
+    });
+
+    it("replays the ranking it is handed instead of computing one from the answers", () => {
+      // The answers alone rank Delta first (see the fixture); the stored ranking says otherwise, and wins.
+      renderShared({
+        algorithmMatches: [
+          { id: ids.zeta, match: 90 },
+          { id: ids.delta, match: 10 },
+        ],
+      });
+      expect(rows().slice(0, 2).map(visibleText)).toEqual(["Největší shoda1.Zeta90\u00a0%", "2.Demokratická strana10\u00a0%"]);
+      // Everybody the stored ranking leaves out is unranked, and says so.
+      expect(within(rows()[2] as HTMLElement).getByText("Neodpověděli")).toBeInTheDocument();
+    });
+
+    it("writes nothing of the viewer's own: neither the answers nor the reveal", async () => {
+      const user = userEvent.setup();
+      const { answersStore } = renderShared();
+      const before = answersStore.getState().answers;
+
+      await user.click(rowButton("Alfa"));
+      await user.click(screen.getByRole("button", { name: /Zobrazit další strany/ }));
+      await user.click(screen.getByRole("button", { name: "Vyplnit vlastní kalkulačku" }));
+
+      expect(answersStore.getState().answers).toBe(before);
+      expect(window.sessionStorage.getItem(seenKey(calculatorId))).toBeNull();
     });
   });
 
