@@ -14,13 +14,12 @@ export type IntroductionPage = {
   embedContext: EmbedContextType;
   homepageHref: string;
   privacyHref?: string;
-  fallbackShortTitle?: string;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
 };
 
-export function IntroductionPage({ embedContext, homepageHref, privacyHref, fallbackShortTitle = "", calculator, onNextClick, onCloseClick }: IntroductionPage) {
+export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
@@ -37,7 +36,7 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, fall
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomMain>
-              <h2 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{calculator?.shortTitle || fallbackShortTitle}</h2>
+              <h2 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{calculator?.shortTitle}</h2>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>

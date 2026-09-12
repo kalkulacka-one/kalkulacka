@@ -37,8 +37,6 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
 
   return (
     <IntroductionPage
-      // TODO: drop this fallback — it hardcodes a past election as the heading for any calculator whose data has no shortTitle, which hides the missing data instead of surfacing it
-      fallbackShortTitle="Sněmovní 2025"
       homepageHref={canonical.homepage()}
       privacyHref={appConfig.links?.privacy}
       embedContext={embed}
