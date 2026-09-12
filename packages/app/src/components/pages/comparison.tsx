@@ -1,12 +1,12 @@
-// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
-import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@kalkulacka-one/app";
-import { EmbedFooter, Layout } from "@kalkulacka-one/app";
-import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { useTranslations } from "next-intl";
 
-import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+import { AppHeader, ComparisonGrid, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
+import { EmbedFooter } from "@/components/embed-footer";
+import { Layout } from "@/components/layout";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
 
 export type ComparisonPage = {
   embedContext: EmbedContextType;
@@ -21,6 +21,7 @@ export type ComparisonPage = {
 };
 
 export function ComparisonPage({ embedContext, homepageHref, privacyHref, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
+  const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
@@ -32,19 +33,19 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
               <AppHeader condensed={condensed} calculator={calculator}>
                 <AppHeader.Right>
                   <HideOnEmbed>
-                    <Button variant="link" color="neutral" size="small" aria-label="Затвори" onClick={onCloseClick}>
+                    <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                       <Icon icon={mdiClose} size="medium" decorative />
                     </Button>
                   </HideOnEmbed>
                 </AppHeader.Right>
                 <AppHeader.Bottom>
                   <AppHeader.BottomLeft condensed={condensed}>
-                    <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Назад кон резултатите">
+                    <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("comparison.back")}>
                       <Icon icon={mdiArrowLeft} size="medium" decorative />
                     </Button>
                   </AppHeader.BottomLeft>
                   <AppHeader.BottomMain condensed={condensed}>
-                    <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Споредба</h3>
+                    <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("comparison.title")}</h3>
                   </AppHeader.BottomMain>
                 </AppHeader.Bottom>
               </AppHeader>
