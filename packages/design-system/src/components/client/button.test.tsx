@@ -156,32 +156,6 @@ describe("Button", () => {
     });
   });
 
-  describe("legacy answer variant", () => {
-    it("should take the new geometry", () => {
-      const classes = classesOf({ variant: "answer", color: "primary" });
-      expect(classes).toEqual(expect.arrayContaining(["ko:rounded-control", "ko:h-fluid-action", "ko:px-6", "ko:border-2", "ko:bg-transparent"]));
-      expect(classes).not.toContain("ko:rounded-pill");
-      expect(classes).not.toContain("ko:rounded-br-none");
-      expect(classes).not.toContain("ko:border-0");
-    });
-
-    it("should keep its outlined, checked and just-clicked behaviour", () => {
-      expect(classesOf({ variant: "answer", color: "primary" })).toEqual(
-        expect.arrayContaining([
-          "ko:border-primary",
-          "ko:text-primary",
-          "ko:hover:bg-primary",
-          "ko:data-checked:bg-primary",
-          "ko:data-checked:text-on-bg-primary",
-          "ko:data-[just-clicked]:hover:!bg-transparent",
-          "ko:data-active:bg-primary-active",
-        ]),
-      );
-      expect(classesOf({ variant: "answer", color: "secondary" })).toEqual(expect.arrayContaining(["ko:border-secondary", "ko:text-secondary", "ko:data-checked:bg-secondary"]));
-      expect(classesOf({ variant: "answer", color: "neutral" })).toEqual(expect.arrayContaining(["ko:border-neutral", "ko:text-neutral", "ko:data-checked:bg-neutral"]));
-    });
-  });
-
   describe("sizes", () => {
     it("should size by padding instead of a fixed height", () => {
       expect(classesOf({ size: "small" })).toEqual(expect.arrayContaining(["ko:px-4", "ko:py-2", "ko:text-sm"]));

@@ -27,9 +27,8 @@ const buttonVariants = cva(
         large: "ko:px-7 ko:py-4 ko:text-[1.0625rem]",
       },
       /*
-       * Colour only reaches `solid` (and the legacy `answer`) through the
-       * compound variants below; `ghost`, `surface` and `plate` are neutral
-       * whatever is passed.
+       * Colour only reaches `solid` through the compound variants below;
+       * `ghost`, `surface` and `plate` are neutral whatever is passed.
        */
       color: {
         neutral: "",
@@ -53,16 +52,6 @@ const buttonVariants = cva(
           "ko:backdrop-blur-[12px] ko:backdrop-saturate-[1.4]",
           "ko:data-hover:bg-surface ko:data-hover:text-text-strong ko:data-hover:shadow-[inset_0_0_0_1.5px_var(--ko-color-border-strong),var(--ko-shadow-card-back)]",
         ],
-        /**
-         * The outlined answer toggle of the legacy question page, kept only
-         * because `ToggleButton variant="answer"` needs it until that page is
-         * replaced. It keeps its outlined, checked and just-clicked behaviour
-         * but takes the new geometry: control radius, fluid action height, no
-         * square corner.
-         *
-         * @deprecated Removed together with the legacy question page.
-         */
-        answer: ["ko:rounded-control ko:h-fluid-action ko:px-6", "ko:border-2 ko:bg-transparent"],
       },
     },
     defaultVariants: {
@@ -86,45 +75,6 @@ const buttonVariants = cva(
         color: "secondary",
         class: ["ko:bg-disagree ko:text-on-disagree", "ko:data-hover:bg-disagree-hover", "ko:data-active:bg-disagree-active"],
       },
-      {
-        variant: "answer",
-        color: "primary",
-        class: [
-          "ko:border-primary ko:text-primary",
-          "ko:hover:bg-primary ko:hover:text-on-bg-primary",
-          "ko:data-[just-clicked]:hover:!bg-transparent ko:data-[just-clicked]:hover:!text-primary",
-          "ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
-          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-primary ko:data-checked:active:bg-primary-active/10 ko:data-checked:active:border-primary",
-          "ko:data-checked:data-[just-clicked]:hover:!bg-primary ko:data-checked:data-[just-clicked]:hover:!text-on-bg-primary",
-          "ko:data-active:bg-primary-active ko:data-active:border-primary-active ko:data-active:hover:bg-primary-active ko:data-active:text-on-bg-primary",
-        ],
-      },
-      {
-        variant: "answer",
-        color: "secondary",
-        class: [
-          "ko:border-secondary ko:text-secondary",
-          "ko:hover:bg-secondary ko:hover:text-on-bg-secondary",
-          "ko:data-[just-clicked]:hover:!bg-transparent ko:data-[just-clicked]:hover:!text-secondary",
-          "ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
-          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-secondary ko:data-checked:active:bg-secondary-active/10 ko:data-checked:active:border-secondary",
-          "ko:data-checked:data-[just-clicked]:hover:!bg-secondary ko:data-checked:data-[just-clicked]:hover:!text-on-bg-secondary",
-          "ko:data-active:bg-secondary-active ko:data-active:border-secondary-active ko:data-active:hover:bg-secondary-active ko:data-active:text-on-bg-secondary",
-        ],
-      },
-      {
-        variant: "answer",
-        color: "neutral",
-        class: [
-          "ko:border-neutral ko:text-neutral",
-          "ko:hover:bg-neutral ko:hover:text-on-bg-neutral",
-          "ko:data-[just-clicked]:hover:!bg-transparent ko:data-[just-clicked]:hover:!text-neutral",
-          "ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral",
-          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-neutral ko:data-checked:active:bg-neutral-active/10 ko:data-checked:active:border-neutral",
-          "ko:data-checked:data-[just-clicked]:hover:!bg-neutral ko:data-checked:data-[just-clicked]:hover:!text-on-bg-neutral",
-          "ko:data-active:bg-neutral-active ko:data-active:border-neutral-active ko:data-active:hover:bg-neutral-active ko:data-active:text-on-bg-neutral",
-        ],
-      },
     ],
   },
 );
@@ -135,15 +85,16 @@ export type ButtonVariant = NonNullable<ButtonVariantProps["variant"]>;
 export type ButtonSize = NonNullable<ButtonVariantProps["size"]>;
 
 /**
- * Variant names of the retired design, accepted so the screens that have not
- * been ported yet keep compiling. `fill` is the `solid` pill, `outline` the
- * `surface` one and `link` the `ghost`.
+ * Variant names of the retired design, still used by the screens the port did
+ * not touch — the homepage and content pages, the subscribe, donate and
+ * city-signup forms. `fill` is the `solid` pill, `outline` the `surface` one
+ * and `link` the `ghost`.
  *
- * @deprecated Removed with the cleanup PR once the last consumer is ported; use `solid`, `surface` or `ghost`.
+ * @deprecated Removed once those pages are restyled; use `solid`, `surface` or `ghost`.
  */
 export type LegacyButtonVariant = "fill" | "outline" | "link";
 
-/** @deprecated Removed with the cleanup PR together with `LegacyButtonVariant`. */
+/** @deprecated Removed together with `LegacyButtonVariant`. */
 const legacyVariants = {
   fill: "solid",
   outline: "surface",

@@ -153,10 +153,9 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   );
 
   /*
-   * No donate card: this site has no donation platform (the legacy
-   * `calculator/components/client/donate-card.tsx` is a stub that renders
-   * nothing), so the slot the Czech and Slovak pages fill stays empty rather
-   * than mounting a card with nothing in it.
+   * No donate card: this site has no donation platform, so the slot the Czech
+   * and Slovak pages fill stays empty rather than mounting a card with nothing
+   * in it.
    */
   return (
     <ResultPage

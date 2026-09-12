@@ -48,30 +48,6 @@
         "neutral": "Nevím",
         "none": "Bez odpovědi"
       },
-      "embedAttribution": {
-        "broughtBy": "Přináší"
-      },
-      "guide": {
-        "agreement": {
-          "title": "Shoda",
-          "description": "Při shodě s Vaší odpovědí strana nebo politik dostane bod"
-        },
-        "disagreement": {
-          "title": "Neshoda",
-          "description": "Při neshodě bod naopak ztratí"
-        },
-        "skip": {
-          "title": "Přeskočit",
-          "description": "Otázku můžete přeskočit a nebude se do výpočtu počítat"
-        },
-        "important": {
-          "title": "Důležité otázky",
-          "description": "Pro vás důležité otázky označte hvězdičkou. Shody a neshody pak budou váženější."
-        }
-      },
-      "guideNavigationCard": {
-        "startButton": "Začít odpovídat"
-      },
       "guidePage": {
         "title": "Jak to funguje",
         "description": "Vyzkoušejte si to na cvičné kartě — nic z ní se nikam nezapočítá.",
@@ -118,9 +94,6 @@
       "helpDialog": {
         "title": "Jak to funguje",
         "close": "Zavřít"
-      },
-      "introductionNavigationCard": {
-        "continueButton": "Pokračovat"
       },
       "introductionPage": {
         "description": "Odpovíte na {count, plural, one {# otázku} few {# otázky} other {# otázek}} a uvidíte, ke komu máte nejblíž.",
@@ -172,22 +145,6 @@
         "cancel": "Zrušit",
         "confirm": "Smazat a začít znovu",
         "close": "Zavřít"
-      },
-      "publicResultNavigationCard": {
-        "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
-      },
-      "questionNavigationCard": {
-        "guide": "Návod",
-        "previous": "Předchozí",
-        "next": "Další",
-        "skip": "Přeskočit",
-        "yes": "Ano",
-        "no": "Ne",
-        "important": "Pro mě důležité"
-      },
-      "resultNavigationCard": {
-        "compareButton": "Porovnat",
-        "shareButton": "Sdílet"
       },
       "resultPage": {
         "title": "Moje shoda",
@@ -274,9 +231,6 @@
         "linkCopied": "Odkaz zkopírován",
         "linkFailed": "Odkaz se nepodařilo vytvořit. Zkuste to prosím znovu."
       },
-      "reviewNavigationCard": {
-        "showResultsButton": "Zobrazit výsledky"
-      },
       "reviewPage": {
         "title": "Rekapitulace",
         "description": "Zkontrolujte odpovědi, než se podíváte na výsledek. Klepnutím na otázku ji můžete změnit.",
@@ -297,11 +251,6 @@
         "important": "Pro mě důležité",
         "skip": "Přeskočit",
         "close": "Zavřít"
-      },
-      "reviewQuestionCard": {
-        "yes": "Ano",
-        "no": "Ne",
-        "important": "Pro mě důležité"
       }
     }
   }

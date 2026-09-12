@@ -20,8 +20,8 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["solid", "ghost", "surface", "plate", "answer"],
-      description: "`answer` is deprecated: it only backs the legacy question page's answer toggle. `fill`, `outline` and `link` are still accepted as aliases of `solid`, `surface` and `ghost`.",
+      options: ["solid", "ghost", "surface", "plate"],
+      description: "`fill`, `outline` and `link` are still accepted as aliases of `solid`, `surface` and `ghost` for the content pages that have not been restyled.",
       defaultValue: {
         summary: "solid",
       },
@@ -29,7 +29,7 @@ const meta: Meta<typeof Button> = {
     color: {
       control: "select",
       options: ["neutral", "primary", "secondary"],
-      description: "Applies to `solid` (and the legacy `answer`); `ghost`, `surface` and `plate` are neutral regardless.",
+      description: "Applies to `solid`; `ghost`, `surface` and `plate` are neutral regardless.",
       defaultValue: {
         summary: "neutral",
       },
@@ -154,24 +154,6 @@ export const IconOnly: ButtonStory = {
     children: createElement(Icon, { icon: icons.close, decorative: true }),
     variant: "ghost",
     "aria-label": "Zavřít",
-  },
-};
-
-/** The outlined answer toggle of the legacy question page. Deprecated; goes away with that page. */
-export const LegacyAnswer: ButtonStory = {
-  name: "Legacy: answer (deprecated)",
-  args: {
-    children: "Ano",
-    variant: "answer",
-    color: "primary",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Deprecated. Kept only because the legacy question page\'s `ToggleButton variant="answer"` needs it; it is removed together with that page. New screens use the `solid` pill in the `primary` or `secondary` color instead.',
-      },
-    },
   },
 };
 

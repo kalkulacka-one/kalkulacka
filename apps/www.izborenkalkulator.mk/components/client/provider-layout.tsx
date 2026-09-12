@@ -2,7 +2,8 @@ import type { CalculatorData } from "@kalkulacka-one/app";
 
 import type { PropsWithChildren } from "react";
 
-import { AnswersStoreProvider, CalculatorStoreProvider } from "@/calculator/client";
+import { AnswersStoreProvider } from "./answers-store-provider";
+import { CalculatorStoreProvider } from "./calculator-store-provider";
 
 export type ProviderLayout = PropsWithChildren<{
   calculatorData: CalculatorData;
