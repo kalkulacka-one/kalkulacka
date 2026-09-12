@@ -248,6 +248,31 @@
         "none": "No answer",
         "close": "Close"
       },
+      "shareDialog": {
+        "title": "Share your result",
+        "close": "Close",
+        "preview": "Preview of the shared image",
+        "themeLabel": "Theme",
+        "themeLight": "Light",
+        "themeDark": "Dark",
+        "themeAgree": "Agree",
+        "themeDisagree": "Disagree",
+        "formatLabel": "Format",
+        "formatStory": "Portrait",
+        "formatLandscape": "Landscape",
+        "shareImage": "Share image",
+        "copyImage": "Copy image",
+        "download": "Download",
+        "working": "Preparing…",
+        "saved": "Image saved",
+        "imageCopied": "Image copied",
+        "imageCopyFailedSaved": "The image could not be copied, so it was downloaded as a file.",
+        "failed": "The image could not be created. Please try again.",
+        "copyLink": "Copy link",
+        "copyingLink": "Creating the link…",
+        "linkCopied": "Link copied",
+        "linkFailed": "The link could not be created. Please try again."
+      },
       "reviewNavigationCard": {
         "showResultsButton": "Show results"
       },

@@ -26,3 +26,4 @@ export * from "./results-dashboard";
 export * from "./review-navigation-card";
 export * from "./review-page";
 export * from "./review-question-card";
+export * from "./share-dialog";

@@ -1,25 +1,32 @@
-import { ResultPage } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculatedMatches, useCalculator } from "@kalkulacka-one/app/client";
+import { ResultPage, type ResultPageShare } from "@kalkulacka-one/app";
+import { useAnswersStore, useCalculatedMatches, useCalculator, useCalculatorStore } from "@kalkulacka-one/app/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { ShareModal } from "@/calculator/components/client";
-import { CalculatorMenu, DonateCard, useEmbed } from "@/components/client";
+import { CalculatorMenu, DonateCard, useEmbed, useSessionStatus } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api";
+import { saveSessionData, shareSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
-import { comparisonFilterQuery, type RouteSegments, routes } from "@/lib/routing";
+import { canonical, comparisonFilterQuery, type RouteSegments, routes, stripEmbed } from "@/lib/routing";
+import { toProxiedAssetUrl } from "@/lib/share-asset-url";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const router = useRouter();
   const calculator = useCalculator();
+  const baseUrl = useCalculatorStore((state) => state.baseUrl);
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
   const locale = useLocale();
+  /*
+   * Whether there is a backend to mint a public link on: the sessions
+   * endpoint has answered this visit (see `SessionStatusProvider`). Without
+   * one — a local checkout, a fork that configured none — the share dialog is
+   * image-only rather than offering a "Kopírovat odkaz" that could only fail.
+   */
+  const sessionStatus = useSessionStatus();
 
   const algorithmMatches = useCalculatedMatches();
 
@@ -40,10 +47,13 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
 
   // A group calculator (`snemovni-2025/kalkulacka`) is named by its group and
   // variant keys; a standalone one by its own key. Neither carries a display
-  // name in the data, hence the config.
+  // name in the data, hence the config. The same two keys are what the asset
+  // proxy needs to find the calculator's pictures under the data endpoint.
+  const calculatorGroup = "calculatorGroup" in calculator ? calculator.calculatorGroup.key : undefined;
+  const calculatorKey = ("variant" in calculator ? calculator.variant?.key : undefined) ?? calculator.key;
   const { electionName, calculatorName } = calculatorNames({
-    group: "calculatorGroup" in calculator ? calculator.calculatorGroup.key : undefined,
-    key: ("variant" in calculator ? calculator.variant?.key : undefined) ?? calculator.key,
+    group: calculatorGroup,
+    key: calculatorKey,
     fallback: calculator.title || undefined,
   });
 
@@ -72,37 +82,81 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     router.push(`${comparisonRoute}${comparisonFilterQuery("important")}`);
   };
 
-  const handleShareClick = () => {
-    setIsShareModalOpen(true);
-  };
+  /*
+   * Everything that leaves the app — the address handed to the OS share sheet
+   * and the public link — is addressed outside any embed (`stripEmbed`): a
+   * link shared out of a partner's iframe should open the full site, not a
+   * chrome-stripped embed orphaned from the page it was designed to sit in.
+   */
+  const canonicalSegments = useMemo(() => stripEmbed(segments), [segments]);
+
+  /*
+   * The sheet's address is the calculator's *intro*, never this results page
+   * — a recipient who opened this page's own URL would see the sender's
+   * ranking, not a blank calculator waiting for their own answers. The origin
+   * comes from the page rather than from configuration: it has to be the
+   * site the reader is actually on (staging, a preview deployment), and there
+   * is no `window` to read it from during the server render, hence the
+   * effect.
+   */
+  const [shareUrl, setShareUrl] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    setShareUrl(new URL(routes.introduction(canonicalSegments, locale), window.location.origin).toString());
+  }, [canonicalSegments, locale]);
+
+  /*
+   * "Kopírovat odkaz": the existing `sessions:share` endpoint mints the
+   * session's public id (idempotently — a session that already has one gets
+   * the same one back, so pressing twice cannot mint two links to one
+   * result), and the link is the canonical public-result address the retired
+   * share modal copied. A mint that fails is reported and answered with
+   * `null`, which the dialog turns into its own message.
+   */
+  const requestShareLink = useCallback(async () => {
+    try {
+      const { publicId } = await shareSession(calculator.id);
+      return canonical.publicResult(canonicalSegments, publicId, locale);
+    } catch (error) {
+      reportError(error);
+      return null;
+    }
+  }, [calculator.id, canonicalSegments, locale]);
+
+  const share = useMemo<ResultPageShare>(
+    () => ({
+      url: shareUrl,
+      onRequestShareLink: sessionStatus === "ready" ? requestShareLink : undefined,
+      // The card's pictures go through the same-origin proxy: the canvas
+      // export needs readable pixels, and the data CDN sends no CORS header.
+      assetUrl: (url) => toProxiedAssetUrl(url, { assetBase: baseUrl, group: calculatorGroup, key: calculatorKey }) ?? url,
+    }),
+    [shareUrl, sessionStatus, requestShareLink, baseUrl, calculatorGroup, calculatorKey],
+  );
 
   const donateCardPosition = embed.isEmbed ? (embed.config?.donateCard ?? 1) : 5;
 
   return (
-    <>
-      <ResultPage
-        appTitle="Volební kalkulačka"
-        electionName={electionName}
-        calculatorName={calculatorName}
-        headerActions={<CalculatorMenu segments={segments} matches={algorithmMatches} />}
-        attributionHref={attributionHref}
-        logoMonochrome={logoMonochrome}
-        onBackClick={handleBackClick}
-        onCompareClick={handleCompareClick}
-        onCompareTopicClick={handleCompareTopicClick}
-        onCompareImportantClick={handleCompareImportantClick}
-        onShareClick={handleShareClick}
-        donateCardPosition={donateCardPosition}
-        donateCard={
-          <DonateCard source="result-card" logo dismissible>
-            <DonateCard.Heading>
-              Pomohla vám <span className="whitespace-nowrap">Volební kalkulačka?</span>
-            </DonateCard.Heading>
-            <DonateCard.Description>Volební kalkulačka je nezávislá a nezisková. Podpořte demokracii a pomozte milionům voličů.</DonateCard.Description>
-          </DonateCard>
-        }
-      />
-      <ShareModal calculatorId={calculator.id} segments={segments} isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
-    </>
+    <ResultPage
+      appTitle="Volební kalkulačka"
+      electionName={electionName}
+      calculatorName={calculatorName}
+      headerActions={<CalculatorMenu segments={segments} matches={algorithmMatches} />}
+      attributionHref={attributionHref}
+      logoMonochrome={logoMonochrome}
+      onBackClick={handleBackClick}
+      onCompareClick={handleCompareClick}
+      onCompareTopicClick={handleCompareTopicClick}
+      onCompareImportantClick={handleCompareImportantClick}
+      share={share}
+      donateCardPosition={donateCardPosition}
+      donateCard={
+        <DonateCard source="result-card" logo dismissible>
+          <DonateCard.Heading>
+            Pomohla vám <span className="whitespace-nowrap">Volební kalkulačka?</span>
+          </DonateCard.Heading>
+          <DonateCard.Description>Volební kalkulačka je nezávislá a nezisková. Podpořte demokracii a pomozte milionům voličů.</DonateCard.Description>
+        </DonateCard>
+      }
+    />
   );
 }
