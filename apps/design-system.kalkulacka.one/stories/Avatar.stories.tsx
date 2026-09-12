@@ -1,3 +1,4 @@
+// Ported from kalkulacka-2026/packages/ui/src/avatar/avatar.stories.tsx
 import { Avatar } from "@kalkulacka-one/design-system/server";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
@@ -5,183 +6,112 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 const meta: Meta<typeof Avatar> = {
   title: "Components/Avatar",
   component: Avatar,
+  tags: ["autodocs"],
+  args: { name: "Piráti a Starostové" },
   argTypes: {
-    shape: {
-      control: "select",
-      options: ["circle", "square"],
-    },
+    name: { control: "text" },
+    src: { control: "text" },
+    accent: { control: "color" },
     size: {
       control: "select",
       options: ["small", "medium", "large"],
+      defaultValue: { summary: "medium" },
     },
-    alignment: {
+    shape: {
       control: "select",
-      options: ["center", "top"],
+      options: ["circle", "square"],
+      defaultValue: { summary: "circle" },
     },
-    padding: {
-      control: "boolean",
-    },
-    backgroundColor: {
-      control: "color",
-    },
+    image: { control: "object" },
+    backgroundColor: { control: "color" },
+    alignment: { control: "select", options: ["center", "top"] },
+    padding: { control: "boolean" },
+    fit: { control: "select", options: ["cover", "contain"] },
+    className: { control: false },
   },
 };
 
 type AvatarStory = StoryObj<typeof meta>;
 
-export const PersonWithImage: AvatarStory = {
-  name: "Person with image",
-  args: {
-    shape: "circle",
-    size: "medium",
-    backgroundColor: "#ffffff",
-    alignment: "center",
-    image: {
-      original: "https://i.pravatar.cc/300?img=12",
-      md: "https://i.pravatar.cc/100?img=12",
-      sm: "https://i.pravatar.cc/80?img=12",
-    },
-  },
-};
-
-export const OrganizationWithImage: AvatarStory = {
-  name: "Organization with image",
-  args: {
-    shape: "square",
-    size: "medium",
-    backgroundColor: "#ffffff",
-    image: {
-      original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
-    },
-  },
-};
+/** No logo in the data — the initials carry it. */
+export const Initials: AvatarStory = {};
 
 export const Sizes: AvatarStory = {
-  name: "Size variants",
+  render: (args) => (
+    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      <Avatar {...args} size="small" />
+      <Avatar {...args} size="medium" />
+      <Avatar {...args} size="large" />
+    </div>
+  ),
+};
+
+/** A picture covers the initials opaquely when it loads. */
+export const WithPicture: AvatarStory = {
+  args: { name: "Portrét", src: "https://i.pravatar.cc/128?img=12" },
+};
+
+/**
+ * A URL that cannot load. The 2026 source promised the initials would show
+ * through; in practice the failed picture keeps its box and its surface fill
+ * (see the component's comment), so this renders as a blank disc with the ring.
+ */
+export const BrokenImage: AvatarStory = {
+  args: { src: "https://archiv.volebnikalkulacka.cz/does-not-exist.png" },
+};
+
+/** The candidate's accent: a ring around the face and a wash behind it, from the same colour the match bar uses. */
+export const Accent: AvatarStory = {
+  render: (args) => (
+    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      <Avatar {...args} accent="light-dark(#2563eb, #3b82f6)" />
+      <Avatar {...args} name="ANO 2011" accent="light-dark(#7c3aed, #a78bfa)" />
+      <Avatar {...args} name="ODS" accent="light-dark(#d97706, #fbbf24)" size="large" />
+      <Avatar {...args} name="Portrét" src="https://i.pravatar.cc/128?img=12" accent="light-dark(#db2777, #f472b6)" size="large" />
+    </div>
+  ),
+};
+
+/**
+ * The legacy match card's props, still honoured until it is replaced by
+ * `MatchRow`: a responsive `image` set, a square shape for organisations, a
+ * padded and contained logo over its own fill, and a portrait cropped to its
+ * top edge.
+ */
+export const Legacy: AvatarStory = {
+  name: "Legacy match card props",
   render: () => (
-    <div className="flex items-end gap-4">
-      <Avatar
-        shape="circle"
-        size="small"
-        backgroundColor="#ffffff"
-        image={{
-          original: "https://i.pravatar.cc/300?img=12",
-          md: "https://i.pravatar.cc/100?img=12",
-          sm: "https://i.pravatar.cc/80?img=12",
-        }}
-      />
-      <Avatar
-        shape="circle"
-        size="medium"
-        backgroundColor="#ffffff"
-        image={{
-          original: "https://i.pravatar.cc/300?img=12",
-          md: "https://i.pravatar.cc/100?img=12",
-          sm: "https://i.pravatar.cc/80?img=12",
-        }}
-      />
+    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
       <Avatar
         shape="circle"
         size="large"
-        backgroundColor="#ffffff"
+        backgroundColor="#e2e8f0"
+        alignment="top"
         image={{
           original: "https://i.pravatar.cc/300?img=12",
           md: "https://i.pravatar.cc/100?img=12",
           sm: "https://i.pravatar.cc/80?img=12",
         }}
       />
-    </div>
-  ),
-};
-
-export const CircleVsSquare: AvatarStory = {
-  name: "Circle vs Square",
-  render: () => (
-    <div className="flex items-center gap-4">
-      <div className="flex flex-col items-center gap-2">
-        <Avatar
-          shape="circle"
-          size="large"
-          backgroundColor="#ffffff"
-          image={{
-            original: "https://i.pravatar.cc/300?img=12",
-            md: "https://i.pravatar.cc/100?img=12",
-            sm: "https://i.pravatar.cc/80?img=12",
-          }}
-        />
-        <span className="text-sm text-slate-600">Circle</span>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <Avatar
-          shape="square"
-          size="large"
-          backgroundColor="#ffffff"
-          image={{
-            original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
-          }}
-        />
-        <span className="text-sm text-slate-600">Square</span>
-      </div>
-    </div>
-  ),
-};
-
-export const PortraitAlignment: AvatarStory = {
-  name: "Portrait with top alignment",
-  args: {
-    shape: "circle",
-    size: "medium",
-    backgroundColor: "#ffffff",
-    alignment: "top",
-    image: {
-      original: "https://i.pravatar.cc/300?img=12",
-      md: "https://i.pravatar.cc/100?img=12",
-      sm: "https://i.pravatar.cc/80?img=12",
-    },
-  },
-};
-
-export const WithPadding: AvatarStory = {
-  name: "Organization logo with padding",
-  args: {
-    shape: "square",
-    size: "medium",
-    backgroundColor: "#ffffff",
-    padding: true,
-    image: {
-      original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
-    },
-  },
-};
-
-export const PaddingComparison: AvatarStory = {
-  name: "With vs without padding",
-  render: () => (
-    <div className="flex items-center gap-4">
-      <div className="flex flex-col items-center gap-2">
-        <Avatar
-          shape="square"
-          size="large"
-          backgroundColor="#ffffff"
-          padding={false}
-          image={{
-            original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
-          }}
-        />
-        <span className="text-sm text-slate-600">No padding</span>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <Avatar
-          shape="square"
-          size="large"
-          backgroundColor="#ffffff"
-          padding={true}
-          image={{
-            original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
-          }}
-        />
-        <span className="text-sm text-slate-600">With padding</span>
-      </div>
+      <Avatar
+        shape="square"
+        size="large"
+        backgroundColor="#e2e8f0"
+        fit="contain"
+        padding
+        image={{
+          original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
+        }}
+      />
+      <Avatar
+        shape="square"
+        size="large"
+        backgroundColor="#e2e8f0"
+        fit="contain"
+        image={{
+          original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/ODS_logo.svg/200px-ODS_logo.svg.png",
+        }}
+      />
     </div>
   ),
 };

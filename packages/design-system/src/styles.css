@@ -408,6 +408,67 @@
     }
   }
 
+  /*
+   * The Meter's fill growing from nothing (`Meter`, and through it the bar
+   * along the top edge of every `MatchRow`). Grown with `transform` rather
+   * than by animating `width`: the width is already correct on the first
+   * frame, so the bar can never be measured mid-animation and nothing reflows
+   * on each tick; the component sets `origin-left`, which is what makes it
+   * read as filling rather than sliding in. `both`, so a delayed bar holds
+   * at zero through its stagger. The bar's job is to be comparable at a
+   * glance, and it does that standing still: the component adds
+   * `motion-reduce:animate-none`, because a collapsed duration alone would
+   * still honour the delay and leave a delayed bar invisible for that long.
+   * Ported from kalkulacka-2026/packages/ui/src/meter/meter.module.css (`grow`).
+   */
+  --animate-meter-grow: ko-meter-grow var(--ko-duration-slow) var(--ko-ease-spring) both;
+
+  @keyframes ko-meter-grow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  /*
+   * A `MatchRow` rising into place from below; the results list staggers the
+   * delays so the ranking assembles bottom-up with the winner landing last.
+   * `backwards`, not `both`: a forwards-filled `transform: none` from this
+   * keyframe would outrank every declarative transform and leave the card
+   * permanently inert under the pointer (see `.ko-pressable` below);
+   * `backwards` still holds the `from` state through the stagger delay, which
+   * is the only part that was ever needed. Switched off outright under reduced
+   * motion by the component, for the same reason as the Meter's.
+   * Ported from kalkulacka-2026/packages/ui/src/match-row/match-row.module.css (`rise`).
+   */
+  --animate-match-row-rise: ko-match-row-rise var(--ko-duration-slow) var(--ko-ease-spring) backwards;
+
+  @keyframes ko-match-row-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /*
+   * The `AvatarStack` popover arriving under its trigger.
+   * Ported from kalkulacka-2026/packages/ui/src/avatar-stack/avatar-stack.module.css (`stack-panel-in`).
+   */
+  --animate-stack-panel-in: ko-stack-panel-in var(--ko-duration-base) var(--ko-ease-spring);
+
+  @keyframes ko-stack-panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.96);
+    }
+  }
+
   /* Elevation, tinted with the neutral so shadows belong to the theme. */
   --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
   --shadow-card-next: 0 2px 8px -2px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -6px oklch(from var(--ko-shadow-color) l c h / 0.14);
@@ -1431,6 +1492,107 @@
     .ko-recap-header > * {
       overflow: hidden;
       min-height: 0;
+    }
+  }
+
+  /* --- Calculating -----------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/calculating/calculating.module.css.
+   *
+   * The choreography of the wait before the results: a ring counts around a
+   * circular gate while a strip of answer marks is pulled through it, then
+   * the gate shutters and the logo's percent sign lands in its place. The
+   * static arrangement is `ko:` utilities in calculating.tsx; what lives here
+   * is everything that moves, because it moves on literal timings measured
+   * against each other (the shutter closes at 1.15s exactly as the tape stops,
+   * the mark lands 70ms later) rather than on the control tempo the duration
+   * tokens describe — so the blanket reduction in @layer base does not reach
+   * it, and reduced motion has to be stated below.
+   */
+
+  /* The ring. 2πr for r=45. */
+  .ko-calculating-ring-fill {
+    stroke-dasharray: 282.74;
+    animation: ko-calculating-count 1.3s cubic-bezier(0.6, 0, 0.35, 1) both;
+  }
+
+  @keyframes ko-calculating-count {
+    from {
+      stroke-dashoffset: 282.74;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /*
+   * The gate: a circular aperture the tape is pulled through, sitting inside
+   * the ring. The round clip is what marries the two ideas — the same circle
+   * that counts the progress is the window the answers are read through. It
+   * shutters (fades) as the tape comes to rest.
+   */
+  .ko-calculating-gate {
+    animation: ko-calculating-shutter 0.22s ease 1.15s both;
+  }
+
+  @keyframes ko-calculating-shutter {
+    to {
+      opacity: 0;
+    }
+  }
+
+  /*
+   * The tape and its sprocket holes are pulled by the same keyframes, so holes
+   * and marks stay locked to each other — a strip whose perforations drift
+   * against its frames reads as two layers rather than one piece of film.
+   */
+  .ko-calculating-tape,
+  .ko-calculating-sprockets {
+    animation: ko-calculating-roll 1.15s linear both;
+  }
+
+  @keyframes ko-calculating-roll {
+    to {
+      transform: translateX(-48rem);
+    }
+  }
+
+  /*
+   * The resolve: the logo's own percent sign, landing as the gate closes. The
+   * overshoot is what makes it read as arriving rather than fading up.
+   */
+  .ko-calculating-percent {
+    animation: ko-calculating-land 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 1.22s both;
+  }
+
+  @keyframes ko-calculating-land {
+    from {
+      opacity: 0;
+      transform: scale(0.55);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /*
+   * Nothing moves. The tape is the part that would be unpleasant — a strip of
+   * high-contrast marks travelling at speed is exactly the motion this
+   * preference exists to switch off — so the gate is not merely stopped but
+   * removed, and the percent mark and the label carry the moment on their own.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .ko-calculating-gate {
+      display: none;
+    }
+
+    .ko-calculating-ring-fill {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+
+    .ko-calculating-percent {
+      animation: none;
     }
   }
 }

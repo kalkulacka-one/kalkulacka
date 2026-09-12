@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Logo } from "./logo";
+import { Logo, PERCENT_MARK_PATHS, PercentMark } from "./logo";
 
 describe("Logo", () => {
   it("renders the SVG as an image", () => {
@@ -59,5 +59,33 @@ describe("Logo", () => {
       const title = screen.queryByTitle("Volební kalkulačka");
       expect(title).not.toBeInTheDocument();
     });
+  });
+});
+
+describe("PercentMark", () => {
+  it("draws the three percent paths, decoratively, in currentColor", () => {
+    const { container } = render(<PercentMark />);
+    const svg = container.querySelector("svg") as SVGSVGElement;
+    expect(svg).toHaveAttribute("aria-hidden", "true");
+    expect(svg).toHaveAttribute("focusable", "false");
+    const paths = Array.from(svg.querySelectorAll("path"));
+    expect(paths.map((path) => path.getAttribute("d"))).toEqual([...PERCENT_MARK_PATHS]);
+    for (const path of paths) expect(path).toHaveAttribute("fill", "currentColor");
+  });
+
+  it("is 24px tall by default and keeps the mark's own aspect ratio", () => {
+    const { container } = render(<PercentMark />);
+    const svg = container.querySelector("svg") as SVGSVGElement;
+    expect(svg).toHaveAttribute("height", "24");
+    expect(svg).toHaveAttribute("width", "24");
+    expect(svg).toHaveAttribute("viewBox", "5 5 14.57 14.4");
+  });
+
+  it("scales by height and takes a class", () => {
+    const { container } = render(<PercentMark size={34} className="ko:absolute" />);
+    const svg = container.querySelector("svg") as SVGSVGElement;
+    expect(svg).toHaveAttribute("height", "34");
+    expect(svg).toHaveAttribute("width", "34");
+    expect(svg).toHaveClass("ko:absolute");
   });
 });
