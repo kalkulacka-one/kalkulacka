@@ -21,6 +21,7 @@ describe("Input", () => {
     );
     expect(screen.getByTestId("input")).toBeInTheDocument();
     expect(screen.getByTestId("icon")).toBeInTheDocument();
-    expect(screen.getByTestId("input")).toHaveClass(twMerge("ko:pl-14 ko:p-4"));
+    expect(screen.getByTestId("input")).toHaveClass("ko:p-4 ko:pl-14");
+    expect(twMerge("ko:p-4 ko:pl-14")).toBe("ko:p-4 ko:pl-14");
   });
 });

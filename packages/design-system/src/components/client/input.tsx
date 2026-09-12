@@ -23,7 +23,7 @@ const InputVariants = cva(
     variants: {
       variant: {
         default: "ko:p-4",
-        icon: "ko:pl-14 ko:p-4",
+        icon: "ko:p-4 ko:pl-14",
       },
     },
   },
