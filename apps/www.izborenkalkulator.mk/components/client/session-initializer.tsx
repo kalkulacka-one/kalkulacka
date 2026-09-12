@@ -6,6 +6,7 @@ import { initializeSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 
 import { useEmbed } from "./embed-context-provider";
+import { useSetSessionStatus } from "./session-status";
 
 type CalculatorWithVariant = {
   variant: { key: string };
@@ -21,6 +22,7 @@ export function SessionInitializer() {
   const initialized = useRef(false);
   const calculator = useCalculatorStore((state) => state.data.calculator);
   const embed = useEmbed();
+  const setSessionStatus = useSetSessionStatus();
 
   useEffect(() => {
     if (initialized.current) {
@@ -38,17 +40,22 @@ export function SessionInitializer() {
       calculatorGroup,
       calculatorVersion: calculator.version,
       embedName: embed.isEmbed ? embed.name : undefined,
-    }).catch((error: Response | Error) => {
-      if (error instanceof Response) {
-        if (error.status === 404 || error.status === 401) {
-          return;
+    })
+      // Answered: there is a backend, and the screens that need one — the
+      // share dialog's public link — may now offer it.
+      .then(() => setSessionStatus("ready"))
+      .catch((error: Response | Error) => {
+        setSessionStatus("unavailable");
+        if (error instanceof Response) {
+          if (error.status === 404 || error.status === 401) {
+            return;
+          }
+          reportError(new Error(`Session initialization failed: ${error.status} ${error.statusText}`));
+        } else {
+          reportError(error);
         }
-        reportError(new Error(`Session initialization failed: ${error.status} ${error.statusText}`));
-      } else {
-        reportError(error);
-      }
-    });
-  }, [calculator, embed]);
+      });
+  }, [calculator, embed, setSessionStatus]);
 
   return null;
 }

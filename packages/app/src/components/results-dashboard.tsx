@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { answerTone } from "@/answers";
-import { type AnswerDistribution, MIN_TOPIC_ANSWERS, type QuestionConsensus, type TopicMatch, topicIcon } from "@/insights";
+import { type AnswerDistribution, MIN_TOPIC_ANSWERS, type QuestionConsensus, type TopicMatch, topicIcon, topicSlug } from "@/insights";
 import { copyText } from "@/utilities";
 import { avatarSrc } from "@/view-models";
 
@@ -27,9 +27,14 @@ export type ResultsDashboard = {
    * becomes an entry point, and the important card gets an action. Absent on
    * a shared result, where that view would compare the *visitor's* (likely
    * empty) answers, not the ones on screen. The app owns the routes, so the
-   * dashboard only says which topic the reader chose.
+   * dashboard only says which topic the reader chose — by its slug
+   * (`topicSlug`), the form a URL carries and the comparison filter reads.
+   *
+   * A topic whose name yields no slug — one written in Cyrillic, say — has
+   * no address for the app to link to, so its row stays plain text even when
+   * the handler is here: a button that led nowhere would be worse than none.
    */
-  onCompareTopicClick?: (topic: string) => void;
+  onCompareTopicClick?: (topicSlug: string) => void;
   onCompareImportantClick?: () => void;
 };
 
@@ -298,16 +303,19 @@ export function ResultsDashboard({ distribution, topics, important, againstTheGr
                     </>
                   );
 
+                  // No slug, no link: the row is a finding on its own, not a way in.
+                  const slug = topicSlug(topic.topic);
+
                   return (
                     <li key={topic.topic}>
-                      {onCompareTopicClick ? (
+                      {onCompareTopicClick && slug !== undefined ? (
                         /*
                           The whole row is the control, with the chevron only
                           saying so — an `aria-label` names the destination,
                           because the row's visible text is a *finding*
                           ("Doprava, nejblíž Piráti") rather than an action.
                         */
-                        <button type="button" className={topicButtonClasses} onClick={() => onCompareTopicClick(topic.topic)} aria-label={t("topicCompare", { topic: topic.topic })}>
+                        <button type="button" className={topicButtonClasses} onClick={() => onCompareTopicClick(slug)} aria-label={t("topicCompare", { topic: topic.topic })}>
                           {row}
                           <span className={topicChevronClasses} aria-hidden="true">
                             <Icon icon={icons.chevronRightThin} size={null} decorative className="koa:size-[1.125rem]" />

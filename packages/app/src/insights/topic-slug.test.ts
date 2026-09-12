@@ -18,8 +18,14 @@ describe("topicSlug", () => {
     expect(topicSlug("Agenda 2030")).toBe("agenda-2030");
   });
 
-  it("is empty for a topic with nothing to keep", () => {
-    expect(topicSlug("—")).toBe("");
+  it("has no slug for a topic with nothing to keep", () => {
+    expect(topicSlug("—")).toBeUndefined();
+  });
+
+  it("has no slug for a name in another script, rather than an empty one to put in a URL", () => {
+    // The Macedonian calculator's topics: Latin-only rules leave nothing of them.
+    expect(topicSlug("Економија")).toBeUndefined();
+    expect(topicSlug("Владеење на правото")).toBeUndefined();
   });
 });
 
@@ -35,5 +41,11 @@ describe("topicFromSlug", () => {
     expect(topicFromSlug("vesmir", topics)).toBeUndefined();
     expect(topicFromSlug(undefined, topics)).toBeUndefined();
     expect(topicFromSlug("", topics)).toBeUndefined();
+  });
+
+  it("never resolves a slug-less topic, whatever the slug asked for", () => {
+    // Two Cyrillic topics both have no slug; neither is "the" match for anything.
+    expect(topicFromSlug("", ["Економија", "Вредности"])).toBeUndefined();
+    expect(topicFromSlug("ekonomija", ["Економија", "Вредности"])).toBeUndefined();
   });
 });
