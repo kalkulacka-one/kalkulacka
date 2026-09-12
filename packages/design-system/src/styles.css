@@ -1,5 +1,7 @@
 @import 'tailwindcss' prefix(ko);
 
+@source not "**/*.test.{ts,tsx}";
+
 :root {
   color-scheme: light dark;
 }

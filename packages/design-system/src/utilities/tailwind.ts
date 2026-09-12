@@ -1,5 +1,7 @@
 import { extendTailwindMerge } from "tailwind-merge";
 
-export const twMerge = extendTailwindMerge({
-  prefix: "ko:",
-});
+export function createTwMerge(prefix: string) {
+  return extendTailwindMerge({ prefix });
+}
+
+export const twMerge = createTwMerge("ko");

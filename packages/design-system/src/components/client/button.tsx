@@ -16,7 +16,7 @@ export const ButtonVariants = cva(
     "ko:border-2",
     "ko:select-none ko:data-hover:cursor-pointer",
     "ko:font-semibold ko:tracking-[.01em]",
-    "ko:rounded-br-none ko:rounded-2xl",
+    "ko:rounded-2xl ko:rounded-br-none",
     "ko:text-s",
     "ko:data-disabled:cursor-not-allowed",
     "ko:grid ko:grid-flow-col ko:place-items-center ko:place-content-center ko:gap-1",
@@ -31,7 +31,7 @@ export const ButtonVariants = cva(
       variant: {
         fill: [""],
         outline: ["ko:bg-transparent"],
-        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
+        link: ["ko:bg-transparent"],
         answer: ["ko:px-6"],
       },
       color: {
@@ -46,6 +46,10 @@ export const ButtonVariants = cva(
       color: "primary",
     },
     compoundVariants: [
+      {
+        variant: "link",
+        class: ["ko:border-transparent", "ko:data-disabled:border-transparent"],
+      },
       {
         variant: "fill",
         color: "primary",

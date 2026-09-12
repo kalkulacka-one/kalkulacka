@@ -1,4 +1,4 @@
-import { twMerge } from "@kalkulacka-one/design-system/utilities";
+import { twMerge } from "@/utilities/tailwind";
 
 export type Layout = {
   children: React.ReactNode;
