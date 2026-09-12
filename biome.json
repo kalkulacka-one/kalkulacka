@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/styles.css", "!**/globals.css"]
+    "includes": ["**", "!**/styles.css", "!**/globals.css", "!**/tokens.css"]
   },
   "assist": {
     "actions": {

@@ -31,7 +31,7 @@ export default function Page() {
                 <span className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-2.5 py-1 font-semibold text-primary-700">Изборен компас</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">10 минути</span>
               </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Кој ги споделува вашите вредности?</h2>
+              <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Кој ги споделува вашите вредности?</h2>
               <p className="mt-2 text-slate-500">Откријте кои партии застапуваат слични вредности како вас.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/kompas-2025" className="grid">

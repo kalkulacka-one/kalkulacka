@@ -32,7 +32,7 @@ export default function Page() {
         </Link>
 
         {/* Heading */}
-        <h1 className="mt-4 font-display ko:font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Pomozte nám s kalkulačkou pro vaše město</h1>
+        <h1 className="mt-4 font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Pomozte nám s kalkulačkou pro vaše město</h1>
         <p className="mt-4 max-w-prose text-slate-500">
           Ke komunálním volbám 2026 připravujeme volební kalkulačky pro vybraná města. Chcete, aby vznikla i pro to vaše? Vyberte město, nechte nám na sebe e-mail a ozveme se vám.
         </p>
@@ -46,7 +46,7 @@ export default function Page() {
                   <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">Komunální volby 2026</span>
                   <span className="rounded-full bg-slate-100 px-2.5 py-1">9.&nbsp;a&nbsp;10.&nbsp;října&nbsp;2026</span>
                 </div>
-                <h2 className="font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Přidejte se!</h2>
+                <h2 className="font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Přidejte se!</h2>
                 <p className="text-slate-500">
                   Kalkulačka pro vaše město vznikne jen s pomocí lidí, kteří tam žijí, vědí, co se ve městě řeší, a znají místní kandidáty — od těch totiž potřebujeme získat odpovědi na otázky. Dáme
                   vám vědět, jak se můžete zapojit.

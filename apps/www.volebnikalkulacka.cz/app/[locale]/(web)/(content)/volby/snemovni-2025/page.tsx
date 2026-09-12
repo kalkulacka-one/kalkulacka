@@ -31,7 +31,7 @@ export default function Page() {
         </Link>
 
         {/* Heading */}
-        <h1 className="mt-4 font-display ko:font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Sněmovní volby 2025</h1>
+        <h1 className="mt-4 font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Sněmovní volby 2025</h1>
         <p className="mt-4 max-w-prose text-slate-500">Volby do Poslanecké sněmovny proběhly 3. a 4. října 2025. Všechny kalkulačky si můžete vyplnit i po volbách.</p>
 
         {/* Featured cards */}
@@ -44,7 +44,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">42 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
               </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo zastává vaše postoje?</h2>
+              <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo zastává vaše postoje?</h2>
               <p className="mt-2 text-slate-500">Klasická Volební kalkulačka, jak ji znáte už skoro 20 let.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/volby/snemovni-2025/kalkulacka" className="grid">
@@ -64,7 +64,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">35 hlasování</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
               </div>
-              <h2 className="mt-4 font-display ko:font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo vás zastupoval ve Sněmovně?</h2>
+              <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo vás zastupoval ve Sněmovně?</h2>
               <p className="mt-2 text-slate-500">Žádné sliby, ale skutečná hlasování poslanců ve Sněmovně za končící volební období.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/volby/snemovni-2025/inventura" className="grid">
@@ -78,7 +78,7 @@ export default function Page() {
         </div>
 
         {/* Other calculators */}
-        <h2 className="mt-16 md:mt-20 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">Další volební kalkulačky</h2>
+        <h2 className="mt-16 md:mt-20 font-display font-bold tracking-tight text-slate-700 text-3xl">Další volební kalkulačky</h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
             <div className="p-6 h-full flex flex-col">
@@ -87,7 +87,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">25 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">5 minut</span>
               </div>
-              <h3 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Nejužitečnějších 5 minut před volbami</h3>
+              <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Nejužitečnějších 5 minut před volbami</h3>
               <p className="mt-1 text-slate-500">Těch 25 nejklíčovějších otázek, které vám zaberou jen 5 minut.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/volby/snemovni-2025/expresni" className="grid">
@@ -106,7 +106,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">100 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">30 minut</span>
               </div>
-              <h3 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Všech 100 otázek pro „politické fajnšmekry"</h3>
+              <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Všech 100 otázek pro „politické fajnšmekry"</h3>
               <p className="mt-1 text-slate-500">Nejrozsáhlejší verze se všemi 100 otázkami, na které jsme se ptali.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/volby/snemovni-2025/ultimatni" className="grid">
@@ -120,7 +120,7 @@ export default function Page() {
         </div>
 
         {/* Thematic calculators */}
-        <h2 className="mt-12 font-display ko:font-display font-bold tracking-tight text-slate-700 text-3xl">Tématické volební kalkulačky</h2>
+        <h2 className="mt-12 font-display font-bold tracking-tight text-slate-700 text-3xl">Tématické volební kalkulačky</h2>
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3 items-stretch">
           <Card shadow="hard" border corner="topLeft" className="h-full !border-slate-200">
             <div className="p-6 h-full flex flex-col">
@@ -131,7 +131,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">35 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
               </div>
-              <h3 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">35 otázek, které pálí nejen mladou generaci</h3>
+              <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">35 otázek, které pálí nejen mladou generaci</h3>
               <p className="mt-1 text-slate-500">
                 Témata, která podle výzkumu pálí mladou generaci. Ve spolupráci s{" "}
                 <a href="https://dikyzemuzem.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
@@ -155,7 +155,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">20 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">5 minut</span>
               </div>
-              <h3 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo má plán pro klima?</h3>
+              <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Kdo má plán pro klima?</h3>
               <p className="mt-1 text-slate-500">
                 Výběr otázek ke klimatické změně: povolenky, energetika, doprava. Ve spolupráci s{" "}
                 <a href="https://faktaoklimatu.cz" target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
@@ -179,7 +179,7 @@ export default function Page() {
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">25 otázek</span>
                 <span className="rounded-full bg-slate-100 px-2.5 py-1">10 minut</span>
               </div>
-              <h3 className="mt-3 font-display ko:font-display font-bold tracking-tight text-slate-700 text-xl">Kdo sdílí vaše hodnoty?</h3>
+              <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Kdo sdílí vaše hodnoty?</h3>
               <p className="mt-1 text-slate-500">Hodnotové otázky místo konkrétních návrhů. Zjistěte, které strany zastávají podobné hodnoty jako vy.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
                 <Link href="/volby/snemovni-2025/kompas" className="grid">
