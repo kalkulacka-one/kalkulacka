@@ -8,7 +8,7 @@ import type { AnswerViewModel } from "@/view-models/answer";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "h-[138px]";
+const HEIGHT = "koa:h-[138px]";
 
 export type QuestionNavigationCard = {
   current: number;
