@@ -11,6 +11,13 @@ export type ComparisonAnswer = {
   tone: AnswerMarkTone;
   /** How the answer reads aloud, e.g. "Ano" — the mark is a bare coloured circle, so this string *is* the answer. */
   label: string;
+  /**
+   * What stands behind the mark where it is not one recorded answer but many
+   * summarised — e.g. "Pro 12 z 12 zastupitelů". Shown under the statement and
+   * read out after the answer, because a mark that stands for a majority and
+   * one that stands for a single voice look identical otherwise.
+   */
+  detail?: string;
 };
 
 export type ComparisonRow = {
@@ -99,6 +106,11 @@ const statementClasses = "ko:col-start-1 ko:m-0 ko:min-w-0 ko:pt-0.5 ko:font-san
 
 const starClasses = "ko:inline ko:size-[13px] ko:align-[-0.15em] ko:mr-1.5 ko:text-text-muted";
 
+/* Sits in the statement's column, directly under it — the tally is about the
+   mark, but the mark's column has no room for words. Tabular figures so "8/9"
+   and "12/12" line up down the list rather than jittering. */
+const detailClasses = "ko:col-start-1 ko:m-0 ko:mt-1 ko:font-sans ko:text-[0.75rem] ko:leading-[1.3] ko:text-text-muted ko:tabular-nums";
+
 /*
  * The party's own words.
  *
@@ -173,8 +185,18 @@ export function ComparisonList({ rows, labels, resetKey }: ComparisonListProps) 
               {row.important ? <VisuallyHidden> ({labels.important})</VisuallyHidden> : null}
             </p>
 
-            <AnswerMark tone={row.candidate.tone} label={`${labels.candidate}: ${row.candidate.label}`} size="small" />
+            <AnswerMark tone={row.candidate.tone} label={`${labels.candidate}: ${row.candidate.label}${row.candidate.detail ? `, ${row.candidate.detail}` : ""}`} size="small" />
             <AnswerMark tone={row.user.tone} label={`${labels.you}: ${row.user.label}`} size="small" />
+
+            {/* Under the statement, not under the mark: the mark's column is
+                1.5rem wide and a tally does not fit in it at any legible size.
+                `aria-hidden` — it is already in the mark's own label above,
+                and reading it twice would make every row say it twice. */}
+            {row.candidate.detail ? (
+              <p className={detailClasses} aria-hidden="true">
+                {row.candidate.detail}
+              </p>
+            ) : null}
 
             {/*
               A grid child in its own right rather than nested under the

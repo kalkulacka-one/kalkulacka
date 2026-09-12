@@ -46,7 +46,9 @@
         "yes": "Ano",
         "no": "Ne",
         "neutral": "Nevím",
-        "none": "Bez odpovědi"
+        "none": "Bez odpovědi",
+        "majorityNote": "Značka ukazuje, jak hlasovala většina zastupitelů za tuto stranu.",
+        "majorityTally": "Shodně hlasovalo {agreeing} z {total} zastupitelů"
       },
       "guidePage": {
         "title": "Jak to funguje",

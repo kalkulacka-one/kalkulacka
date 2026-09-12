@@ -74,6 +74,10 @@ const percentClasses = "koa:m-0 koa:mt-0.5 koa:font-(family-name:--ko-font-displ
    statements and marks scrolling beneath them. */
 const filtersClasses = "koa:flex-none koa:px-6 koa:pb-3";
 
+/* Above the filter chips and on the same inset as the rows it explains. Muted
+   and small: it is a caption for the column, not a warning. */
+const majorityNoteClasses = "koa:flex-none koa:m-0 koa:px-6 koa:pb-3 koa:font-(family-name:--ko-font-sans) koa:text-[0.8125rem] koa:leading-[1.4] koa:text-(--ko-color-text-muted)";
+
 /*
  * The grab handle. Phone only — on a desktop the pane is a column, not a sheet,
  * and there is nothing to drag it away from. `touch-none` claims the vertical
@@ -232,25 +236,33 @@ export function ComparisonPane({ matches, selectedId, onClose, formatPercent, ch
   const comparison = useMemo(() => {
     if (!selected) return undefined;
 
-    return getCandidateAnswerComparison(selected.candidate.id, answers, candidatesAnswers, questions)
+    return getCandidateAnswerComparison(selected.candidate.id, answers, candidatesAnswers, questions, selected.candidate.nestedCandidates ?? [])
       .filter((entry) => entry.userAnswer !== undefined)
       .map((entry) => {
         const userTone = answerTone({ questionId: entry.questionId, answer: entry.userAnswer });
         const candidateTone = answerTone({ questionId: entry.questionId, answer: entry.candidateAnswer });
+        /* Only where the mark stands for a majority — a tally under an answer
+           the candidate gave itself would be saying "1 of 1". */
+        const detail = entry.candidateTally && entry.candidateTally.agreeing > 0 ? t("majorityTally", entry.candidateTally) : undefined;
 
         return {
           row: {
             id: entry.questionId,
             statement: entry.questionText ?? "",
             user: { tone: userTone, label: answerLabel(userTone) },
-            candidate: { tone: candidateTone, label: answerLabel(candidateTone) },
+            candidate: { tone: candidateTone, label: answerLabel(candidateTone), ...(detail ? { detail } : {}) },
             important: entry.isImportant === true,
             ...(entry.candidateComment ? { comment: entry.candidateComment } : {}),
           } satisfies ComparisonRow,
           agreement: agreementOf(entry.userAnswer, entry.candidateAnswer),
         };
       });
-  }, [selected, answers, candidatesAnswers, questions, answerLabel]);
+  }, [selected, answers, candidatesAnswers, questions, answerLabel, t]);
+
+  /* The note belongs to the whole comparison, not to a row: every mark in it
+     is a majority, and saying so once at the top is what stops the reader
+     taking the first one for the party's own recorded answer. */
+  const showsMajorities = useMemo(() => (comparison ?? []).some((entry) => entry.row.candidate.detail !== undefined), [comparison]);
 
   /*
    * Starting over on the filter every time a different comparison opens, so a
@@ -337,6 +349,8 @@ export function ComparisonPane({ matches, selectedId, onClose, formatPercent, ch
 
             <IconButton icon={icons.close} label={t("close")} onClick={closeComparison} />
           </div>
+
+          {showsMajorities ? <p className={majorityNoteClasses}>{t("majorityNote")}</p> : null}
 
           {comparisonCounts.match > 0 || comparisonCounts.mismatch > 0 || comparisonCounts.important > 0 ? (
             <div className={filtersClasses}>

@@ -46,7 +46,9 @@
         "yes": "Yes",
         "no": "No",
         "neutral": "Don't know",
-        "none": "No answer"
+        "none": "No answer",
+        "majorityNote": "The mark shows how the majority of this party's councillors voted.",
+        "majorityTally": "{agreeing} of {total} councillors voted the same way"
       },
       "guidePage": {
         "title": "How it works",

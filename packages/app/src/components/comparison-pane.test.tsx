@@ -112,7 +112,90 @@ const chips = () => within(screen.getByRole("group", { name: "Filtrovat odpověd
 const rows = () => within(screen.getByRole("list")).getAllByRole("listitem");
 const statements = () => rows().map((row) => within(row as HTMLElement).getByText(/^Tvrzení/).textContent);
 
+const nestedIds = {
+  koalice: "10101010-1010-4101-8101-101010101010",
+  marie: "20202020-2020-4202-8202-202020202020",
+  martin: "30303030-3030-4303-8303-303030303030",
+  magda: "40404040-4040-4404-8404-404040404040",
+} as const;
+
+/** A party that voted nothing itself: on q1 two of its three councillors voted yes, on q2 they split evenly. */
+const nestedCalculatorData: CalculatorData = {
+  ...calculatorData,
+  data: {
+    ...calculatorData.data,
+    candidates: [
+      {
+        id: nestedIds.koalice,
+        displayName: "Koalice",
+        references: [],
+        nestedCandidates: [
+          { id: nestedIds.marie, displayName: "Marie", references: [] },
+          { id: nestedIds.martin, displayName: "Martin", references: [] },
+          { id: nestedIds.magda, displayName: "Magda", references: [] },
+        ],
+      },
+    ],
+    candidatesAnswers: {
+      [nestedIds.marie]: answersFor({ [q1]: { answer: true }, [q2]: { answer: true } }),
+      [nestedIds.martin]: answersFor({ [q1]: { answer: true }, [q2]: { answer: false } }),
+      [nestedIds.magda]: answersFor({ [q1]: { answer: false } }),
+    },
+  },
+};
+
+function NestedHarness() {
+  const { matches } = useResult(useCalculatedMatches());
+  return (
+    <ComparisonPane matches={matches} selectedId={nestedIds.koalice} onClose={() => {}} formatPercent={percent}>
+      <p>Přehled</p>
+    </ComparisonPane>
+  );
+}
+
+function renderNestedPane() {
+  const answersStore = createAnswersStore();
+  answersStore.getState().setAnswers(userAnswers);
+
+  return render(
+    <LocaleProvider locale="cs" messages={csMessages}>
+      <CalculatorStoreContext.Provider value={createCalculatorStore(nestedCalculatorData)}>
+        <AnswersStoreContext.Provider value={answersStore}>
+          <NestedHarness />
+        </AnswersStoreContext.Provider>
+      </CalculatorStoreContext.Provider>
+    </LocaleProvider>,
+  );
+}
+
 describe("ComparisonPane", () => {
+  describe("a candidate whose answers are its members'", () => {
+    it("says once, at the top, that every mark is a majority", () => {
+      renderNestedPane();
+      expect(screen.getAllByText("Značka ukazuje, jak hlasovala většina zastupitelů za tuto stranu.")).toHaveLength(1);
+    });
+
+    it("marks the majority and counts it under the statement", () => {
+      renderNestedPane();
+      const q1Row = rows()[0] as HTMLElement;
+      expect(within(q1Row).getByRole("img", { name: "Koalice: Ano, Shodně hlasovalo 2 z 3 zastupitelů" })).toBeInTheDocument();
+      expect(within(q1Row).getByText("Shodně hlasovalo 2 z 3 zastupitelů")).toBeInTheDocument();
+    });
+
+    it("leaves an evenly split question unmarked, with no count to explain", () => {
+      renderNestedPane();
+      const q2Row = rows()[1] as HTMLElement;
+      expect(within(q2Row).getByRole("img", { name: "Koalice: Bez odpovědi" })).toBeInTheDocument();
+      expect(within(q2Row).queryByText(/Shodně hlasovalo/)).toBeNull();
+    });
+
+    it("says nothing about majorities for a candidate that answered for itself", () => {
+      renderPane({ initialId: ids.alfa });
+      expect(screen.queryByText(/Značka ukazuje/)).toBeNull();
+      expect(screen.queryByText(/Shodně hlasovalo/)).toBeNull();
+    });
+  });
+
   describe("holding the dashboard", () => {
     it("shows the children in an unnamed, unstyled box while nothing is selected", () => {
       renderPane();

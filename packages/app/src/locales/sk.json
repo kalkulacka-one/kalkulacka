@@ -46,7 +46,9 @@
         "yes": "Áno",
         "no": "Nie",
         "neutral": "Neviem",
-        "none": "Bez odpovede"
+        "none": "Bez odpovede",
+        "majorityNote": "Značka ukazuje, ako hlasovala väčšina poslancov za túto stranu.",
+        "majorityTally": "Zhodne hlasovalo {agreeing} z {total} poslancov"
       },
       "guidePage": {
         "title": "Ako to funguje",

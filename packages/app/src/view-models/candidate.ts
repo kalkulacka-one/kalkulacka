@@ -158,11 +158,16 @@ export function avatarSrc(candidate: Pick<CandidateViewModel, "avatar">): string
   return urls.xs ?? urls.sm ?? urls.md ?? urls.original;
 }
 
+/** How many of a candidate's members voted the way the mark shows, out of how many voted at all. */
+export type CandidateAnswerTally = { agreeing: number; total: number };
+
 export type AnswerComparison = {
   questionId: string;
   questionText?: string;
   userAnswer: boolean | null | undefined;
   candidateAnswer: boolean | null | undefined;
+  /** Present only where `candidateAnswer` summarises the members rather than being one recorded answer. */
+  candidateTally?: CandidateAnswerTally;
   candidateComment?: string;
   candidateSources?: Answer["sources"];
   expertAnswer?: boolean | null | undefined;
@@ -171,9 +176,79 @@ export type AnswerComparison = {
   isImportant?: boolean;
 };
 
-export function getCandidateAnswerComparison(candidateId: string, userAnswers: Answer[], candidatesAnswers: CandidatesAnswers, questions: Question[] = []): AnswerComparison[] {
+/**
+ * How a candidate's members voted on one question, reduced to the one answer a
+ * single mark can carry — the majority — and the count behind it.
+ *
+ * An evenly split club has no majority to show, so it gets no mark at all
+ * rather than an arbitrary one: "half of them voted each way" is not "Ano".
+ * Abstentions are votes here, the same as they are in the score.
+ */
+function majorityAnswer(votes: Answer[]): { answer: boolean | null | undefined; tally: CandidateAnswerTally } | undefined {
+  if (votes.length === 0) return undefined;
+
+  const counts = new Map<string, { answer: boolean | null; count: number }>();
+  for (const vote of votes) {
+    if (vote.answer === undefined) continue;
+    const key = String(vote.answer);
+    const seen = counts.get(key);
+    if (seen) seen.count += 1;
+    else counts.set(key, { answer: vote.answer, count: 1 });
+  }
+
+  const ranked = [...counts.values()].sort((a, b) => b.count - a.count);
+  const top = ranked[0];
+  if (!top) return undefined;
+
+  const total = ranked.reduce((sum, entry) => sum + entry.count, 0);
+  const tied = ranked[1]?.count === top.count;
+
+  return { answer: tied ? undefined : top.answer, tally: { agreeing: tied ? 0 : top.count, total } };
+}
+
+/**
+ * The answers to show for a candidate that holds none of its own.
+ *
+ * In an Inventura hlasování a party never voted — its councillors did, one by
+ * one. The score above already pools their votes; this pools them the other
+ * way, into the one position a row can draw, so the comparison says what the
+ * percentage is made of instead of showing an empty column beside it.
+ */
+function aggregatedFromMembers(nested: { id: string }[], candidatesAnswers: CandidatesAnswers): Map<string, { answer: boolean | null | undefined; tally: CandidateAnswerTally }> {
+  const byQuestion = new Map<string, Answer[]>();
+  for (const member of nested) {
+    for (const answer of candidatesAnswers[member.id] ?? []) {
+      const votes = byQuestion.get(answer.questionId);
+      if (votes) votes.push(answer);
+      else byQuestion.set(answer.questionId, [answer]);
+    }
+  }
+
+  const aggregated = new Map<string, { answer: boolean | null | undefined; tally: CandidateAnswerTally }>();
+  for (const [questionId, votes] of byQuestion) {
+    const majority = majorityAnswer(votes);
+    if (majority) aggregated.set(questionId, majority);
+  }
+  return aggregated;
+}
+
+export function getCandidateAnswerComparison(
+  candidateId: string,
+  userAnswers: Answer[],
+  candidatesAnswers: CandidatesAnswers,
+  questions: Question[] = [],
+  /** The candidate's own members, where it has any — used only when it answered nothing itself. */
+  nestedCandidates: { id: string }[] = [],
+): AnswerComparison[] {
   const candidateAnswers = candidatesAnswers[candidateId] || [];
   const expertAnswers = candidatesAnswers.expert || [];
+
+  /*
+   * Only when the candidate answered nothing itself. A coalition that answered
+   * as one and also lists its member parties keeps its own answers — summarising
+   * its members would overwrite what it actually said.
+   */
+  const aggregated = candidateAnswers.length === 0 ? aggregatedFromMembers(nestedCandidates, candidatesAnswers) : undefined;
 
   // Create maps for quick lookup
   const userAnswersMap = new Map(userAnswers.map((answer) => [answer.questionId, answer]));
@@ -187,11 +262,14 @@ export function getCandidateAnswerComparison(candidateId: string, userAnswers: A
     const candidateAnswer = candidateAnswersMap.get(questionId);
     const expertAnswer = expertAnswersMap.get(questionId);
 
+    const summarised = aggregated?.get(questionId);
+
     return {
       questionId,
       questionText: question?.statement || question?.title || questionId,
       userAnswer: userAnswer?.answer,
-      candidateAnswer: candidateAnswer?.answer,
+      candidateAnswer: summarised ? summarised.answer : candidateAnswer?.answer,
+      ...(summarised ? { candidateTally: summarised.tally } : {}),
       candidateComment: candidateAnswer?.comment,
       candidateSources: candidateAnswer?.sources,
       expertAnswer: expertAnswer?.answer,

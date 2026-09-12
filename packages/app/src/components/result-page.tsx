@@ -613,10 +613,20 @@ export function ResultPage({
                 <div className={viewClasses}>
                   <FilterChips
                     label={t("viewLabel")}
-                    options={[
-                      { id: "lists", label: t("viewLists") },
-                      { id: "people", label: t("viewPeople") },
-                    ]}
+                    /* The one the ranking opens on leads, so the chips read in
+                       the order the page does rather than putting the lists
+                       first and then landing past them. */
+                    options={
+                      answersAreNested
+                        ? [
+                            { id: "people", label: t("viewPeople") },
+                            { id: "lists", label: t("viewLists") },
+                          ]
+                        : [
+                            { id: "lists", label: t("viewLists") },
+                            { id: "people", label: t("viewPeople") },
+                          ]
+                    }
                     value={showOnlyNested ? "people" : "lists"}
                     /* The rows swap wholesale, and the one that was open is
                        not among the new ones — so its comparison goes too,
