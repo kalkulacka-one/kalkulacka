@@ -1,4 +1,5 @@
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@kalkulacka-one/app";
+import { EmbedFooter, Layout } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
@@ -6,10 +7,10 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { AppHeader, ComparisonGrid, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
-
 export type ComparisonPage = {
   embedContext: EmbedContextType;
+  homepageHref: string;
+  privacyHref?: string;
   calculator: CalculatorViewModel;
   result: ResultViewModel;
   answers: AnswersViewModel;
@@ -18,7 +19,7 @@ export type ComparisonPage = {
   onCloseClick: () => void;
 };
 
-export function ComparisonPage({ embedContext, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
+export function ComparisonPage({ embedContext, homepageHref, privacyHref, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
@@ -54,7 +55,7 @@ export function ComparisonPage({ embedContext, calculator, result, answers, ques
         )}
       </WithCondenseOnScroll>
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
 }

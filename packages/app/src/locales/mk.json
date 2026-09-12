@@ -1,8 +1,12 @@
 {
   "koa": {
+    "appTitle": "Изборен калкулатор",
     "components": {
       "embedAttribution": {
         "broughtBy": "Обезбедено од"
+      },
+      "embedFooter": {
+        "privacy": "Приватност"
       },
       "guide": {
         "agreement": {

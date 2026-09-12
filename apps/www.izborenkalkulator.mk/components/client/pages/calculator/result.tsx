@@ -61,6 +61,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   return (
     <>
       <AppResultPage
+        homepageHref={canonical.homepage()}
         embedContext={embed}
         calculator={calculator}
         result={result}

@@ -6,9 +6,10 @@ import { useLocale } from "next-intl";
 
 import { IntroductionPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function IntroductionPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
@@ -34,5 +35,14 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
     router.push("/");
   };
 
-  return <IntroductionPage embedContext={embed} calculator={calculator} onNextClick={handleNavigationNextClick} onCloseClick={handleCloseClick} />;
+  return (
+    <IntroductionPage
+      homepageHref={canonical.homepage()}
+      privacyHref={appConfig.links?.privacy}
+      embedContext={embed}
+      calculator={calculator}
+      onNextClick={handleNavigationNextClick}
+      onCloseClick={handleCloseClick}
+    />
+  );
 }

@@ -8,7 +8,7 @@ import { GuidePage as AppGuidePage } from "@/calculator";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
@@ -38,5 +38,14 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     router.push("/");
   };
 
-  return <AppGuidePage embedContext={embed} calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} />;
+  return (
+    <AppGuidePage
+      homepageHref={canonical.homepage()}
+      embedContext={embed}
+      calculator={calculator}
+      onNextClick={handleNavigationNextClick}
+      onBackClick={handleBackClick}
+      onCloseClick={handleCloseClick}
+    />
+  );
 }

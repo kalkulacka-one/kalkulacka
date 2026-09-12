@@ -1,5 +1,5 @@
 import type { CalculatorViewModel } from "@kalkulacka-one/app";
-import { Introduction, IntroductionNavigationCard } from "@kalkulacka-one/app";
+import { EmbedFooter, Introduction, IntroductionNavigationCard, Layout } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
@@ -7,16 +7,16 @@ import { mdiClose } from "@mdi/js";
 import { AppHeader } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
-
 export type IntroductionPage = {
   embedContext: EmbedContextType;
+  homepageHref: string;
+  privacyHref?: string;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
 };
 
-export function IntroductionPage({ embedContext, calculator, onNextClick, onCloseClick }: IntroductionPage) {
+export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
@@ -45,7 +45,7 @@ export function IntroductionPage({ embedContext, calculator, onNextClick, onClos
       <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
 }

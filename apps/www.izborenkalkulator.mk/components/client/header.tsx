@@ -1,4 +1,5 @@
-import { Layout } from "@/calculator";
+import { Layout } from "@kalkulacka-one/app";
+
 import { AppHeader, WithCondenseOnScroll } from "@/calculator/client";
 
 export function Header() {

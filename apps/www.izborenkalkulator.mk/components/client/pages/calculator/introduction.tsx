@@ -8,7 +8,7 @@ import { IntroductionPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function IntroductionPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
@@ -34,5 +34,5 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
     router.push("/");
   };
 
-  return <IntroductionPage embedContext={embed} calculator={calculator} onNextClick={handleNavigationNextClick} onCloseClick={handleCloseClick} />;
+  return <IntroductionPage homepageHref={canonical.homepage()} embedContext={embed} calculator={calculator} onNextClick={handleNavigationNextClick} onCloseClick={handleCloseClick} />;
 }

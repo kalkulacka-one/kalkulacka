@@ -1,6 +1,6 @@
 // TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
 import type { CalculatorViewModel, ResultViewModel } from "@kalkulacka-one/app";
-import { ResultNavigationCard } from "@kalkulacka-one/app";
+import { EmbedFooter, Layout, ResultNavigationCard } from "@kalkulacka-one/app";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
@@ -9,10 +9,10 @@ import React, { type ReactNode } from "react";
 import { AppHeader, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
-import { EmbedFooter, Layout } from "../components";
-
 export type ResultPage = {
   embedContext: EmbedContextType;
+  homepageHref: string;
+  privacyHref?: string;
   result: ResultViewModel;
   calculator: CalculatorViewModel;
   onNextClick: () => void;
@@ -25,7 +25,21 @@ export type ResultPage = {
   donateCard?: ReactNode;
 };
 
-export function ResultPage({ embedContext, result, calculator, onNextClick, onPreviousClick, onCloseClick, onShareClick, showOnlyNested, onFilterChange, donateCardPosition, donateCard }: ResultPage) {
+export function ResultPage({
+  embedContext,
+  homepageHref,
+  privacyHref,
+  result,
+  calculator,
+  onNextClick,
+  onPreviousClick,
+  onCloseClick,
+  onShareClick,
+  showOnlyNested,
+  onFilterChange,
+  donateCardPosition,
+  donateCard,
+}: ResultPage) {
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
@@ -89,7 +103,7 @@ export function ResultPage({ embedContext, result, calculator, onNextClick, onPr
       <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
         <ResultNavigationCard onNextClick={onNextClick} onShareClick={onShareClick} />
       </Layout.BottomNavigation>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} />}</Layout.Footer>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
 }

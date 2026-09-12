@@ -1,10 +1,8 @@
 // TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
 import type { CalculatorViewModel, ResultViewModel } from "@kalkulacka-one/app";
-import { PublicResultNavigationCard } from "@kalkulacka-one/app";
+import { Layout, PublicResultNavigationCard } from "@kalkulacka-one/app";
 
 import { AppHeader, MatchCard, WithCondenseOnScroll } from "@/calculator/client";
-
-import { Layout } from "../components";
 
 export type PublicResultPageProps = {
   result: ResultViewModel;
