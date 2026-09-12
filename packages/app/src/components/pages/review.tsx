@@ -1,10 +1,14 @@
-import { type AnswersViewModel, type CalculatorViewModel, EmbedFooter, Layout, type QuestionsViewModel, ReviewNavigationCard, ReviewQuestionCard } from "@kalkulacka-one/app";
-import { AppHeader, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { useTranslations } from "next-intl";
 
-import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+import { AppHeader, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
+import { EmbedFooter } from "@/components/embed-footer";
+import { Layout } from "@/components/layout";
+import { ReviewNavigationCard } from "@/components/review-navigation-card";
+import { ReviewQuestionCard } from "@/components/review-question-card";
+import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/view-models";
 
 export type ReviewPage = {
   embedContext: EmbedContextType;
@@ -19,6 +23,7 @@ export type ReviewPage = {
 };
 
 export function ReviewPage({ embedContext, homepageHref, privacyHref, questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
+  const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   const handleAgreeChange = (questionId: string, agree: boolean) => {
@@ -64,19 +69,19 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label="Close" onClick={onCloseClick}>
+                  <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
               </AppHeader.Right>
               <AppHeader.Bottom>
                 <AppHeader.BottomLeft condensed={condensed}>
-                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Zpět na otázky">
+                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("review.back")}>
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Rekapitulace</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("review.title")}</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
