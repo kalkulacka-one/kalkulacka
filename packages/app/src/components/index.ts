@@ -15,6 +15,8 @@ export * from "./question-card";
 export * from "./question-navigation-card";
 export * from "./question-page";
 export * from "./result-navigation-card";
+export * from "./result-page";
+export * from "./results-dashboard";
 export * from "./review-navigation-card";
 export * from "./review-page";
 export * from "./review-question-card";
