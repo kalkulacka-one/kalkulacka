@@ -1,7 +1,7 @@
-import { dataLoaderGuard } from "@kalkulacka-one/next";
+import { calculatorPathGuard, dataLoaderGuard, isPrefix } from "@kalkulacka-one/next";
 
 import { SessionProviderLayout } from "@/components/client";
-import { mappedParams } from "@/lib/routing";
+import { mappedParams, PREFIXES } from "@/lib/routing";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string }> }) {
   if (!process.env.DATA_ENDPOINT) {
@@ -10,5 +10,11 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   const segments = await params;
   const calculatorData = await dataLoaderGuard({ endpoint: process.env.DATA_ENDPOINT, key: mappedParams.key(segments) });
+
+  calculatorPathGuard({
+    calculator: calculatorData.data.calculator,
+    prefixed: isPrefix({ segment: segments.first, validPrefixes: PREFIXES }),
+    group: mappedParams.group(segments),
+  });
   return <SessionProviderLayout calculatorData={calculatorData}>{children}</SessionProviderLayout>;
 }
