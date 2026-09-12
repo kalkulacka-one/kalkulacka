@@ -1,8 +1,11 @@
-import type { CandidateViewModel } from "@kalkulacka-one/app";
-import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@kalkulacka-one/app/client";
-
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
+import { AnswersStoreContext, createAnswersStore } from "@/client/stores/answers";
+import { CalculatorStoreContext, createCalculatorStore } from "@/client/stores/calculator";
+import { LocaleProvider } from "@/components/providers";
+import { enMessages } from "@/locales";
+import type { CandidateViewModel } from "@/view-models";
 
 import { MatchCard } from "./match-card";
 
@@ -44,11 +47,13 @@ describe("MatchCard", () => {
     const answersStore = createAnswersStore();
 
     render(
-      <CalculatorStoreContext.Provider value={calculatorStore}>
-        <AnswersStoreContext.Provider value={answersStore}>
-          <MatchCard {...props} />
-        </AnswersStoreContext.Provider>
-      </CalculatorStoreContext.Provider>,
+      <LocaleProvider locale="en" messages={enMessages}>
+        <CalculatorStoreContext.Provider value={calculatorStore}>
+          <AnswersStoreContext.Provider value={answersStore}>
+            <MatchCard {...props} />
+          </AnswersStoreContext.Provider>
+        </CalculatorStoreContext.Provider>
+      </LocaleProvider>,
     );
 
     expect(screen.getByText("1")).toBeInTheDocument();
