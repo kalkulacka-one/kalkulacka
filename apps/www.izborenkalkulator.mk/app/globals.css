@@ -3,9 +3,6 @@
 @import "@kalkulacka-one/design-system/styles";
 @import "@kalkulacka-one/app/styles";
 
-/* Generate utilities for the app package components (they use unprefixed classes) */
-@source "../../../packages/app/dist";
-
 :root {
   color-scheme: light;
 }

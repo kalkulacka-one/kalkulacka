@@ -36,23 +36,23 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
 
-  const gridClasses = "grid grid-cols-[auto_1fr_auto] items-center";
-  const expandedRowsClasses = "grid-rows-[3rem_auto]";
-  const collapsedRowsClasses = "grid-rows-[3rem]";
-  const gridSpacingClasses = "gap-x-2 sm:gap-x-3 gap-y-1";
+  const gridClasses = "koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center";
+  const expandedRowsClasses = "koa:grid-rows-[3rem_auto]";
+  const collapsedRowsClasses = "koa:grid-rows-[3rem]";
+  const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-1";
   const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
-  const mainGrid = "grid grid-flow-col grid-cols-[auto_1fr] gap-2";
-  const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "col-span-2" : "";
-  const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "col-start-2" : "";
+  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2";
+  const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "koa:col-span-2" : "";
+  const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "koa:col-start-2" : "";
   const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent);
 
-  const bottomExpanded = "col-span-3 flex items-center h-full";
-  const bottomCondensed = "row-start-1";
+  const bottomExpanded = "koa:col-span-3 koa:flex koa:items-center koa:h-full";
+  const bottomCondensed = "koa:row-start-1";
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
   return (
-    <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
+    <header className="koa:@container koa:sticky koa:top-0 koa:p-2 koa:sm:p-3 koa:bg-white/60 koa:backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
           <AppHeaderMain title={t("appTitle")} calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
@@ -98,14 +98,14 @@ type AppHeaderMain = {
 
 function AppHeaderMain({ children, title, calculator, logoMonochrome }: AppHeaderMain) {
   return (
-    <div className="grid grid-flow-col items-center gap-2">
+    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
-      <div className="grid text-sm text-slate-700 leading-none">
-        <h1 className="font-light">{title}</h1>
+      <div className="koa:grid koa:text-sm koa:text-slate-700 koa:leading-none">
+        <h1 className="koa:font-light">{title}</h1>
         <div>
-          <h2 className="font-semibold inline">{calculator?.title}</h2>
-          {calculator?.title && calculator?.secondaryTitle && <span className="font-light hidden @[24rem]:inline"> • </span>}
-          <span className="font-light hidden @[24rem]:inline">{calculator?.secondaryTitle}</span>
+          <h2 className="koa:font-semibold koa:inline">{calculator?.title}</h2>
+          {calculator?.title && calculator?.secondaryTitle && <span className="koa:font-light koa:hidden koa:@[24rem]:inline"> • </span>}
+          <span className="koa:font-light koa:hidden koa:@[24rem]:inline">{calculator?.secondaryTitle}</span>
         </div>
         {children}
       </div>
@@ -126,7 +126,7 @@ type AppHeaderBottom = {
 };
 
 export function AppHeaderBottom({ children }: AppHeaderBottom) {
-  return <div className="grid grid-flow-col items-center gap-2">{children}</div>;
+  return <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">{children}</div>;
 }
 
 export type AppHeaderBottomLeft = {
@@ -136,7 +136,7 @@ export type AppHeaderBottomLeft = {
 
 export function AppHeaderBottomLeft({ children, condensed }: AppHeaderBottomLeft) {
   if (condensed) {
-    return <div className="row-start-1 col-start-1 grid grid-flow-col items-center gap-1">{children}</div>;
+    return <div className="koa:row-start-1 koa:col-start-1 koa:grid koa:grid-flow-col koa:items-center koa:gap-1">{children}</div>;
   }
   return <>{children}</>;
 }

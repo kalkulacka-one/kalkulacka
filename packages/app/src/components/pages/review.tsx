@@ -81,7 +81,7 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("review.title")}</h3>
+                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{t("review.title")}</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -89,7 +89,7 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content>
-        <div className="grid gap-4">
+        <div className="koa:grid koa:gap-4">
           {questions.questions.map((question, index) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
               answer: undefined,
@@ -112,8 +112,8 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
         </div>
       </Layout.Content>
       <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

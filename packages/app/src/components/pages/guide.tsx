@@ -42,7 +42,7 @@ export function GuidePage({ embedContext, homepageHref, privacyHref, calculator,
               </Button>
             </AppHeader.BottomLeft>
             <AppHeader.BottomMain condensed={false}>
-              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("guide.title")}</h3>
+              <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{t("guide.title")}</h3>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
@@ -51,8 +51,8 @@ export function GuidePage({ embedContext, homepageHref, privacyHref, calculator,
         <Guide calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={GuideNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

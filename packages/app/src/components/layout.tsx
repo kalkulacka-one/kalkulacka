@@ -5,7 +5,7 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
-  return <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">{children}</div>;
+  return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto]">{children}</div>;
 }
 
 LayoutComponent.displayName = "Layout";
@@ -16,7 +16,7 @@ export type LayoutHeader = {
 };
 
 function Header({ children, fixed }: LayoutHeader) {
-  return <div className={` ${fixed ? "fixed left-0 w-full" : "sticky"} top-0 z-50`}>{children}</div>;
+  return <div className={` ${fixed ? "koa:fixed koa:left-0 koa:w-full" : "koa:sticky"} koa:top-0 koa:z-50`}>{children}</div>;
 }
 
 Header.displayName = "Layout.Header";
@@ -28,7 +28,7 @@ export type LayoutContent = {
 };
 
 function Content({ children, fullWidth }: LayoutContent) {
-  return <main className={`${fullWidth ? "w-full" : "max-w-xl w-full"} mx-auto p-2 sm:p-4`}>{children}</main>;
+  return <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} koa:mx-auto koa:p-2 koa:sm:p-4`}>{children}</main>;
 }
 
 Content.displayName = "Layout.Content";
@@ -39,7 +39,7 @@ export type LayoutBottomNavigation = {
 };
 
 function BottomNavigation({ children, className }: LayoutBottomNavigation) {
-  return <div className={twMerge("fixed bottom-0 left-0 right-0 pointer-events-none z-20", className)}>{children}</div>;
+  return <div className={twMerge("koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:pointer-events-none koa:z-20", className)}>{children}</div>;
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";
@@ -52,7 +52,7 @@ function Footer({ children }: LayoutFooter) {
   if (!children) {
     return null;
   }
-  return <footer className="grid justify-items-center fixed bottom-0 left-0 right-0 z-5 mt-2 sm:mt-3 lg:mt-4 p-1">{children}</footer>;
+  return <footer className="koa:grid koa:justify-items-center koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:z-5 koa:mt-2 koa:sm:mt-3 koa:lg:mt-4 koa:p-1">{children}</footer>;
 }
 
 Footer.displayName = "Layout.Footer";

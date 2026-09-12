@@ -16,31 +16,31 @@ export type ComparisonGridDashlinesOverlay = {
 function ComparisonGridDashlinesOverlay({ result, filterNestedCandidates }: ComparisonGridDashlinesOverlay) {
   return (
     <div
-      className="absolute inset-0 pointer-events-none z-0"
+      className="koa:absolute koa:inset-0 koa:pointer-events-none koa:z-0"
       style={{
         top: result.matches.some((match) => match.nestedMatches) ? "180px" : "0px",
       }}
     >
-      <div className="h-full flex gap-8">
+      <div className="koa:h-full koa:flex koa:gap-8">
         {/* User column line - sticky */}
-        <div className="w-[100px] flex justify-center sticky left-4">
-          <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+        <div className="koa:w-[100px] koa:flex koa:justify-center koa:sticky koa:left-4">
+          <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-slate-200" />
         </div>
         {/* Candidate columns lines */}
         {result.matches.map((match) => {
           const nestedMatches = filterNestedCandidates(match.nestedMatches);
           if (!nestedMatches) {
             return (
-              <div key={`line-${match.candidate.id}`} className="w-[100px] flex justify-center">
-                <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+              <div key={`line-${match.candidate.id}`} className="koa:w-[100px] koa:flex koa:justify-center">
+                <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-slate-200" />
               </div>
             );
           }
           return (
-            <div key={`line-group-${match.candidate.id}`} className="flex gap-8">
+            <div key={`line-group-${match.candidate.id}`} className="koa:flex koa:gap-8">
               {nestedMatches.map((nested: NonNullable<ResultViewModel["matches"][0]["nestedMatches"]>[0]) => (
-                <div key={`line-${nested.candidate.id}`} className="w-[100px] flex justify-center">
-                  <div className="w-0 h-full border-r-2 border-dashed border-slate-200" />
+                <div key={`line-${nested.candidate.id}`} className="koa:w-[100px] koa:flex koa:justify-center">
+                  <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-slate-200" />
                 </div>
               ))}
             </div>
@@ -63,12 +63,12 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
   if (organizations.length === 0) return null;
 
   return (
-    <div className="sticky left-4 max-w-dvw z-10 flex flex-col gap-2">
-      <h3 className="text-sm font-medium">{t("selectParty")}</h3>
-      <div className="relative bg-slate-100 rounded-full p-1 flex flex-wrap gap-1 max-w-[90dvw] sm:w-fit">
+    <div className="koa:sticky koa:left-4 koa:max-w-dvw koa:z-10 koa:flex koa:flex-col koa:gap-2">
+      <h3 className="koa:text-sm koa:font-medium">{t("selectParty")}</h3>
+      <div className="koa:relative koa:bg-slate-100 koa:rounded-full koa:p-1 koa:flex koa:flex-wrap koa:gap-1 koa:max-w-[90dvw] koa:sm:w-fit">
         <label
-          className={` text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${
-            selectedOrganizations.size === 0 ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+          className={` koa:text-xs koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${
+            selectedOrganizations.size === 0 ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"
           }`}
         >
           <input
@@ -81,15 +81,15 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
                 setSelectedOrganizations(new Set(organizations));
               }
             }}
-            className="sr-only"
+            className="koa:sr-only"
           />
           {t("selectAll")}
         </label>
         {organizations.map((org) => (
           <label
             key={org}
-            className={`text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${
-              selectedOrganizations.has(org) ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+            className={`koa:text-xs koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${
+              selectedOrganizations.has(org) ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"
             }`}
           >
             <input
@@ -104,7 +104,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
                 }
                 setSelectedOrganizations(newSelected);
               }}
-              className="sr-only"
+              className="koa:sr-only"
             />
             {org}
           </label>
@@ -136,8 +136,8 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
   const t = useTranslations("koa.components.comparisonGrid");
 
   return (
-    <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-40 transition-all duration-500 ease-in-out`}>
-      <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
+    <div className={`koa:sticky ${condensed ? "koa:top-[4.75rem]" : "koa:top-32"} koa:gap-8 koa:flex koa:z-40 koa:transition-all koa:duration-500 koa:ease-in-out`}>
+      <div className="koa:rounded-xl koa:bg-blue-100/60 koa:backdrop-blur-lg koa:border-blue-50 koa:border-1 koa:z-50 koa:min-h-[65px] koa:sticky koa:left-4 koa:w-[100px] koa:flex-shrink-0 koa:text-center koa:text-xs koa:flex koa:items-center koa:justify-center">
         {t("yourAnswers")}
       </div>
       {result.matches.map((match) => {
@@ -145,7 +145,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
         const nestedCandidates = nestedMatches?.map((nested: NonNullable<ResultViewModel["matches"][0]["nestedMatches"]>[0]) => (
           <div
             key={`header-${nested.candidate.id}`}
-            className=" rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+            className=" koa:rounded-xl koa:bg-slate-100/60 koa:backdrop-blur-lg koa:border-slate-100 koa:border-1 koa:w-[100px] koa:flex-shrink-0 koa:flex koa:items-center koa:justify-center koa:text-center koa:text-xs"
           >
             <span>
               {nested.candidate.displayName}
@@ -157,14 +157,14 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
           return (
             <div
               key={`header-${match.candidate.id}`}
-              className="rounded-xl bg-slate-100/60 backdrop-blur-lg border-slate-100 border-1 w-[100px] flex-shrink-0 flex items-center justify-center text-center text-xs"
+              className="koa:rounded-xl koa:bg-slate-100/60 koa:backdrop-blur-lg koa:border-slate-100 koa:border-1 koa:w-[100px] koa:flex-shrink-0 koa:flex koa:items-center koa:justify-center koa:text-center koa:text-xs"
             >
               {match.candidate.displayName}
             </div>
           );
         }
         return (
-          <div key={`header-group-${match.candidate.id}`} className="flex gap-8">
+          <div key={`header-group-${match.candidate.id}`} className="koa:flex koa:gap-8">
             {nestedCandidates}
           </div>
         );
@@ -186,22 +186,22 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
   const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
 
   return (
-    <div key={question.id} className="flex flex-col gap-4 relative z-30">
-      <div className="flex gap-8 relative w-max">
-        <div className="h-auto absolute left-0 top-0" />
-        <div className="px-4 flex justify-start sticky left-4 w-[95dvw]">
+    <div key={question.id} className="koa:flex koa:flex-col koa:gap-4 koa:relative koa:z-30">
+      <div className="koa:flex koa:gap-8 koa:relative koa:w-max">
+        <div className="koa:h-auto koa:absolute koa:left-0 koa:top-0" />
+        <div className="koa:px-4 koa:flex koa:justify-start koa:sticky koa:left-4 koa:w-[95dvw]">
           <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} />
         </div>
-        <div className="w-[100px] flex-shrink-0" />
+        <div className="koa:w-[100px] koa:flex-shrink-0" />
         {result.matches.map((match) => {
           const nestedMatches = filterNestedCandidates(match.nestedMatches);
           if (!nestedMatches) {
-            return <div key={`spacer-${match.candidate.id}`} className="w-[100px] flex-shrink-0" />;
+            return <div key={`spacer-${match.candidate.id}`} className="koa:w-[100px] koa:flex-shrink-0" />;
           }
           return (
-            <div key={`spacer-group-${match.candidate.id}`} className="flex gap-8">
+            <div key={`spacer-group-${match.candidate.id}`} className="koa:flex koa:gap-8">
               {nestedMatches.map((nested) => (
-                <div key={`spacer-${nested.candidate.id}`} className="w-[100px] flex-shrink-0" />
+                <div key={`spacer-${nested.candidate.id}`} className="koa:w-[100px] koa:flex-shrink-0" />
               ))}
             </div>
           );
@@ -209,11 +209,11 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
       </div>
 
       {/* answers grid */}
-      <div className="flex gap-8 relative">
-        <div className="h-32 absolute left-0 top-0" />
+      <div className="koa:flex koa:gap-8 koa:relative">
+        <div className="koa:h-32 koa:absolute koa:left-0 koa:top-0" />
         {/* user answers */}
-        <div className="w-[100px] z-20 flex-shrink-0 flex justify-center items-center min-h-[40px] sticky left-4">
-          <div className="rounded-full bg-slate-50">
+        <div className="koa:w-[100px] koa:z-20 koa:flex-shrink-0 koa:flex koa:justify-center koa:items-center koa:min-h-[40px] koa:sticky koa:left-4">
+          <div className="koa:rounded-full koa:bg-slate-50">
             <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
           </div>
         </div>
@@ -223,17 +223,17 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
           if (!nestedMatches) {
             const answer = match.candidateAnswers.find((a) => a.questionId === question.id);
             return (
-              <div key={`answer-${match.candidate.id}`} className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+              <div key={`answer-${match.candidate.id}`} className="koa:w-[100px] koa:flex-shrink-0 koa:flex koa:justify-center koa:items-center koa:min-h-[40px]">
                 <ComparisonAnswerIcon answer={answer?.answer} />
               </div>
             );
           }
           return (
-            <div key={`answer-group-${match.candidate.id}`} className="flex gap-8">
+            <div key={`answer-group-${match.candidate.id}`} className="koa:flex koa:gap-8">
               {nestedMatches.map((nested: NonNullable<ResultViewModel["matches"][0]["nestedMatches"]>[0]) => {
                 const answer = nested.candidateAnswers.find((a: (typeof nested.candidateAnswers)[0]) => a.questionId === question.id);
                 return (
-                  <div key={`answer-${nested.candidate.id}`} className="w-[100px] flex-shrink-0 flex justify-center items-center min-h-[40px]">
+                  <div key={`answer-${nested.candidate.id}`} className="koa:w-[100px] koa:flex-shrink-0 koa:flex koa:justify-center koa:items-center koa:min-h-[40px]">
                     <ComparisonAnswerIcon answer={answer?.answer} />
                   </div>
                 );
@@ -275,9 +275,9 @@ export function ComparisonGrid({ questions, answers, result, condensed = false }
   };
 
   return (
-    <div className="mt-28 flex flex-col gap-8 relative">
+    <div className="koa:mt-28 koa:flex koa:flex-col koa:gap-8 koa:relative">
       <OrganizationFilter organizations={organizations} selectedOrganizations={selectedOrganizations} setSelectedOrganizations={setSelectedOrganizations} />
-      <div className="mr-[calc(5dvw)] flex flex-col gap-8">
+      <div className="koa:mr-[calc(5dvw)] koa:flex koa:flex-col koa:gap-8">
         <ComparisonGridDashlinesOverlay result={result} filterNestedCandidates={filterNestedCandidates} />
         <ComparisonHeader condensed={condensed} result={result} filterNestedCandidates={filterNestedCandidates} />
         {questions.questions.map((question, index) => (
