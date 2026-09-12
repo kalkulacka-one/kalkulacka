@@ -1,14 +1,14 @@
+import type { AppConfigWithDefaults } from "@/config-helpers";
 import type { PageType } from "@/routing/localized-slugs";
-import type { AppConfig } from "@/types/app-config";
 
 export type RewritesConfig = {
-  i18n: AppConfig["i18n"];
+  i18n: AppConfigWithDefaults["i18n"];
   pageSlugs: Record<string, Record<PageType, string>>;
   prefixSlugs: Record<string, Record<string, string>>;
 };
 
 export function createRewrites({ i18n, pageSlugs, prefixSlugs }: RewritesConfig) {
-  const { locales, defaultLocale, localePrefix = "as-needed" } = i18n;
+  const { locales, defaultLocale, localePrefix } = i18n;
 
   function validateLocale(locale: string): void {
     if (!locales.includes(locale)) {

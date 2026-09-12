@@ -1,6 +1,6 @@
 import type { AppConfig } from "@/types/app-config";
 
-type AppConfigWithDefaults = AppConfig & {
+export type AppConfigWithDefaults = AppConfig & {
   i18n: AppConfig["i18n"] & {
     localePrefix: "always" | "as-needed" | "never";
   };
