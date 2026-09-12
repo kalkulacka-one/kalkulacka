@@ -1,5 +1,15 @@
-@import 'tailwindcss/theme' prefix(koa);
-@import 'tailwindcss/utilities' prefix(koa);
+/*
+ * The layer order must be declared before the imports, and `layer()` has to
+ * come before `prefix()` on each import — the other order makes Tailwind emit
+ * `@media layer(...)`, which is not valid CSS and fails the app build.
+ *
+ * Preflight is deliberately not imported: this package is meant to drop into
+ * an existing React app, and a global element reset is not ours to ship.
+ */
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme' layer(theme) prefix(koa);
+@import 'tailwindcss/utilities' layer(utilities) prefix(koa);
 
 @theme static {
   --font-display: var(--ko-font-display);
