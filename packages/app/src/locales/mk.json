@@ -28,6 +28,19 @@
       "introductionNavigationCard": {
         "continueButton": "Продолжи"
       },
+      "introductionPage": {
+        "description": "Ќе одговорите на {count, plural, one {# прашање} other {# прашања}} и ќе видите кому сте најблиску.",
+        "candidates": "Споредуваме {count, plural, one {# кандидат} other {# кандидати}}.",
+        "progress": "Имате одговорено {answered} од {total}.",
+        "start": "Продолжи",
+        "continue": "Продолжи со одговарање",
+        "factImportantTitle": "Важно за мене",
+        "factImportantDescription": "Прашање што особено ви е важно можете да го означите како важно. Во резултатот тогаш има двојна тежина.",
+        "factSkipTitle": "Прескокнување",
+        "factSkipDescription": "Не мора да одговорите на сè. Прескокнатото прашање не се засметува во резултатот.",
+        "factRecapTitle": "Рекапитулација",
+        "factRecapDescription": "На крајот ќе ги видите сите прашања заедно и одговорите сè уште можете да ги промените."
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"
       },

@@ -14,4 +14,5 @@ export * from "./shell";
 export * from "./steppedProgressBar";
 export * from "./stickyBar";
 export * from "./tag";
+export * from "./tutorialStep";
 export * from "./visuallyHidden";

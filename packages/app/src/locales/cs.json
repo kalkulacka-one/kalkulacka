@@ -28,6 +28,19 @@
       "introductionNavigationCard": {
         "continueButton": "Pokračovat"
       },
+      "introductionPage": {
+        "description": "Odpovíte na {count, plural, one {# otázku} few {# otázky} other {# otázek}} a uvidíte, ke komu máte nejblíž.",
+        "candidates": "Porovnáváme {count, plural, one {# kandidáta} few {# kandidáty} other {# kandidátů}}.",
+        "progress": "Máte odpovězeno {answered} z {total}.",
+        "start": "Pokračovat",
+        "continue": "Pokračovat v odpovídání",
+        "factImportantTitle": "Pro mě důležité",
+        "factImportantDescription": "Otázku, na které vám obzvlášť záleží, můžete označit jako důležitou. Ve výsledku pak má dvojnásobnou váhu.",
+        "factSkipTitle": "Přeskočení",
+        "factSkipDescription": "Odpovídat nemusíte na všechno. Přeskočená otázka se do výsledku nezapočítá.",
+        "factRecapTitle": "Rekapitulace",
+        "factRecapDescription": "Na konci uvidíte všechny otázky pohromadě a odpovědi můžete ještě změnit."
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplnit vlastní kalkulačku"
       },

@@ -28,6 +28,19 @@
       "introductionNavigationCard": {
         "continueButton": "Continue"
       },
+      "introductionPage": {
+        "description": "Answer {count, plural, one {# question} other {# questions}} and see who you are closest to.",
+        "candidates": "Comparing {count, plural, one {# candidate} other {# candidates}}.",
+        "progress": "You have answered {answered} of {total}.",
+        "start": "Continue",
+        "continue": "Continue answering",
+        "factImportantTitle": "Important to me",
+        "factImportantDescription": "You can mark a question you particularly care about as important. It then counts double in the result.",
+        "factSkipTitle": "Skipping",
+        "factSkipDescription": "You don't have to answer everything. A skipped question doesn't count towards the result.",
+        "factRecapTitle": "Recap",
+        "factRecapDescription": "At the end you'll see all the questions together and can still change your answers."
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Fill your own calculator"
       },
