@@ -7,5 +7,4 @@ export const { getSlugRewrites, getLocaleRewrites, getLocaleRedirects } = create
   i18n: appConfig.i18n,
   pageSlugs: PAGE_SLUGS,
   prefixSlugs: PREFIX_SLUGS,
-  unprefixedCalculatorRoutes: true,
 });
