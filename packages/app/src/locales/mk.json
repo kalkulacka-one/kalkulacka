@@ -2,6 +2,11 @@
   "koa": {
     "appTitle": "Изборен калкулатор",
     "components": {
+      "comparisonGrid": {
+        "selectParty": "Изберете партија:",
+        "selectAll": "Избери сите",
+        "yourAnswers": "Вашите одговори"
+      },
       "embedAttribution": {
         "broughtBy": "Обезбедено од"
       },
@@ -31,6 +36,16 @@
       },
       "introductionNavigationCard": {
         "continueButton": "Продолжи"
+      },
+      "matchCard": {
+        "expertNoteLine1": "Ставови според јавни извори,",
+        "expertNoteLine2": "партијата не одговори на испратените прашања.",
+        "beta": "Бета верзија на споредбата. Уште подесуваме!",
+        "meCandidate": "Јас • Кандидат",
+        "positionUnknown": "Ставот не можеше да се утврди",
+        "source": "Извор",
+        "noDescription": "Нема достапен опис",
+        "link": "(линк)"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"

@@ -1,14 +1,16 @@
-// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
-import type { CandidateMatchViewModel } from "@kalkulacka-one/app";
-import { useCandidateAnswerComparison, useHasDirectAnswers } from "@kalkulacka-one/app/client";
 import { ExpandableCard } from "@kalkulacka-one/design-system/client";
 import { Avatar, ProgressBar } from "@kalkulacka-one/design-system/server";
 
+import { useTranslations } from "next-intl";
 import React, { useState } from "react";
+
+import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/client/view-models/candidate";
+import type { CandidateMatchViewModel } from "@/view-models";
 
 export type MatchCard = CandidateMatchViewModel;
 
 export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
+  const t = useTranslations("koa.components.matchCard");
   const hasDirectAnswers = useHasDirectAnswers(candidate.id);
   const answerComparisons = useCandidateAnswerComparison(candidate.id);
   const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
@@ -42,8 +44,8 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
                 {respondent === "expert" && (
                   <p className="text-xs text-gray-500">
-                    Ставови според јавни извори,
-                    <br /> партијата не одговори на испратените прашања.
+                    {t("expertNoteLine1")}
+                    <br /> {t("expertNoteLine2")}
                   </p>
                 )}
               </div>
@@ -62,12 +64,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                   <div className="grid grid-cols-[1fr_auto] gap-y-2 gap-x-1 auto-rows-auto">
                     <div className="col-span-2 text-right mb-2">
                       <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
-                        <span>Бета верзија на споредбата. Уште подесуваме!</span>
+                        <span>{t("beta")}</span>
                       </div>
                     </div>
                     {/* Grid Header Row */}
                     <div />
-                    <div>Јас • Кандидат</div>
+                    <div>{t("meCandidate")}</div>
 
                     {answerComparisons.map((comparison) => (
                       <React.Fragment key={comparison.questionId}>
@@ -93,10 +95,9 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                   <div>
                                     <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs">
                                       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                                        <title>Info</title>
                                         <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
                                       </svg>
-                                      <span>Ставот не можеше да се утврди</span>
+                                      <span>{t("positionUnknown")}</span>
                                     </div>
                                   </div>
                                 </div>
@@ -121,9 +122,8 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                             setExpandedSources(newExpanded);
                                           }}
                                         >
-                                          <span>{source.title || source.url || "Извор"}</span>
+                                          <span>{source.title || source.url || t("source")}</span>
                                           <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                                            <title>External link</title>
                                             <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
                                           </svg>
                                         </button>
@@ -131,12 +131,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
 
                                       {isExpanded && (
                                         <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">
-                                          {source.description || "Нема достапен опис"}
+                                          {source.description || t("noDescription")}
                                           {source.url && (
                                             <>
                                               {" "}
                                               <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">
-                                                (линк)
+                                                {t("link")}
                                               </a>
                                             </>
                                           )}

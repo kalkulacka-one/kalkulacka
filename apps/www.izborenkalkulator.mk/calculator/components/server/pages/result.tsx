@@ -1,13 +1,12 @@
 // TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
 import type { CalculatorViewModel, ResultViewModel } from "@kalkulacka-one/app";
 import { EmbedFooter, Layout, ResultNavigationCard } from "@kalkulacka-one/app";
-import { AppHeader, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
+import { AppHeader, MatchCard, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import React, { type ReactNode } from "react";
 
-import { MatchCard } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 export type ResultPage = {
