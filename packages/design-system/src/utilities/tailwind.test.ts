@@ -24,7 +24,6 @@ describe("twMerge", () => {
   });
 
   it("treats the theme's own token values as their real utility group", () => {
-    // `text-s` is a font size, not a color, so a following text color must not drop it
     expect(twMerge("ko:text-s ko:text-primary")).toBe("ko:text-s ko:text-primary");
     expect(twMerge("ko:drop-shadow-2xl ko:drop-shadow-hard")).toBe("ko:drop-shadow-hard");
     expect(twMerge("ko:font-sans ko:font-display")).toBe("ko:font-display");

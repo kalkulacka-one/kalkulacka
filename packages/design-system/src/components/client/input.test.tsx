@@ -20,7 +20,6 @@ describe("Input", () => {
     );
     expect(screen.getByTestId("input")).toBeInTheDocument();
     expect(screen.getByTestId("icon")).toBeInTheDocument();
-    // both must survive the merge: the base padding and the extra room for the icon
     expect(screen.getByTestId("input")).toHaveClass("ko:p-4", "ko:pl-14");
   });
 });

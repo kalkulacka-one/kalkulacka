@@ -28,8 +28,7 @@ export const ButtonVariants = cva(
         small: "ko:h-10 ko:px-2",
         medium: "ko:h-12 ko:px-3",
       },
-      // `color` is declared before `variant` so that `link`'s transparent border
-      // and `answer`'s padding come last and win the merge, as they did the cascade.
+      // declared before `variant` so `link` and `answer` win the merge, as they won the cascade
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
         secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
