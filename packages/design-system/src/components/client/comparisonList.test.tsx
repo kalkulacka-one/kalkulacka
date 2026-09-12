@@ -91,6 +91,31 @@ describe("ComparisonList", () => {
     expect(screen.getByRole("list")).not.toBe(before);
   });
 
+  it("shows what stands behind a summarised mark, once — under the statement and inside the mark's own label", () => {
+    const summarised: ComparisonRow[] = [
+      {
+        id: "q1",
+        statement: "Hlasovali byste pro rozšíření městského kamerového systému?",
+        user: { tone: "agree", label: "Ano" },
+        candidate: { tone: "agree", label: "Ano", detail: "Shodně hlasovalo 12 z 12 zastupitelů" },
+      },
+    ];
+    render(<ComparisonList rows={summarised} labels={labels} />);
+
+    // In the mark's label for a screen reader, and on screen but hidden from
+    // one — so it is announced once, not twice.
+    expect(screen.getByRole("img", { name: "Piráti: Ano, Shodně hlasovalo 12 z 12 zastupitelů" })).toBeInTheDocument();
+    const detail = screen.getByText("Shodně hlasovalo 12 z 12 zastupitelů");
+    expect(detail).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("leaves a row that is one candidate's own answer without a detail line", () => {
+    render(<ComparisonList rows={rows} labels={labels} />);
+    expect(screen.queryByText(/Shodně hlasovalo/)).toBeNull();
+    // Both "Ano" rows, labelled by the answer alone with nothing appended.
+    expect(screen.getAllByRole("img", { name: "Piráti: Ano" })).toHaveLength(2);
+  });
+
   it("renders an empty list without a row", () => {
     render(<ComparisonList rows={[]} labels={labels} />);
     expect(screen.getByRole("list")).toBeEmptyDOMElement();

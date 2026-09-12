@@ -46,7 +46,9 @@
         "yes": "Áno",
         "no": "Nie",
         "neutral": "Neviem",
-        "none": "Bez odpovede"
+        "none": "Bez odpovede",
+        "majorityNote": "Značka ukazuje, ako hlasovala väčšina poslancov za túto stranu.",
+        "majorityTally": "Zhodne hlasovalo {agreeing} z {total} poslancov"
       },
       "guidePage": {
         "title": "Ako to funguje",
@@ -150,10 +152,12 @@
         "title": "Moja zhoda",
         "calculating": "Počítame vašu zhodu",
         "listHint": "Ťuknutím na stranu môžete porovnať svoje odpovede",
+        "listHintPeople": "Ťuknutím na kandidáta môžete porovnať svoje odpovede",
         "noAnswer": "Neodpovedali",
         "winner": "Najväčšia zhoda",
         "backToRecap": "Späť na rekapituláciu",
         "showMoreParties": "Zobraziť ďalšie strany",
+        "showMorePeople": "Zobraziť ďalších kandidátov",
         "compareAnswers": "Porovnať odpovede",
         "share": "Zdieľať",
         "sharedTitle": "Zdieľaná zhoda",

@@ -396,7 +396,7 @@ describe("ResultPage", () => {
   });
 
   describe("candidate lists with people on them", () => {
-    it("offers the switch only when there is something nested, and swaps the rows", async () => {
+    it("opens on the people where the answers are theirs, and swaps the rows", async () => {
       const user = userEvent.setup();
       renderPage({
         data: nestedCalculatorData,
@@ -406,13 +406,81 @@ describe("ResultPage", () => {
         ],
       });
 
+      // The coalition holds no answers of its own — a ranking of it is a
+      // ranking of nobody who answered, so the people come first.
       const chips = screen.getByRole("group", { name: "Zobrazení výsledků" });
-      expect(within(chips).getByRole("button", { name: "Kandidátní listiny" })).toHaveAttribute("aria-pressed", "true");
-      expect(rows().map(visibleText)).toEqual(["Největší shoda1.Koalice50\u00a0%"]);
-
-      await user.click(within(chips).getByRole("button", { name: "Lidé" }));
       expect(within(chips).getByRole("button", { name: "Lidé" })).toHaveAttribute("aria-pressed", "true");
       expect(rows().map(visibleText)).toEqual(["Největší shoda1.Marie100\u00a0%", "2.Martin0\u00a0%"]);
+
+      await user.click(within(chips).getByRole("button", { name: "Kandidátní listiny" }));
+      expect(within(chips).getByRole("button", { name: "Kandidátní listiny" })).toHaveAttribute("aria-pressed", "true");
+      expect(rows().map(visibleText)).toEqual(["Největší shoda1.Koalice50\u00a0%"]);
+    });
+
+    it("opens on the lists where the list itself answered, even though it has people on it", async () => {
+      const answeringCoalition: CalculatorData = {
+        ...nestedCalculatorData,
+        data: {
+          ...nestedCalculatorData.data,
+          candidatesAnswers: {
+            ...nestedCalculatorData.data.candidatesAnswers,
+            [ids.coalition]: answersFor({ [q1]: true, [q2]: false, [q3]: true }),
+          },
+        },
+      };
+
+      renderPage({
+        data: answeringCoalition,
+        answers: [
+          { questionId: q1, answer: true },
+          { questionId: q2, answer: false },
+        ],
+      });
+
+      const chips = screen.getByRole("group", { name: "Zobrazení výsledků" });
+      expect(within(chips).getByRole("button", { name: "Kandidátní listiny" })).toHaveAttribute("aria-pressed", "true");
+    });
+
+    it("names the rows for what they are on each view — candidates on the people's, parties on the lists'", async () => {
+      const user = userEvent.setup();
+      renderPage({
+        data: nestedCalculatorData,
+        answers: [
+          { questionId: q1, answer: true },
+          { questionId: q2, answer: false },
+        ],
+      });
+
+      expect(screen.getByText("Tapnutím na kandidáta můžete porovnat svoje odpovědi")).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Kandidátní listiny" }));
+      expect(screen.getByText("Tapnutím na stranu můžete porovnat svoje odpovědi")).toBeInTheDocument();
+    });
+
+    it("offers the tail as candidates on the people's view and as parties on the lists'", async () => {
+      const user = userEvent.setup();
+      /* Seven councillors, so the ranking folds its tail on the people's view too. */
+      const councillors = Array.from({ length: 7 }, (_, index) => ({
+        id: `${index}0000000-0000-4000-8000-000000000000`,
+        displayName: `Zastupitel ${index + 1}`,
+        references: [],
+      }));
+      const bigClub: CalculatorData = {
+        ...nestedCalculatorData,
+        data: {
+          ...nestedCalculatorData.data,
+          candidates: [{ id: ids.coalition, displayName: "Koalice", references: [], nestedCandidates: councillors }],
+          candidatesAnswers: Object.fromEntries(councillors.map((councillor) => [councillor.id, answersFor({ [q1]: true })])),
+        },
+      };
+
+      renderPage({ data: bigClub, answers: [{ questionId: q1, answer: true }] });
+
+      expect(screen.getByRole("button", { name: "Zobrazit další kandidáty (2)" })).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Kandidátní listiny" }));
+      // One party, so its own tail is not folded — the wording is what matters.
+      expect(screen.queryByRole("button", { name: /Zobrazit další kandidáty/ })).toBeNull();
     });
 
     it("is not offered for a flat list of parties", () => {
@@ -591,7 +659,7 @@ describe("ResultPage", () => {
       }
     });
 
-    it("closes when the ranking switches to the people on the lists", async () => {
+    it("closes when the ranking switches between the people and their lists", async () => {
       const user = userEvent.setup();
       renderPage({
         data: nestedCalculatorData,
@@ -601,15 +669,15 @@ describe("ResultPage", () => {
         ],
       });
 
-      await user.click(rowButton("Koalice"));
-      expect(region("Koalice")).toBeInTheDocument();
-
-      await user.click(screen.getByRole("button", { name: "Lidé" }));
-      expect(screen.queryByRole("region")).toBeNull();
-      expect(rowButton("Marie")).toHaveAttribute("aria-pressed", "false");
-
       await user.click(rowButton("Marie"));
       expect(region("Marie")).toBeInTheDocument();
+
+      await user.click(screen.getByRole("button", { name: "Kandidátní listiny" }));
+      expect(screen.queryByRole("region")).toBeNull();
+      expect(rowButton("Koalice")).toHaveAttribute("aria-pressed", "false");
+
+      await user.click(rowButton("Koalice"));
+      expect(region("Koalice")).toBeInTheDocument();
     });
   });
 
