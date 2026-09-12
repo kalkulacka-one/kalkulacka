@@ -22,7 +22,7 @@ const meta: Meta<typeof Card> = {
     },
     corner: {
       control: "select",
-      options: ["topRight", "topLeft", "bottomRight", "bottomLeft"],
+      options: ["topRight", "topLeft", "bottomRight", "bottomLeft", "card"],
     },
     border: {
       control: "boolean",

@@ -15,6 +15,15 @@ describe("Card", () => {
     });
   });
 
+  describe("when given the card corner", () => {
+    it("should take the whole radius from the card token", () => {
+      const { container } = render(<Card corner="card">Children</Card>);
+      expect(container.firstChild).toHaveClass("ko:rounded-card");
+      expect(container.firstChild).not.toHaveClass("ko:rounded-3xl");
+      expect(container.firstChild).not.toHaveClass("ko:rounded-tl-none");
+    });
+  });
+
   describe("when given interactive prop", () => {
     it("should not add any classes when interactive is true", () => {
       const { container } = render(<Card interactive={true}>Children</Card>);

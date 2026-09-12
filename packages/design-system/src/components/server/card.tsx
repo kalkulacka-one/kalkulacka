@@ -13,7 +13,14 @@ const CardVariants = cva("ko:rounded-3xl", {
       white: "ko:bg-white",
       transparent: "ko:bg-transparent",
     },
-    corner: { topRight: "ko:rounded-tr-none", topLeft: "ko:rounded-tl-none", bottomRight: "ko:rounded-br-none", bottomLeft: "ko:rounded-bl-none" },
+    corner: {
+      topRight: "ko:rounded-tr-none",
+      topLeft: "ko:rounded-tl-none",
+      bottomRight: "ko:rounded-br-none",
+      bottomLeft: "ko:rounded-bl-none",
+      /* The new design's card shape — the whole radius comes from the `--ko-radius-card` token, square top-left corner included. */
+      card: "ko:rounded-card",
+    },
     border: {
       true: "ko:border ko:border-neutral",
       false: "",

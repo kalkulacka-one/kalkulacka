@@ -922,6 +922,74 @@
     }
   }
 
+  /* --- QuestionCard ----------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/question-card/question-card.module.css
+   * (`.tooltip`). Everything else on the card is `ko:` utilities in
+   * questionCard.tsx; the tooltip lives here because it fades and lifts on
+   * literal timings (see the reduced-motion note below) and is shown by its
+   * *parent's* hover and focus, which a utility on the tooltip itself cannot
+   * express without a group hook.
+   *
+   * The star's label. Styled after the deck's drag-hint toast (same pill, same
+   * colors) rather than a native `title`, so it matches the app's own
+   * vocabulary for a transient label and appears the instant the button is
+   * hovered or focused instead of after the browser's built-in tooltip delay.
+   *
+   * Anchored to the button's left edge rather than centered: the star sits
+   * right next to the card's left padding, and the card clips overflow for its
+   * rounded corners, so a centered pill would get cut off on that side once the
+   * label is wider than the button itself.
+   */
+  .ko-question-card-tooltip {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 0;
+    z-index: 1;
+
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--ko-radius-pill);
+    background: var(--ko-color-neutral-ink);
+    color: var(--ko-color-on-neutral-ink);
+
+    font-family: var(--ko-font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: left bottom;
+    transform: translateY(4px) scale(0.92);
+    transition:
+      opacity 0.12s ease,
+      transform 0.12s var(--ko-ease-spring);
+  }
+
+  .ko-question-card-important:hover .ko-question-card-tooltip,
+  .ko-question-card-important:focus-visible .ko-question-card-tooltip {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /*
+   * The star's tooltip fades and lifts on its own literal timings rather than
+   * `--ko-duration-*`, so the blanket reduction in @layer base does not reach
+   * it. The tooltip still appears on hover and on focus — it is what names the
+   * control — it simply stops sliding up into place.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .ko-question-card-tooltip {
+      transition: none;
+      transform: none;
+    }
+
+    .ko-question-card-important:hover .ko-question-card-tooltip,
+    .ko-question-card-important:focus-visible .ko-question-card-tooltip {
+      transform: none;
+    }
+  }
+
   /* --- Backdrop --------------------------------------------------------------
    * Ported from kalkulacka-2026/packages/ui/src/backdrop/backdrop.tsx
    * (`FallbackGradient`) and backdrop.module.css (`.host`, `.fallback`).
