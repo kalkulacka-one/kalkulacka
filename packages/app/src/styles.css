@@ -3,6 +3,9 @@
 @import 'tailwindcss/theme' layer(theme) prefix(koa);
 @import 'tailwindcss/utilities' layer(utilities) prefix(koa);
 
+/* Class names written in tests are examples, not product styles. */
+@source not "**/*.test.{ts,tsx}";
+
 @theme static {
   --font-display: var(--ko-font-display);
 }

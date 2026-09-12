@@ -1,5 +1,8 @@
 @import 'tailwindcss' prefix(ko);
 
+/* Class names written in tests are examples, not product styles. */
+@source not "**/*.test.{ts,tsx}";
+
 :root {
   color-scheme: light dark;
 }
