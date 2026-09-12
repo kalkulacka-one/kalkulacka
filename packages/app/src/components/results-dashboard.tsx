@@ -192,7 +192,7 @@ function ConsensusRow({ entry, show = "share" }: { entry: QuestionConsensus; sho
 
         {show === "agreeing" ? (
           <AvatarStack
-            items={entry.agreeing.map((candidate) => ({ id: candidate.id, name: candidate.displayName ?? "", src: avatarSrc(candidate) }))}
+            items={entry.agreeing.map((candidate) => ({ id: candidate.id, name: candidate.shortName, src: avatarSrc(candidate) }))}
             label={t("agreeingParties")}
             popover={{ closeLabel: t("close") }}
           />
@@ -295,8 +295,9 @@ export function ResultsDashboard({ distribution, topics, important, againstTheGr
                         </span>
 
                         <span className={topicBestClasses}>
-                          <Avatar name={topic.best.candidate.displayName} image={topic.best.candidate.avatar?.urls} size="small" />
-                          <span className={topicBestNameClasses}>{topic.best.candidate.displayName}</span>
+                          {/* The short name, as 2026 has it: "SPD" fits beside the percent where "Svoboda a přímá demokracie" would wrap the row. */}
+                          <Avatar name={topic.best.candidate.shortName} image={topic.best.candidate.avatar?.urls} size="small" />
+                          <span className={topicBestNameClasses}>{topic.best.candidate.shortName}</span>
                         </span>
                       </span>
 

@@ -1,6 +1,20 @@
 {
   "koa": {
     "components": {
+      "comparisonPane": {
+        "close": "Затвори ја споредбата",
+        "filterLabel": "Филтрирај одговори",
+        "filterAll": "Сите",
+        "filterMatches": "Совпаѓања",
+        "filterMismatches": "Несовпаѓања",
+        "filterImportant": "Важни",
+        "you": "Вие",
+        "important": "Важно за мене",
+        "yes": "Да",
+        "no": "Не",
+        "neutral": "Не знам",
+        "none": "Без одговор"
+      },
       "embedAttribution": {
         "broughtBy": "Обезбедено од"
       },

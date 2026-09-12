@@ -4,6 +4,7 @@ export * from "./avatarStack";
 export * from "./button";
 export * from "./calculating";
 export * from "./clientTest";
+export * from "./comparisonList";
 export * from "./description";
 export * from "./dialog";
 export * from "./dragGuides";

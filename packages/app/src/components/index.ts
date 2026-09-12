@@ -1,3 +1,4 @@
+export * from "./comparison-pane";
 export * from "./comparison-question-card";
 export * from "./embed-attribution";
 export * from "./guide";

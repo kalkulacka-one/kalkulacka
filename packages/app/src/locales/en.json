@@ -1,6 +1,20 @@
 {
   "koa": {
     "components": {
+      "comparisonPane": {
+        "close": "Close comparison",
+        "filterLabel": "Filter answers",
+        "filterAll": "All",
+        "filterMatches": "Matches",
+        "filterMismatches": "Mismatches",
+        "filterImportant": "Important",
+        "you": "You",
+        "important": "Important to me",
+        "yes": "Yes",
+        "no": "No",
+        "neutral": "Don't know",
+        "none": "No answer"
+      },
       "embedAttribution": {
         "broughtBy": "Brought by"
       },

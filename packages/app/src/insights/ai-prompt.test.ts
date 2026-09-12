@@ -23,7 +23,7 @@ const labels: AiPromptLabels = {
   locale: "cs",
 };
 
-const candidate = (id: string, displayName: string): CandidateViewModel => ({ id, displayName, references: [] });
+const candidate = (id: string, displayName: string): CandidateViewModel => ({ id, displayName, name: displayName, shortName: displayName, references: [] });
 const question = (id: string, statement: string): Question => ({ id, title: statement, statement });
 
 const alfa = candidate("alfa", "Alfa");

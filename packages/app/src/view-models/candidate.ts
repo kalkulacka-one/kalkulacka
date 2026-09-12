@@ -6,7 +6,27 @@ import type { OrganizationViewModel } from "./organization";
 import type { PersonViewModel } from "./person";
 
 export type CandidateViewModel = Omit<Candidate, "nestedCandidates"> & {
+  /**
+   * The name as the legacy screens have always shown it — the short form for
+   * an organization. Unchanged so those screens stay untouched; the new
+   * screens read `name` and `shortName` instead.
+   */
   displayName: string | undefined;
+  /**
+   * The full preferred name — a ranking row's headline. A coalition's own
+   * `displayName` ("SPOLU"), else the referenced organization's `name` or the
+   * person's display name, else the id: a candidate always resolves to
+   * *something*, and a stray id on screen is a data bug made visible rather
+   * than an empty row. Mirrors 2026's platform adapter.
+   */
+  name: string;
+  /**
+   * The short form for tight places — the comparison pane's heading and column,
+   * an avatar's caption: the candidate's own `displayName`, else the
+   * organization's short name (a person has none, so their name serves), else
+   * `name`.
+   */
+  shortName: string;
   organization?: string | undefined;
   avatar?: {
     type: "avatar" | "logo" | "portrait";
@@ -31,6 +51,28 @@ function getCandidateDisplayName(candidate: Candidate, personsMap: Map<string, P
     }
   }
 
+  return undefined;
+}
+
+/**
+ * The full and the short name together, resolved once: the two must come from
+ * the same reference, or a coalition's own `displayName` would head the row
+ * while a member's short name labelled the column.
+ */
+function getCandidateNames(candidate: Candidate, personsMap: Map<string, PersonViewModel>, organizationsMap: Map<string, OrganizationViewModel>): { name: string; shortName: string } {
+  const referenced = getReferencedNames(candidate, personsMap, organizationsMap);
+  const name = candidate.displayName ?? referenced?.name ?? candidate.id;
+  return { name, shortName: candidate.displayName ?? referenced?.shortName ?? name };
+}
+
+/** What the first reference is called — an organization's two names, or a person's one name serving as both. */
+function getReferencedNames(candidate: Candidate, personsMap: Map<string, PersonViewModel>, organizationsMap: Map<string, OrganizationViewModel>): { name: string; shortName: string } | undefined {
+  const firstReference = candidate.references?.[0];
+  if (firstReference?.type === "organization") return organizationsMap.get(firstReference.id);
+  if (firstReference?.type === "person") {
+    const person = personsMap.get(firstReference.id);
+    return person ? { name: person.displayName, shortName: person.displayName } : undefined;
+  }
   return undefined;
 }
 
@@ -88,6 +130,7 @@ function getCandidateType(candidate: Candidate): "person" | "organization" | und
 
 export function candidateViewModel(candidate: Candidate, personsMap: Map<string, PersonViewModel>, organizationsMap: Map<string, OrganizationViewModel>, baseUrl: string): CandidateViewModel {
   const displayName = getCandidateDisplayName(candidate, personsMap, organizationsMap);
+  const { name, shortName } = getCandidateNames(candidate, personsMap, organizationsMap);
   const organization = getCandidateOrganization(candidate, personsMap, organizationsMap);
   const avatar = getCandidateAvatar(candidate, personsMap, organizationsMap, baseUrl);
   const type = getCandidateType(candidate);
@@ -96,6 +139,8 @@ export function candidateViewModel(candidate: Candidate, personsMap: Map<string,
   return {
     ...candidate,
     displayName,
+    name,
+    shortName,
     organization,
     avatar,
     type,

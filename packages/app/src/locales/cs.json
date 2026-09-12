@@ -1,6 +1,20 @@
 {
   "koa": {
     "components": {
+      "comparisonPane": {
+        "close": "Zavřít porovnání",
+        "filterLabel": "Filtrovat odpovědi",
+        "filterAll": "Vše",
+        "filterMatches": "Shody",
+        "filterMismatches": "Neshody",
+        "filterImportant": "Důležité",
+        "you": "Vy",
+        "important": "Pro mě důležité",
+        "yes": "Ano",
+        "no": "Ne",
+        "neutral": "Nevím",
+        "none": "Bez odpovědi"
+      },
       "embedAttribution": {
         "broughtBy": "Přináší"
       },

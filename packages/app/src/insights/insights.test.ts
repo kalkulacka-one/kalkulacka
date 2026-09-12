@@ -13,7 +13,7 @@ import { buildAnswerDistribution, buildAnswerGroups, buildQuestionConsensus, bui
 const question = (id: string, tags?: string[]): Question => (tags ? { id, title: id, statement: id, tags } : { id, title: id, statement: id });
 
 const candidate = (id: string, nestedCandidates?: CandidateViewModel[]): CandidateViewModel =>
-  nestedCandidates ? { id, displayName: id, references: [], nestedCandidates } : { id, displayName: id, references: [] };
+  nestedCandidates ? { id, displayName: id, name: id, shortName: id, references: [], nestedCandidates } : { id, displayName: id, name: id, shortName: id, references: [] };
 
 const answersFor = (entries: Record<string, boolean | null>): CandidateAnswer[] => Object.entries(entries).map(([questionId, answer]) => ({ questionId, answer }));
 
