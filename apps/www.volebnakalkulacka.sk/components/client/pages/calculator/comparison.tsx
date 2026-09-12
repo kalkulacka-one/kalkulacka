@@ -1,29 +1,71 @@
-import { useAnswers, useCalculatedMatches, useCalculator, useQuestions, useResult } from "@kalkulacka-one/app/client";
+import { type ComparisonFilter, ComparisonPage } from "@kalkulacka-one/app";
+import { useCalculatedMatches, useCalculator } from "@kalkulacka-one/app/client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
+import { useCallback } from "react";
 
-import { ComparisonPage } from "@/calculator";
-import { useEmbed } from "@/components/client";
-import { type RouteSegments, routes } from "@/lib/routing";
+import { CalculatorMenu, useEmbed } from "@/components/client";
+import { calculatorNames } from "@/config/calculator-names";
+import { trackEvent } from "@/lib/analytics";
+import { COMPARISON_FILTER_PARAM, comparisonFilterQuery, parseComparisonFilter, type RouteSegments, routes } from "@/lib/routing";
 
 export function ComparisonPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const calculator = useCalculator();
-  const algorithmMatches = useCalculatedMatches();
-  const result = useResult(algorithmMatches);
-  const answers = useAnswers();
-  const questions = useQuestions();
   const embed = useEmbed();
+  const algorithmMatches = useCalculatedMatches();
   const locale = useLocale();
 
-  const handlePreviousClick = () => {
+  // A standalone calculator is named by its own data; there is no election
+  // group to name it after — see `config/calculator-names.ts`.
+  const { electionName, calculatorName } = calculatorNames({
+    key: ("variant" in calculator ? calculator.variant?.key : undefined) ?? calculator.key,
+    title: calculator.title || undefined,
+    shortTitle: calculator.shortTitle,
+  });
+
+  // In an embed the wordmark doubles as the attribution — the one way out of a
+  // partner's iframe to the full site — unless the partner opted out of it.
+  const attributionHref = embed.isEmbed && embed.config?.attribution !== false ? (process.env.NEXT_PUBLIC_CANONICAL_URL ?? "/") : undefined;
+  const logoMonochrome = embed.isEmbed && embed.config?.logo === "monochrome";
+
+  const comparisonRoute = routes.comparison(segments, locale);
+
+  /*
+   * `?filtr=dolezite` or `?filtr=<topic slug>`, as the results page's dashboard
+   * links write it. Read once, on arrival: the page keeps its own filter from
+   * there, and `handleFilterChange` keeps the address bar in step.
+   */
+  const initialFilter = parseComparisonFilter(searchParams.get(COMPARISON_FILTER_PARAM));
+
+  const handleViewed = useCallback(() => {
+    trackEvent("Comparison viewed", { calculator: calculator.id });
+  }, [calculator.id]);
+
+  const handleBackClick = () => {
     router.push(routes.result(segments, locale));
   };
 
-  const handleCloseClick = () => {
-    router.push("/");
+  const handleFilterChange = (filter: ComparisonFilter | undefined) => {
+    // The URL keeps up without a navigation: the screen already has the data
+    // for every filter, and a server round-trip would only re-fetch it.
+    window.history.replaceState(null, "", `${comparisonRoute}${comparisonFilterQuery(filter)}`);
   };
 
-  return <ComparisonPage embedContext={embed} calculator={calculator} result={result} answers={answers} questions={questions} onPreviousClick={handlePreviousClick} onCloseClick={handleCloseClick} />;
+  return (
+    <ComparisonPage
+      appTitle="Volebná kalkulačka"
+      electionName={electionName}
+      calculatorName={calculatorName}
+      initialFilter={initialFilter}
+      headerActions={<CalculatorMenu segments={segments} matches={algorithmMatches} />}
+      attributionHref={attributionHref}
+      logoMonochrome={logoMonochrome}
+      onBackClick={handleBackClick}
+      onFilterChange={handleFilterChange}
+      onViewed={handleViewed}
+    />
+  );
 }

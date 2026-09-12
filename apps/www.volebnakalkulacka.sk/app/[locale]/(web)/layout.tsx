@@ -1,3 +1,5 @@
+import { bootstrapColorMode } from "@kalkulacka-one/app";
+
 import type { Metadata, Viewport } from "next";
 
 import type { I18nParams } from "@/i18n/params";
@@ -59,6 +61,20 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  /*
+   * One tag, no `prefers-color-scheme` pair.
+   *
+   * A media-gated pair follows the *OS*, which stops being the right answer
+   * the moment someone picks a mode in the app's menu — and a browser applies
+   * the first tag whose media matches, so the OS's answer would keep winning
+   * over anything written later. A single unconditional tag is the one the
+   * colour-mode code can own: `bootstrapColorMode` below corrects it before
+   * first paint and the toggle rewrites it on every switch. This value is
+   * only what a browser sees in the served HTML — the light page colour of
+   * the theme this site borrows (`--ko-palette-page-light` in the design
+   * system's `www.volebnikalkulacka.cz/default.css`, see `themes/default-theme.tsx`).
+   */
+  themeColor: "#f8fafc",
 };
 
 export function generateStaticParams() {
@@ -70,11 +86,36 @@ export default async function RootLayout({ children, params }: { children: React
   const defaultTheme = appConfig.theme.defaultTheme as ThemeName;
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      // The inline script below adds `data-mode` itself, before hydration —
+      // deliberately out of step with the server-rendered markup, which
+      // knows nothing about a client-only localStorage value. That mismatch
+      // is the point, not a bug for React to flag.
+      suppressHydrationWarning
+    >
       <head>
         <PlausibleScript />
       </head>
       <body className="min-h-dvh bg-slate-50">
+        {/*
+          Light/dark mode defaults to the OS preference (`color-scheme: light
+          dark` in the design system); this only has work to do once someone
+          picks an explicit override. A plain `<script>` — not `next/script` —
+          because it has to run synchronously while the server-rendered HTML
+          is still being parsed, before the browser paints anything: that's
+          what stops a stored override from flashing the system mode first.
+        */}
+        <script
+          id="color-mode-bootstrap"
+          suppressHydrationWarning
+          // A child string triggers React's "script tag while rendering"
+          // dev warning, since a `<script>` child is normally page text, not
+          // code — `dangerouslySetInnerHTML` is the same output without it.
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: `bootstrapColorMode` is a fixed, module-scope string with no user input, not markup built from a request.
+          dangerouslySetInnerHTML={{ __html: bootstrapColorMode }}
+        />
+
         <I18nProvider locale={locale}>
           <EmbedContextProvider isEmbed={false}>
             <ThemeProvider name={defaultTheme}>{children}</ThemeProvider>

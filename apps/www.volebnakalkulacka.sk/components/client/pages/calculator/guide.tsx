@@ -1,25 +1,36 @@
-import { useAnswersStore, useCalculator } from "@kalkulacka-one/app/client";
+import { GuidePage } from "@kalkulacka-one/app";
+import { useCalculator } from "@kalkulacka-one/app/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
-import { GuidePage as AppGuidePage } from "@/calculator";
-import { useEmbed } from "@/components/client";
+import { CalculatorMenu, useEmbed } from "@/components/client";
+import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api";
-import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing";
 
 export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculator();
   const embed = useEmbed();
-  const answersStore = useAnswersStore((state) => state.answers);
   const locale = useLocale();
 
   useAutoSave();
 
-  const handleNavigationNextClick = () => {
+  // A standalone calculator is named by its own data; there is no election
+  // group to name it after — see `config/calculator-names.ts`.
+  const { electionName, calculatorName } = calculatorNames({
+    key: ("variant" in calculator ? calculator.variant?.key : undefined) ?? calculator.key,
+    title: calculator.title || undefined,
+    shortTitle: calculator.shortTitle,
+  });
+
+  // In an embed the wordmark doubles as the attribution — the one way out of a
+  // partner's iframe to the full site — unless the partner opted out of it.
+  const attributionHref = embed.isEmbed && embed.config?.attribution !== false ? (process.env.NEXT_PUBLIC_CANONICAL_URL ?? "/") : undefined;
+  const logoMonochrome = embed.isEmbed && embed.config?.logo === "monochrome";
+
+  const handleStartClick = () => {
     router.push(routes.question(segments, 1, locale));
   };
 
@@ -27,16 +38,16 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     router.push(routes.introduction(segments, locale));
   };
 
-  const handleCloseClick = async () => {
-    try {
-      if (answersStore.length > 0) {
-        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
-  };
-
-  return <AppGuidePage embedContext={embed} calculator={calculator} onNextClick={handleNavigationNextClick} onBackClick={handleBackClick} onCloseClick={handleCloseClick} />;
+  return (
+    <GuidePage
+      appTitle="Volebná kalkulačka"
+      electionName={electionName}
+      calculatorName={calculatorName}
+      headerActions={<CalculatorMenu segments={segments} />}
+      attributionHref={attributionHref}
+      logoMonochrome={logoMonochrome}
+      onBackClick={handleBackClick}
+      onStartClick={handleStartClick}
+    />
+  );
 }
