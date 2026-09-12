@@ -126,6 +126,27 @@
       "reviewNavigationCard": {
         "showResultsButton": "Show results"
       },
+      "reviewPage": {
+        "title": "Recap",
+        "description": "Check your answers before you look at the result. Tap a question to change it.",
+        "tally": "Answered {answered} of {total}",
+        "skipped": "Skipped {remaining}",
+        "filterLabel": "Filter questions",
+        "filterAll": "All",
+        "filterUnanswered": "Skipped",
+        "filterImportant": "Important",
+        "empty": "There are no questions in this selection.",
+        "showAll": "Show all",
+        "showResults": "Show results",
+        "back": "Back to questions",
+        "yes": "Yes",
+        "no": "No",
+        "neutral": "Don't know",
+        "none": "No answer",
+        "important": "Important to me",
+        "skip": "Skip",
+        "close": "Close"
+      },
       "reviewQuestionCard": {
         "yes": "Yes",
         "no": "No",

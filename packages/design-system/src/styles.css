@@ -377,6 +377,37 @@
     }
   }
 
+  /*
+   * The recap (the app's `ReviewPage`) arriving from the deck: the screen
+   * assembles rather than appears — the header leads, the filters and the
+   * list follow a beat later, each through `animate-(--ko-animate-recap-rise)`
+   * with its own delay. The stagger is small on purpose: this is a transition
+   * between two steps of one task, not a curtain going up. The second is the
+   * list's own, smaller entrance, replayed on every filter change (the list is
+   * keyed on the filter): a new result set deserves its own small entrance,
+   * not a silent swap. Literal timings, as in the source — these are one-shot
+   * entrances rather than the control tempo the duration tokens describe — so
+   * the consumer switches them off under reduced motion
+   * (`motion-reduce:animate-none`) instead of relying on the collapse.
+   * Ported from kalkulacka-2026/apps/web/components/recap.module.css (`rise`, `listIn`).
+   */
+  --animate-recap-rise: ko-recap-rise 420ms var(--ko-ease-spring) backwards;
+  --animate-recap-list-in: ko-recap-list-in 260ms var(--ko-ease-spring) backwards;
+
+  @keyframes ko-recap-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+
+  @keyframes ko-recap-list-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.99);
+    }
+  }
+
   /* Elevation, tinted with the neutral so shadows belong to the theme. */
   --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
   --shadow-card-next: 0 2px 8px -2px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -6px oklch(from var(--ko-shadow-color) l c h / 0.14);
@@ -1360,5 +1391,46 @@
 
   .ko-question-dialog[data-closing]::backdrop {
     animation: var(--ko-animate-veil-out);
+  }
+
+  /* --- Recap header ----------------------------------------------------------
+   * Ported from kalkulacka-2026/apps/web/components/recap.module.css
+   * (`.header`, `.headerInner`). The one hook the app's `ReviewPage` needs
+   * from here — the rest of that screen is `koa:` utilities in
+   * review-page.tsx. It lives in this layer because the collapse keys on an
+   * attribute of the header and reaches into its child, and because both
+   * elements switch layout under one media query — which a utility on each
+   * would spell out twice and could drift on.
+   *
+   * Phone-only: while scrolling forward through the list, the header collapses
+   * to just the filter row below it, and re-expands the moment the scroll
+   * reverses (`review-page.tsx` tracks direction, not just distance from the
+   * top — the common "toolbar hides advancing, reappears on the way back"
+   * pattern). Same breakpoint as the recap's two columns (`wide`, 56rem): past
+   * it the list has the room and the header never collapses.
+   *
+   * The grid-rows trick, not `max-height`: the header's content — the back
+   * link, the title, the description, the tally — has no fixed height to guess
+   * at, and `max-height` transitions either overshoot (guess too high, the
+   * animation has dead time at the end) or clip (guess too low). Animating
+   * `grid-template-rows` from `1fr` to `0fr` instead sizes to the *actual*
+   * content every time, with the inner element's `overflow: hidden` doing the
+   * clipping as the row shrinks.
+   */
+  @media (width < 56rem) {
+    .ko-recap-header {
+      display: grid;
+      grid-template-rows: 1fr;
+      transition: grid-template-rows var(--ko-duration-slow) ease;
+    }
+
+    .ko-recap-header[data-collapsed] {
+      grid-template-rows: 0fr;
+    }
+
+    .ko-recap-header > * {
+      overflow: hidden;
+      min-height: 0;
+    }
   }
 }

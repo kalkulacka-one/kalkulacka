@@ -126,6 +126,27 @@
       "reviewNavigationCard": {
         "showResultsButton": "Zobraziť výsledky"
       },
+      "reviewPage": {
+        "title": "Rekapitulácia",
+        "description": "Skontrolujte odpovede, než sa pozriete na výsledok. Klepnutím na otázku ju môžete zmeniť.",
+        "tally": "Zodpovedané {answered} z {total}",
+        "skipped": "Preskočené {remaining}",
+        "filterLabel": "Filtrovať otázky",
+        "filterAll": "Všetko",
+        "filterUnanswered": "Preskočené",
+        "filterImportant": "Dôležité",
+        "empty": "V tomto výbere nie sú žiadne otázky.",
+        "showAll": "Zobraziť všetko",
+        "showResults": "Zobraziť výsledky",
+        "back": "Späť k otázkam",
+        "yes": "Áno",
+        "no": "Nie",
+        "neutral": "Neviem",
+        "none": "Bez odpovede",
+        "important": "Pre mňa dôležité",
+        "skip": "Preskočiť",
+        "close": "Zavrieť"
+      },
       "reviewQuestionCard": {
         "yes": "Áno",
         "no": "Nie",
