@@ -29,6 +29,7 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
   const { electionName, calculatorName } = calculatorNames({
     group: "calculatorGroup" in calculator ? calculator.calculatorGroup.key : undefined,
     key: ("variant" in calculator ? calculator.variant?.key : undefined) ?? calculator.key,
+    shortTitle: calculator.shortTitle || undefined,
     fallback: calculator.title || undefined,
   });
 

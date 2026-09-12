@@ -63,15 +63,20 @@ export function electionName(group: string): string | undefined {
 
 /**
  * The names for a calculator, from the config where it is listed and from the
- * data's own `title` / `shortTitle` (passed as `fallback`) — or, failing both,
- * the key itself — where it is not.
+ * data where it is not — or, failing both, the key itself.
+ *
+ * `shortTitle` is preferred over `fallback` (the data's full `title`) because
+ * the two are shown together with the election name: a district election's
+ * full title repeats it ("Komunální volby 2026: Beroun" under "Komunální volby
+ * 2026"), where its short title is the one thing the election name does not
+ * already say — the city or constituency.
  */
-export function calculatorNames({ group, key, fallback }: { group?: string; key?: string; fallback?: string }): CalculatorNames {
+export function calculatorNames({ group, key, shortTitle, fallback }: { group?: string; key?: string; shortTitle?: string; fallback?: string }): CalculatorNames {
   const election = group ? ELECTIONS[group] : undefined;
   const configured = key ? election?.calculators?.[key] : undefined;
 
   return {
     electionName: election?.name,
-    calculatorName: configured ?? fallback ?? key ?? "",
+    calculatorName: configured ?? shortTitle ?? fallback ?? key ?? "",
   };
 }
