@@ -41,6 +41,29 @@
         "factRecapTitle": "Рекапитулација",
         "factRecapDescription": "На крајот ќе ги видите сите прашања заедно и одговорите сè уште можете да ги промените."
       },
+      "questionPage": {
+        "counter": "Прашање {position} од {total}",
+        "progressLabel": "Напредок на пополнувањето",
+        "agree": "Да",
+        "disagree": "Не",
+        "important": "Важно за мене",
+        "importantSuffix": " · Важно за мене",
+        "skip": "Прескокни",
+        "next": "Следно",
+        "previous": "Претходно",
+        "guide": "Водич",
+        "hints": {
+          "arrowLeft": "Стрелка налево",
+          "arrowRight": "Стрелка надесно",
+          "arrowUp": "Стрелка нагоре",
+          "arrowDown": "Стрелка надолу",
+          "comma": "Запирка",
+          "period": "Точка",
+          "important": "Важно",
+          "browse": "Прелистување без одговор"
+        },
+        "announce": "Прашање {position} од {total}: {statement}"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"
       },

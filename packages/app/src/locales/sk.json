@@ -41,6 +41,29 @@
         "factRecapTitle": "Rekapitulácia",
         "factRecapDescription": "Na konci uvidíte všetky otázky pohromade a odpovede môžete ešte zmeniť."
       },
+      "questionPage": {
+        "counter": "Otázka {position} z {total}",
+        "progressLabel": "Priebeh vypĺňania",
+        "agree": "Áno",
+        "disagree": "Nie",
+        "important": "Pre mňa dôležité",
+        "importantSuffix": " · Pre mňa dôležité",
+        "skip": "Preskočiť",
+        "next": "Ďalšia",
+        "previous": "Predchádzajúca",
+        "guide": "Návod",
+        "hints": {
+          "arrowLeft": "Šípka vľavo",
+          "arrowRight": "Šípka vpravo",
+          "arrowUp": "Šípka nahor",
+          "arrowDown": "Šípka nadol",
+          "comma": "Čiarka",
+          "period": "Bodka",
+          "important": "Dôležité",
+          "browse": "Prechádzať bez odpovede"
+        },
+        "announce": "Otázka {position} z {total}: {statement}"
+      },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplniť vlastnú kalkulačku"
       },

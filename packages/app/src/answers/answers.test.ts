@@ -3,7 +3,7 @@ import type { Answer } from "@kalkulacka-one/schema";
 
 import { describe, expect, it } from "vitest";
 
-import { countAnswered, countSkipped, firstUnansweredIndex, hasAnswer, isVisited } from "./answers";
+import { countAnswered, countSkipped, firstUnansweredIndex, hasAnswer, isVisited, toSegments } from "./answers";
 
 const questions = [{ id: "q1" }, { id: "q2" }, { id: "q3" }];
 
@@ -98,5 +98,41 @@ describe("firstUnansweredIndex", () => {
 
   it("ignores stored answers to questions this calculator no longer asks", () => {
     expect(firstUnansweredIndex(questions, [yes("retired-question")])).toBe(0);
+  });
+});
+
+describe("toSegments", () => {
+  it("maps each question to its answer's state, in question order", () => {
+    expect(toSegments(questions, [no("q1"), yes("q3")])).toEqual([
+      { state: "disagree", important: false },
+      { state: "unanswered", important: false },
+      { state: "agree", important: false },
+    ]);
+  });
+
+  it("reads a visited question without a position as skipped", () => {
+    expect(toSegments(questions, [skipped("q1")])[0]).toEqual({ state: "skipped", important: false });
+  });
+
+  it("reads an explicit neutral as skipped in the bar, even though it scores", () => {
+    expect(toSegments(questions, [neutral("q2")])[1]).toEqual({ state: "skipped", important: false });
+  });
+
+  it("carries the important flag whatever the state, including before an answer exists", () => {
+    expect(
+      toSegments(questions, [
+        { questionId: "q1", answer: true, isImportant: true },
+        { questionId: "q2", isImportant: true },
+      ]),
+    ).toEqual([
+      { state: "agree", important: true },
+      { state: "skipped", important: true },
+      { state: "unanswered", important: false },
+    ]);
+  });
+
+  it("ignores stored answers to questions this calculator no longer asks", () => {
+    expect(toSegments(questions, [yes("retired-question")])).toHaveLength(3);
+    expect(toSegments(questions, [yes("retired-question")]).every((segment) => segment.state === "unanswered")).toBe(true);
   });
 });
