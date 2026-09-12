@@ -292,6 +292,24 @@
   --ease-spring: var(--ko-motion-easing-spring, cubic-bezier(0.2, 0.9, 0.3, 1));
   --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
 
+  /*
+   * The progress bar's current segment popping in (`ProgressSegments`). A
+   * theme animation so it is one `ko:animate-segment-pop` utility, which
+   * `ko:motion-reduce:animate-none` can switch off.
+   */
+  --animate-segment-pop: ko-segment-pop var(--ko-duration-slow) var(--ko-ease-spring);
+
+  @keyframes ko-segment-pop {
+    0% {
+      transform: scaleY(0.4);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
   /* Elevation, tinted with the neutral so shadows belong to the theme. */
   --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
   --shadow-card-next: 0 2px 8px -2px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -6px oklch(from var(--ko-shadow-color) l c h / 0.14);
@@ -987,6 +1005,159 @@
     .ko-question-card-important:hover .ko-question-card-tooltip,
     .ko-question-card-important:focus-visible .ko-question-card-tooltip {
       transform: none;
+    }
+  }
+
+  /* --- QuestionDeck ----------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/ui/src/question-deck/question-deck.module.css.
+   *
+   * The static arrangement of the deck's layers. Everything that moves — the
+   * drag, the stack rising to the front, the ghost's flight, the spring back —
+   * is written as inline `style` by `useSwipeDeck` (that is how the source
+   * works, and a drag cannot afford a React render per pointer move), so what
+   * lives here is only where each layer rests before a script touches it and
+   * the order they paint in.
+   *
+   * The z-index stack, in the 2026 `--vk-z-*` values: back 1, next 2, the
+   * active card 3, the ghost 4, the toast 6.
+   */
+  .ko-deck {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    /*
+     * Also what makes the deck the containing block for its fixed-position
+     * toast — see `.ko-deck-toast` before removing this.
+     */
+    container-type: inline-size;
+    container-name: deck;
+  }
+
+  .ko-deck-layer {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 50%;
+  }
+
+  .ko-deck-back {
+    z-index: 1;
+    transform: translate(0px, -60px) scale(0.88);
+    filter: brightness(0.95);
+    opacity: 1;
+  }
+
+  .ko-deck-next {
+    z-index: 2;
+    transform: translate(0px, -32px) scale(0.94);
+    filter: brightness(0.98);
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  /*
+   * The drag surface: the card under the reader's hand. `touch-action: none`
+   * so the browser never claims a swipe for scrolling once it has started on
+   * the card; the card's own `interactive` variant says the same, this is the
+   * deck's guarantee regardless.
+   */
+  .ko-deck-active {
+    z-index: 3;
+    touch-action: none;
+    transform-origin: 50% 50%;
+  }
+
+  /* The copy of the just-answered card, mid-flight. */
+  .ko-deck-ghost {
+    z-index: 4;
+    pointer-events: none;
+    transform-origin: 50% 50%;
+  }
+
+  /*
+   * The drag hint.
+   *
+   * `fixed`, but resolved against the deck, not the viewport: `.ko-deck` sets
+   * `container-type`, which makes it the containing block for its
+   * fixed-position descendants. That is deliberate — it parks the toast over
+   * the bottom of the card, right where the eye already is mid-drag, instead of
+   * at the foot of the screen under the sticky bar. Anything that removes
+   * containment from `.ko-deck` will silently move this to the viewport edge.
+   *
+   * The deck's heaviest elevation, on the smallest thing that uses it. The
+   * toast lands directly over the sticky action bar and the card's own answer
+   * buttons — solid fill alone left it reading as another button in that
+   * stack rather than as something floating above it, and the one thing that
+   * separates a layer from the layer below is the shadow it casts on it.
+   *
+   * Wraps rather than overflows. It used to be `nowrap`, which was safe only
+   * because the longest string it could hold was the compact "Ne · Pro mě
+   * důležité"; now that it always spells the answer out, "Nesouhlasím · Pro
+   * mě důležité" clears a 375px screen but not a 320px one, and a clipped
+   * toast is a worse answer than a two-line one.
+   *
+   * Capped against the viewport rather than with a `%`, which would resolve
+   * against the deck — the container that captures this element's
+   * positioning, and on a phone narrower than the room the toast really has.
+   * No `text-wrap: balance` either: balancing a pill that is one line in the
+   * common case only ever fires when it wraps, and there it traded two full
+   * lines for four short ones.
+   *
+   * `width: max-content` is what makes the cap the thing that decides. Left
+   * to shrink-to-fit, an absolutely-placed box offset by `left: 50%` gets
+   * only the half of its containing block to the right of that offset — so
+   * the toast wrapped against half a card's width and never reached the cap
+   * at all. `nowrap` used to hide that by overflowing straight through it.
+   */
+  .ko-deck-toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+    z-index: 6;
+
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--ko-radius-pill);
+    background: var(--ko-color-neutral-ink);
+    color: var(--ko-color-on-neutral-ink);
+    box-shadow: var(--ko-shadow-card-lifted);
+
+    font-family: var(--ko-font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    width: max-content;
+    max-width: min(100vw - 2rem, 22rem);
+    text-align: center;
+
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px) scale(0.92);
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s var(--ko-ease-spring);
+  }
+
+  .ko-deck-toast-visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  /*
+   * The toast's timings are literals rather than `--ko-duration-*` — they were
+   * measured against the drag's own feel, not the app's control tempo — so
+   * the blanket reduction in @layer base does not reach them and this has to
+   * say it. The pill still appears and still says what releasing would do; it
+   * just arrives instead of rising into place, which matters when it is being
+   * read out of the corner of an eye that is following a moving card.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .ko-deck-toast {
+      transition: none;
+      transform: translateX(-50%);
+    }
+
+    .ko-deck-toast-visible {
+      transform: translateX(-50%);
     }
   }
 
