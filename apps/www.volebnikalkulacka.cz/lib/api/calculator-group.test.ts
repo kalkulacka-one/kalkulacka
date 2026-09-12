@@ -62,8 +62,8 @@ describe("loadCalculatorGroup", () => {
     const listing = await loadCalculatorGroup({ group: "senatni-2026" });
 
     expect(listing.calculators).toEqual([
-      { key: "3-cheb", districtName: "Cheb", districtCode: "3", region: { key: "karlovarsky-kraj", name: "Karlovarský kraj" }, variantKey: undefined, round: 1 },
-      { key: "6-louny", districtName: "Louny", districtCode: "6", region: { key: "ustecky-kraj", name: "Ústecký kraj" }, variantKey: undefined, round: 1 },
+      { key: "3-cheb", districtKey: "3-cheb", districtName: "Cheb", districtCode: "3", region: { key: "karlovarsky-kraj", name: "Karlovarský kraj" }, variantKey: undefined, round: 1 },
+      { key: "6-louny", districtKey: "6-louny", districtName: "Louny", districtCode: "6", region: { key: "ustecky-kraj", name: "Ústecký kraj" }, variantKey: undefined, round: 1 },
     ]);
   });
 

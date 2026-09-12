@@ -16,6 +16,8 @@ import { electionName } from "@/config/calculator-names";
 export type GroupCalculator = {
   /** The calculator's key — the last URL segment. */
   key: string;
+  /** The district's key, the one thing that ties a district's calculators together. */
+  districtKey: string;
   /** The district's name, e.g. "Beroun" or "Cheb". */
   districtName: string;
   /** The district's official code, e.g. a Senate constituency number. */
@@ -82,6 +84,7 @@ export async function loadCalculatorGroup({ group }: { group: string }): Promise
     return [
       {
         key: calculator.key,
+        districtKey: district.key,
         districtName: district.shortTitle ?? district.title,
         districtCode: district.code,
         region: region ? { key: region.key, name: region.title } : undefined,
