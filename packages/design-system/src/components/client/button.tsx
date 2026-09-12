@@ -28,17 +28,16 @@ export const ButtonVariants = cva(
         small: "ko:h-10 ko:px-2",
         medium: "ko:h-12 ko:px-3",
       },
-      // declared before `variant` so `link` and `answer` win the merge, as they won the cascade
+      variant: {
+        fill: [""],
+        outline: ["ko:bg-transparent"],
+        link: ["ko:bg-transparent"],
+        answer: ["ko:px-6"],
+      },
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary-disabled"],
         secondary: ["ko:border-secondary", "ko:data-disabled:border-secondary-disabled"],
         neutral: ["ko:border-neutral", "ko:data-disabled:border-neutral-disabled"],
-      },
-      variant: {
-        fill: [""],
-        outline: ["ko:bg-transparent"],
-        link: ["ko:bg-transparent", "ko:border-transparent", "ko:data-disabled:border-transparent"],
-        answer: ["ko:px-6"],
       },
     },
     defaultVariants: {
@@ -47,6 +46,10 @@ export const ButtonVariants = cva(
       color: "primary",
     },
     compoundVariants: [
+      {
+        variant: "link",
+        class: ["ko:border-transparent", "ko:data-disabled:border-transparent"],
+      },
       {
         variant: "fill",
         color: "primary",

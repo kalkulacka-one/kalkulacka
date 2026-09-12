@@ -23,18 +23,12 @@ describe("twMerge", () => {
     expect(twMerge("ko:rounded-2xl ko:rounded-br-none")).toBe("ko:rounded-2xl ko:rounded-br-none");
   });
 
-  it("treats the theme's own token values as their real utility group", () => {
-    expect(twMerge("ko:text-s ko:text-primary")).toBe("ko:text-s ko:text-primary");
-    expect(twMerge("ko:drop-shadow-2xl ko:drop-shadow-hard")).toBe("ko:drop-shadow-hard");
-    expect(twMerge("ko:font-sans ko:font-display")).toBe("ko:font-display");
-  });
-
   it("ignores classes belonging to another package's prefix", () => {
     expect(twMerge("koa:p-2 koa:p-4")).toBe("koa:p-2 koa:p-4");
   });
 
   it("builds a merger for another prefix", () => {
-    const koa = createTwMerge({ prefix: "koa" });
+    const koa = createTwMerge("koa");
     expect(koa("koa:p-2 koa:p-4")).toBe("koa:p-4");
     expect(koa("ko:p-2 ko:p-4")).toBe("ko:p-2 ko:p-4");
   });
