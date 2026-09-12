@@ -1,4 +1,7 @@
-@import 'tailwindcss' prefix(ko);
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme' layer(theme) prefix(ko);
+@import 'tailwindcss/utilities' layer(utilities) prefix(ko);
 
 @source not "**/*.test.{ts,tsx}";
 
