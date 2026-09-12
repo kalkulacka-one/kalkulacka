@@ -1,4 +1,4 @@
-import { IconButton } from "@kalkulacka-one/design-system/client";
+import { Menu } from "@kalkulacka-one/design-system/client";
 import { icons } from "@kalkulacka-one/design-system/icons";
 import { AppHeader } from "@kalkulacka-one/design-system/server";
 
@@ -58,13 +58,26 @@ export const AsAttributionLink: AppHeaderStory = {
   },
 };
 
-/** The shell menu trigger in the actions slot, pushed to the right edge. */
+/** The shell menu in the actions slot, pushed to the right edge — its popover hangs from that same corner. */
 export const WithActions: AppHeaderStory = {
   args: {
     electionName: "Komunální volby 2022",
     calculatorName: "Pardubice",
-    actions: <IconButton icon={icons.list} label="Nabídka" variant="surface" />,
+    actions: (
+      <Menu
+        label="Nabídka"
+        items={[
+          { id: "help", label: "Jak to funguje", detail: "Připomenutí, jak se odpovídá", icon: icons.info, onSelect: () => {} },
+          { id: "restart", label: "Začít znovu", detail: "Smaže vaše odpovědi", icon: icons.restart, onSelect: () => {} },
+        ]}
+      />
+    ),
   },
+  render: (args) => (
+    <div style={{ minHeight: "14rem" }}>
+      <AppHeader {...args} />
+    </div>
+  ),
 };
 
 /** The mark in the text ink — for a partner theme whose brand colours would clash with the logo's. */

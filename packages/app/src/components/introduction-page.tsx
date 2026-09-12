@@ -6,13 +6,14 @@ import { icons } from "@kalkulacka-one/design-system/icons";
 import { AppHeader, Screen, StickyBar, TutorialStep } from "@kalkulacka-one/design-system/server";
 
 import { useTranslations } from "next-intl";
-import type { ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 
 import { countAnswered, firstUnansweredIndex } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
 import { useQuestions } from "@/client/view-models";
 
 import { EditorialMarkdown } from "./editorial-markdown";
+import { RestartDialog } from "./restart-dialog";
 
 /** Where a returning visitor picks up: the first unvisited question (1-based), or the recap once every question was visited. */
 export type IntroductionResumeTarget = { question: number } | { review: true };
@@ -36,6 +37,12 @@ export type IntroductionPage = {
   onContinueClick: () => void;
   /** A returning visitor resumes where they left off. */
   onResumeClick: (target: IntroductionResumeTarget) => void;
+  /**
+   * A returning visitor confirmed "Začít znovu" — the app clears the answers
+   * and takes them to the first question, the same way the shell menu's
+   * restart does.
+   */
+  onRestartClick: () => void;
 };
 
 /**
@@ -53,14 +60,27 @@ export type IntroductionPage = {
  * explains what the calculator *does* with an answer, the guide teaches how to
  * *give* one.
  *
- * Not yet here: the 2026 "Začít znovu" secondary action for returners. It needs
- * the restart dialog, which arrives with the Dialog component; until then a
- * returner has only "Pokračovat v odpovídání".
+ * A returner also gets "Začít znovu" beside the way back in: it asks first,
+ * through the same `RestartDialog` the shell menu uses, so the one destructive
+ * action in the app is worded the same wherever it is reached from.
  */
-export function IntroductionPage({ appTitle, electionName, calculatorName, candidateCount, intro, headerActions, attributionHref, logoMonochrome, onContinueClick, onResumeClick }: IntroductionPage) {
+export function IntroductionPage({
+  appTitle,
+  electionName,
+  calculatorName,
+  candidateCount,
+  intro,
+  headerActions,
+  attributionHref,
+  logoMonochrome,
+  onContinueClick,
+  onResumeClick,
+  onRestartClick,
+}: IntroductionPage) {
   const t = useTranslations("koa.components.introductionPage");
   const { questions, total } = useQuestions();
   const answers = useAnswersStore((state) => state.answers);
+  const [confirmingRestart, setConfirmingRestart] = useState(false);
 
   // Derived once per render from the store, so the primary action does not
   // change its mind from "Pokračovat" to "Pokračovat v odpovídání" mid-render.
@@ -84,9 +104,23 @@ export function IntroductionPage({ appTitle, electionName, calculatorName, candi
       footer={
         <StickyBar>
           {inProgress ? (
-            <Button variant="solid" color="neutral" size="large" onClick={() => onResumeClick(resumeTarget)}>
-              {t("continue")}
-            </Button>
+            <>
+              {/*
+                `plate`, not `ghost`: this button floats directly over the
+                backdrop with no container behind it (`StickyBar` has no
+                panel), and `ghost`'s transparent background needs one to read
+                against. `plate` is the variant built for exactly this — the
+                back link, the share action, the shell's menu trigger. First
+                in the DOM as the secondary action; `StickyBar` puts the
+                primary one on top when the pair stacks.
+              */}
+              <Button variant="plate" size="large" onClick={() => setConfirmingRestart(true)}>
+                {t("restart")}
+              </Button>
+              <Button variant="solid" color="neutral" size="large" onClick={() => onResumeClick(resumeTarget)}>
+                {t("continue")}
+              </Button>
+            </>
           ) : (
             <Button variant="solid" color="neutral" size="large" onClick={onContinueClick}>
               {t("start")}
@@ -114,6 +148,18 @@ export function IntroductionPage({ appTitle, electionName, calculatorName, candi
       <IntroFacts />
 
       {intro ? <EditorialMarkdown>{intro}</EditorialMarkdown> : null}
+
+      <RestartDialog
+        open={confirmingRestart}
+        onClose={() => setConfirmingRestart(false)}
+        onConfirm={() => {
+          setConfirmingRestart(false);
+          // Same destination as the menu's restart: cleared answers and a
+          // screen still saying "Pokračovat v odpovídání" would be its own
+          // small lie.
+          onRestartClick();
+        }}
+      />
     </Screen>
   );
 }

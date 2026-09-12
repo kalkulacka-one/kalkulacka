@@ -2,7 +2,7 @@ import type { Answer } from "@kalkulacka-one/schema";
 
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/client/stores";
 import type { CalculatorData } from "@/data-fetching";
@@ -10,6 +10,17 @@ import { csMessages } from "@/locales";
 
 import { IntroductionPage } from "./introduction-page";
 import { LocaleProvider } from "./providers";
+
+/* jsdom doesn't implement `<dialog>`'s `showModal()`/`close()` — the same minimum stub the design system's dialog tests use, for the restart confirmation. */
+beforeAll(() => {
+  HTMLDialogElement.prototype.showModal = function (this: HTMLDialogElement) {
+    this.open = true;
+  };
+  HTMLDialogElement.prototype.close = function (this: HTMLDialogElement) {
+    this.open = false;
+    this.dispatchEvent(new Event("close"));
+  };
+});
 
 const questionIds = ["11111111-1111-4111-8111-111111111111", "22222222-2222-4222-8222-222222222222", "33333333-3333-4333-8333-333333333333"] as const;
 const [q1, q2, q3] = questionIds;
@@ -37,6 +48,7 @@ type RenderOptions = {
 function renderPage({ answers = [], props = {} }: RenderOptions = {}) {
   const onContinueClick = vi.fn();
   const onResumeClick = vi.fn();
+  const onRestartClick = vi.fn();
   const answersStore = createAnswersStore();
   answersStore.getState().setAnswers(answers);
 
@@ -51,6 +63,7 @@ function renderPage({ answers = [], props = {} }: RenderOptions = {}) {
             candidateCount={26}
             onContinueClick={onContinueClick}
             onResumeClick={onResumeClick}
+            onRestartClick={onRestartClick}
             {...props}
           />
         </AnswersStoreContext.Provider>
@@ -58,7 +71,7 @@ function renderPage({ answers = [], props = {} }: RenderOptions = {}) {
     </LocaleProvider>,
   );
 
-  return { ...result, onContinueClick, onResumeClick };
+  return { ...result, onContinueClick, onResumeClick, onRestartClick };
 }
 
 const yes = (questionId: string): Answer => ({ questionId, answer: true });
@@ -115,6 +128,11 @@ describe("IntroductionPage", () => {
       expect(onContinueClick).toHaveBeenCalledTimes(1);
       expect(onResumeClick).not.toHaveBeenCalled();
     });
+
+    it("has nothing to start over", () => {
+      renderPage();
+      expect(screen.queryByRole("button", { name: "Začít znovu" })).toBeNull();
+    });
   });
 
   describe("for a returning visitor", () => {
@@ -151,6 +169,35 @@ describe("IntroductionPage", () => {
       renderPage({ answers: [skipped(q1)] });
       expect(screen.getByRole("button", { name: "Pokračovat" })).toBeInTheDocument();
       expect(screen.queryByText(/Máte odpovězeno/)).toBeNull();
+    });
+
+    it("offers to start over, as the secondary action before the primary one", () => {
+      renderPage({ answers: [yes(q1)] });
+      const restart = screen.getByRole("button", { name: "Začít znovu" });
+      const resume = screen.getByRole("button", { name: "Pokračovat v odpovídání" });
+      expect(restart).toHaveClass("ko:bg-surface/72");
+      expect(restart.compareDocumentPosition(resume) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    });
+
+    it("asks before starting over, and restarts only on the confirming action", async () => {
+      const user = userEvent.setup();
+      const { onRestartClick, onResumeClick } = renderPage({ answers: [yes(q1)] });
+      const dialog = () => screen.getByRole("dialog", { hidden: true });
+      expect(dialog()).toHaveProperty("open", false);
+
+      await user.click(screen.getByRole("button", { name: "Začít znovu" }));
+      expect(dialog()).toHaveProperty("open", true);
+      expect(dialog()).toHaveAccessibleName("Začít znovu?");
+
+      await user.click(screen.getByRole("button", { name: "Zrušit" }));
+      expect(dialog()).toHaveProperty("open", false);
+      expect(onRestartClick).not.toHaveBeenCalled();
+
+      await user.click(screen.getByRole("button", { name: "Začít znovu" }));
+      await user.click(screen.getByRole("button", { name: "Smazat a začít znovu" }));
+      expect(onRestartClick).toHaveBeenCalledTimes(1);
+      expect(onResumeClick).not.toHaveBeenCalled();
+      expect(dialog()).toHaveProperty("open", false);
     });
   });
 

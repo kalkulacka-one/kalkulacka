@@ -250,8 +250,14 @@ export function QuestionDeck({ current, next, after, selection, labels, onAnswer
       // `event.target` is not always an Element (it's `window`/`document` for
       // some synthetically dispatched or unfocused-body keydowns) — guard
       // before calling an Element-only method on it.
+      //
+      // A key typed into a modal dialog, the shell menu or its trigger is
+      // theirs, not the deck's: the help sheet opens over the flow, and an
+      // arrow pressed to move through it (or through the menu) must not
+      // answer the card behind it — a window listener still hears keys the
+      // top layer is showing.
       const target = event.target;
-      if (target instanceof HTMLElement && target.closest("input, textarea, select, [contenteditable]")) return;
+      if (target instanceof HTMLElement && target.closest('input, textarea, select, [contenteditable], dialog, [role="menu"], [aria-haspopup="menu"]')) return;
       if (event.metaKey || event.ctrlKey || event.altKey) return;
 
       switch (event.key) {

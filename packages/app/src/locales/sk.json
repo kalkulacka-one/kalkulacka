@@ -1,6 +1,19 @@
 {
   "koa": {
     "components": {
+      "appMenu": {
+        "label": "Ponuka",
+        "help": "Ako to funguje",
+        "helpDetail": "Pripomenutie, ako sa odpovedá",
+        "darkMode": "Tmavý režim",
+        "darkModeDetail": "Prepne aplikáciu do tmavého vzhľadu",
+        "lightMode": "Svetlý režim",
+        "lightModeDetail": "Prepne aplikáciu do svetlého vzhľadu",
+        "restart": "Začať znova",
+        "restartDetail": "Vymaže vaše odpovede",
+        "leave": "Opustiť kalkulačku",
+        "leaveDetail": "Postup zostane uložený"
+      },
       "comparisonPage": {
         "title": "Porovnanie odpovedí",
         "description": "Ako strany odpovedali na jednotlivé otázky",
@@ -102,6 +115,10 @@
         "recapTitle": "Rekapitulácia",
         "recapDescription": "Na konci uvidíte všetky otázky pohromade a odpovede môžete ešte zmeniť."
       },
+      "helpDialog": {
+        "title": "Ako to funguje",
+        "close": "Zavrieť"
+      },
       "introductionNavigationCard": {
         "continueButton": "Pokračovať"
       },
@@ -111,12 +128,20 @@
         "progress": "Máte zodpovedaných {answered} z {total}.",
         "start": "Pokračovať",
         "continue": "Pokračovať v odpovedaní",
+        "restart": "Začať znova",
         "factImportantTitle": "Pre mňa dôležité",
         "factImportantDescription": "Otázku, na ktorej vám obzvlášť záleží, môžete označiť ako dôležitú. Vo výsledku má potom dvojnásobnú váhu.",
         "factSkipTitle": "Preskočenie",
         "factSkipDescription": "Odpovedať nemusíte na všetko. Preskočená otázka sa do výsledku nezapočíta.",
         "factRecapTitle": "Rekapitulácia",
         "factRecapDescription": "Na konci uvidíte všetky otázky pohromade a odpovede môžete ešte zmeniť."
+      },
+      "leaveDialog": {
+        "title": "Opustiť kalkulačku?",
+        "description": "Vaše odpovede priebežne ukladáme, takže sa k nim v tomto prehliadači môžete vrátiť a pokračovať tam, kde ste skončili. V anonymnom okne sa však po jeho zavretí stratia.",
+        "cancel": "Zrušiť",
+        "confirm": "Opustiť",
+        "close": "Zavrieť"
       },
       "questionPage": {
         "counter": "Otázka {position} z {total}",
@@ -140,6 +165,13 @@
           "browse": "Prechádzať bez odpovede"
         },
         "announce": "Otázka {position} z {total}: {statement}"
+      },
+      "restartDialog": {
+        "title": "Začať znova?",
+        "description": "Vymažeme všetky vaše odpovede v tejto kalkulačke a vrátime vás na prvú otázku. Túto akciu nie je možné vziať späť.",
+        "cancel": "Zrušiť",
+        "confirm": "Vymazať a začať znova",
+        "close": "Zavrieť"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplniť vlastnú kalkulačku"

@@ -22,10 +22,10 @@ const stepsClasses = "koa:flex koa:flex-col koa:gap-6 koa:-mt-3 koa:mx-0 koa:mb-
 /**
  * What the flow's controls mean.
  *
- * Lives on its own because it is needed in two places that must never drift
- * apart: the "Podrobný návod" overlay on the guide, and the same overlay
- * opened from the shell menu anywhere in the flow. Same list, same order, one
- * definition. (Both arrive with the help dialog; nothing renders this yet.)
+ * Lives on its own so that every surface wanting this list gets the same one:
+ * today the help dialog opened from the shell menu anywhere in the flow
+ * (`HelpDialog`), and any second overlay that needs the same prose later.
+ * Same list, same order, one definition.
  *
  * It says nothing about what the reader has already tried. It used to tick off
  * the gestures practised on the card behind it, which turned reference prose

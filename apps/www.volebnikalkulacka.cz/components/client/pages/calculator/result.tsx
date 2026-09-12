@@ -1,14 +1,12 @@
 import { ResultPage } from "@kalkulacka-one/app";
 import { useAnswersStore, useCalculatedMatches, useCalculator } from "@kalkulacka-one/app/client";
-import { IconButton } from "@kalkulacka-one/design-system/client";
-import { icons } from "@kalkulacka-one/design-system/icons";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { ShareModal } from "@/calculator/components/client";
-import { DonateCard, HideOnEmbed, useEmbed } from "@/components/client";
+import { CalculatorMenu, DonateCard, useEmbed } from "@/components/client";
 import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
@@ -74,19 +72,6 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     router.push(`${comparisonRoute}${comparisonFilterQuery("important")}`);
   };
 
-  const handleCloseClick = async () => {
-    try {
-      const hasValidMatches = algorithmMatches?.some((match) => match.match !== undefined);
-
-      if (answersStore.length > 0 && hasValidMatches) {
-        await saveSessionData(calculator.id, answersStore, algorithmMatches, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
-  };
-
   const handleShareClick = () => {
     setIsShareModalOpen(true);
   };
@@ -99,11 +84,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
         appTitle="Volební kalkulačka"
         electionName={electionName}
         calculatorName={calculatorName}
-        headerActions={
-          <HideOnEmbed>
-            <IconButton icon={icons.close} label="Zavřít" variant="surface" onClick={handleCloseClick} />
-          </HideOnEmbed>
-        }
+        headerActions={<CalculatorMenu segments={segments} matches={algorithmMatches} />}
         attributionHref={attributionHref}
         logoMonochrome={logoMonochrome}
         onBackClick={handleBackClick}

@@ -1,4 +1,5 @@
 export * from "./answers";
+export * from "./color-mode";
 export * from "./components";
 export * from "./data-fetching";
 export * from "./errors";
