@@ -5,12 +5,15 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev --port 3050",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "start": "next start",
     "ncu": "ncu",
     "ncu:upgrade": "ncu -u",
-    "test": "vitest --passWithNoTests",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

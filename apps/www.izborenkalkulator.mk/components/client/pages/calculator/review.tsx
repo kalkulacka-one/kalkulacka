@@ -1,56 +1,70 @@
-import { useAnswers, useAnswersStore, useCalculator, useQuestions } from "@kalkulacka-one/app/client";
+import { ReviewPage } from "@kalkulacka-one/app";
+import { useCalculator, useQuestions } from "@kalkulacka-one/app/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { useEffect } from "react";
 
-import { ReviewPage as AppReviewPage } from "@/calculator";
-import { useEmbed } from "@/components/client";
+import { CalculatorMenu, useEmbed } from "@/components/client";
+import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
-import { saveSessionData } from "@/lib/api";
-import { reportError } from "@/lib/monitoring";
 import { type RouteSegments, routes } from "@/lib/routing";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
   const calculator = useCalculator();
-  const questions = useQuestions();
-  const answersStore = useAnswersStore((state) => state.answers);
-  const answers = useAnswers();
+  const { total } = useQuestions();
   const embed = useEmbed();
   const locale = useLocale();
 
   useAutoSave();
 
-  const handleNextClick = () => {
-    router.push(routes.result(segments, locale));
+  // A standalone calculator is named by its own data; there is no election
+  // group to name it after — see `config/calculator-names.ts`.
+  const { electionName, calculatorName } = calculatorNames({
+    key: ("variant" in calculator ? calculator.variant?.key : undefined) ?? calculator.key,
+    title: calculator.title || undefined,
+    shortTitle: calculator.shortTitle,
+  });
+
+  // In an embed the wordmark doubles as the attribution — the one way out of a
+  // partner's iframe to the full site — unless the partner opted out of it.
+  const attributionHref = embed.isEmbed && embed.config?.attribution !== false ? (process.env.NEXT_PUBLIC_CANONICAL_URL ?? "/") : undefined;
+  const logoMonochrome = embed.isEmbed && embed.config?.logo === "monochrome";
+
+  const resultRoute = routes.result(segments, locale);
+
+  /*
+   * Warm the results route while the recap is being read. The screen after
+   * this one opens on a loading animation that should start the moment the
+   * button is pressed, not after an RSC round-trip — and the button is a
+   * `router.push`, not a `<Link>`, so nothing prefetches it on its own.
+   * Explicit is cheap. (No-op in dev.)
+   */
+  useEffect(() => {
+    router.prefetch(resultRoute);
+  }, [router, resultRoute]);
+
+  // The recap follows the deck's end, so "back" is the card it came from — the
+  // last question — as 2026 has it, not the first.
+  const handleBackClick = () => {
+    router.push(routes.question(segments, total, locale));
   };
 
-  const handlePreviousClick = () => {
-    router.push(routes.question(segments, questions.total, locale));
-  };
-
-  const handleCloseClick = async () => {
-    try {
-      if (answersStore.length > 0) {
-        await saveSessionData(calculator.id, answersStore, undefined, calculator.version);
-      }
-    } catch (error) {
-      reportError(error);
-    }
-    router.push("/");
+  const handleShowResultsClick = () => {
+    router.push(resultRoute);
   };
 
   return (
-    <div>
-      <AppReviewPage
-        embedContext={embed}
-        calculator={calculator}
-        questions={questions}
-        answers={answers}
-        onNextClick={handleNextClick}
-        onPreviousClick={handlePreviousClick}
-        onCloseClick={handleCloseClick}
-      />
-    </div>
+    <ReviewPage
+      appTitle="Изборен калкулатор"
+      electionName={electionName}
+      calculatorName={calculatorName}
+      headerActions={<CalculatorMenu segments={segments} />}
+      attributionHref={attributionHref}
+      logoMonochrome={logoMonochrome}
+      onBackClick={handleBackClick}
+      onShowResultsClick={handleShowResultsClick}
+    />
   );
 }

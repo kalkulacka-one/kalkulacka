@@ -12,7 +12,7 @@ import { Fragment, type ReactNode, useCallback, useEffect, useMemo, useRef, useS
 import { countAnswered } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
 import { useAnswerDistribution, useCalculatedMatches, useCalculator, useQuestionConsensus, useQuestions, useResult, useTopicMatches } from "@/client/view-models";
-import { buildAiPrompt, selectAgainstTheGrain, selectImportant, topicSlug } from "@/insights";
+import { buildAiPrompt, selectAgainstTheGrain, selectImportant } from "@/insights";
 import type { calculateMatches } from "@/result-calculation";
 
 import { ComparisonPane } from "./comparison-pane";
@@ -693,7 +693,7 @@ export function ResultPage({
                 againstTheGrain={againstTheGrain}
                 prompt={prompt}
                 formatPercent={formatPercent}
-                onCompareTopicClick={shared || !onCompareTopicClick ? undefined : (topic) => onCompareTopicClick(topicSlug(topic))}
+                onCompareTopicClick={shared ? undefined : onCompareTopicClick}
                 onCompareImportantClick={shared ? undefined : onCompareImportantClick}
               />
             </ComparisonPane>

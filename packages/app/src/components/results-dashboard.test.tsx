@@ -119,7 +119,8 @@ describe("ResultsDashboard", () => {
       expect(rows[0]?.querySelector("svg")).toBeInTheDocument();
 
       await user.click(rows[1] as HTMLElement);
-      expect(onCompareTopicClick).toHaveBeenCalledWith("Školství");
+      // Named by its slug — the form the app puts in a link — not by its display name.
+      expect(onCompareTopicClick).toHaveBeenCalledWith("skolstvi");
       expect(within(topicsCard).getByText("Témata s méně než 3 odpověďmi se nezobrazují.")).toBeInTheDocument();
     });
 
@@ -128,6 +129,25 @@ describe("ResultsDashboard", () => {
       const topicsCard = card("Podle témat");
       expect(within(topicsCard).queryByRole("button")).toBeNull();
       expect(within(topicsCard).getAllByRole("listitem")).toHaveLength(2);
+    });
+
+    it("shows a topic the URL cannot name as plain text, with the link kept for the ones it can", async () => {
+      const user = userEvent.setup();
+      const onCompareTopicClick = vi.fn();
+      // The Macedonian calculator's topics are Cyrillic; the Latin-only slug rule leaves nothing of them.
+      renderDashboard({ onCompareTopicClick, topics: [topic("Економија", alfa, 90, 4), topic("Doprava", beta, 70)] });
+      const topicsCard = card("Podle témat");
+
+      expect(within(topicsCard).getAllByRole("listitem")).toHaveLength(2);
+      // The finding is still there to read, only the row is no control.
+      expect(within(topicsCard).getByText("Економија")).toBeInTheDocument();
+      expect(within(topicsCard).queryByRole("button", { name: "Porovnat odpovědi k tématu Економија" })).toBeNull();
+
+      const rows = within(topicsCard).getAllByRole("button");
+      expect(rows.map((row) => row.getAttribute("aria-label"))).toEqual(["Porovnat odpovědi k tématu Doprava"]);
+      await user.click(rows[0] as HTMLElement);
+      expect(onCompareTopicClick).toHaveBeenCalledTimes(1);
+      expect(onCompareTopicClick).toHaveBeenCalledWith("doprava");
     });
 
     it("says why the list is empty", () => {

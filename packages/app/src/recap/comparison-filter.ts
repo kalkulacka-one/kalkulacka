@@ -33,10 +33,11 @@ export function comparisonFilterToId(filter: ComparisonFilter | undefined, topic
 
 /**
  * The inverse — what the page tells the app when a chip is picked. "All" is no
- * filter at all, and so is a topic whose slug comes out empty (a name with no
- * Latin letters or digits in it): a filter the URL cannot spell is not offered
- * to it. The recap's "unanswered" is never a comparison filter; it reads as
- * "all" too rather than as a value the routes have no word for.
+ * filter at all, and so is a topic that has no slug (a name with no Latin
+ * letters or digits in it — `topicSlug` answers `undefined` for those): a
+ * filter the URL cannot spell is not offered to it. The recap's "unanswered"
+ * is never a comparison filter; it reads as "all" too rather than as a value
+ * the routes have no word for.
  */
 export function comparisonFilterFromId(id: RecapFilterId): ComparisonFilter | undefined {
   if (id === RECAP_FILTER_IMPORTANT) return "important";
