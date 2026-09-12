@@ -45,7 +45,7 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
                     </Button>
                   </AppHeader.BottomLeft>
                   <AppHeader.BottomMain condensed={condensed}>
-                    <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("comparison.title")}</h3>
+                    <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{t("comparison.title")}</h3>
                   </AppHeader.BottomMain>
                 </AppHeader.Bottom>
               </AppHeader>
@@ -56,7 +56,7 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
           </>
         )}
       </WithCondenseOnScroll>
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );

@@ -86,8 +86,8 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
         <QuestionCard question={question} current={number} total={total} />
       </Layout.Content>
       <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
         <QuestionNavigationCard
           current={number}
           total={total}

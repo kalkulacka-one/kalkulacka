@@ -66,7 +66,7 @@ export function ResultPage({
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("result.title")}</h3>
+                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{t("result.title")}</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -75,22 +75,26 @@ export function ResultPage({
       </Layout.Header>
       <Layout.Content>
         {shouldShowToggleComputed && (
-          <div className="mb-6">
-            <div className="flex items-center gap-3 text-sm">
-              <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
-                <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
-                  <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
+          <div className="koa:mb-6">
+            <div className="koa:flex koa:items-center koa:gap-3 koa:text-sm">
+              <div className="koa:relative koa:bg-slate-100 koa:rounded-full koa:p-1 koa:flex  koa:w-full koa:sm:w-auto koa:text-center">
+                <label
+                  className={`koa:grow koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${!showOnlyNested ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"}`}
+                >
+                  <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="koa:sr-only" />
                   {t("result.candidateLists")}
                 </label>
-                <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
-                  <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
+                <label
+                  className={`koa:grow koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${showOnlyNested ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"}`}
+                >
+                  <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="koa:sr-only" />
                   {t("result.people")}
                 </label>
               </div>
             </div>
           </div>
         )}
-        <div className="grid gap-4">
+        <div className="koa:grid koa:gap-4">
           {donateCardPosition === 0 && donateCard}
           {result.matches.map((match, index) => (
             <React.Fragment key={match.candidate.id}>
@@ -101,8 +105,8 @@ export function ResultPage({
         </div>
       </Layout.Content>
       <Layout.BottomSpacer className={ResultNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
         <ResultNavigationCard onNextClick={onNextClick} onShareClick={onShareClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

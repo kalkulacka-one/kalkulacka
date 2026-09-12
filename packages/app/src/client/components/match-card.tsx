@@ -16,12 +16,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
 
   return (
-    <ExpandableCard corner="topLeft" shadow="hard" className="overflow-hidden border border-slate-200">
+    <ExpandableCard corner="topLeft" shadow="hard" className="koa:overflow-hidden koa:border koa:border-slate-200">
       {({ open }) => (
         <>
           {match !== undefined && <ProgressBar value={match} color={order === 1 ? "primary" : "neutral"} corner="sharp" />}
-          <ExpandableCard.Content className="grid gap-3 p-4 sm:gap-4 sm:p-6">
-            <div className="grid grid-cols-[auto_1fr_auto] gap-4 items-center">
+          <ExpandableCard.Content className="koa:grid koa:gap-3 koa:p-4 koa:sm:gap-4 koa:sm:p-6">
+            <div className="koa:grid koa:grid-cols-[auto_1fr_auto] koa:gap-4 koa:items-center">
               {candidate.avatar ? (
                 <Avatar
                   image={candidate.avatar.urls}
@@ -34,36 +34,36 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 />
               ) : (
                 <div
-                  className={`flex h-20 w-20 items-center justify-center rounded-2xl ${order === 1 ? "bg-[var(--ko-color-primary)] text-[var(--ko-color-on-bg-primary)]" : "bg-white text-slate-700"}`}
+                  className={`koa:flex koa:h-20 koa:w-20 koa:items-center koa:justify-center koa:rounded-2xl ${order === 1 ? "koa:bg-[var(--ko-color-primary)] koa:text-[var(--ko-color-on-bg-primary)]" : "koa:bg-white koa:text-slate-700"}`}
                 >
-                  <span className="text-3xl font-bold">{order !== undefined ? order : "—"}</span>
+                  <span className="koa:text-3xl koa:font-bold">{order !== undefined ? order : "—"}</span>
                 </div>
               )}
-              <div className="flex flex-col gap-1 items-start justify-center">
-                <h3 className="text-lg font-bold leading-tight text-slate-700">{candidate.displayName}</h3>
-                {candidate.organization && <p className="text-sm text-slate-500">{candidate.organization}</p>}
+              <div className="koa:flex koa:flex-col koa:gap-1 koa:items-start koa:justify-center">
+                <h3 className="koa:text-lg koa:font-bold koa:leading-tight koa:text-slate-700">{candidate.displayName}</h3>
+                {candidate.organization && <p className="koa:text-sm koa:text-slate-500">{candidate.organization}</p>}
                 {respondent === "expert" && (
-                  <p className="text-xs text-gray-500">
+                  <p className="koa:text-xs koa:text-gray-500">
                     {t("expertNoteLine1")}
                     <br /> {t("expertNoteLine2")}
                   </p>
                 )}
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-3xl font-bold tracking-tight text-slate-800">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
-                {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="text-slate-400" />}
+              <div className="koa:flex koa:items-center koa:gap-2">
+                <span className="koa:text-3xl koa:font-bold koa:tracking-tight koa:text-slate-800">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
+                {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="koa:text-slate-400" />}
               </div>
             </div>
           </ExpandableCard.Content>
 
           {hasDirectAnswers && (
-            <ExpandableCard.HiddenContent className="px-4 sm:px-6 pb-4 sm:pb-6 bg-white">
-              <div className="border-t border-slate-200 pt-4">
+            <ExpandableCard.HiddenContent className="koa:px-4 koa:sm:px-6 koa:pb-4 koa:sm:pb-6 koa:bg-white">
+              <div className="koa:border-t koa:border-slate-200 koa:pt-4">
                 {/* Answer Comparisons Grid */}
                 {answerComparisons.length > 0 && (
-                  <div className="grid grid-cols-[1fr_auto] gap-y-2 gap-x-1 auto-rows-auto">
-                    <div className="col-span-2 text-right mb-2">
-                      <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
+                  <div className="koa:grid koa:grid-cols-[1fr_auto] koa:gap-y-2 koa:gap-x-1 koa:auto-rows-auto">
+                    <div className="koa:col-span-2 koa:text-right koa:mb-2">
+                      <div className="koa:inline-flex koa:items-center koa:px-3 koa:py-1 koa:rounded-full koa:text-xs koa:font-medium koa:bg-amber-100 koa:text-amber-800 koa:border koa:border-amber-200">
                         <span>{t("beta")}</span>
                       </div>
                     </div>
@@ -74,14 +74,16 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                     {answerComparisons.map((comparison) => (
                       <React.Fragment key={comparison.questionId}>
                         {/* Question + Metadata Wrapper */}
-                        <div className="space-y-2">
+                        <div className="koa:space-y-2">
                           {/* Question Text */}
-                          <div className="text-slate-800 font-medium text-sm">{comparison.questionText}</div>
+                          <div className="koa:text-slate-800 koa:font-medium koa:text-sm">{comparison.questionText}</div>
 
                           {/* Comment if available - candidate or expert - but not if showing expert no-data badge */}
                           {(comparison.candidateComment || comparison.expertComment) &&
                             !((comparison.candidateAnswer === null || comparison.candidateAnswer === undefined) && respondent === "expert") && (
-                              <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">"{comparison.candidateComment || comparison.expertComment}"</blockquote>
+                              <blockquote className="koa:text-slate-600 koa:italic koa:pl-4 koa:border-l-2 koa:border-slate-200 koa:text-sm">
+                                "{comparison.candidateComment || comparison.expertComment}"
+                              </blockquote>
                             )}
 
                           {/* Sources if available - candidate or expert */}
@@ -89,12 +91,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                             (comparison.expertSources && comparison.expertSources.length > 0) ||
                             comparison.candidateAnswer === null ||
                             comparison.candidateAnswer === undefined) && (
-                            <div className="text-xs text-slate-500">
+                            <div className="koa:text-xs koa:text-slate-500">
                               {(comparison.candidateAnswer === null || comparison.candidateAnswer === undefined) && respondent === "expert" ? (
-                                <div className="space-y-1">
+                                <div className="koa:space-y-1">
                                   <div>
-                                    <div className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 text-slate-700 text-xs">
-                                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <div className="koa:inline-flex koa:items-center koa:gap-1 koa:px-2 koa:py-1 koa:rounded koa:bg-slate-100 koa:text-slate-700 koa:text-xs">
+                                      <svg className="koa:w-3 koa:h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                         <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
                                       </svg>
                                       <span>{t("positionUnknown")}</span>
@@ -107,11 +109,11 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                   const isExpanded = expandedSources.has(sourceKey);
 
                                   return (
-                                    <div key={source.url || `source-${i}`} className="space-y-1">
+                                    <div key={source.url || `source-${i}`} className="koa:space-y-1">
                                       <div>
                                         <button
                                           type="button"
-                                          className="inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 text-xs"
+                                          className="koa:inline-flex koa:items-center koa:gap-1 koa:px-2 koa:py-1 koa:rounded koa:bg-slate-100 koa:hover:bg-slate-200 koa:text-slate-700 koa:hover:text-slate-900 koa:text-xs"
                                           onClick={() => {
                                             const newExpanded = new Set(expandedSources);
                                             if (isExpanded) {
@@ -123,19 +125,19 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                                           }}
                                         >
                                           <span>{source.title || source.url || t("source")}</span>
-                                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                          <svg className="koa:w-3 koa:h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                             <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
                                           </svg>
                                         </button>
                                       </div>
 
                                       {isExpanded && (
-                                        <blockquote className="text-slate-600 italic pl-4 border-l-2 border-slate-200 text-sm">
+                                        <blockquote className="koa:text-slate-600 koa:italic koa:pl-4 koa:border-l-2 koa:border-slate-200 koa:text-sm">
                                           {source.description || t("noDescription")}
                                           {source.url && (
                                             <>
                                               {" "}
-                                              <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">
+                                              <a href={source.url} target="_blank" rel="noopener noreferrer" className="koa:text-blue-600 koa:hover:text-blue-800 koa:underline">
                                                 {t("link")}
                                               </a>
                                             </>
@@ -151,18 +153,18 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                         </div>
 
                         {/* Answer Comparison */}
-                        <div className="flex items-center gap-1">
+                        <div className="koa:flex koa:items-center koa:gap-1">
                           <div
-                            className={`px-3 py-1 rounded text-sm font-bold ${
+                            className={`koa:px-3 koa:py-1 koa:rounded koa:text-sm koa:font-bold ${
                               comparison.userAnswer === comparison.candidateAnswer && comparison.userAnswer !== null && comparison.userAnswer !== undefined
                                 ? comparison.userAnswer === true
-                                  ? "bg-blue-600 text-white"
-                                  : "bg-red-600 text-white"
-                                : "bg-transparent text-slate-600"
+                                  ? "koa:bg-blue-600 koa:text-white"
+                                  : "koa:bg-red-600 koa:text-white"
+                                : "koa:bg-transparent koa:text-slate-600"
                             }`}
                           >
                             <span>{comparison.userAnswer === true ? "✓" : comparison.userAnswer === false ? "✗" : "—"}</span>
-                            <span className="mx-1">•</span>
+                            <span className="koa:mx-1">•</span>
                             <span>{comparison.candidateAnswer === true ? "✓" : comparison.candidateAnswer === false ? "✗" : "—"}</span>
                           </div>
                         </div>

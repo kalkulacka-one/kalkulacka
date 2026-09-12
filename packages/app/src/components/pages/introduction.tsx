@@ -36,7 +36,7 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomMain>
-              <h2 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{calculator?.shortTitle}</h2>
+              <h2 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{calculator?.shortTitle}</h2>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
@@ -45,8 +45,8 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
         <Introduction calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={IntroductionNavigationCard.heightClassNames} />
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} lg:mb-0` : undefined}>
+      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
+      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
