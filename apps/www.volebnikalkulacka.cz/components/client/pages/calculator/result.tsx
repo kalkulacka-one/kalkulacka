@@ -55,6 +55,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const { electionName, calculatorName } = calculatorNames({
     group: calculatorGroup,
     key: calculatorKey,
+    shortTitle: calculator.shortTitle || undefined,
     fallback: calculator.title || undefined,
   });
 
