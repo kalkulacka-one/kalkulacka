@@ -1,4 +1,4 @@
-import type { calculateMatches } from "@kalkulacka-one/app";
+import { type calculateMatches, hasAnswer } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
 import type { Answer } from "@kalkulacka-one/schema";
 
@@ -46,6 +46,12 @@ export default async function Page({ params }: { params: Promise<{ first: string
 
   const answers = session.data.answers as Answer[];
   const result = session.data.result as ReturnType<typeof calculateMatches>;
+
+  // A session with no answers is not a result: it would render an empty
+  // ranking under a headline claiming somebody's shoda.
+  if (!answers.some((answer) => hasAnswer(answer))) {
+    notFound();
+  }
 
   return <PublicResultPageWithData algorithmMatches={result} answers={answers} segments={segments} />;
 }

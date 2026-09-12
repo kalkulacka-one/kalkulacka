@@ -13,6 +13,7 @@ import { countAnswered } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
 import { useAnswerDistribution, useCalculatedMatches, useCalculator, useQuestionConsensus, useQuestions, useResult, useTopicMatches } from "@/client/view-models";
 import { buildAiPrompt, selectAgainstTheGrain, selectImportant, topicSlug } from "@/insights";
+import type { calculateMatches } from "@/result-calculation";
 
 import { ComparisonPane } from "./comparison-pane";
 import { ResultsDashboard } from "./results-dashboard";
@@ -61,14 +62,30 @@ export type ResultPage = {
    * their own calculator instead of the ways out of this one.
    */
   shared?: boolean;
+  /**
+   * A ranking to show in place of the one computed from the answers in the
+   * store — a shared result replays the ranking stored with the session, as
+   * it stood when it was shared, rather than recomputing one that a later
+   * data or algorithm change could have quietly altered. The dashboard and
+   * the comparison pane still read the answers, which the app puts in the
+   * store alongside.
+   */
+  algorithmMatches?: ReturnType<typeof calculateMatches>;
   /** "Zpět na rekapitulaci", and the empty state's "Přejít na otázky" — the app takes the reader back. */
   onBackClick: () => void;
+  /*
+   * The three ways into the comparison. All optional for one reason: a
+   * shared result offers none of them (that view compares the *visitor's*
+   * store against a ranking that isn't theirs), so its app has none to hand
+   * over. Left out on your own result, the same thing happens — the link
+   * under the list goes and the dashboard's rows turn inert.
+   */
   /** "Porovnat odpovědi" — the question-centric comparison of every party. */
-  onCompareClick: () => void;
+  onCompareClick?: () => void;
   /** A topic row on the dashboard — the comparison filtered to that topic, named by its slug (`topicSlug`). */
-  onCompareTopicClick: (topicSlug: string) => void;
+  onCompareTopicClick?: (topicSlug: string) => void;
   /** "Porovnat důležité otázky" — the comparison filtered to the starred questions. */
-  onCompareImportantClick: () => void;
+  onCompareImportantClick?: () => void;
   /**
    * "Sdílet" was pressed. With `share` set the page opens its own share
    * dialog and this is a notification (the app's analytics hook); without it
@@ -271,6 +288,7 @@ export function ResultPage({
   attributionHref,
   logoMonochrome,
   shared = false,
+  algorithmMatches,
   onBackClick,
   onCompareClick,
   onCompareTopicClick,
@@ -297,8 +315,9 @@ export function ResultPage({
    * anything nested to show.
    */
   const [showOnlyNested, setShowOnlyNested] = useState(false);
-  const algorithmMatches = useCalculatedMatches();
-  const { matches } = useResult(algorithmMatches, { showOnlyNested });
+  /* Computed unconditionally — hooks are — and set aside when a ranking was handed in. */
+  const calculatedMatches = useCalculatedMatches();
+  const { matches } = useResult(algorithmMatches ?? calculatedMatches, { showOnlyNested });
   const hasNested = matches.some((entry) => entry.nestedMatches !== undefined && entry.nestedMatches.length > 0);
   const showViewSwitch = hasNested || showOnlyNested;
 
@@ -618,7 +637,7 @@ export function ResultPage({
                     </Button>
                   ) : null}
 
-                  {shared ? null : (
+                  {shared || !onCompareClick ? null : (
                     <Button variant="surface" iconEnd={icons.arrowRight} onClick={onCompareClick}>
                       {t("compareAnswers")}
                     </Button>
@@ -641,7 +660,7 @@ export function ResultPage({
                 againstTheGrain={againstTheGrain}
                 prompt={prompt}
                 formatPercent={formatPercent}
-                onCompareTopicClick={shared ? undefined : (topic) => onCompareTopicClick(topicSlug(topic))}
+                onCompareTopicClick={shared || !onCompareTopicClick ? undefined : (topic) => onCompareTopicClick(topicSlug(topic))}
                 onCompareImportantClick={shared ? undefined : onCompareImportantClick}
               />
             </ComparisonPane>
@@ -649,7 +668,13 @@ export function ResultPage({
         </div>
       </main>
 
-      {share && shareMounted ? (
+      {/*
+        Never on a shared result — there is no "Sdílet" to mount it from, and
+        the guard says so outright: the card would be a copy of somebody
+        else's ranking, and the link would be minted from *the visitor's*
+        session for this calculator, which they have no reason to have.
+      */}
+      {!shared && share && shareMounted ? (
         <ShareDialog open={shareOpen} onClose={closeShare} content={shareContent} fileName={`shoda-${calculator.id}`} shareUrl={share.url} onRequestShareLink={share.onRequestShareLink} />
       ) : null}
     </Shell>
