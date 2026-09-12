@@ -1,8 +1,8 @@
 import { useAnswersStore, useCalculatorStore } from "@kalkulacka-one/app/client";
+import { loadSessionData } from "@kalkulacka-one/next/api";
 
 import { useEffect, useRef } from "react";
 
-import { loadSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 
 export function SessionDataLoader() {

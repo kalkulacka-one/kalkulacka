@@ -1,8 +1,8 @@
 import { useCalculatorStore } from "@kalkulacka-one/app/client";
+import { initializeSession } from "@kalkulacka-one/next/api";
 
 import { useEffect, useRef } from "react";
 
-import { initializeSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 
 import { useEmbed } from "./embed-context-provider";

@@ -1,4 +1,5 @@
 import { useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
+import { saveSessionData, shareSession } from "@kalkulacka-one/next/api";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -7,7 +8,6 @@ import { useEffect, useState } from "react";
 import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { DonateCard, useEmbed } from "@/components/client";
-import { saveSessionData, shareSession } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
