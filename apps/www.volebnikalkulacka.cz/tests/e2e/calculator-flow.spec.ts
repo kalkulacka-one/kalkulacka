@@ -292,3 +292,80 @@ test.describe("Calculator System", () => {
     }
   });
 });
+
+// A municipal calculator is reached the other way round from a 2025 one: there
+// is no card per calculator, only a city picker, and the URL is only knowable
+// once a city has been picked out of it.
+const MUNICIPAL: CalculatorConfig & { selectionPath: string; city: string } = {
+  key: "komunalni-2026",
+  group: "beroun",
+  name: "Beroun",
+  path: "/volby/komunalni-2026/beroun",
+  expectedTitle: "Beroun",
+  selectionPath: "/volby/komunalni-2026",
+  city: "Beroun",
+};
+
+test.describe(`Calculator Flow: Komunální volby 2026 (${MUNICIPAL.name})`, () => {
+  // The 2026 data is not on every data endpoint this suite runs against, and a
+  // missing calculator group is not a regression in the app.
+  async function skipUnlessPublished(page: Page) {
+    await page.goto(MUNICIPAL.selectionPath);
+    await waitForPageLoad(page);
+    const picker = page.getByRole("searchbox");
+    test.skip((await picker.count()) === 0, `${MUNICIPAL.key} is not published on this data endpoint`);
+  }
+
+  test("should find a city in the picker and complete its flow", async ({ page }) => {
+    test.setTimeout(TIMEOUTS.EXTENDED);
+    await skipUnlessPublished(page);
+
+    await page.getByRole("searchbox").fill(MUNICIPAL.city);
+    await page.locator(`a[href="${MUNICIPAL.path}"]`).click();
+    await page.waitForURL(new RegExp(`.*${MUNICIPAL.path}/uvod`), { timeout: TIMEOUTS.STANDARD });
+    await waitForPageLoad(page);
+    await expect(page.locator("main")).toBeVisible();
+
+    // Driven by exact button names rather than the shared helpers above: those
+    // match on substrings, and "Smazat a začít znovu" inside the restart dialog
+    // is an earlier, invisible match for their "Začít".
+    await page.getByRole("button", { name: "Pokračovat", exact: true }).click();
+    await page.waitForURL(new RegExp(`.*${MUNICIPAL.path}/navod`), { timeout: TIMEOUTS.STANDARD });
+
+    await page.getByRole("button", { name: "Rozumím, začít", exact: true }).click();
+    await page.waitForURL(new RegExp(`.*${MUNICIPAL.path}/otazka/1`), { timeout: TIMEOUTS.STANDARD });
+
+    // `getByRole` skips the `aria-hidden` copies on the cards stacked behind
+    // the active question, so this is the answer the voter can actually press.
+    for (const question of [1, 2, 3]) {
+      await expect(page).toHaveURL(new RegExp(`.*${MUNICIPAL.path}/otazka/${question}`));
+      await page.getByRole("button", { name: "Ano", exact: true }).click();
+      await page.waitForURL(new RegExp(`.*${MUNICIPAL.path}/otazka/${question + 1}`), { timeout: TIMEOUTS.STANDARD });
+    }
+  });
+
+  test("should narrow the picker to what was typed", async ({ page }) => {
+    await skipUnlessPublished(page);
+
+    // A city that is in the data but is not the one being searched for.
+    await expect(page.locator('a[href="/volby/komunalni-2026/brno"]')).toBeVisible();
+
+    await page.getByRole("searchbox").fill(MUNICIPAL.city);
+
+    await expect(page.locator(`a[href="${MUNICIPAL.path}"]`)).toBeVisible();
+    await expect(page.locator('a[href="/volby/komunalni-2026/brno"]')).toHaveCount(0);
+  });
+
+  test("should show the election and the city on the introduction", async ({ page }) => {
+    await skipUnlessPublished(page);
+
+    await page.goto(`${MUNICIPAL.path}/uvod`);
+    await waitForPageLoad(page);
+
+    await expect(page.locator("h1").filter({ hasText: MUNICIPAL.city }).first()).toBeVisible({ timeout: TIMEOUTS.HEADING_VISIBILITY });
+    // The shell composes the election name around the city: "Komunální volby Beroun 2026".
+    const shellHeader = page.locator("header").first();
+    await expect(shellHeader).toContainText("Komunální volby");
+    await expect(shellHeader).toContainText(MUNICIPAL.city);
+  });
+});
