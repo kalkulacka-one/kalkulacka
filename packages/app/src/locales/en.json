@@ -70,6 +70,24 @@
         "yes": "Yes",
         "no": "No",
         "important": "Important to me"
+      },
+      "shareModal": {
+        "close": "Close",
+        "title": "Share result",
+        "creating": "Creating link...",
+        "error": "Failed to create a sharing link",
+        "intro": "Share your result with your friends and family:",
+        "copy": "Copy",
+        "copied": "Copied",
+        "shareInstagram": "Share on Instagram",
+        "shareX": "Share on X",
+        "consentPrefix": "By sharing your results you agree to our",
+        "privacyPolicy": "privacy policy",
+        "shareText": "Check out my Election Calculator result:",
+        "shareTextWithHandle": "Check out my {handle} result:",
+        "shareTitle": "Election Calculator",
+        "shareFileText": "Check out my Election Calculator result",
+        "fileName": "My Election Calculator.png"
       }
     }
   }

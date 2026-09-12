@@ -1,11 +1,10 @@
-import { useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
+import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
 import { saveSessionData, shareSession } from "@kalkulacka-one/next/api";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { ShareModal } from "@/calculator/components/client";
 import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { DonateCard, useEmbed } from "@/components/client";
 import { appConfig } from "@/config/app-config";
@@ -87,6 +86,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
         onShare={() => shareSession(calculator.id)}
+        privacyHref={appConfig.links?.privacy}
         buildShareUrl={(publicId) => canonical.publicResult({ first: segments.first, second: segments.second, third: segments.third }, publicId, locale)}
       />
     </>

@@ -70,6 +70,24 @@
         "yes": "Áno",
         "no": "Nie",
         "important": "Pre mňa dôležité"
+      },
+      "shareModal": {
+        "close": "Zavrieť",
+        "title": "Zdieľať výsledok",
+        "creating": "Vytváranie odkazu...",
+        "error": "Nepodarilo sa vytvoriť odkaz na zdieľanie",
+        "intro": "Zdieľajte svoj výsledok so svojimi blízkymi:",
+        "copy": "Kopírovať",
+        "copied": "Skopírované",
+        "shareInstagram": "Zdieľať na Instagram",
+        "shareX": "Zdieľať na X",
+        "consentPrefix": "Zdieľaním výsledkov súhlasíte s našimi",
+        "privacyPolicy": "zásadami ochrany osobných údajov",
+        "shareText": "Pozrite sa, ako mi vyšla Volebná kalkulačka:",
+        "shareTextWithHandle": "Pozrite sa, ako mi vyšla {handle}:",
+        "shareTitle": "Volebná kalkulačka",
+        "shareFileText": "Pozrite sa, ako mi vyšla Volebná kalkulačka",
+        "fileName": "Moja Volebná kalkulačka.png"
       }
     }
   }
