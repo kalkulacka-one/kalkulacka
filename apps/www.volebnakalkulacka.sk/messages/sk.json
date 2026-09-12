@@ -14,18 +14,5 @@
       "result": "vysledok",
       "comparison": "porovnanie"
     }
-  },
-  "calculator": {
-    "components": {
-      "question-navigation-card": {
-        "yes": "Áno",
-        "no": "Nie",
-        "next": "Ďalej",
-        "previous": "Späť",
-        "guide": "Návod",
-        "skip": "Preskočiť",
-        "important": "Pre mňa dôležité"
-      }
-    }
   }
 }
