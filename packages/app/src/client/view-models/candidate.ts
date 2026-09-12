@@ -1,7 +1,16 @@
 import { useMemo } from "react";
 
 import { useAnswersStore, useCalculatorStore } from "@/client/stores";
-import { type AnswerComparison, type CandidateViewModel, candidateViewModel, getCandidateAnswerComparison, hasDirectAnswers, organizationViewModel, personViewModel } from "@/view-models";
+import {
+  type AnswerComparison,
+  answersBelongToNestedCandidates,
+  type CandidateViewModel,
+  candidateViewModel,
+  getCandidateAnswerComparison,
+  hasDirectAnswers,
+  organizationViewModel,
+  personViewModel,
+} from "@/view-models";
 
 export function useCandidate(id: string): CandidateViewModel | undefined {
   const candidates = useCalculatorStore((state) => state.data.candidates);
@@ -34,4 +43,12 @@ export function useHasDirectAnswers(candidateId: string): boolean {
   return useMemo(() => {
     return hasDirectAnswers(candidateId, candidatesAnswers);
   }, [candidateId, candidatesAnswers]);
+}
+
+/** Whether this calculator's answers sit on the nested candidates — see `answersBelongToNestedCandidates`. */
+export function useAnswersBelongToNestedCandidates(): boolean {
+  const candidates = useCalculatorStore((state) => state.data.candidates);
+  const candidatesAnswers = useCalculatorStore((state) => state.data.candidatesAnswers);
+
+  return useMemo(() => answersBelongToNestedCandidates(candidates, candidatesAnswers), [candidates, candidatesAnswers]);
 }

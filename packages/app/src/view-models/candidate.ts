@@ -205,3 +205,27 @@ export function getCandidateAnswerComparison(candidateId: string, userAnswers: A
 export function hasDirectAnswers(candidateId: string, candidatesAnswers: CandidatesAnswers): boolean {
   return candidateId in candidatesAnswers && (candidatesAnswers[candidateId]?.length ?? 0) > 0;
 }
+
+/** As much of a candidate as the question below needs — satisfied by both the schema's shape and the view model's. */
+type NestableCandidate = { id: string; nestedCandidates?: NestableCandidate[] };
+
+/**
+ * Whether a ranking of these candidates would be a ranking of nothing.
+ *
+ * An Inventura hlasování records the votes of the individual councillors, so
+ * its `candidates-answers` are keyed by the nested candidates and the parties
+ * above them hold none of their own. A list of those parties is the wrong
+ * thing to land on: the answers — the actual votes — belong to the people.
+ *
+ * Asked of the data rather than of the calculator's variant key, so any
+ * calculator published this way behaves the same without being named here.
+ */
+export function answersBelongToNestedCandidates(candidates: NestableCandidate[], candidatesAnswers: CandidatesAnswers): boolean {
+  const nested = candidates.flatMap((candidate) => candidate.nestedCandidates ?? []);
+  if (nested.length === 0) return false;
+
+  const topLevelAnswered = candidates.some((candidate) => hasDirectAnswers(candidate.id, candidatesAnswers));
+  const nestedAnswered = nested.some((candidate) => hasDirectAnswers(candidate.id, candidatesAnswers));
+
+  return !topLevelAnswered && nestedAnswered;
+}

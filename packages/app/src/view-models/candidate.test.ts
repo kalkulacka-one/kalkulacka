@@ -2,7 +2,7 @@ import type { Candidate } from "@kalkulacka-one/schema";
 
 import { describe, expect, it } from "vitest";
 
-import { candidateViewModel } from "./candidate";
+import { answersBelongToNestedCandidates, candidateViewModel } from "./candidate";
 import { organizationViewModel } from "./organization";
 import { personViewModel } from "./person";
 
@@ -65,5 +65,36 @@ describe("candidateViewModel", () => {
     );
     expect(model.nestedCandidates?.[0]?.name).toBe("Svoboda a přímá demokracie");
     expect(model.nestedCandidates?.[0]?.shortName).toBe("SPD");
+  });
+});
+
+describe("answersBelongToNestedCandidates", () => {
+  const party = (id: string, nestedIds: string[]) => ({ id, nestedCandidates: nestedIds.map((nestedId) => ({ id: nestedId })) });
+  const answered = () => [{ questionId: "q1", answer: true }];
+
+  it("is true for an Inventura: the parties hold no votes, their councillors do", () => {
+    const candidates = [party("ods", ["ods-1", "ods-2"]), party("piráti", ["pir-1"])];
+    const answers = { "ods-1": answered(), "ods-2": answered(), "pir-1": answered() };
+
+    expect(answersBelongToNestedCandidates(candidates, answers)).toBe(true);
+  });
+
+  it("is false where the top-level candidates answered themselves, even though they have members", () => {
+    // A coalition that answered as one, with its member parties listed under it.
+    const candidates = [party("spolu", ["ods", "top09"])];
+    const answers = { spolu: answered() };
+
+    expect(answersBelongToNestedCandidates(candidates, answers)).toBe(false);
+  });
+
+  it("is false for an ordinary calculator, which nests nothing", () => {
+    const candidates = [{ id: "ods" }, { id: "piráti" }];
+    const answers = { ods: answered(), piráti: answered() };
+
+    expect(answersBelongToNestedCandidates(candidates, answers)).toBe(false);
+  });
+
+  it("is false when nobody answered at all, rather than sending the reader to an empty list of people", () => {
+    expect(answersBelongToNestedCandidates([party("ods", ["ods-1"])], {})).toBe(false);
   });
 });

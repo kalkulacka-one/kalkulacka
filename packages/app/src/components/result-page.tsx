@@ -11,7 +11,7 @@ import { Fragment, type ReactNode, useCallback, useEffect, useMemo, useRef, useS
 
 import { countAnswered } from "@/answers";
 import { useAnswersStore } from "@/client/stores";
-import { useAnswerDistribution, useCalculatedMatches, useCalculator, useQuestionConsensus, useQuestions, useResult, useTopicMatches } from "@/client/view-models";
+import { useAnswerDistribution, useAnswersBelongToNestedCandidates, useCalculatedMatches, useCalculator, useQuestionConsensus, useQuestions, useResult, useTopicMatches } from "@/client/view-models";
 import { buildAiPrompt, selectAgainstTheGrain, selectImportant } from "@/insights";
 import type { calculateMatches } from "@/result-calculation";
 
@@ -329,8 +329,14 @@ export function ResultPage({
    * "Kandidátní listiny" or "Lidé": whether the ranking lists the candidates
    * themselves or the people nested under them. Only offered when there is
    * anything nested to show.
+   *
+   * It opens on the people where the answers are the people's — an Inventura
+   * hlasování, whose parties hold no votes of their own. Landing on the lists
+   * there offers a ranking of candidates who never answered anything, and the
+   * comparison behind each row would have a column with nothing in it.
    */
-  const [showOnlyNested, setShowOnlyNested] = useState(false);
+  const answersAreNested = useAnswersBelongToNestedCandidates();
+  const [showOnlyNested, setShowOnlyNested] = useState(answersAreNested);
   /* Computed unconditionally — hooks are — and set aside when a ranking was handed in. */
   const calculatedMatches = useCalculatedMatches();
   const { matches } = useResult(algorithmMatches ?? calculatedMatches, { showOnlyNested });
