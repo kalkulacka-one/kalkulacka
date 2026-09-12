@@ -1,7 +1,7 @@
 "use client";
 
 // Ported from kalkulacka-2026/apps/web/components/results.tsx (+ results.module.css)
-import { Button, Calculating, FilterChips, MatchRow } from "@kalkulacka-one/design-system/client";
+import { Button, Calculating, FilterChips, MatchRow, type ShareCardContent } from "@kalkulacka-one/design-system/client";
 import { icons } from "@kalkulacka-one/design-system/icons";
 import { AppHeader, Screen, Shell, StickyBar } from "@kalkulacka-one/design-system/server";
 import { prefersReducedMotion } from "@kalkulacka-one/design-system/utilities";
@@ -16,6 +16,31 @@ import { buildAiPrompt, selectAgainstTheGrain, selectImportant, topicSlug } from
 
 import { ComparisonPane } from "./comparison-pane";
 import { ResultsDashboard } from "./results-dashboard";
+import { ShareDialog } from "./share-dialog";
+
+/**
+ * What the app hands the share dialog — the two things it alone knows: where
+ * its routes are, and whether it has a backend to mint a public link on.
+ */
+export type ResultPageShare = {
+  /**
+   * The address offered alongside the picture in the OS share sheet — the
+   * calculator's intro, absolute, never the results page (see `ShareDialog`).
+   */
+  url?: string;
+  /**
+   * Mints the public link and resolves to its absolute address, or `null` when
+   * it could not be made. Absent without a backend: the dialog then never
+   * offers "Kopírovat odkaz".
+   */
+  onRequestShareLink?: () => Promise<string | null>;
+  /**
+   * Rewrites a candidate's picture URL for the canvas export — a same-origin
+   * proxy, where the data CDN sends no CORS header. Only the card goes through
+   * it; the rows on screen keep loading the CDN directly.
+   */
+  assetUrl?: (url: string) => string;
+};
 
 export type ResultPage = {
   /** The header wordmark text, e.g. "Volební kalkulačka" — the product name, owned by the app. */
@@ -44,8 +69,14 @@ export type ResultPage = {
   onCompareTopicClick: (topicSlug: string) => void;
   /** "Porovnat důležité otázky" — the comparison filtered to the starred questions. */
   onCompareImportantClick: () => void;
-  /** "Sdílet" — the app opens whatever it shares with. */
-  onShareClick: () => void;
+  /**
+   * "Sdílet" was pressed. With `share` set the page opens its own share
+   * dialog and this is a notification (the app's analytics hook); without it
+   * this is the whole action — the app opens whatever it still shares with.
+   */
+  onShareClick?: () => void;
+  /** Opts the page into the share dialog; the apps that still have a share surface of their own leave it out. */
+  share?: ResultPageShare;
   /** A shared result's "Vyplnit vlastní kalkulačku". */
   onStartOwnClick?: () => void;
   /** The app's own card between the rows — the Czech app's donation ask. */
@@ -245,6 +276,7 @@ export function ResultPage({
   onCompareTopicClick,
   onCompareImportantClick,
   onShareClick,
+  share,
   onStartOwnClick,
   donateCard,
   donateCardPosition = false,
@@ -367,6 +399,69 @@ export function ResultPage({
     [electionName, calculatorName, answered, questions.length, matches, topics, important, againstTheGrain, td, formatPercent, locale],
   );
 
+  const [shareOpen, setShareOpen] = useState(false);
+  /*
+   * Mounted on the first "Sdílet" and kept after: the dialog's live preview is
+   * a second full ranking of rows, and there is no reason to build it — or to
+   * read the theme's colours off the DOM for it — on a visit that never
+   * shares. Kept mounted afterwards so the close transition has something to
+   * fade.
+   */
+  const [shareMounted, setShareMounted] = useState(false);
+  const closeShare = useCallback(() => setShareOpen(false), []);
+
+  const handleShareClick = () => {
+    onShareClick?.();
+    if (!share) return;
+    setShareMounted(true);
+    setShareOpen(true);
+  };
+
+  /*
+   * The page's own host, read after mount rather than during render: there is
+   * no `window` on the server, and a share card that rendered it into the
+   * HTML would be baking one visitor's host into everyone's page.
+   */
+  const [host, setHost] = useState("");
+  useEffect(() => {
+    setHost(window.location.host);
+  }, []);
+
+  /** What gets painted onto the shared image — the top five, and where they came from. */
+  const shareContent = useMemo<ShareCardContent>(
+    () => ({
+      brand: appTitle,
+      electionName,
+      calculatorName,
+      title: t("title"),
+      winnerLabel: t("winner"),
+      entries: matches.slice(0, COLLAPSED_RESULTS).map(({ candidate, match, order }, index) => {
+        // The largest picture worth the bytes: the card's rows are zoomed
+        // almost three times, where the row's own `xs` would go soft.
+        const picture = candidate.avatar?.urls.md ?? candidate.avatar?.urls.sm ?? candidate.avatar?.urls.original;
+        return {
+          // A candidate nobody could compare has no order, only a place in
+          // the list — but they sit after everybody who does, so the index
+          // is always a number the reader would agree with.
+          rank: order ?? index + 1,
+          // The short name, as the prototype's card does — five rows at export
+          // size have no room for "Svoboda a přímá demokracie" — while the
+          // hashed party colour stays seeded from the full name, so the card
+          // and the rows on this screen agree on every party's accent.
+          name: candidate.shortName ?? candidate.name,
+          seed: candidate.name,
+          // Routed through the app's same-origin proxy here only: the canvas
+          // export needs readable pixels, everywhere else on this screen
+          // keeps loading the CDN directly.
+          avatarUrl: picture && share?.assetUrl ? share.assetUrl(picture) : picture,
+          ...(match === undefined ? { noAnswerLabel: t("noAnswer") } : { percentLabel: formatPercent(match), matchPercentage: match }),
+        };
+      }),
+      url: host,
+    }),
+    [appTitle, electionName, calculatorName, t, matches, share, formatPercent, host],
+  );
+
   const header = <AppHeader title={appTitle} electionName={electionName} calculatorName={calculatorName} href={attributionHref} logoMonochrome={logoMonochrome} actions={headerActions} />;
 
   if (!waited) {
@@ -447,7 +542,7 @@ export function ResultPage({
                   Opens the app's share surface rather than copying a link on
                   the spot: a ranking is a thing people post, and a URL is not.
                 */
-                <Button variant="plate" size="small" iconStart={icons.share} onClick={onShareClick}>
+                <Button variant="plate" size="small" iconStart={icons.share} onClick={handleShareClick}>
                   {t("share")}
                 </Button>
               )}
@@ -553,6 +648,10 @@ export function ResultPage({
           </div>
         </div>
       </main>
+
+      {share && shareMounted ? (
+        <ShareDialog open={shareOpen} onClose={closeShare} content={shareContent} fileName={`shoda-${calculator.id}`} shareUrl={share.url} onRequestShareLink={share.onRequestShareLink} />
+      ) : null}
     </Shell>
   );
 }

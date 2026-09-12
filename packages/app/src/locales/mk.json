@@ -248,6 +248,31 @@
         "none": "Без одговор",
         "close": "Затвори"
       },
+      "shareDialog": {
+        "title": "Сподели го резултатот",
+        "close": "Затвори",
+        "preview": "Преглед на споделената слика",
+        "themeLabel": "Тема",
+        "themeLight": "Светла",
+        "themeDark": "Темна",
+        "themeAgree": "Согласност",
+        "themeDisagree": "Несогласност",
+        "formatLabel": "Формат",
+        "formatStory": "Вертикално",
+        "formatLandscape": "Хоризонтално",
+        "shareImage": "Сподели слика",
+        "copyImage": "Копирај слика",
+        "download": "Преземи",
+        "working": "Подготвуваме…",
+        "saved": "Сликата е зачувана",
+        "imageCopied": "Сликата е копирана",
+        "imageCopyFailedSaved": "Сликата не можеше да се копира, па беше преземена како датотека.",
+        "failed": "Сликата не можеше да се создаде. Ве молиме обидете се повторно.",
+        "copyLink": "Копирај линк",
+        "copyingLink": "Го создаваме линкот…",
+        "linkCopied": "Линкот е копиран",
+        "linkFailed": "Линкот не можеше да се создаде. Ве молиме обидете се повторно."
+      },
       "reviewNavigationCard": {
         "showResultsButton": "Прикажи резултати"
       },

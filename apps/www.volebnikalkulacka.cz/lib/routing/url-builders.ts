@@ -12,7 +12,8 @@ export function buildCanonicalUrl(path: string): string {
   return `${baseUrl}${normalizedPath}`;
 }
 
-function stripEmbed(segments: RouteSegments): RouteSegments {
+/** The same calculator, addressed outside any embed — what every address that leaves the app is built from. */
+export function stripEmbed(segments: RouteSegments): RouteSegments {
   const { embed: _embed, ...rest } = segments;
   return rest;
 }

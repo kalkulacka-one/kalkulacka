@@ -2,7 +2,7 @@ import type { Answer, CandidatesAnswers } from "@kalkulacka-one/schema";
 
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 
 import { AnswersStoreContext, CalculatorStoreContext, createAnswersStore, createCalculatorStore } from "@/client/stores";
 import type { CalculatorData } from "@/data-fetching";
@@ -599,5 +599,76 @@ describe("ResultPage", () => {
     expect(rows()[0]).toHaveTextContent("Zeta");
     fireEvent.click(rowButton("Zeta"));
     expect(rowButton("Zeta")).toHaveAttribute("aria-pressed", "true");
+  });
+});
+
+describe("sharing", () => {
+  /* jsdom doesn't implement `<dialog>`'s `showModal()`/`close()` — the same minimum stub the design system's dialog tests use. */
+  beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function (this: HTMLDialogElement) {
+      this.open = true;
+    };
+    HTMLDialogElement.prototype.close = function (this: HTMLDialogElement) {
+      this.open = false;
+      this.dispatchEvent(new Event("close"));
+    };
+  });
+
+  /** Alfa with a logo, so one card row has a picture to route through the app's proxy. */
+  const dataWithLogo: CalculatorData = {
+    ...calculatorData,
+    data: {
+      ...calculatorData.data,
+      candidates: calculatorData.data.candidates.map((candidate) =>
+        candidate.id === ids.alfa ? { ...candidate, images: [{ type: "logo", urls: { original: "images/alfa.png", xs: "images/alfa.xs.webp", md: "images/alfa.md.webp" } }] } : candidate,
+      ),
+    },
+  };
+
+  it("without a share configuration, only tells the app — the page has no dialog of its own to open", async () => {
+    const user = userEvent.setup();
+    const { onShareClick } = renderPage();
+    await user.click(screen.getByRole("button", { name: "Sdílet" }));
+    expect(onShareClick).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("dialog", { hidden: true })).toBeNull();
+  });
+
+  it("opens the share dialog over the ranking, previewing the top five as they stand on screen", async () => {
+    const user = userEvent.setup();
+    const assetUrl = vi.fn((url: string) => `/api/assets/${url.split("/").pop()}`);
+    const { onShareClick } = renderPage({ data: dataWithLogo, props: { share: { url: "https://example.test/volby/uvod", assetUrl } } });
+
+    // Nothing of the dialog is built until it is asked for.
+    expect(screen.queryByRole("dialog", { hidden: true })).toBeNull();
+
+    await user.click(screen.getByRole("button", { name: "Sdílet" }));
+    expect(onShareClick).toHaveBeenCalledTimes(1);
+    const dialog = screen.getByRole("dialog", { name: "Sdílet výsledek" });
+    expect(dialog).toHaveProperty("open", true);
+
+    // The preview is a picture of *this* ranking: the same five rows and numbers, with the short names the card has room for.
+    const preview = dialog.querySelector("[data-format='story']");
+    if (!(preview instanceof HTMLElement)) throw new Error("No card in the preview");
+    expect(Array.from(preview.querySelectorAll("li")).map(visibleText)).toEqual(["Největší shoda1.Delta100\u00a0%", "2.Alfa67\u00a0%", "3.Gama50\u00a0%", "4.Epsilon50\u00a0%", "5.Beta33\u00a0%"]);
+    expect(preview.querySelector("h2")).toHaveTextContent("Moje shoda");
+    expect(preview.querySelector("header")).toHaveTextContent("Sněmovní volby Volební kalkulačka 2025");
+
+    // The card's picture goes through the app's proxy — the largest size worth the bytes — while the row on screen keeps the CDN's own set.
+    expect(assetUrl).toHaveBeenCalledWith("https://data.kalkulacka.one/kalkulacka/images/alfa.md.webp");
+    expect(preview.querySelector("img")).toHaveAttribute("src", "/api/assets/alfa.md.webp");
+    expect(within(rowButton("Alfa")).getByRole("presentation")).toHaveAttribute("src", "https://data.kalkulacka.one/kalkulacka/images/alfa.xs.webp");
+
+    // No backend was configured, so no link to copy.
+    expect(within(dialog).queryByRole("button", { name: "Kopírovat odkaz" })).toBeNull();
+
+    await user.click(within(dialog).getByRole("button", { name: "Zavřít" }));
+    expect(dialog).toHaveProperty("open", false);
+  });
+
+  it("offers the public link once the app says it can mint one", async () => {
+    const user = userEvent.setup();
+    renderPage({ props: { share: { onRequestShareLink: vi.fn().mockResolvedValue(null) } } });
+    await user.click(screen.getByRole("button", { name: "Sdílet" }));
+    expect(within(screen.getByRole("dialog", { name: "Sdílet výsledek" })).getByRole("button", { name: "Kopírovat odkaz" })).toBeInTheDocument();
   });
 });

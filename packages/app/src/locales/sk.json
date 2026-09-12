@@ -248,6 +248,31 @@
         "none": "Bez odpovede",
         "close": "Zavrieť"
       },
+      "shareDialog": {
+        "title": "Zdieľať výsledok",
+        "close": "Zavrieť",
+        "preview": "Náhľad zdieľaného obrázka",
+        "themeLabel": "Motív",
+        "themeLight": "Svetlý",
+        "themeDark": "Tmavý",
+        "themeAgree": "Súhlas",
+        "themeDisagree": "Nesúhlas",
+        "formatLabel": "Formát",
+        "formatStory": "Na výšku",
+        "formatLandscape": "Na šírku",
+        "shareImage": "Zdieľať obrázok",
+        "copyImage": "Skopírovať obrázok",
+        "download": "Stiahnuť",
+        "working": "Pripravujeme…",
+        "saved": "Obrázok uložený",
+        "imageCopied": "Obrázok skopírovaný",
+        "imageCopyFailedSaved": "Obrázok sa nepodarilo skopírovať, bol stiahnutý ako súbor.",
+        "failed": "Obrázok sa nepodarilo vytvoriť. Skúste to prosím znova.",
+        "copyLink": "Kopírovať odkaz",
+        "copyingLink": "Vytvárame odkaz…",
+        "linkCopied": "Odkaz skopírovaný",
+        "linkFailed": "Odkaz sa nepodarilo vytvoriť. Skúste to prosím znova."
+      },
       "reviewNavigationCard": {
         "showResultsButton": "Zobraziť výsledky"
       },

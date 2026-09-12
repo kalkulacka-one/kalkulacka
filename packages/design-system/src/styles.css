@@ -552,6 +552,61 @@
   --breakpoint-wide: 56rem; /* the recap's two columns */
 }
 
+/*
+ * The typefaces, declared outside any cascade layer on purpose. `@font-face`
+ * takes no part in the cascade, so a layer changes nothing about how these
+ * apply — but `html-to-image`, which rasterises the share card
+ * (`shareCard/exportShareCard.tsx`), embeds a document's fonts by walking
+ * the stylesheets for top-level `CSSFontFaceRule`s and never descends into
+ * a `@layer` block. Declared inside `@layer base` these were invisible to it,
+ * the exported PNG fell back to the system font, and the wider fallback
+ * overran the card's header column.
+ */
+@font-face {
+  font-family: "Radio Canada";
+  font-weight: 300 700;
+  src: url("./fonts/radio-canada/normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Radio Canada";
+  font-weight: 300 700;
+  font-style: italic;
+  src: url("./fonts/radio-canada/italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist";
+  font-weight: 100 900;
+  src: url("./fonts/geist/normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist";
+  font-weight: 100 900;
+  font-style: italic;
+  src: url("./fonts/geist/italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 100 900;
+  src: url("./fonts/geist-mono/normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-weight: 100 900;
+  font-style: italic;
+  src: url("./fonts/geist-mono/italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 300 700;
+  src: url("./fonts/inter/normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 300 700;
+  font-style: italic;
+  src: url("./fonts/inter/italic.woff2") format("woff2");
+}
+
 @layer base {
   @media (prefers-reduced-motion: reduce) {
     :root {
@@ -560,59 +615,6 @@
       --ko-duration-slow: 0.01ms;
     }
   }
-
-  @font-face {
-    font-family: "Radio Canada";
-    font-weight: 300 700;
-    src: url("./fonts/radio-canada/normal.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Radio Canada";
-    font-weight: 300 700;
-    font-style: italic;
-    src: url("./fonts/radio-canada/italic.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Geist";
-    font-weight: 100 900;
-    src: url("./fonts/geist/normal.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Geist";
-    font-weight: 100 900;
-    font-style: italic;
-    src: url("./fonts/geist/italic.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Geist Mono";
-    font-weight: 100 900;
-    src: url("./fonts/geist-mono/normal.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Geist Mono";
-    font-weight: 100 900;
-    font-style: italic;
-    src: url("./fonts/geist-mono/italic.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-weight: 300 700;
-    src: url("./fonts/inter/normal.woff2") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Inter";
-    font-weight: 300 700;
-    font-style: italic;
-    src: url("./fonts/inter/italic.woff2") format("woff2");
-  }
-
 }
 
 /*
@@ -1369,6 +1371,57 @@
       radial-gradient(circle at 20% 25%, oklch(from var(--ko-color-agree) l c h / 0.11), transparent 50%),
       radial-gradient(circle at 80% 75%, oklch(from var(--ko-color-disagree) l c h / 0.094), transparent 50%),
       var(--ko-color-page);
+  }
+
+  /* --- Theme scope -----------------------------------------------------------
+   * Ported from kalkulacka-2026/packages/tokens/src/base.css (`[data-vk-theme-scope]`).
+   *
+   * A subtree painted in its own colour set — the share card, which has to
+   * come out light, dark, agree or disagree whatever the document's own mode
+   * is. The card sets the *base* tokens inline (`cardCssVars` in
+   * shareCard/themeColors.ts); this block re-declares every token `@theme`
+   * derives from them, so those recompute from the overridden values too.
+   *
+   * Needed because a custom property substitutes its `var()`s where it is
+   * *declared*: `--ko-color-text-strong` on `:root` is resolved from the
+   * root's `--ko-color-text` and then inherited as that resolved value, so an
+   * override on a descendant never reaches it. Restating the same formulas
+   * on the scope element is what makes them see the override. The formulas
+   * are copied from `@theme` above — one place they can drift, and this
+   * comment is the reminder to change both.
+   */
+  [data-ko-theme-scope] {
+    --ko-color-text-strong: oklch(from var(--ko-color-text) calc(l - 0.06) c h);
+    --ko-color-text-subtle: oklch(from var(--ko-color-text-muted) calc(l + 0.12) c h);
+    --ko-color-border-strong: oklch(from var(--ko-color-border) calc(l - 0.1) c h);
+
+    --ko-color-agree-hover: oklch(from var(--ko-color-agree) calc(l - 0.05) c h);
+    --ko-color-agree-active: oklch(from var(--ko-color-agree) calc(l - 0.1) c h);
+    --ko-color-agree-soft: color-mix(in oklab, var(--ko-color-agree) 22%, var(--ko-color-surface));
+    --ko-color-agree-wash: oklch(from var(--ko-color-agree) l c h / 0.14);
+    --ko-color-agree-wash-strong: oklch(from var(--ko-color-agree) l c h / 0.22);
+    --ko-color-on-agree: light-dark(
+      var(--ko-palette-on-agree-light, var(--ko-palette-on-agree, oklch(from var(--ko-color-agree) clamp(0, (0.62 - l) * 1000, 1) 0 h))),
+      var(--ko-palette-on-agree-dark, var(--ko-palette-on-agree, white))
+    );
+
+    --ko-color-disagree-hover: oklch(from var(--ko-color-disagree) calc(l - 0.05) c h);
+    --ko-color-disagree-active: oklch(from var(--ko-color-disagree) calc(l - 0.1) c h);
+    --ko-color-disagree-soft: color-mix(in oklab, var(--ko-color-disagree) 22%, var(--ko-color-surface));
+    --ko-color-disagree-wash: oklch(from var(--ko-color-disagree) l c h / 0.12);
+    --ko-color-disagree-wash-strong: oklch(from var(--ko-color-disagree) l c h / 0.2);
+    --ko-color-on-disagree: light-dark(
+      var(--ko-palette-on-disagree-light, var(--ko-palette-on-disagree, oklch(from var(--ko-color-disagree) clamp(0, (0.62 - l) * 1000, 1) 0 h))),
+      var(--ko-palette-on-disagree-dark, var(--ko-palette-on-disagree, white))
+    );
+
+    --ko-color-neutral-soft: color-mix(in oklab, var(--ko-color-neutral-ink) 22%, var(--ko-color-surface));
+    --ko-color-neutral-wash: oklch(from var(--ko-color-text-muted) l c h / 0.2);
+    --ko-color-neutral-wash-strong: oklch(from var(--ko-color-text-muted) l c h / 0.32);
+    --ko-color-on-neutral-ink: light-dark(
+      var(--ko-palette-on-neutral-ink-light, var(--ko-palette-on-neutral-ink, white)),
+      var(--ko-palette-on-neutral-ink-dark, var(--ko-palette-on-neutral-ink, var(--ko-color-page)))
+    );
   }
 
   /* --- Dialog ----------------------------------------------------------------
