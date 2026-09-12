@@ -1,6 +1,6 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { icons } from "@kalkulacka-one/design-system/icons";
 
-import { mdiClose, mdiCog, mdiMagnify } from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { createElement } from "react";
 
@@ -9,33 +9,36 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ["autodocs"],
   args: {
-    children: "Button",
-    variant: "fill",
-    color: "primary",
+    children: "Pokračovat",
+    variant: "solid",
+    color: "neutral",
     size: "medium",
     type: "button",
     disabled: false,
+    fullWidth: false,
   },
   argTypes: {
-    size: {
-      control: "select",
-      options: ["small", "medium"],
-      defaultValue: {
-        summary: "medium",
-      },
-    },
     variant: {
       control: "select",
-      options: ["fill", "outline", "link", "answer"],
+      options: ["solid", "ghost", "surface", "plate", "answer"],
+      description: "`answer` is deprecated: it only backs the legacy question page's answer toggle. `fill`, `outline` and `link` are still accepted as aliases of `solid`, `surface` and `ghost`.",
       defaultValue: {
-        summary: "fill",
+        summary: "solid",
       },
     },
     color: {
       control: "select",
-      options: ["primary", "secondary", "neutral"],
+      options: ["neutral", "primary", "secondary"],
+      description: "Applies to `solid` (and the legacy `answer`); `ghost`, `surface` and `plate` are neutral regardless.",
       defaultValue: {
-        summary: "primary",
+        summary: "neutral",
+      },
+    },
+    size: {
+      control: "select",
+      options: ["small", "medium", "large"],
+      defaultValue: {
+        summary: "medium",
       },
     },
     type: {
@@ -51,6 +54,22 @@ const meta: Meta<typeof Button> = {
         summary: false,
       },
     },
+    fullWidth: {
+      control: "boolean",
+      defaultValue: {
+        summary: false,
+      },
+    },
+    iconStart: {
+      control: "select",
+      options: Object.keys(icons),
+      mapping: icons,
+    },
+    iconEnd: {
+      control: "select",
+      options: Object.keys(icons),
+      mapping: icons,
+    },
   },
 };
 
@@ -58,65 +77,101 @@ type ButtonStory = StoryObj<typeof meta>;
 
 export const Default: ButtonStory = {
   args: {
-    children: "Button",
-    variant: "fill",
-    color: "primary",
-    type: "button",
-    disabled: false,
+    children: "Pokračovat",
+    variant: "solid",
+    color: "neutral",
   },
 };
 
-export const Outline: ButtonStory = {
+export const Agree: ButtonStory = {
   args: {
-    children: "Outline",
-    variant: "outline",
+    children: "Ano",
+    variant: "solid",
     color: "primary",
+    iconStart: icons.check,
   },
 };
 
-export const Link: ButtonStory = {
+export const Disagree: ButtonStory = {
   args: {
-    children: "Link",
-    variant: "link",
-    color: "primary",
+    children: "Ne",
+    variant: "solid",
+    color: "secondary",
+    iconStart: icons.cross,
   },
 };
 
-export const Answer: ButtonStory = {
+export const Ghost: ButtonStory = {
   args: {
-    children: "Answer",
-    variant: "answer",
-    color: "primary",
+    children: "Zrušit",
+    variant: "ghost",
+  },
+};
+
+export const Surface: ButtonStory = {
+  args: {
+    children: "Stáhnout",
+    variant: "surface",
+    iconStart: icons.download,
+  },
+};
+
+export const Plate: ButtonStory = {
+  args: {
+    children: "Zpět na rekapitulaci",
+    variant: "plate",
+    iconStart: icons.chevronLeftThin,
+  },
+  decorators: [(Story) => createElement("div", { style: { padding: "2rem", background: "linear-gradient(135deg, var(--ko-color-agree-soft), var(--ko-color-disagree-soft))" } }, Story())],
+};
+
+export const Sizes: ButtonStory = {
+  args: {
+    children: "Pokračovat",
+  },
+  render: (args) =>
+    createElement(
+      "div",
+      { style: { display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" } },
+      createElement(Button, { ...args, size: "small" }),
+      createElement(Button, { ...args, size: "medium" }),
+      createElement(Button, { ...args, size: "large" }),
+    ),
+};
+
+export const FullWidth: ButtonStory = {
+  args: {
+    children: "Zobrazit výsledky",
+    variant: "solid",
+    color: "neutral",
+    size: "large",
+    fullWidth: true,
   },
 };
 
 export const IconOnly: ButtonStory = {
   args: {
-    children: createElement(Icon, { icon: mdiMagnify, decorative: true }),
-    variant: "fill",
+    children: createElement(Icon, { icon: icons.close, decorative: true }),
+    variant: "ghost",
+    "aria-label": "Zavřít",
+  },
+};
+
+/** The outlined answer toggle of the legacy question page. Deprecated; goes away with that page. */
+export const LegacyAnswer: ButtonStory = {
+  name: "Legacy: answer (deprecated)",
+  args: {
+    children: "Ano",
+    variant: "answer",
     color: "primary",
-    type: "button",
-    disabled: false,
   },
-};
-
-export const IconOnlySecondary: ButtonStory = {
-  args: {
-    children: createElement(Icon, { icon: mdiClose, decorative: true }),
-    variant: "outline",
-    color: "secondary",
-    type: "button",
-    disabled: false,
-  },
-};
-
-export const IconOnlyNeutral: ButtonStory = {
-  args: {
-    children: createElement(Icon, { icon: mdiCog, decorative: true }),
-    variant: "fill",
-    color: "neutral",
-    type: "button",
-    disabled: false,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Deprecated. Kept only because the legacy question page\'s `ToggleButton variant="answer"` needs it; it is removed together with that page. New screens use the `solid` pill in the `primary` or `secondary` color instead.',
+      },
+    },
   },
 };
 
