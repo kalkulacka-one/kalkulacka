@@ -5,6 +5,7 @@ export * from "./candidate";
 export * from "./candidate-answer";
 export * from "./candidate-answers";
 export * from "./candidates";
+export * from "./insights";
 export * from "./organization";
 export * from "./organizations";
 export * from "./person";
