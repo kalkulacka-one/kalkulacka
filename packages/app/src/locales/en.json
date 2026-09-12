@@ -89,6 +89,34 @@
         "shareFileText": "Check out my Election Calculator result",
         "fileName": "My Election Calculator.png"
       }
+    },
+    "pages": {
+      "common": {
+        "close": "Close"
+      },
+      "comparison": {
+        "title": "Comparison",
+        "back": "Back to results"
+      },
+      "guide": {
+        "title": "Guide",
+        "back": "Back to introduction"
+      },
+      "publicResult": {
+        "title": "My result",
+        "candidateLists": "Candidate lists",
+        "people": "People"
+      },
+      "result": {
+        "title": "Result",
+        "back": "Back",
+        "candidateLists": "Candidate lists",
+        "people": "People"
+      },
+      "review": {
+        "title": "Review",
+        "back": "Back to questions"
+      }
     }
   }
 }

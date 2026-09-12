@@ -7,6 +7,7 @@ export * from "./introduction";
 export * from "./introduction-navigation-card";
 export * from "./layout";
 export * from "./navigation-card";
+export * from "./pages";
 export * from "./providers";
 export * from "./public-result-navigation-card";
 export * from "./question-card";

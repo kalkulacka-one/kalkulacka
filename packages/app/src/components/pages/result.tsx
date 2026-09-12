@@ -1,13 +1,14 @@
-// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
-import type { CalculatorViewModel, ResultViewModel } from "@kalkulacka-one/app";
-import { EmbedFooter, Layout, ResultNavigationCard } from "@kalkulacka-one/app";
-import { AppHeader, MatchCard, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { useTranslations } from "next-intl";
 import React, { type ReactNode } from "react";
 
-import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+import { AppHeader, type EmbedContextType, HideOnEmbed, MatchCard, WithCondenseOnScroll } from "@/client";
+import { EmbedFooter } from "@/components/embed-footer";
+import { Layout } from "@/components/layout";
+import { ResultNavigationCard } from "@/components/result-navigation-card";
+import type { CalculatorViewModel, ResultViewModel } from "@/view-models";
 
 export type ResultPage = {
   embedContext: EmbedContextType;
@@ -40,6 +41,7 @@ export function ResultPage({
   donateCardPosition,
   donateCard,
 }: ResultPage) {
+  const t = useTranslations("koa.pages");
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
@@ -52,19 +54,19 @@ export function ResultPage({
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label="Zavrieť" onClick={onCloseClick}>
+                  <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>
               </AppHeader.Right>
               <AppHeader.Bottom>
                 <AppHeader.BottomLeft condensed={condensed}>
-                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label="Späť">
+                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("result.back")}>
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Výsledok</h3>
+                  <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("result.title")}</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -78,11 +80,11 @@ export function ResultPage({
               <div className="relative bg-slate-100 rounded-full p-1 flex  w-full sm:w-auto text-center">
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${!showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="sr-only" />
-                  Strany
+                  {t("result.candidateLists")}
                 </label>
                 <label className={`grow px-4 py-2 rounded-full cursor-pointer transition-colors ${showOnlyNested ? "bg-slate-700 text-slate-50" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="sr-only" />
-                  Ľudia
+                  {t("result.people")}
                 </label>
               </div>
             </div>

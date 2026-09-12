@@ -1,12 +1,14 @@
-// TODO [TENANT-014]: Extract hardcoded Macedonian strings to i18n
-
-import { type AnswerViewModel, type CalculatorViewModel, EmbedFooter, Layout, QuestionCard, QuestionNavigationCard, type QuestionViewModel } from "@kalkulacka-one/app";
-import { AppHeader, WithCondenseOnScroll } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
+import { useTranslations } from "next-intl";
 
-import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+import { AppHeader, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
+import { EmbedFooter } from "@/components/embed-footer";
+import { Layout } from "@/components/layout";
+import { QuestionCard } from "@/components/question-card";
+import { QuestionNavigationCard } from "@/components/question-navigation-card";
+import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
 
 export type QuestionPage = {
   embedContext: EmbedContextType;
@@ -23,6 +25,7 @@ export type QuestionPage = {
 };
 
 export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
+  const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   const handleAgreeChange = (checked: boolean) => {
@@ -70,7 +73,7 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label="Затвори" onClick={onCloseClick}>
+                  <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
                 </HideOnEmbed>

@@ -1,12 +1,14 @@
-// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
-import type { CalculatorViewModel } from "@kalkulacka-one/app";
-import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "@kalkulacka-one/app";
-import { AppHeader } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { useTranslations } from "next-intl";
 
-import { type EmbedContextType, HideOnEmbed } from "@/components/client";
+import { AppHeader, type EmbedContextType, HideOnEmbed } from "@/client";
+import { EmbedFooter } from "@/components/embed-footer";
+import { Guide } from "@/components/guide";
+import { GuideNavigationCard } from "@/components/guide-navigation-card";
+import { Layout } from "@/components/layout";
+import type { CalculatorViewModel } from "@/view-models";
 
 export type GuidePage = {
   embedContext: EmbedContextType;
@@ -19,6 +21,7 @@ export type GuidePage = {
 };
 
 export function GuidePage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
+  const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
@@ -27,19 +30,19 @@ export function GuidePage({ embedContext, homepageHref, privacyHref, calculator,
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <Button variant="link" color="neutral" size="small" aria-label="Zavrieť" onClick={onCloseClick}>
+              <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
             </HideOnEmbed>
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomLeft condensed={false}>
-              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label="Späť na úvod">
+              <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label={t("guide.back")}>
                 <Icon icon={mdiArrowLeft} size="medium" decorative />
               </Button>
             </AppHeader.BottomLeft>
             <AppHeader.BottomMain condensed={false}>
-              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">Návod</h3>
+              <h3 className="font-display font-semibold text-2xl tracking-tight text-slate-700">{t("guide.title")}</h3>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>

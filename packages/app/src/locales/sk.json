@@ -89,6 +89,34 @@
         "shareFileText": "Pozrite sa, ako mi vyšla Volebná kalkulačka",
         "fileName": "Moja Volebná kalkulačka.png"
       }
+    },
+    "pages": {
+      "common": {
+        "close": "Zavrieť"
+      },
+      "comparison": {
+        "title": "Porovnanie",
+        "back": "Späť na výsledky"
+      },
+      "guide": {
+        "title": "Návod",
+        "back": "Späť na úvod"
+      },
+      "publicResult": {
+        "title": "Môj výsledok",
+        "candidateLists": "Strany",
+        "people": "Ľudia"
+      },
+      "result": {
+        "title": "Výsledok",
+        "back": "Späť",
+        "candidateLists": "Strany",
+        "people": "Ľudia"
+      },
+      "review": {
+        "title": "Rekapitulácia",
+        "back": "Späť na otázky"
+      }
     }
   }
 }

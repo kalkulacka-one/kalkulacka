@@ -1,10 +1,10 @@
+import { IntroductionPage } from "@kalkulacka-one/app";
 import { useAnswersStore, useCalculator } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
-import { IntroductionPage } from "@/calculator";
 import { useEmbed } from "@/components/client";
 import { appConfig } from "@/config/app-config";
 import { useAutoSave } from "@/hooks/auto-save";
@@ -37,6 +37,8 @@ export function IntroductionPageWithRouting({ segments }: { segments: RouteSegme
 
   return (
     <IntroductionPage
+      // TODO: drop this fallback — it hardcodes a past election as the heading for any calculator whose data has no shortTitle, which hides the missing data instead of surfacing it
+      fallbackShortTitle="Sněmovní 2025"
       homepageHref={canonical.homepage()}
       privacyHref={appConfig.links?.privacy}
       embedContext={embed}

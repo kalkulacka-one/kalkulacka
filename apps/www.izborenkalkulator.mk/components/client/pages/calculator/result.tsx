@@ -1,3 +1,4 @@
+import { ResultPage as AppResultPage } from "@kalkulacka-one/app";
 import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
 import { saveSessionData, shareSession } from "@kalkulacka-one/next/api";
 
@@ -5,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { ResultPage as AppResultPage } from "@/calculator/components/server";
 import { useEmbed } from "@/components/client";
 import { reportError } from "@/lib/monitoring";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
