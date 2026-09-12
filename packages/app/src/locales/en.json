@@ -1,6 +1,26 @@
 {
   "koa": {
     "components": {
+      "comparisonPage": {
+        "title": "Answer comparison",
+        "description": "How the parties answered each question",
+        "back": "Back to results",
+        "filterLabel": "Filter questions",
+        "filterAll": "All",
+        "filterImportant": "Important",
+        "you": "You",
+        "groupOther": "Don't know / no answer",
+        "stackYes": "Answered yes",
+        "stackNo": "Answered no",
+        "close": "Close",
+        "emptyFilter": "No question matches this filter.",
+        "emptyFilterAction": "Show all",
+        "important": "Important to me",
+        "yes": "Yes",
+        "no": "No",
+        "neutral": "Don't know",
+        "none": "No answer"
+      },
       "comparisonPane": {
         "close": "Close comparison",
         "filterLabel": "Filter answers",

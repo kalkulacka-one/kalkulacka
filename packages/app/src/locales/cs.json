@@ -1,6 +1,26 @@
 {
   "koa": {
     "components": {
+      "comparisonPage": {
+        "title": "Porovnání odpovědí",
+        "description": "Jak strany odpovídaly na jednotlivé otázky",
+        "back": "Zpět na výsledky",
+        "filterLabel": "Filtrovat otázky",
+        "filterAll": "Vše",
+        "filterImportant": "Důležité",
+        "you": "Vy",
+        "groupOther": "Nevím / bez odpovědi",
+        "stackYes": "Odpověděly ano",
+        "stackNo": "Odpověděly ne",
+        "close": "Zavřít",
+        "emptyFilter": "Tomuhle filtru neodpovídá žádná otázka.",
+        "emptyFilterAction": "Zobrazit všechny",
+        "important": "Pro mě důležité",
+        "yes": "Ano",
+        "no": "Ne",
+        "neutral": "Nevím",
+        "none": "Bez odpovědi"
+      },
       "comparisonPane": {
         "close": "Zavřít porovnání",
         "filterLabel": "Filtrovat odpovědi",

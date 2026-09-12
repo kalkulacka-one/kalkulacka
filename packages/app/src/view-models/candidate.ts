@@ -148,6 +148,16 @@ export function candidateViewModel(candidate: Candidate, personsMap: Map<string,
   };
 }
 
+/**
+ * The smallest picture the data layer serves — a stack of faces, or the small
+ * avatar on a party's row, needs no more.
+ */
+export function avatarSrc(candidate: Pick<CandidateViewModel, "avatar">): string | undefined {
+  const urls = candidate.avatar?.urls;
+  if (!urls) return undefined;
+  return urls.xs ?? urls.sm ?? urls.md ?? urls.original;
+}
+
 export type AnswerComparison = {
   questionId: string;
   questionText?: string;

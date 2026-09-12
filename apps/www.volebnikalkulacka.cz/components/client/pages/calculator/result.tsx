@@ -13,15 +13,7 @@ import { calculatorNames } from "@/config/calculator-names";
 import { useAutoSave } from "@/hooks/auto-save";
 import { saveSessionData } from "@/lib/api";
 import { reportError } from "@/lib/monitoring";
-import { type RouteSegments, routes } from "@/lib/routing";
-
-/**
- * The comparison view's filter, as a query parameter — `?filtr=dulezite` for
- * the starred questions, `?filtr=<topic slug>` for one theme. A stand-in
- * until the comparison page itself is ported and defines the deep link.
- */
-const FILTER_PARAM = "filtr";
-const IMPORTANT_FILTER = "dulezite";
+import { comparisonFilterQuery, type RouteSegments, routes } from "@/lib/routing";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -72,12 +64,14 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     router.push(comparisonRoute);
   };
 
+  // The dashboard's deep links into the comparison — the same `?filtr=` the
+  // comparison page reads on arrival (see `lib/routing/comparison-filter.ts`).
   const handleCompareTopicClick = (topicSlug: string) => {
-    router.push(`${comparisonRoute}?${FILTER_PARAM}=${encodeURIComponent(topicSlug)}`);
+    router.push(`${comparisonRoute}${comparisonFilterQuery({ topic: topicSlug })}`);
   };
 
   const handleCompareImportantClick = () => {
-    router.push(`${comparisonRoute}?${FILTER_PARAM}=${IMPORTANT_FILTER}`);
+    router.push(`${comparisonRoute}${comparisonFilterQuery("important")}`);
   };
 
   const handleCloseClick = async () => {
