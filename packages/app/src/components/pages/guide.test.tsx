@@ -1,9 +1,15 @@
-import { calculatorViewModel, Guide, GuideNavigationCard, Introduction } from "@kalkulacka-one/app";
 import type { Calculator } from "@kalkulacka-one/schema";
 
 import { render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { Guide } from "@/components/guide";
+import { GuideNavigationCard } from "@/components/guide-navigation-card";
+import { Introduction } from "@/components/introduction";
+import { enMessages } from "@/locales";
+import { calculatorViewModel } from "@/view-models";
+
+import { LocaleProvider } from "../providers";
 import { GuidePage } from "./guide";
 
 vi.mock("@kalkulacka-one/design-system/client", () => ({
@@ -11,8 +17,23 @@ vi.mock("@kalkulacka-one/design-system/client", () => ({
   Icon: vi.fn(() => null),
 }));
 
-vi.mock("@kalkulacka-one/app", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@kalkulacka-one/app")>();
+vi.mock("@/components/guide", () => ({
+  Guide: vi.fn(() => null),
+}));
+
+vi.mock("@/components/introduction", () => ({
+  Introduction: vi.fn(() => null),
+}));
+
+vi.mock("@/components/guide-navigation-card", () => {
+  const GuideNavigationCardMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string };
+  GuideNavigationCardMock.heightClassNames = "h-0";
+  return {
+    GuideNavigationCard: GuideNavigationCardMock,
+  };
+});
+
+vi.mock("@/components/layout", () => {
   const LayoutMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
     Header: React.FC<{ children?: React.ReactNode }>;
     Content: React.FC<{ children?: React.ReactNode }>;
@@ -25,18 +46,22 @@ vi.mock("@kalkulacka-one/app", async (importOriginal) => {
   LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
   LayoutMock.Footer = vi.fn(({ children }) => children);
   LayoutMock.BottomSpacer = vi.fn(({ children }) => children);
+
   return {
-    ...actual,
-    Guide: vi.fn(() => null),
-    Introduction: vi.fn(() => null),
-    GuideNavigationCard: vi.fn(() => null),
-    EmbedFooter: vi.fn(() => null),
     Layout: LayoutMock,
   };
 });
 
-vi.mock("@kalkulacka-one/app/client", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@kalkulacka-one/app/client")>();
+vi.mock("@/components/embed-footer", () => {
+  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; marginBottomClassNames: string };
+  EmbedFooterMock.heightClassNames = "h-0";
+  EmbedFooterMock.marginBottomClassNames = "mb-0";
+  return {
+    EmbedFooter: EmbedFooterMock,
+  };
+});
+
+vi.mock("@/client", () => {
   const AppHeaderMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
     Right: React.FC<{ children?: React.ReactNode }>;
     Bottom: React.FC<{ children?: React.ReactNode }>;
@@ -49,14 +74,10 @@ vi.mock("@kalkulacka-one/app/client", async (importOriginal) => {
   AppHeaderMock.BottomMain = vi.fn(({ children }) => children);
 
   return {
-    ...actual,
     AppHeader: AppHeaderMock,
+    HideOnEmbed: vi.fn(({ children }) => children),
   };
 });
-
-vi.mock("../../../../components/client", () => ({
-  HideOnEmbed: vi.fn(({ children }) => children),
-}));
 
 const data = calculatorViewModel({
   id: "00000000-0000-0000-0000-000000000000",
@@ -72,6 +93,13 @@ describe("GuidePage", () => {
   let onBackClick: ReturnType<typeof vi.fn<() => void>>;
   let onCloseClick: ReturnType<typeof vi.fn<() => void>>;
 
+  const renderPage = () =>
+    render(
+      <LocaleProvider locale="en" messages={enMessages}>
+        <GuidePage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />
+      </LocaleProvider>,
+    );
+
   beforeEach(() => {
     onNextClick = vi.fn<() => void>();
     onBackClick = vi.fn<() => void>();
@@ -83,12 +111,12 @@ describe("GuidePage", () => {
   });
 
   it("renders Guide component", () => {
-    render(<GuidePage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    renderPage();
     expect(Guide).toHaveBeenCalledTimes(1);
   });
 
   it("passes calculator to Guide component", () => {
-    render(<GuidePage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    renderPage();
     expect(Guide).toHaveBeenCalledWith(
       expect.objectContaining({
         calculator: data,
@@ -98,17 +126,17 @@ describe("GuidePage", () => {
   });
 
   it("doesn't render Introduction", () => {
-    render(<GuidePage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    renderPage();
     expect(Introduction).not.toHaveBeenCalled();
   });
 
   it("renders GuideNavigationCard", () => {
-    render(<GuidePage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    renderPage();
     expect(GuideNavigationCard).toHaveBeenCalledTimes(1);
   });
 
   it("passes onNextClick to GuideNavigationCard", () => {
-    render(<GuidePage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onBackClick={onBackClick} onCloseClick={onCloseClick} />);
+    renderPage();
     expect(GuideNavigationCard).toHaveBeenCalledWith(
       expect.objectContaining({
         onNextClick: onNextClick,
