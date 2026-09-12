@@ -1,5 +1,3 @@
-// TODO [TENANT-003]: Extract app title to i18n messages
-
 import type { CalculatorViewModel } from "@kalkulacka-one/app";
 import { Logo } from "@kalkulacka-one/design-system/client";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
@@ -7,7 +5,7 @@ import { twMerge } from "@kalkulacka-one/design-system/utilities";
 import type { ReactNode } from "react";
 import React from "react";
 
-import { useEmbed } from "@/components/client";
+import { useEmbed } from "./embed-context-provider";
 
 const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);
 
@@ -55,7 +53,7 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
     <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
-          <AppHeaderMain title="Изборен калкулатор" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+          <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
         </div>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {

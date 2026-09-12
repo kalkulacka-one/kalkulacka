@@ -1,5 +1,5 @@
 // Ported from kalkulacka-2026/packages/ui/src/meter/meter.stories.tsx
-import { Meter, ProgressBar } from "@kalkulacka-one/design-system/server";
+import { Meter } from "@kalkulacka-one/design-system/server";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
@@ -24,8 +24,6 @@ const meta: Meta<typeof Meter> = {
     label: { control: "text" },
     accent: { control: "color" },
     className: { control: false },
-    color: { control: false },
-    corner: { control: false },
   },
   decorators: [
     (Story) => (
@@ -66,20 +64,6 @@ export const Labelled: MeterStory = {
 /** The ranking paints each candidate's own colour over the tone's ink. */
 export const Accent: MeterStory = {
   args: { accent: "light-dark(#d97706, #fbbf24)" },
-};
-
-/**
- * The retired `ProgressBar` name and its `color` / `corner` props still work
- * for the legacy match card — `primary` is the agree tone, `corner` is ignored.
- */
-export const LegacyProgressBar: MeterStory = {
-  name: "Legacy ProgressBar alias",
-  render: () => (
-    <div style={{ display: "grid", gap: "0.75rem" }}>
-      <ProgressBar value={85} color="primary" corner="sharp" />
-      <ProgressBar value={42} color="neutral" corner="rounded" />
-    </div>
-  ),
 };
 
 export default meta;

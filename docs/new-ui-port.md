@@ -143,10 +143,45 @@ test flips it to ready.
 | 23 | `port/23-mk` | Switch the Macedonian app to the shared calculator pages | MK | 15 | **C12** MK full flow |
 | 24 | `port/24-cleanup` | Remove the superseded calculator components | app, CZ, SK, MK | 20 | — |
 
-Deferred, to decide separately: the election picker page (`/volby/<election>`,
-a new route), the WebGL backdrop (the CSS gradient ships first), per-partner
-surface colours for `alarm` / `prima` / `diky-ze-muzem`, and the Hungarian app
-(it has no calculator yet).
+## Delivered
+
+Every PR of the stack is in:
+
+- Foundations: #510 roadmap (0), #511 tokens (1), #513 the twMerge prefix
+  fix (2a), #514 Button, Icon and IconButton (2), #515 Chip, Tag, AnswerMark
+  and VisuallyHidden (3), #516 AppHeader, Screen, StickyBar, EdgeFade and
+  Backdrop (4), #517 the Czech palette (4a).
+- Question flow: #518 introduction page, C1 (5), #519 question card (6),
+  #520 question deck, C2 (7), #521 FlowNav and KeyboardHints (8), #522
+  question page, C3 (9), #523 guide page, C4 (10).
+- Review and results: #524 Dialog, FilterChips, RecapRow and QuestionDialog
+  (11), #525 insights (12), #526 review page, C5 (13), #527 Meter, MatchRow,
+  AvatarStack, Donut and Calculating (14), #529 result page, C6 (15), #530
+  comparison pane, C7 (16), #531 comparison page, C8 (17).
+- Menu, share and wiring: #532 menu and dark mode, C9 (18), #533 share
+  dialog, C10 (19), #534 shared results (20), #535 analytics (21).
+- The other instances and the cleanup: #536 Slovak, C11 (22), #537
+  Macedonian, C12 (23), and the cleanup that removed the superseded
+  calculator components and adds this section (24).
+
+## Deferred
+
+What is left after the stack, each to decide separately:
+
+- Logo-derived party colours (server-side image analysis); the ranking bars
+  use the seeded palette until then.
+- The WebGL backdrop; the CSS gradient ships.
+- The election picker page (`/volby/<election>`, a new route).
+- A Unicode-aware topic slug, so the Macedonian dashboard's topic deep links
+  work (Cyrillic tags produce no slug today and the link is omitted).
+- The avatar initials fallback when an image fails to load.
+- Partner-theme surface colours for `alarm` / `prima` / `diky-ze-muzem`.
+- Comparing a party through its nested candidates' answers in the comparison
+  pane, for parties whose answers live only in their members (the inventory
+  calculators).
+- A native review of the machine-translated Slovak and Macedonian strings.
+- Topic-icon rules for non-Czech tags; every non-Czech topic takes the
+  generic icon today.
 
 ## Checkpoints for manual testing
 

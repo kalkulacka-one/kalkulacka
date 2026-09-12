@@ -48,30 +48,6 @@
         "neutral": "Neviem",
         "none": "Bez odpovede"
       },
-      "embedAttribution": {
-        "broughtBy": "Prináša"
-      },
-      "guide": {
-        "agreement": {
-          "title": "Zhoda",
-          "description": "Pri zhode s Vašou odpoveďou strana alebo politik dostane bod"
-        },
-        "disagreement": {
-          "title": "Nezhoda",
-          "description": "Pri nezhode bod naopak stratí"
-        },
-        "skip": {
-          "title": "Preskočiť",
-          "description": "Otázku môžete preskočiť a nebude sa do výpočtu počítať"
-        },
-        "important": {
-          "title": "Dôležité otázky",
-          "description": "Pre vás dôležité otázky označte hviezdičkou. Zhody a nezhody potom budú závažnejšie."
-        }
-      },
-      "guideNavigationCard": {
-        "startButton": "Začať odpovedať"
-      },
       "guidePage": {
         "title": "Ako to funguje",
         "description": "Vyskúšajte si to na cvičnej karte — nič z nej sa nikam nezapočíta.",
@@ -118,9 +94,6 @@
       "helpDialog": {
         "title": "Ako to funguje",
         "close": "Zavrieť"
-      },
-      "introductionNavigationCard": {
-        "continueButton": "Pokračovať"
       },
       "introductionPage": {
         "description": "Odpoviete na {count, plural, one {# otázku} few {# otázky} other {# otázok}} a uvidíte, ku komu máte najbližšie.",
@@ -172,22 +145,6 @@
         "cancel": "Zrušiť",
         "confirm": "Vymazať a začať znova",
         "close": "Zavrieť"
-      },
-      "publicResultNavigationCard": {
-        "fillOwnCalculatorButton": "Vyplniť vlastnú kalkulačku"
-      },
-      "questionNavigationCard": {
-        "guide": "Návod",
-        "previous": "Predchádzajúca",
-        "next": "Ďalšia",
-        "skip": "Preskočiť",
-        "yes": "Áno",
-        "no": "Nie",
-        "important": "Pre mňa dôležité"
-      },
-      "resultNavigationCard": {
-        "compareButton": "Porovnať",
-        "shareButton": "Zdieľať"
       },
       "resultPage": {
         "title": "Moja zhoda",
@@ -274,9 +231,6 @@
         "linkCopied": "Odkaz skopírovaný",
         "linkFailed": "Odkaz sa nepodarilo vytvoriť. Skúste to prosím znova."
       },
-      "reviewNavigationCard": {
-        "showResultsButton": "Zobraziť výsledky"
-      },
       "reviewPage": {
         "title": "Rekapitulácia",
         "description": "Skontrolujte odpovede, než sa pozriete na výsledok. Ťuknutím na otázku ju môžete zmeniť.",
@@ -297,11 +251,6 @@
         "important": "Pre mňa dôležité",
         "skip": "Preskočiť",
         "close": "Zavrieť"
-      },
-      "reviewQuestionCard": {
-        "yes": "Áno",
-        "no": "Nie",
-        "important": "Pre mňa dôležité"
       }
     }
   }

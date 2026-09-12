@@ -2,7 +2,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { Meter, MeterFillVariants, MeterTrackVariants, ProgressBar } from "./progressBar";
+import { Meter, MeterFillVariants, ProgressBar } from "./progressBar";
 
 function fillOf(container: HTMLElement): HTMLElement {
   return container.querySelector("[style]") as HTMLElement;
@@ -75,30 +75,7 @@ describe("Meter", () => {
     expect(container.firstElementChild).not.toHaveClass("ko:rounded-pill", "ko:bg-surface-sunken");
   });
 
-  describe("legacy aliases", () => {
-    it("is exported as ProgressBar too", () => {
-      expect(ProgressBar).toBe(Meter);
-    });
-
-    it("maps color=primary to the agree tone", () => {
-      const { container } = render(<ProgressBar value={50} color="primary" corner="sharp" />);
-      expect(fillOf(container)).toHaveClass("ko:bg-agree");
-    });
-
-    it("maps color=neutral to the neutral tone", () => {
-      const { container } = render(<ProgressBar value={50} color="neutral" />);
-      expect(fillOf(container)).toHaveClass("ko:bg-neutral-ink");
-    });
-
-    it("lets tone win over color", () => {
-      const { container } = render(<ProgressBar value={50} color="primary" tone="neutral" />);
-      expect(fillOf(container)).toHaveClass("ko:bg-neutral-ink");
-    });
-
-    it("ignores corner — the track is always a pill", () => {
-      const { container } = render(<ProgressBar value={50} corner="sharp" />);
-      expect(container.firstElementChild).toHaveClass("ko:rounded-pill");
-      expect(MeterTrackVariants().split(" ")).toContain("ko:rounded-pill");
-    });
+  it("is exported as ProgressBar too", () => {
+    expect(ProgressBar).toBe(Meter);
   });
 });

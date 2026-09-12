@@ -6,20 +6,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 export type MeterTone = NonNullable<VariantProps<typeof MeterFillVariants>["tone"]>;
 export type MeterSize = NonNullable<VariantProps<typeof MeterTrackVariants>["size"]>;
 
-/**
- * Colour names of the retired `ProgressBar`, accepted so the legacy match card
- * keeps compiling: `primary` is the `agree` tone, `neutral` is `neutral`.
- *
- * @deprecated Removed with the cleanup PR once the legacy match card is gone; use `tone`.
- */
-export type LegacyMeterColor = "primary" | "neutral";
-
-/** @deprecated Removed with the cleanup PR together with `LegacyMeterColor`. */
-const legacyTones = {
-  primary: "agree",
-  neutral: "neutral",
-} as const satisfies Record<LegacyMeterColor, MeterTone>;
-
 export type Meter = {
   /** 0–100. Values outside the range are clamped rather than overflowing the track. */
   value: number;
@@ -50,16 +36,6 @@ export type Meter = {
   accent?: string;
   /** For the track — the match row squares it off and pins it to the card's top edge. */
   className?: string;
-  /** @deprecated Use `tone`. `primary` is `agree`. */
-  color?: LegacyMeterColor | null;
-  /**
-   * The retired design's corner switch. Accepted and ignored: the Meter is
-   * always a pill, and the one consumer that asked for `sharp` (the legacy
-   * match card) is replaced by `MatchRow`.
-   *
-   * @deprecated Removed with the cleanup PR.
-   */
-  corner?: "rounded" | "sharp" | null;
 };
 
 export const MeterTrackVariants = cva("ko:w-full ko:rounded-pill ko:bg-surface-sunken ko:overflow-hidden", {
@@ -97,12 +73,10 @@ export const MeterFillVariants = cva("ko:h-full ko:rounded-pill ko:origin-left k
 /**
  * A horizontal proportion — the match percentage, and the dashboard's topic
  * rows. This is the retired `ProgressBar` restyled to the 2026 Meter; the old
- * name and its `color` and `corner` props survive as aliases for the legacy
- * match card until the cleanup PR.
+ * name survives as an alias.
  */
-export function Meter({ value, tone, size, delay = 0, label, accent, className, color, corner: _corner }: Meter) {
+export function Meter({ value, tone, size, delay = 0, label, accent, className }: Meter) {
   const clamped = Math.max(0, Math.min(100, value));
-  const resolvedTone = tone ?? (color ? legacyTones[color] : undefined);
 
   return (
     <div
@@ -117,12 +91,12 @@ export function Meter({ value, tone, size, delay = 0, label, accent, className, 
           }
         : { "aria-hidden": "true" })}
     >
-      <div className={twMerge(MeterFillVariants({ tone: resolvedTone }))} style={{ width: `${clamped}%`, animationDelay: delay ? `${delay}s` : undefined, backgroundColor: accent }} />
+      <div className={twMerge(MeterFillVariants({ tone }))} style={{ width: `${clamped}%`, animationDelay: delay ? `${delay}s` : undefined, backgroundColor: accent }} />
     </div>
   );
 }
 
-/** @deprecated The retired name of `Meter`; removed with the cleanup PR. */
+/** @deprecated The retired name of `Meter`. */
 export const ProgressBar = Meter;
-/** @deprecated The retired name of `Meter`'s props; removed with the cleanup PR. */
+/** @deprecated The retired name of `Meter`'s props. */
 export type ProgressBar = Meter;

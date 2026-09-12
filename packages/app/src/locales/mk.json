@@ -48,30 +48,6 @@
         "neutral": "Не знам",
         "none": "Без одговор"
       },
-      "embedAttribution": {
-        "broughtBy": "Обезбедено од"
-      },
-      "guide": {
-        "agreement": {
-          "title": "Согласност",
-          "description": "При согласност со вашиот одговор, партијата или политичарот добива поен"
-        },
-        "disagreement": {
-          "title": "Несогласност",
-          "description": "При несогласност, поенот се губи"
-        },
-        "skip": {
-          "title": "Прескокни",
-          "description": "Прашањето може да се прескокне и нема да се пресметува"
-        },
-        "important": {
-          "title": "Важни прашања",
-          "description": "Означете ги важните прашања со ѕвездичка. Согласностите и несогласностите тогаш ќе бидат позначајни."
-        }
-      },
-      "guideNavigationCard": {
-        "startButton": "Започни со одговарање"
-      },
       "guidePage": {
         "title": "Како функционира",
         "description": "Испробајте го на картичка за вежбање — ништо од неа не се засметува никаде.",
@@ -118,9 +94,6 @@
       "helpDialog": {
         "title": "Како функционира",
         "close": "Затвори"
-      },
-      "introductionNavigationCard": {
-        "continueButton": "Продолжи"
       },
       "introductionPage": {
         "description": "Ќе одговорите на {count, plural, one {# прашање} other {# прашања}} и ќе видите кому сте најблиску.",
@@ -172,22 +145,6 @@
         "cancel": "Откажи",
         "confirm": "Избриши и почни одново",
         "close": "Затвори"
-      },
-      "publicResultNavigationCard": {
-        "fillOwnCalculatorButton": "Пополнете го вашиот калкулатор"
-      },
-      "questionNavigationCard": {
-        "guide": "Водич",
-        "previous": "Назад",
-        "next": "Следно",
-        "skip": "Прескокни",
-        "yes": "Да",
-        "no": "Не",
-        "important": "Важно за мене"
-      },
-      "resultNavigationCard": {
-        "compareButton": "Спореди",
-        "shareButton": "Сподели"
       },
       "resultPage": {
         "title": "Моето совпаѓање",
@@ -274,9 +231,6 @@
         "linkCopied": "Линкот е копиран",
         "linkFailed": "Линкот не можеше да се создаде. Ве молиме обидете се повторно."
       },
-      "reviewNavigationCard": {
-        "showResultsButton": "Прикажи резултати"
-      },
       "reviewPage": {
         "title": "Рекапитулација",
         "description": "Проверете ги одговорите пред да го видите резултатот. Допрете на прашање за да го промените.",
@@ -297,11 +251,6 @@
         "important": "Важно за мене",
         "skip": "Прескокни",
         "close": "Затвори"
-      },
-      "reviewQuestionCard": {
-        "yes": "Да",
-        "no": "Не",
-        "important": "Важно за мене"
       }
     }
   }

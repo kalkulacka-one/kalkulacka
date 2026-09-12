@@ -48,30 +48,6 @@
         "neutral": "Don't know",
         "none": "No answer"
       },
-      "embedAttribution": {
-        "broughtBy": "Brought by"
-      },
-      "guide": {
-        "agreement": {
-          "title": "Agreement",
-          "description": "When you agree with an answer, the party or politician receives a point"
-        },
-        "disagreement": {
-          "title": "Disagreement",
-          "description": "When you disagree, they lose a point"
-        },
-        "skip": {
-          "title": "Skip",
-          "description": "You can skip a question and it won't be included in the calculation"
-        },
-        "important": {
-          "title": "Important questions",
-          "description": "Mark important questions with a star. Agreements and disagreements will be weighted more heavily."
-        }
-      },
-      "guideNavigationCard": {
-        "startButton": "Start answering"
-      },
       "guidePage": {
         "title": "How it works",
         "description": "Try it on a practice card — nothing from it counts anywhere.",
@@ -118,9 +94,6 @@
       "helpDialog": {
         "title": "How it works",
         "close": "Close"
-      },
-      "introductionNavigationCard": {
-        "continueButton": "Continue"
       },
       "introductionPage": {
         "description": "Answer {count, plural, one {# question} other {# questions}} and see who you are closest to.",
@@ -172,22 +145,6 @@
         "cancel": "Cancel",
         "confirm": "Delete and start over",
         "close": "Close"
-      },
-      "publicResultNavigationCard": {
-        "fillOwnCalculatorButton": "Fill your own calculator"
-      },
-      "questionNavigationCard": {
-        "guide": "Guide",
-        "previous": "Previous",
-        "next": "Next",
-        "skip": "Skip",
-        "yes": "Yes",
-        "no": "No",
-        "important": "Important to me"
-      },
-      "resultNavigationCard": {
-        "compareButton": "Compare",
-        "shareButton": "Share"
       },
       "resultPage": {
         "title": "My match",
@@ -274,9 +231,6 @@
         "linkCopied": "Link copied",
         "linkFailed": "The link could not be created. Please try again."
       },
-      "reviewNavigationCard": {
-        "showResultsButton": "Show results"
-      },
       "reviewPage": {
         "title": "Recap",
         "description": "Check your answers before you look at the result. Tap a question to change it.",
@@ -297,11 +251,6 @@
         "important": "Important to me",
         "skip": "Skip",
         "close": "Close"
-      },
-      "reviewQuestionCard": {
-        "yes": "Yes",
-        "no": "No",
-        "important": "Important to me"
       }
     }
   }
