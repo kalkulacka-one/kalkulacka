@@ -1,5 +1,7 @@
-@import 'tailwindcss/theme' prefix(koa);
-@import 'tailwindcss/utilities' prefix(koa);
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme' layer(theme) prefix(koa);
+@import 'tailwindcss/utilities' layer(utilities) prefix(koa);
 
 @theme static {
   --font-display: var(--ko-font-display);
