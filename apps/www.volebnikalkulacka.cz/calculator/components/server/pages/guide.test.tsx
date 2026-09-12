@@ -25,7 +25,6 @@ vi.mock("@kalkulacka-one/app", async (importOriginal) => {
   LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
   LayoutMock.Footer = vi.fn(({ children }) => children);
   LayoutMock.BottomSpacer = vi.fn(({ children }) => children);
-
   return {
     ...actual,
     Guide: vi.fn(() => null),
@@ -36,7 +35,8 @@ vi.mock("@kalkulacka-one/app", async (importOriginal) => {
   };
 });
 
-vi.mock("../../client", () => {
+vi.mock("@kalkulacka-one/app/client", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@kalkulacka-one/app/client")>();
   const AppHeaderMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
     Right: React.FC<{ children?: React.ReactNode }>;
     Bottom: React.FC<{ children?: React.ReactNode }>;
@@ -49,6 +49,7 @@ vi.mock("../../client", () => {
   AppHeaderMock.BottomMain = vi.fn(({ children }) => children);
 
   return {
+    ...actual,
     AppHeader: AppHeaderMock,
   };
 });

@@ -1,11 +1,12 @@
-import type { CalculatorViewModel } from "@kalkulacka-one/app";
 import { Logo } from "@kalkulacka-one/design-system/client";
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import React from "react";
 
-import { useEmbed } from "@/components/client";
+import { useEmbed } from "@/client/embeds";
+import type { CalculatorViewModel } from "@/view-models/calculator";
 
 const hasChildOfType = (children: ReactNode, type: React.ElementType) => React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === type);
 
@@ -29,6 +30,7 @@ type AppHeaderProps = {
 };
 
 export function AppHeader({ children, condensed = false, calculator }: AppHeaderProps) {
+  const t = useTranslations("koa");
   const embed = useEmbed();
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
@@ -53,7 +55,7 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
     <header className="@container sticky top-0 p-2 sm:p-3 bg-white/60 backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
-          <AppHeaderMain title="Volební kalkulačka" calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+          <AppHeaderMain title={t("appTitle")} calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
         </div>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {

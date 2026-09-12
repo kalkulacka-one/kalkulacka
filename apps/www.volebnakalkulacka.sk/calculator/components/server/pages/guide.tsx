@@ -1,11 +1,11 @@
 // TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
 import type { CalculatorViewModel } from "@kalkulacka-one/app";
 import { EmbedFooter, Guide, GuideNavigationCard, Layout } from "@kalkulacka-one/app";
+import { AppHeader } from "@kalkulacka-one/app/client";
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 
-import { AppHeader } from "@/calculator/client";
 import { type EmbedContextType, HideOnEmbed } from "@/components/client";
 
 export type GuidePage = {
