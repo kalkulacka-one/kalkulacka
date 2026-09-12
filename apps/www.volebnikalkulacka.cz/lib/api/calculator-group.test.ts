@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { loadCalculatorGroup } from "./calculator-group";
+import { loadCalculatorGroup, loadPublishedCalculatorGroup } from "./calculator-group";
 
 const fetchMock = vi.fn();
 
@@ -115,5 +115,28 @@ describe("loadCalculatorGroup", () => {
     const listing = await loadCalculatorGroup({ group: "krajske-2028" });
 
     expect(listing.electionName).toBeUndefined();
+  });
+});
+
+describe("loadPublishedCalculatorGroup", () => {
+  it("returns the listing where the group is published", async () => {
+    serveGroupFiles({ "calculator-group.json": calculatorGroup, "election.json": election });
+
+    await expect(loadPublishedCalculatorGroup({ group: "senatni-2026" })).resolves.toMatchObject({ groupKey: "senatni-2026" });
+  });
+
+  it("returns nothing where the data endpoint does not serve the group, rather than throwing", async () => {
+    // What every endpoint but a local mirror does for the 2026 groups today,
+    // and what the real ones will do until the day they are published. These
+    // pages are prerendered, so a throw here fails the whole build.
+    serveGroupFiles({});
+
+    await expect(loadPublishedCalculatorGroup({ group: "komunalni-2026" })).resolves.toBeUndefined();
+  });
+
+  it("still throws where the group is served but broken, so a real fault is not swallowed", async () => {
+    serveGroupFiles({ "calculator-group.json": { key: "senatni-2026" }, "election.json": election });
+
+    await expect(loadPublishedCalculatorGroup({ group: "senatni-2026" })).rejects.toThrow();
   });
 });

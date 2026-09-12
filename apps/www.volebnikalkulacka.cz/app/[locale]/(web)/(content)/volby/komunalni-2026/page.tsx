@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-import { type GroupCalculator, loadCalculatorGroup } from "@/lib/api/calculator-group";
+import { type GroupCalculator, loadPublishedCalculatorGroup } from "@/lib/api/calculator-group";
 
 import { CalculatorSearch, type SearchableCalculator } from "../CalculatorSearch";
 
 const GROUP = "komunalni-2026";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { electionName } = await loadCalculatorGroup({ group: GROUP });
-  return { title: electionName };
+  const group = await loadPublishedCalculatorGroup({ group: GROUP });
+  return { title: group?.electionName };
 }
 
 /**
@@ -39,7 +40,10 @@ function citiesWithVariants(calculators: GroupCalculator[]): SearchableCalculato
 }
 
 export default async function Page() {
-  const group = await loadCalculatorGroup({ group: GROUP });
+  const group = await loadPublishedCalculatorGroup({ group: GROUP });
+  // Until the election's data is published there is no list to pick from, so
+  // the page is not there either.
+  if (!group) notFound();
   const cities = citiesWithVariants(group.calculators);
 
   return (

@@ -6,17 +6,21 @@ import { useId } from "react";
 
 import { SubscribeForm } from "@/components/client";
 import { elections2026Live } from "@/config/feature-flags";
-import { loadCalculatorGroup } from "@/lib/api/calculator-group";
+import { loadPublishedCalculatorGroup } from "@/lib/api/calculator-group";
 
 import { BeadRow } from "./BeadRow";
 import { type ElectionCard, ElectionCards } from "./ElectionCards";
 
 /**
  * The two 2026 elections, counted from the data so the homepage never promises
- * more cities than the picker behind it can offer.
+ * more cities than the picker behind it can offer — and nothing at all until
+ * both are published.
  */
-async function elections2026(): Promise<ElectionCard[]> {
-  const [municipal, senate] = await Promise.all([loadCalculatorGroup({ group: "komunalni-2026" }), loadCalculatorGroup({ group: "senatni-2026" })]);
+async function elections2026(): Promise<ElectionCard[] | undefined> {
+  const [municipal, senate] = await Promise.all([loadPublishedCalculatorGroup({ group: "komunalni-2026" }), loadPublishedCalculatorGroup({ group: "senatni-2026" })]);
+  // A card leading to a picker that is not there is worse than no card: with
+  // the flag turned on before the data lands, the teaser stays up.
+  if (!municipal || !senate) return undefined;
 
   const cities = new Set(municipal.calculators.map((calculator) => calculator.districtKey)).size;
 

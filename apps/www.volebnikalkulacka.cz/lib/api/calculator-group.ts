@@ -1,4 +1,4 @@
-import { buildDataUrl, fetchFile, parseWithSchema } from "@kalkulacka-one/app";
+import { buildDataUrl, fetchFile, NotFoundError, parseWithSchema } from "@kalkulacka-one/app";
 import { type CalculatorGroup, calculatorGroupSchema, type District, type Election, electionSchema, type Round } from "@kalkulacka-one/schema";
 
 import type { z } from "zod";
@@ -101,4 +101,23 @@ export async function loadCalculatorGroup({ group }: { group: string }): Promise
     rounds: election.rounds,
     calculators,
   };
+}
+
+/**
+ * The same listing, or nothing at all where the group is not published yet.
+ *
+ * A calculator group appears in the data only once its election is ready, and
+ * the page for one that is not there yet has to be a 404 rather than a crash:
+ * these pages are prerendered, so a group the data endpoint does not serve
+ * would otherwise fail the whole build — which is exactly what the 2026 groups
+ * do everywhere but a local mirror, and what the real ones will do until the
+ * day they are published.
+ */
+export async function loadPublishedCalculatorGroup({ group }: { group: string }): Promise<CalculatorGroupListing | undefined> {
+  try {
+    return await loadCalculatorGroup({ group });
+  } catch (error) {
+    if (error instanceof NotFoundError) return undefined;
+    throw error;
+  }
 }
