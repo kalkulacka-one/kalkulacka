@@ -1,10 +1,9 @@
 import { Button, Icon, Logo } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
+import { plausibleEvent } from "@kalkulacka-one/next/analytics";
 
 import { mdiClose } from "@mdi/js";
 import { createContext, type ReactNode, useContext, useState } from "react";
-
-import { plausibleEvent } from "@/lib/analytics";
 
 const donateUrl = "https://www.darujme.cz/darovat/1200653";
 const currency = "CZK";

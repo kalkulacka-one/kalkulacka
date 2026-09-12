@@ -7,11 +7,12 @@ import { routing } from "@/i18n/routing";
 
 import "@/app/globals.css";
 
+import { allowCrawling } from "@kalkulacka-one/next";
+
 import { EmbedContextProvider, ThemeProvider } from "@/components/client";
 import { I18nProvider, PlausibleScript } from "@/components/server";
 import { appConfig } from "@/config/app-config";
 import type { ThemeName } from "@/config/themes";
-import { allowCrawling } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: {
