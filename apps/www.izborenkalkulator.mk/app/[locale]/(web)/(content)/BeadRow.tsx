@@ -30,10 +30,10 @@ export function BeadRow({ anchorId = "other-calcs-heading" }: { anchorId?: strin
     <div ref={rootRef} className="absolute left-0 right-0" style={{ top }}>
       <div className="grid grid-cols-6 gap-x-6">
         <div className="relative col-start-4">
-          <BeadCheckBlue className="absolute left-0 -translate-x-1/2 h-8 w-8 ko:text-primary" />
+          <BeadCheckBlue className="absolute left-0 -translate-x-1/2 h-8 w-8 text-[var(--ko-color-primary)]" />
         </div>
         <div className="relative col-start-5">
-          <BeadCrossRed className="absolute left-0 -translate-x-1/2 h-8 w-8 ko:text-secondary" />
+          <BeadCrossRed className="absolute left-0 -translate-x-1/2 h-8 w-8 text-[var(--ko-color-secondary)]" />
         </div>
         <div className="relative col-start-6">
           <BeadTickSlate className="absolute left-0 -translate-x-1/2 h-8 w-8 text-slate-700" />
