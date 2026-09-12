@@ -1,10 +1,12 @@
-// TODO [TENANT-014]: Extract hardcoded Slovak strings to i18n
-import { type AnswersViewModel, ComparisonQuestionCard, type QuestionsViewModel, type ResultViewModel } from "@kalkulacka-one/app";
 import { Icon } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
 import { IconBadge } from "@kalkulacka-one/design-system/server";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
+
+import { ComparisonQuestionCard } from "@/components/comparison-question-card";
+import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
 
 export type ComparisonGridDashlinesOverlay = {
   result: ResultViewModel;
@@ -56,11 +58,13 @@ export type OrganizationFilter = {
 };
 
 function OrganizationFilter({ organizations, selectedOrganizations, setSelectedOrganizations }: OrganizationFilter) {
+  const t = useTranslations("koa.components.comparisonGrid");
+
   if (organizations.length === 0) return null;
 
   return (
     <div className="sticky left-4 max-w-dvw z-10 flex flex-col gap-2">
-      <h3 className="text-sm font-medium">Vyberte stranu:</h3>
+      <h3 className="text-sm font-medium">{t("selectParty")}</h3>
       <div className="relative bg-slate-100 rounded-full p-1 flex flex-wrap gap-1 max-w-[90dvw] sm:w-fit">
         <label
           className={` text-xs px-4 py-2 rounded-full cursor-pointer transition-colors ${
@@ -79,7 +83,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
             }}
             className="sr-only"
           />
-          Vybrať všetko
+          {t("selectAll")}
         </label>
         {organizations.map((org) => (
           <label
@@ -129,10 +133,12 @@ export type ComparisonHeader = {
 };
 
 function ComparisonHeader({ condensed = false, result, filterNestedCandidates }: ComparisonHeader) {
+  const t = useTranslations("koa.components.comparisonGrid");
+
   return (
     <div className={`sticky ${condensed ? "top-[4.75rem]" : "top-32"} gap-8 flex z-40 transition-all duration-500 ease-in-out`}>
       <div className="rounded-xl bg-blue-100/60 backdrop-blur-lg border-blue-50 border-1 z-50 min-h-[65px] sticky left-4 w-[100px] flex-shrink-0 text-center text-xs flex items-center justify-center">
-        Vaše odpovede
+        {t("yourAnswers")}
       </div>
       {result.matches.map((match) => {
         const nestedMatches = filterNestedCandidates(match.nestedMatches);
