@@ -78,9 +78,9 @@
         "start": "Rozumiem, začať"
       },
       "guidePractice": {
-        "bodyTouch": "Ťahajte kartou do vyznačených smerov, alebo ťuknite na jednu z možností.",
-        "bodyPointer": "Ťahajte kartou do vyznačených smerov, alebo kliknite na jednu z možností.",
-        "progress": "Vyskúšané {done} zo {total}",
+        "bodyTouch": "Ťahajte kartu do vyznačených smerov, alebo ťuknite na jednu z možností.",
+        "bodyPointer": "Ťahajte kartu do vyznačených smerov, alebo kliknite na jednu z možností.",
+        "progress": "Vyskúšané {done} z {total}",
         "feedbackAgree": "Áno — karta išla doľava.",
         "feedbackDisagree": "Nie — karta išla doprava.",
         "feedbackImportant": "Pre mňa dôležité — taká otázka má vo výsledku dvojnásobnú váhu.",
@@ -207,7 +207,7 @@
         "emptyAction": "Prejsť na otázky",
         "expertNote": "Postoje podľa verejných zdrojov, strana neodpovedala na zaslané otázky.",
         "viewLabel": "Zobrazenie výsledkov",
-        "viewLists": "Kandidátne listiny",
+        "viewLists": "Strany",
         "viewPeople": "Ľudia"
       },
       "resultsDashboard": {
@@ -231,7 +231,8 @@
         "promptCopied": "Skopírované",
         "promptFallback": "Skopírovať sa nepodarilo. Text je označený, skopírujte ho ručne.",
         "promptNote": "Zhrnutie vzniklo tu v prehliadači z vašich odpovedí. Nikam sa neodosiela.",
-        "promptIntro": "Rozhodujem sa vo voľbách {election} ({district}). Vo volebnej kalkulačke mám zodpovedaných {answered} zo {total} otázok.",
+        "promptIntro": "Rozhodujem sa vo voľbách {election} ({district}). Vo volebnej kalkulačke mám zodpovedaných {answered} z {total} otázok.",
+        "promptIntroStandalone": "Vypĺňam volebnú kalkulačku {calculator}. Mám zodpovedaných {answered} z {total} otázok.",
         "promptMatches": "Najviac sa zhodujem s týmito stranami:",
         "promptTopics": "Podľa jednotlivých tém mi je najbližšie:",
         "promptImportant": "Ako dôležité mám označené tieto otázky:",
@@ -278,7 +279,7 @@
       },
       "reviewPage": {
         "title": "Rekapitulácia",
-        "description": "Skontrolujte odpovede, než sa pozriete na výsledok. Klepnutím na otázku ju môžete zmeniť.",
+        "description": "Skontrolujte odpovede, než sa pozriete na výsledok. Ťuknutím na otázku ju môžete zmeniť.",
         "tally": "Zodpovedané {answered} z {total}",
         "skipped": "Preskočené {remaining}",
         "filterLabel": "Filtrovať otázky",

@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
+// This app's own dev port (see `package.json`), or wherever a build is already being served — `next start` on another port, say.
+const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3030";
+
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
@@ -8,7 +11,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
-    baseURL: "http://localhost:3020",
+    baseURL,
     trace: "on-first-retry",
   },
 
@@ -21,7 +24,7 @@ export default defineConfig({
 
   webServer: {
     command: "npm run dev",
-    url: "http://localhost:3020",
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
   },
 });

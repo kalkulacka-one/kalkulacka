@@ -3,7 +3,22 @@
 @import "@kalkulacka-one/design-system/styles";
 @import "@kalkulacka-one/app/styles";
 
-:root {
+/*
+ * Light and dark follow the design system: `color-scheme: light dark` on the
+ * root, an explicit `data-mode` override written by the shell menu (applied
+ * before first paint by `bootstrapColorMode` in the layouts), and a partner
+ * theme's own single-mode pin. The legacy content screens — the homepage and
+ * the editorial pages — are built in fixed light colours (slate utilities, a
+ * light body), so they pin the scheme light instead: on their own wrapper
+ * (`scheme-light` in the content layout), which keeps every design-system
+ * component on them light everywhere, and — where `:has()` is understood —
+ * on the root as well, so the browser's own chrome and the theme-colour sync
+ * see the same light page. The second selector outranks the design system's
+ * `:root[data-mode="dark"]`, so a dark override stored while using a
+ * calculator does not follow the visitor onto these screens.
+ */
+html:has(.scheme-light),
+html[data-mode]:has(.scheme-light) {
   color-scheme: light;
 }
 
