@@ -2,11 +2,8 @@ import { InternalServerError, NotFoundError } from "@/errors";
 
 export const DATA_REVALIDATE_SECONDS = 60;
 
-type RevalidatingRequestInit = RequestInit & { next: { revalidate: number } };
-
 export async function fetchFile({ url }: { url: string }): Promise<unknown> {
-  const options: RevalidatingRequestInit = { next: { revalidate: DATA_REVALIDATE_SECONDS } };
-  const response = await fetch(url, options);
+  const response = await fetch(url, { next: { revalidate: DATA_REVALIDATE_SECONDS } } as RequestInit);
 
   if (response.status === 404) {
     throw new NotFoundError(`File \`${url}\` not found`);
