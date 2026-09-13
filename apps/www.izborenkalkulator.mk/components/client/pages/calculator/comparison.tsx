@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 
 import { useEmbed } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ComparisonPageWithRouting({ segments }: { segments: RouteSegments }) {
@@ -28,6 +29,7 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
   return (
     <ComparisonPage
       homepageHref={canonical.homepage()}
+      privacyHref={appConfig.links?.privacy}
       embedContext={embed}
       calculator={calculator}
       result={result}

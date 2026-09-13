@@ -7,6 +7,7 @@ import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 import { useEmbed } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 import { reportError } from "@/lib/monitoring";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
@@ -61,6 +62,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     <>
       <AppResultPage
         homepageHref={canonical.homepage()}
+        privacyHref={appConfig.links?.privacy}
         embedContext={embed}
         calculator={calculator}
         result={result}
@@ -76,6 +78,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
         onShare={() => shareSession(calculator.id)}
+        privacyHref={appConfig.links?.privacy}
         buildShareUrl={(publicId) => canonical.publicResult({ first: segments.first, second: segments.second, third: segments.third }, publicId, locale)}
       />
     </>

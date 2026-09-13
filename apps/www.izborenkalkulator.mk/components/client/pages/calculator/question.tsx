@@ -7,6 +7,7 @@ import { useLocale } from "next-intl";
 import { useEffect, useReducer } from "react";
 
 import { useEmbed } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 import { useAutoSave } from "@/hooks/auto-save";
 import { reportError } from "@/lib/monitoring";
 import { canonical, parsedParams, type RouteSegments, routes } from "@/lib/routing";
@@ -89,6 +90,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     <div>
       <AppQuestionPage
         homepageHref={canonical.homepage()}
+        privacyHref={appConfig.links?.privacy}
         embedContext={embed}
         calculator={calculator}
         question={question}
