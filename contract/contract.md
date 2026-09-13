@@ -23,8 +23,9 @@ reviewed by the contract owner.
   only when mechanical rules prove it cannot affect another instance; otherwise it is **shared**.
 - **Contract** – a human-curated, machine-enforced rule (this document's terms and their encodings
   as tests and checks) that no change may violate, regardless of tags.
-- **Politically substantive text** – methodology, question wording, anything interpreting
-  positions.
+- **Politically substantive text** – methodology, question wording, answer and result labels,
+  anything interpreting positions, and party- or candidate-specific visual prominence.
+- **Standard checks** – typecheck, lint, tests, and build for every affected workspace.
 
 ## Capability tags
 
@@ -33,21 +34,25 @@ reviewed by the contract owner.
 | presentation | Layout, styling, animation, visualization of already-computed values | Running result | Standard + preview per affected instance | – |
 | interaction | New ways to trigger an existing state-changing action (keyboard, gesture, control) | Running result | Standard + preview per affected instance | Input equivalence: every input method produces the identical underlying action |
 | editorial | Static copy: content pages, message values | Text diff; politically substantive text needs independent approval | Standard + frozen message keys and routing | – |
-| calculation | Matching, scoring, result semantics, derived political metrics | Code review, always | Standard | Independently derived expected values (T9) |
+| calculation | Matching, scoring, result semantics, derived political metrics | Code review, always | Standard | Independently derived expected values |
 | platform | Everything else: dependencies and lockfiles, build/CI/deploy, schemas and APIs, storage/session/auth, network/telemetry, shared architecture, anything unknown | Code review, always | Standard | – |
 | protected | This contract, CI workflows, agent and repository configuration, correctness oracles (fixtures and expected values) | Contract owner review, always | Standard | – |
 
-All tags derive from paths except interaction, which a scanner derives from diff content (calls
-to state-changing answer-store actions) – never the author (T1). Until that scanner carries its
-T14 evidence, presentation and interaction are indistinguishable and the lane stays closed (T15).
+The table summarizes; the terms govern. All tags derive from paths except interaction: a diff
+in product paths that adds or changes an event binding, or any invocation path to state-changing
+behavior, carries interaction – derived by a scanner, never the author (T1); reachability the
+scanner cannot resolve escalates to platform (T3). Until that scanner carries its T14 evidence,
+presentation and interaction are indistinguishable and the lane stays closed (T15).
 
 ## Terms
 
 ### Classifying a change
 
 - **T1.** All applicable capability tags MUST be derived mechanically from the files a change
-  touches (and, where enforced, from imports and content rules). The author MAY add context but
-  can NEVER choose, reduce, or override tags.
+  touches, their content, and their imports. The author MAY add context but can NEVER choose,
+  reduce, or override tags. A product tag holds only within enforced capability bounds: the
+  change MUST NOT introduce network destinations, external scripts, or new reads of answer or
+  session state – what cannot be proven within bounds is platform (T3).
 - **T2.** Blast radius MUST be derived the same way: which instances a change can affect. Files
   replicated across instance directories count as shared regardless of their path.
 - **T3.** Fail closed: unknown, unclassified, renamed, generated, or mixed changes escalate to
@@ -67,7 +72,8 @@ T14 evidence, presentation and interaction are indistinguishable and the lane st
 - **T6.** A shared change MUST be verified on every instance it can affect before merge – for
   product-tagged shared changes, on every instance's running result, not just one.
 - **T7.** Classification, checks, previews, and approvals MUST be bound to the exact commit SHA
-  they judged. Any later commit invalidates them.
+  they judged – and, where a proof depends on election content, to the content revision it ran
+  against. Any later commit invalidates them.
 
 ### Contracts and proofs
 
@@ -76,7 +82,8 @@ T14 evidence, presentation and interaction are indistinguishable and the lane st
   the merge – the code adapts to the contract, never the reverse.
 - **T9.** Product-tagged correctness MUST be proven twice: (a) on fake, test-only fixture data
   with expected values derived independently of the implementation (hand-computed from published
-  rules, never computed by the code under test); and (b) by a smoke
+  rules, never computed by the code under test) and asserted on the rendered result – candidate
+  identity, score association, and ordering, not just the numbers; and (b) by a smoke
   test against the live election content of every affected instance – the full flow completes and
   results render, with no exact-value assertions. Tests
   NEVER read or write live voter data (real users' answers and sessions).
@@ -86,8 +93,7 @@ T14 evidence, presentation and interaction are indistinguishable and the lane st
   independent approval is required only where the capability table says so.
 - **T11.** No self-judging: a change MUST NOT modify the classifier, this contract, a correctness
   oracle, or trusted CI configuration and then be judged by what it modified – such changes are
-  protected and judged by the unmodified base. Likewise, a no-code-review change MUST NOT alter
-  both a behavior and the expected values that prove it.
+  protected and judged by the unmodified base.
 
 ### The setup itself
 
