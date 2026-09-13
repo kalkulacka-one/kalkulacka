@@ -1,6 +1,6 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
-import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { AppHeader, type EmbedContextType, HideOnEmbed } from "@/client";
@@ -15,12 +15,11 @@ export type IntroductionPage = {
   homepageHref: string;
   privacyHref?: string;
   calculator: CalculatorViewModel;
-  onBackClick?: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
 };
 
-export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onBackClick, onNextClick, onCloseClick }: IntroductionPage) {
+export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
@@ -36,13 +35,6 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
             </HideOnEmbed>
           </AppHeader.Right>
           <AppHeader.Bottom>
-            {onBackClick && (
-              <AppHeader.BottomLeft>
-                <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label={t("introduction.backToPicker")}>
-                  <Icon icon={mdiArrowLeft} size="medium" decorative />
-                </Button>
-              </AppHeader.BottomLeft>
-            )}
             <AppHeader.BottomMain>
               <h2 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{calculator?.shortTitle}</h2>
             </AppHeader.BottomMain>
