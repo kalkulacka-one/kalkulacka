@@ -17,9 +17,8 @@ export type IntroductionPage = {
   calculator: CalculatorViewModel;
   onNextClick: () => void;
   onCloseClick: () => void;
-  /** Shown only when both are given: a way back to where the calculator was chosen from. */
+  /** A way back to where the calculator was chosen from; rendered only when both are given. */
   onBackClick?: () => void;
-  /** Shown only when both are given: a way back to where the calculator was chosen from. */
   backLabel?: string;
 };
 
