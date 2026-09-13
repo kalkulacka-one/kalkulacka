@@ -1,25 +1,41 @@
 # Agent guidelines
 
-Rules for AI coding agents working in this repository. They exist so that a human can review
-your work from its **result** instead of re-deriving your intent from the diff. The authoritative
-policy is [`contract/contract.md`](contract/contract.md); this file is the working version.
-This file is protected – never edit it.
+Rules for anyone – human or AI agent – working in this repository. The authoritative policy is
+[`contract/contract.md`](contract/contract.md); this file is the working version. It is
+protected – never edit it.
+
+## Project
+
+Kalkulacka.1 is a multi-country voting advice application platform (Turborepo monorepo, used by
+millions of voters). `apps/*` are Next.js sites named by production domain; `packages/*` are
+shared libraries (`schema` → `app` → `next` → apps, plus `design-system` and `database`).
+Election content is not in the repo (fetched from `DATA_ENDPOINT`); user answers flow through
+`apps/*/app/api/**` into the database. Architecture: `docs/architecture.md`; routing:
+`docs/routing.md`.
+
+## Commands
+
+- `npm install` · `npm run dev` (all dev servers) · `npm run build`
+- `npm run test` · `npm run e2e` · `npm run typecheck`
+- `npm run lint` / `npm run lint:fix` (Biome)
+- `npm run scope` – classify your current change (see The boundary)
+- Always from the repo root, never from individual workspaces.
 
 ## The boundary
 
 Changes are classified mechanically by the files they touch – never by what you say about them.
-Run `npm run scope` before opening a PR and paste its output into the PR description. There are
-three kinds of territory:
+Run `npm run scope` before opening a PR and paste its output into the PR description. Three
+kinds of territory:
 
-**Product (you may work freely):**
+**Product (work freely):**
 - `packages/design-system/src/**` and `packages/app/src/components/**` – shared UI components
 - `apps/*/calculator/components/**` – per-app calculator UI (cards, headers, modals)
-- `apps/*/components/client/themes/**`, `apps/*/app/globals.css`, `apps/*/public/**` – theming and assets
+- `apps/*/components/client/themes/**`, `apps/*/app/globals.css`, `apps/*/public/**`
 - `apps/*/app/[locale]/(web)/(content)/**` – content pages
 - `apps/*/messages/*.json` and `packages/app/src/locales/*.json` – translation **values only**:
   never add/remove/rename keys, never touch the `routing.*` subtree
 
-**Platform (stop and report – do not cross on your own):**
+**Platform (requires explicit human approval):**
 - Everything not listed above. Notably: `apps/*/lib/**`, `apps/*/hooks/**`, `apps/*/app/api/**`,
   and the `(app)`/`(embed)` route trees – these look app-local but are byte-replicated across
   CZ/SK/MK and count as shared platform code – plus `packages/{schema,database,next}`, any
@@ -27,7 +43,8 @@ three kinds of territory:
   algorithm – never touch it, period).
 
 **Protected (never write, no exceptions):**
-- `contract/**`, `.github/workflows/**`, `.github/CODEOWNERS`, `.claude/**`, this file.
+- `contract/**`, `.github/workflows/**`, `.github/CODEOWNERS`, `.claude/**`, `AGENTS.md`,
+  `CLAUDE.md`.
 
 ## When your task needs a platform file
 
@@ -57,4 +74,16 @@ file "just in CZ". An honestly blocked task is a good outcome; a silent crossing
 - Before every PR, from the repo root, in this order:
   `npm run typecheck` → `npm run lint:fix` → `npm run test` → `npm run scope`
 
-Development commands, code style, and testing conventions live in [`CLAUDE.md`](CLAUDE.md).
+## Code standards
+
+- Biome for lint/format: 2-space indent, double quotes, line width 200, self-closing JSX.
+- TypeScript strict; no `any`, no non-null assertions.
+- Tailwind class prefixes: `ko:` in `design-system`, `koa:` in the `app` package – the prefix
+  always comes before responsive modifiers (`ko:lg:grid-cols-3`, never `lg:ko:grid-cols-3`).
+- Import order (Biome-enforced): `@kalkulacka-one/**` → third-party → `@/**` → relative.
+
+## Testing
+
+- Vitest + React Testing Library, jsdom. Tests live next to the component they test, named
+  `{component}.test.tsx` / `{module}.test.ts`.
+- Import the unit under test directly by relative path – never through barrel files.
