@@ -67,10 +67,13 @@ export const calculatorBaseSchema = z.object({
   changes: changesSchema.optional(),
 });
 
+// A standalone calculator may still belong to an election – an election with a single calculator has no group to put it in.
+// Its election is also what allows it to be served under a prefixed path, see \`calculatorPathGuard\`.
 const standaloneCalculatorSchema = calculatorBaseSchema
   .extend({
     key: keySchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
+    election: election.optional(),
   })
   .strict();
 
