@@ -6,10 +6,13 @@ import { z } from "zod";
 import { type CreateCalculatorSessionParams, createCalculatorSession, getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest, type SessionCookie, setSessionCookie } from "@/session/server";
 import { calculatorFullKey } from "@/session/shared";
 
+// A key or group is a single path segment: it is joined into the data URL, so anything else can address a different calculator.
+const keySchema = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
-  calculatorKey: z.string(),
-  calculatorGroup: z.string().optional(),
+  calculatorKey: keySchema,
+  calculatorGroup: keySchema.optional(),
   calculatorVersion: z
     .string()
     .regex(/^\d+\.\d+\.\d+$/)
