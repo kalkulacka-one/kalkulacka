@@ -5,6 +5,13 @@
   "description": "Round of an election",
   "type": "object",
   "properties": {
+    "key": {
+      "title": "Key",
+      "description": "Human-friendly unique key of a round in the hyphen-separated lowercased format",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "examples": ["2-kolo", "2nd-round"]
+    },
     "number": {
       "title": "Number",
       "description": "Round ordinal number from 1",
@@ -23,19 +30,19 @@
     }
   },
   "unevaluatedProperties": false,
-  "required": ["number"],
+  "required": ["key", "number"],
   "$defs": {
     "reference": {
       "title": "Round reference",
       "description": "Reference to a round of an election",
       "type": "object",
       "properties": {
-        "number": {
-          "$ref": "#/properties/number"
+        "key": {
+          "$ref": "#/properties/key"
         }
       },
       "unevaluatedProperties": false,
-      "required": ["number"]
+      "required": ["key"]
     }
   }
 }
