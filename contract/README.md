@@ -109,6 +109,7 @@ presentation and interaction are indistinguishable and the lane stays closed (T1
   or changed, a deliberate violation MUST produce a recorded red run. Conformance fixtures live
   in `contract/conformance/` and run whenever enforcement changes.
 - **T15.** The no-code-review lane stays **off** until every gate it depends on exists, carries
-  its T14 evidence, and is required by branch protection. Until then, every change merges through
+  its T14 evidence, and is required by branch protection – including a post-merge verification
+  of main, so that independently merged changes cannot compose unnoticed into a broken result. Until then, every change merges through
   the interim gate of T12 – and this contract still governs how agents scope and describe their
   work.
