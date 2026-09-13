@@ -102,6 +102,9 @@
         "title": "Guide",
         "back": "Back to introduction"
       },
+      "introduction": {
+        "backToPicker": "Back to the list"
+      },
       "publicResult": {
         "title": "My result",
         "candidateLists": "Candidate lists",

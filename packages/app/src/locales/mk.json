@@ -102,6 +102,9 @@
         "title": "Водич",
         "back": "Назад кон вовед"
       },
+      "introduction": {
+        "backToPicker": "Назад на листата"
+      },
       "publicResult": {
         "title": "Мој резултат",
         "candidateLists": "Партии",

@@ -15,13 +15,12 @@ export type IntroductionPage = {
   homepageHref: string;
   privacyHref?: string;
   calculator: CalculatorViewModel;
+  onBackClick?: () => void;
   onNextClick: () => void;
   onCloseClick: () => void;
-  onBackClick?: () => void;
-  backLabel?: string;
 };
 
-export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick, onBackClick, backLabel }: IntroductionPage) {
+export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onBackClick, onNextClick, onCloseClick }: IntroductionPage) {
   const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
@@ -37,9 +36,9 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
             </HideOnEmbed>
           </AppHeader.Right>
           <AppHeader.Bottom>
-            {onBackClick && backLabel && (
+            {onBackClick && (
               <AppHeader.BottomLeft>
-                <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label={backLabel}>
+                <Button variant="link" color="neutral" size="small" onClick={onBackClick} aria-label={t("introduction.backToPicker")}>
                   <Icon icon={mdiArrowLeft} size="medium" decorative />
                 </Button>
               </AppHeader.BottomLeft>

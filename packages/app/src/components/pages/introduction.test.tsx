@@ -88,7 +88,7 @@ describe("IntroductionPage", () => {
   let onCloseClick: ReturnType<typeof vi.fn<() => void>>;
   let onBackClick: ReturnType<typeof vi.fn<() => void>>;
 
-  const renderPage = (props?: Partial<{ onBackClick: () => void; backLabel: string }>) =>
+  const renderPage = (props?: { onBackClick?: () => void }) =>
     render(
       <LocaleProvider locale="en" messages={enMessages}>
         <IntroductionPage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onCloseClick={onCloseClick} {...props} />
@@ -110,23 +110,13 @@ describe("IntroductionPage", () => {
     expect(Introduction).toHaveBeenCalledTimes(1);
   });
 
-  it("doesn't render a back button when onBackClick and backLabel aren't both given", () => {
+  it("doesn't render a back button without onBackClick", () => {
     renderPage();
     expect(Button).not.toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick }), undefined);
   });
 
-  it("doesn't render a back button when only onBackClick is given", () => {
+  it("renders the back button with its label when onBackClick is given", () => {
     renderPage({ onBackClick });
-    expect(Button).not.toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick }), undefined);
-  });
-
-  it("doesn't render a back button when only backLabel is given", () => {
-    renderPage({ backLabel: "Back to picker" });
-    expect(Button).not.toHaveBeenCalledWith(expect.objectContaining({ "aria-label": "Back to picker" }), undefined);
-  });
-
-  it("renders the back button with its label when both onBackClick and backLabel are given", () => {
-    renderPage({ onBackClick, backLabel: "Back to picker" });
-    expect(Button).toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick, "aria-label": "Back to picker" }), undefined);
+    expect(Button).toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick, "aria-label": "Back to the list" }), undefined);
   });
 });

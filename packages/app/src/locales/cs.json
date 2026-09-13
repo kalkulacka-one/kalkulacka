@@ -102,6 +102,9 @@
         "title": "Návod",
         "back": "Zpět na úvod"
       },
+      "introduction": {
+        "backToPicker": "Zpět na výběr"
+      },
       "publicResult": {
         "title": "Můj výsledek",
         "candidateLists": "Kandidátní listiny",
