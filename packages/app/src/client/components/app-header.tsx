@@ -23,19 +23,16 @@ type AppHeaderChildProps = {
   condensed?: boolean;
 };
 
-export type AppHeaderHeading = { title: string; secondaryTitle?: string };
-
 type AppHeaderProps = {
   children?: ReactNode;
   condensed?: boolean;
   calculator?: CalculatorViewModel;
-  heading?: AppHeaderHeading;
+  heading?: { title: string; secondaryTitle?: string };
 };
 
 export function AppHeader({ children, condensed = false, calculator, heading }: AppHeaderProps) {
   const t = useTranslations("koa");
   const embed = useEmbed();
-  const titleLine = calculator ?? heading;
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
@@ -59,7 +56,7 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
     <header className="koa:@container koa:sticky koa:top-0 koa:p-2 koa:sm:p-3 koa:bg-white/60 koa:backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
-          <AppHeaderMain title={t("appTitle")} heading={titleLine} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+          <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
         </div>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {
@@ -96,7 +93,7 @@ export function AppHeaderLeft({ children }: AppHeaderLeft) {
 type AppHeaderMain = {
   children?: ReactNode;
   title: string;
-  heading?: AppHeaderHeading;
+  heading?: { title: string; secondaryTitle?: string };
   logoMonochrome?: boolean;
 };
 
