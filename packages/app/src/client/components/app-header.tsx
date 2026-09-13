@@ -29,7 +29,6 @@ type AppHeaderProps = {
   children?: ReactNode;
   condensed?: boolean;
   calculator?: CalculatorViewModel;
-  /** Used for the title line when there is no calculator. */
   heading?: AppHeaderHeading;
 };
 
