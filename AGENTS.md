@@ -28,8 +28,8 @@ Run `npm run scope` before opening a PR and paste its output into the PR descrip
 kinds of territory:
 
 **Product (work freely):**
-- `packages/design-system/src/**` and `packages/app/src/components/**` – shared UI components
-- `apps/*/calculator/components/**` – per-app calculator UI (cards, headers, modals)
+- `packages/design-system/src/**`, `packages/app/src/components/**`,
+  `packages/app/src/client/components/**` – shared UI components
 - `apps/*/components/client/themes/**`, `apps/*/app/globals.css`, `apps/*/public/**`
 - `apps/*/app/[locale]/(web)/(content)/**` – content pages
 - `apps/*/messages/*.json` and `packages/app/src/locales/*.json` – translation **values only**:
@@ -37,10 +37,11 @@ kinds of territory:
 
 **Platform (requires explicit human approval):**
 - Everything not listed above. Notably: `apps/*/lib/**`, `apps/*/hooks/**`, `apps/*/app/api/**`,
-  and the `(app)`/`(embed)` route trees – these look app-local but are byte-replicated across
-  CZ/SK/MK and count as shared platform code – plus `packages/{schema,database,next}`, any
-  `package.json`/lockfile, configs, and `packages/app/src/result-calculation/**` (the matching
-  algorithm – never touch it, period).
+  and the `(app)`/`(embed)` route trees – these look app-local but are still byte-replicated
+  across CZ/SK/MK and count as shared platform code – plus `packages/{schema,database,next}`,
+  `packages/app/src/client/{stores,view-models,embeds}/**`, any `package.json`/lockfile,
+  configs, and `packages/app/src/result-calculation/**` (the matching algorithm – never touch
+  it, period).
 
 **Protected (never write, no exceptions):**
 - `contract/**`, `.github/workflows/**`, `.github/CODEOWNERS`, `.claude/**`, `AGENTS.md`,

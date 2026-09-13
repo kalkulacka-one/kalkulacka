@@ -11,9 +11,14 @@ export type ConformanceCase = {
 
 export const cases: ConformanceCase[] = [
   {
-    name: "match card tweak is product, CZ only",
-    files: [{ path: "apps/www.volebnikalkulacka.cz/calculator/components/client/match-card.tsx" }],
+    name: "donate card tweak is product, CZ only",
+    files: [{ path: "apps/www.volebnikalkulacka.cz/components/client/donate-card.tsx" }],
     expect: { verdict: "product", tags: ["presentation"], instances: ["www.volebnikalkulacka.cz"] },
+  },
+  {
+    name: "extracted app component is product but shared (all instances)",
+    files: [{ path: "packages/app/src/client/components/match-card.tsx" }],
+    expect: { verdict: "product", tags: ["presentation"], instances: ["*"] },
   },
   {
     name: "design-system component is product but shared (all instances)",
@@ -23,8 +28,8 @@ export const cases: ConformanceCase[] = [
   {
     name: "one engine file flips the same PR to platform",
     files: [
-      { path: "apps/www.volebnikalkulacka.cz/calculator/components/client/match-card.tsx" },
-      { path: "apps/www.volebnikalkulacka.cz/lib/api/session-data.ts" },
+      { path: "apps/www.volebnikalkulacka.cz/components/client/donate-card.tsx" },
+      { path: "apps/www.volebnikalkulacka.cz/lib/monitoring/report-error.ts" },
     ],
     expect: { verdict: "platform", instances: ["*"] },
   },
@@ -40,7 +45,7 @@ export const cases: ConformanceCase[] = [
   },
   {
     name: "replicated engine under SK path is shared platform",
-    files: [{ path: "apps/www.volebnakalkulacka.sk/lib/session/server/create-session.ts" }],
+    files: [{ path: "apps/www.volebnakalkulacka.sk/app/api/sessions/route.ts" }],
     expect: { verdict: "platform", instances: ["*"] },
   },
   {
@@ -55,7 +60,7 @@ export const cases: ConformanceCase[] = [
   },
   {
     name: "rename out of the engine fails closed",
-    files: [{ path: "apps/www.volebnikalkulacka.cz/components/client/session-data.ts", renamedFrom: "apps/www.volebnikalkulacka.cz/lib/api/session-data.ts" }],
+    files: [{ path: "apps/www.volebnikalkulacka.cz/components/client/auto-save.ts", renamedFrom: "apps/www.volebnikalkulacka.cz/hooks/auto-save.ts" }],
     expect: { verdict: "platform" },
   },
   {

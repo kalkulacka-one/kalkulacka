@@ -23,9 +23,9 @@ export const scopes = {
     presentation: [
       "packages/design-system/src/**",
       "packages/app/src/components/**",
-      "apps/*/calculator/components/**",
+      "packages/app/src/client/components/**",
       "apps/*/components/client/themes/**",
-      "apps/*/components/client/{header,hide-on-embed,embed-only,subscribe-form,city-signup-form}.tsx",
+      "apps/*/components/client/{header,donate-card,subscribe-form,city-signup-form}.tsx",
       "apps/*/components/server/footer.tsx",
       "apps/*/app/globals.css",
       "apps/*/public/**",
@@ -39,14 +39,14 @@ export const scopes = {
     calculation: ["packages/app/src/result-calculation/**"],
   },
 
-  /** The CZ/SK/MK apps carry byte-replicated engine code under instance paths: shared regardless
-   *  of path (contract T2). Shrinks as the extraction moves the engine into packages/. */
+  /** What is left of the once-replicated engine layer after the extraction into packages/ –
+   *  these remnants are still byte-identical across CZ/SK/MK (verified 2026-09-13): shared
+   *  regardless of path (contract T2). Remove entries only when the copies genuinely diverge
+   *  per instance or move into packages/. */
   sharedEvenIfInstancePath: [
     "apps/*/lib/**",
     "apps/*/hooks/**",
     "apps/*/app/api/**",
-    "apps/*/calculator/client.ts",
-    "apps/*/calculator/index.ts",
     "apps/*/app/[locale]/(web)/(app)/**",
     "apps/*/app/[locale]/(embed)/**",
   ],
