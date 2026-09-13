@@ -5,7 +5,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
-import { type ChangedFile, classify, globToRegExp, PRODUCT_TAGS, scopes, SIZE_LIMITS, type Tag } from "../contract/scopes.config.ts";
+import { type ChangedFile, classify, globToRegExp, PRODUCT_TAGS, scopes, SIZE_LIMITS, type Tag } from "../scopes.config.ts";
 
 function git(...args: string[]): string {
   return execFileSync("git", args, { encoding: "utf8" }).trim();

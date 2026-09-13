@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node --no-warnings scripts/scope-guard.ts"
+            "command": "node --no-warnings contract/scripts/scope-guard.ts"
           }
         ]
       }

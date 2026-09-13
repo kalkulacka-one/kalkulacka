@@ -10,7 +10,7 @@
     "lint:fix": "turbo lint:fix",
     "ncu": "turbo ncu",
     "ncu:upgrade": "turbo ncu:upgrade",
-    "scope": "node --no-warnings scripts/scope.ts",
+    "scope": "node --no-warnings contract/scripts/scope.ts",
     "scope:conformance": "node --no-warnings contract/conformance/run.ts",
     "test": "turbo run test",
     "test:ui": "turbo run test:ui",

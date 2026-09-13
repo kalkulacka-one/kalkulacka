@@ -27,7 +27,7 @@ jobs:
             echo "missing=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          node --no-warnings scripts/scope.ts --base "origin/${{ github.base_ref }}" --json > scope.json
+          node --no-warnings contract/scripts/scope.ts --base "origin/${{ github.base_ref }}" --json > scope.json
           cat scope.json
           echo "missing=false" >> "$GITHUB_OUTPUT"
       - name: Label and comment
