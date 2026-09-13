@@ -1,5 +1,5 @@
 // Conformance fixtures (contract T14): intentionally shaped change sets and the verdict the
-// classifier MUST produce. Run with `npm run scope:conformance`. Protected: agents never edit.
+// classifier MUST produce. See conformance.test.ts. Protected: agents never edit.
 
 import type { ChangedFile, Classification } from "../scripts/classify.ts";
 

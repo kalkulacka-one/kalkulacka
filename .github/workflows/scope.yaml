@@ -1,6 +1,7 @@
 name: Scope
 # Report-only (contract T12 interim state): classifies each pull request from
 # contract/scopes.config.ts, applies labels, and posts one verdict comment. Never blocks.
+# All logic lives in contract/scripts/scope-pr.ts.
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -20,45 +21,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
-      - name: Classify
-        id: scope
-        run: |
-          if [ ! -f contract/scopes.config.ts ]; then
-            echo "missing=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          node --no-warnings contract/scripts/scope.ts --base "origin/${{ github.base_ref }}" --json > scope.json
-          cat scope.json
-          echo "missing=false" >> "$GITHUB_OUTPUT"
-      - name: Label and comment
-        if: steps.scope.outputs.missing == 'false'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require("fs");
-            const result = JSON.parse(fs.readFileSync("scope.json", "utf8"));
-            const { owner, repo } = context.repo;
-            const issue_number = context.issue.number;
-
-            const wanted = [`scope:${result.verdict}`, ...result.tags.map((tag) => `tag:${tag}`)];
-            for (const name of wanted) {
-              try {
-                await github.rest.issues.getLabel({ owner, repo, name });
-              } catch {
-                await github.rest.issues.createLabel({ owner, repo, name, color: name.startsWith("scope:") ? "b60205" : "c5def5" });
-              }
-            }
-            const { data: current } = await github.rest.issues.listLabelsOnIssue({ owner, repo, issue_number });
-            const stale = current.map((label) => label.name).filter((name) => (name.startsWith("scope:") || name.startsWith("tag:")) && !wanted.includes(name));
-            for (const name of stale) await github.rest.issues.removeLabel({ owner, repo, issue_number, name });
-            await github.rest.issues.addLabels({ owner, repo, issue_number, labels: wanted });
-
-            const marker = "<!-- scope-verdict -->";
-            const escalations = result.escalations.length
-              ? "\n\n**Escalations:**\n" + result.escalations.map((escalation) => `- \`${escalation.path}\` → ${escalation.tag}: ${escalation.reason}`).join("\n")
-              : "";
-            const body = `${marker}\n**Scope verdict: ${result.verdict.toUpperCase()}** · tags: ${result.tags.join(", ")} · instances: ${result.instances.join(", ")}${escalations}\n\n<sub>Report-only (contract T12). Derived from \`contract/scopes.config.ts\` at ${context.payload.pull_request.head.sha.slice(0, 8)}.</sub>`;
-            const { data: comments } = await github.rest.issues.listComments({ owner, repo, issue_number, per_page: 100 });
-            const existing = comments.find((comment) => comment.body?.includes(marker));
-            if (existing) await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
-            else await github.rest.issues.createComment({ owner, repo, issue_number, body });
+      - name: Classify and report
+        if: hashFiles('contract/scripts/scope-pr.ts') != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node --no-warnings contract/scripts/scope-pr.ts

@@ -35,9 +35,9 @@ if (!target) process.exit(0);
 const path = relative(process.cwd(), resolve(target));
 if (path.startsWith("..")) process.exit(0); // outside the repository – not ours to judge
 
-let classify: typeof import("./classify.ts").classify;
+let classify: typeof import("../scripts/classify.ts").classify;
 try {
-  ({ classify } = await import("./classify.ts"));
+  ({ classify } = await import("../scripts/classify.ts"));
 } catch {
   process.exit(0); // classifier not on this branch – steering unavailable, fail open by design
 }
@@ -46,7 +46,7 @@ const { verdict, escalations } = classify([{ path }]);
 const reason = escalations[0]?.reason ?? verdict;
 
 if (verdict === "protected") {
-  respond("deny", `Protected path (${path}): ${reason}. Agents never write here – see contract/contract.md.`);
+  respond("deny", `Protected path (${path}): ${reason}. Agents never write here – see contract/README.md.`);
 }
 if (verdict === "platform" || verdict === "calculation") {
   respond("ask", `${verdict === "calculation" ? "Result calculation" : "Platform-scope"} path (${path}): ${reason}. Requires explicit human approval – see AGENTS.md.`);

@@ -1,7 +1,7 @@
 # Agent guidelines
 
 Rules for anyone – human or AI agent – working in this repository. The authoritative policy is
-[`contract/contract.md`](contract/contract.md); this file is the working version. It is
+[`contract/README.md`](contract/README.md); this file is the working version. It is
 protected – never edit it.
 
 ## Project
