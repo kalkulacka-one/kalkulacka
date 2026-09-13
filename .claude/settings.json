@@ -1,5 +1,25 @@
 {
   "permissions": {
-    "allow": ["Bash(npm run build)", "Bash(npm run dev)", "Bash(npm run typecheck:*)", "Bash(npm run lint:*)", "Bash(npm run test*:)"]
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test*:)",
+      "Bash(npm run scope*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'test -f \"$CLAUDE_PROJECT_DIR/contract/claude/scope-guard.ts\" && exec node --no-warnings \"$CLAUDE_PROJECT_DIR/contract/claude/scope-guard.ts\"; exit 0'"
+          }
+        ]
+      }
+    ]
   }
 }

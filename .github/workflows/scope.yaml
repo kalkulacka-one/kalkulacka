@@ -1,0 +1,47 @@
+name: Scope
+# Report-only (contract T12 interim state): labels each pull request with its derived scope.
+# Never blocks. A change touching the control plane is labeled PROTECTED without executing any
+# code from the pull request (contract T11: no change is judged by what it modified); for all
+# other changes the head's classifier is byte-identical to the base's, so running it is safe.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions:
+  pull-requests: write
+jobs:
+  classify:
+    name: Classify the change
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - name: Detect control-plane changes
+        id: control
+        run: |
+          touched=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- contract .github .claude AGENTS.md CLAUDE.md)
+          if [ -n "$touched" ]; then
+            echo "touched=true" >> "$GITHUB_OUTPUT"
+            echo "Control plane touched:"; echo "$touched"
+          else
+            echo "touched=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Report the protected verdict without running pull request code
+        if: steps.control.outputs.touched == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Scope verdict: PROTECTED – control plane touched; classifier not run (contract T11)."
+          gh label create "scope:protected" --color b60205 --force 2>/dev/null || true
+          gh pr edit "${{ github.event.pull_request.number }}" --add-label "scope:protected" || echo "Read-only token (fork?) – label skipped; verdict is in this log."
+      - name: Classify and report
+        if: steps.control.outputs.touched == 'false' && hashFiles('contract/scripts/scope-pr.ts') != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node --no-warnings contract/scripts/scope-pr.ts

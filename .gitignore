@@ -42,3 +42,4 @@ yarn-error.log*
 *storybook.log
 
 .claude/settings.local.json
+.claude/worktrees/
