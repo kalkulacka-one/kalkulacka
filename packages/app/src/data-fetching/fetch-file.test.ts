@@ -20,7 +20,7 @@ describe("fetchFile", () => {
     const result = await fetchFile({ url: "https://example.com/test.json" });
 
     expect(result).toEqual(mockData);
-    expect(mockFetch).toHaveBeenCalledWith("https://example.com/test.json");
+    expect(mockFetch).toHaveBeenCalledWith("https://example.com/test.json", { next: { revalidate: 60 } });
   });
 
   it("should throw NotFoundError for 404 status", async () => {
