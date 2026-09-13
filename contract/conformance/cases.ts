@@ -1,7 +1,7 @@
 // Conformance fixtures (contract T14): intentionally shaped change sets and the verdict the
 // classifier MUST produce. Run with `npm run scope:conformance`. Protected: agents never edit.
 
-import type { ChangedFile, Classification } from "../scopes.config.ts";
+import type { ChangedFile, Classification } from "../scripts/classify.ts";
 
 export type ConformanceCase = {
   name: string;

@@ -1,6 +1,6 @@
 // Conformance runner (contract T14): every fixture must produce its expected verdict.
 
-import { classify } from "../scopes.config.ts";
+import { classify } from "../scripts/classify.ts";
 import { cases } from "./cases.ts";
 
 let failures = 0;

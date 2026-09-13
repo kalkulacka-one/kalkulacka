@@ -35,9 +35,9 @@ if (!target) process.exit(0);
 const path = relative(process.cwd(), resolve(target));
 if (path.startsWith("..")) process.exit(0); // outside the repository – not ours to judge
 
-let classify: typeof import("../scopes.config.ts").classify;
+let classify: typeof import("./classify.ts").classify;
 try {
-  ({ classify } = await import("../scopes.config.ts"));
+  ({ classify } = await import("./classify.ts"));
 } catch {
   process.exit(0); // classifier not on this branch – steering unavailable, fail open by design
 }
