@@ -37,8 +37,10 @@ export function globToRegExp(glob: string): RegExp {
       }
     } else if (c === "{") {
       const end = glob.indexOf("}", i);
+      if (end === -1) throw new Error(`Unclosed brace in glob: ${glob}`);
       const options = glob.slice(i + 1, end).split(",");
-      out += `(?:${options.map((option) => option.replace(/[.+^$()|[\]\\]/g, "\\$&")).join("|")})`;
+      if (options.some((option) => option.includes("{"))) throw new Error(`Nested braces are not supported: ${glob}`);
+      out += `(?:${options.map((option) => option.replace(/[.+^$()|[\]\\*?]/g, "\\$&")).join("|")})`;
       i = end + 1;
     } else {
       out += c.replace(/[.+^$()|[\]\\]/g, "\\$&");
@@ -49,6 +51,11 @@ export function globToRegExp(glob: string): RegExp {
 }
 
 const matchesAny = (path: string, globs: string[]) => globs.some((glob) => globToRegExp(glob).test(path));
+
+// Fail loudly at import time on a malformed curated glob (contract T13: drift MUST fail).
+for (const globs of [scopes.protected, ...Object.values(scopes.tags), scopes.sharedEvenIfInstancePath, scopes.frozenMessageGlobs]) {
+  for (const glob of globs) globToRegExp(glob);
+}
 
 const instanceOf = (path: string) => path.match(/^apps\/([^/]+)\//)?.[1];
 

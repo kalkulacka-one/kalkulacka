@@ -78,4 +78,22 @@ export const cases: ConformanceCase[] = [
     files: [{ path: "apps/www.volebnikalkulacka.cz/app/[locale]/(web)/(content)/(pages)/o-projektu/page.mdx" }],
     expect: { verdict: "product", tags: ["editorial"] },
   },
+  {
+    name: "two instances' product files aggregate both instances",
+    files: [
+      { path: "apps/www.volebnikalkulacka.cz/components/client/donate-card.tsx" },
+      { path: "apps/www.volebnakalkulacka.sk/components/client/donate-card.tsx" },
+    ],
+    expect: { verdict: "product", instances: ["www.volebnakalkulacka.sk", "www.volebnikalkulacka.cz"] },
+  },
+  {
+    name: "protected beats platform in the same change",
+    files: [{ path: "package-lock.json" }, { path: "contract/README.md" }],
+    expect: { verdict: "protected" },
+  },
+  {
+    name: "rename into the control plane is protected",
+    files: [{ path: ".github/workflows/extra.yaml", renamedFrom: "apps/www.volebnikalkulacka.cz/components/client/donate-card.tsx" }],
+    expect: { verdict: "protected" },
+  },
 ];

@@ -17,8 +17,14 @@ function flattenKeys(value: unknown, prefix = ""): string[] {
 
 export function checkMessages(path: string, baseJson: string | undefined, headJson: string | undefined): MessageViolation | undefined {
   if (baseJson === undefined || headJson === undefined) return { path, reason: "message file added or deleted – key set changed" };
-  const base = JSON.parse(baseJson) as Record<string, unknown>;
-  const head = JSON.parse(headJson) as Record<string, unknown>;
+  let base: Record<string, unknown>;
+  let head: Record<string, unknown>;
+  try {
+    base = JSON.parse(baseJson) as Record<string, unknown>;
+    head = JSON.parse(headJson) as Record<string, unknown>;
+  } catch {
+    return { path, reason: "unparseable message file – fail closed" };
+  }
   if (flattenKeys(base).sort().join("\n") !== flattenKeys(head).sort().join("\n")) return { path, reason: "message key set changed – only values may change" };
   if (JSON.stringify(base.routing) !== JSON.stringify(head.routing)) return { path, reason: "routing.* subtree changed – frozen (drives URL rewrites)" };
   return undefined;

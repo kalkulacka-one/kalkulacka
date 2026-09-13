@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node --no-warnings contract/claude/scope-guard.ts"
+            "command": "sh -c 'test -f \"$CLAUDE_PROJECT_DIR/contract/claude/scope-guard.ts\" && exec node --no-warnings \"$CLAUDE_PROJECT_DIR/contract/claude/scope-guard.ts\"; exit 0'"
           }
         ]
       }

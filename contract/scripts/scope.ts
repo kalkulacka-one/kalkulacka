@@ -13,6 +13,10 @@ const json = argv.includes("--json");
 const requireProduct = argv.includes("--require-product");
 
 const files = changedFiles(base);
+if (files.length === 0) {
+  console.log(`No changes detected vs ${base} – nothing to classify.`);
+  process.exit(requireProduct ? 1 : 0);
+}
 const result = classify(files);
 
 for (const violation of messageViolations(base, files)) {

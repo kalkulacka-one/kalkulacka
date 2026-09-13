@@ -31,6 +31,9 @@ kinds of territory:
 - `packages/design-system/src/**`, `packages/app/src/components/**`,
   `packages/app/src/client/components/**` – shared UI components
 - `apps/*/components/client/themes/**`, `apps/*/app/globals.css`, `apps/*/public/**`
+- `apps/*/components/client/{header,donate-card,subscribe-form,city-signup-form}.tsx` and
+  `apps/*/components/server/footer.tsx`
+- `apps/design-system.kalkulacka.one/stories/**` – Storybook stories
 - `apps/*/app/[locale]/(web)/(content)/**` – content pages
 - `apps/*/messages/*.json` and `packages/app/src/locales/*.json` – translation **values only**:
   never add/remove/rename keys, never touch the `routing.*` subtree
