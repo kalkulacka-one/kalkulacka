@@ -11,6 +11,8 @@ import { variantReferenceSchema } from "./variant.schema";
 const calculatorGroup = z.lazy(() => calculatorGroupSchema.calculatorGroupSchemaReference).describe("Reference to a calculator group the calculator belongs to");
 const election = z.lazy(() => electionSchema.electionSchemaReference).describe("Reference to an election the calculator belongs to");
 
+// Only a standalone calculator carries a key. A calculator in a group is identified by its coordinates within that group –
+// district, variant and round – and its URL segment is composed from their keys, in that order.
 const keySchema = z
   .string()
   .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/)
@@ -69,14 +71,11 @@ const standaloneCalculatorSchema = calculatorBaseSchema
   .extend({
     key: keySchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters"),
-    election: election.optional(),
   })
-
   .strict();
 
 const groupCalculatorSchema = calculatorBaseSchema
   .extend({
-    key: keySchema.optional(),
     calculatorGroup: calculatorGroup,
     variant: variantReferenceSchema,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),
@@ -85,7 +84,6 @@ const groupCalculatorSchema = calculatorBaseSchema
 
 const electionCalculatorSchema = calculatorBaseSchema
   .extend({
-    key: keySchema.optional(),
     calculatorGroup: calculatorGroup,
     election: election,
     shortTitle: z.string().max(25).describe("Short title of a calculator with a maximum of 25 characters").optional(),

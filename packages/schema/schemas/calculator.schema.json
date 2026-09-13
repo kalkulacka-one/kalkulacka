@@ -242,9 +242,6 @@
       "properties": {
         "key": {
           "$ref": "#/$defs/key"
-        },
-        "election": {
-          "$ref": "#/$defs/election"
         }
       },
       "required": ["key", "shortTitle"],
@@ -256,9 +253,6 @@
       "title": "Calculator from a group",
       "description": "Calculator that is part of a calculator group",
       "properties": {
-        "key": {
-          "$ref": "#/$defs/key"
-        },
         "calculatorGroup": {
           "$ref": "#/$defs/calculatorGroup"
         },
@@ -275,9 +269,6 @@
       "title": "Calculator from an election",
       "description": "Calculator that is part of an election",
       "properties": {
-        "key": {
-          "$ref": "#/$defs/key"
-        },
         "calculatorGroup": {
           "$ref": "#/$defs/calculatorGroup"
         },
