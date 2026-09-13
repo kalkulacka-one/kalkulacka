@@ -1,0 +1,132 @@
+import { Button } from "@kalkulacka-one/design-system/client";
+import type { Calculator } from "@kalkulacka-one/schema";
+
+import { render } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { Introduction } from "@/components/introduction";
+import { enMessages } from "@/locales";
+import { calculatorViewModel } from "@/view-models";
+
+import { LocaleProvider } from "../providers";
+import { IntroductionPage } from "./introduction";
+
+vi.mock("@kalkulacka-one/design-system/client", () => ({
+  Button: vi.fn(({ children }) => children),
+  Icon: vi.fn(() => null),
+}));
+
+vi.mock("@/components/introduction", () => ({
+  Introduction: vi.fn(() => null),
+}));
+
+vi.mock("@/components/introduction-navigation-card", () => {
+  const IntroductionNavigationCardMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string };
+  IntroductionNavigationCardMock.heightClassNames = "h-0";
+  return {
+    IntroductionNavigationCard: IntroductionNavigationCardMock,
+  };
+});
+
+vi.mock("@/components/layout", () => {
+  const LayoutMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
+    Header: React.FC<{ children?: React.ReactNode }>;
+    Content: React.FC<{ children?: React.ReactNode }>;
+    BottomNavigation: React.FC<{ children?: React.ReactNode }>;
+    Footer: React.FC<{ children?: React.ReactNode }>;
+    BottomSpacer: React.FC<{ children?: React.ReactNode }>;
+  };
+  LayoutMock.Header = vi.fn(({ children }) => children);
+  LayoutMock.Content = vi.fn(({ children }) => children);
+  LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
+  LayoutMock.Footer = vi.fn(({ children }) => children);
+  LayoutMock.BottomSpacer = vi.fn(({ children }) => children);
+
+  return {
+    Layout: LayoutMock,
+  };
+});
+
+vi.mock("@/components/embed-footer", () => {
+  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; marginBottomClassNames: string };
+  EmbedFooterMock.heightClassNames = "h-0";
+  EmbedFooterMock.marginBottomClassNames = "mb-0";
+  return {
+    EmbedFooter: EmbedFooterMock,
+  };
+});
+
+vi.mock("@/client", () => {
+  const AppHeaderMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
+    Right: React.FC<{ children?: React.ReactNode }>;
+    Bottom: React.FC<{ children?: React.ReactNode }>;
+    BottomLeft: React.FC<{ children?: React.ReactNode }>;
+    BottomMain: React.FC<{ children?: React.ReactNode }>;
+  };
+  AppHeaderMock.Right = vi.fn(({ children }) => children);
+  AppHeaderMock.Bottom = vi.fn(({ children }) => children);
+  AppHeaderMock.BottomLeft = vi.fn(({ children }) => children);
+  AppHeaderMock.BottomMain = vi.fn(({ children }) => children);
+
+  return {
+    AppHeader: AppHeaderMock,
+    HideOnEmbed: vi.fn(({ children }) => children),
+  };
+});
+
+const data = calculatorViewModel({
+  id: "00000000-0000-0000-0000-000000000000",
+  createdAt: new Date(0).toISOString(),
+  key: "kalkulacka",
+  shortTitle: "Sněmovní 2025",
+  title: "Volební kalkulačka pro sněmovní volby 2025",
+  intro: "Čeká vás 35 otázek, na které jsme se zeptali všech 26 kandidujících subjektů.",
+} satisfies Calculator);
+
+describe("IntroductionPage", () => {
+  let onNextClick: ReturnType<typeof vi.fn<() => void>>;
+  let onCloseClick: ReturnType<typeof vi.fn<() => void>>;
+  let onBackClick: ReturnType<typeof vi.fn<() => void>>;
+
+  const renderPage = (props?: Partial<{ onBackClick: () => void; backLabel: string }>) =>
+    render(
+      <LocaleProvider locale="en" messages={enMessages}>
+        <IntroductionPage embedContext={{ isEmbed: false }} homepageHref="https://example.test/" calculator={data} onNextClick={onNextClick} onCloseClick={onCloseClick} {...props} />
+      </LocaleProvider>,
+    );
+
+  beforeEach(() => {
+    onNextClick = vi.fn<() => void>();
+    onCloseClick = vi.fn<() => void>();
+    onBackClick = vi.fn<() => void>();
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("renders Introduction component", () => {
+    renderPage();
+    expect(Introduction).toHaveBeenCalledTimes(1);
+  });
+
+  it("doesn't render a back button when onBackClick and backLabel aren't both given", () => {
+    renderPage();
+    expect(Button).not.toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick }), undefined);
+  });
+
+  it("doesn't render a back button when only onBackClick is given", () => {
+    renderPage({ onBackClick });
+    expect(Button).not.toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick }), undefined);
+  });
+
+  it("doesn't render a back button when only backLabel is given", () => {
+    renderPage({ backLabel: "Back to picker" });
+    expect(Button).not.toHaveBeenCalledWith(expect.objectContaining({ "aria-label": "Back to picker" }), undefined);
+  });
+
+  it("renders the back button with its label when both onBackClick and backLabel are given", () => {
+    renderPage({ onBackClick, backLabel: "Back to picker" });
+    expect(Button).toHaveBeenCalledWith(expect.objectContaining({ onClick: onBackClick, "aria-label": "Back to picker" }), undefined);
+  });
+});

@@ -23,13 +23,17 @@ type AppHeaderChildProps = {
   condensed?: boolean;
 };
 
+export type AppHeaderHeading = { title: string; secondaryTitle?: string };
+
 type AppHeaderProps = {
   children?: ReactNode;
   condensed?: boolean;
   calculator?: CalculatorViewModel;
+  /** Title line for screens outside a calculator (picker, landing), used when there is no `calculator`. */
+  heading?: AppHeaderHeading;
 };
 
-export function AppHeader({ children, condensed = false, calculator }: AppHeaderProps) {
+export function AppHeader({ children, condensed = false, calculator, heading }: AppHeaderProps) {
   const t = useTranslations("koa");
   const embed = useEmbed();
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
@@ -55,7 +59,7 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
     <header className="koa:@container koa:sticky koa:top-0 koa:p-2 koa:sm:p-3 koa:bg-white/60 koa:backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
-          <AppHeaderMain title={t("appTitle")} calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+          <AppHeaderMain title={t("appTitle")} calculator={calculator ?? heading} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
         </div>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {
@@ -92,7 +96,7 @@ export function AppHeaderLeft({ children }: AppHeaderLeft) {
 type AppHeaderMain = {
   children?: ReactNode;
   title: string;
-  calculator?: CalculatorViewModel;
+  calculator?: AppHeaderHeading;
   logoMonochrome?: boolean;
 };
 
