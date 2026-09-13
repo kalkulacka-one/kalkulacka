@@ -60,6 +60,8 @@ export type CalculatorData = {
     persons?: Persons;
     organizations?: Organizations;
   };
+  key: string;
+  group?: string;
   baseUrl: string;
 };
 
@@ -96,6 +98,8 @@ export async function loadCalculatorData({ endpoint, key, group }: { endpoint: s
 
   return {
     data: Object.fromEntries(parsedData) as CalculatorData["data"],
+    key,
+    group,
     baseUrl: buildDataUrl({ endpoint, key, group }),
   };
 }

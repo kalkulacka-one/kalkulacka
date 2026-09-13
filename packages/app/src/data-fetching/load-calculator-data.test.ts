@@ -77,6 +77,8 @@ describe("loadCalculatorData", () => {
         persons: data,
         organizations: data,
       },
+      key: "key",
+      group: undefined,
       baseUrl: `${DATA_ENDPOINT}/key`,
     });
   });
@@ -103,8 +105,22 @@ describe("loadCalculatorData", () => {
         persons: data,
         organizations: data,
       },
+      key: "key",
+      group: "group",
       baseUrl: `${DATA_ENDPOINT}/group/key`,
     });
+  });
+
+  it("should report the key and group the data was loaded with, leaving the calculator untouched", async () => {
+    const document = { ...data, variant: { key: "inventura" } };
+    mockFetchFile.mockResolvedValue(document);
+    mockParseWithSchema.mockReturnValue(document);
+
+    const result = await loadCalculatorData({ endpoint: DATA_ENDPOINT, key: "praha-inventura", group: "komunalni-2026" });
+
+    expect(result.key).toBe("praha-inventura");
+    expect(result.group).toBe("komunalni-2026");
+    expect(result.data.calculator).toEqual(document);
   });
 
   it("should throw error with details when fetch fails", async () => {

@@ -40,6 +40,7 @@ describe("MatchCard", () => {
         questions: [],
         candidatesAnswers: {},
       },
+      key: "calculator",
       baseUrl: "https://data.example.com",
     };
 
