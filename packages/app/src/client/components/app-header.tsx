@@ -27,9 +27,10 @@ type AppHeaderProps = {
   children?: ReactNode;
   condensed?: boolean;
   calculator?: CalculatorViewModel;
+  heading?: { title: string; secondaryTitle?: string };
 };
 
-export function AppHeader({ children, condensed = false, calculator }: AppHeaderProps) {
+export function AppHeader({ children, condensed = false, calculator, heading }: AppHeaderProps) {
   const t = useTranslations("koa");
   const embed = useEmbed();
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
@@ -55,7 +56,7 @@ export function AppHeader({ children, condensed = false, calculator }: AppHeader
     <header className="koa:@container koa:sticky koa:top-0 koa:p-2 koa:sm:p-3 koa:bg-white/60 koa:backdrop-blur-md">
       <div className={headerGridClasses}>
         <div className={mainClasses}>
-          <AppHeaderMain title={t("appTitle")} calculator={calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+          <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
         </div>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === AppHeaderRight) {
@@ -92,20 +93,20 @@ export function AppHeaderLeft({ children }: AppHeaderLeft) {
 type AppHeaderMain = {
   children?: ReactNode;
   title: string;
-  calculator?: CalculatorViewModel;
+  heading?: { title: string; secondaryTitle?: string };
   logoMonochrome?: boolean;
 };
 
-function AppHeaderMain({ children, title, calculator, logoMonochrome }: AppHeaderMain) {
+function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMain) {
   return (
     <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
       <div className="koa:grid koa:text-sm koa:text-slate-700 koa:leading-none">
         <h1 className="koa:font-light">{title}</h1>
         <div>
-          <h2 className="koa:font-semibold koa:inline">{calculator?.title}</h2>
-          {calculator?.title && calculator?.secondaryTitle && <span className="koa:font-light koa:hidden koa:@[24rem]:inline"> • </span>}
-          <span className="koa:font-light koa:hidden koa:@[24rem]:inline">{calculator?.secondaryTitle}</span>
+          <h2 className="koa:font-semibold koa:inline">{heading?.title}</h2>
+          {heading?.title && heading?.secondaryTitle && <span className="koa:font-light koa:hidden koa:@[24rem]:inline"> • </span>}
+          <span className="koa:font-light koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
         </div>
         {children}
       </div>
