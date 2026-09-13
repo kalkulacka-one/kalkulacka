@@ -4,6 +4,11 @@ import { candidatesAnswersViewModel, candidateViewModel, HttpError, loadCalculat
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
+// A shared result can be answered again, so its card is not immutable. `next/og` would otherwise send `max-age=31536000,
+// immutable` and freeze the card for a year against a page that can change. A minute matches the revalidation window the
+// underlying calculator data already uses; stale-while-revalidate keeps the card cheap to serve while it refreshes.
+const CACHE_CONTROL = "public, max-age=60, s-maxage=60, stale-while-revalidate=86400";
+
 export type SessionImageRouteConfig = {
   electionName: string;
   appTitle: string;
@@ -273,6 +278,7 @@ export function createSessionImageRoute({ electionName, appTitle, shareHeading, 
             </div>
           </div>,
           {
+            headers: { "cache-control": CACHE_CONTROL },
             width: 1080,
             height: 1920,
             fonts: [
@@ -526,6 +532,7 @@ export function createSessionImageRoute({ electionName, appTitle, shareHeading, 
           </div>
         </div>,
         {
+          headers: { "cache-control": CACHE_CONTROL },
           width: 2400,
           height: 1260,
           fonts: [
