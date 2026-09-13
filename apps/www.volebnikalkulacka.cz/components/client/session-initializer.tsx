@@ -5,19 +5,11 @@ import { useEffect, useRef } from "react";
 
 import { reportError } from "@/lib/monitoring";
 
-type CalculatorWithVariant = {
-  variant: { key: string };
-  calculatorGroup: { key: string };
-};
-
-type CalculatorWithKey = {
-  key: string;
-  calculatorGroup?: { key: string };
-};
-
 export function SessionInitializer() {
   const initialized = useRef(false);
   const calculator = useCalculatorStore((state) => state.data.calculator);
+  const calculatorKey = useCalculatorStore((state) => state.key);
+  const calculatorGroup = useCalculatorStore((state) => state.group);
   const embed = useEmbed();
 
   useEffect(() => {
@@ -25,10 +17,6 @@ export function SessionInitializer() {
       return;
     }
     initialized.current = true;
-
-    const calc = calculator as CalculatorWithVariant | CalculatorWithKey;
-    const calculatorKey = "variant" in calc ? calc.variant.key : calc.key;
-    const calculatorGroup = "variant" in calc ? calc.calculatorGroup.key : undefined;
 
     initializeSession({
       calculatorId: calculator.id,
@@ -46,7 +34,7 @@ export function SessionInitializer() {
         reportError(error);
       }
     });
-  }, [calculator, embed]);
+  }, [calculator, calculatorKey, calculatorGroup, embed]);
 
   return null;
 }
