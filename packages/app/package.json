@@ -46,7 +46,10 @@
   "dependencies": {
     "@kalkulacka-one/design-system": "*",
     "@kalkulacka-one/schema": "*",
+    "@mdi/js": "^7.4.47",
     "next-intl": "^4.3.9",
+    "react-markdown": "^10.1.0",
+    "zod": "^4.0.0",
     "zustand": "^5.0.2"
   },
   "peerDependencies": {
