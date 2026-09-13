@@ -2,18 +2,18 @@
 
 <!-- One sentence, in your own words. If you need "and", split the PR. -->
 
+<details><summary>Original prompt</summary>
+
+<!-- Optional: the verbatim task you were given, if the requester agrees to share it. -->
+
+</details>
+
 ## Scope
 
 <!-- Paste the output of `npm run scope`. -->
 
 ```
 ```
-
-<details><summary>Original prompt</summary>
-
-<!-- Optional: the verbatim task you were given, if the requester agrees to share it. -->
-
-</details>
 
 ---
 
