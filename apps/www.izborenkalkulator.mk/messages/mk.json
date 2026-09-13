@@ -14,18 +14,5 @@
       "result": "rezultat",
       "comparison": "sporedba"
     }
-  },
-  "calculator": {
-    "components": {
-      "question-navigation-card": {
-        "yes": "Да",
-        "no": "Не",
-        "next": "Следно",
-        "previous": "Назад",
-        "guide": "Водич",
-        "skip": "Прескокни",
-        "important": "Важно за мене"
-      }
-    }
   }
 }
