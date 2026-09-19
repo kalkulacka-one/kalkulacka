@@ -2,12 +2,6 @@ import type { Calculator, District, Election, ElectionCalculatorGroup, ElectionC
 
 import { isPublished } from "./published";
 
-export type DistrictPickerCopy = {
-  title: string;
-  description?: string;
-  searchPlaceholder: string;
-};
-
 export type DistrictPickerRowViewModel = {
   key: string;
   title: string;
@@ -24,7 +18,10 @@ export type DistrictPickerSectionViewModel = {
   rows: DistrictPickerRowViewModel[];
 };
 
-export type DistrictPickerViewModel = DistrictPickerCopy & {
+export type DistrictPickerViewModel = {
+  title?: string;
+  description?: string;
+  searchPlaceholder?: string;
   showCode: boolean;
   sections: DistrictPickerSectionViewModel[];
 };
@@ -32,7 +29,6 @@ export type DistrictPickerViewModel = DistrictPickerCopy & {
 export type DistrictPickerViewModelInput = {
   group: ElectionCalculatorGroup;
   election: Election;
-  copy: DistrictPickerCopy;
   buildHref: (districtKey: string) => string;
   calculators: Record<string, Calculator>;
   now: Date;
@@ -119,7 +115,7 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
 }
 
 export function districtPickerViewModel(input: DistrictPickerViewModelInput): DistrictPickerViewModel {
-  const { group, election, copy } = input;
+  const { group, election } = input;
   const index = indexDistricts(election, group);
   const districts = [...index.byKey.values()];
   const { selection } = group;
@@ -137,9 +133,9 @@ export function districtPickerViewModel(input: DistrictPickerViewModelInput): Di
   }
 
   return {
-    title: selection?.title ?? copy.title,
-    description: selection?.description ?? copy.description,
-    searchPlaceholder: selection?.searchPlaceholder ?? copy.searchPlaceholder,
+    title: selection?.title,
+    description: selection?.description,
+    searchPlaceholder: selection?.searchPlaceholder,
     showCode: selection?.showCode ?? false,
     sections,
   };
