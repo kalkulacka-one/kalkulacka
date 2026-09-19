@@ -94,7 +94,7 @@ export type OptionListRow = {
 } & Omit<HTMLAttributes<HTMLElement>, "onClick" | "className" | "tabIndex">;
 
 const OptionListRowVariants = cva(
-  ["ko:group ko:grid ko:grid-cols-[auto_minmax(0,1fr)_auto] ko:items-center ko:w-full ko:min-h-[3.25rem] ko:px-4 ko:py-3", "ko:rounded-[1.125rem]", "ko:text-left ko:no-underline ko:text-inherit"],
+  ["ko:group ko:grid ko:grid-cols-[auto_minmax(0,1fr)_auto] ko:grid-rows-[auto_minmax(0,max-content)] ko:content-center ko:items-center ko:w-full ko:min-h-[3.25rem] ko:px-4 ko:py-3", "ko:rounded-[1.125rem]", "ko:text-left ko:no-underline ko:text-inherit"],
   {
     variants: {
       interactive: {
