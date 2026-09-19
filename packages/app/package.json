@@ -11,7 +11,8 @@
     "./client": {
       "types": "./dist/client/index.d.ts",
       "default": "./dist/client/index.js"
-    }
+    },
+    "./locales/*.json": "./dist/locales/*.json"
   },
   "scripts": {
     "build": "npm run tailwind && tsc && tsc-alias",
