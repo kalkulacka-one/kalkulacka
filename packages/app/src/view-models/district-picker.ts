@@ -1,4 +1,4 @@
-import type { Calculator, CalculatorGroup, District, Election, ElectionCalculatorItem } from "@kalkulacka-one/schema";
+import type { Calculator, District, Election, ElectionCalculatorGroup, ElectionCalculatorItem } from "@kalkulacka-one/schema";
 
 import { isPublished } from "./published";
 
@@ -14,7 +14,6 @@ export type DistrictPickerRowViewModel = {
   shortTitle?: string;
   code?: string;
   href?: string;
-  available: boolean;
   children?: DistrictPickerRowViewModel[];
   aliases?: string[];
 };
@@ -31,11 +30,11 @@ export type DistrictPickerViewModel = DistrictPickerCopy & {
 };
 
 export type DistrictPickerViewModelInput = {
-  group: CalculatorGroup;
+  group: ElectionCalculatorGroup;
   election: Election;
   copy: DistrictPickerCopy;
-  buildDistrictHref: (districtKey: string) => string;
-  calculators: Record<string, Pick<Calculator, "publishedAt">>;
+  buildHref: (districtKey: string) => string;
+  calculators: Record<string, Calculator>;
   now: Date;
 };
 
@@ -46,10 +45,10 @@ type DistrictIndex = {
   calculatorsOf: Map<string, ElectionCalculatorItem[]>;
 };
 
-function calculatorsByDistrict(group: CalculatorGroup): Map<string, ElectionCalculatorItem[]> {
+function calculatorsByDistrict(group: ElectionCalculatorGroup): Map<string, ElectionCalculatorItem[]> {
   const byDistrict = new Map<string, ElectionCalculatorItem[]>();
   for (const item of group.calculators) {
-    if (!("district" in item) || !item.district) continue;
+    if (!item.district) continue;
     const items = byDistrict.get(item.district.key) ?? [];
     items.push(item);
     byDistrict.set(item.district.key, items);
@@ -69,7 +68,7 @@ function ancestorsOf(district: District, byKey: Map<string, District>): District
   return parent ? [] : ancestors;
 }
 
-function indexDistricts(election: Election, group: CalculatorGroup): DistrictIndex {
+function indexDistricts(election: Election, group: ElectionCalculatorGroup): DistrictIndex {
   const byKey = new Map<string, District>();
   for (const district of election.districts ?? []) {
     if (!byKey.has(district.key)) byKey.set(district.key, district);
@@ -106,8 +105,7 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
   const inside = index.childrenOf.get(district.key) ?? [];
   const children = inside.filter((child) => hasCalculatorsBelow(child, index)).map((child) => districtRow(child, index, input));
   const aliases = inside.filter((child) => !hasCalculatorsBelow(child, index)).map((child) => child.title);
-  const href = published.length > 0 ? input.buildDistrictHref(district.key) : undefined;
-  const available = href !== undefined || children.some((child) => child.available);
+  const href = published.length > 0 ? input.buildHref(district.key) : undefined;
 
   return {
     key: district.key,
@@ -115,7 +113,6 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
     shortTitle: district.shortTitle,
     code: district.code,
     href,
-    available,
     children: children.length > 0 ? children : undefined,
     aliases: aliases.length > 0 ? aliases : undefined,
   };
@@ -125,7 +122,7 @@ export function districtPickerViewModel(input: DistrictPickerViewModelInput): Di
   const { group, election, copy } = input;
   const index = indexDistricts(election, group);
   const districts = [...index.byKey.values()];
-  const selection = "selection" in group ? group.selection : undefined;
+  const { selection } = group;
 
   const sections: DistrictPickerSectionViewModel[] = [];
   const topLevelRows = districts.filter((district) => !isSection(district, index) && isTopLevel(district, index)).map((district) => districtRow(district, index, input));

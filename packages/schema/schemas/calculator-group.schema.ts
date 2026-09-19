@@ -92,6 +92,7 @@ export const electionCalculatorGroupSchema = calculatorGroupBaseSchema
 export const calculatorGroupSchema = z.union([standaloneCalculatorInGroupSchema, electionCalculatorGroupSchema]);
 
 export type CalculatorGroup = z.infer<typeof calculatorGroupSchema>;
+export type ElectionCalculatorGroup = z.infer<typeof electionCalculatorGroupSchema>;
 export type CalculatorItem = z.infer<typeof calculatorItemSchema>;
 export type ElectionCalculatorItem = z.infer<typeof electionCalculatorItemSchema>;
 export type CalculatorGroupReference = z.infer<typeof calculatorGroupSchemaReference>;

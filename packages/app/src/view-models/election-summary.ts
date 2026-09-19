@@ -1,7 +1,7 @@
-import type { CalculatorGroup, Election, TimePeriod } from "@kalkulacka-one/schema";
+import type { Election, ElectionCalculatorGroup, TimePeriod } from "@kalkulacka-one/schema";
 
 export type ElectionSummaryViewModel = {
-  key: string;
+  groupKey: string;
   title: string;
   shortTitle: string;
   description?: string;
@@ -9,9 +9,9 @@ export type ElectionSummaryViewModel = {
   calculatorCount: number;
 };
 
-export function electionSummaryViewModel(group: CalculatorGroup, election: Election): ElectionSummaryViewModel {
+export function electionSummaryViewModel(group: ElectionCalculatorGroup, election: Election): ElectionSummaryViewModel {
   return {
-    key: group.key,
+    groupKey: group.key,
     title: election.title,
     shortTitle: election.shortTitle,
     description: group.description ?? election.description,
