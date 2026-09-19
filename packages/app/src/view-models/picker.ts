@@ -100,3 +100,31 @@ function districtRow(district: District, index: DistrictIndex, input: PickerView
     aliases: aliases.length > 0 ? aliases : undefined,
   };
 }
+
+export function pickerViewModel(input: PickerViewModelInput): PickerViewModel {
+  const { group, election, kind, copy } = input;
+  const districts = election.districts ?? [];
+  const index = indexDistricts(election, group);
+  const selection = "selection" in group ? group.selection : undefined;
+
+  const sections: PickerSectionViewModel[] = [];
+  const topLevelRows = districts.filter((district) => !isSection(district, index) && isTopLevel(district, index)).map((district) => districtRow(district, index, input));
+  if (topLevelRows.length > 0) {
+    sections.push({ key: "top-level", rows: topLevelRows });
+  }
+  for (const section of districts.filter((district) => isSection(district, index))) {
+    const rows = (index.childrenOf.get(section.key) ?? []).filter((district) => !isSection(district, index)).map((district) => districtRow(district, index, input));
+    if (rows.length > 0) {
+      sections.push({ key: section.key, title: section.shortTitle ?? section.title, rows });
+    }
+  }
+
+  return {
+    title: selection?.title ?? copy.title,
+    description: selection?.description ?? copy.description,
+    searchPlaceholder: selection?.searchPlaceholder ?? copy.searchPlaceholder,
+    showCode: selection?.showCode ?? kind === "electoral-district",
+    kind,
+    sections,
+  };
+}
