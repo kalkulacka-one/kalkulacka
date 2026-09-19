@@ -31,3 +31,5 @@ export function createCanonical({ routes }: { routes: Routes }) {
 
   return { canonical };
 }
+
+export type Canonical = ReturnType<typeof createCanonical>["canonical"];
