@@ -1,5 +1,7 @@
 import type { Calculator, CalculatorGroup, District, DistrictKind, Election, ElectionCalculatorItem } from "@kalkulacka-one/schema";
 
+import { isPublished } from "./published";
+
 export type PickerCopy = {
   title: string;
   description?: string;
@@ -76,4 +78,25 @@ function isSection(district: District, index: DistrictIndex): boolean {
 
 function isTopLevel(district: District, index: DistrictIndex): boolean {
   return district.parent === undefined || !index.byKey.has(district.parent);
+}
+
+function districtRow(district: District, index: DistrictIndex, input: PickerViewModelInput): PickerRowViewModel {
+  const published = (index.calculatorsOf.get(district.key) ?? []).filter((item) => isPublished(input.calculators[item.key], input.now));
+  const inside = index.childrenOf.get(district.key) ?? [];
+  const children = inside.filter((child) => index.calculatorsOf.has(child.key)).map((child) => districtRow(child, index, input));
+  const aliases = inside.filter((child) => !index.calculatorsOf.has(child.key)).map((child) => child.title);
+  const href = published.length > 0 ? input.buildDistrictHref(district.key) : undefined;
+  const available = href !== undefined || children.some((child) => child.available);
+
+  return {
+    key: district.key,
+    title: district.title,
+    shortTitle: district.shortTitle,
+    code: district.code,
+    kind: district.kind,
+    href,
+    available,
+    children: children.length > 0 ? children : undefined,
+    aliases: aliases.length > 0 ? aliases : undefined,
+  };
 }
