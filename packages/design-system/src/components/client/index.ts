@@ -9,4 +9,6 @@ export * from "./icon";
 export * from "./input";
 export * from "./label";
 export * from "./logo";
+export * from "./optionList";
+export * from "./searchField";
 export * from "./toggleButton";
