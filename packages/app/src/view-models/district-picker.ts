@@ -2,13 +2,13 @@ import type { Calculator, CalculatorGroup, District, DistrictKind, Election, Ele
 
 import { isPublished } from "./published";
 
-export type PickerCopy = {
+export type DistrictPickerCopy = {
   title: string;
   description?: string;
   searchPlaceholder: string;
 };
 
-export type PickerRowViewModel = {
+export type DistrictPickerRowViewModel = {
   key: string;
   title: string;
   shortTitle?: string;
@@ -16,27 +16,27 @@ export type PickerRowViewModel = {
   kind: DistrictKind;
   href?: string;
   available: boolean;
-  children?: PickerRowViewModel[];
+  children?: DistrictPickerRowViewModel[];
   aliases?: string[];
 };
 
-export type PickerSectionViewModel = {
+export type DistrictPickerSectionViewModel = {
   key: string;
   title?: string;
-  rows: PickerRowViewModel[];
+  rows: DistrictPickerRowViewModel[];
 };
 
-export type PickerViewModel = PickerCopy & {
+export type DistrictPickerViewModel = DistrictPickerCopy & {
   kind: DistrictKind;
   showCode: boolean;
-  sections: PickerSectionViewModel[];
+  sections: DistrictPickerSectionViewModel[];
 };
 
-export type PickerViewModelInput = {
+export type DistrictPickerViewModelInput = {
   group: CalculatorGroup;
   election: Election;
   kind: DistrictKind;
-  copy: PickerCopy;
+  copy: DistrictPickerCopy;
   buildDistrictHref: (districtKey: string) => string;
   calculators: Record<string, Pick<Calculator, "publishedAt">>;
   now: Date;
@@ -80,7 +80,7 @@ function isTopLevel(district: District, index: DistrictIndex): boolean {
   return district.parent === undefined || !index.byKey.has(district.parent);
 }
 
-function districtRow(district: District, index: DistrictIndex, input: PickerViewModelInput): PickerRowViewModel {
+function districtRow(district: District, index: DistrictIndex, input: DistrictPickerViewModelInput): DistrictPickerRowViewModel {
   const published = (index.calculatorsOf.get(district.key) ?? []).filter((item) => isPublished(input.calculators[item.key], input.now));
   const inside = index.childrenOf.get(district.key) ?? [];
   const children = inside.filter((child) => index.calculatorsOf.has(child.key)).map((child) => districtRow(child, index, input));
@@ -101,13 +101,13 @@ function districtRow(district: District, index: DistrictIndex, input: PickerView
   };
 }
 
-export function pickerViewModel(input: PickerViewModelInput): PickerViewModel {
+export function districtPickerViewModel(input: DistrictPickerViewModelInput): DistrictPickerViewModel {
   const { group, election, kind, copy } = input;
   const districts = election.districts ?? [];
   const index = indexDistricts(election, group);
   const selection = "selection" in group ? group.selection : undefined;
 
-  const sections: PickerSectionViewModel[] = [];
+  const sections: DistrictPickerSectionViewModel[] = [];
   const topLevelRows = districts.filter((district) => !isSection(district, index) && isTopLevel(district, index)).map((district) => districtRow(district, index, input));
   if (topLevelRows.length > 0) {
     sections.push({ key: "top-level", rows: topLevelRows });
