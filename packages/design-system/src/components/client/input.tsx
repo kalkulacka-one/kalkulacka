@@ -44,11 +44,14 @@ function InputComponent({ children, variant, onClear, clearLabel, ...props }: In
   const hasIcon = children != null;
   const clearable = onClear !== undefined && typeof props.value === "string" && props.value !== "";
 
-  const setRefs = (node: HTMLInputElement | null) => {
-    inputRef.current = node;
-    if (typeof ref === "function") ref(node);
-    else if (ref) ref.current = node;
-  };
+  const setRefs = React.useCallback(
+    (node: HTMLInputElement | null) => {
+      inputRef.current = node;
+      if (typeof ref === "function") ref(node);
+      else if (ref) ref.current = node;
+    },
+    [ref],
+  );
 
   const handleClear = () => {
     onClear?.();
