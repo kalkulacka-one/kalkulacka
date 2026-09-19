@@ -7,6 +7,7 @@ export * from "./candidate-answer";
 export * from "./candidate-answers";
 export * from "./candidates";
 export * from "./district-picker";
+export * from "./election-summary";
 export * from "./organization";
 export * from "./organizations";
 export * from "./person";
