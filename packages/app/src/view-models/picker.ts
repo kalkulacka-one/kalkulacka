@@ -69,3 +69,11 @@ function indexDistricts(election: Election, group: CalculatorGroup): DistrictInd
   }
   return { byKey, childrenOf, calculatorsOf: calculatorsByDistrict(group) };
 }
+
+function isSection(district: District, index: DistrictIndex): boolean {
+  return !index.calculatorsOf.has(district.key) && (index.childrenOf.get(district.key)?.length ?? 0) > 0;
+}
+
+function isTopLevel(district: District, index: DistrictIndex): boolean {
+  return district.parent === undefined || !index.byKey.has(district.parent);
+}
