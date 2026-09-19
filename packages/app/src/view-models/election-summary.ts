@@ -15,7 +15,7 @@ export function electionSummaryViewModel(group: ElectionCalculatorGroup, electio
     title: election.title,
     shortTitle: election.shortTitle,
     description: group.description ?? election.description,
-    votingHours: election.votingHours ?? election.rounds?.[0]?.votingHours ?? [],
+    votingHours: election.votingHours ?? election.rounds?.find((round) => round.number === 1)?.votingHours ?? [],
     calculatorCount: group.calculators.length,
   };
 }

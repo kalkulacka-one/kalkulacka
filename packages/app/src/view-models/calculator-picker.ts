@@ -6,7 +6,7 @@ export type CalculatorPickerCardViewModel = {
   key: string;
   title: string;
   description?: string;
-  href: string;
+  href?: string;
   available: boolean;
 };
 
@@ -26,12 +26,13 @@ export function calculatorPickerViewModel(
     title: district.title,
     cards: items.map((item) => {
       const calculator = calculators[item.key];
+      const available = isPublished(calculator, now);
       return {
         key: item.key,
         title: calculator?.title ?? calculator?.shortTitle ?? item.key,
         description: calculator?.description,
-        href: buildHref(item.key),
-        available: isPublished(calculator, now),
+        href: available ? buildHref(item.key) : undefined,
+        available,
       };
     }),
   };
