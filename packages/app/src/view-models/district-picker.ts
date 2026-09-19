@@ -1,4 +1,4 @@
-import type { Calculator, CalculatorGroup, District, DistrictKind, Election, ElectionCalculatorItem } from "@kalkulacka-one/schema";
+import type { Calculator, CalculatorGroup, District, Election, ElectionCalculatorItem } from "@kalkulacka-one/schema";
 
 import { isPublished } from "./published";
 
@@ -13,7 +13,6 @@ export type DistrictPickerRowViewModel = {
   title: string;
   shortTitle?: string;
   code?: string;
-  kind: DistrictKind;
   href?: string;
   available: boolean;
   children?: DistrictPickerRowViewModel[];
@@ -27,7 +26,6 @@ export type DistrictPickerSectionViewModel = {
 };
 
 export type DistrictPickerViewModel = DistrictPickerCopy & {
-  kind: DistrictKind;
   showCode: boolean;
   sections: DistrictPickerSectionViewModel[];
 };
@@ -35,7 +33,6 @@ export type DistrictPickerViewModel = DistrictPickerCopy & {
 export type DistrictPickerViewModelInput = {
   group: CalculatorGroup;
   election: Election;
-  kind: DistrictKind;
   copy: DistrictPickerCopy;
   buildDistrictHref: (districtKey: string) => string;
   calculators: Record<string, Pick<Calculator, "publishedAt">>;
@@ -93,7 +90,6 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
     title: district.title,
     shortTitle: district.shortTitle,
     code: district.code,
-    kind: district.kind,
     href,
     available,
     children: children.length > 0 ? children : undefined,
@@ -102,7 +98,7 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
 }
 
 export function districtPickerViewModel(input: DistrictPickerViewModelInput): DistrictPickerViewModel {
-  const { group, election, kind, copy } = input;
+  const { group, election, copy } = input;
   const districts = election.districts ?? [];
   const index = indexDistricts(election, group);
   const selection = "selection" in group ? group.selection : undefined;
@@ -123,8 +119,7 @@ export function districtPickerViewModel(input: DistrictPickerViewModelInput): Di
     title: selection?.title ?? copy.title,
     description: selection?.description ?? copy.description,
     searchPlaceholder: selection?.searchPlaceholder ?? copy.searchPlaceholder,
-    showCode: selection?.showCode ?? kind === "electoral-district",
-    kind,
+    showCode: selection?.showCode ?? false,
     sections,
   };
 }
