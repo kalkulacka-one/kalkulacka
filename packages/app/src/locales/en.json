@@ -116,6 +116,21 @@
       "review": {
         "title": "Review",
         "back": "Back to questions"
+      },
+      "districtPicker": {
+        "searchLabel": "Search",
+        "clearSearch": "Clear search",
+        "codeLabel": "District",
+        "unavailable": "Coming soon",
+        "resultsCount": "{count, plural, =0 {No results} one {# result} other {# results}}",
+        "empty": "Nothing matches “{query}”.",
+        "title": "Choose where you vote",
+        "description": "The calculator compares your views with the candidates where you vote.",
+        "searchPlaceholder": "Start typing a name"
+      },
+      "calculatorPicker": {
+        "description": "There are several calculators for this place. Pick the one you want to fill in.",
+        "start": "Start the calculator"
       }
     }
   }
