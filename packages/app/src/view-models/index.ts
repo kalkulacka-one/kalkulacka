@@ -9,6 +9,7 @@ export * from "./organization";
 export * from "./organizations";
 export * from "./person";
 export * from "./persons";
+export * from "./picker";
 export * from "./published";
 export * from "./question";
 export * from "./questions";
