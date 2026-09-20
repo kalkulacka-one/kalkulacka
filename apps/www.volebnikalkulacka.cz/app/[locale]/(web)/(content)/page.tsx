@@ -4,9 +4,8 @@ import { Card } from "@kalkulacka-one/design-system/server";
 import Link from "next/link";
 import { useId } from "react";
 
-import { SubscribeForm } from "@/components/client";
-
 import { BeadRow } from "./BeadRow";
+import { Campaign } from "./campaign";
 
 export default function Page() {
   const bgGridId = useId();
@@ -32,21 +31,7 @@ export default function Page() {
         {/* Campaign: komunální + senátní volby 2026 */}
         <h1 className="font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Komunální a senátní volby 2026</h1>
         <div className="mt-10 md:mt-12 grid grid-cols-1 items-stretch">
-          <Card shadow="hard" border corner="topLeft" className="bg-white !border-slate-200">
-            <div className="p-6 md:p-10 grid gap-8 md:grid-cols-2 md:items-center">
-              <div className="flex flex-col items-start gap-3">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">Připravujeme</span>
-                  <span className="rounded-full bg-slate-100 px-2.5 py-1">9.&nbsp;a&nbsp;10.&nbsp;října&nbsp;2026</span>
-                </div>
-                <h2 className="font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Ať vám nové kalkulačky neutečou</h2>
-                <p className="text-slate-500">Nechte nám na sebe e-mail a dáme vám vědět, jakmile volební kalkulačky pro komunální a senátní volby spustíme.</p>
-              </div>
-              <div className="w-full">
-                <SubscribeForm />
-              </div>
-            </div>
-          </Card>
+          <Campaign />
 
           <Card border className="mt-8 !border-slate-200 bg-slate-50/50">
             <div className="p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
