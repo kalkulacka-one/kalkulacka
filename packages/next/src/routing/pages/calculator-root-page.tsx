@@ -38,6 +38,7 @@ export async function CalculatorRootPage({ endpoint, segments, locale, embedCont
   const resolution = resolveGroupSegment({ group, election, segment });
   if (!resolution) notFound();
   if (resolution.kind === "calculator") {
+    await calculatorGuard({ endpoint, key: resolution.key, group: groupKey, prefixed: true });
     redirect(routes.introduction({ ...segments, third: resolution.key }, locale));
   }
 
