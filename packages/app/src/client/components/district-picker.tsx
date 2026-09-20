@@ -129,7 +129,7 @@ export function DistrictPickerResults() {
 
     return (
       <Fragment key={row.key}>
-        <OptionList.Row href={row.href} disabled={row.href === undefined} highlighted={active && searching} tabIndex={active ? 0 : -1}>
+        <OptionList.Row href={row.href} disabled={row.href === undefined} highlighted={active && searching} tabIndex={active ? 0 : -1} className="koa:scroll-mt-64">
           {code}
           <OptionList.Title>{row.title}</OptionList.Title>
           {description && <OptionList.Description>{description}</OptionList.Description>}
