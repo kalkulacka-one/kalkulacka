@@ -55,5 +55,8 @@ export async function calculatorRootMetadata({ endpoint, segments, canonical }: 
   if (!group) return {};
   const resolution = resolveGroupSegment({ group, election, segment: segments.third });
   if (resolution?.kind !== "calculator-picker") return {};
-  return { title: resolution.district.title, description: election?.description, alternates: { canonical: canonical.base(segments) } };
+  const title = resolution.district.title;
+  const description = election?.description;
+  const url = canonical.base(segments);
+  return { title, description, alternates: { canonical: url }, openGraph: { title, description, url } };
 }

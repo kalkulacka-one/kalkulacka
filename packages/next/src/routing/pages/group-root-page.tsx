@@ -50,5 +50,8 @@ export async function groupRootMetadata({ endpoint, segments, canonical }: Pick<
   if (!segments.second) return {};
   const [group, election] = await Promise.all([ifFound(loadCalculatorGroup({ endpoint, group: segments.second })), ifFound(loadElection({ endpoint, group: segments.second }))]);
   if (!group || !election) return {};
-  return { title: election.title, description: group.description ?? election.description, alternates: { canonical: canonical.base(segments) } };
+  const title = election.title;
+  const description = group.description ?? election.description;
+  const url = canonical.base(segments);
+  return { title, description, alternates: { canonical: url }, openGraph: { title, description, url } };
 }
