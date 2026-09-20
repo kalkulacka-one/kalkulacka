@@ -49,9 +49,9 @@ export function DistrictPicker({ picker, onNavigate, children }: DistrictPicker)
   }, [picker.sections, matches, query]);
 
   // Runs after the highlight moved, so the list's handle already targets the new active row.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: `query` is a dependency on purpose: a new result set with the same index still needs scrolling
+  // biome-ignore lint/correctness/useExhaustiveDependencies: `activeIndex` is a dependency on purpose: the list's handle scrolls whichever row is active now
   useEffect(() => {
-    listRef.current?.scrollActiveIntoView();
+    if (query) listRef.current?.scrollActiveIntoView();
   }, [activeIndex, query]);
 
   const changeQuery = (value: string) => {
