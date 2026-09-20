@@ -1,18 +1,5 @@
 {
   "homepage": {
     "title": "Volebná kalkulačka"
-  },
-  "routing": {
-    "prefixes": {
-      "election": "volby"
-    },
-    "pages": {
-      "introduction": "uvod",
-      "guide": "navod",
-      "question": "otazka",
-      "review": "rekapitulacia",
-      "result": "vysledok",
-      "comparison": "porovnanie"
-    }
   }
 }
