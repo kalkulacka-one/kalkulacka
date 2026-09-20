@@ -53,5 +53,11 @@ export async function groupRootMetadata({ endpoint, segments, canonical }: Pick<
   const title = election.title;
   const description = group.description ?? election.description;
   const url = canonical.base(segments);
-  return { title, description, alternates: { canonical: url }, openGraph: { title, description, url } };
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url },
+    twitter: { card: "summary", ...(process.env.X_HANDLE && { site: process.env.X_HANDLE }), title, description },
+  };
 }
