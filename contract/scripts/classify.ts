@@ -53,7 +53,7 @@ export function globToRegExp(glob: string): RegExp {
 const matchesAny = (path: string, globs: string[]) => globs.some((glob) => globToRegExp(glob).test(path));
 
 // Fail loudly at import time on a malformed curated glob (contract T13: drift MUST fail).
-for (const globs of [scopes.protected, ...Object.values(scopes.tags), scopes.sharedEvenIfInstancePath, scopes.frozenMessageGlobs]) {
+for (const globs of [scopes.protected, ...Object.values(scopes.tags), scopes.sharedEvenIfInstancePath, scopes.lockstepMessageGlobs]) {
   for (const glob of globs) globToRegExp(glob);
 }
 

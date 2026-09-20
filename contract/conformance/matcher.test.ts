@@ -29,7 +29,7 @@ describe("glob matcher", () => {
 
 describe("config globs correspond to the repository tree", () => {
   const root = join(import.meta.dirname, "..", "..");
-  const allGlobs = [...scopes.protected, ...Object.values(scopes.tags).flat(), ...scopes.sharedEvenIfInstancePath, ...scopes.frozenMessageGlobs];
+  const allGlobs = [...scopes.protected, ...Object.values(scopes.tags).flat(), ...scopes.sharedEvenIfInstancePath, ...scopes.lockstepMessageGlobs];
   for (const glob of allGlobs) {
     it(`${glob} anchors to something real`, () => {
       const wildcardIndex = glob.search(/[*{[]/);
