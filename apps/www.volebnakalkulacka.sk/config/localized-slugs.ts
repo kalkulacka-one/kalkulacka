@@ -1,8 +1,8 @@
 import { createLocalizedSlugs } from "@kalkulacka-one/next";
 
-import skMessages from "../messages/sk.json";
+import { routeSlugs } from "./route-slugs";
 
-export type PageType = keyof (typeof skMessages)["routing"]["pages"];
-export type PrefixType = keyof (typeof skMessages)["routing"]["prefixes"];
+export type PageType = keyof (typeof routeSlugs)["sk"]["pages"];
+export type PrefixType = keyof (typeof routeSlugs)["sk"]["prefixes"];
 
-export const { PAGE_SLUGS, PREFIX_SLUGS, getPageSlug, getPrefixSlug } = createLocalizedSlugs({ messagesByLocale: { sk: skMessages } });
+export const { PAGE_SLUGS, PREFIX_SLUGS, getPageSlug, getPrefixSlug } = createLocalizedSlugs({ slugsByLocale: routeSlugs });
