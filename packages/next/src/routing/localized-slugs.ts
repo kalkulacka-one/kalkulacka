@@ -1,17 +1,15 @@
 export type PageType = "introduction" | "guide" | "question" | "review" | "result" | "comparison";
 
-export type RoutingMessages = {
-  routing: {
-    prefixes: Record<string, string>;
-    pages: Record<PageType, string>;
-  };
+export type RouteSlugs = {
+  prefixes: Record<string, string>;
+  pages: Record<PageType, string>;
 };
 
-export function createLocalizedSlugs<TMessages extends RoutingMessages>({ messagesByLocale }: { messagesByLocale: Record<string, TMessages> }) {
-  const locales = Object.keys(messagesByLocale);
+export function createLocalizedSlugs<TSlugs extends RouteSlugs>({ slugsByLocale }: { slugsByLocale: Record<string, TSlugs> }) {
+  const locales = Object.keys(slugsByLocale);
 
-  const PREFIX_SLUGS = Object.fromEntries(Object.entries(messagesByLocale).map(([locale, messages]) => [locale, messages.routing.prefixes])) as Record<string, TMessages["routing"]["prefixes"]>;
-  const PAGE_SLUGS = Object.fromEntries(Object.entries(messagesByLocale).map(([locale, messages]) => [locale, messages.routing.pages])) as Record<string, TMessages["routing"]["pages"]>;
+  const PREFIX_SLUGS = Object.fromEntries(Object.entries(slugsByLocale).map(([locale, slugs]) => [locale, slugs.prefixes])) as Record<string, TSlugs["prefixes"]>;
+  const PAGE_SLUGS = Object.fromEntries(Object.entries(slugsByLocale).map(([locale, slugs]) => [locale, slugs.pages])) as Record<string, TSlugs["pages"]>;
 
   function getPageSlug(locale: string, pageType: PageType): string {
     if (!locales.includes(locale)) {
@@ -24,7 +22,7 @@ export function createLocalizedSlugs<TMessages extends RoutingMessages>({ messag
     throw new Error(`Page type "${pageType}" not found for locale "${locale}".`);
   }
 
-  function getPrefixSlug(locale: string, prefixType: keyof TMessages["routing"]["prefixes"] & string): string {
+  function getPrefixSlug(locale: string, prefixType: keyof TSlugs["prefixes"] & string): string {
     if (!locales.includes(locale)) {
       throw new Error(`Invalid locale: "${locale}". Valid locales are: ${locales.join(", ")}`);
     }

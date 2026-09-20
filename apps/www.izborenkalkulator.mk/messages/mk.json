@@ -1,18 +1,5 @@
 {
   "homepage": {
     "title": "Изборен калкулатор"
-  },
-  "routing": {
-    "prefixes": {
-      "election": "izbori"
-    },
-    "pages": {
-      "introduction": "voved",
-      "guide": "vodic",
-      "question": "prasanje",
-      "review": "pregled",
-      "result": "rezultat",
-      "comparison": "sporedba"
-    }
   }
 }

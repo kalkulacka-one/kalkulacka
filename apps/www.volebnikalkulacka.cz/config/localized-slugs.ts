@@ -1,8 +1,8 @@
 import { createLocalizedSlugs } from "@kalkulacka-one/next";
 
-import csMessages from "../messages/cs.json";
+import { routeSlugs } from "./route-slugs";
 
-export type PageType = keyof (typeof csMessages)["routing"]["pages"];
-export type PrefixType = keyof (typeof csMessages)["routing"]["prefixes"];
+export type PageType = keyof (typeof routeSlugs)["cs"]["pages"];
+export type PrefixType = keyof (typeof routeSlugs)["cs"]["prefixes"];
 
-export const { PAGE_SLUGS, PREFIX_SLUGS, getPageSlug, getPrefixSlug } = createLocalizedSlugs({ messagesByLocale: { cs: csMessages } });
+export const { PAGE_SLUGS, PREFIX_SLUGS, getPageSlug, getPrefixSlug } = createLocalizedSlugs({ slugsByLocale: routeSlugs });
