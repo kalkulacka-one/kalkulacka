@@ -90,10 +90,16 @@ async function discoverCalculators(context: APIRequestContext): Promise<string[]
   return [...calculators].sort();
 }
 
+let discovery: Promise<string[]> | undefined;
+
 const test = base.extend<{ calculators: string[] }>({
-  calculators: async ({ request }, use, testInfo) => {
-    const calculators = await discoverCalculators(request);
-    await testInfo.attach("calculators", { body: calculators.join("\n"), contentType: "text/plain" });
+  calculators: async ({ request }, use) => {
+    // Discover once per worker and print the list, so the CI log shows what was covered.
+    discovery ??= discoverCalculators(request).then((calculators) => {
+      console.log(`Smoke: ${calculators.length} calculator(s) reachable from the homepage\n${calculators.map((calculator) => `  ${calculator}`).join("\n")}`);
+      return calculators;
+    });
+    const calculators = await discovery;
     expect(calculators, "no calculator is reachable from the homepage").not.toEqual([]);
     await use(calculators);
   },

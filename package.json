@@ -4,7 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo watch dev",
-    "e2e": "turbo run e2e --concurrency=1",
+    "e2e": "turbo run e2e",
     "e2e:ui": "turbo run e2e:ui",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
