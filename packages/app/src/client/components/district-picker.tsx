@@ -77,7 +77,7 @@ export function DistrictPicker({ picker, onNavigate, children }: DistrictPicker)
 export function DistrictPickerSearch() {
   const t = useTranslations("koa.pages.districtPicker");
   const { picker, query, setQuery, activeIndex, matches, targets, listRef, listId, navigate } = useDistrictPicker();
-  const highlightedHref = targets[activeIndex];
+  const highlightedHref = query ? targets[activeIndex] : undefined;
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "ArrowDown") {
