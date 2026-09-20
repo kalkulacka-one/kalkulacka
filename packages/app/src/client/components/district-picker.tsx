@@ -76,7 +76,7 @@ export function DistrictPicker({ picker, onNavigate, children }: DistrictPicker)
 
 export function DistrictPickerSearch() {
   const t = useTranslations("koa.pages.districtPicker");
-  const { picker, query, setQuery, activeIndex, targets, listRef, listId, navigate } = useDistrictPicker();
+  const { picker, query, setQuery, activeIndex, matches, targets, listRef, listId, navigate } = useDistrictPicker();
   const highlightedHref = targets[activeIndex];
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -102,7 +102,7 @@ export function DistrictPickerSearch() {
         autoComplete="off"
       />
       <output aria-live="polite" className="koa:sr-only">
-        {query ? t("resultsCount", { count: targets.length }) : ""}
+        {query ? t("resultsCount", { count: matches.length }) : ""}
       </output>
     </>
   );
