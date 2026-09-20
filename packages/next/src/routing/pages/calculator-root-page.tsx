@@ -8,7 +8,7 @@ import { now } from "@/routing/clock";
 import type { Routes } from "@/routing/factories/route-builders";
 import type { Canonical } from "@/routing/factories/url-builders";
 import { resolveGroupSegment } from "@/routing/group-resolution";
-import { calculatorExistsGuard } from "@/routing/guards/calculator-exists";
+import { calculatorGuard } from "@/routing/guards/calculator";
 import type { RouteSegments } from "@/routing/segments";
 
 import { loadGroupCalculators } from "./load-group-calculators";
@@ -31,7 +31,7 @@ export async function CalculatorRootPage({ endpoint, segments, locale, embedCont
 
   const [group, election] = await Promise.all([ifFound(loadCalculatorGroup({ endpoint, group: groupKey })), ifFound(loadElection({ endpoint, group: groupKey }))]);
   if (!group) {
-    await calculatorExistsGuard({ endpoint, key: segment, group: groupKey });
+    await calculatorGuard({ endpoint, key: segment, group: groupKey, prefixed: true });
     redirect(routes.introduction(segments, locale));
   }
 

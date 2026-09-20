@@ -1,4 +1,4 @@
-import { GroupRootPage, groupRootMetadata, isPrefix } from "@kalkulacka-one/next";
+import { calculatorGuard, GroupRootPage, groupRootMetadata, isPrefix } from "@kalkulacka-one/next";
 
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
@@ -6,7 +6,7 @@ import type { Locale } from "next-intl";
 
 import { appConfig } from "@/config/app-config";
 import { type EmbedName, embedsConfig } from "@/config/embeds";
-import { canonical, PREFIXES, routes } from "@/lib/routing";
+import { canonical, mappedParams, PREFIXES, routes } from "@/lib/routing";
 
 type Params = Promise<{ locale: Locale; embed: EmbedName; first: string; second: string }>;
 
@@ -27,6 +27,7 @@ export default async function Page({ params }: { params: Params }) {
   const { locale, ...segments } = await params;
 
   if (!isPrefix({ segment: segments.first, validPrefixes: PREFIXES })) {
+    await calculatorGuard({ endpoint: endpoint(), key: mappedParams.key(segments), group: mappedParams.group(segments), prefixed: false });
     redirect(routes.introduction(segments, locale));
   }
 
