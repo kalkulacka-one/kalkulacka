@@ -49,6 +49,11 @@ export const cases: ConformanceCase[] = [
     expect: { verdict: "platform", instances: ["*"] },
   },
   {
+    name: "one instance's smoke spec is shared platform (byte-identical copies)",
+    files: [{ path: "apps/www.volebnikalkulacka.cz/tests/smoke/calculators.spec.ts" }],
+    expect: { verdict: "platform", instances: ["*"] },
+  },
+  {
     name: "MK message values are editorial product",
     files: [{ path: "apps/www.izborenkalkulator.mk/messages/mk.json" }],
     expect: { verdict: "product", tags: ["editorial"], instances: ["www.izborenkalkulator.mk"] },
