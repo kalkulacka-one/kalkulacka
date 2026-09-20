@@ -1,4 +1,4 @@
-import { calculatorPathGuard, dataLoaderGuard, isPrefix, prefixGuard } from "@kalkulacka-one/next";
+import { calculatorPathGuard, dataLoaderGuard, isPrefix } from "@kalkulacka-one/next";
 
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams, PREFIXES } from "@/lib/routing";
@@ -9,10 +9,6 @@ export default async function Layout({ children, params }: { children: React.Rea
   }
 
   const segments = await params;
-  const { first } = segments;
-
-  prefixGuard({ prefix: first, validPrefixes: PREFIXES });
-
   const calculatorData = await dataLoaderGuard({
     endpoint: process.env.DATA_ENDPOINT,
     key: mappedParams.key(segments),

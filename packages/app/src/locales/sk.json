@@ -116,6 +116,21 @@
       "review": {
         "title": "Rekapitulácia",
         "back": "Späť na otázky"
+      },
+      "districtPicker": {
+        "searchLabel": "Hľadať",
+        "clearSearch": "Vymazať hľadanie",
+        "codeLabel": "Obvod",
+        "unavailable": "Pripravujeme",
+        "resultsCount": "{count, plural, =0 {Nič nenájdené} one {# výsledok} few {# výsledky} other {# výsledkov}}",
+        "empty": "Hľadanie „{query}“ nič nenašlo.",
+        "title": "Vyberte, kde volíte",
+        "description": "Kalkulačka porovná vaše názory s kandidátmi tam, kde volíte.",
+        "searchPlaceholder": "Začnite písať názov"
+      },
+      "calculatorPicker": {
+        "description": "Pre toto miesto máme viac kalkulačiek. Vyberte si, ktorú chcete vyplniť.",
+        "start": "Spustiť kalkulačku"
       }
     }
   }

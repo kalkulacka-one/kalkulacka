@@ -51,6 +51,19 @@ If `first` is not in allowed prefixes:
 - Prefix validation
 - Params mapping: `group: second, key: third`
 
+## Group pickers
+
+**Pattern**: `/{prefix}/{group}` and `/{prefix}/{group}/{district}`
+
+**Example**: `/election/municipal-2026` and `/election/municipal-2026/brno`
+
+Only for a group with `calculator-group.json` and `election.json`; other groups keep the patterns above.
+
+- `/{prefix}/{group}`: district picker
+- `/{prefix}/{group}/{district}`: several calculators render a calculator picker, exactly one redirects to its introduction, none is 404
+- `/{prefix}/{group}/{key}`: redirect to the calculator's introduction; a district wins over a calculator key with the same name
+- A district is launched once one of its calculators has `publishedAt` in the past; the rest show as preparing
+
 ## Subroutes
 
 All calculator routes include these subroutes:
