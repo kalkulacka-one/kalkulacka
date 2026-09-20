@@ -6,4 +6,6 @@ export * from "./calculator-store-provider";
 export * from "./comparison-grid";
 export * from "./district-picker";
 export * from "./match-card";
+export * from "./pages/calculator-picker";
+export * from "./pages/district-picker";
 export * from "./share-modal";

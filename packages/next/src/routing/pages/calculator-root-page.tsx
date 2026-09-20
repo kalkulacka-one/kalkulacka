@@ -1,5 +1,5 @@
-import { CalculatorPickerPage, calculatorPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
-import type { EmbedContextType } from "@kalkulacka-one/app/client";
+import { calculatorPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
+import { CalculatorPickerPage, type EmbedContextType } from "@kalkulacka-one/app/client";
 
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";

@@ -1,5 +1,5 @@
-import { DistrictPickerPage, districtPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
-import type { EmbedContextType } from "@kalkulacka-one/app/client";
+import { districtPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
+import { DistrictPickerPage, type EmbedContextType } from "@kalkulacka-one/app/client";
 
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
