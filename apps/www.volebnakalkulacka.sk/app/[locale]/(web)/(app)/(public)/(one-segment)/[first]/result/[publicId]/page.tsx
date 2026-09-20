@@ -1,5 +1,6 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
+import { sessionPathGuard } from "@kalkulacka-one/next";
 import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
 import type { Answer } from "@kalkulacka-one/schema";
 
@@ -41,6 +42,8 @@ export default async function Page({ params }: { params: Promise<{ first: string
   if (!session?.data) {
     notFound();
   }
+
+  sessionPathGuard({ session, key: mappedParams.key(segments), group: mappedParams.group(segments) });
 
   const answers = session.data.answers as Answer[];
   const result = session.data.result as ReturnType<typeof calculateMatches>;
