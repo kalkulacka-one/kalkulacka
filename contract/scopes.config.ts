@@ -51,6 +51,8 @@ export const scopes = {
     "apps/*/app/[locale]/(embed)/**",
   ],
 
-  /** Message files where values may change freely but keys and the routing subtree are frozen. */
-  frozenMessageGlobs: ["apps/*/messages/*.json", "packages/app/src/locales/*.json"],
+  /** Message files: values change freely; keys change only in lockstep – every locale file in
+   *  the same directory must end up with an identical key set, so no locale misses a string.
+   *  (URL slugs live in config/route-slugs.ts – platform by path – since #600.) */
+  lockstepMessageGlobs: ["apps/*/messages/*.json", "packages/app/src/locales/*.json"],
 };

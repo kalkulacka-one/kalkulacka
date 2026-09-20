@@ -33,7 +33,7 @@ reviewed by the contract owner.
 | --- | --- | --- | --- | --- |
 | presentation | Layout, styling, animation, visualization of already-computed values | Running result | Standard + preview per affected instance | – |
 | interaction | New ways to trigger an existing state-changing action (keyboard, gesture, control) | Running result | Standard + preview per affected instance | Input equivalence: every input method produces the identical underlying action |
-| editorial | Static copy: content pages, message values | Text diff; politically substantive text needs independent approval | Standard + frozen message keys and routing | – |
+| editorial | Static copy: content pages, message values and locale keys | Text diff; politically substantive text needs independent approval | Standard + locale keys in lockstep across locales | – |
 | calculation | Matching, scoring, result semantics, derived political metrics | Code review, always | Standard | Independently derived expected values |
 | platform | Everything else: dependencies and lockfiles, build/CI/deploy, schemas and APIs, storage/session/auth, network/telemetry, shared architecture, anything unknown | Code review, always | Standard | – |
 | protected | This contract, CI workflows, agent and repository configuration, correctness oracles (fixtures and expected values) | Contract owner review, always | Standard | – |

@@ -1,28 +1,22 @@
-// Frozen-message content rules (contract: editorial tag). Protected: agents never edit.
+// Lockstep message rule (contract: editorial tag). Protected: agents never edit.
 
 import { describe, expect, it } from "vitest";
 
-import { checkMessages } from "../scripts/messages.ts";
+import { checkLockstep } from "../scripts/messages.ts";
 
-const base = JSON.stringify({ routing: { pages: { result: "vysledek" } }, calculator: { yes: "Ano" } });
-
-describe("message content rules", () => {
-  it("allows a value change", () => {
-    const head = JSON.stringify({ routing: { pages: { result: "vysledek" } }, calculator: { yes: "Jo" } });
-    expect(checkMessages("m.json", base, head)).toBeUndefined();
+describe("lockstep locale rules", () => {
+  const cs = JSON.stringify({ koa: { pages: { picker: { title: "Zvolte" } } } });
+  it("allows any key change applied to every locale", () => {
+    expect(checkLockstep({ "cs.json": cs, "sk.json": cs })).toEqual([]);
   });
-  it("rejects an added key", () => {
-    const head = JSON.stringify({ routing: { pages: { result: "vysledek" } }, calculator: { yes: "Ano", maybe: "Možná" } });
-    expect(checkMessages("m.json", base, head)?.reason).toMatch(/key set changed/);
+  it("rejects a key present in only some locales", () => {
+    const sk = JSON.stringify({ koa: { pages: { picker: {} } } });
+    expect(checkLockstep({ "cs.json": cs, "sk.json": sk })[0]?.reason).toMatch(/diverge/);
   });
-  it("rejects a routing value change even with identical keys", () => {
-    const head = JSON.stringify({ routing: { pages: { result: "vysledok" } }, calculator: { yes: "Ano" } });
-    expect(checkMessages("m.json", base, head)?.reason).toMatch(/routing/);
+  it("passes trivially for a single-locale directory", () => {
+    expect(checkLockstep({ "cs.json": cs })).toEqual([]);
   });
   it("fails closed on unparseable JSON", () => {
-    expect(checkMessages("m.json", base, "{oops")?.reason).toMatch(/unparseable/);
-  });
-  it("fails closed on an added or deleted file", () => {
-    expect(checkMessages("m.json", undefined, base)?.reason).toMatch(/added or deleted/);
+    expect(checkLockstep({ "cs.json": cs, "sk.json": "{oops" })[0]?.reason).toMatch(/unparseable/);
   });
 });

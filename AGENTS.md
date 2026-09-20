@@ -35,8 +35,9 @@ kinds of territory:
   `apps/*/components/server/footer.tsx`
 - `apps/design-system.kalkulacka.one/stories/**` – Storybook stories
 - `apps/*/app/[locale]/(web)/(content)/**` – content pages
-- `apps/*/messages/*.json` and `packages/app/src/locales/*.json` – translation **values only**:
-  never add/remove/rename keys, never touch the `routing.*` subtree
+- `apps/*/messages/*.json` and `packages/app/src/locales/*.json` – translation values freely;
+  keys may be added, removed or renamed only **in lockstep**: every locale file in the same
+  directory must end up with an identical key set (the gate verifies this)
 
 **Platform (requires explicit human approval):**
 - Everything not listed above. Notably: `apps/*/lib/**`, `apps/*/hooks/**`, `apps/*/app/api/**`,
