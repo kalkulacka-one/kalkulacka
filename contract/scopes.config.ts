@@ -49,6 +49,7 @@ export const scopes = {
     "apps/*/app/api/**",
     "apps/*/app/[locale]/(web)/(app)/**",
     "apps/*/app/[locale]/(embed)/**",
+    "apps/*/tests/smoke/**", // one smoke spec, byte-identical per instance since #601
   ],
 
   /** Message files: values change freely; keys change only in lockstep – every locale file in
