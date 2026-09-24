@@ -1,3 +1,14 @@
+/*
+ * `--ko-shadow-color` is a plain (non-@theme) hook, like the `--ko-palette-*`
+ * ones below: it must not sit inside `@theme`, or a consumer that imports
+ * this file under a different Tailwind prefix (e.g. the app package's `koa`)
+ * would double-prefix it. See `styles.css` for the full derivation this
+ * mirrors.
+ */
+:root {
+  --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
+}
+
 @theme static {
   --font-display: var(--ko-font-display);
   --font-sans: var(--ko-font-sans);
@@ -25,4 +36,52 @@
   --color-green: var(--ko-color-green);
   --color-red: var(--ko-color-red);
   --color-yellow: var(--ko-color-yellow);
+
+  /*
+   * Surfaces and text, ported from `styles.css` (P1) so a consumer that only
+   * imports this minimal token file — like the app package's own standalone
+   * build, see `packages/app/src/styles.css` — still gets these utilities.
+   * `--color-text-strong` deliberately does not cross-reference `--color-text`
+   * (a self-reference would need the emitted, prefixed name, which differs
+   * between this file's consumers) — it re-derives from the neutral palette
+   * with the same offset `styles.css` uses instead.
+   */
+  --color-page: light-dark(
+    var(--ko-palette-page-light, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.984 min(c, 0.003) h))),
+    var(--ko-palette-page-dark, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.18 min(c, 0.037) h)))
+  );
+
+  --color-surface: light-dark(
+    var(--ko-palette-surface-light, var(--ko-palette-surface, white)),
+    var(--ko-palette-surface-dark, var(--ko-palette-surface, oklch(from var(--ko-palette-neutral) 0.265 min(c, 0.045) h)))
+  );
+
+  --color-surface-sunken: light-dark(
+    var(--ko-palette-surface-sunken-light, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.968 min(c, 0.007) h))),
+    var(--ko-palette-surface-sunken-dark, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.228 min(c, 0.037) h)))
+  );
+
+  --color-surface-hover: color-mix(in oklab, var(--ko-palette-neutral) 8%, transparent);
+
+  --color-text: light-dark(
+    var(--ko-palette-text-light, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.279 min(c, 0.041) h))),
+    var(--ko-palette-text-dark, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.945 min(c, 0.011) h)))
+  );
+
+  --color-text-muted: light-dark(
+    var(--ko-palette-text-muted-light, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.554 min(c, 0.046) h))),
+    var(--ko-palette-text-muted-dark, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.711 min(c, 0.035) h)))
+  );
+
+  --color-text-strong: light-dark(
+    oklch(from var(--ko-palette-neutral) 0.219 min(c, 0.041) h),
+    oklch(from var(--ko-palette-neutral) 0.885 min(c, 0.011) h)
+  );
+
+  --color-border: light-dark(
+    var(--ko-palette-border-light, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.929 min(c, 0.013) h))),
+    var(--ko-palette-border-dark, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.327 min(c, 0.036) h)))
+  );
+
+  --shadow-surface: 0 1px 2px -1px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -14px oklch(from var(--ko-shadow-color) l c h / 0.2);
 }
