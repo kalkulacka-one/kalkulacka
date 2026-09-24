@@ -8,7 +8,7 @@ import type { AnswerViewModel } from "@/view-models/answer";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "koa:h-[138px]";
+const HEIGHT = "koa:h-[138px] koa:sm:hidden"; // sm+: the nav sits in the document flow now, no reserved gap needed.
 
 export type QuestionNavigationCard = {
   current: number;
