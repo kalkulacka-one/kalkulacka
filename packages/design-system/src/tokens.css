@@ -25,4 +25,89 @@
   --color-green: var(--ko-color-green);
   --color-red: var(--ko-color-red);
   --color-yellow: var(--ko-color-yellow);
+
+  /* 2026 tokens: the values live in styles.css; these pass them through to consumers with another prefix. */
+
+  /* Surfaces, text and answer colours. */
+  --color-page: var(--ko-color-page);
+  --color-surface: var(--ko-color-surface);
+  --color-surface-sunken: var(--ko-color-surface-sunken);
+  --color-surface-hover: var(--ko-color-surface-hover);
+  --color-text: var(--ko-color-text);
+  --color-text-muted: var(--ko-color-text-muted);
+  --color-text-strong: var(--ko-color-text-strong);
+  --color-text-subtle: var(--ko-color-text-subtle);
+  --color-border: var(--ko-color-border);
+  --color-border-strong: var(--ko-color-border-strong);
+  --color-focus: var(--ko-color-focus);
+  --color-agree: var(--ko-color-agree);
+  --color-agree-hover: var(--ko-color-agree-hover);
+  --color-agree-active: var(--ko-color-agree-active);
+  --color-agree-soft: var(--ko-color-agree-soft);
+  --color-agree-wash: var(--ko-color-agree-wash);
+  --color-agree-wash-strong: var(--ko-color-agree-wash-strong);
+  --color-on-agree: var(--ko-color-on-agree);
+  --color-disagree: var(--ko-color-disagree);
+  --color-disagree-hover: var(--ko-color-disagree-hover);
+  --color-disagree-active: var(--ko-color-disagree-active);
+  --color-disagree-soft: var(--ko-color-disagree-soft);
+  --color-disagree-wash: var(--ko-color-disagree-wash);
+  --color-disagree-wash-strong: var(--ko-color-disagree-wash-strong);
+  --color-on-disagree: var(--ko-color-on-disagree);
+  --color-neutral-ink: var(--ko-color-neutral-ink);
+  --color-neutral-soft: var(--ko-color-neutral-soft);
+  --color-neutral-wash: var(--ko-color-neutral-wash);
+  --color-neutral-wash-strong: var(--ko-color-neutral-wash-strong);
+  --color-on-neutral-ink: var(--ko-color-on-neutral-ink);
+
+  /* Typeface. */
+  --font-question: var(--ko-font-question);
+
+  /* Shape. */
+  --radius-card: var(--ko-radius-card);
+  --radius-control: var(--ko-radius-control);
+  --radius-chip: var(--ko-radius-chip);
+  --radius-pill: var(--ko-radius-pill);
+
+  /* Motion. */
+  --duration-fast: var(--ko-duration-fast);
+  --duration-base: var(--ko-duration-base);
+  --duration-slow: var(--ko-duration-slow);
+  --ease-spring: var(--ko-ease-spring);
+  --ease-exit: var(--ko-ease-exit);
+
+  /* Elevation. */
+  --shadow-card: var(--ko-shadow-card);
+  --shadow-card-next: var(--ko-shadow-card-next);
+  --shadow-card-back: var(--ko-shadow-card-back);
+  --shadow-card-lifted: var(--ko-shadow-card-lifted);
+  --shadow-sticky: var(--ko-shadow-sticky);
+  --shadow-surface: var(--ko-shadow-surface);
+
+  /* Fluid spacing. */
+  --spacing-fluid-gutter: var(--ko-spacing-fluid-gutter);
+  --spacing-fluid-header-top: var(--ko-spacing-fluid-header-top);
+  --spacing-fluid-progress-top: var(--ko-spacing-fluid-progress-top);
+  --spacing-fluid-card-pad-top: var(--ko-spacing-fluid-card-pad-top);
+  --spacing-fluid-card-pad-side: var(--ko-spacing-fluid-card-pad-side);
+  --spacing-fluid-card-pad-bottom: var(--ko-spacing-fluid-card-pad-bottom);
+  --spacing-fluid-star: var(--ko-spacing-fluid-star);
+  --spacing-fluid-action: var(--ko-spacing-fluid-action);
+  --spacing-fluid-nav: var(--ko-spacing-fluid-nav);
+  --spacing-fade-edge: var(--ko-spacing-fade-edge);
+  --spacing-fade-action: var(--ko-spacing-fade-action);
+  --spacing-scroll-tail: var(--ko-spacing-scroll-tail);
+
+  /* Type scale. */
+  --text-fluid-brand: var(--ko-text-fluid-brand);
+  --text-fluid-question: var(--ko-text-fluid-question);
+  --text-fluid-question--line-height: var(--ko-text-fluid-question--line-height);
+  --text-fluid-gist: var(--ko-text-fluid-gist);
+  --text-fluid-gist--line-height: var(--ko-text-fluid-gist--line-height);
+  --text-fluid-chip: var(--ko-text-fluid-chip);
+  --text-fluid-action-label: var(--ko-text-fluid-action-label);
+  --text-title: var(--ko-text-title);
+  --text-title--line-height: var(--ko-text-title--line-height);
+  --text-display: var(--ko-text-display);
+  --text-display--line-height: var(--ko-text-display--line-height);
 }
