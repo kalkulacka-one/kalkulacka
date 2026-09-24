@@ -59,7 +59,7 @@ export function SubscribeForm() {
             <div className="grid grid-rows-2 gap-2 justify-center">
               <div className="flex gap-4 justify-center items-center">
                 <Label className="sr-only">Внесете ја вашата е-пошта</Label>
-                <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="Е-пошта" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
+                <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="Е-пошта" {...register("email")} />
                 <Button disabled={isSubmitting} type="submit" variant="outline" color="neutral">
                   {isSubmitting ? "Испраќам" : "Испрати"}
                 </Button>
