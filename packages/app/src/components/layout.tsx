@@ -5,7 +5,10 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
-  return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto]">{children}</div>;
+  // Mobile (< sm) keeps today's grid: Content stretches to fill the viewport and BottomNavigation floats over it, fixed.
+  // sm and up switch to a plain column flow: Content sizes to its own content and BottomNavigation follows it in the
+  // document, sticking to the viewport bottom only once the page is taller than the screen.
+  return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
 }
 
 LayoutComponent.displayName = "Layout";
@@ -39,7 +42,14 @@ export type LayoutBottomNavigation = {
 };
 
 function BottomNavigation({ children, className }: LayoutBottomNavigation) {
-  return <div className={twMerge("koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:pointer-events-none koa:z-20", className)}>{children}</div>;
+  // < sm: unchanged, fixed overlay docked to the viewport bottom.
+  // sm+: back into the document flow, sticky to the viewport bottom so short pages keep it right under the content
+  // and long ones let it stick while the list scrolls underneath.
+  return (
+    <div className={twMerge("koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:pointer-events-none koa:z-20 koa:sm:sticky koa:sm:left-auto koa:sm:right-auto koa:sm:pointer-events-auto", className)}>
+      {children}
+    </div>
+  );
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";
