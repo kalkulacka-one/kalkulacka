@@ -1,14 +1,3 @@
-/*
- * `--ko-shadow-color` is a plain (non-@theme) hook, like the `--ko-palette-*`
- * ones below: it must not sit inside `@theme`, or a consumer that imports
- * this file under a different Tailwind prefix (e.g. the app package's `koa`)
- * would double-prefix it. See `styles.css` for the full derivation this
- * mirrors.
- */
-:root {
-  --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
-}
-
 @theme static {
   --font-display: var(--ko-font-display);
   --font-sans: var(--ko-font-sans);
@@ -37,51 +26,88 @@
   --color-red: var(--ko-color-red);
   --color-yellow: var(--ko-color-yellow);
 
-  /*
-   * Surfaces and text, ported from `styles.css` (P1) so a consumer that only
-   * imports this minimal token file — like the app package's own standalone
-   * build, see `packages/app/src/styles.css` — still gets these utilities.
-   * `--color-text-strong` deliberately does not cross-reference `--color-text`
-   * (a self-reference would need the emitted, prefixed name, which differs
-   * between this file's consumers) — it re-derives from the neutral palette
-   * with the same offset `styles.css` uses instead.
-   */
-  --color-page: light-dark(
-    var(--ko-palette-page-light, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.984 min(c, 0.003) h))),
-    var(--ko-palette-page-dark, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.18 min(c, 0.037) h)))
-  );
+  /* 2026 tokens: the values live in styles.css; these pass them through to consumers with another prefix. */
 
-  --color-surface: light-dark(
-    var(--ko-palette-surface-light, var(--ko-palette-surface, white)),
-    var(--ko-palette-surface-dark, var(--ko-palette-surface, oklch(from var(--ko-palette-neutral) 0.265 min(c, 0.045) h)))
-  );
+  /* Surfaces, text and answer colours. */
+  --color-page: var(--ko-color-page);
+  --color-surface: var(--ko-color-surface);
+  --color-surface-sunken: var(--ko-color-surface-sunken);
+  --color-surface-hover: var(--ko-color-surface-hover);
+  --color-text: var(--ko-color-text);
+  --color-text-muted: var(--ko-color-text-muted);
+  --color-text-strong: var(--ko-color-text-strong);
+  --color-text-subtle: var(--ko-color-text-subtle);
+  --color-border: var(--ko-color-border);
+  --color-border-strong: var(--ko-color-border-strong);
+  --color-focus: var(--ko-color-focus);
+  --color-agree: var(--ko-color-agree);
+  --color-agree-hover: var(--ko-color-agree-hover);
+  --color-agree-active: var(--ko-color-agree-active);
+  --color-agree-soft: var(--ko-color-agree-soft);
+  --color-agree-wash: var(--ko-color-agree-wash);
+  --color-agree-wash-strong: var(--ko-color-agree-wash-strong);
+  --color-on-agree: var(--ko-color-on-agree);
+  --color-disagree: var(--ko-color-disagree);
+  --color-disagree-hover: var(--ko-color-disagree-hover);
+  --color-disagree-active: var(--ko-color-disagree-active);
+  --color-disagree-soft: var(--ko-color-disagree-soft);
+  --color-disagree-wash: var(--ko-color-disagree-wash);
+  --color-disagree-wash-strong: var(--ko-color-disagree-wash-strong);
+  --color-on-disagree: var(--ko-color-on-disagree);
+  --color-neutral-ink: var(--ko-color-neutral-ink);
+  --color-neutral-soft: var(--ko-color-neutral-soft);
+  --color-neutral-wash: var(--ko-color-neutral-wash);
+  --color-neutral-wash-strong: var(--ko-color-neutral-wash-strong);
+  --color-on-neutral-ink: var(--ko-color-on-neutral-ink);
 
-  --color-surface-sunken: light-dark(
-    var(--ko-palette-surface-sunken-light, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.968 min(c, 0.007) h))),
-    var(--ko-palette-surface-sunken-dark, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.228 min(c, 0.037) h)))
-  );
+  /* Typeface. */
+  --font-question: var(--ko-font-question);
 
-  --color-surface-hover: color-mix(in oklab, var(--ko-palette-neutral) 8%, transparent);
+  /* Shape. */
+  --radius-card: var(--ko-radius-card);
+  --radius-control: var(--ko-radius-control);
+  --radius-chip: var(--ko-radius-chip);
+  --radius-pill: var(--ko-radius-pill);
 
-  --color-text: light-dark(
-    var(--ko-palette-text-light, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.279 min(c, 0.041) h))),
-    var(--ko-palette-text-dark, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.945 min(c, 0.011) h)))
-  );
+  /* Motion. */
+  --duration-fast: var(--ko-duration-fast);
+  --duration-base: var(--ko-duration-base);
+  --duration-slow: var(--ko-duration-slow);
+  --ease-spring: var(--ko-ease-spring);
+  --ease-exit: var(--ko-ease-exit);
 
-  --color-text-muted: light-dark(
-    var(--ko-palette-text-muted-light, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.554 min(c, 0.046) h))),
-    var(--ko-palette-text-muted-dark, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.711 min(c, 0.035) h)))
-  );
+  /* Elevation. */
+  --shadow-card: var(--ko-shadow-card);
+  --shadow-card-next: var(--ko-shadow-card-next);
+  --shadow-card-back: var(--ko-shadow-card-back);
+  --shadow-card-lifted: var(--ko-shadow-card-lifted);
+  --shadow-sticky: var(--ko-shadow-sticky);
+  --shadow-surface: var(--ko-shadow-surface);
 
-  --color-text-strong: light-dark(
-    oklch(from var(--ko-palette-neutral) 0.219 min(c, 0.041) h),
-    oklch(from var(--ko-palette-neutral) 0.885 min(c, 0.011) h)
-  );
+  /* Fluid spacing. */
+  --spacing-fluid-gutter: var(--ko-spacing-fluid-gutter);
+  --spacing-fluid-header-top: var(--ko-spacing-fluid-header-top);
+  --spacing-fluid-progress-top: var(--ko-spacing-fluid-progress-top);
+  --spacing-fluid-card-pad-top: var(--ko-spacing-fluid-card-pad-top);
+  --spacing-fluid-card-pad-side: var(--ko-spacing-fluid-card-pad-side);
+  --spacing-fluid-card-pad-bottom: var(--ko-spacing-fluid-card-pad-bottom);
+  --spacing-fluid-star: var(--ko-spacing-fluid-star);
+  --spacing-fluid-action: var(--ko-spacing-fluid-action);
+  --spacing-fluid-nav: var(--ko-spacing-fluid-nav);
+  --spacing-fade-edge: var(--ko-spacing-fade-edge);
+  --spacing-fade-action: var(--ko-spacing-fade-action);
+  --spacing-scroll-tail: var(--ko-spacing-scroll-tail);
 
-  --color-border: light-dark(
-    var(--ko-palette-border-light, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.929 min(c, 0.013) h))),
-    var(--ko-palette-border-dark, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.327 min(c, 0.036) h)))
-  );
-
-  --shadow-surface: 0 1px 2px -1px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -14px oklch(from var(--ko-shadow-color) l c h / 0.2);
+  /* Type scale. */
+  --text-fluid-brand: var(--ko-text-fluid-brand);
+  --text-fluid-question: var(--ko-text-fluid-question);
+  --text-fluid-question--line-height: var(--ko-text-fluid-question--line-height);
+  --text-fluid-gist: var(--ko-text-fluid-gist);
+  --text-fluid-gist--line-height: var(--ko-text-fluid-gist--line-height);
+  --text-fluid-chip: var(--ko-text-fluid-chip);
+  --text-fluid-action-label: var(--ko-text-fluid-action-label);
+  --text-title: var(--ko-text-title);
+  --text-title--line-height: var(--ko-text-title--line-height);
+  --text-display: var(--ko-text-display);
+  --text-display--line-height: var(--ko-text-display--line-height);
 }
