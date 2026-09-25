@@ -66,7 +66,7 @@ export function ResultPage({
                   </Button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{t("result.title")}</h3>
+                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-text-strong">{t("result.title")}</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -77,15 +77,15 @@ export function ResultPage({
         {shouldShowToggleComputed && (
           <div className="koa:mb-6">
             <div className="koa:flex koa:items-center koa:gap-3 koa:text-sm">
-              <div className="koa:relative koa:bg-slate-100 koa:rounded-full koa:p-1 koa:flex  koa:w-full koa:sm:w-auto koa:text-center">
+              <div className="koa:relative koa:bg-surface-sunken koa:rounded-full koa:p-1 koa:flex  koa:w-full koa:sm:w-auto koa:text-center">
                 <label
-                  className={`koa:grow koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${!showOnlyNested ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"}`}
+                  className={`koa:grow koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${!showOnlyNested ? "koa:bg-neutral-ink koa:text-on-neutral-ink" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"}`}
                 >
                   <input type="radio" name="resultView" checked={!showOnlyNested} onChange={() => onFilterChange(false)} className="koa:sr-only" />
                   {t("result.candidateLists")}
                 </label>
                 <label
-                  className={`koa:grow koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${showOnlyNested ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"}`}
+                  className={`koa:grow koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${showOnlyNested ? "koa:bg-neutral-ink koa:text-on-neutral-ink" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"}`}
                 >
                   <input type="radio" name="resultView" checked={showOnlyNested} onChange={() => onFilterChange(true)} className="koa:sr-only" />
                   {t("result.people")}
