@@ -16,11 +16,11 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
 
   return (
-    <ExpandableCard corner="topLeft" shadow="hard" className="koa:overflow-hidden koa:border koa:border-slate-200">
+    <ExpandableCard corner="topLeft" shadow="hard" className="koa:overflow-hidden koa:border koa:border-border">
       {({ open }) => (
         <>
           {match !== undefined && <ProgressBar value={match} color={order === 1 ? "primary" : "neutral"} corner="sharp" />}
-          <ExpandableCard.Content className="koa:grid koa:gap-3 koa:p-4 koa:sm:gap-4 koa:sm:p-6">
+          <ExpandableCard.Content className="koa:grid koa:gap-3 koa:p-4 koa:sm:gap-4 koa:sm:p-6 koa:text-left">
             <div className="koa:grid koa:grid-cols-[auto_1fr_auto] koa:gap-4 koa:items-center">
               {candidate.avatar ? (
                 <Avatar
@@ -39,19 +39,19 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                   <span className="koa:text-3xl koa:font-bold koa:tabular-nums">{order !== undefined ? order : "—"}</span>
                 </div>
               )}
-              <div className="koa:flex koa:flex-col koa:gap-1 koa:items-start koa:justify-center">
-                <h3 className="koa:text-lg koa:font-bold koa:leading-tight koa:text-slate-700">{candidate.displayName}</h3>
-                {candidate.organization && <p className="koa:text-sm koa:text-slate-500">{candidate.organization}</p>}
+              <div className="koa:flex koa:flex-col koa:gap-1 koa:items-start koa:justify-center koa:text-left koa:min-w-0">
+                <h3 className="koa:text-lg koa:font-bold koa:leading-tight koa:text-text-strong">{candidate.displayName}</h3>
+                {candidate.organization && <p className="koa:text-sm koa:text-text-muted">{candidate.organization}</p>}
                 {respondent === "expert" && (
-                  <p className="koa:text-xs koa:text-gray-500">
+                  <p className="koa:text-xs koa:text-text-muted">
                     {t("expertNoteLine1")}
                     <br /> {t("expertNoteLine2")}
                   </p>
                 )}
               </div>
               <div className="koa:flex koa:items-center koa:gap-2">
-                <span className="koa:text-3xl koa:font-bold koa:tracking-tight koa:text-slate-800">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
-                {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="koa:text-slate-400" />}
+                <span className="koa:text-3xl koa:font-bold koa:tracking-tight koa:text-text-strong">{match !== undefined ? `${Math.round(match)} %` : "—"}</span>
+                {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="koa:text-text-muted" />}
               </div>
             </div>
           </ExpandableCard.Content>
