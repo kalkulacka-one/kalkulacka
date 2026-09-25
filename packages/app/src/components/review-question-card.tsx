@@ -21,7 +21,7 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
   const t = useTranslations("koa.components.reviewQuestionCard");
   const { title, detail, statement } = question;
   return (
-    <Card shadow={false} className="koa:rounded-card! koa:border koa:border-border">
+    <Card shadow={false} className="koa:rounded-card! koa:border koa:border-border koa:shadow-card">
       <div className="koa:pt-fluid-card-pad-top koa:px-fluid-card-pad-side koa:pb-fluid-card-pad-bottom koa:flex koa:flex-col koa:gap-4">
         <div className="koa:flex koa:items-center koa:gap-2">
           <span className="koa:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-xs koa:font-semibold koa:text-text-muted">{title}</span>
