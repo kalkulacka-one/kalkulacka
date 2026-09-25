@@ -34,9 +34,9 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 />
               ) : (
                 <div
-                  className={`koa:flex koa:h-20 koa:w-20 koa:items-center koa:justify-center koa:rounded-2xl ${order === 1 ? "koa:bg-primary koa:text-on-bg-primary" : "koa:bg-white koa:text-slate-700"}`}
+                  className={`koa:flex koa:h-20 koa:w-20 koa:items-center koa:justify-center koa:rounded-2xl ${order === 1 ? "koa:bg-primary koa:text-on-bg-primary" : "koa:bg-surface-sunken koa:text-text-strong"}`}
                 >
-                  <span className="koa:text-3xl koa:font-bold">{order !== undefined ? order : "—"}</span>
+                  <span className="koa:text-3xl koa:font-bold koa:tabular-nums">{order !== undefined ? order : "—"}</span>
                 </div>
               )}
               <div className="koa:flex koa:flex-col koa:gap-1 koa:items-start koa:justify-center koa:text-left koa:min-w-0">
