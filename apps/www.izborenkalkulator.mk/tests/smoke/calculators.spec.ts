@@ -110,11 +110,10 @@ async function expectPageShell(page: Page) {
   await expect(page.locator("h1").first()).toBeVisible();
 }
 
-// The UX contract is a control with the answer's accessible name, not a widget: today it is a
-// Headless UI switch, the redesigned question card renders a button with aria-pressed.
+// An answer control is identified by its accessible name; it may be a switch or a toggle button.
 const answerControl = (page: Page, name: string) => page.getByRole("switch", { name }).or(page.getByRole("button", { name })).first();
 
-// Likewise an action is known by its accessible name; a redesigned screen may render it as a link.
+// An action is identified by its accessible name; it may be a button or a link.
 const action = (page: Page, name: string) => page.getByRole("button", { name }).or(page.getByRole("link", { name })).first();
 
 async function answerEveryQuestion(page: Page, calculator: string) {
