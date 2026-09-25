@@ -83,7 +83,10 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
         </WithCondenseOnScroll>
       </Layout.Header>
       <Layout.Content>
-        <QuestionCard question={question} current={number} total={total} />
+        {/* From sm up, reserve the tallest question's height (≈31rem at the content width) so the answer bar below keeps its place from question to question; short viewports cap it. */}
+        <div className="koa:grid koa:sm:min-h-[min(31rem,calc(100dvh-17rem))]">
+          <QuestionCard question={question} current={number} total={total} />
+        </div>
       </Layout.Content>
       <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
