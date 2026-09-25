@@ -97,6 +97,7 @@ export const IconOnly: ButtonStory = {
     color: "primary",
     type: "button",
     disabled: false,
+    "aria-label": "Hledat",
   },
 };
 
@@ -107,6 +108,7 @@ export const IconOnlySecondary: ButtonStory = {
     color: "secondary",
     type: "button",
     disabled: false,
+    "aria-label": "Zavřít",
   },
 };
 
@@ -117,6 +119,7 @@ export const IconOnlyNeutral: ButtonStory = {
     color: "neutral",
     type: "button",
     disabled: false,
+    "aria-label": "Nastavení",
   },
 };
 
