@@ -110,13 +110,20 @@ async function expectPageShell(page: Page) {
   await expect(page.locator("h1").first()).toBeVisible();
 }
 
+// The UX contract is a control with the answer's accessible name, not a widget: today it is a
+// Headless UI switch, the redesigned question card renders a button with aria-pressed.
+const answerControl = (page: Page, name: string) => page.getByRole("switch", { name }).or(page.getByRole("button", { name })).first();
+
+// Likewise an action is known by its accessible name; a redesigned screen may render it as a link.
+const action = (page: Page, name: string) => page.getByRole("button", { name }).or(page.getByRole("link", { name })).first();
+
 async function answerEveryQuestion(page: Page, calculator: string) {
   const reviewUrl = endsWith(calculator + pages.review);
   for (let answered = 0; answered < limits.questions; answered++) {
     if (reviewUrl.test(page.url())) return;
     const before = page.url();
     // Choosing an answer advances to the next question, and after the last one to the review.
-    await page.getByRole("switch", { name: labels.yes }).first().click({ timeout: timeouts.step });
+    await answerControl(page, labels.yes).click({ timeout: timeouts.step });
     await page.waitForURL((url) => url.toString() !== before, { timeout: timeouts.step });
   }
   throw new Error(`${calculator} did not reach its review page within ${limits.questions} questions`);
@@ -126,16 +133,16 @@ async function completeFlow(page: Page, calculator: string) {
   await page.goto(calculator + pages.introduction, { timeout: timeouts.navigation });
   await expectPageShell(page);
 
-  await page.getByRole("button", { name: labels.continue }).first().click({ timeout: timeouts.step });
+  await action(page, labels.continue).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.guide), { timeout: timeouts.navigation });
   await expectPageShell(page);
 
-  await page.getByRole("button", { name: labels.start }).first().click({ timeout: timeouts.step });
+  await action(page, labels.start).click({ timeout: timeouts.step });
   await page.waitForURL(new RegExp(`${escapeRegExp(calculator + pages.question)}/\\d+$`), { timeout: timeouts.navigation });
   await answerEveryQuestion(page, calculator);
   await expectPageShell(page);
 
-  await page.getByRole("button", { name: labels.showResults }).first().click({ timeout: timeouts.step });
+  await action(page, labels.showResults).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.result), { timeout: timeouts.navigation });
   await expectPageShell(page);
   await expect(page.getByText(/\d+\s?%/).first()).toBeVisible({ timeout: timeouts.step });
