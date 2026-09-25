@@ -1,29 +1,20 @@
-import cs from "@kalkulacka-one/app/locales/cs.json";
-import en from "@kalkulacka-one/app/locales/en.json";
-import mk from "@kalkulacka-one/app/locales/mk.json";
-import sk from "@kalkulacka-one/app/locales/sk.json";
-
 import type { APIRequestContext, Page } from "@playwright/test";
 import { test as base, expect } from "@playwright/test";
 
 import { routeSlugs } from "@/config/route-slugs";
 
+import { vocabulary } from "./vocabulary";
+
 /**
  * Smoke suite against live election content (contract T9b): every calculator the site links to
  * completes its flow and renders a result. Calculators are discovered from the running app and
- * every assertion is structural – no titles, counts or values – so content changes never require
- * a test change. The file is identical in every instance: the locale, the slugs and the labels
- * all come from the app's own config and the app package's messages.
+ * the assertions are structural – no titles, counts or values from the content – so content
+ * changes never require a test change. The file is identical in every instance: the slugs come
+ * from the app's config and the four core words from the vocabulary file next to this one.
  */
 
-const messagesByLocale = { cs, en, mk, sk };
-const isSupportedLocale = (locale: string): locale is keyof typeof messagesByLocale => locale in messagesByLocale;
-
-const [instance] = Object.entries(routeSlugs);
-if (!instance) throw new Error("route-slugs.ts declares no locale");
-const [locale, slugs] = instance;
-if (!isSupportedLocale(locale)) throw new Error(`no app package messages for locale ${locale}`);
-const messages = messagesByLocale[locale];
+const [slugs] = Object.values(routeSlugs);
+if (!slugs) throw new Error("route-slugs.ts declares no locale");
 
 const pages = {
   introduction: `/${slugs.pages.introduction}`,
@@ -31,14 +22,6 @@ const pages = {
   question: `/${slugs.pages.question}`,
   review: `/${slugs.pages.review}`,
   result: `/${slugs.pages.result}`,
-} as const;
-
-// The labels the flow components render, read from the same messages they use.
-const labels = {
-  continue: messages.koa.components.introductionNavigationCard.continueButton,
-  start: messages.koa.components.guideNavigationCard.startButton,
-  yes: messages.koa.components.questionNavigationCard.yes,
-  showResults: messages.koa.components.reviewNavigationCard.showResultsButton,
 } as const;
 
 const limits = { crawlDepth: 3, crawlPages: 50, questions: 200 } as const;
@@ -110,13 +93,16 @@ async function expectPageShell(page: Page) {
   await expect(page.locator("h1").first()).toBeVisible();
 }
 
+// A control is found by its visible text alone, whatever element renders it.
+const control = (page: Page, text: string) => page.getByText(text, { exact: true }).first();
+
 async function answerEveryQuestion(page: Page, calculator: string) {
   const reviewUrl = endsWith(calculator + pages.review);
   for (let answered = 0; answered < limits.questions; answered++) {
     if (reviewUrl.test(page.url())) return;
     const before = page.url();
     // Choosing an answer advances to the next question, and after the last one to the review.
-    await page.getByRole("switch", { name: labels.yes }).first().click({ timeout: timeouts.step });
+    await control(page, vocabulary.yes).click({ timeout: timeouts.step });
     await page.waitForURL((url) => url.toString() !== before, { timeout: timeouts.step });
   }
   throw new Error(`${calculator} did not reach its review page within ${limits.questions} questions`);
@@ -126,16 +112,16 @@ async function completeFlow(page: Page, calculator: string) {
   await page.goto(calculator + pages.introduction, { timeout: timeouts.navigation });
   await expectPageShell(page);
 
-  await page.getByRole("button", { name: labels.continue }).first().click({ timeout: timeouts.step });
+  await control(page, vocabulary.continue).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.guide), { timeout: timeouts.navigation });
   await expectPageShell(page);
 
-  await page.getByRole("button", { name: labels.start }).first().click({ timeout: timeouts.step });
+  await control(page, vocabulary.start).click({ timeout: timeouts.step });
   await page.waitForURL(new RegExp(`${escapeRegExp(calculator + pages.question)}/\\d+$`), { timeout: timeouts.navigation });
   await answerEveryQuestion(page, calculator);
   await expectPageShell(page);
 
-  await page.getByRole("button", { name: labels.showResults }).first().click({ timeout: timeouts.step });
+  await control(page, vocabulary.showResults).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.result), { timeout: timeouts.navigation });
   await expectPageShell(page);
   await expect(page.getByText(/\d+\s?%/).first()).toBeVisible({ timeout: timeouts.step });
