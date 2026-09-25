@@ -93,11 +93,8 @@ async function expectPageShell(page: Page) {
   await expect(page.locator("h1").first()).toBeVisible();
 }
 
-// An answer control is identified by its accessible name; it may be a switch or a toggle button.
-const answerControl = (page: Page, name: string) => page.getByRole("switch", { name }).or(page.getByRole("button", { name })).first();
-
-// An action is identified by its accessible name; it may be a button or a link.
-const action = (page: Page, name: string) => page.getByRole("button", { name }).or(page.getByRole("link", { name })).first();
+// A control is found by its visible text alone, whatever element renders it.
+const control = (page: Page, text: string) => page.getByText(text, { exact: true }).first();
 
 async function answerEveryQuestion(page: Page, calculator: string) {
   const reviewUrl = endsWith(calculator + pages.review);
@@ -105,7 +102,7 @@ async function answerEveryQuestion(page: Page, calculator: string) {
     if (reviewUrl.test(page.url())) return;
     const before = page.url();
     // Choosing an answer advances to the next question, and after the last one to the review.
-    await answerControl(page, vocabulary.yes).click({ timeout: timeouts.step });
+    await control(page, vocabulary.yes).click({ timeout: timeouts.step });
     await page.waitForURL((url) => url.toString() !== before, { timeout: timeouts.step });
   }
   throw new Error(`${calculator} did not reach its review page within ${limits.questions} questions`);
@@ -115,16 +112,16 @@ async function completeFlow(page: Page, calculator: string) {
   await page.goto(calculator + pages.introduction, { timeout: timeouts.navigation });
   await expectPageShell(page);
 
-  await action(page, vocabulary.continue).click({ timeout: timeouts.step });
+  await control(page, vocabulary.continue).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.guide), { timeout: timeouts.navigation });
   await expectPageShell(page);
 
-  await action(page, vocabulary.start).click({ timeout: timeouts.step });
+  await control(page, vocabulary.start).click({ timeout: timeouts.step });
   await page.waitForURL(new RegExp(`${escapeRegExp(calculator + pages.question)}/\\d+$`), { timeout: timeouts.navigation });
   await answerEveryQuestion(page, calculator);
   await expectPageShell(page);
 
-  await action(page, vocabulary.showResults).click({ timeout: timeouts.step });
+  await control(page, vocabulary.showResults).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.result), { timeout: timeouts.navigation });
   await expectPageShell(page);
   await expect(page.getByText(/\d+\s?%/).first()).toBeVisible({ timeout: timeouts.step });
