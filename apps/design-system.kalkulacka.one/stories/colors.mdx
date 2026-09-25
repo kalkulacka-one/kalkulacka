@@ -305,6 +305,129 @@ In addition, combinations (element on token) with appropriate color contrast are
   </div>
 </Unstyled>
 
+Surfaces, text and the answer colors are derived from the neutral, primary and secondary palette colors, so every existing theme gets a complete light and dark set for free. A theme pins any of them with `--ko-palette-page`, `--ko-palette-surface`, `--ko-palette-text`, `--ko-palette-agree`, … (or the `-light` / `-dark` variants).
+
+#### Surfaces and text
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "page", variable: "--ko-color-page" },
+          { label: "surface", variable: "--ko-color-surface" },
+          { label: "surface sunken", variable: "--ko-color-surface-sunken" },
+          { label: "text", variable: "--ko-color-text" },
+          { label: "text muted", variable: "--ko-color-text-muted" },
+          { label: "border", variable: "--ko-color-border" },
+          { label: "focus", variable: "--ko-color-focus" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Answers
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "agree", variable: "--ko-color-agree" },
+          { label: "agree soft", variable: "--ko-color-agree-soft" },
+          { label: "on agree", variable: "--ko-color-on-agree" },
+          { label: "disagree", variable: "--ko-color-disagree" },
+          { label: "disagree soft", variable: "--ko-color-disagree-soft" },
+          { label: "on disagree", variable: "--ko-color-on-disagree" },
+          { label: "neutral ink", variable: "--ko-color-neutral-ink" },
+          { label: "neutral soft", variable: "--ko-color-neutral-soft" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
 ### Logo colors
 
 <Unstyled>
@@ -362,3 +485,13 @@ In addition, combinations (element on token) with appropriate color contrast are
     ))}
   </div>
 </Unstyled>
+
+## Shape, motion and scale
+
+Beyond colors, the design system defines a few non-color tokens that components share. Themes override them through `--ko-shape-*` and `--ko-motion-*` variables.
+
+- **radius**: `--ko-radius-card` (the signature square top-left corner: `0 30px 30px 30px`), `--ko-radius-control` (fluid 16–22px), `--ko-radius-chip`, `--ko-radius-pill` — used as `ko:rounded-card`, `ko:rounded-control`, …; a theme pins them with `--ko-shape-radius-card`, …
+- **motion**: `--ko-duration-fast` / `-base` / `-slow` (120 / 150 / 250 ms, collapsing to 0.01 ms under `prefers-reduced-motion`) and `--ko-ease-spring` / `--ko-ease-exit`; a theme pins them with `--ko-motion-duration-*` and `--ko-motion-easing-*`
+- **elevation**: `--ko-shadow-card`, `-card-next`, `-card-back`, `-card-lifted`, `-sticky`, `-surface`, all tinted with the neutral palette color — used as `ko:shadow-card`, …
+- **fluid scale**: sizes that ramp linearly between a 375px and a 1600px viewport via `clamp()`, in the spacing namespace (`ko:h-fluid-nav`, `ko:p-fluid-gutter`, `ko:size-fluid-star`, `ko:pt-fluid-card-pad-top`) and the text namespace (`ko:text-fluid-question`, `ko:text-fluid-gist`, `ko:text-fluid-chip`, `ko:text-title`, `ko:text-display`)
+- **mode**: `data-mode="light"` or `data-mode="dark"` on the root element forces a color scheme; without it the page follows the operating system.

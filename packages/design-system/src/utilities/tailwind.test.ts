@@ -32,4 +32,33 @@ describe("twMerge", () => {
     expect(koa("koa:p-2 koa:p-4")).toBe("koa:p-4");
     expect(koa("ko:p-2 ko:p-4")).toBe("ko:p-2 ko:p-4");
   });
+
+  it("merges a built-in radius with the card radius token", () => {
+    expect(twMerge("ko:rounded-lg ko:rounded-card")).toBe("ko:rounded-card");
+    expect(twMerge("ko:rounded-pill ko:rounded-chip")).toBe("ko:rounded-chip");
+  });
+
+  it("merges a built-in shadow with an elevation token", () => {
+    expect(twMerge("ko:shadow-md ko:shadow-card")).toBe("ko:shadow-card");
+    expect(twMerge("ko:shadow-card-next ko:shadow-card-lifted")).toBe("ko:shadow-card-lifted");
+  });
+
+  it("merges the drop-shadow token with a built-in drop-shadow", () => {
+    expect(twMerge("ko:drop-shadow-md ko:drop-shadow-hard")).toBe("ko:drop-shadow-hard");
+  });
+
+  it("merges a built-in font size with a fluid text token", () => {
+    expect(twMerge("ko:text-sm ko:text-fluid-question")).toBe("ko:text-fluid-question");
+    expect(twMerge("ko:text-fluid-gist ko:text-title")).toBe("ko:text-title");
+  });
+
+  it("merges a built-in spacing utility with a fluid spacing token", () => {
+    expect(twMerge("ko:p-4 ko:p-fluid-gutter")).toBe("ko:p-fluid-gutter");
+    expect(twMerge("ko:h-10 ko:h-fluid-nav")).toBe("ko:h-fluid-nav");
+  });
+
+  it("merges a built-in easing function with a motion token", () => {
+    expect(twMerge("ko:ease-in ko:ease-spring")).toBe("ko:ease-spring");
+    expect(twMerge("ko:ease-spring ko:ease-exit")).toBe("ko:ease-exit");
+  });
 });
