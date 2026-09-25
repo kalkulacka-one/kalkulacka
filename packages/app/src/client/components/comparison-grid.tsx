@@ -24,7 +24,7 @@ function ComparisonGridDashlinesOverlay({ result, filterNestedCandidates }: Comp
       <div className="koa:h-full koa:flex koa:gap-8">
         {/* User column line - sticky */}
         <div className="koa:w-[100px] koa:flex koa:justify-center koa:sticky koa:left-4">
-          <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-slate-200" />
+          <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-border" />
         </div>
         {/* Candidate columns lines */}
         {result.matches.map((match) => {
@@ -32,7 +32,7 @@ function ComparisonGridDashlinesOverlay({ result, filterNestedCandidates }: Comp
           if (!nestedMatches) {
             return (
               <div key={`line-${match.candidate.id}`} className="koa:w-[100px] koa:flex koa:justify-center">
-                <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-slate-200" />
+                <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-border" />
               </div>
             );
           }
@@ -40,7 +40,7 @@ function ComparisonGridDashlinesOverlay({ result, filterNestedCandidates }: Comp
             <div key={`line-group-${match.candidate.id}`} className="koa:flex koa:gap-8">
               {nestedMatches.map((nested: NonNullable<ResultViewModel["matches"][0]["nestedMatches"]>[0]) => (
                 <div key={`line-${nested.candidate.id}`} className="koa:w-[100px] koa:flex koa:justify-center">
-                  <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-slate-200" />
+                  <div className="koa:w-0 koa:h-full koa:border-r-2 koa:border-dashed koa:border-border" />
                 </div>
               ))}
             </div>
@@ -65,10 +65,10 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
   return (
     <div className="koa:sticky koa:left-4 koa:max-w-dvw koa:z-10 koa:flex koa:flex-col koa:gap-2">
       <h3 className="koa:text-sm koa:font-medium">{t("selectParty")}</h3>
-      <div className="koa:relative koa:bg-slate-100 koa:rounded-full koa:p-1 koa:flex koa:flex-wrap koa:gap-1 koa:max-w-[90dvw] koa:sm:w-fit">
+      <div className="koa:relative koa:bg-surface-sunken koa:rounded-full koa:p-1 koa:flex koa:flex-wrap koa:gap-1 koa:max-w-[90dvw] koa:sm:w-fit">
         <label
           className={` koa:text-xs koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${
-            selectedOrganizations.size === 0 ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"
+            selectedOrganizations.size === 0 ? "koa:bg-neutral-ink koa:text-on-neutral-ink" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"
           }`}
         >
           <input
@@ -89,7 +89,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
           <label
             key={org}
             className={`koa:text-xs koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${
-              selectedOrganizations.has(org) ? "koa:bg-slate-700 koa:text-slate-50" : "koa:bg-slate-100 koa:text-slate-700 koa:hover:bg-slate-200"
+              selectedOrganizations.has(org) ? "koa:bg-neutral-ink koa:text-on-neutral-ink" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"
             }`}
           >
             <input
@@ -145,7 +145,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
         const nestedCandidates = nestedMatches?.map((nested: NonNullable<ResultViewModel["matches"][0]["nestedMatches"]>[0]) => (
           <div
             key={`header-${nested.candidate.id}`}
-            className=" koa:rounded-xl koa:bg-slate-100/60 koa:backdrop-blur-lg koa:border-slate-100 koa:border-1 koa:w-[100px] koa:flex-shrink-0 koa:flex koa:items-center koa:justify-center koa:text-center koa:text-xs"
+            className=" koa:rounded-xl koa:bg-surface-sunken/60 koa:backdrop-blur-lg koa:border-border koa:border-1 koa:w-[100px] koa:flex-shrink-0 koa:flex koa:items-center koa:justify-center koa:text-center koa:text-xs"
           >
             <span>
               {nested.candidate.displayName}
@@ -157,7 +157,7 @@ function ComparisonHeader({ condensed = false, result, filterNestedCandidates }:
           return (
             <div
               key={`header-${match.candidate.id}`}
-              className="koa:rounded-xl koa:bg-slate-100/60 koa:backdrop-blur-lg koa:border-slate-100 koa:border-1 koa:w-[100px] koa:flex-shrink-0 koa:flex koa:items-center koa:justify-center koa:text-center koa:text-xs"
+              className="koa:rounded-xl koa:bg-surface-sunken/60 koa:backdrop-blur-lg koa:border-border koa:border-1 koa:w-[100px] koa:flex-shrink-0 koa:flex koa:items-center koa:justify-center koa:text-center koa:text-xs"
             >
               {match.candidate.displayName}
             </div>
@@ -213,7 +213,7 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
         <div className="koa:h-32 koa:absolute koa:left-0 koa:top-0" />
         {/* user answers */}
         <div className="koa:w-[100px] koa:z-20 koa:flex-shrink-0 koa:flex koa:justify-center koa:items-center koa:min-h-[40px] koa:sticky koa:left-4">
-          <div className="koa:rounded-full koa:bg-slate-50">
+          <div className="koa:rounded-full koa:bg-surface-sunken">
             <ComparisonAnswerIcon answer={userAnswer?.answer?.answer} />
           </div>
         </div>
