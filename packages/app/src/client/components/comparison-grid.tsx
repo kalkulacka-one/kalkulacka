@@ -68,7 +68,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
       <div className="koa:relative koa:bg-surface-sunken koa:rounded-full koa:p-1 koa:flex koa:flex-wrap koa:gap-1 koa:max-w-[90dvw] koa:sm:w-fit">
         <label
           className={` koa:text-xs koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${
-            selectedOrganizations.size === 0 ? "koa:bg-neutral-ink koa:text-on-neutral-ink" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"
+            selectedOrganizations.size === 0 ? "koa:bg-neutral koa:text-on-bg-neutral" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"
           }`}
         >
           <input
@@ -89,7 +89,7 @@ function OrganizationFilter({ organizations, selectedOrganizations, setSelectedO
           <label
             key={org}
             className={`koa:text-xs koa:px-4 koa:py-2 koa:rounded-full koa:cursor-pointer koa:transition-colors ${
-              selectedOrganizations.has(org) ? "koa:bg-neutral-ink koa:text-on-neutral-ink" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"
+              selectedOrganizations.has(org) ? "koa:bg-neutral koa:text-on-bg-neutral" : "koa:bg-surface-sunken koa:text-text-strong koa:hover:bg-surface-hover"
             }`}
           >
             <input

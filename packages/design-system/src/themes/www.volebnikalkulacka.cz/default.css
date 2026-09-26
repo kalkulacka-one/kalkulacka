@@ -9,10 +9,10 @@
  * source theme and for any consumer that does opt into dark mode.
  *
  * The dark accents are capped by contrast, not taste: the filled answer
- * button pins white ink in dark mode, so agree/disagree can only go as light
- * as still clears 4.5:1 against white (#2c6cee / #cb463f land at ~4.68:1).
- * Disagree's chroma is pulled in further than agree's at the same lightness,
- * because red at blue's chroma reads hotter than blue does.
+ * button pins white ink in dark mode, so primary/secondary can only go as
+ * light as still clears 4.5:1 against white (#2c6cee / #cb463f land at
+ * ~4.68:1). Secondary's chroma is pulled in further than primary's at the
+ * same lightness, because red at blue's chroma reads hotter than blue does.
  */
 :root {
   --ko-typeface-display: "Radio Canada";
@@ -25,7 +25,7 @@
   --ko-palette-secondary: #dc2626;
   --ko-palette-secondary-dark: #cb463f;
   --ko-palette-neutral: #334155;
-  --ko-palette-neutral-ink-dark: #f2f5f9;
+  --ko-palette-neutral-dark: #f2f5f9;
 
   /* Surfaces and ink. */
   --ko-palette-page-light: #f8fafc;
