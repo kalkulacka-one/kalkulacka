@@ -1,5 +1,4 @@
 import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
-import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { Card } from "@kalkulacka-one/design-system/server";
 
 import { mdiStar, mdiStarOutline } from "@mdi/js";
@@ -7,6 +6,8 @@ import { useTranslations } from "next-intl";
 
 import type { AnswerViewModel } from "@/view-models/answer";
 import type { QuestionViewModel } from "@/view-models/question";
+
+import { answerCheckIcon, answerCrossIcon } from "./question-card-icons";
 
 export type QuestionCard = {
   question: QuestionViewModel;
@@ -45,15 +46,17 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
         </div>
 
         <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-stretch">
-          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
-            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
-          </ToggleButton>
+          <span className="koa:inline-grid koa:h-fluid-action koa:aspect-square koa:place-items-center koa:rounded-full koa:border koa:border-border">
+            <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
+              <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} className="koa:text-text-strong" />
+            </ToggleButton>
+          </span>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
-            <Icon icon={logoCheck} decorative={true} />
+            <Icon icon={answerCheckIcon} decorative={true} />
             <span className="koa:hidden koa:sm:inline">{t("yes")}</span>
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)} aria-label={t("no")}>
-            <Icon icon={logoCross} decorative={true} />
+            <Icon icon={answerCrossIcon} decorative={true} />
             <span className="koa:hidden koa:sm:inline">{t("no")}</span>
           </ToggleButton>
         </div>
