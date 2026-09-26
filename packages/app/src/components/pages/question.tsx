@@ -91,7 +91,7 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           screen's step row lives in this same flow (not Layout.BottomNavigation)
           so it renders identically whether or not the shell PR is merged.
         */}
-        <div className="koa:mx-auto koa:flex koa:h-full koa:w-full koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
+        <div className="koa:mx-auto koa:flex koa:h-full koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
           <QuestionProgress current={number} total={total} />
           <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
           <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
