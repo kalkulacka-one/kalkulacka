@@ -16,17 +16,13 @@ export function ResultNavigationCard({ onNextClick, onShareClick }: ResultNaviga
 
   return (
     <NavigationCard>
-      <div className="koa:flex koa:gap-2 koa:w-full">
-        <div className="koa:flex-1">
-          <Button color="neutral" variant="outline" onClick={onNextClick}>
-            {t("compareButton")}
-          </Button>
-        </div>
-        <div className="koa:flex-1">
-          <Button color="neutral" variant="fill" onClick={onShareClick}>
-            {t("shareButton")}
-          </Button>
-        </div>
+      <div className="koa:grid koa:grid-cols-2 koa:gap-2 koa:sm:gap-3 koa:w-full koa:*:w-full">
+        <Button color="neutral" variant="outline" onClick={onNextClick}>
+          {t("compareButton")}
+        </Button>
+        <Button color="neutral" variant="fill" onClick={onShareClick}>
+          {t("shareButton")}
+        </Button>
       </div>
     </NavigationCard>
   );
