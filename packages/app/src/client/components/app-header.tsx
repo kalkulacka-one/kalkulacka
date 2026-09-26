@@ -40,7 +40,7 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const gridClasses = "koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center";
   const expandedRowsClasses = "koa:grid-rows-[3rem_auto]";
   const collapsedRowsClasses = "koa:grid-rows-[3rem]";
-  const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-1";
+  const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-2 koa:sm:gap-y-3";
   const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
   const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2";
@@ -53,30 +53,32 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
   return (
-    <header className="koa:@container koa:sticky koa:top-0 koa:p-2 koa:sm:p-3 koa:bg-white/60 koa:backdrop-blur-md">
-      <div className={headerGridClasses}>
-        <div className={mainClasses}>
-          <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
-        </div>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === AppHeaderRight) {
-            return (child.props as { children: ReactNode }).children;
-          }
-          return null;
-        })}
-        {(expand || (condensed && hasBottomLeft)) && (
-          <div className={bottomClasses}>
-            {React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
-                return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
-                  ...(child.props || {}),
-                  condensed,
-                });
-              }
-              return null;
-            })}
+    <header className="koa:@container koa:sticky koa:top-0 koa:bg-white/60 koa:backdrop-blur-md">
+      <div className="koa:mx-auto koa:max-w-xl koa:w-full koa:px-fluid-gutter koa:py-2 koa:sm:px-4 koa:sm:py-3">
+        <div className={headerGridClasses}>
+          <div className={mainClasses}>
+            <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
           </div>
-        )}
+          {React.Children.map(children, (child) => {
+            if (React.isValidElement(child) && child.type === AppHeaderRight) {
+              return (child.props as { children: ReactNode }).children;
+            }
+            return null;
+          })}
+          {(expand || (condensed && hasBottomLeft)) && (
+            <div className={bottomClasses}>
+              {React.Children.map(children, (child) => {
+                if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
+                  return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
+                    ...(child.props || {}),
+                    condensed,
+                  });
+                }
+                return null;
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
@@ -101,12 +103,12 @@ function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMa
   return (
     <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
-      <div className="koa:grid koa:text-sm koa:text-slate-700 koa:leading-none">
-        <h1 className="koa:font-light">{title}</h1>
-        <div>
-          <h2 className="koa:font-semibold koa:inline">{heading?.title}</h2>
-          {heading?.title && heading?.secondaryTitle && <span className="koa:font-light koa:hidden koa:@[24rem]:inline"> • </span>}
-          <span className="koa:font-light koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
+      <div className="koa:grid koa:gap-0.5 koa:leading-none">
+        <h1 className="koa:text-xs koa:font-normal koa:text-text-muted">{title}</h1>
+        <div className="koa:text-sm koa:text-text">
+          <h2 className="koa:font-medium koa:inline">{heading?.title}</h2>
+          {heading?.title && heading?.secondaryTitle && <span className="koa:font-normal koa:hidden koa:@[24rem]:inline"> • </span>}
+          <span className="koa:font-normal koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
         </div>
         {children}
       </div>

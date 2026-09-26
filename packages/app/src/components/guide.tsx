@@ -16,13 +16,13 @@ export function Guide({ calculator }: Guide) {
   const t = useTranslations("koa.components.guide");
 
   return (
-    <div className="koa:grid koa:gap-4">
+    <div className="koa:-mx-2 koa:px-fluid-gutter koa:pt-fluid-header-top koa:sm:mx-0 koa:sm:px-0 koa:grid koa:gap-3 koa:sm:gap-4">
       <Card shadow="hard" className="koa:border koa:border-slate-200">
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
           <Icon icon={logoCheck} decorative={true} className="koa:text-primary" />
           <div>
-            <p className="koa:font-semibold koa:text-slate-700">{t("agreement.title")}</p>
-            <p className="koa:text-sm koa:text-slate-500">{t("agreement.description")}</p>
+            <p className="koa:font-semibold koa:text-text-strong">{t("agreement.title")}</p>
+            <p className="koa:text-sm koa:text-text-muted">{t("agreement.description")}</p>
           </div>
         </div>
       </Card>
@@ -30,8 +30,8 @@ export function Guide({ calculator }: Guide) {
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
           <Icon icon={logoCross} decorative={true} className="koa:text-secondary" />
           <div>
-            <p className="koa:font-semibold koa:text-slate-700">{t("disagreement.title")}</p>
-            <p className="koa:text-sm koa:text-slate-500">{t("disagreement.description")}</p>
+            <p className="koa:font-semibold koa:text-text-strong">{t("disagreement.title")}</p>
+            <p className="koa:text-sm koa:text-text-muted">{t("disagreement.description")}</p>
           </div>
         </div>
       </Card>
@@ -39,8 +39,8 @@ export function Guide({ calculator }: Guide) {
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
           <Icon icon={mdiArrowRight} decorative={true} />
           <div>
-            <p className="koa:font-semibold koa:text-slate-700">{t("skip.title")}</p>
-            <p className="koa:text-sm koa:text-slate-500">{t("skip.description")}</p>
+            <p className="koa:font-semibold koa:text-text-strong">{t("skip.title")}</p>
+            <p className="koa:text-sm koa:text-text-muted">{t("skip.description")}</p>
           </div>
         </div>
       </Card>
@@ -48,12 +48,12 @@ export function Guide({ calculator }: Guide) {
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
           <Icon icon={mdiStar} decorative={true} className="koa:text-yellow-400" />
           <div>
-            <p className="koa:font-semibold koa:text-slate-700">{t("important.title")}</p>
-            <p className="koa:text-sm koa:text-slate-500">{t("important.description")}</p>
+            <p className="koa:font-semibold koa:text-text-strong">{t("important.title")}</p>
+            <p className="koa:text-sm koa:text-text-muted">{t("important.description")}</p>
           </div>
         </div>
       </Card>
-      <div className="koa:grid koa:gap-1 koa:max-w-prose">
+      <div className="koa:grid koa:gap-2 koa:max-w-prose koa:text-text-muted">
         <Markdown allowedElements={["p", "strong", "em", "ul", "ol", "li", "a"]} skipHtml>
           {calculator.methodology}
         </Markdown>
