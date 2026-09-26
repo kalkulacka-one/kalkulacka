@@ -6,12 +6,18 @@
   --color-primary: var(--ko-color-primary);
   --color-primary-hover: var(--ko-color-primary-hover);
   --color-primary-active: var(--ko-color-primary-active);
+  --color-primary-soft: var(--ko-color-primary-soft);
+  --color-primary-wash: var(--ko-color-primary-wash);
+  --color-primary-wash-strong: var(--ko-color-primary-wash-strong);
   --color-primary-disabled: var(--ko-color-primary-disabled);
   --color-on-bg-primary: var(--ko-color-on-bg-primary);
 
   --color-secondary: var(--ko-color-secondary);
   --color-secondary-hover: var(--ko-color-secondary-hover);
   --color-secondary-active: var(--ko-color-secondary-active);
+  --color-secondary-soft: var(--ko-color-secondary-soft);
+  --color-secondary-wash: var(--ko-color-secondary-wash);
+  --color-secondary-wash-strong: var(--ko-color-secondary-wash-strong);
   --color-secondary-disabled: var(--ko-color-secondary-disabled);
   --color-on-bg-secondary: var(--ko-color-on-bg-secondary);
 
@@ -20,6 +26,9 @@
   --color-neutral-active: var(--ko-color-neutral-active);
   --color-neutral-disabled: var(--ko-color-neutral-disabled);
   --color-neutral-inactive: var(--ko-color-neutral-inactive);
+  --color-neutral-soft: var(--ko-color-neutral-soft);
+  --color-neutral-wash: var(--ko-color-neutral-wash);
+  --color-neutral-wash-strong: var(--ko-color-neutral-wash-strong);
   --color-on-bg-neutral: var(--ko-color-on-bg-neutral);
 
   --color-green: var(--ko-color-green);
@@ -40,25 +49,6 @@
   --color-border: var(--ko-color-border);
   --color-border-strong: var(--ko-color-border-strong);
   --color-focus: var(--ko-color-focus);
-  --color-agree: var(--ko-color-agree);
-  --color-agree-hover: var(--ko-color-agree-hover);
-  --color-agree-active: var(--ko-color-agree-active);
-  --color-agree-soft: var(--ko-color-agree-soft);
-  --color-agree-wash: var(--ko-color-agree-wash);
-  --color-agree-wash-strong: var(--ko-color-agree-wash-strong);
-  --color-on-agree: var(--ko-color-on-agree);
-  --color-disagree: var(--ko-color-disagree);
-  --color-disagree-hover: var(--ko-color-disagree-hover);
-  --color-disagree-active: var(--ko-color-disagree-active);
-  --color-disagree-soft: var(--ko-color-disagree-soft);
-  --color-disagree-wash: var(--ko-color-disagree-wash);
-  --color-disagree-wash-strong: var(--ko-color-disagree-wash-strong);
-  --color-on-disagree: var(--ko-color-on-disagree);
-  --color-neutral-ink: var(--ko-color-neutral-ink);
-  --color-neutral-soft: var(--ko-color-neutral-soft);
-  --color-neutral-wash: var(--ko-color-neutral-wash);
-  --color-neutral-wash-strong: var(--ko-color-neutral-wash-strong);
-  --color-on-neutral-ink: var(--ko-color-on-neutral-ink);
 
   /* Typeface. */
   --font-question: var(--ko-font-question);
