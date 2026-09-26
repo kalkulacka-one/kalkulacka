@@ -27,84 +27,78 @@
   --color-*: initial;
 
   --color-primary: light-dark(
-    var(--ko-palette-primary-light, var(--ko-palette-primary)),
+    var(--ko-palette-primary),
     var(--ko-palette-primary-dark, var(--ko-palette-primary))
   );
 
-  --color-primary-hover: light-dark(
-    var(--ko-palette-primary-hover-light, oklch(from var(--ko-palette-primary) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-primary-hover-dark, oklch(from var(--ko-palette-primary) calc(l - 0.35) calc(c - 0.12) h))
-  );
-
-  --color-primary-active: light-dark(
-    var(--ko-palette-primary-active-light, oklch(from var(--ko-palette-primary) calc(l - 0.436) calc(c - 0.05) h)),
-    var(--ko-palette-primary-active-dark, oklch(from var(--ko-palette-primary) calc(l - 0.5) calc(c - 0.2) h))
-  );
+  /* 2026 formulas: a flat lightness step, no chroma pull-back. */
+  --color-primary-hover: oklch(from var(--ko-color-primary) calc(l - 0.05) c h);
+  --color-primary-active: oklch(from var(--ko-color-primary) calc(l - 0.1) c h);
+  --color-primary-soft: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-surface));
+  --color-primary-wash: oklch(from var(--ko-color-primary) l c h / 0.14);
+  --color-primary-wash-strong: oklch(from var(--ko-color-primary) l c h / 0.22);
 
   --color-primary-disabled: light-dark(
-    var(--ko-palette-primary-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
-    var(--ko-palette-primary-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.01) h),
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h)
   );
 
+  /* 2026 formula: computed ink instead of a fixed white. */
   --color-on-bg-primary: light-dark(
-    var(--ko-palette-on-bg-primary-light, white),
-    var(--ko-palette-on-bg-primary-dark, white)
+    oklch(from var(--ko-color-primary) clamp(0, (0.62 - l) * 1000, 1) 0 h),
+    white
   );
-  
+
   --color-secondary: light-dark(
-    var(--ko-palette-secondary-light, var(--ko-palette-secondary)),
+    var(--ko-palette-secondary),
     var(--ko-palette-secondary-dark, var(--ko-palette-secondary))
   );
 
-  --color-secondary-hover: light-dark(
-    var(--ko-palette-secondary-hover-light, oklch(from var(--ko-palette-secondary) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-secondary-hover-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.35) calc(c - 0.12) h))
-  );
-
-  --color-secondary-active: light-dark(
-    var(--ko-palette-secondary-active-light, oklch(from var(--ko-palette-secondary) calc(l - 0.436) calc(c - 0.05) h)),
-    var(--ko-palette-secondary-active-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.5) calc(c - 0.2) h))
-  );
+  --color-secondary-hover: oklch(from var(--ko-color-secondary) calc(l - 0.05) c h);
+  --color-secondary-active: oklch(from var(--ko-color-secondary) calc(l - 0.1) c h);
+  --color-secondary-soft: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-surface));
+  --color-secondary-wash: oklch(from var(--ko-color-secondary) l c h / 0.12);
+  --color-secondary-wash-strong: oklch(from var(--ko-color-secondary) l c h / 0.2);
 
   --color-secondary-disabled: light-dark(
-    var(--ko-palette-secondary-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
-    var(--ko-palette-secondary-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.01) h),
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h)
   );
 
   --color-on-bg-secondary: light-dark(
-    var(--ko-palette-on-bg-secondary-light, white),
-    var(--ko-palette-on-bg-secondary-dark, white)
+    oklch(from var(--ko-color-secondary) clamp(0, (0.62 - l) * 1000, 1) 0 h),
+    white
   );
 
+  /* 2026 formula: the palette itself in light mode (was darkened). */
   --color-neutral: light-dark(
-    var(--ko-palette-neutral-light, oklch(from var(--ko-palette-neutral) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-neutral-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.35) calc(c - 0.12) h))
+    var(--ko-palette-neutral),
+    var(--ko-palette-neutral-dark, var(--ko-color-text))
   );
 
-  --color-neutral-hover: light-dark(
-    var(--ko-palette-neutral-hover-light, var(--ko-palette-neutral)),
-    var(--ko-palette-neutral-hover-dark, var(--ko-palette-neutral))
-  );
+  --color-neutral-hover: var(--ko-palette-neutral);
 
   --color-neutral-active: light-dark(
-    var(--ko-palette-neutral-active-light, oklch(from var(--ko-palette-neutral) calc(l - 0.436) calc(c - 0.05) h)),
-    var(--ko-palette-neutral-active-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.5) calc(c - 0.2) h))
+    oklch(from var(--ko-palette-neutral) calc(l - 0.436) calc(c - 0.05) h),
+    oklch(from var(--ko-palette-neutral) calc(l - 0.5) calc(c - 0.2) h)
   );
 
   --color-neutral-inactive: light-dark(
-    var(--ko-palette-neutral-inactive-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
-    var(--ko-palette-neutral-inactive-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.01) h),
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h)
   );
 
   --color-neutral-disabled: light-dark(
-    var(--ko-palette-neutral-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
-    var(--ko-palette-neutral-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.01) h),
+    oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h)
   );
 
-  --color-on-bg-neutral: light-dark(
-    var(--ko-palette-on-bg-neutral-light, white),
-    var(--ko-palette-on-bg-neutral-dark, white)
-  );
+  --color-neutral-soft: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-surface));
+  --color-neutral-wash: oklch(from var(--ko-color-text-muted) l c h / 0.2);
+  --color-neutral-wash-strong: oklch(from var(--ko-color-text-muted) l c h / 0.32);
+
+  /* 2026 formula: page background instead of a fixed white in dark mode. */
+  --color-on-bg-neutral: light-dark(white, var(--ko-color-page));
 
   --color-red: light-dark(
     var(--ko-palette-red-light, var(--ko-palette-red)),
@@ -211,48 +205,6 @@
   --color-focus: light-dark(
     var(--ko-palette-focus-light, var(--ko-palette-focus, var(--ko-color-primary))),
     var(--ko-palette-focus-dark, var(--ko-palette-focus, var(--ko-color-primary)))
-  );
-
-  /* "Ano" and "Ne" alias primary/secondary unless a theme says otherwise. */
-  --color-agree: light-dark(
-    var(--ko-palette-agree-light, var(--ko-palette-agree, var(--ko-color-primary))),
-    var(--ko-palette-agree-dark, var(--ko-palette-agree, var(--ko-color-primary)))
-  );
-  --color-agree-hover: oklch(from var(--ko-color-agree) calc(l - 0.05) c h);
-  --color-agree-active: oklch(from var(--ko-color-agree) calc(l - 0.1) c h);
-  --color-agree-soft: color-mix(in oklab, var(--ko-color-agree) 22%, var(--ko-color-surface));
-  --color-agree-wash: oklch(from var(--ko-color-agree) l c h / 0.14);
-  --color-agree-wash-strong: oklch(from var(--ko-color-agree) l c h / 0.22);
-  --color-on-agree: light-dark(
-    var(--ko-palette-on-agree-light, var(--ko-palette-on-agree, oklch(from var(--ko-color-agree) clamp(0, (0.62 - l) * 1000, 1) 0 h))),
-    var(--ko-palette-on-agree-dark, var(--ko-palette-on-agree, white))
-  );
-
-  --color-disagree: light-dark(
-    var(--ko-palette-disagree-light, var(--ko-palette-disagree, var(--ko-color-secondary))),
-    var(--ko-palette-disagree-dark, var(--ko-palette-disagree, var(--ko-color-secondary)))
-  );
-  --color-disagree-hover: oklch(from var(--ko-color-disagree) calc(l - 0.05) c h);
-  --color-disagree-active: oklch(from var(--ko-color-disagree) calc(l - 0.1) c h);
-  --color-disagree-soft: color-mix(in oklab, var(--ko-color-disagree) 22%, var(--ko-color-surface));
-  --color-disagree-wash: oklch(from var(--ko-color-disagree) l c h / 0.12);
-  --color-disagree-wash-strong: oklch(from var(--ko-color-disagree) l c h / 0.2);
-  --color-on-disagree: light-dark(
-    var(--ko-palette-on-disagree-light, var(--ko-palette-on-disagree, oklch(from var(--ko-color-disagree) clamp(0, (0.62 - l) * 1000, 1) 0 h))),
-    var(--ko-palette-on-disagree-dark, var(--ko-palette-on-disagree, white))
-  );
-
-  /* Skipped answers, toasts and the important toggle use the text ink. */
-  --color-neutral-ink: light-dark(
-    var(--ko-palette-neutral-ink-light, var(--ko-palette-neutral-ink, var(--ko-palette-neutral))),
-    var(--ko-palette-neutral-ink-dark, var(--ko-palette-neutral-ink, var(--ko-color-text)))
-  );
-  --color-neutral-soft: color-mix(in oklab, var(--ko-color-neutral-ink) 22%, var(--ko-color-surface));
-  --color-neutral-wash: oklch(from var(--ko-color-text-muted) l c h / 0.2);
-  --color-neutral-wash-strong: oklch(from var(--ko-color-text-muted) l c h / 0.32);
-  --color-on-neutral-ink: light-dark(
-    var(--ko-palette-on-neutral-ink-light, var(--ko-palette-on-neutral-ink, white)),
-    var(--ko-palette-on-neutral-ink-dark, var(--ko-palette-on-neutral-ink, var(--ko-color-page)))
   );
 
   /* Typeface for question statements; defaults to the sans face. */
