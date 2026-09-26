@@ -33,7 +33,7 @@ describe("Button", () => {
     });
   });
 
-  describe.each(["fill", "outline", "link", "answer"] as const)("variant %s", (variant) => {
+  describe.each(["fill", "outline", "link", "answer", "round"] as const)("variant %s", (variant) => {
     it.each(["primary", "secondary", "neutral"] as const)("renders the %s color classes", (color) => {
       render(
         <Button variant={variant} color={color}>
@@ -41,6 +41,46 @@ describe("Button", () => {
         </Button>,
       );
       expect(screen.getByRole("button")).toHaveClass(twMerge(ButtonVariants({ variant, color })));
+    });
+  });
+
+  describe("variant answer", () => {
+    it("uses a soft tinted border and the control radius, unchecked", () => {
+      render(
+        <Button variant="answer" color="primary">
+          Ano
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:border-primary-soft", "ko:rounded-control", "ko:h-fluid-action");
+    });
+
+    it("fills with the colour and the on-colour ink when checked", () => {
+      render(
+        <Button variant="answer" color="primary" data-checked>
+          Ano
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:data-checked:bg-primary", "ko:data-checked:text-on-bg-primary");
+    });
+  });
+
+  describe("variant round", () => {
+    it("is a hairline circle sized to the star spacing token", () => {
+      render(
+        <Button variant="round" color="neutral" aria-label="Důležité">
+          <Icon icon="M0 0h24v24H0z" decorative />
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:rounded-full", "ko:h-fluid-star", "ko:w-fluid-star", "ko:border-border");
+    });
+
+    it("fills with the colour when checked", () => {
+      render(
+        <Button variant="round" color="neutral" data-checked aria-label="Důležité">
+          <Icon icon="M0 0h24v24H0z" decorative />
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:data-checked:bg-neutral", "ko:data-checked:text-on-bg-neutral");
     });
   });
 
