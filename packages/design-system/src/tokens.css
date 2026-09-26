@@ -6,12 +6,18 @@
   --color-primary: var(--ko-color-primary);
   --color-primary-hover: var(--ko-color-primary-hover);
   --color-primary-active: var(--ko-color-primary-active);
+  --color-primary-soft: var(--ko-color-primary-soft);
+  --color-primary-wash: var(--ko-color-primary-wash);
+  --color-primary-wash-strong: var(--ko-color-primary-wash-strong);
   --color-primary-disabled: var(--ko-color-primary-disabled);
   --color-on-bg-primary: var(--ko-color-on-bg-primary);
 
   --color-secondary: var(--ko-color-secondary);
   --color-secondary-hover: var(--ko-color-secondary-hover);
   --color-secondary-active: var(--ko-color-secondary-active);
+  --color-secondary-soft: var(--ko-color-secondary-soft);
+  --color-secondary-wash: var(--ko-color-secondary-wash);
+  --color-secondary-wash-strong: var(--ko-color-secondary-wash-strong);
   --color-secondary-disabled: var(--ko-color-secondary-disabled);
   --color-on-bg-secondary: var(--ko-color-on-bg-secondary);
 
@@ -20,9 +26,78 @@
   --color-neutral-active: var(--ko-color-neutral-active);
   --color-neutral-disabled: var(--ko-color-neutral-disabled);
   --color-neutral-inactive: var(--ko-color-neutral-inactive);
+  --color-neutral-soft: var(--ko-color-neutral-soft);
+  --color-neutral-wash: var(--ko-color-neutral-wash);
+  --color-neutral-wash-strong: var(--ko-color-neutral-wash-strong);
   --color-on-bg-neutral: var(--ko-color-on-bg-neutral);
 
   --color-green: var(--ko-color-green);
   --color-red: var(--ko-color-red);
   --color-yellow: var(--ko-color-yellow);
+
+  /* 2026 tokens: the values live in styles.css; these pass them through to consumers with another prefix. */
+
+  /* Surfaces, text and answer colours. */
+  --color-page: var(--ko-color-page);
+  --color-surface: var(--ko-color-surface);
+  --color-surface-sunken: var(--ko-color-surface-sunken);
+  --color-surface-hover: var(--ko-color-surface-hover);
+  --color-text: var(--ko-color-text);
+  --color-text-muted: var(--ko-color-text-muted);
+  --color-text-strong: var(--ko-color-text-strong);
+  --color-text-subtle: var(--ko-color-text-subtle);
+  --color-border: var(--ko-color-border);
+  --color-border-strong: var(--ko-color-border-strong);
+  --color-focus: var(--ko-color-focus);
+
+  /* Typeface. */
+  --font-question: var(--ko-font-question);
+
+  /* Shape. */
+  --radius-card: var(--ko-radius-card);
+  --radius-control: var(--ko-radius-control);
+  --radius-chip: var(--ko-radius-chip);
+  --radius-pill: var(--ko-radius-pill);
+
+  /* Motion. */
+  --duration-fast: var(--ko-duration-fast);
+  --duration-base: var(--ko-duration-base);
+  --duration-slow: var(--ko-duration-slow);
+  --ease-spring: var(--ko-ease-spring);
+  --ease-exit: var(--ko-ease-exit);
+
+  /* Elevation. */
+  --shadow-card: var(--ko-shadow-card);
+  --shadow-card-next: var(--ko-shadow-card-next);
+  --shadow-card-back: var(--ko-shadow-card-back);
+  --shadow-card-lifted: var(--ko-shadow-card-lifted);
+  --shadow-sticky: var(--ko-shadow-sticky);
+  --shadow-surface: var(--ko-shadow-surface);
+
+  /* Fluid spacing. */
+  --spacing-fluid-gutter: var(--ko-spacing-fluid-gutter);
+  --spacing-fluid-header-top: var(--ko-spacing-fluid-header-top);
+  --spacing-fluid-progress-top: var(--ko-spacing-fluid-progress-top);
+  --spacing-fluid-card-pad-top: var(--ko-spacing-fluid-card-pad-top);
+  --spacing-fluid-card-pad-side: var(--ko-spacing-fluid-card-pad-side);
+  --spacing-fluid-card-pad-bottom: var(--ko-spacing-fluid-card-pad-bottom);
+  --spacing-fluid-star: var(--ko-spacing-fluid-star);
+  --spacing-fluid-action: var(--ko-spacing-fluid-action);
+  --spacing-fluid-nav: var(--ko-spacing-fluid-nav);
+  --spacing-fade-edge: var(--ko-spacing-fade-edge);
+  --spacing-fade-action: var(--ko-spacing-fade-action);
+  --spacing-scroll-tail: var(--ko-spacing-scroll-tail);
+
+  /* Type scale. */
+  --text-fluid-brand: var(--ko-text-fluid-brand);
+  --text-fluid-question: var(--ko-text-fluid-question);
+  --text-fluid-question--line-height: var(--ko-text-fluid-question--line-height);
+  --text-fluid-gist: var(--ko-text-fluid-gist);
+  --text-fluid-gist--line-height: var(--ko-text-fluid-gist--line-height);
+  --text-fluid-chip: var(--ko-text-fluid-chip);
+  --text-fluid-action-label: var(--ko-text-fluid-action-label);
+  --text-title: var(--ko-text-title);
+  --text-title--line-height: var(--ko-text-title--line-height);
+  --text-display: var(--ko-text-display);
+  --text-display--line-height: var(--ko-text-display--line-height);
 }
