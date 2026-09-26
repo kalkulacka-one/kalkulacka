@@ -8,6 +8,7 @@ import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
+import { QuestionProgress } from "@/components/question-progress";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
 
 export type QuestionPage = {
@@ -27,6 +28,7 @@ export type QuestionPage = {
 export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+  const isAnswered = answer.answer?.answer !== undefined;
 
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
@@ -82,23 +84,20 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           )}
         </WithCondenseOnScroll>
       </Layout.Header>
-      <Layout.Content>
-        <QuestionCard question={question} current={number} total={total} />
+      <Layout.Content fullWidth>
+        {/*
+          A dedicated column rather than Layout.Content's own max-width: the
+          2026 card is wider than the app's default content column, and this
+          screen's step row lives in this same flow (not Layout.BottomNavigation)
+          so it renders identically whether or not the shell PR is merged.
+        */}
+        <div className="koa:mx-auto koa:flex koa:h-full koa:w-full koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
+          <QuestionProgress current={number} total={total} />
+          <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
+          <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+        </div>
       </Layout.Content>
-      <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
-        <QuestionNavigationCard
-          current={number}
-          total={total}
-          onPreviousClick={onPreviousClick}
-          onNextClick={onNextClick}
-          answer={answer}
-          onAgreeChange={handleAgreeChange}
-          onDisagreeChange={handleDisagreeChange}
-          onImportantChange={handleImportantChange}
-        />
-      </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
