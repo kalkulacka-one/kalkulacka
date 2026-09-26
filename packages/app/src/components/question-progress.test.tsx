@@ -19,7 +19,7 @@ describe("QuestionProgress", () => {
     const segments = Array.from(container.querySelectorAll("span"));
     const highlightedIndexes: number[] = [];
     segments.forEach((segment, index) => {
-      if (segment.className.includes("w-8")) highlightedIndexes.push(index);
+      if (segment.className.includes("bg-neutral")) highlightedIndexes.push(index);
     });
     expect(highlightedIndexes).toEqual([2]);
   });
