@@ -51,7 +51,7 @@ describe("Button", () => {
           Ano
         </Button>,
       );
-      expect(screen.getByRole("button")).toHaveClass("ko:border-primary-soft", "ko:rounded-control", "ko:h-fluid-action");
+      expect(screen.getByRole("button")).toHaveClass("ko:border-primary-soft", "ko:rounded-control", "ko:h-fluid-action", "ko:text-text-strong");
     });
 
     it("fills with the colour and the on-colour ink when checked", () => {
