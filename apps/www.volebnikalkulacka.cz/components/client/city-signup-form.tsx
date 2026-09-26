@@ -60,8 +60,7 @@ export function CitySignupForm() {
               <select
                 defaultValue=""
                 aria-label="Vyberte vaše město"
-                className="w-full border border-slate-400 rounded-2xl rounded-br-none px-4 bg-white text-base disabled:text-slate-300 disabled:border-slate-200"
-                style={{ height: "48px", minHeight: "48px" }}
+                className="h-12 w-full border border-[var(--ko-color-border)] rounded-[var(--ko-radius-control)] px-4 bg-[var(--ko-color-surface)] text-[var(--ko-color-text)] text-base disabled:opacity-45 disabled:cursor-not-allowed focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--ko-color-focus)]/55"
                 disabled={isSubmitting}
                 {...register("city")}
               >
@@ -75,7 +74,7 @@ export function CitySignupForm() {
                 ))}
               </select>
               <Label className="sr-only">Zadejte váš email</Label>
-              <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
+              <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" {...register("email")} />
               <Button disabled={isSubmitting} type="submit" variant="fill" color="neutral">
                 {isSubmitting ? "Odesílám" : "Chci pomoct"}
               </Button>

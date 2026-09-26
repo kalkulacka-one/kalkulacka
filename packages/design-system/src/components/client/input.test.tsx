@@ -21,7 +21,7 @@ describe("Input", () => {
     );
     expect(screen.getByTestId("input")).toBeInTheDocument();
     expect(screen.getByTestId("icon")).toBeInTheDocument();
-    expect(screen.getByTestId("input")).toHaveClass("ko:p-4", "ko:pl-14");
+    expect(screen.getByTestId("input")).toHaveClass("ko:px-4", "ko:pl-14");
   });
 
   it("shows a clear button only while there is a value, and clearing refocuses the input", async () => {

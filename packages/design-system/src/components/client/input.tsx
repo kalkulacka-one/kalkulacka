@@ -17,19 +17,21 @@ export type Input = {
 
 const InputVariants = cva(
   [
-    "ko:w-full",
-    "ko:border ko:border-neutral",
-    "ko:rounded-2xl ko:rounded-br-none",
-    "ko:placeholder:text-base ko:placeholder:font-sans ko:placeholder:text-neutral",
-    "ko:data-hover:border-neutral-hover",
-    "ko:data-disabled:placeholder:text-neutral-disabled ko:data-disabled:border-neutral-disabled ko:data-disabled:text-neutral-disabled",
+    "ko:h-12 ko:w-full",
+    "ko:bg-surface ko:text-text",
+    "ko:border ko:border-border ko:rounded-control",
+    "ko:placeholder:text-base ko:placeholder:font-sans ko:placeholder:text-text-muted",
+    "ko:transition-[border-color] ko:duration-base",
+    "ko:data-hover:border-border-strong",
+    "ko:data-focus:border-border-strong ko:data-focus:outline-3 ko:data-focus:outline-offset-2 ko:data-focus:outline-focus/55",
+    "ko:data-disabled:cursor-not-allowed ko:data-disabled:opacity-45",
     "ko:[&::-webkit-search-cancel-button]:hidden",
   ],
   {
     variants: {
       variant: {
-        default: "ko:p-4",
-        icon: "ko:p-4 ko:pl-14",
+        default: "ko:px-4",
+        icon: "ko:px-4 ko:pl-14",
       },
       clearable: {
         true: "ko:pr-14",
@@ -60,14 +62,14 @@ function InputComponent({ children, variant, onClear, clearLabel, ...props }: In
 
   return (
     <div className="ko:relative">
-      {hasIcon && <div className="ko:absolute ko:left-4 ko:top-1/2 ko:-translate-y-1/2">{children}</div>}
+      {hasIcon && <div className="ko:absolute ko:left-4 ko:top-1/2 ko:-translate-y-1/2 ko:text-text-muted">{children}</div>}
       <InputHeadless {...props} ref={setRefs} className={twMerge(InputVariants({ variant: hasIcon ? "icon" : "default", clearable }))} />
       {clearable && (
         <button
           type="button"
           onClick={handleClear}
           aria-label={clearLabel}
-          className="ko:absolute ko:right-4 ko:top-1/2 ko:-translate-y-1/2 ko:flex ko:items-center ko:justify-center ko:rounded-full ko:p-1 ko:text-neutral ko:hover:bg-neutral/8 ko:focus-visible:outline-2 ko:focus-visible:outline-offset-2 ko:focus-visible:outline-primary"
+          className="ko:absolute ko:right-4 ko:top-1/2 ko:-translate-y-1/2 ko:flex ko:items-center ko:justify-center ko:rounded-pill ko:p-1 ko:text-text-muted ko:hover:bg-neutral-wash ko:focus-visible:outline-3 ko:focus-visible:outline-offset-2 ko:focus-visible:outline-focus/55"
         >
           <IconComponent icon={mdiClose} decorative size="small" />
         </button>
