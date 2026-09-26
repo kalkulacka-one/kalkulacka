@@ -19,7 +19,7 @@ export function QuestionProgress({ current, total }: QuestionProgress) {
       {Array.from({ length: total }, (_, index) => {
         const isCurrent = index === current - 1;
         // biome-ignore lint/suspicious/noArrayIndexKey: segments are a fixed-length, purely positional list — nothing is ever reordered or inserted.
-        return <span key={index} className={isCurrent ? "koa:h-1.5 koa:min-w-3 koa:flex-[0_1_2rem] koa:rounded-pill koa:bg-neutral" : "koa:h-1.5 koa:min-w-0.5 koa:flex-[0_1_0.375rem] koa:rounded-pill koa:bg-border"} />;
+        return <span key={index} className={isCurrent ? "koa:h-1.5 koa:min-w-3 koa:flex-[3_1_0] koa:rounded-pill koa:bg-neutral" : "koa:h-1.5 koa:min-w-0.5 koa:flex-1 koa:rounded-pill koa:bg-border"} />;
       })}
     </div>
   );
