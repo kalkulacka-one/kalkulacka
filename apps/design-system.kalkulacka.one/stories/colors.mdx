@@ -305,7 +305,9 @@ In addition, combinations (element on token) with appropriate color contrast are
   </div>
 </Unstyled>
 
-Surfaces, text and the answer colors are derived from the neutral, primary and secondary palette colors, so every existing theme gets a complete light and dark set for free. A theme pins any of them with `--ko-palette-page`, `--ko-palette-surface`, `--ko-palette-text`, `--ko-palette-agree`, … (or the `-light` / `-dark` variants).
+Surfaces and text are derived from the neutral, primary and secondary palette colors, so every existing theme gets a complete light and dark set for free. A theme pins any of them with `--ko-palette-page`, `--ko-palette-surface`, `--ko-palette-text`, … (or the `-light` / `-dark` variants where a theme needs one).
+
+The "Ano" and "Ne" answer buttons use the primary and secondary tokens directly — there is a single `soft` / `wash` / `wash-strong` set per color, not a separate agree/disagree vocabulary.
 
 #### Surfaces and text
 
@@ -367,7 +369,7 @@ Surfaces, text and the answer colors are derived from the neutral, primary and s
   </div>
 </Unstyled>
 
-#### Answers
+#### Primary and secondary washes
 
 <Unstyled>
   <div
@@ -389,13 +391,13 @@ Surfaces, text and the answer colors are derived from the neutral, primary and s
         }}
       >
         {[
-          { label: "agree", variable: "--ko-color-agree" },
-          { label: "agree soft", variable: "--ko-color-agree-soft" },
-          { label: "on agree", variable: "--ko-color-on-agree" },
-          { label: "disagree", variable: "--ko-color-disagree" },
-          { label: "disagree soft", variable: "--ko-color-disagree-soft" },
-          { label: "on disagree", variable: "--ko-color-on-disagree" },
-          { label: "neutral ink", variable: "--ko-color-neutral-ink" },
+          { label: "primary", variable: "--ko-color-primary" },
+          { label: "primary soft", variable: "--ko-color-primary-soft" },
+          { label: "on bg primary", variable: "--ko-color-on-bg-primary" },
+          { label: "secondary", variable: "--ko-color-secondary" },
+          { label: "secondary soft", variable: "--ko-color-secondary-soft" },
+          { label: "on bg secondary", variable: "--ko-color-on-bg-secondary" },
+          { label: "neutral", variable: "--ko-color-neutral" },
           { label: "neutral soft", variable: "--ko-color-neutral-soft" },
         ].map(({ label, variable }) => (
           <div
