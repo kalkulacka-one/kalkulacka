@@ -31,7 +31,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
 
   return (
     <Card shadow={false} className="koa:flex koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:sm:flex-none koa:sm:min-h-[min(28rem,calc(100dvh-16rem))]">
-      <div className="koa:flex koa:h-full koa:flex-col koa:gap-4 koa:pt-fluid-card-pad-top koa:px-fluid-card-pad-side koa:pb-fluid-card-pad-bottom">
+      <div className="koa:flex koa:flex-1 koa:flex-col koa:gap-4 koa:pt-fluid-card-pad-top koa:px-fluid-card-pad-side koa:pb-fluid-card-pad-bottom">
         <div className="koa:flex koa:flex-wrap koa:gap-2">
           {category && (
             <span className="koa:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-xs koa:font-semibold koa:text-text-muted">{category}</span>
