@@ -7,6 +7,9 @@
 
 :root {
   color-scheme: light dark;
+
+  /* min(l, 0.2): shadows stay dark even for a light neutral, keeping the theme's hue. */
+  --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
 }
 
 @theme static {
@@ -226,6 +229,11 @@
   --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
 
   /* Elevation */
+  --shadow-surface: 0 1px 2px -1px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -14px oklch(from var(--ko-shadow-color) l c h / 0.2);
+  --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
+  --shadow-card-lifted: 0 8px 20px -4px oklch(from var(--ko-shadow-color) l c h / 0.14), 0 24px 52px -10px oklch(from var(--ko-shadow-color) l c h / 0.25);
+  --shadow-sticky: 0 -8px 24px -12px oklch(from var(--ko-shadow-color) l c h / 0.14);
+
   --drop-shadow-hard: 6px 6px 0px light-dark(
     var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
     var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))

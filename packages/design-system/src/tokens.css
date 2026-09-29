@@ -63,4 +63,9 @@
   --transition-duration-slow: var(--ko-transition-duration-slow);
   --ease-spring: var(--ko-ease-spring);
   --ease-exit: var(--ko-ease-exit);
+
+  --shadow-surface: var(--ko-shadow-surface);
+  --shadow-card: var(--ko-shadow-card);
+  --shadow-card-lifted: var(--ko-shadow-card-lifted);
+  --shadow-sticky: var(--ko-shadow-sticky);
 }
