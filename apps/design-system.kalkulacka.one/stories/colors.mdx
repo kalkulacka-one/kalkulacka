@@ -184,14 +184,15 @@ However, tokens can always be overridden with a specific palette variable for mo
 
 ### Structure
 
-Color tokens are defined on four main levels:
+Every token follows the same principles: it is derived from the palette by a formula, it resolves light and dark mode internally (never in its name), a theme gets both modes for free, and a theme can pin any token with `--ko-palette-<name>` or its `-light` / `-dark` variants. Tokens derived from the neutral cap their chroma at the neutral's own, so an achromatic theme stays achromatic throughout.
 
-- element
-- variant
-- state
-- light/dark mode
+Token names combine three independent axes, at most one word from each:
 
-In addition, combinations (element on token) with appropriate color contrast are also defined.
+- **kind** — what the token is: `surface`, `surface-sunken`, `text`, `border`, `focus`, …
+- **strength** — one ordered ladder: `-strong` &gt; base &gt; `-muted` &gt; `-subtle`
+- **state** — `-hover`, `-active`, `-disabled`, `-inactive`
+
+In addition, combinations with appropriate contrast are defined as `on-bg-<color>`: the content color to use on that background.
 
 Each main color also has two translucent tints — `tint` (the color at low opacity, a highlight overlay safe over any background) and `tint-strong` (its emphasis step). All three families use the same recipe; only the opacity is tuned per family.
 
