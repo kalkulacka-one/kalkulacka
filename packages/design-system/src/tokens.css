@@ -57,4 +57,10 @@
   --radius-control: var(--ko-radius-control);
   --radius-chip: var(--ko-radius-chip);
   --radius-pill: var(--ko-radius-pill);
+
+  --transition-duration-fast: var(--ko-transition-duration-fast);
+  --transition-duration-base: var(--ko-transition-duration-base);
+  --transition-duration-slow: var(--ko-transition-duration-slow);
+  --ease-spring: var(--ko-ease-spring);
+  --ease-exit: var(--ko-ease-exit);
 }

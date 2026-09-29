@@ -221,9 +221,24 @@
   --radius-control: var(--ko-shape-radius-control, clamp(16px, 14.1633px + 0.4898vw, 22px));
   --radius-chip: var(--ko-shape-radius-chip, 9px);
   --radius-pill: var(--ko-shape-radius-pill, 9999px);
+
+  /* Motion */
+  --transition-duration-fast: var(--ko-motion-duration-fast, 120ms);
+  --transition-duration-base: var(--ko-motion-duration-base, 150ms);
+  --transition-duration-slow: var(--ko-motion-duration-slow, 250ms);
+  --ease-spring: var(--ko-motion-easing-spring, cubic-bezier(0.2, 0.9, 0.3, 1));
+  --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
 }
 
 @layer base {
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --ko-motion-duration-fast: 0.01ms;
+      --ko-motion-duration-base: 0.01ms;
+      --ko-motion-duration-slow: 0.01ms;
+    }
+  }
+
   @font-face {
     font-family: "Radio Canada";
     font-weight: 300 700;
