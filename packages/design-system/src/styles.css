@@ -178,6 +178,10 @@
 
   --color-surface-hover: color-mix(in oklab, var(--ko-palette-neutral) 8%, transparent);
 
+  --color-surface-primary: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-surface));
+  --color-surface-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-surface));
+  --color-surface-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-surface));
+
   --color-text: light-dark(
     var(--ko-palette-text-light, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.279 min(c, 0.041) h))),
     var(--ko-palette-text-dark, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.945 min(c, 0.011) h)))
