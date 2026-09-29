@@ -8,6 +8,14 @@
 :root {
   color-scheme: light dark;
 
+  --ko-fade-to-bottom: linear-gradient(to bottom, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+  --ko-fade-to-top: linear-gradient(to top, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+
+  --ko-pressable-scale-hover: 1.008;
+  --ko-pressable-scale-press: 0.985;
+  --ko-pressable-scale-open: 1.015;
+  --ko-pressable-scale-open-hover: 1.022;
+
   /* min(l, 0.2): shadows stay dark even for a light neutral, keeping the theme's hue. */
   --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
 }
