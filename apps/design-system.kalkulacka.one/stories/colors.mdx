@@ -371,6 +371,122 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   </div>
 </Unstyled>
 
+#### Surfaces
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "page", variable: "--ko-color-page" },
+          { label: "surface", variable: "--ko-color-surface" },
+          { label: "surface sunken", variable: "--ko-color-surface-sunken" },
+          { label: "border", variable: "--ko-color-border" },
+          { label: "border strong", variable: "--ko-color-border-strong" },
+          { label: "focus", variable: "--ko-color-focus" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Text
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "text strong", variable: "--ko-color-text-strong" },
+          { label: "text", variable: "--ko-color-text" },
+          { label: "text muted", variable: "--ko-color-text-muted" },
+          { label: "text subtle", variable: "--ko-color-text-subtle" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
 ### Logo colors
 
 <Unstyled>

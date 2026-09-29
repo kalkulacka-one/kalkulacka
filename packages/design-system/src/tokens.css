@@ -31,4 +31,16 @@
   --color-green: var(--ko-color-green);
   --color-red: var(--ko-color-red);
   --color-yellow: var(--ko-color-yellow);
+
+  --color-page: var(--ko-color-page);
+  --color-surface: var(--ko-color-surface);
+  --color-surface-sunken: var(--ko-color-surface-sunken);
+  --color-surface-hover: var(--ko-color-surface-hover);
+  --color-text: var(--ko-color-text);
+  --color-text-strong: var(--ko-color-text-strong);
+  --color-text-muted: var(--ko-color-text-muted);
+  --color-text-subtle: var(--ko-color-text-subtle);
+  --color-border: var(--ko-color-border);
+  --color-border-strong: var(--ko-color-border-strong);
+  --color-focus: var(--ko-color-focus);
 }
