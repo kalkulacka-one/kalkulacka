@@ -6,12 +6,16 @@
   --color-primary: var(--ko-color-primary);
   --color-primary-hover: var(--ko-color-primary-hover);
   --color-primary-active: var(--ko-color-primary-active);
+  --color-primary-tint: var(--ko-color-primary-tint);
+  --color-primary-tint-strong: var(--ko-color-primary-tint-strong);
   --color-primary-disabled: var(--ko-color-primary-disabled);
   --color-on-bg-primary: var(--ko-color-on-bg-primary);
 
   --color-secondary: var(--ko-color-secondary);
   --color-secondary-hover: var(--ko-color-secondary-hover);
   --color-secondary-active: var(--ko-color-secondary-active);
+  --color-secondary-tint: var(--ko-color-secondary-tint);
+  --color-secondary-tint-strong: var(--ko-color-secondary-tint-strong);
   --color-secondary-disabled: var(--ko-color-secondary-disabled);
   --color-on-bg-secondary: var(--ko-color-on-bg-secondary);
 
@@ -20,9 +24,48 @@
   --color-neutral-active: var(--ko-color-neutral-active);
   --color-neutral-disabled: var(--ko-color-neutral-disabled);
   --color-neutral-inactive: var(--ko-color-neutral-inactive);
+  --color-neutral-tint: var(--ko-color-neutral-tint);
+  --color-neutral-tint-strong: var(--ko-color-neutral-tint-strong);
   --color-on-bg-neutral: var(--ko-color-on-bg-neutral);
 
   --color-green: var(--ko-color-green);
   --color-red: var(--ko-color-red);
   --color-yellow: var(--ko-color-yellow);
+
+  --color-page: var(--ko-color-page);
+  --color-surface: var(--ko-color-surface);
+  --color-surface-sunken: var(--ko-color-surface-sunken);
+  --color-surface-hover: var(--ko-color-surface-hover);
+  --color-surface-primary: var(--ko-color-surface-primary);
+  --color-surface-secondary: var(--ko-color-surface-secondary);
+  --color-surface-neutral: var(--ko-color-surface-neutral);
+  --color-surface-sunken-primary: var(--ko-color-surface-sunken-primary);
+  --color-surface-sunken-secondary: var(--ko-color-surface-sunken-secondary);
+  --color-surface-sunken-neutral: var(--ko-color-surface-sunken-neutral);
+  --color-page-primary: var(--ko-color-page-primary);
+  --color-page-secondary: var(--ko-color-page-secondary);
+  --color-page-neutral: var(--ko-color-page-neutral);
+  --color-text: var(--ko-color-text);
+  --color-text-strong: var(--ko-color-text-strong);
+  --color-text-muted: var(--ko-color-text-muted);
+  --color-text-subtle: var(--ko-color-text-subtle);
+  --color-border: var(--ko-color-border);
+  --color-border-strong: var(--ko-color-border-strong);
+  --color-focus: var(--ko-color-focus);
+
+  --radius-card: var(--ko-radius-card);
+  --radius-control: var(--ko-radius-control);
+  --radius-chip: var(--ko-radius-chip);
+  --radius-pill: var(--ko-radius-pill);
+
+  --transition-duration-fast: var(--ko-transition-duration-fast);
+  --transition-duration-base: var(--ko-transition-duration-base);
+  --transition-duration-slow: var(--ko-transition-duration-slow);
+  --ease-spring: var(--ko-ease-spring);
+  --ease-exit: var(--ko-ease-exit);
+
+  --shadow-surface: var(--ko-shadow-surface);
+  --shadow-card: var(--ko-shadow-card);
+  --shadow-card-lifted: var(--ko-shadow-card-lifted);
+  --shadow-sticky: var(--ko-shadow-sticky);
 }

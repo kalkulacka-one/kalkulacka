@@ -26,6 +26,8 @@ The color palette defines three main colors:
       gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
+      color: "black",
+      colorScheme: "light",
       padding: "2rem",
     }}
   >
@@ -71,6 +73,8 @@ and additional direct colors:
       gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
+      color: "black",
+      colorScheme: "light",
       padding: "2rem",
     }}
   >
@@ -119,6 +123,8 @@ If the default mapping of the main colors to the individual parts of the logo do
       gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
+      color: "black",
+      colorScheme: "light",
       padding: "2rem",
     }}
   >
@@ -184,14 +190,17 @@ However, tokens can always be overridden with a specific palette variable for mo
 
 ### Structure
 
-Color tokens are defined on four main levels:
+Every token follows the same principles: it is derived from the palette by a formula, it resolves light and dark mode internally (never in its name), a theme gets both modes for free, and a theme can pin any token with `--ko-palette-<name>` or its `-light` / `-dark` variants. Tokens derived from the neutral cap their chroma at the neutral's own, so an achromatic theme stays achromatic throughout.
 
-- element
-- variant
-- state
-- light/dark mode
+Token names combine three independent axes, at most one word from each:
 
-In addition, combinations (element on token) with appropriate color contrast are also defined.
+- **kind** — what the token is: `surface`, `surface-sunken`, `text`, `border`, `focus`, …
+- **strength** — one ordered ladder: `-strong` &gt; base &gt; `-muted` &gt; `-subtle`
+- **state** — `-hover`, `-active`, `-disabled`, `-inactive`
+
+In addition, combinations with appropriate contrast are defined as `on-bg-<color>`: the content color to use on that background.
+
+Each main color also has two translucent tints — `tint` (the color at low opacity, a highlight overlay safe over any background) and `tint-strong` (its emphasis step). All three families use the same recipe; only the opacity is tuned per family.
 
 ### Reference
 
@@ -250,6 +259,69 @@ In addition, combinations (element on token) with appropriate color contrast are
   </div>
 </Unstyled>
 
+#### Tints
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(4rem, 8rem))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "primary", variable: "--ko-color-primary" },
+          { label: "primary tint", variable: "--ko-color-primary-tint" },
+          { label: "primary tint strong", variable: "--ko-color-primary-tint-strong" },
+          { label: "secondary", variable: "--ko-color-secondary" },
+          { label: "secondary tint", variable: "--ko-color-secondary-tint" },
+          { label: "secondary tint strong", variable: "--ko-color-secondary-tint-strong" },
+          { label: "neutral", variable: "--ko-color-neutral" },
+          { label: "neutral tint", variable: "--ko-color-neutral-tint" },
+          { label: "neutral tint strong", variable: "--ko-color-neutral-tint-strong" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "8rem",
+                aspectRatio: "1",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
 #### Direct colors
 
 <Unstyled>
@@ -292,6 +364,185 @@ In addition, combinations (element on token) with appropriate color contrast are
                 height: "8rem",
                 borderRadius: "50%",
                 backgroundColor: `var(${variable})`,
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Surfaces
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "page", variable: "--ko-color-page" },
+          { label: "surface", variable: "--ko-color-surface" },
+          { label: "surface sunken", variable: "--ko-color-surface-sunken" },
+          { label: "border", variable: "--ko-color-border" },
+          { label: "border strong", variable: "--ko-color-border-strong" },
+          { label: "focus", variable: "--ko-color-focus" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Flavored surfaces
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(4rem, 8rem))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "surface primary", variable: "--ko-color-surface-primary" },
+          { label: "surface secondary", variable: "--ko-color-surface-secondary" },
+          { label: "surface neutral", variable: "--ko-color-surface-neutral" },
+          { label: "surface sunken primary", variable: "--ko-color-surface-sunken-primary" },
+          { label: "surface sunken secondary", variable: "--ko-color-surface-sunken-secondary" },
+          { label: "surface sunken neutral", variable: "--ko-color-surface-sunken-neutral" },
+          { label: "page primary", variable: "--ko-color-page-primary" },
+          { label: "page secondary", variable: "--ko-color-page-secondary" },
+          { label: "page neutral", variable: "--ko-color-page-neutral" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "8rem",
+                aspectRatio: "1",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Text
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "text strong", variable: "--ko-color-text-strong" },
+          { label: "text", variable: "--ko-color-text" },
+          { label: "text muted", variable: "--ko-color-text-muted" },
+          { label: "text subtle", variable: "--ko-color-text-subtle" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "8rem",
+                height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
               }}
             />
             <div style={{ textAlign: "center", fontSize: "0.875rem" }}>

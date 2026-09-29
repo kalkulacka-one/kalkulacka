@@ -7,6 +7,17 @@
 
 :root {
   color-scheme: light dark;
+
+  --ko-fade-to-bottom: linear-gradient(to bottom, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+  --ko-fade-to-top: linear-gradient(to top, transparent, oklch(from var(--ko-color-page) l c h / 0.35) 25%, oklch(from var(--ko-color-page) l c h / 0.7) 50%, oklch(from var(--ko-color-page) l c h / 0.9) 75%, var(--ko-color-page) 100%);
+
+  --ko-pressable-scale-hover: 1.008;
+  --ko-pressable-scale-press: 0.985;
+  --ko-pressable-scale-open: 1.015;
+  --ko-pressable-scale-open-hover: 1.022;
+
+  /* min(l, 0.2): shadows stay dark even for a light neutral, keeping the theme's hue. */
+  --ko-shadow-color: oklch(from var(--ko-palette-neutral) min(l, 0.2) c h);
 }
 
 @theme static {
@@ -30,6 +41,9 @@
     var(--ko-palette-primary-active-light, oklch(from var(--ko-palette-primary) calc(l - 0.436) calc(c - 0.05) h)),
     var(--ko-palette-primary-active-dark, oklch(from var(--ko-palette-primary) calc(l - 0.5) calc(c - 0.2) h))
   );
+
+  --color-primary-tint: oklch(from var(--ko-color-primary) l c h / 0.14);
+  --color-primary-tint-strong: oklch(from var(--ko-color-primary) l c h / 0.22);
 
   --color-primary-disabled: light-dark(
     var(--ko-palette-primary-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
@@ -55,6 +69,9 @@
     var(--ko-palette-secondary-active-light, oklch(from var(--ko-palette-secondary) calc(l - 0.436) calc(c - 0.05) h)),
     var(--ko-palette-secondary-active-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.5) calc(c - 0.2) h))
   );
+
+  --color-secondary-tint: oklch(from var(--ko-color-secondary) l c h / 0.12);
+  --color-secondary-tint-strong: oklch(from var(--ko-color-secondary) l c h / 0.2);
 
   --color-secondary-disabled: light-dark(
     var(--ko-palette-secondary-disabled-light, oklch(from var(--ko-palette-neutral) 0.9  calc(c - 0.01) h)),
@@ -91,6 +108,9 @@
     var(--ko-palette-neutral-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
   );
 
+  --color-neutral-tint: oklch(from var(--ko-color-neutral) l c h / 0.2);
+  --color-neutral-tint-strong: oklch(from var(--ko-color-neutral) l c h / 0.32);
+
   --color-on-bg-neutral: light-dark(
     var(--ko-palette-on-bg-neutral-light, white),
     var(--ko-palette-on-bg-neutral-dark, white)
@@ -111,6 +131,64 @@
   --color-white: light-dark(
     var(--ko-palette-white-light, white),
     var(--ko-palette-white-dark, white)
+  );
+
+  /* Surfaces and text */
+  /* min(c, …): chroma capped at the neutral's own, so achromatic themes stay achromatic. */
+
+  --color-page: light-dark(
+    var(--ko-palette-page-light, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.984 min(c, 0.003) h))),
+    var(--ko-palette-page-dark, var(--ko-palette-page, oklch(from var(--ko-palette-neutral) 0.18 min(c, 0.037) h)))
+  );
+
+  --color-surface: light-dark(
+    var(--ko-palette-surface-light, var(--ko-palette-surface, white)),
+    var(--ko-palette-surface-dark, var(--ko-palette-surface, oklch(from var(--ko-palette-neutral) 0.265 min(c, 0.045) h)))
+  );
+
+  --color-surface-sunken: light-dark(
+    var(--ko-palette-surface-sunken-light, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.968 min(c, 0.007) h))),
+    var(--ko-palette-surface-sunken-dark, var(--ko-palette-surface-sunken, oklch(from var(--ko-palette-neutral) 0.228 min(c, 0.037) h)))
+  );
+
+  --color-surface-hover: color-mix(in oklab, var(--ko-palette-neutral) 8%, transparent);
+
+  --color-surface-primary: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-surface));
+  --color-surface-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-surface));
+  --color-surface-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-surface));
+
+  --color-surface-sunken-primary: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-surface-sunken));
+  --color-surface-sunken-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-surface-sunken));
+  --color-surface-sunken-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-surface-sunken));
+
+  --color-page-primary: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-page));
+  --color-page-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-page));
+  --color-page-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-page));
+
+  --color-text: light-dark(
+    var(--ko-palette-text-light, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.279 min(c, 0.041) h))),
+    var(--ko-palette-text-dark, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.945 min(c, 0.011) h)))
+  );
+
+  --color-text-strong: oklch(from var(--ko-color-text) calc(l - 0.06) c h);
+
+  --color-text-muted: light-dark(
+    var(--ko-palette-text-muted-light, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.554 min(c, 0.046) h))),
+    var(--ko-palette-text-muted-dark, var(--ko-palette-text-muted, oklch(from var(--ko-palette-neutral) 0.711 min(c, 0.035) h)))
+  );
+
+  --color-text-subtle: oklch(from var(--ko-color-text-muted) calc(l + 0.12) c h);
+
+  --color-border: light-dark(
+    var(--ko-palette-border-light, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.929 min(c, 0.013) h))),
+    var(--ko-palette-border-dark, var(--ko-palette-border, oklch(from var(--ko-palette-neutral) 0.327 min(c, 0.036) h)))
+  );
+
+  --color-border-strong: oklch(from var(--ko-color-border) calc(l - 0.1) c h);
+
+  --color-focus: light-dark(
+    var(--ko-palette-focus-light, var(--ko-palette-focus, var(--ko-color-primary))),
+    var(--ko-palette-focus-dark, var(--ko-palette-focus, var(--ko-color-primary)))
   );
 
   /* Logo colors */
@@ -144,6 +222,26 @@
     var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary)))
   );
 
+
+  /* Shape */
+  --radius-card: var(--ko-shape-radius-card, 0 30px 30px 30px);
+  --radius-control: var(--ko-shape-radius-control, clamp(16px, 14.1633px + 0.4898vw, 22px));
+  --radius-chip: var(--ko-shape-radius-chip, 9px);
+  --radius-pill: var(--ko-shape-radius-pill, 9999px);
+
+  /* Motion */
+  --transition-duration-fast: var(--ko-motion-duration-fast, 120ms);
+  --transition-duration-base: var(--ko-motion-duration-base, 150ms);
+  --transition-duration-slow: var(--ko-motion-duration-slow, 250ms);
+  --ease-spring: var(--ko-motion-easing-spring, cubic-bezier(0.2, 0.9, 0.3, 1));
+  --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
+
+  /* Elevation */
+  --shadow-surface: 0 1px 2px -1px oklch(from var(--ko-shadow-color) l c h / 0.08), 0 10px 24px -14px oklch(from var(--ko-shadow-color) l c h / 0.2);
+  --shadow-card: 0 4px 12px -2px oklch(from var(--ko-shadow-color) l c h / 0.1), 0 16px 36px -8px oklch(from var(--ko-shadow-color) l c h / 0.18);
+  --shadow-card-lifted: 0 8px 20px -4px oklch(from var(--ko-shadow-color) l c h / 0.14), 0 24px 52px -10px oklch(from var(--ko-shadow-color) l c h / 0.25);
+  --shadow-sticky: 0 -8px 24px -12px oklch(from var(--ko-shadow-color) l c h / 0.14);
+
   --drop-shadow-hard: 6px 6px 0px light-dark(
     var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
     var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))
@@ -151,6 +249,14 @@
 }
 
 @layer base {
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --ko-motion-duration-fast: 0.01ms;
+      --ko-motion-duration-base: 0.01ms;
+      --ko-motion-duration-slow: 0.01ms;
+    }
+  }
+
   @font-face {
     font-family: "Radio Canada";
     font-weight: 300 700;
