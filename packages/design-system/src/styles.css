@@ -122,42 +122,6 @@
     var(--ko-palette-white-dark, white)
   );
 
-  /* Logo colors */
-  --color-logo-check: light-dark(
-    var(--ko-palette-logo-check-light, var(--ko-palette-logo-check, var(--ko-palette-primary))),
-    var(--ko-palette-logo-check-dark, var(--ko-palette-logo-check, var(--ko-palette-primary)))
-  );
-
-  --color-logo-slash: light-dark(
-    var(--ko-palette-logo-slash-light, var(--ko-palette-logo-slash, var(--ko-palette-neutral))),
-    var(--ko-palette-logo-slash-dark, var(--ko-palette-logo-slash, var(--ko-palette-neutral)))
-  );
-
-  --color-logo-cross: light-dark(
-    var(--ko-palette-logo-cross-light, var(--ko-palette-logo-cross, var(--ko-palette-secondary))),
-    var(--ko-palette-logo-cross-dark, var(--ko-palette-logo-cross, var(--ko-palette-secondary)))
-  );
-
-  --color-logo-percent-numerator: light-dark(
-    var(--ko-palette-logo-percent-numerator-light, var(--ko-palette-logo-percent-numerator, var(--ko-palette-primary))),
-    var(--ko-palette-logo-percent-numerator-dark, var(--ko-palette-logo-percent-numerator, var(--ko-palette-primary)))
-  );
-
-  --color-logo-percent-slash: light-dark(
-    var(--ko-palette-logo-percent-slash-light, var(--ko-palette-logo-percent-slash, var(--ko-palette-neutral))),
-    var(--ko-palette-logo-percent-slash-dark, var(--ko-palette-logo-percent-slash, var(--ko-palette-neutral)))
-  );
-
-  --color-logo-percent-denominator: light-dark(
-    var(--ko-palette-logo-percent-denominator-light, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary))),
-    var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary)))
-  );
-
-  --drop-shadow-hard: 6px 6px 0px light-dark(
-    var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
-    var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))
-  );
-
   /* Surfaces and text */
   /* min(c, …): chroma capped at the neutral's own, so achromatic themes stay achromatic. */
 
@@ -216,6 +180,38 @@
     var(--ko-palette-focus-dark, var(--ko-palette-focus, var(--ko-color-primary)))
   );
 
+  /* Logo colors */
+  --color-logo-check: light-dark(
+    var(--ko-palette-logo-check-light, var(--ko-palette-logo-check, var(--ko-palette-primary))),
+    var(--ko-palette-logo-check-dark, var(--ko-palette-logo-check, var(--ko-palette-primary)))
+  );
+
+  --color-logo-slash: light-dark(
+    var(--ko-palette-logo-slash-light, var(--ko-palette-logo-slash, var(--ko-palette-neutral))),
+    var(--ko-palette-logo-slash-dark, var(--ko-palette-logo-slash, var(--ko-palette-neutral)))
+  );
+
+  --color-logo-cross: light-dark(
+    var(--ko-palette-logo-cross-light, var(--ko-palette-logo-cross, var(--ko-palette-secondary))),
+    var(--ko-palette-logo-cross-dark, var(--ko-palette-logo-cross, var(--ko-palette-secondary)))
+  );
+
+  --color-logo-percent-numerator: light-dark(
+    var(--ko-palette-logo-percent-numerator-light, var(--ko-palette-logo-percent-numerator, var(--ko-palette-primary))),
+    var(--ko-palette-logo-percent-numerator-dark, var(--ko-palette-logo-percent-numerator, var(--ko-palette-primary)))
+  );
+
+  --color-logo-percent-slash: light-dark(
+    var(--ko-palette-logo-percent-slash-light, var(--ko-palette-logo-percent-slash, var(--ko-palette-neutral))),
+    var(--ko-palette-logo-percent-slash-dark, var(--ko-palette-logo-percent-slash, var(--ko-palette-neutral)))
+  );
+
+  --color-logo-percent-denominator: light-dark(
+    var(--ko-palette-logo-percent-denominator-light, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary))),
+    var(--ko-palette-logo-percent-denominator-dark, var(--ko-palette-logo-percent-denominator, var(--ko-palette-secondary)))
+  );
+
+
   /* Shape */
   --radius-card: var(--ko-shape-radius-card, 0 30px 30px 30px);
   --radius-control: var(--ko-shape-radius-control, clamp(16px, 14.1633px + 0.4898vw, 22px));
@@ -228,6 +224,12 @@
   --transition-duration-slow: var(--ko-motion-duration-slow, 250ms);
   --ease-spring: var(--ko-motion-easing-spring, cubic-bezier(0.2, 0.9, 0.3, 1));
   --ease-exit: var(--ko-motion-easing-exit, cubic-bezier(0.3, 0.6, 0.4, 1));
+
+  /* Elevation */
+  --drop-shadow-hard: 6px 6px 0px light-dark(
+    var(--ko-drop-shadow-hard-light, oklch(from var(--ko-palette-neutral) 0.95 c h)),
+    var(--ko-drop-shadow-hard-dark, oklch(from var(--ko-palette-neutral) 0.95 c h))
+  );
 }
 
 @layer base {
