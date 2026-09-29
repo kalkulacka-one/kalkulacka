@@ -52,4 +52,9 @@
   --color-border: var(--ko-color-border);
   --color-border-strong: var(--ko-color-border-strong);
   --color-focus: var(--ko-color-focus);
+
+  --radius-card: var(--ko-radius-card);
+  --radius-control: var(--ko-radius-control);
+  --radius-chip: var(--ko-radius-chip);
+  --radius-pill: var(--ko-radius-pill);
 }

@@ -215,6 +215,12 @@
     var(--ko-palette-focus-light, var(--ko-palette-focus, var(--ko-color-primary))),
     var(--ko-palette-focus-dark, var(--ko-palette-focus, var(--ko-color-primary)))
   );
+
+  /* Shape */
+  --radius-card: var(--ko-shape-radius-card, 0 30px 30px 30px);
+  --radius-control: var(--ko-shape-radius-control, clamp(16px, 14.1633px + 0.4898vw, 22px));
+  --radius-chip: var(--ko-shape-radius-chip, 9px);
+  --radius-pill: var(--ko-shape-radius-pill, 9999px);
 }
 
 @layer base {
