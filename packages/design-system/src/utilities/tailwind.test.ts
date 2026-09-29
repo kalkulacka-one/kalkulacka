@@ -32,4 +32,34 @@ describe("twMerge", () => {
     expect(koa("koa:p-2 koa:p-4")).toBe("koa:p-4");
     expect(koa("ko:p-2 ko:p-4")).toBe("ko:p-2 ko:p-4");
   });
+
+  it("merges a built-in radius with a radius token", () => {
+    expect(twMerge("ko:rounded-lg ko:rounded-card")).toBe("ko:rounded-card");
+    expect(twMerge("ko:rounded-pill ko:rounded-chip")).toBe("ko:rounded-chip");
+  });
+
+  it("merges a built-in shadow with an elevation token", () => {
+    expect(twMerge("ko:shadow-md ko:shadow-card")).toBe("ko:shadow-card");
+    expect(twMerge("ko:shadow-card ko:shadow-card-lifted")).toBe("ko:shadow-card-lifted");
+  });
+
+  it("merges the hard drop shadow with a built-in drop shadow", () => {
+    expect(twMerge("ko:drop-shadow-md ko:drop-shadow-hard")).toBe("ko:drop-shadow-hard");
+  });
+
+  it("merges a built-in easing with a motion token", () => {
+    expect(twMerge("ko:ease-in ko:ease-spring")).toBe("ko:ease-spring");
+    expect(twMerge("ko:ease-spring ko:ease-exit")).toBe("ko:ease-exit");
+  });
+
+  it("merges a built-in duration with a duration token", () => {
+    expect(twMerge("ko:duration-150 ko:duration-fast")).toBe("ko:duration-fast");
+    expect(twMerge("ko:duration-base ko:duration-slow")).toBe("ko:duration-slow");
+  });
+
+  it("merges the token groups behind the app package's prefix too", () => {
+    const koa = createTwMerge("koa");
+    expect(koa("koa:rounded-lg koa:rounded-card")).toBe("koa:rounded-card");
+    expect(koa("koa:shadow-md koa:shadow-sticky")).toBe("koa:shadow-sticky");
+  });
 });
