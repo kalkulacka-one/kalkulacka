@@ -1,13 +1,9 @@
 import { extendTailwindMerge } from "tailwind-merge";
 
 /*
- * Theme tokens declared in the design system's `styles.css` are listed here
- * so that, for example, a later `ko:rounded-pill` drops an earlier
- * `ko:rounded-2xl` the way built-in values do. Colors need no listing:
- * tailwind-merge already accepts any word after them. Durations are not a
- * tailwind-merge theme scale, so the named ones extend the class group
- * instead. Both the design system's `ko` prefix and the app package's `koa`
- * prefix share this list, since both consume the same theme tokens.
+ * Tokens from styles.css on tailwind-merge's closed-list scales, so they
+ * conflict-resolve like built-ins; colors need no listing. A new token on
+ * one of these scales must be added here in the same change.
  */
 const themeExtension = {
   radius: ["card", "control", "chip", "pill"],
