@@ -39,6 +39,12 @@
   --color-surface-primary: var(--ko-color-surface-primary);
   --color-surface-secondary: var(--ko-color-surface-secondary);
   --color-surface-neutral: var(--ko-color-surface-neutral);
+  --color-surface-sunken-primary: var(--ko-color-surface-sunken-primary);
+  --color-surface-sunken-secondary: var(--ko-color-surface-sunken-secondary);
+  --color-surface-sunken-neutral: var(--ko-color-surface-sunken-neutral);
+  --color-page-primary: var(--ko-color-page-primary);
+  --color-page-secondary: var(--ko-color-page-secondary);
+  --color-page-neutral: var(--ko-color-page-neutral);
   --color-text: var(--ko-color-text);
   --color-text-strong: var(--ko-color-text-strong);
   --color-text-muted: var(--ko-color-text-muted);

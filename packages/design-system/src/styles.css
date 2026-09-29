@@ -182,6 +182,14 @@
   --color-surface-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-surface));
   --color-surface-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-surface));
 
+  --color-surface-sunken-primary: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-surface-sunken));
+  --color-surface-sunken-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-surface-sunken));
+  --color-surface-sunken-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-surface-sunken));
+
+  --color-page-primary: color-mix(in oklab, var(--ko-color-primary) 22%, var(--ko-color-page));
+  --color-page-secondary: color-mix(in oklab, var(--ko-color-secondary) 22%, var(--ko-color-page));
+  --color-page-neutral: color-mix(in oklab, var(--ko-color-neutral) 22%, var(--ko-color-page));
+
   --color-text: light-dark(
     var(--ko-palette-text-light, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.279 min(c, 0.041) h))),
     var(--ko-palette-text-dark, var(--ko-palette-text, oklch(from var(--ko-palette-neutral) 0.945 min(c, 0.011) h)))

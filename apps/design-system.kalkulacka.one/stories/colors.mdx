@@ -402,9 +402,6 @@ Each main color also has two translucent tints — `tint` (the color at low opac
           { label: "page", variable: "--ko-color-page" },
           { label: "surface", variable: "--ko-color-surface" },
           { label: "surface sunken", variable: "--ko-color-surface-sunken" },
-          { label: "surface primary", variable: "--ko-color-surface-primary" },
-          { label: "surface secondary", variable: "--ko-color-surface-secondary" },
-          { label: "surface neutral", variable: "--ko-color-surface-neutral" },
           { label: "border", variable: "--ko-color-border" },
           { label: "border strong", variable: "--ko-color-border-strong" },
           { label: "focus", variable: "--ko-color-focus" },
@@ -423,6 +420,69 @@ Each main color also has two translucent tints — `tint` (the color at low opac
               style={{
                 width: "8rem",
                 height: "8rem",
+                borderRadius: "50%",
+                backgroundColor: `var(${variable})`,
+                boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+              }}
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>
+              {label}
+            </div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+#### Flavored surfaces
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(4rem, 8rem))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "surface primary", variable: "--ko-color-surface-primary" },
+          { label: "surface secondary", variable: "--ko-color-surface-secondary" },
+          { label: "surface neutral", variable: "--ko-color-surface-neutral" },
+          { label: "surface sunken primary", variable: "--ko-color-surface-sunken-primary" },
+          { label: "surface sunken secondary", variable: "--ko-color-surface-sunken-secondary" },
+          { label: "surface sunken neutral", variable: "--ko-color-surface-sunken-neutral" },
+          { label: "page primary", variable: "--ko-color-page-primary" },
+          { label: "page secondary", variable: "--ko-color-page-secondary" },
+          { label: "page neutral", variable: "--ko-color-page-neutral" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "8rem",
+                aspectRatio: "1",
                 borderRadius: "50%",
                 backgroundColor: `var(${variable})`,
                 boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
