@@ -10,6 +10,8 @@ const themeExtension = {
   shadow: ["surface", "card", "card-lifted", "sticky"],
   "drop-shadow": ["hard"],
   ease: ["spring", "exit"],
+  spacing: ["gutter", "nav", "fade-edge", "scroll-tail"],
+  text: ["title", "display"],
 };
 
 const classGroupExtension = {

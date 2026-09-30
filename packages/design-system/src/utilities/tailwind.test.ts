@@ -57,6 +57,16 @@ describe("twMerge", () => {
     expect(twMerge("ko:duration-base ko:duration-slow")).toBe("ko:duration-slow");
   });
 
+  it("merges a built-in spacing utility with a layout token", () => {
+    expect(twMerge("ko:p-4 ko:p-gutter")).toBe("ko:p-gutter");
+    expect(twMerge("ko:h-10 ko:h-nav")).toBe("ko:h-nav");
+  });
+
+  it("merges a built-in font size with a type-scale token", () => {
+    expect(twMerge("ko:text-sm ko:text-title")).toBe("ko:text-title");
+    expect(twMerge("ko:text-title ko:text-display")).toBe("ko:text-display");
+  });
+
   it("merges the token groups behind the app package's prefix too", () => {
     const koa = createTwMerge("koa");
     expect(koa("koa:rounded-lg koa:rounded-card")).toBe("koa:rounded-card");
