@@ -50,8 +50,9 @@
     var(--ko-palette-primary-disabled-dark, oklch(from var(--ko-palette-neutral) 0.9 calc(c - 0.2) h))
   );
 
+  /* clamp(0, (0.62 - l) * 1000, 1) snaps to white on a dark base, black on a light one. */
   --color-on-bg-primary: light-dark(
-    var(--ko-palette-on-bg-primary-light, white),
+    var(--ko-palette-on-bg-primary-light, oklch(from var(--ko-color-primary) clamp(0, (0.62 - l) * 1000, 1) 0 h)),
     var(--ko-palette-on-bg-primary-dark, white)
   );
   
@@ -79,7 +80,7 @@
   );
 
   --color-on-bg-secondary: light-dark(
-    var(--ko-palette-on-bg-secondary-light, white),
+    var(--ko-palette-on-bg-secondary-light, oklch(from var(--ko-color-secondary) clamp(0, (0.62 - l) * 1000, 1) 0 h)),
     var(--ko-palette-on-bg-secondary-dark, white)
   );
 
