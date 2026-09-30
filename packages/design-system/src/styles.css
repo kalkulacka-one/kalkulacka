@@ -25,6 +25,12 @@
   --font-sans: var(--ko-typeface-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: var(--ko-typeface-mono), ui-monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+  /* Type scale */
+  --text-title: clamp(1.625rem, 1.3rem + 1.5vw, 2.25rem);
+  --text-title--line-height: 1.1;
+  --text-display: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-display--line-height: 1.1;
+
   --color-*: initial;
 
   --color-primary: light-dark(

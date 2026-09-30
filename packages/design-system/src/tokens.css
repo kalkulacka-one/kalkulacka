@@ -3,6 +3,11 @@
   --font-sans: var(--ko-font-sans);
   --font-mono: var(--ko-font-mono);
 
+  --text-title: var(--ko-text-title);
+  --text-title--line-height: var(--ko-text-title--line-height);
+  --text-display: var(--ko-text-display);
+  --text-display--line-height: var(--ko-text-display--line-height);
+
   --color-primary: var(--ko-color-primary);
   --color-primary-hover: var(--ko-color-primary-hover);
   --color-primary-active: var(--ko-color-primary-active);
