@@ -63,6 +63,11 @@
   --radius-chip: var(--ko-radius-chip);
   --radius-pill: var(--ko-radius-pill);
 
+  --spacing-gutter: var(--ko-spacing-gutter);
+  --spacing-nav: var(--ko-spacing-nav);
+  --spacing-fade-edge: var(--ko-spacing-fade-edge);
+  --spacing-scroll-tail: var(--ko-spacing-scroll-tail);
+
   --transition-duration-fast: var(--ko-transition-duration-fast);
   --transition-duration-base: var(--ko-transition-duration-base);
   --transition-duration-slow: var(--ko-transition-duration-slow);
@@ -73,9 +78,4 @@
   --shadow-card: var(--ko-shadow-card);
   --shadow-card-lifted: var(--ko-shadow-card-lifted);
   --shadow-sticky: var(--ko-shadow-sticky);
-
-  --spacing-gutter: var(--ko-spacing-gutter);
-  --spacing-nav: var(--ko-spacing-nav);
-  --spacing-fade-edge: var(--ko-spacing-fade-edge);
-  --spacing-scroll-tail: var(--ko-spacing-scroll-tail);
 }
