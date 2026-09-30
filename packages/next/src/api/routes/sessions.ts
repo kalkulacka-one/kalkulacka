@@ -6,10 +6,12 @@ import { z } from "zod";
 import { type CreateCalculatorSessionParams, createCalculatorSession, getEmbedNameFromRequest, getSessionCookie, getSessionFromRequest, type SessionCookie, setSessionCookie } from "@/session/server";
 import { calculatorFullKey } from "@/session/shared";
 
+const keySchema = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+
 const postRequestSchema = z.object({
   calculatorId: z.string().uuid(),
-  calculatorKey: z.string(),
-  calculatorGroup: z.string().optional(),
+  calculatorKey: keySchema,
+  calculatorGroup: keySchema.optional(),
   calculatorVersion: z
     .string()
     .regex(/^\d+\.\d+\.\d+$/)
