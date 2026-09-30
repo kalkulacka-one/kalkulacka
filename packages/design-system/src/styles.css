@@ -85,8 +85,8 @@
   );
 
   --color-neutral: light-dark(
-    var(--ko-palette-neutral-light, oklch(from var(--ko-palette-neutral) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-neutral-dark, oklch(from var(--ko-palette-neutral) calc(l - 0.35) calc(c - 0.12) h))
+    var(--ko-palette-neutral-light, var(--ko-palette-neutral)),
+    var(--ko-palette-neutral-dark, var(--ko-color-text))
   );
 
   --color-neutral-hover: light-dark(
@@ -114,7 +114,7 @@
 
   --color-on-bg-neutral: light-dark(
     var(--ko-palette-on-bg-neutral-light, white),
-    var(--ko-palette-on-bg-neutral-dark, white)
+    var(--ko-palette-on-bg-neutral-dark, var(--ko-color-page))
   );
 
   --color-red: light-dark(
