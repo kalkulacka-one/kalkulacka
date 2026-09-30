@@ -68,4 +68,9 @@
   --shadow-card: var(--ko-shadow-card);
   --shadow-card-lifted: var(--ko-shadow-card-lifted);
   --shadow-sticky: var(--ko-shadow-sticky);
+
+  --spacing-gutter: var(--ko-spacing-gutter);
+  --spacing-nav: var(--ko-spacing-nav);
+  --spacing-fade-edge: var(--ko-spacing-fade-edge);
+  --spacing-scroll-tail: var(--ko-spacing-scroll-tail);
 }

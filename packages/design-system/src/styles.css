@@ -230,6 +230,12 @@
   --radius-chip: var(--ko-shape-radius-chip, 9px);
   --radius-pill: var(--ko-shape-radius-pill, 9999px);
 
+  /* Layout */
+  --spacing-gutter: clamp(18px, 10.0408px + 2.1224vw, 44px);
+  --spacing-nav: clamp(62px, 54.6531px + 1.9592vw, 86px);
+  --spacing-fade-edge: 3rem;
+  --spacing-scroll-tail: max(4rem, env(safe-area-inset-bottom, 0px));
+
   /* Motion */
   --transition-duration-fast: var(--ko-motion-duration-fast, 120ms);
   --transition-duration-base: var(--ko-motion-duration-base, 150ms);
