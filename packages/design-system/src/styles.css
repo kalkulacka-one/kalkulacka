@@ -33,13 +33,13 @@
   );
 
   --color-primary-hover: light-dark(
-    var(--ko-palette-primary-hover-light, oklch(from var(--ko-palette-primary) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-primary-hover-dark, oklch(from var(--ko-palette-primary) calc(l - 0.35) calc(c - 0.12) h))
+    var(--ko-palette-primary-hover-light, oklch(from var(--ko-color-primary) calc(l - 0.05) c h)),
+    var(--ko-palette-primary-hover-dark, oklch(from var(--ko-color-primary) calc(l - 0.05) c h))
   );
 
   --color-primary-active: light-dark(
-    var(--ko-palette-primary-active-light, oklch(from var(--ko-palette-primary) calc(l - 0.436) calc(c - 0.05) h)),
-    var(--ko-palette-primary-active-dark, oklch(from var(--ko-palette-primary) calc(l - 0.5) calc(c - 0.2) h))
+    var(--ko-palette-primary-active-light, oklch(from var(--ko-color-primary) calc(l - 0.1) c h)),
+    var(--ko-palette-primary-active-dark, oklch(from var(--ko-color-primary) calc(l - 0.1) c h))
   );
 
   --color-primary-tint: oklch(from var(--ko-color-primary) l c h / 0.14);
@@ -61,13 +61,13 @@
   );
 
   --color-secondary-hover: light-dark(
-    var(--ko-palette-secondary-hover-light, oklch(from var(--ko-palette-secondary) calc(l - 0.206) calc(c - 0.075) h)),
-    var(--ko-palette-secondary-hover-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.35) calc(c - 0.12) h))
+    var(--ko-palette-secondary-hover-light, oklch(from var(--ko-color-secondary) calc(l - 0.05) c h)),
+    var(--ko-palette-secondary-hover-dark, oklch(from var(--ko-color-secondary) calc(l - 0.05) c h))
   );
 
   --color-secondary-active: light-dark(
-    var(--ko-palette-secondary-active-light, oklch(from var(--ko-palette-secondary) calc(l - 0.436) calc(c - 0.05) h)),
-    var(--ko-palette-secondary-active-dark, oklch(from var(--ko-palette-secondary) calc(l - 0.5) calc(c - 0.2) h))
+    var(--ko-palette-secondary-active-light, oklch(from var(--ko-color-secondary) calc(l - 0.1) c h)),
+    var(--ko-palette-secondary-active-dark, oklch(from var(--ko-color-secondary) calc(l - 0.1) c h))
   );
 
   --color-secondary-tint: oklch(from var(--ko-color-secondary) l c h / 0.12);
