@@ -65,6 +65,7 @@ function formatVotingDays(summary: ElectionSummaryViewModel): string | undefined
 export async function Campaign() {
   const current = now();
   const cards = (await Promise.all(GROUPS.map((group) => electionCard(group, current)))).flatMap((card) => (card ? [card] : []));
+  const preparing = cards.some((card) => card.published.length <= DIRECT_LINKS_UP_TO);
 
   return (
     <>
@@ -101,7 +102,9 @@ export async function Campaign() {
         <div className="p-6 md:p-8 grid gap-6 md:grid-cols-2 md:items-center">
           <div className="flex flex-col items-start gap-2">
             <h2 className="font-display font-bold tracking-tight text-slate-700 text-xl md:text-2xl">Ať vám nové kalkulačky neutečou</h2>
-            <p className="text-slate-500">Nechte nám e-mail a napíšeme vám, až spustíme kalkulačky pro komunální volby.</p>
+            <p className="text-slate-500">
+              {preparing ? "Nechte nám e-mail a napíšeme vám, až spustíme kalkulačky pro komunální volby." : "Nechte nám e-mail a napíšeme vám, až spustíme další kalkulačky."}
+            </p>
           </div>
           <div className="w-full">
             <SubscribeForm />
