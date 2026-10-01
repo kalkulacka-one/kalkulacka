@@ -33,6 +33,7 @@ import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
     .ko-demo-duration-slow .ko-demo-dot { transition-duration: var(--ko-transition-duration-slow); transition-timing-function: var(--ko-ease-spring); }
     .ko-demo-ease-spring .ko-demo-dot { transition-duration: var(--ko-transition-duration-slow); transition-timing-function: var(--ko-ease-spring); }
     .ko-demo-ease-exit .ko-demo-dot { transition-duration: var(--ko-transition-duration-slow); transition-timing-function: var(--ko-ease-exit); background-color: var(--ko-color-secondary); }
+    .ko-demo-pressable p { margin: 0; }
     .ko-demo-pressable {
       width: 8rem;
       aspect-ratio: 1;
@@ -70,6 +71,7 @@ Hover a lane — the same trip at the three speeds.
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
       color: "black",
@@ -103,6 +105,7 @@ Hover a lane — the same trip and speed, a different character.
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
       color: "black",
@@ -140,6 +143,7 @@ Hover the card, then press and hold: scale-hover with shadow-card-lifted, scale-
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
       color: "black",
