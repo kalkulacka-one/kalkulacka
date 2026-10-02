@@ -11,8 +11,12 @@ export type NavigationCard = {
 export function NavigationCard({ children, bare = false }: NavigationCard) {
   if (bare) {
     return (
-      <div className="koa:@container koa:grid koa:justify-items-center koa:px-gutter koa:pb-4 koa:sm:p-0 koa:sm:mx-auto koa:sm:w-full koa:sm:max-w-xl koa:sm:px-4 koa:sm:py-3 koa:lg:py-4">
-        <div className="koa:pointer-events-auto koa:[&>:first-child]:drop-shadow-lg koa:sm:[&>:first-child]:drop-shadow-none">{children}</div>
+      // `isolate` + the `before:` layer below is the 2026 action band: on a phone, the list scrolling
+      // underneath the floating button settles toward the page colour before it reaches the pill, instead of
+      // running straight up to its edge. `-z-10` needs its own stacking context (`isolate`) or it would compare
+      // against the sticky nav's siblings instead of staying behind just this card's own button.
+      <div className="koa:@container koa:relative koa:isolate koa:grid koa:justify-items-center koa:px-gutter koa:pb-4 koa:sm:p-0 koa:sm:mx-auto koa:sm:w-full koa:sm:max-w-xl koa:sm:px-4 koa:sm:py-3 koa:lg:py-4 koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:-z-10 koa:before:bottom-0 koa:before:left-1/2 koa:before:w-screen koa:before:-translate-x-1/2 koa:before:h-[5rem] koa:before:bg-[image:var(--ko-fade-to-bottom)] koa:sm:before:hidden">
+        <div className="koa:pointer-events-auto koa:[&>:first-child]:shadow-sticky koa:sm:[&>:first-child]:shadow-none">{children}</div>
       </div>
     );
   }

@@ -52,9 +52,12 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const bottomCondensed = "koa:row-start-1";
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
-  // No background band: the header sits transparently on the page backdrop, like 2026.
+  // No hard-edged panel — like 2026, a blur-less page-colour fade sits behind the bar (`before:`, its own
+  // stacking context via `isolate` so `-z-10` stays behind just this header's own content): solid behind the
+  // wordmark, fading out before it reaches the bottom of the bar, so content scrolling underneath settles
+  // toward the page colour instead of colliding with the logo/title.
   return (
-    <header className="koa:@container koa:sticky koa:top-0">
+    <header className="koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-x-0 koa:before:top-0 koa:before:-z-10 koa:before:h-[calc(100%+var(--ko-spacing-fade-edge))] koa:before:bg-[image:var(--ko-fade-to-bottom)]">
       <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
         <div className={headerGridClasses}>
           <div className={mainClasses}>

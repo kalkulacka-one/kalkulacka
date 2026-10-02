@@ -27,9 +27,10 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
       {/*
        * 2026's compact recap row runs 64-76px tall with its titles fitting in one or two lines — ours
        * forced 76px as a floor and spaced the two answer toggles wide enough that, together with the
-       * star, they left too little width for the title and pushed it to wrap further than 2026. Button
-       * has no size smaller than "small" (40px, already at the top of the 36-40px target), so the fix
-       * here is tightening what this row controls — a shorter floor and tighter gaps — not the toggles.
+       * star, they left too little width for the title and pushed it to wrap further than 2026. The
+       * toggles below already pass size="small"; the design system's `answer` variant just ignored it
+       * until it gained a matching 36px compound (button.tsx) — paired here with a shorter row floor
+       * and tighter gaps so the title gets its width back too.
        */}
       <div className="koa:min-h-[64px] koa:py-2.5 koa:px-4 koa:sm:px-5 koa:flex koa:items-center koa:gap-2.5">
         <ToggleButton
