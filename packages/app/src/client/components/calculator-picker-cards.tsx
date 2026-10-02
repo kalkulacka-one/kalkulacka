@@ -13,21 +13,21 @@ export function CalculatorPickerCards({ cards, startLabel, unavailableLabel }: C
   return (
     <div className="koa:grid koa:gap-4">
       {cards.map((card, index) => {
-        const surface = card.available ? "koa:bg-white" : "koa:bg-slate-100/70";
-        const titleColor = card.available ? "koa:text-slate-800" : "koa:text-slate-500";
+        const surface = card.available ? "koa:bg-surface" : "koa:bg-surface-sunken/70";
+        const titleColor = card.available ? "koa:text-text-strong" : "koa:text-text-muted";
         const action = ButtonVariants({ color: "neutral", variant: index === 0 ? "fill" : "outline" });
 
         return (
-          <div key={card.key} className={`koa:rounded-[1.25rem] koa:border koa:border-slate-200 koa:shadow-[0_1px_2px_rgba(15,23,42,0.06)] ${surface}`}>
+          <div key={card.key} className={`koa:rounded-[1.25rem] koa:border koa:border-border koa:shadow-surface ${surface}`}>
             <div className="koa:grid koa:gap-3 koa:p-5 koa:sm:p-6">
               <h3 className={`koa:font-display koa:text-xl koa:font-bold koa:tracking-tight ${titleColor}`}>{card.title}</h3>
-              {card.description && <p className="koa:leading-relaxed koa:text-slate-500">{card.description}</p>}
+              {card.description && <p className="koa:leading-relaxed koa:text-text-muted">{card.description}</p>}
               {card.href ? (
                 <a href={card.href} className={`koa:text-center ${action}`}>
                   {startLabel}
                 </a>
               ) : (
-                <p className="koa:font-semibold koa:text-slate-500">{unavailableLabel}</p>
+                <p className="koa:font-semibold koa:text-text-muted">{unavailableLabel}</p>
               )}
             </div>
           </div>

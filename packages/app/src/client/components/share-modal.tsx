@@ -115,16 +115,16 @@ export function ShareModal({ isOpen, onClose, onShare, buildShareUrl, privacyHre
 
   return (
     <div className="koa:fixed koa:inset-0 koa:z-50 koa:flex koa:items-center koa:justify-center koa:p-4 koa:bg-black/50 koa:backdrop-blur-sm" onClick={onClose} role="dialog" aria-modal="true">
-      <div className="koa:bg-white koa:rounded-2xl koa:shadow-xl koa:max-w-lg koa:w-full koa:p-6 koa:relative" onClick={(e) => e.stopPropagation()} role="document">
-        <button type="button" onClick={onClose} className="koa:absolute koa:top-4 koa:right-4 koa:text-slate-400 koa:hover:text-slate-600 koa:transition-colors" aria-label={t("close")}>
+      <div className="koa:bg-surface koa:rounded-2xl koa:shadow-xl koa:max-w-lg koa:w-full koa:p-6 koa:relative" onClick={(e) => e.stopPropagation()} role="document">
+        <button type="button" onClick={onClose} className="koa:absolute koa:top-4 koa:right-4 koa:text-text-muted koa:hover:text-text koa:transition-colors" aria-label={t("close")}>
           <Icon icon={mdiClose} size="medium" decorative />
         </button>
 
-        <h2 className="koa:font-display koa:text-2xl koa:font-bold koa:text-slate-800 koa:mb-4">{t("title")}</h2>
+        <h2 className="koa:font-display koa:text-2xl koa:font-bold koa:text-text-strong koa:mb-4">{t("title")}</h2>
 
         {isLoading && (
           <div className="koa:flex koa:items-center koa:justify-center koa:py-8">
-            <div className="koa:text-slate-500">{t("creating")}</div>
+            <div className="koa:text-text-muted">{t("creating")}</div>
           </div>
         )}
 
@@ -132,7 +132,7 @@ export function ShareModal({ isOpen, onClose, onShare, buildShareUrl, privacyHre
 
         {shareUrl && !isLoading && !error && (
           <>
-            <p className="koa:text-slate-600 koa:text-sm koa:mb-4">{t("intro")}</p>
+            <p className="koa:text-text-muted koa:text-sm koa:mb-4">{t("intro")}</p>
 
             <div className="koa:flex koa:gap-2 koa:mb-6">
               <input
@@ -140,7 +140,7 @@ export function ShareModal({ isOpen, onClose, onShare, buildShareUrl, privacyHre
                 type="text"
                 readOnly
                 value={shareUrl}
-                className="koa:flex-1 koa:min-w-0 koa:px-3 koa:py-2 koa:border koa:border-slate-200 koa:rounded-lg koa:bg-slate-50 koa:text-slate-700 koa:text-sm koa:truncate"
+                className="koa:flex-1 koa:min-w-0 koa:px-3 koa:py-2 koa:border koa:border-border koa:rounded-lg koa:bg-surface-sunken koa:text-text-strong koa:text-sm koa:truncate"
               />
               {hasClipboardAccess && (
                 <div className="koa:shrink-0">
@@ -171,9 +171,9 @@ export function ShareModal({ isOpen, onClose, onShare, buildShareUrl, privacyHre
             </div>
 
             {privacyHref && (
-              <p className="koa:text-slate-500 koa:text-xs koa:mt-4">
+              <p className="koa:text-text-muted koa:text-xs koa:mt-4">
                 {t("consentPrefix")}{" "}
-                <a href={privacyHref} target="_blank" rel="noopener noreferrer" className="koa:text-slate-700 koa:hover:text-slate-900 koa:underline">
+                <a href={privacyHref} target="_blank" rel="noopener noreferrer" className="koa:text-text-strong koa:hover:text-text-strong koa:underline">
                   {t("privacyPolicy")}
                 </a>
                 .
