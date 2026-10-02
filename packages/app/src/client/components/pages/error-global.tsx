@@ -7,6 +7,7 @@ export type ErrorGlobalPage = {
   eyebrow: string;
   heading: string;
   paragraph: string;
+  note: string;
   reload: string;
   home: string;
   reference: string;
@@ -15,7 +16,7 @@ export type ErrorGlobalPage = {
 };
 
 /** The error page for global-error.tsx, which replaces the document: it has no provider, so it is given its words. */
-export function ErrorGlobalPage({ title, eyebrow, heading, paragraph, reload, home, reference, digest, homeHref = "/" }: ErrorGlobalPage) {
+export function ErrorGlobalPage({ title, eyebrow, heading, paragraph, note, reload, home, reference, digest, homeHref = "/" }: ErrorGlobalPage) {
   return (
     <ErrorPageLayout title={title}>
       <p className="koa:text-xs koa:font-semibold koa:uppercase koa:tracking-widest koa:text-slate-400">{eyebrow}</p>
@@ -29,11 +30,15 @@ export function ErrorGlobalPage({ title, eyebrow, heading, paragraph, reload, ho
           </Button>
         </a>
       </div>
-      {digest && (
-        <p className="koa:mt-6 koa:text-xs koa:text-slate-400">
-          {reference}: <code className="koa:font-mono">{digest}</code>
-        </p>
-      )}
+      <p className="koa:mt-6 koa:text-xs koa:text-slate-400">
+        {note}
+        {digest && (
+          <>
+            {" "}
+            {reference}: <code className="koa:font-mono">{digest}</code>
+          </>
+        )}
+      </p>
     </ErrorPageLayout>
   );
 }

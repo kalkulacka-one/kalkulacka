@@ -23,6 +23,7 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
             eyebrow="Грешка 500"
             heading="Згрешивме во пресметката"
             paragraph="Калкулаторот не можеше да се вчита. Обидете се да ја освежите страницата."
+            note="Грешката е забележана, нашиот технички тим веќе знае за неа."
             reload="Освежи страница"
             home="Назад на почетната"
             reference="Код на грешката"

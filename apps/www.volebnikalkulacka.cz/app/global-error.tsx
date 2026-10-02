@@ -23,6 +23,7 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
             eyebrow="Chyba 500"
             heading="Přepočítali jsme se"
             paragraph="Kalkulačku se nepodařilo spustit. Zkuste stránku načíst znovu."
+            note="Chybu jsme si zapsali, náš technický tým o ní už ví."
             reload="Načíst stránku znovu"
             home="Zpátky na úvod"
             reference="Kód chyby"
