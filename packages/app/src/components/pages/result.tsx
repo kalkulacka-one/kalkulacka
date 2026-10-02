@@ -1,6 +1,6 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
-import { mdiArrowLeft, mdiClose } from "@mdi/js";
+import { mdiArrowLeft, mdiClose, mdiExportVariant } from "@mdi/js";
 import { useTranslations } from "next-intl";
 import React, { type ReactNode } from "react";
 
@@ -42,9 +42,15 @@ export function ResultPage({
   donateCard,
 }: ResultPage) {
   const t = useTranslations("koa.pages");
+  const tResultNavigationCard = useTranslations("koa.components.resultNavigationCard");
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+
+  // Local to this page head, not a shared Button variant: the 2026 look's back/share controls
+  // are full pills, distinct from the design system's brand-cornered Button.
+  const pillButtonClasses =
+    "koa:inline-flex koa:items-center koa:gap-1.5 koa:rounded-pill koa:border koa:border-border koa:bg-surface koa:px-4 koa:py-2 koa:text-sm koa:font-semibold koa:text-text-strong koa:hover:bg-surface-hover koa:transition-colors";
 
   return (
     <Layout>
@@ -53,20 +59,27 @@ export function ResultPage({
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
-                <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
-                    <Icon icon={mdiClose} size="medium" decorative />
-                  </Button>
-                </HideOnEmbed>
+                <div className="koa:flex koa:items-center koa:gap-2">
+                  <button type="button" className={pillButtonClasses} onClick={onShareClick}>
+                    <Icon icon={mdiExportVariant} size="small" decorative />
+                    {tResultNavigationCard("shareButton")}
+                  </button>
+                  <HideOnEmbed>
+                    <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+                      <Icon icon={mdiClose} size="medium" decorative />
+                    </Button>
+                  </HideOnEmbed>
+                </div>
               </AppHeader.Right>
               <AppHeader.Bottom>
                 <AppHeader.BottomLeft condensed={condensed}>
-                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("result.back")}>
-                    <Icon icon={mdiArrowLeft} size="medium" decorative />
-                  </Button>
+                  <button type="button" className={pillButtonClasses} onClick={onPreviousClick}>
+                    <Icon icon={mdiArrowLeft} size="small" decorative />
+                    {t("result.back")}
+                  </button>
                 </AppHeader.BottomLeft>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-text-strong">{t("result.title")}</h3>
+                  <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text-strong">{t("result.title")}</h3>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
