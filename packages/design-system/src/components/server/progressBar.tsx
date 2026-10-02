@@ -39,7 +39,14 @@ export function ProgressBar({ value, color, corner, accentColor }: ProgressBar) 
       aria-valuenow={width}
       aria-valuemin={0}
       aria-valuemax={100}
-      className={twMerge("ko:h-1.5 ko:w-full ko:overflow-hidden ko:bg-surface-sunken", corner === "rounded" ? "ko:rounded-full" : "")}
+      className={twMerge(
+        // 2026's row-top edge bar is a thin hairline (0.3125rem) against the
+        // border colour, not the rounded free-standing bar's thicker surface-
+        // sunken track — local to this corner variant, not a new token.
+        corner === "sharp" ? "ko:h-[0.3125rem] ko:bg-border" : "ko:h-1.5 ko:bg-surface-sunken",
+        "ko:w-full ko:overflow-hidden",
+        corner === "rounded" ? "ko:rounded-full" : "",
+      )}
     >
       <div
         className={accentColor ? "ko:h-full ko:w-full" : twMerge(ProgressBarVariants({ color, corner }))}

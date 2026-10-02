@@ -42,7 +42,14 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
       {({ open }) => (
         <>
           {match !== undefined && <ProgressBar value={match} accentColor={accent} corner="sharp" />}
-          <ExpandableCard.Content className={`koa:grid koa:gap-3 koa:text-left ${winner ? "koa:p-5 koa:sm:p-6" : "koa:p-4 koa:sm:p-5"}`}>
+          {/*
+           * Padding and the name/percent/ordinal sizes below are the 2026
+           * match row's own values (`packages/ui/src/match-row/match-row.module.css`
+           * in kalkulacka-2026), as local arbitrary values — not new tokens, per
+           * handoff-tokens.md. Row: 16px/24px (lg); winner: 24px top-bottom ×
+           * 16px sides, 32px × 24px on lg.
+           */}
+          <ExpandableCard.Content className={`koa:grid koa:gap-3 koa:text-left ${winner ? "koa:px-4 koa:py-6 koa:lg:px-6 koa:lg:py-8" : "koa:px-4 koa:py-4 koa:lg:p-6"}`}>
             <div className="koa:grid koa:grid-cols-[auto_1fr_auto] koa:gap-4 koa:items-center">
               {candidate.avatar ? (
                 <span className="koa:inline-flex koa:shrink-0 koa:rounded-full koa:overflow-hidden" style={{ boxShadow: `inset 0 0 0 2px ${accent}` }}>
@@ -66,8 +73,10 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 </div>
               )}
               <div className="koa:flex koa:flex-col koa:gap-1 koa:items-start koa:justify-center koa:text-left koa:min-w-0">
-                <h3 className={`koa:flex koa:items-baseline koa:gap-1.5 koa:font-semibold koa:leading-tight koa:text-text-strong ${winner ? "koa:text-xl" : "koa:text-lg"}`}>
-                  {order !== undefined && <span className="koa:text-sm koa:font-bold koa:text-text-muted koa:tabular-nums">{order}.</span>}
+                <h3
+                  className={`koa:flex koa:items-baseline koa:gap-1.5 koa:font-semibold koa:leading-[1.3] koa:tracking-[-0.01em] koa:text-text-strong ${winner ? "koa:text-[1rem]" : "koa:text-[0.875rem]"}`}
+                >
+                  {order !== undefined && <span className="koa:text-[0.8125rem] koa:font-bold koa:text-text-muted koa:tabular-nums">{order}.</span>}
                   <span>{candidate.displayName}</span>
                 </h3>
                 {candidate.organization && <p className="koa:text-sm koa:text-text-muted">{candidate.organization}</p>}
@@ -79,7 +88,9 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 )}
               </div>
               <div className="koa:flex koa:items-center koa:gap-2">
-                <span className={`koa:font-bold koa:tracking-tight koa:tabular-nums koa:text-text-strong ${winner ? "koa:text-4xl" : "koa:text-2xl"}`}>
+                <span
+                  className={`koa:font-display koa:font-bold koa:tracking-[-0.01em] koa:tabular-nums koa:text-text-strong koa:whitespace-nowrap ${winner ? "koa:text-[1.5rem]" : "koa:text-[1.25rem]"}`}
+                >
                   {match !== undefined ? `${Math.round(match)} %` : "—"}
                 </span>
                 {hasDirectAnswers && <ExpandableCard.Chevron open={open} className="koa:text-text-muted" />}
