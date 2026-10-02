@@ -104,9 +104,9 @@ function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMa
     <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
       <div className="koa:grid koa:gap-0.5 koa:leading-none">
-        <h1 className="koa:text-xs koa:font-normal koa:text-text-muted">{title}</h1>
-        <div className="koa:text-sm koa:text-text">
-          <h2 className="koa:font-medium koa:inline">{heading?.title}</h2>
+        <h1 className="koa:text-sm koa:font-semibold koa:text-text-strong">{title}</h1>
+        <div className="koa:text-xs koa:text-text-muted">
+          <h2 className="koa:font-normal koa:inline">{heading?.title}</h2>
           {heading?.title && heading?.secondaryTitle && <span className="koa:font-normal koa:hidden koa:@[24rem]:inline"> • </span>}
           <span className="koa:font-normal koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
         </div>

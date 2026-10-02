@@ -22,16 +22,16 @@ export function ReviewQuestionCard({ question, answer, current, total, onAgreeCh
   const { title, detail, statement } = question;
   return (
     <Card shadow={false} className="koa:rounded-card! koa:border koa:border-border koa:shadow-card">
-      <div className="koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)] koa:flex koa:flex-col koa:gap-4">
+      <div className="koa:py-3 koa:px-4 koa:sm:py-4 koa:sm:px-5 koa:flex koa:flex-col koa:gap-3">
         <div className="koa:flex koa:items-center koa:gap-2">
           <span className="koa:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-xs koa:font-semibold koa:text-text-muted">{title}</span>
           <span className="koa:text-xs koa:text-text-subtle koa:tabular-nums">
             <span>{current}</span>/<span>{total}</span>
           </span>
         </div>
-        <h3 className="koa:font-display koa:text-[clamp(15.5px,15.0408px+0.1224vw,17px)] koa:font-bold koa:text-text-strong koa:leading-tight koa:tracking-tight koa:break-words">{statement}</h3>
+        <h3 className="koa:font-display koa:text-sm koa:font-bold koa:text-text-strong koa:leading-tight koa:tracking-tight koa:break-words">{statement}</h3>
         {detail && <p className="koa:hidden koa:sm:block koa:text-sm koa:text-text-muted koa:leading-relaxed koa:max-w-prose koa:break-words koa:tracking-wide">{detail}</p>}
-        <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-4 koa:items-stretch">
+        <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-2 koa:sm:gap-3 koa:items-stretch">
           <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
