@@ -130,6 +130,12 @@
       "calculatorPicker": {
         "description": "There are several calculators for this place. Pick the one you want to fill in.",
         "start": "Start the calculator"
+      },
+      "notFound": {
+        "eyebrow": "Error 404",
+        "heading": "This page is not running for office",
+        "paragraph": "It may have withdrawn its candidacy, or the link may have a typo. You will find all our calculators on the home page.",
+        "home": "Back to the home page"
       }
     }
   }

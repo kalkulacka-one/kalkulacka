@@ -130,6 +130,12 @@
       "calculatorPicker": {
         "description": "Pro toto místo máme více kalkulaček. Vyberte si, kterou chcete vyplnit.",
         "start": "Spustit kalkulačku"
+      },
+      "notFound": {
+        "eyebrow": "Chyba 404",
+        "heading": "Tahle stránka nekandiduje",
+        "paragraph": "Možná odstoupila z kandidatury, možná jste se jen přepsali v odkazu. Na úvodní stránce najdete všechny naše kalkulačky.",
+        "home": "Zpátky na úvod"
       }
     }
   }
