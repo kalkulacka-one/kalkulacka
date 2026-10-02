@@ -24,12 +24,19 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
   const { title } = question;
   return (
     <Card shadow={false} className="koa:rounded-card! koa:border koa:border-border koa:shadow-card">
-      <div className="koa:min-h-[76px] koa:py-3 koa:px-4 koa:sm:px-5 koa:flex koa:items-center koa:gap-3">
+      {/*
+       * 2026's compact recap row runs 64-76px tall with its titles fitting in one or two lines — ours
+       * forced 76px as a floor and spaced the two answer toggles wide enough that, together with the
+       * star, they left too little width for the title and pushed it to wrap further than 2026. Button
+       * has no size smaller than "small" (40px, already at the top of the 36-40px target), so the fix
+       * here is tightening what this row controls — a shorter floor and tighter gaps — not the toggles.
+       */}
+      <div className="koa:min-h-[64px] koa:py-2.5 koa:px-4 koa:sm:px-5 koa:flex koa:items-center koa:gap-2.5">
         <ToggleButton size="small" color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
           <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
         </ToggleButton>
         <h3 className="koa:font-sans koa:text-[17px] koa:font-bold koa:text-text koa:leading-snug koa:break-words koa:flex-1">{title}</h3>
-        <div className="koa:flex koa:items-center koa:gap-2">
+        <div className="koa:flex koa:items-center koa:gap-1.5">
           <ToggleButton size="small" variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
           </ToggleButton>
