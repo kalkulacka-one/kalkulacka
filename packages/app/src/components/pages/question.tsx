@@ -8,6 +8,7 @@ import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
+import { QuestionProgress } from "@/components/question-progress";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
 
 export type QuestionPage = {
@@ -27,6 +28,7 @@ export type QuestionPage = {
 export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const t = useTranslations("koa.pages");
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
+  const isAnswered = answer.answer?.answer !== undefined;
 
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
@@ -82,23 +84,36 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           )}
         </WithCondenseOnScroll>
       </Layout.Header>
-      <Layout.Content>
-        <QuestionCard question={question} current={number} total={total} />
+      <Layout.Content fullWidth>
+        {/*
+          Gutter implemented locally rather than in Layout.Content (owned by
+          another PR): `-mx-2`/`sm:-mx-4` cancels Content's own `p-2`/`sm:p-4`
+          so `px-gutter` (18px on phones, fluid up to 44px) is the only
+          horizontal inset actually applied. Split into its own unpadded
+          wrapper — rather than combined with the centred column below — so it
+          never has to fight that column's `mx-auto` for the margin-x box.
+        */}
+        <div className="koa:-mx-2 koa:px-gutter koa:sm:-mx-4">
+          {/*
+            A dedicated column rather than Layout.Content's own max-width: the
+            2026 card is wider than the app's default content column, and this
+            screen's step row lives in this same flow (not Layout.BottomNavigation)
+            so it renders identically whether or not the shell PR is merged.
+
+            `h-dvh` rather than `h-full`: this screen never scrolls, so it must
+            size itself to the *visible* viewport directly (what `dvh`
+            promises) rather than inherit a height Layout.Content doesn't
+            actually set — that is what kept the step row below iOS Safari's
+            floating bar.
+          */}
+          <div className="koa:mx-auto koa:flex koa:h-dvh koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
+            <QuestionProgress current={number} total={total} />
+            <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
+            <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+          </div>
+        </div>
       </Layout.Content>
-      <Layout.BottomSpacer className={QuestionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
-        <QuestionNavigationCard
-          current={number}
-          total={total}
-          onPreviousClick={onPreviousClick}
-          onNextClick={onNextClick}
-          answer={answer}
-          onAgreeChange={handleAgreeChange}
-          onDisagreeChange={handleDisagreeChange}
-          onImportantChange={handleImportantChange}
-        />
-      </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
