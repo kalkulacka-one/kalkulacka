@@ -53,7 +53,7 @@ export function ResultPage({
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <Button variant="round" color="neutral" aria-label={t("common.close")} onClick={onCloseClick}>
+              <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
             </HideOnEmbed>
