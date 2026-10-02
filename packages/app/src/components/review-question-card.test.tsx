@@ -29,26 +29,21 @@ describe("ReviewQuestionCard", () => {
   const props = {
     question: mockQuestion,
     answer: mockAnswer,
-    current: 5,
-    total: 40,
     onAgreeChange: vi.fn(),
     onDisagreeChange: vi.fn(),
     onImportantChange: vi.fn(),
   };
 
-  it("renders question information and answer buttons", () => {
+  it("renders the question title and the answer controls", () => {
     render(
       <LocaleProvider locale="en" messages={enMessages}>
         <ReviewQuestionCard {...props} />
       </LocaleProvider>,
     );
 
-    expect(screen.getByText(props.current.toString())).toBeInTheDocument();
-    expect(screen.getByText(props.total.toString())).toBeInTheDocument();
     expect(screen.getByText(props.question.title)).toBeInTheDocument();
-    expect(screen.getByText(props.question.statement)).toBeInTheDocument();
-    expect(screen.getByText("Yes")).toBeInTheDocument();
-    expect(screen.getByText("No")).toBeInTheDocument();
+    expect(screen.getByLabelText("Yes")).toBeInTheDocument();
+    expect(screen.getByLabelText("No")).toBeInTheDocument();
     expect(screen.getByLabelText("Important to me")).toBeInTheDocument();
   });
 
@@ -62,7 +57,7 @@ describe("ReviewQuestionCard", () => {
         </LocaleProvider>,
       );
 
-      await user.click(screen.getByText("Yes"));
+      await user.click(screen.getByLabelText("Yes"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
@@ -75,7 +70,7 @@ describe("ReviewQuestionCard", () => {
         </LocaleProvider>,
       );
 
-      await user.click(screen.getByText("No"));
+      await user.click(screen.getByLabelText("No"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
