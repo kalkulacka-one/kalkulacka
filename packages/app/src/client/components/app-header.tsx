@@ -81,15 +81,16 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
   // Two layers, its own stacking context via `isolate` so `-z-10` stays behind just this header's own content:
-  // `before:` is the header's own box, solid page colour at all times — the wordmark must never collide with
-  // content scrolling underneath, even at rest or on the very first scrolled pixel, so this one never animates.
+  // `before:` is the header's own box in solid page colour, so the wordmark never collides with content
+  // scrolling underneath. At rest nothing sits under the header, and a solid band would show against the page
+  // backdrop's glow, so it appears together with the tail once `useScrolled` reports real movement.
   // `after:` is the soft page-colour tail below the box, like 2026's bar — but unlike 2026 it is not needed at
   // rest (nothing scrolls under a header that is already opaque), so it stays invisible until `useScrolled`
   // confirms the page has actually moved, then fades in. That keeps the intro/review screens' content (which
   // never wire up condense-on-scroll) from reading dimmed on first paint.
   const headerBoxClasses =
-    "koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-0 koa:before:-z-10 koa:before:bg-page koa:after:content-[''] koa:after:pointer-events-none koa:after:absolute koa:after:inset-x-0 koa:after:top-full koa:after:-z-10 koa:after:h-[var(--ko-spacing-fade-edge)] koa:after:bg-[image:var(--ko-fade-to-bottom)] koa:after:transition-opacity koa:after:duration-base koa:after:ease-out";
-  const headerClasses = twMerge(headerBoxClasses, scrolled ? "koa:after:opacity-100" : "koa:after:opacity-0");
+    "koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-0 koa:before:-z-10 koa:before:bg-page koa:before:transition-opacity koa:before:duration-base koa:after:content-[''] koa:after:pointer-events-none koa:after:absolute koa:after:inset-x-0 koa:after:top-full koa:after:-z-10 koa:after:h-[var(--ko-spacing-fade-edge)] koa:after:bg-[image:var(--ko-fade-to-bottom)] koa:after:transition-opacity koa:after:duration-base koa:after:ease-out";
+  const headerClasses = twMerge(headerBoxClasses, scrolled ? "koa:before:opacity-100 koa:after:opacity-100" : "koa:before:opacity-0 koa:after:opacity-0");
 
   return (
     <header className={headerClasses}>
