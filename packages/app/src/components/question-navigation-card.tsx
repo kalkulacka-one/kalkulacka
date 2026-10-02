@@ -25,19 +25,23 @@ export function QuestionNavigationCard({ current, total, isAnswered, onPreviousC
     <div className="koa:grid koa:grid-cols-[1fr_auto_1fr] koa:items-center koa:gap-1 koa:sm:gap-2">
       <div className="koa:justify-self-start">
         <Button size="small" variant="link" color="neutral" onClick={onPreviousClick}>
-          <Icon icon={mdiArrowLeft} decorative={true} />
-          {previousButtonLabel}
+          <span className="koa:flex koa:items-center koa:gap-1 koa:text-[17px] koa:font-bold koa:text-text">
+            <Icon icon={mdiArrowLeft} decorative={true} />
+            {previousButtonLabel}
+          </span>
         </Button>
       </div>
-      <div className="koa:justify-self-center koa:text-sm koa:text-text-subtle koa:tabular-nums">
+      <div className="koa:justify-self-center koa:text-[17px] koa:text-text-subtle koa:tabular-nums">
         <span className="koa:whitespace-nowrap">
-          <strong className="koa:text-text-muted">{current}</strong>/{total}
+          <strong className="koa:font-bold koa:text-text-strong">{current}</strong>/{total}
         </span>
       </div>
       <div className="koa:justify-self-end">
         <Button size="small" variant="link" color="neutral" onClick={onNextClick}>
-          {nextButtonLabel}
-          <Icon icon={mdiArrowRight} decorative={true} />
+          <span className="koa:flex koa:items-center koa:gap-1 koa:text-[17px] koa:font-bold koa:text-text">
+            {nextButtonLabel}
+            <Icon icon={mdiArrowRight} decorative={true} />
+          </span>
         </Button>
       </div>
     </div>
