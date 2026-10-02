@@ -46,12 +46,12 @@ export function GuidePage({ embedContext, homepageHref, privacyHref, calculator,
           <Icon icon={mdiArrowLeft} size="small" decorative />
           {t("guide.back")}
         </button>
-        <h3 className="koa:font-display koa:font-semibold koa:text-display koa:tracking-tight koa:text-text-strong koa:mb-2 koa:sm:mb-3">{t("guide.title")}</h3>
+        <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{t("guide.title")}</h3>
         <Guide calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={GuideNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:sm:mb-0 koa:sm:bottom-11` : undefined}>
+      <Layout.BottomNavigation className={hasFooter ? "koa:bottom-11" : undefined}>
         <GuideNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

@@ -52,8 +52,9 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const bottomCondensed = "koa:row-start-1";
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
+  // No background band: the header sits transparently on the page backdrop, like 2026.
   return (
-    <header className="koa:@container koa:sticky koa:top-0 koa:bg-white/60 koa:backdrop-blur-md">
+    <header className="koa:@container koa:sticky koa:top-0">
       <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
         <div className={headerGridClasses}>
           <div className={mainClasses}>
@@ -104,8 +105,8 @@ function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMa
     <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2 koa:min-w-0">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
       <div className="koa:grid koa:gap-0.5 koa:leading-none koa:min-w-0">
-        <h1 className="koa:text-sm koa:font-semibold koa:text-text-strong koa:truncate">{title}</h1>
-        <div className="koa:text-xs koa:text-text-muted koa:truncate">
+        <h1 className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:font-bold koa:text-text koa:truncate">{title}</h1>
+        <div className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:text-text-muted koa:truncate">
           <h2 className="koa:font-normal koa:inline">{heading?.title}</h2>
           {heading?.title && heading?.secondaryTitle && <span className="koa:font-normal koa:hidden koa:@[24rem]:inline"> • </span>}
           <span className="koa:font-normal koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
@@ -167,7 +168,7 @@ export function AppHeaderIconButton({ children, onClick, ...rest }: AppHeaderIco
     <button
       type="button"
       onClick={onClick}
-      className="koa:inline-flex koa:items-center koa:justify-center koa:size-10 koa:sm:size-11 koa:rounded-full koa:border koa:border-border koa:text-text-strong koa:hover:bg-surface-hover"
+      className="koa:inline-flex koa:items-center koa:justify-center koa:size-11 koa:rounded-full koa:border koa:border-border koa:text-text koa:hover:bg-surface-hover"
       {...rest}
     >
       {children}

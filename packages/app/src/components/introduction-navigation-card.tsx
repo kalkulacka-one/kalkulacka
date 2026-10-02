@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "koa:h-[88px] koa:sm:hidden"; // sm+: the nav sits in the document flow now, no reserved gap needed.
+// The nav sits in the document flow at every breakpoint now (sticky, never `fixed`), so no reserved gap is needed.
+const HEIGHT = "";
 
 export type IntroductionNavigationCard = {
   onNextClick: () => void;

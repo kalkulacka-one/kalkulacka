@@ -31,7 +31,7 @@ export type LayoutContent = {
 };
 
 function Content({ children, fullWidth }: LayoutContent) {
-  return <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} koa:mx-auto koa:p-2 koa:sm:p-4`}>{children}</main>;
+  return <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>;
 }
 
 Content.displayName = "Layout.Content";
@@ -42,14 +42,11 @@ export type LayoutBottomNavigation = {
 };
 
 function BottomNavigation({ children, className }: LayoutBottomNavigation) {
-  // < sm: unchanged, fixed overlay docked to the viewport bottom.
-  // sm+: back into the document flow, sticky to the viewport bottom so short pages keep it right under the content
-  // and long ones let it stick while the list scrolls underneath.
-  return (
-    <div className={twMerge("koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:pointer-events-none koa:z-20 koa:sm:sticky koa:sm:left-auto koa:sm:right-auto koa:sm:pointer-events-auto", className)}>
-      {children}
-    </div>
-  );
+  // Sticky in the document flow at every breakpoint now, never docked with `fixed`: iOS Safari clips
+  // fixed-positioned content above its bottom glass bar, so the nav has to be real content the page can
+  // scroll to, not an overlay. Short pages keep it right under the content; long ones let it stick to the
+  // viewport bottom (with a small gap so it clears the glass bar) while the rest scrolls underneath.
+  return <div className={twMerge("koa:sticky koa:bottom-4 koa:z-20", className)}>{children}</div>;
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";

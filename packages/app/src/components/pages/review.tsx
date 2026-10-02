@@ -83,9 +83,9 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
           <Icon icon={mdiArrowLeft} size="small" decorative />
           {t("review.back")}
         </button>
-        <h3 className="koa:font-display koa:font-semibold koa:text-display koa:tracking-tight koa:text-text-strong koa:mb-4 koa:sm:mb-6">{t("review.title")}</h3>
-        <div className="koa:grid koa:gap-3">
-          {questions.questions.map((question, index) => {
+        <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-4 koa:sm:mb-6">{t("review.title")}</h3>
+        <div className="koa:grid koa:gap-2">
+          {questions.questions.map((question) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
               answer: undefined,
               setAnswer: answers.setAnswer,
@@ -96,8 +96,6 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
                 key={question.id}
                 question={question}
                 answer={answer}
-                current={index + 1}
-                total={questions.total}
                 onAgreeChange={(agree) => handleAgreeChange(question.id, agree)}
                 onDisagreeChange={(disagree) => handleDisagreeChange(question.id, disagree)}
                 onImportantChange={(isImportant) => handleImportantChange(question.id, isImportant)}
@@ -108,7 +106,7 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
       </Layout.Content>
       <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:sm:mb-0 koa:sm:bottom-11` : undefined}>
+      <Layout.BottomNavigation className={hasFooter ? "koa:bottom-11" : undefined}>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
