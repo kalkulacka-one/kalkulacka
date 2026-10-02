@@ -1,34 +1,21 @@
 import { extendTailwindMerge } from "tailwind-merge";
 
 /*
- * Theme tokens declared in the design system's `styles.css` (radius, shadow,
- * fluid text/spacing scales, easing) are listed here so that, for example, a
- * later `ko:rounded-pill` drops an earlier `ko:rounded-2xl` the way built-in
- * values do. Colors and `font-*` need no listing: tailwind-merge already
- * accepts any word after them. Both the design system's `ko` prefix and the
- * app package's `koa` prefix share this list, since both consume the same
- * theme tokens.
+ * Tokens from styles.css on tailwind-merge's closed-list scales, so they
+ * conflict-resolve like built-ins; colors need no listing. A new token on
+ * one of these scales must be added here in the same change.
  */
 const themeExtension = {
   radius: ["card", "control", "chip", "pill"],
-  shadow: ["card", "card-next", "card-back", "card-lifted", "sticky", "surface"],
+  shadow: ["surface", "card", "card-lifted", "sticky"],
   "drop-shadow": ["hard"],
-  text: ["fluid-brand", "fluid-question", "fluid-gist", "fluid-chip", "fluid-action-label", "title", "display"],
-  spacing: [
-    "fluid-gutter",
-    "fluid-header-top",
-    "fluid-progress-top",
-    "fluid-card-pad-top",
-    "fluid-card-pad-side",
-    "fluid-card-pad-bottom",
-    "fluid-star",
-    "fluid-action",
-    "fluid-nav",
-    "fade-edge",
-    "fade-action",
-    "scroll-tail",
-  ],
   ease: ["spring", "exit"],
+  spacing: ["gutter", "nav", "fade-edge", "scroll-tail"],
+  text: ["title", "display"],
+};
+
+const classGroupExtension = {
+  duration: [{ duration: ["fast", "base", "slow"] }],
 };
 
 export function createTwMerge(prefix: string) {
@@ -36,6 +23,7 @@ export function createTwMerge(prefix: string) {
     prefix,
     extend: {
       theme: themeExtension,
+      classGroups: classGroupExtension,
     },
   });
 }
