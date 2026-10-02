@@ -1,4 +1,4 @@
-import { Icon } from "@kalkulacka-one/design-system/client";
+import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
@@ -29,9 +29,9 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <AppHeader.IconButton aria-label={t("common.close")} onClick={onCloseClick}>
+              <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
-              </AppHeader.IconButton>
+              </Button>
             </HideOnEmbed>
           </AppHeader.Right>
         </AppHeader>

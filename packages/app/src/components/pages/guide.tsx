@@ -1,4 +1,4 @@
-import { Icon } from "@kalkulacka-one/design-system/client";
+import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
@@ -30,22 +30,20 @@ export function GuidePage({ embedContext, homepageHref, privacyHref, calculator,
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <AppHeader.IconButton aria-label={t("common.close")} onClick={onCloseClick}>
+              <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
-              </AppHeader.IconButton>
+              </Button>
             </HideOnEmbed>
           </AppHeader.Right>
         </AppHeader>
       </Layout.Header>
       <Layout.Content>
-        <button
-          type="button"
-          onClick={onBackClick}
-          className="koa:inline-flex koa:items-center koa:gap-1.5 koa:rounded-pill koa:border koa:border-border koa:px-3 koa:py-1.5 koa:text-sm koa:text-text-muted koa:mb-4 koa:hover:bg-surface-sunken"
-        >
-          <Icon icon={mdiArrowLeft} size="small" decorative />
-          {t("guide.back")}
-        </button>
+        <div className="koa:mb-4">
+          <Button variant="pill" color="neutral" onClick={onBackClick}>
+            <Icon icon={mdiArrowLeft} size="small" decorative />
+            {t("guide.back")}
+          </Button>
+        </div>
         <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{t("guide.title")}</h3>
         <Guide calculator={calculator} />
       </Layout.Content>

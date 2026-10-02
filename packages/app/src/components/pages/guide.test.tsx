@@ -67,13 +67,11 @@ vi.mock("@/client", () => {
     Bottom: React.FC<{ children?: React.ReactNode }>;
     BottomLeft: React.FC<{ children?: React.ReactNode }>;
     BottomMain: React.FC<{ children?: React.ReactNode }>;
-    IconButton: React.FC<{ children?: React.ReactNode }>;
   };
   AppHeaderMock.Right = vi.fn(({ children }) => children);
   AppHeaderMock.Bottom = vi.fn(({ children }) => children);
   AppHeaderMock.BottomLeft = vi.fn(({ children }) => children);
   AppHeaderMock.BottomMain = vi.fn(({ children }) => children);
-  AppHeaderMock.IconButton = vi.fn(({ children }) => children);
 
   return {
     AppHeader: AppHeaderMock,

@@ -157,28 +157,8 @@ export function AppHeaderBottomMain({ children, condensed }: AppHeaderBottomMain
   return <>{children}</>;
 }
 
-type AppHeaderIconButton = {
-  children: ReactNode;
-  "aria-label": string;
-  onClick?: () => void;
-};
-
-export function AppHeaderIconButton({ children, onClick, ...rest }: AppHeaderIconButton) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="koa:inline-flex koa:items-center koa:justify-center koa:size-11 koa:rounded-full koa:border koa:border-border koa:text-text koa:hover:bg-surface-hover"
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-}
-
 AppHeader.Left = AppHeaderLeft;
 AppHeader.Right = AppHeaderRight;
 AppHeader.Bottom = AppHeaderBottom;
 AppHeader.BottomLeft = AppHeaderBottomLeft;
 AppHeader.BottomMain = AppHeaderBottomMain;
-AppHeader.IconButton = AppHeaderIconButton;

@@ -32,7 +32,14 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
        * here is tightening what this row controls — a shorter floor and tighter gaps — not the toggles.
        */}
       <div className="koa:min-h-[64px] koa:py-2.5 koa:px-4 koa:sm:px-5 koa:flex koa:items-center koa:gap-2.5">
-        <ToggleButton size="small" color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
+        <ToggleButton
+          size="small"
+          color="neutral"
+          variant="round"
+          checked={answer.answer?.isImportant || false}
+          onChange={(checked: boolean) => onImportantChange(checked)}
+          aria-label={t("important")}
+        >
           <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
         </ToggleButton>
         <h3 className="koa:font-sans koa:text-[17px] koa:font-bold koa:text-text koa:leading-snug koa:break-words koa:flex-1">{title}</h3>
