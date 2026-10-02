@@ -5,17 +5,15 @@ import { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { campaignCities } from "@/config/campaign-cities";
-import { citySignup } from "@/server/city-signup";
+import { subscribe } from "@/server/subscribe";
 
-const citySignupSchema = z.object({
+const joinUsSchema = z.object({
   email: z.string().email("Neplatný formát"),
-  city: z.enum(campaignCities, { message: "Vyberte město ze seznamu" }),
 });
 
-type CitySignupData = z.infer<typeof citySignupSchema>;
+type JoinUsData = z.infer<typeof joinUsSchema>;
 
-export function CitySignupForm() {
+export function JoinUsForm() {
   const [isSuccessfullySubmitted, setIsSuccessfullySubmitted] = useState(false);
   const {
     register,
@@ -24,14 +22,14 @@ export function CitySignupForm() {
     setError,
     setFocus,
     formState: { errors, isSubmitting },
-  } = useForm<CitySignupData>({
-    resolver: zodResolver(citySignupSchema),
+  } = useForm<JoinUsData>({
+    resolver: zodResolver(joinUsSchema),
   });
 
-  const onSubmit: SubmitHandler<CitySignupData> = async (data) => {
+  const onSubmit: SubmitHandler<JoinUsData> = async (data) => {
     setIsSuccessfullySubmitted(false);
     try {
-      const response = await citySignup(data);
+      const response = await subscribe({ ...data, origin: "join-us-form" });
       if (response.success) {
         reset();
         setIsSuccessfullySubmitted(true);
@@ -57,32 +55,15 @@ export function CitySignupForm() {
         <form className="flex flex-col gap-4 items-stretch" onSubmit={handleSubmit(onSubmit)} noValidate>
           <Field disabled={isSubmitting}>
             <div className="grid gap-3">
-              <select
-                defaultValue=""
-                aria-label="Vyberte vaše město"
-                className="h-12 w-full border border-[var(--ko-color-border)] rounded-[var(--ko-radius-control)] px-4 bg-[var(--ko-color-surface)] text-[var(--ko-color-text)] text-base disabled:opacity-45 disabled:cursor-not-allowed focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[var(--ko-color-focus)]/55"
-                disabled={isSubmitting}
-                {...register("city")}
-              >
-                <option value="" disabled>
-                  Vyberte město
-                </option>
-                {campaignCities.map((city) => (
-                  <option key={city} value={city}>
-                    {city}
-                  </option>
-                ))}
-              </select>
               <Label className="sr-only">Zadejte váš email</Label>
               <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" {...register("email")} />
               <Button disabled={isSubmitting} type="submit" variant="fill" color="neutral">
-                {isSubmitting ? "Odesílám" : "Chci pomoct"}
+                {isSubmitting ? "Odesílám" : "Chci se zapojit"}
               </Button>
               <div className="text-center space-y-1">
-                {errors.city && <Description className="text-xs text-[var(--ko-palette-secondary)]">{errors.city.message}</Description>}
                 {errors.email && <Description className="text-xs text-[var(--ko-palette-secondary)]">{errors.email.message}</Description>}
                 {errors.root?.serverError && <Description className="text-sm">⚠️ {errors.root?.serverError.message}</Description>}
-                <p className="text-xs text-slate-500">Odesláním souhlasíte, že se vám ozveme ohledně kalkulačky pro vaše město.</p>
+                <p className="text-xs text-slate-500">Odesláním souhlasíte, že se vám ozveme ohledně zapojení do Volební kalkulačky.</p>
               </div>
             </div>
           </Field>

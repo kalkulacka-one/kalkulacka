@@ -4,6 +4,9 @@ import { candidatesAnswersViewModel, candidateViewModel, HttpError, loadCalculat
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
+// A shared result can change after sharing – override `next/og`'s default year-long immutable cache.
+const CACHE_CONTROL = "public, max-age=300, s-maxage=300, stale-while-revalidate=86400";
+
 export type SessionImageRouteConfig = {
   electionName: string;
   appTitle: string;
@@ -273,6 +276,7 @@ export function createSessionImageRoute({ electionName, appTitle, shareHeading, 
             </div>
           </div>,
           {
+            headers: { "cache-control": CACHE_CONTROL },
             width: 1080,
             height: 1920,
             fonts: [
@@ -526,6 +530,7 @@ export function createSessionImageRoute({ electionName, appTitle, shareHeading, 
           </div>
         </div>,
         {
+          headers: { "cache-control": CACHE_CONTROL },
           width: 2400,
           height: 1260,
           fonts: [
