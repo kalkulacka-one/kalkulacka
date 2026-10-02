@@ -25,6 +25,11 @@ const AvatarVariants = cva("ko:relative ko:flex ko:items-center ko:justify-cente
       small: "ko:h-10 ko:w-10",
       medium: "ko:h-14 ko:w-14",
       large: "ko:h-20 ko:w-20",
+      // Additive, alongside small/medium/large rather than replacing them: 2026's own
+      // avatar sizes (match-row's 44px row avatar and 64px top-match avatar), which
+      // land between our existing sizes rather than on top of any of them.
+      compact: "ko:h-11 ko:w-11",
+      prominent: "ko:h-16 ko:w-16",
     },
     shape: {
       circle: "ko:rounded-full",
@@ -53,6 +58,8 @@ export function Avatar({ image, backgroundColor, shape, alignment = "center", pa
     small: "40px",
     medium: "56px",
     large: "80px",
+    compact: "44px",
+    prominent: "64px",
   };
 
   const sizesAttr = sizeMap[size || "medium"];
