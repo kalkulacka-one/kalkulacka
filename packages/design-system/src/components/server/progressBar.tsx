@@ -32,7 +32,7 @@ export function ProgressBar({ value, color, corner }: ProgressBar) {
       aria-valuenow={width}
       aria-valuemin={0}
       aria-valuemax={100}
-      className={twMerge("ko:h-1.5 ko:w-full ko:overflow-hidden ko:bg-neutral-inactive", corner === "rounded" ? "ko:rounded-full" : "")}
+      className={twMerge("ko:h-1.5 ko:w-full ko:overflow-hidden ko:bg-surface-sunken", corner === "rounded" ? "ko:rounded-full" : "")}
     >
       <div className={twMerge(ProgressBarVariants({ color, corner }))} style={{ width: `${width}%` }} />
     </div>
