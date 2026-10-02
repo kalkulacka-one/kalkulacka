@@ -18,7 +18,7 @@ export function EmbedFooter({ attribution = true, homepageHref, privacyHref }: E
     <div className="koa:flex koa:items-baseline koa:gap-4">
       {attribution && <EmbedAttribution href={homepageHref} title={t("appTitle")} />}
       {privacyHref && (
-        <a href={privacyHref} target="_blank" rel="noopener noreferrer" className="koa:text-xs koa:text-slate-400 koa:hover:text-slate-600 koa:hover:underline">
+        <a href={privacyHref} target="_blank" rel="noopener noreferrer" className="koa:text-xs koa:text-text-muted koa:hover:text-text koa:hover:underline">
           {t("components.embedFooter.privacy")}
         </a>
       )}
