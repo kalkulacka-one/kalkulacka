@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "@/components/navigation-card";
 
-const HEIGHT = "koa:h-[88px]";
+const HEIGHT = "koa:h-[88px] koa:sm:hidden"; // sm+: the nav sits in the document flow now, no reserved gap needed.
 
 export type GuideNavigationCard = {
   onNextClick: () => void;
@@ -14,7 +14,7 @@ export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
   const t = useTranslations("koa.components.guideNavigationCard");
 
   return (
-    <NavigationCard>
+    <NavigationCard bare>
       <Button color="neutral" onClick={onNextClick}>
         {t("startButton")}
       </Button>
