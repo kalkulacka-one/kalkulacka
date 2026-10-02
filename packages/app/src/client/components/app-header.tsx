@@ -2,7 +2,7 @@ import { Logo } from "@kalkulacka-one/design-system/client";
 
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
-import React from "react";
+import React, { useLayoutEffect, useState } from "react";
 
 import { useEmbed } from "@/client/embeds";
 import { twMerge } from "@/utilities/tailwind";
@@ -30,9 +30,37 @@ type AppHeaderProps = {
   heading?: { title: string; secondaryTitle?: string };
 };
 
+// Tracks whether the page has actually scrolled (a few px of hysteresis so it doesn't flicker at the very top),
+// independent of any screen's own condense-on-scroll wiring — several screens (intro, review) use `AppHeader`
+// without `WithCondenseOnScroll` at all, so the fade below has to work on its own.
+function useScrolled(threshold = 8) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useLayoutEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > threshold);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [threshold]);
+
+  return scrolled;
+}
+
 export function AppHeader({ children, condensed = false, calculator, heading }: AppHeaderProps) {
   const t = useTranslations("koa");
   const embed = useEmbed();
+  const scrolled = useScrolled();
   const hasPageHeading = hasChildOfType(children, AppHeaderBottom);
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
@@ -52,12 +80,19 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const bottomCondensed = "koa:row-start-1";
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
-  // No hard-edged panel — like 2026, a blur-less page-colour fade sits behind the bar (`before:`, its own
-  // stacking context via `isolate` so `-z-10` stays behind just this header's own content): solid behind the
-  // wordmark, fading out before it reaches the bottom of the bar, so content scrolling underneath settles
-  // toward the page colour instead of colliding with the logo/title.
+  // Two layers, its own stacking context via `isolate` so `-z-10` stays behind just this header's own content:
+  // `before:` is the header's own box, solid page colour at all times — the wordmark must never collide with
+  // content scrolling underneath, even at rest or on the very first scrolled pixel, so this one never animates.
+  // `after:` is the soft page-colour tail below the box, like 2026's bar — but unlike 2026 it is not needed at
+  // rest (nothing scrolls under a header that is already opaque), so it stays invisible until `useScrolled`
+  // confirms the page has actually moved, then fades in. That keeps the intro/review screens' content (which
+  // never wire up condense-on-scroll) from reading dimmed on first paint.
+  const headerBoxClasses =
+    "koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-0 koa:before:-z-10 koa:before:bg-page koa:after:content-[''] koa:after:pointer-events-none koa:after:absolute koa:after:inset-x-0 koa:after:top-full koa:after:-z-10 koa:after:h-[var(--ko-spacing-fade-edge)] koa:after:bg-[image:var(--ko-fade-to-bottom)] koa:after:transition-opacity koa:after:duration-base koa:after:ease-out";
+  const headerClasses = twMerge(headerBoxClasses, scrolled ? "koa:after:opacity-100" : "koa:after:opacity-0");
+
   return (
-    <header className="koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-x-0 koa:before:top-0 koa:before:-z-10 koa:before:h-[calc(100%+var(--ko-spacing-fade-edge))] koa:before:bg-[linear-gradient(to_bottom,var(--ko-color-page)_calc(100%-var(--ko-spacing-fade-edge)),transparent)]">
+    <header className={headerClasses}>
       <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
         <div className={headerGridClasses}>
           <div className={mainClasses}>

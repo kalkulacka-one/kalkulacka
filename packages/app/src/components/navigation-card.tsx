@@ -11,12 +11,15 @@ export type NavigationCard = {
 export function NavigationCard({ children, bare = false }: NavigationCard) {
   if (bare) {
     return (
-      // `isolate` + the `before:` layer below is the 2026 action band: on a phone, the list scrolling
-      // underneath the floating button settles toward the page colour before it reaches the pill, instead of
-      // running straight up to its edge. `-z-10` needs its own stacking context (`isolate`) or it would compare
-      // against the sticky nav's siblings instead of staying behind just this card's own button.
-      <div className="koa:@container koa:relative koa:isolate koa:grid koa:justify-items-center koa:px-gutter koa:pb-4 koa:sm:p-0 koa:sm:mx-auto koa:sm:w-full koa:sm:max-w-xl koa:sm:px-4 koa:sm:py-3 koa:lg:py-4 koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:-z-10 koa:before:bottom-0 koa:before:left-1/2 koa:before:w-screen koa:before:-translate-x-1/2 koa:before:h-[5rem] koa:before:bg-[image:var(--ko-fade-to-bottom)] koa:sm:before:hidden">
-        <div className="koa:pointer-events-auto koa:[&>:first-child]:shadow-sticky koa:sm:[&>:first-child]:shadow-none">{children}</div>
+      // No band behind the button anymore — like 2026, the pill floats on shadow alone: a tight contact shadow
+      // plus a soft, wide ambient one, both tinted through `--ko-shadow-color` so they read as the page's own
+      // light rather than a grey halo. That is what separates it from a list scrolling underneath on a phone;
+      // sm+ lays the button out in the normal content flow (see `Layout`'s comment above), so it drops the
+      // shadow there same as before.
+      <div className="koa:@container koa:grid koa:justify-items-center koa:px-gutter koa:pb-4 koa:sm:p-0 koa:sm:mx-auto koa:sm:w-full koa:sm:max-w-xl koa:sm:px-4 koa:sm:py-3 koa:lg:py-4">
+        <div className="koa:pointer-events-auto koa:[&>:first-child]:shadow-[0_2px_6px_-2px_oklch(from_var(--ko-shadow-color)_l_c_h/0.2),0_10px_28px_-6px_oklch(from_var(--ko-shadow-color)_l_c_h/0.35),0_28px_64px_-12px_oklch(from_var(--ko-shadow-color)_l_c_h/0.28)] koa:sm:[&>:first-child]:shadow-none">
+          {children}
+        </div>
       </div>
     );
   }
