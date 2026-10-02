@@ -8,6 +8,13 @@ import { appConfig } from "@/config/app-config";
 import { type EmbedName, embedsConfig } from "@/config/embeds";
 import { canonical, mappedParams, PREFIXES, routes } from "@/lib/routing";
 
+// On-demand ISR: nothing is prerendered at build, each path renders on its first request and is then served from cache, re-rendered at most once a minute (matches the data fetch revalidation).
+export const revalidate = 60;
+
+export function generateStaticParams() {
+  return [];
+}
+
 type Params = Promise<{ locale: Locale; embed: EmbedName; first: string; second: string }>;
 
 function endpoint(): string {

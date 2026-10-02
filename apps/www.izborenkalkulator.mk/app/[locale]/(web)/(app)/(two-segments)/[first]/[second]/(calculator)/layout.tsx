@@ -3,6 +3,13 @@ import { calculatorPathGuard, dataLoaderGuard, isPrefix, prefixGuard } from "@ka
 import { SessionProviderLayout } from "@/components/client";
 import { mappedParams, PREFIXES } from "@/lib/routing";
 
+// On-demand ISR: nothing is prerendered at build, each path renders on its first request and is then served from cache, re-rendered at most once a minute (matches the data fetch revalidation).
+export const revalidate = 60;
+
+export function generateStaticParams() {
+  return [];
+}
+
 export default async function Layout({ children, params }: { children: React.ReactNode; params: Promise<{ first: string; second: string }> }) {
   if (!process.env.DATA_ENDPOINT) {
     throw new Error("DATA_ENDPOINT environment variable is not set");
