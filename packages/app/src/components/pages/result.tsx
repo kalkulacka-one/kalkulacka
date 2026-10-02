@@ -47,28 +47,15 @@ export function ResultPage({
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
-  // Local to this page head, not a shared Button variant: the 2026 look's back/share controls
-  // are light pills, distinct from the design system's brand-cornered Button.
-  const pillButtonClasses =
-    "koa:inline-flex koa:items-center koa:gap-1.5 koa:rounded-pill koa:border koa:border-border koa:bg-surface koa:px-4 koa:py-2 koa:text-sm koa:font-semibold koa:text-text-strong koa:hover:bg-surface-hover koa:transition-colors";
-
   return (
     <Layout>
       <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              {/*
-                Match intro/guide/review's 44px round hairline close button (#629's
-                `AppHeader.IconButton`, not available here): wrap the existing close
-                button rather than reach for that import, forcing its own pill chrome
-                to fill this circle instead of drawing alongside it.
-              */}
-              <span className="koa:inline-flex koa:size-11 koa:items-center koa:justify-center koa:rounded-full koa:border koa:border-border koa:text-text koa:[&>button]:!size-full koa:[&>button]:!rounded-full koa:[&>button]:!border-none koa:[&>button]:!bg-transparent koa:[&>button]:!p-0">
-                <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
-                  <Icon icon={mdiClose} size="medium" decorative />
-                </Button>
-              </span>
+              <Button variant="round" color="neutral" aria-label={t("common.close")} onClick={onCloseClick}>
+                <Icon icon={mdiClose} size="medium" decorative />
+              </Button>
             </HideOnEmbed>
           </AppHeader.Right>
         </AppHeader>
@@ -76,14 +63,14 @@ export function ResultPage({
       <Layout.Content>
         <div>
           <div className="koa:flex koa:items-center koa:justify-between koa:gap-2 koa:mb-4">
-            <button type="button" className={pillButtonClasses} onClick={onPreviousClick}>
+            <Button variant="pill" color="neutral" onClick={onPreviousClick}>
               <Icon icon={mdiArrowLeft} size="small" decorative />
               {t("result.back")}
-            </button>
-            <button type="button" className={pillButtonClasses} onClick={onShareClick}>
+            </Button>
+            <Button variant="pill" color="neutral" onClick={onShareClick}>
               <Icon icon={mdiExportVariant} size="small" decorative />
               {tResultNavigationCard("shareButton")}
-            </button>
+            </Button>
           </div>
           <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-4 koa:sm:mb-6">{t("result.title")}</h3>
           {shouldShowToggleComputed && (
