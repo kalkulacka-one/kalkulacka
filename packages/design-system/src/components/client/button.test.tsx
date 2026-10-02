@@ -82,6 +82,16 @@ describe("Button", () => {
       );
       expect(screen.getByRole("button")).toHaveClass("ko:data-checked:bg-neutral", "ko:data-checked:text-on-bg-neutral");
     });
+
+    it("is a fixed 44px touch target at size small, for the header close/back button", () => {
+      render(
+        <Button variant="round" color="neutral" size="small" aria-label="Zavřít">
+          <Icon icon="M0 0h24v24H0z" decorative />
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:h-11", "ko:w-11");
+      expect(screen.getByRole("button")).not.toHaveClass("ko:h-[clamp(52px,46.4898px+1.4694vw,70px)]");
+    });
   });
 
   describe("variant pill", () => {
