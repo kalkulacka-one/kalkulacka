@@ -41,7 +41,9 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
         </div>
 
         <div className="koa:flex koa:flex-1 koa:flex-col koa:justify-center koa:gap-3">
-          <h3 className="koa:font-[var(--ko-typeface-question,var(--ko-typeface-sans)),ui-sans-serif,system-ui,sans-serif,Apple_Color_Emoji,Segoe_UI_Emoji,Segoe_UI_Symbol,Noto_Color_Emoji] koa:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text-strong koa:leading-tight koa:tracking-tighter koa:break-words">{statement}</h3>
+          <h3 className="koa:font-[family-name:var(--ko-typeface-question,var(--ko-typeface-sans)),ui-sans-serif,system-ui,sans-serif,Apple_Color_Emoji,Segoe_UI_Emoji,Segoe_UI_Symbol,Noto_Color_Emoji] koa:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text-strong koa:leading-tight koa:tracking-tighter koa:break-words">
+            {statement}
+          </h3>
           {detail && <p className="koa:text-[clamp(15.5px,15.0408px+0.1224vw,17px)] koa:text-text-muted koa:leading-relaxed koa:break-words">{detail}</p>}
         </div>
 
