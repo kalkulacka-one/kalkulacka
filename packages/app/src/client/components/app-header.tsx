@@ -89,7 +89,7 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   // confirms the page has actually moved, then fades in. That keeps the intro/review screens' content (which
   // never wire up condense-on-scroll) from reading dimmed on first paint.
   const headerBoxClasses =
-    "koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-0 koa:before:-z-10 koa:before:bg-page koa:before:transition-opacity koa:before:duration-base koa:after:content-[''] koa:after:pointer-events-none koa:after:absolute koa:after:inset-x-0 koa:after:top-full koa:after:-z-10 koa:after:h-[var(--ko-spacing-fade-edge)] koa:after:bg-[image:var(--ko-fade-to-bottom)] koa:after:transition-opacity koa:after:duration-base koa:after:ease-out";
+    "koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-0 koa:before:-z-10 koa:before:bg-page koa:before:transition-opacity koa:before:duration-base koa:after:content-[''] koa:after:pointer-events-none koa:after:absolute koa:after:inset-x-0 koa:after:top-full koa:after:-z-10 koa:after:h-[var(--ko-spacing-fade-edge)] koa:after:bg-[image:var(--ko-fade-to-top)] koa:after:transition-opacity koa:after:duration-base koa:after:ease-out";
   const headerClasses = twMerge(headerBoxClasses, scrolled ? "koa:before:opacity-100 koa:after:opacity-100" : "koa:before:opacity-0 koa:after:opacity-0");
 
   return (
