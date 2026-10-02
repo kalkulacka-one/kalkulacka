@@ -43,7 +43,7 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-2 koa:sm:gap-y-3";
   const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
-  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2";
+  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2 koa:min-w-0";
   const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "koa:col-span-2" : "";
   const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "koa:col-start-2" : "";
   const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent);
@@ -101,11 +101,11 @@ type AppHeaderMain = {
 
 function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMain) {
   return (
-    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">
+    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2 koa:min-w-0">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
-      <div className="koa:grid koa:gap-0.5 koa:leading-none">
-        <h1 className="koa:text-sm koa:font-semibold koa:text-text-strong">{title}</h1>
-        <div className="koa:text-xs koa:text-text-muted">
+      <div className="koa:grid koa:gap-0.5 koa:leading-none koa:min-w-0">
+        <h1 className="koa:text-sm koa:font-semibold koa:text-text-strong koa:truncate">{title}</h1>
+        <div className="koa:text-xs koa:text-text-muted koa:truncate">
           <h2 className="koa:font-normal koa:inline">{heading?.title}</h2>
           {heading?.title && heading?.secondaryTitle && <span className="koa:font-normal koa:hidden koa:@[24rem]:inline"> • </span>}
           <span className="koa:font-normal koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
@@ -156,8 +156,28 @@ export function AppHeaderBottomMain({ children, condensed }: AppHeaderBottomMain
   return <>{children}</>;
 }
 
+type AppHeaderIconButton = {
+  children: ReactNode;
+  "aria-label": string;
+  onClick?: () => void;
+};
+
+export function AppHeaderIconButton({ children, onClick, ...rest }: AppHeaderIconButton) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="koa:inline-flex koa:items-center koa:justify-center koa:size-10 koa:sm:size-11 koa:rounded-full koa:border koa:border-border koa:text-text-strong koa:hover:bg-surface-hover"
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+
 AppHeader.Left = AppHeaderLeft;
 AppHeader.Right = AppHeaderRight;
 AppHeader.Bottom = AppHeaderBottom;
 AppHeader.BottomLeft = AppHeaderBottomLeft;
 AppHeader.BottomMain = AppHeaderBottomMain;
+AppHeader.IconButton = AppHeaderIconButton;
