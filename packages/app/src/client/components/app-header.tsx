@@ -142,7 +142,7 @@ type AppHeaderMain = {
 function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMain) {
   return (
     <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-[0.875rem] koa:min-w-0">
-      <Logo title={title} size="small" monochrome={logoMonochrome} />
+      <Logo title={title} size="xsmall" monochrome={logoMonochrome} />
       <div className="koa:grid koa:gap-0.5 koa:leading-none koa:min-w-0">
         <h1 className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:tracking-[-0.03em] koa:font-bold koa:text-text koa:truncate">{title}</h1>
         <div className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:tracking-[-0.03em] koa:text-text-muted koa:truncate">
