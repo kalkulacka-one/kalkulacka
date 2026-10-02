@@ -35,7 +35,10 @@ export const ButtonVariants = cva(
     variants: {
       size: {
         small: "ko:h-10 ko:px-4",
-        medium: "ko:h-12 ko:px-5",
+        // 2026's primary CTA ("Pokračovat"/"Začít odpovídat"/"Zobrazit výsledky") sizes its large
+        // button at 0.9375rem→1.0625rem label (17px), 1rem/1.75rem padding and no explicit height —
+        // the 56px/28px here reproduce that at our medium size, which is what those CTAs use.
+        medium: "ko:h-14 ko:px-7 ko:text-[17px]",
       },
       variant: {
         fill: [""],
@@ -159,7 +162,7 @@ export const ButtonVariants = cva(
         variant: "answer",
         color: "primary",
         class: [
-          "ko:border-primary-tint ko:text-text-strong",
+          "ko:border-primary-tint-strong ko:text-text-strong",
           "ko:hover:bg-primary-tint",
           "ko:data-[just-clicked]:hover:!bg-transparent",
           "ko:data-checked:border-primary ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
@@ -172,7 +175,7 @@ export const ButtonVariants = cva(
         variant: "answer",
         color: "secondary",
         class: [
-          "ko:border-secondary-tint ko:text-text-strong",
+          "ko:border-secondary-tint-strong ko:text-text-strong",
           "ko:hover:bg-secondary-tint",
           "ko:data-[just-clicked]:hover:!bg-transparent",
           "ko:data-checked:border-secondary ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
@@ -185,7 +188,7 @@ export const ButtonVariants = cva(
         variant: "answer",
         color: "neutral",
         class: [
-          "ko:border-neutral-tint ko:text-text-strong",
+          "ko:border-neutral-tint-strong ko:text-text-strong",
           "ko:hover:bg-neutral-tint",
           "ko:data-[just-clicked]:hover:!bg-transparent",
           "ko:data-checked:border-neutral ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral",
@@ -221,9 +224,13 @@ function ButtonComponent({ children, size, variant, color, ...props }: Button, r
   const isIconOnly = React.isValidElement(children) && (children as React.ReactElement).type === Icon;
 
   const iconOnlyClasses = isIconOnly ? "ko:aspect-square ko:!p-0 ko:!rounded-full ko:grid ko:place-items-center" : "";
+  // The answer variant is always rendered icon-only (✓/✕). 2026 draws that
+  // mark noticeably larger than our Icon default (28px vs. the medium 24px) —
+  // bump it locally here rather than asking every call site to pass a size.
+  const answerIconClasses = isIconOnly && variant === "answer" ? "ko:[&>svg]:!size-7" : "";
 
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses)} {...props} ref={ref}>
+    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses, answerIconClasses)} {...props} ref={ref}>
       {children}
     </ButtonHeadless>
   );

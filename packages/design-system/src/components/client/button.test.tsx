@@ -45,13 +45,13 @@ describe("Button", () => {
   });
 
   describe("variant answer", () => {
-    it("uses a tinted border and the control radius, unchecked", () => {
+    it("uses a strongly tinted border and the control radius, unchecked", () => {
       render(
         <Button variant="answer" color="primary">
           Ano
         </Button>,
       );
-      expect(screen.getByRole("button")).toHaveClass("ko:border-primary-tint", "ko:rounded-control", "ko:h-[clamp(58px,51.8776px+1.6327vw,78px)]", "ko:text-text-strong");
+      expect(screen.getByRole("button")).toHaveClass("ko:border-primary-tint-strong", "ko:rounded-control", "ko:h-[clamp(58px,51.8776px+1.6327vw,78px)]", "ko:text-text-strong");
     });
 
     it("fills with the colour and the on-colour ink when checked", () => {
