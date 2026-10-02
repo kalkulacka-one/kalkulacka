@@ -225,6 +225,14 @@ export const ButtonVariants = cva(
         variant: "pill",
         class: ["ko:border-border ko:text-text-strong", "ko:hover:bg-surface-hover ko:data-hover:bg-surface-hover", "ko:data-active:bg-surface-hover", "ko:data-disabled:border-border"],
       },
+      // `round`'s own clamp() sizes it for the star toggle next to the answer
+      // buttons. The header close/back icon button is a fixed 44px touch
+      // target instead — pass `size="small"` for that case.
+      {
+        variant: "round",
+        size: "small",
+        class: ["ko:h-11 ko:w-11"],
+      },
     ],
   },
 );
