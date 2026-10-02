@@ -69,7 +69,7 @@ function InputComponent({ children, variant, onClear, clearLabel, ...props }: In
           type="button"
           onClick={handleClear}
           aria-label={clearLabel}
-          className="ko:absolute ko:right-4 ko:top-1/2 ko:-translate-y-1/2 ko:flex ko:items-center ko:justify-center ko:rounded-pill ko:p-1 ko:text-text-muted ko:hover:bg-neutral-wash ko:focus-visible:outline-3 ko:focus-visible:outline-offset-2 ko:focus-visible:outline-focus/55"
+          className="ko:absolute ko:right-4 ko:top-1/2 ko:-translate-y-1/2 ko:flex ko:items-center ko:justify-center ko:rounded-pill ko:p-1 ko:text-text-muted ko:hover:bg-neutral-tint ko:focus-visible:outline-3 ko:focus-visible:outline-offset-2 ko:focus-visible:outline-focus/55"
         >
           <IconComponent icon={mdiClose} decorative size="small" />
         </button>

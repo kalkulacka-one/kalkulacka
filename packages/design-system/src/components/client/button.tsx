@@ -15,7 +15,7 @@ export type Button = {
  * Colour is expressed through the `primary`/`secondary`/`neutral` tokens —
  * the same names a themed instance already pins to restyle the "ano"/"ne"
  * meaning. This restyle only changes which formulas those names resolve to
- * (2026's flat hover/active steps and soft/wash variants), not the names
+ * (2026's flat hover/active steps and tint variants), not the names
  * themselves, so every existing caller keeps working unchanged.
  */
 export const ButtonVariants = cva(
@@ -41,8 +41,8 @@ export const ButtonVariants = cva(
         fill: [""],
         outline: ["ko:bg-transparent"],
         link: ["ko:bg-transparent"],
-        answer: ["ko:rounded-control ko:h-fluid-action ko:border-[1.5px] ko:bg-surface ko:px-6"],
-        round: ["ko:rounded-full ko:aspect-square ko:h-fluid-star ko:w-fluid-star ko:border ko:bg-surface ko:p-0"],
+        answer: ["ko:rounded-control ko:h-[clamp(58px,51.8776px+1.6327vw,78px)] ko:border-[1.5px] ko:bg-surface ko:px-6"],
+        round: ["ko:rounded-full ko:aspect-square ko:h-[clamp(52px,46.4898px+1.4694vw,70px)] ko:w-[clamp(52px,46.4898px+1.4694vw,70px)] ko:border ko:bg-surface ko:p-0"],
       },
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary"],
@@ -94,9 +94,9 @@ export const ButtonVariants = cva(
         color: "primary",
         class: [
           "ko:text-primary",
-          "ko:data-hover:bg-primary-wash ko:data-focus:bg-primary-wash",
-          "ko:data-active:bg-primary-wash-strong",
-          "ko:data-hover:data-active:bg-primary-wash-strong",
+          "ko:data-hover:bg-primary-tint ko:data-focus:bg-primary-tint",
+          "ko:data-active:bg-primary-tint-strong",
+          "ko:data-hover:data-active:bg-primary-tint-strong",
           "ko:data-disabled:text-primary",
         ],
       },
@@ -105,9 +105,9 @@ export const ButtonVariants = cva(
         color: "secondary",
         class: [
           "ko:text-secondary",
-          "ko:data-hover:bg-secondary-wash ko:data-focus:bg-secondary-wash",
-          "ko:data-active:bg-secondary-wash-strong",
-          "ko:data-hover:data-active:bg-secondary-wash-strong",
+          "ko:data-hover:bg-secondary-tint ko:data-focus:bg-secondary-tint",
+          "ko:data-active:bg-secondary-tint-strong",
+          "ko:data-hover:data-active:bg-secondary-tint-strong",
           "ko:data-disabled:text-secondary",
         ],
       },
@@ -116,9 +116,9 @@ export const ButtonVariants = cva(
         color: "neutral",
         class: [
           "ko:text-neutral",
-          "ko:data-hover:bg-neutral-wash ko:data-focus:bg-neutral-wash",
-          "ko:data-active:bg-neutral-wash-strong",
-          "ko:data-hover:data-active:bg-neutral-wash-strong",
+          "ko:data-hover:bg-neutral-tint ko:data-focus:bg-neutral-tint",
+          "ko:data-active:bg-neutral-tint-strong",
+          "ko:data-hover:data-active:bg-neutral-tint-strong",
           "ko:data-disabled:text-neutral",
         ],
       },
@@ -127,8 +127,8 @@ export const ButtonVariants = cva(
         color: "primary",
         class: [
           "ko:text-primary",
-          "ko:data-hover:bg-primary-wash ko:data-hover:text-primary-hover ko:data-focus:text-primary-hover",
-          "ko:data-active:text-primary-active ko:data-active:bg-primary-wash",
+          "ko:data-hover:bg-primary-tint ko:data-hover:text-primary-hover ko:data-focus:text-primary-hover",
+          "ko:data-active:text-primary-active ko:data-active:bg-primary-tint",
           "ko:data-hover:data-active:text-primary-active",
           "ko:data-disabled:text-primary",
         ],
@@ -138,8 +138,8 @@ export const ButtonVariants = cva(
         color: "secondary",
         class: [
           "ko:text-secondary",
-          "ko:data-hover:bg-secondary-wash ko:data-hover:text-secondary-hover ko:data-focus:text-secondary-hover",
-          "ko:data-active:text-secondary-active ko:data-active:bg-secondary-wash",
+          "ko:data-hover:bg-secondary-tint ko:data-hover:text-secondary-hover ko:data-focus:text-secondary-hover",
+          "ko:data-active:text-secondary-active ko:data-active:bg-secondary-tint",
           "ko:data-hover:data-active:text-secondary-active",
           "ko:data-disabled:text-secondary",
         ],
@@ -149,8 +149,8 @@ export const ButtonVariants = cva(
         color: "neutral",
         class: [
           "ko:text-neutral",
-          "ko:data-hover:bg-neutral-wash ko:data-hover:text-text-strong ko:data-focus:text-text-strong",
-          "ko:data-active:text-text-strong ko:data-active:bg-neutral-wash",
+          "ko:data-hover:bg-neutral-tint ko:data-hover:text-text-strong ko:data-focus:text-text-strong",
+          "ko:data-active:text-text-strong ko:data-active:bg-neutral-tint",
           "ko:data-hover:data-active:text-text-strong",
           "ko:data-disabled:text-neutral",
         ],
@@ -159,44 +159,44 @@ export const ButtonVariants = cva(
         variant: "answer",
         color: "primary",
         class: [
-          "ko:border-primary-soft ko:text-text-strong",
-          "ko:hover:bg-primary-wash",
+          "ko:border-primary-tint ko:text-text-strong",
+          "ko:hover:bg-primary-tint",
           "ko:data-[just-clicked]:hover:!bg-transparent",
           "ko:data-checked:border-primary ko:data-checked:bg-primary ko:data-checked:text-on-bg-primary",
-          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-text-strong ko:data-checked:active:bg-primary-wash-strong ko:data-checked:active:border-primary",
+          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-text-strong ko:data-checked:active:bg-primary-tint-strong ko:data-checked:active:border-primary",
           "ko:data-checked:data-[just-clicked]:hover:!bg-primary ko:data-checked:data-[just-clicked]:hover:!text-on-bg-primary",
-          "ko:data-active:bg-primary-wash-strong",
+          "ko:data-active:bg-primary-tint-strong",
         ],
       },
       {
         variant: "answer",
         color: "secondary",
         class: [
-          "ko:border-secondary-soft ko:text-text-strong",
-          "ko:hover:bg-secondary-wash",
+          "ko:border-secondary-tint ko:text-text-strong",
+          "ko:hover:bg-secondary-tint",
           "ko:data-[just-clicked]:hover:!bg-transparent",
           "ko:data-checked:border-secondary ko:data-checked:bg-secondary ko:data-checked:text-on-bg-secondary",
-          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-text-strong ko:data-checked:active:bg-secondary-wash-strong ko:data-checked:active:border-secondary",
+          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-text-strong ko:data-checked:active:bg-secondary-tint-strong ko:data-checked:active:border-secondary",
           "ko:data-checked:data-[just-clicked]:hover:!bg-secondary ko:data-checked:data-[just-clicked]:hover:!text-on-bg-secondary",
-          "ko:data-active:bg-secondary-wash-strong",
+          "ko:data-active:bg-secondary-tint-strong",
         ],
       },
       {
         variant: "answer",
         color: "neutral",
         class: [
-          "ko:border-neutral-soft ko:text-text-strong",
-          "ko:hover:bg-neutral-wash",
+          "ko:border-neutral-tint ko:text-text-strong",
+          "ko:hover:bg-neutral-tint",
           "ko:data-[just-clicked]:hover:!bg-transparent",
           "ko:data-checked:border-neutral ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral",
-          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-text-strong ko:data-checked:active:bg-neutral-wash-strong ko:data-checked:active:border-neutral",
+          "ko:data-checked:hover:bg-transparent ko:data-checked:hover:text-text-strong ko:data-checked:active:bg-neutral-tint-strong ko:data-checked:active:border-neutral",
           "ko:data-checked:data-[just-clicked]:hover:!bg-neutral ko:data-checked:data-[just-clicked]:hover:!text-on-bg-neutral",
-          "ko:data-active:bg-neutral-wash-strong",
+          "ko:data-active:bg-neutral-tint-strong",
         ],
       },
       {
         variant: "round",
-        class: ["ko:border-border ko:text-text-strong", "ko:hover:bg-neutral-wash", "ko:data-active:bg-neutral-wash-strong"],
+        class: ["ko:border-border ko:text-text-strong", "ko:hover:bg-neutral-tint", "ko:data-active:bg-neutral-tint-strong"],
       },
       {
         variant: "round",
