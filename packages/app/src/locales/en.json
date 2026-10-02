@@ -136,6 +136,15 @@
         "heading": "This page is not running for office",
         "paragraph": "It may have withdrawn its candidacy, or the link may have a typo. You will find all our calculators on the home page.",
         "home": "Back to the home page"
+      },
+      "error": {
+        "eyebrow": "Error 500",
+        "heading": "We miscalculated",
+        "paragraph": "The calculator got stuck for a moment. It was not your fault – please try again.",
+        "note": "We have logged the error, our technical team already knows about it.",
+        "reference": "Error code",
+        "retry": "Try again",
+        "home": "Back to the home page"
       }
     }
   }

@@ -136,6 +136,15 @@
         "heading": "Táto stránka nekandiduje",
         "paragraph": "Možno odstúpila z kandidatúry, možno ste sa len prepísali v odkaze. Na úvodnej stránke nájdete všetky naše kalkulačky.",
         "home": "Späť na úvod"
+      },
+      "error": {
+        "eyebrow": "Chyba 500",
+        "heading": "Prepočítali sme sa",
+        "paragraph": "Kalkulačka sa na chvíľu zasekla. Nebola to vaša chyba – skúste to prosím znova.",
+        "note": "Chybu sme si zapísali, náš technický tím o nej už vie.",
+        "reference": "Kód chyby",
+        "retry": "Skúsiť to znova",
+        "home": "Späť na úvod"
       }
     }
   }
