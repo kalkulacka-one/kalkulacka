@@ -141,11 +141,11 @@ type AppHeaderMain = {
 
 function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMain) {
   return (
-    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2 koa:min-w-0">
+    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-[0.875rem] koa:min-w-0">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
       <div className="koa:grid koa:gap-0.5 koa:leading-none koa:min-w-0">
-        <h1 className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:font-bold koa:text-text koa:truncate">{title}</h1>
-        <div className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:text-text-muted koa:truncate">
+        <h1 className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:tracking-[-0.03em] koa:font-bold koa:text-text koa:truncate">{title}</h1>
+        <div className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:tracking-[-0.03em] koa:text-text-muted koa:truncate">
           <h2 className="koa:font-normal koa:inline">{heading?.title}</h2>
           {heading?.title && heading?.secondaryTitle && <span className="koa:font-normal koa:hidden koa:@[24rem]:inline"> • </span>}
           <span className="koa:font-normal koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
