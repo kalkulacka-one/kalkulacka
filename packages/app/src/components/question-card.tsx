@@ -24,6 +24,11 @@ export type QuestionCard = {
  * Height is reserved (`sm` and up) so the card doesn't resize from question to
  * question; short statements just leave the answer row where it is, with
  * spare room above it instead of the card shrinking to fit.
+ *
+ * `mb-2` below is deliberate, not decorative: the step row sits in the same
+ * flex column right after this card (see pages/question.tsx), and without it
+ * the two touch — this is the only thing giving the row its own breathing
+ * room above it rather than reading as glued to the card's bottom edge.
  */
 export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionCard) {
   const t = useTranslations("koa.components.questionNavigationCard");
@@ -33,7 +38,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
   return (
     <Card
       shadow={false}
-      className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:sm:flex-none koa:sm:min-h-[min(28rem,calc(100dvh-16rem))]"
+      className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[min(28rem,calc(100dvh-16rem))]"
     >
       <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
         <div className="koa:flex koa:flex-wrap koa:gap-2">

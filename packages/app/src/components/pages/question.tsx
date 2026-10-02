@@ -92,18 +92,27 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
             screen's step row lives in this same flow (not Layout.BottomNavigation)
             so it renders identically whether or not the shell PR is merged.
 
-            Sized to the visible viewport (`dvh`) minus the header above it:
-            this screen never scrolls, so the step row must always end above
-            iOS Safari's floating bar.
+            Sized to the layout viewport (`lvh`), not the dynamic one (`dvh`):
+            this screen never scrolls, so iOS Safari's address bar never gets a
+            scroll gesture to minimise on its own and `dvh` is stuck reporting
+            its most pessimistic (bar-expanded) reading — on iOS 26 that is
+            ~47px short of the bar's real position, which left the step row
+            floating well above it with dead space below. `lvh` is 2026's fix
+            for this same "pinned, never-scrolling screen" case (see its
+            `globals.css`): it reads the full layout viewport regardless of bar
+            state, and since this column's own height is capped there (nothing
+            here ever overflows it — the card's `overflow-y-auto` absorbs long
+            text instead, see question-card.tsx), there is nothing for the
+            extra height to scroll.
 
             Bottom padding on this same column — not extra height — keeps the
             step row off the viewport edge (2026's `.center` gives it
             `padding-bottom: max(1rem, env(safe-area-inset-bottom))`, same idea
-            here): the column's height stays `100dvh - header`, so the padding
+            here): the column's height stays `100lvh - header`, so the padding
             is carved out of its own flex content rather than pushing the total
             past the viewport.
           */}
-          <div className="koa:mx-auto koa:flex koa:h-[calc(100dvh-5rem)] koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-8 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
+          <div className="koa:mx-auto koa:flex koa:h-[calc(100lvh-5rem)] koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-8 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
             <QuestionProgress current={number} total={total} />
             <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
             <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
