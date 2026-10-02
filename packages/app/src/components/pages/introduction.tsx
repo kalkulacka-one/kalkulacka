@@ -1,4 +1,4 @@
-import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
@@ -29,24 +29,20 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+              <AppHeader.IconButton aria-label={t("common.close")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
-              </Button>
+              </AppHeader.IconButton>
             </HideOnEmbed>
           </AppHeader.Right>
-          <AppHeader.Bottom>
-            <AppHeader.BottomMain>
-              <h2 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{calculator?.shortTitle}</h2>
-            </AppHeader.BottomMain>
-          </AppHeader.Bottom>
         </AppHeader>
       </Layout.Header>
       <Layout.Content>
+        <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
         <Introduction calculator={calculator} />
       </Layout.Content>
       <Layout.BottomSpacer className={IntroductionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
+      <Layout.BottomNavigation className={hasFooter ? "koa:bottom-11" : undefined}>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
