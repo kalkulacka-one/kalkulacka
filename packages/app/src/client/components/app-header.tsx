@@ -40,10 +40,10 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const gridClasses = "koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center";
   const expandedRowsClasses = "koa:grid-rows-[3rem_auto]";
   const collapsedRowsClasses = "koa:grid-rows-[3rem]";
-  const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-1";
+  const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-2 koa:sm:gap-y-3";
   const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
-  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2";
+  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2 koa:min-w-0";
   const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "koa:col-span-2" : "";
   const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "koa:col-start-2" : "";
   const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent);
@@ -52,31 +52,37 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const bottomCondensed = "koa:row-start-1";
   const bottomClasses = expand ? bottomExpanded : bottomCondensed;
 
+  // No hard-edged panel — like 2026, a blur-less page-colour fade sits behind the bar (`before:`, its own
+  // stacking context via `isolate` so `-z-10` stays behind just this header's own content): solid behind the
+  // wordmark, fading out before it reaches the bottom of the bar, so content scrolling underneath settles
+  // toward the page colour instead of colliding with the logo/title.
   return (
-    <header className="koa:@container koa:sticky koa:top-0 koa:p-2 koa:sm:p-3 koa:bg-white/60 koa:backdrop-blur-md">
-      <div className={headerGridClasses}>
-        <div className={mainClasses}>
-          <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
-        </div>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === AppHeaderRight) {
-            return (child.props as { children: ReactNode }).children;
-          }
-          return null;
-        })}
-        {(expand || (condensed && hasBottomLeft)) && (
-          <div className={bottomClasses}>
-            {React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
-                return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
-                  ...(child.props || {}),
-                  condensed,
-                });
-              }
-              return null;
-            })}
+    <header className="koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-x-0 koa:before:top-0 koa:before:-z-10 koa:before:h-[calc(100%+var(--ko-spacing-fade-edge))] koa:before:bg-[image:var(--ko-fade-to-top)]">
+      <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
+        <div className={headerGridClasses}>
+          <div className={mainClasses}>
+            <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
           </div>
-        )}
+          {React.Children.map(children, (child) => {
+            if (React.isValidElement(child) && child.type === AppHeaderRight) {
+              return (child.props as { children: ReactNode }).children;
+            }
+            return null;
+          })}
+          {(expand || (condensed && hasBottomLeft)) && (
+            <div className={bottomClasses}>
+              {React.Children.map(children, (child) => {
+                if (React.isValidElement(child) && child.type !== AppHeaderMain && child.type !== AppHeaderRight) {
+                  return React.cloneElement(child as React.ReactElement<AppHeaderChildProps>, {
+                    ...(child.props || {}),
+                    condensed,
+                  });
+                }
+                return null;
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
@@ -99,14 +105,14 @@ type AppHeaderMain = {
 
 function AppHeaderMain({ children, title, heading, logoMonochrome }: AppHeaderMain) {
   return (
-    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2">
+    <div className="koa:grid koa:grid-flow-col koa:items-center koa:gap-2 koa:min-w-0">
       <Logo title={title} size="small" monochrome={logoMonochrome} />
-      <div className="koa:grid koa:text-sm koa:text-slate-700 koa:leading-none">
-        <h1 className="koa:font-light">{title}</h1>
-        <div>
-          <h2 className="koa:font-semibold koa:inline">{heading?.title}</h2>
-          {heading?.title && heading?.secondaryTitle && <span className="koa:font-light koa:hidden koa:@[24rem]:inline"> • </span>}
-          <span className="koa:font-light koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
+      <div className="koa:grid koa:gap-0.5 koa:leading-none koa:min-w-0">
+        <h1 className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:font-bold koa:text-text koa:truncate">{title}</h1>
+        <div className="koa:font-display koa:text-[11px] koa:leading-[1.2] koa:text-text-muted koa:truncate">
+          <h2 className="koa:font-normal koa:inline">{heading?.title}</h2>
+          {heading?.title && heading?.secondaryTitle && <span className="koa:font-normal koa:hidden koa:@[24rem]:inline"> • </span>}
+          <span className="koa:font-normal koa:hidden koa:@[24rem]:inline">{heading?.secondaryTitle}</span>
         </div>
         {children}
       </div>
