@@ -7,6 +7,11 @@ import type { Locale } from "next-intl";
 import { QuestionPageWithRouting } from "@/components/client";
 import { canonical, mappedParams } from "@/lib/routing";
 
+// Each dynamic segment needs its own empty `generateStaticParams` to stay on-demand ISR – `revalidate` comes from the calculator layout.
+export function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; embed: string; first: string; second: string; questionNumber: string }> }): Promise<Metadata> {
   const { locale, questionNumber, ...segments } = await params;
   const key = mappedParams.key(segments);
