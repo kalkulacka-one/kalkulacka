@@ -1,0 +1,4 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- :/package.json && turbo query affected --base=\"$VERCEL_GIT_PREVIOUS_SHA\" --packages www.kalkulacka.one --exit-code || exit 1"
+}
