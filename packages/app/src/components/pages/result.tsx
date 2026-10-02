@@ -4,7 +4,7 @@ import { mdiArrowLeft, mdiClose, mdiExportVariant } from "@mdi/js";
 import { useTranslations } from "next-intl";
 import React, { type ReactNode } from "react";
 
-import { AppHeader, type EmbedContextType, HideOnEmbed, MatchCard, WithCondenseOnScroll } from "@/client";
+import { AppHeader, type EmbedContextType, HideOnEmbed, MatchCard } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { ResultNavigationCard } from "@/components/result-navigation-card";
@@ -48,45 +48,35 @@ export function ResultPage({
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   // Local to this page head, not a shared Button variant: the 2026 look's back/share controls
-  // are full pills, distinct from the design system's brand-cornered Button.
+  // are light pills, distinct from the design system's brand-cornered Button.
   const pillButtonClasses =
     "koa:inline-flex koa:items-center koa:gap-1.5 koa:rounded-pill koa:border koa:border-border koa:bg-surface koa:px-4 koa:py-2 koa:text-sm koa:font-semibold koa:text-text-strong koa:hover:bg-surface-hover koa:transition-colors";
 
   return (
     <Layout>
       <Layout.Header>
-        <WithCondenseOnScroll>
-          {(condensed) => (
-            <AppHeader condensed={condensed} calculator={calculator}>
-              <AppHeader.Right>
-                <div className="koa:flex koa:items-center koa:gap-2">
-                  <button type="button" className={pillButtonClasses} onClick={onShareClick}>
-                    <Icon icon={mdiExportVariant} size="small" decorative />
-                    {tResultNavigationCard("shareButton")}
-                  </button>
-                  <HideOnEmbed>
-                    <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
-                      <Icon icon={mdiClose} size="medium" decorative />
-                    </Button>
-                  </HideOnEmbed>
-                </div>
-              </AppHeader.Right>
-              <AppHeader.Bottom>
-                <AppHeader.BottomLeft condensed={condensed}>
-                  <button type="button" className={pillButtonClasses} onClick={onPreviousClick}>
-                    <Icon icon={mdiArrowLeft} size="small" decorative />
-                    {t("result.back")}
-                  </button>
-                </AppHeader.BottomLeft>
-                <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text-strong">{t("result.title")}</h3>
-                </AppHeader.BottomMain>
-              </AppHeader.Bottom>
-            </AppHeader>
-          )}
-        </WithCondenseOnScroll>
+        <AppHeader calculator={calculator}>
+          <AppHeader.Right>
+            <HideOnEmbed>
+              <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+                <Icon icon={mdiClose} size="medium" decorative />
+              </Button>
+            </HideOnEmbed>
+          </AppHeader.Right>
+        </AppHeader>
       </Layout.Header>
       <Layout.Content>
+        <div className="koa:flex koa:items-center koa:justify-between koa:gap-2 koa:mb-4">
+          <button type="button" className={pillButtonClasses} onClick={onPreviousClick}>
+            <Icon icon={mdiArrowLeft} size="small" decorative />
+            {t("result.back")}
+          </button>
+          <button type="button" className={pillButtonClasses} onClick={onShareClick}>
+            <Icon icon={mdiExportVariant} size="small" decorative />
+            {tResultNavigationCard("shareButton")}
+          </button>
+        </div>
+        <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text-strong koa:mb-4 koa:sm:mb-6">{t("result.title")}</h3>
         {shouldShowToggleComputed && (
           <div className="koa:mb-6">
             <div className="koa:flex koa:items-center koa:gap-3 koa:text-sm">
