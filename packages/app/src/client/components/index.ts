@@ -8,5 +8,6 @@ export * from "./district-picker";
 export * from "./match-card";
 export * from "./pages/calculator-picker";
 export * from "./pages/district-picker";
+export * from "./pages/error-global";
 export * from "./pages/error-page";
 export * from "./share-modal";
