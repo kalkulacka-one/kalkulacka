@@ -7,3 +7,18 @@
 :root {
   color-scheme: light;
 }
+
+/*
+ * The 2026 calculator flow's soft backdrop: a faint blue glow top-left and a
+ * faint red glow bottom-right on the page colour (see the prototype's
+ * `Backdrop` fallback gradient). Only `background-image` is set here — the
+ * root layout's own `bg-slate-50` on `<body>` (a platform file we don't
+ * touch) still supplies the base colour, so this can't fight it on
+ * specificity. Static (no motion), and subtle enough to sit behind the
+ * content pages too rather than needing a route-scoped selector.
+ */
+body {
+  background-image: radial-gradient(60% 50% at 15% 10%, color-mix(in oklab, var(--ko-color-primary) 10%, transparent), transparent 70%),
+    radial-gradient(60% 50% at 85% 90%, color-mix(in oklab, var(--ko-color-secondary) 8%, transparent), transparent 70%);
+  background-attachment: fixed;
+}
