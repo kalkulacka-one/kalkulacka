@@ -8,7 +8,7 @@ export default function ErrorBoundary({ error, reset }: { error: Error & { diges
   return (
     <>
       <ErrorReporter error={error} />
-      <ErrorPage reset={reset} digest={error.digest} compact />
+      <ErrorPage reset={reset} digest={error.digest} />
     </>
   );
 }
