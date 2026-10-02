@@ -54,7 +54,7 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
 
   return (
     <header className="koa:@container koa:sticky koa:top-0 koa:bg-white/60 koa:backdrop-blur-md">
-      <div className="koa:w-full koa:px-fluid-gutter koa:py-2 koa:sm:py-3">
+      <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
         <div className={headerGridClasses}>
           <div className={mainClasses}>
             <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
