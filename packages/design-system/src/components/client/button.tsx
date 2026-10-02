@@ -202,6 +202,14 @@ export const ButtonVariants = cva(
           "ko:data-active:bg-neutral-tint-strong",
         ],
       },
+      // Icon-only "answer" (the recap row's compact yes/no toggles): the variant's own clamp() is sized for
+      // the big question-card Ano/Ne pair, so `size="small"` needs its own override here the same way
+      // `round`+`small` already does above — 32-36px so a title next to it keeps to one or two lines.
+      {
+        variant: "answer",
+        size: "small",
+        class: ["ko:h-9 ko:w-9"],
+      },
       {
         variant: "round",
         class: ["ko:border-border ko:text-text-strong", "ko:hover:bg-neutral-tint", "ko:data-active:bg-neutral-tint-strong"],
@@ -244,7 +252,8 @@ function ButtonComponent({ children, size, variant, color, ...props }: Button, r
   // The answer variant is always rendered icon-only (✓/✕). 2026 draws that
   // mark noticeably larger than our Icon default (28px vs. the medium 24px) —
   // bump it locally here rather than asking every call site to pass a size.
-  const answerIconClasses = isIconOnly && variant === "answer" ? "ko:[&>svg]:!size-7" : "";
+  // At size="small" (the recap row's compact toggles, 36px circles) the mark scales down to match.
+  const answerIconClasses = isIconOnly && variant === "answer" ? (size === "small" ? "ko:[&>svg]:!size-4" : "ko:[&>svg]:!size-7") : "";
 
   return (
     <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses, answerIconClasses)} {...props} ref={ref}>
