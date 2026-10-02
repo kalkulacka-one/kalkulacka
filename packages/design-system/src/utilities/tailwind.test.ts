@@ -33,32 +33,43 @@ describe("twMerge", () => {
     expect(koa("ko:p-2 ko:p-4")).toBe("ko:p-2 ko:p-4");
   });
 
-  it("merges a built-in radius with the card radius token", () => {
+  it("merges a built-in radius with a radius token", () => {
     expect(twMerge("ko:rounded-lg ko:rounded-card")).toBe("ko:rounded-card");
     expect(twMerge("ko:rounded-pill ko:rounded-chip")).toBe("ko:rounded-chip");
   });
 
   it("merges a built-in shadow with an elevation token", () => {
     expect(twMerge("ko:shadow-md ko:shadow-card")).toBe("ko:shadow-card");
-    expect(twMerge("ko:shadow-card-next ko:shadow-card-lifted")).toBe("ko:shadow-card-lifted");
+    expect(twMerge("ko:shadow-card ko:shadow-card-lifted")).toBe("ko:shadow-card-lifted");
   });
 
-  it("merges the drop-shadow token with a built-in drop-shadow", () => {
+  it("merges the hard drop shadow with a built-in drop shadow", () => {
     expect(twMerge("ko:drop-shadow-md ko:drop-shadow-hard")).toBe("ko:drop-shadow-hard");
   });
 
-  it("merges a built-in font size with a fluid text token", () => {
-    expect(twMerge("ko:text-sm ko:text-fluid-question")).toBe("ko:text-fluid-question");
-    expect(twMerge("ko:text-fluid-gist ko:text-title")).toBe("ko:text-title");
-  });
-
-  it("merges a built-in spacing utility with a fluid spacing token", () => {
-    expect(twMerge("ko:p-4 ko:p-fluid-gutter")).toBe("ko:p-fluid-gutter");
-    expect(twMerge("ko:h-10 ko:h-fluid-nav")).toBe("ko:h-fluid-nav");
-  });
-
-  it("merges a built-in easing function with a motion token", () => {
+  it("merges a built-in easing with a motion token", () => {
     expect(twMerge("ko:ease-in ko:ease-spring")).toBe("ko:ease-spring");
     expect(twMerge("ko:ease-spring ko:ease-exit")).toBe("ko:ease-exit");
+  });
+
+  it("merges a built-in duration with a duration token", () => {
+    expect(twMerge("ko:duration-150 ko:duration-fast")).toBe("ko:duration-fast");
+    expect(twMerge("ko:duration-base ko:duration-slow")).toBe("ko:duration-slow");
+  });
+
+  it("merges a built-in spacing utility with a layout token", () => {
+    expect(twMerge("ko:p-4 ko:p-gutter")).toBe("ko:p-gutter");
+    expect(twMerge("ko:h-10 ko:h-nav")).toBe("ko:h-nav");
+  });
+
+  it("merges a built-in font size with a type-scale token", () => {
+    expect(twMerge("ko:text-sm ko:text-title")).toBe("ko:text-title");
+    expect(twMerge("ko:text-title ko:text-display")).toBe("ko:text-display");
+  });
+
+  it("merges the token groups behind the app package's prefix too", () => {
+    const koa = createTwMerge("koa");
+    expect(koa("koa:rounded-lg koa:rounded-card")).toBe("koa:rounded-card");
+    expect(koa("koa:shadow-md koa:shadow-sticky")).toBe("koa:shadow-sticky");
   });
 });

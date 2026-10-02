@@ -242,6 +242,9 @@
       "properties": {
         "key": {
           "$ref": "#/$defs/key"
+        },
+        "election": {
+          "$ref": "#/$defs/election"
         }
       },
       "required": ["key", "shortTitle"],
