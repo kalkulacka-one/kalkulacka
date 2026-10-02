@@ -75,9 +75,17 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
                 <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
-                    <Icon icon={mdiClose} size="medium" decorative />
-                  </Button>
+                  {/*
+                    Match intro/guide/review's 44px round hairline close button (#629's
+                    `AppHeader.IconButton`, not available here): wrap the existing close
+                    button rather than reach for that import, forcing its own pill chrome
+                    to fill this circle instead of drawing alongside it.
+                  */}
+                  <span className="koa:inline-flex koa:size-11 koa:items-center koa:justify-center koa:rounded-full koa:border koa:border-border koa:text-text koa:[&>button]:!size-full koa:[&>button]:!rounded-full koa:[&>button]:!border-none koa:[&>button]:!bg-transparent koa:[&>button]:!p-0">
+                    <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+                      <Icon icon={mdiClose} size="medium" decorative />
+                    </Button>
+                  </span>
                 </HideOnEmbed>
               </AppHeader.Right>
             </AppHeader>
@@ -95,8 +103,15 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
             Sized to the visible viewport (`dvh`) minus the header above it:
             this screen never scrolls, so the step row must always end above
             iOS Safari's floating bar.
+
+            Bottom padding on this same column — not extra height — keeps the
+            step row off the viewport edge (2026's `.center` gives it
+            `padding-bottom: max(1rem, env(safe-area-inset-bottom))`, same idea
+            here): the column's height stays `100dvh - header`, so the padding
+            is carved out of its own flex content rather than pushing the total
+            past the viewport.
           */}
-          <div className="koa:mx-auto koa:flex koa:h-[calc(100dvh-5rem)] koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
+          <div className="koa:mx-auto koa:flex koa:h-[calc(100dvh-5rem)] koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-8 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
             <QuestionProgress current={number} total={total} />
             <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
             <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
