@@ -141,13 +141,7 @@ export const Pill: ButtonStory = {
     type: "button",
     disabled: false,
   },
-  render: (args) =>
-    createElement(
-      Button,
-      { ...args, children: undefined },
-      createElement(Icon, { icon: mdiArrowLeft, decorative: true }),
-      "Zpět",
-    ),
+  render: (args) => createElement(Button, { ...args, children: undefined }, createElement(Icon, { icon: mdiArrowLeft, decorative: true }), "Zpět"),
 };
 
 export default meta;
