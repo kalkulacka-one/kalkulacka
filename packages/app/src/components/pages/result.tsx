@@ -58,9 +58,17 @@ export function ResultPage({
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <HideOnEmbed>
-              <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
-                <Icon icon={mdiClose} size="medium" decorative />
-              </Button>
+              {/*
+                Match intro/guide/review's 44px round hairline close button (#629's
+                `AppHeader.IconButton`, not available here): wrap the existing close
+                button rather than reach for that import, forcing its own pill chrome
+                to fill this circle instead of drawing alongside it.
+              */}
+              <span className="koa:inline-flex koa:size-11 koa:items-center koa:justify-center koa:rounded-full koa:border koa:border-border koa:text-text koa:[&>button]:!size-full koa:[&>button]:!rounded-full koa:[&>button]:!border-none koa:[&>button]:!bg-transparent koa:[&>button]:!p-0">
+                <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+                  <Icon icon={mdiClose} size="medium" decorative />
+                </Button>
+              </span>
             </HideOnEmbed>
           </AppHeader.Right>
         </AppHeader>

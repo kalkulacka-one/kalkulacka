@@ -34,8 +34,10 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
   const winner = order === 1;
   const name = candidate.displayName ?? candidate.id;
   const accent = partyColor(name);
-  const avatarSize = winner ? "large" : "medium";
-  const fallbackSizeClasses = winner ? "koa:h-20 koa:w-20 koa:text-2xl" : "koa:h-14 koa:w-14 koa:text-lg";
+  // 2026 sizes match-row avatars at 44px (row) / 64px (top match) — the design
+  // system's `compact`/`prominent` Avatar sizes, added for this.
+  const avatarSize = winner ? "prominent" : "compact";
+  const fallbackSizeClasses = winner ? "koa:h-16 koa:w-16 koa:text-xl" : "koa:h-11 koa:w-11 koa:text-base";
 
   return (
     <ExpandableCard corner="topLeft" shadow="hard" className="koa:overflow-hidden koa:border koa:border-border">
