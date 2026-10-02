@@ -2,10 +2,10 @@ import { Card } from "@kalkulacka-one/design-system/server";
 
 import Link from "next/link";
 
-import { CitySignupForm } from "@/components/client";
+import { JoinUsForm } from "@/components/client";
 
 export const metadata = {
-  title: "Pomozte nám s kalkulačkou pro vaše město",
+  title: "Pojďte s námi tvořit Volební kalkulačku",
 };
 
 export default function Page() {
@@ -32,10 +32,8 @@ export default function Page() {
         </Link>
 
         {/* Heading */}
-        <h1 className="mt-4 font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Pomozte nám s kalkulačkou pro vaše město</h1>
-        <p className="mt-4 max-w-prose text-slate-500">
-          Ke komunálním volbám 2026 připravujeme volební kalkulačky pro vybraná města. Chcete, aby vznikla i pro to vaše? Vyberte město, nechte nám na sebe e-mail a ozveme se vám.
-        </p>
+        <h1 className="mt-4 font-display font-bold tracking-tighter text-slate-700 text-4xl md:text-5xl lg:text-6xl">Pojďte s&nbsp;námi tvořit Volební kalkulačku</h1>
+        <p className="mt-4 max-w-prose text-slate-500">Volební kalkulačku připravuje tým dobrovolníků. Přidejte se a pomozte milionům voličů rozhodovat se podle skutečných postojů kandidátů.</p>
 
         {/* Signup card */}
         <div className="mt-10 md:mt-12 grid grid-cols-1 items-stretch">
@@ -43,21 +41,26 @@ export default function Page() {
             <div className="p-6 md:p-10 grid gap-8 md:grid-cols-2 md:items-center">
               <div className="flex flex-col items-start gap-3">
                 <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">Komunální volby 2026</span>
-                  <span className="rounded-full bg-slate-100 px-2.5 py-1">9.&nbsp;a&nbsp;10.&nbsp;října&nbsp;2026</span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">Dobrovolnictví</span>
                 </div>
                 <h2 className="font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Přidejte se!</h2>
-                <p className="text-slate-500">
-                  Kalkulačka pro vaše město vznikne jen s pomocí lidí, kteří tam žijí, vědí, co se ve městě řeší, a znají místní kandidáty — od těch totiž potřebujeme získat odpovědi na otázky. Dáme
-                  vám vědět, jak se můžete zapojit.
-                </p>
+                <p className="text-slate-500">Práce je pestrá a&nbsp;každý si v&nbsp;ní najde své. Nechte nám na sebe e-mail – ozveme se vám a&nbsp;domluvíme se, jak byste se mohli zapojit.</p>
               </div>
               <div className="w-full">
-                <CitySignupForm />
+                <JoinUsForm />
               </div>
             </div>
           </Card>
         </div>
+
+        {/* Contact */}
+        <p className="mt-8 max-w-prose text-slate-500">
+          Chcete se jen na něco zeptat? Napište nám na{" "}
+          <a href="mailto:ahoj@volebnikalkulacka.cz" className="text-slate-700 hover:text-slate-900 underline underline-offset-2">
+            ahoj@volebnikalkulacka.cz
+          </a>
+          .
+        </p>
       </div>
     </div>
   );
