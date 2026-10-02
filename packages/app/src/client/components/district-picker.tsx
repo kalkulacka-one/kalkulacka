@@ -116,7 +116,7 @@ export function DistrictPickerResults() {
   const renderRow = (row: DistrictPickerMatch, parent?: DistrictPickerRowViewModel): ReactNode => {
     const code = picker.showCode && row.code && (
       <OptionList.Badge>
-        <span className="koa:inline-grid koa:h-7 koa:min-w-7 koa:place-items-center koa:rounded-lg koa:bg-slate-100 koa:px-1.5 koa:text-sm koa:font-medium koa:tabular-nums koa:text-slate-500">
+        <span className="koa:inline-grid koa:h-7 koa:min-w-7 koa:place-items-center koa:rounded-lg koa:bg-surface-sunken koa:px-1.5 koa:text-sm koa:font-medium koa:tabular-nums koa:text-text-muted">
           <span className="koa:sr-only">{t("codeLabel")} </span>
           {row.code}
         </span>
@@ -142,7 +142,7 @@ export function DistrictPickerResults() {
   return (
     <div id={listId}>
       {searching && matches.length === 0 ? (
-        <p className="koa:px-4 koa:py-6 koa:text-slate-500">{t("empty", { query })}</p>
+        <p className="koa:px-4 koa:py-6 koa:text-text-muted">{t("empty", { query })}</p>
       ) : (
         <OptionList ref={listRef} activeIndex={activeIndex} onActiveIndexChange={setActiveIndex} aria-label={picker.title ?? t("title")} className="koa:grid koa:gap-6">
           {searching
@@ -152,7 +152,7 @@ export function DistrictPickerResults() {
                 return (
                   <section key={section.key} aria-labelledby={section.title ? headingId : undefined} className="koa:grid koa:gap-2.5">
                     {section.title && (
-                      <h3 id={headingId} className="koa:px-1 koa:text-xs koa:font-semibold koa:uppercase koa:tracking-[0.04em] koa:text-slate-500">
+                      <h3 id={headingId} className="koa:px-1 koa:text-xs koa:font-semibold koa:uppercase koa:tracking-[0.04em] koa:text-text-muted">
                         {section.title}
                       </h3>
                     )}

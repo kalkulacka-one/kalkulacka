@@ -31,7 +31,7 @@ export function CalculatorPickerPage({ embedContext, picker, heading, closeHref,
           <AppHeader.Right>
             {closeHref && (
               <HideOnEmbed>
-                <a href={closeHref} aria-label={t("common.close")} className="koa:inline-grid koa:place-items-center koa:size-10 koa:rounded-full koa:text-slate-700 koa:hover:bg-slate-100">
+                <a href={closeHref} aria-label={t("common.close")} className="koa:inline-grid koa:place-items-center koa:size-10 koa:rounded-full koa:text-text-strong koa:hover:bg-surface-hover">
                   <Icon icon={mdiClose} size="medium" decorative />
                 </a>
               </HideOnEmbed>
@@ -39,13 +39,13 @@ export function CalculatorPickerPage({ embedContext, picker, heading, closeHref,
           </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomMain>
-              <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-slate-800 koa:sm:text-[2rem]">{picker.title}</h2>
+              <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-text-strong koa:sm:text-[2rem]">{picker.title}</h2>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>
       </Layout.Header>
       <Layout.Content>
-        <p className="koa:mb-4 koa:max-w-prose koa:text-slate-600">{t("calculatorPicker.description")}</p>
+        <p className="koa:mb-4 koa:max-w-prose koa:text-text-muted">{t("calculatorPicker.description")}</p>
         <CalculatorPickerCards cards={picker.cards} startLabel={t("calculatorPicker.start")} unavailableLabel={t("districtPicker.unavailable")} />
       </Layout.Content>
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
