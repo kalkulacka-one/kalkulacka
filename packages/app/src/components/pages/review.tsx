@@ -1,9 +1,9 @@
-import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { AppHeader, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
+import { AppHeader, type EmbedContextType, HideOnEmbed } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { ReviewNavigationCard } from "@/components/review-navigation-card";
@@ -64,33 +64,28 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
   return (
     <Layout>
       <Layout.Header>
-        <WithCondenseOnScroll>
-          {(condensed) => (
-            <AppHeader condensed={condensed} calculator={calculator}>
-              <AppHeader.Right>
-                <HideOnEmbed>
-                  <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
-                    <Icon icon={mdiClose} size="medium" decorative />
-                  </Button>
-                </HideOnEmbed>
-              </AppHeader.Right>
-              <AppHeader.Bottom>
-                <AppHeader.BottomLeft condensed={condensed}>
-                  <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("review.back")}>
-                    <Icon icon={mdiArrowLeft} size="medium" decorative />
-                  </Button>
-                </AppHeader.BottomLeft>
-                <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-slate-700">{t("review.title")}</h3>
-                </AppHeader.BottomMain>
-              </AppHeader.Bottom>
-            </AppHeader>
-          )}
-        </WithCondenseOnScroll>
+        <AppHeader calculator={calculator}>
+          <AppHeader.Right>
+            <HideOnEmbed>
+              <AppHeader.IconButton aria-label={t("common.close")} onClick={onCloseClick}>
+                <Icon icon={mdiClose} size="medium" decorative />
+              </AppHeader.IconButton>
+            </HideOnEmbed>
+          </AppHeader.Right>
+        </AppHeader>
       </Layout.Header>
       <Layout.Content>
-        <div className="koa:grid koa:gap-4">
-          {questions.questions.map((question, index) => {
+        <button
+          type="button"
+          onClick={onPreviousClick}
+          className="koa:inline-flex koa:items-center koa:gap-1.5 koa:rounded-pill koa:border koa:border-border koa:px-3 koa:py-1.5 koa:text-sm koa:text-text-muted koa:mb-4 koa:hover:bg-surface-sunken"
+        >
+          <Icon icon={mdiArrowLeft} size="small" decorative />
+          {t("review.back")}
+        </button>
+        <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-4 koa:sm:mb-6">{t("review.title")}</h3>
+        <div className="koa:grid koa:gap-2">
+          {questions.questions.map((question) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
               answer: undefined,
               setAnswer: answers.setAnswer,
@@ -101,8 +96,6 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
                 key={question.id}
                 question={question}
                 answer={answer}
-                current={index + 1}
-                total={questions.total}
                 onAgreeChange={(agree) => handleAgreeChange(question.id, agree)}
                 onDisagreeChange={(disagree) => handleDisagreeChange(question.id, disagree)}
                 onImportantChange={(isImportant) => handleImportantChange(question.id, isImportant)}
@@ -113,7 +106,7 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
       </Layout.Content>
       <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? `${EmbedFooter.marginBottomClassNames} koa:lg:mb-0` : undefined}>
+      <Layout.BottomNavigation className={hasFooter ? "koa:bottom-11" : undefined}>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

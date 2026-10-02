@@ -19,8 +19,8 @@ const CardVariants = cva("ko:rounded-3xl", {
       false: "",
     },
     shadow: {
-      elevated: "ko:drop-shadow-2xl",
-      hard: "ko:drop-shadow-hard",
+      elevated: "ko:shadow-card-lifted",
+      hard: "ko:shadow-card",
       false: "",
     },
     interactive: {
