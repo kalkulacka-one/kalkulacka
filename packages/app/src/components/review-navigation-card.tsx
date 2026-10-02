@@ -14,7 +14,7 @@ export function ReviewNavigationCard({ onNextClick }: ReviewNavigationCard) {
   const t = useTranslations("koa.components.reviewNavigationCard");
 
   return (
-    <NavigationCard>
+    <NavigationCard bare>
       <Button color="neutral" onClick={onNextClick}>
         {t("showResultsButton")}
       </Button>
