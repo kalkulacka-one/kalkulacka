@@ -62,11 +62,6 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 {/* Answer Comparisons Grid */}
                 {answerComparisons.length > 0 && (
                   <div className="koa:grid koa:grid-cols-[1fr_auto] koa:gap-y-2 koa:gap-x-1 koa:auto-rows-auto">
-                    <div className="koa:col-span-2 koa:text-right koa:mb-2">
-                      <div className="koa:inline-flex koa:items-center koa:px-3 koa:py-1 koa:rounded-full koa:text-xs koa:font-medium koa:bg-amber-100 koa:text-amber-800 koa:border koa:border-amber-200">
-                        <span>{t("beta")}</span>
-                      </div>
-                    </div>
                     {/* Grid Header Row */}
                     <div />
                     <div>{t("meCandidate")}</div>
