@@ -66,12 +66,7 @@ export function ResultPage({
         </AppHeader>
       </Layout.Header>
       <Layout.Content>
-        {/*
-         * Layout.Content's own padding (p-2/sm:p-4) is shell-owned; cancelled
-         * here and replaced with the 2026 fluid gutter (18px on phones, up to
-         * 44px) local to this page's column rather than edited upstream.
-         */}
-        <div className="koa:-mx-2 koa:sm:-mx-4 koa:px-gutter">
+        <div>
           <div className="koa:flex koa:items-center koa:justify-between koa:gap-2 koa:mb-4">
             <button type="button" className={pillButtonClasses} onClick={onPreviousClick}>
               <Icon icon={mdiArrowLeft} size="small" decorative />
