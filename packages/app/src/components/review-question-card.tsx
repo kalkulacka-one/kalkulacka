@@ -10,36 +10,31 @@ import type { AnswerViewModel, QuestionViewModel } from "@/view-models";
 export type ReviewQuestionCard = {
   question: QuestionViewModel;
   answer: AnswerViewModel;
-  current: number;
-  total: number;
   onAgreeChange: (agree: boolean) => void;
   onDisagreeChange: (disagree: boolean) => void;
   onImportantChange: (isImportant: boolean) => void;
 };
 
-export function ReviewQuestionCard({ question, answer, current, total, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
+// Compact recap row (2026): a single line per question — star, title, two small icon-only answer toggles — instead
+// of the old full statement/detail card. The yes/no toggles drop their visible "Ano"/"Ne" label for an aria-label
+// (Button renders icon-only children as a round button on its own); this list isn't the smoke test's target for
+// that visible label — only the question screen's switch keeps the visible text.
+export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
   const t = useTranslations("koa.components.reviewQuestionCard");
-  const { title, detail, statement } = question;
+  const { title } = question;
   return (
-    <Card corner="topLeft" shadow="hard" className="koa:border koa:border-slate-200">
-      <div className="koa:p-3 koa:sm:p-6 koa:flex koa:flex-col koa:gap-4">
-        <div className="koa:text-sm koa:text-slate-500">
-          <span className="koa:font-bold koa:text-slate-600">{current}</span>/<span className="koa:mr-3">{total}</span>
-          <span>{title}</span>
-        </div>
-        <h3 className="koa:font-display koa:text-lg koa:sm:text-xl koa:font-bold koa:text-slate-700 koa:leading-tight koa:tracking-tight koa:break-words">{statement}</h3>
-        {detail && <p className="koa:hidden koa:sm:block koa:text-sm koa:text-slate-600 koa:leading-relaxed koa:max-w-prose koa:break-words koa:tracking-wide">{detail}</p>}
-        <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-4 koa:items-stretch">
-          <ToggleButton color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
-            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
-          </ToggleButton>
-          <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)}>
+    <Card shadow={false} className="koa:rounded-card! koa:border koa:border-border koa:shadow-card">
+      <div className="koa:min-h-[76px] koa:py-3 koa:px-4 koa:sm:px-5 koa:flex koa:items-center koa:gap-3">
+        <ToggleButton size="small" color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
+          <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
+        </ToggleButton>
+        <h3 className="koa:font-sans koa:text-[17px] koa:font-bold koa:text-text koa:leading-snug koa:break-words koa:flex-1">{title}</h3>
+        <div className="koa:flex koa:items-center koa:gap-2">
+          <ToggleButton size="small" variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
-            {t("yes")}
           </ToggleButton>
-          <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)}>
+          <ToggleButton size="small" variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)} aria-label={t("no")}>
             <Icon icon={logoCross} decorative={true} />
-            {t("no")}
           </ToggleButton>
         </div>
       </div>
