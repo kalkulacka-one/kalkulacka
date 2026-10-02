@@ -82,6 +82,6 @@ describe("ExpandableCard", () => {
     // Find the actual Card component (the Disclosure component)
     const card = container.firstElementChild;
     expect(card).toHaveClass("ko:rounded-tr-none");
-    expect(card).toHaveClass("ko:drop-shadow-hard");
+    expect(card).toHaveClass("ko:shadow-card");
   });
 });
