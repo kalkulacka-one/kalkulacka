@@ -62,6 +62,16 @@ describe("Button", () => {
       );
       expect(screen.getByRole("button")).toHaveClass("ko:data-checked:bg-primary", "ko:data-checked:text-on-bg-primary");
     });
+
+    it("is a 36px circle at size small, for the recap row's compact toggles", () => {
+      render(
+        <Button variant="answer" color="primary" size="small" aria-label="Ano">
+          <Icon icon="M0 0h24v24H0z" decorative />
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:h-9", "ko:w-9", "ko:[&>svg]:!size-4");
+      expect(screen.getByRole("button")).not.toHaveClass("ko:h-[clamp(58px,51.8776px+1.6327vw,78px)]", "ko:[&>svg]:!size-7");
+    });
   });
 
   describe("variant round", () => {
