@@ -57,7 +57,7 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   // wordmark, fading out before it reaches the bottom of the bar, so content scrolling underneath settles
   // toward the page colour instead of colliding with the logo/title.
   return (
-    <header className="koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-x-0 koa:before:top-0 koa:before:-z-10 koa:before:h-[calc(100%+var(--ko-spacing-fade-edge))] koa:before:bg-[image:var(--ko-fade-to-bottom)]">
+    <header className="koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-x-0 koa:before:top-0 koa:before:-z-10 koa:before:h-[calc(100%+var(--ko-spacing-fade-edge))] koa:before:bg-[image:var(--ko-fade-to-top)]">
       <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
         <div className={headerGridClasses}>
           <div className={mainClasses}>
