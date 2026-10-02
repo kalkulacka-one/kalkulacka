@@ -28,7 +28,7 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
         <ToggleButton size="small" color="neutral" variant="link" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
           <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
         </ToggleButton>
-        <h3 className="koa:font-display koa:text-base koa:font-bold koa:text-text koa:leading-tight koa:tracking-tight koa:break-words koa:flex-1">{title}</h3>
+        <h3 className="koa:font-sans koa:text-[17px] koa:font-bold koa:text-text koa:leading-snug koa:break-words koa:flex-1">{title}</h3>
         <div className="koa:flex koa:items-center koa:gap-2">
           <ToggleButton size="small" variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
