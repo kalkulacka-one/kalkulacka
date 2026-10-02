@@ -46,6 +46,11 @@ export const ButtonVariants = cva(
         link: ["ko:bg-transparent"],
         answer: ["ko:rounded-control ko:h-[clamp(58px,51.8776px+1.6327vw,78px)] ko:border-[1.5px] ko:bg-surface ko:px-6"],
         round: ["ko:rounded-full ko:aspect-square ko:h-[clamp(52px,46.4898px+1.4694vw,70px)] ko:w-[clamp(52px,46.4898px+1.4694vw,70px)] ko:border ko:bg-surface ko:p-0"],
+        // The back/share pill: a light, hairline-bordered control that floats over
+        // content (review/guide back links, result's back+share). Look is fixed —
+        // it does not vary with `color`, unlike `fill`/`outline`/`link` (the colour
+        // override lives in compoundVariants below, after the `color` classes).
+        pill: ["ko:h-10 ko:gap-1.5 ko:border ko:bg-surface ko:px-4 ko:text-sm"],
       },
       color: {
         primary: ["ko:border-primary", "ko:data-disabled:border-primary"],
@@ -215,6 +220,10 @@ export const ButtonVariants = cva(
         variant: "round",
         color: "neutral",
         class: ["ko:data-checked:border-neutral ko:data-checked:bg-neutral ko:data-checked:text-on-bg-neutral"],
+      },
+      {
+        variant: "pill",
+        class: ["ko:border-border ko:text-text-strong", "ko:hover:bg-surface-hover ko:data-hover:bg-surface-hover", "ko:data-active:bg-surface-hover", "ko:data-disabled:border-border"],
       },
     ],
   },

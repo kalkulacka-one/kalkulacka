@@ -33,7 +33,7 @@ describe("Button", () => {
     });
   });
 
-  describe.each(["fill", "outline", "link", "answer", "round"] as const)("variant %s", (variant) => {
+  describe.each(["fill", "outline", "link", "answer", "round", "pill"] as const)("variant %s", (variant) => {
     it.each(["primary", "secondary", "neutral"] as const)("renders the %s color classes", (color) => {
       render(
         <Button variant={variant} color={color}>
@@ -81,6 +81,19 @@ describe("Button", () => {
         </Button>,
       );
       expect(screen.getByRole("button")).toHaveClass("ko:data-checked:bg-neutral", "ko:data-checked:text-on-bg-neutral");
+    });
+  });
+
+  describe("variant pill", () => {
+    it("is a light, hairline-bordered 40px pill regardless of color", () => {
+      render(
+        <Button variant="pill" color="primary">
+          <Icon icon="M0 0h24v24H0z" decorative />
+          Zpět
+        </Button>,
+      );
+      expect(screen.getByRole("button")).toHaveClass("ko:h-10", "ko:rounded-pill", "ko:border-border", "ko:bg-surface", "ko:text-text-strong");
+      expect(screen.getByRole("button")).not.toHaveClass("ko:border-primary");
     });
   });
 

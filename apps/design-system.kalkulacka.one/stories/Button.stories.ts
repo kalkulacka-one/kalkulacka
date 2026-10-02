@@ -1,6 +1,6 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
-import { mdiClose, mdiCog, mdiMagnify, mdiStarOutline } from "@mdi/js";
+import { mdiArrowLeft, mdiClose, mdiCog, mdiMagnify, mdiStarOutline } from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { createElement } from "react";
 
@@ -26,7 +26,7 @@ const meta: Meta<typeof Button> = {
     },
     variant: {
       control: "select",
-      options: ["fill", "outline", "link", "answer", "round"],
+      options: ["fill", "outline", "link", "answer", "round", "pill"],
       defaultValue: {
         summary: "fill",
       },
@@ -132,6 +132,22 @@ export const Round: ButtonStory = {
     disabled: false,
     "aria-label": "Důležité",
   },
+};
+
+export const Pill: ButtonStory = {
+  args: {
+    variant: "pill",
+    color: "primary",
+    type: "button",
+    disabled: false,
+  },
+  render: (args) =>
+    createElement(
+      Button,
+      { ...args, children: undefined },
+      createElement(Icon, { icon: mdiArrowLeft, decorative: true }),
+      "Zpět",
+    ),
 };
 
 export default meta;
