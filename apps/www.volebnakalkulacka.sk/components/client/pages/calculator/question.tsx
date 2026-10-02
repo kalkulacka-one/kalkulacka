@@ -1,6 +1,7 @@
 import { QuestionPage as AppQuestionPage } from "@kalkulacka-one/app";
 import { useAnswer, useAnswersStore, useCalculator, useQuestions } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
+import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
 import { notFound, usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -9,7 +10,6 @@ import { useEffect, useReducer } from "react";
 import { useEmbed } from "@/components/client";
 import { appConfig } from "@/config/app-config";
 import { useAutoSave } from "@/hooks/auto-save";
-import { reportError } from "@/lib/monitoring";
 import { canonical, parsedParams, type RouteSegments, routes } from "@/lib/routing";
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
