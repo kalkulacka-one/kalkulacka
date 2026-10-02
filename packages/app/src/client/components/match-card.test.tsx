@@ -57,8 +57,10 @@ describe("MatchCard", () => {
       </LocaleProvider>,
     );
 
-    expect(screen.getByText("1")).toBeInTheDocument();
+    expect(screen.getByText("1.")).toBeInTheDocument();
     expect(screen.getByText(mockCandidate.displayName ?? "")).toBeInTheDocument();
     expect(screen.getByText("85 %")).toBeInTheDocument();
+    // No logo: falls back to initials computed from the display name.
+    expect(screen.getByText("OD")).toBeInTheDocument();
   });
 });
