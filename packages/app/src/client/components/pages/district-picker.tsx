@@ -28,12 +28,12 @@ export function DistrictPickerPage({ embedContext, picker, heading, closeHref, h
     <DistrictPicker picker={picker}>
       <Layout>
         <Layout.Header>
-          <div className="koa:bg-slate-50/85 koa:backdrop-blur-md koa:shadow-[0_1px_0_0_rgba(15,23,42,0.06)]">
+          <div className="koa:bg-page/85 koa:backdrop-blur-md koa:border-b koa:border-border">
             <AppHeader heading={heading}>
               <AppHeader.Right>
                 {closeHref && (
                   <HideOnEmbed>
-                    <a href={closeHref} aria-label={t("common.close")} className="koa:inline-grid koa:place-items-center koa:size-10 koa:rounded-full koa:text-slate-700 koa:hover:bg-slate-100">
+                    <a href={closeHref} aria-label={t("common.close")} className="koa:inline-grid koa:place-items-center koa:size-10 koa:rounded-full koa:text-text-strong koa:hover:bg-surface-hover">
                       <Icon icon={mdiClose} size="medium" decorative />
                     </a>
                   </HideOnEmbed>
@@ -41,14 +41,14 @@ export function DistrictPickerPage({ embedContext, picker, heading, closeHref, h
               </AppHeader.Right>
               <AppHeader.Bottom>
                 <AppHeader.BottomMain>
-                  <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-slate-800 koa:sm:text-[2rem]">
+                  <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-text-strong koa:sm:text-[2rem]">
                     {picker.title ?? t("districtPicker.title")}
                   </h2>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
             <div className="koa:mx-auto koa:grid koa:w-full koa:max-w-xl koa:gap-3 koa:px-2 koa:pb-3 koa:sm:px-4">
-              <p className="koa:max-w-prose koa:text-[0.9375rem] koa:leading-relaxed koa:text-slate-500">{picker.description ?? t("districtPicker.description")}</p>
+              <p className="koa:max-w-prose koa:text-[0.9375rem] koa:leading-relaxed koa:text-text-muted">{picker.description ?? t("districtPicker.description")}</p>
               <DistrictPickerSearch />
             </div>
           </div>
