@@ -1,4 +1,5 @@
 import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { Card } from "@kalkulacka-one/design-system/server";
 
 import { mdiStar, mdiStarOutline } from "@mdi/js";
@@ -6,8 +7,6 @@ import { useTranslations } from "next-intl";
 
 import type { AnswerViewModel } from "@/view-models/answer";
 import type { QuestionViewModel } from "@/view-models/question";
-
-import { answerCheckIcon, answerCrossIcon } from "./question-card-icons";
 
 export type QuestionCard = {
   question: QuestionViewModel;
@@ -71,11 +70,11 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
-            <Icon icon={answerCheckIcon} decorative={true} />
+            <Icon icon={logoCheck} decorative={true} />
             <span className="koa:hidden koa:sm:inline">{t("yes")}</span>
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)} aria-label={t("no")}>
-            <Icon icon={answerCrossIcon} decorative={true} />
+            <Icon icon={logoCross} decorative={true} />
             <span className="koa:hidden koa:sm:inline">{t("no")}</span>
           </ToggleButton>
         </div>
