@@ -2,34 +2,25 @@ import { Button } from "@kalkulacka-one/design-system/client";
 
 import { useTranslations } from "next-intl";
 
-import { NavigationCard } from "./navigation-card";
-
-const HEIGHT = "koa:h-[88px]";
-
+/**
+ * The 2026 look keeps only one control down here: sharing already lives in the
+ * top pill (see `result.tsx`), so a second "Sdílet" at the bottom was a
+ * duplicate, not a second action. "Porovnat" sits in the page's own normal
+ * flow, under the list, as a light pill — never a `position: fixed` bar, which
+ * iOS Safari's glass bar clips on phones.
+ */
 export type ResultNavigationCard = {
   onNextClick: () => void;
-  onShareClick: () => void;
 };
 
-export function ResultNavigationCard({ onNextClick, onShareClick }: ResultNavigationCard) {
+export function ResultNavigationCard({ onNextClick }: ResultNavigationCard) {
   const t = useTranslations("koa.components.resultNavigationCard");
 
   return (
-    <NavigationCard>
-      <div className="koa:flex koa:gap-2 koa:w-full">
-        <div className="koa:flex-1">
-          <Button color="neutral" variant="outline" onClick={onNextClick}>
-            {t("compareButton")}
-          </Button>
-        </div>
-        <div className="koa:flex-1">
-          <Button color="neutral" variant="fill" onClick={onShareClick}>
-            {t("shareButton")}
-          </Button>
-        </div>
-      </div>
-    </NavigationCard>
+    <div className="koa:flex koa:justify-center koa:sm:justify-start">
+      <Button variant="pill" color="neutral" onClick={onNextClick}>
+        {t("compareButton")}
+      </Button>
+    </div>
   );
 }
-
-ResultNavigationCard.heightClassNames = HEIGHT;

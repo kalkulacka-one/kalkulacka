@@ -52,9 +52,8 @@ vi.mock("@/components/layout", () => {
 });
 
 vi.mock("@/components/embed-footer", () => {
-  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; marginBottomClassNames: string; navOffsetClassNames: string };
+  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; navOffsetClassNames: string };
   EmbedFooterMock.heightClassNames = "h-0";
-  EmbedFooterMock.marginBottomClassNames = "mb-0";
   EmbedFooterMock.navOffsetClassNames = "bottom-0";
   return {
     EmbedFooter: EmbedFooterMock,

@@ -12,6 +12,14 @@ const meta: Meta<typeof IconBadge> = {
       control: "select",
       options: ["primary", "secondary", "neutral"],
     },
+    variant: {
+      control: "select",
+      options: ["tint", "solid", "dashed"],
+    },
+    size: {
+      control: "select",
+      options: ["medium", "small"],
+    },
   },
 };
 
