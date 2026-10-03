@@ -59,9 +59,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           with it the page and the step row beneath — to grow past the viewport.
         */}
         <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:justify-center koa:gap-3 koa:overflow-y-auto">
-          <h3 className="koa:font-sans koa:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
-            {statement}
-          </h3>
+          <h3 className="koa:font-sans koa:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">{statement}</h3>
           {detail && <p className="koa:text-[clamp(15.5px,15.0408px+0.1224vw,17px)] koa:text-text-muted koa:leading-[1.62] koa:break-words">{detail}</p>}
         </div>
 
