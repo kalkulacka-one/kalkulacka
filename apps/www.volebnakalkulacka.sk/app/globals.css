@@ -24,8 +24,12 @@
  * below; `body`'s background-color is this file's own product CSS, not a
  * platform edit. Static (no motion), and subtle enough to sit behind the
  * content pages too rather than needing a route-scoped selector.
+ *
+ * Scoped to documents whose `<body>` carries the root layout's `bg-slate-50`
+ * (the website, not embeds): the embed layout's `<body>` has no background,
+ * so embeds stay transparent on partner pages.
  */
-html {
+html:has(> body.bg-slate-50) {
   background-color: var(--ko-color-page);
   /* The first layer keeps the very top in the plain page colour, matching what Safari paints under the status bar. */
   background-image: linear-gradient(to bottom, var(--ko-color-page), transparent 7rem),
@@ -34,6 +38,6 @@ html {
   background-attachment: fixed;
 }
 
-body {
+body.bg-slate-50 {
   background-color: transparent;
 }
