@@ -69,7 +69,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           </div>
         </div>
 
-        <div className="koa:@container koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-stretch">
+        <div className="koa:@container koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-center">
           <ToggleButton variant="round" color="neutral" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
