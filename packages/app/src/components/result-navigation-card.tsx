@@ -1,3 +1,5 @@
+import { Button } from "@kalkulacka-one/design-system/client";
+
 import { useTranslations } from "next-intl";
 
 /**
@@ -16,13 +18,9 @@ export function ResultNavigationCard({ onNextClick }: ResultNavigationCard) {
 
   return (
     <div className="koa:flex koa:justify-center koa:sm:justify-start">
-      <button
-        type="button"
-        onClick={onNextClick}
-        className="koa:inline-flex koa:items-center koa:justify-center koa:rounded-pill koa:border koa:border-border koa:bg-surface koa:px-6 koa:py-3 koa:text-sm koa:font-semibold koa:text-text koa:hover:bg-surface-hover koa:transition-colors"
-      >
+      <Button variant="pill" color="neutral" onClick={onNextClick}>
         {t("compareButton")}
-      </button>
+      </Button>
     </div>
   );
 }
