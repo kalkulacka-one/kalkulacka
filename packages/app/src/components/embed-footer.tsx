@@ -3,7 +3,6 @@ import { useTranslations } from "next-intl";
 import { EmbedAttribution } from "@/components/embed-attribution";
 
 const HEIGHT = "koa:h-11";
-const MARGIN_BOTTOM = "koa:mb-11";
 const NAV_OFFSET = "koa:bottom-11";
 
 export type EmbedFooter = {
@@ -28,5 +27,4 @@ export function EmbedFooter({ attribution = true, homepageHref, privacyHref }: E
 }
 
 EmbedFooter.heightClassNames = HEIGHT;
-EmbedFooter.marginBottomClassNames = MARGIN_BOTTOM;
 EmbedFooter.navOffsetClassNames = NAV_OFFSET;
