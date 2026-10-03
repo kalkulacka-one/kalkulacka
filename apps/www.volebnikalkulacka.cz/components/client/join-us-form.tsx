@@ -56,7 +56,7 @@ export function JoinUsForm() {
           <Field disabled={isSubmitting}>
             <div className="grid gap-3">
               <Label className="sr-only">Zadejte váš email</Label>
-              <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" style={{ height: "48px", minHeight: "48px" }} {...register("email")} />
+              <Input invalid={!!errors.email} autoComplete="email" type="email" placeholder="E-mail" {...register("email")} />
               <Button disabled={isSubmitting} type="submit" variant="fill" color="neutral">
                 {isSubmitting ? "Odesílám" : "Chci se zapojit"}
               </Button>
