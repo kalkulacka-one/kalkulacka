@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { appsignal } from "@kalkulacka-one/next/monitoring/client";
 
-import { appsignal } from "@/lib/monitoring";
+import { useEffect } from "react";
 
 interface ErrorReporterProps {
   error: Error & { digest?: string };

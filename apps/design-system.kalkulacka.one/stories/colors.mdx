@@ -23,6 +23,7 @@ The color palette defines three main colors:
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
@@ -70,6 +71,7 @@ and additional direct colors:
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
@@ -120,6 +122,7 @@ If the default mapping of the main colors to the individual parts of the logo do
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
       gap: "2rem",
       backgroundColor: "rgba(0, 0, 0, 0.05)",
@@ -210,6 +213,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -265,6 +269,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -328,6 +333,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -383,6 +389,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -442,6 +449,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -505,6 +513,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -562,6 +571,7 @@ Each main color also has two translucent tints — `tint` (the color at low opac
   <div
     style={{
       display: "grid",
+      marginBottom: "2rem",
       gridAutoFlow: "rows",
     }}
   >
@@ -609,6 +619,53 @@ Each main color also has two translucent tints — `tint` (the color at low opac
             <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
           </div>
         ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+### Fades
+
+Scroll-edge gradients from transparent to the page color — painted over scroll edges so content dissolves instead of clipping. Derived from `--ko-color-page`, so they track theme and mode; plain variables, consumed as `var(…)`.
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      marginBottom: "2rem",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      color: "black",
+      colorScheme: "light",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "fade to bottom", variable: "--ko-fade-to-bottom" },
+      { label: "fade to top", variable: "--ko-fade-to-top" },
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            background: `repeating-linear-gradient(45deg, rgba(128, 128, 128, 0.4) 0 8px, transparent 8px 16px)`,
+            boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+          }}
+        >
+          <div style={{ width: "100%", height: "100%", background: `var(${variable})` }} />
+        </div>
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
       </div>
     ))}
   </div>

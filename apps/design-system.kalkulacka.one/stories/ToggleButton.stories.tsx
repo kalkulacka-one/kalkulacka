@@ -1,6 +1,6 @@
 import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 
-import { mdiHeart, mdiHeartOutline } from "@mdi/js";
+import { mdiHeart, mdiHeartOutline, mdiStar, mdiStarOutline } from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { createElement } from "react";
 import { useArgs } from "storybook/internal/preview-api";
@@ -71,6 +71,28 @@ export const IconToggle: ToggleButtonStory = {
       <ToggleButton variant="fill" color={checked ? "secondary" : "neutral"} checked={checked} onChange={onChange}>
         {createElement(Icon, {
           icon: checked ? mdiHeart : mdiHeartOutline,
+          decorative: true,
+        })}
+      </ToggleButton>
+    );
+  },
+} satisfies ToggleButtonStory;
+
+export const StarToggle: ToggleButtonStory = {
+  args: {
+    checked: false,
+  },
+  render: function Render() {
+    const [{ checked }, updateArgs] = useArgs();
+
+    function onChange() {
+      updateArgs({ checked: !checked });
+    }
+
+    return (
+      <ToggleButton variant="round" color="primary" checked={checked} onChange={onChange} aria-label="Důležité">
+        {createElement(Icon, {
+          icon: checked ? mdiStar : mdiStarOutline,
           decorative: true,
         })}
       </ToggleButton>
