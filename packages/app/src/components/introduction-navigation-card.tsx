@@ -13,7 +13,7 @@ export type IntroductionNavigationCard = {
 export function IntroductionNavigationCard({ onNextClick }: IntroductionNavigationCard) {
   const t = useTranslations("koa.components.introductionNavigationCard");
   return (
-    <NavigationCard bare>
+    <NavigationCard bare alignStart>
       <Button color="neutral" onClick={onNextClick}>
         {t("continueButton")}
       </Button>
