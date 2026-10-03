@@ -14,7 +14,7 @@ export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
   const t = useTranslations("koa.components.guideNavigationCard");
 
   return (
-    <NavigationCard bare>
+    <NavigationCard bare alignStart>
       <Button color="neutral" onClick={onNextClick}>
         {t("startButton")}
       </Button>
