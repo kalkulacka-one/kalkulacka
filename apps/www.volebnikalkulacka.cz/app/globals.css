@@ -23,9 +23,11 @@
  * would otherwise sit on top of this and reintroduce the seam — cleared
  * below; `body`'s background-color is this file's own product CSS, not a
  * platform edit. Static (no motion), and subtle enough to sit behind the
- * content pages too rather than needing a route-scoped selector.
+ * content pages too rather than needing a route-scoped selector. Embeds
+ * (`data-embed` on `<html>`) get no backdrop: they stay transparent on the
+ * partner's page.
  */
-html {
+html:not([data-embed]) {
   background-color: var(--ko-color-page);
   /* The first layer keeps the very top in the plain page colour, matching what Safari paints under the status bar. */
   background-image: linear-gradient(to bottom, var(--ko-color-page), transparent 7rem),
