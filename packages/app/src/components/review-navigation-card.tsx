@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "koa:h-[88px]";
+// The nav sits in the document flow at every breakpoint now (sticky, never `fixed`), so no reserved gap is needed.
 
 export type ReviewNavigationCard = {
   onNextClick: () => void;
@@ -14,12 +14,10 @@ export function ReviewNavigationCard({ onNextClick }: ReviewNavigationCard) {
   const t = useTranslations("koa.components.reviewNavigationCard");
 
   return (
-    <NavigationCard>
+    <NavigationCard bare>
       <Button color="neutral" onClick={onNextClick}>
         {t("showResultsButton")}
       </Button>
     </NavigationCard>
   );
 }
-
-ReviewNavigationCard.heightClassNames = HEIGHT;

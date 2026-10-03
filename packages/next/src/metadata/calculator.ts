@@ -1,6 +1,8 @@
-import { buildDataUrl, calculatorViewModel, loadCalculatorData } from "@kalkulacka-one/app";
+import { buildDataUrl, calculatorViewModel } from "@kalkulacka-one/app";
 
 import type { Metadata } from "next";
+
+import { dataLoaderGuard } from "@/routing/guards/data-loader";
 
 export async function generateCalculatorMetadata({
   key,
@@ -27,7 +29,7 @@ export async function generateCalculatorMetadata({
     throw new Error("DATA_ENDPOINT environment variable is not set");
   }
 
-  const calculatorData = await loadCalculatorData({ endpoint: process.env.DATA_ENDPOINT, key, group });
+  const calculatorData = await dataLoaderGuard({ endpoint: process.env.DATA_ENDPOINT, key, group });
   const calculator = calculatorViewModel(calculatorData.data.calculator);
 
   const ogImage = calculator.images?.find((img) => img.type === "opengraph");

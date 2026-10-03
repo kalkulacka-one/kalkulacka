@@ -28,7 +28,7 @@ export default async function RootLayout({ children, params }: { children: React
   const embed: EmbedName = embedParam;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-embed={embed}>
       <head>
         <PlausibleScript />
       </head>

@@ -31,7 +31,7 @@ kinds of territory:
 - `packages/design-system/src/**`, `packages/app/src/components/**`,
   `packages/app/src/client/components/**` – shared UI components
 - `apps/*/components/client/themes/**`, `apps/*/app/globals.css`, `apps/*/public/**`
-- `apps/*/components/client/{header,donate-card,subscribe-form,city-signup-form}.tsx` and
+- `apps/*/components/client/{header,donate-card,subscribe-form,join-us-form}.tsx` and
   `apps/*/components/server/footer.tsx`
 - `apps/design-system.kalkulacka.one/stories/**` – Storybook stories
 - `apps/*/app/[locale]/(web)/(content)/**` – content pages
