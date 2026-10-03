@@ -5,7 +5,11 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
-  return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto]">{children}</div>;
+  // Mobile (< sm) is a grid: Content stretches to fill the viewport, so BottomNavigation sits at the screen's bottom
+  // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
+  // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
+  // taller than the screen.
+  return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
 }
 
 LayoutComponent.displayName = "Layout";
@@ -28,7 +32,7 @@ export type LayoutContent = {
 };
 
 function Content({ children, fullWidth }: LayoutContent) {
-  return <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} koa:mx-auto koa:p-2 koa:sm:p-4`}>{children}</main>;
+  return <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>;
 }
 
 Content.displayName = "Layout.Content";
@@ -39,7 +43,11 @@ export type LayoutBottomNavigation = {
 };
 
 function BottomNavigation({ children, className }: LayoutBottomNavigation) {
-  return <div className={twMerge("koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:pointer-events-none koa:z-20", className)}>{children}</div>;
+  // Sticky in the document flow at every breakpoint now, never docked with `fixed`: iOS Safari clips
+  // fixed-positioned content above its bottom glass bar, so the nav has to be real content the page can
+  // scroll to, not an overlay. Short pages keep it right under the content; long ones let it stick to the
+  // viewport bottom (with a small gap so it clears the glass bar) while the rest scrolls underneath.
+  return <div className={twMerge("koa:sticky koa:bottom-4 koa:z-20", className)}>{children}</div>;
 }
 
 BottomNavigation.displayName = "Layout.BottomNavigation";

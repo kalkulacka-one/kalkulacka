@@ -4,8 +4,6 @@ import { useTranslations } from "next-intl";
 
 import { NavigationCard } from "./navigation-card";
 
-const HEIGHT = "koa:h-[88px]";
-
 export type PublicResultNavigationCard = {
   onStartClick: () => void;
 };
@@ -21,5 +19,3 @@ export function PublicResultNavigationCard({ onStartClick }: PublicResultNavigat
     </NavigationCard>
   );
 }
-
-PublicResultNavigationCard.heightClassNames = HEIGHT;
