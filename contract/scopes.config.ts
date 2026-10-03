@@ -8,14 +8,7 @@ export const SIZE_LIMITS = { targetFiles: 15, targetLines: 200, maxFiles: 40, ma
 
 export const scopes = {
   /** Never autonomous; changes require the contract owner's review (contract T8, T11). */
-  protected: [
-    "contract/**",
-    ".github/workflows/**",
-    ".github/CODEOWNERS",
-    ".claude/**",
-    "AGENTS.md",
-    "CLAUDE.md",
-  ],
+  protected: ["contract/**", ".github/workflows/**", ".github/CODEOWNERS", ".claude/**", "AGENTS.md", "CLAUDE.md"],
 
   /** Product allowlists per tag; every unmatched path is platform (contract T3). `interaction`
    *  derives from diff content, not paths – see the contract's Capability tags section. */
@@ -25,17 +18,13 @@ export const scopes = {
       "packages/app/src/components/**",
       "packages/app/src/client/components/**",
       "apps/*/components/client/themes/**",
-      "apps/*/components/client/{header,donate-card,subscribe-form,city-signup-form}.tsx",
+      "apps/*/components/client/{header,donate-card,subscribe-form,join-us-form}.tsx",
       "apps/*/components/server/footer.tsx",
       "apps/*/app/globals.css",
       "apps/*/public/**",
       "apps/design-system.kalkulacka.one/stories/**",
     ],
-    editorial: [
-      "apps/*/app/[locale]/(web)/(content)/**",
-      "apps/*/messages/*.json",
-      "packages/app/src/locales/*.json",
-    ],
+    editorial: ["apps/*/app/[locale]/(web)/(content)/**", "apps/*/messages/*.json", "packages/app/src/locales/*.json"],
     calculation: ["packages/app/src/result-calculation/**"],
   },
 
