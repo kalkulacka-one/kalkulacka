@@ -82,7 +82,7 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
           </Button>
         </div>
         <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-4 koa:sm:mb-6">{t("review.title")}</h3>
-        <div className="koa:grid koa:gap-2">
+        <div className="koa:grid koa:gap-2 koa:sm:gap-3">
           {questions.questions.map((question) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
               answer: undefined,
