@@ -7,18 +7,3 @@
 :root {
   color-scheme: light;
 }
-
-/*
- * Soft 2026 backdrop: faint primary glow top-left, secondary bottom-right.
- * On `html`, not `body`, so iOS Safari paints it under its floating bottom bar
- * too (a `body` background leaves a seam there). Embeds (`data-embed`) stay
- * transparent on the partner's page.
- */
-html:not([data-embed]) {
-  background-color: var(--ko-color-page);
-  /* The first layer keeps the very top in the plain page colour, matching what Safari paints under the status bar. */
-  background-image: linear-gradient(to bottom, var(--ko-color-page), transparent 7rem),
-    radial-gradient(60% 50% at 15% 10%, color-mix(in oklab, var(--ko-color-primary) 10%, transparent), transparent 70%),
-    radial-gradient(60% 50% at 85% 90%, color-mix(in oklab, var(--ko-color-secondary) 8%, transparent), transparent 70%);
-  background-attachment: fixed;
-}
