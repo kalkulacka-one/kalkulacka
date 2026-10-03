@@ -34,6 +34,7 @@ export const ButtonVariants = cva(
   {
     variants: {
       size: {
+        xsmall: "ko:h-9 ko:px-3",
         small: "ko:h-10 ko:px-4",
         // 2026's primary CTA ("Pokračovat"/"Začít odpovídat"/"Zobrazit výsledky") sizes its large
         // button at 0.9375rem→1.0625rem label (17px), 1rem/1.75rem padding and no explicit height —
@@ -240,6 +241,12 @@ export const ButtonVariants = cva(
         variant: "round",
         size: "small",
         class: ["ko:h-11 ko:w-11"],
+      },
+      // 36px, the same as the recap row's icon-only answer toggles, so the star and the answers read as one set.
+      {
+        variant: "round",
+        size: "xsmall",
+        class: ["ko:h-9 ko:w-9"],
       },
     ],
   },
