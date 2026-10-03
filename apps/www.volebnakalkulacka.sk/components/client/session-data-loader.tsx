@@ -1,9 +1,8 @@
 import { useAnswersStore, useCalculatorStore } from "@kalkulacka-one/app/client";
 import { loadSessionData } from "@kalkulacka-one/next/api";
+import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
 import { useEffect, useRef } from "react";
-
-import { reportError } from "@/lib/monitoring";
 
 export function SessionDataLoader() {
   const loadedCalculatorId = useRef<string | null>(null);
