@@ -1,6 +1,7 @@
 export * from "./comparison-question-card";
 export * from "./embed-attribution";
 export * from "./embed-footer";
+export * from "./error-page-layout";
 export * from "./guide";
 export * from "./guide-navigation-card";
 export * from "./introduction";

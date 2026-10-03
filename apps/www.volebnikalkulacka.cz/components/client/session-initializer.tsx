@@ -1,9 +1,8 @@
 import { useCalculatorStore, useEmbed } from "@kalkulacka-one/app/client";
 import { initializeSession } from "@kalkulacka-one/next/api";
+import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
 import { useEffect, useRef } from "react";
-
-import { reportError } from "@/lib/monitoring";
 
 export function SessionInitializer() {
   const initialized = useRef(false);

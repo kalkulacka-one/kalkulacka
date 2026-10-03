@@ -74,7 +74,7 @@ export default async function RootLayout({ children, params }: { children: React
       <head>
         <PlausibleScript />
       </head>
-      <body className="min-h-dvh bg-slate-50">
+      <body className="min-h-dvh">
         <I18nProvider locale={locale}>
           <EmbedContextProvider isEmbed={false}>
             <ThemeProvider name={defaultTheme}>{children}</ThemeProvider>

@@ -9,14 +9,15 @@ import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
     const { locales } = appConfig.i18n;
     return [
-      ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
-      ...getLocaleRewrites(),
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
@@ -25,6 +26,8 @@ const nextConfig: NextConfig = {
         source: "/api/event",
         destination: "https://plausible.io/api/event",
       },
+      ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
+      ...getLocaleRewrites(),
     ];
   },
   async redirects() {
@@ -62,12 +65,27 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        source: "/krajske-2024/:path*",
+        destination: "https://archiv-2024.volebnikalkulacka.cz/volby/krajske-2024/:path*",
+        permanent: false,
+      },
+      {
         source: "/volby/senatni-2024/:path*",
         destination: "https://archiv-2024.volebnikalkulacka.cz/volby/senatni-2024/:path*",
         permanent: false,
       },
       {
+        source: "/senatni-2024/:path*",
+        destination: "https://archiv-2024.volebnikalkulacka.cz/volby/senatni-2024/:path*",
+        permanent: false,
+      },
+      {
         source: "/volby/evropske-2024/:path*",
+        destination: "https://archiv-2024.volebnikalkulacka.cz/volby/evropske-2024/:path*",
+        permanent: false,
+      },
+      {
+        source: "/evropske-2024/:path*",
         destination: "https://archiv-2024.volebnikalkulacka.cz/volby/evropske-2024/:path*",
         permanent: false,
       },
@@ -78,12 +96,27 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        source: "/prezidentske-2023/:path*",
+        destination: "https://archiv.volebnikalkulacka.cz/volby/prezidentske-2023/:path*",
+        permanent: false,
+      },
+      {
         source: "/volby/senatni-2022/:path*",
         destination: "https://archiv.volebnikalkulacka.cz/volby/senatni-2022/:path*",
         permanent: false,
       },
       {
+        source: "/senatni-2022/:path*",
+        destination: "https://archiv.volebnikalkulacka.cz/volby/senatni-2022/:path*",
+        permanent: false,
+      },
+      {
         source: "/volby/komunalni-2022/:path*",
+        destination: "https://archiv.volebnikalkulacka.cz/volby/komunalni-2022/:path*",
+        permanent: false,
+      },
+      {
+        source: "/komunalni-2022/:path*",
         destination: "https://archiv.volebnikalkulacka.cz/volby/komunalni-2022/:path*",
         permanent: false,
       },

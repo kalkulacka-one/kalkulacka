@@ -1,6 +1,7 @@
 import { ResultPage as AppResultPage } from "@kalkulacka-one/app";
 import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
 import { saveSessionData, shareSession } from "@kalkulacka-one/next/api";
+import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -8,7 +9,6 @@ import { useEffect, useState } from "react";
 
 import { DonateCard, useEmbed } from "@/components/client";
 import { appConfig } from "@/config/app-config";
-import { reportError } from "@/lib/monitoring";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ResultPageWithRouting({ segments }: { segments: RouteSegments }) {

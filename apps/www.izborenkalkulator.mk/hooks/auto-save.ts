@@ -1,10 +1,9 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { AnswersStoreContext, useCalculator } from "@kalkulacka-one/app/client";
 import { saveSessionDataWithBeacon } from "@kalkulacka-one/next/api";
+import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
 import { useContext, useEffect, useRef } from "react";
-
-import { reportError } from "@/lib/monitoring";
 
 export type UseAutoSaveOptions = {
   matches?: ReturnType<typeof calculateMatches>;

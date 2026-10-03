@@ -130,6 +130,21 @@
       "calculatorPicker": {
         "description": "Pro toto místo máme více kalkulaček. Vyberte si, kterou chcete vyplnit.",
         "start": "Spustit kalkulačku"
+      },
+      "notFound": {
+        "eyebrow": "Chyba 404",
+        "heading": "Tahle stránka nekandiduje",
+        "paragraph": "Možná odstoupila z kandidatury, možná jste se jen přepsali v odkazu. Na úvodní stránce najdete všechny naše kalkulačky.",
+        "home": "Zpátky na úvod"
+      },
+      "error": {
+        "eyebrow": "Chyba 500",
+        "heading": "Přepočítali jsme se",
+        "paragraph": "Kalkulačka se na chvíli zasekla. Nebyla to vaše chyba – zkuste to prosím znovu.",
+        "note": "Chybu jsme si zapsali, náš technický tým o ní už ví.",
+        "reference": "Kód chyby",
+        "retry": "Zkusit to znovu",
+        "home": "Zpátky na úvod"
       }
     }
   }

@@ -26,8 +26,7 @@ vi.mock("@/components/introduction", () => ({
 }));
 
 vi.mock("@/components/guide-navigation-card", () => {
-  const GuideNavigationCardMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string };
-  GuideNavigationCardMock.heightClassNames = "h-0";
+  const GuideNavigationCardMock = vi.fn(() => null) as unknown as React.FC;
   return {
     GuideNavigationCard: GuideNavigationCardMock,
   };
@@ -53,9 +52,10 @@ vi.mock("@/components/layout", () => {
 });
 
 vi.mock("@/components/embed-footer", () => {
-  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; marginBottomClassNames: string };
+  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; marginBottomClassNames: string; navOffsetClassNames: string };
   EmbedFooterMock.heightClassNames = "h-0";
   EmbedFooterMock.marginBottomClassNames = "mb-0";
+  EmbedFooterMock.navOffsetClassNames = "bottom-0";
   return {
     EmbedFooter: EmbedFooterMock,
   };

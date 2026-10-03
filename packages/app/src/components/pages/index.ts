@@ -1,4 +1,5 @@
 export * from "./comparison";
+export * from "./error-not-found";
 export * from "./guide";
 export * from "./introduction";
 export * from "./public-result";
