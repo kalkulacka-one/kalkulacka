@@ -1,6 +1,7 @@
 import { IntroductionPage } from "@kalkulacka-one/app";
 import { useAnswersStore, useCalculator } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
+import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -8,7 +9,6 @@ import { useLocale } from "next-intl";
 import { useEmbed } from "@/components/client";
 import { appConfig } from "@/config/app-config";
 import { useAutoSave } from "@/hooks/auto-save";
-import { reportError } from "@/lib/monitoring";
 import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function IntroductionPageWithRouting({ segments }: { segments: RouteSegments }) {

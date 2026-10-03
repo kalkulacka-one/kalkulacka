@@ -1,0 +1,73 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+
+<Meta title="Elevation" />
+
+# Elevation
+
+Shadows tinted through `--ko-shadow-color` — the neutral palette color capped dark, so shadows hold for light neutrals but keep the theme's hue. Ordered by height: `surface`, `card`, `card-lifted`, `sticky` (an upward shadow for bars docked to the bottom). Used as `ko:shadow-card`, ….
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      marginBottom: "2rem",
+      gridAutoFlow: "rows",
+    }}
+  >
+    {["light", "dark"].map((mode) => (
+      <div
+        key={mode}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+          gap: "2rem",
+          backgroundColor: mode === "dark" ? "rgba(0, 0, 0, 0.85)" : "rgba(0, 0, 0, 0.05)",
+          color: mode === "dark" ? "white" : "black",
+          padding: "2rem",
+        }}
+      >
+        {[
+          { label: "surface", variable: "--ko-shadow-surface" },
+          { label: "card", variable: "--ko-shadow-card" },
+          { label: "card lifted", variable: "--ko-shadow-card-lifted" },
+          { label: "sticky", variable: "--ko-shadow-sticky" },
+        ].map(({ label, variable }) => (
+          <div
+            key={`${mode}-${variable}`}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              colorScheme: mode,
+            }}
+          >
+            <div
+              style={
+                label === "sticky"
+                  ? {
+                      width: "8rem",
+                      height: "3rem",
+                      marginTop: "5rem",
+                      backgroundColor: "var(--ko-color-surface)",
+                      boxShadow: `var(${variable})`,
+                    }
+                  : {
+                      width: "8rem",
+                      height: "8rem",
+                      borderRadius: "var(--ko-radius-card)",
+                      backgroundColor: "var(--ko-color-surface)",
+                      boxShadow: `var(${variable})`,
+                    }
+              }
+            />
+            <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+            <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+The legacy `--ko-drop-shadow-hard` (`ko:drop-shadow-hard`) also lives in this group.

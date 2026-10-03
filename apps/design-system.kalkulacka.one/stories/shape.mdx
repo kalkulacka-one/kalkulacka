@@ -1,0 +1,51 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+
+<Meta title="Shape" />
+
+# Shape
+
+Four radii: `card` (the signature square top-left corner), `control` (fluid with the viewport), `chip` and `pill`. Used as `ko:rounded-card`, `ko:rounded-control`, …; a theme pins them with `--ko-shape-radius-card`, ….
+
+<Unstyled>
+  <div
+    style={{
+      display: "grid",
+      marginBottom: "2rem",
+      gridTemplateColumns: "repeat(auto-fill, minmax(8rem, 1fr))",
+      gap: "2rem",
+      backgroundColor: "rgba(0, 0, 0, 0.05)",
+      color: "black",
+      colorScheme: "light",
+      padding: "2rem",
+    }}
+  >
+    {[
+      { label: "card", variable: "--ko-radius-card" },
+      { label: "control", variable: "--ko-radius-control" },
+      { label: "chip", variable: "--ko-radius-chip" },
+      { label: "pill", variable: "--ko-radius-pill" },
+    ].map(({ label, variable }) => (
+      <div
+        key={variable}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.5rem",
+        }}
+      >
+        <div
+          style={{
+            width: "8rem",
+            height: "8rem",
+            borderRadius: `var(${variable})`,
+            backgroundColor: "white",
+            boxShadow: "inset 0 0 0 1px rgba(128, 128, 128, 0.35)",
+          }}
+        />
+        <div style={{ textAlign: "center", fontSize: "0.875rem" }}>{label}</div>
+        <code style={{ textAlign: "center", fontSize: "0.625rem" }}>{variable}</code>
+      </div>
+    ))}
+  </div>
+</Unstyled>

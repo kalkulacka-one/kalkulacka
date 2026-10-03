@@ -9,14 +9,15 @@ import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  experimental: {
+    globalNotFound: true,
+  },
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   transpilePackages: ["@kalkulacka-one/design-system"],
   productionBrowserSourceMaps: true,
   async rewrites() {
     const { locales } = appConfig.i18n;
     return [
-      ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
-      ...getLocaleRewrites(),
       {
         source: "/js/script.tagged-events.outbound-links.js",
         destination: "https://plausible.io/js/script.tagged-events.outbound-links.js",
@@ -25,6 +26,8 @@ const nextConfig: NextConfig = {
         source: "/api/event",
         destination: "https://plausible.io/api/event",
       },
+      ...locales.flatMap((locale) => getSlugRewrites(locale as Locale)),
+      ...getLocaleRewrites(),
     ];
   },
   async redirects() {
