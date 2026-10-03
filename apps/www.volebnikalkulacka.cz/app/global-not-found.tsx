@@ -18,7 +18,7 @@ export const metadata: Metadata = { title: messages.koa.pages.notFound.heading }
 export default function GlobalNotFound() {
   return (
     <html lang={locale}>
-      <body className="min-h-dvh bg-slate-50">
+      <body className="min-h-dvh">
         <I18nProvider locale={locale}>
           <ThemeProvider name={appConfig.theme.defaultTheme as ThemeName}>
             <ErrorNotFoundPage />
