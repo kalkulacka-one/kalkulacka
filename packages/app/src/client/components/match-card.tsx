@@ -1,5 +1,6 @@
-import { ExpandableCard } from "@kalkulacka-one/design-system/client";
-import { Avatar, ProgressBar } from "@kalkulacka-one/design-system/server";
+import { ExpandableCard, Icon } from "@kalkulacka-one/design-system/client";
+import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
+import { Avatar, IconBadge, ProgressBar } from "@kalkulacka-one/design-system/server";
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -21,32 +22,6 @@ function initialsOf(name: string): string {
     .slice(0, 2)
     .map((word) => word[0]?.toUpperCase() ?? "")
     .join("");
-}
-
-// Tone per 2026's `AnswerMark` (kalkulacka-2026 packages/ui/src/answer-mark): agree/disagree, neutral
-// for an explicit "nevím" (`null`), none for an unanswered question (`undefined`).
-type ComparisonTone = "agree" | "disagree" | "neutral" | "none";
-
-function toneOf(answer: boolean | null | undefined): ComparisonTone {
-  return answer === true ? "agree" : answer === false ? "disagree" : answer === null ? "neutral" : "none";
-}
-
-const COMPARISON_MARK: Record<ComparisonTone, { className: string; symbol: string }> = {
-  agree: { className: "koa:bg-primary koa:text-on-bg-primary", symbol: "✓" },
-  disagree: { className: "koa:bg-secondary koa:text-on-bg-secondary", symbol: "✗" },
-  neutral: { className: "koa:bg-surface-sunken koa:text-text-muted", symbol: "–" },
-  none: { className: "koa:border koa:border-dashed koa:border-border", symbol: "" },
-};
-
-// A recorded position as a small quiet circle (2026's `AnswerMark`, `small` size) — replaces the old
-// "✓ • ✓" filled pill: no middle dot, every answer gets its own colour, not only matching rows.
-function ComparisonMark({ tone }: { tone: ComparisonTone }) {
-  const { className, symbol } = COMPARISON_MARK[tone];
-  return (
-    <span className={`koa:inline-flex koa:h-6 koa:w-6 koa:shrink-0 koa:items-center koa:justify-center koa:rounded-full koa:text-[0.6875rem] koa:font-bold koa:leading-none ${className}`}>
-      {symbol}
-    </span>
-  );
 }
 
 export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
@@ -138,8 +113,16 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                             <p className="koa:pt-0.5 koa:text-sm koa:font-medium koa:text-text-strong">{comparison.questionText}</p>
 
                             {/* "Já" then "Kandidát", matching the header string's reading order. */}
-                            <ComparisonMark tone={toneOf(comparison.userAnswer)} />
-                            <ComparisonMark tone={toneOf(comparison.candidateAnswer)} />
+                            {(
+                              [
+                                ["user", comparison.userAnswer],
+                                ["candidate", comparison.candidateAnswer],
+                              ] as const
+                            ).map(([who, answer]) => (
+                              <IconBadge key={who} size="small" variant={answer === undefined ? "dashed" : "solid"} color={answer === true ? "primary" : answer === false ? "secondary" : "neutral"}>
+                                {answer !== undefined && <Icon icon={answer === true ? logoCheck : answer === false ? logoCross : logoSlash} decorative={true} />}
+                              </IconBadge>
+                            ))}
 
                             {showsComment && (
                               <blockquote className="koa:col-span-3 koa:text-text-muted koa:italic koa:pl-4 koa:border-l-2 koa:border-border koa:text-sm">
