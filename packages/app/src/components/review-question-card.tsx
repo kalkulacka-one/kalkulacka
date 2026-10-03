@@ -33,7 +33,7 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
        * until it gained a matching 36px compound (button.tsx) — paired here with a shorter row floor
        * and tighter gaps so the title gets its width back too.
        */}
-      <div className="koa:min-h-[64px] koa:py-3 koa:px-4 koa:sm:py-4 koa:sm:px-5 koa:grid koa:grid-cols-[auto_auto_1fr] koa:sm:grid-cols-[auto_1fr_auto] koa:items-center koa:gap-x-2.5 koa:gap-y-3">
+      <div className="koa:min-h-[64px] koa:py-3 koa:px-4 koa:sm:py-4 koa:sm:px-5 koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center koa:gap-x-2.5 koa:gap-y-3">
         <div className="koa:col-start-1 koa:row-start-2 koa:sm:row-start-1">
           <ToggleButton
             size="small"
@@ -49,7 +49,7 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
         <h3 className="koa:col-span-3 koa:row-start-1 koa:sm:col-span-1 koa:sm:col-start-2 koa:font-sans koa:text-[15px] koa:sm:text-[17px] koa:font-semibold koa:text-text koa:leading-snug koa:break-words">
           {statement}
         </h3>
-        <div className="koa:col-start-2 koa:row-start-2 koa:sm:col-start-3 koa:sm:row-start-1 koa:flex koa:items-center koa:gap-1.5">
+        <div className="koa:col-start-3 koa:row-start-2 koa:sm:row-start-1 koa:flex koa:items-center koa:gap-1.5">
           <ToggleButton size="small" variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
           </ToggleButton>
