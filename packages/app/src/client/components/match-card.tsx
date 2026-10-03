@@ -7,8 +7,6 @@ import { useState } from "react";
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/client/view-models/candidate";
 import type { CandidateMatchViewModel } from "@/view-models";
 
-import { partyColor } from "./party-color";
-
 export type MatchCard = CandidateMatchViewModel;
 
 /**
@@ -59,17 +57,12 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
 
   const winner = order === 1;
   const name = candidate.displayName ?? candidate.id;
-  const accent = partyColor(name);
-  // 2026 sizes match-row avatars at 44px (row) / 64px (top match) — the design
-  // system's `compact`/`prominent` Avatar sizes, added for this.
-  const avatarSize = winner ? "prominent" : "compact";
-  const fallbackSizeClasses = winner ? "koa:h-16 koa:w-16 koa:text-xl" : "koa:h-11 koa:w-11 koa:text-base";
 
   return (
     <ExpandableCard corner="topLeft" shadow="hard" className="koa:overflow-hidden koa:border koa:border-border">
       {({ open }) => (
         <>
-          {match !== undefined && <ProgressBar value={match} accentColor={accent} corner="sharp" />}
+          {match !== undefined && <ProgressBar value={match} color={winner ? "primary" : "neutral"} corner="sharp" />}
           {/*
            * Padding and the name/percent/ordinal sizes below are the 2026
            * match row's own values (`packages/ui/src/match-row/match-row.module.css`
@@ -80,23 +73,17 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
           <ExpandableCard.Content className={`koa:grid koa:gap-3 koa:text-left ${winner ? "koa:px-4 koa:py-6 koa:lg:px-6 koa:lg:py-8" : "koa:px-4 koa:py-4 koa:lg:p-6"}`}>
             <div className="koa:grid koa:grid-cols-[auto_1fr_auto] koa:gap-4 koa:items-center">
               {candidate.avatar ? (
-                <span className="koa:inline-flex koa:shrink-0 koa:rounded-full koa:overflow-hidden" style={{ boxShadow: `inset 0 0 0 2px ${accent}` }}>
-                  <Avatar
-                    image={candidate.avatar.urls}
-                    backgroundColor="var(--ko-color-surface-sunken)"
-                    shape="circle"
-                    alignment={candidate.avatar.type === "portrait" ? "top" : "center"}
-                    fit={candidate.avatar.type === "logo" ? "contain" : "cover"}
-                    padding={candidate.avatar.type === "logo" || candidate.avatar.type === "avatar"}
-                    size={avatarSize}
-                  />
-                </span>
+                <Avatar
+                  image={candidate.avatar.urls}
+                  backgroundColor="var(--ko-color-border)"
+                  shape={candidate.type === "person" ? "circle" : "square"}
+                  alignment={candidate.avatar.type === "portrait" ? "top" : "center"}
+                  fit={candidate.avatar.type === "logo" ? "contain" : "cover"}
+                  padding={candidate.avatar.type === "logo" || candidate.avatar.type === "avatar"}
+                  size="large"
+                />
               ) : (
-                <div
-                  className={`koa:flex koa:shrink-0 koa:items-center koa:justify-center koa:rounded-full koa:font-bold koa:tabular-nums ${fallbackSizeClasses}`}
-                  style={{ backgroundColor: `oklch(from ${accent} l c h / 0.16)`, boxShadow: `inset 0 0 0 2px oklch(from ${accent} l c h / 0.6)`, color: accent }}
-                  aria-hidden="true"
-                >
+                <div className="koa:flex koa:h-20 koa:w-20 koa:shrink-0 koa:items-center koa:justify-center koa:rounded-2xl koa:bg-border koa:text-2xl koa:font-bold koa:text-text" aria-hidden="true">
                   {initialsOf(name)}
                 </div>
               )}

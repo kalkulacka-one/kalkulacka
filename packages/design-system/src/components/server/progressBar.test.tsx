@@ -29,13 +29,4 @@ describe("ProgressBar", () => {
     const innerBar = progressBar.firstChild as HTMLElement;
     expect(innerBar).toHaveClass("ko:bg-primary");
   });
-
-  it("should use accentColor as an inline background instead of the color variant when given", () => {
-    render(<ProgressBar value={50} accentColor="light-dark(#2563eb, #3b82f6)" />);
-    const progressBar = screen.getByRole("progressbar");
-    const innerBar = progressBar.firstChild as HTMLElement;
-    expect(innerBar.style.backgroundColor).toBe("light-dark(rgb(37, 99, 235), rgb(59, 130, 246))");
-    expect(innerBar).not.toHaveClass("ko:bg-primary");
-    expect(innerBar).not.toHaveClass("ko:bg-neutral");
-  });
 });

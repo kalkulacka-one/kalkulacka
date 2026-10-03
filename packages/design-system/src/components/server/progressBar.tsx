@@ -4,13 +4,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 export type ProgressBar = {
   value: number;
-  /**
-   * A CSS colour (e.g. a per-item `light-dark()` accent) for the filled bar,
-   * overriding `color`. For callers whose fill colour isn't one of the two
-   * fixed variants below — a party's own accent, say — rather than adding a
-   * variant per possible colour.
-   */
-  accentColor?: string;
 } & VariantProps<typeof ProgressBarVariants>;
 
 const ProgressBarVariants = cva("ko:h-full ko:w-full", {
@@ -30,7 +23,7 @@ const ProgressBarVariants = cva("ko:h-full ko:w-full", {
   },
 });
 
-export function ProgressBar({ value, color, corner, accentColor }: ProgressBar) {
+export function ProgressBar({ value, color, corner }: ProgressBar) {
   const width = value > 100 ? 100 : value < 0 ? 0 : value;
 
   return (
@@ -48,10 +41,7 @@ export function ProgressBar({ value, color, corner, accentColor }: ProgressBar) 
         corner === "rounded" ? "ko:rounded-full" : "",
       )}
     >
-      <div
-        className={accentColor ? "ko:h-full ko:w-full" : twMerge(ProgressBarVariants({ color, corner }))}
-        style={accentColor ? { width: `${width}%`, backgroundColor: accentColor } : { width: `${width}%` }}
-      />
+      <div className={twMerge(ProgressBarVariants({ color, corner }))} style={{ width: `${width}%` }} />
     </div>
   );
 }
