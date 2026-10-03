@@ -60,7 +60,6 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
           ))}
         </div>
       </Layout.Content>
-      <Layout.BottomSpacer className={PublicResultNavigationCard.heightClassNames} />
       <Layout.BottomNavigation>
         <PublicResultNavigationCard onStartClick={onStartCalculator} />
       </Layout.BottomNavigation>

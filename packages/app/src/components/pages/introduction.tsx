@@ -40,9 +40,8 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
         <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
         <Introduction calculator={calculator} />
       </Layout.Content>
-      <Layout.BottomSpacer className={IntroductionNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? "koa:bottom-11" : undefined}>
+      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.navOffsetClassNames : undefined}>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

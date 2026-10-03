@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { NavigationCard } from "@/components/navigation-card";
 
 // The nav sits in the document flow at every breakpoint now (sticky, never `fixed`), so no reserved gap is needed.
-const HEIGHT = "";
 
 export type GuideNavigationCard = {
   onNextClick: () => void;
@@ -22,5 +21,3 @@ export function GuideNavigationCard({ onNextClick }: GuideNavigationCard) {
     </NavigationCard>
   );
 }
-
-GuideNavigationCard.heightClassNames = HEIGHT;

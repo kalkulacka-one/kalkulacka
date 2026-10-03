@@ -5,9 +5,10 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
-  // Mobile (< sm) keeps today's grid: Content stretches to fill the viewport and BottomNavigation floats over it, fixed.
-  // sm and up switch to a plain column flow: Content sizes to its own content and BottomNavigation follows it in the
-  // document, sticking to the viewport bottom only once the page is taller than the screen.
+  // Mobile (< sm) is a grid: Content stretches to fill the viewport, so BottomNavigation sits at the screen's bottom
+  // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
+  // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
+  // taller than the screen.
   return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
 }
 

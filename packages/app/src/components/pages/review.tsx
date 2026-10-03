@@ -102,9 +102,8 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
           })}
         </div>
       </Layout.Content>
-      <Layout.BottomSpacer className={ReviewNavigationCard.heightClassNames} />
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? "koa:bottom-11" : undefined}>
+      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.navOffsetClassNames : undefined}>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
