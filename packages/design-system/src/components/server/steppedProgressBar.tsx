@@ -10,18 +10,20 @@ export type SteppedProgressBar<TItem extends Record<string, unknown>> = {
   stepTotal: number;
   idKey: keyof TItem;
   statusKey: keyof TItem;
+  /** Hide from assistive technology when the same position is already announced elsewhere. */
+  decorative?: boolean;
 } & VariantProps<typeof stepProgressVariants>;
 
-const stepProgressVariants = cva("", {
+const stepProgressVariants = cva("ko:h-1.5 ko:rounded-pill", {
   variants: {
     status: {
       inFavour: "ko:bg-primary",
       against: "ko:bg-secondary",
-      isNull: "ko:bg-neutral-inactive",
+      isNull: "ko:bg-border",
     },
     height: {
-      active: "ko:h-2 ko:bg-neutral-active!",
-      inactive: "ko:h-1",
+      active: "ko:min-w-3 ko:flex-[3_1_0] ko:bg-neutral!",
+      inactive: "ko:min-w-0.5 ko:flex-1",
     },
   },
   defaultVariants: {
@@ -42,19 +44,17 @@ function checkAnswer(status: StepStatus) {
   }
 }
 
-export function SteppedProgressBar<TItem extends Record<string, unknown>>({ stepItems, stepCurrent, stepTotal, idKey, statusKey }: SteppedProgressBar<TItem>) {
+export function SteppedProgressBar<TItem extends Record<string, unknown>>({ stepItems, stepCurrent, stepTotal, idKey, statusKey, decorative = false }: SteppedProgressBar<TItem>) {
   if (!stepItems || stepItems.length === 0) {
     return null;
   }
 
   return (
     <div
-      role="progressbar"
-      aria-valuetext={`Question ${stepCurrent} of ${stepTotal}`}
-      aria-valuenow={stepCurrent}
-      aria-valuemin={1}
-      aria-valuemax={stepTotal}
-      className="ko:flex ko:items-center ko:justify-start"
+      {...(decorative
+        ? { "aria-hidden": true }
+        : { role: "progressbar", "aria-valuetext": `Question ${stepCurrent} of ${stepTotal}`, "aria-valuenow": stepCurrent, "aria-valuemin": 1, "aria-valuemax": stepTotal })}
+      className="ko:flex ko:min-w-0 ko:items-center ko:gap-1"
     >
       {stepItems.map((step, index) => {
         const id = step[idKey] as string;
@@ -64,10 +64,6 @@ export function SteppedProgressBar<TItem extends Record<string, unknown>>({ step
           <div
             key={`bar-${id}`}
             aria-hidden="true"
-            style={{
-              flex: `1 1 calc(100% / ${stepTotal})`,
-              width: `calc(100% / ${stepTotal})`,
-            }}
             className={twMerge(
               stepProgressVariants({
                 status: checkAnswer(status),

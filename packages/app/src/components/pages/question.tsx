@@ -1,4 +1,5 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { SteppedProgressBar } from "@kalkulacka-one/design-system/server";
 
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
@@ -8,7 +9,6 @@ import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
-import { QuestionProgress } from "@/components/question-progress";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
 
 export type QuestionPage = {
@@ -113,7 +113,14 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
             past the viewport.
           */}
           <div className="koa:mx-auto koa:flex koa:h-[calc(100lvh-5rem)] koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-8 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
-            <QuestionProgress current={number} total={total} />
+            <SteppedProgressBar
+              stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
+              stepCurrent={number}
+              stepTotal={total}
+              idKey="id"
+              statusKey="status"
+              decorative
+            />
             <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
             <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
           </div>
