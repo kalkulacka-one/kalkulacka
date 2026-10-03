@@ -30,7 +30,7 @@ describe("SteppedProgressBar", () => {
     render(<SteppedProgressBar stepItems={stepItems} stepCurrent={2} stepTotal={stepItems.length} idKey="id" statusKey="status" />);
     const progressBar = screen.getByRole("progressbar");
     const secondStep = progressBar.childNodes[1] as HTMLElement;
-    expect(secondStep).toHaveClass("ko:h-2");
+    expect(secondStep).toHaveClass("ko:flex-[3_1_0]");
   });
 
   it("should apply correct styles for different statuses", () => {
@@ -43,7 +43,13 @@ describe("SteppedProgressBar", () => {
 
     expect(firstStep).toHaveClass("ko:bg-primary");
     expect(secondStep).toHaveClass("ko:bg-secondary");
-    expect(thirdStep).toHaveClass("ko:bg-neutral-inactive");
-    expect(fourthStep).toHaveClass("ko:bg-neutral-inactive");
+    expect(thirdStep).toHaveClass("ko:bg-border");
+    expect(fourthStep).toHaveClass("ko:bg-border");
+  });
+
+  it("should hide from assistive technology when decorative", () => {
+    const { container } = render(<SteppedProgressBar stepItems={stepItems} stepCurrent={1} stepTotal={stepItems.length} idKey="id" statusKey="status" decorative />);
+    expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+    expect(container.firstChild).toHaveAttribute("aria-hidden", "true");
   });
 });
