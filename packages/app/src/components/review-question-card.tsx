@@ -17,7 +17,7 @@ export type ReviewQuestionCard = {
 
 // Recap row: the whole question statement (there is no tap-to-open detail view yet, so this is the only place to
 // read it while reviewing), the star and two small icon-only answer toggles. The star sits left of the statement and the
-// answers on a line below it on phones; from `sm` up everything is on one line. The yes/no toggles drop their visible "Ano"/"Ne" label for an aria-label
+// answers on a line below it, right-aligned for the thumb, on phones; from `sm` up everything is on one line. The yes/no toggles drop their visible "Ano"/"Ne" label for an aria-label
 // (Button renders icon-only children as a round button on its own); this list isn't the smoke test's target for
 // that visible label — only the question screen's switch keeps the visible text.
 export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
@@ -47,7 +47,7 @@ export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagree
           </ToggleButton>
         </div>
         <h3 className="koa:col-start-2 koa:row-start-1 koa:font-sans koa:text-[15px] koa:sm:text-[17px] koa:font-semibold koa:text-text koa:leading-snug koa:break-words">{statement}</h3>
-        <div className="koa:col-start-2 koa:row-start-2 koa:sm:col-start-3 koa:sm:row-start-1 koa:flex koa:items-center koa:gap-1.5">
+        <div className="koa:col-span-2 koa:col-start-1 koa:row-start-2 koa:justify-self-end koa:sm:col-span-1 koa:sm:col-start-3 koa:sm:row-start-1 koa:flex koa:items-center koa:gap-1.5">
           <ToggleButton size="small" variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
           </ToggleButton>
