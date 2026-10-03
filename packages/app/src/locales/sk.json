@@ -114,6 +114,7 @@
       },
       "review": {
         "title": "Rekapitulácia",
+        "description": "Tu si môžete odpovede ešte skontrolovať a zmeniť a označiť dôležité otázky hviezdičkou.",
         "back": "Späť na otázky"
       },
       "districtPicker": {
