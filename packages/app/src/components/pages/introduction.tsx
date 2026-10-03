@@ -1,6 +1,7 @@
 import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { IconBadge } from "@kalkulacka-one/design-system/server";
 
-import { mdiClose } from "@mdi/js";
+import { mdiClose, mdiFormatListChecks, mdiSkipNext, mdiStarOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { AppHeader, type EmbedContextType, HideOnEmbed } from "@/client";
@@ -39,6 +40,24 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
       <Layout.Content>
         <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
         <Introduction calculator={calculator} />
+        {/* PROTOTYPE copy (hard-coded Czech, taken from the 2026 reference's intro facts) — real copy needs locale keys. */}
+        <ul className="koa:mt-6 koa:sm:mt-8 koa:grid koa:max-w-prose koa:gap-5">
+          {[
+            { icon: mdiStarOutline, title: "Pro mě důležité", text: "Otázku, na které vám obzvlášť záleží, můžete označit hvězdičkou. Ve výsledku pak má dvojnásobnou váhu." },
+            { icon: mdiSkipNext, title: "Přeskočení", text: "Pokud nevíte, nebo vám je to jedno, otázku přeskočte. Do výsledku se nezapočítá." },
+            { icon: mdiFormatListChecks, title: "Rekapitulace", text: "Na konci uvidíte všechny otázky pohromadě. Odpovědi můžete ještě změnit a označit důležité otázky." },
+          ].map((fact) => (
+            <li key={fact.title} className="koa:grid koa:grid-cols-[auto_1fr] koa:items-start koa:gap-4">
+              <IconBadge color="neutral" variant="tint" size="medium">
+                <Icon icon={fact.icon} decorative />
+              </IconBadge>
+              <div className="koa:grid koa:gap-0.5">
+                <p className="koa:font-semibold koa:text-text">{fact.title}</p>
+                <p className="koa:text-text-muted koa:leading-[1.5]">{fact.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </Layout.Content>
       {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
       <Layout.BottomNavigation className={hasFooter ? EmbedFooter.navOffsetClassNames : undefined}>
