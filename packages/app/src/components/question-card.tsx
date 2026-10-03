@@ -32,7 +32,6 @@ export type QuestionCard = {
 export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionCard) {
   const t = useTranslations("koa.components.questionNavigationCard");
   const { title, detail, statement, tags } = question;
-  const category = tags?.[0];
 
   return (
     <Card
@@ -41,11 +40,14 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
     >
       <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
         <div className="koa:flex koa:flex-wrap koa:gap-2">
-          {category && (
-            <span className="koa:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-[clamp(13.5px,13.1939px+0.0816vw,14.5px)] koa:leading-[1.2] koa:font-medium koa:text-text">
-              {category}
+          {tags?.map((tag) => (
+            <span
+              key={tag}
+              className="koa:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-[clamp(13.5px,13.1939px+0.0816vw,14.5px)] koa:leading-[1.2] koa:font-medium koa:text-text"
+            >
+              {tag}
             </span>
-          )}
+          ))}
           <span className="koa:inline-flex koa:items-center koa:rounded-chip koa:border koa:border-border koa:px-2.5 koa:py-1 koa:text-[clamp(13.5px,13.1939px+0.0816vw,14.5px)] koa:leading-[1.2] koa:font-medium koa:text-text">
             {title}
           </span>

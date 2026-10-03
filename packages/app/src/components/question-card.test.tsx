@@ -49,9 +49,10 @@ describe("QuestionCard", () => {
     );
 
   describe("rendering", () => {
-    it("renders the category chip from the first tag and the title chip", () => {
+    it("renders a chip for every tag and the title chip", () => {
       renderCard();
       expect(screen.getByText("Test tag")).toBeInTheDocument();
+      expect(screen.getByText("Another tag")).toBeInTheDocument();
       expect(screen.getByText(mockQuestion.title)).toBeInTheDocument();
     });
 
@@ -61,7 +62,7 @@ describe("QuestionCard", () => {
       expect(screen.getByText(mockQuestion.detail as string)).toBeInTheDocument();
     });
 
-    it("omits the category chip when the question has no tags", () => {
+    it("renders only the title chip when the question has no tags", () => {
       renderCard({ question: { ...mockQuestion, tags: undefined } });
       expect(screen.queryByText("Test tag")).not.toBeInTheDocument();
       expect(screen.getByText(mockQuestion.title)).toBeInTheDocument();
