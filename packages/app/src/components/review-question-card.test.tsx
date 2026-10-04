@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -49,6 +49,12 @@ describe("ReviewQuestionCard", () => {
     expect(screen.queryByLabelText("No")).not.toBeInTheDocument();
   });
 
+  it("reads a skipped question as secondary and keeps its star off", () => {
+    renderCard({ answer: { answer: { questionId: "1", answer: undefined }, setAnswer: vi.fn() } });
+
+    expect(screen.getByLabelText("Important to me")).toBeDisabled();
+  });
+
   it("opens the whole question and the answer controls in a dialog", async () => {
     const user = userEvent.setup();
     renderCard();
@@ -57,9 +63,10 @@ describe("ReviewQuestionCard", () => {
 
     expect(screen.getByRole("dialog", { name: props.question.statement })).toBeInTheDocument();
     expect(screen.getByText(props.question.detail ?? "")).toBeInTheDocument();
-    expect(screen.getByLabelText("Yes")).toBeInTheDocument();
-    expect(screen.getByLabelText("No")).toBeInTheDocument();
-    expect(screen.getByLabelText("Important to me")).toBeInTheDocument();
+    const dialog = within(screen.getByRole("dialog"));
+    expect(dialog.getByLabelText("Yes")).toBeInTheDocument();
+    expect(dialog.getByLabelText("No")).toBeInTheDocument();
+    expect(dialog.getByLabelText("Important to me")).toBeInTheDocument();
   });
 
   it("closes the dialog from the close button", async () => {
@@ -79,7 +86,7 @@ describe("ReviewQuestionCard", () => {
       renderCard({ onAgreeChange: mockHandler });
       await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
 
-      await user.click(screen.getByLabelText("Yes"));
+      await user.click(within(screen.getByRole("dialog")).getByLabelText("Yes"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
@@ -89,18 +96,18 @@ describe("ReviewQuestionCard", () => {
       renderCard({ onDisagreeChange: mockHandler });
       await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
 
-      await user.click(screen.getByLabelText("No"));
+      await user.click(within(screen.getByRole("dialog")).getByLabelText("No"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
     });
 
-    it("calls onImportantChange when important button is clicked", async () => {
+    it("toggles the star right in the row, without opening the question", async () => {
       const mockHandler = vi.fn();
       const user = userEvent.setup();
       renderCard({ onImportantChange: mockHandler });
-      await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
 
       await user.click(screen.getByLabelText("Important to me"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
+      expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     });
   });
 });
