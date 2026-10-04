@@ -9,66 +9,121 @@ import { buildCanonicalUrl, type Canonical } from "@/routing/factories/url-build
 import { dataLoaderGuard } from "@/routing/guards/data-loader";
 import type { RouteSegments } from "@/routing/segments";
 
-type MappedParams = ReturnType<typeof createParamsMapper>["mappedParams"];
-type Translator = Awaited<ReturnType<typeof getTranslations>>;
-type Image = { url: string; width?: number; height?: number; alt?: string };
-
-type BuildOptions = {
-  segments: RouteSegments;
-  locale: string;
+async function generateCalculatorMetadata({
+  key,
+  group,
+  canonicalUrl,
+  locale,
+  pageTitle,
+  ogImage: ogImageOverride,
+  twitterImage: twitterImageOverride,
+}: {
+  key: string;
+  group?: string;
   canonicalUrl: string;
-  pageTitle?: (t: Translator, data: CalculatorData["data"]) => string;
-  ogImage?: Image;
-};
-
-export function createCalculatorMetadata({ canonical, mappedParams }: { canonical: Canonical; mappedParams: MappedParams }) {
-  async function build({ segments, locale, canonicalUrl, pageTitle, ogImage }: BuildOptions): Promise<Metadata> {
-    const endpoint = process.env.DATA_ENDPOINT;
-    if (!endpoint) {
-      throw new Error("DATA_ENDPOINT environment variable is not set");
-    }
-
-    const key = mappedParams.key(segments);
-    const group = mappedParams.group(segments);
-    const { data } = await dataLoaderGuard({ endpoint, key, group });
-    const calculator = calculatorViewModel(data.calculator);
-
-    const dataImage = (type: "opengraph" | "twitter"): Image | undefined => {
-      const image = calculator.images?.find((img) => img.type === type);
-      if (!image?.urls?.original) return undefined;
-      return { url: buildDataUrl({ endpoint, key, group, resourcePath: image.urls.original }), width: image.width, height: image.height, alt: image.alt };
-    };
-    const openGraphImage = ogImage ?? dataImage("opengraph");
-    const twitterImage = dataImage("twitter") ?? openGraphImage;
-
-    const calculatorTitle = calculator.title || calculator.shortTitle;
-    const title = pageTitle && calculatorTitle ? prefixPageTitle(pageTitle(await getTranslations({ locale, namespace: "koa.pages" }), data), calculatorTitle) : calculatorTitle;
-
-    return {
-      title,
-      description: calculator.description,
-      alternates: { canonical: canonicalUrl },
-      // Bare calculator title, so a link shared mid-flow doesn't preview as "Otázka 7/30".
-      openGraph: {
-        title: calculatorTitle,
-        description: calculator.description,
-        url: canonicalUrl,
-        ...(openGraphImage && { images: [openGraphImage] }),
-      },
-      twitter: {
-        card: "summary_large_image",
-        ...(process.env.X_HANDLE && { site: process.env.X_HANDLE }),
-        ...(twitterImage && { images: { url: twitterImage.url, alt: twitterImage.alt } }),
-      },
-    };
+  locale: string;
+  pageTitle?: (t: Awaited<ReturnType<typeof getTranslations>>, data: CalculatorData["data"]) => string;
+  ogImage?: {
+    url: string;
+    width?: number;
+    height?: number;
+    alt?: string;
+  };
+  twitterImage?: {
+    url: string;
+    alt?: string;
+  };
+}): Promise<Metadata> {
+  if (!process.env.DATA_ENDPOINT) {
+    throw new Error("DATA_ENDPOINT environment variable is not set");
   }
 
+  const calculatorData = await dataLoaderGuard({ endpoint: process.env.DATA_ENDPOINT, key, group });
+  const calculator = calculatorViewModel(calculatorData.data.calculator);
+
+  const ogImage = calculator.images?.find((img) => img.type === "opengraph");
+  const twitterImage = calculator.images?.find((img) => img.type === "twitter");
+
+  let ogImageUrl: string | undefined;
+  let ogImageWidth: number | undefined;
+  let ogImageHeight: number | undefined;
+  let ogImageAlt: string | undefined;
+
+  if (ogImageOverride) {
+    ogImageUrl = ogImageOverride.url;
+    ogImageWidth = ogImageOverride.width;
+    ogImageHeight = ogImageOverride.height;
+    ogImageAlt = ogImageOverride.alt;
+  } else if (ogImage?.urls?.original) {
+    ogImageUrl = buildDataUrl({ endpoint: process.env.DATA_ENDPOINT, key, group, resourcePath: ogImage.urls.original });
+    ogImageWidth = ogImage.width;
+    ogImageHeight = ogImage.height;
+    ogImageAlt = ogImage.alt;
+  }
+
+  let twitterImageUrl: string | undefined;
+  let twitterImageAlt: string | undefined;
+
+  if (twitterImageOverride) {
+    twitterImageUrl = twitterImageOverride.url;
+    twitterImageAlt = twitterImageOverride.alt;
+  } else if (twitterImage?.urls?.original) {
+    twitterImageUrl = buildDataUrl({ endpoint: process.env.DATA_ENDPOINT, key, group, resourcePath: twitterImage.urls.original });
+    twitterImageAlt = twitterImage.alt;
+  } else {
+    twitterImageUrl = ogImageUrl;
+    twitterImageAlt = ogImageAlt;
+  }
+
+  const calculatorTitle = calculator.title || calculator.shortTitle;
+  const title = pageTitle && calculatorTitle ? prefixPageTitle(pageTitle(await getTranslations({ locale, namespace: "koa.pages" }), calculatorData.data), calculatorTitle) : calculatorTitle;
+
+  const metadata: Metadata = {
+    title,
+    description: calculator.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    // Bare calculator title, so a link shared mid-flow doesn't preview as "Otázka 7/30".
+    openGraph: {
+      title: calculatorTitle,
+      description: calculator.description,
+      url: canonicalUrl,
+      ...(ogImageUrl && {
+        images: [
+          {
+            url: ogImageUrl,
+            width: ogImageWidth,
+            height: ogImageHeight,
+            alt: ogImageAlt,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      ...(process.env.X_HANDLE && { site: process.env.X_HANDLE }),
+      ...(twitterImageUrl && {
+        images: {
+          url: twitterImageUrl,
+          alt: twitterImageAlt,
+        },
+      }),
+    },
+  };
+
+  return metadata;
+}
+
+export function createCalculatorMetadata({ canonical, mappedParams }: { canonical: Canonical; mappedParams: ReturnType<typeof createParamsMapper>["mappedParams"] }) {
+  const forPage = (segments: RouteSegments, options: Omit<Parameters<typeof generateCalculatorMetadata>[0], "key" | "group">) =>
+    generateCalculatorMetadata({ key: mappedParams.key(segments), group: mappedParams.group(segments), ...options });
+
   const calculatorMetadata = {
-    introduction: (segments: RouteSegments, locale: string) => build({ segments, locale, canonicalUrl: canonical.introduction(segments, locale) }),
-    guide: (segments: RouteSegments, locale: string) => build({ segments, locale, canonicalUrl: canonical.guide(segments, locale), pageTitle: (t) => t("guide.title") }),
+    introduction: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.introduction(segments, locale) }),
+    guide: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.guide(segments, locale), pageTitle: (t) => t("guide.title") }),
     question: (segments: RouteSegments, questionNumber: number, locale: string) =>
-      build({
-        segments,
+      forPage(segments, {
         locale,
         canonicalUrl: canonical.question(segments, questionNumber, locale),
         pageTitle: (t, data) => {
@@ -76,12 +131,11 @@ export function createCalculatorMetadata({ canonical, mappedParams }: { canonica
           return t("question.documentTitle", { current: questionNumber, total: data.questions.length });
         },
       }),
-    review: (segments: RouteSegments, locale: string) => build({ segments, locale, canonicalUrl: canonical.review(segments, locale), pageTitle: (t) => t("review.title") }),
-    result: (segments: RouteSegments, locale: string) => build({ segments, locale, canonicalUrl: canonical.result(segments, locale), pageTitle: (t) => t("result.title") }),
-    comparison: (segments: RouteSegments, locale: string) => build({ segments, locale, canonicalUrl: canonical.comparison(segments, locale), pageTitle: (t) => t("comparison.title") }),
+    review: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.review(segments, locale), pageTitle: (t) => t("review.title") }),
+    result: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.result(segments, locale), pageTitle: (t) => t("result.title") }),
+    comparison: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.comparison(segments, locale), pageTitle: (t) => t("comparison.title") }),
     publicResult: (segments: RouteSegments, publicId: string, locale: string) =>
-      build({
-        segments,
+      forPage(segments, {
         locale,
         canonicalUrl: canonical.publicResult(segments, publicId, locale),
         ogImage: { url: buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`), width: 2400, height: 1260 },
