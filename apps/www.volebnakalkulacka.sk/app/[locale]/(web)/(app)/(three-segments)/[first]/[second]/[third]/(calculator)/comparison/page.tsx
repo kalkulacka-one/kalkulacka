@@ -1,17 +1,12 @@
-import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
-
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
 import { ComparisonPageWithRouting } from "@/components/client";
-import { canonical, mappedParams } from "@/lib/routing";
+import { calculatorMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; first: string; second: string; third: string }> }): Promise<Metadata> {
   const { locale, ...segments } = await params;
-  const key = mappedParams.key(segments);
-  const group = mappedParams.group(segments);
-  const canonicalUrl = canonical.comparison(segments, locale);
-  return generateCalculatorMetadata({ key, group, canonicalUrl });
+  return calculatorMetadata.comparison(segments, locale);
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; third: string }> }) {
