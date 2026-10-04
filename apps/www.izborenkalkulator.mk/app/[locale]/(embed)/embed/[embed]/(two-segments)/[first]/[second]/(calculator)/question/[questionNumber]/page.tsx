@@ -1,5 +1,5 @@
 import { questionNumberGuard } from "@kalkulacka-one/next";
-import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
+import { calculatorMetadata } from "@kalkulacka-one/next/metadata";
 
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   const group = mappedParams.group(segments);
   const currentQuestionNumber = questionNumberGuard(questionNumber);
   const canonicalUrl = canonical.question(segments, currentQuestionNumber, locale);
-  return generateCalculatorMetadata({ key, group, canonicalUrl, locale, page: "question", questionNumber: currentQuestionNumber });
+  return calculatorMetadata.question({ key, group, canonicalUrl, locale, questionNumber: currentQuestionNumber });
 }
 
 export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string; questionNumber: string }> }) {

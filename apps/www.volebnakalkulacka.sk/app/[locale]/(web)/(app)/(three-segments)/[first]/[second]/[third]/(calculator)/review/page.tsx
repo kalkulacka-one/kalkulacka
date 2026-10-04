@@ -1,4 +1,4 @@
-import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
+import { calculatorMetadata } from "@kalkulacka-one/next/metadata";
 
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
   const canonicalUrl = canonical.review(segments, locale);
-  return generateCalculatorMetadata({ key, group, canonicalUrl, locale, page: "review" });
+  return calculatorMetadata.review({ key, group, canonicalUrl, locale });
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; third: string }> }) {

@@ -5,35 +5,42 @@ import { getTranslations } from "next-intl/server";
 
 import { dataLoaderGuard } from "@/routing/guards/data-loader";
 
-export type CalculatorPage = "guide" | "question" | "review" | "result" | "comparison";
+type CalculatorPageMetadataOptions = { key: string; group?: string; canonicalUrl: string; locale: string };
 
-async function pageTitle({ page, questionNumber, locale, questionCount }: { page: CalculatorPage; questionNumber?: number; locale: string; questionCount: number }): Promise<string> {
-  const t = await getTranslations({ locale, namespace: "koa.pages" });
-  if (page === "question") {
-    if (questionNumber === undefined) {
-      throw new Error("questionNumber is required for the question page");
-    }
-    return t("question.documentTitle", { current: questionNumber, total: questionCount });
-  }
-  return t(`${page}.title`);
+function titledPage(page: "guide" | "review" | "result" | "comparison") {
+  return async ({ locale, ...options }: CalculatorPageMetadataOptions): Promise<Metadata> => {
+    const t = await getTranslations({ locale, namespace: "koa.pages" });
+    return buildCalculatorMetadata({ ...options, pageTitle: () => t(`${page}.title`) });
+  };
 }
 
-export async function generateCalculatorMetadata({
+export const calculatorMetadata = {
+  guide: titledPage("guide"),
+  question: async ({ locale, questionNumber, ...options }: CalculatorPageMetadataOptions & { questionNumber: number }): Promise<Metadata> => {
+    const t = await getTranslations({ locale, namespace: "koa.pages" });
+    return buildCalculatorMetadata({ ...options, pageTitle: ({ questionCount }) => t("question.documentTitle", { current: questionNumber, total: questionCount }) });
+  },
+  review: titledPage("review"),
+  result: titledPage("result"),
+  comparison: titledPage("comparison"),
+} as const;
+
+export async function generateCalculatorMetadata(options: Omit<Parameters<typeof buildCalculatorMetadata>[0], "pageTitle">): Promise<Metadata> {
+  return buildCalculatorMetadata(options);
+}
+
+async function buildCalculatorMetadata({
   key,
   group,
   canonicalUrl,
-  locale,
-  page,
-  questionNumber,
+  pageTitle,
   ogImage: ogImageOverride,
   twitterImage: twitterImageOverride,
 }: {
   key: string;
   group?: string;
   canonicalUrl: string;
-  locale?: string;
-  page?: CalculatorPage;
-  questionNumber?: number;
+  pageTitle?: (context: { questionCount: number }) => string;
   ogImage?: {
     url: string;
     width?: number;
@@ -87,7 +94,7 @@ export async function generateCalculatorMetadata({
   }
 
   const calculatorTitle = calculator.title || calculator.shortTitle;
-  const currentPageTitle = page && locale ? await pageTitle({ page, questionNumber, locale, questionCount: calculatorData.data.questions.length }) : undefined;
+  const currentPageTitle = pageTitle?.({ questionCount: calculatorData.data.questions.length });
 
   const metadata: Metadata = {
     title: currentPageTitle ? `${currentPageTitle} · ${calculatorTitle}` : calculatorTitle,
