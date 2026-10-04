@@ -1,0 +1,125 @@
+===== home LM header,footer LIVE  SKIP 
+ TABS 23
+   a "Zvolte svůj volební obvod" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=65,453,526,56 /volby/senatni-2026
+   button(button) "Zvolte svůj volební obvod" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=65,453,526,56 
+   a "Inventura Praha" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=689,453,257,56 /volby/komunalni-2026/praha
+   button(button) "Inventura Praha" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=689,453,257,56 
+   a "Inventura Brno" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=958,453,257,56 /volby/komunalni-2026/brno
+   button(button) "Inventura Brno" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=958,453,257,56 
+   input(email) "E-mail" p=null c=false e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=751,675,228,48 
+   button(submit) "Odeslat" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=991,671,125,56 
+   a "Přidejte se" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=1066,372,149,56 /zapojte-se
+   button(button) "Přidejte se" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1066,372,149,56 
+   a "Prohlédnout kalkulačky" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=65,744,526,56 /volby/snemovni-2025
+   button(button) "Prohlédnout kalkulačky" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=65,744,526,56 
+   a "Přejít do archivu" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=689,744,526,56 https://archiv-2024.volebnikalkulacka.cz
+   button(button) "Přejít do archivu" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=689,744,526,56 
+   a "Instagram" p=null c=null e=null ti=null o=auto 1px rgb(144, 161, 185) sh=none box=32,712,24,24 https://www.instagram.com/volebnikalk
+   a "X (Twitter)" p=null c=null e=null ti=null o=auto 1px rgb(144, 161, 185) sh=none box=64,712,24,24 https://twitter.com/volebnikalk
+   a "O projektu" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=344,632,280,20 /o-projektu
+   a "Status" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=656,632,280,20 https://status.volebnikalkulacka.cz
+   a "Statistiky" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=656,660,280,20 https://plausible.io/volebnikalkulacka.cz
+   a "Soukromí" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=656,688,280,20 /soukromi
+   a "ahoj@volebnikalkulacka.cz" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=968,632,280,20 mailto:ahoj@volebnikalkulacka.cz
+   a "+420 735 518 529" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=968,660,280,20 tel:+420735518529
+   null(body)
+===== picker LM header,main,section[aria-label=Zvolte svůj volební obvod] LIVE OUTPUT role=null live=polite vnow=null label=null text= SKIP 
+ headings 16 H1: Volební kalkulačka / H2: Senátní 2026 / H2: Zvolte svůj volební obvod / H3: Karlovarský kraj / H3: Ústecký kraj / H3: Plzeňský kraj
+ TABS 4
+   a "Zavřít" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=1203,16,40,40 https://staging.volebnikalkulacka.cz/
+   input(search) "Hledat obvod nebo obec…" p=null c=false e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=368,160,544,48 
+   a "Obvod 3Cheb" p=null c=null e=null ti=0 o=solid 2px rgb(0, 112, 244) sh=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0 box=389,263,502,54 /volby/senatni-2026/3-cheb
+   null(body)
+===== intro LM header,main LIVE  SKIP 
+ TABS 3
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1199,14,44,44 
+   button(button) "Pokračovat" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0 box=389,292,154,56 
+   null(body)
+===== guide LM header,main LIVE  SKIP 
+ TABS 4
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1199,14,44,44 
+   button(button) "Zpět na úvod" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=389,88,144,40 
+   button(button) "Začít odpovídat" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0 box=389,699,189,56 
+   null(body)
+===== q1 LM header,main LIVE  SKIP 
+ TABS 7
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1199,14,44,44 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=262,492,65,65 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=340,488,333,73 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=685,488,333,73 
+   button(button) "Návod" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=212,614,118,40 
+   button(button) "Přeskočit" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=923,614,145,40 
+   null(body)
+===== review LM header,main LIVE  SKIP 
+ headings 43 H1: Volební kalkulačka / H2: Senátní volby 2026: obvod 81 – Uherské Hradiště / H3: Rekapitulace / H3: Má stát zavést vyšší daň z nemovitosti pro dlouhodobě neobývané byty? / H3: Má stát více pomáhat s financováním výstavby obecních nájemních bytů? / H3: Mají senátoři napadnout novelu stavebního zákona z roku 2026 u Ústavní
+ TABS 124
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1199,14,44,44 
+   button(button) "Zpět na otázky" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=389,88,157,40 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,294,36,36 
+   button[switch](button) "Ano" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,294,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,294,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,387,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,387,36,36 
+   button[switch](button) "Ne" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,387,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,492,36,36 
+   button[switch](button) "Ano" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,492,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,492,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,596,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,596,36,36 
+   button[switch](button) "Ne" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,596,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,712,36,36 
+   button[switch](button) "Ano" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,712,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,712,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,382,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,382,36,36 
+   button[switch](button) "Ne" p=null c=true e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,382,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,475,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,475,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,475,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,568,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,568,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,568,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,661,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,661,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,661,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,764,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,764,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,764,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,382,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,382,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,382,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,510,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,510,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,510,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,626,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,626,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,626,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,754,36,36 
+   button[switch](button) "Ano" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=792,754,36,36 
+   button[switch](button) "Ne" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=834,754,36,36 
+   button[switch](button) "Pro mě důležité" p=null c=false e=null ti=0 o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=410,382,36,36 
+===== result LM header,main LIVE DIV role=progressbar live=null vnow=71.42857142857143 label=null text= ; DIV role=progressbar live=null vnow=64.28571428571428 label=null text= ; DIV role=progressbar live=null vnow=57.14285714285714 label=null text= SKIP 
+ TABS 17
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1199,14,44,44 
+   button(button) "Zpět" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=389,88,87,40 
+   button(button) "Sdílet" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=794,88,96,40 
+   button(button) "JB1.Josef Bazala71 %" p=null c=null e=false ti=null o=auto 1px rgb(0, 95, 204) sh=none box=390,218,500,144 
+   button(button) "JV2.Jiří Vašica, DiS.64 %" p=null c=null e=false ti=null o=auto 1px rgb(0, 95, 204) sh=none box=390,385,500,128 
+   button(button) "IK3.Ing. Kristýna Zelienková57 %" p=null c=null e=false ti=null o=auto 1px rgb(0, 95, 204) sh=none box=390,536,500,128 
+   button(button) "OBOtakar Březina—" p=null c=null e=false ti=null o=auto 1px rgb(0, 95, 204) sh=none box=390,672,500,128 
+   button(button) "DSDavid Skyba—" p=null c=null e=false ti=null o=auto 1px rgb(0, 95, 204) sh=none box=390,336,500,128 
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=802,498,40,40 
+   button(button) "👍 200 Kč" p=false c=null e=null ti=null o=auto 3px rgb(49, 65, 88) sh=none box=548,622,77,26 
+   button(button) "❤️ 500 Kč" p=true c=null e=null ti=null o=auto 3px rgb(49, 65, 88) sh=none box=646,622,77,26 
+   button(button) "🤩 1 000 Kč" p=false c=null e=null ti=null o=auto 3px rgb(49, 65, 88) sh=none box=744,622,85,26 
+   a "Podpořit Volební kalkulačku" p=null c=null e=null ti=null o=auto 1px rgb(0, 95, 204) sh=none box=548,656,293,56 https://www.darujme.cz/darovat/1200653?frequency=once&amount=500
+   button(button) "Podpořit Volební kalkulačku" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=548,656,293,56 
+   button(button) "MMMgr. Margita Balaštíková—" p=null c=null e=false ti=null o=auto 1px rgb(0, 95, 204) sh=none box=390,672,500,128 
+   button(button) "Porovnat" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=389,736,95,40 
+   null(body)
+===== comparison LM header,main LIVE  SKIP 
+ headings 43 H1: Volební kalkulačka / H2: Senátní volby 2026: obvod 81 – Uherské Hradiště / H3: Porovnání / H3: Má stát zavést vyšší daň z nemovitosti pro dlouhodobě neobývané byty? / H3: Má stát více pomáhat s financováním výstavby obecních nájemních bytů? / H3: Mají senátoři napadnout novelu stavebního zákona z roku 2026 u Ústavní
+ TABS 3
+   button(button) "Zavřít" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=1203,16,40,40 
+   button(button) "Zpět na výsledky" p=null c=null e=null ti=null o=solid 3px oklab(0.573865 -0.0435683 -0.211278 / 0.55) sh=none box=37,72,40,40 
+   null(body)
