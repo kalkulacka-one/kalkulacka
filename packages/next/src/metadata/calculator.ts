@@ -5,31 +5,30 @@ import { getTranslations } from "next-intl/server";
 
 import { dataLoaderGuard } from "@/routing/guards/data-loader";
 
-type CalculatorPageMetadataOptions = { key: string; group?: string; canonicalUrl: string; locale: string };
+type BaseMetadataOptions = { key: string; group?: string; canonicalUrl: string };
+type CalculatorPageMetadataOptions = BaseMetadataOptions & { locale: string };
 
 function titledPage(page: "guide" | "review" | "result" | "comparison") {
   return async ({ locale, ...options }: CalculatorPageMetadataOptions): Promise<Metadata> => {
     const t = await getTranslations({ locale, namespace: "koa.pages" });
-    return buildCalculatorMetadata({ ...options, pageTitle: () => t(`${page}.title`) });
+    return buildMetadata({ ...options, pageTitle: () => t(`${page}.title`) });
   };
 }
 
 export const calculatorMetadata = {
+  introduction: (options: BaseMetadataOptions): Promise<Metadata> => buildMetadata(options),
   guide: titledPage("guide"),
   question: async ({ locale, questionNumber, ...options }: CalculatorPageMetadataOptions & { questionNumber: number }): Promise<Metadata> => {
     const t = await getTranslations({ locale, namespace: "koa.pages" });
-    return buildCalculatorMetadata({ ...options, pageTitle: ({ questionCount }) => t("question.documentTitle", { current: questionNumber, total: questionCount }) });
+    return buildMetadata({ ...options, pageTitle: ({ questionCount }) => t("question.documentTitle", { current: questionNumber, total: questionCount }) });
   },
   review: titledPage("review"),
   result: titledPage("result"),
   comparison: titledPage("comparison"),
+  publicResult: (options: Omit<Parameters<typeof buildMetadata>[0], "pageTitle">): Promise<Metadata> => buildMetadata(options),
 } as const;
 
-export async function generateCalculatorMetadata(options: Omit<Parameters<typeof buildCalculatorMetadata>[0], "pageTitle">): Promise<Metadata> {
-  return buildCalculatorMetadata(options);
-}
-
-async function buildCalculatorMetadata({
+async function buildMetadata({
   key,
   group,
   canonicalUrl,

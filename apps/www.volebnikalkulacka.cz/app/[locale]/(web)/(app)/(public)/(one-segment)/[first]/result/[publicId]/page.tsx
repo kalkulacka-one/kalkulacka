@@ -1,7 +1,7 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
 import { sessionPathGuard } from "@kalkulacka-one/next";
-import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
+import { calculatorMetadata } from "@kalkulacka-one/next/metadata";
 import type { Answer } from "@kalkulacka-one/schema";
 
 import type { Metadata } from "next";
@@ -16,7 +16,7 @@ export async function generateMetadata({ params: routeParams }: { params: Promis
   const key = mappedParams.key(segments);
   const canonicalUrl = canonical.publicResult(segments, publicId, locale);
   const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
-  return await generateCalculatorMetadata({
+  return await calculatorMetadata.publicResult({
     key,
     canonicalUrl,
     ogImage: {
