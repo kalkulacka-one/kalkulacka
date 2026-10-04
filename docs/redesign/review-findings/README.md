@@ -9,6 +9,7 @@ Two lanes, one folder:
 
 - [`bug-report.md`](bug-report.md): visual, UX and behaviour findings `F-01`…`F-31` (bugs, opinions, gaps, open questions).
 - [`a11y-audit.md`](a11y-audit.md): accessibility findings `A11Y-01`…`A11Y-19`, mapped to WCAG success criteria.
+- [`status.md`](status.md): who is working on what, and Klára's intentional-or-not answers. Update it on this branch before starting a fix.
 
 They are kept apart because they have different readers and different acceptance criteria (taste versus WCAG).
 Overlaps are cross-referenced, not duplicated. The fix plan below merges both into PR-sized bundles.
