@@ -3,30 +3,44 @@ import { buildDataUrl, calculatorViewModel } from "@kalkulacka-one/app";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import { buildCanonicalUrl, type Canonical } from "@/routing/factories/url-builders";
 import { dataLoaderGuard } from "@/routing/guards/data-loader";
+import type { RouteSegments } from "@/routing/segments";
 
-type BaseMetadataOptions = { key: string; group?: string; canonicalUrl: string };
-type CalculatorPageMetadataOptions = BaseMetadataOptions & { locale: string };
+type MappedParams = { key: (segments: RouteSegments) => string; group: (segments: RouteSegments) => string | undefined };
 
-function titledPage(page: "guide" | "review" | "result" | "comparison") {
-  return async ({ locale, ...options }: CalculatorPageMetadataOptions): Promise<Metadata> => {
-    const t = await getTranslations({ locale, namespace: "koa.pages" });
-    return buildMetadata({ ...options, pageTitle: () => t(`${page}.title`) });
-  };
+export function createCalculatorMetadata({ canonical, mappedParams }: { canonical: Canonical; mappedParams: MappedParams }) {
+  function build(segments: RouteSegments, canonicalUrl: string, options: Pick<Parameters<typeof buildMetadata>[0], "pageTitle" | "ogImage"> = {}): Promise<Metadata> {
+    return buildMetadata({ key: mappedParams.key(segments), group: mappedParams.group(segments), canonicalUrl, ...options });
+  }
+
+  function titledPage(page: "guide" | "review" | "result" | "comparison") {
+    return async (segments: RouteSegments, locale: string): Promise<Metadata> => {
+      const t = await getTranslations({ locale, namespace: "koa.pages" });
+      return build(segments, canonical[page](segments, locale), { pageTitle: () => t(`${page}.title`) });
+    };
+  }
+
+  const calculatorMetadata = {
+    introduction: (segments: RouteSegments, locale: string): Promise<Metadata> => build(segments, canonical.introduction(segments, locale)),
+    guide: titledPage("guide"),
+    question: async (segments: RouteSegments, questionNumber: number, locale: string): Promise<Metadata> => {
+      const t = await getTranslations({ locale, namespace: "koa.pages" });
+      return build(segments, canonical.question(segments, questionNumber, locale), {
+        pageTitle: ({ questionCount }) => t("question.documentTitle", { current: questionNumber, total: questionCount }),
+      });
+    },
+    review: titledPage("review"),
+    result: titledPage("result"),
+    comparison: titledPage("comparison"),
+    publicResult: (segments: RouteSegments, publicId: string, locale: string): Promise<Metadata> =>
+      build(segments, canonical.publicResult(segments, publicId, locale), {
+        ogImage: { url: buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`), width: 2400, height: 1260 },
+      }),
+  } as const;
+
+  return { calculatorMetadata };
 }
-
-export const calculatorMetadata = {
-  introduction: (options: BaseMetadataOptions): Promise<Metadata> => buildMetadata(options),
-  guide: titledPage("guide"),
-  question: async ({ locale, questionNumber, ...options }: CalculatorPageMetadataOptions & { questionNumber: number }): Promise<Metadata> => {
-    const t = await getTranslations({ locale, namespace: "koa.pages" });
-    return buildMetadata({ ...options, pageTitle: ({ questionCount }) => t("question.documentTitle", { current: questionNumber, total: questionCount }) });
-  },
-  review: titledPage("review"),
-  result: titledPage("result"),
-  comparison: titledPage("comparison"),
-  publicResult: (options: Omit<Parameters<typeof buildMetadata>[0], "pageTitle">): Promise<Metadata> => buildMetadata(options),
-} as const;
 
 async function buildMetadata({
   key,

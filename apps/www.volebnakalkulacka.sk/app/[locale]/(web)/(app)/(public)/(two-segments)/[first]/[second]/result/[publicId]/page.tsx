@@ -1,7 +1,6 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
 import { prisma } from "@kalkulacka-one/database";
 import { sessionPathGuard } from "@kalkulacka-one/next";
-import { calculatorMetadata } from "@kalkulacka-one/next/metadata";
 import type { Answer } from "@kalkulacka-one/schema";
 
 import type { Metadata } from "next";
@@ -9,24 +8,12 @@ import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
 
 import { PublicResultPageWithData } from "@/components/client";
-import { buildCanonicalUrl, canonical, mappedParams } from "@/lib/routing";
+import { calculatorMetadata } from "@/lib/metadata";
+import { mappedParams } from "@/lib/routing";
 
 export async function generateMetadata({ params: routeParams }: { params: Promise<{ locale: Locale; first: string; second: string; publicId: string }> }): Promise<Metadata> {
   const { locale, publicId, ...segments } = await routeParams;
-  const key = mappedParams.key(segments);
-  const group = mappedParams.group(segments);
-  const canonicalUrl = canonical.publicResult(segments, publicId, locale);
-  const ogImageUrl = buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`);
-  return await calculatorMetadata.publicResult({
-    key,
-    group,
-    canonicalUrl,
-    ogImage: {
-      url: ogImageUrl,
-      width: 2400,
-      height: 1260,
-    },
-  });
+  return calculatorMetadata.publicResult(segments, publicId, locale);
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; publicId: string }> }) {
