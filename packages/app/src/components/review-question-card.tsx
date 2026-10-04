@@ -1,9 +1,10 @@
-import { Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
+import { Dialog, Icon, ToggleButton } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross } from "@kalkulacka-one/design-system/icons";
 import { Card } from "@kalkulacka-one/design-system/server";
 
-import { mdiStar, mdiStarOutline } from "@mdi/js";
+import { mdiChevronRight, mdiStar, mdiStarOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
 
 import type { AnswerViewModel, QuestionViewModel } from "@/view-models";
 
@@ -15,47 +16,97 @@ export type ReviewQuestionCard = {
   onImportantChange: (isImportant: boolean) => void;
 };
 
-// Recap row: the whole question statement (there is no tap-to-open detail view yet, so this is the only place to
-// read it while reviewing), the star and two small icon-only answer toggles. The star sits left of the statement and the
-// answers on a line below it, right-aligned for the thumb, on phones; from `sm` up everything is on one line. The yes/no toggles drop their visible "Ano"/"Ne" label for an aria-label
-// (Button renders icon-only children as a round button on its own); this list isn't the smoke test's target for
-// that visible label — only the question screen's switch keeps the visible text.
+// How long a chosen answer stays visible as selected before the dialog closes.
+const HOLD_MS = 120;
+
+const chipClasses = "koa:inline-flex koa:items-center koa:rounded-chip koa:px-2.5 koa:py-1 koa:text-sm koa:leading-[1.2] koa:font-medium koa:text-text";
+
+/**
+ * Recap row: just the question's title and how it was answered. Tapping it opens the whole question in a dialog, where
+ * the answer (and the star) can be changed. Keeping the controls out of the rows leaves one tab stop per row instead
+ * of three, and nothing for a thumb to mis-tap while scrolling a list of forty.
+ */
 export function ReviewQuestionCard({ question, answer, onAgreeChange, onDisagreeChange, onImportantChange }: ReviewQuestionCard) {
   const t = useTranslations("koa.components.reviewQuestionCard");
-  const { statement } = question;
+  const tPages = useTranslations("koa.pages");
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+
+  const { title, statement, detail, tags } = question;
+  const isYes = answer.answer?.answer === true;
+  const isNo = answer.answer?.answer === false;
+  const isImportant = answer.answer?.isImportant === true;
+
+  // Choosing an answer closes the dialog after a beat, like the question screen moves on; un-choosing it doesn't.
+  const handleAnswer = (change: (checked: boolean) => void) => (checked: boolean) => {
+    change(checked);
+    if (checked) {
+      closeTimer.current = setTimeout(() => setOpen(false), HOLD_MS);
+    }
+  };
+
   return (
     <Card shadow={false} className="koa:rounded-card! koa:border koa:border-border koa:shadow-card">
-      {/*
-       * 2026's compact recap row runs 64-76px tall with its titles fitting in one or two lines — ours
-       * forced 76px as a floor and spaced the two answer toggles wide enough that, together with the
-       * star, they left too little width for the title and pushed it to wrap further than 2026. The
-       * toggles below already pass size="small"; the design system's `answer` variant just ignored it
-       * until it gained a matching 36px compound (button.tsx) — paired here with a shorter row floor
-       * and tighter gaps so the title gets its width back too.
-       */}
-      <div className="koa:min-h-[64px] koa:py-3 koa:px-4 koa:sm:py-4 koa:sm:px-5 koa:grid koa:grid-cols-[auto_1fr] koa:sm:grid-cols-[auto_1fr_auto] koa:items-center koa:gap-x-2.5 koa:gap-y-3">
-        <div className="koa:col-start-1 koa:row-start-1 koa:self-start koa:sm:self-center">
-          <ToggleButton
-            size="xsmall"
-            color="neutral"
-            variant="round"
-            checked={answer.answer?.isImportant || false}
-            onChange={(checked: boolean) => onImportantChange(checked)}
-            aria-label={t("important")}
-          >
-            <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="koa:flex koa:min-h-16 koa:w-full koa:cursor-pointer koa:items-center koa:gap-3 koa:rounded-card koa:px-4 koa:py-3 koa:text-left koa:sm:px-5 koa:sm:py-4"
+      >
+        <span
+          aria-hidden="true"
+          className={`koa:flex koa:size-9 koa:shrink-0 koa:items-center koa:justify-center koa:rounded-full koa:border-[1.5px] ${
+            isYes
+              ? "koa:border-primary koa:bg-primary koa:text-on-bg-primary"
+              : isNo
+                ? "koa:border-secondary koa:bg-secondary koa:text-on-bg-secondary"
+                : "koa:border-dashed koa:border-border koa:text-text-muted"
+          }`}
+        >
+          {isYes && <Icon icon={logoCheck} size="small" decorative />}
+          {isNo && <Icon icon={logoCross} size="small" decorative />}
+        </span>
+        <span className="koa:min-w-0 koa:flex-1 koa:font-sans koa:text-[15px] koa:font-semibold koa:leading-snug koa:text-text koa:break-words koa:sm:text-[17px]">
+          {title}
+          {isYes && <span className="koa:sr-only"> – {t("yes")}</span>}
+          {isNo && <span className="koa:sr-only"> – {t("no")}</span>}
+          {isImportant && <span className="koa:sr-only"> – {t("important")}</span>}
+        </span>
+        {isImportant && <Icon icon={mdiStar} className="koa:shrink-0 koa:text-text-strong" size="medium" decorative />}
+        <Icon icon={mdiChevronRight} className="koa:shrink-0 koa:text-text-muted" size="medium" decorative />
+      </button>
+
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        closeLabel={tPages("common.close")}
+        title={statement}
+        eyebrow={
+          <div className="koa:flex koa:flex-wrap koa:gap-2">
+            {tags?.map((tag) => (
+              <span key={tag} className={`${chipClasses} koa:bg-surface-sunken`}>
+                {tag}
+              </span>
+            ))}
+            <span className={`${chipClasses} koa:border koa:border-border`}>{title}</span>
+          </div>
+        }
+      >
+        {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:leading-[1.5] koa:text-text-muted koa:break-words">{detail}</p>}
+        <div className="koa:@container koa:mt-2 koa:grid koa:grid-cols-[auto_1fr_1fr] koa:items-center koa:gap-3">
+          <ToggleButton variant="round" color="neutral" checked={isImportant} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
+            <Icon icon={isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
-        </div>
-        <h3 className="koa:col-start-2 koa:row-start-1 koa:font-sans koa:text-[15px] koa:sm:text-[17px] koa:font-semibold koa:text-text koa:leading-snug koa:break-words">{statement}</h3>
-        <div className="koa:col-span-2 koa:col-start-1 koa:row-start-2 koa:justify-self-end koa:sm:col-span-1 koa:sm:col-start-3 koa:sm:row-start-1 koa:flex koa:items-center koa:gap-1.5">
-          <ToggleButton size="small" variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
+          <ToggleButton variant="answer" color="primary" checked={isYes} onChange={handleAnswer(onAgreeChange)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
+            <span className="koa:hidden koa:@min-[264px]:inline">{t("yes")}</span>
           </ToggleButton>
-          <ToggleButton size="small" variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)} aria-label={t("no")}>
+          <ToggleButton variant="answer" color="secondary" checked={isNo} onChange={handleAnswer(onDisagreeChange)} aria-label={t("no")}>
             <Icon icon={logoCross} decorative={true} />
+            <span className="koa:hidden koa:@min-[264px]:inline">{t("no")}</span>
           </ToggleButton>
         </div>
-      </div>
+      </Dialog>
     </Card>
   );
 }

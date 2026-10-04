@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -34,28 +34,50 @@ describe("ReviewQuestionCard", () => {
     onImportantChange: vi.fn(),
   };
 
-  it("renders the whole question statement and the answer controls", () => {
+  const renderCard = (overrides: Partial<typeof props> = {}) =>
     render(
       <LocaleProvider locale="en" messages={enMessages}>
-        <ReviewQuestionCard {...props} />
+        <ReviewQuestionCard {...props} {...overrides} />
       </LocaleProvider>,
     );
 
-    expect(screen.getByText(props.question.statement)).toBeInTheDocument();
+  it("shows only the title and how it was answered, not the statement or the controls", () => {
+    renderCard();
+
+    expect(screen.getByRole("button", { name: /Test Question Title/ })).toHaveAccessibleName(/Yes/);
+    expect(screen.queryByText(props.question.statement)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("No")).not.toBeInTheDocument();
+  });
+
+  it("opens the whole question and the answer controls in a dialog", async () => {
+    const user = userEvent.setup();
+    renderCard();
+
+    await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
+
+    expect(screen.getByRole("dialog", { name: props.question.statement })).toBeInTheDocument();
+    expect(screen.getByText(props.question.detail ?? "")).toBeInTheDocument();
     expect(screen.getByLabelText("Yes")).toBeInTheDocument();
     expect(screen.getByLabelText("No")).toBeInTheDocument();
     expect(screen.getByLabelText("Important to me")).toBeInTheDocument();
+  });
+
+  it("closes the dialog from the close button", async () => {
+    const user = userEvent.setup();
+    renderCard();
+
+    await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
+    await user.click(screen.getByRole("button", { name: "Close" }));
+
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
   });
 
   describe("interactions", () => {
     it("calls onAgreeChange when agree button is clicked", async () => {
       const mockHandler = vi.fn();
       const user = userEvent.setup();
-      render(
-        <LocaleProvider locale="en" messages={enMessages}>
-          <ReviewQuestionCard {...props} onAgreeChange={mockHandler} />
-        </LocaleProvider>,
-      );
+      renderCard({ onAgreeChange: mockHandler });
+      await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
 
       await user.click(screen.getByLabelText("Yes"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
@@ -64,11 +86,8 @@ describe("ReviewQuestionCard", () => {
     it("calls onDisagreeChange when disagree button is clicked", async () => {
       const mockHandler = vi.fn();
       const user = userEvent.setup();
-      render(
-        <LocaleProvider locale="en" messages={enMessages}>
-          <ReviewQuestionCard {...props} onDisagreeChange={mockHandler} />
-        </LocaleProvider>,
-      );
+      renderCard({ onDisagreeChange: mockHandler });
+      await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
 
       await user.click(screen.getByLabelText("No"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
@@ -77,11 +96,8 @@ describe("ReviewQuestionCard", () => {
     it("calls onImportantChange when important button is clicked", async () => {
       const mockHandler = vi.fn();
       const user = userEvent.setup();
-      render(
-        <LocaleProvider locale="en" messages={enMessages}>
-          <ReviewQuestionCard {...props} onImportantChange={mockHandler} />
-        </LocaleProvider>,
-      );
+      renderCard({ onImportantChange: mockHandler });
+      await user.click(screen.getByRole("button", { name: /Test Question Title/ }));
 
       await user.click(screen.getByLabelText("Important to me"));
       expect(mockHandler).toHaveBeenCalledTimes(1);
