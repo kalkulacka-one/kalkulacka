@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   const key = mappedParams.key(segments);
   const group = mappedParams.group(segments);
   const canonicalUrl = canonical.review(segments, locale);
-  return generateCalculatorMetadata({ key, group, canonicalUrl });
+  return generateCalculatorMetadata({ key, group, canonicalUrl, locale, page: "review" });
 }
 
 export default async function Page({ params }: { params: Promise<{ embed: string; first: string; second: string }> }) {

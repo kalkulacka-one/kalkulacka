@@ -101,6 +101,9 @@
         "title": "Návod",
         "back": "Späť na úvod"
       },
+      "question": {
+        "documentTitle": "Otázka {current}/{total}"
+      },
       "publicResult": {
         "title": "Môj výsledok",
         "candidateLists": "Strany",

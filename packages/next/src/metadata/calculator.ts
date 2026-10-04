@@ -1,19 +1,39 @@
 import { buildDataUrl, calculatorViewModel } from "@kalkulacka-one/app";
 
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 import { dataLoaderGuard } from "@/routing/guards/data-loader";
+
+export type CalculatorPage = "guide" | "question" | "review" | "result" | "comparison";
+
+async function pageTitle({ page, questionNumber, locale, questionCount }: { page: CalculatorPage; questionNumber?: number; locale: string; questionCount: number }): Promise<string> {
+  const t = await getTranslations({ locale, namespace: "koa.pages" });
+  if (page === "question") {
+    if (questionNumber === undefined) {
+      throw new Error("questionNumber is required for the question page");
+    }
+    return t("question.documentTitle", { current: questionNumber, total: questionCount });
+  }
+  return t(`${page}.title`);
+}
 
 export async function generateCalculatorMetadata({
   key,
   group,
   canonicalUrl,
+  locale,
+  page,
+  questionNumber,
   ogImage: ogImageOverride,
   twitterImage: twitterImageOverride,
 }: {
   key: string;
   group?: string;
   canonicalUrl: string;
+  locale?: string;
+  page?: CalculatorPage;
+  questionNumber?: number;
   ogImage?: {
     url: string;
     width?: number;
@@ -66,14 +86,18 @@ export async function generateCalculatorMetadata({
     twitterImageAlt = ogImageAlt;
   }
 
+  const calculatorTitle = calculator.title || calculator.shortTitle;
+  const currentPageTitle = page && locale ? await pageTitle({ page, questionNumber, locale, questionCount: calculatorData.data.questions.length }) : undefined;
+
   const metadata: Metadata = {
-    title: calculator.title || calculator.shortTitle,
+    title: currentPageTitle ? `${currentPageTitle} · ${calculatorTitle}` : calculatorTitle,
     description: calculator.description,
     alternates: {
       canonical: canonicalUrl,
     },
+    // Bare calculator title, so a link shared mid-flow doesn't preview as "Otázka 7/30".
     openGraph: {
-      title: calculator.title || calculator.shortTitle,
+      title: calculatorTitle,
       description: calculator.description,
       url: canonicalUrl,
       ...(ogImageUrl && {
