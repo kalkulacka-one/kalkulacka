@@ -9,7 +9,7 @@ function LayoutComponent({ children }: Layout) {
   // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
   // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
   // taller than the screen.
-  return <div className="koa:min-h-screen koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
+  return <div className="koa:min-h-dvh koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
 }
 
 LayoutComponent.displayName = "Layout";
@@ -29,10 +29,14 @@ export type LayoutContent = {
   children: React.ReactNode;
   fullWidth?: boolean;
   fixed?: boolean;
+  // Lets a screen's own column take the space left below the header, so it can anchor its content to the bottom.
+  fill?: boolean;
 };
 
-function Content({ children, fullWidth }: LayoutContent) {
-  return <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>;
+function Content({ children, fullWidth, fill }: LayoutContent) {
+  return (
+    <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>
+  );
 }
 
 Content.displayName = "Layout.Content";
