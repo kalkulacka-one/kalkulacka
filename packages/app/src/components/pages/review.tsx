@@ -83,7 +83,8 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
         </div>
         <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{t("review.title")}</h3>
         <p className="koa:mb-5 koa:sm:mb-6 koa:max-w-prose koa:text-text-muted koa:leading-[1.5]">{t("review.description")}</p>
-        <div className="koa:grid koa:gap-2 koa:sm:gap-3">
+        {/* The floating button sticks 1rem above the page's end, so at the end of the list it sits over the last row; this room (measured: 7px of overlap) leaves a gap instead. */}
+        <div className="koa:mb-6 koa:grid koa:gap-2 koa:sm:gap-3">
           {questions.questions.map((question) => {
             const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
               answer: undefined,

@@ -15,8 +15,9 @@ export type ReviewQuestionCard = {
   onImportantChange: (isImportant: boolean) => void;
 };
 
-// How long a chosen answer stays visible as selected before the dialog closes.
-const HOLD_MS = 120;
+// How long a chosen answer stays visible as selected before the dialog closes. Longer than on the question screen,
+// where the card moving away carries the confirmation: here the dialog just closes, so the answer has to be seen.
+const HOLD_MS = 350;
 
 const chipClasses = "koa:inline-flex koa:items-center koa:rounded-chip koa:px-2.5 koa:py-1 koa:text-sm koa:leading-[1.2] koa:font-medium koa:text-text";
 
