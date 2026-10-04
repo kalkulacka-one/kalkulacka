@@ -4,7 +4,6 @@ import { Card } from "@kalkulacka-one/design-system/server";
 
 import { mdiStar, mdiStarOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef } from "react";
 
 import type { AnswerViewModel } from "@/view-models/answer";
 import type { QuestionViewModel } from "@/view-models/question";
@@ -32,45 +31,14 @@ export type QuestionCard = {
  * the two touch — this is the only thing giving the row its own breathing
  * room above it rather than reading as glued to the card's bottom edge.
  */
-// A new question eases in (a short fade and rise), so the change is legible even when two questions look alike.
-// Done in script rather than CSS so it only plays on a change, never on first paint, and so it can honour
-// prefers-reduced-motion. 150 ms matches the design system's `duration-base`.
-function useEnterMotion(questionId: string) {
-  const chipsRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const previousId = useRef(questionId);
-
-  useEffect(() => {
-    if (previousId.current === questionId) {
-      return;
-    }
-    previousId.current = questionId;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    for (const element of [chipsRef.current, textRef.current]) {
-      element?.animate(
-        [
-          { opacity: 0, transform: "translateY(6px)" },
-          { opacity: 1, transform: "none" },
-        ],
-        { duration: 150, easing: "cubic-bezier(0.2, 0.9, 0.3, 1)" },
-      );
-    }
-  }, [questionId]);
-
-  return { chipsRef, textRef };
-}
-
 export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange, onImportantChange }: QuestionCard) {
   const t = useTranslations("koa.components.questionNavigationCard");
   const { title, detail, statement, tags } = question;
-  const { chipsRef, textRef } = useEnterMotion(question.id);
 
   return (
     <Card shadow={false} className="koa:flex koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[34rem]">
       <div className="koa:flex koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
-        <div ref={chipsRef} className="koa:flex koa:flex-wrap koa:gap-2">
+        <div className="koa:flex koa:flex-wrap koa:gap-2">
           {tags?.map((tag) => (
             <span
               key={tag}
@@ -89,7 +57,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           stays on the answer button the user just pressed).
         */}
         <div aria-live="polite" aria-atomic="true">
-          <div ref={textRef} className="koa:flex koa:flex-col koa:gap-3">
+          <div className="koa:flex koa:flex-col koa:gap-3">
             <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
               {statement}
             </h3>
