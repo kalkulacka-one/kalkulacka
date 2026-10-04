@@ -43,7 +43,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           {tags?.map((tag) => (
             <span
               key={tag}
-              className="koa:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-[clamp(13.5px,13.1939px+0.0816vw,14.5px)] koa:leading-[1.2] koa:font-medium koa:text-text"
+              className="koa:hidden koa:sm:inline-flex koa:items-center koa:rounded-chip koa:bg-surface-sunken koa:px-2.5 koa:py-1 koa:text-[clamp(13.5px,13.1939px+0.0816vw,14.5px)] koa:leading-[1.2] koa:font-medium koa:text-text"
             >
               {tag}
             </span>
@@ -60,22 +60,26 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           chips and answer row above/below it, instead of forcing the card — and
           with it the page and the step row beneath — to grow past the viewport.
         */}
-        <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:justify-center koa:gap-3 koa:overflow-y-auto">
-          <h3 className="koa:font-sans koa:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">{statement}</h3>
-          {detail && <p className="koa:text-[clamp(15.5px,15.0408px+0.1224vw,17px)] koa:text-text-muted koa:leading-[1.62] koa:break-words">{detail}</p>}
+        <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto">
+          <div className="koa:my-auto koa:flex koa:flex-col koa:gap-3">
+            <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
+              {statement}
+            </h3>
+            {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
+          </div>
         </div>
 
-        <div className="koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-stretch">
+        <div className="koa:@container koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-center">
           <ToggleButton variant="round" color="neutral" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
           <ToggleButton variant="answer" color="primary" checked={answer.answer?.answer === true} onChange={(checked: boolean) => onAgreeChange(checked)} aria-label={t("yes")}>
             <Icon icon={logoCheck} decorative={true} />
-            <span className="koa:hidden koa:sm:inline">{t("yes")}</span>
+            <span className="koa:hidden koa:@min-[264px]:inline">{t("yes")}</span>
           </ToggleButton>
           <ToggleButton variant="answer" color="secondary" checked={answer.answer?.answer === false} onChange={(checked: boolean) => onDisagreeChange(checked)} aria-label={t("no")}>
             <Icon icon={logoCross} decorative={true} />
-            <span className="koa:hidden koa:sm:inline">{t("no")}</span>
+            <span className="koa:hidden koa:@min-[264px]:inline">{t("no")}</span>
           </ToggleButton>
         </div>
       </div>

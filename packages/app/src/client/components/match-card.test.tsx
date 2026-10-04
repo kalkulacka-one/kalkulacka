@@ -65,7 +65,7 @@ describe("MatchCard", () => {
     expect(screen.getByText("OD")).toBeInTheDocument();
   });
 
-  it("renders the answer comparison once expanded", async () => {
+  async function renderExpanded(userAnswer: boolean, candidateAnswer: boolean) {
     const questionId = "11111111-1111-1111-1111-111111111111";
 
     const mockCalculatorData = {
@@ -90,7 +90,7 @@ describe("MatchCard", () => {
           [mockCandidate.id]: [
             {
               questionId,
-              answer: false,
+              answer: candidateAnswer,
               comment: "Zavedení by bylo příliš nákladné.",
             },
           ],
@@ -102,7 +102,7 @@ describe("MatchCard", () => {
 
     const calculatorStore = createCalculatorStore(mockCalculatorData);
     const answersStore = createAnswersStore();
-    answersStore.getState().setAnswer({ questionId, answer: true });
+    answersStore.getState().setAnswer({ questionId, answer: userAnswer });
 
     const user = userEvent.setup();
 
@@ -117,6 +117,10 @@ describe("MatchCard", () => {
     );
 
     await user.click(screen.getByRole("button", { expanded: false }));
+  }
+
+  it("renders the answer comparison once expanded", async () => {
+    await renderExpanded(true, false);
 
     // The combined column header, shown once as a single unclipped line.
     expect(screen.getByText("Me • Candidate")).toBeInTheDocument();
@@ -124,5 +128,21 @@ describe("MatchCard", () => {
     // No middle-dot pill anymore — the two positions are two separate marks.
     expect(screen.queryByText("•", { exact: true })).not.toBeInTheDocument();
     expect(screen.getByText(/Zavedení by bylo příliš nákladné/)).toBeInTheDocument();
+  });
+
+  it("keeps the two marks apart when the answers differ", async () => {
+    await renderExpanded(true, false);
+
+    expect(document.querySelector(".koa\\:bg-primary, .koa\\:bg-secondary")).toBeNull();
+  });
+
+  it("joins the two marks in one solid pill when both agree", async () => {
+    await renderExpanded(true, true);
+    expect(document.querySelector(".koa\\:bg-primary")).not.toBeNull();
+  });
+
+  it("fills the joined pill the other way when both disagree", async () => {
+    await renderExpanded(false, false);
+    expect(document.querySelector(".koa\\:bg-secondary")).not.toBeNull();
   });
 });

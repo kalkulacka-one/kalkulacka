@@ -34,14 +34,14 @@ describe("ReviewQuestionCard", () => {
     onImportantChange: vi.fn(),
   };
 
-  it("renders the question title and the answer controls", () => {
+  it("renders the whole question statement and the answer controls", () => {
     render(
       <LocaleProvider locale="en" messages={enMessages}>
         <ReviewQuestionCard {...props} />
       </LocaleProvider>,
     );
 
-    expect(screen.getByText(props.question.title)).toBeInTheDocument();
+    expect(screen.getByText(props.question.statement)).toBeInTheDocument();
     expect(screen.getByLabelText("Yes")).toBeInTheDocument();
     expect(screen.getByLabelText("No")).toBeInTheDocument();
     expect(screen.getByLabelText("Important to me")).toBeInTheDocument();
