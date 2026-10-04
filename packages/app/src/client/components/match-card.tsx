@@ -108,30 +108,42 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                         return (
                           <li
                             key={comparison.questionId}
-                            className="koa:grid koa:grid-cols-[1fr_auto_auto] koa:items-start koa:gap-x-3 koa:gap-y-2 koa:border-b koa:border-border koa:py-3 koa:last:border-b-0 koa:last:pb-0"
+                            className="koa:grid koa:grid-cols-[1fr_auto] koa:items-start koa:gap-x-3 koa:gap-y-2 koa:border-b koa:border-border koa:py-3 koa:last:border-b-0 koa:last:pb-0"
                           >
                             <p className="koa:pt-0.5 koa:text-sm koa:font-medium koa:text-text-strong">{comparison.questionText}</p>
 
-                            {/* "Já" then "Kandidát", matching the header string's reading order. */}
-                            {(
-                              [
-                                ["user", comparison.userAnswer],
-                                ["candidate", comparison.candidateAnswer],
-                              ] as const
-                            ).map(([who, answer]) => (
-                              <IconBadge key={who} size="small" variant={answer === undefined ? "dashed" : "solid"} color={answer === true ? "primary" : answer === false ? "secondary" : "neutral"}>
-                                {answer !== undefined && <Icon icon={answer === true ? logoCheck : answer === false ? logoCross : logoSlash} decorative={true} />}
-                              </IconBadge>
-                            ))}
+                            {/* "Já" then "Kandidát", matching the header string's reading order. When both gave the same
+                                yes/no answer the two marks sit in one tinted pill, so agreement reads as a shape and not
+                                only as a colour; otherwise the same-sized pill is left bare and the marks stay separate. */}
+                            <span
+                              className={`koa:inline-flex koa:items-center koa:gap-1 koa:rounded-full koa:p-0.5 ${
+                                comparison.userAnswer === true && comparison.candidateAnswer === true
+                                  ? "koa:bg-primary"
+                                  : comparison.userAnswer === false && comparison.candidateAnswer === false
+                                    ? "koa:bg-secondary"
+                                    : ""
+                              }`}
+                            >
+                              {(
+                                [
+                                  ["user", comparison.userAnswer],
+                                  ["candidate", comparison.candidateAnswer],
+                                ] as const
+                              ).map(([who, answer]) => (
+                                <IconBadge key={who} size="small" variant={answer === undefined ? "dashed" : "solid"} color={answer === true ? "primary" : answer === false ? "secondary" : "neutral"}>
+                                  {answer !== undefined && <Icon icon={answer === true ? logoCheck : answer === false ? logoCross : logoSlash} decorative={true} />}
+                                </IconBadge>
+                              ))}
+                            </span>
 
                             {showsComment && (
-                              <blockquote className="koa:col-span-3 koa:text-text-muted koa:italic koa:pl-4 koa:border-l-2 koa:border-border koa:text-sm">
+                              <blockquote className="koa:col-span-2 koa:text-text-muted koa:italic koa:pl-4 koa:border-l-2 koa:border-border koa:text-sm">
                                 "{comparison.candidateComment || comparison.expertComment}"
                               </blockquote>
                             )}
 
                             {showsSourcesSection && (
-                              <div className="koa:col-span-3 koa:text-xs koa:text-text-muted">
+                              <div className="koa:col-span-2 koa:text-xs koa:text-text-muted">
                                 {noDirectCandidatePosition && respondent === "expert" ? (
                                   <div className="koa:inline-flex koa:items-center koa:gap-1 koa:px-2 koa:py-1 koa:rounded koa:bg-surface-sunken koa:text-text-strong koa:text-xs">
                                     <svg className="koa:w-3 koa:h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
