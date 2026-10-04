@@ -114,6 +114,7 @@
       },
       "review": {
         "title": "Review",
+        "description": "You can still check and change your answers here, and mark important questions with a star.",
         "back": "Back to questions"
       },
       "districtPicker": {
