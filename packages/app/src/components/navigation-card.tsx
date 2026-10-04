@@ -6,18 +6,22 @@ export type NavigationCard = {
   // the 2026 shell — no card chrome around it. Multi-control screens (question, result) keep the bordered card
   // surface beneath their row of controls, unchanged.
   bare?: boolean;
+  // With `bare`: from sm up, line the button up with the text column instead of centring it under it.
+  alignStart?: boolean;
 };
 
-export function NavigationCard({ children, bare = false }: NavigationCard) {
+export function NavigationCard({ children, bare = false, alignStart = false }: NavigationCard) {
   if (bare) {
     return (
       // No band behind the button anymore — like 2026, the pill floats on shadow alone: a tight contact shadow
       // plus a soft, wide ambient one, both tinted through `--ko-shadow-color` so they read as the page's own
-      // light rather than a grey halo. That is what separates it from a list scrolling underneath on a phone;
-      // sm+ lays the button out in the normal content flow (see `Layout`'s comment above), so it drops the
-      // shadow there same as before.
-      <div className="koa:@container koa:grid koa:justify-items-center koa:px-gutter koa:pb-4 koa:sm:p-0 koa:sm:mx-auto koa:sm:w-full koa:sm:max-w-xl koa:sm:px-4 koa:sm:py-3 koa:lg:py-4">
-        <div className="koa:pointer-events-auto koa:[&>:first-child]:shadow-[0_2px_6px_-2px_oklch(from_var(--ko-shadow-color)_l_c_h/0.2),0_10px_28px_-6px_oklch(from_var(--ko-shadow-color)_l_c_h/0.35),0_28px_64px_-12px_oklch(from_var(--ko-shadow-color)_l_c_h/0.28)] koa:sm:[&>:first-child]:shadow-none">
+      // light rather than a grey halo. That is what separates it from a list scrolling underneath — which the
+      // button does on desktop too (it stays docked while the review list scrolls), so the shadow stays on
+      // at every size.
+      <div
+        className={`koa:@container koa:grid koa:justify-items-center koa:px-gutter koa:pb-4 koa:sm:p-0 koa:sm:mx-auto koa:sm:w-full koa:sm:max-w-xl ${alignStart ? "koa:sm:justify-items-start koa:sm:px-gutter" : "koa:sm:px-4"} koa:sm:py-3 koa:lg:py-4`}
+      >
+        <div className="koa:pointer-events-auto koa:[&>:first-child]:shadow-[0_2px_6px_-2px_oklch(from_var(--ko-shadow-color)_l_c_h/0.2),0_10px_28px_-6px_oklch(from_var(--ko-shadow-color)_l_c_h/0.35),0_28px_64px_-12px_oklch(from_var(--ko-shadow-color)_l_c_h/0.28)]">
           {children}
         </div>
       </div>
