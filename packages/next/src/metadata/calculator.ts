@@ -9,7 +9,7 @@ import { buildCanonicalUrl, type Canonical } from "@/routing/factories/url-build
 import { dataLoaderGuard } from "@/routing/guards/data-loader";
 import type { RouteSegments } from "@/routing/segments";
 
-async function generateCalculatorMetadata({
+async function buildMetadata({
   key,
   group,
   canonicalUrl,
@@ -116,10 +116,10 @@ async function generateCalculatorMetadata({
 }
 
 export function createCalculatorMetadata({ canonical, mappedParams }: { canonical: Canonical; mappedParams: ReturnType<typeof createParamsMapper>["mappedParams"] }) {
-  const forPage = (segments: RouteSegments, options: Omit<Parameters<typeof generateCalculatorMetadata>[0], "key" | "group">) =>
-    generateCalculatorMetadata({ key: mappedParams.key(segments), group: mappedParams.group(segments), ...options });
+  const forPage = (segments: RouteSegments, options: Omit<Parameters<typeof buildMetadata>[0], "key" | "group">) =>
+    buildMetadata({ key: mappedParams.key(segments), group: mappedParams.group(segments), ...options });
 
-  const calculatorMetadata = {
+  return {
     introduction: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.introduction(segments, locale) }),
     guide: (segments: RouteSegments, locale: string) => forPage(segments, { locale, canonicalUrl: canonical.guide(segments, locale), pageTitle: (t) => t("guide.title") }),
     question: (segments: RouteSegments, questionNumber: number, locale: string) =>
@@ -141,6 +141,4 @@ export function createCalculatorMetadata({ canonical, mappedParams }: { canonica
         ogImage: { url: buildCanonicalUrl(`/api/images/sessions/${publicId}/opengraph`), width: 2400, height: 1260 },
       }),
   };
-
-  return { calculatorMetadata };
 }
