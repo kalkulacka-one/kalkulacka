@@ -38,7 +38,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
   return (
     <Card shadow={false} className="koa:flex koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[34rem]">
       <div className="koa:flex koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
-        <div className="koa:flex koa:flex-wrap koa:gap-2">
+        <div key={question.id} className="koa-question-enter koa:flex koa:flex-wrap koa:gap-2">
           {tags?.map((tag) => (
             <span
               key={tag}
@@ -52,13 +52,18 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           </span>
         </div>
 
-        <div className="koa:flex koa:flex-col koa:gap-3">
-          <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
-            {statement}
-          </h3>
-          {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
+        {/*
+          A stable live region around the keyed text: swapping its content announces the new question to screen
+          readers (focus stays on the answer button the user just pressed), while the key replays the enter motion.
+        */}
+        <div aria-live="polite" aria-atomic="true">
+          <div key={question.id} className="koa-question-enter koa:flex koa:flex-col koa:gap-3">
+            <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
+              {statement}
+            </h3>
+            {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
+          </div>
         </div>
-
         <div className="koa:@container koa:mt-auto koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-center">
           <ToggleButton variant="round" color="neutral" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />

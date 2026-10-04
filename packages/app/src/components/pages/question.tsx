@@ -3,6 +3,7 @@ import { SteppedProgressBar } from "@kalkulacka-one/design-system/server";
 
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef, useState } from "react";
 
 import { AppHeader, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
@@ -10,6 +11,9 @@ import { Layout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
+
+// Long enough to see the answer land, short enough to still feel instant.
+const ADVANCE_DELAY_MS = 180;
 
 export type QuestionPage = {
   embedContext: EmbedContextType;
@@ -30,35 +34,35 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
   const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
   const isAnswered = answer.answer?.answer !== undefined;
 
-  const handleAgreeChange = (checked: boolean) => {
+  // Paint the chosen answer, hold it for a beat, then move on. Navigating in the same tick meant the selected state
+  // never showed. Taps during the hold are ignored, so a double tap can't answer the next question by accident.
+  const advanceTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const [isAdvancing, setIsAdvancing] = useState(false);
+
+  // A different question (skip, back, or the hold ending) always ends the hold.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: question.id is the trigger, not a value read inside
+  useEffect(() => {
+    clearTimeout(advanceTimer.current);
+    setIsAdvancing(false);
+  }, [question.id]);
+  useEffect(() => () => clearTimeout(advanceTimer.current), []);
+
+  const handleAnswerChange = (value: boolean) => (checked: boolean) => {
+    if (isAdvancing) {
+      return;
+    }
+    answer.setAnswer({
+      questionId: question.id,
+      answer: checked ? value : undefined,
+    });
     if (checked) {
-      answer.setAnswer({
-        questionId: question.id,
-        answer: true,
-      });
-      onNextClick();
-    } else {
-      answer.setAnswer({
-        questionId: question.id,
-        answer: undefined,
-      });
+      setIsAdvancing(true);
+      advanceTimer.current = setTimeout(onNextClick, ADVANCE_DELAY_MS);
     }
   };
 
-  const handleDisagreeChange = (checked: boolean) => {
-    if (checked) {
-      answer.setAnswer({
-        questionId: question.id,
-        answer: false,
-      });
-      onNextClick();
-    } else {
-      answer.setAnswer({
-        questionId: question.id,
-        answer: undefined,
-      });
-    }
-  };
+  const handleAgreeChange = handleAnswerChange(true);
+  const handleDisagreeChange = handleAnswerChange(false);
 
   const handleImportantChange = (checked: boolean) => {
     answer.setAnswer({
