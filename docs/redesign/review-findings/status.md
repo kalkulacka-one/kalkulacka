@@ -34,7 +34,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-24 | Bug (design) | District picker on desktop: title sits at the page edge, description/search/list in a centred column | minor | ? | open |  |  |  |
 | F-25 | Opinion | Picker: unavailable ("Připravujeme") districts look *more* prominent than available ones | minor | ? | open |  |  |  |
 | F-26 | Gap | Result: donate card is off-grid and still in the old style | minor | ? | open |  |  |  |
-| F-28 | Bug (a11y/UX) | Every calculator step has the same document title | minor | — | open | Kryštof |  |  |
+| F-28 | Bug (a11y/UX) | Every calculator step has the same document title | minor | — | in progress | Kryštof | `metadata/calculator-step-titles` |  |
 | F-30 | Bug | New visitor: 401 console error from `session-data` on the intro | cosmetic | — | open | Kryštof |  |  |
 | F-31 | Question | Answers sometimes missing or different after reloading the result in a fresh browser | major if confirmed | — | open | Kryštof |  |  |
 | A11Y-01 | A11y | Candidate and user answer marks (✓/✗/–) have no text alternative; screen readers get none of the comparison | blocker | — | open |  |  |  |
@@ -42,7 +42,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | A11Y-03 | A11y | Share modal: focus doesn't move in, isn't trapped, Escape doesn't close, focus is lost on close, and the dialog is unnamed | major | — | in progress | Kryštof (Claude) | `fix/share-modal-dialog` |  |
 | A11Y-04 | A11y | Focus ring is primary at 55 % alpha: 2.17–2.26:1 against the page, below 3:1 | major | — | open |  |  |  |
 | A11Y-05 | A11y | Route changes announce nothing; focus drops to `<body>`, or stays on "Ano" while the question changes underneath | major | — | open |  |  |  |
-| A11Y-06 | A11y | Every calculator route has the same `<title>` | major | — | open | Kryštof |  |  |
+| A11Y-06 | A11y | Every calculator route has the same `<title>` | major | — | in progress | Kryštof | `metadata/calculator-step-titles` |  |
 | A11Y-07 | A11y | Enter does nothing on ★ / Ano / Ne (Headless `Switch`); only Space works | major | — | open |  |  |  |
 | A11Y-08 | A11y | At 390 px the whole document is 1351 px wide, and the header's close button sits off-screen at x = 1293 | major | — | open |  |  |  |
 | A11Y-09 | A11y | `<a>` wraps `<button>`: invalid nesting, two Tab stops per CTA, read as "link" plus "button" | major | — | open |  |  |  |
