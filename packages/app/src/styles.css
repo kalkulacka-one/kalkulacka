@@ -20,20 +20,3 @@ html:not([data-embed]) {
     radial-gradient(60% 50% at 85% 90%, color-mix(in oklab, var(--ko-color-secondary) 8%, transparent), transparent 70%);
   background-attachment: fixed;
 }
-
-/*
- * A new question eases in (a short fade and rise) so the change is legible even when two questions look alike.
- * The durations come from the design system's motion tokens, which prefers-reduced-motion collapses to ~0.
- */
-@layer components {
-  @keyframes koa-question-enter {
-    from {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-  }
-
-  .koa-question-enter {
-    animation: koa-question-enter var(--ko-motion-duration-base, 150ms) var(--ko-motion-easing-spring, cubic-bezier(0.2, 0.9, 0.3, 1)) both;
-  }
-}
