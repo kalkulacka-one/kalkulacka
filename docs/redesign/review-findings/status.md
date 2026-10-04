@@ -18,7 +18,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-08 | Bug (a11y) | Review screen: yes/no/star touch targets are ~36px, yes and no only 6px apart | major | chyba | open |  |  | To be solved by the recap modal (title only; answer changed in a modal), not by enlarging the inline buttons. |
 | F-09 | Opinion | Result: "Porovnat" sits at the end of the list instead of floating like every other screen's action | minor | chyba | open |  |  | Low priority, comes with F-05. |
 | F-10 | Gap | Comparison page still has the pre-2026 layout | major | — | open |  |  |  |
-| F-11 | Bug (UX) | Question screen: tapping Ano/Ne gives no "selected" confirmation before the next question replaces it | major | chyba | open |  |  |  |
+| F-11 | Bug (UX) | Question screen: tapping Ano/Ne gives no "selected" confirmation before the next question replaces it | major | chyba | in progress | Klára | redesign/answer-confirmation |  |
 | F-12 | Bug | Desktop: answer buttons and step row move with each question's text length; repeated clicks miss and select text | major | chyba | in progress | Klára | PR #661 | Fix first: desktop answer row jumps between questions. |
 | F-13 | Bug | Desktop: question screen scrolls ~16px for no reason; the progress bar fades under the header | minor | — | in progress | Klára | PR #661 |  |
 | F-14 | Bug | Result: the lists/people switch has lost its track, so it no longer reads as a switch | minor | chyba | open |  |  |  |
@@ -41,9 +41,9 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | A11Y-02 | A11y | At 320×256 (400 % zoom) the question text collapses to 0 px and the step row overlaps the answer buttons | blocker | — | in progress | Klára | PR #661 |  |
 | A11Y-03 | A11y | Share modal: focus doesn't move in, isn't trapped, Escape doesn't close, focus is lost on close, and the dialog is unnamed | major | — | open |  |  |  |
 | A11Y-04 | A11y | Focus ring is primary at 55 % alpha: 2.17–2.26:1 against the page, below 3:1 | major | — | open |  |  |  |
-| A11Y-05 | A11y | Route changes announce nothing; focus drops to `<body>`, or stays on "Ano" while the question changes underneath | major | — | open |  |  |  |
+| A11Y-05 | A11y | Route changes announce nothing; focus drops to `<body>`, or stays on "Ano" while the question changes underneath | major | — | in progress | Klára | redesign/answer-confirmation | Question part only (announce the new question). Route-title part is Kryštof's, #660. |
 | A11Y-06 | A11y | Every calculator route has the same `<title>` | major | — | done | Kryštof | #660 |  |
-| A11Y-07 | A11y | Enter does nothing on ★ / Ano / Ne (Headless `Switch`); only Space works | major | — | open |  |  |  |
+| A11Y-07 | A11y | Enter does nothing on ★ / Ano / Ne (Headless `Switch`); only Space works | major | — | in progress | Klára | redesign/answer-confirmation |  |
 | A11Y-08 | A11y | At 390 px the whole document is 1351 px wide, and the header's close button sits off-screen at x = 1293 | major | — | open |  |  |  |
 | A11Y-09 | A11y | `<a>` wraps `<button>`: invalid nesting, two Tab stops per CTA, read as "link" plus "button" | major | — | open |  |  |  |
 | A11Y-10 | A11y | Step counter "/40" in `text-subtle` is 2.81:1 | major | — | open |  |  |  |
