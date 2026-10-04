@@ -15,7 +15,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-05 | Bug | Bottom button covers the last line of text, even fully scrolled | major | — | open |  |  |  |
 | F-06 | Bug | Question screen: step row (back / 1/40 / skip) is hidden below the fold on iPhone | blocker | — | in progress | Klára | PR #661 |  |
 | F-07 | Bug | Question screen: nested scroll inside the card traps the gesture, with no sign the text scrolls | major | — | in progress | Klára | PR #661 |  |
-| F-08 | Bug (a11y) | Review screen: yes/no/star touch targets are ~36px, yes and no only 6px apart | major | chyba | in progress | Klára | redesign/dialog, redesign/recap-modal | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
+| F-08 | Bug (a11y) | Review screen: yes/no/star touch targets are ~36px, yes and no only 6px apart | major | chyba | PR #664 | Klára | redesign/recap-modal (on #663 Dialog) | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
 | F-09 | Opinion | Result: "Porovnat" sits at the end of the list instead of floating like every other screen's action | minor | chyba | open |  |  | Low priority, comes with F-05. |
 | F-10 | Gap | Comparison page still has the pre-2026 layout | major | — | open |  |  |  |
 | F-11 | Bug (UX) | Question screen: tapping Ano/Ne gives no "selected" confirmation before the next question replaces it | major | chyba | PR #662 | Klára | redesign/answer-confirmation |  |
@@ -28,7 +28,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-18 | Bug | District picker: search field and result rows have different widths | minor | — | open |  |  |  |
 | F-19 | Bug (design) | Guide: vertical spacing has no rhythm, and on mobile the cards are inset from the title | minor | chyba | open |  |  | Low priority. |
 | F-20 | Bug (a11y) | Keyboard: in Safari, plain Tab skips Návod/Přeskočit/Zavřít while it stops on ★/Ano/Ne | major | — | open |  |  |  |
-| F-21 | Bug (a11y) | Review: reaching "Zobrazit výsledky" by keyboard takes ~120 Tabs | major | — | in progress | Klára | redesign/dialog, redesign/recap-modal | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
+| F-21 | Bug (a11y) | Review: reaching "Zobrazit výsledky" by keyboard takes ~120 Tabs | major | — | PR #664 | Klára | redesign/recap-modal (on #663 Dialog) | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
 | F-22 | Bug | Result: the whole match card is clickable (expand) but shows no hover, cursor or focus cue | minor | — | open |  |  |  |
 | F-23 | Bug (a11y) | Share modal: Escape doesn't close it and focus isn't moved into it | major | — | open |  |  |  |
 | F-24 | Bug (design) | District picker on desktop: title sits at the page edge, description/search/list in a centred column | minor | chyba | open |  |  | Low priority. |
@@ -50,7 +50,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | A11Y-12 | A11y | District number badges (`text-muted` on `surface-sunken`) are 4.34:1 | minor | — | open |  |  |  |
 | A11Y-13 | A11y | "Podpořit Volební kalkulačku" (primary on `#f1f5f9`) is 4.15:1 | minor | — | open |  |  |  |
 | A11Y-14 | A11y | "Připravujeme" rows are 3.12:1 (name) and 3.95:1 (status) | minor | — | open |  |  |  |
-| A11Y-15 | A11y | Ano/Ne are `role="switch"` (on/off), not a choice; review exposes 40× identical "Ano"/"Ne"/"Pro mě důležité" | minor | — | in progress | Klára | redesign/dialog, redesign/recap-modal | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
+| A11Y-15 | A11y | Ano/Ne are `role="switch"` (on/off), not a choice; review exposes 40× identical "Ano"/"Ne"/"Pro mě důležité" | minor | — | PR #664 | Klára | redesign/recap-modal (on #663 Dialog) | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
 | A11Y-16 | A11y | Match-card progress bars have no accessible name | minor | — | open |  |  |  |
 | A11Y-17 | A11y | Heading structure: site name is the only `h1`, page titles are `h3`, no skip link | minor | — | open |  |  |  |
 | A11Y-18 | A11y | Roving tabindex on plain links: Tab reaches 1 of 18 enabled districts, and nothing tells you arrows work | minor | — | open |  |  |  |
