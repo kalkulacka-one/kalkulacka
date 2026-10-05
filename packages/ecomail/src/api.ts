@@ -6,21 +6,27 @@ const API_BASE = "https://api2.ecomailapp.cz";
 export const PER_PAGE = 1000;
 const MAX_RETRIES = 6;
 const MAX_WAIT_MS = 120_000;
+/** Per attempt, body included; a timed-out attempt is retried like a network error. A POST may wait longer: Ecomail imports the batch. */
+export const TIMEOUT_MS = { GET: 60_000, POST: 120_000 } as const;
 
 export class EcomailApiError extends Error {}
 
 const sleep = (ms: number) => new Promise((done) => setTimeout(done, ms));
 
-async function jsonBody(response: Response, label: string): Promise<unknown> {
+const isTimeout = (error: unknown) => error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
+
+/** `null` when reading the body timed out (retried like a network error); throws on a body that is not JSON. */
+async function jsonBody(response: Response, label: string): Promise<{ value: unknown } | null> {
   try {
-    return await response.json();
-  } catch {
+    return { value: await response.json() };
+  } catch (error) {
+    if (isTimeout(error)) return null;
     throw new EcomailApiError(`${label} → HTTP ${response.status} with a non-JSON body`);
   }
 }
 
 /**
- * Retries on 429 (honouring `Retry-After`, capped), 5xx and network errors; any other failure throws immediately, except a 422
+ * Retries on 429 (honouring `Retry-After`, capped), 5xx, network errors and timeouts (`TIMEOUT_MS`); any other failure throws immediately, except a 422
  * when `allow422` is set, whose JSON body is returned for the caller to inspect.
  */
 async function request(apiKey: string, method: "GET" | "POST", path: string, body?: unknown, allow422 = false): Promise<{ status: number; body: unknown }> {
@@ -31,12 +37,18 @@ async function request(apiKey: string, method: "GET" | "POST", path: string, bod
     let response: Response | null = null;
     let networkError: unknown = null;
     try {
-      response = await fetch(`${API_BASE}${path}`, { method, headers, ...(body !== undefined && { body: JSON.stringify(body) }) });
+      const signal = AbortSignal.timeout(TIMEOUT_MS[method]);
+      response = await fetch(`${API_BASE}${path}`, { method, headers, signal, ...(body !== undefined && { body: JSON.stringify(body) }) });
     } catch (error) {
       networkError = error;
     }
 
-    if (response?.ok || (allow422 && response?.status === 422)) return { status: response.status, body: await jsonBody(response, label) };
+    if (response?.ok || (allow422 && response?.status === 422)) {
+      const parsed = await jsonBody(response, label);
+      if (parsed) return { status: response.status, body: parsed.value };
+      networkError = new Error(`timed out reading the body after HTTP ${response.status}`);
+      response = null;
+    }
     if (response && response.status !== 429 && response.status < 500) throw new EcomailApiError(`${label} → HTTP ${response.status}`);
     if (attempt >= MAX_RETRIES) {
       const reason = response ? `HTTP ${response.status}` : networkError instanceof Error ? networkError.message : String(networkError);

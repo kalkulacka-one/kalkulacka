@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { BULK_LIMIT, bulkRequest, EcomailApiError, fetchListSubscribers, PER_PAGE, parseBulkErrors, subscribeBulk } from "./api.ts";
+import { BULK_LIMIT, bulkRequest, EcomailApiError, fetchListSubscribers, PER_PAGE, parseBulkErrors, subscribeBulk, TIMEOUT_MS } from "./api.ts";
 
 const fetchMock = vi.fn<typeof fetch>();
 
@@ -59,6 +59,29 @@ describe("fetchListSubscribers", () => {
     expect(fetchMock).toHaveBeenCalledTimes(7);
   });
 
+  it("gives each attempt a timeout and retries a timed-out one", async () => {
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockRejectedValueOnce(new DOMException("The operation was aborted due to timeout", "TimeoutError")).mockResolvedValueOnce(json({ data: records(1, "a"), last_page: 1 }));
+
+    const promise = fetchListSubscribers("key", 3, "subscribed");
+    await vi.advanceTimersByTimeAsync(1_000);
+    await expect(promise).resolves.toMatchObject({ records: [{}] });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(timeout).toHaveBeenCalledWith(TIMEOUT_MS.GET);
+    for (const [, init] of fetchMock.mock.calls) expect(init?.signal).toBeInstanceOf(AbortSignal);
+  });
+
+  it("retries when reading the body times out", async () => {
+    const stalled = new Response(null, { status: 200 });
+    vi.spyOn(stalled, "json").mockRejectedValueOnce(new DOMException("The operation was aborted due to timeout", "TimeoutError"));
+    fetchMock.mockResolvedValueOnce(stalled).mockResolvedValueOnce(json({ data: records(1, "a"), last_page: 1 }));
+
+    const promise = fetchListSubscribers("key", 3, "subscribed");
+    await vi.advanceTimersByTimeAsync(1_000);
+    await expect(promise).resolves.toMatchObject({ records: [{}] });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
   it("throws on a 401 without retrying", async () => {
     fetchMock.mockResolvedValueOnce(new Response("", { status: 401 }));
     await expect(fetchListSubscribers("key", 3, "subscribed")).rejects.toThrow(EcomailApiError);
@@ -114,6 +137,17 @@ describe("subscribeBulk", () => {
     const promise = subscribeBulk("key", 3, [subscriber]);
     await vi.advanceTimersByTimeAsync(1_000);
     await expect(promise).resolves.toMatchObject({ ok: true });
+    expect(fetchMock.mock.calls[1]?.[1]?.body).toBe(fetchMock.mock.calls[0]?.[1]?.body);
+  });
+
+  it("uses the longer POST timeout and retries a timed-out POST with the same body", async () => {
+    const timeout = vi.spyOn(AbortSignal, "timeout");
+    fetchMock.mockRejectedValueOnce(new DOMException("The operation was aborted due to timeout", "TimeoutError")).mockResolvedValueOnce(json({ inserts: 1 }));
+
+    const promise = subscribeBulk("key", 3, [subscriber]);
+    await vi.advanceTimersByTimeAsync(1_000);
+    await expect(promise).resolves.toEqual({ ok: true, inserts: 1 });
+    expect(timeout).toHaveBeenCalledWith(TIMEOUT_MS.POST);
     expect(fetchMock.mock.calls[1]?.[1]?.body).toBe(fetchMock.mock.calls[0]?.[1]?.body);
   });
 
