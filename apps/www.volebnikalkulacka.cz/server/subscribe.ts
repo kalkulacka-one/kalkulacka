@@ -6,7 +6,7 @@ import { PrismaClientKnownRequestError } from "@kalkulacka-one/database/library"
 import { z } from "zod";
 
 const subscribeBodySchema = z.object({
-  email: z.string().email("Neplatný formát"),
+  email: z.string().trim().normalize("NFC").pipe(z.email("Neplatný formát")),
   origin: z.enum(["subscribe-form", "join-us-form"]),
 });
 
@@ -20,6 +20,14 @@ export async function subscribe(body: SubscribeBody): Promise<{ success: true } 
   }
 
   try {
+    // Store the email as typed, but treat case variants as duplicates (the local part is case-sensitive, so we never rewrite it)
+    const existing = await prisma.$queryRaw<{ id: string }[]>`
+      SELECT id FROM "Subscription" WHERE origin = ${parsed.data.origin} AND lower(email) = lower(${parsed.data.email}) LIMIT 1
+    `;
+    if (existing.length > 0) {
+      return { success: true };
+    }
+
     await prisma.subscription.create({
       data: {
         email: parsed.data.email,
