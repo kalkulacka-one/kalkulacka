@@ -24,10 +24,12 @@
     "tailwind:watch": "npm run tailwind -- --watch",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "validate-emails": "turbo run build --filter=@kalkulacka-one/app --output-logs=errors-only && node dist/email-validation/cli/validate-emails.js"
   },
   "packageManager": "npm@11.5.2",
   "devDependencies": {
+    "@kalkulacka-one/database": "*",
     "@kalkulacka-one/typescript-config": "*",
     "@tailwindcss/cli": "^4.1.17",
     "@tailwindcss/postcss": "^4.1.17",
@@ -39,6 +41,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.22",
+    "dotenv": "^16.4.7",
     "postcss": "^8.5.6",
     "react": "^19.2.3",
     "tsc-alias": "^1.8.16",
