@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { Update } from "./plan.ts";
-import { IDS_PER_STATEMENT, type SqlClient, STATEMENTS_PER_TRANSACTION, write } from "./write.ts";
+import { IDS_PER_STATEMENT, type SqlClient, STATEMENTS_PER_TRANSACTION, TRANSACTION_OPTIONS, type TransactionOptions, write } from "./write.ts";
 
 type Statement = { sql: string; values: unknown[] };
 
@@ -10,14 +10,16 @@ const normalize = (sql: string) => sql.replace(/\s+/g, " ").trim();
 /** Counts each statement as the number of ids it targets (a fix targets one row). */
 function fakeClient(countOf: (statement: Statement) => number = (statement) => (Array.isArray(statement.values[1]) ? statement.values[1].length : 1)) {
   const transactions: Statement[][] = [];
+  const options: TransactionOptions[] = [];
   const client: SqlClient<Statement> = {
     executeRaw: (query, ...values) => ({ sql: query.join("?"), values }),
-    transaction: async (statements) => {
+    transaction: async (statements, transactionOptions) => {
       transactions.push(statements);
+      options.push(transactionOptions);
       return statements.map(countOf);
     },
   };
-  return { client, transactions };
+  return { client, transactions, options };
 }
 
 describe("write", () => {
@@ -63,14 +65,15 @@ describe("write", () => {
     expect(sql).toContain(`AND NOT EXISTS (SELECT 1 FROM "Subscription" AS "other" WHERE "other"."origin" = "Subscription"."origin" AND lower("other"."email") = lower(?))`);
   });
 
-  it("chunks ids per statement and statements per transaction", async () => {
+  it("chunks ids per statement and statements per transaction, each with the raised timeout", async () => {
     const updates: Update[] = Array.from({ length: IDS_PER_STATEMENT * STATEMENTS_PER_TRANSACTION + 1 }, (_, index) => ({ kind: "status", id: `v${index}`, status: "valid" }));
-    const { client, transactions } = fakeClient();
+    const { client, transactions, options } = fakeClient();
     const progress: number[] = [];
 
     await expect(write(client, updates, (written) => progress.push(written))).resolves.toEqual({ statuses: updates.length, fixes: 0 });
 
     expect(transactions.map((statements) => statements.length)).toEqual([STATEMENTS_PER_TRANSACTION, 1]);
+    expect(options).toEqual([TRANSACTION_OPTIONS, TRANSACTION_OPTIONS]);
     expect(transactions[1]?.[0]?.values[1]).toEqual([`v${updates.length - 1}`]);
     expect(progress).toEqual([IDS_PER_STATEMENT * STATEMENTS_PER_TRANSACTION, updates.length]);
   });

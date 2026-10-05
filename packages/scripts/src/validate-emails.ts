@@ -61,8 +61,10 @@ async function main() {
         return results;
       },
       write: async (updates) => {
-        const written = await write({ executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements) => prisma.$transaction(statements) }, updates, (count) =>
-          progress(`written ${count} / ${updates.length}`),
+        const written = await write(
+          { executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements, options) => prisma.$transaction(statements, options) },
+          updates,
+          (count) => progress(`written ${count} / ${updates.length}`),
         );
         process.stderr.write("\n");
         return written;
