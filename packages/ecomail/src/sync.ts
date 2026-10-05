@@ -62,6 +62,7 @@ export function parseZonedTimestamp(value: string | null | undefined): Date | nu
  * aligns with send times, while the Z-suffixed `unsubscribed_at` is 1–2 h early, so `unsubscribed_at` is never used.
  * When `unsubscribed_at_utc` is empty (contacts imported already unsubscribed, spam complaints), fall back to the last delivery
  * (an unsubscribe/complaint follows it), then to `subscribed_at_utc` (the import, when the status was set); `null` → sync time.
+ * Caveat: `subscriber.last_delivery` is account-wide, not per list.
  */
 export function ecomailUnsubscribedAt(record: EcomailRecord): { at: Date; source: Exclude<UnsubscribeSource, "sync_time"> } | null {
   const candidates = [
@@ -79,6 +80,14 @@ export function ecomailUnsubscribedAt(record: EcomailRecord): { at: Date; source
 function isHardBounced(record: EcomailRecord): boolean {
   const flag = record.subscriber?.bounced_hard;
   return flag === true || (typeof flag === "number" && flag > 0);
+}
+
+const sourceRank = (source: UnsubscribeSource) => UNSUBSCRIBE_SOURCES.indexOf(source);
+
+function isBetterUnsubscribe(found: { at: Date; source: UnsubscribeSource }, contact: EcomailContact): boolean {
+  if (!contact.unsubscribedAt || !contact.unsubscribedAtSource) return true;
+  const rank = sourceRank(found.source) - sourceRank(contact.unsubscribedAtSource);
+  return rank < 0 || (rank === 0 && found.at < contact.unsubscribedAt);
 }
 
 /** Folds the per-status listings into one contact per lower-cased email. */
@@ -105,8 +114,8 @@ export function collectContacts(byStatus: Partial<Record<EcomailStatus, EcomailR
       if (status === "unsubscribed" || status === "complained") {
         contact.unsubscribed = true;
         const found = ecomailUnsubscribedAt(record);
-        // Keep the earliest known unsubscribe if an email shows up twice.
-        if (found && (!contact.unsubscribedAt || found.at < contact.unsubscribedAt)) {
+        // Across several records of one email, a better-ranked source wins; within the same source, the earliest time.
+        if (found && isBetterUnsubscribe(found, contact)) {
           contact.unsubscribedAt = found.at;
           contact.unsubscribedAtSource = found.source;
         }
