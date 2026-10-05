@@ -14,10 +14,21 @@ model Subscription {
   origin   String
   metadata Json?
 
+  emailStatus    EmailStatus @default(unverified)
+  unsubscribedAt DateTime?   @db.Timestamptz(3)
+
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   updatedAt DateTime @updatedAt @db.Timestamptz(3)
 
   @@unique([email, origin])
+}
+
+enum EmailStatus {
+  valid
+  invalid
+  unverified
+  /// Hard bounce reported by the ESP
+  bounced
 }
 
 enum crdb_internal_region {
