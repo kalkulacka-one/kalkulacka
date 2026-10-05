@@ -1,23 +1,22 @@
 // Ecomail → DB pull: mirrors the state of the Ecomail list into Subscription rows (presence marker, unsubscribes, hard bounces).
 // Read-only towards Ecomail (GET only). Dry-run by default; writes only with --apply.
 //
-//   npm run ecomail:pull                       # dry-run: fetch, plan, print the summary
-//   npm run ecomail:pull -- --verbose          # … with full email lists per category
-//   npm run ecomail:pull -- --apply            # write the planned changes
-//   npm run ecomail:pull -- --apply --limit 10 # write at most 10 row updates (canary)
+//   npm run ecomail:pull -w @kalkulacka-one/ecomail                       # dry-run: fetch, plan, print the summary
+//   npm run ecomail:pull -w @kalkulacka-one/ecomail -- --verbose          # … with full email lists per category
+//   npm run ecomail:pull -w @kalkulacka-one/ecomail -- --apply            # write the planned changes
+//   npm run ecomail:pull -w @kalkulacka-one/ecomail -- --apply --limit 10 # write at most 10 row updates (canary)
 //
-// Env (from packages/database/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID (the Ecomail list to mirror).
+// Env (from packages/ecomail/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID (the Ecomail list to mirror).
+
+import type { PrismaClient } from "@kalkulacka-one/database";
 
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { config } from "dotenv";
 
-import type { PrismaClient } from "../src/db.ts";
-import { collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, parseUtcTimestamp, planSync, type RowUpdate, type SyncReport } from "./ecomail-sync.ts";
+import { fetchListSubscribers } from "./ecomail-api.ts";
+import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type RowUpdate, type SyncReport, UNSUBSCRIBE_SOURCES } from "./ecomail-sync.ts";
 
-const API_BASE = "https://api2.ecomailapp.cz";
-const PER_PAGE = 1000;
-const MAX_RETRIES = 6;
 const IDS_PER_STATEMENT = 1000;
 const STATEMENTS_PER_TRANSACTION = 100;
 const SAMPLES = 5;
@@ -37,54 +36,11 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-const sleep = (ms: number) => new Promise((done) => setTimeout(done, ms));
-
-type Page = { data?: EcomailRecord[]; last_page?: number; total?: number };
-
-async function getPage(apiKey: string, path: string): Promise<Page> {
-  for (let attempt = 0; ; attempt++) {
-    let retryAfterMs: number | null = null;
-    try {
-      const response = await fetch(`${API_BASE}${path}`, { method: "GET", headers: { key: apiKey, accept: "application/json" } });
-      if (response.ok) return (await response.json()) as Page;
-      if (response.status !== 429 && response.status < 500) fail(`GET ${path} → HTTP ${response.status}`);
-      const retryAfter = Number(response.headers.get("retry-after"));
-      if (retryAfter > 0) retryAfterMs = retryAfter * 1000;
-      if (attempt >= MAX_RETRIES) fail(`GET ${path} → HTTP ${response.status} after ${MAX_RETRIES} retries`);
-    } catch (error) {
-      if (attempt >= MAX_RETRIES) fail(`GET ${path} failed after ${MAX_RETRIES} retries: ${error instanceof Error ? error.message : String(error)}`);
-    }
-    await sleep(retryAfterMs ?? Math.min(60_000, 1000 * 2 ** attempt));
-  }
-}
-
 async function fetchStatus(apiKey: string, listId: number, status: EcomailStatus): Promise<EcomailRecord[]> {
-  const records: EcomailRecord[] = [];
-  let total: number | undefined;
-  for (let page = 1; ; page++) {
-    const body = await getPage(apiKey, `/lists/${listId}/subscribers?status=${status}&per_page=${PER_PAGE}&page=${page}`);
-    const data = body.data ?? [];
-    records.push(...data);
-    total = body.total ?? total;
-    process.stderr.write(`\r  ${status}: ${records.length}${total !== undefined ? ` / ${total}` : ""}   `);
-    if (data.length === 0 || page >= (body.last_page ?? page)) break;
-  }
+  const { records, total } = await fetchListSubscribers(apiKey, listId, status, (fetched, total) => process.stderr.write(`\r  ${status}: ${fetched}${total !== undefined ? ` / ${total}` : ""}   `));
   process.stderr.write("\n");
   if (total !== undefined && total !== records.length) console.warn(`  ⚠ ${status}: Ecomail reported ${total}, fetched ${records.length} (list changed mid-scan?)`);
   return records;
-}
-
-/** Diagnostic for the timestamp choice: how far the naive `unsubscribed_at` sits from `unsubscribed_at_utc`, in hours. */
-function timestampOffsets(records: EcomailRecord[]): Record<string, number> {
-  const offsets: Record<string, number> = {};
-  for (const record of records) {
-    const utc = parseUtcTimestamp(record.unsubscribed_at_utc);
-    const local = parseUtcTimestamp(record.unsubscribed_at);
-    if (!utc || !local) continue;
-    const hours = String(Math.round((local.getTime() - utc.getTime()) / 36e5));
-    offsets[hours] = (offsets[hours] ?? 0) + 1;
-  }
-  return offsets;
 }
 
 function printCategory(label: string, emails: string[]) {
@@ -93,25 +49,30 @@ function printCategory(label: string, emails: string[]) {
   console.log(`  ${label}: ${emails.length}${shown.length ? ` – ${shown.join(", ")}${more > 0 ? `, … (+${more})` : ""}` : ""}`);
 }
 
+function printSources(bySource: BySource) {
+  for (const source of UNSUBSCRIBE_SOURCES) if (bySource[source].length) printCategory(`    from ${source}`, bySource[source]);
+}
+
 function printReport(report: SyncReport, issues: ReturnType<typeof collectContacts>["issues"], updates: RowUpdate[]) {
   console.log("\nPlanned changes (rows):");
   printCategory("newly marked as in Ecomail", report.newlyMarked);
   printCategory("unsubscribedAt set", report.unsubscribedSet);
-  printCategory("  of which fallback to sync time (no Ecomail timestamp)", report.unsubscribedFallback);
+  printSources(report.unsubscribeSources.set);
   printCategory("unsubscribedAt changed", report.unsubscribedChanged);
+  printSources(report.unsubscribeSources.changed);
   printCategory("emailStatus → bounced", report.bouncedSet);
   console.log(`  rows to write: ${updates.length}`);
   console.log(`  unchanged (matched, nothing to write): ${report.unchanged}`);
   console.log(`  DB rows not in Ecomail: ${report.notInEcomail}`);
   console.log("\nReported only, never auto-resolved:");
   printCategory("newer consent than Ecomail unsubscribe (needs re-subscribe push)", report.newerConsent);
+  printSources(report.unsubscribeSources.newerConsent);
   printCategory("unsubscribedAt set in DB but subscribed in Ecomail (re-subscribe?)", report.resubscribed);
   printCategory("bounced in DB but not hard-bounced in Ecomail", report.bouncedNoLongerInEcomail);
   printCategory("metadata is not an object (cannot merge marker)", report.unmergeableMetadata);
   printCategory("in Ecomail without a DB row (not inserted)", report.ecomailOnly);
   printCategory("Ecomail emails seen under several statuses", issues.multipleStatuses);
   printCategory("Ecomail `bounced` without bounced_hard (not treated as hard bounce)", issues.bouncedWithoutHardFlag);
-  printCategory("unsubscribe time taken from zoned unsubscribed_at (no _utc)", issues.timestampFromZonedField);
 }
 
 async function write(prisma: PrismaClient, updates: RowUpdate[]): Promise<number> {
@@ -161,10 +122,10 @@ async function write(prisma: PrismaClient, updates: RowUpdate[]): Promise<number
 
 async function main() {
   const apiKey = process.env.ECOMAIL_API_KEY;
-  if (!apiKey) fail("ECOMAIL_API_KEY is not set (packages/database/.env)");
-  if (!process.env.DATABASE_URL) fail("DATABASE_URL is not set (packages/database/.env)");
+  if (!apiKey) fail("ECOMAIL_API_KEY is not set (packages/ecomail/.env)");
+  if (!process.env.DATABASE_URL) fail("DATABASE_URL is not set (packages/ecomail/.env)");
   const rawListId = process.env.ECOMAIL_LIST_ID?.trim();
-  if (!rawListId) fail("ECOMAIL_LIST_ID is not set (packages/database/.env)");
+  if (!rawListId) fail("ECOMAIL_LIST_ID is not set (packages/ecomail/.env)");
   if (!/^\d+$/.test(rawListId) || Number(rawListId) <= 0) fail(`ECOMAIL_LIST_ID must be a positive integer, got "${rawListId}"`);
   const listId = Number(rawListId);
 
@@ -173,15 +134,8 @@ async function main() {
   const byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>> = {};
   for (const status of ECOMAIL_STATUSES) byStatus[status] = await fetchStatus(apiKey, listId, status);
 
-  const offsets = timestampOffsets([...(byStatus.unsubscribed ?? []), ...(byStatus.complained ?? [])]);
-  console.log(`  unsubscribed_at − unsubscribed_at_utc (hours → records): ${JSON.stringify(offsets)}`);
-
   // Imported only after dotenv has run: the client reads DATABASE_URL when the module loads.
-  const dbModule = new URL("../dist/db.js", import.meta.url).href;
-  // dist is CommonJS; depending on export detection the client sits on the namespace or on its default export.
-  const db = (await import(dbModule)) as { prisma?: PrismaClient; default?: { prisma?: PrismaClient } };
-  const prisma = db.prisma ?? db.default?.prisma;
-  if (!prisma) fail("could not load the Prisma client from dist/db.js – run `npm run build` in packages/database");
+  const { prisma } = await import("@kalkulacka-one/database");
   try {
     console.log("Reading subscriptions…");
     const rows = await prisma.subscription.findMany({ select: { id: true, email: true, createdAt: true, metadata: true, emailStatus: true, unsubscribedAt: true } });

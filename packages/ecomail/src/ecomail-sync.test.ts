@@ -58,12 +58,12 @@ describe("ecomail pull planning", () => {
   });
 
   it("takes unsubscribedAt from Ecomail's UTC timestamp", () => {
-    const { updates, report } = plan({ unsubscribed: [{ email: "a@example.cz", unsubscribed_at: "2026-03-01 13:30:00", unsubscribed_at_utc: "2026-03-01 12:30:00" }] }, [
+    const { updates, report } = plan({ unsubscribed: [{ email: "a@example.cz", unsubscribed_at_utc: "2026-03-01 12:30:00", subscriber: { last_delivery: "2026-02-01 00:00:00" } }] }, [
       row({ id: "1", email: "a@example.cz" }),
     ]);
     expect(updates[0]?.unsubscribedAt?.toISOString()).toBe("2026-03-01T12:30:00.000Z");
     expect(report.unsubscribedSet).toEqual(["a@example.cz"]);
-    expect(report.unsubscribedFallback).toEqual([]);
+    expect(report.unsubscribeSources.set.unsubscribed_at_utc).toEqual(["a@example.cz"]);
   });
 
   it("treats complaints as unsubscribes and corrects a differing unsubscribedAt", () => {
@@ -71,27 +71,54 @@ describe("ecomail pull planning", () => {
     const { updates, report } = plan({ complained: [{ email: "a@example.cz", unsubscribed_at_utc: "2026-02-01T08:00:00.000000Z" }] }, rows);
     expect(updates[0]?.unsubscribedAt?.toISOString()).toBe("2026-02-01T08:00:00.000Z");
     expect(report.unsubscribedChanged).toEqual(["a@example.cz"]);
+    expect(report.unsubscribeSources.changed.unsubscribed_at_utc).toEqual(["a@example.cz"]);
   });
 
-  it("ignores a naive local unsubscribed_at but accepts a zoned one", () => {
-    expect(ecomailUnsubscribedAt({ email: "a", unsubscribed_at: "2026-03-01 13:30:00" }).at).toBeNull();
-    expect(ecomailUnsubscribedAt({ email: "a", unsubscribed_at: "2026-03-01T12:30:00.000000Z" })).toEqual({ at: new Date("2026-03-01T12:30:00Z"), fromZonedField: true });
+  it("falls back to last_delivery, then subscribed_at_utc, never to unsubscribed_at", () => {
+    // The Z-suffixed unsubscribed_at is verified wrong (1–2 h early) and must be ignored.
+    const onlyZonedUnsubscribedAt = { email: "a", unsubscribed_at: "2026-03-01T11:30:00.000000Z" };
+    expect(ecomailUnsubscribedAt(onlyZonedUnsubscribedAt)).toBeNull();
+    expect(ecomailUnsubscribedAt({ email: "a", subscribed_at_utc: "2026-01-10 09:00:00", subscriber: { last_delivery: "2026-02-15 18:00:00" } })).toEqual({
+      at: new Date("2026-02-15T18:00:00Z"),
+      source: "last_delivery",
+    });
+    expect(ecomailUnsubscribedAt({ email: "a", subscribed_at_utc: "2026-01-10 09:00:00", subscriber: { last_delivery: null } })).toEqual({
+      at: new Date("2026-01-10T09:00:00Z"),
+      source: "subscribed_at_utc",
+    });
+
+    const { updates, report } = plan(
+      {
+        unsubscribed: [{ email: "a@example.cz", subscriber: { last_delivery: "2026-02-15 18:00:00" } }],
+        complained: [{ email: "b@example.cz", subscribed_at_utc: "2026-01-10 09:00:00" }],
+      },
+      [row({ id: "1", email: "a@example.cz" }), row({ id: "2", email: "b@example.cz" })],
+    );
+    expect(updates.map((update) => update.unsubscribedAt?.toISOString())).toEqual(["2026-02-15T18:00:00.000Z", "2026-01-10T09:00:00.000Z"]);
+    expect(report.unsubscribeSources.set).toEqual({ unsubscribed_at_utc: [], last_delivery: ["a@example.cz"], subscribed_at_utc: ["b@example.cz"], sync_time: [] });
+  });
+
+  it("applies the consent rule to fallback timestamps too", () => {
+    const rows = [row({ id: "1", email: "a@example.cz", createdAt: new Date("2026-03-01T00:00:00Z") })];
+    const { updates, report } = plan({ unsubscribed: [{ email: "a@example.cz", subscribed_at_utc: "2026-01-10 09:00:00" }] }, rows);
+    expect(updates[0]?.unsubscribedAt ?? null).toBeNull();
+    expect(report.unsubscribeSources.newerConsent.subscribed_at_utc).toEqual(["a@example.cz"]);
   });
 
   it("falls back to the sync time when Ecomail has no timestamp, only once", () => {
     const rows = [row({ id: "1", email: "a@example.cz" })];
-    const first = plan({ unsubscribed: [{ email: "a@example.cz", unsubscribed_at: null, unsubscribed_at_utc: null }] }, rows);
+    const first = plan({ unsubscribed: [{ email: "a@example.cz", unsubscribed_at_utc: null, subscribed_at_utc: null, subscriber: { last_delivery: null } }] }, rows);
     expect(first.updates[0]?.unsubscribedAt).toEqual(NOW);
-    expect(first.report.unsubscribedFallback).toEqual(["a@example.cz"]);
+    expect(first.report.unsubscribeSources.set.sync_time).toEqual(["a@example.cz"]);
 
     const second = plan({ unsubscribed: [{ email: "a@example.cz" }] }, applyUpdates(rows, first.updates), new Date("2026-10-06T00:00:00Z"));
     expect(second.updates).toEqual([]);
   });
 
-  it("falls back even when the row has a newer consent (conservative)", () => {
+  it("falls back to the sync time even when the row has a newer consent (conservative)", () => {
     const { updates, report } = plan({ unsubscribed: [{ email: "a@example.cz" }] }, [row({ id: "1", email: "a@example.cz", createdAt: new Date("2026-09-01T00:00:00Z") })]);
     expect(updates[0]?.unsubscribedAt).toEqual(NOW);
-    expect(report.unsubscribedFallback).toEqual(["a@example.cz"]);
+    expect(report.unsubscribeSources.set.sync_time).toEqual(["a@example.cz"]);
   });
 
   it("leaves rows whose consent is newer than the Ecomail unsubscribe (createdAt)", () => {

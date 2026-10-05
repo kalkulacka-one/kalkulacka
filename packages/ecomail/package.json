@@ -1,0 +1,25 @@
+{
+  "name": "@kalkulacka-one/ecomail",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Ecomail integration – syncs the Ecomail list state into the database",
+  "type": "module",
+  "scripts": {
+    "ecomail:pull": "npm run build --prefix ../database && node --no-warnings src/ecomail-pull.ts",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@kalkulacka-one/database": "*"
+  },
+  "devDependencies": {
+    "@kalkulacka-one/typescript-config": "*",
+    "@types/node": "^22.19.1",
+    "dotenv": "^16.4.7",
+    "typescript": "^7.0.2"
+  }
+}

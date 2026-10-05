@@ -1,4 +1,4 @@
-// Pure core of the Ecomail → DB pull (`ecomail-pull.mts`): Ecomail list records + Subscription rows → planned row updates and
+// Pure core of the Ecomail → DB pull (`ecomail-pull.ts`): Ecomail list records + Subscription rows → planned row updates and
 // a report. No I/O here, so it can be unit-tested; the CLI does the fetching and the writing.
 
 /** The values Ecomail's `status` filter accepts as strings (numeric values are silently ignored by the API). */
@@ -8,10 +8,14 @@ export type EcomailStatus = (typeof ECOMAIL_STATUSES)[number];
 /** The subset of an Ecomail `GET /lists/{id}/subscribers` record this sync reads. */
 export type EcomailRecord = {
   email: string;
-  unsubscribed_at?: string | null;
   unsubscribed_at_utc?: string | null;
-  subscriber?: { bounced_hard?: number | boolean | null } | null;
+  subscribed_at_utc?: string | null;
+  subscriber?: { bounced_hard?: number | boolean | null; last_delivery?: string | null } | null;
 };
+
+/** Where an unsubscribe time came from, best first; `sync_time` means Ecomail gave nothing usable. */
+export const UNSUBSCRIBE_SOURCES = ["unsubscribed_at_utc", "last_delivery", "subscribed_at_utc", "sync_time"] as const;
+export type UnsubscribeSource = (typeof UNSUBSCRIBE_SOURCES)[number];
 
 export type EcomailContact = {
   /** Lower-cased email – the match key. */
@@ -20,6 +24,7 @@ export type EcomailContact = {
   unsubscribed: boolean;
   /** When the person unsubscribed or complained in Ecomail; `null` when Ecomail gives no usable timestamp. */
   unsubscribedAt: Date | null;
+  unsubscribedAtSource: Exclude<UnsubscribeSource, "sync_time"> | null;
   hardBounced: boolean;
 };
 
@@ -28,8 +33,6 @@ export type CollectIssues = {
   multipleStatuses: string[];
   /** Records under the `bounced` status whose subscriber has no hard-bounce flag – not treated as hard bounces. */
   bouncedWithoutHardFlag: string[];
-  /** Unsubscribed/complained records whose unsubscribe time came from `unsubscribed_at` because `unsubscribed_at_utc` was empty. */
-  timestampFromZonedField: string[];
 };
 
 const ZONED = /(Z|[+-]\d{2}:?\d{2})$/i;
@@ -55,15 +58,22 @@ export function parseZonedTimestamp(value: string | null | undefined): Date | nu
 }
 
 /**
- * Ecomail's unsubscribe time: `unsubscribed_at_utc` first (read as UTC), then `unsubscribed_at` only if it carries an explicit
- * zone (a naive `unsubscribed_at` is the account's local time and would be off by the UTC offset).
- * Verified 2026-10-05 against campaign `sent_at` (naive UTC): `_utc` read as UTC aligns with send times; the Z-suffixed `unsubscribed_at` is 1–2 h early.
+ * Ecomail's unsubscribe time. Naive API timestamps are UTC – verified 2026-10-05 against campaign `sent_at`: `_utc` read as UTC
+ * aligns with send times, while the Z-suffixed `unsubscribed_at` is 1–2 h early, so `unsubscribed_at` is never used.
+ * When `unsubscribed_at_utc` is empty (contacts imported already unsubscribed, spam complaints), fall back to the last delivery
+ * (an unsubscribe/complaint follows it), then to `subscribed_at_utc` (the import, when the status was set); `null` → sync time.
  */
-export function ecomailUnsubscribedAt(record: EcomailRecord): { at: Date | null; fromZonedField: boolean } {
-  const utc = parseUtcTimestamp(record.unsubscribed_at_utc);
-  if (utc) return { at: utc, fromZonedField: false };
-  const zoned = parseZonedTimestamp(record.unsubscribed_at);
-  return { at: zoned, fromZonedField: zoned !== null };
+export function ecomailUnsubscribedAt(record: EcomailRecord): { at: Date; source: Exclude<UnsubscribeSource, "sync_time"> } | null {
+  const candidates = [
+    ["unsubscribed_at_utc", record.unsubscribed_at_utc],
+    ["last_delivery", record.subscriber?.last_delivery],
+    ["subscribed_at_utc", record.subscribed_at_utc],
+  ] as const;
+  for (const [source, value] of candidates) {
+    const at = parseUtcTimestamp(value);
+    if (at) return { at, source };
+  }
+  return null;
 }
 
 function isHardBounced(record: EcomailRecord): boolean {
@@ -74,7 +84,7 @@ function isHardBounced(record: EcomailRecord): boolean {
 /** Folds the per-status listings into one contact per lower-cased email. */
 export function collectContacts(byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>>): { contacts: Map<string, EcomailContact>; issues: CollectIssues } {
   const contacts = new Map<string, EcomailContact>();
-  const issues: CollectIssues = { multipleStatuses: [], bouncedWithoutHardFlag: [], timestampFromZonedField: [] };
+  const issues: CollectIssues = { multipleStatuses: [], bouncedWithoutHardFlag: [] };
 
   for (const status of ECOMAIL_STATUSES) {
     for (const record of byStatus[status] ?? []) {
@@ -82,7 +92,7 @@ export function collectContacts(byStatus: Partial<Record<EcomailStatus, EcomailR
       if (!email) continue;
       let contact = contacts.get(email);
       if (!contact) {
-        contact = { email, statuses: new Set(), unsubscribed: false, unsubscribedAt: null, hardBounced: false };
+        contact = { email, statuses: new Set(), unsubscribed: false, unsubscribedAt: null, unsubscribedAtSource: null, hardBounced: false };
         contacts.set(email, contact);
       } else if (!contact.statuses.has(status)) {
         issues.multipleStatuses.push(email);
@@ -94,10 +104,12 @@ export function collectContacts(byStatus: Partial<Record<EcomailStatus, EcomailR
 
       if (status === "unsubscribed" || status === "complained") {
         contact.unsubscribed = true;
-        const { at, fromZonedField } = ecomailUnsubscribedAt(record);
-        if (fromZonedField) issues.timestampFromZonedField.push(email);
+        const found = ecomailUnsubscribedAt(record);
         // Keep the earliest known unsubscribe if an email shows up twice.
-        if (at && (!contact.unsubscribedAt || at < contact.unsubscribedAt)) contact.unsubscribedAt = at;
+        if (found && (!contact.unsubscribedAt || found.at < contact.unsubscribedAt)) {
+          contact.unsubscribedAt = found.at;
+          contact.unsubscribedAtSource = found.source;
+        }
       }
     }
   }
@@ -125,12 +137,14 @@ export type RowUpdate = {
   bounced: boolean;
 };
 
+export type BySource = Record<UnsubscribeSource, string[]>;
+
 export type SyncReport = {
   newlyMarked: string[];
   unsubscribedSet: string[];
   unsubscribedChanged: string[];
-  /** Subset of `unsubscribedSet`: Ecomail gave no usable timestamp, so the sync time was used. */
-  unsubscribedFallback: string[];
+  /** Which timestamp each set / changed / newer-consent unsubscribe came from. */
+  unsubscribeSources: { set: BySource; changed: BySource; newerConsent: BySource };
   /** Ecomail unsubscribe predates the row's last consent (createdAt / metadata.resubscribedAt) – left alone, needs a re-subscribe push. */
   newerConsent: string[];
   bouncedSet: string[];
@@ -149,6 +163,10 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+function emptyBySource(): BySource {
+  return { unsubscribed_at_utc: [], last_delivery: [], subscribed_at_utc: [], sync_time: [] };
+}
+
 /** Last time the person gave consent on our side: the row's creation, or a later re-subscribe if recorded. */
 export function lastConsentAt(row: SubscriptionRow): Date {
   const resubscribedAt = isPlainObject(row.metadata) && typeof row.metadata.resubscribedAt === "string" ? parseZonedTimestamp(row.metadata.resubscribedAt) : null;
@@ -160,7 +178,7 @@ export function planSync({ contacts, rows, listId, now }: { contacts: Map<string
     newlyMarked: [],
     unsubscribedSet: [],
     unsubscribedChanged: [],
-    unsubscribedFallback: [],
+    unsubscribeSources: { set: emptyBySource(), changed: emptyBySource(), newerConsent: emptyBySource() },
     newerConsent: [],
     bouncedSet: [],
     unchanged: 0,
@@ -201,16 +219,22 @@ export function planSync({ contacts, rows, listId, now }: { contacts: Map<string
         if (row.unsubscribedAt === null) {
           update.unsubscribedAt = now;
           report.unsubscribedSet.push(row.email);
-          report.unsubscribedFallback.push(row.email);
+          report.unsubscribeSources.set.sync_time.push(row.email);
         }
-      } else if (contact.unsubscribedAt <= lastConsentAt(row)) {
-        report.newerConsent.push(row.email);
-      } else if (row.unsubscribedAt === null) {
-        update.unsubscribedAt = contact.unsubscribedAt;
-        report.unsubscribedSet.push(row.email);
-      } else if (row.unsubscribedAt.getTime() !== contact.unsubscribedAt.getTime()) {
-        update.unsubscribedAt = contact.unsubscribedAt;
-        report.unsubscribedChanged.push(row.email);
+      } else {
+        const source = contact.unsubscribedAtSource ?? "sync_time";
+        if (contact.unsubscribedAt <= lastConsentAt(row)) {
+          report.newerConsent.push(row.email);
+          report.unsubscribeSources.newerConsent[source].push(row.email);
+        } else if (row.unsubscribedAt === null) {
+          update.unsubscribedAt = contact.unsubscribedAt;
+          report.unsubscribedSet.push(row.email);
+          report.unsubscribeSources.set[source].push(row.email);
+        } else if (row.unsubscribedAt.getTime() !== contact.unsubscribedAt.getTime()) {
+          update.unsubscribedAt = contact.unsubscribedAt;
+          report.unsubscribedChanged.push(row.email);
+          report.unsubscribeSources.changed[source].push(row.email);
+        }
       }
     } else if (row.unsubscribedAt !== null && contact.statuses.has("subscribed")) {
       report.resubscribed.push(row.email);
