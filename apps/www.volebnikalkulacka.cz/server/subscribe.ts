@@ -6,7 +6,7 @@ import { PrismaClientKnownRequestError } from "@kalkulacka-one/database/library"
 import { z } from "zod";
 
 const subscribeBodySchema = z.object({
-  email: z.string().email("Neplatný formát"),
+  email: z.string().trim().toLowerCase().normalize("NFC").pipe(z.email("Neplatný formát")),
   origin: z.enum(["subscribe-form", "join-us-form"]),
 });
 
