@@ -6,7 +6,9 @@
 //   npm run pull -w @kalkulacka-one/ecomail -- --apply --limit 10  # canary: risky kinds (unsubscribe, bounce) first
 //   npm run pull -w @kalkulacka-one/ecomail -- --apply             # write everything planned
 //
-// Env (packages/ecomail/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID.
+// Env (packages/ecomail/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID, ECOMAIL_ORIGINS.
+// ECOMAIL_ORIGINS is the comma-separated list of Subscription origins that belong to the list (e.g. `subscribe-form,import-2022`):
+// only rows of these origins are read and written; rows of other origins are invisible to the pull.
 //
 // Writes commit batch by batch, so a failure mid-run leaves a partial apply. Re-running is safe: the plan is idempotent and
 // picks up exactly the rows that still differ.
@@ -17,6 +19,7 @@ import { parseArgs } from "node:util";
 import { config } from "dotenv";
 
 import { fetchListSubscribers } from "./api.ts";
+import { parseOrigins, subscriptionsQuery } from "./origins.ts";
 import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type SyncReport, UNSUBSCRIBE_SOURCES } from "./sync.ts";
 import { countKinds, orderForApply, write } from "./write.ts";
 
@@ -95,8 +98,14 @@ async function main() {
   if (!rawListId) fail("ECOMAIL_LIST_ID is not set (packages/ecomail/.env)");
   if (!/^\d+$/.test(rawListId) || Number(rawListId) <= 0) fail(`ECOMAIL_LIST_ID must be a positive integer, got "${rawListId}"`);
   const listId = Number(rawListId);
+  let origins: string[] = [];
+  try {
+    origins = parseOrigins(process.env.ECOMAIL_ORIGINS);
+  } catch (error) {
+    fail(error instanceof Error ? error.message : String(error));
+  }
 
-  console.log(`Ecomail list ${listId} → Subscription (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
+  console.log(`Ecomail list ${listId} → Subscription [origin: ${origins.join(", ")}] (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
   console.log("Fetching Ecomail…");
   const byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>> = {};
   for (const status of ECOMAIL_STATUSES) byStatus[status] = await fetchStatus(apiKey, listId, status);
@@ -105,11 +114,11 @@ async function main() {
   const { prisma } = await import("@kalkulacka-one/database");
   try {
     console.log("Reading subscriptions…");
-    const rows = await prisma.subscription.findMany({ select: { id: true, email: true, createdAt: true, metadata: true, emailStatus: true, unsubscribedAt: true } });
+    const rows = await prisma.subscription.findMany(subscriptionsQuery(origins));
     console.log(`  ${rows.length} rows`);
 
     const { contacts, issues } = collectContacts(byStatus);
-    const { updates, report } = planSync({ contacts, rows, listId, now: new Date() });
+    const { updates, report } = planSync({ contacts, rows, origins, listId, now: new Date() });
     printReport(report, issues, updates.length);
 
     if (!apply) {
@@ -120,7 +129,7 @@ async function main() {
     const kinds = countKinds(batch);
     console.log(`\nWriting ${batch.length} row update(s): ${kinds.unsubscribe} unsubscribe, ${kinds.bounce} bounce, ${kinds.marker} marker only…`);
     const written = batch.length
-      ? await write({ executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements) => prisma.$transaction(statements) }, batch, (count) =>
+      ? await write({ executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements) => prisma.$transaction(statements) }, batch, origins, (count) =>
           process.stderr.write(`\r  written ${count} / ${batch.length}   `),
         )
       : 0;

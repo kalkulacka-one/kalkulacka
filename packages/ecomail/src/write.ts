@@ -40,9 +40,10 @@ export type SqlClient<Statement> = {
 /**
  * Rows needing the same change share one `id = ANY(…)` statement, so the first-run marking of every row (one shared marker)
  * collapses into a handful of statements. Each transaction commits on its own: a failure mid-run leaves a partial apply,
- * which a re-run completes.
+ * which a re-run completes. Every statement is also restricted to `origins`, so even a planning bug cannot touch rows of origins
+ * that do not belong to the list.
  */
-export async function write<Statement>(client: SqlClient<Statement>, updates: RowUpdate[], onProgress?: (written: number) => void): Promise<number> {
+export async function write<Statement>(client: SqlClient<Statement>, updates: RowUpdate[], origins: string[], onProgress?: (written: number) => void): Promise<number> {
   const groups = new Map<string, { update: RowUpdate; ids: string[] }>();
   for (const update of updates) {
     const key = `${update.ecomail ? 1 : 0}|${update.bounced ? 1 : 0}|${update.unsubscribedAt?.toISOString() ?? ""}`;
@@ -70,7 +71,7 @@ export async function write<Statement>(client: SqlClient<Statement>, updates: Ro
             "unsubscribedAt" = COALESCE(${update.unsubscribedAt}::TIMESTAMPTZ, "unsubscribedAt"),
             "emailStatus" = CASE WHEN ${update.bounced}::BOOL THEN 'bounced'::"EmailStatus" ELSE "emailStatus" END,
             "updatedAt" = now()
-          WHERE "id" = ANY(${chunk}::UUID[])`,
+          WHERE "id" = ANY(${chunk}::UUID[]) AND "origin" = ANY(${origins}::TEXT[])`,
       );
     }
   }

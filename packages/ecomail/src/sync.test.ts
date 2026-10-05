@@ -4,14 +4,15 @@ import { collectContacts, type EcomailRecord, type EcomailStatus, ecomailUnsubsc
 
 const NOW = new Date("2026-10-05T10:00:00.000Z");
 const CREATED = new Date("2025-01-01T00:00:00.000Z");
+const ORIGINS = ["subscribe-form", "import-2022"];
 
 function row(overrides: Partial<SubscriptionRow> & { id: string; email: string }): SubscriptionRow {
-  return { createdAt: CREATED, metadata: null, emailStatus: "unverified", unsubscribedAt: null, ...overrides };
+  return { origin: "subscribe-form", createdAt: CREATED, metadata: null, emailStatus: "unverified", unsubscribedAt: null, ...overrides };
 }
 
 function plan(byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>>, rows: SubscriptionRow[], now = NOW) {
   const { contacts, issues } = collectContacts(byStatus);
-  return { ...planSync({ contacts, rows, listId: 3, now }), issues };
+  return { ...planSync({ contacts, rows, origins: ORIGINS, listId: 3, now }), issues };
 }
 
 /** What the DB would hold after applying the updates (mirrors the SQL in pull.ts). */
@@ -43,6 +44,21 @@ describe("ecomail pull planning", () => {
     expect(updates.map((update) => update.id)).toEqual(["1", "2"]);
     expect(updates[0]?.ecomail).toEqual({ listId: 3, syncedAt: NOW.toISOString() });
     expect(report.notInEcomail).toBe(1);
+  });
+
+  it("ignores rows whose origin does not belong to the list", () => {
+    const rows = [
+      row({ id: "1", email: "a@example.cz", origin: "join-us-form" }),
+      row({ id: "2", email: "A@example.cz", origin: "import-2022" }),
+      row({ id: "3", email: "b@example.cz", origin: "join-us-form" }),
+    ];
+    const { updates, report } = plan(
+      { unsubscribed: [{ email: "a@example.cz", unsubscribed_at_utc: "2026-03-01 12:30:00" }], bounced: [{ email: "b@example.cz", subscriber: { bounced_hard: 1 } }] },
+      rows,
+    );
+    expect(updates.map((update) => update.id)).toEqual(["2"]);
+    expect(report.notInEcomail).toBe(0);
+    expect(report.ecomailOnly).toEqual(["b@example.cz"]);
   });
 
   it("merges the marker into existing metadata, keeping cities", () => {

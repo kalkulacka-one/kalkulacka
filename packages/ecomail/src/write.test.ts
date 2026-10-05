@@ -4,6 +4,7 @@ import type { RowUpdate } from "./sync.ts";
 import { countKinds, IDS_PER_STATEMENT, orderForApply, type SqlClient, STATEMENTS_PER_TRANSACTION, write } from "./write.ts";
 
 const MARKER = { listId: 3, syncedAt: "2026-10-05T10:00:00.000Z" };
+const ORIGINS = ["subscribe-form", "import-2022"];
 
 type Statement = { sql: string; values: unknown[] };
 
@@ -29,19 +30,23 @@ describe("write", () => {
     const updates = [update("a", { ecomail: MARKER }), update("b", { ecomail: MARKER }), update("c", { ecomail: MARKER, unsubscribedAt }), update("d", { bounced: true })];
     const { client, transactions } = fakeClient();
 
-    await expect(write(client, updates)).resolves.toBe(4);
+    await expect(write(client, updates, ORIGINS)).resolves.toBe(4);
 
     expect(transactions).toHaveLength(1);
     const statements = transactions[0] ?? [];
     expect(statements).toHaveLength(3);
-    for (const statement of statements) expect(statement.sql).toMatch(/^\s*UPDATE "Subscription" SET/);
+    for (const statement of statements) {
+      expect(statement.sql).toMatch(/^\s*UPDATE "Subscription" SET/);
+      expect(statement.sql).toMatch(/WHERE "id" = ANY\(\?::UUID\[\]\) AND "origin" = ANY\(\?::TEXT\[\]\)\s*$/);
+      expect(statement.values[6]).toEqual(ORIGINS);
+    }
 
     const [markerOnly, withUnsubscribe, bounce] = statements.map((statement) => statement.values);
-    expect(markerOnly).toEqual([JSON.stringify(MARKER), JSON.stringify(MARKER), JSON.stringify(MARKER), null, false, ["a", "b"]]);
+    expect(markerOnly).toEqual([JSON.stringify(MARKER), JSON.stringify(MARKER), JSON.stringify(MARKER), null, false, ["a", "b"], ORIGINS]);
     expect(withUnsubscribe?.[3]).toBeInstanceOf(Date);
     expect(withUnsubscribe?.[3]).toEqual(unsubscribedAt);
     expect(withUnsubscribe?.[5]).toEqual(["c"]);
-    expect(bounce).toEqual([null, null, null, null, true, ["d"]]);
+    expect(bounce).toEqual([null, null, null, null, true, ["d"], ORIGINS]);
   });
 
   it("chunks ids per statement and statements per transaction", async () => {
@@ -49,7 +54,7 @@ describe("write", () => {
     const unsubscribes = Array.from({ length: STATEMENTS_PER_TRANSACTION }, (_, index) => update(`u${index}`, { unsubscribedAt: new Date(Date.UTC(2026, 0, 1, 0, index)) }));
     const { client, transactions } = fakeClient();
 
-    await expect(write(client, [...markerOnly, ...unsubscribes])).resolves.toBe(markerOnly.length + unsubscribes.length);
+    await expect(write(client, [...markerOnly, ...unsubscribes], ORIGINS)).resolves.toBe(markerOnly.length + unsubscribes.length);
 
     expect(transactions.map((statements) => statements.length)).toEqual([STATEMENTS_PER_TRANSACTION, 2]);
     const idCounts = transactions.flat().map((statement) => (statement.values[5] as string[]).length);
