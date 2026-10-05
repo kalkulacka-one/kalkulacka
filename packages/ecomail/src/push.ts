@@ -1,0 +1,166 @@
+// DB → Ecomail push: adds valid, subscribed addresses that are not in the list yet, then marks their rows as in Ecomail.
+// The only write towards Ecomail is `subscribe-bulk`, which never updates or resubscribes existing contacts. Dry-run by default.
+//
+// `npm run sync` (pull, then push) is the normal entry point. A standalone push refuses to --apply unless a pull ran recently:
+// the newest `metadata.ecomail.syncedAt` of the list's origins must be at most --max-pull-age minutes old (default 15).
+//
+//   npm run push -w @kalkulacka-one/ecomail                        # dry-run: counts per origin
+//   npm run push -w @kalkulacka-one/ecomail -- --verbose           # … with the emails
+//   npm run push -w @kalkulacka-one/ecomail -- --apply --limit 10  # canary: the 10 longest-waiting addresses
+//   npm run push -w @kalkulacka-one/ecomail -- --apply             # send everything planned
+//
+// Env: as for the pull (packages/ecomail/.env). Each batch is marked right after Ecomail accepts it, so a failure mid-run
+// leaves the earlier batches marked; a re-run sends only what is still unmarked, and re-sending an address is a no-op.
+
+import { BULK_LIMIT, type BulkResult, type BulkSubscriber, subscribeBulk } from "./api.ts";
+import { type CliOptions, type EcomailEnv, isMain, type PrismaClient, printCategory, prismaSqlClient, runCli } from "./cli.ts";
+import { chunk, DEFAULT_MAX_PULL_AGE_MINUTES, fetchCandidates, fetchLastSyncedAt, type PushCandidateRow, type PushEmail, planPush, stalePullReason, toSubscriber } from "./push-plan.ts";
+import type { RowUpdate } from "./sync.ts";
+import { write } from "./write.ts";
+
+export type PushDeps = {
+  fetchCandidates: () => Promise<PushCandidateRow[]>;
+  subscribeBulk: (subscribers: BulkSubscriber[]) => Promise<BulkResult>;
+  markRows: (updates: RowUpdate[]) => Promise<number>;
+  now: () => Date;
+};
+
+/** `notInserted`: accepted addresses beyond the `inserts` Ecomail reported – dropped, or already in Ecomail. */
+export type PushOutcome = { planned: string[]; accepted: string[]; rejected: { email: string; reason: string }[]; failed: string[]; marked: number; notInserted: number };
+
+const perOrigin = (counts: Record<string, number>) =>
+  Object.entries(counts)
+    .map(([origin, count]) => `${origin} ${count}`)
+    .join(", ") || "–";
+
+/**
+ * Every accepted address counts as accepted (an already-existing contact too), so it is marked either way. Fewer `inserts` than
+ * addresses sent can also mean Ecomail dropped some silently: that is shouted, and the next pull reports any address still missing
+ * from the list under "DB rows not in Ecomail".
+ */
+function checkInserts(inserts: number | undefined, sent: number, outcome: PushOutcome) {
+  if (inserts === undefined) {
+    console.warn(`  ⚠ Ecomail accepted a batch of ${sent} without an \`inserts\` count – cannot tell whether every address was added`);
+  } else if (inserts < sent) {
+    outcome.notInserted += sent - inserts;
+    console.warn(
+      `  ⚠⚠⚠ Ecomail inserted only ${inserts} of ${sent} accepted address(es): ${sent - inserts} dropped or already in Ecomail. They are marked anyway; run \`pull\` and check "DB rows not in Ecomail".`,
+    );
+  }
+}
+
+/**
+ * Sends one batch. On a 422 that names individual subscribers, those are dropped and the rest is sent once more: whether
+ * Ecomail inserted the valid part of a rejected request is undocumented, and re-sending is harmless, so only a 2xx counts.
+ */
+async function sendBatch(deps: PushDeps, batch: PushEmail[], outcome: PushOutcome): Promise<PushEmail[]> {
+  const first = await deps.subscribeBulk(batch.map(toSubscriber));
+  if (first.ok) {
+    checkInserts(first.inserts, batch.length, outcome);
+    return batch;
+  }
+  if (!first.rejected) {
+    console.warn(`  ⚠ batch of ${batch.length} rejected as a whole: ${JSON.stringify(first.errors)}`);
+    outcome.failed.push(...batch.map((email) => email.email));
+    return [];
+  }
+  for (const [index, reason] of first.rejected) {
+    const email = batch[index];
+    if (email) outcome.rejected.push({ email: email.email, reason });
+  }
+  const rest = batch.filter((_, index) => !first.rejected?.has(index));
+  if (!rest.length) return [];
+  const second = await deps.subscribeBulk(rest.map(toSubscriber));
+  if (second.ok) {
+    checkInserts(second.inserts, rest.length, outcome);
+    return rest;
+  }
+  console.warn(`  ⚠ batch of ${rest.length} rejected again after dropping ${first.rejected.size}: ${JSON.stringify(second.errors)}`);
+  outcome.failed.push(...rest.map((email) => email.email));
+  return [];
+}
+
+/**
+ * The push against injected I/O; throws when any address was rejected or in a failed batch, after all batches ran and everything
+ * accepted was marked. `exclude`: normalised addresses the pull planned to write (see `planPush`).
+ */
+export async function push(
+  deps: PushDeps,
+  { apply, verbose, limit }: CliOptions,
+  { listId, origins }: Pick<EcomailEnv, "listId" | "origins">,
+  exclude: ReadonlySet<string> = new Set(),
+): Promise<PushOutcome> {
+  console.log(`Subscription [origin: ${origins.join(", ")}] → Ecomail list ${listId} (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
+  console.log("Reading candidates…");
+  const plan = planPush(await deps.fetchCandidates(), origins, exclude);
+  console.log("\nPlanned push:");
+  console.log(`  candidate rows by origin: ${perOrigin(plan.rowsByOrigin)}`);
+  printCategory(
+    verbose,
+    `emails to send (by origin of the oldest row: ${perOrigin(plan.emailsByOrigin)})`,
+    plan.emails.map((email) => email.email),
+  );
+  console.log(`  rows to mark: ${plan.rows}`);
+
+  const outcome: PushOutcome = { planned: plan.emails.map((email) => email.email), accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 };
+  if (!apply) {
+    console.log("\nDry-run – nothing sent. Re-run with --apply to send.");
+    return outcome;
+  }
+
+  const selected = plan.emails.slice(0, limit);
+  const batches = chunk(selected, BULK_LIMIT);
+  console.log(`\nSending ${selected.length} email(s) in ${batches.length} batch(es)…`);
+  const marker = { listId, syncedAt: deps.now().toISOString() };
+  for (const batch of batches) {
+    const accepted = await sendBatch(deps, batch, outcome);
+    outcome.accepted.push(...accepted.map((email) => email.email));
+    const updates = accepted.flatMap((email) => email.rowIds.map((id): RowUpdate => ({ id, email: email.email, ecomail: marker, unsubscribedAt: null, bounced: false })));
+    if (updates.length) outcome.marked += await deps.markRows(updates);
+    process.stderr.write(`\r  sent ${outcome.accepted.length + outcome.rejected.length + outcome.failed.length} / ${selected.length}   `);
+  }
+  process.stderr.write("\n");
+
+  console.log("\nDone:");
+  printCategory(verbose, "accepted by Ecomail", outcome.accepted);
+  console.log(`  rows marked: ${outcome.marked}`);
+  printCategory(
+    verbose,
+    "rejected by Ecomail (not marked)",
+    outcome.rejected.map(({ email, reason }) => (verbose ? `${email} (${reason})` : email)),
+  );
+  printCategory(verbose, "in failed batches (not marked)", outcome.failed);
+  if (outcome.notInserted) console.warn(`  ⚠ accepted but not reported as inserted: ${outcome.notInserted} – run \`pull\` and check "DB rows not in Ecomail"`);
+  const problems = [
+    outcome.rejected.length && `${outcome.rejected.length} email(s) rejected by Ecomail${verbose ? "" : " (--verbose lists them)"}`,
+    outcome.failed.length && `${outcome.failed.length} email(s) were in batches Ecomail rejected – re-run to retry`,
+  ].filter(Boolean);
+  if (problems.length) throw new Error(`${problems.join("; ")}; none of those was marked`);
+  return outcome;
+}
+
+/**
+ * The push against Ecomail and the DB; `prisma` is passed in so `sync` can share one client with the pull. `sync` passes the
+ * pull's addresses as `exclude`; a standalone push (no `exclude`) first checks that a pull ran recently.
+ */
+export async function runPush(options: CliOptions, { apiKey, listId, origins }: EcomailEnv, prisma: PrismaClient, exclude?: ReadonlySet<string>): Promise<void> {
+  if (!exclude) {
+    const lastSyncedAt = await fetchLastSyncedAt({ queryRaw: (query, ...values) => prisma.$queryRaw(query, ...values) }, origins);
+    const stale = stalePullReason(lastSyncedAt, new Date(), options.maxPullAge ?? DEFAULT_MAX_PULL_AGE_MINUTES);
+    if (stale && options.apply) throw new Error(`refusing to push: ${stale}`);
+    if (stale) console.warn(`⚠ ${stale} This dry-run may list addresses that are already in Ecomail.\n`);
+  }
+  await push(
+    {
+      fetchCandidates: () => fetchCandidates({ queryRaw: (query, ...values) => prisma.$queryRaw<PushCandidateRow[]>(query, ...values) }, origins),
+      subscribeBulk: (subscribers) => subscribeBulk(apiKey, listId, subscribers),
+      markRows: (updates) => write(prismaSqlClient(prisma), updates, origins),
+      now: () => new Date(),
+    },
+    options,
+    { listId, origins },
+    exclude,
+  );
+}
+
+if (isMain(import.meta.url)) await runCli("push", (options, env, prisma) => runPush(options, env, prisma));
