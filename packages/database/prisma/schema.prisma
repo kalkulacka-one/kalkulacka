@@ -28,10 +28,8 @@ model Subscription {
 enum EmailStatus {
   /// Deliverable as far as we can tell
   valid
-  /// Bad syntax, or the domain doesn't exist or has a null MX
+  /// Bad syntax, a known typo domain, or the domain doesn't exist / has a null MX
   invalid
-  /// Likely typo, needs manual fix
-  suspicious
   /// DNS check failed temporarily, retry
   unverified
   /// Hard bounce reported by the ESP

@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "public"."EmailStatus" AS ENUM ('valid', 'invalid', 'suspicious', 'unverified', 'bounced');
+CREATE TYPE "public"."EmailStatus" AS ENUM ('valid', 'invalid', 'unverified', 'bounced');
 
 -- AlterTable
 ALTER TABLE "public"."Subscription" ADD COLUMN "emailStatus" "public"."EmailStatus";
