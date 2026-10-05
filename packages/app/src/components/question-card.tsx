@@ -20,9 +20,11 @@ export type QuestionCard = {
  * The one card in the answering flow: chips, statement, detail, and — always
  * pinned to the card's own bottom, in thumb reach on a phone — the answer row.
  *
- * Height is reserved (`sm` and up) so the card doesn't resize from question to
- * question; short statements just leave the answer row where it is, with
- * spare room above it instead of the card shrinking to fit.
+ * The card never scrolls on its own. On a phone it stretches to the column so
+ * the answer row stays at the bottom of the screen; from `sm` up it has a
+ * minimum height, so the answer row stays in the same place from question to
+ * question and the text just starts at the top. Only a question longer than
+ * that minimum grows the card.
  *
  * `mb-2` below is deliberate, not decorative: the step row sits in the same
  * flex column right after this card (see pages/question.tsx), and without it
@@ -34,11 +36,8 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
   const { title, detail, statement, tags } = question;
 
   return (
-    <Card
-      shadow={false}
-      className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[min(28rem,calc(100dvh-16rem))]"
-    >
-      <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
+    <Card shadow={false} className="koa:flex koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[34rem]">
+      <div className="koa:flex koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
         <div className="koa:flex koa:flex-wrap koa:gap-2">
           {tags?.map((tag) => (
             <span
@@ -53,23 +52,14 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           </span>
         </div>
 
-        {/*
-          The one part of the card allowed to scroll: on a short viewport (390×664
-          measured), a long statement+detail can outgrow the card's reserved height.
-          `min-h-0` lets this flex item actually shrink to the space left by the
-          chips and answer row above/below it, instead of forcing the card — and
-          with it the page and the step row beneath — to grow past the viewport.
-        */}
-        <div className="koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto">
-          <div className="koa:my-auto koa:flex koa:flex-col koa:gap-3">
-            <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
-              {statement}
-            </h3>
-            {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
-          </div>
+        <div className="koa:flex koa:flex-col koa:gap-3">
+          <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
+            {statement}
+          </h3>
+          {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
         </div>
 
-        <div className="koa:@container koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-center">
+        <div className="koa:@container koa:mt-auto koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-center">
           <ToggleButton variant="round" color="neutral" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
           </ToggleButton>
