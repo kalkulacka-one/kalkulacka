@@ -14,12 +14,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@kalkulacka-one/database": "*"
+    "@kalkulacka-one/database": "*",
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
     "@types/node": "^22.19.1",
-    "dotenv": "^16.4.7",
     "typescript": "^7.0.2"
   }
 }

@@ -57,6 +57,24 @@ describe("ecomail pull planning", () => {
     expect(report.unmergeableMetadata).toEqual(["a@example.cz"]);
   });
 
+  it.each([
+    ["an array", ["odd"]],
+    ["a string", "odd"],
+  ])("still unsubscribes a row whose metadata is %s, without touching the metadata", (_, metadata) => {
+    const { updates, report } = plan({ unsubscribed: [{ email: "a@example.cz", unsubscribed_at_utc: "2026-03-01 12:30:00" }] }, [row({ id: "1", email: "a@example.cz", metadata })]);
+    expect(updates).toEqual([{ id: "1", email: "a@example.cz", ecomail: null, unsubscribedAt: new Date("2026-03-01T12:30:00Z"), bounced: false }]);
+    expect(report.unmergeableMetadata).toEqual(["a@example.cz"]);
+  });
+
+  it("reports an email under several statuses and lets the unsubscribe win", () => {
+    const { updates, report, issues } = plan({ subscribed: [{ email: "a@example.cz" }], unsubscribed: [{ email: "A@example.cz", unsubscribed_at_utc: "2026-03-01 12:30:00" }] }, [
+      row({ id: "1", email: "a@example.cz" }),
+    ]);
+    expect(issues.multipleStatuses).toEqual(["a@example.cz"]);
+    expect(updates[0]?.unsubscribedAt?.toISOString()).toBe("2026-03-01T12:30:00.000Z");
+    expect(report.resubscribed).toEqual([]);
+  });
+
   it("takes unsubscribedAt from Ecomail's UTC timestamp", () => {
     const { updates, report } = plan({ unsubscribed: [{ email: "a@example.cz", unsubscribed_at_utc: "2026-03-01 12:30:00", subscriber: { last_delivery: "2026-02-01 00:00:00" } }] }, [
       row({ id: "1", email: "a@example.cz" }),
