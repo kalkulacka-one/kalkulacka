@@ -1,0 +1,29 @@
+{
+  "name": "@kalkulacka-one/scripts",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Node-only maintenance CLIs over the database",
+  "type": "module",
+  "exports": {
+    "./email-validation": "./src/email-validation/index.ts"
+  },
+  "scripts": {
+    "validate-emails": "turbo run build --filter=@kalkulacka-one/scripts^... --output-logs=errors-only && node --no-warnings src/validate-emails.ts",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "ncu": "ncu",
+    "ncu:upgrade": "ncu -u",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@kalkulacka-one/database": "*",
+    "dotenv": "^16.4.7",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@kalkulacka-one/typescript-config": "*",
+    "@types/node": "^22.19.1",
+    "typescript": "^7.0.2"
+  }
+}
