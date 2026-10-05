@@ -21,7 +21,6 @@ export type IntroductionPage = {
 
 export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   const t = useTranslations("koa.pages");
-  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
     <Layout>
@@ -40,8 +39,7 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
         <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
         <Introduction calculator={calculator} />
       </Layout.Content>
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.navOffsetClassNames : undefined}>
+      <Layout.BottomNavigation>
         <IntroductionNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>

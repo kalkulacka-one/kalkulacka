@@ -22,7 +22,6 @@ export type CalculatorPickerPage = {
 
 export function CalculatorPickerPage({ embedContext, picker, heading, closeHref, homepageHref, privacyHref }: CalculatorPickerPage) {
   const t = useTranslations("koa.pages");
-  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
     <Layout>
@@ -48,7 +47,6 @@ export function CalculatorPickerPage({ embedContext, picker, heading, closeHref,
         <p className="koa:mb-4 koa:max-w-prose koa:text-text-muted">{t("calculatorPicker.description")}</p>
         <CalculatorPickerCards cards={picker.cards} startLabel={t("calculatorPicker.start")} unavailableLabel={t("districtPicker.unavailable")} />
       </Layout.Content>
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
