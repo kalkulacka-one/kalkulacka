@@ -1,12 +1,14 @@
-import type { DomainCheck } from "../check-domain";
-import { checkEmailSyntaxAndTypos, emailDomain } from "../check-email";
+import type { DomainCheck } from "../email-validation/check-domain.ts";
+import { checkEmailSyntaxAndTypos, emailDomain } from "../email-validation/check-email.ts";
 
 /** Mirrors the `EmailStatus` enum of `@kalkulacka-one/database`, kept local so planning stays a pure module. */
 export type EmailStatus = "valid" | "invalid" | "unverified" | "bounced";
 
 export type SubscriptionRow = { id: string; email: string; origin: string; emailStatus: EmailStatus };
 
-export type Reason = "syntax" | "typo" | "dns-invalid" | "dns-unknown";
+/** Why a row is `invalid`. Reported only, never stored. */
+export type Reason = "syntax" | "typo" | "dns";
+export const REASONS: readonly Reason[] = ["syntax", "typo", "dns"];
 
 export type Verdict = {
   id: string;
@@ -14,13 +16,17 @@ export type Verdict = {
   origin: string;
   domain: string | undefined;
   status: "valid" | "invalid" | "unverified";
+  /** Set for `invalid` rows only. */
   reason?: Reason;
+  /** Suggested correction: from a syntax or typo check, or from a look-alike warning. */
   suggestion?: string;
+  /** The look-alike heuristic fired; DNS still decided the status. */
+  suspect?: boolean;
 };
 
 export type StatusUpdate = { id: string; status: "valid" | "invalid" };
 
-/** Distinct lowercase domains that still need a DNS check: only of `unverified` rows that pass the syntax and typo check. */
+/** Distinct lowercase domains that need a DNS check: of `unverified` rows with valid syntax and no typo-map domain. Suspects are checked too. */
 export function domainsToCheck(rows: SubscriptionRow[]): string[] {
   const domains = new Set<string>();
   for (const row of rows) {
@@ -31,16 +37,22 @@ export function domainsToCheck(rows: SubscriptionRow[]): string[] {
   return [...domains].sort();
 }
 
-/** The status of one `unverified` row. A domain missing from `domainChecks` counts as `unknown`. */
+/**
+ * The status of one `unverified` row:
+ * - bad syntax → `invalid` (`syntax`); a domain from the typo map → `invalid` (`typo`), without DNS;
+ * - otherwise DNS decides: `ok` → `valid`, `invalid` → `invalid` (`dns`), `unknown` or not checked → stays `unverified`.
+ * A look-alike warning (fuzzy match, typo TLD) only marks the row as a suspect.
+ */
 export function judge(row: SubscriptionRow, domainChecks: ReadonlyMap<string, DomainCheck>): Verdict {
   const domain = emailDomain(row.email);
   const base = { id: row.id, email: row.email, origin: row.origin, domain };
   const check = checkEmailSyntaxAndTypos(row.email);
   if (!check.ok) return { ...base, status: "invalid", reason: check.reason, ...(check.suggestion ? { suggestion: check.suggestion } : {}) };
+  const suspect = check.suspect ? { suggestion: check.suspect, suspect: true } : {};
   const dns = (domain && domainChecks.get(domain)) ?? "unknown";
-  if (dns === "ok") return { ...base, status: "valid" };
-  if (dns === "invalid") return { ...base, status: "invalid", reason: "dns-invalid" };
-  return { ...base, status: "unverified", reason: "dns-unknown" };
+  if (dns === "ok") return { ...base, status: "valid", ...suspect };
+  if (dns === "invalid") return { ...base, status: "invalid", reason: "dns", ...suspect };
+  return { ...base, status: "unverified", ...suspect };
 }
 
 /**

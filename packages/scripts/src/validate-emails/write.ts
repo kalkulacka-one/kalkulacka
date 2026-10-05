@@ -1,4 +1,4 @@
-import type { StatusUpdate } from "./plan";
+import type { StatusUpdate } from "./plan.ts";
 
 export const IDS_PER_STATEMENT = 1000;
 export const STATEMENTS_PER_TRANSACTION = 100;

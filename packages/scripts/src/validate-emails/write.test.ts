@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import type { StatusUpdate } from "./plan";
-import { IDS_PER_STATEMENT, type SqlClient, STATEMENTS_PER_TRANSACTION, write } from "./write";
+import type { StatusUpdate } from "./plan.ts";
+import { IDS_PER_STATEMENT, type SqlClient, STATEMENTS_PER_TRANSACTION, write } from "./write.ts";
 
 type Statement = { sql: string; values: unknown[] };
 

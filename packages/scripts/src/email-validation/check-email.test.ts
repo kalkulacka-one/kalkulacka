@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { checkEmailSyntaxAndTypos, emailDomain, suggestDomain } from "./check-email";
+import { checkEmailSyntaxAndTypos, emailDomain, suggestDomain } from "./check-email.ts";
 
 describe("checkEmailSyntaxAndTypos", () => {
   it.each([
@@ -43,13 +43,24 @@ describe("checkEmailSyntaxAndTypos", () => {
     ["a@cetrum.cz", "a@centrum.cz"],
     ["a@icloud.con", "a@icloud.com"],
     ["a@protonmail.con", "a@protonmail.com"],
+  ])("flags %s from the typo map as a typo of %s", (email, suggestion) => {
+    expect(checkEmailSyntaxAndTypos(email)).toEqual({ ok: false, reason: "typo", suggestion });
+  });
+
+  it.each([
     ["a@hotmail.con", "a@hotmail.com"],
     ["a@firma.cpm", "a@firma.com"],
     ["a@seznam.cu", "a@seznam.cz"],
     ["a@outlok.com", "a@outlook.com"],
     ["a@cnetrum.cz", "a@centrum.cz"],
-  ])("flags %s as a typo of %s", (email, suggestion) => {
-    expect(checkEmailSyntaxAndTypos(email)).toEqual({ ok: false, reason: "typo", suggestion });
+    // Real, deliverable domains the heuristic matches: only a warning, DNS decides.
+    ["a@xmail.cz", "a@email.cz"],
+    ["a@smail.cz", "a@email.cz"],
+    ["a@cloud.com", "a@icloud.com"],
+    ["a@volna.cz", "a@volny.cz"],
+    ["a@volno.cz", "a@volny.cz"],
+  ])("passes %s on to DNS as a suspect of %s", (email, suspect) => {
+    expect(checkEmailSyntaxAndTypos(email)).toEqual({ ok: true, suspect });
   });
 
   it("reports a broken TLD as syntax, still with a suggestion", () => {
@@ -64,6 +75,12 @@ describe("checkEmailSyntaxAndTypos", () => {
   it("ignores case and keeps the local part as typed in the suggestion", () => {
     expect(checkEmailSyntaxAndTypos("Jana.Novak@Seznam.CZ")).toEqual({ ok: true });
     expect(checkEmailSyntaxAndTypos("Jana.Novak@GMAIL.CON")).toEqual({ ok: false, reason: "typo", suggestion: "Jana.Novak@gmail.com" });
+    expect(checkEmailSyntaxAndTypos("Jana.Novak@Hotmail.CON")).toEqual({ ok: true, suspect: "Jana.Novak@hotmail.com" });
+  });
+
+  it("ignores inherited object keys", () => {
+    expect(suggestDomain("constructor")).toBeUndefined();
+    expect(suggestDomain("firma.constructor")).toBeUndefined();
   });
 
   it("never treats the big Czech providers as typos of each other", () => {
