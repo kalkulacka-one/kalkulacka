@@ -14,10 +14,8 @@ model Subscription {
   origin   String
   metadata Json?
 
-  /// `null` means not yet checked
-  emailStatus    EmailStatus?
-  /// The person withdrew consent (unsubscribe or spam complaint)
-  unsubscribedAt DateTime?    @db.Timestamptz(3)
+  emailStatus    EmailStatus @default(unverified)
+  unsubscribedAt DateTime?   @db.Timestamptz(3)
 
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   updatedAt DateTime @updatedAt @db.Timestamptz(3)
@@ -26,11 +24,8 @@ model Subscription {
 }
 
 enum EmailStatus {
-  /// Deliverable as far as we can tell
   valid
-  /// Bad syntax, a known typo domain, or the domain doesn't exist / has a null MX
   invalid
-  /// DNS check failed temporarily, retry
   unverified
   /// Hard bounce reported by the ESP
   bounced
