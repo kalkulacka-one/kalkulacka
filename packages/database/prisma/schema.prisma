@@ -14,10 +14,28 @@ model Subscription {
   origin   String
   metadata Json?
 
+  /// `null` means not yet checked
+  emailStatus    EmailStatus?
+  /// The person withdrew consent (unsubscribe or spam complaint)
+  unsubscribedAt DateTime?    @db.Timestamptz(3)
+
   createdAt DateTime @default(now()) @db.Timestamptz(3)
   updatedAt DateTime @updatedAt @db.Timestamptz(3)
 
   @@unique([email, origin])
+}
+
+enum EmailStatus {
+  /// Deliverable as far as we can tell
+  valid
+  /// Bad syntax, or the domain doesn't exist or has a null MX
+  invalid
+  /// Likely typo, needs manual fix
+  suspicious
+  /// DNS check failed temporarily, retry
+  unverified
+  /// Hard bounce reported by the ESP
+  bounced
 }
 
 enum crdb_internal_region {
