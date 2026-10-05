@@ -6,7 +6,7 @@
 //   npm run ecomail:pull -- --apply            # write the planned changes
 //   npm run ecomail:pull -- --apply --limit 10 # write at most 10 row updates (canary)
 //
-// Env (from packages/database/.env): ECOMAIL_API_KEY, DATABASE_URL.
+// Env (from packages/database/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID (the Ecomail list to mirror).
 
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,7 +15,6 @@ import { config } from "dotenv";
 import type { PrismaClient } from "../src/db.ts";
 import { collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, parseUtcTimestamp, planSync, type RowUpdate, type SyncReport } from "./ecomail-sync.ts";
 
-const LIST_ID = 3;
 const API_BASE = "https://api2.ecomailapp.cz";
 const PER_PAGE = 1000;
 const MAX_RETRIES = 6;
@@ -59,11 +58,11 @@ async function getPage(apiKey: string, path: string): Promise<Page> {
   }
 }
 
-async function fetchStatus(apiKey: string, status: EcomailStatus): Promise<EcomailRecord[]> {
+async function fetchStatus(apiKey: string, listId: number, status: EcomailStatus): Promise<EcomailRecord[]> {
   const records: EcomailRecord[] = [];
   let total: number | undefined;
   for (let page = 1; ; page++) {
-    const body = await getPage(apiKey, `/lists/${LIST_ID}/subscribers?status=${status}&per_page=${PER_PAGE}&page=${page}`);
+    const body = await getPage(apiKey, `/lists/${listId}/subscribers?status=${status}&per_page=${PER_PAGE}&page=${page}`);
     const data = body.data ?? [];
     records.push(...data);
     total = body.total ?? total;
@@ -164,11 +163,15 @@ async function main() {
   const apiKey = process.env.ECOMAIL_API_KEY;
   if (!apiKey) fail("ECOMAIL_API_KEY is not set (packages/database/.env)");
   if (!process.env.DATABASE_URL) fail("DATABASE_URL is not set (packages/database/.env)");
+  const rawListId = process.env.ECOMAIL_LIST_ID?.trim();
+  if (!rawListId) fail("ECOMAIL_LIST_ID is not set (packages/database/.env)");
+  if (!/^\d+$/.test(rawListId) || Number(rawListId) <= 0) fail(`ECOMAIL_LIST_ID must be a positive integer, got "${rawListId}"`);
+  const listId = Number(rawListId);
 
-  console.log(`Ecomail list ${LIST_ID} → Subscription (${apply ? "APPLY" : "dry-run"})`);
+  console.log(`Ecomail list ${listId} → Subscription (${apply ? "APPLY" : "dry-run"})`);
   console.log("Fetching Ecomail…");
   const byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>> = {};
-  for (const status of ECOMAIL_STATUSES) byStatus[status] = await fetchStatus(apiKey, status);
+  for (const status of ECOMAIL_STATUSES) byStatus[status] = await fetchStatus(apiKey, listId, status);
 
   const offsets = timestampOffsets([...(byStatus.unsubscribed ?? []), ...(byStatus.complained ?? [])]);
   console.log(`  unsubscribed_at − unsubscribed_at_utc (hours → records): ${JSON.stringify(offsets)}`);
@@ -185,7 +188,7 @@ async function main() {
     console.log(`  ${rows.length} rows`);
 
     const { contacts, issues } = collectContacts(byStatus);
-    const { updates, report } = planSync({ contacts, rows, listId: LIST_ID, now: new Date() });
+    const { updates, report } = planSync({ contacts, rows, listId, now: new Date() });
     printReport(report, issues, updates);
 
     if (!apply) {

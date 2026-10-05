@@ -57,6 +57,7 @@ export function parseZonedTimestamp(value: string | null | undefined): Date | nu
 /**
  * Ecomail's unsubscribe time: `unsubscribed_at_utc` first (read as UTC), then `unsubscribed_at` only if it carries an explicit
  * zone (a naive `unsubscribed_at` is the account's local time and would be off by the UTC offset).
+ * Verified 2026-10-05 against campaign `sent_at` (naive UTC): `_utc` read as UTC aligns with send times; the Z-suffixed `unsubscribed_at` is 1–2 h early.
  */
 export function ecomailUnsubscribedAt(record: EcomailRecord): { at: Date | null; fromZonedField: boolean } {
   const utc = parseUtcTimestamp(record.unsubscribed_at_utc);
