@@ -1,40 +1,54 @@
-// Ecomail → DB pull: mirrors the state of the Ecomail list into Subscription rows (presence marker, unsubscribes, hard bounces).
+// Ecomail → DB pull: mirrors the state of an Ecomail list into Subscription rows (presence marker, unsubscribes, hard bounces).
 // Read-only towards Ecomail (GET only). Dry-run by default; writes only with --apply.
 //
-//   npm run pull -w @kalkulacka-one/ecomail                       # dry-run: fetch, plan, print the summary
-//   npm run pull -w @kalkulacka-one/ecomail -- --verbose          # … with full email lists per category
-//   npm run pull -w @kalkulacka-one/ecomail -- --apply            # write the planned changes
-//   npm run pull -w @kalkulacka-one/ecomail -- --apply --limit 10 # write at most 10 row updates (canary)
+//   npm run pull -w @kalkulacka-one/ecomail                        # dry-run: counts per category
+//   npm run pull -w @kalkulacka-one/ecomail -- --verbose           # … with the emails per category
+//   npm run pull -w @kalkulacka-one/ecomail -- --apply --limit 10  # canary: risky kinds (unsubscribe, bounce) first
+//   npm run pull -w @kalkulacka-one/ecomail -- --apply             # write everything planned
 //
-// Env (from packages/ecomail/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID (the Ecomail list to mirror).
-
-import type { PrismaClient } from "@kalkulacka-one/database";
+// Env (packages/ecomail/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID.
+//
+// Writes commit batch by batch, so a failure mid-run leaves a partial apply. Re-running is safe: the plan is idempotent and
+// picks up exactly the rows that still differ.
 
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseArgs } from "node:util";
 import { config } from "dotenv";
 
 import { fetchListSubscribers } from "./api.ts";
-import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type RowUpdate, type SyncReport, UNSUBSCRIBE_SOURCES } from "./sync.ts";
-
-const IDS_PER_STATEMENT = 1000;
-const STATEMENTS_PER_TRANSACTION = 100;
-const SAMPLES = 5;
-
-const here = dirname(fileURLToPath(import.meta.url));
-config({ path: resolve(here, "../.env"), quiet: true });
-
-const args = process.argv.slice(2);
-const apply = args.includes("--apply");
-const verbose = args.includes("--verbose");
-const limitIndex = args.indexOf("--limit");
-const limit = limitIndex >= 0 ? Number(args[limitIndex + 1]) : Number.POSITIVE_INFINITY;
-if (Number.isNaN(limit) || limit < 0) fail("--limit expects a non-negative number");
+import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type SyncReport, UNSUBSCRIBE_SOURCES } from "./sync.ts";
+import { countKinds, orderForApply, write } from "./write.ts";
 
 function fail(message: string): never {
   console.error(`ecomail pull: ${message}`);
   process.exit(1);
 }
+
+function parseCli() {
+  let values: { apply?: boolean; verbose?: boolean; limit?: string };
+  try {
+    ({ values } = parseArgs({
+      options: { apply: { type: "boolean" }, verbose: { type: "boolean" }, limit: { type: "string" } },
+      strict: true,
+      allowPositionals: false,
+    }));
+  } catch (error) {
+    fail(`${error instanceof Error ? error.message : String(error)}\nUsage: pull [--verbose] [--apply [--limit N]]`);
+  }
+  let limit: number | undefined;
+  if (values.limit !== undefined) {
+    if (!values.apply) fail("--limit only applies to --apply");
+    if (!/^\d+$/.test(values.limit) || Number(values.limit) <= 0) fail(`--limit expects a positive integer, got "${values.limit}"`);
+    limit = Number(values.limit);
+  }
+  return { apply: values.apply ?? false, verbose: values.verbose ?? false, limit };
+}
+
+const { apply, verbose, limit } = parseCli();
+
+const here = dirname(fileURLToPath(import.meta.url));
+config({ path: resolve(here, "../.env"), quiet: true });
 
 async function fetchStatus(apiKey: string, listId: number, status: EcomailStatus): Promise<EcomailRecord[]> {
   const { records, total } = await fetchListSubscribers(apiKey, listId, status, (fetched, total) => process.stderr.write(`\r  ${status}: ${fetched}${total !== undefined ? ` / ${total}` : ""}   `));
@@ -44,16 +58,14 @@ async function fetchStatus(apiKey: string, listId: number, status: EcomailStatus
 }
 
 function printCategory(label: string, emails: string[]) {
-  const shown = verbose ? emails : emails.slice(0, SAMPLES);
-  const more = emails.length - shown.length;
-  console.log(`  ${label}: ${emails.length}${shown.length ? ` – ${shown.join(", ")}${more > 0 ? `, … (+${more})` : ""}` : ""}`);
+  console.log(`  ${label}: ${emails.length}${verbose && emails.length ? ` – ${emails.join(", ")}` : ""}`);
 }
 
 function printSources(bySource: BySource) {
   for (const source of UNSUBSCRIBE_SOURCES) if (bySource[source].length) printCategory(`    from ${source}`, bySource[source]);
 }
 
-function printReport(report: SyncReport, issues: ReturnType<typeof collectContacts>["issues"], updates: RowUpdate[]) {
+function printReport(report: SyncReport, issues: ReturnType<typeof collectContacts>["issues"], rowsToWrite: number) {
   console.log("\nPlanned changes (rows):");
   printCategory("newly marked as in Ecomail", report.newlyMarked);
   printCategory("unsubscribedAt set", report.unsubscribedSet);
@@ -61,7 +73,7 @@ function printReport(report: SyncReport, issues: ReturnType<typeof collectContac
   printCategory("unsubscribedAt changed", report.unsubscribedChanged);
   printSources(report.unsubscribeSources.changed);
   printCategory("emailStatus → bounced", report.bouncedSet);
-  console.log(`  rows to write: ${updates.length}`);
+  console.log(`  rows to write: ${rowsToWrite}`);
   console.log(`  unchanged (matched, nothing to write): ${report.unchanged}`);
   console.log(`  DB rows not in Ecomail: ${report.notInEcomail}`);
   console.log("\nReported only, never auto-resolved:");
@@ -75,51 +87,6 @@ function printReport(report: SyncReport, issues: ReturnType<typeof collectContac
   printCategory("Ecomail `bounced` without bounced_hard (not treated as hard bounce)", issues.bouncedWithoutHardFlag);
 }
 
-async function write(prisma: PrismaClient, updates: RowUpdate[]): Promise<number> {
-  // Rows needing the same change share one statement: the marker is identical for the whole run, so the bulk first-run marking
-  // collapses into a handful of `id = ANY(…)` statements; unsubscribe timestamps differ per email and group by value.
-  const groups = new Map<string, { update: RowUpdate; ids: string[] }>();
-  for (const update of updates) {
-    const key = `${update.ecomail ? 1 : 0}|${update.bounced ? 1 : 0}|${update.unsubscribedAt?.toISOString() ?? ""}`;
-    const group = groups.get(key) ?? { update, ids: [] };
-    group.ids.push(update.id);
-    groups.set(key, group);
-  }
-
-  const statements = [];
-  for (const { update, ids } of groups.values()) {
-    const marker = update.ecomail ? JSON.stringify(update.ecomail) : null;
-    for (let i = 0; i < ids.length; i += IDS_PER_STATEMENT) {
-      const chunk = ids.slice(i, i + IDS_PER_STATEMENT);
-      // The marker is merged server-side (`||`) and only where it is still missing, so concurrent metadata writes (e.g. `cities`)
-      // and an earlier `syncedAt` are never overwritten.
-      statements.push(
-        () => prisma.$executeRaw`
-          UPDATE "Subscription" SET
-            "metadata" = CASE
-              WHEN ${marker}::JSONB IS NULL THEN "metadata"
-              WHEN "metadata" IS NULL OR jsonb_typeof("metadata") = 'null' THEN jsonb_build_object('ecomail', ${marker}::JSONB)
-              WHEN jsonb_typeof("metadata") = 'object' AND "metadata"->'ecomail' IS NULL THEN "metadata" || jsonb_build_object('ecomail', ${marker}::JSONB)
-              ELSE "metadata"
-            END,
-            "unsubscribedAt" = COALESCE(${update.unsubscribedAt}::TIMESTAMPTZ, "unsubscribedAt"),
-            "emailStatus" = CASE WHEN ${update.bounced}::BOOL THEN 'bounced'::"EmailStatus" ELSE "emailStatus" END,
-            "updatedAt" = now()
-          WHERE "id" = ANY(${chunk}::UUID[])`,
-      );
-    }
-  }
-
-  let written = 0;
-  for (let i = 0; i < statements.length; i += STATEMENTS_PER_TRANSACTION) {
-    const counts = await prisma.$transaction(statements.slice(i, i + STATEMENTS_PER_TRANSACTION).map((statement) => statement()));
-    written += counts.reduce((sum, count) => sum + count, 0);
-    process.stderr.write(`\r  written ${written} / ${updates.length}   `);
-  }
-  process.stderr.write("\n");
-  return written;
-}
-
 async function main() {
   const apiKey = process.env.ECOMAIL_API_KEY;
   if (!apiKey) fail("ECOMAIL_API_KEY is not set (packages/ecomail/.env)");
@@ -129,7 +96,7 @@ async function main() {
   if (!/^\d+$/.test(rawListId) || Number(rawListId) <= 0) fail(`ECOMAIL_LIST_ID must be a positive integer, got "${rawListId}"`);
   const listId = Number(rawListId);
 
-  console.log(`Ecomail list ${listId} → Subscription (${apply ? "APPLY" : "dry-run"})`);
+  console.log(`Ecomail list ${listId} → Subscription (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
   console.log("Fetching Ecomail…");
   const byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>> = {};
   for (const status of ECOMAIL_STATUSES) byStatus[status] = await fetchStatus(apiKey, listId, status);
@@ -143,15 +110,21 @@ async function main() {
 
     const { contacts, issues } = collectContacts(byStatus);
     const { updates, report } = planSync({ contacts, rows, listId, now: new Date() });
-    printReport(report, issues, updates);
+    printReport(report, issues, updates.length);
 
     if (!apply) {
       console.log("\nDry-run – nothing written. Re-run with --apply to write.");
       return;
     }
-    const batch = updates.slice(0, limit);
-    console.log(`\nWriting ${batch.length} row update(s)…`);
-    const written = batch.length ? await write(prisma, batch) : 0;
+    const batch = orderForApply(updates).slice(0, limit);
+    const kinds = countKinds(batch);
+    console.log(`\nWriting ${batch.length} row update(s): ${kinds.unsubscribe} unsubscribe, ${kinds.bounce} bounce, ${kinds.marker} marker only…`);
+    const written = batch.length
+      ? await write({ executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements) => prisma.$transaction(statements) }, batch, (count) =>
+          process.stderr.write(`\r  written ${count} / ${batch.length}   `),
+        )
+      : 0;
+    process.stderr.write("\n");
     console.log(`Done: ${written} row(s) updated${written !== batch.length ? ` (planned ${batch.length})` : ""}.`);
   } finally {
     await prisma.$disconnect();
