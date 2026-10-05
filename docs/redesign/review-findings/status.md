@@ -11,16 +11,16 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-01 | Bug | Header wordmark text is too small, especially on desktop | major | chyba | open |  |  | Low priority: scale the wordmark up from sm:. |
 | F-02 | Bug | Picker description fades to a ghost on scroll | major | — | open |  |  |  |
 | F-03 | Bug (design) | Search field and highlighted result both show a focus ring | minor | — | open |  |  |  |
-| F-04 | Bug | Short pages scroll on iPhone; the title scrolls away under the header | minor | — | in progress | Klára | PR #661 |  |
+| F-04 | Bug | Short pages scroll on iPhone; the title scrolls away under the header | minor | — | merged | Klára | #661 | Chromium: intro doesn't scroll at 390×664. iOS Safari toolbar behaviour still to check on a device. |
 | F-05 | Bug | Bottom button covers the last line of text, even fully scrolled | major | — | PR #665 | Kryštof | #665 |  |
-| F-06 | Bug | Question screen: step row (back / 1/40 / skip) is hidden below the fold on iPhone | blocker | — | in progress | Klára | PR #661 |  |
-| F-07 | Bug | Question screen: nested scroll inside the card traps the gesture, with no sign the text scrolls | major | — | in progress | Klára | PR #661 |  |
+| F-06 | Bug | Question screen: step row (back / 1/40 / skip) is hidden below the fold on iPhone | blocker | — | merged | Klára | #661 | Verified on staging 2026-10-05 (Chromium 390×664, 390×844): the step row is in view at load on 29 of 30 questions; q16 is long, so the page scrolls (intended). Real iPhone Safari still to check. |
+| F-07 | Bug | Question screen: nested scroll inside the card traps the gesture, with no sign the text scrolls | major | — | merged | Klára | #661 | Verified 2026-10-05: no inner scrollers on any question. |
 | F-08 | Bug (a11y) | Review screen: yes/no/star touch targets are ~36px, yes and no only 6px apart | major | chyba | PR #664 | Klára | redesign/recap-modal (on #663 Dialog) | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
 | F-09 | Opinion | Result: "Porovnat" sits at the end of the list instead of floating like every other screen's action | minor | chyba | open |  |  | Low priority, comes with F-05. |
 | F-10 | Gap | Comparison page still has the pre-2026 layout | major | — | open |  |  |  |
 | F-11 | Bug (UX) | Question screen: tapping Ano/Ne gives no "selected" confirmation before the next question replaces it | major | chyba | PR #662 | Klára | redesign/answer-confirmation |  |
-| F-12 | Bug | Desktop: answer buttons and step row move with each question's text length; repeated clicks miss and select text | major | chyba | in progress | Klára | PR #661 | Fix first: desktop answer row jumps between questions. |
-| F-13 | Bug | Desktop: question screen scrolls ~16px for no reason; the progress bar fades under the header | minor | — | in progress | Klára | PR #661 |  |
+| F-12 | Bug | Desktop: answer buttons and step row move with each question's text length; repeated clicks miss and select text | major | chyba | merged | Klára | #661 | Verified on staging 2026-10-05 (Chromium, 30 questions): Ano never moves at 1440×900 or 1280×720. |
+| F-13 | Bug | Desktop: question screen scrolls ~16px for no reason; the progress bar fades under the header | minor | — | reopened | Klára | #661 | Partly: no scroll at 1440×900, but at 1280×720 every question scrolls 70px and the step row is cut at the fold (card `sm:min-h-[34rem]` is too tall for short laptops). Follow-up needed. |
 | F-14 | Bug | Result: the lists/people switch has lost its track, so it no longer reads as a switch | minor | chyba | open |  |  |  |
 | F-15 | Bug (data) | Intro heading shows a pre-truncated name: "Obvod 81 – Uherské Hradi…" | major | — | open | Kryštof |  |  |
 | F-16 | Opinion (UX) | Back/close navigation is different on every screen of the flow | major | záměr | open |  |  | Back navigation is fine as is; D1 not needed, no unification PR. |
@@ -38,7 +38,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-30 | Bug | New visitor: 401 console error from `session-data` on the intro | cosmetic | — | open | Kryštof |  |  |
 | F-31 | Question | Answers sometimes missing or different after reloading the result in a fresh browser | major if confirmed | — | open | Kryštof |  |  |
 | A11Y-01 | A11y | Candidate and user answer marks (✓/✗/–) have no text alternative; screen readers get none of the comparison | blocker | — | open |  |  |  |
-| A11Y-02 | A11y | At 320×256 (400 % zoom) the question text collapses to 0 px and the step row overlaps the answer buttons | blocker | — | in progress | Klára | PR #661 |  |
+| A11Y-02 | A11y | At 320×256 (400 % zoom) the question text collapses to 0 px and the step row overlaps the answer buttons | blocker | — | merged | Klára | #661 | Verified 2026-10-05 at 320×256: the text is visible and the page scrolls; no overlap of the step row and the answers. |
 | A11Y-03 | A11y | Share modal: focus doesn't move in, isn't trapped, Escape doesn't close, focus is lost on close, and the dialog is unnamed | major | — | open |  |  |  |
 | A11Y-04 | A11y | Focus ring is primary at 55 % alpha: 2.17–2.26:1 against the page, below 3:1 | major | — | open |  |  |  |
 | A11Y-05 | A11y | Route changes announce nothing; focus drops to `<body>`, or stays on "Ano" while the question changes underneath | major | — | PR #662 | Klára | redesign/answer-confirmation | Question part only (announce the new question). Route-title part is Kryštof's, #660. |
