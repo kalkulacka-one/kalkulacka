@@ -2,12 +2,15 @@
 // Syntax (Zod `z.email()`) and the hand-curated typo map decide on their own; everything else goes to DNS (MX, else A/AAAA).
 // Look-alike domains (one edit from a popular one, `.con`/`.cpm`/`.cu`) are only reported as suspects – DNS decides. No SMTP.
 // Rows whose DNS lookup fails transiently stay `unverified` and are retried on the next run. `bounced` rows are never touched.
+// With --fix-typos, rows whose domain is in the typo map get the domain corrected (local part kept; skipped on a same-origin
+// collision), `metadata.emailCorrectedFrom` set, and the status of the corrected domain.
 // Dry-run by default; writes only with --apply. The reason is printed, never stored.
 //
 //   npm run validate-emails -w @kalkulacka-one/scripts                                  # dry-run: counts only, no emails printed
 //   npm run validate-emails -w @kalkulacka-one/scripts -- --origin komunalni-2026       # only these origins (repeatable)
 //   npm run validate-emails -w @kalkulacka-one/scripts -- --verbose                     # … plus invalid and suspect emails with suggestions
-//   npm run validate-emails -w @kalkulacka-one/scripts -- --apply --limit 10            # canary: one invalid and one valid first
+//   npm run validate-emails -w @kalkulacka-one/scripts -- --fix-typos --verbose         # … plus the planned typo fixes, original → corrected
+//   npm run validate-emails -w @kalkulacka-one/scripts -- --apply --limit 10            # canary: one fix, one invalid and one valid first
 //   npm run validate-emails -w @kalkulacka-one/scripts -- --apply                       # write everything planned
 //
 // Env (packages/scripts/.env): DATABASE_URL.
@@ -21,6 +24,7 @@ import { fileURLToPath } from "node:url";
 import { config } from "dotenv";
 
 import { checkDomains } from "./email-validation/check-domain.ts";
+import type { ExistingEmail } from "./validate-emails/plan.ts";
 import { parseCliArgs, run } from "./validate-emails/run.ts";
 import { write } from "./validate-emails/write.ts";
 
@@ -48,8 +52,9 @@ async function main() {
       readRows: (origins) =>
         prisma.subscription.findMany({
           where: { emailStatus: "unverified", ...(origins ? { origin: { in: origins } } : {}) },
-          select: { id: true, email: true, origin: true, emailStatus: true },
+          select: { id: true, email: true, origin: true, emailStatus: true, createdAt: true },
         }),
+      findExistingEmails: (emails) => prisma.$queryRaw<ExistingEmail[]>`SELECT "origin", "email" FROM "Subscription" WHERE lower("email") = ANY(${emails}::TEXT[])`,
       checkDomains: async (domains) => {
         const results = await checkDomains(domains, resolver, { concurrency: DNS_CONCURRENCY, timeoutMs, onProgress: (checked) => progress(`${checked} / ${domains.length}`) });
         process.stderr.write("\n");

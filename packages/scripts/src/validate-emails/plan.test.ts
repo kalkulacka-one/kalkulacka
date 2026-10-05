@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import type { DomainCheck } from "../email-validation/check-domain.ts";
-import { domainsToCheck, orderForApply, planStatuses, type SubscriptionRow } from "./plan.ts";
+import { domainsToCheck, orderForApply, planStatuses, planTypoFixes, type SubscriptionRow, typoFixCandidates } from "./plan.ts";
 
 function row(id: string, email: string, change: Partial<SubscriptionRow> = {}): SubscriptionRow {
-  return { id, email, origin: "subscribe-form", emailStatus: "unverified", ...change };
+  return { id, email, origin: "subscribe-form", emailStatus: "unverified", createdAt: new Date("2026-09-01T00:00:00Z"), ...change };
 }
 
 const DNS = new Map<string, DomainCheck>([
@@ -57,10 +57,10 @@ describe("planStatuses", () => {
       { id: "6", status: "unverified", reason: undefined, suggestion: undefined, suspect: undefined },
     ]);
     expect(updates).toEqual([
-      { id: "1", status: "valid" },
-      { id: "2", status: "invalid" },
-      { id: "3", status: "invalid" },
-      { id: "4", status: "invalid" },
+      { kind: "status", id: "1", status: "valid" },
+      { kind: "status", id: "2", status: "invalid" },
+      { kind: "status", id: "3", status: "invalid" },
+      { kind: "status", id: "4", status: "invalid" },
     ]);
     expect(skipped).toBe(0);
   });
@@ -90,19 +90,85 @@ describe("planStatuses", () => {
     const rows = [row("1", "a@gmail.con", { emailStatus: "bounced" }), row("2", "b@gmail.com", { emailStatus: "invalid" }), row("3", "c@gone.cz", { emailStatus: "valid" }), row("4", "d@gmail.com")];
     const { verdicts, updates, skipped } = planStatuses(rows, DNS);
     expect(verdicts.map((verdict) => verdict.id)).toEqual(["4"]);
-    expect(updates).toEqual([{ id: "4", status: "valid" }]);
+    expect(updates).toEqual([{ kind: "status", id: "4", status: "valid" }]);
     expect(skipped).toBe(3);
   });
 });
 
-describe("orderForApply", () => {
-  it("puts one invalid and one valid first, then the rest by status and id", () => {
-    const ordered = orderForApply([
-      { id: "v2", status: "valid" },
-      { id: "i2", status: "invalid" },
-      { id: "v1", status: "valid" },
-      { id: "i1", status: "invalid" },
+describe("typo fixes", () => {
+  it("replaces only the domain of typo-map rows, case-insensitively, keeping the local part as typed", () => {
+    const rows = [row("1", "Jana.Novak@GAMIL.com"), row("2", "petr@Seznam.CU"), row("3", "x@xmail.cz"), row("4", "y@gmail.com"), row("5", "z@gamil.com", { emailStatus: "bounced" })];
+    expect(typoFixCandidates(rows).map(({ row, to }) => [row.id, to])).toEqual([
+      ["1", "Jana.Novak@gmail.com"],
+      ["2", "petr@seznam.cz"],
     ]);
-    expect(ordered.map((update) => update.id)).toEqual(["i1", "v1", "i2", "v2"]);
+  });
+
+  it("fixes a typo row and takes the status of the corrected domain", () => {
+    const rows = [row("1", "a@gamil.com"), row("2", "b@seznam.c"), row("3", "c@sezam.cz")];
+    const fixes = planTypoFixes(rows, []);
+    expect(domainsToCheck(rows, fixes)).toEqual(["gmail.com", "seznam.cz"]);
+    const dns = new Map<string, DomainCheck>([["gmail.com", "ok"]]);
+    const { verdicts, updates } = planStatuses(rows, dns, fixes);
+    expect(verdicts.map(({ id, status, fix }) => ({ id, status, fix }))).toEqual([
+      { id: "1", status: "valid", fix: "a@gmail.com" },
+      { id: "2", status: "unverified", fix: "b@seznam.cz" },
+      { id: "3", status: "unverified", fix: "c@seznam.cz" },
+    ]);
+    expect(updates).toEqual([
+      { kind: "fix", id: "1", from: "a@gamil.com", to: "a@gmail.com", status: "valid" },
+      { kind: "fix", id: "2", from: "b@seznam.c", to: "b@seznam.cz", status: "unverified" },
+      { kind: "fix", id: "3", from: "c@sezam.cz", to: "c@seznam.cz", status: "unverified" },
+    ]);
+  });
+
+  it("skips a fix when the corrected address already exists in the same origin, case-insensitively", () => {
+    const rows = [row("1", "Jana@gamil.com"), row("2", "petr@gamil.com", { origin: "komunalni-2026" })];
+    const fixes = planTypoFixes(rows, [
+      { origin: "subscribe-form", email: "JANA@gmail.com" },
+      { origin: "other-origin", email: "petr@gmail.com" },
+    ]);
+    expect([...fixes.collisions]).toEqual([["1", "Jana@gmail.com"]]);
+    expect([...fixes.fixes]).toEqual([["2", "petr@gmail.com"]]);
+
+    const { verdicts, updates } = planStatuses(rows, DNS, fixes);
+    expect(verdicts[0]).toMatchObject({ id: "1", status: "invalid", reason: "typo", suggestion: "Jana@gmail.com", fixSkipped: "collision" });
+    expect(updates).toEqual([
+      { kind: "status", id: "1", status: "invalid" },
+      { kind: "fix", id: "2", from: "petr@gamil.com", to: "petr@gmail.com", status: "valid" },
+    ]);
+  });
+
+  it("fixes only the oldest of two typo rows that would collide with each other", () => {
+    const rows = [
+      row("new", "jana@gmail.con", { createdAt: new Date("2026-09-02T00:00:00Z") }),
+      row("old", "Jana@gamil.com", { createdAt: new Date("2026-09-01T00:00:00Z") }),
+      row("other-origin", "jana@gmail.cz", { origin: "komunalni-2026", createdAt: new Date("2026-09-03T00:00:00Z") }),
+    ];
+    const fixes = planTypoFixes(rows, []);
+    expect([...fixes.fixes]).toEqual([
+      ["old", "Jana@gmail.com"],
+      ["other-origin", "jana@gmail.com"],
+    ]);
+    expect([...fixes.collisions]).toEqual([["new", "jana@gmail.com"]]);
+  });
+
+  it("leaves typo-map rows invalid without fixes", () => {
+    const { updates } = planStatuses([row("1", "a@gamil.com")], DNS);
+    expect(updates).toEqual([{ kind: "status", id: "1", status: "invalid" }]);
+  });
+});
+
+describe("orderForApply", () => {
+  it("puts one fix, one invalid and one valid first, then the rest by kind and id", () => {
+    const ordered = orderForApply([
+      { kind: "status", id: "v2", status: "valid" },
+      { kind: "fix", id: "f2", from: "b@gamil.com", to: "b@gmail.com", status: "valid" },
+      { kind: "status", id: "i2", status: "invalid" },
+      { kind: "status", id: "v1", status: "valid" },
+      { kind: "fix", id: "f1", from: "a@gamil.com", to: "a@gmail.com", status: "valid" },
+      { kind: "status", id: "i1", status: "invalid" },
+    ]);
+    expect(ordered.map((update) => update.id)).toEqual(["f1", "i1", "v1", "f2", "i2", "v2"]);
   });
 });

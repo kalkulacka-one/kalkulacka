@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { checkEmailSyntaxAndTypos, emailDomain, suggestDomain } from "./check-email.ts";
+import { checkEmailSyntaxAndTypos, correctTypoDomain, emailDomain, suggestDomain } from "./check-email.ts";
 
 describe("checkEmailSyntaxAndTypos", () => {
   it.each([
@@ -43,6 +43,19 @@ describe("checkEmailSyntaxAndTypos", () => {
     ["a@cetrum.cz", "a@centrum.cz"],
     ["a@icloud.con", "a@icloud.com"],
     ["a@protonmail.con", "a@protonmail.com"],
+    ["a@hmail.vom", "a@gmail.com"],
+    ["a@gmail.comj", "a@gmail.com"],
+    ["a@gmail.cu", "a@gmail.com"],
+    ["a@seznam.cu", "a@seznam.cz"],
+    ["a@seznam.czo", "a@seznam.cz"],
+    ["a@sreznam.cz", "a@seznam.cz"],
+    ["a@emaoil.cz", "a@email.cz"],
+    ["a@centrum.ct", "a@centrum.cz"],
+    ["a@icloud.cim", "a@icloud.com"],
+    ["a@protonmaill.com", "a@protonmail.com"],
+    ["a@volny.vz", "a@volny.cz"],
+    ["a@post.cu", "a@post.cz"],
+    ["a@outlook.cu", "a@outlook.cz"],
   ])("flags %s from the typo map as a typo of %s", (email, suggestion) => {
     expect(checkEmailSyntaxAndTypos(email)).toEqual({ ok: false, reason: "typo", suggestion });
   });
@@ -50,7 +63,7 @@ describe("checkEmailSyntaxAndTypos", () => {
   it.each([
     ["a@hotmail.con", "a@hotmail.com"],
     ["a@firma.cpm", "a@firma.com"],
-    ["a@seznam.cu", "a@seznam.cz"],
+    ["a@firma.cu", "a@firma.cz"],
     ["a@outlok.com", "a@outlook.com"],
     ["a@cnetrum.cz", "a@centrum.cz"],
     // Real, deliverable domains the heuristic matches: only a warning, DNS decides.
@@ -62,6 +75,14 @@ describe("checkEmailSyntaxAndTypos", () => {
   ])("passes %s on to DNS as a suspect of %s", (email, suspect) => {
     expect(checkEmailSyntaxAndTypos(email)).toEqual({ ok: true, suspect });
   });
+
+  it.each(["cmail.cz", "fmail.com", "kcloud.com", "avlas.cz", "iclout.net", "gmail.commusi", "gmail.l.com", "srznsm.cz", "swznqm.cz"])(
+    "leaves %s, deliberately not in the typo map, to DNS",
+    (domain) => {
+      expect(checkEmailSyntaxAndTypos(`a@${domain}`).ok).toBe(true);
+      expect(correctTypoDomain(`a@${domain}`)).toBeUndefined();
+    },
+  );
 
   it("reports a broken TLD as syntax, still with a suggestion", () => {
     expect(checkEmailSyntaxAndTypos("a@seznam.c")).toEqual({ ok: false, reason: "syntax", suggestion: "a@seznam.cz" });
@@ -85,6 +106,23 @@ describe("checkEmailSyntaxAndTypos", () => {
 
   it("never treats the big Czech providers as typos of each other", () => {
     for (const domain of ["email.cz", "post.cz", "centrum.cz", "seznam.cz"]) expect(suggestDomain(domain)).toBeUndefined();
+  });
+});
+
+describe("correctTypoDomain", () => {
+  it("replaces only the domain, keeping the local part exactly as typed", () => {
+    expect(correctTypoDomain("Jana.Novak+tag@gamil.com")).toBe("Jana.Novak+tag@gmail.com");
+    expect(correctTypoDomain("a@b@seznam.cu")).toBe("a@b@seznam.cz");
+  });
+
+  it("matches the domain case-insensitively and writes the target in lowercase", () => {
+    expect(correctTypoDomain("Petr@SEZNAM.CU")).toBe("Petr@seznam.cz");
+  });
+
+  it("returns undefined outside the typo map", () => {
+    expect(correctTypoDomain("a@gmail.com")).toBeUndefined();
+    expect(correctTypoDomain("a@xmail.cz")).toBeUndefined();
+    expect(correctTypoDomain("no-at-sign")).toBeUndefined();
   });
 });
 

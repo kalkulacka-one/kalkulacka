@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { DomainCheck } from "../email-validation/check-domain.ts";
-import type { StatusUpdate, SubscriptionRow } from "./plan.ts";
+import type { ExistingEmail, SubscriptionRow, Update } from "./plan.ts";
 import { type CliOptions, parseCliArgs, type RunDeps, run, UsageError } from "./run.ts";
 
 let output: string[];
@@ -19,31 +19,34 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
+const createdAt = new Date("2026-09-01T00:00:00Z");
 const ROWS: SubscriptionRow[] = [
-  { id: "1", email: "a@gmail.com", origin: "komunalni-2026", emailStatus: "unverified" },
-  { id: "2", email: "b@seznam.cz", origin: "komunalni-2026", emailStatus: "unverified" },
-  { id: "3", email: "c@gmail.cz", origin: "subscribe-form", emailStatus: "unverified" },
-  { id: "4", email: "d@gone.cz", origin: "subscribe-form", emailStatus: "unverified" },
-  { id: "5", email: "e@xmail.cz", origin: "subscribe-form", emailStatus: "unverified" },
-  { id: "6", email: "f@flaky.cz", origin: "subscribe-form", emailStatus: "unverified" },
+  { id: "1", email: "a@gmail.com", origin: "komunalni-2026", emailStatus: "unverified", createdAt },
+  { id: "2", email: "b@seznam.cz", origin: "komunalni-2026", emailStatus: "unverified", createdAt },
+  { id: "3", email: "c@gmail.cz", origin: "subscribe-form", emailStatus: "unverified", createdAt },
+  { id: "4", email: "d@gone.cz", origin: "subscribe-form", emailStatus: "unverified", createdAt },
+  { id: "5", email: "e@xmail.cz", origin: "subscribe-form", emailStatus: "unverified", createdAt },
+  { id: "6", email: "f@flaky.cz", origin: "subscribe-form", emailStatus: "unverified", createdAt },
 ];
 
 const DNS: Record<string, DomainCheck> = { "gmail.com": "ok", "seznam.cz": "ok", "gone.cz": "invalid", "xmail.cz": "ok", "flaky.cz": "unknown" };
 
 function fakeDeps() {
-  const writes: StatusUpdate[][] = [];
+  const writes: Update[][] = [];
   const deps = {
     readRows: vi.fn(async (_origins: string[] | undefined) => ROWS),
+    findExistingEmails: vi.fn(async (_emails: string[]): Promise<ExistingEmail[]> => []),
     checkDomains: vi.fn(async (domains: string[]) => new Map(domains.map((domain) => [domain, DNS[domain] ?? "unknown"] as const))),
-    write: vi.fn(async (updates: StatusUpdate[]) => {
+    write: vi.fn(async (updates: Update[]) => {
       writes.push(updates);
-      return updates.length;
+      const fixes = updates.filter((update) => update.kind === "fix").length;
+      return { fixes, statuses: updates.length - fixes };
     }),
   } satisfies RunDeps;
   return { deps, writes };
 }
 
-const DRY_RUN: CliOptions = { apply: false, verbose: false, limit: undefined, origins: undefined };
+const DRY_RUN: CliOptions = { apply: false, verbose: false, fixTypos: false, limit: undefined, origins: undefined };
 
 describe("parseCliArgs", () => {
   it("defaults to a dry-run over all origins", () => {
@@ -51,7 +54,8 @@ describe("parseCliArgs", () => {
   });
 
   it("accepts repeated --origin, --verbose, --apply and --limit", () => {
-    expect(parseCliArgs(["--origin", "a", "--origin= b ", "--verbose", "--apply", "--limit", "10"])).toEqual({ apply: true, verbose: true, limit: 10, origins: ["a", "b"] });
+    expect(parseCliArgs(["--origin", "a", "--origin= b ", "--verbose", "--apply", "--limit", "10"])).toEqual({ apply: true, verbose: true, fixTypos: false, limit: 10, origins: ["a", "b"] });
+    expect(parseCliArgs(["--fix-typos"])).toEqual({ ...DRY_RUN, fixTypos: true });
   });
 
   it("only accepts --limit together with --apply", () => {
@@ -74,6 +78,7 @@ describe("run", () => {
     const { deps } = fakeDeps();
     await expect(run(DRY_RUN, deps)).resolves.toBe(0);
     expect(deps.write).not.toHaveBeenCalled();
+    expect(deps.findExistingEmails).not.toHaveBeenCalled();
     expect(output).toContain("\nDry-run – nothing written. Re-run with --apply to write.");
   });
 
@@ -123,11 +128,11 @@ describe("run", () => {
     await expect(run({ ...DRY_RUN, apply: true }, deps)).resolves.toBe(5);
     expect(writes).toEqual([
       [
-        { id: "3", status: "invalid" },
-        { id: "1", status: "valid" },
-        { id: "4", status: "invalid" },
-        { id: "2", status: "valid" },
-        { id: "5", status: "valid" },
+        { kind: "status", id: "3", status: "invalid" },
+        { kind: "status", id: "1", status: "valid" },
+        { kind: "status", id: "4", status: "invalid" },
+        { kind: "status", id: "2", status: "valid" },
+        { kind: "status", id: "5", status: "valid" },
       ],
     ]);
   });
@@ -137,8 +142,8 @@ describe("run", () => {
     await expect(run({ ...DRY_RUN, apply: true, limit: 2 }, deps)).resolves.toBe(2);
     expect(writes).toEqual([
       [
-        { id: "3", status: "invalid" },
-        { id: "1", status: "valid" },
+        { kind: "status", id: "3", status: "invalid" },
+        { kind: "status", id: "1", status: "valid" },
       ],
     ]);
   });
@@ -148,5 +153,44 @@ describe("run", () => {
     deps.readRows.mockResolvedValue([]);
     await expect(run({ ...DRY_RUN, apply: true }, deps)).resolves.toBe(0);
     expect(deps.write).not.toHaveBeenCalled();
+  });
+
+  it("plans typo fixes in a dry-run without writing, with counts per target and collisions", async () => {
+    const { deps } = fakeDeps();
+    deps.readRows.mockResolvedValue([...ROWS, { id: "7", email: "G@Gamil.com", origin: "subscribe-form", emailStatus: "unverified", createdAt }]);
+    deps.findExistingEmails.mockResolvedValue([{ origin: "subscribe-form", email: "C@gmail.com" }]);
+
+    await run({ ...DRY_RUN, fixTypos: true, verbose: true }, deps);
+
+    expect(deps.findExistingEmails).toHaveBeenCalledWith(["c@gmail.com", "g@gmail.com"]);
+    expect(deps.write).not.toHaveBeenCalled();
+    expect(output).toEqual(
+      expect.arrayContaining([
+        "  planned: 1",
+        "    → gmail.com: 1",
+        "  fix skipped: collision (address already in the origin, stays invalid typo): 1",
+        "  G@Gamil.com → G@gmail.com (subscribe-form)",
+        "  c@gmail.cz → c@gmail.com (subscribe-form) – fix skipped: collision",
+        "    typo: 1",
+      ]),
+    );
+  });
+
+  it("writes fixes first with --fix-typos --apply, and counts guard skips", async () => {
+    const { deps, writes } = fakeDeps();
+    deps.write.mockImplementation(async (updates: Update[]) => {
+      writes.push(updates);
+      return { fixes: 0, statuses: updates.length - 1 };
+    });
+
+    await expect(run({ ...DRY_RUN, fixTypos: true, apply: true, limit: 2 }, deps)).resolves.toBe(1);
+
+    expect(writes).toEqual([
+      [
+        { kind: "fix", id: "3", from: "c@gmail.cz", to: "c@gmail.com", status: "valid" },
+        { kind: "status", id: "4", status: "invalid" },
+      ],
+    ]);
+    expect(output).toContain("  skipped (changed concurrently, or a fix that would now collide): 1 fix(es), 0 status update(s)");
   });
 });

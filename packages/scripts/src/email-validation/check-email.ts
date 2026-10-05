@@ -6,27 +6,76 @@ import { z } from "zod";
  */
 export type EmailCheck = { ok: true; suspect?: string } | { ok: false; reason: "syntax" | "typo"; suggestion?: string };
 
-/** Typo domains measured in production, mapped to the domain the subscriber most likely meant. A match is `invalid` without DNS. */
-const TYPO_DOMAINS: Readonly<Record<string, string>> = {
-  "gmail.cz": "gmail.com",
-  "gmail.con": "gmail.com",
-  "gmail.cpm": "gmail.com",
-  "gmail.co": "gmail.com",
-  "gamil.com": "gmail.com",
-  "gmai.com": "gmail.com",
-  "gmal.com": "gmail.com",
-  "gmial.com": "gmail.com",
-  "gmaill.com": "gmail.com",
-  "gnail.com": "gmail.com",
-  "sezam.cz": "seznam.cz",
-  "seznma.cz": "seznam.cz",
-  "seznam.c": "seznam.cz",
-  "emial.cz": "email.cz",
-  "centrum.c": "centrum.cz",
-  "cetrum.cz": "centrum.cz",
-  "icloud.con": "icloud.com",
-  "protonmail.con": "protonmail.com",
+/**
+ * Typo domains measured in production (approved after a prod dry-run), by the domain the subscriber most likely meant. A match is
+ * `invalid` without DNS, or fixed with `--fix-typos`. Look-alikes left out on purpose (`cmail.cz`, `fmail.com`, `kcloud.com`, …)
+ * stay on the heuristic path, where DNS decides.
+ */
+const TYPOS_BY_TARGET: Readonly<Record<string, readonly string[]>> = {
+  "gmail.com": [
+    "gmail.cz",
+    "gmail.con",
+    "gmail.cpm",
+    "gmail.co",
+    "gamil.com",
+    "gmai.com",
+    "gmal.com",
+    "gmial.com",
+    "gmaill.com",
+    "gnail.com",
+    "gmsil.com",
+    "gmnail.com",
+    "gmaiil.com",
+    "gmmail.com",
+    "gmaul.com",
+    "hmail.com",
+    "hmail.vom",
+    "gmail.cok",
+    "gmail.cm",
+    "gmail.clm",
+    "gmail.cim",
+    "gmail.cu",
+    "gmail.comm",
+    "gmail.comp",
+    "gmail.comh",
+    "gmail.comi",
+    "gmail.comj",
+  ],
+  "seznam.cz": [
+    "sezam.cz",
+    "seznma.cz",
+    "seznam.c",
+    "seznam.cu",
+    "seznam.ct",
+    "seznam.vz",
+    "seznam.cs",
+    "seznam.cg",
+    "seznam.czo",
+    "seznam.czl",
+    "seznsm.cz",
+    "srznam.cz",
+    "seznan.cz",
+    "sezna.cz",
+    "sezanm.cz",
+    "senzam.cz",
+    "sznam.cz",
+    "seznqm.cz",
+    "seznamn.cz",
+    "sezbam.cz",
+    "seynam.cz",
+    "deznam.cz",
+    "sreznam.cz",
+  ],
+  "email.cz": ["emial.cz", "email.cu", "email.ct", "email.vz", "emai.cz", "enail.cz", "emaul.cz", "eail.cz", "emaoil.cz"],
+  "centrum.cz": ["centrum.c", "cetrum.cz", "cenzrum.cz", "centurum.cz", "centrom.cz", "centrumy.cz", "centrum.ct"],
+  "icloud.com": ["icloud.con", "iclou.com", "icloud.cim"],
+  "protonmail.com": ["protonmail.con", "protonmaill.com"],
+  "volny.cz": ["volny.vz"],
+  "post.cz": ["post.cu"],
+  "outlook.cz": ["outlook.cu"],
 };
+
+const TYPO_DOMAINS: ReadonlyMap<string, string> = new Map(Object.entries(TYPOS_BY_TARGET).flatMap(([target, typos]) => typos.map((typo) => [typo, target] as const)));
 
 /** Top-level domains that are likely typos in this audience (`.cu`, Cuba, for `.cz`). Only a warning: DNS decides. */
 const TYPO_TLDS: Readonly<Record<string, string>> = {
@@ -89,7 +138,7 @@ function isWithinOneEdit(a: string, b: string): boolean {
 }
 
 function typoDomain(domain: string): string | undefined {
-  return Object.hasOwn(TYPO_DOMAINS, domain) ? TYPO_DOMAINS[domain] : undefined;
+  return TYPO_DOMAINS.get(domain);
 }
 
 /** Heuristic look-alike (typo TLD, or one edit from a popular domain), or `undefined`. Expects lowercase. */
@@ -132,6 +181,17 @@ export function checkEmailSyntaxAndTypos(email: string): EmailCheck {
   if (typo) return { ok: false, reason: "typo", suggestion: typo };
   const suspect = withDomain(suspectDomain(domain));
   return suspect ? { ok: true, suspect } : { ok: true };
+}
+
+/**
+ * The email with a typo-map domain replaced by its lowercase target, keeping the local part exactly as typed, or `undefined` when
+ * the domain (compared case-insensitively) is not in the map.
+ */
+export function correctTypoDomain(email: string): string | undefined {
+  const at = email.lastIndexOf("@");
+  if (at === -1) return undefined;
+  const target = typoDomain(email.slice(at + 1).toLowerCase());
+  return target ? `${email.slice(0, at)}@${target}` : undefined;
 }
 
 /** Lowercase domain part of an email, or `undefined` when there is no `@`. */

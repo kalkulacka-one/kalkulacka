@@ -1,21 +1,22 @@
 import { parseArgs } from "node:util";
 
 import type { DomainCheck } from "../email-validation/check-domain.ts";
-import { domainsToCheck, orderForApply, planStatuses, REASONS, type StatusUpdate, type SubscriptionRow, type Verdict } from "./plan.ts";
+import { domainsToCheck, type ExistingEmail, orderForApply, planStatuses, planTypoFixes, REASONS, type SubscriptionRow, type TypoFixes, typoFixCandidates, type Update, type Verdict } from "./plan.ts";
+import type { WriteResult } from "./write.ts";
 
-export type CliOptions = { apply: boolean; verbose: boolean; limit: number | undefined; origins: string[] | undefined };
+export type CliOptions = { apply: boolean; verbose: boolean; fixTypos: boolean; limit: number | undefined; origins: string[] | undefined };
 
 export class UsageError extends Error {}
 
-const USAGE = "Usage: validate-emails [--origin X …] [--verbose] [--apply [--limit N]]";
+const USAGE = "Usage: validate-emails [--origin X …] [--fix-typos] [--verbose] [--apply [--limit N]]";
 
-/** Strict flags: `--origin X` (repeatable), `--verbose`, `--apply`, `--limit N` (positive integer, only with `--apply`). */
+/** Strict flags: `--origin X` (repeatable), `--fix-typos`, `--verbose`, `--apply`, `--limit N` (positive integer, only with `--apply`). */
 export function parseCliArgs(args: string[]): CliOptions {
-  let values: { apply?: boolean; verbose?: boolean; limit?: string; origin?: string[] };
+  let values: { apply?: boolean; verbose?: boolean; "fix-typos"?: boolean; limit?: string; origin?: string[] };
   try {
     ({ values } = parseArgs({
       args,
-      options: { apply: { type: "boolean" }, verbose: { type: "boolean" }, limit: { type: "string" }, origin: { type: "string", multiple: true } },
+      options: { apply: { type: "boolean" }, verbose: { type: "boolean" }, "fix-typos": { type: "boolean" }, limit: { type: "string" }, origin: { type: "string", multiple: true } },
       strict: true,
       allowPositionals: false,
     }));
@@ -30,14 +31,16 @@ export function parseCliArgs(args: string[]): CliOptions {
   }
   const origins = values.origin?.map((origin) => origin.trim());
   if (origins?.some((origin) => !origin)) throw new UsageError("--origin expects a non-empty value");
-  return { apply: values.apply ?? false, verbose: values.verbose ?? false, limit, origins };
+  return { apply: values.apply ?? false, verbose: values.verbose ?? false, fixTypos: values["fix-typos"] ?? false, limit, origins };
 }
 
 /** Everything `run` does outside planning, injected so the orchestration can be tested without a database or DNS. */
 export type RunDeps = {
   readRows: (origins: string[] | undefined) => Promise<SubscriptionRow[]>;
+  /** Rows of any status whose email equals one of `emails` case-insensitively (given lowercase); only called with `--fix-typos`. */
+  findExistingEmails: (emails: string[]) => Promise<ExistingEmail[]>;
   checkDomains: (domains: string[]) => Promise<Map<string, DomainCheck>>;
-  write: (updates: StatusUpdate[]) => Promise<number>;
+  write: (updates: Update[]) => Promise<WriteResult>;
 };
 
 function count<T>(items: Iterable<T>, predicate: (item: T) => boolean): number {
@@ -48,7 +51,7 @@ function count<T>(items: Iterable<T>, predicate: (item: T) => boolean): number {
 
 const isSuspect = (verdict: Verdict) => verdict.suspect === true && verdict.status === "valid";
 
-function printReport(verdicts: Verdict[], domainChecks: Map<string, DomainCheck>, skipped: number, verbose: boolean) {
+function printReport(verdicts: Verdict[], domainChecks: Map<string, DomainCheck>, skipped: number, verbose: boolean, fixTypos: boolean) {
   const checks = [...domainChecks.values()];
   console.log("\nDNS:");
   console.log(
@@ -61,6 +64,7 @@ function printReport(verdicts: Verdict[], domainChecks: Map<string, DomainCheck>
   console.log(`  invalid: ${count(verdicts, (verdict) => verdict.status === "invalid")}`);
   for (const reason of REASONS) console.log(`    ${reason}: ${count(verdicts, (verdict) => verdict.reason === reason)}`);
   console.log(`  stays unverified (DNS unknown, retried next run): ${count(verdicts, (verdict) => verdict.status === "unverified")}`);
+  if (fixTypos) console.log(`  of all these, email fixed (--fix-typos): ${count(verdicts, (verdict) => verdict.fix !== undefined)}`);
   if (skipped) console.log(`  skipped (not unverified): ${skipped}`);
 
   console.log("\nPer origin (valid / invalid / unverified / suspect):");
@@ -75,6 +79,8 @@ function printReport(verdicts: Verdict[], domainChecks: Map<string, DomainCheck>
     console.log(`  ${origin}: ${[...statuses, count(items, isSuspect)].join(" / ")}`);
   }
 
+  if (fixTypos) printTypoFixes(verdicts, verbose);
+
   if (!verbose) return;
   console.log("\nInvalid emails:");
   for (const verdict of verdicts.filter((item) => item.status === "invalid")) {
@@ -86,21 +92,47 @@ function printReport(verdicts: Verdict[], domainChecks: Map<string, DomainCheck>
   if (unknown.length) console.log(`\nDomains with DNS unknown: ${unknown.join(", ")}`);
 }
 
+function printTypoFixes(verdicts: Verdict[], verbose: boolean) {
+  const fixed = verdicts.filter((verdict) => verdict.fix !== undefined);
+  const collisions = verdicts.filter((verdict) => verdict.fixSkipped === "collision");
+  console.log("\nTypo fixes (domain only; the local part is kept as typed):");
+  console.log(`  planned: ${fixed.length}`);
+  const byTarget = new Map<string, number>();
+  for (const verdict of fixed) {
+    const target = verdict.fix?.slice(verdict.fix.lastIndexOf("@") + 1) ?? "";
+    byTarget.set(target, (byTarget.get(target) ?? 0) + 1);
+  }
+  for (const [target, n] of [...byTarget].sort(([a], [b]) => a.localeCompare(b))) console.log(`    → ${target}: ${n}`);
+  console.log(`  fix skipped: collision (address already in the origin, stays invalid typo): ${collisions.length}`);
+  if (!verbose) return;
+  for (const verdict of fixed) console.log(`  ${verdict.email} → ${verdict.fix} (${verdict.origin})`);
+  for (const verdict of collisions) console.log(`  ${verdict.email} → ${verdict.suggestion} (${verdict.origin}) – fix skipped: collision`);
+}
+
 /** Reads `unverified` rows, checks DNS, prints the report and – only with `--apply` – writes the planned statuses. Returns rows written. */
-export async function run({ apply, verbose, limit, origins }: CliOptions, deps: RunDeps): Promise<number> {
-  console.log(`Subscription email validation (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"}; origins: ${origins ? origins.join(", ") : "all"})`);
+export async function run({ apply, verbose, fixTypos, limit, origins }: CliOptions, deps: RunDeps): Promise<number> {
+  console.log(
+    `Subscription email validation (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"}${fixTypos ? ", fix typos" : ""}; origins: ${origins ? origins.join(", ") : "all"})`,
+  );
 
   console.log("Reading unverified subscriptions…");
   const rows = await deps.readRows(origins);
   console.log(`  ${rows.length} rows`);
   for (const origin of origins ?? []) if (!rows.some((row) => row.origin === origin)) console.warn(`  ⚠ no unverified rows for origin "${origin}"`);
 
-  const domains = domainsToCheck(rows);
+  let typoFixes: TypoFixes | undefined;
+  if (fixTypos) {
+    const targets = [...new Set(typoFixCandidates(rows).map(({ to }) => to.toLowerCase()))].sort();
+    console.log(`Looking up ${targets.length} corrected addresses for collisions…`);
+    typoFixes = planTypoFixes(rows, targets.length ? await deps.findExistingEmails(targets) : []);
+  }
+
+  const domains = domainsToCheck(rows, typoFixes);
   console.log(`Checking DNS for ${domains.length} domains…`);
   const domainChecks = await deps.checkDomains(domains);
 
-  const { verdicts, updates, skipped } = planStatuses(rows, domainChecks);
-  printReport(verdicts, domainChecks, skipped, verbose);
+  const { verdicts, updates, skipped } = planStatuses(rows, domainChecks, typoFixes);
+  printReport(verdicts, domainChecks, skipped, verbose, fixTypos);
   console.log(`\nRows to write: ${updates.length}`);
 
   if (!apply) {
@@ -108,8 +140,15 @@ export async function run({ apply, verbose, limit, origins }: CliOptions, deps: 
     return 0;
   }
   const batch = orderForApply(updates).slice(0, limit);
-  console.log(`\nWriting ${batch.length} row update(s): ${count(batch, (update) => update.status === "invalid")} invalid, ${count(batch, (update) => update.status === "valid")} valid…`);
-  const written = batch.length ? await deps.write(batch) : 0;
-  console.log(`Done: ${written} row(s) updated${written !== batch.length ? ` (planned ${batch.length}; the rest changed status concurrently)` : ""}.`);
-  return written;
+  const fixes = count(batch, (update) => update.kind === "fix");
+  const statuses = batch.length - fixes;
+  console.log(
+    `\nWriting ${batch.length} row update(s): ${fixes} typo fix(es), ${count(batch, (update) => update.kind === "status" && update.status === "invalid")} invalid, ${count(batch, (update) => update.kind === "status" && update.status === "valid")} valid…`,
+  );
+  const written = batch.length ? await deps.write(batch) : { statuses: 0, fixes: 0 };
+  console.log(`Done: ${written.fixes} typo fix(es) and ${written.statuses} status update(s) written.`);
+  const skippedFixes = fixes - written.fixes;
+  const skippedStatuses = statuses - written.statuses;
+  if (skippedFixes || skippedStatuses) console.log(`  skipped (changed concurrently, or a fix that would now collide): ${skippedFixes} fix(es), ${skippedStatuses} status update(s)`);
+  return written.fixes + written.statuses;
 }
