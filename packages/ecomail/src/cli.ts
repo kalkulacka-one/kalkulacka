@@ -2,8 +2,9 @@
 
 import type { prisma as Prisma } from "@kalkulacka-one/database";
 
+import { realpathSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { config } from "dotenv";
 
@@ -54,9 +55,17 @@ export function printCategory(verbose: boolean, label: string, emails: string[])
   console.log(`  ${label}: ${emails.length}${verbose && emails.length ? ` – ${emails.join(", ")}` : ""}`);
 }
 
-/** True when the module was started as the script (`node src/pull.ts`), not imported. */
-export function isMain(moduleUrl: string): boolean {
-  return process.argv[1] !== undefined && moduleUrl === pathToFileURL(resolve(process.argv[1])).href;
+/**
+ * True when the module was started as the script (`node src/pull.ts`), not imported. Both sides are resolved to real paths, so a
+ * symlinked script or checkout (e.g. macOS `/tmp` → `/private/tmp`) still counts.
+ */
+export function isMain(moduleUrl: string, script: string | undefined = process.argv[1]): boolean {
+  if (script === undefined) return false;
+  try {
+    return realpathSync(resolve(script)) === realpathSync(fileURLToPath(moduleUrl));
+  } catch {
+    return false;
+  }
 }
 
 /** Parses flags, loads env, runs `command` with a Prisma client and exits 1 with a message on any failure. */
