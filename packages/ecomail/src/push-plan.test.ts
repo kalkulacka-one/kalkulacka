@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { chunk, fetchCandidates, type PushCandidateRow, planPush, toSubscriber } from "./push-plan.ts";
+import { chunk, EMAIL_TRIM_PATTERN, fetchCandidates, normalizeEmail, type PushCandidateRow, planPush, toSubscriber } from "./push-plan.ts";
 
 const ORIGINS = ["subscribe-form", "import-2022"];
 
@@ -23,15 +23,22 @@ describe("fetchCandidates", () => {
       ORIGINS,
     );
 
-    expect(values).toEqual([ORIGINS]);
+    expect(values).toEqual([ORIGINS, EMAIL_TRIM_PATTERN, EMAIL_TRIM_PATTERN]);
     expect(sql).toContain(`s."origin" = ANY(?::TEXT[])`);
     expect(sql).toContain(`s."emailStatus" = 'valid'`);
     expect(sql).toContain(`s."unsubscribedAt" IS NULL`);
     expect(sql).toContain(`s."metadata"->'ecomail' IS NULL`);
     // Siblings are matched case-insensitively across all origins (no origin condition inside NOT EXISTS).
-    expect(sql).toMatch(/NOT EXISTS \( SELECT 1 FROM "Subscription" o WHERE lower\(btrim\(o."email"\)\) = lower\(btrim\(s."email"\)\) AND \(/);
+    expect(sql).toContain(`NOT EXISTS ( SELECT 1 FROM "Subscription" o WHERE lower(regexp_replace(o."email", ?::TEXT, '', 'g')) = lower(regexp_replace(s."email", ?::TEXT, '', 'g')) AND (`);
     expect(sql).toContain(`o."unsubscribedAt" IS NOT NULL OR o."emailStatus" IN ('invalid', 'bounced') OR o."metadata"->'ecomail' IS NOT NULL`);
     expect(sql.slice(sql.indexOf("NOT EXISTS"))).not.toContain("origin");
+  });
+});
+
+describe("normalizeEmail", () => {
+  it("trims ASCII whitespace the way the SQL regexp_replace does, then lowercases", () => {
+    expect(normalizeEmail(" \t Jana@Example.CZ\r\n")).toBe("jana@example.cz");
+    expect(EMAIL_TRIM_PATTERN).toBe("^[ \\t\\n\\v\\f\\r]+|[ \\t\\n\\v\\f\\r]+$");
   });
 });
 

@@ -25,6 +25,19 @@ export type PushPlan = {
   rows: number;
 };
 
+/**
+ * Leading/trailing ASCII whitespace, as one regex source that JS and the database (RE2 on CockroachDB, ARE on Postgres) read the
+ * same way. JS `trim()` and SQL `btrim()` disagree (`btrim` strips only spaces; `trim()` also tabs, newlines and Unicode
+ * spaces), so the sibling check and the JS grouping both use this pattern instead: the same address is the same key on both sides.
+ */
+export const EMAIL_TRIM_PATTERN = "^[ \\t\\n\\v\\f\\r]+|[ \\t\\n\\v\\f\\r]+$";
+const EMAIL_TRIM = new RegExp(EMAIL_TRIM_PATTERN, "g");
+
+/** The grouping key of an address: trimmed as the SQL `regexp_replace(…, EMAIL_TRIM_PATTERN, '', 'g')`, then lowercased. */
+export function normalizeEmail(email: string): string {
+  return email.replace(EMAIL_TRIM, "").toLowerCase();
+}
+
 export type QueryClient = { queryRaw: (query: TemplateStringsArray, ...values: unknown[]) => Promise<PushCandidateRow[]> };
 
 /**
@@ -42,7 +55,7 @@ export function fetchCandidates(client: QueryClient, origins: string[]): Promise
       AND (s."metadata" IS NULL OR jsonb_typeof(s."metadata") = 'null' OR (jsonb_typeof(s."metadata") = 'object' AND s."metadata"->'ecomail' IS NULL))
       AND NOT EXISTS (
         SELECT 1 FROM "Subscription" o
-        WHERE lower(btrim(o."email")) = lower(btrim(s."email"))
+        WHERE lower(regexp_replace(o."email", ${EMAIL_TRIM_PATTERN}::TEXT, '', 'g')) = lower(regexp_replace(s."email", ${EMAIL_TRIM_PATTERN}::TEXT, '', 'g'))
           AND (o."unsubscribedAt" IS NOT NULL OR o."emailStatus" IN ('invalid', 'bounced') OR o."metadata"->'ecomail' IS NOT NULL)
       )
     ORDER BY s."createdAt", s."id"`;
@@ -67,7 +80,7 @@ export function planPush(rows: PushCandidateRow[], origins: string[]): PushPlan 
   const rowsByOrigin: Record<string, number> = {};
   let count = 0;
   for (const row of rows) {
-    const key = row.email.trim().toLowerCase();
+    const key = normalizeEmail(row.email);
     if (!key || !isCandidate(row, allowed)) continue;
     groups.set(key, [...(groups.get(key) ?? []), row]);
     rowsByOrigin[row.origin] = (rowsByOrigin[row.origin] ?? 0) + 1;
@@ -79,7 +92,7 @@ export function planPush(rows: PushCandidateRow[], origins: string[]): PushPlan 
   for (const group of groups.values()) {
     const [oldest, ...rest] = group.sort(byAge);
     if (!oldest) continue;
-    emails.push({ id: oldest.id, email: oldest.email.trim(), origin: oldest.origin, createdAt: oldest.createdAt, rowIds: [oldest.id, ...rest.map((row) => row.id)] });
+    emails.push({ id: oldest.id, email: oldest.email.replace(EMAIL_TRIM, ""), origin: oldest.origin, createdAt: oldest.createdAt, rowIds: [oldest.id, ...rest.map((row) => row.id)] });
     emailsByOrigin[oldest.origin] = (emailsByOrigin[oldest.origin] ?? 0) + 1;
   }
   return { emails: emails.sort(byAge).map(({ id: _, ...email }) => email), rowsByOrigin, emailsByOrigin, rows: count };
