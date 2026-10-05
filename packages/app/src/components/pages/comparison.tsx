@@ -22,7 +22,6 @@ export type ComparisonPage = {
 
 export function ComparisonPage({ embedContext, homepageHref, privacyHref, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
   const t = useTranslations("koa.pages");
-  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
     <Layout>
@@ -56,7 +55,6 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
           </>
         )}
       </WithCondenseOnScroll>
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );

@@ -64,27 +64,20 @@ function Footer({ children }: LayoutFooter) {
   if (!children) {
     return null;
   }
-  return <footer className="koa:grid koa:justify-items-center koa:fixed koa:bottom-0 koa:left-0 koa:right-0 koa:z-5 koa:mt-2 koa:sm:mt-3 koa:lg:mt-4 koa:p-1">{children}</footer>;
+  // In the document flow as the layout's last child, never `fixed`: embeds are usually shorter than the page
+  // (partners use a 600px iframe), and an overlay docked to the frame's bottom covered cards and buttons there.
+  // `mt-auto` pushes it to the bottom of short pages (in the mobile grid's last row and the sm+ column alike);
+  // on long pages it follows the content, and a sticky BottomNavigation stops right above it.
+  return <footer className="koa:grid koa:justify-items-center koa:mt-auto koa:p-1 koa:pt-2 koa:sm:pt-3 koa:lg:pt-4">{children}</footer>;
 }
 
 Footer.displayName = "Layout.Footer";
-
-export type LayoutBottomSpacer = {
-  className?: string;
-};
-
-function BottomSpacer({ className }: LayoutBottomSpacer) {
-  return <div className={className} aria-hidden="true" />;
-}
-
-BottomSpacer.displayName = "Layout.BottomSpacer";
 
 type LayoutCompound = React.FC<Layout> & {
   Header: React.FC<LayoutHeader>;
   Content: React.FC<LayoutContent>;
   BottomNavigation: React.FC<LayoutBottomNavigation>;
   Footer: React.FC<LayoutFooter>;
-  BottomSpacer: React.FC<LayoutBottomSpacer>;
 };
 
 export const Layout = Object.assign(LayoutComponent, {
@@ -92,5 +85,4 @@ export const Layout = Object.assign(LayoutComponent, {
   Content,
   BottomNavigation,
   Footer,
-  BottomSpacer,
 }) satisfies LayoutCompound;
