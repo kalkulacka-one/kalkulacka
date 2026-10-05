@@ -54,7 +54,7 @@ afterEach(() => {
 describe("push", () => {
   it("never sends or marks on a dry-run", async () => {
     const { deps, sent, marked } = fakeDeps(rows(5));
-    await expect(push(deps, DRY, ENV)).resolves.toEqual({ accepted: [], rejected: [], failed: [], marked: 0 });
+    await expect(push(deps, DRY, ENV)).resolves.toEqual({ accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 });
     expect(sent).toEqual([]);
     expect(marked).toEqual([]);
   });
@@ -94,14 +94,36 @@ describe("push", () => {
   it("on a 422, drops the rejected subscribers, re-sends the rest and marks only those", async () => {
     const { deps, sent, marked } = fakeDeps(rows(4), [() => ({ ok: false, rejected: new Map([[1, "email: Invalid email address"]]), errors: {} })]);
 
-    const outcome = await push(deps, APPLY, ENV);
+    await expect(push(deps, APPLY, ENV)).rejects.toThrow("1 email(s) rejected by Ecomail (--verbose lists them); none of those was marked");
 
     expect(sent.map((batch) => batch.map((subscriber) => subscriber.email))).toEqual([
       ["user0@example.cz", "user1@example.cz", "user2@example.cz", "user3@example.cz"],
       ["user0@example.cz", "user2@example.cz", "user3@example.cz"],
     ]);
     expect(marked.flat().map((update) => update.email)).toEqual(["user0@example.cz", "user2@example.cz", "user3@example.cz"]);
-    expect(outcome.rejected).toEqual([{ email: "user1@example.cz", reason: "email: Invalid email address" }]);
+    expect(console.log).toHaveBeenCalledWith("  rejected by Ecomail (not marked): 1");
+  });
+
+  it("exits non-zero on per-subscriber rejections only after the other batches ran", async () => {
+    const { deps, sent, marked } = fakeDeps(rows(3001), [() => ({ ok: false, rejected: new Map([[0, "email: Invalid"]]), errors: {} })]);
+    await expect(push(deps, { ...APPLY, verbose: true }, ENV)).rejects.toThrow(/^1 email\(s\) rejected by Ecomail; none/);
+    expect(sent.map((batch) => batch.length)).toEqual([3000, 2999, 1]);
+    expect(marked.flat()).toHaveLength(3000);
+    expect(console.log).toHaveBeenCalledWith("  rejected by Ecomail (not marked): 1 – user0@example.cz (email: Invalid)");
+  });
+
+  it("warns loudly when Ecomail inserts fewer than it accepted, and still marks them", async () => {
+    const { deps, marked } = fakeDeps(rows(4), [() => ({ ok: true, inserts: 3 })]);
+    const outcome = await push(deps, APPLY, ENV);
+    expect(outcome.notInserted).toBe(1);
+    expect(marked.flat()).toHaveLength(4);
+    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining("inserted only 3 of 4 accepted address(es)"));
+  });
+
+  it("compares inserts with the re-sent remainder after a 422", async () => {
+    const { deps } = fakeDeps(rows(4), [() => ({ ok: false, rejected: new Map([[1, "email: Invalid"]]), errors: {} }), () => ({ ok: true, inserts: 3 })]);
+    await expect(push(deps, APPLY, ENV)).rejects.toThrow(/rejected by Ecomail/);
+    expect(console.warn).not.toHaveBeenCalledWith(expect.stringContaining("inserted only"));
   });
 
   it("marks nothing from a batch rejected as a whole, keeps going and fails at the end", async () => {
@@ -115,7 +137,7 @@ describe("push", () => {
   it("marks nothing when the re-sent remainder is rejected again", async () => {
     const reject: BulkResult = { ok: false, rejected: new Map([[0, "email: Invalid"]]), errors: {} };
     const { deps, sent, marked } = fakeDeps(rows(2), [() => reject, () => reject]);
-    await expect(push(deps, APPLY, ENV)).rejects.toThrow(/1 email\(s\)/);
+    await expect(push(deps, APPLY, ENV)).rejects.toThrow("1 email(s) rejected by Ecomail (--verbose lists them); 1 email(s) were in batches Ecomail rejected – re-run to retry; none of those was marked");
     expect(sent).toHaveLength(2);
     expect(marked).toEqual([]);
   });

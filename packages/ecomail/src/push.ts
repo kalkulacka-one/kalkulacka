@@ -22,7 +22,8 @@ export type PushDeps = {
   now: () => Date;
 };
 
-export type PushOutcome = { accepted: string[]; rejected: { email: string; reason: string }[]; failed: string[]; marked: number };
+/** `notInserted`: accepted addresses beyond the `inserts` Ecomail reported – dropped, or already in Ecomail. */
+export type PushOutcome = { accepted: string[]; rejected: { email: string; reason: string }[]; failed: string[]; marked: number; notInserted: number };
 
 const perOrigin = (counts: Record<string, number>) =>
   Object.entries(counts)
@@ -30,12 +31,29 @@ const perOrigin = (counts: Record<string, number>) =>
     .join(", ") || "–";
 
 /**
+ * Every accepted address counts as accepted (an already-existing contact too), so it is marked either way. Fewer `inserts` than
+ * addresses sent can also mean Ecomail dropped some silently: that is shouted, and the next pull reports any address still missing
+ * from the list under "DB rows not in Ecomail".
+ */
+function checkInserts(inserts: number | undefined, sent: number, outcome: PushOutcome) {
+  if (inserts === undefined) {
+    console.warn(`  ⚠ Ecomail accepted a batch of ${sent} without an \`inserts\` count – cannot tell whether every address was added`);
+  } else if (inserts < sent) {
+    outcome.notInserted += sent - inserts;
+    console.warn(`  ⚠⚠⚠ Ecomail inserted only ${inserts} of ${sent} accepted address(es): ${sent - inserts} dropped or already in Ecomail. They are marked anyway; run \`pull\` and check "DB rows not in Ecomail".`);
+  }
+}
+
+/**
  * Sends one batch. On a 422 that names individual subscribers, those are dropped and the rest is sent once more: whether
  * Ecomail inserted the valid part of a rejected request is undocumented, and re-sending is harmless, so only a 2xx counts.
  */
 async function sendBatch(deps: PushDeps, batch: PushEmail[], outcome: PushOutcome): Promise<PushEmail[]> {
   const first = await deps.subscribeBulk(batch.map(toSubscriber));
-  if (first.ok) return batch;
+  if (first.ok) {
+    checkInserts(first.inserts, batch.length, outcome);
+    return batch;
+  }
   if (!first.rejected) {
     console.warn(`  ⚠ batch of ${batch.length} rejected as a whole: ${JSON.stringify(first.errors)}`);
     outcome.failed.push(...batch.map((email) => email.email));
@@ -48,13 +66,16 @@ async function sendBatch(deps: PushDeps, batch: PushEmail[], outcome: PushOutcom
   const rest = batch.filter((_, index) => !first.rejected?.has(index));
   if (!rest.length) return [];
   const second = await deps.subscribeBulk(rest.map(toSubscriber));
-  if (second.ok) return rest;
+  if (second.ok) {
+    checkInserts(second.inserts, rest.length, outcome);
+    return rest;
+  }
   console.warn(`  ⚠ batch of ${rest.length} rejected again after dropping ${first.rejected.size}: ${JSON.stringify(second.errors)}`);
   outcome.failed.push(...rest.map((email) => email.email));
   return [];
 }
 
-/** The push against injected I/O; throws when a batch failed, after marking everything that was accepted. */
+/** The push against injected I/O; throws when any address was rejected or in a failed batch, after all batches ran and everything accepted was marked. */
 export async function push(deps: PushDeps, { apply, verbose, limit }: CliOptions, { listId, origins }: Pick<EcomailEnv, "listId" | "origins">): Promise<PushOutcome> {
   console.log(`Subscription [origin: ${origins.join(", ")}] → Ecomail list ${listId} (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
   console.log("Reading candidates…");
@@ -68,7 +89,7 @@ export async function push(deps: PushDeps, { apply, verbose, limit }: CliOptions
   );
   console.log(`  rows to mark: ${plan.rows}`);
 
-  const outcome: PushOutcome = { accepted: [], rejected: [], failed: [], marked: 0 };
+  const outcome: PushOutcome = { accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 };
   if (!apply) {
     console.log("\nDry-run – nothing sent. Re-run with --apply to send.");
     return outcome;
@@ -96,7 +117,12 @@ export async function push(deps: PushDeps, { apply, verbose, limit }: CliOptions
     outcome.rejected.map(({ email, reason }) => (verbose ? `${email} (${reason})` : email)),
   );
   printCategory(verbose, "in failed batches (not marked)", outcome.failed);
-  if (outcome.failed.length) throw new Error(`${outcome.failed.length} email(s) were in batches Ecomail rejected; nothing of those was marked – re-run to retry`);
+  if (outcome.notInserted) console.warn(`  ⚠ accepted but not reported as inserted: ${outcome.notInserted} – run \`pull\` and check "DB rows not in Ecomail"`);
+  const problems = [
+    outcome.rejected.length && `${outcome.rejected.length} email(s) rejected by Ecomail${verbose ? "" : " (--verbose lists them)"}`,
+    outcome.failed.length && `${outcome.failed.length} email(s) were in batches Ecomail rejected – re-run to retry`,
+  ].filter(Boolean);
+  if (problems.length) throw new Error(`${problems.join("; ")}; none of those was marked`);
   return outcome;
 }
 
