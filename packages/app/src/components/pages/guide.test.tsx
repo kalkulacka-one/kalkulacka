@@ -38,13 +38,11 @@ vi.mock("@/components/layout", () => {
     Content: React.FC<{ children?: React.ReactNode }>;
     BottomNavigation: React.FC<{ children?: React.ReactNode }>;
     Footer: React.FC<{ children?: React.ReactNode }>;
-    BottomSpacer: React.FC<{ children?: React.ReactNode }>;
   };
   LayoutMock.Header = vi.fn(({ children }) => children);
   LayoutMock.Content = vi.fn(({ children }) => children);
   LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
   LayoutMock.Footer = vi.fn(({ children }) => children);
-  LayoutMock.BottomSpacer = vi.fn(({ children }) => children);
 
   return {
     Layout: LayoutMock,
@@ -52,11 +50,8 @@ vi.mock("@/components/layout", () => {
 });
 
 vi.mock("@/components/embed-footer", () => {
-  const EmbedFooterMock = vi.fn(() => null) as unknown as React.FC & { heightClassNames: string; navOffsetClassNames: string };
-  EmbedFooterMock.heightClassNames = "h-0";
-  EmbedFooterMock.navOffsetClassNames = "bottom-0";
   return {
-    EmbedFooter: EmbedFooterMock,
+    EmbedFooter: vi.fn(() => null),
   };
 });
 

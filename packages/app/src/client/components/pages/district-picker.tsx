@@ -22,7 +22,6 @@ export type DistrictPickerPage = {
 
 export function DistrictPickerPage({ embedContext, picker, heading, closeHref, homepageHref, privacyHref }: DistrictPickerPage) {
   const t = useTranslations("koa.pages");
-  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   return (
     <DistrictPicker picker={picker}>
@@ -56,7 +55,6 @@ export function DistrictPickerPage({ embedContext, picker, heading, closeHref, h
         <Layout.Content>
           <DistrictPickerResults />
         </Layout.Content>
-        {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
         <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
       </Layout>
     </DistrictPicker>

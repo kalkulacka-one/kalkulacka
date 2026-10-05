@@ -27,7 +27,6 @@ export type QuestionPage = {
 
 export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const t = useTranslations("koa.pages");
-  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
   const isAnswered = answer.answer?.answer !== undefined;
 
   const handleAgreeChange = (checked: boolean) => {
@@ -112,7 +111,6 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
         </div>
       </Layout.Content>
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );

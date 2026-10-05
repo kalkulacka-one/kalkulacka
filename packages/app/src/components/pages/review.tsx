@@ -24,7 +24,6 @@ export type ReviewPage = {
 
 export function ReviewPage({ embedContext, homepageHref, privacyHref, questions, answers, calculator, onNextClick, onPreviousClick, onCloseClick }: ReviewPage) {
   const t = useTranslations("koa.pages");
-  const hasFooter = embedContext.isEmbed && embedContext.config?.attribution !== false;
 
   const handleAgreeChange = (questionId: string, agree: boolean) => {
     if (agree) {
@@ -103,8 +102,7 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
           })}
         </div>
       </Layout.Content>
-      {hasFooter && <Layout.BottomSpacer className={`${EmbedFooter.heightClassNames} koa:lg:hidden`} />}
-      <Layout.BottomNavigation className={hasFooter ? EmbedFooter.navOffsetClassNames : undefined}>
+      <Layout.BottomNavigation>
         <ReviewNavigationCard onNextClick={onNextClick} />
       </Layout.BottomNavigation>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
