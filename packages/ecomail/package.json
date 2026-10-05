@@ -2,10 +2,12 @@
   "name": "@kalkulacka-one/ecomail",
   "version": "0.0.0",
   "private": true,
-  "description": "Ecomail integration – syncs the Ecomail list state into the database",
+  "description": "Ecomail integration – syncs the Ecomail list state with the database",
   "type": "module",
   "scripts": {
     "pull": "turbo run build --filter=@kalkulacka-one/ecomail^... --output-logs=errors-only && node --no-warnings src/pull.ts",
+    "push": "turbo run build --filter=@kalkulacka-one/ecomail^... --output-logs=errors-only && node --no-warnings src/push.ts",
+    "sync": "turbo run build --filter=@kalkulacka-one/ecomail^... --output-logs=errors-only && node --no-warnings src/sync-cli.ts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "ncu": "ncu",
