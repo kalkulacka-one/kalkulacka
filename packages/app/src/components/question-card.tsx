@@ -26,7 +26,7 @@ export type QuestionCard = {
  * question and the text just starts at the top. Only a question longer than
  * that minimum grows the card. The minimum is capped at the viewport minus
  * the chrome around the card (header, progress bar, step row, paddings and
- * the embed footer's spacer, ~18.5rem), so a 600px partner iframe or a short
+ * the embed footer's spacer, ~17rem), so a 600px partner iframe or a short
  * laptop screen still shows the answer and step rows without scrolling.
  *
  * `mb-2` below is deliberate, not decorative: the step row sits in the same
@@ -41,7 +41,7 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
   return (
     <Card
       shadow={false}
-      className="koa:flex koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[min(34rem,100dvh_-_18.5rem)]"
+      className="koa:flex koa:flex-1 koa:flex-col koa:rounded-card! koa:border koa:border-border koa:shadow-card koa:mb-2 koa:sm:mb-0 koa:sm:flex-none koa:sm:min-h-[min(34rem,100dvh_-_17rem)]"
     >
       <div className="koa:flex koa:flex-1 koa:flex-col koa:gap-4 koa:pt-[clamp(20px,14.4898px+1.4694vw,38px)] koa:px-[clamp(18px,12.4898px+1.4694vw,36px)] koa:pb-[clamp(18px,13.7143px+1.1429vw,32px)]">
         <div className="koa:flex koa:flex-wrap koa:gap-2">
