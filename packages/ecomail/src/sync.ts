@@ -122,6 +122,7 @@ export function collectContacts(byStatus: Partial<Record<EcomailStatus, EcomailR
 export type SubscriptionRow = {
   id: string;
   email: string;
+  origin: string;
   createdAt: Date;
   metadata: unknown;
   emailStatus: string;
@@ -172,7 +173,14 @@ export function lastConsentAt(row: SubscriptionRow): Date {
   return resubscribedAt && resubscribedAt > row.createdAt ? resubscribedAt : row.createdAt;
 }
 
-export function planSync({ contacts, rows, listId, now }: { contacts: Map<string, EcomailContact>; rows: SubscriptionRow[]; listId: number; now: Date }): { updates: RowUpdate[]; report: SyncReport } {
+/**
+ * Plans updates for the rows whose origin belongs to the list. Rows of other origins are expected to be filtered out by the
+ * query already; here they are skipped as well, so they neither get an update nor count as DB rows for matching.
+ */
+export function planSync({ contacts, rows, origins, listId, now }: { contacts: Map<string, EcomailContact>; rows: SubscriptionRow[]; origins: string[]; listId: number; now: Date }): {
+  updates: RowUpdate[];
+  report: SyncReport;
+} {
   const report: SyncReport = {
     newlyMarked: [],
     unsubscribedSet: [],
@@ -191,7 +199,10 @@ export function planSync({ contacts, rows, listId, now }: { contacts: Map<string
   const matched = new Set<string>();
   const marker: EcomailMarker = { listId, syncedAt: now.toISOString() };
 
+  const allowedOrigins = new Set(origins);
+
   for (const row of rows) {
+    if (!allowedOrigins.has(row.origin)) continue;
     const key = row.email.trim().toLowerCase();
     const contact = contacts.get(key);
     if (!contact) {
