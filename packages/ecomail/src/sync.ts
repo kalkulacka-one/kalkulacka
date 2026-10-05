@@ -1,4 +1,4 @@
-// Pure core of the Ecomail → DB pull (`ecomail-pull.ts`): Ecomail list records + Subscription rows → planned row updates and
+// Pure core of the Ecomail → DB pull (`pull.ts`): Ecomail list records + Subscription rows → planned row updates and
 // a report. No I/O here, so it can be unit-tested; the CLI does the fetching and the writing.
 
 /** The values Ecomail's `status` filter accepts as strings (numeric values are silently ignored by the API). */

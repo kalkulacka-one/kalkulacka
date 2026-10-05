@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { collectContacts, type EcomailRecord, type EcomailStatus, ecomailUnsubscribedAt, planSync, type RowUpdate, type SubscriptionRow } from "./ecomail-sync.ts";
+import { collectContacts, type EcomailRecord, type EcomailStatus, ecomailUnsubscribedAt, planSync, type RowUpdate, type SubscriptionRow } from "./sync.ts";
 
 const NOW = new Date("2026-10-05T10:00:00.000Z");
 const CREATED = new Date("2025-01-01T00:00:00.000Z");
@@ -14,7 +14,7 @@ function plan(byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>>, rows: S
   return { ...planSync({ contacts, rows, listId: 3, now }), issues };
 }
 
-/** What the DB would hold after applying the updates (mirrors the SQL in ecomail-pull.mts). */
+/** What the DB would hold after applying the updates (mirrors the SQL in pull.ts). */
 function applyUpdates(rows: SubscriptionRow[], updates: RowUpdate[]): SubscriptionRow[] {
   return rows.map((current) => {
     const update = updates.find((candidate) => candidate.id === current.id);

@@ -5,7 +5,7 @@
   "description": "Ecomail integration – syncs the Ecomail list state into the database",
   "type": "module",
   "scripts": {
-    "ecomail:pull": "turbo run build --filter=@kalkulacka-one/ecomail^... --output-logs=errors-only && node --no-warnings src/ecomail-pull.ts",
+    "pull": "turbo run build --filter=@kalkulacka-one/ecomail^... --output-logs=errors-only && node --no-warnings src/pull.ts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "ncu": "ncu",

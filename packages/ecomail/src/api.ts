@@ -1,6 +1,6 @@
 // Minimal read-only Ecomail API client – GET requests only, nothing here writes to Ecomail.
 
-import type { EcomailRecord, EcomailStatus } from "./ecomail-sync.ts";
+import type { EcomailRecord, EcomailStatus } from "./sync.ts";
 
 const API_BASE = "https://api2.ecomailapp.cz";
 const PER_PAGE = 1000;

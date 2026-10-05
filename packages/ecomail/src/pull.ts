@@ -1,10 +1,10 @@
 // Ecomail → DB pull: mirrors the state of the Ecomail list into Subscription rows (presence marker, unsubscribes, hard bounces).
 // Read-only towards Ecomail (GET only). Dry-run by default; writes only with --apply.
 //
-//   npm run ecomail:pull -w @kalkulacka-one/ecomail                       # dry-run: fetch, plan, print the summary
-//   npm run ecomail:pull -w @kalkulacka-one/ecomail -- --verbose          # … with full email lists per category
-//   npm run ecomail:pull -w @kalkulacka-one/ecomail -- --apply            # write the planned changes
-//   npm run ecomail:pull -w @kalkulacka-one/ecomail -- --apply --limit 10 # write at most 10 row updates (canary)
+//   npm run pull -w @kalkulacka-one/ecomail                       # dry-run: fetch, plan, print the summary
+//   npm run pull -w @kalkulacka-one/ecomail -- --verbose          # … with full email lists per category
+//   npm run pull -w @kalkulacka-one/ecomail -- --apply            # write the planned changes
+//   npm run pull -w @kalkulacka-one/ecomail -- --apply --limit 10 # write at most 10 row updates (canary)
 //
 // Env (from packages/ecomail/.env), all required: DATABASE_URL, ECOMAIL_API_KEY, ECOMAIL_LIST_ID (the Ecomail list to mirror).
 
@@ -14,8 +14,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { config } from "dotenv";
 
-import { fetchListSubscribers } from "./ecomail-api.ts";
-import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type RowUpdate, type SyncReport, UNSUBSCRIBE_SOURCES } from "./ecomail-sync.ts";
+import { fetchListSubscribers } from "./api.ts";
+import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type RowUpdate, type SyncReport, UNSUBSCRIBE_SOURCES } from "./sync.ts";
 
 const IDS_PER_STATEMENT = 1000;
 const STATEMENTS_PER_TRANSACTION = 100;
@@ -32,7 +32,7 @@ const limit = limitIndex >= 0 ? Number(args[limitIndex + 1]) : Number.POSITIVE_I
 if (Number.isNaN(limit) || limit < 0) fail("--limit expects a non-negative number");
 
 function fail(message: string): never {
-  console.error(`ecomail-pull: ${message}`);
+  console.error(`ecomail pull: ${message}`);
   process.exit(1);
 }
 
