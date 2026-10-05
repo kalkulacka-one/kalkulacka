@@ -55,7 +55,7 @@ export function loadEnv(): EcomailEnv {
 }
 
 export function prismaSqlClient(prisma: PrismaClient): SqlClient<ReturnType<PrismaClient["$executeRaw"]>> {
-  return { executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements) => prisma.$transaction(statements) };
+  return { executeRaw: (query, ...values) => prisma.$executeRaw(query, ...values), transaction: (statements, options) => prisma.$transaction(statements, options) };
 }
 
 /** A report line: the count, plus the emails with `--verbose`. */

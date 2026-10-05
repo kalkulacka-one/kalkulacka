@@ -1,12 +1,20 @@
 import type { FixUpdate, StatusUpdate, Update } from "./plan.ts";
 
 export const IDS_PER_STATEMENT = 1000;
-export const STATEMENTS_PER_TRANSACTION = 100;
+/**
+ * With the driver adapter, Prisma runs each `$transaction([...])` batch as an interactive transaction with a 5 s default timeout,
+ * and every statement is a round trip to the cluster (~50 ms for a single-row one). 10 statements keep a transaction around
+ * half a second of round trips; the raised timeout is headroom for statements that update a full `IDS_PER_STATEMENT` chunk.
+ */
+export const STATEMENTS_PER_TRANSACTION = 10;
+export const TRANSACTION_OPTIONS = { timeout: 60_000, maxWait: 10_000 } as const;
+
+export type TransactionOptions = { timeout: number; maxWait: number };
 
 /** The two Prisma calls `write` needs, so it can be tested with a fake. */
 export type SqlClient<Statement> = {
   executeRaw: (query: TemplateStringsArray, ...values: unknown[]) => Statement;
-  transaction: (statements: Statement[]) => Promise<number[]>;
+  transaction: (statements: Statement[], options: TransactionOptions) => Promise<number[]>;
 };
 
 export type WriteResult = { statuses: number; fixes: number };
@@ -71,7 +79,10 @@ export async function write<Statement>(client: SqlClient<Statement>, updates: Up
   const result: WriteResult = { statuses: 0, fixes: 0 };
   for (let i = 0; i < statements.length; i += STATEMENTS_PER_TRANSACTION) {
     const batch = statements.slice(i, i + STATEMENTS_PER_TRANSACTION);
-    const counts = await client.transaction(batch.map((statement) => statement.build()));
+    const counts = await client.transaction(
+      batch.map((statement) => statement.build()),
+      TRANSACTION_OPTIONS,
+    );
     counts.forEach((count, index) => {
       const kind = batch[index]?.kind;
       if (kind) result[kind] += count;

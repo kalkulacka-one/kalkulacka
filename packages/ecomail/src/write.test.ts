@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { RowUpdate } from "./sync.ts";
-import { countKinds, IDS_PER_STATEMENT, orderForApply, type SqlClient, STATEMENTS_PER_TRANSACTION, write } from "./write.ts";
+import { countKinds, IDS_PER_STATEMENT, orderForApply, type SqlClient, STATEMENTS_PER_TRANSACTION, TRANSACTION_OPTIONS, type TransactionOptions, write } from "./write.ts";
 
 const MARKER = { listId: 3, syncedAt: "2026-10-05T10:00:00.000Z" };
 const ORIGINS = ["subscribe-form", "import-2022"];
@@ -10,14 +10,16 @@ type Statement = { sql: string; values: unknown[] };
 
 function fakeClient() {
   const transactions: Statement[][] = [];
+  const options: TransactionOptions[] = [];
   const client: SqlClient<Statement> = {
     executeRaw: (query, ...values) => ({ sql: query.join("?"), values }),
-    transaction: async (statements) => {
+    transaction: async (statements, transactionOptions) => {
       transactions.push(statements);
+      options.push(transactionOptions);
       return statements.map((statement) => (statement.values[5] as string[]).length);
     },
   };
-  return { client, transactions };
+  return { client, transactions, options };
 }
 
 function update(id: string, change: Partial<RowUpdate> = {}): RowUpdate {
@@ -49,14 +51,15 @@ describe("write", () => {
     expect(bounce).toEqual([null, null, null, null, true, ["d"], ORIGINS]);
   });
 
-  it("chunks ids per statement and statements per transaction", async () => {
+  it("chunks ids per statement and statements per transaction, each with the raised timeout", async () => {
     const markerOnly = Array.from({ length: IDS_PER_STATEMENT + 1 }, (_, index) => update(`m${index}`, { ecomail: MARKER }));
     const unsubscribes = Array.from({ length: STATEMENTS_PER_TRANSACTION }, (_, index) => update(`u${index}`, { unsubscribedAt: new Date(Date.UTC(2026, 0, 1, 0, index)) }));
-    const { client, transactions } = fakeClient();
+    const { client, transactions, options } = fakeClient();
 
     await expect(write(client, [...markerOnly, ...unsubscribes], ORIGINS)).resolves.toBe(markerOnly.length + unsubscribes.length);
 
     expect(transactions.map((statements) => statements.length)).toEqual([STATEMENTS_PER_TRANSACTION, 2]);
+    expect(options).toEqual([TRANSACTION_OPTIONS, TRANSACTION_OPTIONS]);
     const idCounts = transactions.flat().map((statement) => (statement.values[5] as string[]).length);
     expect(idCounts.slice(0, 2)).toEqual([IDS_PER_STATEMENT, 1]);
   });
