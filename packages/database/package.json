@@ -23,7 +23,9 @@
     "ncu:upgrade": "ncu -u",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.scripts.json",
+    "test": "vitest run",
+    "ecomail:pull": "npm run build && node --no-warnings scripts/ecomail-pull.mts"
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",
