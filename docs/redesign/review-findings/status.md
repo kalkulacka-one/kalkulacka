@@ -12,7 +12,7 @@ Who is working on what. Edit this file on this branch (`redesign/review-findings
 | F-02 | Bug | Picker description fades to a ghost on scroll | major | — | open |  |  |  |
 | F-03 | Bug (design) | Search field and highlighted result both show a focus ring | minor | — | open |  |  |  |
 | F-04 | Bug | Short pages scroll on iPhone; the title scrolls away under the header | minor | — | merged | Klára | #661 | Chromium: intro doesn't scroll at 390×664. iOS Safari toolbar behaviour still to check on a device. |
-| F-05 | Bug | Bottom button covers the last line of text, even fully scrolled | major | — | PR #665 | Kryštof | #665 |  |
+| F-05 | Bug | Bottom button covers the last line of text, even fully scrolled | major | — | open |  |  | #665 closed: its padding box blocked embed footer links; needs pointer-events-none on Layout.BottomNavigation |
 | F-06 | Bug | Question screen: step row (back / 1/40 / skip) is hidden below the fold on iPhone | blocker | — | merged | Klára | #661 | Verified on staging 2026-10-05 (Chromium 390×664, 390×844): the step row is in view at load on 29 of 30 questions; q16 is long, so the page scrolls (intended). Real iPhone Safari still to check. |
 | F-07 | Bug | Question screen: nested scroll inside the card traps the gesture, with no sign the text scrolls | major | — | merged | Klára | #661 | Verified 2026-10-05: no inner scrollers on any question. |
 | F-08 | Bug (a11y) | Review screen: yes/no/star touch targets are ~36px, yes and no only 6px apart | major | chyba | PR #664 | Klára | redesign/recap-modal (on #663 Dialog) | Recap rows show only the title; the whole question and the answer controls open in a Dialog (new in the design system). Makes F-08 moot and cuts F-21 to one stop per row. |
