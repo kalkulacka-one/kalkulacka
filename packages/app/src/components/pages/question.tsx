@@ -98,7 +98,7 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           row stays at the bottom of a short question; on larger screens the
           card has a stable minimum height so the answer row doesn't move.
         */}
-        <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:flex-none koa:sm:gap-6 koa:sm:py-6">
+        <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:flex-none koa:sm:gap-6">
           <SteppedProgressBar
             stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
             stepCurrent={number}
