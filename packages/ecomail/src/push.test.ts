@@ -54,7 +54,7 @@ afterEach(() => {
 describe("push", () => {
   it("never sends or marks on a dry-run", async () => {
     const { deps, sent, marked } = fakeDeps(rows(5));
-    await expect(push(deps, DRY, ENV)).resolves.toEqual({ accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 });
+    await expect(push(deps, DRY, ENV)).resolves.toEqual({ planned: rows(5).map((row) => row.email), accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 });
     expect(sent).toEqual([]);
     expect(marked).toEqual([]);
   });
@@ -137,7 +137,9 @@ describe("push", () => {
   it("marks nothing when the re-sent remainder is rejected again", async () => {
     const reject: BulkResult = { ok: false, rejected: new Map([[0, "email: Invalid"]]), errors: {} };
     const { deps, sent, marked } = fakeDeps(rows(2), [() => reject, () => reject]);
-    await expect(push(deps, APPLY, ENV)).rejects.toThrow("1 email(s) rejected by Ecomail (--verbose lists them); 1 email(s) were in batches Ecomail rejected – re-run to retry; none of those was marked");
+    await expect(push(deps, APPLY, ENV)).rejects.toThrow(
+      "1 email(s) rejected by Ecomail (--verbose lists them); 1 email(s) were in batches Ecomail rejected – re-run to retry; none of those was marked",
+    );
     expect(sent).toHaveLength(2);
     expect(marked).toEqual([]);
   });

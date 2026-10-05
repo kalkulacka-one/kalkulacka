@@ -11,27 +11,35 @@ import { config } from "dotenv";
 import { parseOrigins } from "./origins.ts";
 import type { SqlClient } from "./write.ts";
 
-export type CliOptions = { apply: boolean; verbose: boolean; limit: number | undefined };
+/** `maxPullAge` (minutes) is only accepted by the standalone push. */
+export type CliOptions = { apply: boolean; verbose: boolean; limit: number | undefined; maxPullAge?: number };
 export type EcomailEnv = { apiKey: string; listId: number; origins: string[] };
 export type PrismaClient = typeof Prisma;
 
 export class UsageError extends Error {}
 
-/** Strict flags: `--apply`, `--verbose`, `--limit N` (positive integer, only with `--apply`). */
+const positiveInteger = (value: string) => /^\d+$/.test(value) && Number(value) > 0;
+
+/** Strict flags: `--apply`, `--verbose`, `--limit N` (positive integer, only with `--apply`); `push` also takes `--max-pull-age MIN`. */
 export function parseCliArgs(args: string[], command: string): CliOptions {
-  let values: { apply?: boolean; verbose?: boolean; limit?: string };
+  let values: { apply?: boolean; verbose?: boolean; limit?: string; "max-pull-age"?: string };
+  const usage = `Usage: ${command} [--verbose] [--apply [--limit N]]${command === "push" ? " [--max-pull-age MIN]" : ""}`;
   try {
-    ({ values } = parseArgs({ args, options: { apply: { type: "boolean" }, verbose: { type: "boolean" }, limit: { type: "string" } }, strict: true, allowPositionals: false }));
+    const options = { apply: { type: "boolean" }, verbose: { type: "boolean" }, limit: { type: "string" }, "max-pull-age": { type: "string" } } as const;
+    ({ values } = parseArgs({ args, options, strict: true, allowPositionals: false }));
   } catch (error) {
-    throw new UsageError(`${error instanceof Error ? error.message : String(error)}\nUsage: ${command} [--verbose] [--apply [--limit N]]`);
+    throw new UsageError(`${error instanceof Error ? error.message : String(error)}\n${usage}`);
   }
+  const rawMaxPullAge = values["max-pull-age"];
+  if (rawMaxPullAge !== undefined && command !== "push") throw new UsageError(`--max-pull-age only applies to push\n${usage}`);
+  if (rawMaxPullAge !== undefined && !positiveInteger(rawMaxPullAge)) throw new UsageError(`--max-pull-age expects a positive number of minutes, got "${rawMaxPullAge}"`);
   let limit: number | undefined;
   if (values.limit !== undefined) {
     if (!values.apply) throw new UsageError("--limit only applies to --apply");
-    if (!/^\d+$/.test(values.limit) || Number(values.limit) <= 0) throw new UsageError(`--limit expects a positive integer, got "${values.limit}"`);
+    if (!positiveInteger(values.limit)) throw new UsageError(`--limit expects a positive integer, got "${values.limit}"`);
     limit = Number(values.limit);
   }
-  return { apply: values.apply ?? false, verbose: values.verbose ?? false, limit };
+  return { apply: values.apply ?? false, verbose: values.verbose ?? false, limit, ...(rawMaxPullAge !== undefined && { maxPullAge: Number(rawMaxPullAge) }) };
 }
 
 /** Loads `packages/ecomail/.env` and validates the required variables. */

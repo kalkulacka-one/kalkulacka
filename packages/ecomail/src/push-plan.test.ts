@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { chunk, EMAIL_TRIM_PATTERN, fetchCandidates, normalizeEmail, type PushCandidateRow, planPush, toSubscriber } from "./push-plan.ts";
+import { chunk, EMAIL_TRIM_PATTERN, fetchCandidates, fetchLastSyncedAt, normalizeEmail, type PushCandidateRow, planPush, stalePullReason, toSubscriber } from "./push-plan.ts";
 
 const ORIGINS = ["subscribe-form", "import-2022"];
 
@@ -32,6 +32,45 @@ describe("fetchCandidates", () => {
     expect(sql).toContain(`NOT EXISTS ( SELECT 1 FROM "Subscription" o WHERE lower(regexp_replace(o."email", ?::TEXT, '', 'g')) = lower(regexp_replace(s."email", ?::TEXT, '', 'g')) AND (`);
     expect(sql).toContain(`o."unsubscribedAt" IS NOT NULL OR o."emailStatus" IN ('invalid', 'bounced') OR o."metadata"->'ecomail' IS NOT NULL`);
     expect(sql.slice(sql.indexOf("NOT EXISTS"))).not.toContain("origin");
+  });
+});
+
+describe("fetchLastSyncedAt", () => {
+  it("reads the newest marker of the list's origins only", async () => {
+    let sql = "";
+    let values: unknown[] = [];
+    const at = await fetchLastSyncedAt(
+      {
+        queryRaw: async (query, ...params) => {
+          sql = query.join("?").replace(/\s+/g, " ");
+          values = params;
+          return [{ lastSyncedAt: "2026-10-05T09:50:00.000Z" }];
+        },
+      },
+      ORIGINS,
+    );
+    expect(at).toEqual(new Date("2026-10-05T09:50:00.000Z"));
+    expect(values).toEqual([ORIGINS]);
+    expect(sql).toContain(`SELECT max("metadata"->'ecomail'->>'syncedAt') AS "lastSyncedAt" FROM "Subscription" WHERE "origin" = ANY(?::TEXT[])`);
+  });
+
+  it("returns null without a marker or with an unreadable one", async () => {
+    await expect(fetchLastSyncedAt({ queryRaw: async () => [{ lastSyncedAt: null }] }, ORIGINS)).resolves.toBeNull();
+    await expect(fetchLastSyncedAt({ queryRaw: async () => [{ lastSyncedAt: "yesterday" }] }, ORIGINS)).resolves.toBeNull();
+  });
+});
+
+describe("stalePullReason", () => {
+  const now = new Date("2026-10-05T10:00:00Z");
+
+  it("accepts a marker within the limit", () => {
+    expect(stalePullReason(new Date("2026-10-05T09:45:00Z"), now, 15)).toBeNull();
+  });
+
+  it("refuses an old or missing marker and points to sync", () => {
+    expect(stalePullReason(new Date("2026-10-05T09:44:00Z"), now, 15)).toMatch(/16 min ago.*older than the 15 min.*npm run sync/);
+    expect(stalePullReason(null, now, 15)).toMatch(/^no row carries an Ecomail marker.*npm run sync/);
+    expect(stalePullReason(new Date("2026-10-05T09:00:00Z"), now, 90)).toBeNull();
   });
 });
 
@@ -87,6 +126,15 @@ describe("planPush", () => {
       row("blank", "  "),
     ];
     expect(planPush(rows, ORIGINS).emails.map((email) => email.rowIds)).toEqual([["ok"], ["other-metadata"]]);
+  });
+});
+
+describe("planPush exclusions", () => {
+  it("skips addresses the pull plans to write, under any spelling", () => {
+    const plan = planPush([row("1", "a@example.cz"), row("2", " A@Example.cz"), row("3", "b@example.cz")], ORIGINS, new Set(["a@example.cz"]));
+    expect(plan.emails.map((email) => email.email)).toEqual(["b@example.cz"]);
+    expect(plan.rows).toBe(1);
+    expect(plan.rowsByOrigin).toEqual({ "subscribe-form": 1 });
   });
 });
 

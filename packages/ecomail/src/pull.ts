@@ -16,6 +16,7 @@
 import { fetchListSubscribers } from "./api.ts";
 import { type CliOptions, type EcomailEnv, isMain, type PrismaClient, printCategory, prismaSqlClient, runCli } from "./cli.ts";
 import { subscriptionsQuery } from "./origins.ts";
+import { normalizeEmail } from "./push-plan.ts";
 import { type BySource, collectContacts, ECOMAIL_STATUSES, type EcomailRecord, type EcomailStatus, planSync, type SyncReport, UNSUBSCRIBE_SOURCES } from "./sync.ts";
 import { countKinds, orderForApply, write } from "./write.ts";
 
@@ -52,8 +53,14 @@ function printReport(verbose: boolean, report: SyncReport, issues: ReturnType<ty
   printCategory(verbose, "Ecomail `bounced` without bounced_hard (not treated as hard bounce)", issues.bouncedWithoutHardFlag);
 }
 
+/**
+ * `planned`/`written`: rows this run meant to write and did (0 written on a dry-run). `emails`: the normalised addresses of
+ * every planned update – all in Ecomail – which `sync` hands to the push so a dry-run plans as if they were written.
+ */
+export type PullResult = { planned: number; written: number; emails: Set<string> };
+
 /** The whole pull; throws on failure. `prisma` is passed in so `sync` can share one client with the push. */
-export async function runPull({ apply, verbose, limit }: CliOptions, { apiKey, listId, origins }: EcomailEnv, prisma: PrismaClient): Promise<void> {
+export async function runPull({ apply, verbose, limit }: CliOptions, { apiKey, listId, origins }: EcomailEnv, prisma: PrismaClient): Promise<PullResult> {
   console.log(`Ecomail list ${listId} → Subscription [origin: ${origins.join(", ")}] (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
   console.log("Fetching Ecomail…");
   const byStatus: Partial<Record<EcomailStatus, EcomailRecord[]>> = {};
@@ -66,10 +73,11 @@ export async function runPull({ apply, verbose, limit }: CliOptions, { apiKey, l
   const { contacts, issues } = collectContacts(byStatus);
   const { updates, report } = planSync({ contacts, rows, origins, listId, now: new Date() });
   printReport(verbose, report, issues, updates.length);
+  const emails = new Set(updates.map((update) => normalizeEmail(update.email)));
 
   if (!apply) {
     console.log("\nDry-run – nothing written. Re-run with --apply to write.");
-    return;
+    return { planned: updates.length, written: 0, emails };
   }
   const batch = orderForApply(updates).slice(0, limit);
   const kinds = countKinds(batch);
@@ -77,6 +85,10 @@ export async function runPull({ apply, verbose, limit }: CliOptions, { apiKey, l
   const written = batch.length ? await write(prismaSqlClient(prisma), batch, origins, (count) => process.stderr.write(`\r  written ${count} / ${batch.length}   `)) : 0;
   process.stderr.write("\n");
   console.log(`Done: ${written} row(s) updated${written !== batch.length ? ` (planned ${batch.length})` : ""}.`);
+  return { planned: batch.length, written, emails };
 }
 
-if (isMain(import.meta.url)) await runCli("pull", runPull);
+if (isMain(import.meta.url))
+  await runCli("pull", async (options, env, prisma) => {
+    await runPull(options, env, prisma);
+  });

@@ -61,6 +61,32 @@ export function fetchCandidates(client: QueryClient, origins: string[]): Promise
     ORDER BY s."createdAt", s."id"`;
 }
 
+/** How long ago the newest marker of the list's origins was written, for the standalone push's freshness check. */
+export type LastSyncedClient = { queryRaw: (query: TemplateStringsArray, ...values: unknown[]) => Promise<{ lastSyncedAt: string | null }[]> };
+
+/**
+ * The newest `metadata.ecomail.syncedAt` among rows of the list's origins. Markers are always written as `toISOString()`, whose
+ * fixed-width UTC form sorts as text in time order, so `max` over the text needs no cast that a malformed value could break.
+ */
+export async function fetchLastSyncedAt(client: LastSyncedClient, origins: string[]): Promise<Date | null> {
+  const [result] = await client.queryRaw`
+    SELECT max("metadata"->'ecomail'->>'syncedAt') AS "lastSyncedAt"
+    FROM "Subscription"
+    WHERE "origin" = ANY(${origins}::TEXT[]) AND jsonb_typeof("metadata"->'ecomail') = 'object'`;
+  const at = result?.lastSyncedAt ? new Date(result.lastSyncedAt) : null;
+  return at && !Number.isNaN(at.getTime()) ? at : null;
+}
+
+export const DEFAULT_MAX_PULL_AGE_MINUTES = 15;
+
+/** `null` when the newest marker is recent enough; otherwise why the push must not run. */
+export function stalePullReason(lastSyncedAt: Date | null, now: Date, maxAgeMinutes: number): string | null {
+  const ageMinutes = lastSyncedAt ? (now.getTime() - lastSyncedAt.getTime()) / 60_000 : null;
+  if (ageMinutes !== null && ageMinutes <= maxAgeMinutes) return null;
+  const last = lastSyncedAt ? `the newest Ecomail marker is from ${lastSyncedAt.toISOString()} (${Math.floor(ageMinutes ?? 0)} min ago)` : "no row carries an Ecomail marker";
+  return `${last}, older than the ${maxAgeMinutes} min the push allows (--max-pull-age). The push relies on a fresh pull having marked every address already in the list – run \`npm run sync\` (the normal entry point) or \`npm run pull -- --apply\` first.`;
+}
+
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
@@ -73,15 +99,19 @@ function isCandidate(row: PushCandidateRow, origins: Set<string>): boolean {
 
 const byAge = (a: { createdAt: Date; id: string }, b: { createdAt: Date; id: string }) => a.createdAt.getTime() - b.createdAt.getTime() || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 
-/** One email per address, as stored on its oldest row, oldest first – so a `--limit` canary sends the longest-waiting ones. */
-export function planPush(rows: PushCandidateRow[], origins: string[]): PushPlan {
+/**
+ * One email per address, as stored on its oldest row, oldest first – so a `--limit` canary sends the longest-waiting ones.
+ * `exclude` holds normalised addresses the pull has planned to write (all of them are in Ecomail): in a `sync` dry-run the
+ * pull wrote nothing, so the push plans as if it had, and its numbers match what a real run would send.
+ */
+export function planPush(rows: PushCandidateRow[], origins: string[], exclude: ReadonlySet<string> = new Set()): PushPlan {
   const allowed = new Set(origins);
   const groups = new Map<string, PushCandidateRow[]>();
   const rowsByOrigin: Record<string, number> = {};
   let count = 0;
   for (const row of rows) {
     const key = normalizeEmail(row.email);
-    if (!key || !isCandidate(row, allowed)) continue;
+    if (!key || exclude.has(key) || !isCandidate(row, allowed)) continue;
     groups.set(key, [...(groups.get(key) ?? []), row]);
     rowsByOrigin[row.origin] = (rowsByOrigin[row.origin] ?? 0) + 1;
     count++;

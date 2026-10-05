@@ -23,6 +23,12 @@ describe("parseCliArgs", () => {
     expect(() => parseCliArgs(["--apply", `--limit=${value}`], "push")).toThrow(UsageError);
   });
 
+  it("accepts --max-pull-age for push only", () => {
+    expect(parseCliArgs(["--apply", "--max-pull-age", "30"], "push")).toEqual({ apply: true, verbose: false, limit: undefined, maxPullAge: 30 });
+    expect(() => parseCliArgs(["--max-pull-age", "30"], "sync")).toThrow("--max-pull-age only applies to push");
+    expect(() => parseCliArgs(["--max-pull-age", "0"], "push")).toThrow(UsageError);
+  });
+
   it("rejects unknown flags and positionals", () => {
     expect(() => parseCliArgs(["--force"], "push")).toThrow(/Usage: push/);
     expect(() => parseCliArgs(["apply"], "sync")).toThrow(/Usage: sync/);

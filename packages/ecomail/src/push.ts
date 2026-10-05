@@ -1,6 +1,9 @@
 // DB → Ecomail push: adds valid, subscribed addresses that are not in the list yet, then marks their rows as in Ecomail.
 // The only write towards Ecomail is `subscribe-bulk`, which never updates or resubscribes existing contacts. Dry-run by default.
 //
+// `npm run sync` (pull, then push) is the normal entry point. A standalone push refuses to --apply unless a pull ran recently:
+// the newest `metadata.ecomail.syncedAt` of the list's origins must be at most --max-pull-age minutes old (default 15).
+//
 //   npm run push -w @kalkulacka-one/ecomail                        # dry-run: counts per origin
 //   npm run push -w @kalkulacka-one/ecomail -- --verbose           # … with the emails
 //   npm run push -w @kalkulacka-one/ecomail -- --apply --limit 10  # canary: the 10 longest-waiting addresses
@@ -11,7 +14,7 @@
 
 import { BULK_LIMIT, type BulkResult, type BulkSubscriber, subscribeBulk } from "./api.ts";
 import { type CliOptions, type EcomailEnv, isMain, type PrismaClient, printCategory, prismaSqlClient, runCli } from "./cli.ts";
-import { chunk, fetchCandidates, type PushCandidateRow, type PushEmail, planPush, toSubscriber } from "./push-plan.ts";
+import { chunk, DEFAULT_MAX_PULL_AGE_MINUTES, fetchCandidates, fetchLastSyncedAt, type PushCandidateRow, type PushEmail, planPush, stalePullReason, toSubscriber } from "./push-plan.ts";
 import type { RowUpdate } from "./sync.ts";
 import { write } from "./write.ts";
 
@@ -23,7 +26,7 @@ export type PushDeps = {
 };
 
 /** `notInserted`: accepted addresses beyond the `inserts` Ecomail reported – dropped, or already in Ecomail. */
-export type PushOutcome = { accepted: string[]; rejected: { email: string; reason: string }[]; failed: string[]; marked: number; notInserted: number };
+export type PushOutcome = { planned: string[]; accepted: string[]; rejected: { email: string; reason: string }[]; failed: string[]; marked: number; notInserted: number };
 
 const perOrigin = (counts: Record<string, number>) =>
   Object.entries(counts)
@@ -40,7 +43,9 @@ function checkInserts(inserts: number | undefined, sent: number, outcome: PushOu
     console.warn(`  ⚠ Ecomail accepted a batch of ${sent} without an \`inserts\` count – cannot tell whether every address was added`);
   } else if (inserts < sent) {
     outcome.notInserted += sent - inserts;
-    console.warn(`  ⚠⚠⚠ Ecomail inserted only ${inserts} of ${sent} accepted address(es): ${sent - inserts} dropped or already in Ecomail. They are marked anyway; run \`pull\` and check "DB rows not in Ecomail".`);
+    console.warn(
+      `  ⚠⚠⚠ Ecomail inserted only ${inserts} of ${sent} accepted address(es): ${sent - inserts} dropped or already in Ecomail. They are marked anyway; run \`pull\` and check "DB rows not in Ecomail".`,
+    );
   }
 }
 
@@ -75,11 +80,19 @@ async function sendBatch(deps: PushDeps, batch: PushEmail[], outcome: PushOutcom
   return [];
 }
 
-/** The push against injected I/O; throws when any address was rejected or in a failed batch, after all batches ran and everything accepted was marked. */
-export async function push(deps: PushDeps, { apply, verbose, limit }: CliOptions, { listId, origins }: Pick<EcomailEnv, "listId" | "origins">): Promise<PushOutcome> {
+/**
+ * The push against injected I/O; throws when any address was rejected or in a failed batch, after all batches ran and everything
+ * accepted was marked. `exclude`: normalised addresses the pull planned to write (see `planPush`).
+ */
+export async function push(
+  deps: PushDeps,
+  { apply, verbose, limit }: CliOptions,
+  { listId, origins }: Pick<EcomailEnv, "listId" | "origins">,
+  exclude: ReadonlySet<string> = new Set(),
+): Promise<PushOutcome> {
   console.log(`Subscription [origin: ${origins.join(", ")}] → Ecomail list ${listId} (${apply ? `APPLY${limit !== undefined ? `, limit ${limit}` : ""}` : "dry-run"})`);
   console.log("Reading candidates…");
-  const plan = planPush(await deps.fetchCandidates(), origins);
+  const plan = planPush(await deps.fetchCandidates(), origins, exclude);
   console.log("\nPlanned push:");
   console.log(`  candidate rows by origin: ${perOrigin(plan.rowsByOrigin)}`);
   printCategory(
@@ -89,7 +102,7 @@ export async function push(deps: PushDeps, { apply, verbose, limit }: CliOptions
   );
   console.log(`  rows to mark: ${plan.rows}`);
 
-  const outcome: PushOutcome = { accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 };
+  const outcome: PushOutcome = { planned: plan.emails.map((email) => email.email), accepted: [], rejected: [], failed: [], marked: 0, notInserted: 0 };
   if (!apply) {
     console.log("\nDry-run – nothing sent. Re-run with --apply to send.");
     return outcome;
@@ -126,8 +139,17 @@ export async function push(deps: PushDeps, { apply, verbose, limit }: CliOptions
   return outcome;
 }
 
-/** The push against Ecomail and the DB; `prisma` is passed in so `sync` can share one client with the pull. */
-export async function runPush(options: CliOptions, { apiKey, listId, origins }: EcomailEnv, prisma: PrismaClient): Promise<void> {
+/**
+ * The push against Ecomail and the DB; `prisma` is passed in so `sync` can share one client with the pull. `sync` passes the
+ * pull's addresses as `exclude`; a standalone push (no `exclude`) first checks that a pull ran recently.
+ */
+export async function runPush(options: CliOptions, { apiKey, listId, origins }: EcomailEnv, prisma: PrismaClient, exclude?: ReadonlySet<string>): Promise<void> {
+  if (!exclude) {
+    const lastSyncedAt = await fetchLastSyncedAt({ queryRaw: (query, ...values) => prisma.$queryRaw(query, ...values) }, origins);
+    const stale = stalePullReason(lastSyncedAt, new Date(), options.maxPullAge ?? DEFAULT_MAX_PULL_AGE_MINUTES);
+    if (stale && options.apply) throw new Error(`refusing to push: ${stale}`);
+    if (stale) console.warn(`⚠ ${stale} This dry-run may list addresses that are already in Ecomail.\n`);
+  }
   await push(
     {
       fetchCandidates: () => fetchCandidates({ queryRaw: (query, ...values) => prisma.$queryRaw<PushCandidateRow[]>(query, ...values) }, origins),
@@ -137,7 +159,8 @@ export async function runPush(options: CliOptions, { apiKey, listId, origins }: 
     },
     options,
     { listId, origins },
+    exclude,
   );
 }
 
-if (isMain(import.meta.url)) await runCli("push", runPush);
+if (isMain(import.meta.url)) await runCli("push", (options, env, prisma) => runPush(options, env, prisma));
