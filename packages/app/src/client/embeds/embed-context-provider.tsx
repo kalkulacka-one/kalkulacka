@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 
 // Apps declare their own embed names by augmenting this interface, the way
 // next-intl's AppConfig is augmented for locales and messages:
@@ -21,6 +21,9 @@ export type EmbedConfig = {
   logo?: "monochrome" | "color";
   attribution?: boolean;
   donateCard?: number | false;
+  // Horizontal space (px) inside the iframe, outside the scrolling content, for partners who embed edge to edge:
+  // a swipe that starts there has nothing to scroll in the iframe, so it scrolls the partner's page instead.
+  inset?: number;
 };
 
 export type EmbedContextType =
@@ -42,6 +45,16 @@ export const useEmbed = () => useContext(EmbedContext);
 export const EmbedContextProvider = (props: EmbedContextType & { children: React.ReactNode }) => {
   const { children, ...embedProps } = props;
   const embedValue: EmbedContextType = embedProps;
+  const inset = embedProps.isEmbed ? embedProps.config?.inset : undefined;
+
+  useEffect(() => {
+    // PROTOTYPE: `?inset=16` on the first load overrides the config, so the preview page can try values. It lives on
+    // <html>, which client-side navigation keeps, so it holds for the whole session in the iframe.
+    const override = new URLSearchParams(window.location.search).get("inset");
+    const value = override !== null ? Number(override) : inset;
+    if (value === undefined || Number.isNaN(value)) return;
+    document.documentElement.style.setProperty("--koa-embed-inset", `${value}px`);
+  }, [inset]);
 
   return <EmbedContext.Provider value={embedValue}>{children}</EmbedContext.Provider>;
 };

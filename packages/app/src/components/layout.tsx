@@ -1,3 +1,5 @@
+import React from "react";
+
 import { twMerge } from "@/utilities/tailwind";
 
 export type Layout = {
@@ -5,11 +7,28 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
+  const items = React.Children.toArray(children);
+  const isSlot = (type: React.ElementType) => (child: React.ReactNode) => React.isValidElement(child) && child.type === type;
+  const header = items.filter(isSlot(Header));
+  const footer = items.filter(isSlot(Footer));
+  const body = items.filter((child) => !isSlot(Header)(child) && !isSlot(Footer)(child));
   // Mobile (< sm) is a grid: Content stretches to fill the viewport, so BottomNavigation sits at the screen's bottom
   // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
   // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
   // taller than the screen.
-  return <div className="koa:min-h-dvh koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
+  //
+  // Embeds (styles.css, html[data-embed]) turn this into a frame-tall shell instead: header on top, the body scrolling
+  // in its own region below it, and the footer always visible at the bottom. Outside embeds the body wrapper is
+  // `display: contents`, so the layout above is unchanged.
+  return (
+    <div data-layout className="koa:min-h-dvh koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">
+      {header}
+      <div data-layout-body className="koa:contents">
+        {body}
+      </div>
+      {footer}
+    </div>
+  );
 }
 
 LayoutComponent.displayName = "Layout";
@@ -31,11 +50,14 @@ export type LayoutContent = {
   fixed?: boolean;
   // Lets a screen's own column take the space left below the header, so it can anchor its content to the bottom.
   fill?: boolean;
+  className?: string;
 };
 
-function Content({ children, fullWidth, fill }: LayoutContent) {
+function Content({ children, fullWidth, fill, className }: LayoutContent) {
   return (
-    <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>
+    <main className={twMerge(`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`, className)}>
+      {children}
+    </main>
   );
 }
 

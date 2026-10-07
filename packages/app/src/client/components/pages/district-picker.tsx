@@ -27,7 +27,9 @@ export function DistrictPickerPage({ embedContext, picker, heading, closeHref, h
     <DistrictPicker picker={picker}>
       <Layout>
         <Layout.Header>
-          <div className="koa:bg-page/85 koa:backdrop-blur-md koa:border-b koa:border-border">
+          {/* In an embed the list scrolls in its own region below this block, so it needs no backdrop (which would paint the
+              calculator's page colour over the partner's background). */}
+          <div className={embedContext.isEmbed ? undefined : "koa:bg-page/85 koa:backdrop-blur-md koa:border-b koa:border-border"}>
             <AppHeader heading={heading}>
               <AppHeader.Right>
                 {closeHref && (
@@ -46,7 +48,7 @@ export function DistrictPickerPage({ embedContext, picker, heading, closeHref, h
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
-            <div className="koa:mx-auto koa:grid koa:w-full koa:max-w-xl koa:gap-3 koa:px-2 koa:pb-3 koa:sm:px-4">
+            <div data-picker-intro className="koa:mx-auto koa:grid koa:w-full koa:max-w-xl koa:gap-3 koa:px-2 koa:pb-3 koa:sm:px-4">
               <p className="koa:max-w-prose koa:text-[0.9375rem] koa:leading-relaxed koa:text-text-muted">{picker.description ?? t("districtPicker.description")}</p>
               <DistrictPickerSearch />
             </div>

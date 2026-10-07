@@ -1,0 +1,136 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Embed preview</title>
+<style>
+  body { margin: 0; background: #d9d9d9; font: 14px system-ui; }
+  form { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; padding: 12px 24px; background: #fff; border-bottom: 1px solid #bbb; }
+  label { display: grid; gap: 4px; font: 600 12px system-ui; color: #444; }
+  select, input[type=number], input[type=text] { font: 14px system-ui; padding: 4px 6px; }
+  label.check { display: flex; gap: 6px; align-items: center; font-weight: 500; }
+  code { font: 12px ui-monospace, monospace; color: #555; word-break: break-all; }
+  .src { padding: 8px 24px 0; }
+  .stage { display: flex; gap: 32px; align-items: flex-start; padding: 16px 24px 48px; flex-wrap: wrap; }
+  .caption { font: 600 12px system-ui; color: #555; margin: 0 0 6px; }
+  .article { background: #f7f4ee; color: #1d1d1b; font-family: Georgia, "Times New Roman", serif; }
+  .article header { padding: 16px 20px; border-bottom: 1px solid #e4ddd0; font: 800 18px/1 system-ui; letter-spacing: -0.02em; color: #b3121a; }
+  .article .body { padding: 20px 0; }
+  .article .text { padding: 0 var(--pad); }
+  .article .kicker { font: 600 12px system-ui; text-transform: uppercase; letter-spacing: .06em; color: #b3121a; margin-bottom: 8px; }
+  .article h1 { font-size: 28px; line-height: 1.15; margin: 0 0 12px; }
+  .article .meta { font: 12px system-ui; color: #77705f; margin: 0 0 16px; }
+  .article p { font-size: 17px; line-height: 1.55; margin: 0 0 16px; }
+  .article iframe { display: block; height: 600px; border: 0; margin: 24px 0; background: transparent; }
+  .phone { width: 375px; }
+  .desktop { width: calc(var(--col) + 160px); }
+  .desktop .body { width: var(--col); margin: 0 auto; padding: 32px 0; }
+</style>
+
+<form id="f">
+  <label>Calculator / picker
+    <select name="calc">
+      <optgroup label="Pickers">
+        <option value="volby/senatni-2026|picker">Senát 2026 – district picker</option>
+        <option value="volby/komunalni-2026/brno|picker">Komunální 2026 – Brno picker</option>
+        <option value="volby/komunalni-2026/praha|picker">Komunální 2026 – Praha picker</option>
+      </optgroup>
+      <optgroup label="Senát 2026">
+        <option value="volby/senatni-2026/3-cheb">3 Cheb</option><option value="volby/senatni-2026/6-louny" selected>6 Louny</option>
+        <option value="volby/senatni-2026/9-plzen-mesto">9 Plzeň-město</option><option value="volby/senatni-2026/12-strakonice">12 Strakonice</option>
+        <option value="volby/senatni-2026/15-pelhrimov">15 Pelhřimov</option><option value="volby/senatni-2026/18-pribram">18 Příbram</option>
+        <option value="volby/senatni-2026/21-praha-5">21 Praha 5</option><option value="volby/senatni-2026/24-praha-9">24 Praha 9</option>
+        <option value="volby/senatni-2026/27-praha-1">27 Praha 1</option><option value="volby/senatni-2026/30-kladno">30 Kladno</option>
+        <option value="volby/senatni-2026/33-decin">33 Děčín</option><option value="volby/senatni-2026/36-ceska-lipa">36 Česká Lípa</option>
+        <option value="volby/senatni-2026/39-trutnov">39 Trutnov</option><option value="volby/senatni-2026/42-kolin">42 Kolín</option>
+        <option value="volby/senatni-2026/45-hradec-kralove">45 Hradec Králové</option><option value="volby/senatni-2026/51-zdar-nad-sazavou">51 Žďár nad Sázavou</option>
+        <option value="volby/senatni-2026/54-znojmo">54 Znojmo</option><option value="volby/senatni-2026/60-brno-mesto">60 Brno-město</option>
+        <option value="volby/senatni-2026/63-prerov">63 Přerov</option><option value="volby/senatni-2026/66-litovel">66 Litovel</option>
+        <option value="volby/senatni-2026/69-frydek-mistek">69 Frýdek-Místek</option><option value="volby/senatni-2026/72-ostrava-mesto">72 Ostrava-město</option>
+        <option value="volby/senatni-2026/75-karvina">75 Karviná</option><option value="volby/senatni-2026/78-zlin">78 Zlín</option>
+        <option value="volby/senatni-2026/81-uherske-hradiste">81 Uherské Hradiště</option>
+      </optgroup>
+      <optgroup label="Komunální 2026">
+        <option value="volby/komunalni-2026/brno">Brno</option><option value="volby/komunalni-2026/brno-inventura">Brno – inventura</option>
+        <option value="volby/komunalni-2026/praha">Praha</option><option value="volby/komunalni-2026/praha-inventura">Praha – inventura</option>
+      </optgroup>
+      <optgroup label="Sněmovna 2025">
+        <option value="volby/snemovni-2025/kalkulacka">Kalkulačka</option>
+      </optgroup>
+    </select>
+  </label>
+  <label>Start page
+    <select name="page">
+      <option value="uvod">Úvod</option><option value="navod">Návod</option><option value="otazka/1" selected>Otázka 1</option>
+      <option value="rekapitulace">Rekapitulace</option><option value="vysledek">Výsledek</option><option value="porovnani">Porovnání</option>
+    </select>
+  </label>
+  <label>Embed
+    <select name="embed"><option>default</option><option>diky-ze-muzem</option><option>alarm</option><option>prima</option><option>idnes</option><option>nova</option><option>e15</option><option>reflex</option><option>blesk</option><option>denik</option><option>publico</option><option>aktuality</option><option>datatimes</option><option>hn</option><option>seznamzpravy</option><option>novinky</option><option>aktualne</option><option>ct24</option><option>irozhlas</option><option>denikn</option><option>lidovky</option><option>echo24</option><option>forum24</option><option>info</option><option>respekt</option><option>euro</option><option>hlidacipes</option><option>investigace</option><option>rozhlas</option><option>metro</option><option>krajskelisty</option><option>mesto-brno</option><option>mesto-ostrava</option><option>mesto-plzen</option><option>refresher</option><option>seznam</option><option>heroine</option><option>webpress</option><option>znojemsko</option><option>denik-referendum</option><option>tyden</option><option>instinkt</option><option>ekonom</option><option>forbes</option><option>reporter</option><option>neovlivni</option><option>abc</option><option>bold-news</option><option>studentske-listy</option><option>tiscali</option><option>czechcrunch</option></select>
+  </label>
+  <label>inset (px, inside iframe)<input type="number" name="inset" value="0" min="0" max="48" step="4" style="width:5em"></label>
+  <label>Text padding (px)<input type="number" name="margin" value="16" min="0" max="48" step="4" style="width:5em"></label>
+  <label>Desktop column
+    <select name="column"><option value="600">600</option><option value="632" selected>632</option><option value="690">690</option></select>
+  </label>
+  <label>Iframe
+    <select name="placement"><option value="column" selected>inside the text padding</option><option value="full">without padding (full column width)</option></select>
+  </label>
+  <label class="check"><input type="checkbox" name="border"> 1px grey border</label>
+  <label class="check"><input type="checkbox" name="phone" checked> phone</label>
+  <label class="check"><input type="checkbox" name="desktop" checked> desktop</label>
+  <button type="submit" title="Settings apply on change; this reloads both iframes back to the start page">Restart calculators</button>
+</form>
+<div class="src"><code id="src"></code></div>
+<div class="stage" id="stage"></div>
+
+<script>
+  const form = document.getElementById("f");
+  const BASE = "http://localhost:3121";
+  const article = (cls, caption, src, pad, border, col, full) => {
+    const inset = full ? 0 : pad;
+    return `
+    <div>
+      <p class="caption">${caption}</p>
+      <div class="article ${cls}" style="--col:${col}px;--pad:${pad}px">
+        <header>DENNÍ ZPRÁVY</header>
+        <div class="body">
+          <div class="text">
+            <p class="kicker">Volby 2026</p>
+            <h1>Nevíte, koho volit? Vyzkoušejte volební kalkulačku</h1>
+            <p class="meta">5. října 2026 · 4 min čtení</p>
+            <p>Ve vašem obvodu kandiduje několik lidí s velmi odlišnými názory. Kalkulačka vám pomůže zjistit, kdo z nich vám je nejblíž.</p>
+          </div>
+          <iframe src="${src}" title="Volební kalkulačka" style="width:calc(100% - ${2 * inset}px);margin-left:${inset}px;margin-right:${inset}px;${border ? "border:1px solid #ccc;" : ""}"></iframe>
+          <div class="text">
+            <p>Odpovědi kandidátů redakce ověřovala v září. Výsledek kalkulačky není doporučením, koho volit.</p>
+            <p>Další odstavec článku, aby bylo pod kalkulačkou co scrollovat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  };
+  function render() {
+    const d = Object.fromEntries(new FormData(form));
+    const [calc, kind] = d.calc.split("|");
+    form.page.disabled = kind === "picker";
+    const path = kind === "picker" ? calc : `${calc}/${d.page}`;
+    const inset = Number(d.inset) > 0 ? `?inset=${Number(d.inset)}` : "";
+    const src = `${BASE}/embed/${d.embed}/${path}${inset}`;
+    document.getElementById("src").textContent = src;
+    const margin = Number(d.margin) || 0;
+    const border = d.border === "on";
+    const full = d.placement === "full";
+    document.getElementById("stage").innerHTML =
+      (d.phone ? article("phone", `Phone article (375 wide), text padding ${margin}px, iframe ${full ? "without padding" : "inside the padding"}`, src, margin, border, 0, full) : "") +
+      (d.desktop ? article("desktop", `Desktop article (${d.column}px column), text padding ${margin}px, iframe ${full ? "without padding" : "inside the padding"}`, src, margin, border, Number(d.column), full) : "");
+    location.hash = new URLSearchParams(d).toString();
+  }
+  // restore from hash
+  for (const [k, v] of new URLSearchParams(location.hash.slice(1))) {
+    const el = form.elements[k]; if (!el) continue;
+    if (el.type === "checkbox") el.checked = v === "on"; else el.value = v;
+  }
+  if (location.hash) { for (const name of ["border", "phone", "desktop"]) if (!new URLSearchParams(location.hash.slice(1)).has(name)) form.elements[name].checked = false; }
+  form.addEventListener("submit", (e) => { e.preventDefault(); render(); });
+  form.addEventListener("change", render);
+  render();
+</script>

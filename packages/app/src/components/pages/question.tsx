@@ -28,6 +28,19 @@ export type QuestionPage = {
 export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const t = useTranslations("koa.pages");
   const isAnswered = answer.answer?.answer !== undefined;
+  // Embeds live in a fixed 600px partner iframe: the page fits it exactly and never scrolls, so the card takes the
+  // height left between header, step row and footer and the answer row stays put from question to question.
+  const fit = embedContext.isEmbed;
+  const progress = (
+    <SteppedProgressBar
+      stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
+      stepCurrent={number}
+      stepTotal={total}
+      idKey="id"
+      statusKey="status"
+      decorative
+    />
+  );
 
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {
@@ -71,7 +84,7 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
       <Layout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
-            <AppHeader condensed={condensed} calculator={calculator}>
+            <AppHeader condensed={condensed} calculator={calculator} progress={fit ? progress : undefined}>
               <AppHeader.Right>
                 <HideOnEmbed>
                   <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
@@ -83,7 +96,7 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           )}
         </WithCondenseOnScroll>
       </Layout.Header>
-      <Layout.Content fullWidth fill>
+      <Layout.Content fullWidth fill className={fit ? "koa:flex-1 koa:min-h-0 koa:py-1 koa:sm:py-2" : undefined}>
         {/*
           A dedicated column rather than Layout.Content's own max-width: the
           2026 card is wider than the app's default content column, and this
@@ -98,16 +111,15 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           row stays at the bottom of a short question; on larger screens the
           card has a stable minimum height so the answer row doesn't move.
         */}
-        <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:flex-none koa:sm:gap-6">
-          <SteppedProgressBar
-            stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
-            stepCurrent={number}
-            stepTotal={total}
-            idKey="id"
-            statusKey="status"
-            decorative
-          />
-          <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
+        <div
+          className={
+            fit
+              ? "koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:min-h-0 koa:flex-col koa:gap-2"
+              : "koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:flex-none koa:sm:gap-6"
+          }
+        >
+          {!fit && progress}
+          <QuestionCard fit={fit} question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
           <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
         </div>
       </Layout.Content>

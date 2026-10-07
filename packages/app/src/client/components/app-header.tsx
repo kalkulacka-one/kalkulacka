@@ -28,6 +28,8 @@ type AppHeaderProps = {
   condensed?: boolean;
   calculator?: CalculatorViewModel;
   heading?: { title: string; secondaryTitle?: string };
+  // Compact single row for embeds: logo and titles, with this (the question progress) filling the rest of the row.
+  progress?: ReactNode;
 };
 
 // Tracks whether the page has actually scrolled (a few px of hysteresis so it doesn't flicker at the very top),
@@ -57,7 +59,7 @@ function useScrolled(threshold = 8) {
   return scrolled;
 }
 
-export function AppHeader({ children, condensed = false, calculator, heading }: AppHeaderProps) {
+export function AppHeader({ children, condensed = false, calculator, heading, progress }: AppHeaderProps) {
   const t = useTranslations("koa");
   const embed = useEmbed();
   const scrolled = useScrolled();
@@ -65,9 +67,9 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
 
-  const gridClasses = "koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center";
+  const gridClasses = progress ? "koa:grid koa:grid-cols-[minmax(0,max-content)_minmax(40%,1fr)_auto] koa:items-center" : "koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center";
   const expandedRowsClasses = "koa:grid-rows-[3rem_auto]";
-  const collapsedRowsClasses = "koa:grid-rows-[3rem]";
+  const collapsedRowsClasses = progress ? "koa:grid-rows-[2.5rem]" : "koa:grid-rows-[3rem]";
   const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-2 koa:sm:gap-y-3";
   const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
@@ -90,15 +92,26 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   // never wire up condense-on-scroll) from reading dimmed on first paint.
   const headerBoxClasses =
     "koa:@container koa:sticky koa:top-0 koa:isolate koa:before:content-[''] koa:before:pointer-events-none koa:before:absolute koa:before:inset-0 koa:before:-z-10 koa:before:bg-page koa:before:transition-opacity koa:before:duration-base koa:after:content-[''] koa:after:pointer-events-none koa:after:absolute koa:after:inset-x-0 koa:after:top-full koa:after:-z-10 koa:after:h-[var(--ko-spacing-fade-edge)] koa:after:bg-[image:var(--ko-fade-to-top)] koa:after:transition-opacity koa:after:duration-base koa:after:ease-out";
-  const headerClasses = twMerge(headerBoxClasses, scrolled ? "koa:before:opacity-100 koa:after:opacity-100" : "koa:before:opacity-0 koa:after:opacity-0");
+  // In an embed nothing scrolls under the header (the layout gives the body its own scroll region), and a page-colour
+  // layer would clash with the partner's background, so the header stays fully transparent there.
+  const headerClasses = embed.isEmbed ? "koa:@container" : twMerge(headerBoxClasses, scrolled ? "koa:before:opacity-100 koa:after:opacity-100" : "koa:before:opacity-0 koa:after:opacity-0");
 
   return (
     <header className={headerClasses}>
-      <div className="koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3">
+      <div className={progress ? "koa:w-full koa:px-gutter koa:py-1" : "koa:w-full koa:px-gutter koa:py-2 koa:sm:py-3"}>
         <div className={headerGridClasses}>
-          <div className={mainClasses}>
-            <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
-          </div>
+          {progress ? (
+            <>
+              <div className="koa:min-w-0">
+                <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+              </div>
+              <div className="koa:min-w-0">{progress}</div>
+            </>
+          ) : (
+            <div className={mainClasses}>
+              <AppHeaderMain title={t("appTitle")} heading={heading ?? calculator} logoMonochrome={embed.isEmbed && embed.config?.logo === "monochrome"} />
+            </div>
+          )}
           {React.Children.map(children, (child) => {
             if (React.isValidElement(child) && child.type === AppHeaderRight) {
               return (child.props as { children: ReactNode }).children;

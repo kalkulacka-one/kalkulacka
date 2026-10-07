@@ -16,7 +16,7 @@ export function Guide({ calculator }: Guide) {
   const t = useTranslations("koa.components.guide");
 
   return (
-    <div className="koa:-mx-2 koa:px-gutter koa:pt-[clamp(8px,1.8776px+1.6327vw,28px)] koa:sm:mx-0 koa:sm:px-0 koa:grid koa:gap-3 koa:sm:gap-4">
+    <div data-guide-list className="koa:-mx-2 koa:px-gutter koa:pt-[clamp(8px,1.8776px+1.6327vw,28px)] koa:sm:mx-0 koa:sm:px-0 koa:grid koa:gap-3 koa:sm:gap-4">
       <Card shadow="hard" className="koa:border koa:border-slate-200">
         <div className="koa:flex koa:items-start koa:gap-3 koa:px-6 koa:py-4 koa:max-w-prose">
           <Icon icon={logoCheck} decorative={true} className="koa:text-primary" />

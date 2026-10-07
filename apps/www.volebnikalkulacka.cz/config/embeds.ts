@@ -5,6 +5,7 @@ export type EmbedConfig = {
   logo?: "monochrome" | "color";
   attribution?: boolean;
   donateCard?: number | false;
+  inset?: number;
 };
 
 export const embedsConfig = {

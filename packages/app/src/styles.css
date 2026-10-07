@@ -20,3 +20,95 @@ html:not([data-embed]) {
     radial-gradient(60% 50% at 85% 90%, color-mix(in oklab, var(--ko-color-secondary) 8%, transparent), transparent 70%);
   background-attachment: fixed;
 }
+
+/*
+ * Embeds live in a fixed-height partner iframe: the layout is exactly the frame tall, the header stays on top, the
+ * body scrolls in its own region below it, and the footer (attribution) is always visible at the bottom. Content
+ * never scrolls under the transparent header, so the partner's background shows through it untouched.
+ */
+/* The frame itself never scrolls sideways, whatever the content does (wide content, e.g. the comparison columns,
+ * scrolls inside its own region instead). */
+html[data-embed],
+html[data-embed] body {
+  overflow-x: clip;
+}
+
+html[data-embed] [data-layout] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+html[data-embed] [data-layout-body] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Calculator routes wrap every page's Layout in another one (each app's ProviderLayout); the outer
+ * one steps aside so only the page's own Layout becomes the frame shell. */
+html[data-embed] [data-layout]:has([data-layout]),
+html[data-embed] [data-layout]:has([data-layout]) > [data-layout-body] {
+  display: contents;
+}
+
+/*
+ * Soft top edge where the content scrolls away under the transparent header. The mask fades the content itself (no
+ * colour painted), so it works on any partner background; it grows in over the first 2rem of scroll, so nothing is
+ * faded at rest.
+ */
+@property --koa-edge {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@keyframes koa-edge-in {
+  to {
+    --koa-edge: 2rem;
+  }
+}
+
+html[data-embed] [data-layout-body] {
+  mask-image: linear-gradient(to bottom, transparent, black var(--koa-edge));
+  animation: koa-edge-in linear both;
+  animation-timeline: scroll(self);
+  animation-range: 0 2rem;
+}
+
+/*
+ * No side gutter inside an embed: free-floating text (headings, intro and guide copy, the step row, the header's
+ * logo) lines up with the partner's own paragraphs. A partner that draws a border around the iframe, or embeds it
+ * edge to edge, sets `inset` (embed config) to get that space back as a non-scrolling strip on both sides.
+ */
+html[data-embed] {
+  --ko-spacing-gutter: 0px;
+  --koa-spacing-gutter: 0px;
+}
+
+/* Two pieces reach outward by the old gutter; with no gutter they would stick out of the frame. The step row puts its
+ * arrows on the text edge instead, and the guide list drops its leftover negative margin. */
+html[data-embed] [data-step-row] {
+  margin-inline: 0;
+}
+
+html[data-embed] [data-step-row] button {
+  padding-inline: 0;
+}
+
+html[data-embed] [data-guide-list],
+html[data-embed] [data-picker-intro] {
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+/* The innermost layout is the frame shell; `inset` (embed config) keeps a non-scrolling strip on both sides. */
+html[data-embed] [data-layout]:not(:has([data-layout])) {
+  padding-inline: var(--koa-embed-inset, 0px);
+}
