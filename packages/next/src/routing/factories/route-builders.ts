@@ -32,6 +32,10 @@ export function createRouteBuilders({ i18n, pageSlugs }: { i18n: AppConfigWithDe
   }
 
   const routes = {
+    homepage: (locale: string) => {
+      validateLocale(locale);
+      return addLocalePrefix("", locale) || "/";
+    },
     base: (segments: RouteSegments, locale: string) => {
       validateLocale(locale);
       return addLocalePrefix(`/${createBaseSegment(segments)}`, locale);
