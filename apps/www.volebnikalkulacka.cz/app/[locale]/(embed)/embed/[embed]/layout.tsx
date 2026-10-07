@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import "@/app/globals.css";
 
 import { allowCrawling } from "@kalkulacka-one/next";
+import { NextLinkProvider } from "@kalkulacka-one/next/link";
 
 import { EmbedProvider } from "@/components/client";
 import { I18nProvider, PlausibleScript } from "@/components/server";
@@ -34,7 +35,9 @@ export default async function RootLayout({ children, params }: { children: React
       </head>
       <body>
         <I18nProvider locale={locale}>
-          <EmbedProvider name={embed}>{children}</EmbedProvider>
+          <EmbedProvider name={embed}>
+            <NextLinkProvider>{children}</NextLinkProvider>
+          </EmbedProvider>
         </I18nProvider>
       </body>
     </html>

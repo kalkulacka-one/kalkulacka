@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import "@/app/globals.css";
 
 import { allowCrawling } from "@kalkulacka-one/next";
+import { NextLinkProvider } from "@kalkulacka-one/next/link";
 
 import { EmbedContextProvider, ThemeProvider } from "@/components/client";
 import { I18nProvider, PlausibleScript } from "@/components/server";
@@ -77,7 +78,9 @@ export default async function RootLayout({ children, params }: { children: React
       <body className="min-h-dvh">
         <I18nProvider locale={locale}>
           <EmbedContextProvider isEmbed={false}>
-            <ThemeProvider name={defaultTheme}>{children}</ThemeProvider>
+            <ThemeProvider name={defaultTheme}>
+              <NextLinkProvider>{children}</NextLinkProvider>
+            </ThemeProvider>
           </EmbedContextProvider>
         </I18nProvider>
       </body>

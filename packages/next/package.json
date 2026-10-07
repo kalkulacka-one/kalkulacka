@@ -35,6 +35,10 @@
       "types": "./dist/analytics/index.d.ts",
       "default": "./dist/analytics/index.js"
     },
+    "./link": {
+      "types": "./dist/link/next-link-provider.d.ts",
+      "default": "./dist/link/next-link-provider.js"
+    },
     "./monitoring/client": {
       "types": "./dist/monitoring/client/index.d.ts",
       "default": "./dist/monitoring/client/index.js"
@@ -70,6 +74,7 @@
     "@vercel/otel": "^2.1.3",
     "@kalkulacka-one/app": "*",
     "@kalkulacka-one/database": "*",
+    "@kalkulacka-one/design-system": "*",
     "zod": "^4.0.0",
     "@kalkulacka-one/schema": "*"
   },
