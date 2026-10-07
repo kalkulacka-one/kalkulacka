@@ -9,6 +9,8 @@ import { getLocaleRedirects, getLocaleRewrites, getSlugRewrites } from "./config
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  // Render metadata in <head> for every user agent: streamed metadata lands in <body>, where Google ignores rel=canonical
+  htmlLimitedBots: /.*/,
   experimental: {
     globalNotFound: true,
   },

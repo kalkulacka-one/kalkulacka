@@ -9,6 +9,8 @@ const { defaultLocale, locales } = appConfig.i18n;
 const localesPattern = locales.join("|");
 
 const nextConfig: NextConfig = {
+  // Render metadata in <head> for every user agent: streamed metadata lands in <body>, where Google ignores rel=canonical
+  htmlLimitedBots: /.*/,
   transpilePackages: ["@kalkulacka-one/design-system"],
   async rewrites() {
     return [
