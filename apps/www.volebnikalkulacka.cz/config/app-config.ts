@@ -13,6 +13,16 @@ export const appConfig = withDefaults({
     privacy: "/soukromi",
   },
 
+  calculators: [
+    { group: "senatni-2026", campaign: true },
+    { group: "komunalni-2026", campaign: true },
+    ...["kalkulacka", "expresni", "kompas", "klimaticka", "inventura", "ultimatni", "pro-mlade"].map((key) => ({ group: "snemovni-2025", key })),
+  ],
+
+  sitemap: {
+    pages: ["/o-projektu", "/metodika", "/zapojte-se", "/soukromi", "/volby/snemovni-2025"],
+  },
+
   footer: {
     statusUrl: "https://status.volebnikalkulacka.cz",
   },

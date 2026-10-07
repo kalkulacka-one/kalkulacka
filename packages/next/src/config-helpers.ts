@@ -1,4 +1,4 @@
-import type { AppConfig } from "@/types/app-config";
+import type { AppConfig, ListedCalculator } from "@/types/app-config";
 
 export type AppConfigWithDefaults = AppConfig & {
   i18n: AppConfig["i18n"] & {
@@ -6,6 +6,10 @@ export type AppConfigWithDefaults = AppConfig & {
   };
   theme: {
     defaultTheme: string;
+  };
+  calculators: readonly ListedCalculator[];
+  sitemap: {
+    pages: readonly string[];
   };
   footer: {
     showStatus: boolean;
@@ -24,6 +28,10 @@ export function withDefaults(config: AppConfig): AppConfigWithDefaults {
     },
     theme: {
       defaultTheme: config.theme?.defaultTheme ?? "default",
+    },
+    calculators: config.calculators ?? [],
+    sitemap: {
+      pages: config.sitemap?.pages ?? [],
     },
     footer: {
       showStatus: config.footer?.showStatus ?? true,
