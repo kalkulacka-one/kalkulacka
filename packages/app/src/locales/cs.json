@@ -126,11 +126,13 @@
         "empty": "Hledání „{query}“ nic nenašlo.",
         "title": "Vyberte, kde volíte",
         "description": "Kalkulačka porovná vaše názory s kandidáty tam, kde volíte.",
-        "searchPlaceholder": "Začněte psát název"
+        "searchPlaceholder": "Začněte psát název",
+        "home": "Úvodní stránka"
       },
       "calculatorPicker": {
         "description": "Pro toto místo máme více kalkulaček. Vyberte si, kterou chcete vyplnit.",
-        "start": "Spustit kalkulačku"
+        "start": "Spustit kalkulačku",
+        "back": "Zpět na výběr města"
       },
       "notFound": {
         "eyebrow": "Chyba 404",

@@ -54,7 +54,10 @@ export async function CalculatorRootPage({ endpoint, segments, locale, embedCont
   const headingTitle = election?.shortTitle ?? election?.title ?? group.title;
   const heading = headingTitle ? { title: headingTitle } : undefined;
 
-  return <CalculatorPickerPage embedContext={embedContext} picker={picker} heading={heading} closeHref={homepageHref} homepageHref={homepageHref} privacyHref={privacyHref} />;
+  // In an embed only when opened from the district picker, so a partner embedding one district keeps the voter there.
+  const backHref = embedContext.isEmbed ? launcher : routes.base({ first: segments.first, second: groupKey }, locale);
+
+  return <CalculatorPickerPage embedContext={embedContext} picker={picker} heading={heading} backHref={backHref} homepageHref={homepageHref} privacyHref={privacyHref} />;
 }
 
 export async function calculatorRootMetadata({ endpoint, segments, canonical }: Pick<CalculatorRootPage, "endpoint" | "segments" | "canonical">): Promise<Metadata> {

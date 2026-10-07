@@ -44,7 +44,7 @@ export async function GroupRootPage({ endpoint, segments, locale, embedContext, 
   });
   const heading = { title: election.shortTitle ?? election.title };
 
-  return <DistrictPickerPage embedContext={embedContext} picker={picker} heading={heading} closeHref={homepageHref} homepageHref={homepageHref} privacyHref={privacyHref} />;
+  return <DistrictPickerPage embedContext={embedContext} picker={picker} heading={heading} backHref={routes.homepage(locale)} homepageHref={homepageHref} privacyHref={privacyHref} />;
 }
 
 export async function groupRootMetadata({ endpoint, segments, canonical }: Pick<GroupRootPage, "endpoint" | "segments" | "canonical">): Promise<Metadata> {

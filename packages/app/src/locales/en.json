@@ -126,11 +126,13 @@
         "empty": "Nothing matches “{query}”.",
         "title": "Choose where you vote",
         "description": "The calculator compares your views with the candidates where you vote.",
-        "searchPlaceholder": "Start typing a name"
+        "searchPlaceholder": "Start typing a name",
+        "home": "Home"
       },
       "calculatorPicker": {
         "description": "There are several calculators for this place. Pick the one you want to fill in.",
-        "start": "Start the calculator"
+        "start": "Start the calculator",
+        "back": "Back to all cities"
       },
       "notFound": {
         "eyebrow": "Error 404",
