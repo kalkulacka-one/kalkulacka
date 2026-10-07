@@ -1,4 +1,4 @@
-import { calculatorPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
+import { addLauncherParam, calculatorPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
 import { CalculatorPickerPage, type EmbedContextType } from "@kalkulacka-one/app/client";
 
 import type { Metadata } from "next";
@@ -22,9 +22,10 @@ export type CalculatorRootPage = {
   canonical: Canonical;
   homepageHref: string;
   privacyHref?: string;
+  launcher?: string;
 };
 
-export async function CalculatorRootPage({ endpoint, segments, locale, embedContext, routes, homepageHref, privacyHref }: CalculatorRootPage) {
+export async function CalculatorRootPage({ endpoint, segments, locale, embedContext, routes, homepageHref, privacyHref, launcher }: CalculatorRootPage) {
   const groupKey = segments.second;
   const segment = segments.third;
   if (!groupKey || !segment) notFound();
@@ -32,18 +33,24 @@ export async function CalculatorRootPage({ endpoint, segments, locale, embedCont
   const [group, election] = await Promise.all([ifFound(loadCalculatorGroup({ endpoint, group: groupKey })), ifFound(loadElection({ endpoint, group: groupKey }))]);
   if (!group) {
     await calculatorGuard({ endpoint, key: segment, group: groupKey, prefixed: true });
-    redirect(routes.introduction(segments, locale));
+    redirect(addLauncherParam(routes.introduction(segments, locale), launcher));
   }
 
   const resolution = resolveGroupSegment({ group, election, segment });
   if (!resolution) notFound();
   if (resolution.kind === "calculator") {
     await calculatorGuard({ endpoint, key: resolution.key, group: groupKey, prefixed: true });
-    redirect(routes.introduction({ ...segments, third: resolution.key }, locale));
+    redirect(addLauncherParam(routes.introduction({ ...segments, third: resolution.key }, locale), launcher));
   }
 
   const calculators = await loadGroupCalculators({ endpoint, group: groupKey, keys: resolution.calculators.map((item) => item.key) });
-  const picker = calculatorPickerViewModel(resolution.district, resolution.calculators, calculators, (key) => routes.introduction({ ...segments, third: key }, locale), now());
+  const picker = calculatorPickerViewModel(
+    resolution.district,
+    resolution.calculators,
+    calculators,
+    (key) => addLauncherParam(routes.introduction({ ...segments, third: key }, locale), addLauncherParam(routes.base(segments, locale), launcher)),
+    now(),
+  );
   const headingTitle = election?.shortTitle ?? election?.title ?? group.title;
   const heading = headingTitle ? { title: headingTitle } : undefined;
 

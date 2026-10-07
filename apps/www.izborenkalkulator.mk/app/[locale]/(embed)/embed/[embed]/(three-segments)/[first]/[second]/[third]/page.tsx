@@ -5,7 +5,7 @@ import type { Locale } from "next-intl";
 
 import { appConfig } from "@/config/app-config";
 import { type EmbedName, embedsConfig } from "@/config/embeds";
-import { canonical, routes } from "@/lib/routing";
+import { canonical, parsedParams, routes } from "@/lib/routing";
 
 type Params = Promise<{ locale: Locale; embed: EmbedName; first: string; second: string; third: string }>;
 
@@ -21,8 +21,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return calculatorRootMetadata({ endpoint: endpoint(), segments, canonical });
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params, searchParams }: { params: Params; searchParams: Promise<{ from?: string | string[] }> }) {
   const { locale, ...segments } = await params;
+  const launcher = parsedParams.launcher((await searchParams).from, segments.embed);
   return (
     <CalculatorRootPage
       endpoint={endpoint()}
@@ -33,6 +34,7 @@ export default async function Page({ params }: { params: Params }) {
       canonical={canonical}
       homepageHref={canonical.homepage()}
       privacyHref={appConfig.links?.privacy}
+      launcher={launcher}
     />
   );
 }

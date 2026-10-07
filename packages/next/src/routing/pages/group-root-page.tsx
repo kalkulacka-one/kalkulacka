@@ -1,4 +1,4 @@
-import { districtPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
+import { addLauncherParam, districtPickerViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
 import { DistrictPickerPage, type EmbedContextType } from "@kalkulacka-one/app/client";
 
 import type { Metadata } from "next";
@@ -21,23 +21,24 @@ export type GroupRootPage = {
   canonical: Canonical;
   homepageHref: string;
   privacyHref?: string;
+  launcher?: string;
 };
 
-export async function GroupRootPage({ endpoint, segments, locale, embedContext, routes, homepageHref, privacyHref }: GroupRootPage) {
+export async function GroupRootPage({ endpoint, segments, locale, embedContext, routes, homepageHref, privacyHref, launcher }: GroupRootPage) {
   const groupKey = segments.second;
   if (!groupKey) notFound();
 
   const [group, election] = await Promise.all([ifFound(loadCalculatorGroup({ endpoint, group: groupKey })), ifFound(loadElection({ endpoint, group: groupKey }))]);
   if (!group?.election || !election) {
     await calculatorGuard({ endpoint, key: groupKey, prefixed: true });
-    redirect(routes.introduction(segments, locale));
+    redirect(addLauncherParam(routes.introduction(segments, locale), launcher));
   }
 
   const calculators = await loadGroupCalculators({ endpoint, group: groupKey, keys: group.calculators.map((item) => item.key) });
   const picker = districtPickerViewModel({
     group,
     election,
-    buildHref: (key) => routes.base({ ...segments, third: key }, locale),
+    buildHref: (key) => addLauncherParam(routes.base({ ...segments, third: key }, locale), routes.base(segments, locale)),
     calculators,
     now: now(),
   });
