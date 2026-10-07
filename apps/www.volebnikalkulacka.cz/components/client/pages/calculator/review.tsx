@@ -1,5 +1,5 @@
 import { ReviewPage as AppReviewPage } from "@kalkulacka-one/app";
-import { useAnswers, useAnswersStore, useCalculator, useQuestions } from "@kalkulacka-one/app/client";
+import { useAnswers, useAnswersStore, useCalculator, useLauncher, useQuestions } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
 import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
@@ -13,6 +13,7 @@ import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ReviewPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
+  const launcher = useLauncher();
   const calculator = useCalculator();
   const questions = useQuestions();
   const answersStore = useAnswersStore((state) => state.answers);
@@ -38,7 +39,7 @@ export function ReviewPageWithRouting({ segments }: { segments: RouteSegments })
     } catch (error) {
       reportError(error);
     }
-    router.push("/");
+    router.push(launcher ?? routes.homepage(locale));
   };
 
   return (

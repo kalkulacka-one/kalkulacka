@@ -4,7 +4,7 @@ import { SteppedProgressBar } from "@kalkulacka-one/design-system/server";
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { AppHeader, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
+import { AppHeader, Closable, type EmbedContextType, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
@@ -73,11 +73,11 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Right>
-                <HideOnEmbed>
-                  <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+                <Closable>
+                  <Button variant="round" color="neutral" size="small" aria-label={t("common.closeCalculator")} title={t("common.closeCalculator")} onClick={onCloseClick}>
                     <Icon icon={mdiClose} size="medium" decorative />
                   </Button>
-                </HideOnEmbed>
+                </Closable>
               </AppHeader.Right>
             </AppHeader>
           )}

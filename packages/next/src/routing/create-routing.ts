@@ -13,7 +13,7 @@ export function createRouting({ i18n, pageSlugs, prefixSlugs }: RoutingConfig) {
   const { routes } = createRouteBuilders({ i18n, pageSlugs });
   const { canonical } = createCanonical({ routes });
   const { mappedParams } = createParamsMapper({ prefixes: PREFIXES });
-  const { parsedParams } = createRouteParsers({ pageSlugs });
+  const { parsedParams } = createRouteParsers({ pageSlugs, i18n, routes });
 
   return { routes, canonical, mappedParams, parsedParams, PREFIXES };
 }

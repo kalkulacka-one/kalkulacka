@@ -3,7 +3,7 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { AppHeader, ComparisonGrid, type EmbedContextType, HideOnEmbed, WithCondenseOnScroll } from "@/client";
+import { AppHeader, Closable, ComparisonGrid, type EmbedContextType, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
@@ -31,15 +31,15 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
             <Layout.Header fixed>
               <AppHeader condensed={condensed} calculator={calculator}>
                 <AppHeader.Right>
-                  <HideOnEmbed>
-                    <Button variant="link" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+                  <Closable>
+                    <Button variant="link" color="neutral" size="small" aria-label={t("common.closeCalculator")} title={t("common.closeCalculator")} onClick={onCloseClick}>
                       <Icon icon={mdiClose} size="medium" decorative />
                     </Button>
-                  </HideOnEmbed>
+                  </Closable>
                 </AppHeader.Right>
                 <AppHeader.Bottom>
                   <AppHeader.BottomLeft condensed={condensed}>
-                    <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("comparison.back")}>
+                    <Button variant="link" color="neutral" size="small" onClick={onPreviousClick} aria-label={t("comparison.back")} title={t("comparison.back")}>
                       <Icon icon={mdiArrowLeft} size="medium" decorative />
                     </Button>
                   </AppHeader.BottomLeft>

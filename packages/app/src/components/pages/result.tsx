@@ -4,7 +4,7 @@ import { mdiArrowLeft, mdiClose, mdiExportVariant } from "@mdi/js";
 import { useTranslations } from "next-intl";
 import React, { type ReactNode } from "react";
 
-import { AppHeader, type EmbedContextType, HideOnEmbed, MatchCard } from "@/client";
+import { AppHeader, Closable, type EmbedContextType, MatchCard } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { ResultNavigationCard } from "@/components/result-navigation-card";
@@ -51,11 +51,11 @@ export function ResultPage({
       <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
-            <HideOnEmbed>
-              <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+            <Closable>
+              <Button variant="round" color="neutral" size="small" aria-label={t("common.closeCalculator")} title={t("common.closeCalculator")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
-            </HideOnEmbed>
+            </Closable>
           </AppHeader.Right>
         </AppHeader>
       </Layout.Header>

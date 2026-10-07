@@ -1,3 +1,4 @@
+import { addLauncherParam } from "@kalkulacka-one/app";
 import { calculatorGuard, GroupRootPage, groupRootMetadata, isPrefix } from "@kalkulacka-one/next";
 
 import type { Metadata } from "next";
@@ -6,7 +7,7 @@ import type { Locale } from "next-intl";
 
 import { appConfig } from "@/config/app-config";
 import { type EmbedName, embedsConfig } from "@/config/embeds";
-import { canonical, mappedParams, PREFIXES, routes } from "@/lib/routing";
+import { canonical, mappedParams, PREFIXES, parsedParams, routes } from "@/lib/routing";
 
 type Params = Promise<{ locale: Locale; embed: EmbedName; first: string; second: string }>;
 
@@ -23,12 +24,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return groupRootMetadata({ endpoint: endpoint(), segments, canonical });
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params, searchParams }: { params: Params; searchParams: Promise<{ from?: string | string[] }> }) {
   const { locale, ...segments } = await params;
+  const launcher = parsedParams.launcher((await searchParams).from, segments.embed);
 
   if (!isPrefix({ segment: segments.first, validPrefixes: PREFIXES })) {
     await calculatorGuard({ endpoint: endpoint(), key: mappedParams.key(segments), group: mappedParams.group(segments), prefixed: false });
-    redirect(routes.introduction(segments, locale));
+    redirect(addLauncherParam(routes.introduction(segments, locale), launcher));
   }
 
   return (
@@ -41,6 +43,7 @@ export default async function Page({ params }: { params: Params }) {
       canonical={canonical}
       homepageHref={canonical.homepage()}
       privacyHref={appConfig.links?.privacy}
+      launcher={launcher}
     />
   );
 }

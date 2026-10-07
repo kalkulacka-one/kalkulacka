@@ -91,7 +91,7 @@
     },
     "pages": {
       "common": {
-        "close": "Zavrieť"
+        "closeCalculator": "Zavrieť kalkulačku"
       },
       "comparison": {
         "title": "Porovnanie",
@@ -126,11 +126,13 @@
         "empty": "Hľadanie „{query}“ nič nenašlo.",
         "title": "Vyberte, kde volíte",
         "description": "Kalkulačka porovná vaše názory s kandidátmi tam, kde volíte.",
-        "searchPlaceholder": "Začnite písať názov"
+        "searchPlaceholder": "Začnite písať názov",
+        "home": "Úvodná stránka"
       },
       "calculatorPicker": {
         "description": "Pre toto miesto máme viac kalkulačiek. Vyberte si, ktorú chcete vyplniť.",
-        "start": "Spustiť kalkulačku"
+        "start": "Spustiť kalkulačku",
+        "back": "Späť na výber mesta"
       },
       "notFound": {
         "eyebrow": "Chyba 404",

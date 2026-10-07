@@ -1,9 +1,10 @@
-import { Icon } from "@kalkulacka-one/design-system/client";
+import { Button, Icon } from "@kalkulacka-one/design-system/client";
 
-import { mdiClose } from "@mdi/js";
+import { mdiArrowLeft } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { type EmbedContextType, HideOnEmbed } from "@/client/embeds";
+import type { EmbedContextType } from "@/client/embeds";
+import { DropLauncherParam } from "@/client/launcher";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import type { CalculatorPickerViewModel } from "@/view-models";
@@ -15,30 +16,30 @@ export type CalculatorPickerPage = {
   embedContext: EmbedContextType;
   picker: CalculatorPickerViewModel;
   heading?: { title: string };
-  closeHref?: string;
+  backHref?: string;
   homepageHref: string;
   privacyHref?: string;
 };
 
-export function CalculatorPickerPage({ embedContext, picker, heading, closeHref, homepageHref, privacyHref }: CalculatorPickerPage) {
+export function CalculatorPickerPage({ embedContext, picker, heading, backHref, homepageHref, privacyHref }: CalculatorPickerPage) {
   const t = useTranslations("koa.pages");
 
   return (
     <Layout>
+      {/* Web only: the embed needs `from` to survive browser back, or this picker would lose its back link. */}
+      {!embedContext.isEmbed && <DropLauncherParam />}
       <Layout.Header>
         <AppHeader heading={heading}>
-          <AppHeader.Right>
-            {closeHref && (
-              <HideOnEmbed>
-                <a href={closeHref} aria-label={t("common.close")} className="koa:inline-grid koa:place-items-center koa:size-10 koa:rounded-full koa:text-text-strong koa:hover:bg-surface-hover">
-                  <Icon icon={mdiClose} size="medium" decorative />
-                </a>
-              </HideOnEmbed>
-            )}
-          </AppHeader.Right>
           <AppHeader.Bottom>
             <AppHeader.BottomMain>
-              <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-text-strong koa:sm:text-[2rem]">{picker.title}</h2>
+              <div className="koa:flex koa:items-center koa:gap-3">
+                {backHref && (
+                  <Button variant="round" color="neutral" size="small" aria-label={t("calculatorPicker.back")} title={t("calculatorPicker.back")} onClick={() => window.location.assign(backHref)}>
+                    <Icon icon={mdiArrowLeft} size="medium" decorative />
+                  </Button>
+                )}
+                <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-text-strong koa:sm:text-[2rem]">{picker.title}</h2>
+              </div>
             </AppHeader.BottomMain>
           </AppHeader.Bottom>
         </AppHeader>

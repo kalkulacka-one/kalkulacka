@@ -1,5 +1,5 @@
 import { ResultPage as AppResultPage } from "@kalkulacka-one/app";
-import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useResult } from "@kalkulacka-one/app/client";
+import { ShareModal, useAnswersStore, useCalculatedMatches, useCalculator, useLauncher, useResult } from "@kalkulacka-one/app/client";
 import { saveSessionData, shareSession } from "@kalkulacka-one/next/api";
 import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
@@ -15,6 +15,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
   const [showOnlyNested, setShowOnlyNested] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const router = useRouter();
+  const launcher = useLauncher();
   const calculator = useCalculator();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
@@ -49,7 +50,7 @@ export function ResultPageWithRouting({ segments }: { segments: RouteSegments })
     } catch (error) {
       reportError(error);
     }
-    router.push("/");
+    router.push(launcher ?? routes.homepage(locale));
   };
 
   const handleShareClick = () => {

@@ -1,5 +1,5 @@
 import { ComparisonPage } from "@kalkulacka-one/app";
-import { useAnswers, useCalculatedMatches, useCalculator, useQuestions, useResult } from "@kalkulacka-one/app/client";
+import { useAnswers, useCalculatedMatches, useCalculator, useLauncher, useQuestions, useResult } from "@kalkulacka-one/app/client";
 
 import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -10,6 +10,7 @@ import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function ComparisonPageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
+  const launcher = useLauncher();
   const calculator = useCalculator();
   const algorithmMatches = useCalculatedMatches();
   const result = useResult(algorithmMatches);
@@ -23,7 +24,7 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
   };
 
   const handleCloseClick = () => {
-    router.push("/");
+    router.push(launcher ?? routes.homepage(locale));
   };
 
   return (
