@@ -34,7 +34,7 @@ export function CalculatorPickerPage({ embedContext, picker, heading, backHref, 
             <AppHeader.BottomMain>
               <div className="koa:flex koa:items-center koa:gap-3">
                 {backHref && (
-                  <Button variant="round" color="neutral" size="small" aria-label={t("calculatorPicker.back")} title={t("calculatorPicker.back")} onClick={() => window.location.assign(backHref)}>
+                  <Button variant="round" color="neutral" size="small" aria-label={t("calculatorPicker.back")} title={t("calculatorPicker.back")} href={backHref}>
                     <Icon icon={mdiArrowLeft} size="medium" decorative />
                   </Button>
                 )}

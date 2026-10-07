@@ -1,7 +1,6 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
-import Link from "next/link";
 import { useId } from "react";
 
 import { BeadRow } from "./BeadRow";
@@ -39,11 +38,11 @@ export default function Page() {
                 <h2 className="font-display font-bold tracking-tight text-slate-700 text-xl md:text-2xl">Pojďte s&nbsp;námi tvořit kalkulačku</h2>
                 <p className="mt-1 text-slate-500">Volební kalkulačku připravuje tým dobrovolníků – přidejte se k&nbsp;nám.</p>
               </div>
-              <Link href="/zapojte-se" className="grid md:shrink-0">
-                <Button variant="outline" color="neutral">
+              <div className="grid md:shrink-0">
+                <Button variant="outline" color="neutral" href="/zapojte-se">
                   Přidejte se
                 </Button>
-              </Link>
+              </div>
             </div>
           </Card>
         </div>
@@ -60,11 +59,9 @@ export default function Page() {
               <h3 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kalkulačky ke sněmovním volbám</h3>
               <p className="mt-2 text-slate-500">Všech sedm kalkulaček ke sněmovním volbám 2025 si můžete vyplnit i po volbách — od expresní po ultimátní.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Prohlédnout kalkulačky
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025">
+                  Prohlédnout kalkulačky
+                </Button>
               </div>
             </div>
           </Card>
@@ -77,11 +74,9 @@ export default function Page() {
               <h3 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Archiv kalkulaček</h3>
               <p className="mt-2 text-slate-500">Volební kalkulačky ke starším volbám najdete v archivu.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <a href="https://archiv-2024.volebnikalkulacka.cz" target="_blank" rel="noopener noreferrer" className="grid">
-                  <Button variant="link" color="neutral">
-                    Přejít do archivu
-                  </Button>
-                </a>
+                <Button variant="link" color="neutral" href="https://archiv-2024.volebnikalkulacka.cz" target="_blank" rel="noopener noreferrer">
+                  Přejít do archivu
+                </Button>
               </div>
             </div>
           </Card>

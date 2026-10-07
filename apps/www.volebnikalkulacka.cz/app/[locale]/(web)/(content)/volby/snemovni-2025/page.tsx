@@ -47,11 +47,9 @@ export default function Page() {
               <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo zastává vaše postoje?</h2>
               <p className="mt-2 text-slate-500">Klasická Volební kalkulačka, jak ji znáte už skoro 20 let.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/kalkulacka" className="grid">
-                  <Button variant="fill" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
+                <Button variant="fill" color="neutral" href="/volby/snemovni-2025/kalkulacka">
+                  Spustit kalkulačku
+                </Button>
               </div>
             </div>
           </Card>
@@ -67,11 +65,9 @@ export default function Page() {
               <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kdo vás zastupoval ve Sněmovně?</h2>
               <p className="mt-2 text-slate-500">Žádné sliby, ale skutečná hlasování poslanců ve Sněmovně za končící volební období.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/inventura" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit inventuru hlasování
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025/inventura">
+                  Spustit inventuru hlasování
+                </Button>
               </div>
             </div>
           </Card>
@@ -90,11 +86,9 @@ export default function Page() {
               <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Nejužitečnějších 5 minut před volbami</h3>
               <p className="mt-1 text-slate-500">Těch 25 nejklíčovějších otázek, které vám zaberou jen 5 minut.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/expresni" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025/expresni">
+                  Spustit kalkulačku
+                </Button>
               </div>
             </div>
           </Card>
@@ -109,11 +103,9 @@ export default function Page() {
               <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Všech 100 otázek pro „politické fajnšmekry"</h3>
               <p className="mt-1 text-slate-500">Nejrozsáhlejší verze se všemi 100 otázkami, na které jsme se ptali.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/ultimatni" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025/ultimatni">
+                  Spustit kalkulačku
+                </Button>
               </div>
             </div>
           </Card>
@@ -140,11 +132,9 @@ export default function Page() {
                 .
               </p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/pro-mlade" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025/pro-mlade">
+                  Spustit kalkulačku
+                </Button>
               </div>
             </div>
           </Card>
@@ -164,11 +154,9 @@ export default function Page() {
                 .
               </p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/klimaticka" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025/klimaticka">
+                  Spustit kalkulačku
+                </Button>
               </div>
             </div>
           </Card>
@@ -182,11 +170,9 @@ export default function Page() {
               <h3 className="mt-3 font-display font-bold tracking-tight text-slate-700 text-xl">Kdo sdílí vaše hodnoty?</h3>
               <p className="mt-1 text-slate-500">Hodnotové otázky místo konkrétních návrhů. Zjistěte, které strany zastávají podobné hodnoty jako vy.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/volby/snemovni-2025/kompas" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustit kalkulačku
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/volby/snemovni-2025/kompas">
+                  Spustit kalkulačku
+                </Button>
               </div>
             </div>
           </Card>
