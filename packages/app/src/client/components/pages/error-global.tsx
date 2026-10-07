@@ -24,11 +24,9 @@ export function ErrorGlobalPage({ title, eyebrow, heading, paragraph, note, relo
       <p className="koa:mt-3 koa:text-slate-500">{paragraph}</p>
       <div className="koa:mt-6 koa:grid koa:gap-2">
         <Button onClick={() => window.location.reload()}>{reload}</Button>
-        <a href={homeHref} className="koa:grid">
-          <Button variant="link" color="neutral">
-            {home}
-          </Button>
-        </a>
+        <Button variant="link" color="neutral" href={homeHref}>
+          {home}
+        </Button>
       </div>
       <p className="koa:mt-6 koa:text-xs koa:text-slate-400">
         {note}

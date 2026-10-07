@@ -1,8 +1,6 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
-import Link from "next/link";
-
 import { SubscribeForm } from "@/components/client";
 
 export default function Page() {
@@ -55,11 +53,9 @@ export default function Page() {
               <h3 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Kto vás naozaj zastupuje?</h3>
               <p className="mt-2 text-slate-500">Žiadne sľuby, ale skutočné hlasovania 2023-2025.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/inventura-2023-2025" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Spustiť inventúru hlasovania
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/inventura-2023-2025">
+                  Spustiť inventúru hlasovania
+                </Button>
               </div>
             </div>
           </Card>
@@ -72,11 +68,9 @@ export default function Page() {
               <h3 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Archív kalkulačiek</h3>
               <p className="mt-2 text-slate-500">Volebné kalkulačky k starším voľbám nájdete v archíve.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <a href="https://archiv.volebnakalkulacka.sk" target="_blank" rel="noopener noreferrer" className="grid">
-                  <Button variant="link" color="neutral">
-                    Prejsť do archívu
-                  </Button>
-                </a>
+                <Button variant="link" color="neutral" href="https://archiv.volebnakalkulacka.sk" target="_blank" rel="noopener noreferrer">
+                  Prejsť do archívu
+                </Button>
               </div>
             </div>
           </Card>

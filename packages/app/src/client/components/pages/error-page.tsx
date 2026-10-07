@@ -21,11 +21,9 @@ export function ErrorPage({ reset, digest, compact, homeHref = "/" }: ErrorPage)
       <p className="koa:mt-3 koa:text-slate-500">{t("pages.error.paragraph")}</p>
       <div className="koa:mt-6 koa:grid koa:gap-2">
         <Button onClick={reset}>{t("pages.error.retry")}</Button>
-        <a href={homeHref} className="koa:grid" {...(compact ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-          <Button variant="link" color="neutral">
-            {t("pages.error.home")}
-          </Button>
-        </a>
+        <Button variant="link" color="neutral" href={homeHref} {...(compact ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+          {t("pages.error.home")}
+        </Button>
       </div>
       <p className="koa:mt-6 koa:text-xs koa:text-slate-400">
         {t("pages.error.note")}

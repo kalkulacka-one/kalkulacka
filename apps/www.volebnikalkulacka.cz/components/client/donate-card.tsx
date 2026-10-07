@@ -72,12 +72,10 @@ export function DonateCard({ source, defaultAmount = "500", logo = false, dismis
               </button>
             </div>
           ))}
-          <div className={`col-span-3 @sm:col-span-3 ${logo ? "@sm:col-start-2" : "@sm:col-start-1"}`}>
-            <a href={href} target="_blank" className={`grid ${plausibleClassNames}`}>
-              <Button variant="outline" color="primary" size="medium">
-                Podpořit Volební kalkulačku
-              </Button>
-            </a>
+          <div className={`grid col-span-3 @sm:col-span-3 ${logo ? "@sm:col-start-2" : "@sm:col-start-1"} ${plausibleClassNames}`}>
+            <Button variant="outline" color="primary" size="medium" href={href} target="_blank">
+              Podpořit Volební kalkulačku
+            </Button>
           </div>
         </div>
       </Card>

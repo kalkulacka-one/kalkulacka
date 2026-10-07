@@ -3,8 +3,6 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
-import Link from "next/link";
-
 export default function Page() {
   return (
     <div className="relative bg-slate-50 z-0">
@@ -34,11 +32,9 @@ export default function Page() {
               <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">Кој ги споделува вашите вредности?</h2>
               <p className="mt-2 text-slate-500">Откријте кои партии застапуваат слични вредности како вас.</p>
               <div className="grid mt-auto pt-4 md:pt-6">
-                <Link href="/kompas-2025" className="grid">
-                  <Button variant="outline" color="neutral">
-                    Започни
-                  </Button>
-                </Link>
+                <Button variant="outline" color="neutral" href="/kompas-2025">
+                  Започни
+                </Button>
               </div>
             </div>
           </Card>

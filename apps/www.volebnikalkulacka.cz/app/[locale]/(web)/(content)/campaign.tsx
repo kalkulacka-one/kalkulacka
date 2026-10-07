@@ -3,8 +3,6 @@ import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 import { now } from "@kalkulacka-one/next";
 
-import Link from "next/link";
-
 import { SubscribeForm } from "@/components/client";
 
 const GROUPS = ["senatni-2026", "komunalni-2026"];
@@ -81,14 +79,14 @@ export async function Campaign() {
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {published.length <= DIRECT_LINKS_UP_TO ? (
                   published.map(({ href, label }) => (
-                    <Link key={href} href={href} className="grid">
-                      <Button>{label}</Button>
-                    </Link>
+                    <Button key={href} href={href}>
+                      {label}
+                    </Button>
                   ))
                 ) : (
-                  <Link href={`/volby/${summary.groupKey}`} className="grid sm:col-span-2">
-                    <Button>{pickerLabel}</Button>
-                  </Link>
+                  <div className="grid sm:col-span-2">
+                    <Button href={`/volby/${summary.groupKey}`}>{pickerLabel}</Button>
+                  </div>
                 )}
               </div>
               <p className="mt-4 text-sm leading-relaxed text-slate-400">

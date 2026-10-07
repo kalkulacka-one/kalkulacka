@@ -34,7 +34,7 @@ export function DistrictPickerPage({ embedContext, picker, heading, backHref, ho
                   <div className="koa:flex koa:items-center koa:gap-3">
                     {backHref && (
                       <HideOnEmbed>
-                        <Button variant="round" color="neutral" size="small" aria-label={t("districtPicker.home")} title={t("districtPicker.home")} onClick={() => window.location.assign(backHref)}>
+                        <Button variant="round" color="neutral" size="small" aria-label={t("districtPicker.home")} title={t("districtPicker.home")} href={backHref}>
                           <Icon icon={mdiHomeOutline} size="medium" decorative />
                         </Button>
                       </HideOnEmbed>
