@@ -1,10 +1,11 @@
-import { Button, Icon } from "@kalkulacka-one/design-system/client";
+import { Button, type ButtonAsButtonProps, Icon } from "@kalkulacka-one/design-system/client";
 
 import { mdiArrowLeft, mdiClose, mdiCog, mdiMagnify, mdiStarOutline } from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { createElement } from "react";
 
-const meta: Meta<typeof Button> = {
+// Typed on the button form; the link form (`href`) has its own story below.
+const meta: Meta<ButtonAsButtonProps> = {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
@@ -79,6 +80,15 @@ export const Link: ButtonStory = {
     children: "Link",
     variant: "link",
     color: "primary",
+  },
+};
+
+export const AsLink: StoryObj<typeof Button> = {
+  args: {
+    href: "#",
+    children: "Spustit kalkulačku",
+    variant: "fill",
+    color: "neutral",
   },
 };
 

@@ -1,15 +1,22 @@
 import { twMerge } from "@kalkulacka-one/design-system/utilities";
 
-import { Button as ButtonHeadless, type ButtonProps as ButtonPropsHeadless } from "@headlessui/react";
+import { Button as ButtonHeadless, type ButtonProps as ButtonPropsHeadless, DataInteractive } from "@headlessui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 
 import { Icon } from "./icon";
+import { useLinkComponent } from "./link-provider";
 
-export type Button = {
-  children: React.ReactNode;
-} & Omit<ButtonPropsHeadless, "className" | "as"> &
-  VariantProps<typeof ButtonVariants>;
+type ButtonAsButton = { href?: never; ref?: React.Ref<HTMLButtonElement> } & Omit<ButtonPropsHeadless, "className" | "as">;
+type ButtonAsLink = { href: string } & Omit<React.ComponentPropsWithRef<"a">, "className" | "href" | "color">;
+
+type ButtonBase = { children: React.ReactNode } & VariantProps<typeof ButtonVariants>;
+
+// The button form alone, for components that render as a Button (`ToggleButton`).
+export type ButtonAsButtonProps = ButtonBase & ButtonAsButton;
+
+// With `href` it renders the app's link (see `LinkProvider`) with the same look instead of a button.
+export type Button = ButtonBase & (ButtonAsButton | ButtonAsLink);
 
 /*
  * Colour is expressed through the `primary`/`secondary`/`neutral` tokens —
@@ -27,7 +34,7 @@ export const ButtonVariants = cva(
     "ko:border-2",
     "ko:transition-[background-color,color,border-color,transform] ko:duration-base ko:data-active:duration-fast",
     "ko:data-disabled:cursor-not-allowed ko:data-disabled:opacity-45",
-    "ko:grid ko:grid-flow-col ko:place-items-center ko:place-content-center ko:gap-1",
+    "ko:grid ko:grid-flow-col ko:place-items-center ko:place-content-center ko:gap-1 ko:text-center",
     "ko:data-active:scale-[0.97]",
     "ko:data-focus:outline-3 ko:data-focus:outline-offset-2 ko:data-focus:outline-focus/55",
   ],
@@ -252,7 +259,8 @@ export const ButtonVariants = cva(
   },
 );
 
-function ButtonComponent({ children, size, variant, color, ...props }: Button, ref: React.Ref<HTMLButtonElement>) {
+export function Button({ children, size, variant, color, ...props }: Button) {
+  const Link = useLinkComponent();
   const isIconOnly = React.isValidElement(children) && (children as React.ReactElement).type === Icon;
 
   const iconOnlyClasses = isIconOnly ? "ko:aspect-square ko:!p-0 ko:!rounded-full ko:grid ko:place-items-center" : "";
@@ -262,13 +270,22 @@ function ButtonComponent({ children, size, variant, color, ...props }: Button, r
   // At size="small" (the recap row's compact toggles, 36px circles) the mark scales down to match.
   const answerIconClasses = isIconOnly && variant === "answer" ? (size === "small" ? "ko:[&>svg]:!size-4" : "ko:[&>svg]:!size-7") : "";
 
+  const className = twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses, answerIconClasses);
+
+  if (props.href !== undefined) {
+    // DataInteractive gives the link the same data-hover/focus/active states the variants style.
+    return (
+      <DataInteractive>
+        <Link {...props} className={className}>
+          {children}
+        </Link>
+      </DataInteractive>
+    );
+  }
+
   return (
-    <ButtonHeadless className={twMerge(ButtonVariants({ size, variant, color }), iconOnlyClasses, answerIconClasses)} {...props} ref={ref}>
+    <ButtonHeadless className={className} {...props}>
       {children}
     </ButtonHeadless>
   );
 }
-
-const Button = React.forwardRef(ButtonComponent);
-
-export { Button };
