@@ -69,7 +69,7 @@ vi.mock("@/client", () => {
 
   return {
     AppHeader: AppHeaderMock,
-    HideOnEmbed: vi.fn(({ children }) => children),
+    Closable: vi.fn(({ children }) => children),
   };
 });
 

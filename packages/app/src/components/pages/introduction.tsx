@@ -3,7 +3,7 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { AppHeader, type EmbedContextType, HideOnEmbed } from "@/client";
+import { AppHeader, Closable, type EmbedContextType } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Introduction } from "@/components/introduction";
 import { IntroductionNavigationCard } from "@/components/introduction-navigation-card";
@@ -27,11 +27,11 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
       <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
-            <HideOnEmbed>
-              <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+            <Closable>
+              <Button variant="round" color="neutral" size="small" aria-label={t("common.closeCalculator")} title={t("common.closeCalculator")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
-            </HideOnEmbed>
+            </Closable>
           </AppHeader.Right>
         </AppHeader>
       </Layout.Header>

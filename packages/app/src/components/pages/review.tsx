@@ -3,7 +3,7 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { AppHeader, type EmbedContextType, HideOnEmbed } from "@/client";
+import { AppHeader, Closable, type EmbedContextType } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { Layout } from "@/components/layout";
 import { ReviewNavigationCard } from "@/components/review-navigation-card";
@@ -65,11 +65,11 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
       <Layout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
-            <HideOnEmbed>
-              <Button variant="round" color="neutral" size="small" aria-label={t("common.close")} onClick={onCloseClick}>
+            <Closable>
+              <Button variant="round" color="neutral" size="small" aria-label={t("common.closeCalculator")} title={t("common.closeCalculator")} onClick={onCloseClick}>
                 <Icon icon={mdiClose} size="medium" decorative />
               </Button>
-            </HideOnEmbed>
+            </Closable>
           </AppHeader.Right>
         </AppHeader>
       </Layout.Header>

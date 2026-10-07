@@ -91,7 +91,7 @@
     },
     "pages": {
       "common": {
-        "close": "Zavrieť"
+        "closeCalculator": "Zavrieť kalkulačku"
       },
       "comparison": {
         "title": "Porovnanie",

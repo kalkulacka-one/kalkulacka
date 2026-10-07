@@ -91,7 +91,7 @@
     },
     "pages": {
       "common": {
-        "close": "Затвори"
+        "closeCalculator": "Затвори го калкулаторот"
       },
       "comparison": {
         "title": "Споредба",

@@ -1,5 +1,5 @@
 import { QuestionPage as AppQuestionPage } from "@kalkulacka-one/app";
-import { useAnswer, useAnswersStore, useCalculator, useQuestions } from "@kalkulacka-one/app/client";
+import { useAnswer, useAnswersStore, useCalculator, useLauncher, useQuestions } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
 import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
@@ -14,6 +14,7 @@ import { canonical, parsedParams, type RouteSegments, routes } from "@/lib/routi
 
 export function QuestionPageWithRouting({ current, segments }: { current: number; segments: RouteSegments }) {
   const router = useRouter();
+  const launcher = useLauncher();
   const pathname = usePathname();
   const calculator = useCalculator();
   const { questions, total } = useQuestions();
@@ -81,7 +82,7 @@ export function QuestionPageWithRouting({ current, segments }: { current: number
     } catch (error) {
       reportError(error);
     }
-    router.push("/");
+    router.push(launcher ?? routes.homepage(locale));
   };
 
   const answer = useAnswer(question.id);

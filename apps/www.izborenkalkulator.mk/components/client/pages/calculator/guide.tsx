@@ -1,5 +1,5 @@
 import { GuidePage as AppGuidePage } from "@kalkulacka-one/app";
-import { useAnswersStore, useCalculator } from "@kalkulacka-one/app/client";
+import { useAnswersStore, useCalculator, useLauncher } from "@kalkulacka-one/app/client";
 import { saveSessionData } from "@kalkulacka-one/next/api";
 import { reportError } from "@kalkulacka-one/next/monitoring/client";
 
@@ -13,6 +13,7 @@ import { canonical, type RouteSegments, routes } from "@/lib/routing";
 
 export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) {
   const router = useRouter();
+  const launcher = useLauncher();
   const calculator = useCalculator();
   const embed = useEmbed();
   const answersStore = useAnswersStore((state) => state.answers);
@@ -36,7 +37,7 @@ export function GuidePageWithRouting({ segments }: { segments: RouteSegments }) 
     } catch (error) {
       reportError(error);
     }
-    router.push("/");
+    router.push(launcher ?? routes.homepage(locale));
   };
 
   return (

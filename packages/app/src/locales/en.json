@@ -91,7 +91,7 @@
     },
     "pages": {
       "common": {
-        "close": "Close"
+        "closeCalculator": "Close the calculator"
       },
       "comparison": {
         "title": "Comparison",
