@@ -3,7 +3,14 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
+import type { Metadata } from "next";
 import Link from "next/link";
+
+import { canonical } from "@/lib/routing";
+
+export const metadata: Metadata = {
+  alternates: { canonical: canonical.homepage() },
+};
 
 export default function Page() {
   return (

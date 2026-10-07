@@ -1,11 +1,18 @@
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { useId } from "react";
 
+import { canonical } from "@/lib/routing";
+
 import { BeadRow } from "./BeadRow";
 import { Campaign } from "./campaign";
+
+export const metadata: Metadata = {
+  alternates: { canonical: canonical.homepage() },
+};
 
 export default function Page() {
   const bgGridId = useId();
