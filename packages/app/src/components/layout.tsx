@@ -5,11 +5,13 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
+  // The single column is `minmax(0, 1fr)`, not the implicit `auto`: an auto column grows to its widest child's
+  // min-content (a nowrap title, a row of buttons), which widens the page past a narrow phone or iframe.
   // Mobile (< sm) is a grid: Content stretches to fill the viewport, so BottomNavigation sits at the screen's bottom
   // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
   // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
   // taller than the screen.
-  return <div className="koa:min-h-dvh koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
+  return <div className="koa:min-h-dvh koa:grid koa:grid-cols-[minmax(0,1fr)] koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
 }
 
 LayoutComponent.displayName = "Layout";

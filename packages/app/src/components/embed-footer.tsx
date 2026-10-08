@@ -12,7 +12,7 @@ export function EmbedFooter({ attribution = true, homepageHref, privacyHref }: E
   const t = useTranslations("koa");
 
   return (
-    <div className="koa:flex koa:items-baseline koa:gap-4">
+    <div className="koa:flex koa:flex-wrap koa:items-baseline koa:justify-center koa:gap-x-4 koa:gap-y-1">
       {attribution && <EmbedAttribution href={homepageHref} title={t("appTitle")} />}
       {privacyHref && (
         <a href={privacyHref} target="_blank" rel="noopener noreferrer" className="koa:text-xs koa:text-text-muted koa:hover:text-text koa:hover:underline">
