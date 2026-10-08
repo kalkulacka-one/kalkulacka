@@ -65,13 +65,13 @@ export function AppHeader({ children, condensed = false, calculator, heading }: 
   const hasBottomLeft = hasNestedChildOfType(children, AppHeaderBottom, AppHeaderBottomLeft);
   const expand = hasPageHeading && !condensed;
 
-  const gridClasses = "koa:grid koa:grid-cols-[auto_1fr_auto] koa:items-center";
+  const gridClasses = "koa:grid koa:grid-cols-[auto_minmax(0,1fr)_auto] koa:items-center";
   const expandedRowsClasses = "koa:grid-rows-[3rem_auto]";
   const collapsedRowsClasses = "koa:grid-rows-[3rem]";
   const gridSpacingClasses = "koa:gap-x-2 koa:sm:gap-x-3 koa:gap-y-2 koa:sm:gap-y-3";
   const headerGridClasses = twMerge(gridClasses, expand ? expandedRowsClasses : collapsedRowsClasses, gridSpacingClasses);
 
-  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_1fr] koa:gap-2 koa:min-w-0";
+  const mainGrid = "koa:grid koa:grid-flow-col koa:grid-cols-[auto_minmax(0,1fr)] koa:gap-2 koa:min-w-0";
   const mainExpandedOrNoLeftContent = expand || !hasBottomLeft ? "koa:col-span-2" : "";
   const mainCondensedWithLeftContent = condensed && hasBottomLeft ? "koa:col-start-2" : "";
   const mainClasses = twMerge(mainGrid, mainExpandedOrNoLeftContent, mainCondensedWithLeftContent);
