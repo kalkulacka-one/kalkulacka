@@ -60,6 +60,10 @@ export const embedsConfig = {
   "studentske-listy": {},
   tiscali: {},
   czechcrunch: {},
+  okraj: {},
+  datovazurnalistika: {},
+  voxpot: {},
+  pagenotfound: {},
 } as const satisfies Record<string, EmbedConfig>;
 
 export type EmbedName = keyof typeof embedsConfig;
