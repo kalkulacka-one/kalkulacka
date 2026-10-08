@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 
 function FixedLayoutComponent({ children }: { children: React.ReactNode }) {
-  return <div className="koa:relative koa:flex koa:h-dvh koa:flex-col koa:overflow-hidden">{children}</div>;
+  return <div className="koa:relative koa:flex koa:h-dvh koa:flex-col koa:overflow-hidden koa:pb-6">{children}</div>;
 }
 
 FixedLayoutComponent.displayName = "FixedLayout";

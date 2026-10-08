@@ -83,7 +83,7 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
         </AppHeader>
       </PageLayout.Header>
       <PageLayout.Content fullWidth fullHeight>
-        <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:min-h-0 koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:gap-6">
+        <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:min-h-0 koa:flex-1 koa:flex-col koa:gap-4 koa:sm:gap-6">
           <SteppedProgressBar
             stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
             stepCurrent={number}
