@@ -13,10 +13,22 @@
  * transparent on the partner's page.
  */
 html:not([data-embed]) {
-  background-color: var(--ko-color-page);
-  /* The first layer keeps the very top in the plain page colour, matching what Safari paints under the status bar. */
-  background-image: linear-gradient(to bottom, var(--ko-color-page), transparent 7rem),
+  --koa-backdrop:
+    /* The first layer keeps the very top in the plain page colour, matching what Safari paints under the status bar. */
+    linear-gradient(to bottom, var(--ko-color-page), transparent 7rem),
     radial-gradient(60% 50% at 15% 10%, color-mix(in oklab, var(--ko-color-primary) 10%, transparent), transparent 70%),
     radial-gradient(60% 50% at 85% 90%, color-mix(in oklab, var(--ko-color-secondary) 8%, transparent), transparent 70%);
+  background-color: var(--ko-color-page);
+  background-image: var(--koa-backdrop);
   background-attachment: fixed;
+}
+
+/*
+ * The same backdrop as a fixed layer, for screens whose page is pinned to the dynamic viewport and so never
+ * scrolls. iOS Safari paints only the plain page colour under its bottom bar, so there the glow would end in a
+ * hard seam; this layer fades the glow out into the page colour at the bottom instead.
+ */
+html:not([data-embed]) .koa-backdrop {
+  background-color: var(--ko-color-page);
+  background-image: linear-gradient(to top, var(--ko-color-page), transparent 6rem), var(--koa-backdrop);
 }
