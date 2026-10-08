@@ -4,11 +4,11 @@ import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
-import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
 import { Introduction } from "@/components/introduction";
 import { IntroductionNavigationCard } from "@/components/introduction-navigation-card";
+import { Layout } from "@/components/layout";
 import type { CalculatorViewModel } from "@/view-models";
 
 export type IntroductionPage = {
@@ -23,11 +23,11 @@ export type IntroductionPage = {
 export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   const t = useTranslations("koa.pages");
 
-  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
+  const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
 
   return (
-    <Layout>
-      <Layout.Header>
+    <PageLayout>
+      <PageLayout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <Closable>
@@ -37,17 +37,15 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
             </Closable>
           </AppHeader.Right>
         </AppHeader>
-      </Layout.Header>
-      <Layout.Body>
-        <Layout.Content>
-          <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
-          <Introduction calculator={calculator} />
-        </Layout.Content>
-        <Layout.BottomNavigation>
-          <IntroductionNavigationCard onNextClick={onNextClick} />
-        </Layout.BottomNavigation>
-      </Layout.Body>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
-    </Layout>
+      </PageLayout.Header>
+      <PageLayout.Content>
+        <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
+        <Introduction calculator={calculator} />
+      </PageLayout.Content>
+      <PageLayout.BottomNavigation>
+        <IntroductionNavigationCard onNextClick={onNextClick} />
+      </PageLayout.BottomNavigation>
+      <PageLayout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</PageLayout.Footer>
+    </PageLayout>
   );
 }

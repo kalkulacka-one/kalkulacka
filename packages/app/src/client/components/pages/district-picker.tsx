@@ -4,9 +4,9 @@ import { mdiHomeOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { type EmbedContextType, HideOnEmbed } from "@/client/embeds";
-import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
+import { Layout } from "@/components/layout";
 import type { DistrictPickerViewModel } from "@/view-models";
 
 import { AppHeader } from "../app-header";
@@ -24,12 +24,12 @@ export type DistrictPickerPage = {
 export function DistrictPickerPage({ embedContext, picker, heading, backHref, homepageHref, privacyHref }: DistrictPickerPage) {
   const t = useTranslations("koa.pages");
 
-  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
+  const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
 
   return (
     <DistrictPicker picker={picker}>
-      <Layout>
-        <Layout.Header>
+      <PageLayout>
+        <PageLayout.Header>
           <div className="koa:bg-page/85 koa:backdrop-blur-md koa:border-b koa:border-border">
             <AppHeader heading={heading}>
               <AppHeader.Bottom>
@@ -54,14 +54,12 @@ export function DistrictPickerPage({ embedContext, picker, heading, backHref, ho
               <DistrictPickerSearch />
             </div>
           </div>
-        </Layout.Header>
-        <Layout.Body>
-          <Layout.Content>
-            <DistrictPickerResults />
-          </Layout.Content>
-        </Layout.Body>
-        <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
-      </Layout>
+        </PageLayout.Header>
+        <PageLayout.Content>
+          <DistrictPickerResults />
+        </PageLayout.Content>
+        <PageLayout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</PageLayout.Footer>
+      </PageLayout>
     </DistrictPicker>
   );
 }
