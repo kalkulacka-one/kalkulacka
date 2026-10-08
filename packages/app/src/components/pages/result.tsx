@@ -6,7 +6,8 @@ import React, { type ReactNode } from "react";
 
 import { AppHeader, Closable, type EmbedContextType, MatchCard } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
-import { Layout } from "@/components/layout";
+import { EmbedLayout } from "@/components/embed-layout";
+import { Layout as AppLayout } from "@/components/layout";
 import { ResultNavigationCard } from "@/components/result-navigation-card";
 import type { CalculatorViewModel, ResultViewModel } from "@/view-models";
 
@@ -45,6 +46,8 @@ export function ResultPage({
   const tResultNavigationCard = useTranslations("koa.components.resultNavigationCard");
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <Layout>

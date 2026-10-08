@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
-import { Layout } from "@/components/layout";
+import { EmbedLayout } from "@/components/embed-layout";
+import { Layout as AppLayout } from "@/components/layout";
 import { ReviewNavigationCard } from "@/components/review-navigation-card";
 import { ReviewQuestionCard } from "@/components/review-question-card";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/view-models";
@@ -59,6 +60,8 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
       isImportant,
     });
   };
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <Layout>

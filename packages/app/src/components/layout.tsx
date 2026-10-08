@@ -1,4 +1,3 @@
-import { useEmbed } from "@/client";
 import { twMerge } from "@/utilities/tailwind";
 
 export type Layout = {
@@ -6,14 +5,6 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
-  const embed = useEmbed();
-  // Embeds sit in a fixed-height partner iframe: the layout is exactly the frame tall, the header stays on top,
-  // Layout.Body scrolls between them and the footer (attribution) is always visible at the bottom. `relative` also
-  // contains absolutely positioned descendants (visually hidden labels), so they can't extend the frame.
-  if (embed.isEmbed) {
-    return <div className="koa:relative koa:flex koa:h-dvh koa:flex-col koa:overflow-hidden">{children}</div>;
-  }
-
   // Mobile (< sm) is a grid: Content stretches to fill the viewport, so BottomNavigation sits at the screen's bottom
   // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
   // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
@@ -38,15 +29,10 @@ export type LayoutBody = {
   children: React.ReactNode;
 };
 
-// Everything between Layout.Header and Layout.Footer. Outside embeds it renders no element at all, so the layout
-// above is unchanged; in an embed it is the region that scrolls, with a soft top edge where content goes under the
-// header.
+// Everything between Layout.Header and Layout.Footer. Here it adds no element, so the layout above is unchanged; it
+// exists so pages can use the same structure with EmbedLayout, where it is the region that scrolls.
 function Body({ children }: LayoutBody) {
-  const embed = useEmbed();
-  if (!embed.isEmbed) {
-    return <>{children}</>;
-  }
-  return <div className="koa:relative koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto koa:embed-scroll-edge">{children}</div>;
+  return <>{children}</>;
 }
 
 Body.displayName = "Layout.Body";
@@ -60,15 +46,8 @@ export type LayoutContent = {
 };
 
 function Content({ children, fullWidth, fill }: LayoutContent) {
-  const embed = useEmbed();
-  // In an embed's Layout.Body the content stretches below sm, so a short page keeps its bottom navigation at the bottom
-  // of the frame, like the mobile grid does outside embeds.
   return (
-    <main
-      className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} ${embed.isEmbed ? "koa:max-sm:flex-[1_0_auto]" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}
-    >
-      {children}
-    </main>
+    <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>
   );
 }
 

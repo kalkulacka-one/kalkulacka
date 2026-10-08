@@ -6,7 +6,8 @@ import { useTranslations } from "next-intl";
 import type { EmbedContextType } from "@/client/embeds";
 import { DropLauncherParam } from "@/client/launcher";
 import { EmbedFooter } from "@/components/embed-footer";
-import { Layout } from "@/components/layout";
+import { EmbedLayout } from "@/components/embed-layout";
+import { Layout as AppLayout } from "@/components/layout";
 import type { CalculatorPickerViewModel } from "@/view-models";
 
 import { AppHeader } from "../app-header";
@@ -23,6 +24,8 @@ export type CalculatorPickerPage = {
 
 export function CalculatorPickerPage({ embedContext, picker, heading, backHref, homepageHref, privacyHref }: CalculatorPickerPage) {
   const t = useTranslations("koa.pages");
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <Layout>

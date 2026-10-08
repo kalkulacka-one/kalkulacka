@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, ComparisonGrid, type EmbedContextType, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
-import { Layout } from "@/components/layout";
+import { EmbedLayout } from "@/components/embed-layout";
+import { Layout as AppLayout } from "@/components/layout";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
 
 export type ComparisonPage = {
@@ -22,6 +23,8 @@ export type ComparisonPage = {
 
 export function ComparisonPage({ embedContext, homepageHref, privacyHref, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
   const t = useTranslations("koa.pages");
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <Layout>

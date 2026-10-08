@@ -5,9 +5,10 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
+import { EmbedLayout } from "@/components/embed-layout";
 import { Guide } from "@/components/guide";
 import { GuideNavigationCard } from "@/components/guide-navigation-card";
-import { Layout } from "@/components/layout";
+import { Layout as AppLayout } from "@/components/layout";
 import type { CalculatorViewModel } from "@/view-models";
 
 export type GuidePage = {
@@ -22,6 +23,8 @@ export type GuidePage = {
 
 export function GuidePage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onBackClick, onCloseClick }: GuidePage) {
   const t = useTranslations("koa.pages");
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <Layout>

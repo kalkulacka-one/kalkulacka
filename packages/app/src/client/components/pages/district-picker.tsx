@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 
 import { type EmbedContextType, HideOnEmbed } from "@/client/embeds";
 import { EmbedFooter } from "@/components/embed-footer";
-import { Layout } from "@/components/layout";
+import { EmbedLayout } from "@/components/embed-layout";
+import { Layout as AppLayout } from "@/components/layout";
 import type { DistrictPickerViewModel } from "@/view-models";
 
 import { AppHeader } from "../app-header";
@@ -22,6 +23,8 @@ export type DistrictPickerPage = {
 
 export function DistrictPickerPage({ embedContext, picker, heading, backHref, homepageHref, privacyHref }: DistrictPickerPage) {
   const t = useTranslations("koa.pages");
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <DistrictPicker picker={picker}>

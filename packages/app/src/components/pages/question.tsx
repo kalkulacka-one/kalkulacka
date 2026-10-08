@@ -6,7 +6,8 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
-import { Layout } from "@/components/layout";
+import { EmbedLayout } from "@/components/embed-layout";
+import { Layout as AppLayout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
@@ -65,6 +66,8 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
       isImportant: checked,
     });
   };
+
+  const Layout = embedContext.isEmbed ? EmbedLayout : AppLayout;
 
   return (
     <Layout>
