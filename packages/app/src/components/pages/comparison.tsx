@@ -4,9 +4,9 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, ComparisonGrid, type EmbedContextType, WithCondenseOnScroll } from "@/client";
+import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
-import { Layout as AppLayout } from "@/components/layout";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
 
 export type ComparisonPage = {

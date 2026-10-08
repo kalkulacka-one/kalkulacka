@@ -4,9 +4,9 @@ import { mdiArrowLeft, mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
+import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
-import { Layout as AppLayout } from "@/components/layout";
 import { ReviewNavigationCard } from "@/components/review-navigation-card";
 import { ReviewQuestionCard } from "@/components/review-question-card";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel } from "@/view-models";

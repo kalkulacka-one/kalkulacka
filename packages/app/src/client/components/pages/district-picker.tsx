@@ -4,9 +4,9 @@ import { mdiHomeOutline } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { type EmbedContextType, HideOnEmbed } from "@/client/embeds";
+import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
-import { Layout as AppLayout } from "@/components/layout";
 import type { DistrictPickerViewModel } from "@/view-models";
 
 import { AppHeader } from "../app-header";

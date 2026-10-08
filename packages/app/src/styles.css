@@ -21,11 +21,6 @@ html:not([data-embed]) {
   background-attachment: fixed;
 }
 
-/*
- * Soft top edge for the embed's scrolling body (Layout.Body), where content goes under the header. The mask fades the
- * content itself (no colour painted), so it works on any partner background; it grows in over the first 2rem of
- * scroll, so nothing is faded at rest. Without scroll-driven animations the edge is simply hard.
- */
 @property --koa-scroll-edge {
   syntax: "<length>";
   inherits: false;

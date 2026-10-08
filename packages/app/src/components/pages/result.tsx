@@ -5,9 +5,9 @@ import { useTranslations } from "next-intl";
 import React, { type ReactNode } from "react";
 
 import { AppHeader, Closable, type EmbedContextType, MatchCard } from "@/client";
+import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
-import { Layout as AppLayout } from "@/components/layout";
 import { ResultNavigationCard } from "@/components/result-navigation-card";
 import type { CalculatorViewModel, ResultViewModel } from "@/view-models";
 

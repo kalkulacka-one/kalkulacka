@@ -4,11 +4,11 @@ import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
+import { AppLayout } from "@/components/app-layout";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
 import { Introduction } from "@/components/introduction";
 import { IntroductionNavigationCard } from "@/components/introduction-navigation-card";
-import { Layout as AppLayout } from "@/components/layout";
 import type { CalculatorViewModel } from "@/view-models";
 
 export type IntroductionPage = {

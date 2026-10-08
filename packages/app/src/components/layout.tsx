@@ -25,18 +25,6 @@ function Header({ children, fixed }: LayoutHeader) {
 
 Header.displayName = "Layout.Header";
 
-export type LayoutBody = {
-  children: React.ReactNode;
-};
-
-// Everything between Layout.Header and Layout.Footer. Here it adds no element, so the layout above is unchanged; it
-// exists so pages can use the same structure with EmbedLayout, where it is the region that scrolls.
-function Body({ children }: LayoutBody) {
-  return <>{children}</>;
-}
-
-Body.displayName = "Layout.Body";
-
 export type LayoutContent = {
   children: React.ReactNode;
   fullWidth?: boolean;
@@ -87,7 +75,6 @@ Footer.displayName = "Layout.Footer";
 
 type LayoutCompound = React.FC<Layout> & {
   Header: React.FC<LayoutHeader>;
-  Body: React.FC<LayoutBody>;
   Content: React.FC<LayoutContent>;
   BottomNavigation: React.FC<LayoutBottomNavigation>;
   Footer: React.FC<LayoutFooter>;
@@ -95,7 +82,6 @@ type LayoutCompound = React.FC<Layout> & {
 
 export const Layout = Object.assign(LayoutComponent, {
   Header,
-  Body,
   Content,
   BottomNavigation,
   Footer,
