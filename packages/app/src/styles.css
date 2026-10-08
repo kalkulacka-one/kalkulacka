@@ -20,22 +20,3 @@ html:not([data-embed]) {
     radial-gradient(60% 50% at 85% 90%, color-mix(in oklab, var(--ko-color-secondary) 8%, transparent), transparent 70%);
   background-attachment: fixed;
 }
-
-@property --koa-scroll-edge {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 0px;
-}
-
-@keyframes koa-scroll-edge-in {
-  to {
-    --koa-scroll-edge: 2rem;
-  }
-}
-
-@utility embed-scroll-edge {
-  mask-image: linear-gradient(to bottom, transparent, black var(--koa-scroll-edge));
-  animation: koa-scroll-edge-in linear both;
-  animation-timeline: scroll(self);
-  animation-range: 0 2rem;
-}

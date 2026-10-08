@@ -12,7 +12,9 @@ function EmbedLayoutComponent({ children }: { children: React.ReactNode }) {
   return (
     <div className="koa:relative koa:flex koa:h-dvh koa:flex-col koa:overflow-hidden">
       {header}
-      <div className="koa:relative koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto koa:embed-scroll-edge koa:max-sm:[&>main]:flex-[1_0_auto]">{body}</div>
+      <div className="koa:relative koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto koa:pt-4 koa:[mask-image:linear-gradient(to_bottom,transparent,black_1rem)] koa:max-sm:[&>main]:flex-[1_0_auto]">
+        {body}
+      </div>
       {footer}
     </div>
   );
