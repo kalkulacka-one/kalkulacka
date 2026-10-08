@@ -47,6 +47,7 @@ export const embedsConfig = {
   heroine: {},
   webpress: {},
   znojemsko: {},
+  brandysko: {},
   "denik-referendum": {},
   tyden: {},
   instinkt: {},
