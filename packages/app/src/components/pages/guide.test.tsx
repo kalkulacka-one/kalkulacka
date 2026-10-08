@@ -35,11 +35,13 @@ vi.mock("@/components/guide-navigation-card", () => {
 vi.mock("@/components/layout", () => {
   const LayoutMock = vi.fn(({ children }) => children) as unknown as React.FC<{ children?: React.ReactNode }> & {
     Header: React.FC<{ children?: React.ReactNode }>;
+    Body: React.FC<{ children?: React.ReactNode }>;
     Content: React.FC<{ children?: React.ReactNode }>;
     BottomNavigation: React.FC<{ children?: React.ReactNode }>;
     Footer: React.FC<{ children?: React.ReactNode }>;
   };
   LayoutMock.Header = vi.fn(({ children }) => children);
+  LayoutMock.Body = vi.fn(({ children }) => children);
   LayoutMock.Content = vi.fn(({ children }) => children);
   LayoutMock.BottomNavigation = vi.fn(({ children }) => children);
   LayoutMock.Footer = vi.fn(({ children }) => children);

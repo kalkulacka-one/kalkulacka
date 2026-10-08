@@ -83,8 +83,9 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           )}
         </WithCondenseOnScroll>
       </Layout.Header>
-      <Layout.Content fullWidth fill>
-        {/*
+      <Layout.Body>
+        <Layout.Content fullWidth fill>
+          {/*
           A dedicated column rather than Layout.Content's own max-width: the
           2026 card is wider than the app's default content column, and this
           screen's step row lives in this same flow (not Layout.BottomNavigation)
@@ -98,19 +99,20 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           row stays at the bottom of a short question; on larger screens the
           card has a stable minimum height so the answer row doesn't move.
         */}
-        <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:flex-none koa:sm:gap-6">
-          <SteppedProgressBar
-            stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
-            stepCurrent={number}
-            stepTotal={total}
-            idKey="id"
-            statusKey="status"
-            decorative
-          />
-          <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
-          <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
-        </div>
-      </Layout.Content>
+          <div className="koa:mx-auto koa:flex koa:w-full koa:min-w-0 koa:max-w-[51.25rem] koa:flex-1 koa:flex-col koa:gap-4 koa:pb-6 koa:sm:flex-none koa:sm:gap-6">
+            <SteppedProgressBar
+              stepItems={Array.from({ length: total }, (_, index) => ({ id: String(index + 1), status: null }))}
+              stepCurrent={number}
+              stepTotal={total}
+              idKey="id"
+              statusKey="status"
+              decorative
+            />
+            <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
+            <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
+          </div>
+        </Layout.Content>
+      </Layout.Body>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );

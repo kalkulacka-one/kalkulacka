@@ -49,9 +49,11 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
                 </AppHeader.Bottom>
               </AppHeader>
             </Layout.Header>
-            <Layout.Content fullWidth>
-              <ComparisonGrid questions={questions} result={result} answers={answers} condensed={condensed} />
-            </Layout.Content>
+            <Layout.Body>
+              <Layout.Content fullWidth>
+                <ComparisonGrid questions={questions} result={result} answers={answers} condensed={condensed} />
+              </Layout.Content>
+            </Layout.Body>
           </>
         )}
       </WithCondenseOnScroll>

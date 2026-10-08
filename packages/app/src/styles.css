@@ -22,64 +22,25 @@ html:not([data-embed]) {
 }
 
 /*
- * Embeds live in a fixed-height partner iframe: the layout is exactly the frame tall, the header stays on top, the
- * body scrolls in its own region below it, and the footer (attribution) is always visible at the bottom. Nothing
- * scrolls under the header, so it stays transparent on the partner's background.
+ * Soft top edge for the embed's scrolling body (Layout.Body), where content goes under the header. The mask fades the
+ * content itself (no colour painted), so it works on any partner background; it grows in over the first 2rem of
+ * scroll, so nothing is faded at rest. Without scroll-driven animations the edge is simply hard.
  */
-html[data-embed] [data-layout] {
-  /* Also the containing block for absolutely positioned descendants (visually hidden labels), so they can't extend
-   * the frame. */
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  overflow: hidden;
-}
-
-html[data-embed] [data-layout-body] {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-}
-
-/* Like the mobile grid outside embeds: below sm the content stretches, so a short page keeps its bottom navigation at
- * the bottom of the frame; from sm up the navigation follows the content. */
-@media (width < 40rem) {
-  html[data-embed] [data-layout-body] > main {
-    flex: 1 0 auto;
-  }
-}
-
-/* Calculator routes wrap every page's Layout in another one (each app's ProviderLayout); the outer one steps aside,
- * so only the page's own Layout becomes the frame shell. */
-html[data-embed] [data-layout]:has([data-layout]),
-html[data-embed] [data-layout]:has([data-layout]) > [data-layout-body] {
-  display: contents;
-}
-
-/*
- * Soft top edge where the content scrolls away under the header. The mask fades the content itself (no colour
- * painted), so it works on any partner background; it grows in over the first 2rem of scroll, so nothing is faded at
- * rest.
- */
-@property --koa-edge {
+@property --koa-scroll-edge {
   syntax: "<length>";
   inherits: false;
   initial-value: 0px;
 }
 
-@keyframes koa-edge-in {
+@keyframes koa-scroll-edge-in {
   to {
-    --koa-edge: 2rem;
+    --koa-scroll-edge: 2rem;
   }
 }
 
-html[data-embed] [data-layout-body] {
-  mask-image: linear-gradient(to bottom, transparent, black var(--koa-edge));
-  animation: koa-edge-in linear both;
+@utility embed-scroll-edge {
+  mask-image: linear-gradient(to bottom, transparent, black var(--koa-scroll-edge));
+  animation: koa-scroll-edge-in linear both;
   animation-timeline: scroll(self);
   animation-range: 0 2rem;
 }

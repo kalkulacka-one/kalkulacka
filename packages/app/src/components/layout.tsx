@@ -1,5 +1,4 @@
-import React from "react";
-
+import { useEmbed } from "@/client";
 import { twMerge } from "@/utilities/tailwind";
 
 export type Layout = {
@@ -7,28 +6,19 @@ export type Layout = {
 };
 
 function LayoutComponent({ children }: Layout) {
-  const items = React.Children.toArray(children);
-  const isSlot = (type: React.ElementType) => (child: React.ReactNode) => React.isValidElement(child) && child.type === type;
-  const header = items.filter(isSlot(Header));
-  const footer = items.filter(isSlot(Footer));
-  const body = items.filter((child) => !isSlot(Header)(child) && !isSlot(Footer)(child));
+  const embed = useEmbed();
+  // Embeds sit in a fixed-height partner iframe: the layout is exactly the frame tall, the header stays on top,
+  // Layout.Body scrolls between them and the footer (attribution) is always visible at the bottom. `relative` also
+  // contains absolutely positioned descendants (visually hidden labels), so they can't extend the frame.
+  if (embed.isEmbed) {
+    return <div className="koa:relative koa:flex koa:h-dvh koa:flex-col koa:overflow-hidden">{children}</div>;
+  }
+
   // Mobile (< sm) is a grid: Content stretches to fill the viewport, so BottomNavigation sits at the screen's bottom
   // edge on short pages. sm and up switch to a plain column flow: Content sizes to its own content and
   // BottomNavigation follows it. On every breakpoint BottomNavigation sticks to the viewport bottom once the page is
   // taller than the screen.
-  //
-  // Embeds (styles.css, html[data-embed]) turn this into a frame-tall shell instead: the header stays on top, the body
-  // scrolls in its own region below it, and the footer is always visible at the bottom. Outside embeds the body
-  // wrapper is `display: contents`, so the layout above is unchanged.
-  return (
-    <div data-layout className="koa:min-h-dvh koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">
-      {header}
-      <div data-layout-body className="koa:contents">
-        {body}
-      </div>
-      {footer}
-    </div>
-  );
+  return <div className="koa:min-h-dvh koa:grid koa:grid-rows-[auto_1fr_auto] koa:sm:flex koa:sm:flex-col">{children}</div>;
 }
 
 LayoutComponent.displayName = "Layout";
@@ -44,6 +34,23 @@ function Header({ children, fixed }: LayoutHeader) {
 
 Header.displayName = "Layout.Header";
 
+export type LayoutBody = {
+  children: React.ReactNode;
+};
+
+// Everything between Layout.Header and Layout.Footer. Outside embeds it renders no element at all, so the layout
+// above is unchanged; in an embed it is the region that scrolls, with a soft top edge where content goes under the
+// header.
+function Body({ children }: LayoutBody) {
+  const embed = useEmbed();
+  if (!embed.isEmbed) {
+    return <>{children}</>;
+  }
+  return <div className="koa:relative koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto koa:embed-scroll-edge">{children}</div>;
+}
+
+Body.displayName = "Layout.Body";
+
 export type LayoutContent = {
   children: React.ReactNode;
   fullWidth?: boolean;
@@ -53,8 +60,15 @@ export type LayoutContent = {
 };
 
 function Content({ children, fullWidth, fill }: LayoutContent) {
+  const embed = useEmbed();
+  // In an embed's Layout.Body the content stretches below sm, so a short page keeps its bottom navigation at the bottom
+  // of the frame, like the mobile grid does outside embeds.
   return (
-    <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>
+    <main
+      className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} ${embed.isEmbed ? "koa:max-sm:flex-[1_0_auto]" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}
+    >
+      {children}
+    </main>
   );
 }
 
@@ -94,6 +108,7 @@ Footer.displayName = "Layout.Footer";
 
 type LayoutCompound = React.FC<Layout> & {
   Header: React.FC<LayoutHeader>;
+  Body: React.FC<LayoutBody>;
   Content: React.FC<LayoutContent>;
   BottomNavigation: React.FC<LayoutBottomNavigation>;
   Footer: React.FC<LayoutFooter>;
@@ -101,6 +116,7 @@ type LayoutCompound = React.FC<Layout> & {
 
 export const Layout = Object.assign(LayoutComponent, {
   Header,
+  Body,
   Content,
   BottomNavigation,
   Footer,

@@ -35,13 +35,15 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
           </AppHeader.Right>
         </AppHeader>
       </Layout.Header>
-      <Layout.Content>
-        <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
-        <Introduction calculator={calculator} />
-      </Layout.Content>
-      <Layout.BottomNavigation>
-        <IntroductionNavigationCard onNextClick={onNextClick} />
-      </Layout.BottomNavigation>
+      <Layout.Body>
+        <Layout.Content>
+          <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
+          <Introduction calculator={calculator} />
+        </Layout.Content>
+        <Layout.BottomNavigation>
+          <IntroductionNavigationCard onNextClick={onNextClick} />
+        </Layout.BottomNavigation>
+      </Layout.Body>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );

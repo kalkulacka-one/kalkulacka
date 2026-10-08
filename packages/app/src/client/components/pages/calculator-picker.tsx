@@ -44,10 +44,12 @@ export function CalculatorPickerPage({ embedContext, picker, heading, backHref, 
           </AppHeader.Bottom>
         </AppHeader>
       </Layout.Header>
-      <Layout.Content>
-        <p className="koa:mb-4 koa:max-w-prose koa:text-text-muted">{t("calculatorPicker.description")}</p>
-        <CalculatorPickerCards cards={picker.cards} startLabel={t("calculatorPicker.start")} unavailableLabel={t("districtPicker.unavailable")} />
-      </Layout.Content>
+      <Layout.Body>
+        <Layout.Content>
+          <p className="koa:mb-4 koa:max-w-prose koa:text-text-muted">{t("calculatorPicker.description")}</p>
+          <CalculatorPickerCards cards={picker.cards} startLabel={t("calculatorPicker.start")} unavailableLabel={t("districtPicker.unavailable")} />
+        </Layout.Content>
+      </Layout.Body>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );

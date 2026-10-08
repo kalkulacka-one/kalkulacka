@@ -52,9 +52,11 @@ export function DistrictPickerPage({ embedContext, picker, heading, backHref, ho
             </div>
           </div>
         </Layout.Header>
-        <Layout.Content>
-          <DistrictPickerResults />
-        </Layout.Content>
+        <Layout.Body>
+          <Layout.Content>
+            <DistrictPickerResults />
+          </Layout.Content>
+        </Layout.Body>
         <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
       </Layout>
     </DistrictPicker>

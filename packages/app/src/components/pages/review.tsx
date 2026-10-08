@@ -73,38 +73,40 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
           </AppHeader.Right>
         </AppHeader>
       </Layout.Header>
-      <Layout.Content>
-        <div className="koa:mb-4">
-          <Button variant="pill" color="neutral" onClick={onPreviousClick}>
-            <Icon icon={mdiArrowLeft} size="small" decorative />
-            {t("review.back")}
-          </Button>
-        </div>
-        <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{t("review.title")}</h3>
-        <p className="koa:mb-5 koa:sm:mb-6 koa:max-w-prose koa:text-text-muted koa:leading-[1.5]">{t("review.description")}</p>
-        <div className="koa:grid koa:gap-2 koa:sm:gap-3">
-          {questions.questions.map((question) => {
-            const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
-              answer: undefined,
-              setAnswer: answers.setAnswer,
-            };
+      <Layout.Body>
+        <Layout.Content>
+          <div className="koa:mb-4">
+            <Button variant="pill" color="neutral" onClick={onPreviousClick}>
+              <Icon icon={mdiArrowLeft} size="small" decorative />
+              {t("review.back")}
+            </Button>
+          </div>
+          <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{t("review.title")}</h3>
+          <p className="koa:mb-5 koa:sm:mb-6 koa:max-w-prose koa:text-text-muted koa:leading-[1.5]">{t("review.description")}</p>
+          <div className="koa:grid koa:gap-2 koa:sm:gap-3">
+            {questions.questions.map((question) => {
+              const answer = answers.answers.find((a) => a.answer?.questionId === question.id) || {
+                answer: undefined,
+                setAnswer: answers.setAnswer,
+              };
 
-            return (
-              <ReviewQuestionCard
-                key={question.id}
-                question={question}
-                answer={answer}
-                onAgreeChange={(agree) => handleAgreeChange(question.id, agree)}
-                onDisagreeChange={(disagree) => handleDisagreeChange(question.id, disagree)}
-                onImportantChange={(isImportant) => handleImportantChange(question.id, isImportant)}
-              />
-            );
-          })}
-        </div>
-      </Layout.Content>
-      <Layout.BottomNavigation>
-        <ReviewNavigationCard onNextClick={onNextClick} />
-      </Layout.BottomNavigation>
+              return (
+                <ReviewQuestionCard
+                  key={question.id}
+                  question={question}
+                  answer={answer}
+                  onAgreeChange={(agree) => handleAgreeChange(question.id, agree)}
+                  onDisagreeChange={(disagree) => handleDisagreeChange(question.id, disagree)}
+                  onImportantChange={(isImportant) => handleImportantChange(question.id, isImportant)}
+                />
+              );
+            })}
+          </div>
+        </Layout.Content>
+        <Layout.BottomNavigation>
+          <ReviewNavigationCard onNextClick={onNextClick} />
+        </Layout.BottomNavigation>
+      </Layout.Body>
       <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
     </Layout>
   );
