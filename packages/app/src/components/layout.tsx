@@ -29,13 +29,16 @@ export type LayoutContent = {
   children: React.ReactNode;
   fullWidth?: boolean;
   fixed?: boolean;
-  // Lets a screen's own column take the space left below the header, so it can anchor its content to the bottom.
-  fill?: boolean;
+  fullHeight?: boolean;
 };
 
-function Content({ children, fullWidth, fill }: LayoutContent) {
+function Content({ children, fullWidth, fullHeight }: LayoutContent) {
   return (
-    <main className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fill ? "koa:flex koa:flex-col koa:sm:flex-1" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}>{children}</main>
+    <main
+      className={`${fullWidth ? "koa:w-full" : "koa:max-w-xl koa:w-full"} ${fullHeight ? "koa:flex koa:min-h-0 koa:flex-1 koa:flex-col koa:overflow-y-auto" : ""} koa:mx-auto koa:px-gutter koa:py-2 koa:sm:py-4`}
+    >
+      {children}
+    </main>
   );
 }
 
