@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, ComparisonGrid, type EmbedContextType, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
-import { EmbedLayout } from "@/components/embed-layout";
 import { Layout } from "@/components/layout";
 import type { AnswersViewModel, CalculatorViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
 
@@ -24,14 +23,12 @@ export type ComparisonPage = {
 export function ComparisonPage({ embedContext, homepageHref, privacyHref, calculator, result, answers, questions, onPreviousClick, onCloseClick }: ComparisonPage) {
   const t = useTranslations("koa.pages");
 
-  const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
-
   return (
-    <PageLayout>
+    <Layout>
       <WithCondenseOnScroll>
         {(condensed) => (
           <>
-            <PageLayout.Header fixed>
+            <Layout.Header fixed>
               <AppHeader condensed={condensed} calculator={calculator}>
                 <AppHeader.Right>
                   <Closable>
@@ -51,14 +48,14 @@ export function ComparisonPage({ embedContext, homepageHref, privacyHref, calcul
                   </AppHeader.BottomMain>
                 </AppHeader.Bottom>
               </AppHeader>
-            </PageLayout.Header>
-            <PageLayout.Content fullWidth>
+            </Layout.Header>
+            <Layout.Content fullWidth>
               <ComparisonGrid questions={questions} result={result} answers={answers} condensed={condensed} />
-            </PageLayout.Content>
+            </Layout.Content>
           </>
         )}
       </WithCondenseOnScroll>
-      <PageLayout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</PageLayout.Footer>
-    </PageLayout>
+      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
+    </Layout>
   );
 }
