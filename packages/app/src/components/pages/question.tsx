@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType, WithCondenseOnScroll } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
+import { EmbedLayout } from "@/components/embed-layout";
 import { Layout } from "@/components/layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
@@ -66,9 +67,11 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
     });
   };
 
+  const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
+
   return (
-    <Layout>
-      <Layout.Header>
+    <PageLayout>
+      <PageLayout.Header>
         <WithCondenseOnScroll>
           {(condensed) => (
             <AppHeader condensed={condensed} calculator={calculator}>
@@ -82,8 +85,8 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
             </AppHeader>
           )}
         </WithCondenseOnScroll>
-      </Layout.Header>
-      <Layout.Content fullWidth fill>
+      </PageLayout.Header>
+      <PageLayout.Content fullWidth fill>
         {/*
           A dedicated column rather than Layout.Content's own max-width: the
           2026 card is wider than the app's default content column, and this
@@ -110,8 +113,8 @@ export function QuestionPage({ embedContext, homepageHref, privacyHref, question
           <QuestionCard question={question} answer={answer} onAgreeChange={handleAgreeChange} onDisagreeChange={handleDisagreeChange} onImportantChange={handleImportantChange} />
           <QuestionNavigationCard current={number} total={total} isAnswered={isAnswered} onPreviousClick={onPreviousClick} onNextClick={onNextClick} />
         </div>
-      </Layout.Content>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
-    </Layout>
+      </PageLayout.Content>
+      <PageLayout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</PageLayout.Footer>
+    </PageLayout>
   );
 }

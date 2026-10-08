@@ -6,6 +6,7 @@ import React, { type ReactNode } from "react";
 
 import { AppHeader, Closable, type EmbedContextType, MatchCard } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
+import { EmbedLayout } from "@/components/embed-layout";
 import { Layout } from "@/components/layout";
 import { ResultNavigationCard } from "@/components/result-navigation-card";
 import type { CalculatorViewModel, ResultViewModel } from "@/view-models";
@@ -46,9 +47,11 @@ export function ResultPage({
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
+  const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
+
   return (
-    <Layout>
-      <Layout.Header>
+    <PageLayout>
+      <PageLayout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <Closable>
@@ -58,8 +61,8 @@ export function ResultPage({
             </Closable>
           </AppHeader.Right>
         </AppHeader>
-      </Layout.Header>
-      <Layout.Content>
+      </PageLayout.Header>
+      <PageLayout.Content>
         <div>
           <div className="koa:flex koa:items-center koa:justify-between koa:gap-2 koa:mb-4">
             <Button variant="pill" color="neutral" onClick={onPreviousClick}>
@@ -111,8 +114,8 @@ export function ResultPage({
             <ResultNavigationCard onNextClick={onNextClick} />
           </div>
         </div>
-      </Layout.Content>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
-    </Layout>
+      </PageLayout.Content>
+      <PageLayout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</PageLayout.Footer>
+    </PageLayout>
   );
 }

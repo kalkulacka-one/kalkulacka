@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
+import { EmbedLayout } from "@/components/embed-layout";
 import { Layout } from "@/components/layout";
 import { ReviewNavigationCard } from "@/components/review-navigation-card";
 import { ReviewQuestionCard } from "@/components/review-question-card";
@@ -60,9 +61,11 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
     });
   };
 
+  const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
+
   return (
-    <Layout>
-      <Layout.Header>
+    <PageLayout>
+      <PageLayout.Header>
         <AppHeader calculator={calculator}>
           <AppHeader.Right>
             <Closable>
@@ -72,8 +75,8 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
             </Closable>
           </AppHeader.Right>
         </AppHeader>
-      </Layout.Header>
-      <Layout.Content>
+      </PageLayout.Header>
+      <PageLayout.Content>
         <div className="koa:mb-4">
           <Button variant="pill" color="neutral" onClick={onPreviousClick}>
             <Icon icon={mdiArrowLeft} size="small" decorative />
@@ -101,11 +104,11 @@ export function ReviewPage({ embedContext, homepageHref, privacyHref, questions,
             );
           })}
         </div>
-      </Layout.Content>
-      <Layout.BottomNavigation>
+      </PageLayout.Content>
+      <PageLayout.BottomNavigation>
         <ReviewNavigationCard onNextClick={onNextClick} />
-      </Layout.BottomNavigation>
-      <Layout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</Layout.Footer>
-    </Layout>
+      </PageLayout.BottomNavigation>
+      <PageLayout.Footer>{embedContext.isEmbed && <EmbedFooter attribution={embedContext.config?.attribution} homepageHref={homepageHref} privacyHref={privacyHref} />}</PageLayout.Footer>
+    </PageLayout>
   );
 }
