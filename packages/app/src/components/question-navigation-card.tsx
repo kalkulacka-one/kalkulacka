@@ -29,7 +29,7 @@ export function QuestionNavigationCard({ current, total, isAnswered, onPreviousC
   const nextButtonLabel = isAnswered ? t("next") : t("skip");
 
   return (
-    <div className="koa:-mx-4.5 koa:grid koa:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] koa:items-center koa:gap-1 koa:sm:gap-2">
+    <div className="koa:-mx-4.5 koa:shrink-0 koa:grid koa:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] koa:items-center koa:gap-1 koa:sm:gap-2">
       <div className="koa:justify-self-start">
         <Button size="small" variant="link" color="neutral" onClick={onPreviousClick}>
           <span className="koa:flex koa:items-center koa:gap-1 koa:text-[clamp(14px,4.5vw,17px)] koa:font-bold koa:text-text">
