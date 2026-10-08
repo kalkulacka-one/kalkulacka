@@ -25,4 +25,11 @@ describe("Toggle button", () => {
     fireEvent.click(screen.getByRole("switch"));
     expect(handleChange).toHaveBeenCalledTimes(1);
   });
+
+  it("should toggle on Enter, like it does on Space", () => {
+    const handleChange = vi.fn();
+    render(<ToggleButton checked={false} onChange={handleChange} />);
+    fireEvent.keyDown(screen.getByRole("switch"), { key: "Enter" });
+    expect(handleChange).toHaveBeenCalledWith(true);
+  });
 });

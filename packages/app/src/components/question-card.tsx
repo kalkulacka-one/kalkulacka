@@ -58,13 +58,18 @@ export function QuestionCard({ question, answer, onAgreeChange, onDisagreeChange
           </span>
         </div>
 
-        <div className="koa:flex koa:flex-col koa:gap-3">
-          <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
-            {statement}
-          </h3>
-          {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
+        {/*
+          A live region around the text: swapping its content announces the new question to screen readers (focus
+          stays on the answer button the user just pressed).
+        */}
+        <div aria-live="polite" aria-atomic="true">
+          <div className="koa:flex koa:flex-col koa:gap-3">
+            <h3 className="koa:font-sans koa:text-[clamp(23px,14.89px+2.162vw,28.73px)] koa:sm:text-[clamp(27px,24.551px+0.6531vw,35px)] koa:font-bold koa:text-text koa:leading-[1.22] koa:tracking-[-0.03em] koa:break-words">
+              {statement}
+            </h3>
+            {detail && <p className="koa:text-[clamp(15px,14.5px+0.12vw,17px)] koa:text-text-muted koa:leading-[1.5] koa:sm:leading-[1.62] koa:break-words">{detail}</p>}
+          </div>
         </div>
-
         <div className="koa:@container koa:mt-auto koa:grid koa:grid-cols-[auto_1fr_1fr] koa:gap-3 koa:items-center">
           <ToggleButton variant="round" color="neutral" checked={answer.answer?.isImportant || false} onChange={(checked: boolean) => onImportantChange(checked)} aria-label={t("important")}>
             <Icon icon={answer.answer?.isImportant ? mdiStar : mdiStarOutline} decorative={true} />
