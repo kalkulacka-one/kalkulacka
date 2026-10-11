@@ -9,6 +9,7 @@ export * from "./field";
 export * from "./icon";
 export * from "./input";
 export * from "./label";
+export * from "./link-provider";
 export * from "./logo";
 export * from "./optionList";
 export * from "./searchField";
