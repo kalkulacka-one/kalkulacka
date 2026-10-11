@@ -101,6 +101,9 @@
         "title": "Водич",
         "back": "Назад кон вовед"
       },
+      "question": {
+        "documentTitle": "Прашање {current}/{total}"
+      },
       "publicResult": {
         "title": "Мој резултат",
         "candidateLists": "Партии",

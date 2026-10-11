@@ -3,6 +3,7 @@ import { SteppedProgressBar } from "@kalkulacka-one/design-system/server";
 
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 
 import { AppHeader, Closable, type EmbedContextType } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
@@ -10,6 +11,7 @@ import { EmbedLayout } from "@/components/embed-layout";
 import { FixedLayout } from "@/components/fixed-layout";
 import { QuestionCard } from "@/components/question-card";
 import { QuestionNavigationCard } from "@/components/question-navigation-card";
+import { replacePageTitle } from "@/utilities/page-title";
 import type { AnswerViewModel, CalculatorViewModel, QuestionViewModel } from "@/view-models";
 
 export type QuestionPage = {
@@ -29,6 +31,12 @@ export type QuestionPage = {
 export function QuestionPage({ embedContext, homepageHref, privacyHref, question, number, total, calculator, onPreviousClick, onNextClick, answer, onCloseClick }: QuestionPage) {
   const t = useTranslations("koa.pages");
   const isAnswered = answer.answer?.answer !== undefined;
+  const pageTitle = t("question.documentTitle", { current: number, total });
+
+  // Questions change through history.pushState, which skips generateMetadata, so the tab title follows here.
+  useEffect(() => {
+    document.title = replacePageTitle(document.title, pageTitle);
+  }, [pageTitle]);
 
   const handleAgreeChange = (checked: boolean) => {
     if (checked) {

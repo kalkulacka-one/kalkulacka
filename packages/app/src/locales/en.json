@@ -101,6 +101,9 @@
         "title": "Guide",
         "back": "Back to introduction"
       },
+      "question": {
+        "documentTitle": "Question {current}/{total}"
+      },
       "publicResult": {
         "title": "My result",
         "candidateLists": "Candidate lists",

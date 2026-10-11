@@ -71,7 +71,8 @@
     "@kalkulacka-one/app": "*",
     "@kalkulacka-one/database": "*",
     "zod": "^4.0.0",
-    "@kalkulacka-one/schema": "*"
+    "@kalkulacka-one/schema": "*",
+    "next-intl": "^4.3.9"
   },
   "devDependencies": {
     "@kalkulacka-one/typescript-config": "*",

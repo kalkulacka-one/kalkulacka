@@ -1,19 +1,15 @@
 import { questionNumberGuard } from "@kalkulacka-one/next";
-import { generateCalculatorMetadata } from "@kalkulacka-one/next/metadata";
 
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
 
 import { QuestionPageWithRouting } from "@/components/client";
-import { canonical, mappedParams } from "@/lib/routing";
+import { calculatorMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; first: string; second: string; third: string; questionNumber: string }> }): Promise<Metadata> {
   const { locale, questionNumber, ...segments } = await params;
   const currentQuestionNumber = questionNumberGuard(questionNumber);
-  const key = mappedParams.key(segments);
-  const group = mappedParams.group(segments);
-  const canonicalUrl = canonical.question(segments, currentQuestionNumber, locale);
-  return generateCalculatorMetadata({ key, group, canonicalUrl });
+  return calculatorMetadata.question(segments, currentQuestionNumber, locale);
 }
 
 export default async function Page({ params }: { params: Promise<{ first: string; second: string; third: string; questionNumber: string }> }) {
