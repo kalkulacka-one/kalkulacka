@@ -108,6 +108,12 @@
           "title": "Show code",
           "description": "Whether to display district codes next to district names; overrides the app default",
           "type": "boolean"
+        },
+        "backLabel": {
+          "title": "Back label",
+          "description": "Label of the link from a district's calculator picker back to the district list; overrides the app default",
+          "type": "string",
+          "examples": ["Zpět na výběr města"]
         }
       },
       "unevaluatedProperties": false

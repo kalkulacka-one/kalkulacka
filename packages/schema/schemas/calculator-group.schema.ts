@@ -16,6 +16,7 @@ const selectionSchema = z
     description: z.string().describe("Description shown in the calculator picker").optional(),
     searchPlaceholder: z.string().describe("Placeholder of the calculator picker search field").optional(),
     showCode: z.boolean().describe("Whether to display district codes next to district names; overrides the app default").optional(),
+    backLabel: z.string().describe("Label of the link from a district's calculator picker back to the district list; overrides the app default").optional(),
   })
   .strict()
   .describe("Optional copy and display overrides for the calculator picker");
