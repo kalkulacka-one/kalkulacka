@@ -3,6 +3,7 @@ import type { calculateMatches } from "@/result-calculation";
 import type { CandidateViewModel } from "./candidate";
 import type { CandidateAnswerViewModel } from "./candidate-answer";
 import type { CandidatesAnswersViewModel } from "./candidate-answers";
+import { type CandidateRoundStatus, candidateRoundStatus } from "./rounds";
 
 export type CandidateMatchViewModel = {
   candidate: CandidateViewModel;
@@ -11,10 +12,19 @@ export type CandidateMatchViewModel = {
   respondent: "candidate" | "expert" | "mixed";
   candidateAnswers: CandidateAnswerViewModel[];
   nestedMatches?: CandidateMatchViewModel[];
+  /** Only for elections with rounds: whether the candidate is still in the race, already elected, or out. */
+  roundStatus?: CandidateRoundStatus;
+};
+
+export type ResultViewModelOptions = {
+  /** The round the voter is looking at; candidates out of it are listed apart in `eliminated`. */
+  currentRound?: number;
 };
 
 export type ResultViewModel = {
   matches: CandidateMatchViewModel[];
+  /** Candidates out of the race in the current round, listed apart and without a rank. */
+  eliminated?: CandidateMatchViewModel[];
 };
 
 function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
@@ -22,6 +32,11 @@ function sortByOrder<T extends { order?: number }>(items: T[]): T[] {
   const withoutOrder = items.filter((item) => item.order === undefined);
   withOrder.sort((a, b) => a.order - b.order);
   return [...withOrder, ...withoutOrder];
+}
+
+function renumber<T extends { match?: number; order?: number }>(items: T[]): T[] {
+  let next = 1;
+  return items.map((item) => ({ ...item, order: item.match !== undefined ? next++ : undefined }));
 }
 
 function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<string, CandidateAnswerViewModel[]>): "candidate" | "expert" | "mixed" {
@@ -37,7 +52,12 @@ function getRespondentValue(candidateId: string, candidatesAnswersMap: Map<strin
   return respondents.values().next().value ?? "candidate";
 }
 
-export function resultViewModel(candidates: CandidateViewModel[], candidatesAnswers: CandidatesAnswersViewModel, algorithmMatches: ReturnType<typeof calculateMatches>): ResultViewModel {
+export function resultViewModel(
+  candidates: CandidateViewModel[],
+  candidatesAnswers: CandidatesAnswersViewModel,
+  algorithmMatches: ReturnType<typeof calculateMatches>,
+  options: ResultViewModelOptions = {},
+): ResultViewModel {
   const candidatesAnswersMap = new Map(Object.entries(candidatesAnswers));
 
   const topLevelIds = candidates.map((candidate) => candidate.id);
@@ -83,5 +103,15 @@ export function resultViewModel(candidates: CandidateViewModel[], candidatesAnsw
     };
   });
 
-  return { matches: sortByOrder(matches) };
+  const { currentRound } = options;
+  if (currentRound === undefined) {
+    return { matches: sortByOrder(matches) };
+  }
+
+  const withRoundStatus = sortByOrder(matches.map((match) => ({ ...match, roundStatus: candidateRoundStatus(match.candidate, currentRound) })));
+  // Ranks are renumbered among the candidates still in the race; the eliminated keep their match but carry no rank.
+  const inRace = renumber(withRoundStatus.filter((match) => match.roundStatus !== "eliminated"));
+  const eliminated = withRoundStatus.filter((match) => match.roundStatus === "eliminated").map((match) => ({ ...match, order: undefined }));
+
+  return { matches: inRace, eliminated };
 }
