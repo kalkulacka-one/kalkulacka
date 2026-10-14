@@ -6,9 +6,10 @@ export type ComparisonQuestionCard = {
   question: QuestionViewModel;
   current: number;
   total: number;
+  note?: string;
 };
 
-export function ComparisonQuestionCard({ question, current, total }: ComparisonQuestionCard) {
+export function ComparisonQuestionCard({ question, current, total, note }: ComparisonQuestionCard) {
   const { title, statement } = question;
   return (
     <Card corner="topLeft" shadow="hard" className="koa:border koa:border-border koa:w-fit">
@@ -18,6 +19,7 @@ export function ComparisonQuestionCard({ question, current, total }: ComparisonQ
           <span>{title}</span>
         </div>
         <h3 className="koa:font-display koa:text-lg koa:sm:text-xl koa:font-bold koa:text-text-strong koa:leading-tight koa:tracking-tighter koa:break-words">{statement}</h3>
+        {note && <p className="koa:text-sm koa:text-text-muted">{note}</p>}
       </div>
     </Card>
   );

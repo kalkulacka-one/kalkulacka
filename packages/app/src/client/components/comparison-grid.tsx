@@ -5,6 +5,7 @@ import { IconBadge } from "@kalkulacka-one/design-system/server";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import { useRound } from "@/client/view-models/rounds";
 import { ComparisonQuestionCard } from "@/components/comparison-question-card";
 import type { AnswersViewModel, QuestionsViewModel, ResultViewModel } from "@/view-models";
 
@@ -183,6 +184,8 @@ type ComparisonQuestionRow = {
 };
 
 function ComparisonQuestionRow({ question, index, totalQuestions, answers, result, filterNestedCandidates }: ComparisonQuestionRow) {
+  const t = useTranslations("koa.components.comparisonGrid");
+  const round = useRound();
   const userAnswer = answers.answers.find((answer) => answer.answer?.questionId === question.id);
 
   return (
@@ -190,7 +193,7 @@ function ComparisonQuestionRow({ question, index, totalQuestions, answers, resul
       <div className="koa:flex koa:gap-8 koa:relative koa:w-max">
         <div className="koa:h-auto koa:absolute koa:left-0 koa:top-0" />
         <div className="koa:px-4 koa:flex koa:justify-start koa:sticky koa:left-4 koa:w-[95dvw]">
-          <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} />
+          <ComparisonQuestionCard question={question} current={index + 1} total={totalQuestions} note={question.settled && round ? t("settledQuestion", { round: round.current }) : undefined} />
         </div>
         <div className="koa:w-[100px] koa:flex-shrink-0" />
         {result.matches.map((match) => {
