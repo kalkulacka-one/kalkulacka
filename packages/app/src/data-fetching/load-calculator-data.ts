@@ -11,13 +11,16 @@ import {
   personsSchema,
   type Questions,
   questionsSchema,
+  type Round,
 } from "@kalkulacka-one/schema";
 
 import type { z } from "zod";
 
+import { NotFoundError } from "@/errors";
 import { parseWithSchema } from "@/utilities";
 
 import { fetchFile } from "./fetch-file";
+import { loadElection } from "./load-election";
 import { buildDataUrl } from "./url-builders";
 
 const DATA_CONFIG = {
@@ -57,13 +60,26 @@ export type CalculatorData = {
     questions: Questions;
     candidates: Candidates;
     candidatesAnswers: CandidatesAnswers;
+    /** The rounds of the election a grouped calculator belongs to, when its file is there. */
+    rounds?: Round[];
     persons?: Persons;
     organizations?: Organizations;
   };
   key: string;
   group?: string;
   baseUrl: string;
+  /** When the data was loaded, as the server saw the clock; the round is derived from it. */
+  now?: string;
 };
+
+async function loadElectionIfPossible({ endpoint, group }: { endpoint: string; group: string }) {
+  try {
+    return await loadElection({ endpoint, group });
+  } catch (error) {
+    if (!(error instanceof NotFoundError)) console.error(`Election of \`${group}\` could not be loaded; the calculator runs without rounds`, error);
+    return undefined;
+  }
+}
 
 export async function loadCalculatorData({ endpoint, key, group }: { endpoint: string; key: string; group?: string }): Promise<CalculatorData> {
   const fileEntries = Object.entries(DATA_CONFIG).map(([entryKey, config]) => ({
@@ -96,10 +112,9 @@ export async function loadCalculatorData({ endpoint, key, group }: { endpoint: s
     })
     .filter((entry): entry is [string, unknown] => entry !== undefined);
 
-  return {
-    data: Object.fromEntries(parsedData) as CalculatorData["data"],
-    key,
-    group,
-    baseUrl: buildDataUrl({ endpoint, key, group }),
-  };
+  const data = Object.fromEntries(parsedData) as CalculatorData["data"];
+  if (group && "election" in data.calculator) {
+    data.rounds = (await loadElectionIfPossible({ endpoint, group }))?.rounds;
+  }
+  return { data, key, group, baseUrl: buildDataUrl({ endpoint, key, group }) };
 }
