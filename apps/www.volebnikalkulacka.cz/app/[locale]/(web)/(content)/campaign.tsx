@@ -47,7 +47,7 @@ async function electionCard(groupKey: string, current: Date): Promise<ElectionCa
   if (published.length === 0) return undefined;
   const code = new Map((election.districts ?? []).map((district) => [`/volby/${groupKey}/${district.key}`, district.code ?? ""]));
   published.sort((a, b) => (code.get(a.href) ?? "").localeCompare(code.get(b.href) ?? ""));
-  return { summary: electionSummaryViewModel(group, election), published, pickerLabel: group.selection?.title ?? "Vyberte kalkulačku" };
+  return { summary: electionSummaryViewModel(group, election, current), published, pickerLabel: group.selection?.title ?? "Vyberte kalkulačku" };
 }
 
 const day = new Intl.DateTimeFormat("cs-CZ", { day: "numeric", timeZone: "Europe/Prague" });
@@ -74,6 +74,9 @@ export async function Campaign() {
           {cards.map(({ summary, published, pickerLabel }) => (
             <Card key={summary.groupKey} shadow="hard" border corner="topLeft" className="bg-white !border-slate-200 p-6 md:p-8 flex flex-col md:grid md:grid-rows-subgrid md:row-span-5">
               <div className="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                {summary.round && summary.round.total > 1 && (
+                  <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 font-semibold text-blue-700">{summary.round.current}. kolo</span>
+                )}
                 {formatVotingDays(summary) && <span className="rounded-full bg-slate-100 px-2.5 py-1">{formatVotingDays(summary)}</span>}
               </div>
               <h2 className="mt-4 font-display font-bold tracking-tight text-slate-700 text-2xl md:text-3xl">{summary.title}</h2>
