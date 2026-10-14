@@ -20,6 +20,7 @@ const personBaseSchema = z
     honorificSuffix: z.string().describe("Honorifics following a person's name").optional(),
     sortName: z.string().describe("A name to use in a lexicographically ordered list").optional(),
     alternateNames: z.array(z.string()).describe("Alternate names to use for example in search").optional(),
+    gender: z.enum(["female", "male", "other"]).describe("Person's gender, as registered in the official candidate registry; used e.g. for grammatical inflection").optional(),
     images: imagesSchema.optional(),
     memberOf: z
       .lazy(() =>

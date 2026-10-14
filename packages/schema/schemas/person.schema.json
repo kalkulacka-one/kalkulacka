@@ -41,6 +41,12 @@
       "description": "A name to use in a lexicographically ordered list",
       "type": "string"
     },
+    "gender": {
+      "title": "Gender",
+      "description": "Person's gender, as registered in the official candidate registry; used e.g. for grammatical inflection",
+      "type": "string",
+      "enum": ["female", "male", "other"]
+    },
     "alternateNames": {
       "description": "Alternate names to use for example in search",
       "type": "array",
