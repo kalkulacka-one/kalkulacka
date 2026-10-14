@@ -44,7 +44,10 @@
         "positionUnknown": "Position could not be determined",
         "source": "Source",
         "noDescription": "No description available",
-        "link": "(link)"
+        "link": "(link)",
+        "elected": "Elected in round {round}",
+        "eliminated": "Did not advance to round {round}",
+        "advancing": "Through to round {round}"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Fill your own calculator"
@@ -87,6 +90,13 @@
         "shareTitle": "Election Calculator",
         "shareFileText": "Check out my Election Calculator result",
         "fileName": "My Election Calculator.png"
+      },
+      "roundBadge": {
+        "round": "Round {round}"
+      },
+      "eliminatedMatches": {
+        "show": "{count, plural, one {Show # eliminated candidate} other {Show # eliminated candidates}}",
+        "hide": "Hide eliminated candidates"
       }
     },
     "pages": {
@@ -127,7 +137,8 @@
         "title": "Choose where you vote",
         "description": "The calculator compares your views with the candidates where you vote.",
         "searchPlaceholder": "Start typing a name",
-        "home": "Home"
+        "home": "Home",
+        "decided": "Decided in round {round}"
       },
       "calculatorPicker": {
         "description": "There are several calculators for this place. Pick the one you want to fill in.",
