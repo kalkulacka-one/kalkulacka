@@ -4,11 +4,13 @@ import { mdiArrowLeft, mdiClose, mdiExportVariant } from "@mdi/js";
 import { useTranslations } from "next-intl";
 import React, { type ReactNode } from "react";
 
-import { AppHeader, Closable, type EmbedContextType, MatchCard } from "@/client";
+import { AppHeader, Closable, type EmbedContextType, MatchCard, useRound } from "@/client";
+import { EliminatedMatches } from "@/components/eliminated-matches";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
 import { Layout } from "@/components/layout";
 import { ResultNavigationCard } from "@/components/result-navigation-card";
+import { RoundBadge } from "@/components/round-badge";
 import type { CalculatorViewModel, ResultViewModel } from "@/view-models";
 
 export type ResultPage = {
@@ -43,6 +45,7 @@ export function ResultPage({
   donateCard,
 }: ResultPage) {
   const t = useTranslations("koa.pages");
+  const round = useRound();
   const tResultNavigationCard = useTranslations("koa.components.resultNavigationCard");
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
@@ -74,7 +77,10 @@ export function ResultPage({
               {tResultNavigationCard("shareButton")}
             </Button>
           </div>
-          <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-4 koa:sm:mb-6">{t("result.title")}</h3>
+          <div className="koa:flex koa:items-center koa:gap-3 koa:mb-4 koa:sm:mb-6">
+            <h3 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text">{t("result.title")}</h3>
+            <RoundBadge round={round} />
+          </div>
           {shouldShowToggleComputed && (
             <div className="koa:mb-6">
               <div className="koa:flex koa:items-center koa:gap-3 koa:text-sm">
@@ -104,6 +110,7 @@ export function ResultPage({
               </React.Fragment>
             ))}
           </div>
+          <EliminatedMatches result={result} />
           {/*
            * "Porovnat" in the page's own normal flow, under the list — not a
            * `position: fixed` bottom bar, which iOS Safari's glass bar clips on
