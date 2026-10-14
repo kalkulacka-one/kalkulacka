@@ -44,7 +44,10 @@
         "positionUnknown": "Postoj sa nepodarilo zistiť",
         "source": "Zdroj",
         "noDescription": "Žiadny popis nie je k dispozícii",
-        "link": "(odkaz)"
+        "link": "(odkaz)",
+        "elected": "Zvolený/á v {round}. kole",
+        "eliminated": "Nepostupuje do {round}. kola",
+        "advancing": "Postupuje do {round}. kola"
       },
       "publicResultNavigationCard": {
         "fillOwnCalculatorButton": "Vyplniť vlastnú kalkulačku"
@@ -87,6 +90,13 @@
         "shareTitle": "Volebná kalkulačka",
         "shareFileText": "Pozrite sa, ako mi vyšla Volebná kalkulačka",
         "fileName": "Moja Volebná kalkulačka.png"
+      },
+      "roundBadge": {
+        "round": "{round}. kolo"
+      },
+      "eliminatedMatches": {
+        "show": "{count, plural, one {Zobraziť # vyradeného kandidáta} few {Zobraziť # vyradených kandidátov} other {Zobraziť # vyradených kandidátov}}",
+        "hide": "Skryť vyradených kandidátov"
       }
     },
     "pages": {
@@ -127,7 +137,8 @@
         "title": "Vyberte, kde volíte",
         "description": "Kalkulačka porovná vaše názory s kandidátmi tam, kde volíte.",
         "searchPlaceholder": "Začnite písať názov",
-        "home": "Úvodná stránka"
+        "home": "Úvodná stránka",
+        "decided": "Rozhodnuté v {round}. kole"
       },
       "calculatorPicker": {
         "description": "Pre toto miesto máme viac kalkulačiek. Vyberte si, ktorú chcete vyplniť.",
