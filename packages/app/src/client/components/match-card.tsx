@@ -1,11 +1,12 @@
 import { ExpandableCard, Icon } from "@kalkulacka-one/design-system/client";
 import { logoCheck, logoCross, logoSlash } from "@kalkulacka-one/design-system/icons";
-import { Avatar, IconBadge, ProgressBar } from "@kalkulacka-one/design-system/server";
+import { Avatar, Badge, IconBadge, ProgressBar } from "@kalkulacka-one/design-system/server";
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { useCandidateAnswerComparison, useHasDirectAnswers } from "@/client/view-models/candidate";
+import { useRound } from "@/client/view-models/rounds";
 import type { CandidateMatchViewModel } from "@/view-models";
 
 export type MatchCard = CandidateMatchViewModel;
@@ -24,12 +25,15 @@ function initialsOf(name: string): string {
     .join("");
 }
 
-export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
+export function MatchCard({ candidate, order, match, respondent, roundStatus }: MatchCard) {
   const t = useTranslations("koa.components.matchCard");
   const hasDirectAnswers = useHasDirectAnswers(candidate.id);
   const answerComparisons = useCandidateAnswerComparison(candidate.id);
   const [expandedSources, setExpandedSources] = useState<Set<string>>(new Set());
 
+  const round = useRound();
+  // Without `rounds` the win must have come in a finished round, so the one before the current, if any.
+  const electedRound = candidate.rounds && candidate.rounds.length > 0 ? Math.max(...candidate.rounds) : round && Math.max(1, round.current - 1);
   const winner = order === 1;
   const name = candidate.displayName ?? candidate.id;
 
@@ -63,6 +67,9 @@ export function MatchCard({ candidate, order, match, respondent }: MatchCard) {
                 </div>
               )}
               <div className="koa:flex koa:flex-col koa:gap-1 koa:items-start koa:justify-center koa:text-left koa:min-w-0">
+                {roundStatus === "elected" && electedRound !== undefined && <Badge color="green">{t("elected", { round: electedRound })}</Badge>}
+                {roundStatus === "active" && round !== undefined && round.current > 1 && <Badge color="primary">{t("advancing", { round: round.current })}</Badge>}
+                {roundStatus === "eliminated" && round !== undefined && <Badge color="neutral">{t("eliminated", { round: round.current })}</Badge>}
                 <h3
                   className={`koa:flex koa:items-baseline koa:gap-1.5 koa:font-semibold koa:leading-[1.3] koa:tracking-[-0.01em] koa:text-text-strong ${winner ? "koa:text-[1rem]" : "koa:text-[0.875rem]"}`}
                 >
