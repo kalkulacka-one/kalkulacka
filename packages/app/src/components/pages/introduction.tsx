@@ -3,7 +3,7 @@ import { Button, Icon } from "@kalkulacka-one/design-system/client";
 import { mdiClose } from "@mdi/js";
 import { useTranslations } from "next-intl";
 
-import { AppHeader, Closable, type EmbedContextType } from "@/client";
+import { AppHeader, Closable, type EmbedContextType, useQuestions, useRound } from "@/client";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
 import { Introduction } from "@/components/introduction";
@@ -22,6 +22,9 @@ export type IntroductionPage = {
 
 export function IntroductionPage({ embedContext, homepageHref, privacyHref, calculator, onNextClick, onCloseClick }: IntroductionPage) {
   const t = useTranslations("koa.pages");
+  const round = useRound();
+  const questions = useQuestions({ includeSettled: true });
+  const settledCount = questions.questions.filter((question) => question.settled).length;
 
   const PageLayout = embedContext.isEmbed ? EmbedLayout : Layout;
 
@@ -41,6 +44,11 @@ export function IntroductionPage({ embedContext, homepageHref, privacyHref, calc
       <PageLayout.Content>
         <h2 className="koa:font-display koa:font-bold koa:text-display koa:tracking-tight koa:text-text koa:mb-2 koa:sm:mb-3">{calculator?.shortTitle}</h2>
         <Introduction calculator={calculator} />
+        {round !== undefined && round.current > 1 && settledCount > 0 && (
+          <p className="koa:mt-3 koa:max-w-prose koa:text-base koa:leading-[1.55] koa:text-text-muted">
+            {t("introduction.roundQuestions", { round: round.current, count: questions.total - settledCount })}
+          </p>
+        )}
       </PageLayout.Content>
       <PageLayout.BottomNavigation>
         <IntroductionNavigationCard onNextClick={onNextClick} />
