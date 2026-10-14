@@ -5,7 +5,8 @@
       "comparisonGrid": {
         "selectParty": "Select a party:",
         "selectAll": "Select all",
-        "yourAnswers": "Your answers"
+        "yourAnswers": "Your answers",
+        "settledQuestion": "Not asked in round {round}: the candidates still in the race do not differ on it."
       },
       "embedAttribution": {
         "broughtBy": "Brought by"
@@ -159,6 +160,9 @@
         "reference": "Error code",
         "retry": "Try again",
         "home": "Back to the home page"
+      },
+      "introduction": {
+        "roundQuestions": "{count, plural, one {Round {round} asks only # question on which the remaining candidates differ.} other {Round {round} asks only # questions on which the remaining candidates differ.}}"
       }
     }
   }

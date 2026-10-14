@@ -5,7 +5,8 @@
       "comparisonGrid": {
         "selectParty": "Vyberte stranu:",
         "selectAll": "Vybrať všetko",
-        "yourAnswers": "Vaše odpovede"
+        "yourAnswers": "Vaše odpovede",
+        "settledQuestion": "V {round}. kole sa na túto otázku nepýtame: postupujúci kandidáti sa v nej nelíšia."
       },
       "embedAttribution": {
         "broughtBy": "Prináša"
@@ -159,6 +160,9 @@
         "reference": "Kód chyby",
         "retry": "Skúsiť to znova",
         "home": "Späť na úvod"
+      },
+      "introduction": {
+        "roundQuestions": "{count, plural, one {V {round}. kole sa pýtame len na # otázku, v ktorej sa postupujúci kandidáti líšia.} few {V {round}. kole sa pýtame len na # otázky, v ktorých sa postupujúci kandidáti líšia.} other {V {round}. kole sa pýtame len na # otázok, v ktorých sa postupujúci kandidáti líšia.}}"
       }
     }
   }
