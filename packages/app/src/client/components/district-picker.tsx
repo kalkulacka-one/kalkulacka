@@ -125,7 +125,8 @@ export function DistrictPickerResults() {
     const context = row.matchedAlias ?? row.parentTitle ?? parent?.title;
     const children = row.children?.map((child) => renderRow(child, row));
     const active = row.href !== undefined && targets.indexOf(row.href) === activeIndex;
-    const description = row.href ? context : context ? `${context} · ${t("unavailable")}` : t("unavailable");
+    const note = row.href ? (row.decidedIn !== undefined ? t("decided", { round: row.decidedIn }) : undefined) : t("unavailable");
+    const description = [context, note].filter((part) => part !== undefined).join(" · ") || undefined;
 
     return (
       <Fragment key={row.key}>

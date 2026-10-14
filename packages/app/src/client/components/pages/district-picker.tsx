@@ -7,6 +7,7 @@ import { type EmbedContextType, HideOnEmbed } from "@/client/embeds";
 import { EmbedFooter } from "@/components/embed-footer";
 import { EmbedLayout } from "@/components/embed-layout";
 import { Layout } from "@/components/layout";
+import { RoundBadge } from "@/components/round-badge";
 import type { DistrictPickerViewModel } from "@/view-models";
 
 import { AppHeader } from "../app-header";
@@ -42,9 +43,12 @@ export function DistrictPickerPage({ embedContext, picker, heading, backHref, ho
                         </Button>
                       </HideOnEmbed>
                     )}
-                    <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-text-strong koa:sm:text-[2rem]">
-                      {picker.title ?? t("districtPicker.title")}
-                    </h2>
+                    <div className="koa:flex koa:flex-wrap koa:items-center koa:gap-3">
+                      <h2 className="koa:font-display koa:text-[1.75rem] koa:font-bold koa:leading-tight koa:tracking-[-0.03em] koa:text-text-strong koa:sm:text-[2rem]">
+                        {picker.title ?? t("districtPicker.title")}
+                      </h2>
+                      <RoundBadge round={picker.round} />
+                    </div>
                   </div>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>

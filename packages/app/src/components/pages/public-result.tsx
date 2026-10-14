@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 
-import { AppHeader, MatchCard, WithCondenseOnScroll } from "@/client";
+import { AppHeader, MatchCard, useRound, WithCondenseOnScroll } from "@/client";
+import { EliminatedMatches } from "@/components/eliminated-matches";
 import { Layout } from "@/components/layout";
 import { PublicResultNavigationCard } from "@/components/public-result-navigation-card";
+import { RoundBadge } from "@/components/round-badge";
 import type { CalculatorViewModel, ResultViewModel } from "@/view-models";
 
 export type PublicResultPageProps = {
@@ -15,6 +17,7 @@ export type PublicResultPageProps = {
 
 export function PublicResultPage({ result, calculator, showOnlyNested, onFilterChange, onStartCalculator }: PublicResultPageProps) {
   const t = useTranslations("koa.pages");
+  const round = useRound();
   const hasNestedCandidates = result.matches.some((match) => match.nestedMatches && match.nestedMatches.length > 0);
   const shouldShowToggleComputed = hasNestedCandidates || showOnlyNested;
 
@@ -26,7 +29,10 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
             <AppHeader condensed={condensed} calculator={calculator}>
               <AppHeader.Bottom>
                 <AppHeader.BottomMain condensed={condensed}>
-                  <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-text-strong">{t("publicResult.title")}</h3>
+                  <div className="koa:flex koa:items-center koa:gap-3">
+                    <h3 className="koa:font-display koa:font-semibold koa:text-2xl koa:tracking-tight koa:text-text-strong">{t("publicResult.title")}</h3>
+                    <RoundBadge round={round} />
+                  </div>
                 </AppHeader.BottomMain>
               </AppHeader.Bottom>
             </AppHeader>
@@ -59,6 +65,7 @@ export function PublicResultPage({ result, calculator, showOnlyNested, onFilterC
             <MatchCard key={match.candidate.id} {...match} />
           ))}
         </div>
+        <EliminatedMatches result={result} />
       </Layout.Content>
       <Layout.BottomNavigation>
         <PublicResultNavigationCard onStartClick={onStartCalculator} />
