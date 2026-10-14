@@ -10,6 +10,7 @@ import type { Canonical } from "@/routing/factories/url-builders";
 import { calculatorGuard } from "@/routing/guards/calculator";
 import type { RouteSegments } from "@/routing/segments";
 
+import { loadDecidedIn } from "./load-decided-in";
 import { loadGroupCalculators } from "./load-group-calculators";
 
 export type GroupRootPage = {
@@ -34,13 +35,16 @@ export async function GroupRootPage({ endpoint, segments, locale, embedContext, 
     redirect(addLauncherParam(routes.introduction(segments, locale), launcher));
   }
 
+  const current = now();
   const calculators = await loadGroupCalculators({ endpoint, group: groupKey, keys: group.calculators.map((item) => item.key) });
+  const decidedIn = await loadDecidedIn({ endpoint, group: groupKey, keys: Object.keys(calculators), election, now: current });
   const picker = districtPickerViewModel({
     group,
     election,
     buildHref: (key) => addLauncherParam(routes.base({ ...segments, third: key }, locale), routes.base(segments, locale)),
     calculators,
-    now: now(),
+    decidedIn,
+    now: current,
   });
   const heading = { title: election.shortTitle ?? election.title };
 

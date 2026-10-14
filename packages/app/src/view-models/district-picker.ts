@@ -1,6 +1,7 @@
 import type { Calculator, District, Election, ElectionCalculatorGroup, ElectionCalculatorItem } from "@kalkulacka-one/schema";
 
 import { isPublished } from "./published";
+import { currentRound, type RoundState } from "./rounds";
 
 export type DistrictPickerRowViewModel = {
   key: string;
@@ -8,6 +9,7 @@ export type DistrictPickerRowViewModel = {
   shortTitle?: string;
   code?: string;
   href?: string;
+  decidedIn?: number;
   children?: DistrictPickerRowViewModel[];
   aliases?: string[];
 };
@@ -23,6 +25,7 @@ export type DistrictPickerViewModel = {
   description?: string;
   searchPlaceholder?: string;
   showCode: boolean;
+  round?: RoundState;
   sections: DistrictPickerSectionViewModel[];
 };
 
@@ -31,6 +34,7 @@ export type DistrictPickerViewModelInput = {
   election: Election;
   buildHref: (districtKey: string) => string;
   calculators: Record<string, Calculator>;
+  decidedIn?: Record<string, number>;
   now: Date;
 };
 
@@ -102,6 +106,7 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
   const children = inside.filter((child) => hasCalculatorsBelow(child, index)).map((child) => districtRow(child, index, input));
   const aliases = inside.filter((child) => !hasCalculatorsBelow(child, index)).map((child) => child.title);
   const href = published.length > 0 ? input.buildHref(district.key) : undefined;
+  const decidedIn = published.map((item) => input.decidedIn?.[item.key]).find((round) => round !== undefined);
 
   return {
     key: district.key,
@@ -109,6 +114,7 @@ function districtRow(district: District, index: DistrictIndex, input: DistrictPi
     shortTitle: district.shortTitle,
     code: district.code,
     href,
+    decidedIn,
     children: children.length > 0 ? children : undefined,
     aliases: aliases.length > 0 ? aliases : undefined,
   };
@@ -137,6 +143,7 @@ export function districtPickerViewModel(input: DistrictPickerViewModelInput): Di
     description: selection?.description,
     searchPlaceholder: selection?.searchPlaceholder,
     showCode: selection?.showCode ?? false,
+    round: election.rounds ? currentRound(election.rounds, input.now) : undefined,
     sections,
   };
 }

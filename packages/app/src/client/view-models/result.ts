@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import { useAnswersStore, useCalculatorStore } from "@/client/stores";
+import { useRound } from "@/client/view-models/rounds";
 import { calculateMatches } from "@/result-calculation";
 import { type CandidateAnswer, candidatesAnswersViewModel, candidateViewModel, organizationViewModel, personViewModel, type ResultViewModel, resultViewModel } from "@/view-models";
 
@@ -13,6 +14,7 @@ export function useCalculatedMatches(): ReturnType<typeof calculateMatches> {
 }
 
 export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>, options?: { showOnlyNested?: boolean }): ResultViewModel {
+  const round = useRound();
   const allCandidatesData = useCalculatorStore((state) => state.data.candidates);
   const personsData = useCalculatorStore((state) => state.data.persons);
   const organizationsData = useCalculatorStore((state) => state.data.organizations);
@@ -37,5 +39,5 @@ export function useResult(algorithmMatches: ReturnType<typeof calculateMatches>,
 
   const candidatesAnswers = useMemo(() => candidatesAnswersViewModel(filteredCandidatesAnswersData), [filteredCandidatesAnswersData]);
 
-  return useMemo(() => resultViewModel(candidates, candidatesAnswers, algorithmMatches), [candidates, candidatesAnswers, algorithmMatches]);
+  return useMemo(() => resultViewModel(candidates, candidatesAnswers, algorithmMatches, { currentRound: round?.current }), [candidates, candidatesAnswers, algorithmMatches, round]);
 }

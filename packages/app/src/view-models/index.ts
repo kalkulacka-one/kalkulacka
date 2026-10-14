@@ -16,3 +16,4 @@ export * from "./published";
 export * from "./question";
 export * from "./questions";
 export * from "./result";
+export * from "./rounds";

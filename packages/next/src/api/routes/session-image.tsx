@@ -1,8 +1,20 @@
 import type { calculateMatches } from "@kalkulacka-one/app";
-import { candidatesAnswersViewModel, candidateViewModel, HttpError, loadCalculatorData, NotFoundError, organizationViewModel, personViewModel, resultViewModel } from "@kalkulacka-one/app";
+import {
+  candidatesAnswersViewModel,
+  candidateViewModel,
+  currentRound,
+  HttpError,
+  loadCalculatorData,
+  NotFoundError,
+  organizationViewModel,
+  personViewModel,
+  resultViewModel,
+} from "@kalkulacka-one/app";
 
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
+
+import { now } from "@/routing/clock";
 
 // A shared result can change after sharing – override `next/og`'s default year-long immutable cache.
 const CACHE_CONTROL = "public, max-age=300, s-maxage=300, stale-while-revalidate=86400";
@@ -39,6 +51,8 @@ export function createSessionImageRoute({ electionName, appTitle, shareHeading, 
         key: sessionData.calculatorKey,
         group: sessionData.calculatorGroup || undefined,
       });
+      const rounds = calculatorData.data.rounds;
+      const round = rounds ? currentRound(rounds, now()) : undefined;
 
       const personsMap = new Map((calculatorData.data.persons || []).map((person) => [person.id, personViewModel(person, calculatorData.baseUrl)]));
       const organizationsMap = new Map((calculatorData.data.organizations || []).map((organization) => [organization.id, organizationViewModel(organization, calculatorData.baseUrl)]));
@@ -46,7 +60,7 @@ export function createSessionImageRoute({ electionName, appTitle, shareHeading, 
       const candidatesVm = calculatorData.data.candidates.map((candidate) => candidateViewModel(candidate, personsMap, organizationsMap, calculatorData.baseUrl));
       const candidatesAnswersVm = candidatesAnswersViewModel(calculatorData.data.candidatesAnswers);
 
-      const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches);
+      const result = resultViewModel(candidatesVm, candidatesAnswersVm, algorithmMatches, { currentRound: round?.current });
 
       const topMatches = result.matches.slice(0, 5).map((match) => ({
         id: match.candidate.id,
