@@ -15,7 +15,7 @@ export function ComparisonPageWithRouting({ segments }: { segments: RouteSegment
   const algorithmMatches = useCalculatedMatches();
   const result = useResult(algorithmMatches);
   const answers = useAnswers();
-  const questions = useQuestions();
+  const questions = useQuestions({ includeSettled: true });
   const embed = useEmbed();
   const locale = useLocale();
 
