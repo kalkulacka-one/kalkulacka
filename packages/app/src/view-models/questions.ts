@@ -8,9 +8,10 @@ export type QuestionsViewModel = {
   total: number;
 };
 
-export function questionsViewModel(questions: Question[]): QuestionsViewModel {
+export function questionsViewModel(questions: Question[], settledQuestionIds: string[] = []): QuestionsViewModel {
+  const settled = new Set(settledQuestionIds);
   return {
-    questions: questions.map(questionViewModel),
+    questions: questions.map((question) => questionViewModel(question, settled.has(question.id))),
     total: questions.length,
   };
 }
