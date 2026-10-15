@@ -10,7 +10,7 @@ import { vocabulary } from "./vocabulary";
  * completes its flow and renders a result. Calculators are discovered from the running app and
  * the assertions are structural – no titles, counts or values from the content – so content
  * changes never require a test change. The file is identical in every instance: the slugs come
- * from the app's config and the four core words from the vocabulary file next to this one.
+ * from the app's config and the core words from the vocabulary file next to this one.
  */
 
 const [slugs] = Object.values(routeSlugs);
@@ -94,7 +94,7 @@ async function expectPageShell(page: Page) {
 }
 
 // A control is found by its visible text alone, whatever element renders it.
-const control = (page: Page, text: string) => page.getByText(text, { exact: true }).first();
+const control = (page: Page, text: string | RegExp) => page.getByText(text, { exact: true }).first();
 
 async function answerEveryQuestion(page: Page, calculator: string) {
   const reviewUrl = endsWith(calculator + pages.review);
@@ -124,7 +124,12 @@ async function completeFlow(page: Page, calculator: string) {
   await control(page, vocabulary.showResults).click({ timeout: timeouts.step });
   await page.waitForURL(endsWith(calculator + pages.result), { timeout: timeouts.navigation });
   await expectPageShell(page);
-  await expect(page.getByText(/\d+\s?%/).first()).toBeVisible({ timeout: timeouts.step });
+  // A district decided in an earlier round shows only its winner, without a percentage; the others sit behind a toggle.
+  const percentage = page.getByText(/\d+\s?%/).first();
+  const showEliminated = control(page, vocabulary.showEliminated);
+  await expect(percentage.or(showEliminated).first()).toBeVisible({ timeout: timeouts.step });
+  if (await showEliminated.isVisible()) await showEliminated.click();
+  await expect(percentage).toBeVisible({ timeout: timeouts.step });
 }
 
 test.describe("Calculator smoke", () => {
