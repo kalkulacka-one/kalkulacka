@@ -243,10 +243,12 @@ export const ButtonVariants = cva(
         class: ["ko:h-11 ko:w-11"],
       },
       // 36px, the same as the recap row's icon-only answer toggles, so the star and the answers read as one set.
+      // The look stays 36px, but the tap area is 44px: an invisible ring of the button's own pseudo-element (6px, measured from inside the 2px border), so a
+      // thumb that lands just beside the circle still hits it.
       {
         variant: "round",
         size: "xsmall",
-        class: ["ko:h-9 ko:w-9"],
+        class: ["ko:h-9 ko:w-9 ko:relative ko:after:absolute ko:after:-inset-1.5 ko:after:content-['']"],
       },
     ],
   },
