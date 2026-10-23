@@ -1,9 +1,9 @@
-import { Button } from "@kalkulacka-one/design-system/client";
+import { Button, type ButtonAsButtonProps } from "@kalkulacka-one/design-system/client";
 
 import { Switch as SwitchHeadless, type SwitchProps as SwitchPropsHeadless } from "@headlessui/react";
 import * as React from "react";
 
-export type ToggleButton = Omit<SwitchPropsHeadless<typeof Button>, "as">;
+export type ToggleButton = Omit<SwitchPropsHeadless<React.ComponentType<ButtonAsButtonProps>>, "as">;
 
 function ToggleComponent(props: ToggleButton, ref: React.Ref<HTMLButtonElement>) {
   const [justClicked, setJustClicked] = React.useState(false);
