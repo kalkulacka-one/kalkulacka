@@ -1,13 +1,14 @@
-import { type ElectionSummaryViewModel, electionSummaryViewModel, ifFound, isPublished, loadCalculator, loadCalculatorGroup, loadElection, NotFoundError } from "@kalkulacka-one/app";
+import { type ElectionSummaryViewModel, electionSummaryViewModel, ifFound, loadCalculatorGroup, loadElection } from "@kalkulacka-one/app";
 import { Button } from "@kalkulacka-one/design-system/client";
 import { Card } from "@kalkulacka-one/design-system/server";
-import { now } from "@kalkulacka-one/next";
+import { loadPublishedCalculators, now } from "@kalkulacka-one/next";
 
 import Link from "next/link";
 
 import { SubscribeForm } from "@/components/client";
+import { appConfig } from "@/config/app-config";
 
-const GROUPS = ["senatni-2026", "komunalni-2026"];
+const GROUPS = appConfig.calculators.flatMap((entry) => (entry.campaign && !entry.key ? [entry.group] : []));
 const DIRECT_LINKS_UP_TO = 4;
 
 type CalculatorLink = { href: string; label: string };
@@ -25,25 +26,17 @@ function endpoint(): string {
   return process.env.DATA_ENDPOINT;
 }
 
-async function publishedCalculator(group: string, key: string, current: Date) {
-  try {
-    const calculator = await loadCalculator({ endpoint: endpoint(), key, group });
-    return isPublished(calculator, current) ? calculator : undefined;
-  } catch (error) {
-    if (!(error instanceof NotFoundError)) {
-      console.error(`Calculator \`${group}/${key}\` could not be loaded`, error);
-    }
-    return undefined;
-  }
-}
-
 async function electionCard(groupKey: string, current: Date): Promise<ElectionCard | undefined> {
-  const [group, election] = await Promise.all([ifFound(loadCalculatorGroup({ endpoint: endpoint(), group: groupKey })), ifFound(loadElection({ endpoint: endpoint(), group: groupKey }))]);
+  const [group, election, calculators] = await Promise.all([
+    ifFound(loadCalculatorGroup({ endpoint: endpoint(), group: groupKey })),
+    ifFound(loadElection({ endpoint: endpoint(), group: groupKey })),
+    loadPublishedCalculators({ endpoint: endpoint(), group: groupKey, current }),
+  ]);
   if (!group?.election || !election) return undefined;
-  const calculators = await Promise.all(group.calculators.map(async (item) => ({ item, calculator: await publishedCalculator(groupKey, item.key, current) })));
-  const published = calculators.flatMap(({ item, calculator }) =>
-    calculator ? [{ href: `/volby/${groupKey}/${item.district?.key ?? item.key}`, label: calculator.shortTitle ?? calculator.title ?? item.key }] : [],
-  );
+  const published = (calculators ?? []).map(({ item, calculator }) => ({
+    href: `/volby/${groupKey}/${("district" in item ? item.district?.key : undefined) ?? item.key}`,
+    label: calculator.shortTitle ?? calculator.title ?? item.key,
+  }));
   if (published.length === 0) return undefined;
   const code = new Map((election.districts ?? []).map((district) => [`/volby/${groupKey}/${district.key}`, district.code ?? ""]));
   published.sort((a, b) => (code.get(a.href) ?? "").localeCompare(code.get(b.href) ?? ""));

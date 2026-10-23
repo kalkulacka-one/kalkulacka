@@ -8,6 +8,8 @@ export const appConfig = withDefaults({
     locales: ["mk"],
   },
 
+  calculators: [{ key: "kompas-2025" }],
+
   footer: {
     showAnalytics: false,
   },

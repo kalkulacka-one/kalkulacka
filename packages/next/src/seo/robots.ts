@@ -1,6 +1,6 @@
 import type { PageType } from "@/routing/localized-slugs";
 
-export function buildRobotsTxt({ allow, pageSlugs }: { allow: boolean; pageSlugs: Record<string, Record<PageType, string>> }): string {
+export function buildRobotsTxt({ allow, pageSlugs, sitemap }: { allow: boolean; pageSlugs: Record<string, Record<PageType, string>>; sitemap?: string }): string {
   if (!allow) {
     return "User-agent: *\nDisallow: /\n";
   }
@@ -14,5 +14,7 @@ export function buildRobotsTxt({ allow, pageSlugs }: { allow: boolean; pageSlugs
     slugRules.add(`Allow: /*/${slugs.result}/`);
   }
 
-  return `${[...lines, ...slugRules].join("\n")}\n`;
+  const sitemapLines = sitemap ? ["", `Sitemap: ${sitemap}`] : [];
+
+  return `${[...lines, ...slugRules, ...sitemapLines].join("\n")}\n`;
 }

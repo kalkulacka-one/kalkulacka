@@ -8,6 +8,12 @@ export const appConfig = withDefaults({
     locales: ["sk"],
   },
 
+  calculators: [{ key: "inventura-2023-2025" }],
+
+  sitemap: {
+    pages: ["/o-projekte", "/metodika", "/soukromi"],
+  },
+
   links: {
     privacy: "/soukromi",
   },
